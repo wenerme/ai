@@ -1,16 +1,18 @@
 ---
-title: Client certificate variables
 description: Variables available in WAF rules when using client certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Client certificate variables
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client certificate variables
 
-# Client certificate variables
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a request includes a client certificate for [mTLS authentication](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/), Cloudflare exposes certificate details as variables in the Ruleset Engine and as properties on the Workers `request.cf` object.
 
@@ -48,7 +50,14 @@ Some `tlsClientAuth` properties have a different type than their Rules language 
 * [request.cf.tlsClientAuth.certChainRFC9440](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fchain%5Frfc9440/) — The intermediate certificate chain in [RFC 9440 ↗](https://www.rfc-editor.org/rfc/rfc9440) format as a comma-separated list.
 * [request.cf.tlsClientAuth.certChainRFC9440TooLarge](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fchain%5Frfc9440%5Ftoo%5Flarge/) — `true` if the intermediate chain exceeded the 16 KiB encoding limit and was omitted from `certChainRFC9440`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/#page","headline":"Client certificate variables · Cloudflare SSL/TLS docs","description":"Variables available in WAF rules when using client certificates.","url":"https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/client-certificate-variables/","name":"Client certificate variables"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/#page","headline":"Client certificate variables · Cloudflare SSL/TLS docs","description":"Variables available in WAF rules when using client certificates.","url":"https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

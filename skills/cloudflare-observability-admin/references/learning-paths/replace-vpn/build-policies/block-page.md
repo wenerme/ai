@@ -1,16 +1,18 @@
 ---
-title: Gateway block page
 description: Set up custom Gateway block pages.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Gateway block page
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway block page
 
-# Gateway block page
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Zero Trust, you can deliver actionable feedback to users when they are blocked by a Gateway policy. Custom block messages can reduce user confusion and decrease your IT ticket load.
 
@@ -39,9 +41,6 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-* [ Dashboard ](#tab-panel-9947)
-* [ Terraform (v5) ](#tab-panel-9948)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, turn on **Modify Gateway block behavior**.
@@ -60,29 +59,29 @@ Depending on your settings, Gateway will display a block page in your users' bro
 3. In the policy's [rule\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy), turn on `block_page_enabled`. If you have configured a [custom Gateway block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#customize-the-block-page), you can optionally show an additional `block_reason` when traffic is blocked by this policy.
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" {
-  name        = "Block DNS Security Categories"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "Managed by Terraform - Generic security policy based on Cloudflare Threat Intelligence categories."
-  precedence  = 101
-  action      = "block"
-  filters     = ["dns"]
-  /* Categories being enabled here:
-    - 80:  "Command and Control & Botnet"
-    - 83:  "Cryptomining"
-    - 117: "Malware"
-    - 131: "Phishing"
-    - 153: "Spyware"
-    - 175: "DNS Tunneling"
-    - 176: "DGA Domains"
-    - 178: "Brand Embedding"
-  */
-  traffic = "any(dns.security_category[*] in {80 83 117 131 153 175 176 178})"
-  identity = ""
-  rule_settings = {
-    block_page_enabled = true
-    block_reason  = "This domain has been flagged as a potential security risk." // Adds an additional message to the custom block page. Requires enabling custom block page in cloudflare_zero_trust_gateway_settings.
-  }
+	name        = "Block DNS Security Categories"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "Managed by Terraform - Generic security policy based on Cloudflare Threat Intelligence categories."
+	precedence  = 101
+	action      = "block"
+	filters     = ["dns"]
+	/* Categories being enabled here:
+		- 80:  "Command and Control & Botnet"
+		- 83:  "Cryptomining"
+		- 117: "Malware"
+		- 131: "Phishing"
+		- 153: "Spyware"
+		- 175: "DNS Tunneling"
+		- 176: "DGA Domains"
+		- 178: "Brand Embedding"
+	*/
+	traffic = "any(dns.security_category[*] in {80 83 117 131 153 175 176 178})"
+	identity = ""
+	rule_settings = {
+		block_page_enabled = true
+		block_reason  = "This domain has been flagged as a potential security risk." // Adds an additional message to the custom block page. Requires enabling custom block page in cloudflare_zero_trust_gateway_settings.
+	}
 }
 ```
 
@@ -91,9 +90,6 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" 
 You can customize the Cloudflare-hosted block page by making global changes that Gateway will display every time a user reaches your block page. Customizations will apply regardless of the type of policy (DNS or HTTP) that blocks the traffic.
 
 To customize your block page:
-
-* [ Dashboard ](#tab-panel-9945)
-* [ Terraform (v5) ](#tab-panel-9946)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -112,21 +108,21 @@ To customize your block page:
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    block_page = {
-      enabled = true //do not use the default Gateway block page
-      mode = "customized_block_page" //use a custom block page
-      name = "Cloudflare"
-      logo_path = "https://logos.com/a.png"
-      header_text = "--header--"
-      footer_text = "--footer--"
-      mailto_address = "admin@example.com"
-      mailto_subject = "Blocked Request"
-      background_color = "#ffffff"
-      suppress_footer = false
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		block_page = {
+			enabled = true //do not use the default Gateway block page
+			mode = "customized_block_page" //use a custom block page
+			name = "Cloudflare"
+			logo_path = "https://logos.com/a.png"
+			header_text = "--header--"
+			footer_text = "--footer--"
+			mailto_address = "admin@example.com"
+			mailto_subject = "Blocked Request"
+			background_color = "#ffffff"
+			suppress_footer = false
+		}
+	}
 }
 ```
 
@@ -145,7 +141,14 @@ Client notifications provide additional functionality over the [custom block pag
 * Client notifications work with network policies, which means you can surface feedback for all partial actions on user traffic including blocking a specific port, file upload, or protocol.
 * Client notifications allow you to direct users to a unique link per individual policy. For example, you could link users to your organization's acceptable use policy, data protection policy, or any existing IT troubleshooting infrastructure. If no infrastructure for this exists within your organization, you can quickly deploy an HTML site on [Cloudflare Pages](https://developers.cloudflare.com/pages/), put the site behind a [Cloudflare Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and provide dynamic feedback based on the identity and device posture values found in the user's [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/#page","headline":"Gateway block page · Cloudflare Learning Paths","description":"Set up custom Gateway block pages.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/block-page/","name":"Gateway block page"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/#page","headline":"Gateway block page · Cloudflare Learning Paths","description":"Set up custom Gateway block pages.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

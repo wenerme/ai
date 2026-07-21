@@ -1,16 +1,18 @@
 ---
-title: IdP federation
 description: Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.
-image: https://developers.cloudflare.com/zt-preview.png
+title: IdP federation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  IdP federation
 
-# IdP federation
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 IdP federation allows organizations with multiple Cloudflare accounts to use a single identity provider (IdP) configuration across accounts. Instead of configuring the same IdP (for example, Okta or Entra ID) separately in every account, you configure it once in a source account and share it with the other accounts in your organization.
 
@@ -33,9 +35,6 @@ When a user in a recipient account authenticates, the request is routed through 
 
 ## Share an IdP
 
-* [ Dashboard ](#tab-panel-7882)
-* [ API ](#tab-panel-7883)
-
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
@@ -52,19 +51,19 @@ Sharing an IdP via the API is a two-step process: create a federation grant, the
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "idp_id": "<IDP_UUID>"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"idp_id": "<IDP_UUID>"
+	}'
 ```
 
 The response includes the grant `id`, which you will use in the next step. To list all federation grants in your account:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. Share the grant
@@ -80,48 +79,48 @@ To share the grant with one or more specific accounts:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Identity provider: OpenID Connect",
-    "recipients": [
-        {
-            "recipient_account_id": "<RECIPIENT_ACCOUNT_ID>"
-        }
-    ],
-    "resources": [
-        {
-            "resource_account_id": "<SOURCE_ACCOUNT_ID>",
-            "resource_id": "<GRANT_ID>",
-            "resource_type": "idp-federation-grant",
-            "meta": {}
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Identity provider: OpenID Connect",
+		"recipients": [
+				{
+						"recipient_account_id": "<RECIPIENT_ACCOUNT_ID>"
+				}
+		],
+		"resources": [
+				{
+						"resource_account_id": "<SOURCE_ACCOUNT_ID>",
+						"resource_id": "<GRANT_ID>",
+						"resource_type": "idp-federation-grant",
+						"meta": {}
+				}
+		]
+	}'
 ```
 
 To share the grant with every account in your organization, replace the `recipients` array with your organization ID:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Identity provider: OpenID Connect",
-    "recipients": [
-        {
-            "organization_id": "<ORGANIZATION_ID>"
-        }
-    ],
-    "resources": [
-        {
-            "resource_account_id": "<SOURCE_ACCOUNT_ID>",
-            "resource_id": "<GRANT_ID>",
-            "resource_type": "idp-federation-grant",
-            "meta": {}
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Identity provider: OpenID Connect",
+		"recipients": [
+				{
+						"organization_id": "<ORGANIZATION_ID>"
+				}
+		],
+		"resources": [
+				{
+						"resource_account_id": "<SOURCE_ACCOUNT_ID>",
+						"resource_id": "<GRANT_ID>",
+						"resource_type": "idp-federation-grant",
+						"meta": {}
+				}
+		]
+	}'
 ```
 
 Each recipient account is automatically provisioned with a read-only IdP connection that points to the bridge. When you share with an organization, every account in the organization receives the connection.
@@ -130,12 +129,9 @@ Each recipient account is automatically provisioned with a read-only IdP connect
 
 To stop sharing an IdP, delete the federation grant, as well as the share.
 
-Warning
+Caution
 
 Deleting the federation grant immediately removes the IdP connection from all recipient accounts. Any Access policies in those accounts that reference the federated IdP will no longer match, which may lock users out. Verify that recipient accounts have alternative authentication methods before you stop sharing.
-
-* [ Dashboard ](#tab-panel-7880)
-* [ API ](#tab-panel-7881)
 
 The dashboard handles both grant and share deletion in a single flow.
 
@@ -150,16 +146,16 @@ Unfederating an IdP via the API is a two-step process. Deleting the grant stops 
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants/$GRANT_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. (Optional) Delete the share
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Limitations
@@ -167,7 +163,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID
 * An account can federate at most one IdP as a source.
 * A source IdP cannot be deleted while it has a federation grant associated with it. Delete the grant first.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/idp-federation/","name":"IdP federation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

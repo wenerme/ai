@@ -1,16 +1,18 @@
 ---
-title: Configure DoH on your browser
 description: Configure DNS over HTTPS in your browser.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Configure DoH on your browser
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure DoH on your browser
 
-# Configure DoH on your browser
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Several browsers support DNS over HTTPS (DoH), which encrypts your DNS queries to protect them from monitoring and tampering.
 
@@ -53,7 +55,14 @@ Note
 
 Visit [1.1.1.1 help page ↗](https://one.one.one.one/help) and check if `Using DNS over HTTPS (DoH)` shows `Yes`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/#page","headline":"Configure DoH on your browser | Cloudflare Docs","description":"Configure DNS over HTTPS in your browser.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/","name":"DNS over HTTPS"}},{"@type":"ListItem","position":5,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/","name":"Configure DoH on your browser"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/#page","headline":"Configure DoH on your browser | Cloudflare Docs","description":"Configure DNS over HTTPS in your browser.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

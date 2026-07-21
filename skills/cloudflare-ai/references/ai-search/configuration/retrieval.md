@@ -1,16 +1,18 @@
 ---
-title: Retrieval
 description: Configure AI Search retrieval settings, including reranking, caching, and result filtering.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Retrieval
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Retrieval
 
-# Retrieval
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 * [ Reranking ](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)
 * [ System prompt ](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)
@@ -22,7 +24,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
 * [ UI snippets ](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/#page","headline":"Retrieval · Cloudflare AI Search docs","description":"Configure AI Search retrieval settings, including reranking, caching, and result filtering.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/#page","headline":"Retrieval · Cloudflare AI Search docs","description":"Configure AI Search retrieval settings, including reranking, caching, and result filtering.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

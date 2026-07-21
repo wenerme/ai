@@ -1,16 +1,18 @@
 ---
-title: Health monitor notifications
 description: Migrate health monitor notifications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Health monitor notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Health monitor notifications
 
-# Health monitor notifications
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is migrating the notifications used by load balancing [health monitors](https://developers.cloudflare.com/load-balancing/monitors/) to use Cloudflare's centralized [Notifications Service](https://developers.cloudflare.com/notifications/).
 
@@ -32,15 +34,11 @@ With code
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/list/) to list all your pools and then look for whether each pool has a value for the `notification_email` parameter.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools" \
 --header "Authorization: Bearer <API_TOKEN>" \
 | jq '[.result[] | select(.notification_email != "") | {name, notification_email}]'
 ```
-
-**Response**
 
 ```json
 [
@@ -109,15 +107,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Patch Pools**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "notification_email": ""
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"notification_email": ""
+	}'
 ```
 
 This API call supports the standard pagination query parameters, either `limit/offset` or `per_page/page`, so by default it only updates the first 25 pools listed. To make sure you update all your pools, you may want to adjust your API call so it loops through various pages or includes a larger number of pools with each request.
@@ -130,7 +126,14 @@ Once you created your new notification in [Step 2](#step-2---create-new-notifica
 
 If you do not complete this step (removing all notification emails from all pools), your migration will not be considered complete and you will continue to receive additional emails about this deprecation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/#page","headline":"Health monitor notifications · Cloudflare Load Balancing docs","description":"Migrate health monitor notifications.","url":"https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/reference/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/load-balancing/reference/migration-guides/health-monitor-notifications/","name":"Health monitor notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/#page","headline":"Health monitor notifications · Cloudflare Load Balancing docs","description":"Migrate health monitor notifications.","url":"https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

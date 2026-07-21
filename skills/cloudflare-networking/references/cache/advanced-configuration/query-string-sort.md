@@ -1,16 +1,18 @@
 ---
-title: Query String Sort
 description: Improve cache hit rates by sorting query string parameters.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Query String Sort
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query String Sort
 
-# Query String Sort
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 **Query String Sort** increases cache-hit rates by first sorting query strings into a consistent order before checking the Cloudflare cache.
 
@@ -112,7 +114,14 @@ To learn more about Cache Rules, visit [Cache Rules](https://developers.cloudfla
 * [Increasing Cache Hit Rates with Query String Sort ↗](https://blog.cloudflare.com/increasing-cache-hit-rates-with-query-string-sort/)
 * [Best Practice: Caching Everything While Ignoring Query Strings](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything-ignore-query-strings/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/#page","headline":"Query String Sort · Cloudflare Cache (CDN) docs","description":"Improve cache hit rates by sorting query string parameters.","url":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/query-string-sort/","name":"Query String Sort"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/#page","headline":"Query String Sort · Cloudflare Cache (CDN) docs","description":"Improve cache hit rates by sorting query string parameters.","url":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Features and plans
 description: Review information on all Cloudflare DNS features and their availability.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Features and plans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Features and plans
 
-# Features and plans
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/reference/all-features/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides the following features for different [plans ↗](https://www.cloudflare.com/plans/).
 
@@ -248,7 +250,14 @@ Pro plans and above can customize
 * **Business:** Yes
 * **Enterprise:** Yes
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/all-features/#page","headline":"Features and plans · Cloudflare DNS docs","description":"Review information on all Cloudflare DNS features and their availability.","url":"https://developers.cloudflare.com/dns/reference/all-features/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/reference/all-features/","name":"Features and plans"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/all-features/#page","headline":"Features and plans · Cloudflare DNS docs","description":"Review information on all Cloudflare DNS features and their availability.","url":"https://developers.cloudflare.com/dns/reference/all-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

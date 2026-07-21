@@ -1,25 +1,24 @@
 ---
-title: Create a waiting room
 description: Create a new waiting room in the dashboard or via API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a waiting room
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a waiting room
 
-# Create a waiting room
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can create a waiting room from the dashboard or via API.
 
 Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
-
-* [ Dashboard ](#tab-panel-12082)
-* [ API ](#tab-panel-12083)
 
 1. Within your application, go to **Traffic** \> **Waiting Room**.
 2. Select **Create**.
@@ -43,68 +42,71 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Waiting Rooms Write`
 
-**Create waiting room**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "shop_waiting_room",
-    "description": "Waiting room for webshop",
-    "host": "shop.example.com",
-    "path": "/shop",
-    "queue_all": true,
-    "new_users_per_minute": 200,
-    "total_active_users": 300,
-    "session_duration": 1,
-    "disable_session_renewal": false,
-    "json_response_enabled": false,
-    "queueing_method": "fifo",
-    "queueing_status_code": 202,
-    "cookie_attributes": {
-        "samesite": "auto",
-        "secure": "auto"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "shop_waiting_room",
+		"description": "Waiting room for webshop",
+		"host": "shop.example.com",
+		"path": "/shop",
+		"queue_all": true,
+		"new_users_per_minute": 200,
+		"total_active_users": 300,
+		"session_duration": 1,
+		"disable_session_renewal": false,
+		"json_response_enabled": false,
+		"queueing_method": "fifo",
+		"queueing_status_code": 202,
+		"cookie_attributes": {
+				"samesite": "auto",
+				"secure": "auto"
+		}
+	}'
 ```
 
 The response contains the complete definition of the newly created Waiting Room.
 
-**Response**
-
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": [
-    {
-      "id": "1111111111111111111111",
-      "created_on": "2023-01-01T05:20:00.12345Z",
-      "modified_on": "2023-01-01T05:20:00.12345Z",
-      "name": "shop_waiting_room",
-      "description": "Waiting room for webshop",
-      "host": "shop.example.com",
-      "path": "/shop",
-      "queue_all": true,
-      "new_users_per_minute": 200,
-      "total_active_users": 300,
-      "session_duration": 1,
-      "disable_session_renewal": false,
-      "json_response_enabled": false,
-      "queueing_method": "fifo",
-      "queueing_status_code": 202,
-      "cookie_attributes": {
-        "samesite": "auto",
-        "secure": "auto"
-      }
-    }
-  ]
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": [
+		{
+			"id": "1111111111111111111111",
+			"created_on": "2023-01-01T05:20:00.12345Z",
+			"modified_on": "2023-01-01T05:20:00.12345Z",
+			"name": "shop_waiting_room",
+			"description": "Waiting room for webshop",
+			"host": "shop.example.com",
+			"path": "/shop",
+			"queue_all": true,
+			"new_users_per_minute": 200,
+			"total_active_users": 300,
+			"session_duration": 1,
+			"disable_session_renewal": false,
+			"json_response_enabled": false,
+			"queueing_method": "fifo",
+			"queueing_status_code": 202,
+			"cookie_attributes": {
+				"samesite": "auto",
+				"secure": "auto"
+			}
+		}
+	]
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/#page","headline":"Create a waiting room · Cloudflare Waiting Room docs","description":"Create a new waiting room in the dashboard or via API.","url":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/create-waiting-room/","name":"Create a waiting room"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/#page","headline":"Create a waiting room · Cloudflare Waiting Room docs","description":"Create a new waiting room in the dashboard or via API.","url":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

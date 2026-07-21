@@ -1,16 +1,18 @@
 ---
-title: Device metrics
 description: Device metrics in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device metrics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device metrics
 
-# Device metrics
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance (formerly Magic WAN Connector) in the Cloudflare dashboard. These metrics help you troubleshoot potential issues with your Cloudflare One Appliance. For details, refer to [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/).
 
@@ -78,8 +80,6 @@ query telemetry(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBALmANmAtmO0AUAoGMAkAhgMbED2IAdnACqEDmAXDAM4YCWl9uBLlhABxYALMnBYAxdogQRmAQVIVqAWXKVKNJKnTQAyvyGjx8gCaC47AG5gA4hApCpMyAH0AkpQEg4AeQBGAFZgxHAAhDz4fIIiYirK4s6yCkpUcGpkGlrIaBhQBjHG8WksZhbWdg4gTtKyHl4+AcGhEXhRhrG0wpAohIiStZAp5GkZWdq5+h3GNN0Qvf1lApY29o4DLhD13n5BIeGRiOwo7HDMnHAAbAAsEQCUMADePFbsYADukE88eCQj1CxMAAzQZyJ4wP4JOhMAiQtLQmAAXwezzwaNY0zELGYKHUmgmunymPEOHR6JBm2Y7UKWKSkB+ZKOJzOBCZpwZ6LIEFMkAAQlBmABtcwISxoKQ2FScHxgFiuAAiAFE9ABhAC6HJgKM1eF6AA9vmSycRvCqEjq0YgyIRTPIbBAGGAAIwoC261BcqASCBgMD8hAsN0wNAoT00MR9f2yi2Ii2mY5gSgsdiZFiGo1ovH7LnuUxBkXoBMSsBSygywMZpGa2NG6JGOIJbHBvHZHR5Ar19KN0kZinJXjE4oAukQC1sln4ccWrk8iD8oUFsVgYul8sK5XqzXayv69OVwhWQjSQj+ZBRiuV+ARxDnmNxhNJlNJvcZrOhHN5y8wRdFiqrgN3kaNZknWnSzD0fRNrimT4jkhIdmBcwLICFp9kMA40l0EH9COY7HKcVJTpWM58gKMDCoQoq-pK0oBuuqoADQwG+cAfvRm5GtuGa7qil7ECAEA+tQKpIMmIAXkB95oI+qYvkaLEfvmlGFuKf60dGlbAeiWlVngsaIkAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAbASwFsXEsBGABl4C+QA)
-
 ### Average CPU load explained
 
 The metric `average CPU load` is unique and distinctly different from `CPU utilization` which is another common CPU metric. The Cloudflare One Appliance uses a [Unix-style CPU load calculation ↗](https://en.wikipedia.org/wiki/Load%5F%28computing%29).
@@ -88,7 +88,14 @@ CPU load is a measure of the number of processes that are currently running and 
 
 Cloudflare is still evaluating the typical CPU load operating range on the Cloudflare One Appliance. In general, a healthy range for average CPU load on any device is between 30% and 70%. Customers may experience decreased Cloudflare One Appliance performance if the average CPU load is consistently above 100%.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/#page","headline":"Device metrics · Cloudflare One docs","description":"Device metrics in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/","name":"Configure with Connector"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/","name":"Device metrics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/#page","headline":"Device metrics · Cloudflare One docs","description":"Device metrics in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

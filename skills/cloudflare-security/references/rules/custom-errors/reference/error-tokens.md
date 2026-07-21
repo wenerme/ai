@@ -1,16 +1,18 @@
 ---
-title: Error tokens
 description: Dynamic tokens available for use in custom error page HTML.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error tokens
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error tokens
 
-# Error tokens
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## For Error Pages
 
@@ -39,7 +41,14 @@ A custom error asset, inline response, or error page may also include the follow
 | ::RAY\_ID::    | A unique identifier given to every request that goes through Cloudflare. |
 | ::GEO::        | The country or region associated with the visitor's IP address.          |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/#page","headline":"Custom error tokens · Cloudflare Rules docs","description":"Dynamic tokens available for use in custom error page HTML.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/custom-errors/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/custom-errors/reference/error-tokens/","name":"Error tokens"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/#page","headline":"Custom error tokens · Cloudflare Rules docs","description":"Dynamic tokens available for use in custom error page HTML.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

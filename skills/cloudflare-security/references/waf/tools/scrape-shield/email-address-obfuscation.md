@@ -1,16 +1,18 @@
 ---
-title: Email Address Obfuscation
 description: Hide email addresses from bots while keeping them visible to visitors.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Email Address Obfuscation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email Address Obfuscation
 
-# Email Address Obfuscation
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By enabling Cloudflare Email Address Obfuscation, email addresses on your web page will be hidden from bots, while keeping them visible to humans. In fact, there are no visible changes to your website for visitors.
 
@@ -30,21 +32,17 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-12070)
-* [ Old dashboard ](#tab-panel-12071)
-* [ API ](#tab-panel-12072)
-
 To disable **Email Address Obfuscation** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. For **Email Address Obfuscation**, switch the toggle to **Off**.
 
 To disable **Email Address Obfuscation** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Scrape Shield** page.
-[ Go to **Scrape Shield** ](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
+[ Go to **Scrape Shield** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
 2. For **Email Address Obfuscation**, switch the toggle to **Off**.
 
 To disable **Email Address Obfuscation** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `email_obfuscation` as the setting name in the URI path, and the `value` parameter set to `"off"`.
@@ -86,7 +84,14 @@ Notes
   * The HTML/JavaScript code is specifically added by a [Worker](https://developers.cloudflare.com/workers/).
 * Email Obfuscation might not work as expected when the HTML page includes `<template></template>` tags.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/#page","headline":"Email Address Obfuscation · Cloudflare Web Application Firewall (WAF) docs","description":"Hide email addresses from bots while keeping them visible to visitors.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/scrape-shield/","name":"Scrape Shield"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/scrape-shield/email-address-obfuscation/","name":"Email Address Obfuscation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/#page","headline":"Email Address Obfuscation · Cloudflare Web Application Firewall (WAF) docs","description":"Hide email addresses from bots while keeping them visible to visitors.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

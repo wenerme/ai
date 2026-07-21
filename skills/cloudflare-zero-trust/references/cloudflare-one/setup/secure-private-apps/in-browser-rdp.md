@@ -1,16 +1,18 @@
 ---
-title: In-browser remote desktop
 description: Provide in-browser remote desktop access to Windows hosts through Cloudflare Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: In-browser remote desktop
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  In-browser remote desktop
 
-# In-browser remote desktop
+Last updated Mar 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Provide secure, in-browser remote desktop access to Windows hosts without Remote Desktop Protocol (RDP) client software on the user's device. This is useful when you need to give IT staff or support teams remote access to Windows machines for administration or troubleshooting from any browser.
 
@@ -104,7 +106,14 @@ If you have issues connecting, refer to these resources:
 * [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
 * [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/troubleshooting/): resolve common Zero Trust errors and issues.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/#page","headline":"In-browser remote desktop · Cloudflare One docs","description":"Provide in-browser remote desktop access to Windows hosts through Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-03-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Windows"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/secure-private-apps/","name":"Secure private apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/setup/secure-private-apps/in-browser-rdp/","name":"In-browser remote desktop"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/#page","headline":"In-browser remote desktop · Cloudflare One docs","description":"Provide in-browser remote desktop access to Windows hosts through Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Windows"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Dynamic Workers Starter
 description: A starter template for deploying a Worker that loads and runs Dynamic Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Dynamic Workers Starter
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dynamic Workers Starter
 
-# Dynamic Workers Starter
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [starter template ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) for deploying a Worker that loads and runs [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/).
 
@@ -26,22 +28,15 @@ Use this pattern for AI agents that need to execute a snippet of code to complet
 
 Add a `worker_loaders` binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9162)
-* [  wrangler.toml ](#tab-panel-9163)
-
-**JSONC**
-
 ```jsonc
 {
-  "worker_loaders": [
-    {
-      "binding": "LOADER"
-    }
-  ]
+	"worker_loaders": [
+		{
+			"binding": "LOADER"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[worker_loaders]]
@@ -55,56 +50,45 @@ In this example:
 * `env.LOADER.load()` creates a one-off dynamic isolate
 * `globalOutbound: null` blocks all outbound network access from the Dynamic Worker
 
-* [  JavaScript ](#tab-panel-9164)
-* [  TypeScript ](#tab-panel-9165)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const { code } = await request.json();
+	async fetch(request, env) {
+		const { code } = await request.json();
 
+		const worker = env.LOADER.load({
+			compatibilityDate: "2026-05-01",
+			mainModule: "worker.js",
+			modules: {
+				"worker.js": code,
+			},
+			// Block all outbound network access
+			globalOutbound: null,
+		});
 
-    const worker = env.LOADER.load({
-      compatibilityDate: "2026-05-01",
-      mainModule: "worker.js",
-      modules: {
-        "worker.js": code,
-      },
-      // Block all outbound network access
-      globalOutbound: null,
-    });
-
-
-    const result = await worker.getEntrypoint().fetch(request);
-    return result;
-  },
+		const result = await worker.getEntrypoint().fetch(request);
+		return result;
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env): Promise<Response> {
-    const { code } = await request.json();
+	async fetch(request, env): Promise<Response> {
+		const { code } = await request.json();
 
+		const worker = env.LOADER.load({
+			compatibilityDate: "2026-05-01",
+			mainModule: "worker.js",
+			modules: {
+				"worker.js": code,
+			},
+			// Block all outbound network access
+			globalOutbound: null,
+		});
 
-    const worker = env.LOADER.load({
-      compatibilityDate: "2026-05-01",
-      mainModule: "worker.js",
-      modules: {
-        "worker.js": code,
-      },
-      // Block all outbound network access
-      globalOutbound: null,
-    });
-
-
-    const result = await worker.getEntrypoint().fetch(request);
-    return result;
-  },
+		const result = await worker.getEntrypoint().fetch(request);
+		return result;
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -115,7 +99,14 @@ npm install
 npm run dev
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/#page","headline":"Dynamic Workers Starter · Cloudflare Dynamic Workers docs","description":"A starter template for deploying a Worker that loads and runs Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/examples/dynamic-workers-starter/","name":"Dynamic Workers Starter"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/#page","headline":"Dynamic Workers Starter · Cloudflare Dynamic Workers docs","description":"A starter template for deploying a Worker that loads and runs Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript"]}
 ```

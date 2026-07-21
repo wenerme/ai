@@ -1,16 +1,18 @@
 ---
-title: DLP settings
 description: Configure account-level DLP settings.
-image: https://developers.cloudflare.com/zt-preview.png
+title: DLP settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DLP settings
 
-# DLP settings
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 DLP settings allow you to configure account-level settings that apply across all DLP profiles and policies. These settings are located in **Zero Trust** \> **Data loss prevention** \> **DLP settings** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 
@@ -81,7 +83,7 @@ Note
 
 The masking level is applied at detection time, before the payload is encrypted. Your team will see the selected format when they decrypt the log with your private key.
 
-Warning
+Caution
 
 The selected masking level applies to all sensitive data matches found within a payload window — not just the match that triggered the policy.
 
@@ -99,7 +101,14 @@ To migrate:
 4. For each profile with OCR or AI context analysis enabled, edit the profile and turn off the profile-level settings.
 5. Select **Save profile**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#page","headline":"DLP settings · Cloudflare One docs","description":"Configure account-level DLP settings.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-settings/","name":"DLP settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#page","headline":"DLP settings · Cloudflare One docs","description":"Configure account-level DLP settings.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

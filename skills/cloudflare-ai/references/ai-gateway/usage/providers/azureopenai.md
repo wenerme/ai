@@ -1,16 +1,18 @@
 ---
-title: Azure OpenAI
 description: Route Azure OpenAI requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Azure OpenAI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Azure OpenAI
 
-# Azure OpenAI
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Azure OpenAI ↗](https://azure.microsoft.com/en-gb/products/ai-services/openai-service/) allows you apply natural language algorithms on your data.
 
@@ -38,8 +40,6 @@ Your new base URL will use the data above in this structure: `https://gateway.ai
 
 ### cURL
 
-**Example fetch request**
-
 ```bash
 curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/{deployment_name}/chat/completions?api-version=2023-05-15' \
   --header 'Content-Type: application/json' \
@@ -56,11 +56,8 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{
 
 ### Use `openai` JavaScript SDK
 
-**JavaScript**
-
 ```js
 import { AzureOpenAI } from "openai";
-
 
 const azure_openai = new AzureOpenAI({
   apiKey: "{azure_api_key}",
@@ -69,14 +66,20 @@ const azure_openai = new AzureOpenAI({
   defaultHeaders: { "cf-aig-authorization": "{cf-api-token}" }, // if authenticated
 });
 
-
 const result = await azure_openai.chat.completions.create({
   model: '{deployment_name}',
   messages: [{ role: "user", content: "Hello" }],
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/#page","headline":"Azure OpenAI · Cloudflare AI Gateway docs","description":"Route Azure OpenAI requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/azureopenai/","name":"Azure OpenAI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/#page","headline":"Azure OpenAI · Cloudflare AI Gateway docs","description":"Route Azure OpenAI requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

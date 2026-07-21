@@ -1,16 +1,18 @@
 ---
-title: Business Continuity Guide
 description: Build a business continuity strategy for the Cloudflare One Client using available disconnection mechanisms and decision guidance for service degradation scenarios.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Business Continuity Guide
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Business Continuity Guide
 
-# Business Continuity Guide
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you build business continuity strategies for the Cloudflare One Client by documenting available disconnection mechanisms and providing decision guidance for handling service degradation or infrastructure unavailability.
 
@@ -53,7 +55,7 @@ The mechanisms below help you execute fail-open decisions when needed. Document 
 | **Degraded performance impacting user productivity**Example: High latency through client tunnel; intermittent connection drops affecting work quality.                                                                  | **Graduated response strategy**Use a combination of mechanisms based on scope and severity. Use [Digital Experience (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) to determine scope and severity.                                                                                                                          | **Guidance by scope:** **Single device:** Admin Override Code → manual disconnect**Group or department:** External Emergency Disconnect with MDM-differentiated endpoints**Organization-wide:** Global Disconnection (if Cloudflare reachable) or External Emergency Disconnect**Decision factors:** Balance user productivity needs against security requirements. For regulated industries, consult your compliance team before disconnecting.**Expected outcome:** Restored user productivity with a documented security trade-off.                                                                                                                                                                 | **Prerequisites:**Documented decision criteria for fail-open vs. fail-closedPre-configured mechanisms before incidents occurClear authorization matrix**Limitations:**Each mechanism has different infrastructure dependenciesMobile platforms have limited options**Security impact:** Scope-dependent — refer to individual mechanism entries above.                                                                                                                                               |
 | **Management dashboard unavailable, traffic processing normally**Example: Dashboard and API unreachable; edge services and client connections remain functional with cached policies.                                   | **No action required**Edge services continue operating using cached configurations. New configuration changes will be unavailable until management systems recover.                                                                                                                                                                                  | **Use when:** Cloudflare's management systems are unavailable but user traffic continues processing normally.**Guidance:** Monitor the [Cloudflare status page](https://www.cloudflarestatus.com/). No customer action is typically required — edge services enforce cached policies until management systems recover.**Expected outcome:** Existing configuration continues to apply; configuration changes resume when management systems recover.                                                                                                                                                                                                                                                   | **Prerequisites:**Monitoring of the Cloudflare status pageUnderstanding that traffic processing and management are separate systems**Limitations:**Cannot modify policies during the outageCannot trigger Global Disconnection from DashboardReal-time logs and analytics may be delayed**Security impact:** None — security controls remain active.                                                                                                                                                 |
 
-Warning
+Caution
 
 **Mobile platform limitation**
 
@@ -129,7 +131,14 @@ When you disconnect the Cloudflare One Client, the following controls are affect
 | Troubleshooting               | [Client Troubleshooting Guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/)                                                                             |
 | Resilience Whitepaper         | [Cloudflare Network and Service Resilience Whitepaper ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ad0dpR3YyqxMlikPfbBgn/020b7450909f03ccf3c7dcfb0e99fc2e/Resilience%5FWhitepaper.pdf)                                |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/#page","headline":"Business Continuity Guide · Cloudflare One docs","description":"Build a business continuity strategy for the Cloudflare One Client using available disconnection mechanisms and decision guidance for service degradation scenarios.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/","name":"Business Continuity Guide"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/#page","headline":"Business Continuity Guide · Cloudflare One docs","description":"Build a business continuity strategy for the Cloudflare One Client using available disconnection mechanisms and decision guidance for service degradation scenarios.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

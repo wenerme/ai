@@ -1,18 +1,20 @@
 ---
-title: Send email over SMTP
 description: Send transactional emails through Cloudflare Email Service authenticated SMTP from curl, Node.js, Python, or PHP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Send email over SMTP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Send email over SMTP
+#  Send email over SMTP
 
 Send transactional emails over Cloudflare Email Service SMTP using curl, Nodemailer, Python smtplib, or PHPMailer.
+
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Send transactional emails over Cloudflare Email Service [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) (`smtp.mx.cloudflare.net:465`) from any SMTP-capable language or client.
 
@@ -20,11 +22,6 @@ Send transactional emails over Cloudflare Email Service [authenticated SMTP](htt
 
 * A domain onboarded for [Email Sending](https://developers.cloudflare.com/email-service/configuration/domains/).
 * A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Email Sending: Edit** permission. Set it as `CF_API_TOKEN` in your environment. The token is used as the SMTP password; the username is the literal string `api_token`.
-
-* [ curl ](#tab-panel-9247)
-* [ Node.js (Nodemailer) ](#tab-panel-9248)
-* [ Python (smtplib) ](#tab-panel-9249)
-* [ PHP (PHPMailer) ](#tab-panel-9250)
 
 ### Send an email
 
@@ -34,10 +31,8 @@ From: welcome@yourdomain.com
 To: recipient@example.com
 Subject: Welcome to our service!
 
-
 Thanks for signing up.
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -53,52 +48,45 @@ Install [Nodemailer ↗](https://nodemailer.com/) with `npm install nodemailer`.
 
 ### Send an email
 
-**JavaScript**
-
 ```js
 import nodemailer from "nodemailer";
 
-
 const transporter = nodemailer.createTransport({
-  host: "smtp.mx.cloudflare.net",
-  port: 465,
-  secure: true, // implicit TLS
-  auth: {
-    user: "api_token",
-    pass: process.env.CF_API_TOKEN,
-  },
+	host: "smtp.mx.cloudflare.net",
+	port: 465,
+	secure: true, // implicit TLS
+	auth: {
+		user: "api_token",
+		pass: process.env.CF_API_TOKEN,
+	},
 });
-
 
 const info = await transporter.sendMail({
-  from: '"Acme" <welcome@yourdomain.com>',
-  to: "user@example.com",
-  subject: "Welcome to Acme",
-  text: "Thanks for signing up.",
-  html: "<h1>Welcome to Acme</h1><p>Thanks for signing up.</p>",
+	from: '"Acme" <welcome@yourdomain.com>',
+	to: "user@example.com",
+	subject: "Welcome to Acme",
+	text: "Thanks for signing up.",
+	html: "<h1>Welcome to Acme</h1><p>Thanks for signing up.</p>",
 });
-
 
 console.log("Message sent:", info.messageId);
 ```
 
 ### Send with an attachment
 
-**JavaScript**
-
 ```js
 const info = await transporter.sendMail({
-  from: '"Acme Billing" <billing@yourdomain.com>',
-  to: "customer@example.com",
-  subject: "Your invoice",
-  text: "Please find your invoice attached.",
-  attachments: [
-    {
-      filename: "invoice-2026-04.pdf",
-      path: "./invoices/invoice-2026-04.pdf",
-      contentType: "application/pdf",
-    },
-  ],
+	from: '"Acme Billing" <billing@yourdomain.com>',
+	to: "customer@example.com",
+	subject: "Your invoice",
+	text: "Please find your invoice attached.",
+	attachments: [
+		{
+			filename: "invoice-2026-04.pdf",
+			path: "./invoices/invoice-2026-04.pdf",
+			contentType: "application/pdf",
+		},
+	],
 });
 ```
 
@@ -108,15 +96,13 @@ Total message size (including base64-encoded attachments) must not exceed 5 MiB.
 
 Nodemailer rejects the promise with an `Error` whose `.responseCode` reflects the SMTP reply code. See [SMTP response codes](https://developers.cloudflare.com/email-service/api/send-emails/smtp/#response-codes) and [Troubleshooting](https://developers.cloudflare.com/email-service/api/send-emails/smtp/#troubleshooting).
 
-**JavaScript**
-
 ```js
 try {
-  await transporter.sendMail({
-    /* ... */
-  });
+	await transporter.sendMail({
+		/* ... */
+	});
 } catch (err) {
-  console.error(err.responseCode, err.message);
+	console.error(err.responseCode, err.message);
 }
 ```
 
@@ -124,13 +110,10 @@ Uses the standard-library [smtplib ↗](https://docs.python.org/3/library/smtpli
 
 ### Send an email
 
-**Python**
-
 ```python
 import os
 import smtplib
 from email.message import EmailMessage
-
 
 msg = EmailMessage()
 msg["From"] = "Acme <welcome@yourdomain.com>"
@@ -142,7 +125,6 @@ msg.add_alternative(
     subtype="html",
 )
 
-
 with smtplib.SMTP_SSL("smtp.mx.cloudflare.net", 465) as s:
     s.login("api_token", os.environ["CF_API_TOKEN"])
     s.send_message(msg)
@@ -151,8 +133,6 @@ with smtplib.SMTP_SSL("smtp.mx.cloudflare.net", 465) as s:
 `smtplib.SMTP_SSL` opens an implicit-TLS connection on port `465`, which is what Cloudflare's SMTP endpoint requires. Do not use `smtplib.SMTP` with `starttls()`; `STARTTLS` is not supported.
 
 ### Send to multiple recipients
-
-**Python**
 
 ```python
 msg["To"] = ", ".join([
@@ -166,11 +146,8 @@ A single SMTP session can deliver to up to 50 `RCPT TO` addresses. See [Limits](
 
 ### Send with an attachment
 
-**Python**
-
 ```python
 from pathlib import Path
-
 
 pdf = Path("invoice-2026-04.pdf").read_bytes()
 msg.add_attachment(
@@ -184,8 +161,6 @@ msg.add_attachment(
 ### Error handling
 
 `smtplib` raises subclasses of `smtplib.SMTPException` with the SMTP reply code attached. See [SMTP response codes](https://developers.cloudflare.com/email-service/api/send-emails/smtp/#response-codes) and [Troubleshooting](https://developers.cloudflare.com/email-service/api/send-emails/smtp/#troubleshooting).
-
-**Python**
 
 ```python
 try:
@@ -204,9 +179,7 @@ except smtplib.SMTPResponseException as e:
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
-
 require 'vendor/autoload.php';
-
 
 $mail = new PHPMailer(true);
 $mail->isSMTP();
@@ -216,7 +189,6 @@ $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->SMTPAuth   = true;
 $mail->Username   = 'api_token';
 $mail->Password   = getenv('CF_API_TOKEN');
-
 
 $mail->setFrom('welcome@yourdomain.com', 'Acme');
 $mail->addAddress('recipient@example.com');
@@ -231,7 +203,14 @@ $mail->send();
 * [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/) — multiple recipients, CC and BCC, and named addresses.
 * [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — account, message, and session limits.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/#page","headline":"Send email over SMTP · Cloudflare Email Service docs","description":"Send transactional emails through Cloudflare Email Service authenticated SMTP from curl, Node.js, Python, or PHP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/smtp/","name":"Send email over SMTP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/#page","headline":"Send email over SMTP · Cloudflare Email Service docs","description":"Send transactional emails through Cloudflare Email Service authenticated SMTP from curl, Node.js, Python, or PHP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

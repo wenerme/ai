@@ -1,16 +1,18 @@
 ---
-title: WAF managed rules upgrade
 description: Upgrade from the previous version of WAF managed rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WAF managed rules upgrade
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WAF managed rules upgrade
 
-# WAF managed rules upgrade
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 On 2022-05-04, Cloudflare started the upgrade from the [previous version of WAF managed rules](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/) to the new [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), allowing a first set of eligible zones to migrate. Currently, all zones can upgrade to WAF Managed Rules, including partner accounts.
 
@@ -109,7 +111,7 @@ Once the upgrade is complete, the APIs for interacting with WAF managed rules **
 * [WAF rule groups](https://developers.cloudflare.com/api/resources/firewall/subresources/waf/subresources/packages/subresources/groups/methods/list/)
 * [WAF rules](https://developers.cloudflare.com/api/resources/firewall/subresources/waf/subresources/packages/subresources/rules/methods/list/)
 
-Warning
+Caution
 
 If you have any integrations using the WAF managed rules APIs stated above, you must update them before upgrading to the new WAF Managed Rules.
 
@@ -174,7 +176,7 @@ You can start the WAF upgrade in the Cloudflare dashboard or via API.
 B) If you are using the [new security dashboard](https://developers.cloudflare.com/security/):
 
   1. Go to the **Security rules** page.
-  [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+  [ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
   2. Select **Go to upgrade your Managed rules**.
 If you are an Enterprise customer, the dashboard will show the following banner:
 ![The upgrade banner displayed to Enterprise customers.](https://developers.cloudflare.com/_astro/waf-migration-ent-banner.aotEhXUu_Z2lILWA.webp)
@@ -214,13 +216,13 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/check?p
 Example response:
 ```json
 {
-  "result": {
-    "compatible": true,
-    "migration_state": "start"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"compatible": true,
+		"migration_state": "start"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 If the response includes `"compatible": true`, this means that the zone can update to the new WAF and you can proceed with the upgrade process. If the response includes `"compatible": false`, this means that your zone is not eligible for the upgrade, given its current configuration. Refer to [Eligible zones](#eligible-zones) for details.
@@ -232,35 +234,35 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/config?
 Example response:
 ```json
 {
-  "result": {
-    "name": "default",
-    "rules": [
-      {
-        "id": "",
-        "version": "",
-        "action": "execute",
-        "expression": "true",
-        "description": "",
-        "ref": "",
-        "enabled": true,
-        "action_parameters": {
-          "id": "efb7b8c949ac4650a09736fc376e9aee",
-          "overrides": {
-            "rules": [
-              {
-                "id": "23ee7cebe6e8443e99ecf932ab579455",
-                "action": "log",
-                "enabled": false
-              }
-            ]
-          }
-        }
-      }
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"name": "default",
+		"rules": [
+			{
+				"id": "",
+				"version": "",
+				"action": "execute",
+				"expression": "true",
+				"description": "",
+				"ref": "",
+				"enabled": true,
+				"action_parameters": {
+					"id": "efb7b8c949ac4650a09736fc376e9aee",
+					"overrides": {
+						"rules": [
+							{
+								"id": "23ee7cebe6e8443e99ecf932ab579455",
+								"action": "log",
+								"enabled": false
+							}
+						]
+					}
+				}
+			}
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -454,7 +456,7 @@ cloudflare_waf_group.my_group: Refreshing state... [id=0580eb5d92e344ddb2374979f
 [...]
 ```
 5. Remove any state related to the previous version of WAF managed rules from your Terraform state:
-Warning
+Caution
 You must remove WAF packages, groups, and rules from Terraform state before deleting their configuration from `.tf` configuration files to prevent issues.
 
   1. Run the following command to find all resources related to the previous version of WAF managed rules:
@@ -507,7 +509,14 @@ The concept of paranoia level did not exist in the OWASP version (2.x) used in W
 
 You cannot disable the new version of WAF Managed Rules using [Page Rules](https://developers.cloudflare.com/rules/page-rules/), since the _Web Application Firewall: Off_ setting in Page Rules only applies to the previous version of WAF managed rules. To disable the new WAF Managed Rules you must configure [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) (also known as skip rules).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/#page","headline":"WAF managed rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/old-waf-managed-rules/","name":"WAF managed rules (previous version)"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/reference/legacy/old-waf-managed-rules/upgrade/","name":"WAF managed rules upgrade"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/#page","headline":"WAF managed rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

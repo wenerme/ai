@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Troubleshoot Troubleshooting issues in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies.
 
@@ -108,9 +110,6 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-8363)
-* [ Workaround ](#tab-panel-8364)
-
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 
 Create a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) that includes hosts such as `github.com`, `*.amazonaws.com`, and `*.docker.io`.
@@ -143,7 +142,14 @@ You have configured Gateway to resolve internal hostnames, but users are unable 
 | Split Tunnel excludes the private IP range | If your internal resources are in a private IP range (such as 10.0.0.0/8), that range must be included in the tunnel. If it is in the Exclude list of your Split Tunnel configuration, the Cloudflare One Client will not proxy the traffic. |
 | Local Domain Fallback misconfiguration     | Use resolver policies for corporate DNS. Only use Local Domain Fallback for domains specific to a user's immediate physical network.                                                                                                         |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#page","headline":"Troubleshooting · Cloudflare One docs","description":"Troubleshoot Troubleshooting issues in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#page","headline":"Troubleshooting · Cloudflare One docs","description":"Troubleshoot Troubleshooting issues in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

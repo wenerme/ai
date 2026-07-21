@@ -55,6 +55,19 @@ Start by calling `POST /videos` with a text prompt and the required parameters. 
 
 Create a video
 
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+let video = await openai.videos.create({
+  model: "sora-2",
+  prompt: "A video of the words 'Thank you' in sparkling letters",
+});
+
+console.log("Video generation started: ", video);
+```
+
 ```python
 from openai import OpenAI
 
@@ -140,20 +153,26 @@ Typical states are `queued`, `in_progress`, `completed`, and `failed`. Poll at a
 Poll the status endpoint
 
 ```javascript
-import OpenAI from 'openai';
+import OpenAI from "openai";
+import { setTimeout as sleep } from "node:timers/promises";
 
 const openai = new OpenAI();
 
 async function main() {
-  const video = await openai.videos.createAndPoll({
-    model: 'sora-2',
+  let video = await openai.videos.create({
+    model: "sora-2",
     prompt: "A video of the words 'Thank you' in sparkling letters",
   });
 
-  if (video.status === 'completed') {
-    console.log('Video successfully completed: ', video);
+  while (video.status === "queued" || video.status === "in_progress") {
+    await sleep(2000);
+    video = await openai.videos.retrieve(video.id);
+  }
+
+  if (video.status === "completed") {
+    console.log("Video successfully completed: ", video);
   } else {
-    console.log('Video creation failed. Status: ', video.status);
+    console.log("Video creation failed. Status: ", video.status);
   }
 }
 
@@ -228,54 +247,55 @@ Once the job reaches status `completed`, fetch the MP4 with `GET /videos/{video_
 Download the MP4
 
 ```javascript
-import OpenAI from 'openai';
+import { writeFileSync } from "node:fs";
+
+import OpenAI from "openai";
 
 const openai = new OpenAI();
 
 let video = await openai.videos.create({
-    model: 'sora-2',
-    prompt: "A video of the words 'Thank you' in sparkling letters",
+  model: "sora-2",
+  prompt: "A video of the words 'Thank you' in sparkling letters",
 });
 
-console.log('Video generation started: ', video);
+console.log("Video generation started: ", video);
 let progress = video.progress ?? 0;
 
-while (video.status === 'in_progress' || video.status === 'queued') {
-    video = await openai.videos.retrieve(video.id);
-    progress = video.progress ?? 0;
+while (video.status === "in_progress" || video.status === "queued") {
+  video = await openai.videos.retrieve(video.id);
+  progress = video.progress ?? 0;
 
-    // Display progress bar
-    const barLength = 30;
-    const filledLength = Math.floor((progress / 100) * barLength);
-    // Simple ASCII progress visualization for terminal output
-    const bar = '='.repeat(filledLength) + '-'.repeat(barLength - filledLength);
-    const statusText = video.status === 'queued' ? 'Queued' : 'Processing';
+  // Display progress bar
+  const barLength = 30;
+  const filledLength = Math.floor((progress / 100) * barLength);
+  // Simple ASCII progress visualization for terminal output
+  const bar = "=".repeat(filledLength) + "-".repeat(barLength - filledLength);
+  const statusText = video.status === "queued" ? "Queued" : "Processing";
 
-    process.stdout.write(`${statusText}: [${bar}] ${progress.toFixed(1)}%`);
+  process.stdout.write(`${statusText}: [${bar}] ${progress.toFixed(1)}%`);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
 // Clear the progress line and show completion
-process.stdout.write('\n');
+process.stdout.write("\n");
 
-if (video.status === 'failed') {
-    console.error('Video generation failed');
-    return;
+if (video.status === "failed") {
+  throw new Error("Video generation failed");
 }
 
-console.log('Video generation completed: ', video);
+console.log("Video generation completed: ", video);
 
-console.log('Downloading video content...');
+console.log("Downloading video content...");
 
 const content = await openai.videos.downloadContent(video.id);
 
 const body = content.arrayBuffer();
 const buffer = Buffer.from(await body);
 
-require('fs').writeFileSync('video.mp4', buffer);
+writeFileSync("video.mp4", buffer);
 
-console.log('Wrote video.mp4');
+console.log("Wrote video.mp4");
 ```
 
 ```bash
@@ -341,7 +361,7 @@ You now have the final video file ready for playback, editing, or distribution. 
 
 For each completed video, you can also download a **thumbnail** and a **spritesheet**. These are lightweight assets useful for previews, scrubbers, or catalog displays. Use the `variant` query parameter to specify what you want to download. The default is `variant=video` for the MP4.
 
-```shell
+```bash
 # Download a thumbnail
 curl -L "https://api.openai.com/v1/videos/video_abc123/content?variant=thumbnail" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -352,6 +372,7 @@ curl -L "https://api.openai.com/v1/videos/video_abc123/content?variant=spriteshe
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   --output spritesheet.jpg
 ```
+
 
 ## Use image references
 
@@ -366,7 +387,7 @@ The image must match the target video's resolution (`size`).
 
 Supported file formats are `image/jpeg`, `image/png`, and `image/webp`.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -376,6 +397,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
   -F seconds="8" \
   -F input_reference="@sample_720p.jpeg;type=image/jpeg"
 ```
+
 
 |                          Input image generated with [OpenAI GPT Image](https://developers.openai.com/api/docs/guides/image-generation)                           |                                 Generated video using Sora 2 (converted to GIF)                                  |
 | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
@@ -403,7 +425,7 @@ Character uploads that depict human likeness are blocked by default. Contact
   team](https://openai.com/contact-sales/) to learn more about eligibility for
   human-likeness access.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos/characters" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -411,13 +433,14 @@ curl -X POST "https://api.openai.com/v1/videos/characters" \
   -F "name=Mossy"
 ```
 
+
 Mention the character name verbatim in your prompt. Passing the character ID
 alone isn't enough to reliably preserve the character in the shot.
 
 Characters can be combined with `input_reference`. Extensions don't support
 characters.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -432,6 +455,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
   }'
 ```
 
+
 ## Extend completed videos
 
 Video extensions let you continue an existing completed video and create a new stitched result. Provide the source video in the `video` field to `POST /v1/videos/extensions`, add a prompt describing how the scene should continue, and the API generates the next segment using the full source clip as context.
@@ -443,7 +467,7 @@ Each extension can add up to `20` seconds. A single video can be extended up
   currently accept only a source video and prompt. They don't support characters
   or image references.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos/extensions" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -455,6 +479,7 @@ curl -X POST "https://api.openai.com/v1/videos/extensions" \
     "seconds": "8"
   }'
 ```
+
 
 ## Edit existing videos
 
@@ -470,7 +495,7 @@ Editing uploaded videos is only available to eligible customers. Contact your
   account manager or [reach out to our sales
   team](https://openai.com/contact-sales/) if you need this workflow.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -482,10 +507,11 @@ curl -X POST "https://api.openai.com/v1/videos/edits" \
   }'
 ```
 
+
 If you upload a new video instead of editing an existing generation, set
 `model` explicitly in the request.
 
-```shell
+```bash
 curl -X POST "https://api.openai.com/v1/videos/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -493,6 +519,7 @@ curl -X POST "https://api.openai.com/v1/videos/edits" \
   -F "model=sora-2-pro" \
   -F "prompt=Shift the color palette to teal, sand, and rust, with a warm backlight."
 ```
+
 
 Editing is especially valuable for iteration because it lets you refine without discarding what already works. By constraining each edit to one clear adjustment, you keep the visual style, subject consistency, and camera framing stable, while still exploring variations in mood, palette, or staging. This makes it far easier to build polished sequences through small, reliable steps.
 
@@ -525,17 +552,19 @@ When a batch reaches `completed`, the video jobs in its output have already reac
 
 Use `GET /videos` to enumerate your videos. The endpoint supports optional query parameters for pagination and sorting.
 
-```shell
+```bash
 curl "https://api.openai.com/v1/videos?limit=20&after=video_123&order=asc" \
   -H "Authorization: Bearer $OPENAI_API_KEY" | jq .
 ```
 
+
 Use `DELETE /videos/{video_id}` to remove videos you no longer need from OpenAI’s storage.
 
-```shell
+```bash
 curl -X DELETE "https://api.openai.com/v1/videos/REPLACE_WITH_YOUR_VIDEO_ID" \
   -H "Authorization: Bearer $OPENAI_API_KEY" | jq .
 ```
+
 
 [sora_woman_skyline_original]: https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_original_2.jpeg
 [sora_woman_skyline_video]: https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_video.gif

@@ -1,109 +1,100 @@
 ---
-title: Scheduled tasks
 description: Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Scheduled tasks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scheduled tasks
 
-# Scheduled tasks
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
-
-* [  JavaScript ](#tab-panel-6147)
-* [  TypeScript ](#tab-panel-6148)
-
-**JavaScript**
 
 ```js
 import { Think, defineScheduledTasks } from "@cloudflare/think";
 
-
 export class DigestAgent extends Think {
-  getDefaultTimezone() {
-    return "Europe/London";
-  }
+	getDefaultTimezone() {
+		return "Europe/London";
+	}
 
-
-  getScheduledTasks() {
-    return defineScheduledTasks({
-      weeklyCommitReport: {
-        schedule: "every week on monday at 09:00",
-        prompt:
-          "Compile all my GitHub commits for the last week and send a concise summary.",
-      },
-      workout: {
-        schedule: "every day at 08:00 in Europe/London",
-        prompt: "Start my workout.",
-      },
-      customerDigest: {
-        schedule: "every day at 09:00",
-        timezone: "America/New_York",
-        metadata: { workflowName: "customer-digest" },
-        retry: { maxAttempts: 3 },
-        handler: async ({
-          idempotencyKey,
-          scheduledFor,
-          scheduleKind,
-          timezone,
-        }) => {
-          await this.env.DIGEST_WORKFLOW.create({
-            id: idempotencyKey,
-            params: { scheduledFor, scheduleKind, timezone },
-          });
-        },
-      },
-    });
-  }
+	getScheduledTasks() {
+		return defineScheduledTasks({
+			weeklyCommitReport: {
+				schedule: "every week on monday at 09:00",
+				prompt:
+					"Compile all my GitHub commits for the last week and send a concise summary.",
+			},
+			workout: {
+				schedule: "every day at 08:00 in Europe/London",
+				prompt: "Start my workout.",
+			},
+			customerDigest: {
+				schedule: "every day at 09:00",
+				timezone: "America/New_York",
+				metadata: { workflowName: "customer-digest" },
+				retry: { maxAttempts: 3 },
+				handler: async ({
+					idempotencyKey,
+					scheduledFor,
+					scheduleKind,
+					timezone,
+				}) => {
+					await this.env.DIGEST_WORKFLOW.create({
+						id: idempotencyKey,
+						params: { scheduledFor, scheduleKind, timezone },
+					});
+				},
+			},
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, defineScheduledTasks } from "@cloudflare/think";
 
-
 export class DigestAgent extends Think<Env> {
-  getDefaultTimezone() {
-    return "Europe/London";
-  }
+	getDefaultTimezone() {
+		return "Europe/London";
+	}
 
-
-  getScheduledTasks() {
-    return defineScheduledTasks({
-      weeklyCommitReport: {
-        schedule: "every week on monday at 09:00",
-        prompt:
-          "Compile all my GitHub commits for the last week and send a concise summary.",
-      },
-      workout: {
-        schedule: "every day at 08:00 in Europe/London",
-        prompt: "Start my workout.",
-      },
-      customerDigest: {
-        schedule: "every day at 09:00",
-        timezone: "America/New_York",
-        metadata: { workflowName: "customer-digest" },
-        retry: { maxAttempts: 3 },
-        handler: async ({
-          idempotencyKey,
-          scheduledFor,
-          scheduleKind,
-          timezone,
-        }) => {
-          await this.env.DIGEST_WORKFLOW.create({
-            id: idempotencyKey,
-            params: { scheduledFor, scheduleKind, timezone },
-          });
-        },
-      },
-    });
-  }
+	getScheduledTasks() {
+		return defineScheduledTasks({
+			weeklyCommitReport: {
+				schedule: "every week on monday at 09:00",
+				prompt:
+					"Compile all my GitHub commits for the last week and send a concise summary.",
+			},
+			workout: {
+				schedule: "every day at 08:00 in Europe/London",
+				prompt: "Start my workout.",
+			},
+			customerDigest: {
+				schedule: "every day at 09:00",
+				timezone: "America/New_York",
+				metadata: { workflowName: "customer-digest" },
+				retry: { maxAttempts: 3 },
+				handler: async ({
+					idempotencyKey,
+					scheduledFor,
+					scheduleKind,
+					timezone,
+				}) => {
+					await this.env.DIGEST_WORKFLOW.create({
+						id: idempotencyKey,
+						params: { scheduledFor, scheduleKind, timezone },
+					});
+				},
+			},
+		});
+	}
 }
 ```
 
@@ -117,7 +108,14 @@ Static declarations reconcile on startup. If `getScheduledTasks()` reads product
 
 For a recurring job whose steps matter — multiple deterministic steps, long waits, or human approval — use a handler task to create a [Think Workflow](https://developers.cloudflare.com/agents/harnesses/think/workflows/) run. Keep simple recurring prompts as prompt tasks, and keep one-off background turns on [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks · Cloudflare Agents docs","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/scheduled-tasks/","name":"Scheduled tasks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks · Cloudflare Agents docs","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

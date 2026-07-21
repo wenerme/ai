@@ -1,16 +1,18 @@
 ---
-title: Architecture
 description: Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Architecture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Architecture
 
-# Architecture
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/architecture/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sandbox SDK lets you execute untrusted code safely from your Workers. It combines three Cloudflare technologies to provide secure, stateful, and isolated execution:
 
@@ -47,11 +49,8 @@ flowchart TB
 
 The developer-facing API you use in your Workers:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox } from "@cloudflare/sandbox";
-
 
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 const result = await sandbox.exec("python script.py");
@@ -63,13 +62,11 @@ const result = await sandbox.exec("python script.py");
 
 Manages sandbox lifecycle and routing:
 
-**TypeScript**
-
 ```typescript
 export class Sandbox extends DurableObject<Env> {
-  // Extends Cloudflare Container for isolation
-  // Routes requests between client and container
-  // Manages preview URLs and state
+	// Extends Cloudflare Container for isolation
+	// Routes requests between client and container
+	// Manages preview URLs and state
 }
 ```
 
@@ -101,8 +98,6 @@ The SDK supports two transport protocols for communication between the Durable O
 
 Each SDK method makes a separate HTTP request to the container API. Simple, reliable, and works for most use cases.
 
-**TypeScript**
-
 ```typescript
 // Default behavior - uses HTTP
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
@@ -115,20 +110,13 @@ Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids 
 
 Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11075)
-* [  wrangler.toml ](#tab-panel-11076)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_TRANSPORT": "websocket"
-  },
+	"vars": {
+		"SANDBOX_TRANSPORT": "websocket"
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -140,8 +128,6 @@ The transport layer is transparent to your application code - all SDK methods wo
 ## Request flow
 
 When you execute a command:
-
-**TypeScript**
 
 ```typescript
 await sandbox.exec("python script.py");
@@ -170,7 +156,14 @@ The WebSocket connection is established on first SDK call and reused for all sub
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- How isolation and validation work
 * [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- Advanced state management
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/architecture/#page","headline":"Architecture · Cloudflare Sandbox SDK docs","description":"Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.","url":"https://developers.cloudflare.com/sandbox/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/architecture/","name":"Architecture"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/architecture/#page","headline":"Architecture · Cloudflare Sandbox SDK docs","description":"Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.","url":"https://developers.cloudflare.com/sandbox/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

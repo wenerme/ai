@@ -1,16 +1,18 @@
 ---
-title: SvelteKit
 description: Learn how to create and deploy a SvelteKit application to Cloudflare Pages using the create-cloudflare CLI
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SvelteKit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SvelteKit
 
-# SvelteKit
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 SvelteKit is the official framework for building modern web applications with [Svelte ↗](https://svelte.dev), an increasingly popular open-source tool for creating user interfaces. Unlike most frameworks, SvelteKit uses Svelte, a compiler that transforms your component code into efficient JavaScript, enabling SvelteKit to deliver fast, reactive applications that update the DOM surgically as the application state changes.
 
@@ -79,9 +81,8 @@ If using [create-cloudflare (C3) ↗](https://www.npmjs.com/package/create-cloud
 2. Include the adapter in `svelte.config.js`:
 
 ```diff
- import adapter from '@sveltejs/adapter-auto';
- import adapter from '@sveltejs/adapter-cloudflare';
-
+- import adapter from '@sveltejs/adapter-auto';
++ import adapter from '@sveltejs/adapter-cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -90,7 +91,6 @@ const config = {
     // ... truncated ...
   }
 };
-
 
 export default config;
 ```
@@ -101,20 +101,17 @@ export default config;
 declare namespace App {
     interface Locals {}
 
-
-   interface Platform {
-       env: {
-           COUNTER: DurableObjectNamespace;
-       };
-       context: {
-           waitUntil(promise: Promise<any>): void;
-       };
-       caches: CacheStorage & { default: Cache }
-   }
-
++   interface Platform {
++       env: {
++           COUNTER: DurableObjectNamespace;
++       };
++       context: {
++           waitUntil(promise: Promise<any>): void;
++       };
++       caches: CacheStorage & { default: Cache }
++   }
 
     interface Session {}
-
 
     interface Stuff {}
 }
@@ -122,11 +119,9 @@ declare namespace App {
 
 1. Access the added KV or Durable objects (or generally any [binding](https://developers.cloudflare.com/pages/functions/bindings/)) in your endpoint with `env`:
 
-**JavaScript**
-
 ```js
 export async function post(context) {
-  const counter = context.platform.env.COUNTER.idFromName("A");
+	const counter = context.platform.env.COUNTER.idFromName("A");
 }
 ```
 
@@ -141,7 +136,7 @@ To solve this issue, provide a `CF_PAGES` variable to SvelteKit so that the adap
 
 * [@sveltejs/adapter-static ↗](https://www.npmjs.com/package/@sveltejs/adapter-static)Only produces client-side static assets (no server-side rendering) and is compatible with Cloudflare Pages. Review the [official SvelteKit documentation ↗](https://kit.svelte.dev/docs/adapter-static) for instructions on how to set up the adapter. Keep in mind that if you decide to use this adapter, the build directory, instead of `.svelte-kit/cloudflare`, becomes `build`. You must also configure your Cloudflare Pages application's build directory accordingly.
 
-Warning
+Caution
 
 If you are using any adapter different from the default SvelteKit adapter, remember to commit and push your adapter setting changes to your GitHub repository before attempting the deployment.
 
@@ -156,7 +151,7 @@ If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-clou
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
@@ -188,14 +183,11 @@ In SvelteKit, functions are written as endpoints. Functions contained in the `/f
 
 To have the functionality equivalent to Pages Functions [onRequests](https://developers.cloudflare.com/pages/functions/api-reference/#onrequests), you need to write standard request handlers in SvelteKit. For example, the following TypeScript file behaves like an `onRequestGet`:
 
-**TypeScript**
-
 ```ts
 import type { RequestHandler } from "./$types";
 
-
 export const GET = (({ url }) => {
-  return new Response(String(Math.random()));
+	return new Response(String(Math.random()));
 }) satisfies RequestHandler;
 ```
 
@@ -207,7 +199,14 @@ For more information about SvelteKit API Routes, refer to the [SvelteKit documen
 
 By completing this guide, you have successfully deployed your Svelte site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/#page","headline":"SvelteKit · Cloudflare Pages docs","description":"Learn how to create and deploy a SvelteKit application to Cloudflare Pages using the create-cloudflare CLI","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-svelte-kit-site/","name":"SvelteKit"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/#page","headline":"SvelteKit · Cloudflare Pages docs","description":"Learn how to create and deploy a SvelteKit application to Cloudflare Pages using the create-cloudflare CLI","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

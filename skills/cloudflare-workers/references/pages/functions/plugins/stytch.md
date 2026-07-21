@@ -1,16 +1,18 @@
 ---
-title: Stytch
 description: Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Stytch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stytch
 
-# Stytch
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/stytch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Stytch Pages Plugin is a middleware which validates all requests and their `session_token`.
 
@@ -36,17 +38,14 @@ bun add @cloudflare/pages-plugin-stytch
 
 ## Usage
 
-**TypeScript**
-
 ```typescript
 import stytchPlugin from "@cloudflare/pages-plugin-stytch";
 import { envs } from "@cloudflare/pages-plugin-stytch/api";
 
-
 export const onRequest: PagesFunction = stytchPlugin({
-  project_id: "YOUR_STYTCH_PROJECT_ID",
-  secret: "YOUR_STYTCH_PROJECT_SECRET",
-  env: envs.live,
+	project_id: "YOUR_STYTCH_PROJECT_ID",
+	secret: "YOUR_STYTCH_PROJECT_SECRET",
+	env: envs.live,
 });
 ```
 
@@ -56,7 +55,14 @@ The Stytch Plugin takes a single argument, an object with several properties. `p
 
 The validated session response containing user information is made available to subsequent Pages Functions on `data.stytch.session`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/stytch/#page","headline":"Stytch · Cloudflare Pages docs","description":"Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/stytch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/stytch/","name":"Stytch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/stytch/#page","headline":"Stytch · Cloudflare Pages docs","description":"Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/stytch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

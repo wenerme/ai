@@ -1,16 +1,18 @@
 ---
-title: Error page types
 description: Types of error pages you can customize with custom error rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error page types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error page types
 
-# Error page types
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Page type                                 | Description                                                                                                                                                                                                                                                                                                         | API identifier     |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
@@ -22,7 +24,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 | Managed challenge / I'm Under Attack Mode | Presents different types of challenges to a visitor depending on the nature of their request and your security settings. This page returns a 403 status code. For more information, refer to [Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/).                      | managed\_challenge |
 | Rate limiting block                       | Displayed to visitors when they have been blocked by a [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/). This page returns a 429 status code.                                                                                                                                       | ratelimit\_block   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/#page","headline":"Error page types · Cloudflare Rules docs","description":"Types of error pages you can customize with custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/custom-errors/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/custom-errors/reference/error-page-types/","name":"Error page types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/#page","headline":"Error page types · Cloudflare Rules docs","description":"Types of error pages you can customize with custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

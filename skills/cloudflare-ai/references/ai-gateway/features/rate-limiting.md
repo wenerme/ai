@@ -1,16 +1,18 @@
 ---
-title: Rate limiting
 description: Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Rate limiting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rate limiting
 
-# Rate limiting
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Rate limiting controls the traffic that reaches your application, which prevents expensive bills and suspicious activity.
 
@@ -27,9 +29,6 @@ To illustrate this, let us say you had a limit of ten requests per ten minutes, 
 When your requests exceed the allowed rate, you will encounter rate limiting. This means the server will respond with a `429 Too Many Requests` status code and your request will not be processed.
 
 ## Default configuration
-
-* [ Dashboard ](#tab-panel-7128)
-* [ API ](#tab-panel-7129)
 
 To set the default rate limiting configuration in the dashboard:
 
@@ -49,7 +48,14 @@ To set the default rate limiting configuration using the API:
 
 This rate limiting behavior will be uniformly applied to all requests for that gateway.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/#page","headline":"Rate limiting · Cloudflare AI Gateway docs","description":"Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.","url":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/rate-limiting/","name":"Rate limiting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/#page","headline":"Rate limiting · Cloudflare AI Gateway docs","description":"Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.","url":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

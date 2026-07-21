@@ -1,16 +1,18 @@
 ---
-title: Worker script
 description: How the presence of a Worker script influences static asset routing and the related configuration options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Worker script
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Worker script
 
-# Worker script
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you have both static assets and a Worker script configured, Cloudflare will first attempt to serve static assets if one matches the incoming request. You can read more about how we match assets in the [HTML handling docs](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 
@@ -22,7 +24,7 @@ This allows you to easily combine together these two features to create powerful
 
 You can configure the [assets.run\_worker\_first setting](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst) to control when your Worker script runs relative to static asset serving. This gives you more control over exactly how and when those assets are served and can be used to implement "middleware" for requests.
 
-Warning
+Caution
 
 If you are using [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) in combination with `assets.run_worker_first`, you may find that placement decisions are not optimized correctly as, currently, the entire Worker script is placed as a single unit. This may not accurately reflect the desired "split" in behavior of edge-first vs. smart-placed compute for your application. This is a limitation that we are currently working to resolve.
 
@@ -30,33 +32,25 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-13041)
-* [  wrangler.toml ](#tab-panel-13042)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "main": "./worker/index.ts",
-  "assets": {
-    "directory": "./dist/",
-    "binding": "ASSETS",
-    "run_worker_first": true
-  }
+	"name": "my-worker",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"main": "./worker/index.ts",
+	"assets": {
+		"directory": "./dist/",
+		"binding": "ASSETS",
+		"run_worker_first": true
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./worker/index.ts"
-
 
 [assets]
 directory = "./dist/"
@@ -64,72 +58,57 @@ binding = "ASSETS"
 run_worker_first = true
 ```
 
-* [  JavaScript ](#tab-panel-13045)
-* [  TypeScript ](#tab-panel-13046)
-
-**./worker/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
-  async fetch(request) {
-    // You can perform checks before fetching assets
-    const user = await checkIfRequestIsAuthenticated(request);
+	async fetch(request) {
+		// You can perform checks before fetching assets
+		const user = await checkIfRequestIsAuthenticated(request);
 
+		if (!user) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
-    if (!user) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+		// You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
+		const assetResponse = await this.env.ASSETS.fetch(request);
 
-
-    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
-    const assetResponse = await this.env.ASSETS.fetch(request);
-
-
-    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter
-    return new HTMLRewriter()
-      .on("#user", {
-        element(element) {
-          element.setInnerContent(JSON.stringify({ name: user.name }));
-        },
-      })
-      .transform(assetResponse);
-  }
+		// You can return static asset response as-is, or you can transform them with something like HTMLRewriter
+		return new HTMLRewriter()
+			.on("#user", {
+				element(element) {
+					element.setInnerContent(JSON.stringify({ name: user.name }));
+				},
+			})
+			.transform(assetResponse);
+	}
 }
 ```
-
-**./worker/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint<Env> {
-  async fetch(request: Request) {
-    // You can perform checks before fetching assets
-    const user = await checkIfRequestIsAuthenticated(request);
+	async fetch(request: Request) {
+		// You can perform checks before fetching assets
+		const user = await checkIfRequestIsAuthenticated(request);
 
+		if (!user) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
-    if (!user) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+		// You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
+		const assetResponse = await this.env.ASSETS.fetch(request);
 
-
-    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
-    const assetResponse = await this.env.ASSETS.fetch(request);
-
-
-    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter
-    return new HTMLRewriter()
-      .on("#user", {
-        element(element) {
-          element.setInnerContent(JSON.stringify({ name: user.name }));
-        },
-      })
-      .transform(assetResponse);
-  }
+		// You can return static asset response as-is, or you can transform them with something like HTMLRewriter
+		return new HTMLRewriter()
+			.on("#user", {
+				element(element) {
+					element.setInnerContent(JSON.stringify({ name: user.name }));
+				},
+			})
+			.transform(assetResponse);
+	}
 }
 ```
 
@@ -137,34 +116,26 @@ export default class extends WorkerEntrypoint<Env> {
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-13043)
-* [  wrangler.toml ](#tab-panel-13044)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "main": "./worker/index.ts",
-  "assets": {
-    "directory": "./dist/",
-    "not_found_handling": "single-page-application",
-    "binding": "ASSETS",
-    "run_worker_first": ["/oauth/callback"]
-  }
+	"name": "my-worker",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"main": "./worker/index.ts",
+	"assets": {
+		"directory": "./dist/",
+		"not_found_handling": "single-page-application",
+		"binding": "ASSETS",
+		"run_worker_first": ["/oauth/callback"]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./worker/index.ts"
-
 
 [assets]
 directory = "./dist/"
@@ -173,70 +144,64 @@ binding = "ASSETS"
 run_worker_first = [ "/oauth/callback" ]
 ```
 
-* [  JavaScript ](#tab-panel-13047)
-* [  TypeScript ](#tab-panel-13048)
-
-**./worker/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
-  async fetch(request) {
-    // The only thing this Worker script does is handle an OAuth callback.
-    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
-    const url = new URL(request.url);
-    const code = url.searchParams.get("code");
-    const state = url.searchParams.get("state");
+	async fetch(request) {
+		// The only thing this Worker script does is handle an OAuth callback.
+		// All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
+		const url = new URL(request.url);
+		const code = url.searchParams.get("code");
+		const state = url.searchParams.get("state");
 
+		const accessToken = await exchangeCodeForToken(code, state);
+		const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
 
-    const accessToken = await exchangeCodeForToken(code, state);
-    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
-
-
-    // Redirect back to the index, but set a cookie that the front-end will use.
-    return new Response(null, {
-      headers: {
-        Location: "/",
-        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
-      },
-    });
-  }
+		// Redirect back to the index, but set a cookie that the front-end will use.
+		return new Response(null, {
+			headers: {
+				Location: "/",
+				"Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
+			},
+		});
+	}
 }
 ```
-
-**./worker/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint<Env> {
-  async fetch(request: Request) {
-    // The only thing this Worker script does is handle an OAuth callback.
-    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
-    const url = new URL(request.url);
-    const code = url.searchParams.get("code");
-    const state = url.searchParams.get("state");
+	async fetch(request: Request) {
+		// The only thing this Worker script does is handle an OAuth callback.
+		// All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
+		const url = new URL(request.url);
+		const code = url.searchParams.get("code");
+		const state = url.searchParams.get("state");
 
+		const accessToken = await exchangeCodeForToken(code, state);
+		const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
 
-    const accessToken = await exchangeCodeForToken(code, state);
-    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
-
-
-    // Redirect back to the index, but set a cookie that the front-end will use.
-    return new Response(null, {
-      headers: {
-        Location: "/",
-        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
-      },
-    });
-  }
+		// Redirect back to the index, but set a cookie that the front-end will use.
+		return new Response(null, {
+			headers: {
+				Location: "/",
+				"Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
+			},
+		});
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script · Cloudflare Workers docs","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/worker-script/","name":"Worker script"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script · Cloudflare Workers docs","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

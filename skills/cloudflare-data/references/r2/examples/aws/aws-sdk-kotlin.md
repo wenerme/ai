@@ -1,16 +1,18 @@
 ---
-title: aws-sdk-kotlin
 description: Configure the AWS SDK for Kotlin to work with Cloudflare R2 object storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws-sdk-kotlin
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws-sdk-kotlin
 
-# aws-sdk-kotlin
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -18,8 +20,6 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 This example uses the [aws-sdk-kotlin ↗](https://github.com/aws/aws-sdk-kotlin). You must pass in the R2 configuration credentials when instantiating your `S3` client:
 
 ## Basic Usage
-
-**Kotlin**
 
 ```kotlin
 import aws.sdk.kotlin.runtime.auth.credentials.StaticCredentialsProvider
@@ -34,11 +34,9 @@ import aws.smithy.kotlin.runtime.net.url.Url
 import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.minutes
 
-
 val ACCOUNT_ID = "<ACCOUNT_ID>"
 val ACCESS_KEY = "<ACCESS_KEY>"
 val SECRET_KEY = "<SECRET_KEY>"
-
 
 fun main() = runBlocking {
     val r2Client = S3Client.fromEnvironment {
@@ -52,19 +50,16 @@ fun main() = runBlocking {
         )
     }
 
-
     println("Available buckets:")
     r2Client.listBuckets().buckets?.forEach { bucket ->
         println("* ${bucket.name}")
     }
-
 
     val bucketName = "<BUCKET_NAME>"
     println("\nObjects in bucket '${bucketName}':")
     r2Client.listObjects { bucket = bucketName }.contents?.forEach {
         println("* ${it.key} (size: ${it.size} bytes, modified: ${it.lastModified})")
     }
-
 
     r2Client.close()
 }
@@ -75,7 +70,6 @@ Available buckets:
 * my-bucket-1
 * my-bucket-2
 
-
 Objects in bucket 'my-bucket-1':
 * image1.png (size: 253167 bytes, modified: 2026-01-17T11:30:58.896Z)
 * image2.png (size: 247027 bytes, modified: 2026-01-17T11:30:57.779Z)
@@ -84,8 +78,6 @@ Objects in bucket 'my-bucket-1':
 ## Generate presigned URLs
 
 You can also generate presigned links that can be used to temporarily share public read or write access to a bucket.
-
-**Kotlin**
 
 ```kotlin
 val uploadUrl = r2Client.presignPutObject(
@@ -96,7 +88,6 @@ val uploadUrl = r2Client.presignPutObject(
     duration = 15.minutes,
 ).url
 println(uploadUrl)
-
 
 val getUrl = r2Client.presignGetObject(
     input = GetObjectRequest {
@@ -120,7 +111,14 @@ To download a file using the GET URL:
 curl -X GET "https://<your-presigned-get-url>" -o downloaded-file.txt
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/#page","headline":"aws-sdk-kotlin · Cloudflare R2 docs","description":"Configure the AWS SDK for Kotlin to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-kotlin/","name":"aws-sdk-kotlin"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/#page","headline":"aws-sdk-kotlin · Cloudflare R2 docs","description":"Configure the AWS SDK for Kotlin to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Terraform (AWS)
 description: Configure R2 buckets and objects with Terraform using the AWS provider.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Terraform (AWS)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform (AWS)
 
-# Terraform (AWS)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/terraform-aws/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -38,36 +40,29 @@ terraform {
   }
 }
 
-
 provider "aws" {
   region = "us-east-1"
-
 
   access_key = <R2 Access Key>
   secret_key = <R2 Secret Key>
 
-
-  # Required for R2.
-  # These options disable S3-specific validation on the client (Terraform) side.
+	# Required for R2.
+	# These options disable S3-specific validation on the client (Terraform) side.
   skip_credentials_validation = true
   skip_region_validation      = true
   skip_requesting_account_id  = true
-
 
   endpoints {
     s3 = "https://<account id>.r2.cloudflarestorage.com"
   }
 }
 
-
 resource "aws_s3_bucket" "default" {
   bucket = "<org>-test"
 }
 
-
 resource "aws_s3_bucket_cors_configuration" "default" {
   bucket   = aws_s3_bucket.default.id
-
 
   cors_rule {
     allowed_methods = ["GET"]
@@ -75,10 +70,8 @@ resource "aws_s3_bucket_cors_configuration" "default" {
   }
 }
 
-
 resource "aws_s3_bucket_lifecycle_configuration" "default" {
   bucket = aws_s3_bucket.default.id
-
 
   rule {
     id     = "expire-bucket"
@@ -87,7 +80,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "default" {
       days = 1
     }
   }
-
 
   rule {
     id     = "abort-multipart-upload"
@@ -101,7 +93,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "default" {
 
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/terraform-aws/#page","headline":"Terraform (AWS) · Cloudflare R2 docs","description":"Configure R2 buckets and objects with Terraform using the AWS provider.","url":"https://developers.cloudflare.com/r2/examples/terraform-aws/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/terraform-aws/","name":"Terraform (AWS)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/terraform-aws/#page","headline":"Terraform (AWS) · Cloudflare R2 docs","description":"Configure R2 buckets and objects with Terraform using the AWS provider.","url":"https://developers.cloudflare.com/r2/examples/terraform-aws/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

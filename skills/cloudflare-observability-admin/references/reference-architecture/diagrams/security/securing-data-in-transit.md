@@ -1,16 +1,18 @@
 ---
-title: Securing data in transit
 description: Data in transit is often considered vulnerable to interception or tampering during transmission. Data Loss Prevention (DLP) technologies can be used to inspect the contents of network traffic and block sensitive data from going to a risky destination.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Securing data in transit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Securing data in transit
 
-# Securing data in transit
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -78,7 +80,14 @@ Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP
 * [Securing data in use](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/)
 * [Securing data at rest](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/#page","headline":"Reference Architecture Diagram: Securing data in transit · Cloudflare Reference Architecture docs","description":"Data in transit is often considered vulnerable to interception or tampering during transmission. Data Loss Prevention (DLP) technologies can be used to inspect the contents of network traffic and block sensitive data from going to a risky destination.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/security/securing-data-in-transit/","name":"Securing data in transit"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/#page","headline":"Reference Architecture Diagram: Securing data in transit · Cloudflare Reference Architecture docs","description":"Data in transit is often considered vulnerable to interception or tampering during transmission. Data Loss Prevention (DLP) technologies can be used to inspect the contents of network traffic and block sensitive data from going to a risky destination.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

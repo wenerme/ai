@@ -1,16 +1,18 @@
 ---
-title: Set up Claude Managed Agents
 description: Run Claude Managed Agents on self-managed Cloudflare environments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up Claude Managed Agents
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Claude Managed Agents
 
-# Set up Claude Managed Agents
+Last updated May 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a self-managed environment for [Claude Managed Agents ↗](https://platform.claude.com/docs/en/managed-agents/overview). The agent loop runs on the Anthropic platform, while Cloudflare provides the runtime — sandboxes, egress control, browser access, email, and custom tools — that the agent's actions execute in.
 
@@ -72,7 +74,14 @@ The repository includes detailed documentation on each capability:
 | [Architecture ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/architecture.md)                                       | Request lifecycle from webhook ingress through dispatch to either sandbox backend, and every Worker binding the control plane uses                               |
 | [Securing access ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/securing-access.md)                                 | Secure access to the CMA control plane                                                                                                                           |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/#page","headline":"Set up Claude Managed Agents · Cloudflare Sandbox SDK docs","description":"Run Claude Managed Agents on self-managed Cloudflare environments.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/claude-managed-agents/","name":"Set up Claude Managed Agents"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/#page","headline":"Set up Claude Managed Agents · Cloudflare Sandbox SDK docs","description":"Run Claude Managed Agents on self-managed Cloudflare environments.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

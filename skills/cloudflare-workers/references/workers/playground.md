@@ -1,16 +1,18 @@
 ---
-title: Playground
 description: Preview and test Cloudflare Workers code in a browser-based sandbox without setup or authentication.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Playground
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Playground
 
-# Playground
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/playground/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browser support
 
@@ -26,34 +28,29 @@ The Playground uses the same editor as the authenticated experience. The Playgro
 
 When you arrive in the Playground, you will see this default code:
 
-**JavaScript**
-
 ```js
 import welcome from "welcome.html";
-
 
 /**
  * @typedef {Object} Env
  */
 
-
 export default {
-  /**
-   * @param {Request} request
-   * @param {Env} env
-   * @param {ExecutionContext} ctx
-   * @returns {Response}
-   */
-  fetch(request, env, ctx) {
-    console.log("Hello Cloudflare Workers!");
+	/**
+	 * @param {Request} request
+	 * @param {Env} env
+	 * @param {ExecutionContext} ctx
+	 * @returns {Response}
+	 */
+	fetch(request, env, ctx) {
+		console.log("Hello Cloudflare Workers!");
 
-
-    return new Response(welcome, {
-      headers: {
-        "content-type": "text/html",
-      },
-    });
-  },
+		return new Response(welcome, {
+			headers: {
+				"content-type": "text/html",
+			},
+		});
+	},
 };
 ```
 
@@ -90,7 +87,14 @@ You can deploy a Worker from the Playground. If you are already logged in, you c
 
 Once deployed, your Worker will get its own unique URL and be available almost instantly on Cloudflare's global network. From here, you can add [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), [storage resources](https://developers.cloudflare.com/workers/platform/storage-options/), and more.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/playground/#page","headline":"Playground · Cloudflare Workers docs","description":"Preview and test Cloudflare Workers code in a browser-based sandbox without setup or authentication.","url":"https://developers.cloudflare.com/workers/playground/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/playground/","name":"Playground"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/playground/#page","headline":"Playground · Cloudflare Workers docs","description":"Preview and test Cloudflare Workers code in a browser-based sandbox without setup or authentication.","url":"https://developers.cloudflare.com/workers/playground/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

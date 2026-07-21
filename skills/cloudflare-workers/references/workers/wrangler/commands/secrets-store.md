@@ -1,16 +1,18 @@
 ---
-title: Secrets Store
 description: Wrangler commands for managing account secrets within a Secrets Store.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Secrets Store
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secrets Store
 
-# Secrets Store
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Interact with [Secret Store](https://developers.cloudflare.com/secrets-store/) using Wrangler.
 
@@ -18,7 +20,7 @@ Interact with [Secret Store](https://developers.cloudflare.com/secrets-store/) u
 
 Use the following commands to manage your account secrets.
 
-`--remote` option
+\`--remote\` option
 
 In order to interact with Secrets Store in production, you should append `--remote` to your command. Without it, your command will default to [local development mode](https://developers.cloudflare.com/workers/local-development/).
 
@@ -26,20 +28,18 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-13633)
-* [  pnpm ](#tab-panel-13634)
-* [  yarn ](#tab-panel-13635)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret create [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret create [STORE-ID]
+```
+yarn wrangler secrets-store secret create [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret create [STORE-ID]
+```
+pnpm wrangler secrets-store secret create [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -87,7 +87,6 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 ```sh
 ✓ Enter a secret value: › ***
 
-
 🔐 Creating secret... (Name: ServiceA_key-1, Value: REDACTED, Scopes: workers, Comment: undefined)
 ✓ Select an account: › My account
 ✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
@@ -97,20 +96,18 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-13636)
-* [  pnpm ](#tab-panel-13637)
-* [  yarn ](#tab-panel-13638)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret update [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret update [STORE-ID]
+```
+yarn wrangler secrets-store secret update [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret update [STORE-ID]
+```
+pnpm wrangler secrets-store secret update [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -153,20 +150,18 @@ Use a specific auth profile
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-13639)
-* [  pnpm ](#tab-panel-13640)
-* [  yarn ](#tab-panel-13641)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret duplicate [STORE-ID]
+```
+yarn wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret duplicate [STORE-ID]
+```
+pnpm wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -209,20 +204,18 @@ Use a specific auth profile
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-13642)
-* [  pnpm ](#tab-panel-13643)
-* [  yarn ](#tab-panel-13644)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret get [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret get [STORE-ID]
+```
+yarn wrangler secrets-store secret get [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret get [STORE-ID]
+```
+pnpm wrangler secrets-store secret get [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -273,20 +266,18 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-13645)
-* [  pnpm ](#tab-panel-13646)
-* [  yarn ](#tab-panel-13647)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret delete [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret delete [STORE-ID]
+```
+yarn wrangler secrets-store secret delete [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret delete [STORE-ID]
+```
+pnpm wrangler secrets-store secret delete [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -323,20 +314,18 @@ Use a specific auth profile
 
 List secrets within a store
 
-* [  npm ](#tab-panel-13648)
-* [  pnpm ](#tab-panel-13649)
-* [  yarn ](#tab-panel-13650)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store secret list [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store secret list [STORE-ID]
+```
+yarn wrangler secrets-store secret list [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store secret list [STORE-ID]
+```
+pnpm wrangler secrets-store secret list [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -383,20 +372,18 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-13651)
-* [  pnpm ](#tab-panel-13652)
-* [  yarn ](#tab-panel-13653)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store store create [NAME]
 ```
 
-```sh
-pnpm wrangler secrets-store store create [NAME]
+```
+yarn wrangler secrets-store store create [NAME]
 ```
 
-```sh
-yarn wrangler secrets-store store create [NAME]
+```
+pnpm wrangler secrets-store store create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -440,20 +427,18 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-13654)
-* [  pnpm ](#tab-panel-13655)
-* [  yarn ](#tab-panel-13656)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store store delete [STORE-ID]
 ```
 
-```sh
-pnpm wrangler secrets-store store delete [STORE-ID]
+```
+yarn wrangler secrets-store store delete [STORE-ID]
 ```
 
-```sh
-yarn wrangler secrets-store store delete [STORE-ID]
+```
+pnpm wrangler secrets-store store delete [STORE-ID]
 ```
 
 * `[STORE-ID]` ` string ` required
@@ -497,20 +482,18 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-13657)
-* [  pnpm ](#tab-panel-13658)
-* [  yarn ](#tab-panel-13659)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secrets-store store list
 ```
 
-```sh
-pnpm wrangler secrets-store store list
+```
+yarn wrangler secrets-store store list
 ```
 
-```sh
-yarn wrangler secrets-store store list
+```
+pnpm wrangler secrets-store store list
 ```
 
 * `--page` ` number ` default: 1
@@ -556,7 +539,14 @@ npx wrangler secrets-store store list --remote
 └─────────┴──────────────────────────────────┴──────────────────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/secrets-store/","name":"Secrets Store"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

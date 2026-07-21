@@ -1,16 +1,18 @@
 ---
-title: Traffic steering
 description: Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Traffic steering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Traffic steering
 
-# Traffic steering
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Magic Transit Virtual Network routing table
 
@@ -108,10 +110,8 @@ For example, if your ASN is `65000` then the `BGP UPDATE` to Cloudflare will be:
 # No change to base priority.
 AS_PATH: 65000 65200
 
-
 # Add 10 to base priority for 1 prepend of 65000
 AS_PATH: 65000 65000 65200
-
 
 # Add 20 to base priority for 2 prepend of 65000
 AS_PATH: 65000 65000 65000 65200
@@ -208,14 +208,20 @@ Configure scoping for your traffic in the **Region code** section when adding or
 
 ### Map route prefixes smaller than `/24`
 
+```
 You must provide your prefixes and the tunnels that should be mapped to for Cloudflare to route your traffic from our global network to your data centers through anycast tunnels. Use the following table as reference.
+
+```
 
 | Prefix          | NextHop        |
 | --------------- | -------------- |
 | 103.21.244.0/29 | TUNNEL\_1\_IAD |
 | 103.21.244.8/29 | TUNNEL\_2\_ATL |
 
-The minimum advertising prefix is `/24`, but because Cloudflare uses anycast tunnels as an outer wrapper for your traffic, Cloudflare can route prefixes within that `/24` to different tunnel endpoints. For example, you can send `x.x.x.0/29` to Data Center 1 and `x.x.x.8/29` to Data Center 2\. This is helpful when you operate in an environment with constrained IP resources.
+```
+The minimum advertising prefix is `/24`, but because Cloudflare uses anycast tunnels as an outer wrapper for your traffic, Cloudflare can route prefixes within that `/24` to different tunnel endpoints. For example, you can send `x.x.x.0/29` to Data Center 1 and `x.x.x.8/29` to Data Center 2. This is helpful when you operate in an environment with constrained IP resources.
+
+```
 
 ### Map route prefixes bigger than onboarded prefixes
 
@@ -232,7 +238,7 @@ Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/co
 
 Note
 
-These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
+ These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
 
 ## Equal-cost multi-path routing
 
@@ -453,7 +459,14 @@ For Magic Transit customers, BGP with the Magic Transit Virtual Network routing 
 
 You need to enable [legacy health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/#legacy-bidirectional-health-checks) alongside BGP. This is essential to determine if a specific Cloudflare data center is reachable from your device. [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) modify the route priorities for dynamically learned BGP routes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/traffic-steering/","name":"Traffic steering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

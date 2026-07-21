@@ -1,16 +1,18 @@
 ---
-title: Operators and grouping symbols
 description: Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Operators and grouping symbols
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Operators and grouping symbols
 
-# Operators and grouping symbols
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language supports comparison and logical operators:
 
@@ -50,7 +52,7 @@ The Rules language supports these comparison operators:
 2 Access to the `matches` operator requires a Cloudflare Business or Enterprise plan.
 3 Currently, not all Cloudflare products support lists in their expressions. For more information on lists, refer to [Inline lists](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#inline-lists) and [Lists](https://developers.cloudflare.com/waf/tools/lists/).
 
-Warning
+Caution
 
 Comparison operators entered using English notation (such as `eq`, `lt`, and `gt`) must be written in lowercase.
 
@@ -70,7 +72,6 @@ When writing your own custom expressions, you must use the `starts_with()` and `
 ```txt
 # Valid function call
 ends_with(http.request.uri.path, ".html")
-
 
 # Invalid use of ends_with function
 http.request.uri.path ends_with ".html"
@@ -92,19 +93,15 @@ The `wildcard` operator performs a case-insensitive match between a field value 
 
 When using the `wildcard`/`strict wildcard` operator, the entire field value must match the literal string with wildcards (the literal after the operator).
 
-**Example A**
-
 ```txt
 # The following expression:
 http.request.full_uri wildcard "http*://example.com/a/*"
-
 
 # Would match the following URIs:
 # - https://example.com/a/           (the '*' matches zero characters)
 # - http://example.com/a/
 # - https://example.com/a/page.html
 # - https://example.com/a/sub/folder/?name=value
-
 
 # Would NOT match the following URIs:
 # - https://example.com/ab/
@@ -118,12 +115,10 @@ Example B
 # The following expression:
 http.request.full_uri wildcard "*.example.com/*/page.html"
 
-
 # Would match the following URIs:
 # - http://sub.example.com/folder/page.html
 # - https://admin.example.com/team/page.html
 # - https://admin.example.com/team/subteam/page.html
-
 
 # Would NOT match the following URIs:
 # - https://example.com/ab/page.html                   ('*.example.com' matches only subdomains)
@@ -138,7 +133,6 @@ Example C
 ```txt
 # The following expression:
 http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildcard "http*://example.com/*"
-
 
 # Would match the following URIs:
 # - https://example.com/folder/list.htm
@@ -181,7 +175,7 @@ Each logical operator has an [order of precedence](#order-of-precedence). The or
 | Logical XOR(exclusive OR) | xor             | ^^             | http.host eq "www​.cloudflare​.com" **xor** ip.src in {203.0.113.0/24}         | 3                   |
 | Logical OR                | or              | \||            | http.host eq "www​.cloudflare​.com" **or** ip.src in 203.0.113.0/24            | 4                   |
 
-Warning
+Caution
 
 Logical operators entered using English notation (such as `not`, `and`, and `or`) must be written in lowercase.
 
@@ -248,7 +242,14 @@ Note that when evaluating the precedence of logical operators, parentheses insid
 "^(www|store|blog)\.example\.com"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#page","headline":"Rule operators and grouping symbols · Cloudflare Ruleset Engine docs","description":"Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/operators/","name":"Operators and grouping symbols"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#page","headline":"Rule operators and grouping symbols · Cloudflare Ruleset Engine docs","description":"Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

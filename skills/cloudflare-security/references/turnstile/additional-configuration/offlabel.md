@@ -1,16 +1,18 @@
 ---
-title: Remove Cloudflare branding with Offlabel
 description: Remove Cloudflare branding from Turnstile widgets with Offlabel mode.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remove Cloudflare branding with Offlabel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Remove Cloudflare branding with Offlabel
 
-# Remove Cloudflare branding with Offlabel
+Last updated May 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Offlabel is an Enterprise-only feature that removes Cloudflare branding and logo from Turnstile widgets. When enabled, widgets display without any visual references to Cloudflare.
 
@@ -30,8 +32,6 @@ The widget will display with a clean, unbranded appearance that integrates seaml
 
 After your account team enables the Offlabel entitlement, you can activate it for specific widgets using the Cloudflare API.
 
-**cURL command**
-
 ```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
 -H "Authorization: Bearer $API_TOKEN" \
@@ -44,8 +44,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenge
 ### Create new widgets with Offlabel
 
 You can enable Offlabel when creating new widgets.
-
-**cURL command**
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
@@ -62,8 +60,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challeng
 ### Verification
 
 Confirm Offlabel is enabled by checking your widget configuration.
-
-**cURL command**
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
@@ -87,7 +83,14 @@ Offlabel is available exclusively to Enterprise customers with the Enterprise Tu
 
 Contact your account team for access to the Offlabel feature.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/#page","headline":"Remove Cloudflare branding with Offlabel · Cloudflare Turnstile docs","description":"Remove Cloudflare branding from Turnstile widgets with Offlabel mode.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/additional-configuration/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/additional-configuration/offlabel/","name":"Remove Cloudflare branding with Offlabel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/#page","headline":"Remove Cloudflare branding with Offlabel · Cloudflare Turnstile docs","description":"Remove Cloudflare branding from Turnstile widgets with Offlabel mode.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

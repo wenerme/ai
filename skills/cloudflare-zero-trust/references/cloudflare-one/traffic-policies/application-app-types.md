@@ -1,16 +1,18 @@
 ---
-title: Applications and app types
 description: Reference information for Applications and app types in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Applications and app types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Applications and app types
 
-# Applications and app types
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
 
@@ -146,14 +148,12 @@ data "cloudflare_zero_trust_gateway_app_types_list" "gateway_apptypes" {
   account_id = var.cloudflare_account_id
 }
 
-
 locals {
   apptypes_map = merge([
     for c in data.cloudflare_zero_trust_gateway_app_types_list.gateway_apptypes.result :
     { (c.name) = c.id }
   ]...)
 }
-
 
 resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_apps" {
   account_id = var.cloudflare_account_id
@@ -169,7 +169,14 @@ resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_apps" {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#page","headline":"Applications and app types · Cloudflare One docs","description":"Reference information for Applications and app types in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/application-app-types/","name":"Applications and app types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#page","headline":"Applications and app types · Cloudflare One docs","description":"Reference information for Applications and app types in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

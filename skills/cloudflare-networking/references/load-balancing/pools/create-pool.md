@@ -1,16 +1,18 @@
 ---
-title: Manage pools
 description: Learn how to set up and maintain pools.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage pools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage pools
 
-# Manage pools
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/pools/create-pool/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Within Cloudflare, pools represent your endpoints and how they are organized. As such, a pool can be a group of several endpoints, or you could also have only one endpoint (an origin server, for example) per pool.
 
@@ -18,7 +20,7 @@ If you are familiar with DNS terminology, think of a pool as a “record set,”
 
 For more background information on pools, refer to [Pools](https://developers.cloudflare.com/load-balancing/pools/).
 
-Warning
+Caution
 
 Since load balancing targets are not limited to origin web servers, the term `endpoints` has been introduced. Refer to [Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-other-terms/) for its use in the context of Cloudflare offerings, and to [load balancing concepts](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/) or [Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/) for use case examples.
 
@@ -27,9 +29,6 @@ On the [Load Balancing API](https://developers.cloudflare.com/api/resources/load
 ---
 
 ## Create a pool
-
-* [ Dashboard ](#tab-panel-10189)
-* [ API ](#tab-panel-10190)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -71,60 +70,56 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Create Pool**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Primary data center - Provider XYZ",
-    "name": "primary-dc-1",
-    "enabled": false,
-    "load_shedding": {
-        "default_percent": 0,
-        "default_policy": "random",
-        "session_percent": 0,
-        "session_policy": "hash"
-    },
-    "minimum_origins": 2,
-    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-    "check_regions": [
-        "WEU",
-        "ENAM"
-    ],
-    "origins": [
-        {
-            "name": "app-server-1",
-            "address": "0.0.0.0",
-            "enabled": true,
-            "weight": 0.56,
-            "header": {
-                "Host": [
-                    "example.com"
-                ]
-            }
-        }
-    ],
-    "origin_steering": {
-        "policy": "random"
-    },
-    "notification_filter": {
-        "origin": {
-            "disable": false,
-            "healthy": null
-        },
-        "pool": {
-            "disable": false,
-            "healthy": null
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Primary data center - Provider XYZ",
+		"name": "primary-dc-1",
+		"enabled": false,
+		"load_shedding": {
+				"default_percent": 0,
+				"default_policy": "random",
+				"session_percent": 0,
+				"session_policy": "hash"
+		},
+		"minimum_origins": 2,
+		"monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+		"check_regions": [
+				"WEU",
+				"ENAM"
+		],
+		"origins": [
+				{
+						"name": "app-server-1",
+						"address": "0.0.0.0",
+						"enabled": true,
+						"weight": 0.56,
+						"header": {
+								"Host": [
+										"example.com"
+								]
+						}
+				}
+		],
+		"origin_steering": {
+				"policy": "random"
+		},
+		"notification_filter": {
+				"origin": {
+						"disable": false,
+						"healthy": null
+				},
+				"pool": {
+						"disable": false,
+						"healthy": null
+				}
+		}
+	}'
 ```
 
 The response contains the complete definition of the new pool.
-
-**Response**
 
 ```json
 {
@@ -195,9 +190,6 @@ After creating the pool, you would also want to [create a new notification](http
 
 ## Edit a pool
 
-* [ Dashboard ](#tab-panel-10185)
-* [ API ](#tab-panel-10186)
-
 To edit a pool in the dashboard:
 
 1. Go to **Load Balancing**.
@@ -221,9 +213,6 @@ If you get an error when trying to delete a pool, consider the hostnames listed 
 Note
 
 If the pool is referenced by geo steering, the configuration is **not** automatically removed when you change to a different **Traffic Steering** method. To make sure you remove it, select **Geo Steering**, remove the pool, and then apply and save any other necessary changes.
-
-* [ Dashboard ](#tab-panel-10187)
-* [ API ](#tab-panel-10188)
 
 To delete a pool in the dashboard:
 
@@ -282,7 +271,14 @@ Evaluate [load balancing analytics](https://developers.cloudflare.com/load-balan
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/create-pool/#page","headline":"Manage pools · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain pools.","url":"https://developers.cloudflare.com/load-balancing/pools/create-pool/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/pools/","name":"Pools"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/pools/create-pool/","name":"Manage pools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/create-pool/#page","headline":"Manage pools · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain pools.","url":"https://developers.cloudflare.com/load-balancing/pools/create-pool/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

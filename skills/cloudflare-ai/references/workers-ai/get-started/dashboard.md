@@ -1,16 +1,18 @@
 ---
-title: Dashboard
 description: Create and deploy a Workers AI application using the Cloudflare dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dashboard
 
-# Dashboard
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/get-started/dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this guide to create a Workers AI application using the Cloudflare dashboard.
 
@@ -23,7 +25,7 @@ Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/worke
 To create a Workers AI application:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Under **Select a template**, select **LLM Chat App**.
 4. Select **Deploy**.
@@ -39,7 +41,7 @@ Editing in the dashboard is helpful for simpler use cases.
 Once you have created your Worker script, you can edit and deploy your Worker using the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your application.
 3. Select **Edit Code**.
 ![Edit code directly within the Cloudflare dashboard](https://developers.cloudflare.com/_astro/workers-edit-code.CKxxvQSe_11id2b.webp)
@@ -73,7 +75,14 @@ pnpm create cloudflare@latest [<DIRECTORY>] --type=pre-existing
 
 After you run this command - and work through the prompts - your local changes will not automatically sync with dashboard. So, once you download your script, continue using the CLI.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers AI docs","description":"Create and deploy a Workers AI application using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/get-started/dashboard/","name":"Dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers AI docs","description":"Create and deploy a Workers AI application using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

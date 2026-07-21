@@ -1,16 +1,18 @@
 ---
-title: How Cloudflare DNS works
 description: Understand how Cloudflare acts as your authoritative DNS provider and reverse proxy to optimize, cache, and protect your web traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How Cloudflare DNS works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Cloudflare DNS works
 
-# How Cloudflare DNS works
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To optimize your website or web application, Cloudflare provides [DNS ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) and [CDN ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) services, so we can [reverse proxy ↗](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) the web traffic to and from your domain.
 
@@ -51,7 +53,14 @@ Using Cloudflare as a reverse proxy has several benefits, including:
 * **Caching.** A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
 * **SSL encryption.** SSL/TLS is essential. Without an SSL/TLS certificate, your visitors will find a warning on their browser stating your website or application is not secure. However, encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#page","headline":"How Cloudflare DNS works · Cloudflare Fundamentals docs","description":"Understand how Cloudflare acts as your authoritative DNS provider and reverse proxy to optimize, cache, and protect your web traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/how-cloudflare-works/","name":"How Cloudflare DNS works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#page","headline":"How Cloudflare DNS works · Cloudflare Fundamentals docs","description":"Understand how Cloudflare acts as your authoritative DNS provider and reverse proxy to optimize, cache, and protect your web traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

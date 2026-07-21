@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Tunnel
 description: Review recent changes to Cloudflare Tunnel.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Tunnel
 
-# Cloudflare Tunnel
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/tunnel.xml)
 
@@ -60,20 +62,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/ne
      -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
      -d '{"tunnel_id": "'$TUNNEL_ID'", "comment": "Example comment for this route."}'
 
-
 # After: create a route with the network in the request body
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes \
      -H 'Content-Type: application/json' \
      -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
      -d '{"network": "172.16.0.0/16", "tunnel_id": "'$TUNNEL_ID'", "comment": "Example comment for this route."}'
 
-
 # After: update or delete a route using its route_id
 curl -X PATCH https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID \
      -H 'Content-Type: application/json' \
      -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
      -d '{"comment": "Updated comment for this route."}'
-
 
 curl -X DELETE https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID \
      -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
@@ -98,7 +97,6 @@ Fetch connection details from the tunnel-specific connections endpoint instead o
 # Before: read connections off the tunnel object
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID \
      -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
 
 # After: query connections directly
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections \
@@ -134,7 +132,7 @@ From the unified Routes page you can:
 
 To find it, go to **Networking** \> **Routes** in the dashboard sidebar.
 
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
 
@@ -368,7 +366,6 @@ To get a list of only deleted resources, you must now explicitly add the `is_del
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tunnels?is_deleted=true" \
      -H "Authorization: Bearer $API_TOKEN"
 
-
 # Example: Get ONLY deleted Virtual Networks
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/virtual_networks?is_deleted=true" \
      -H "Authorization: Bearer $API_TOKEN"
@@ -431,7 +428,14 @@ The new `cloudflared` build [2024.10.0 ↗](https://github.com/cloudflare/cloudf
 
 macOS users can now download `cloudflared-arm64.pkg` directly from [GitHub ↗](https://github.com/cloudflare/cloudflared/releases), in addition to being available via Homebrew.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/#page","headline":"Cloudflare Tunnel Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/tunnel/","name":"Cloudflare Tunnel"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/#page","headline":"Cloudflare Tunnel Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

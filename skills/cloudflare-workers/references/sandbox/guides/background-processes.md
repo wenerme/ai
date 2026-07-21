@@ -1,16 +1,18 @@
 ---
-title: Run background processes
 description: Start and manage long-running services and applications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Run background processes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Run background processes
 
-# Run background processes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/background-processes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to start, monitor, and manage long-running background processes in the sandbox.
 
@@ -30,49 +32,34 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-11115)
-* [  TypeScript ](#tab-panel-11116)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
 
 // Start a web server
 const server = await sandbox.startProcess("python -m http.server 8000");
-
 
 console.log("Server started");
 console.log("Process ID:", server.id);
 console.log("PID:", server.pid);
 console.log("Status:", server.status); // 'running'
 
-
 // Process runs in background - your code continues
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox } from '@cloudflare/sandbox';
-
 
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
 
-
 // Start a web server
 const server = await sandbox.startProcess('python -m http.server 8000');
-
 
 console.log('Server started');
 console.log('Process ID:', server.id);
 console.log('PID:', server.pid);
 console.log('Status:', server.status); // 'running'
-
 
 // Process runs in background - your code continues
 ```
@@ -81,29 +68,21 @@ console.log('Status:', server.status); // 'running'
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-11117)
-* [  TypeScript ](#tab-panel-11118)
-
-**JavaScript**
-
 ```js
 const process = await sandbox.startProcess("node server.js", {
-  cwd: "/workspace/api",
-  env: {
-    NODE_ENV: "production",
-    PORT: "8080",
-    API_KEY: env.API_KEY,
-    DATABASE_URL: env.DATABASE_URL,
-  },
+	cwd: "/workspace/api",
+	env: {
+		NODE_ENV: "production",
+		PORT: "8080",
+		API_KEY: env.API_KEY,
+		DATABASE_URL: env.DATABASE_URL,
+	},
 });
-
 
 console.log("API server started");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const process = await sandbox.startProcess('node server.js', {
   cwd: '/workspace/api',
   env: {
@@ -114,7 +93,6 @@ const process = await sandbox.startProcess('node server.js', {
   }
 });
 
-
 console.log('API server started');
 ```
 
@@ -122,42 +100,29 @@ console.log('API server started');
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-11123)
-* [  TypeScript ](#tab-panel-11124)
-
-**JavaScript**
-
 ```js
 const processes = await sandbox.listProcesses();
 
-
 console.log(`Running ${processes.length} processes:`);
 
-
 for (const proc of processes) {
-  console.log(`${proc.id}: ${proc.command} (${proc.status})`);
+	console.log(`${proc.id}: ${proc.command} (${proc.status})`);
 }
-
 
 // Check if specific process is running
 const isRunning = processes.some(
-  (p) => p.id === processId && p.status === "running",
+	(p) => p.id === processId && p.status === "running",
 );
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const processes = await sandbox.listProcesses();
 
-
 console.log(`Running ${processes.length} processes:`);
-
 
 for (const proc of processes) {
   console.log(`${proc.id}: ${proc.command} (${proc.status})`);
 }
-
 
 // Check if specific process is running
 const isRunning = processes.some(p => p.id === processId && p.status === 'running');
@@ -167,56 +132,36 @@ const isRunning = processes.some(p => p.id === processId && p.status === 'runnin
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-11113)
-* [  TypeScript ](#tab-panel-11114)
-
-**JavaScript**
-
 ```js
 const server = await sandbox.startProcess("node server.js");
 
-
 // Wait for server to respond on port 3000
 await server.waitForPort(3000);
-
 
 console.log("Server is ready");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const server = await sandbox.startProcess('node server.js');
-
 
 // Wait for server to respond on port 3000
 await server.waitForPort(3000);
-
 
 console.log('Server is ready');
 ```
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-11119)
-* [  TypeScript ](#tab-panel-11120)
-
-**JavaScript**
-
 ```js
 const server = await sandbox.startProcess("node server.js");
-
 
 // Wait for log message
 const result = await server.waitForLog("Server listening");
 console.log("Server is ready:", result.line);
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const server = await sandbox.startProcess('node server.js');
-
 
 // Wait for log message
 const result = await server.waitForLog('Server listening');
@@ -227,39 +172,26 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-11125)
-* [  TypeScript ](#tab-panel-11126)
-
-**JavaScript**
-
 ```js
 import { parseSSEStream } from "@cloudflare/sandbox";
 
-
 const server = await sandbox.startProcess("node server.js");
-
 
 // Stream logs
 const logStream = await sandbox.streamProcessLogs(server.id);
 
-
 for await (const log of parseSSEStream(logStream)) {
-  console.log(log.data);
+	console.log(log.data);
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
-
 
 const server = await sandbox.startProcess('node server.js');
 
-
 // Stream logs
 const logStream = await sandbox.streamProcessLogs(server.id);
-
 
 for await (const log of parseSSEStream<LogEvent>(logStream)) {
   console.log(log.data);
@@ -268,19 +200,12 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-11121)
-* [  TypeScript ](#tab-panel-11122)
-
-**JavaScript**
-
 ```js
 const logs = await sandbox.getProcessLogs(server.id);
 console.log("Logs:", logs);
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const logs = await sandbox.getProcessLogs(server.id);
 console.log('Logs:', logs);
 ```
@@ -289,34 +214,23 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-11127)
-* [  TypeScript ](#tab-panel-11128)
-
-**JavaScript**
-
 ```js
 // Stop specific process (terminates entire process tree)
 await sandbox.killProcess(server.id);
 
-
 // Force kill if needed
 await sandbox.killProcess(server.id, "SIGKILL");
-
 
 // Stop all processes
 await sandbox.killAllProcesses();
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Stop specific process (terminates entire process tree)
 await sandbox.killProcess(server.id);
 
-
 // Force kill if needed
 await sandbox.killProcess(server.id, 'SIGKILL');
-
 
 // Stop all processes
 await sandbox.killAllProcesses();
@@ -326,30 +240,21 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-11129)
-* [  TypeScript ](#tab-panel-11130)
-
-**JavaScript**
-
 ```js
 // This script spawns multiple child processes
 const batch = await sandbox.startProcess(
-  'bash -c "process1 & process2 & process3 & wait"',
+	'bash -c "process1 & process2 & process3 & wait"',
 );
-
 
 // killProcess() terminates the bash process AND all three child processes
 await sandbox.killProcess(batch.id);
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // This script spawns multiple child processes
 const batch = await sandbox.startProcess(
   'bash -c "process1 & process2 & process3 & wait"'
 );
-
 
 // killProcess() terminates the bash process AND all three child processes
 await sandbox.killProcess(batch.id);
@@ -359,53 +264,38 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-11135)
-* [  TypeScript ](#tab-panel-11136)
-
-**JavaScript**
-
 ```js
 // Start database first
 const db = await sandbox.startProcess("redis-server");
 
-
 // Wait for database to be ready
 await db.waitForPort(6379, { mode: "tcp" });
 
-
 // Now start API server (depends on database)
 const api = await sandbox.startProcess("node api-server.js", {
-  env: { DATABASE_URL: "redis://localhost:6379" },
+	env: { DATABASE_URL: "redis://localhost:6379" },
 });
-
 
 // Wait for API to be ready
 await api.waitForPort(8080, { path: "/health" });
 
-
 console.log("All services running");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Start database first
 const db = await sandbox.startProcess('redis-server');
 
-
 // Wait for database to be ready
 await db.waitForPort(6379, { mode: 'tcp' });
-
 
 // Now start API server (depends on database)
 const api = await sandbox.startProcess('node api-server.js', {
   env: { DATABASE_URL: 'redis://localhost:6379' }
 });
 
-
 // Wait for API to be ready
 await api.waitForPort(8080, { path: '/health' });
-
 
 console.log('All services running');
 ```
@@ -414,61 +304,46 @@ console.log('All services running');
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-11137)
-* [  TypeScript ](#tab-panel-11138)
-
-**JavaScript**
-
 ```js
 import { getSandbox, parseSSEStream } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    // Enable keepAlive for long-running processes
-    const sandbox = getSandbox(env.Sandbox, "build-job-123", {
-      keepAlive: true,
-    });
+	async fetch(request, env) {
+		// Enable keepAlive for long-running processes
+		const sandbox = getSandbox(env.Sandbox, "build-job-123", {
+			keepAlive: true,
+		});
 
+		try {
+			// Start a long-running build process
+			const build = await sandbox.startProcess("npm run build:production");
 
-    try {
-      // Start a long-running build process
-      const build = await sandbox.startProcess("npm run build:production");
+			// Monitor progress
+			const logs = await sandbox.streamProcessLogs(build.id);
 
+			// Process can run indefinitely without container shutdown
+			for await (const log of parseSSEStream(logs)) {
+				console.log(log.data);
+				if (log.data.includes("Build complete")) {
+					break;
+				}
+			}
 
-      // Monitor progress
-      const logs = await sandbox.streamProcessLogs(build.id);
-
-
-      // Process can run indefinitely without container shutdown
-      for await (const log of parseSSEStream(logs)) {
-        console.log(log.data);
-        if (log.data.includes("Build complete")) {
-          break;
-        }
-      }
-
-
-      return new Response("Build completed");
-    } finally {
-      // Important: Must explicitly destroy when done
-      await sandbox.destroy();
-    }
-  },
+			return new Response("Build completed");
+		} finally {
+			// Important: Must explicitly destroy when done
+			await sandbox.destroy();
+		}
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox, parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -477,15 +352,12 @@ export default {
       keepAlive: true
     });
 
-
     try {
       // Start a long-running build process
       const build = await sandbox.startProcess('npm run build:production');
 
-
       // Monitor progress
       const logs = await sandbox.streamProcessLogs(build.id);
-
 
       // Process can run indefinitely without container shutdown
       for await (const log of parseSSEStream<LogEvent>(logs)) {
@@ -494,7 +366,6 @@ export default {
           break;
         }
       }
-
 
       return new Response('Build completed');
     } finally {
@@ -523,29 +394,20 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-11133)
-* [  TypeScript ](#tab-panel-11134)
-
-**JavaScript**
-
 ```js
 const process = await sandbox.startProcess("node server.js");
 await new Promise((resolve) => setTimeout(resolve, 1000));
 
-
 const processes = await sandbox.listProcesses();
 if (!processes.find((p) => p.id === process.id)) {
-  const logs = await sandbox.getProcessLogs(process.id);
-  console.error("Process exited:", logs);
+	const logs = await sandbox.getProcessLogs(process.id);
+	console.error("Process exited:", logs);
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const process = await sandbox.startProcess('node server.js');
 await new Promise(resolve => setTimeout(resolve, 1000));
-
 
 const processes = await sandbox.listProcesses();
 if (!processes.find(p => p.id === process.id)) {
@@ -558,19 +420,12 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-11131)
-* [  TypeScript ](#tab-panel-11132)
-
-**JavaScript**
-
 ```js
 await sandbox.killAllProcesses();
 const server = await sandbox.startProcess("node server.js");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 await sandbox.killAllProcesses();
 const server = await sandbox.startProcess('node server.js');
 ```
@@ -585,7 +440,14 @@ const server = await sandbox.startProcess('node server.js');
 * [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Make processes accessible
 * [Streaming output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Monitor process output
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/background-processes/#page","headline":"Run background processes · Cloudflare Sandbox SDK docs","description":"Start and manage long-running services and applications.","url":"https://developers.cloudflare.com/sandbox/guides/background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/background-processes/","name":"Run background processes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/background-processes/#page","headline":"Run background processes · Cloudflare Sandbox SDK docs","description":"Start and manage long-running services and applications.","url":"https://developers.cloudflare.com/sandbox/guides/background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

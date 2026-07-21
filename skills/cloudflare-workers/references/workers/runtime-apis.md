@@ -1,16 +1,18 @@
 ---
-title: Runtime APIs
 description: Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Runtime APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Runtime APIs
 
-# Runtime APIs
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-workers-runtime/) is designed to be [JavaScript standards compliant ↗](https://ecma-international.org/publications-and-standards/standards/ecma-262/) and web-interoperable. Wherever possible, it uses web platform APIs, so that code can be reused across client and server, as well as across [WinterCG ↗](https://wintercg.org/) JavaScript runtimes.
 
@@ -40,7 +42,14 @@ The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-worker
 * [ WebAssembly (Wasm) ](https://developers.cloudflare.com/workers/runtime-apis/webassembly/)
 * [ WebSockets ](https://developers.cloudflare.com/workers/runtime-apis/websockets/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/#page","headline":"Runtime APIs · Cloudflare Workers docs","description":"Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.","url":"https://developers.cloudflare.com/workers/runtime-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/#page","headline":"Runtime APIs · Cloudflare Workers docs","description":"Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.","url":"https://developers.cloudflare.com/workers/runtime-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

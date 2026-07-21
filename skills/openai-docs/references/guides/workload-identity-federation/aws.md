@@ -160,7 +160,7 @@ Authenticate from an AWS-issued OIDC token
 ```typescript
 import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
@@ -172,6 +172,7 @@ if (!identityProviderId || !serviceAccountId || !audience || !awsRegion) {
     "Set OPENAI_IDENTITY_PROVIDER_ID, OPENAI_SERVICE_ACCOUNT_ID, OPENAI_WIF_AUDIENCE, and AWS_REGION"
   );
 }
+const wifAudience = audience;
 
 const sts = new STSClient({ region: awsRegion });
 
@@ -181,7 +182,7 @@ function awsOutboundWebIdentityTokenProvider(): SubjectTokenProvider {
     getToken: async () => {
       const response = await sts.send(
         new GetWebIdentityTokenCommand({
-          Audience: [audience],
+          Audience: [wifAudience],
           SigningAlgorithm: "ES384",
           DurationSeconds: 300,
         })
@@ -644,17 +645,21 @@ Authenticate from an EKS projected service account token
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
 
 if (!identityProviderId || !serviceAccountId) {
-  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID"
+  );
 }
 
-function mountedEksServiceAccountTokenProvider(path: string): SubjectTokenProvider {
+function mountedEksServiceAccountTokenProvider(
+  path: string
+): SubjectTokenProvider {
   return {
     tokenType: "jwt",
     getToken: async () => {

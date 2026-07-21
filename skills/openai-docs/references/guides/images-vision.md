@@ -37,9 +37,10 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
-    tools: [{type: "image_generation"}],
+  model: "gpt-5.6",
+  input:
+    "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+  tools: [{ type: "image_generation" }],
 });
 
 // Save the image to a file
@@ -132,17 +133,21 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: [{
-        role: "user",
-        content: [
-            { type: "input_text", text: "what's in this image?" },
-            {
-                type: "input_image",
-                image_url: "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
-            },
-        ],
-    }],
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        { type: "input_text", text: "what's in this image?" },
+        {
+          type: "input_image",
+          image_url:
+            "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
+          detail: "auto",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -235,23 +240,24 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const imagePath = "path_to_your_image.jpg";
+const imagePath = "fixtures/example.jpg";
 const base64Image = fs.readFileSync(imagePath, "base64");
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        { type: "input_text", text: "what's in this image?" },
         {
-            role: "user",
-            content: [
-                { type: "input_text", text: "what's in this image?" },
-                {
-                    type: "input_image",
-                    image_url: `data:image/jpeg;base64,${base64Image}`,
-                },
-            ],
+          type: "input_image",
+          image_url: `data:image/jpeg;base64,${base64Image}`,
+          detail: "auto",
         },
-    ],
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -351,7 +357,7 @@ async function createFile(filePath) {
 }
 
 // Getting the file ID
-const fileId = await createFile("path_to_your_image.jpg");
+const fileId = await createFile("fixtures/example.jpg");
 
 const response = await openai.responses.create({
   model: "gpt-5.6",
@@ -363,6 +369,7 @@ const response = await openai.responses.create({
         {
           type: "input_image",
           file_id: fileId,
+          detail: "auto",
         },
       ],
     },

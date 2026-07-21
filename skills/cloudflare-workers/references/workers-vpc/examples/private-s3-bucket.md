@@ -1,16 +1,18 @@
 ---
-title: Access a private S3 bucket
 description: Use Workers VPC to read objects from a private S3-compatible bucket behind Cloudflare Tunnel.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Access a private S3 bucket
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Access a private S3 bucket
 
-# Access a private S3 bucket
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
 
@@ -61,24 +63,24 @@ Configure your S3 bucket to allow anonymous access from your VPC endpoint. This 
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowAnonymousAccessFromVPCE",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:GetObject", "s3:ListBucket"],
-      "Resource": [
-        "arn:aws:s3:::your-bucket-name",
-        "arn:aws:s3:::your-bucket-name/*"
-      ],
-      "Condition": {
-        "StringEquals": {
-          "aws:sourceVpce": "vpce-your-endpoint-id"
-        }
-      }
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowAnonymousAccessFromVPCE",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": ["s3:GetObject", "s3:ListBucket"],
+			"Resource": [
+				"arn:aws:s3:::your-bucket-name",
+				"arn:aws:s3:::your-bucket-name/*"
+			],
+			"Condition": {
+				"StringEquals": {
+					"aws:sourceVpce": "vpce-your-endpoint-id"
+				}
+			}
+		}
+	]
 }
 ```
 
@@ -90,7 +92,6 @@ You can test S3 access directly from the VM where your Cloudflare Tunnel is runn
 # Test listing bucket contents
 curl -i https://s3.us-west-2.amazonaws.com/your-bucket-name/
 
-
 # Test downloading a specific file
 curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 ```
@@ -99,36 +100,28 @@ curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12154)
-* [  wrangler.toml ](#tab-panel-12155)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "private-s3-gateway",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "vpc_services": [
-    {
-      "binding": "S3_STORAGE",
-      "service_id": "<YOUR_SERVICE_ID>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "private-s3-gateway",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"vpc_services": [
+		{
+			"binding": "S3_STORAGE",
+			"service_id": "<YOUR_SERVICE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "private-s3-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[vpc_services]]
 binding = "S3_STORAGE"
@@ -139,22 +132,19 @@ service_id = "<YOUR_SERVICE_ID>"
 
 In your Workers code, use the Workers VPC Service binding in order to send requests to the service:
 
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    try {
-      // Fetch a file from the private S3 bucket via VPC endpoint
-      const response = await env.S3_STORAGE.fetch("https://s3.us-west-2.amazonaws.com/my-bucket/data.json");
+	async fetch(request, env, ctx) {
+		try {
+			// Fetch a file from the private S3 bucket via VPC endpoint
+			const response = await env.S3_STORAGE.fetch("https://s3.us-west-2.amazonaws.com/my-bucket/data.json");
 
-
-      // Use the response from S3 to perform more logic in Workers, before returning the final response
-      return response;
-    } catch (error) {
-      return new Response("Storage unavailable", { status: 503 });
-    }
-  },
+			// Use the response from S3 to perform more logic in Workers, before returning the final response
+			return response;
+		} catch (error) {
+			return new Response("Storage unavailable", { status: 503 });
+		}
+	},
 };
 ```
 
@@ -180,7 +170,14 @@ curl https://private-s3-gateway.workers.dev
 * Set up [monitoring and alerting](https://developers.cloudflare.com/analytics/analytics-engine/)
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/#page","headline":"Access a private S3 bucket · Cloudflare Workers VPC","description":"Use Workers VPC to read objects from a private S3-compatible bucket behind Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/private-s3-bucket/","name":"Access a private S3 bucket"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/#page","headline":"Access a private S3 bucket · Cloudflare Workers VPC","description":"Use Workers VPC to read objects from a private S3-compatible bucket behind Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

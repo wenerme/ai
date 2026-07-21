@@ -1,16 +1,18 @@
 ---
-title: Workers binding
 description: Upload, list, and manage documents in AI Search instances using the Items Workers binding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers binding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers binding
 
-# Workers binding
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to upload, list, and manage documents in your AI Search instances from a Cloudflare Worker. Access the Items API through the `items` property on an instance handle.
 
@@ -29,11 +31,6 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-7198)
-* [  wrangler.toml ](#tab-panel-7199)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -47,11 +44,8 @@ Access all instances within a [namespace](https://developers.cloudflare.com/ai-s
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_date = "2026-03-27"
-
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -68,11 +62,6 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-7200)
-* [  wrangler.toml ](#tab-panel-7201)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -86,11 +75,8 @@ Bind directly to a single instance in the `default` namespace. Use this when you
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_date = "2026-03-27"
-
 
 [[ai_search]]
 binding = "MY_SEARCH"
@@ -109,8 +95,6 @@ The Items API methods are available on both the `ai_search_namespaces` and `ai_s
 
 The examples below use the namespace binding.
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 ```
@@ -119,21 +103,17 @@ const instance = env.AI_SEARCH.get("my-instance");
 
 Uploads a document for indexing. Returns immediately. The document is queued for processing.
 
-**TypeScript**
-
 ```ts
 // Upload from a string
 await instance.items.upload(
-  "faq.md",
-  "# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",
+	"faq.md",
+	"# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",
 );
-
 
 // Upload from an ArrayBuffer
 const pdfResponse = await fetch("https://example.com/guide.pdf");
 const pdfBuffer = await pdfResponse.arrayBuffer();
 await instance.items.upload("guide.pdf", pdfBuffer);
-
 
 // Upload from a ReadableStream
 await instance.items.upload("doc.txt", request.body);
@@ -143,15 +123,13 @@ await instance.items.upload("doc.txt", request.body);
 
 Attach [custom metadata](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) to a document for filtering in search queries. Custom metadata fields must be defined on the instance first using the [update()](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) method or at creation time.
 
-**TypeScript**
-
 ```ts
 await instance.items.upload("guide.pdf", pdfBuffer, {
-  metadata: {
-    category: "onboarding",
-    language: "en",
-    version: "2.0",
-  },
+	metadata: {
+		category: "onboarding",
+		language: "en",
+		version: "2.0",
+	},
 });
 ```
 
@@ -174,20 +152,17 @@ await instance.items.upload("guide.pdf", pdfBuffer, {
 
 Uploads a document and polls until processing completes or the timeout is reached. Use this when you need to search the document immediately after upload.
 
-**TypeScript**
-
 ```ts
 // Wait for a specific document to finish indexing before searching
 const item = await instance.items.uploadAndPoll(
-  "handbook.txt",
-  handbookContent,
+	"handbook.txt",
+	handbookContent,
 );
 console.log(`handbook.txt status: ${item.status}`); // "completed"
 
-
 // Now search across all uploaded documents
 const results = await instance.search({
-  messages: [{ role: "user", content: "password reset policy" }],
+	messages: [{ role: "user", content: "password reset policy" }],
 });
 ```
 
@@ -220,14 +195,11 @@ Returns the full item object after polling completes:
 
 Returns a paginated list of items in the instance.
 
-**TypeScript**
-
 ```ts
 const { result, result_info } = await instance.items.list();
 
-
 for (const item of result) {
-  console.log(`${item.key} (${item.status})`);
+	console.log(`${item.key} (${item.status})`);
 }
 // result_info.total_count contains the total number of items
 ```
@@ -267,8 +239,6 @@ for (const item of result) {
 
 Deletes an item and its indexed chunks.
 
-**TypeScript**
-
 ```ts
 await instance.items.delete("item-id-123");
 ```
@@ -290,8 +260,6 @@ Returns a handle to a specific item for retrieving its status or downloading the
 #### `items.get().info()`
 
 Returns the status and metadata of a specific item.
-
-**TypeScript**
 
 ```ts
 const itemInfo = await instance.items.get("item-id-123").info();
@@ -321,8 +289,6 @@ const itemInfo = await instance.items.get("item-id-123").info();
 
 Downloads the original source file for an item.
 
-**TypeScript**
-
 ```ts
 const file = await instance.items.get("item-id-123").download();
 // file.body is a ReadableStream
@@ -343,7 +309,14 @@ const file = await instance.items.get("item-id-123").download();
 | size        | number         | The file size in bytes.                                   |
 | body        | ReadableStream | A readable stream of the file contents.                   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Upload, list, and manage documents in AI Search instances using the Items Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/items/","name":"Items"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/items/workers-binding/","name":"Workers binding"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Upload, list, and manage documents in AI Search instances using the Items Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

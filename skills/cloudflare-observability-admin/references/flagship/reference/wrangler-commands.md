@@ -1,16 +1,18 @@
 ---
-title: Wrangler commands
 description: Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wrangler commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wrangler commands
 
-# Wrangler commands
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use `wrangler flagship` to manage Flagship apps and feature flags from the command line. Every `wrangler flagship flags` command takes the app ID as the first argument. Most subcommands then take a flag key, for example `wrangler flagship flags get <APP_ID> <KEY>`. List-style commands, such as `wrangler flagship flags list <APP_ID>`, take only the app ID.
 
@@ -37,11 +39,6 @@ Most commands that modify an existing flag first read the current flag and then 
 
 Add a Flagship binding to your Worker project so your Worker code can evaluate flags with low latency at runtime:
 
-* [  wrangler.jsonc ](#tab-panel-9357)
-* [  wrangler.toml ](#tab-panel-9358)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -53,8 +50,6 @@ Add a Flagship binding to your Worker project so your Worker code can evaluate f
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[flagship]]
@@ -75,10 +70,8 @@ Create a boolean flag, evaluate it for a user, and disable it as a kill switch:
 # and serves off by default.
 wrangler flagship flags create <APP_ID> new-checkout
 
-
 # Evaluate the flag for a user.
 wrangler flagship flags evaluate <APP_ID> new-checkout --targeting-key user-42
-
 
 # Disable the flag instantly. Disabled flags always serve their default variation.
 wrangler flagship flags disable <APP_ID> new-checkout
@@ -157,27 +150,25 @@ Use `--variation` (`-V`) to add each variation as `name=value`. Use `--default` 
 ```sh
 # String flag.
 wrangler flagship flags create <APP_ID> checkout-flow \
-  -V v1=old-checkout \
-  -V v2=new-checkout \
-  --default v1 \
-  --type string
-
+	-V v1=old-checkout \
+	-V v2=new-checkout \
+	--default v1 \
+	--type string
 
 # Number flag.
 wrangler flagship flags create <APP_ID> upload-limit \
-  -V free=10 \
-  -V pro=100 \
-  -V enterprise=1000 \
-  --default free \
-  --type number
-
+	-V free=10 \
+	-V pro=100 \
+	-V enterprise=1000 \
+	--default free \
+	--type number
 
 # JSON flag.
 wrangler flagship flags create <APP_ID> theme-config \
-  -V 'light={"bg":"#ffffff","fg":"#111111"}' \
-  -V 'dark={"bg":"#111111","fg":"#ffffff"}' \
-  --default light \
-  --type json
+	-V 'light={"bg":"#ffffff","fg":"#111111"}' \
+	-V 'dark={"bg":"#111111","fg":"#ffffff"}' \
+	--default light \
+	--type json
 ```
 
 Supported value types are `boolean`, `string`, `number`, and `json`. If `--type` is omitted, Wrangler infers each value's scalar type independently.
@@ -188,11 +179,11 @@ Use `--description` (`-d`) to document the purpose of a flag:
 
 ```sh
 wrangler flagship flags create <APP_ID> checkout-flow \
-  -V v1=old-checkout \
-  -V v2=new-checkout \
-  --default v1 \
-  --type string \
-  --description "Controls which checkout experience is served"
+	-V v1=old-checkout \
+	-V v2=new-checkout \
+	--default v1 \
+	--type string \
+	--description "Controls which checkout experience is served"
 ```
 
 Flag keys and variation names can contain letters, numbers, hyphens, and underscores. Keep keys stable, because application code evaluates flags by key.
@@ -203,10 +194,10 @@ Use `--disabled` to create a flag that serves its default variation until you en
 
 ```sh
 wrangler flagship flags create <APP_ID> coming-soon \
-  -V on=true \
-  -V off=false \
-  --default off \
-  --disabled
+	-V on=true \
+	-V off=false \
+	--default off \
+	--disabled
 ```
 
 ## Target users with rules
@@ -230,10 +221,10 @@ serve=<VARIATION>; when=<CONDITIONS>; rollout=<PERCENT>%@<ATTRIBUTE>; priority=<
 
 ```sh
 wrangler flagship flags create <APP_ID> premium-banner \
-  -V on=true \
-  -V off=false \
-  --default off \
-  --rule "serve=on; when=plan equals enterprise AND country in [US,CA]; rollout=25%@user_id"
+	-V on=true \
+	-V off=false \
+	--default off \
+	--rule "serve=on; when=plan equals enterprise AND country in [US,CA]; rollout=25%@user_id"
 ```
 
 ### Conditions
@@ -253,10 +244,8 @@ Use `AND` and `OR` to combine conditions. `AND` has higher precedence than `OR`.
 # Both conditions must match.
 --rule "serve=on; when=plan equals pro AND country equals US"
 
-
 # Either condition can match.
 --rule "serve=on; when=plan equals enterprise OR plan equals team"
-
 
 # Equivalent to: (plan=pro AND country=US) OR plan=enterprise.
 --rule "serve=on; when=plan equals pro AND country equals US OR plan equals enterprise"
@@ -275,10 +264,10 @@ Use `--rule-json` for deeply nested logical groups or if you prefer to pass the 
 
 ```sh
 wrangler flagship flags create <APP_ID> beta-features \
-  -V on=true \
-  -V off=false \
-  --default off \
-  --rule-json '{"serve_variation":"on","conditions":[{"logical_operator":"OR","clauses":[{"attribute":"beta","operator":"equals","value":true},{"attribute":"plan","operator":"equals","value":"enterprise"}]}]}'
+	-V on=true \
+	-V off=false \
+	--default off \
+	--rule-json '{"serve_variation":"on","conditions":[{"logical_operator":"OR","clauses":[{"attribute":"beta","operator":"equals","value":true},{"attribute":"plan","operator":"equals","value":"enterprise"}]}]}'
 ```
 
 ### Multiple rules
@@ -287,13 +276,13 @@ Repeat `--rule` or `--rule-json` to declare multiple rules. Rules are evaluated 
 
 ```sh
 wrangler flagship flags create <APP_ID> rate-limit-tier \
-  -V strict=50 \
-  -V normal=200 \
-  -V relaxed=1000 \
-  --default normal \
-  --type number \
-  --rule "serve=strict; when=score less_than 20" \
-  --rule "serve=relaxed; when=score greater_than_or_equals 90"
+	-V strict=50 \
+	-V normal=200 \
+	-V relaxed=1000 \
+	--default normal \
+	--type number \
+	--rule "serve=strict; when=score less_than 20" \
+	--rule "serve=relaxed; when=score greater_than_or_equals 90"
 ```
 
 Wrangler validates duplicate rule priorities, duplicate variation names, malformed lists, non-finite numeric values such as `Infinity`, and unknown variation names before sending the request.
@@ -330,22 +319,20 @@ wrangler flagship flags get <APP_ID> new-checkout
 
 ```sh
 wrangler flagship flags update <APP_ID> new-checkout \
-  --description "Redesigned checkout experience"
-
-
-wrangler flagship flags update <APP_ID> upload-limit \
-  --set-variation team=500
-
+	--description "Redesigned checkout experience"
 
 wrangler flagship flags update <APP_ID> upload-limit \
-  --remove-variation team
+	--set-variation team=500
+
+wrangler flagship flags update <APP_ID> upload-limit \
+	--remove-variation team
 ```
 
 To add a variant to an existing flag, set a new variation name and value:
 
 ```sh
 wrangler flagship flags update <APP_ID> checkout-flow \
-  --set-variation experiment=new-checkout-v2
+	--set-variation experiment=new-checkout-v2
 ```
 
 Pass an empty description to clear it:
@@ -358,8 +345,8 @@ When you add or replace variations on an existing flag, use `--type` if Wrangler
 
 ```sh
 wrangler flagship flags update <APP_ID> upload-limit \
-  --type number \
-  --set-variation team=500
+	--type number \
+	--set-variation team=500
 ```
 
 Wrangler validates that the resulting variation set still has a single value type and that the default variation and targeting rules still reference known variations.
@@ -389,18 +376,17 @@ Use `--rule` or `--rule-json` to replace the full rule set:
 
 ```sh
 wrangler flagship flags update <APP_ID> premium-banner \
-  --rule "serve=on; when=plan equals pro AND country not_in [CN,RU]"
+	--rule "serve=on; when=plan equals pro AND country not_in [CN,RU]"
 ```
 
 Use `--add-rule` or `--add-rule-json` to append rules without changing existing rules:
 
 ```sh
 wrangler flagship flags update <APP_ID> premium-banner \
-  --add-rule "serve=off; when=account_age less_than 7"
-
+	--add-rule "serve=off; when=account_age less_than 7"
 
 wrangler flagship flags update <APP_ID> premium-banner \
-  --add-rule-json '{"serve_variation":"off","conditions":[{"attribute":"country","operator":"in","value":["CN","RU"]}]}'
+	--add-rule-json '{"serve_variation":"off","conditions":[{"attribute":"country","operator":"in","value":["CN","RU"]}]}'
 ```
 
 Clear all rules:
@@ -441,35 +427,35 @@ Change only a rollout percentage:
 
 ```sh
 wrangler flagship flags rules update <APP_ID> premium-banner \
-  --priority 1 \
-  --rollout 50%@user_id
+	--priority 1 \
+	--rollout 50%@user_id
 ```
 
 Change the variation served by a rule:
 
 ```sh
 wrangler flagship flags rules update <APP_ID> premium-banner \
-  --priority 1 \
-  --serve off
+	--priority 1 \
+	--serve off
 ```
 
 Change the conditions on a rule:
 
 ```sh
 wrangler flagship flags rules update <APP_ID> premium-banner \
-  --priority 1 \
-  --when "plan equals enterprise OR plan equals team"
+	--priority 1 \
+	--when "plan equals enterprise OR plan equals team"
 ```
 
 Remove conditions from a rule so it matches every evaluation context:
 
 ```sh
 wrangler flagship flags rules update <APP_ID> premium-banner \
-  --priority 1 \
-  --clear-conditions
+	--priority 1 \
+	--clear-conditions
 ```
 
-Warning
+Caution
 
 A rule with no conditions matches every evaluation context. Flagship requires unconditional rules to come after all rules that have conditions. If the rule you are clearing is not the last rule in the set, the API will reject the update with `Rules with empty conditions must come after rules with conditions`.
 
@@ -479,8 +465,8 @@ Remove a rollout from a rule:
 
 ```sh
 wrangler flagship flags rules update <APP_ID> premium-banner \
-  --priority 1 \
-  --clear-rollout
+	--priority 1 \
+	--clear-rollout
 ```
 
 ### Delete one rule
@@ -521,9 +507,9 @@ Use `rollout` to serve one variation to a percentage of traffic.
 
 ```sh
 wrangler flagship flags rollout <APP_ID> new-checkout \
-  --to on \
-  --percentage 25 \
-  --by user_id
+	--to on \
+	--percentage 25 \
+	--by user_id
 ```
 
 Use `--from-variation` (alias `--from`) to choose the fallback variation for the remaining traffic. A rollout percentage of `0` removes the rollout rule and keeps the flag's current default variation unchanged.
@@ -536,9 +522,9 @@ Use `split` for A/B tests or multi-way traffic allocation. Wrangler converts wei
 
 ```sh
 wrangler flagship flags split <APP_ID> checkout-flow \
-  --weight v1=80 \
-  --weight v2=20 \
-  --by user_id
+	--weight v1=80 \
+	--weight v2=20 \
+	--by user_id
 ```
 
 `-w` is an alias for `--weight`. Each variation can only be weighted once, and weights must be finite, non-negative numbers.
@@ -551,13 +537,13 @@ Use `--default` with `split` to choose the fallback variation when bucketing can
 
 ```sh
 wrangler flagship flags split <APP_ID> checkout-flow \
-  --weight v1=80 \
-  --weight v2=20 \
-  --default v1 \
-  --by user_id
+	--weight v1=80 \
+	--weight v2=20 \
+	--default v1 \
+	--by user_id
 ```
 
-Warning
+Caution
 
 `rollout` and `split` replace the flag's entire rule set with the rollout or split rules they generate. If the flag has other targeting rules built with `--rule`, `--rule-json`, `--add-rule`, or `rules update` (rules with real conditions, not just a previous rollout or split), Wrangler asks for confirmation before overwriting them. Pass `--force` (`-y`) to skip the prompt, or use `--json` with `--force` in scripts. Rules with no conditions, such as ones created by an earlier `rollout` or `split` call, are replaced without a prompt.
 
@@ -572,15 +558,13 @@ Evaluate a flag from the CLI to verify what a specific context receives.
 ```sh
 wrangler flagship flags evaluate <APP_ID> new-checkout
 
-
 wrangler flagship flags evaluate <APP_ID> new-checkout \
-  --targeting-key user-42
-
+	--targeting-key user-42
 
 wrangler flagship flags evaluate <APP_ID> premium-banner \
-  --context plan=enterprise \
-  --context country=US \
-  --targeting-key user-99
+	--context plan=enterprise \
+	--context country=US \
+	--targeting-key user-99
 ```
 
 Use `--targeting-key` for stable percentage rollout bucketing. Pass each context attribute with `--context name=value`. `wrangler flagship flags eval` is an alias for `flags evaluate`.
@@ -589,9 +573,9 @@ Use `--targeting-key` for stable percentage rollout bucketing. Pass each context
 
 ```sh
 wrangler flagship flags evaluate <APP_ID> premium-banner \
-  -C plan=enterprise \
-  -C country=US \
-  --targeting-key user-99
+	-C plan=enterprise \
+	-C country=US \
+	--targeting-key user-99
 ```
 
 Context values are sent to the evaluation endpoint as strings. Use the same attribute names that your targeting rules expect.
@@ -657,7 +641,6 @@ Create an app, capture its ID, then create a flag:
 ```sh
 APP_ID=$(wrangler flagship apps create checkout-service --json | jq -r '.id')
 
-
 wrangler flagship flags create "$APP_ID" new-checkout --json
 ```
 
@@ -665,7 +648,7 @@ Delete several apps in a loop:
 
 ```sh
 for app_id in <APP_ID_1> <APP_ID_2> <APP_ID_3>; do
-  wrangler flagship apps delete "$app_id" --force
+	wrangler flagship apps delete "$app_id" --force
 done
 ```
 
@@ -683,20 +666,18 @@ The following reference is generated from Wrangler's `flagship` command definiti
 
 Create a Flagship app
 
-* [  npm ](#tab-panel-9294)
-* [  pnpm ](#tab-panel-9295)
-* [  yarn ](#tab-panel-9296)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship apps create [NAME]
 ```
 
-```sh
-pnpm wrangler flagship apps create [NAME]
+```
+yarn wrangler flagship apps create [NAME]
 ```
 
-```sh
-yarn wrangler flagship apps create [NAME]
+```
+pnpm wrangler flagship apps create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -735,20 +716,18 @@ Use a specific auth profile
 
 List Flagship apps
 
-* [  npm ](#tab-panel-9297)
-* [  pnpm ](#tab-panel-9298)
-* [  yarn ](#tab-panel-9299)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship apps list
 ```
 
-```sh
-pnpm wrangler flagship apps list
+```
+yarn wrangler flagship apps list
 ```
 
-```sh
-yarn wrangler flagship apps list
+```
+pnpm wrangler flagship apps list
 ```
 
 * `--json` ` boolean ` default: false
@@ -779,20 +758,18 @@ Use a specific auth profile
 
 Get a Flagship app
 
-* [  npm ](#tab-panel-9300)
-* [  pnpm ](#tab-panel-9301)
-* [  yarn ](#tab-panel-9302)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship apps get [APP-ID]
 ```
 
-```sh
-pnpm wrangler flagship apps get [APP-ID]
+```
+yarn wrangler flagship apps get [APP-ID]
 ```
 
-```sh
-yarn wrangler flagship apps get [APP-ID]
+```
+pnpm wrangler flagship apps get [APP-ID]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -825,20 +802,18 @@ Use a specific auth profile
 
 Update a Flagship app
 
-* [  npm ](#tab-panel-9303)
-* [  pnpm ](#tab-panel-9304)
-* [  yarn ](#tab-panel-9305)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship apps update [APP-ID]
 ```
 
-```sh
-pnpm wrangler flagship apps update [APP-ID]
+```
+yarn wrangler flagship apps update [APP-ID]
 ```
 
-```sh
-yarn wrangler flagship apps update [APP-ID]
+```
+pnpm wrangler flagship apps update [APP-ID]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -873,20 +848,18 @@ Use a specific auth profile
 
 Delete a Flagship app
 
-* [  npm ](#tab-panel-9306)
-* [  pnpm ](#tab-panel-9307)
-* [  yarn ](#tab-panel-9308)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship apps delete [APP-ID]
 ```
 
-```sh
-pnpm wrangler flagship apps delete [APP-ID]
+```
+yarn wrangler flagship apps delete [APP-ID]
 ```
 
-```sh
-yarn wrangler flagship apps delete [APP-ID]
+```
+pnpm wrangler flagship apps delete [APP-ID]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -921,20 +894,18 @@ Use a specific auth profile
 
 Create a feature flag in a Flagship app
 
-* [  npm ](#tab-panel-9309)
-* [  pnpm ](#tab-panel-9310)
-* [  yarn ](#tab-panel-9311)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags create [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags create [APP-ID] [KEY]
+```
+yarn wrangler flagship flags create [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags create [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags create [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -983,20 +954,18 @@ Use a specific auth profile
 
 List feature flags in a Flagship app
 
-* [  npm ](#tab-panel-9312)
-* [  pnpm ](#tab-panel-9313)
-* [  yarn ](#tab-panel-9314)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags list [APP-ID]
 ```
 
-```sh
-pnpm wrangler flagship flags list [APP-ID]
+```
+yarn wrangler flagship flags list [APP-ID]
 ```
 
-```sh
-yarn wrangler flagship flags list [APP-ID]
+```
+pnpm wrangler flagship flags list [APP-ID]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1035,20 +1004,18 @@ Use a specific auth profile
 
 Get a feature flag from a Flagship app
 
-* [  npm ](#tab-panel-9315)
-* [  pnpm ](#tab-panel-9316)
-* [  yarn ](#tab-panel-9317)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags get [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags get [APP-ID] [KEY]
+```
+yarn wrangler flagship flags get [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags get [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags get [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1083,20 +1050,18 @@ Use a specific auth profile
 
 Update a feature flag in a Flagship app
 
-* [  npm ](#tab-panel-9318)
-* [  pnpm ](#tab-panel-9319)
-* [  yarn ](#tab-panel-9320)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags update [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags update [APP-ID] [KEY]
+```
+yarn wrangler flagship flags update [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags update [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags update [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1155,20 +1120,18 @@ Use a specific auth profile
 
 Set the default variation served by a feature flag
 
-* [  npm ](#tab-panel-9321)
-* [  pnpm ](#tab-panel-9322)
-* [  yarn ](#tab-panel-9323)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags set [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags set [APP-ID] [KEY]
+```
+yarn wrangler flagship flags set [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags set [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags set [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1207,20 +1170,18 @@ Use a specific auth profile
 
 List targeting rules for a feature flag
 
-* [  npm ](#tab-panel-9324)
-* [  pnpm ](#tab-panel-9325)
-* [  yarn ](#tab-panel-9326)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags rules list [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags rules list [APP-ID] [KEY]
+```
+yarn wrangler flagship flags rules list [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags rules list [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags rules list [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1255,20 +1216,18 @@ Use a specific auth profile
 
 Update one targeting rule for a feature flag
 
-* [  npm ](#tab-panel-9327)
-* [  pnpm ](#tab-panel-9328)
-* [  yarn ](#tab-panel-9329)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags rules update [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags rules update [APP-ID] [KEY]
+```
+yarn wrangler flagship flags rules update [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags rules update [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags rules update [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1315,20 +1274,18 @@ Use a specific auth profile
 
 Delete one targeting rule from a feature flag
 
-* [  npm ](#tab-panel-9330)
-* [  pnpm ](#tab-panel-9331)
-* [  yarn ](#tab-panel-9332)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags rules delete [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags rules delete [APP-ID] [KEY]
+```
+yarn wrangler flagship flags rules delete [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags rules delete [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags rules delete [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1365,20 +1322,18 @@ Use a specific auth profile
 
 Reorder targeting rules for a feature flag
 
-* [  npm ](#tab-panel-9333)
-* [  pnpm ](#tab-panel-9334)
-* [  yarn ](#tab-panel-9335)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags rules reorder [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags rules reorder [APP-ID] [KEY]
+```
+yarn wrangler flagship flags rules reorder [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags rules reorder [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags rules reorder [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1415,20 +1370,18 @@ Use a specific auth profile
 
 Split traffic across variations by percentage
 
-* [  npm ](#tab-panel-9336)
-* [  pnpm ](#tab-panel-9337)
-* [  yarn ](#tab-panel-9338)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags split [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags split [APP-ID] [KEY]
+```
+yarn wrangler flagship flags split [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags split [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags split [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1471,20 +1424,18 @@ Use a specific auth profile
 
 Roll out one variation to a percentage of traffic
 
-* [  npm ](#tab-panel-9339)
-* [  pnpm ](#tab-panel-9340)
-* [  yarn ](#tab-panel-9341)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags rollout [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags rollout [APP-ID] [KEY]
+```
+yarn wrangler flagship flags rollout [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags rollout [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags rollout [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1529,20 +1480,18 @@ Use a specific auth profile
 
 Enable a feature flag
 
-* [  npm ](#tab-panel-9342)
-* [  pnpm ](#tab-panel-9343)
-* [  yarn ](#tab-panel-9344)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags enable [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags enable [APP-ID] [KEY]
+```
+yarn wrangler flagship flags enable [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags enable [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags enable [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1577,20 +1526,18 @@ Use a specific auth profile
 
 Disable a feature flag
 
-* [  npm ](#tab-panel-9345)
-* [  pnpm ](#tab-panel-9346)
-* [  yarn ](#tab-panel-9347)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags disable [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags disable [APP-ID] [KEY]
+```
+yarn wrangler flagship flags disable [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags disable [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags disable [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1625,20 +1572,18 @@ Use a specific auth profile
 
 Evaluate a feature flag with optional context
 
-* [  npm ](#tab-panel-9348)
-* [  pnpm ](#tab-panel-9349)
-* [  yarn ](#tab-panel-9350)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags evaluate [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags evaluate [APP-ID] [KEY]
+```
+yarn wrangler flagship flags evaluate [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags evaluate [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags evaluate [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1677,20 +1622,18 @@ Use a specific auth profile
 
 Delete a feature flag from a Flagship app
 
-* [  npm ](#tab-panel-9351)
-* [  pnpm ](#tab-panel-9352)
-* [  yarn ](#tab-panel-9353)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags delete [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags delete [APP-ID] [KEY]
+```
+yarn wrangler flagship flags delete [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags delete [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags delete [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1727,20 +1670,18 @@ Use a specific auth profile
 
 Show the changelog for a feature flag
 
-* [  npm ](#tab-panel-9354)
-* [  pnpm ](#tab-panel-9355)
-* [  yarn ](#tab-panel-9356)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler flagship flags changelog [APP-ID] [KEY]
 ```
 
-```sh
-pnpm wrangler flagship flags changelog [APP-ID] [KEY]
+```
+yarn wrangler flagship flags changelog [APP-ID] [KEY]
 ```
 
-```sh
-yarn wrangler flagship flags changelog [APP-ID] [KEY]
+```
+pnpm wrangler flagship flags changelog [APP-ID] [KEY]
 ```
 
 * `[APP-ID]` ` string ` required
@@ -1777,7 +1718,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Flagship docs","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/reference/wrangler-commands/","name":"Wrangler commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Flagship docs","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

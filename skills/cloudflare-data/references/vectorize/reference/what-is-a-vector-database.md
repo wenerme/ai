@@ -1,16 +1,18 @@
 ---
-title: Vector databases
 description: Understand vector databases, embeddings, and how they power search, RAG, and classification.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vector databases
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vector databases
 
-# Vector databases
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Vector databases are a key part of building scalable AI-powered applications. Vector databases provide long term memory, on top of an existing machine learning model.
 
@@ -98,7 +100,14 @@ The distance metric is an index used for vector search. It defines how it determ
 
 Refer to the [distance metrics](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics) documentation to learn how to configure a distance metric when creating a Vectorize index.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/#page","headline":"Vector databases · Cloudflare Vectorize docs","description":"Understand vector databases, embeddings, and how they power search, RAG, and classification.","url":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/what-is-a-vector-database/","name":"Vector databases"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/#page","headline":"Vector databases · Cloudflare Vectorize docs","description":"Understand vector databases, embeddings, and how they power search, RAG, and classification.","url":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
 ```

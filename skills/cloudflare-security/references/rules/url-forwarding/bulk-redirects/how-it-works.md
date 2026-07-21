@@ -1,16 +1,18 @@
 ---
-title: How Bulk Redirects work
 description: How Bulk Redirects evaluate and match incoming requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How Bulk Redirects work
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Bulk Redirects work
 
-# How Bulk Redirects work
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a request reaches Cloudflare, Bulk Redirects are evaluated before the request is sent to your origin server. Cloudflare checks all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
 
@@ -81,7 +83,14 @@ If there are two URL redirects with source URL paths `/folder` and `/folder/subf
 If there are two URL redirects with source URL hostnames `bar.com` and `foo.bar.com`, an incoming request to `qux.foo.bar.com` will match the second redirect (`foo.bar.com`) because it is more specific.
 4. URL redirects with a specific scheme (either `http` or `https`) win over URL redirects that match both schemes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#page","headline":"How Bulk Redirects work · Cloudflare Rules docs","description":"How Bulk Redirects evaluate and match incoming requests.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/how-it-works/","name":"How Bulk Redirects work"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#page","headline":"How Bulk Redirects work · Cloudflare Rules docs","description":"How Bulk Redirects evaluate and match incoming requests.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

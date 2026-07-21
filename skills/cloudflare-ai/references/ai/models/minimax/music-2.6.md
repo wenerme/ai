@@ -1,38 +1,38 @@
 ---
-title: MiniMax Music 2.6
 description: MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: MiniMax Music 2.6
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg)
 
 #  MiniMax Music 2.6
 
-Music Generation • MiniMax
+ Music Generation • MiniMax
 
-`minimax/music-2.6`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` minimax/music-2.6 `
+
+* Third-party
+* Zero data retention
 
 MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
 
-| Model Info          |                                                                                                                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                            |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                 |
-| Zero data retention | Yes                                                                                                                 |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                             |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                  |
+| Zero data retention | Yes                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-978)
-* [ cURL ](#tab-panel-979)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -60,9 +60,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-976)
-* [ Raw response ](#tab-panel-977)
-
 ```json
 {
   "gatewayMetadata": {
@@ -78,11 +75,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **With Lyrics**  — Generate a song with custom lyrics
-
-* [ TypeScript ](#tab-panel-984)
-* [ cURL ](#tab-panel-985)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -113,9 +105,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-980)
-* [ Raw response ](#tab-panel-981)
-
 ```json
 {
   "gatewayMetadata": {
@@ -129,11 +118,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Instrumental**  — Generate instrumental music without vocals
-
-* [ TypeScript ](#tab-panel-986)
-* [ cURL ](#tab-panel-987)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -161,9 +145,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-982)
-* [ Raw response ](#tab-panel-983)
-
 ```json
 {
   "gatewayMetadata": {
@@ -177,11 +158,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **High Quality Audio**  — Specify audio format and sample rate
-
-* [ TypeScript ](#tab-panel-992)
-* [ cURL ](#tab-panel-993)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -213,9 +189,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-988)
-* [ Raw response ](#tab-panel-989)
-
 ```json
 {
   "gatewayMetadata": {
@@ -229,11 +202,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt
-
-* [ TypeScript ](#tab-panel-994)
-* [ cURL ](#tab-panel-995)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -261,9 +229,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-990)
-* [ Raw response ](#tab-panel-991)
-
 ```json
 {
   "gatewayMetadata": {
@@ -277,9 +242,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-996)
-* [ Output ](#tab-panel-997)
 
 prompt
 
@@ -319,7 +281,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-i
 
 Output [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/#page","headline":"MiniMax Music 2.6 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.","url":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/#page","headline":"MiniMax Music 2.6 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.","url":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

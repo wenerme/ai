@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot invoices
 description: Resolve common invoice discrepancies.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot invoices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot invoices
 
-# Troubleshoot invoices
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use this page when invoice information is missing, invoice amounts differ from the Cloudflare dashboard, or company details do not appear as expected.
 
@@ -70,7 +72,14 @@ If the invoice discrepancy remains after one billing period, [contact Cloudflare
 * [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — How to read your invoice
 * [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing email
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/#page","headline":"Troubleshoot invoices · Cloudflare Billing docs","description":"Resolve common invoice discrepancies.","url":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/troubleshoot-invoices/","name":"Troubleshoot invoices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/#page","headline":"Troubleshoot invoices · Cloudflare Billing docs","description":"Resolve common invoice discrepancies.","url":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

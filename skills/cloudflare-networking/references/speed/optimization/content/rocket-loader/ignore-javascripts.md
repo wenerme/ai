@@ -1,16 +1,18 @@
 ---
-title: Ignore JavaScripts
 description: Exclude specific scripts from Rocket Loader optimization.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Ignore JavaScripts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Ignore JavaScripts
 
-# Ignore JavaScripts
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can have Rocket Loader ignore individual scripts by adding the `data-cfasync="false"` attribute to the relevant script tag:
 
@@ -31,7 +33,14 @@ If Rocket Loader is only impacting a specific page, use a [Configuration Rule](h
 * The `data-cfasync` attribute must be added before the `src` attribute.
 * Rocket Loader will recognize the tag when either single or double quotes are placed around the attribute value.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/#page","headline":"Ignore JavaScripts in Rocket Loader · Cloudflare Speed docs","description":"Exclude specific scripts from Rocket Loader optimization.","url":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/rocket-loader/","name":"Rocket Loader"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/rocket-loader/ignore-javascripts/","name":"Ignore JavaScripts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/#page","headline":"Ignore JavaScripts in Rocket Loader · Cloudflare Speed docs","description":"Exclude specific scripts from Rocket Loader optimization.","url":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

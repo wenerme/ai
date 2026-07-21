@@ -108,7 +108,7 @@ async function reviewPullRequest(diff: string): Promise<string> {
       item.agent?.agent_name === "/root" &&
       item.phase === "final_answer"
         ? item.content
-        : [],
+        : []
     )
     .filter((part) => part.type === "output_text")
     .map((part) => part.text)

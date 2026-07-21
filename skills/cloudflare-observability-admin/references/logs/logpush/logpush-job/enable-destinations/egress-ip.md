@@ -1,16 +1,18 @@
 ---
-title: Dedicated Egress IP for Logpush
 description: Send Logpush logs via a dedicated egress IP.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Dedicated Egress IP for Logpush
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dedicated Egress IP for Logpush
 
-# Dedicated Egress IP for Logpush
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) and Logpush configuration and testing instructions to enable log delivery with a fixed, dedicated egress IP.
 
@@ -45,19 +47,17 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Edit zone setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "id": "aegis",
-    "value": {
-        "enabled": true,
-        "pool_id": "<YOUR_EGRESS_POOL_ID>"
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"id": "aegis",
+		"value": {
+				"enabled": true,
+				"pool_id": "<YOUR_EGRESS_POOL_ID>"
+		}
+	}'
 ```
 
 ## 3\. Proxy zone setup
@@ -133,14 +133,20 @@ Test that your WAF rules are blocking unauthorized requests:
 $ curl https://logpush.yourdestinationendpoint.com
 # Expected: error code: 1020
 
-
 $ curl -H "X-Logpush-Secret: wrong-token" https://logpush.yourdestinationendpoint.com
 # Expected: error code: 1020
 ```
 
 Check Cloudflare Analytics for the proxy zone to confirm Logpush traffic is flowing, and monitor WAF events to ensure unauthorized requests are blocked.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/#page","headline":"Dedicated Egress IP for Logpush · Cloudflare Logs docs","description":"Send Logpush logs via a dedicated egress IP.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/egress-ip/","name":"Dedicated Egress IP for Logpush"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/#page","headline":"Dedicated Egress IP for Logpush · Cloudflare Logs docs","description":"Send Logpush logs via a dedicated egress IP.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

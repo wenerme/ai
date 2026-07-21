@@ -1,18 +1,20 @@
 ---
-title: Define a single configuration rule using Terraform
 description: Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Define a single configuration rule using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Define a single configuration rule using Terraform
+#  Define a single configuration rule using Terraform
 
 Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.
+
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,7 +30,6 @@ resource "cloudflare_ruleset" "http_config_rules_example" {
   description = "Set configuration rules for incoming requests"
   kind        = "zone"
   phase       = "http_config_settings"
-
 
   rules {
     ref         = "disable_obfuscation_bic"
@@ -52,7 +53,14 @@ For additional guidance on using Terraform with Cloudflare, refer to the followi
 * [Terraform documentation](https://developers.cloudflare.com/terraform/)
 * [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/#page","headline":"Define a single configuration rule using Terraform · Cloudflare Rules docs","description":"Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.","url":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/configuration-rules/","name":"Configuration Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/configuration-rules/examples/","name":"Configuration Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/configuration-rules/examples/define-single-configuration-terraform/","name":"Define a single configuration rule using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/#page","headline":"Define a single configuration rule using Terraform · Cloudflare Rules docs","description":"Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.","url":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

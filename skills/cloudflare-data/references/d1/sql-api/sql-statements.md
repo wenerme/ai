@@ -1,16 +1,18 @@
 ---
-title: SQL statements
 description: Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SQL statements
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SQL statements
 
-# SQL statements
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/sql-api/sql-statements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. D1 supports a number of database-level statements that allow you to list tables, indexes, and inspect the schema for a given table or index.
 
@@ -68,7 +70,7 @@ CREATE TABLE IF NOT EXISTS "EmployeeTerritory" ( "Id" VARCHAR(8000) PRIMARY KEY,
 CREATE VIEW [ProductDetails_V] as select p.*, c.CategoryName, c.Description as [CategoryDescription], s.CompanyName as [SupplierName], s.Region as [SupplierRegion] from [Product] p join [Category] c on p.CategoryId = c.id join [Supplier] s on s.id = p.SupplierId;
 ```
 
-Warning
+Caution
 
 D1 PRAGMA statements only apply to the current transaction.
 
@@ -418,10 +420,8 @@ To defer foreign key enforcement, set `PRAGMA defer_foreign_keys = on` at the st
 -- Defer foreign key enforcement in this transaction.
 PRAGMA defer_foreign_keys = on
 
-
 -- Run your CREATE TABLE or ALTER TABLE / COLUMN statements
 ALTER TABLE users ...
-
 
 -- This is implicit if not set by the end of the transaction.
 PRAGMA defer_foreign_keys = off
@@ -476,14 +476,12 @@ SELECT name, sql FROM sqlite_master
 
 You can perform a search using SQL's `LIKE` operator:
 
-**JavaScript**
-
 ```js
 const { results } = await env.DB.prepare(
-  "SELECT * FROM Customers WHERE CompanyName LIKE ?",
+	"SELECT * FROM Customers WHERE CompanyName LIKE ?",
 )
-  .bind("%eve%")
-  .run();
+	.bind("%eve%")
+	.run();
 console.log("results: ", results);
 ```
 
@@ -497,7 +495,14 @@ results:  [...]
 * Use D1's [JSON functions](https://developers.cloudflare.com/d1/sql-api/query-json/) to query JSON data.
 * Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and debug issues before deploying.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/sql-statements/#page","headline":"SQL statements · Cloudflare D1 docs","description":"Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.","url":"https://developers.cloudflare.com/d1/sql-api/sql-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/sql-statements/","name":"SQL statements"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/sql-statements/#page","headline":"SQL statements · Cloudflare D1 docs","description":"Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.","url":"https://developers.cloudflare.com/d1/sql-api/sql-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

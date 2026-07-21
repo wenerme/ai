@@ -1,16 +1,18 @@
 ---
-title: Live Instant Clipping
 description: Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Live Instant Clipping
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Live Instant Clipping
 
-# Live Instant Clipping
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Stream supports generating clips of live streams and recordings so creators and viewers alike can highlight short, engaging pieces of a longer broadcast or recording. Live instant clips can be created by end users and do not result in additional storage fees or new entries in the video library.
 
@@ -30,8 +32,6 @@ Live instant clips are generated dynamically from the recording of a live stream
 
 To help users replay and seek recent content, request a preview manifest by adding a `duration` parameter to the HLS manifest URL:
 
-**Preview Manifest**
-
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID||INPUT_ID>/manifest/video.m3u8?duration=5m
 ```
@@ -49,12 +49,9 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗](https://github.com/video-dev/hls.js)and the default loader, override the `pLoader` (playlist loader) class:
 
-**JavaScript**
-
 ```js
 let currentPreviewStart;
 let currentPreviewVideoID;
-
 
 // Override the pLoader (playlist loader) to read the manifest headers:
 class pLoader extends Hls.DefaultConfig.loader {
@@ -66,21 +63,17 @@ class pLoader extends Hls.DefaultConfig.loader {
         var onSuccess = callbacks.onSuccess;
         // copy the existing onSuccess handler to fire it later.
 
-
         callbacks.onSuccess = function (response, stats, context, networkDetails) {
           // The fourth argument here is undocumented in HLS.js but contains
           // the response object for the manifest fetch, which gives us headers:
-
 
           currentPreviewStart =
             parseFloat(networkDetails.getResponseHeader('preview-start-seconds'));
           // Save the start time of the preview manifest
 
-
           currentPreviewVideoID =
             networkDetails.getResponseHeader('stream-media-id');
           // Save the video ID in case the preview was loaded with an input ID
-
 
           onSuccess(response, stats, context);
           // And fire the existing success handler.
@@ -91,7 +84,6 @@ class pLoader extends Hls.DefaultConfig.loader {
   }
 }
 
-
 // Specify the new loader class when setting up HLS
 const hls = new Hls({
   pLoader: pLoader,
@@ -101,8 +93,6 @@ const hls = new Hls({
 ## Clip manifest
 
 To play a clip of a live stream or recording, request a clip manifest with a duration and a start time, relative to the start of the live stream.
-
-**Clip Manifest**
 
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/manifest/clip.m3u8?time=600s&duration=30s
@@ -117,8 +107,6 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 An MP4 of the clip can also be generated dynamically to be saved and shared on other platforms.
 
-**Clip MP4 Download**
-
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&duration=30s&filename=clip.mp4
 ```
@@ -127,7 +115,14 @@ https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&durat
 * `duration` string duration of the clip in seconds, up to 60 seconds max (example: "60s")
 * `filename` string _(optional)_ a filename for the clip
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/#page","headline":"Live Instant Clipping · Cloudflare Stream docs","description":"Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.","url":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/live-instant-clipping/","name":"Live Instant Clipping"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/#page","headline":"Live Instant Clipping · Cloudflare Stream docs","description":"Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.","url":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

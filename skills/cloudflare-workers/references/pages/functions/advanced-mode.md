@@ -1,16 +1,18 @@
 ---
-title: Advanced mode
 description: Use a _worker.js file to develop Pages Functions instead of the /functions directory.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Advanced mode
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Advanced mode
 
-# Advanced mode
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/advanced-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Advanced mode allows you to develop your Pages Functions with a `_worker.js` file rather than the `/functions` directory.
 
@@ -24,48 +26,39 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-10254)
-* [  TypeScript ](#tab-panel-10255)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) {
-      // TODO: Add your custom /api/* logic here.
-      return new Response("Ok");
-    }
-    // Otherwise, serve the static assets.
-    // Without this, the Worker will error and no assets will be served.
-    return env.ASSETS.fetch(request);
-  },
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		if (url.pathname.startsWith("/api/")) {
+			// TODO: Add your custom /api/* logic here.
+			return new Response("Ok");
+		}
+		// Otherwise, serve the static assets.
+		// Without this, the Worker will error and no assets will be served.
+		return env.ASSETS.fetch(request);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 // Note: You would need to compile your TS into JS and output it as a `_worker.js` file. We do not read `_worker.ts`
 
-
 interface Env {
-  ASSETS: Fetcher;
+	ASSETS: Fetcher;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) {
-      // TODO: Add your custom /api/* logic here.
-      return new Response("Ok");
-    }
-    // Otherwise, serve the static assets.
-    // Without this, the Worker will error and no assets will be served.
-    return env.ASSETS.fetch(request);
-  },
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		if (url.pathname.startsWith("/api/")) {
+			// TODO: Add your custom /api/* logic here.
+			return new Response("Ok");
+		}
+		// Otherwise, serve the static assets.
+		// Without this, the Worker will error and no assets will be served.
+		return env.ASSETS.fetch(request);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -80,8 +73,6 @@ In the above code, you have configured your Function to return a response under 
 
 To migrate an existing Worker to your Pages project, copy your Worker code and paste it into your new `_worker.js` file. Then handle static assets by adding the following code snippet to `_worker.js`:
 
-**TypeScript**
-
 ```ts
 return env.ASSETS.fetch(request);
 ```
@@ -90,7 +81,14 @@ return env.ASSETS.fetch(request);
 
 After you have set up a new Function or migrated your Worker to `_worker.js`, make sure your `_worker.js` file is placed in your Pages' project output directory. Deploy your project through your Git integration for advanced mode to take effect.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/advanced-mode/#page","headline":"Advanced mode · Cloudflare Pages docs","description":"Use a \\_worker.js file to develop Pages Functions instead of the /functions directory.","url":"https://developers.cloudflare.com/pages/functions/advanced-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/advanced-mode/","name":"Advanced mode"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/advanced-mode/#page","headline":"Advanced mode · Cloudflare Pages docs","description":"Use a \\_worker.js file to develop Pages Functions instead of the /functions directory.","url":"https://developers.cloudflare.com/pages/functions/advanced-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

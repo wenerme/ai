@@ -1,18 +1,20 @@
 ---
-title: Browser agent
 description: Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Browser agent
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Browser agent
 
-# Browser agent
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/examples/browser-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues with [Browser Run](https://developers.cloudflare.com/browser-run/) tools. Beta
+Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues with [Browser Run](https://developers.cloudflare.com/browser-run/) tools.  Beta
 
 Instead of a fixed set of browser actions (click, screenshot, navigate), the LLM writes JavaScript code that runs CDP commands against a live browser session — accessing all domains, commands, events, and types in the protocol.
 
@@ -49,34 +51,25 @@ npm install agents @cloudflare/codemode ai zod
 
 Add the Browser Run (formerly Browser Rendering) and Worker Loader bindings to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5907)
-* [  wrangler.toml ](#tab-panel-5908)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": ["nodejs_compat"],
-  "browser": {
-    "binding": "BROWSER",
-  },
-  "worker_loaders": [
-    {
-      "binding": "LOADER",
-    },
-  ],
+	"compatibility_flags": ["nodejs_compat"],
+	"browser": {
+		"binding": "BROWSER",
+	},
+	"worker_loaders": [
+		{
+			"binding": "LOADER",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 
-
 [browser]
 binding = "BROWSER"
-
 
 [[worker_loaders]]
 binding = "LOADER"
@@ -84,30 +77,21 @@ binding = "LOADER"
 
 ### 2\. Create browser tools
 
-* [  JavaScript ](#tab-panel-5911)
-* [  TypeScript ](#tab-panel-5912)
-
-**JavaScript**
-
 ```js
 import { createBrowserTools } from "agents/browser/ai";
 
-
 const browserTools = createBrowserTools({
-  browser: env.BROWSER,
-  loader: env.LOADER,
+	browser: env.BROWSER,
+	loader: env.LOADER,
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { createBrowserTools } from "agents/browser/ai";
 
-
 const browserTools = createBrowserTools({
-  browser: env.BROWSER,
-  loader: env.LOADER,
+	browser: env.BROWSER,
+	loader: env.LOADER,
 });
 ```
 
@@ -117,48 +101,37 @@ To connect to a custom CDP endpoint instead of the Browser Run binding, pass `cd
 
 Pass browser tools alongside your other tools. The `model` can be any AI SDK provider — here using Workers AI:
 
-* [  JavaScript ](#tab-panel-5913)
-* [  TypeScript ](#tab-panel-5914)
-
-**JavaScript**
-
 ```js
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 const workersai = createWorkersAI({ binding: env.AI });
 
-
 const result = streamText({
-  model: workersai("@cf/zai-org/glm-4.7-flash"),
-  system: "You are a helpful assistant that can inspect web pages.",
-  messages,
-  tools: {
-    ...browserTools,
-    ...otherTools,
-  },
+	model: workersai("@cf/zai-org/glm-4.7-flash"),
+	system: "You are a helpful assistant that can inspect web pages.",
+	messages,
+	tools: {
+		...browserTools,
+		...otherTools,
+	},
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 const workersai = createWorkersAI({ binding: env.AI });
 
-
 const result = streamText({
-  model: workersai("@cf/zai-org/glm-4.7-flash"),
-  system: "You are a helpful assistant that can inspect web pages.",
-  messages,
-  tools: {
-    ...browserTools,
-    ...otherTools,
-  },
+	model: workersai("@cf/zai-org/glm-4.7-flash"),
+	system: "You are a helpful assistant that can inspect web pages.",
+	messages,
+	tools: {
+		...browserTools,
+		...otherTools,
+	},
 });
 ```
 
@@ -166,35 +139,31 @@ Both tools accept a `code` parameter containing a JavaScript async arrow functio
 
 When the LLM uses `browser_search`, the code queries the CDP spec via the injected `spec` object:
 
-**JavaScript**
-
 ```js
 async () => {
-  const s = await spec.get();
-  return s.domains
-    .find((d) => d.name === "Network")
-    .commands.map((c) => ({ method: c.method, description: c.description }));
+	const s = await spec.get();
+	return s.domains
+		.find((d) => d.name === "Network")
+		.commands.map((c) => ({ method: c.method, description: c.description }));
 };
 ```
 
 When the LLM uses `browser_execute`, the code runs CDP commands via the injected `cdp` helper:
 
-**JavaScript**
-
 ```js
 async () => {
-  const { targetId } = await cdp.send("Target.createTarget", {
-    url: "https://example.com",
-  });
-  const sessionId = await cdp.attachToTarget(targetId);
-  const { root } = await cdp.send("DOM.getDocument", {}, { sessionId });
-  const { outerHTML } = await cdp.send(
-    "DOM.getOuterHTML",
-    { nodeId: root.nodeId },
-    { sessionId },
-  );
-  await cdp.send("Target.closeTarget", { targetId });
-  return outerHTML;
+	const { targetId } = await cdp.send("Target.createTarget", {
+		url: "https://example.com",
+	});
+	const sessionId = await cdp.attachToTarget(targetId);
+	const { root } = await cdp.send("DOM.getDocument", {}, { sessionId });
+	const { outerHTML } = await cdp.send(
+		"DOM.getOuterHTML",
+		{ nodeId: root.nodeId },
+		{ sessionId },
+	);
+	await cdp.send("Target.closeTarget", { targetId });
+	return outerHTML;
 };
 ```
 
@@ -202,44 +171,34 @@ async () => {
 
 The typical pattern is to create browser tools inside an [AIChatAgent](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) message handler, which gives you message persistence and streaming:
 
-* [  JavaScript ](#tab-panel-5919)
-* [  TypeScript ](#tab-panel-5920)
-
-**JavaScript**
-
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { createBrowserTools } from "agents/browser/ai";
 import { createWorkersAI } from "workers-ai-provider";
 import { streamText, convertToModelMessages, stepCountIs } from "ai";
 
-
 export class MyAgent extends AIChatAgent {
-  async onChatMessage() {
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const browserTools = createBrowserTools({
-      browser: this.env.BROWSER,
-      loader: this.env.LOADER,
-    });
+	async onChatMessage() {
+		const workersai = createWorkersAI({ binding: this.env.AI });
+		const browserTools = createBrowserTools({
+			browser: this.env.BROWSER,
+			loader: this.env.LOADER,
+		});
 
+		const result = streamText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			system: "You can browse the web and inspect pages.",
+			messages: await convertToModelMessages(this.messages),
+			tools: {
+				...browserTools,
+			},
+			stopWhen: stepCountIs(10),
+		});
 
-    const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      system: "You can browse the web and inspect pages.",
-      messages: await convertToModelMessages(this.messages),
-      tools: {
-        ...browserTools,
-      },
-      stopWhen: stepCountIs(10),
-    });
-
-
-    return result.toUIMessageStreamResponse();
-  }
+		return result.toUIMessageStreamResponse();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
@@ -247,29 +206,26 @@ import { createBrowserTools } from "agents/browser/ai";
 import { createWorkersAI } from "workers-ai-provider";
 import { streamText, convertToModelMessages, stepCountIs } from "ai";
 
-
 export class MyAgent extends AIChatAgent<Env> {
-  async onChatMessage() {
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const browserTools = createBrowserTools({
-      browser: this.env.BROWSER,
-      loader: this.env.LOADER,
-    });
+	async onChatMessage() {
+		const workersai = createWorkersAI({ binding: this.env.AI });
+		const browserTools = createBrowserTools({
+			browser: this.env.BROWSER,
+			loader: this.env.LOADER,
+		});
 
+		const result = streamText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			system: "You can browse the web and inspect pages.",
+			messages: await convertToModelMessages(this.messages),
+			tools: {
+				...browserTools,
+			},
+			stopWhen: stepCountIs(10),
+		});
 
-    const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      system: "You can browse the web and inspect pages.",
-      messages: await convertToModelMessages(this.messages),
-      tools: {
-        ...browserTools,
-      },
-      stopWhen: stepCountIs(10),
-    });
-
-
-    return result.toUIMessageStreamResponse();
-  }
+		return result.toUIMessageStreamResponse();
+	}
 }
 ```
 
@@ -277,46 +233,35 @@ export class MyAgent extends AIChatAgent<Env> {
 
 For TanStack AI, use the `/tanstack-ai` export:
 
-* [  JavaScript ](#tab-panel-5915)
-* [  TypeScript ](#tab-panel-5916)
-
-**JavaScript**
-
 ```js
 import { createBrowserTools } from "agents/browser/tanstack-ai";
 import { chat, workersAIText } from "@tanstack/ai";
 
-
 const browserTools = createBrowserTools({
-  browser: env.BROWSER,
-  loader: env.LOADER,
+	browser: env.BROWSER,
+	loader: env.LOADER,
 });
-
 
 const stream = chat({
-  adapter: workersAIText(env.AI, "@cf/zai-org/glm-4.7-flash"),
-  tools: [...browserTools, ...otherTools],
-  messages,
+	adapter: workersAIText(env.AI, "@cf/zai-org/glm-4.7-flash"),
+	tools: [...browserTools, ...otherTools],
+	messages,
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { createBrowserTools } from "agents/browser/tanstack-ai";
 import { chat, workersAIText } from "@tanstack/ai";
 
-
 const browserTools = createBrowserTools({
-  browser: env.BROWSER,
-  loader: env.LOADER,
+	browser: env.BROWSER,
+	loader: env.LOADER,
 });
 
-
 const stream = chat({
-  adapter: workersAIText(env.AI, "@cf/zai-org/glm-4.7-flash"),
-  tools: [...browserTools, ...otherTools],
-  messages,
+	adapter: workersAIText(env.AI, "@cf/zai-org/glm-4.7-flash"),
+	tools: [...browserTools, ...otherTools],
+	messages,
 });
 ```
 
@@ -380,19 +325,13 @@ Either `browser` or `cdpUrl` must be provided. When both are set, `cdpUrl` takes
 
 For custom integrations, import the building blocks directly:
 
-* [  JavaScript ](#tab-panel-5917)
-* [  TypeScript ](#tab-panel-5918)
-
-**JavaScript**
-
 ```js
 import {
-  CdpSession,
-  connectBrowser,
-  connectUrl,
-  createBrowserToolHandlers,
+	CdpSession,
+	connectBrowser,
+	connectUrl,
+	createBrowserToolHandlers,
 } from "agents/browser";
-
 
 // Connect to a custom CDP endpoint
 const session = await connectUrl("http://localhost:9222");
@@ -400,16 +339,13 @@ const version = await session.send("Browser.getVersion");
 session.close();
 ```
 
-**TypeScript**
-
 ```ts
 import {
-  CdpSession,
-  connectBrowser,
-  connectUrl,
-  createBrowserToolHandlers,
+	CdpSession,
+	connectBrowser,
+	connectUrl,
+	createBrowserToolHandlers,
 } from "agents/browser";
-
 
 // Connect to a custom CDP endpoint
 const session = await connectUrl("http://localhost:9222");
@@ -462,123 +398,97 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-5923)
-* [  TypeScript ](#tab-panel-5924)
-
-**JavaScript**
-
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 export class MyAgent extends Agent {
-  async browse(browserInstance, urls) {
-    let responses = [];
-    for (const url of urls) {
-      const browser = await puppeteer.launch(browserInstance);
-      const page = await browser.newPage();
-      await page.goto(url);
+	async browse(browserInstance, urls) {
+		let responses = [];
+		for (const url of urls) {
+			const browser = await puppeteer.launch(browserInstance);
+			const page = await browser.newPage();
+			await page.goto(url);
 
+			await page.waitForSelector("body");
+			const bodyContent = await page.$eval(
+				"body",
+				(element) => element.innerHTML,
+			);
 
-      await page.waitForSelector("body");
-      const bodyContent = await page.$eval(
-        "body",
-        (element) => element.innerHTML,
-      );
+			let resp = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
+				messages: [
+					{
+						role: "user",
+						content: `Return a JSON object with the product names, prices and URLs from the website content below. <content>${bodyContent}</content>`,
+					},
+				],
+			});
 
+			responses.push(resp);
+			await browser.close();
+		}
 
-      let resp = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
-        messages: [
-          {
-            role: "user",
-            content: `Return a JSON object with the product names, prices and URLs from the website content below. <content>${bodyContent}</content>`,
-          },
-        ],
-      });
-
-
-      responses.push(resp);
-      await browser.close();
-    }
-
-
-    return responses;
-  }
+		return responses;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  BROWSER: Fetcher;
-  AI: Ai;
+	BROWSER: Fetcher;
+	AI: Ai;
 }
 
-
 export class MyAgent extends Agent<Env> {
-  async browse(browserInstance: Fetcher, urls: string[]) {
-    let responses = [];
-    for (const url of urls) {
-      const browser = await puppeteer.launch(browserInstance);
-      const page = await browser.newPage();
-      await page.goto(url);
+	async browse(browserInstance: Fetcher, urls: string[]) {
+		let responses = [];
+		for (const url of urls) {
+			const browser = await puppeteer.launch(browserInstance);
+			const page = await browser.newPage();
+			await page.goto(url);
 
+			await page.waitForSelector("body");
+			const bodyContent = await page.$eval(
+				"body",
+				(element) => element.innerHTML,
+			);
 
-      await page.waitForSelector("body");
-      const bodyContent = await page.$eval(
-        "body",
-        (element) => element.innerHTML,
-      );
+			let resp = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
+				messages: [
+					{
+						role: "user",
+						content: `Return a JSON object with the product names, prices and URLs from the website content below. <content>${bodyContent}</content>`,
+					},
+				],
+			});
 
+			responses.push(resp);
+			await browser.close();
+		}
 
-      let resp = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
-        messages: [
-          {
-            role: "user",
-            content: `Return a JSON object with the product names, prices and URLs from the website content below. <content>${bodyContent}</content>`,
-          },
-        ],
-      });
-
-
-      responses.push(resp);
-      await browser.close();
-    }
-
-
-    return responses;
-  }
+		return responses;
+	}
 }
 ```
 
 Add the browser binding to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5909)
-* [  wrangler.toml ](#tab-panel-5910)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI",
-  },
-  "browser": {
-    "binding": "BROWSER",
-  },
+	"ai": {
+		"binding": "AI",
+	},
+	"browser": {
+		"binding": "BROWSER",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
 binding = "AI"
-
 
 [browser]
 binding = "BROWSER"
@@ -615,55 +525,52 @@ pnpm add @cloudflare/puppeteer
 bun add @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-5921)
-* [  TypeScript ](#tab-panel-5922)
-
-**JavaScript**
-
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 export class MyAgent extends Agent {
-  async browse(url) {
-    const browser = await puppeteer.connect({
-      browserWSEndpoint: `wss://connect.browserbase.com?apiKey=${this.env.BROWSERBASE_API_KEY}`,
-    });
-    const page = await browser.newPage();
-    await page.goto(url);
-    const content = await page.content();
-    await browser.close();
-    return content;
-  }
+	async browse(url) {
+		const browser = await puppeteer.connect({
+			browserWSEndpoint: `wss://connect.browserbase.com?apiKey=${this.env.BROWSERBASE_API_KEY}`,
+		});
+		const page = await browser.newPage();
+		await page.goto(url);
+		const content = await page.content();
+		await browser.close();
+		return content;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  BROWSERBASE_API_KEY: string;
+	BROWSERBASE_API_KEY: string;
 }
 
-
 export class MyAgent extends Agent<Env> {
-  async browse(url: string) {
-    const browser = await puppeteer.connect({
-      browserWSEndpoint: `wss://connect.browserbase.com?apiKey=${this.env.BROWSERBASE_API_KEY}`,
-    });
-    const page = await browser.newPage();
-    await page.goto(url);
-    const content = await page.content();
-    await browser.close();
-    return content;
-  }
+	async browse(url: string) {
+		const browser = await puppeteer.connect({
+			browserWSEndpoint: `wss://connect.browserbase.com?apiKey=${this.env.BROWSERBASE_API_KEY}`,
+		});
+		const page = await browser.newPage();
+		await page.goto(url);
+		const content = await page.content();
+		await browser.close();
+		return content;
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/browser-agent/#page","headline":"Browser agent · Cloudflare Agents docs","description":"Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.","url":"https://developers.cloudflare.com/agents/examples/browser-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/browser-agent/","name":"Browser agent"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/browser-agent/#page","headline":"Browser agent · Cloudflare Agents docs","description":"Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.","url":"https://developers.cloudflare.com/agents/examples/browser-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

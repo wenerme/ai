@@ -1,16 +1,18 @@
 ---
-title: Automated testing pipeline
 description: Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Automated testing pipeline
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Automated testing pipeline
 
-# Automated testing pipeline
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
 
@@ -51,173 +53,146 @@ cd test-pipeline
 
 Replace `src/index.ts`:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox, proxyToSandbox, parseSSEStream, type Sandbox, type ExecEvent } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  GITHUB_TOKEN?: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	GITHUB_TOKEN?: string;
 }
-
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
+		if (request.method !== 'POST') {
+			return new Response('POST { "repoUrl": "https://github.com/owner/repo", "branch": "main" }');
+		}
 
-    if (request.method !== 'POST') {
-      return new Response('POST { "repoUrl": "https://github.com/owner/repo", "branch": "main" }');
-    }
+		try {
+			const { repoUrl, branch } = await request.json();
 
+			if (!repoUrl) {
+				return Response.json({ error: 'repoUrl required' }, { status: 400 });
+			}
 
-    try {
-      const { repoUrl, branch } = await request.json();
+			const sandbox = getSandbox(env.Sandbox, `test-${Date.now()}`);
 
+			try {
+				// Clone repository
+				console.log('Cloning repository...');
+				let cloneUrl = repoUrl;
 
-      if (!repoUrl) {
-        return Response.json({ error: 'repoUrl required' }, { status: 400 });
-      }
+				if (env.GITHUB_TOKEN && cloneUrl.includes('github.com')) {
+					cloneUrl = cloneUrl.replace('https://', `https://${env.GITHUB_TOKEN}@`);
+				}
 
+				await sandbox.gitCheckout(cloneUrl, {
+					...(branch && { branch }),
+					depth: 1,
+					targetDir: 'repo'
+				});
+				console.log('Repository cloned');
 
-      const sandbox = getSandbox(env.Sandbox, `test-${Date.now()}`);
+				// Detect project type
+				const projectType = await detectProjectType(sandbox);
+				console.log(`Detected ${projectType} project`);
 
+				// Install dependencies
+				const installCmd = getInstallCommand(projectType);
+				if (installCmd) {
+					console.log('Installing dependencies...');
+					const installStream = await sandbox.execStream(`cd /workspace/repo && ${installCmd}`);
 
-      try {
-        // Clone repository
-        console.log('Cloning repository...');
-        let cloneUrl = repoUrl;
+					let installExitCode = 0;
+					for await (const event of parseSSEStream<ExecEvent>(installStream)) {
+						if (event.type === 'stdout' || event.type === 'stderr') {
+							console.log(event.data);
+						} else if (event.type === 'complete') {
+							installExitCode = event.exitCode;
+						}
+					}
 
+					if (installExitCode !== 0) {
+						return Response.json({
+							success: false,
+							error: 'Install failed',
+							exitCode: installExitCode
+						});
+					}
+					console.log('Dependencies installed');
+				}
 
-        if (env.GITHUB_TOKEN && cloneUrl.includes('github.com')) {
-          cloneUrl = cloneUrl.replace('https://', `https://${env.GITHUB_TOKEN}@`);
-        }
+				// Run tests
+				console.log('Running tests...');
+				const testCmd = getTestCommand(projectType);
+				const testStream = await sandbox.execStream(`cd /workspace/repo && ${testCmd}`);
 
+				let testExitCode = 0;
+				for await (const event of parseSSEStream<ExecEvent>(testStream)) {
+					if (event.type === 'stdout' || event.type === 'stderr') {
+						console.log(event.data);
+					} else if (event.type === 'complete') {
+						testExitCode = event.exitCode;
+					}
+				}
+				console.log(`Tests completed with exit code ${testExitCode}`);
 
-        await sandbox.gitCheckout(cloneUrl, {
-          ...(branch && { branch }),
-          depth: 1,
-          targetDir: 'repo'
-        });
-        console.log('Repository cloned');
+				return Response.json({
+					success: testExitCode === 0,
+					exitCode: testExitCode,
+					projectType,
+					message: testExitCode === 0 ? 'All tests passed' : 'Tests failed'
+				});
 
+			} finally {
+				await sandbox.destroy();
+			}
 
-        // Detect project type
-        const projectType = await detectProjectType(sandbox);
-        console.log(`Detected ${projectType} project`);
-
-
-        // Install dependencies
-        const installCmd = getInstallCommand(projectType);
-        if (installCmd) {
-          console.log('Installing dependencies...');
-          const installStream = await sandbox.execStream(`cd /workspace/repo && ${installCmd}`);
-
-
-          let installExitCode = 0;
-          for await (const event of parseSSEStream<ExecEvent>(installStream)) {
-            if (event.type === 'stdout' || event.type === 'stderr') {
-              console.log(event.data);
-            } else if (event.type === 'complete') {
-              installExitCode = event.exitCode;
-            }
-          }
-
-
-          if (installExitCode !== 0) {
-            return Response.json({
-              success: false,
-              error: 'Install failed',
-              exitCode: installExitCode
-            });
-          }
-          console.log('Dependencies installed');
-        }
-
-
-        // Run tests
-        console.log('Running tests...');
-        const testCmd = getTestCommand(projectType);
-        const testStream = await sandbox.execStream(`cd /workspace/repo && ${testCmd}`);
-
-
-        let testExitCode = 0;
-        for await (const event of parseSSEStream<ExecEvent>(testStream)) {
-          if (event.type === 'stdout' || event.type === 'stderr') {
-            console.log(event.data);
-          } else if (event.type === 'complete') {
-            testExitCode = event.exitCode;
-          }
-        }
-        console.log(`Tests completed with exit code ${testExitCode}`);
-
-
-        return Response.json({
-          success: testExitCode === 0,
-          exitCode: testExitCode,
-          projectType,
-          message: testExitCode === 0 ? 'All tests passed' : 'Tests failed'
-        });
-
-
-      } finally {
-        await sandbox.destroy();
-      }
-
-
-    } catch (error: any) {
-      return Response.json({ error: error.message }, { status: 500 });
-    }
-  },
+		} catch (error: any) {
+			return Response.json({ error: error.message }, { status: 500 });
+		}
+	},
 };
 
-
 async function detectProjectType(sandbox: any): Promise<string> {
-  try {
-    await sandbox.readFile('/workspace/repo/package.json');
-    return 'nodejs';
-  } catch {}
+	try {
+		await sandbox.readFile('/workspace/repo/package.json');
+		return 'nodejs';
+	} catch {}
 
+	try {
+		await sandbox.readFile('/workspace/repo/requirements.txt');
+		return 'python';
+	} catch {}
 
-  try {
-    await sandbox.readFile('/workspace/repo/requirements.txt');
-    return 'python';
-  } catch {}
+	try {
+		await sandbox.readFile('/workspace/repo/go.mod');
+		return 'go';
+	} catch {}
 
-
-  try {
-    await sandbox.readFile('/workspace/repo/go.mod');
-    return 'go';
-  } catch {}
-
-
-  return 'unknown';
+	return 'unknown';
 }
-
 
 function getInstallCommand(projectType: string): string {
-  switch (projectType) {
-    case 'nodejs': return 'npm install';
-    case 'python': return 'pip install -r requirements.txt || pip install -e .';
-    case 'go': return 'go mod download';
-    default: return '';
-  }
+	switch (projectType) {
+		case 'nodejs': return 'npm install';
+		case 'python': return 'pip install -r requirements.txt || pip install -e .';
+		case 'go': return 'go mod download';
+		default: return '';
+	}
 }
 
-
 function getTestCommand(projectType: string): string {
-  switch (projectType) {
-    case 'nodejs': return 'npm test';
-    case 'python': return 'python -m pytest || python -m unittest discover';
-    case 'go': return 'go test ./...';
-    default: return 'echo "Unknown project type"';
-  }
+	switch (projectType) {
+		case 'nodejs': return 'npm test';
+		case 'python': return 'python -m pytest || python -m unittest discover';
+		case 'go': return 'go test ./...';
+		default: return 'echo "Unknown project type"';
+	}
 }
 ```
 
@@ -277,7 +252,14 @@ An automated testing pipeline that:
 * [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Handle long-running tests
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Cache dependencies between runs
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/automated-testing-pipeline/","name":"Automated testing pipeline"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

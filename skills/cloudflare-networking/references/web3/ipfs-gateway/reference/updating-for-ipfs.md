@@ -1,16 +1,18 @@
 ---
-title: Using IPFS with your website
 description: Host your website on IPFS and serve it through Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Using IPFS with your website
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using IPFS with your website
 
-# Using IPFS with your website
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Though it is not required, it is strongly recommended that websites hosted on IPFS use only relative links, unless linking to a different domain. This is because data can be accessed in many different (but ultimately equivalent) ways:
 
@@ -53,7 +55,14 @@ This snippet also prefixing any links with `{{base}}`. So for example, we would 
 
 For other frameworks, or if a framework was not used, there's a script called [make-relative ↗](https://github.com/tmcw/make-relative) that will parse the HTML of a website and automatically rewrite links and images to be relative.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/#page","headline":"Using IPFS with your website · Cloudflare Web3 docs","description":"Host your website on IPFS and serve it through Cloudflare.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ipfs-gateway/reference/updating-for-ipfs/","name":"Using IPFS with your website"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/#page","headline":"Using IPFS with your website · Cloudflare Web3 docs","description":"Host your website on IPFS and serve it through Cloudflare.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

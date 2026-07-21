@@ -1,209 +1,178 @@
 ---
-title: Webhooks
 description: Receive and route webhook events from external services to dedicated Cloudflare Agent instances.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Webhooks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Webhooks
 
-# Webhooks
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/webhooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Receive webhook events from external services and route them to dedicated agent instances. Each webhook source (repository, customer, device) can have its own agent with isolated state, persistent storage, and real-time client connections.
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5829)
-* [  TypeScript ](#tab-panel-5830)
-
-**JavaScript**
-
 ```js
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
 
-
 // Agent that handles webhooks for a specific entity
 export class WebhookAgent extends Agent {
-  async onRequest(request) {
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+	async onRequest(request) {
+		if (request.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
+		}
 
+		// Verify the webhook signature
+		const signature = request.headers.get("X-Hub-Signature-256");
+		const body = await request.text();
 
-    // Verify the webhook signature
-    const signature = request.headers.get("X-Hub-Signature-256");
-    const body = await request.text();
+		if (
+			!(await this.verifySignature(body, signature, this.env.WEBHOOK_SECRET))
+		) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
+		// Process the webhook payload
+		const payload = JSON.parse(body);
+		await this.processEvent(payload);
 
-    if (
-      !(await this.verifySignature(body, signature, this.env.WEBHOOK_SECRET))
-    ) {
-      return new Response("Invalid signature", { status: 401 });
-    }
+		return new Response("OK", { status: 200 });
+	}
 
+	async verifySignature(payload, signature, secret) {
+		if (!signature) return false;
 
-    // Process the webhook payload
-    const payload = JSON.parse(body);
-    await this.processEvent(payload);
+		const encoder = new TextEncoder();
+		const key = await crypto.subtle.importKey(
+			"raw",
+			encoder.encode(secret),
+			{ name: "HMAC", hash: "SHA-256" },
+			false,
+			["sign"],
+		);
 
+		const signatureBytes = await crypto.subtle.sign(
+			"HMAC",
+			key,
+			encoder.encode(payload),
+		);
+		const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
+			.map((b) => b.toString(16).padStart(2, "0"))
+			.join("")}`;
 
-    return new Response("OK", { status: 200 });
-  }
+		return signature === expected;
+	}
 
-
-  async verifySignature(payload, signature, secret) {
-    if (!signature) return false;
-
-
-    const encoder = new TextEncoder();
-    const key = await crypto.subtle.importKey(
-      "raw",
-      encoder.encode(secret),
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"],
-    );
-
-
-    const signatureBytes = await crypto.subtle.sign(
-      "HMAC",
-      key,
-      encoder.encode(payload),
-    );
-    const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("")}`;
-
-
-    return signature === expected;
-  }
-
-
-  async processEvent(payload) {
-    // Store event, update state, trigger actions...
-  }
+	async processEvent(payload) {
+		// Store event, update state, trigger actions...
+	}
 }
-
 
 // Route webhooks to the right agent instance
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Webhook endpoint: POST /webhooks/:entityId
+		if (url.pathname.startsWith("/webhooks/") && request.method === "POST") {
+			const entityId = url.pathname.split("/")[2];
+			const agent = await getAgentByName(env.WebhookAgent, entityId);
+			return agent.fetch(request);
+		}
 
-    // Webhook endpoint: POST /webhooks/:entityId
-    if (url.pathname.startsWith("/webhooks/") && request.method === "POST") {
-      const entityId = url.pathname.split("/")[2];
-      const agent = await getAgentByName(env.WebhookAgent, entityId);
-      return agent.fetch(request);
-    }
-
-
-    // Default routing for WebSocket connections
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+		// Default routing for WebSocket connections
+		return (
+			(await routeAgentRequest(request, env)) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
 
-
 // Agent that handles webhooks for a specific entity
 export class WebhookAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+	async onRequest(request: Request): Promise<Response> {
+		if (request.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
+		}
 
+		// Verify the webhook signature
+		const signature = request.headers.get("X-Hub-Signature-256");
+		const body = await request.text();
 
-    // Verify the webhook signature
-    const signature = request.headers.get("X-Hub-Signature-256");
-    const body = await request.text();
+		if (
+			!(await this.verifySignature(body, signature, this.env.WEBHOOK_SECRET))
+		) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
+		// Process the webhook payload
+		const payload = JSON.parse(body);
+		await this.processEvent(payload);
 
-    if (
-      !(await this.verifySignature(body, signature, this.env.WEBHOOK_SECRET))
-    ) {
-      return new Response("Invalid signature", { status: 401 });
-    }
+		return new Response("OK", { status: 200 });
+	}
 
+	private async verifySignature(
+		payload: string,
+		signature: string | null,
+		secret: string,
+	): Promise<boolean> {
+		if (!signature) return false;
 
-    // Process the webhook payload
-    const payload = JSON.parse(body);
-    await this.processEvent(payload);
+		const encoder = new TextEncoder();
+		const key = await crypto.subtle.importKey(
+			"raw",
+			encoder.encode(secret),
+			{ name: "HMAC", hash: "SHA-256" },
+			false,
+			["sign"],
+		);
 
+		const signatureBytes = await crypto.subtle.sign(
+			"HMAC",
+			key,
+			encoder.encode(payload),
+		);
+		const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
+			.map((b) => b.toString(16).padStart(2, "0"))
+			.join("")}`;
 
-    return new Response("OK", { status: 200 });
-  }
+		return signature === expected;
+	}
 
-
-  private async verifySignature(
-    payload: string,
-    signature: string | null,
-    secret: string,
-  ): Promise<boolean> {
-    if (!signature) return false;
-
-
-    const encoder = new TextEncoder();
-    const key = await crypto.subtle.importKey(
-      "raw",
-      encoder.encode(secret),
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"],
-    );
-
-
-    const signatureBytes = await crypto.subtle.sign(
-      "HMAC",
-      key,
-      encoder.encode(payload),
-    );
-    const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("")}`;
-
-
-    return signature === expected;
-  }
-
-
-  private async processEvent(payload: unknown) {
-    // Store event, update state, trigger actions...
-  }
+	private async processEvent(payload: unknown) {
+		// Store event, update state, trigger actions...
+	}
 }
-
 
 // Route webhooks to the right agent instance
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Webhook endpoint: POST /webhooks/:entityId
+		if (url.pathname.startsWith("/webhooks/") && request.method === "POST") {
+			const entityId = url.pathname.split("/")[2];
+			const agent = await getAgentByName(env.WebhookAgent, entityId);
+			return agent.fetch(request);
+		}
 
-    // Webhook endpoint: POST /webhooks/:entityId
-    if (url.pathname.startsWith("/webhooks/") && request.method === "POST") {
-      const entityId = url.pathname.split("/")[2];
-      const agent = await getAgentByName(env.WebhookAgent, entityId);
-      return agent.fetch(request);
-    }
-
-
-    // Default routing for WebSocket connections
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+		// Default routing for WebSocket connections
+		return (
+			(await routeAgentRequest(request, env)) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -259,62 +228,49 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-5803)
-* [  TypeScript ](#tab-panel-5804)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    if (request.method === "POST" && url.pathname === "/webhooks/github") {
-      const payload = await request.clone().json();
+	async fetch(request, env) {
+		if (request.method === "POST" && url.pathname === "/webhooks/github") {
+			const payload = await request.clone().json();
 
+			// Extract entity ID from payload
+			const repoFullName = payload.repository?.full_name;
+			if (!repoFullName) {
+				return new Response("Missing repository", { status: 400 });
+			}
 
-      // Extract entity ID from payload
-      const repoFullName = payload.repository?.full_name;
-      if (!repoFullName) {
-        return new Response("Missing repository", { status: 400 });
-      }
+			// Sanitize for use as agent name
+			const agentName = repoFullName.toLowerCase().replace(/\//g, "-");
 
-
-      // Sanitize for use as agent name
-      const agentName = repoFullName.toLowerCase().replace(/\//g, "-");
-
-
-      // Route to dedicated agent
-      const agent = await getAgentByName(env.RepoAgent, agentName);
-      return agent.fetch(request);
-    }
-  },
+			// Route to dedicated agent
+			const agent = await getAgentByName(env.RepoAgent, agentName);
+			return agent.fetch(request);
+		}
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    if (request.method === "POST" && url.pathname === "/webhooks/github") {
-      const payload = await request.clone().json();
+	async fetch(request: Request, env: Env): Promise<Response> {
+		if (request.method === "POST" && url.pathname === "/webhooks/github") {
+			const payload = await request.clone().json();
 
+			// Extract entity ID from payload
+			const repoFullName = payload.repository?.full_name;
+			if (!repoFullName) {
+				return new Response("Missing repository", { status: 400 });
+			}
 
-      // Extract entity ID from payload
-      const repoFullName = payload.repository?.full_name;
-      if (!repoFullName) {
-        return new Response("Missing repository", { status: 400 });
-      }
+			// Sanitize for use as agent name
+			const agentName = repoFullName.toLowerCase().replace(/\//g, "-");
 
-
-      // Sanitize for use as agent name
-      const agentName = repoFullName.toLowerCase().replace(/\//g, "-");
-
-
-      // Route to dedicated agent
-      const agent = await getAgentByName(env.RepoAgent, agentName);
-      return agent.fetch(request);
-    }
-  },
+			// Route to dedicated agent
+			const agent = await getAgentByName(env.RepoAgent, agentName);
+			return agent.fetch(request);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -322,28 +278,21 @@ export default {
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-5799)
-* [  TypeScript ](#tab-panel-5800)
-
-**JavaScript**
-
 ```js
 // Webhook URL: https://your-worker.dev/webhooks/stripe/cus_123456
 if (url.pathname.startsWith("/webhooks/stripe/")) {
-  const customerId = url.pathname.split("/")[3]; // "cus_123456"
-  const agent = await getAgentByName(env.StripeAgent, customerId);
-  return agent.fetch(request);
+	const customerId = url.pathname.split("/")[3]; // "cus_123456"
+	const agent = await getAgentByName(env.StripeAgent, customerId);
+	return agent.fetch(request);
 }
 ```
-
-**TypeScript**
 
 ```ts
 // Webhook URL: https://your-worker.dev/webhooks/stripe/cus_123456
 if (url.pathname.startsWith("/webhooks/stripe/")) {
-  const customerId = url.pathname.split("/")[3]; // "cus_123456"
-  const agent = await getAgentByName(env.StripeAgent, customerId);
-  return agent.fetch(request);
+	const customerId = url.pathname.split("/")[3]; // "cus_123456"
+	const agent = await getAgentByName(env.StripeAgent, customerId);
+	return agent.fetch(request);
 }
 ```
 
@@ -351,28 +300,21 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-5801)
-* [  TypeScript ](#tab-panel-5802)
-
-**JavaScript**
-
 ```js
 // Slack sends workspace info in headers
 const teamId = request.headers.get("X-Slack-Team-Id");
 if (teamId) {
-  const agent = await getAgentByName(env.SlackAgent, teamId);
-  return agent.fetch(request);
+	const agent = await getAgentByName(env.SlackAgent, teamId);
+	return agent.fetch(request);
 }
 ```
-
-**TypeScript**
 
 ```ts
 // Slack sends workspace info in headers
 const teamId = request.headers.get("X-Slack-Team-Id");
 if (teamId) {
-  const agent = await getAgentByName(env.SlackAgent, teamId);
-  return agent.fetch(request);
+	const agent = await getAgentByName(env.SlackAgent, teamId);
+	return agent.fetch(request);
 }
 ```
 
@@ -382,78 +324,63 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-5815)
-* [  TypeScript ](#tab-panel-5816)
-
-**JavaScript**
-
 ```js
 async function verifySignature(payload, signature, secret) {
-  if (!signature) return false;
+	if (!signature) return false;
 
+	const encoder = new TextEncoder();
+	const key = await crypto.subtle.importKey(
+		"raw",
+		encoder.encode(secret),
+		{ name: "HMAC", hash: "SHA-256" },
+		false,
+		["sign"],
+	);
 
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
+	const signatureBytes = await crypto.subtle.sign(
+		"HMAC",
+		key,
+		encoder.encode(payload),
+	);
 
+	const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
+		.map((b) => b.toString(16).padStart(2, "0"))
+		.join("")}`;
 
-  const signatureBytes = await crypto.subtle.sign(
-    "HMAC",
-    key,
-    encoder.encode(payload),
-  );
-
-
-  const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("")}`;
-
-
-  // Use timing-safe comparison in production
-  return signature === expected;
+	// Use timing-safe comparison in production
+	return signature === expected;
 }
 ```
 
-**TypeScript**
-
 ```ts
 async function verifySignature(
-  payload: string,
-  signature: string | null,
-  secret: string,
+	payload: string,
+	signature: string | null,
+	secret: string,
 ): Promise<boolean> {
-  if (!signature) return false;
+	if (!signature) return false;
 
+	const encoder = new TextEncoder();
+	const key = await crypto.subtle.importKey(
+		"raw",
+		encoder.encode(secret),
+		{ name: "HMAC", hash: "SHA-256" },
+		false,
+		["sign"],
+	);
 
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
+	const signatureBytes = await crypto.subtle.sign(
+		"HMAC",
+		key,
+		encoder.encode(payload),
+	);
 
+	const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
+		.map((b) => b.toString(16).padStart(2, "0"))
+		.join("")}`;
 
-  const signatureBytes = await crypto.subtle.sign(
-    "HMAC",
-    key,
-    encoder.encode(payload),
-  );
-
-
-  const expected = `sha256=${Array.from(new Uint8Array(signatureBytes))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("")}`;
-
-
-  // Use timing-safe comparison in production
-  return signature === expected;
+	// Use timing-safe comparison in production
+	return signature === expected;
 }
 ```
 
@@ -473,108 +400,87 @@ async function verifySignature(
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-5823)
-* [  TypeScript ](#tab-panel-5824)
-
-**JavaScript**
-
 ```js
 export class WebhookAgent extends Agent {
-  async onRequest(request) {
-    // 1. Validate method
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+	async onRequest(request) {
+		// 1. Validate method
+		if (request.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
+		}
 
+		// 2. Get event type from headers
+		const eventType = request.headers.get("X-Event-Type");
 
-    // 2. Get event type from headers
-    const eventType = request.headers.get("X-Event-Type");
+		// 3. Verify signature
+		const signature = request.headers.get("X-Signature");
+		const body = await request.text();
 
+		if (!(await this.verifySignature(body, signature))) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
-    // 3. Verify signature
-    const signature = request.headers.get("X-Signature");
-    const body = await request.text();
+		// 4. Parse and process
+		const payload = JSON.parse(body);
+		await this.handleEvent(eventType, payload);
 
+		// 5. Respond quickly
+		return new Response("OK", { status: 200 });
+	}
 
-    if (!(await this.verifySignature(body, signature))) {
-      return new Response("Invalid signature", { status: 401 });
-    }
+	async handleEvent(type, payload) {
+		// Update state (broadcasts to connected clients)
+		this.setState({
+			...this.state,
+			lastEventType: type,
+			lastEventTime: new Date().toISOString(),
+		});
 
-
-    // 4. Parse and process
-    const payload = JSON.parse(body);
-    await this.handleEvent(eventType, payload);
-
-
-    // 5. Respond quickly
-    return new Response("OK", { status: 200 });
-  }
-
-
-  async handleEvent(type, payload) {
-    // Update state (broadcasts to connected clients)
-    this.setState({
-      ...this.state,
-      lastEventType: type,
-      lastEventTime: new Date().toISOString(),
-    });
-
-
-    // Store in SQL for history
-    this
-      .sql`INSERT INTO events (type, payload, timestamp) VALUES (${type}, ${JSON.stringify(payload)}, ${Date.now()})`;
-  }
+		// Store in SQL for history
+		this
+			.sql`INSERT INTO events (type, payload, timestamp) VALUES (${type}, ${JSON.stringify(payload)}, ${Date.now()})`;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class WebhookAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    // 1. Validate method
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+	async onRequest(request: Request): Promise<Response> {
+		// 1. Validate method
+		if (request.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
+		}
 
+		// 2. Get event type from headers
+		const eventType = request.headers.get("X-Event-Type");
 
-    // 2. Get event type from headers
-    const eventType = request.headers.get("X-Event-Type");
+		// 3. Verify signature
+		const signature = request.headers.get("X-Signature");
+		const body = await request.text();
 
+		if (!(await this.verifySignature(body, signature))) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
-    // 3. Verify signature
-    const signature = request.headers.get("X-Signature");
-    const body = await request.text();
+		// 4. Parse and process
+		const payload = JSON.parse(body);
+		await this.handleEvent(eventType, payload);
 
+		// 5. Respond quickly
+		return new Response("OK", { status: 200 });
+	}
 
-    if (!(await this.verifySignature(body, signature))) {
-      return new Response("Invalid signature", { status: 401 });
-    }
+	private async handleEvent(type: string, payload: unknown) {
+		// Update state (broadcasts to connected clients)
+		this.setState({
+			...this.state,
+			lastEventType: type,
+			lastEventTime: new Date().toISOString(),
+		});
 
-
-    // 4. Parse and process
-    const payload = JSON.parse(body);
-    await this.handleEvent(eventType, payload);
-
-
-    // 5. Respond quickly
-    return new Response("OK", { status: 200 });
-  }
-
-
-  private async handleEvent(type: string, payload: unknown) {
-    // Update state (broadcasts to connected clients)
-    this.setState({
-      ...this.state,
-      lastEventType: type,
-      lastEventTime: new Date().toISOString(),
-    });
-
-
-    // Store in SQL for history
-    this
-      .sql`INSERT INTO events (type, payload, timestamp) VALUES (${type}, ${JSON.stringify(payload)}, ${Date.now()})`;
-  }
+		// Store in SQL for history
+		this
+			.sql`INSERT INTO events (type, payload, timestamp) VALUES (${type}, ${JSON.stringify(payload)}, ${Date.now()})`;
+	}
 }
 ```
 
@@ -584,15 +490,10 @@ Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-5811)
-* [  TypeScript ](#tab-panel-5812)
-
-**JavaScript**
-
 ```js
 class WebhookAgent extends Agent {
-  async onStart() {
-    this.sql`
+	async onStart() {
+		this.sql`
       CREATE TABLE IF NOT EXISTS events (
         id TEXT PRIMARY KEY,
         type TEXT NOT NULL,
@@ -606,21 +507,18 @@ class WebhookAgent extends Agent {
       )
     `;
 
-
-    this.sql`
+		this.sql`
       CREATE INDEX IF NOT EXISTS idx_events_timestamp
       ON events(timestamp DESC)
     `;
-  }
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class WebhookAgent extends Agent {
-  async onStart(): Promise<void> {
-    this.sql`
+	async onStart(): Promise<void> {
+		this.sql`
       CREATE TABLE IF NOT EXISTS events (
         id TEXT PRIMARY KEY,
         type TEXT NOT NULL,
@@ -634,23 +532,17 @@ class WebhookAgent extends Agent {
       )
     `;
 
-
-    this.sql`
+		this.sql`
       CREATE INDEX IF NOT EXISTS idx_events_timestamp
       ON events(timestamp DESC)
     `;
-  }
+	}
 }
 ```
 
 ### Cleanup old events
 
 Prevent unbounded growth by keeping only recent events:
-
-* [  JavaScript ](#tab-panel-5805)
-* [  TypeScript ](#tab-panel-5806)
-
-**JavaScript**
 
 ```js
 // Keep last 100 events
@@ -659,7 +551,6 @@ this.sql`
     SELECT id FROM events ORDER BY timestamp DESC LIMIT 100
   )
 `;
-
 
 // Or delete events older than 30 days
 this.sql`
@@ -668,8 +559,6 @@ this.sql`
 `;
 ```
 
-**TypeScript**
-
 ```ts
 // Keep last 100 events
 this.sql`
@@ -677,7 +566,6 @@ this.sql`
     SELECT id FROM events ORDER BY timestamp DESC LIMIT 100
   )
 `;
-
 
 // Or delete events older than 30 days
 this.sql`
@@ -688,72 +576,61 @@ this.sql`
 
 ### Query events
 
-* [  JavaScript ](#tab-panel-5819)
-* [  TypeScript ](#tab-panel-5820)
-
-**JavaScript**
-
 ```js
 import { Agent, callable } from "agents";
 
-
 class WebhookAgent extends Agent {
-  @callable()
-  getEvents(limit = 20) {
-    return [
-      ...this.sql`
+	@callable()
+	getEvents(limit = 20) {
+		return [
+			...this.sql`
       SELECT * FROM events
       ORDER BY timestamp DESC
       LIMIT ${limit}
     `,
-    ];
-  }
+		];
+	}
 
-
-  @callable()
-  getEventsByType(type, limit = 20) {
-    return [
-      ...this.sql`
+	@callable()
+	getEventsByType(type, limit = 20) {
+		return [
+			...this.sql`
       SELECT * FROM events
       WHERE type = ${type}
       ORDER BY timestamp DESC
       LIMIT ${limit}
     `,
-    ];
-  }
+		];
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable } from "agents";
 
-
 class WebhookAgent extends Agent {
-  @callable()
-  getEvents(limit = 20) {
-    return [
-      ...this.sql`
+	@callable()
+	getEvents(limit = 20) {
+		return [
+			...this.sql`
       SELECT * FROM events
       ORDER BY timestamp DESC
       LIMIT ${limit}
     `,
-    ];
-  }
+		];
+	}
 
-
-  @callable()
-  getEventsByType(type: string, limit = 20) {
-    return [
-      ...this.sql`
+	@callable()
+	getEventsByType(type: string, limit = 20) {
+		return [
+			...this.sql`
       SELECT * FROM events
       WHERE type = ${type}
       ORDER BY timestamp DESC
       LIMIT ${limit}
     `,
-    ];
-  }
+		];
+	}
 }
 ```
 
@@ -761,42 +638,35 @@ class WebhookAgent extends Agent {
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-5807)
-* [  TypeScript ](#tab-panel-5808)
-
-**JavaScript**
-
 ```js
 class WebhookAgent extends Agent {
-  async processWebhook(eventType, payload) {
-    // Update state - this automatically broadcasts to all connected clients
-    this.setState({
-      ...this.state,
-      stats: payload.stats,
-      lastEvent: {
-        type: eventType,
-        timestamp: new Date().toISOString(),
-      },
-    });
-  }
+	async processWebhook(eventType, payload) {
+		// Update state - this automatically broadcasts to all connected clients
+		this.setState({
+			...this.state,
+			stats: payload.stats,
+			lastEvent: {
+				type: eventType,
+				timestamp: new Date().toISOString(),
+			},
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class WebhookAgent extends Agent {
-  private async processWebhook(eventType: string, payload: WebhookPayload) {
-    // Update state - this automatically broadcasts to all connected clients
-    this.setState({
-      ...this.state,
-      stats: payload.stats,
-      lastEvent: {
-        type: eventType,
-        timestamp: new Date().toISOString(),
-      },
-    });
-  }
+	private async processWebhook(eventType: string, payload: WebhookPayload) {
+		// Update state - this automatically broadcasts to all connected clients
+		this.setState({
+			...this.state,
+			stats: payload.stats,
+			lastEvent: {
+				type: eventType,
+				timestamp: new Date().toISOString(),
+			},
+		});
+	}
 }
 ```
 
@@ -805,21 +675,18 @@ On the client side:
 ```tsx
 import { useAgent } from "agents/react";
 
-
 function Dashboard() {
-  const [state, setState] = useState(null);
+	const [state, setState] = useState(null);
 
+	const agent = useAgent({
+		agent: "webhook-agent",
+		name: "my-entity-id",
+		onStateUpdate: (newState) => {
+			setState(newState); // Automatically updates when webhooks arrive
+		},
+	});
 
-  const agent = useAgent({
-    agent: "webhook-agent",
-    name: "my-entity-id",
-    onStateUpdate: (newState) => {
-      setState(newState); // Automatically updates when webhooks arrive
-    },
-  });
-
-
-  return <div>Last event: {state?.lastEvent?.type}</div>;
+	return <div>Last event: {state?.lastEvent?.type}</div>;
 }
 ```
 
@@ -829,58 +696,47 @@ function Dashboard() {
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-5817)
-* [  TypeScript ](#tab-panel-5818)
-
-**JavaScript**
-
 ```js
 class WebhookAgent extends Agent {
-  async handleEvent(eventId, payload) {
-    // Check if already processed
-    const existing = [
-      ...this.sql`
+	async handleEvent(eventId, payload) {
+		// Check if already processed
+		const existing = [
+			...this.sql`
       SELECT id FROM events WHERE id = ${eventId}
     `,
-    ];
+		];
 
+		if (existing.length > 0) {
+			console.log(`Event ${eventId} already processed, skipping`);
+			return;
+		}
 
-    if (existing.length > 0) {
-      console.log(`Event ${eventId} already processed, skipping`);
-      return;
-    }
-
-
-    // Process and store
-    await this.processPayload(payload);
-    this.sql`INSERT INTO events (id, ...) VALUES (${eventId}, ...)`;
-  }
+		// Process and store
+		await this.processPayload(payload);
+		this.sql`INSERT INTO events (id, ...) VALUES (${eventId}, ...)`;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class WebhookAgent extends Agent {
-  async handleEvent(eventId: string, payload: unknown) {
-    // Check if already processed
-    const existing = [
-      ...this.sql`
+	async handleEvent(eventId: string, payload: unknown) {
+		// Check if already processed
+		const existing = [
+			...this.sql`
       SELECT id FROM events WHERE id = ${eventId}
     `,
-    ];
+		];
 
+		if (existing.length > 0) {
+			console.log(`Event ${eventId} already processed, skipping`);
+			return;
+		}
 
-    if (existing.length > 0) {
-      console.log(`Event ${eventId} already processed, skipping`);
-      return;
-    }
-
-
-    // Process and store
-    await this.processPayload(payload);
-    this.sql`INSERT INTO events (id, ...) VALUES (${eventId}, ...)`;
-  }
+		// Process and store
+		await this.processPayload(payload);
+		this.sql`INSERT INTO events (id, ...) VALUES (${eventId}, ...)`;
+	}
 }
 ```
 
@@ -888,103 +744,79 @@ class WebhookAgent extends Agent {
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-5821)
-* [  TypeScript ](#tab-panel-5822)
-
-**JavaScript**
-
 ```js
 class WebhookAgent extends Agent {
-  async onRequest(request) {
-    const payload = await request.json();
+	async onRequest(request) {
+		const payload = await request.json();
 
+		// Quick validation
+		if (!this.isValid(payload)) {
+			return new Response("Invalid", { status: 400 });
+		}
 
-    // Quick validation
-    if (!this.isValid(payload)) {
-      return new Response("Invalid", { status: 400 });
-    }
+		// Queue heavy processing
+		await this.queue("processWebhook", payload);
 
+		// Respond immediately
+		return new Response("Accepted", { status: 202 });
+	}
 
-    // Queue heavy processing
-    await this.queue("processWebhook", payload);
-
-
-    // Respond immediately
-    return new Response("Accepted", { status: 202 });
-  }
-
-
-  async processWebhook(payload) {
-    // Heavy processing happens here, after response sent
-    await this.enrichData(payload);
-    await this.notifyDownstream(payload);
-    await this.updateAnalytics(payload);
-  }
+	async processWebhook(payload) {
+		// Heavy processing happens here, after response sent
+		await this.enrichData(payload);
+		await this.notifyDownstream(payload);
+		await this.updateAnalytics(payload);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class WebhookAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    const payload = await request.json();
+	async onRequest(request: Request): Promise<Response> {
+		const payload = await request.json();
 
+		// Quick validation
+		if (!this.isValid(payload)) {
+			return new Response("Invalid", { status: 400 });
+		}
 
-    // Quick validation
-    if (!this.isValid(payload)) {
-      return new Response("Invalid", { status: 400 });
-    }
+		// Queue heavy processing
+		await this.queue("processWebhook", payload);
 
+		// Respond immediately
+		return new Response("Accepted", { status: 202 });
+	}
 
-    // Queue heavy processing
-    await this.queue("processWebhook", payload);
-
-
-    // Respond immediately
-    return new Response("Accepted", { status: 202 });
-  }
-
-
-  async processWebhook(payload: WebhookPayload) {
-    // Heavy processing happens here, after response sent
-    await this.enrichData(payload);
-    await this.notifyDownstream(payload);
-    await this.updateAnalytics(payload);
-  }
+	async processWebhook(payload: WebhookPayload) {
+		// Heavy processing happens here, after response sent
+		await this.enrichData(payload);
+		await this.notifyDownstream(payload);
+		await this.updateAnalytics(payload);
+	}
 }
 ```
 
 If the asynchronous work is a single Think chat turn, use `submitMessages()` instead. It returns a durable submission ID immediately and lets retries use an idempotency key instead of duplicating the message turn:
 
-* [  JavaScript ](#tab-panel-5809)
-* [  TypeScript ](#tab-panel-5810)
-
-**JavaScript**
-
 ```js
 const submission = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
 
-
 return Response.json(
-  { submissionId: submission.submissionId },
-  { status: 202 },
+	{ submissionId: submission.submissionId },
+	{ status: 202 },
 );
 ```
 
-**TypeScript**
-
 ```ts
 const submission = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
 
-
 return Response.json(
-  { submissionId: submission.submissionId },
-  { status: 202 },
+	{ submissionId: submission.submissionId },
+	{ status: 202 },
 );
 ```
 
@@ -994,94 +826,79 @@ If the webhook owns application side effects around a turn, such as restoring a 
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-5827)
-* [  TypeScript ](#tab-panel-5828)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		if (request.method === "POST") {
+			// GitHub webhooks
+			if (url.pathname.startsWith("/webhooks/github/")) {
+				const payload = await request.clone().json();
+				const repoName = payload.repository?.full_name?.replace("/", "-");
+				const agent = await getAgentByName(env.GitHubAgent, repoName);
+				return agent.fetch(request);
+			}
 
-    if (request.method === "POST") {
-      // GitHub webhooks
-      if (url.pathname.startsWith("/webhooks/github/")) {
-        const payload = await request.clone().json();
-        const repoName = payload.repository?.full_name?.replace("/", "-");
-        const agent = await getAgentByName(env.GitHubAgent, repoName);
-        return agent.fetch(request);
-      }
+			// Stripe webhooks
+			if (url.pathname.startsWith("/webhooks/stripe/")) {
+				const payload = await request.clone().json();
+				const customerId = payload.data?.object?.customer;
+				const agent = await getAgentByName(env.StripeAgent, customerId);
+				return agent.fetch(request);
+			}
 
+			// Slack webhooks
+			if (url.pathname === "/webhooks/slack") {
+				const teamId = request.headers.get("X-Slack-Team-Id");
+				const agent = await getAgentByName(env.SlackAgent, teamId);
+				return agent.fetch(request);
+			}
+		}
 
-      // Stripe webhooks
-      if (url.pathname.startsWith("/webhooks/stripe/")) {
-        const payload = await request.clone().json();
-        const customerId = payload.data?.object?.customer;
-        const agent = await getAgentByName(env.StripeAgent, customerId);
-        return agent.fetch(request);
-      }
-
-
-      // Slack webhooks
-      if (url.pathname === "/webhooks/slack") {
-        const teamId = request.headers.get("X-Slack-Team-Id");
-        const agent = await getAgentByName(env.SlackAgent, teamId);
-        return agent.fetch(request);
-      }
-    }
-
-
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
 
+		if (request.method === "POST") {
+			// GitHub webhooks
+			if (url.pathname.startsWith("/webhooks/github/")) {
+				const payload = await request.clone().json();
+				const repoName = payload.repository?.full_name?.replace("/", "-");
+				const agent = await getAgentByName(env.GitHubAgent, repoName);
+				return agent.fetch(request);
+			}
 
-    if (request.method === "POST") {
-      // GitHub webhooks
-      if (url.pathname.startsWith("/webhooks/github/")) {
-        const payload = await request.clone().json();
-        const repoName = payload.repository?.full_name?.replace("/", "-");
-        const agent = await getAgentByName(env.GitHubAgent, repoName);
-        return agent.fetch(request);
-      }
+			// Stripe webhooks
+			if (url.pathname.startsWith("/webhooks/stripe/")) {
+				const payload = await request.clone().json();
+				const customerId = payload.data?.object?.customer;
+				const agent = await getAgentByName(env.StripeAgent, customerId);
+				return agent.fetch(request);
+			}
 
+			// Slack webhooks
+			if (url.pathname === "/webhooks/slack") {
+				const teamId = request.headers.get("X-Slack-Team-Id");
+				const agent = await getAgentByName(env.SlackAgent, teamId);
+				return agent.fetch(request);
+			}
+		}
 
-      // Stripe webhooks
-      if (url.pathname.startsWith("/webhooks/stripe/")) {
-        const payload = await request.clone().json();
-        const customerId = payload.data?.object?.customer;
-        const agent = await getAgentByName(env.StripeAgent, customerId);
-        return agent.fetch(request);
-      }
-
-
-      // Slack webhooks
-      if (url.pathname === "/webhooks/slack") {
-        const teamId = request.headers.get("X-Slack-Team-Id");
-        const agent = await getAgentByName(env.SlackAgent, teamId);
-        return agent.fetch(request);
-      }
-    }
-
-
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -1089,76 +906,63 @@ export default {
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-5825)
-* [  TypeScript ](#tab-panel-5826)
-
-**JavaScript**
-
 ```js
 export class NotificationAgent extends Agent {
-  async notifySlack(message) {
-    const response = await fetch(this.env.SLACK_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: message }),
-    });
+	async notifySlack(message) {
+		const response = await fetch(this.env.SLACK_WEBHOOK_URL, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ text: message }),
+		});
 
+		if (!response.ok) {
+			throw new Error(`Slack notification failed: ${response.status}`);
+		}
+	}
 
-    if (!response.ok) {
-      throw new Error(`Slack notification failed: ${response.status}`);
-    }
-  }
+	async sendSignedWebhook(url, payload) {
+		const body = JSON.stringify(payload);
+		const signature = await this.sign(body, this.env.WEBHOOK_SECRET);
 
-
-  async sendSignedWebhook(url, payload) {
-    const body = JSON.stringify(payload);
-    const signature = await this.sign(body, this.env.WEBHOOK_SECRET);
-
-
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Signature": signature,
-      },
-      body,
-    });
-  }
+		await fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-Signature": signature,
+			},
+			body,
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class NotificationAgent extends Agent {
-  async notifySlack(message: string) {
-    const response = await fetch(this.env.SLACK_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: message }),
-    });
+	async notifySlack(message: string) {
+		const response = await fetch(this.env.SLACK_WEBHOOK_URL, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ text: message }),
+		});
 
+		if (!response.ok) {
+			throw new Error(`Slack notification failed: ${response.status}`);
+		}
+	}
 
-    if (!response.ok) {
-      throw new Error(`Slack notification failed: ${response.status}`);
-    }
-  }
+	async sendSignedWebhook(url: string, payload: unknown) {
+		const body = JSON.stringify(payload);
+		const signature = await this.sign(body, this.env.WEBHOOK_SECRET);
 
-
-  async sendSignedWebhook(url: string, payload: unknown) {
-    const body = JSON.stringify(payload);
-    const signature = await this.sign(body, this.env.WEBHOOK_SECRET);
-
-
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Signature": signature,
-      },
-      body,
-    });
-  }
+		await fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-Signature": signature,
+			},
+			body,
+		});
+	}
 }
 ```
 
@@ -1171,26 +975,17 @@ export class NotificationAgent extends Agent {
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-5813)
-* [  TypeScript ](#tab-panel-5814)
-
-**JavaScript**
-
 ```js
 // Store secrets securely
 // wrangler secret put GITHUB_WEBHOOK_SECRET
-
 
 // Access in agent
 const secret = this.env.GITHUB_WEBHOOK_SECRET;
 ```
 
-**TypeScript**
-
 ```ts
 // Store secrets securely
 // wrangler secret put GITHUB_WEBHOOK_SECRET
-
 
 // Access in agent
 const secret = this.env.GITHUB_WEBHOOK_SECRET;
@@ -1210,13 +1005,26 @@ const secret = this.env.GITHUB_WEBHOOK_SECRET;
 
 ## Next steps
 
-[ Queue tasks ](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/) Background task processing.
+### [ Queue tasks ](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
 
-[ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/) Handle inbound emails in your agent.
+ Background task processing.
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
+### [ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/)
+
+ Handle inbound emails in your agent.
+
+### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+
+ Complete API reference for the Agents SDK.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/#page","headline":"Webhooks · Cloudflare Agents docs","description":"Receive and route webhook events from external services to dedicated Cloudflare Agent instances.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/webhooks/","name":"Webhooks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/#page","headline":"Webhooks · Cloudflare Agents docs","description":"Receive and route webhook events from external services to dedicated Cloudflare Agent instances.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

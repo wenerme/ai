@@ -1,16 +1,18 @@
 ---
-title: Send Emails With Resend
 description: This tutorial explains how to send emails from Cloudflare Workers using Resend.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Send Emails With Resend
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Send Emails With Resend
 
-# Send Emails With Resend
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to send transactional emails from Workers using [Resend ↗](https://resend.com/). At the end of this tutorial, you’ll be able to:
 
@@ -44,13 +46,11 @@ npm create cloudflare@latest email-with-resend -- --type=hello-world --ts=false 
 
 This creates a simple hello-world Worker having the following content:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -85,22 +85,19 @@ In your Worker, import and use the Resend library like so:
 ```jsx
 import { Resend } from "resend";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const resend = new Resend("your_resend_api_key");
+	async fetch(request, env, ctx) {
+		const resend = new Resend("your_resend_api_key");
 
+		const { data, error } = await resend.emails.send({
+			from: "hello@example.com",
+			to: "someone@example.com",
+			subject: "Hello World",
+			html: "<p>Hello from Workers</p>",
+		});
 
-    const { data, error } = await resend.emails.send({
-      from: "hello@example.com",
-      to: "someone@example.com",
-      subject: "Hello World",
-      html: "<p>Hello from Workers</p>",
-    });
-
-
-    return Response.json({ data, error });
-  },
+		return Response.json({ data, error });
+	},
 };
 ```
 
@@ -124,8 +121,6 @@ RESEND_API_KEY=your_resend_api_key
 
 Also ensure the secret is added to your deployed worker by running:
 
-**Add secret to deployed Worker**
-
 ```sh
 npx wrangler secret put RESEND_API_KEY
 ```
@@ -135,22 +130,19 @@ The added secret can be accessed on via the `env` parameter passed to your Worke
 ```jsx
 import { Resend } from "resend";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const resend = new Resend(env.RESEND_API_KEY);
+	async fetch(request, env, ctx) {
+		const resend = new Resend(env.RESEND_API_KEY);
 
+		const { data, error } = await resend.emails.send({
+			from: "hello@example.com",
+			to: "someone@example.com",
+			subject: "Hello World",
+			html: "<p>Hello from Workers</p>",
+		});
 
-    const { data, error } = await resend.emails.send({
-      from: "hello@example.com",
-      to: "someone@example.com",
-      subject: "Hello World",
-      html: "<p>Hello from Workers</p>",
-    });
-
-
-    return Response.json({ data, error });
-  },
+		return Response.json({ data, error });
+	},
 };
 ```
 
@@ -162,7 +154,14 @@ And finally, deploy this update with `npm run deploy`.
 * [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
 * [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/#page","headline":"Send Emails With Resend · Cloudflare Workers docs","description":"This tutorial explains how to send emails from Cloudflare Workers using Resend.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/send-emails-with-resend/","name":"Send Emails With Resend"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/#page","headline":"Send Emails With Resend · Cloudflare Workers docs","description":"This tutorial explains how to send emails from Cloudflare Workers using Resend.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

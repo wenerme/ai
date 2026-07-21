@@ -1,68 +1,55 @@
 ---
-title: Durable Object Base Class
 description: API reference for the DurableObject abstract base class and its handler methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object Base Class
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object Base Class
 
-# Durable Object Base Class
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-8870)
-* [  TypeScript ](#tab-panel-8871)
-* [  Python ](#tab-panel-8872)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		super(ctx, env);
+	}
 
-
-  async fetch(request) {
-    return new Response("Hello, World!");
-  }
+	async fetch(request) {
+		return new Response("Hello, World!");
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject {
-  constructor(ctx: DurableObjectState, env: Env) {
-    super(ctx, env);
-  }
-
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+	}
 
     async fetch(request: Request) {
-      return new Response("Hello, World!");
+    	return new Response("Hello, World!");
     }
-
 
 }
 ```
-
-**Python**
 
 ```python
 from workers import DurableObject, Response
 
-
 class MyDurableObject(DurableObject):
-  def __init__(self, ctx, env):
-    super().__init__(ctx, env)
+	def __init__(self, ctx, env):
+		super().__init__(ctx, env)
 
-
-  async def fetch(self, request):
-    return Response("Hello, World!")
+	async def fetch(self, request):
+		return Response("Hello, World!")
 ```
 
 ## Methods
@@ -82,44 +69,33 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8873)
-* [  TypeScript ](#tab-panel-8874)
-* [  Python ](#tab-panel-8875)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  async fetch(request) {
-    const url = new URL(request.url);
-    if (url.pathname === "/hello") {
-      return new Response("Hello, World!");
-    }
-    return new Response("Not found", { status: 404 });
-  }
+	async fetch(request) {
+		const url = new URL(request.url);
+		if (url.pathname === "/hello") {
+			return new Response("Hello, World!");
+		}
+		return new Response("Not found", { status: 404 });
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url);
-    if (url.pathname === "/hello") {
-      return new Response("Hello, World!");
-    }
-    return new Response("Not found", { status: 404 });
-  }
+	async fetch(request: Request): Promise<Response> {
+		const url = new URL(request.url);
+		if (url.pathname === "/hello") {
+			return new Response("Hello, World!");
+		}
+		return new Response("Not found", { status: 404 });
+	}
 }
 ```
-
-**Python**
 
 ```python
 from workers import DurableObject, Response
 from urllib.parse import urlparse
-
 
 class MyDurableObject(DurableObject):
     async def fetch(self, request):
@@ -149,41 +125,30 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8876)
-* [  TypeScript ](#tab-panel-8877)
-* [  Python ](#tab-panel-8878)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  async alarm(alarmInfo) {
-    if (alarmInfo?.isRetry) {
-      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
-    }
-    await this.processScheduledTask();
-  }
+	async alarm(alarmInfo) {
+		if (alarmInfo?.isRetry) {
+			console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
+		}
+		await this.processScheduledTask();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  async alarm(alarmInfo?: AlarmInvocationInfo): Promise<void> {
-    if (alarmInfo?.isRetry) {
-      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
-    }
-    await this.processScheduledTask();
-  }
+	async alarm(alarmInfo?: AlarmInvocationInfo): Promise<void> {
+		if (alarmInfo?.isRetry) {
+			console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
+		}
+		await this.processScheduledTask();
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     async def alarm(self, alarm_info=None):
@@ -208,43 +173,32 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8879)
-* [  TypeScript ](#tab-panel-8880)
-* [  Python ](#tab-panel-8881)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  async webSocketMessage(ws, message) {
-    if (typeof message === "string") {
-      ws.send(`Received: ${message}`);
-    } else {
-      ws.send(`Received ${message.byteLength} bytes`);
-    }
-  }
+	async webSocketMessage(ws, message) {
+		if (typeof message === "string") {
+			ws.send(`Received: ${message}`);
+		} else {
+			ws.send(`Received ${message.byteLength} bytes`);
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
-    if (typeof message === "string") {
-      ws.send(`Received: ${message}`);
-    } else {
-      ws.send(`Received ${message.byteLength} bytes`);
-    }
-  }
+	async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
+		if (typeof message === "string") {
+			ws.send(`Received: ${message}`);
+		} else {
+			ws.send(`Received ${message.byteLength} bytes`);
+		}
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     async def webSocketMessage(self, ws, message):
@@ -274,43 +228,32 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8885)
-* [  TypeScript ](#tab-panel-8886)
-* [  Python ](#tab-panel-8887)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  async webSocketClose(ws, code, reason, wasClean) {
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
-    // the runtime has already completed the close handshake.
-    // On older compat dates, call ws.close(code, reason) here.
-    ws.close(code, reason);
-    console.log(`WebSocket closed: code=${code}, reason=${reason}`);
-  }
+	async webSocketClose(ws, code, reason, wasClean) {
+		// With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
+		// the runtime has already completed the close handshake.
+		// On older compat dates, call ws.close(code, reason) here.
+		ws.close(code, reason);
+		console.log(`WebSocket closed: code=${code}, reason=${reason}`);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
-    // the runtime has already completed the close handshake.
-    // On older compat dates, call ws.close(code, reason) here.
-    ws.close(code, reason);
-    console.log(`WebSocket closed: code=${code}, reason=${reason}`);
-  }
+	async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
+		// With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
+		// the runtime has already completed the close handshake.
+		// On older compat dates, call ws.close(code, reason) here.
+		ws.close(code, reason);
+		console.log(`WebSocket closed: code=${code}, reason=${reason}`);
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     async def webSocketClose(self, ws, code, reason, was_clean):
@@ -333,37 +276,26 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8882)
-* [  TypeScript ](#tab-panel-8883)
-* [  Python ](#tab-panel-8884)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  async webSocketError(ws, error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error(`WebSocket error: ${message}`);
-  }
+	async webSocketError(ws, error) {
+		const message = error instanceof Error ? error.message : String(error);
+		console.error(`WebSocket error: ${message}`);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  async webSocketError(ws: WebSocket, error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error(`WebSocket error: ${message}`);
-  }
+	async webSocketError(ws: WebSocket, error: unknown) {
+		const message = error instanceof Error ? error.message : String(error);
+		console.error(`WebSocket error: ${message}`);
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     async def webSocketError(self, ws, error):
@@ -386,7 +318,14 @@ class MyDurableObject(DurableObject):
 * [Alarms API](https://developers.cloudflare.com/durable-objects/api/alarms/) for scheduling future work.
 * [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) for type-safe method calls.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class · Cloudflare Durable Objects docs","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/base/","name":"Durable Object Base Class"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class · Cloudflare Durable Objects docs","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

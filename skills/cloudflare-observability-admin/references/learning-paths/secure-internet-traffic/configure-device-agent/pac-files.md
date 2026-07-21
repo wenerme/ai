@@ -1,16 +1,18 @@
 ---
-title: Determine when to use PAC files
 description: Evaluate PAC files for proxy configuration.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Determine when to use PAC files
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Determine when to use PAC files
 
-# Determine when to use PAC files
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -58,7 +60,14 @@ For detailed instructions on creating a PAC file, refer to [Enable Gateway proxy
 * Do not include standard HTTP caching within your PAC file. Cached contents can make PAC instructions outdated, and thus lead to bad HTTP routing.
 * PAC files cannot be fetched through a proxy.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files · Cloudflare Learning Paths","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","name":"Determine when to use PAC files"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files · Cloudflare Learning Paths","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

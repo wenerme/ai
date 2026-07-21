@@ -166,7 +166,11 @@ const MathReasoning = z.object({
 const response = await openai.responses.parse({
   model: "gpt-5.6",
   input: [
-    { role: "system", content: "You are a helpful math tutor. Guide the user through the solution step by step." },
+    {
+      role: "system",
+      content:
+        "You are a helpful math tutor. Guide the user through the solution step by step.",
+    },
     { role: "user", content: "how can I solve 8x + 7 = -23" },
   ],
   text: {

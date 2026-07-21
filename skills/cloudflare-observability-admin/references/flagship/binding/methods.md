@@ -1,16 +1,18 @@
 ---
-title: Methods
 description: Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Methods
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Methods
 
-# Methods
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/binding/methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a `Promise`. For known evaluation failures, typed methods return the `defaultValue` you provide.
 
@@ -22,8 +24,6 @@ Returns the raw flag value without type checking. Use this method when the flag 
 
 If you provide `defaultValue`, `get()` returns that value for known evaluation failures, such as a missing flag. If you omit `defaultValue`, known evaluation failures are thrown.
 
-**TypeScript**
-
 ```ts
 get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext): Promise<unknown>
 ```
@@ -34,19 +34,15 @@ get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext
 | defaultValue | unknown                   | No       | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const value = await env.FLAGS.get("checkout-flow", "v1", {
-  userId: "user-42",
+	userId: "user-42",
 });
 ```
 
 ## `getBooleanValue()`
 
 Returns the flag value as a `boolean`.
-
-**TypeScript**
 
 ```ts
 getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<boolean>
@@ -58,19 +54,15 @@ getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvalua
 | defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {
-  userId: "user-42",
+	userId: "user-42",
 });
 ```
 
 ## `getStringValue()`
 
 Returns the flag value as a `string`.
-
-**TypeScript**
 
 ```ts
 getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<string>
@@ -82,20 +74,16 @@ getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluati
 | defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {
-  userId: "user-42",
-  country: "US",
+	userId: "user-42",
+	country: "US",
 });
 ```
 
 ## `getNumberValue()`
 
 Returns the flag value as a `number`.
-
-**TypeScript**
 
 ```ts
 getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<number>
@@ -107,19 +95,15 @@ getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluati
 | defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {
-  plan: "enterprise",
+	plan: "enterprise",
 });
 ```
 
 ## `getObjectValue()`
 
 Returns the flag value as a typed object. Use the generic parameter `T` to specify the expected shape.
-
-**TypeScript**
 
 ```ts
 getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<T>
@@ -131,27 +115,22 @@ getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: Fla
 | defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 interface ThemeConfig {
-  primaryColor: string;
-  fontSize: number;
+	primaryColor: string;
+	fontSize: number;
 }
 
-
 const theme = await env.FLAGS.getObjectValue<ThemeConfig>(
-  "theme-config",
-  { primaryColor: "#000", fontSize: 14 },
-  { userId: "user-42" },
+	"theme-config",
+	{ primaryColor: "#000", fontSize: 14 },
+	{ userId: "user-42" },
 );
 ```
 
 ## `getBooleanDetails()`
 
 Returns the flag value as a `boolean` with evaluation metadata.
-
-**TypeScript**
 
 ```ts
 getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<boolean>>
@@ -163,11 +142,9 @@ getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEval
 | defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {
-  userId: "user-42",
+	userId: "user-42",
 });
 console.log(details.value); // true
 console.log(details.reason); // "TARGETING_MATCH"
@@ -176,8 +153,6 @@ console.log(details.reason); // "TARGETING_MATCH"
 ## `getStringDetails()`
 
 Returns the flag value as a `string` with evaluation metadata.
-
-**TypeScript**
 
 ```ts
 getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<string>>
@@ -189,11 +164,9 @@ getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvalua
 | defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {
-  userId: "user-42",
+	userId: "user-42",
 });
 console.log(details.value); // "v2"
 console.log(details.variant); // "new"
@@ -203,8 +176,6 @@ console.log(details.reason); // "TARGETING_MATCH"
 ## `getNumberDetails()`
 
 Returns the flag value as a `number` with evaluation metadata.
-
-**TypeScript**
 
 ```ts
 getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<number>>
@@ -216,11 +187,9 @@ getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvalua
 | defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 const details = await env.FLAGS.getNumberDetails("max-retries", 3, {
-  plan: "enterprise",
+	plan: "enterprise",
 });
 console.log(details.value); // 5
 console.log(details.reason); // "TARGETING_MATCH"
@@ -229,8 +198,6 @@ console.log(details.reason); // "TARGETING_MATCH"
 ## `getObjectDetails()`
 
 Returns the flag value as a typed object with evaluation metadata. Use the generic parameter `T` to specify the expected shape.
-
-**TypeScript**
 
 ```ts
 getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<T>>
@@ -242,19 +209,16 @@ getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: F
 | defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-**TypeScript**
-
 ```ts
 interface ThemeConfig {
-  primaryColor: string;
-  fontSize: number;
+	primaryColor: string;
+	fontSize: number;
 }
 
-
 const details = await env.FLAGS.getObjectDetails<ThemeConfig>(
-  "theme-config",
-  { primaryColor: "#000", fontSize: 14 },
-  { userId: "user-42" },
+	"theme-config",
+	{ primaryColor: "#000", fontSize: 14 },
+	{ userId: "user-42" },
 );
 console.log(details.value); // { primaryColor: "#0051FF", fontSize: 16 }
 console.log(details.variant); // "brand-refresh"
@@ -268,8 +232,6 @@ Typed evaluation methods return the `defaultValue` you provided for known evalua
 
 If you call a typed method on a flag with a different type (for example, `getBooleanValue` on a string flag), the method returns the default value. The `*Details` methods set `errorCode` to `"TYPE_MISMATCH"`.
 
-**TypeScript**
-
 ```ts
 // Flag "checkout-flow" is a string flag, but you call getBooleanDetails.
 const details = await env.FLAGS.getBooleanDetails("checkout-flow", false);
@@ -281,12 +243,10 @@ console.log(details.errorCode); // "TYPE_MISMATCH"
 
 If evaluation fails for another reason, the method returns the default value. The `*Details` methods include an `errorCode` such as `"FLAG_NOT_FOUND"`, `"INVALID_CONTEXT"`, `"PARSE_ERROR"`, or `"GENERAL"`.
 
-**TypeScript**
-
 ```ts
 const details = await env.FLAGS.getStringDetails(
-  "nonexistent-flag",
-  "fallback",
+	"nonexistent-flag",
+	"fallback",
 );
 console.log(details.value); // "fallback"
 console.log(details.errorCode); // "FLAG_NOT_FOUND"
@@ -302,7 +262,14 @@ The following table summarizes the parameters shared across all evaluation metho
 | defaultValue | varies                    | Yes (except get) | The fallback value returned if evaluation fails or the flag is not found.                     |
 | context      | FlagshipEvaluationContext | No               | Key-value attributes for targeting rules (for example, { userId: "user-42", country: "US" }). |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/methods/#page","headline":"Methods · Cloudflare Flagship docs","description":"Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.","url":"https://developers.cloudflare.com/flagship/binding/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/binding/","name":"Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/binding/methods/","name":"Methods"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/methods/#page","headline":"Methods · Cloudflare Flagship docs","description":"Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.","url":"https://developers.cloudflare.com/flagship/binding/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

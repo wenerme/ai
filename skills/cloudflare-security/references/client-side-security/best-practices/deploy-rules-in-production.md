@@ -1,16 +1,18 @@
 ---
-title: Deploy content security rules in production
 description: Safe practices for deploying and updating content security rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Deploy content security rules in production
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy content security rules in production
 
-# Deploy content security rules in production
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -45,7 +47,7 @@ Complete the following checklist before switching a content security rule from _
 * Configured [alerts](https://developers.cloudflare.com/client-side-security/alerts/) for rule violations.
 * There is a documented rollback procedure that is ready to execute.
 
-Warning
+Caution
 
 Switching a rule from _Log_ to _Allow_ without completing this checklist may block resources required by your application. This will directly affect your end users.
 
@@ -58,7 +60,14 @@ If a rule change causes unexpected violations or blocks legitimate resources:
 3. Update the rule to include any missing resources.
 4. Repeat the validation process before switching back to _Allow_ (blocks resources not present in the allowlist).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/#page","headline":"Deploy content security rules in production · Client-side security docs","description":"Safe practices for deploying and updating content security rules.","url":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/best-practices/deploy-rules-in-production/","name":"Deploy content security rules in production"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/#page","headline":"Deploy content security rules in production · Client-side security docs","description":"Safe practices for deploying and updating content security rules.","url":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
 ```

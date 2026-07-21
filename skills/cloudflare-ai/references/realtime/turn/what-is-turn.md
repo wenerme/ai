@@ -1,16 +1,18 @@
 ---
-title: What is TURN?
 description: TURN relays traffic through NATs and firewalls to enable peer-to-peer WebRTC communication.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: What is TURN?
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  What is TURN?
 
-# What is TURN?
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What is TURN?
 
@@ -60,7 +62,14 @@ TURN is often valuable in scenarios where direct peer-to-peer communication is i
 6. **Online Gaming**: TURN can help online games establish peer-to-peer connections between players behind different types of NATs.
 7. **IoT Device Communication**: Internet of Things (IoT) devices can use TURN to communicate when they're behind NATs or firewalls.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/what-is-turn/#page","headline":"What is TURN? · Cloudflare Realtime docs","description":"TURN relays traffic through NATs and firewalls to enable peer-to-peer WebRTC communication.","url":"https://developers.cloudflare.com/realtime/turn/what-is-turn/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/what-is-turn/","name":"What is TURN?"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/what-is-turn/#page","headline":"What is TURN? · Cloudflare Realtime docs","description":"TURN relays traffic through NATs and firewalls to enable peer-to-peer WebRTC communication.","url":"https://developers.cloudflare.com/realtime/turn/what-is-turn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

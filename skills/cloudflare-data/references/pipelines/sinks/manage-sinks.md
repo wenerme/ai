@@ -1,16 +1,18 @@
 ---
-title: Manage sinks
 description: Create, configure, and manage sinks for data storage
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Manage sinks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage sinks
 
-# Manage sinks
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/sinks/manage-sinks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to:
 
@@ -25,7 +27,7 @@ Sinks are made available to pipelines as SQL tables using the sink name (e.g., `
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **Pipelines** page.
-[ Go to **Pipelines** ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline** to launch the pipeline creation wizard.
 3. Complete the wizard to create your sink along with the associated stream and pipeline.
 
@@ -84,7 +86,7 @@ To delete a sink, run the [pipelines sinks delete](https://developers.cloudflare
 npx wrangler pipelines sinks delete <SINK_ID>
 ```
 
-Warning
+Caution
 
 Deleting a sink stops all data writes to that destination.
 
@@ -93,7 +95,14 @@ Deleting a sink stops all data writes to that destination.
 * Sinks cannot be modified after creation. To change sink configuration, you must delete and recreate the sink.
 * The R2 Data Catalog Sink does not currently support writing to R2 buckets into a different jurisdiction.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/#page","headline":"Manage sinks · Cloudflare Pipelines Docs","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sinks/","name":"Sinks"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sinks/manage-sinks/","name":"Manage sinks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/#page","headline":"Manage sinks · Cloudflare Pipelines Docs","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Advanced setups
 description: Learn how to use Workers Builds with more advanced setups
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Advanced setups
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Advanced setups
 
-# Advanced setups
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Monorepos
 
@@ -51,23 +53,19 @@ Set the root directory of each Worker to where its Wrangler configuration file i
 
 When a new commit is made to `ecommerce-monorepo`, a build and deploy will be triggered for each of the Workers if the change is within its included watch paths using the configured commands for that Worker.
 
-* Directoryecommerce-monorepo/
-  * Directoryworkers/
-    * Directoryproduct-service/
-      * Directorysrc/
-        * …
+* ecommerce-monorepo/
+  * workers/
+    * product-service/
+      * src/
       * wrangler.jsonc
-    * Directoryorder-service/
-      * Directorysrc/
-        * …
+    * order-service/
+      * src/
       * wrangler.jsonc
-    * Directorynotification-service/
-      * Directorysrc/
-        * …
+    * notification-service/
+      * src/
       * wrangler.jsonc
-  * Directorypackages/
-    * Directoryschema/
-      * …
+  * packages/
+    * schema/
   * README.md
 
 ## Wrangler Environments
@@ -87,7 +85,14 @@ Imagine you have a Worker named `my-worker`, and you want to set up two environm
 
 In your Cloudflare Dashboard, you should find the two Workers `my-worker-staging` and `my-worker-production`. Then, connect the Git repository for the Worker, `my-worker`, to both of the environment Workers. In the build configurations of each environment Worker, edit the deploy commands to be `npx wrangler deploy --env staging` and `npx wrangler deploy --env production` and the non-production branch deploy commands to be `npx wrangler versions upload --env staging` and `npx wrangler versions upload --env production` respectively.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#page","headline":"Advanced setups · Cloudflare Workers docs","description":"Learn how to use Workers Builds with more advanced setups","url":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/advanced-setups/","name":"Advanced setups"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#page","headline":"Advanced setups · Cloudflare Workers docs","description":"Learn how to use Workers Builds with more advanced setups","url":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

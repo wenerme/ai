@@ -1,16 +1,18 @@
 ---
-title: Concepts
 description: Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Concepts
 
-# Concepts
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Flagship organizes feature flags into apps. You define flags with variants and targeting rules, then evaluate them within Cloudflare's global network.
 
@@ -73,12 +75,10 @@ The evaluation context is a set of key-value attributes that describe the curren
 
 You pass the context as the third argument to evaluation methods on the binding:
 
-**TypeScript**
-
 ```ts
 const value = await env.FLAGS.getBooleanValue("new-checkout", false, {
-  userId: "user-42",
-  country: "US",
+	userId: "user-42",
+	country: "US",
 });
 ```
 
@@ -92,7 +92,14 @@ Avoid sending sensitive data in evaluation context. Only include attributes need
 
 After you change a flag, it can take up to 30 seconds for the updated value to reflect globally. During this propagation window, some evaluations may still return the previous flag value.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts · Cloudflare Flagship docs","description":"Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/concepts/","name":"Concepts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts · Cloudflare Flagship docs","description":"Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

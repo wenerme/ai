@@ -1,16 +1,18 @@
 ---
-title: SameSite cookie interaction with Cloudflare
 description: How SameSite cookie attributes interact with Cloudflare challenges.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SameSite cookie interaction with Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SameSite cookie interaction with Cloudflare
 
-# SameSite cookie interaction with Cloudflare
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Google Chrome enforces SameSite cookie behavior ↗](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
 
@@ -101,7 +103,14 @@ The `Partitioned` attribute only takes effect on cookies that are also set with 
 * [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
 * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare · Cloudflare Web Application Firewall (WAF) docs","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/troubleshooting/samesite-cookie-interaction/","name":"SameSite cookie interaction with Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare · Cloudflare Web Application Firewall (WAF) docs","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
 ```

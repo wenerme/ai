@@ -1,16 +1,18 @@
 ---
-title: AsyncLocalStorage
 description: Use the Node.js AsyncLocalStorage API in Cloudflare Workers to maintain context across asynchronous operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: AsyncLocalStorage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AsyncLocalStorage
 
-# AsyncLocalStorage
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -22,11 +24,8 @@ Cloudflare Workers provides an implementation of a subset of the Node.js [AsyncL
 
 ## Constructor
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from "node:async_hooks";
-
 
 const asyncLocalStorage = new AsyncLocalStorage();
 ```
@@ -59,15 +58,11 @@ const asyncLocalStorage = new AsyncLocalStorage();
 
 ### Fetch Listener
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from 'node:async_hooks';
 
-
 const asyncLocalStorage = new AsyncLocalStorage();
 let idSeq = 0;
-
 
 export default {
   async fetch(req) {
@@ -84,15 +79,11 @@ export default {
 
 The API supports multiple `AsyncLocalStorage` instances to be used concurrently.
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from 'node:async_hooks';
 
-
 const als1 = new AsyncLocalStorage();
 const als2 = new AsyncLocalStorage();
-
 
 export default {
   async fetch(req) {
@@ -111,79 +102,62 @@ export default {
 
 When a `Promise` rejects and the rejection is unhandled, the async context propagates to the `'unhandledrejection'` event handler:
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from "node:async_hooks";
-
 
 const asyncLocalStorage = new AsyncLocalStorage();
 let idSeq = 0;
 
-
 addEventListener("unhandledrejection", (event) => {
-  console.log(asyncLocalStorage.getStore(), "unhandled rejection!");
+	console.log(asyncLocalStorage.getStore(), "unhandled rejection!");
 });
 
-
 export default {
-  async fetch(req) {
-    return asyncLocalStorage.run(idSeq++, () => {
-      // Cause an unhandled rejection!
-      throw new Error("boom");
-    });
-  },
+	async fetch(req) {
+		return asyncLocalStorage.run(idSeq++, () => {
+			// Cause an unhandled rejection!
+			throw new Error("boom");
+		});
+	},
 };
 ```
 
 ### `AsyncLocalStorage.bind()` and `AsyncLocalStorage.snapshot()`
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from "node:async_hooks";
 
-
 const als = new AsyncLocalStorage();
 
-
 function foo() {
-  console.log(als.getStore());
+	console.log(als.getStore());
 }
 function bar() {
-  console.log(als.getStore());
+	console.log(als.getStore());
 }
-
 
 const oneFoo = als.run(123, () => AsyncLocalStorage.bind(foo));
 oneFoo(); // prints 123
-
 
 const snapshot = als.run("abc", () => AsyncLocalStorage.snapshot());
 snapshot(foo); // prints 'abc'
 snapshot(bar); // prints 'abc'
 ```
 
-**JavaScript**
-
 ```js
 import { AsyncLocalStorage } from "node:async_hooks";
 
-
 const als = new AsyncLocalStorage();
 
-
 class MyResource {
-  #runInAsyncScope = AsyncLocalStorage.snapshot();
+	#runInAsyncScope = AsyncLocalStorage.snapshot();
 
-
-  doSomething() {
-    this.#runInAsyncScope(() => {
-      return als.getStore();
-    });
-  }
+	doSomething() {
+		this.#runInAsyncScope(() => {
+			return als.getStore();
+		});
+	}
 }
-
 
 const myResource = als.run(123, () => new MyResource());
 console.log(myResource.doSomething()); // prints 123
@@ -197,29 +171,23 @@ Note that `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind()` provide 
 
 ### Constructor
 
-**JavaScript**
-
 ```js
 import { AsyncResource, AsyncLocalStorage } from "node:async_hooks";
 
-
 const als = new AsyncLocalStorage();
 
-
 class MyResource extends AsyncResource {
-  constructor() {
-    // The type string is required by Node.js but unused in Workers.
-    super("MyResource");
-  }
+	constructor() {
+		// The type string is required by Node.js but unused in Workers.
+		super("MyResource");
+	}
 
-
-  doSomething() {
-    this.runInAsyncScope(() => {
-      return als.getStore();
-    });
-  }
+	doSomething() {
+		this.runInAsyncScope(() => {
+			return als.getStore();
+		});
+	}
 }
-
 
 const myResource = als.run(123, () => new MyResource());
 console.log(myResource.doSomething()); // prints 123
@@ -245,7 +213,14 @@ console.log(myResource.doSomething()); // prints 123
 * Workers does not implement the ability to create an `AsyncResource` with an explicitly identified trigger context as allowed by Node.js. This means that a new `AsyncResource` will always be bound to the async context in which it was created.
 * Thenables (non-Promise objects that expose a `then()` method) are not fully supported when using `AsyncLocalStorage`. When working with thenables, instead use [AsyncLocalStorage.snapshot() ↗](https://nodejs.org/api/async%5Fcontext.html#static-method-asynclocalstoragesnapshot) to capture a snapshot of the current context.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/#page","headline":"AsyncLocalStorage · Cloudflare Workers docs","description":"Use the Node.js AsyncLocalStorage API in Cloudflare Workers to maintain context across asynchronous operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/asynclocalstorage/","name":"AsyncLocalStorage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/#page","headline":"AsyncLocalStorage · Cloudflare Workers docs","description":"Use the Node.js AsyncLocalStorage API in Cloudflare Workers to maintain context across asynchronous operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

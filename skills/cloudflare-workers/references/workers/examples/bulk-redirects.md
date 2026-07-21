@@ -1,95 +1,78 @@
 ---
-title: Bulk redirects
 description: Redirect requests to certain URLs based on a mapped object to the request's URL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bulk redirects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Bulk redirects
+#  Bulk redirects
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-12467)
-* [  TypeScript ](#tab-panel-12468)
-* [  Python ](#tab-panel-12469)
-* [  Hono ](#tab-panel-12470)
-
-**JavaScript**
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/bulk-redirects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ```js
 export default {
-  async fetch(request) {
-    const externalHostname = "examples.cloudflareworkers.com";
+	async fetch(request) {
+		const externalHostname = "examples.cloudflareworkers.com";
 
+		const redirectMap = new Map([
+			["/bulk1", "https://" + externalHostname + "/redirect2"],
+			["/bulk2", "https://" + externalHostname + "/redirect3"],
+			["/bulk3", "https://" + externalHostname + "/redirect4"],
+			["/bulk4", "https://google.com"],
+		]);
 
-    const redirectMap = new Map([
-      ["/bulk1", "https://" + externalHostname + "/redirect2"],
-      ["/bulk2", "https://" + externalHostname + "/redirect3"],
-      ["/bulk3", "https://" + externalHostname + "/redirect4"],
-      ["/bulk4", "https://google.com"],
-    ]);
+		const requestURL = new URL(request.url);
+		const path = requestURL.pathname;
+		const location = redirectMap.get(path);
 
-
-    const requestURL = new URL(request.url);
-    const path = requestURL.pathname;
-    const location = redirectMap.get(path);
-
-
-    if (location) {
-      return Response.redirect(location, 301);
-    }
-    // If request not in map, return the original request
-    return fetch(request);
-  },
+		if (location) {
+			return Response.redirect(location, 301);
+		}
+		// If request not in map, return the original request
+		return fetch(request);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const externalHostname = "examples.cloudflareworkers.com";
+	async fetch(request): Promise<Response> {
+		const externalHostname = "examples.cloudflareworkers.com";
 
+		const redirectMap = new Map([
+			["/bulk1", "https://" + externalHostname + "/redirect2"],
+			["/bulk2", "https://" + externalHostname + "/redirect3"],
+			["/bulk3", "https://" + externalHostname + "/redirect4"],
+			["/bulk4", "https://google.com"],
+		]);
 
-    const redirectMap = new Map([
-      ["/bulk1", "https://" + externalHostname + "/redirect2"],
-      ["/bulk2", "https://" + externalHostname + "/redirect3"],
-      ["/bulk3", "https://" + externalHostname + "/redirect4"],
-      ["/bulk4", "https://google.com"],
-    ]);
+		const requestURL = new URL(request.url);
+		const path = requestURL.pathname;
+		const location = redirectMap.get(path);
 
-
-    const requestURL = new URL(request.url);
-    const path = requestURL.pathname;
-    const location = redirectMap.get(path);
-
-
-    if (location) {
-      return Response.redirect(location, 301);
-    }
-    // If request not in map, return the original request
-    return fetch(request);
-  },
+		if (location) {
+			return Response.redirect(location, 301);
+		}
+		// If request not in map, return the original request
+		return fetch(request);
+	},
 } satisfies ExportedHandler;
 ```
-
-**Python**
 
 ```py
 from workers import WorkerEntrypoint, Response, fetch
 from urllib.parse import urlparse
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         external_hostname = "examples.cloudflareworkers.com"
-
 
         redirect_map = {
           "/bulk1": "https://" + external_hostname + "/redirect2",
@@ -98,68 +81,62 @@ class Default(WorkerEntrypoint):
           "/bulk4": "https://google.com",
           }
 
-
         url = urlparse(request.url)
         location = redirect_map.get(url.path, None)
 
-
         if location:
             return Response.redirect(location, 301)
-
 
         # If request not in map, return the original request
         return fetch(request)
 ```
 
-**TypeScript**
-
 ```ts
 import { Hono } from "hono";
 
-
 const app = new Hono();
-
 
 // Configure your redirects
 const externalHostname = "examples.cloudflareworkers.com";
 
-
 const redirectMap = new Map([
-  ["/bulk1", `https://${externalHostname}/redirect2`],
-  ["/bulk2", `https://${externalHostname}/redirect3`],
-  ["/bulk3", `https://${externalHostname}/redirect4`],
-  ["/bulk4", "https://google.com"],
+	["/bulk1", `https://${externalHostname}/redirect2`],
+	["/bulk2", `https://${externalHostname}/redirect3`],
+	["/bulk3", `https://${externalHostname}/redirect4`],
+	["/bulk4", "https://google.com"],
 ]);
-
 
 // Middleware to handle redirects
 app.use("*", async (c, next) => {
-  const path = c.req.path;
-  const location = redirectMap.get(path);
+	const path = c.req.path;
+	const location = redirectMap.get(path);
 
+	if (location) {
+		// If path is in our redirect map, perform the redirect
+		return c.redirect(location, 301);
+	}
 
-  if (location) {
-    // If path is in our redirect map, perform the redirect
-    return c.redirect(location, 301);
-  }
-
-
-  // Otherwise, continue to the next handler
-  await next();
+	// Otherwise, continue to the next handler
+	await next();
 });
-
 
 // Default handler for requests that don't match any redirects
 app.all("*", async (c) => {
-  // Pass through to origin
-  return fetch(c.req.raw);
+	// Pass through to origin
+	return fetch(c.req.raw);
 });
-
 
 export default app;
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/bulk-redirects/#page","headline":"Bulk redirects · Cloudflare Workers docs","description":"Redirect requests to certain URLs based on a mapped object to the request's URL.","url":"https://developers.cloudflare.com/workers/examples/bulk-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Redirects","JavaScript","TypeScript","Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-redirects/","name":"Bulk redirects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/bulk-redirects/#page","headline":"Bulk redirects · Cloudflare Workers docs","description":"Redirect requests to certain URLs based on a mapped object to the request's URL.","url":"https://developers.cloudflare.com/workers/examples/bulk-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Redirects","JavaScript","TypeScript","Python"]}
 ```

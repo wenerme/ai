@@ -1,16 +1,18 @@
 ---
-title: Support for IPv6-only networks
 description: Use 1.1.1.1 on IPv6-only networks.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Support for IPv6-only networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Support for IPv6-only networks
 
-# Support for IPv6-only networks
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 While network infrastructure is shifting towards IPv6-only networks, providers still need to support IPv4 addresses. Dual-stack networks (networks in which all nodes have both IPv4 and IPv6 connectivity capabilities) can understand both IPv4 and IPv6 packets. However, not all networks are dual-stack, and IPv6-only networks need a translation mechanism to reach IPv4 resources.
 
@@ -44,7 +46,14 @@ After your configuration, visit an IPv4-only address to check if you can reach i
 
 Visit [http://test-ipv6.com/ ↗](http://test-ipv6.com/) to test if it can detect your IPv6 address. If you receive a `10/10`, your IPv6 is configured correctly.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks/#page","headline":"Support for IPv6-only networks | Cloudflare Docs","description":"Use 1.1.1.1 on IPv6-only networks.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/infrastructure/ipv6-networks/","name":"Support for IPv6-only networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks/#page","headline":"Support for IPv6-only networks | Cloudflare Docs","description":"Use 1.1.1.1 on IPv6-only networks.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 ```

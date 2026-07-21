@@ -1,16 +1,18 @@
 ---
-title: Image Management
 description: Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Image Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Image Management
 
-# Image Management
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/platform-details/image-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Push images during `wrangler deploy`
 
@@ -18,22 +20,15 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-8539)
-* [  wrangler.toml ](#tab-panel-8540)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "image": "./Dockerfile"
-    }
-  ]
+	"containers": [
+		{
+			"image": "./Dockerfile"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -64,22 +59,15 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-8541)
-* [  wrangler.toml ](#tab-panel-8542)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
-    }
-  ]
+	"containers": [
+		{
+			"image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -155,27 +143,27 @@ Public ECR images are not supported. To generate the required credentials, creat
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": ["ecr:GetAuthorizationToken"],
-      "Effect": "Allow",
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage"
-      ],
-      // arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}
-      "Resource": [
-        "arn:aws:ecr:us-east-1:123456789012:repository/*"
-        // "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"
-      ]
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Action": ["ecr:GetAuthorizationToken"],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ecr:BatchCheckLayerAvailability",
+				"ecr:GetDownloadUrlForLayer",
+				"ecr:BatchGetImage"
+			],
+			// arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}
+			"Resource": [
+				"arn:aws:ecr:us-east-1:123456789012:repository/*"
+				// "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"
+			]
+		}
+	]
 }
 ```
 
@@ -205,22 +193,15 @@ printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries config
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8543)
-* [  wrangler.toml ](#tab-panel-8544)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
-    }
-  ]
+	"containers": [
+		{
+			"image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -239,7 +220,7 @@ The public credential is the service account email, supplied with `--gar-email`.
 
 The private credential is the service account JSON key. Provide it through `stdin` (a file path, raw JSON, or base64) or the interactive prompt (a file path or base64). Wrangler stores the key base64-encoded in Secrets Store.
 
-Warning
+Caution
 
 Only `*-docker.pkg.dev` hosts are supported. Container Registry hosts such as `gcr.io` and `*.gcr.io` are not supported, because Google has shut down Container Registry.
 
@@ -281,11 +262,6 @@ npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email
 
 After you configure the registry, use the fully qualified Google Artifact Registry image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8545)
-* [  wrangler.toml ](#tab-panel-8546)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -296,8 +272,6 @@ After you configure the registry, use the fully qualified Google Artifact Regist
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -347,22 +321,15 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8547)
-* [  wrangler.toml ](#tab-panel-8548)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
-    }
-  ]
+	"containers": [
+		{
+			"image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -387,7 +354,14 @@ Images are limited in size by available disk of the configured [instance type](h
 
 Delete images with `wrangler containers images delete` to free up space, but reverting a Worker to a previous version that uses a deleted image will then error.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/image-management/","name":"Image Management"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: API
 description: A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API
 
-# API
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
@@ -31,18 +33,15 @@ The `experimental_generateTypes()` function has an `experimental_` prefix becaus
 
 ### Syntax
 
-**TypeScript**
-
 ```ts
 import { experimental_generateTypes } from "wrangler";
-
 
 const result = await experimental_generateTypes(options);
 ```
 
 ### Parameters
 
-* `options` ` object ` optional
+* `options` ` object `optional
 
   * Optional options object mirroring the `wrangler types` CLI flags:
 
@@ -84,19 +83,15 @@ const result = await experimental_generateTypes(options);
 
 You can use `experimental_generateTypes` to generate types programmatically and write them to disk yourself, or pass them to other tools:
 
-**TypeScript**
-
 ```ts
 import { experimental_generateTypes } from "wrangler";
 import * as fs from "node:fs";
 
-
 const result = await experimental_generateTypes({
-  config: "wrangler.json",
-  includeRuntime: true,
-  includeEnv: true,
+	config: "wrangler.json",
+	includeRuntime: true,
+	includeEnv: true,
 });
-
 
 // Write the combined content to the path specified in options
 fs.writeFileSync(result.path, result.content, "utf-8");
@@ -104,23 +99,19 @@ fs.writeFileSync(result.path, result.content, "utf-8");
 
 To generate only env types without runtime types:
 
-**TypeScript**
-
 ```ts
 const result = await experimental_generateTypes({
-  includeRuntime: false,
+	includeRuntime: false,
 });
 ```
 
 To generate types for a specific environment with a custom interface name:
 
-**TypeScript**
-
 ```ts
 const result = await experimental_generateTypes({
-  env: "staging",
-  envInterface: "StagingEnv",
-  path: "./types/staging.d.ts",
+	env: "staging",
+	envInterface: "StagingEnv",
+	path: "./types/staging.d.ts",
 });
 ```
 
@@ -128,34 +119,28 @@ const result = await experimental_generateTypes({
 
 This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. For example, you could use `unstable_startWorker()` to run integration tests against your Worker. This example uses `node:test`, but should apply to any testing framework:
 
-**JavaScript**
-
 ```js
 import assert from "node:assert";
 import test, { after, before, describe } from "node:test";
 import { unstable_startWorker } from "wrangler";
 
-
 describe("worker", () => {
-  let worker;
+	let worker;
 
+	before(async () => {
+		worker = await unstable_startWorker({ config: "wrangler.json" });
+	});
 
-  before(async () => {
-    worker = await unstable_startWorker({ config: "wrangler.json" });
-  });
+	test("hello world", async () => {
+		assert.strictEqual(
+			await (await worker.fetch("http://example.com")).text(),
+			"Hello world",
+		);
+	});
 
-
-  test("hello world", async () => {
-    assert.strictEqual(
-      await (await worker.fetch("http://example.com")).text(),
-      "Hello world",
-    );
-  });
-
-
-  after(async () => {
-    await worker.dispose();
-  });
+	after(async () => {
+		await worker.dispose();
+	});
 });
 ```
 
@@ -175,8 +160,6 @@ If you have been using `unstable_dev()` for integration testing and want to migr
 
 ### Constructor
 
-**JavaScript**
-
 ```js
 const worker = await unstable_dev(script, options);
 ```
@@ -186,7 +169,7 @@ const worker = await unstable_dev(script, options);
 * `script` ` string `
 
   * A string containing a path to your Worker script, relative to your Worker project's root directory.
-* `options` ` object ` optional
+* `options` ` object `optional
 
   * Optional options object containing `wrangler dev` configuration settings.
   * Include an `experimental` object inside `options` to access experimental features such as `disableExperimentalWarning`.
@@ -214,67 +197,52 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-13125)
-* [  TypeScript ](#tab-panel-13126)
-
-**JavaScript**
-
 ```js
 const { unstable_dev } = require("wrangler");
 
-
 describe("Worker", () => {
-  let worker;
+	let worker;
 
+	beforeAll(async () => {
+		worker = await unstable_dev("src/index.js", {
+			experimental: { disableExperimentalWarning: true },
+		});
+	});
 
-  beforeAll(async () => {
-    worker = await unstable_dev("src/index.js", {
-      experimental: { disableExperimentalWarning: true },
-    });
-  });
+	afterAll(async () => {
+		await worker.stop();
+	});
 
-
-  afterAll(async () => {
-    await worker.stop();
-  });
-
-
-  it("should return Hello World", async () => {
-    const resp = await worker.fetch();
-    const text = await resp.text();
-    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-  });
+	it("should return Hello World", async () => {
+		const resp = await worker.fetch();
+		const text = await resp.text();
+		expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+	});
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { unstable_dev } from "wrangler";
 import type { UnstableDevWorker } from "wrangler";
 
-
 describe("Worker", () => {
-  let worker: UnstableDevWorker;
+	let worker: UnstableDevWorker;
 
+	beforeAll(async () => {
+		worker = await unstable_dev("src/index.ts", {
+			experimental: { disableExperimentalWarning: true },
+		});
+	});
 
-  beforeAll(async () => {
-    worker = await unstable_dev("src/index.ts", {
-      experimental: { disableExperimentalWarning: true },
-    });
-  });
+	afterAll(async () => {
+		await worker.stop();
+	});
 
-
-  afterAll(async () => {
-    await worker.stop();
-  });
-
-
-  it("should return Hello World", async () => {
-    const resp = await worker.fetch();
-    const text = await resp.text();
-    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-  });
+	it("should return Hello World", async () => {
+		const resp = await worker.fetch();
+		const text = await resp.text();
+		expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+	});
 });
 ```
 
@@ -284,95 +252,78 @@ You can test Workers that call other Workers. In the below example, we refer to 
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-13127)
-* [  TypeScript ](#tab-panel-13128)
-
-**JavaScript**
-
 ```js
 import { unstable_dev } from "wrangler";
 
-
 describe("multi-worker testing", () => {
-  let childWorker;
-  let parentWorker;
+	let childWorker;
+	let parentWorker;
 
+	beforeAll(async () => {
+		childWorker = await unstable_dev("src/child-worker.js", {
+			config: "src/child-wrangler.toml",
+			experimental: { disableExperimentalWarning: true },
+		});
+		parentWorker = await unstable_dev("src/parent-worker.js", {
+			config: "src/parent-wrangler.toml",
+			experimental: { disableExperimentalWarning: true },
+		});
+	});
 
-  beforeAll(async () => {
-    childWorker = await unstable_dev("src/child-worker.js", {
-      config: "src/child-wrangler.toml",
-      experimental: { disableExperimentalWarning: true },
-    });
-    parentWorker = await unstable_dev("src/parent-worker.js", {
-      config: "src/parent-wrangler.toml",
-      experimental: { disableExperimentalWarning: true },
-    });
-  });
+	afterAll(async () => {
+		await childWorker.stop();
+		await parentWorker.stop();
+	});
 
+	it("childWorker should return Hello World itself", async () => {
+		const resp = await childWorker.fetch();
+		const text = await resp.text();
+		expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+	});
 
-  afterAll(async () => {
-    await childWorker.stop();
-    await parentWorker.stop();
-  });
-
-
-  it("childWorker should return Hello World itself", async () => {
-    const resp = await childWorker.fetch();
-    const text = await resp.text();
-    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-  });
-
-
-  it("parentWorker should return Hello World by invoking the child worker", async () => {
-    const resp = await parentWorker.fetch();
-    const parsedResp = await resp.text();
-    expect(parsedResp).toEqual("Parent worker sees: Hello World!");
-  });
+	it("parentWorker should return Hello World by invoking the child worker", async () => {
+		const resp = await parentWorker.fetch();
+		const parsedResp = await resp.text();
+		expect(parsedResp).toEqual("Parent worker sees: Hello World!");
+	});
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { unstable_dev } from "wrangler";
 import type { UnstableDevWorker } from "wrangler";
 
-
 describe("multi-worker testing", () => {
-  let childWorker: UnstableDevWorker;
-  let parentWorker: UnstableDevWorker;
+	let childWorker: UnstableDevWorker;
+	let parentWorker: UnstableDevWorker;
 
+	beforeAll(async () => {
+		childWorker = await unstable_dev("src/child-worker.js", {
+			config: "src/child-wrangler.toml",
+			experimental: { disableExperimentalWarning: true },
+		});
+		parentWorker = await unstable_dev("src/parent-worker.js", {
+			config: "src/parent-wrangler.toml",
+			experimental: { disableExperimentalWarning: true },
+		});
+	});
 
-  beforeAll(async () => {
-    childWorker = await unstable_dev("src/child-worker.js", {
-      config: "src/child-wrangler.toml",
-      experimental: { disableExperimentalWarning: true },
-    });
-    parentWorker = await unstable_dev("src/parent-worker.js", {
-      config: "src/parent-wrangler.toml",
-      experimental: { disableExperimentalWarning: true },
-    });
-  });
+	afterAll(async () => {
+		await childWorker.stop();
+		await parentWorker.stop();
+	});
 
+	it("childWorker should return Hello World itself", async () => {
+		const resp = await childWorker.fetch();
+		const text = await resp.text();
+		expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+	});
 
-  afterAll(async () => {
-    await childWorker.stop();
-    await parentWorker.stop();
-  });
-
-
-  it("childWorker should return Hello World itself", async () => {
-    const resp = await childWorker.fetch();
-    const text = await resp.text();
-    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-  });
-
-
-  it("parentWorker should return Hello World by invoking the child worker", async () => {
-    const resp = await parentWorker.fetch();
-    const parsedResp = await resp.text();
-    expect(parsedResp).toEqual("Parent worker sees: Hello World!");
-  });
+	it("parentWorker should return Hello World by invoking the child worker", async () => {
+		const resp = await parentWorker.fetch();
+		const parsedResp = await resp.text();
+		expect(parsedResp).toEqual("Parent worker sees: Hello World!");
+	});
 });
 ```
 
@@ -380,7 +331,7 @@ describe("multi-worker testing", () => {
 
 The `getPlatformProxy` function provides a way to obtain an object containing proxies (to **local** `workerd` bindings) and emulations of Cloudflare Workers specific values, allowing the emulation of such in a Node.js process.
 
-Warning
+Caution
 
 `getPlatformProxy` is, by design, to be used exclusively in Node.js applications. `getPlatformProxy` cannot be run inside the Workers runtime.
 
@@ -392,15 +343,13 @@ Binding proxies provided by this function are a best effort emulation of the rea
 
 ### Syntax
 
-**JavaScript**
-
 ```js
 const platform = await getPlatformProxy(options);
 ```
 
 ### Parameters
 
-* `options` ` object ` optional
+* `options` ` object `optional
   * Optional options object containing preferences for the bindings:
     * `environment` string
       The environment to use.
@@ -443,20 +392,13 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-13129)
-* [  wrangler.toml ](#tab-panel-13130)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "MY_VARIABLE": "test"
-  }
+	"vars": {
+		"MY_VARIABLE": "test"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -465,18 +407,13 @@ MY_VARIABLE = "test"
 
 You can access the bindings by importing `getPlatformProxy` like this:
 
-**JavaScript**
-
 ```js
 import { getPlatformProxy } from "wrangler";
-
 
 const { env } = await getPlatformProxy();
 ```
 
 To access the value of the `MY_VARIABLE` binding add the following to your code:
-
-**JavaScript**
 
 ```js
 console.log(`MY_VARIABLE = ${env.MY_VARIABLE}`);
@@ -506,11 +443,6 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 
   * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).
   For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.
-
-    * [  wrangler.jsonc ](#tab-panel-13133)
-    * [  wrangler.toml ](#tab-panel-13134)
-
-**JSONC**
   ```jsonc
   {
     "durable_objects": {
@@ -524,8 +456,6 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
     }
   }
   ```
-
-**TOML**
   ```toml
   [[durable_objects.bindings]]
   name = "MyDurableObject"
@@ -533,34 +463,25 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
   script_name = "external-do-worker"
   ```
   You will need to declare your Durable Object `"MyDurableObject"` in another Worker, called `external-do-worker` in this example.
-
-**./external-do-worker/src/index.ts**
   ```ts
   export class MyDurableObject extends DurableObject {
-    // Your DO code goes here
+  	// Your DO code goes here
   }
   export default {
-    fetch() {
-      // Doesn't have to do anything, but a DO cannot be the default export
-      return new Response("Hello, world!");
-    },
+  	fetch() {
+  		// Doesn't have to do anything, but a DO cannot be the default export
+  		return new Response("Hello, world!");
+  	},
   };
   ```
   That Worker also needs a Wrangler configuration file that looks like this:
-
-    * [  wrangler.jsonc ](#tab-panel-13131)
-    * [  wrangler.toml ](#tab-panel-13132)
-
-**JSONC**
   ```jsonc
   {
-    "name": "external-do-worker",
-    "main": "src/index.ts",
-    "compatibility_date": "XXXX-XX-XX"
+  	"name": "external-do-worker",
+  	"main": "src/index.ts",
+  	"compatibility_date": "XXXX-XX-XX"
   }
   ```
-
-**TOML**
   ```toml
   name = "external-do-worker"
   main = "src/index.ts"
@@ -591,7 +512,14 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
   pnpm wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
   ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/api/","name":"API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

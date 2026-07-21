@@ -1,16 +1,18 @@
 ---
-title: Securing guest wireless networks
 description: This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Securing guest wireless networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Securing guest wireless networks
 
-# Securing guest wireless networks
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -204,7 +206,14 @@ If you are interested in learning more about Gateway, or other aspects of the Cl
 * [Cloudflare One Appliance deployment options · Cloudflare Reference Architecture docs](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/)
 * [DNS policies - Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/#page","headline":"Securing guest wireless networks · Cloudflare Reference Architecture docs","description":"This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/securing-guest-wireless-networks/","name":"Securing guest wireless networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/#page","headline":"Securing guest wireless networks · Cloudflare Reference Architecture docs","description":"This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 ```

@@ -1,18 +1,20 @@
 ---
-title: Logging headers to console
 description: Examine the contents of a Headers object by logging to console with a Map.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Logging headers to console
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Logging headers to console
+#  Logging headers to console
 
 Examine the contents of a Headers object by logging to console with a Map.
+
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/logging-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -20,39 +22,26 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12555)
-* [  TypeScript ](#tab-panel-12556)
-* [  Python ](#tab-panel-12557)
-* [  Rust ](#tab-panel-12558)
-* [  Hono ](#tab-panel-12559)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    console.log(new Map(request.headers));
-    return new Response("Hello world");
-  },
+	async fetch(request) {
+		console.log(new Map(request.headers));
+		return new Response("Hello world");
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    console.log(new Map(request.headers));
-    return new Response("Hello world");
-  },
+	async fetch(request): Promise<Response> {
+		console.log(new Map(request.headers));
+		return new Response("Hello world");
+	},
 } satisfies ExportedHandler;
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -63,7 +52,6 @@ class Default(WorkerEntrypoint):
 ```rs
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<Response> {
     console_log!("{:?}", req.headers());
@@ -71,42 +59,31 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<Response> {
 }
 ```
 
-**TypeScript**
-
 ```ts
 import { Hono } from 'hono';
 
-
 const app = new Hono();
-
 
 app.get('*', (c) => {
   // Different ways to log headers in Hono:
 
-
   // 1. Using Map to display headers in console
   console.log('Headers as Map:', new Map(c.req.raw.headers));
-
 
   // 2. Using spread operator to log headers
   console.log('Headers spread:', [...c.req.raw.headers]);
 
-
   // 3. Using Object.fromEntries to convert to an object
   console.log('Headers as Object:', Object.fromEntries(c.req.raw.headers));
-
 
   // 4. Hono's built-in header accessor (for individual headers)
   console.log('User-Agent:', c.req.header('User-Agent'));
 
-
   // 5. Using c.req.headers to get all headers
   console.log('All headers from Hono context:', c.req.header());
 
-
   return c.text('Hello world');
 });
-
 
 export default app;
 ```
@@ -117,23 +94,17 @@ export default app;
 
 Use a `Map` if you need to log a `Headers` object to the console:
 
-**JavaScript**
-
 ```js
 console.log(new Map(request.headers));
 ```
 
 Use the `spread` operator if you need to quickly stringify a `Headers` object:
 
-**JavaScript**
-
 ```js
 let requestHeaders = JSON.stringify([...request.headers]);
 ```
 
 Use `Object.fromEntries` to convert the headers to an object:
-
-**JavaScript**
 
 ```js
 let requestHeaders = Object.fromEntries(request.headers);
@@ -143,15 +114,11 @@ let requestHeaders = Object.fromEntries(request.headers);
 
 When debugging Workers, examine the headers on a request or response. A common mistake is to try to log headers to the developer console via code like this:
 
-**JavaScript**
-
 ```js
 console.log(request.headers);
 ```
 
 Or this:
-
-**JavaScript**
 
 ```js
 console.log(`Request headers: ${JSON.stringify(request.headers)}`);
@@ -166,8 +133,6 @@ The reason this happens is because [Headers ↗](https://developer.mozilla.org/e
 ### Pass headers through a Map
 
 The first common idiom for making Headers `console.log()`\-friendly is to construct a `Map` object from the `Headers` object and log the `Map` object.
-
-**JavaScript**
 
 ```js
 console.log(new Map(request.headers));
@@ -186,8 +151,6 @@ Even though a `Map` stores its data in enumerable properties, those properties a
 
 Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread%5Fsyntax) (`...`) to it.
 
-**JavaScript**
-
 ```js
 let requestHeaders = JSON.stringify([...request.headers], null, 2);
 console.log(`Request headers: ${requestHeaders}`);
@@ -197,8 +160,6 @@ console.log(`Request headers: ${requestHeaders}`);
 
 ES2019 provides [Object.fromEntries ↗](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
 
-**JavaScript**
-
 ```js
 let headersObject = Object.fromEntries(request.headers);
 let requestHeaders = JSON.stringify(headersObject, null, 2);
@@ -206,8 +167,6 @@ console.log(`Request headers: ${requestHeaders}`);
 ```
 
 This results in something like:
-
-**JavaScript**
 
 ```js
 Request headers: {
@@ -219,7 +178,14 @@ Request headers: {
 }"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/logging-headers/#page","headline":"Logging headers to console · Cloudflare Workers docs","description":"Examine the contents of a Headers object by logging to console with a Map.","url":"https://developers.cloudflare.com/workers/examples/logging-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","Headers","JavaScript","Rust","TypeScript","Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/logging-headers/","name":"Logging headers to console"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/logging-headers/#page","headline":"Logging headers to console · Cloudflare Workers docs","description":"Examine the contents of a Headers object by logging to console with a Map.","url":"https://developers.cloudflare.com/workers/examples/logging-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","Headers","JavaScript","Rust","TypeScript","Python"]}
 ```

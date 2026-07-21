@@ -1,16 +1,18 @@
 ---
-title: Use Pages Functions for A/B testing
 description: Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use Pages Functions for A/B testing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use Pages Functions for A/B testing
 
-# Use Pages Functions for A/B testing
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to use [Pages Functions](https://developers.cloudflare.com/pages/functions/) for A/B testing in your Pages projects. A/B testing is a user experience research methodology applied when comparing two or more versions of a web page or application. With A/B testing, you can serve two or more versions of a webpage to users and divide traffic to your site.
 
@@ -43,38 +45,31 @@ When you create your `_middleware.js` file at the base of your `/functions` fold
 
 Following the Functions naming convention, the `_middleware.js` file exports a single async `onRequest` function that accepts a `request`, `env` and `next` as an argument.
 
-**JavaScript**
-
 ```js
 const abTest = async ({ request, next, env }) => {
-  /*
+	/*
   Todo:
   1. Conditional statements to check for the cookie
   2. Assign cookies based on percentage, then serve
   */
 };
 
-
 export const onRequest = [abTest];
 ```
 
 To set the cookie, create the `cookieName` variable and assign any value. Then create the `newHomepagePathName` variable and assign it `/test`:
 
-**JavaScript**
-
 ```js
 const cookieName = "ab-test-cookie";
 const newHomepagePathName = "/test";
 
-
 const abTest = async ({ request, next, env }) => {
-  /*
+	/*
   Todo:
   1. Conditional statements to check for the cookie
   2. Assign cookie based on percentage then serve
   */
 };
-
 
 export const onRequest = [abTest];
 ```
@@ -83,36 +78,30 @@ export const onRequest = [abTest];
 
 Based on the URL pathname, check that the cookie value is equal to `new`. If the value is `new`, then `newHomepagePathName` will be served.
 
-**JavaScript**
-
 ```js
 const cookieName = "ab-test-cookie";
 const newHomepagePathName = "/test";
 
-
 const abTest = async ({ request, next, env }) => {
-  /*
+	/*
   Todo:
   1. Assign cookies based on randomly generated percentage, then serve
   */
 
+	const url = new URL(request.url);
+	if (url.pathname === "/") {
+		// if cookie ab-test-cookie=new then change the request to go to /test
+		// if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
 
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    // if cookie ab-test-cookie=new then change the request to go to /test
-    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
-
-
-    let cookie = request.headers.get("cookie");
-    // is cookie set?
-    if (cookie && cookie.includes(`${cookieName}=new`)) {
-      // Change the request to go to /test (as set in the newHomepagePathName variable)
-      url.pathname = newHomepagePathName;
-      return env.ASSETS.fetch(url);
-    }
-  }
+		let cookie = request.headers.get("cookie");
+		// is cookie set?
+		if (cookie && cookie.includes(`${cookieName}=new`)) {
+			// Change the request to go to /test (as set in the newHomepagePathName variable)
+			url.pathname = newHomepagePathName;
+			return env.ASSETS.fetch(url);
+		}
+	}
 };
-
 
 export const onRequest = [abTest];
 ```
@@ -127,45 +116,40 @@ Binding
 
 A Function is a Worker that executes on your Pages project to add dynamic functionality. A binding is how your Function (Worker) interacts with external resources. A binding is a runtime variable that the Workers runtime provides to your code.
 
-**JavaScript**
-
 ```js
 const cookieName = "ab-test-cookie";
 const newHomepagePathName = "/test";
 
-
 const abTest = async (context) => {
-  const url = new URL(context.request.url);
-  // if homepage
-  if (url.pathname === "/") {
-    // if cookie ab-test-cookie=new then change the request to go to /test
-    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+	const url = new URL(context.request.url);
+	// if homepage
+	if (url.pathname === "/") {
+		// if cookie ab-test-cookie=new then change the request to go to /test
+		// if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
 
-
-    let cookie = request.headers.get("cookie");
-    // is cookie set?
-    if (cookie && cookie.includes(`${cookieName}=new`)) {
-      // pass the request to /test
-      url.pathname = newHomepagePathName;
-      return context.env.ASSETS.fetch(url);
-    } else {
-      const percentage = Math.floor(Math.random() * 100);
-      let version = "current"; // default version
-      // change pathname and version name for 50% of traffic
-      if (percentage < 50) {
-        url.pathname = newHomepagePathName;
-        version = "new";
-      }
-      // get the static file from ASSETS, and attach a cookie
-      const asset = await context.env.ASSETS.fetch(url);
-      let response = new Response(asset.body, asset);
-      response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);
-      return response;
-    }
-  }
-  return context.next();
+		let cookie = request.headers.get("cookie");
+		// is cookie set?
+		if (cookie && cookie.includes(`${cookieName}=new`)) {
+			// pass the request to /test
+			url.pathname = newHomepagePathName;
+			return context.env.ASSETS.fetch(url);
+		} else {
+			const percentage = Math.floor(Math.random() * 100);
+			let version = "current"; // default version
+			// change pathname and version name for 50% of traffic
+			if (percentage < 50) {
+				url.pathname = newHomepagePathName;
+				version = "new";
+			}
+			// get the static file from ASSETS, and attach a cookie
+			const asset = await context.env.ASSETS.fetch(url);
+			let response = new Response(asset.body, asset);
+			response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);
+			return response;
+		}
+	}
+	return context.next();
 };
-
 
 export const onRequest = [abTest];
 ```
@@ -177,10 +161,17 @@ After you have set up your `functions/_middleware.js` file in your project you a
 After you have deployed your application, review your middleware Function:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings** \> **Functions** \> **Configuration**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/#page","headline":"Use Pages Functions for A/B testing · Cloudflare Pages docs","description":"Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.","url":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/use-worker-for-ab-testing-in-pages/","name":"Use Pages Functions for A/B testing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/#page","headline":"Use Pages Functions for A/B testing · Cloudflare Pages docs","description":"Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.","url":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

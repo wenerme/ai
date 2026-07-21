@@ -1,16 +1,18 @@
 ---
-title: TLS Management
 description: Configure mTLS enforcement and minimum TLS version per custom hostname.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TLS Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TLS Management
 
-# TLS Management
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Mutual TLS (mTLS) ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
 
@@ -18,7 +20,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Cipher suites](#cipher-suites) are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). As a SaaS provider, you can specify configurations for cipher suites on your zone as a whole and cipher suites on individual custom hostnames via the API.
 
-Warning
+Caution
 
 When you [issue a custom hostname certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/) with wildcards enabled, any cipher suites or Minimum TLS settings applied to that hostname will only apply to the direct hostname.
 
@@ -54,22 +56,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**Custom Hostname Details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response example**
 
 ```json
   "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
-12 collapsed lines
       "id": "<CERTIFICATE_ID>",
       "bundle_method": "ubiquitous",
       "certificate_authority": "<CERTIFICATE_AUTHORITY>",
@@ -86,7 +83,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
       "settings": {},
       "signature": "SHA256WithRSA",
       "type": "dv",
-20 collapsed lines
       "uploaded_on": "2020-02-06T18:11:23.531995Z",
       "validation_errors": [
         {
@@ -121,11 +117,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-7679)
-* [ API ](#tab-panel-7680)
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Find the hostname to which you want to apply Minimum TLS Version. Select **Edit**.
 3. Choose the desired TLS version under **Minimum TLS Version** and select **Save**.
 
@@ -139,22 +132,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**Custom Hostname Details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response example**
 
 ```json
   "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
-12 collapsed lines
       "id": "<CERTIFICATE_ID>",
       "bundle_method": "ubiquitous",
       "certificate_authority": "<CERTIFICATE_AUTHORITY>",
@@ -171,7 +159,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
       "settings": {},
       "signature": "SHA256WithRSA",
       "type": "dv",
-20 collapsed lines
       "uploaded_on": "2020-02-06T18:11:23.531995Z",
       "validation_errors": [
         {
@@ -202,21 +189,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ssl": {
-        "method": "http",
-        "type": "dv",
-        "settings": {
-            "min_tls_version:": "1.2"
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ssl": {
+				"method": "http",
+				"type": "dv",
+				"settings": {
+						"min_tls_version:": "1.2"
+				}
+		}
+	}'
 ```
 
 ## Cipher suites
@@ -239,22 +224,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**Custom Hostname Details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response example**
 
 ```json
   "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
-12 collapsed lines
       "id": "<CERTIFICATE_ID>",
       "bundle_method": "ubiquitous",
       "certificate_authority": "<CERTIFICATE_AUTHORITY>",
@@ -271,7 +251,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
       "settings": {},
       "signature": "SHA256WithRSA",
       "type": "dv",
-20 collapsed lines
       "uploaded_on": "2020-02-06T18:11:23.531995Z",
       "validation_errors": [
         {
@@ -302,24 +281,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ssl": {
-        "method": "http",
-        "type": "dv",
-        "settings": {
-            "ciphers": [
-                "ECDHE-ECDSA-AES128-GCM-SHA256",
-                "ECDHE-RSA-AES128-GCM-SHA256"
-            ]
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ssl": {
+				"method": "http",
+				"type": "dv",
+				"settings": {
+						"ciphers": [
+								"ECDHE-ECDSA-AES128-GCM-SHA256",
+								"ECDHE-RSA-AES128-GCM-SHA256"
+						]
+				}
+		}
+	}'
 ```
 
 Restrict cipher suites for custom hostname with custom certificate
@@ -334,22 +311,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**Custom Hostname Details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response example**
 
 ```json
   "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
-12 collapsed lines
       "id": "<CERTIFICATE_ID>",
       "bundle_method": "ubiquitous",
       "certificate_authority": "<CERTIFICATE_AUTHORITY>",
@@ -366,7 +338,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
       "settings": {},
       "signature": "SHA256WithRSA",
       "type": "dv",
-20 collapsed lines
       "uploaded_on": "2020-02-06T18:11:23.531995Z",
       "validation_errors": [
         {
@@ -397,27 +368,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ssl": {
-        "method": "http",
-        "type": "dv",
-        "custom_certificate": "<CERTIFICATE_STRING>",
-        "custom_key": "<CERTIFICATE_PRIVATE_KEY>",
-        "settings": {
-            "ciphers": [
-                "ECDHE-ECDSA-AES128-GCM-SHA256",
-                "ECDHE-RSA-AES128-GCM-SHA256"
-            ],
-            "min_tls_version": "1.2"
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ssl": {
+				"method": "http",
+				"type": "dv",
+				"custom_certificate": "<CERTIFICATE_STRING>",
+				"custom_key": "<CERTIFICATE_PRIVATE_KEY>",
+				"settings": {
+						"ciphers": [
+								"ECDHE-ECDSA-AES128-GCM-SHA256",
+								"ECDHE-RSA-AES128-GCM-SHA256"
+						],
+						"min_tls_version": "1.2"
+				}
+		}
+	}'
 ```
 
 ## Alerts for mutual TLS certificates
@@ -444,7 +413,14 @@ Upload a [renewed certificate](https://developers.cloudflare.com/cloudflare-one/
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#page","headline":"TLS Settings — Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Configure mTLS enforcement and minimum TLS version per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/","name":"Certificate management"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/","name":"TLS Management"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#page","headline":"TLS Settings — Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Configure mTLS enforcement and minimum TLS version per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TLS"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/change-log/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has a regular cadence of releasing updates and new rules to the DDoS managed rulesets. The updates either improve a rule's accuracy, lower false positives rates, or increase the protection due to a change in the threat landscape.
 
@@ -30,7 +32,14 @@ Cloudflare is very proactive in responding to new attack vectors, which may need
 * [Network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/change-log/network/) \- [ Subscribe to RSS ](https://developers.cloudflare.com/ddos-protection/change-log/network/index.xml)
 * [HTTP DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/change-log/http/) \- [ Subscribe to RSS ](https://developers.cloudflare.com/ddos-protection/change-log/http/index.xml)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/#page","headline":"Changelog for global changes to DDoS protection · Cloudflare DDoS Protection docs","description":"Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.","url":"https://developers.cloudflare.com/ddos-protection/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/change-log/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/#page","headline":"Changelog for global changes to DDoS protection · Cloudflare DDoS Protection docs","description":"Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.","url":"https://developers.cloudflare.com/ddos-protection/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Query data
 description: Understand how to query data with R2 SQL
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query data
 
-# Query data
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/query-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Query [Apache Iceberg ↗](https://iceberg.apache.org/) tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/). R2 SQL queries can be made via [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or HTTP API.
 
@@ -92,28 +94,28 @@ To create an API token programmatically for use with R2 SQL, you'll need to spec
 
 ```json
 [
-  {
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-    "effect": "allow",
-    "resources": {
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
-    },
-    "permission_groups": [
-      {
-        "id": "f45430d92e2b4a6cb9f94f2594c141b8",
-        "name": "Workers R2 SQL Read"
-      },
-      {
-        "id": "d229766a2f7f4d299f20eaa8c9b1fde9",
-        "name": "Workers R2 Data Catalog Write"
-      },
-      {
-        "id": "bf7481a1826f439697cb59a20b22293e",
-        "name": "Workers R2 Storage Write"
-      }
-    ]
-  }
+	{
+		"id": "f267e341f3dd4697bd3b9f71dd96247f",
+		"effect": "allow",
+		"resources": {
+			"com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
+			"com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
+		},
+		"permission_groups": [
+			{
+				"id": "f45430d92e2b4a6cb9f94f2594c141b8",
+				"name": "Workers R2 SQL Read"
+			},
+			{
+				"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
+				"name": "Workers R2 Data Catalog Write"
+			},
+			{
+				"id": "bf7481a1826f439697cb59a20b22293e",
+				"name": "Workers R2 Storage Write"
+			}
+		]
+	}
 ]
 ```
 
@@ -121,11 +123,22 @@ To learn more about how to create API tokens for R2 SQL using the API, including
 
 ## Additional resources
 
-[ Manage R2 Data Catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/) Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
+### [ Manage R2 Data Catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
 
-[ Build an end to end data pipeline ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline) Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
+ Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
+
+### [ Build an end to end data pipeline ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline)
+
+ Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/query-data/#page","headline":"Query data · R2 SQL docs","description":"Understand how to query data with R2 SQL","url":"https://developers.cloudflare.com/r2-sql/query-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/query-data/","name":"Query data"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/query-data/#page","headline":"Query data · R2 SQL docs","description":"Understand how to query data with R2 SQL","url":"https://developers.cloudflare.com/r2-sql/query-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

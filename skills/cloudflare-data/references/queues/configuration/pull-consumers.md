@@ -1,16 +1,18 @@
 ---
-title: Pull consumers
 description: Pull messages from a Cloudflare Queue over HTTP from any environment or language.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pull consumers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pull consumers
 
-# Pull consumers
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A pull-based consumer allows you to pull from a queue over HTTP from any environment and/or programming language outside of Cloudflare Workers. A pull-based consumer can be useful when your message consumption rate is limited by upstream infrastructure or long-running tasks.
 
@@ -98,64 +100,52 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-10469)
-* [  TypeScript ](#tab-panel-10470)
-* [  Python ](#tab-panel-10471)
-
-**index.js**
-
 ```js
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull with the timeout & batch size
 let resp = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull`,
-  {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${QUEUES_API_TOKEN}`,
-    },
-    // Optional - you can provide an empty object '{}' and the defaults will apply.
-    body: JSON.stringify({ visibility_timeout_ms: 6000, batch_size: 50 }),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull`,
+	{
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			authorization: `Bearer ${QUEUES_API_TOKEN}`,
+		},
+		// Optional - you can provide an empty object '{}' and the defaults will apply.
+		body: JSON.stringify({ visibility_timeout_ms: 6000, batch_size: 50 }),
+	},
 );
 ```
-
-**index.ts**
 
 ```ts
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull with the timeout & batch size
 let resp = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull`,
-  {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${QUEUES_API_TOKEN}`,
-    },
-    // Optional - you can provide an empty object '{}' and the defaults will apply.
-    body: JSON.stringify({ visibility_timeout_ms: 6000, batch_size: 50 }),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull`,
+	{
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			authorization: `Bearer ${QUEUES_API_TOKEN}`,
+		},
+		// Optional - you can provide an empty object '{}' and the defaults will apply.
+		body: JSON.stringify({ visibility_timeout_ms: 6000, batch_size: 50 }),
+	},
 );
 ```
-
-**Python**
 
 ```python
 import json
 from workers import fetch
 
-
 # POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull with the timeout & batch size
 
-
 resp = await fetch(
-  f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/queues/{QUEUE_ID}/messages/pull",
-  method="POST",
-  headers={
-    "content-type": "application/json",
-    "authorization": f"Bearer {QUEUES_API_TOKEN}",
-  }, # Optional - you can provide an empty object '{}' and the defaults will apply.
-  body=json.dumps({"visibility_timeout_ms": 6000, "batch_size": 50}),
+	f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/queues/{QUEUE_ID}/messages/pull",
+	method="POST",
+	headers={
+		"content-type": "application/json",
+		"authorization": f"Bearer {QUEUES_API_TOKEN}",
+	}, # Optional - you can provide an empty object '{}' and the defaults will apply.
+	body=json.dumps({"visibility_timeout_ms": 6000, "batch_size": 50}),
 )
 ```
 
@@ -163,36 +153,36 @@ This will return an array of messages (up to the specified `batch_size`) in the 
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "message_backlog_count": 10,
-    "messages": [
-      {
-        "body": "hello",
-        "id": "1ad27d24c83de78953da635dc2ea208f",
-        "timestamp_ms": 1689615013586,
-        "attempts": 2,
-        "metadata": {
-          "CF-sourceMessageSource": "dash",
-          "CF-Content-Type": "json"
-        },
-        "lease_id": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..NXmbr8h6tnKLsxJ_AuexHQ.cDt8oBb_XTSoKUkVKRD_Jshz3PFXGIyu7H1psTO5UwI.smxSvQ8Ue3-ymfkV6cHp5Va7cyUFPIHuxFJA07i17sc"
-      },
-      {
-        "body": "world",
-        "id": "95494c37bb89ba8987af80b5966b71a7",
-        "timestamp_ms": 1689615013586,
-        "attempts": 2,
-        "metadata": {
-          "CF-sourceMessageSource": "dash",
-          "CF-Content-Type": "json"
-        },
-        "lease_id": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..QXPgHfzETsxYQ1Vd-H0hNA.mFALS3lyouNtgJmGSkTzEo_imlur95EkSiH7fIRIn2U.PlwBk14CY_EWtzYB-_5CR1k30bGuPFPUx1Nk5WIipFU"
-      }
-    ]
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"message_backlog_count": 10,
+		"messages": [
+			{
+				"body": "hello",
+				"id": "1ad27d24c83de78953da635dc2ea208f",
+				"timestamp_ms": 1689615013586,
+				"attempts": 2,
+				"metadata": {
+					"CF-sourceMessageSource": "dash",
+					"CF-Content-Type": "json"
+				},
+				"lease_id": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..NXmbr8h6tnKLsxJ_AuexHQ.cDt8oBb_XTSoKUkVKRD_Jshz3PFXGIyu7H1psTO5UwI.smxSvQ8Ue3-ymfkV6cHp5Va7cyUFPIHuxFJA07i17sc"
+			},
+			{
+				"body": "world",
+				"id": "95494c37bb89ba8987af80b5966b71a7",
+				"timestamp_ms": 1689615013586,
+				"attempts": 2,
+				"metadata": {
+					"CF-sourceMessageSource": "dash",
+					"CF-Content-Type": "json"
+				},
+				"lease_id": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..QXPgHfzETsxYQ1Vd-H0hNA.mFALS3lyouNtgJmGSkTzEo_imlur95EkSiH7fIRIn2U.PlwBk14CY_EWtzYB-_5CR1k30bGuPFPUx1Nk5WIipFU"
+			}
+		]
+	}
 }
 ```
 
@@ -233,85 +223,73 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-10472)
-* [  TypeScript ](#tab-panel-10473)
-* [  Python ](#tab-panel-10474)
-
-**index.js**
-
 ```js
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack with the lease_ids
 let resp = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack`,
-  {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${QUEUES_API_TOKEN}`,
-    },
-    // If you have no messages to retry, you can specify an empty array - retries: []
-    body: JSON.stringify({
-      acks: [
-        { lease_id: "lease_id1" },
-        { lease_id: "lease_id2" },
-        { lease_id: "etc" },
-      ],
-      retries: [{ lease_id: "lease_id4" }],
-    }),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack`,
+	{
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			authorization: `Bearer ${QUEUES_API_TOKEN}`,
+		},
+		// If you have no messages to retry, you can specify an empty array - retries: []
+		body: JSON.stringify({
+			acks: [
+				{ lease_id: "lease_id1" },
+				{ lease_id: "lease_id2" },
+				{ lease_id: "etc" },
+			],
+			retries: [{ lease_id: "lease_id4" }],
+		}),
+	},
 );
 ```
-
-**index.ts**
 
 ```ts
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack with the lease_ids
 let resp = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack`,
-  {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${QUEUES_API_TOKEN}`,
-    },
-    // If you have no messages to retry, you can specify an empty array - retries: []
-    body: JSON.stringify({
-      acks: [
-        { lease_id: "lease_id1" },
-        { lease_id: "lease_id2" },
-        { lease_id: "etc" },
-      ],
-      retries: [{ lease_id: "lease_id4" }],
-    }),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack`,
+	{
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			authorization: `Bearer ${QUEUES_API_TOKEN}`,
+		},
+		// If you have no messages to retry, you can specify an empty array - retries: []
+		body: JSON.stringify({
+			acks: [
+				{ lease_id: "lease_id1" },
+				{ lease_id: "lease_id2" },
+				{ lease_id: "etc" },
+			],
+			retries: [{ lease_id: "lease_id4" }],
+		}),
+	},
 );
 ```
-
-**Python**
 
 ```python
 import json
 from workers import fetch
 
-
 # POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack with the lease_ids
 
-
 resp = await fetch(
-  f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/queues/{QUEUE_ID}/messages/ack",
-  method="POST",
-  headers={
-    "content-type": "application/json",
-    "authorization": f"Bearer {QUEUES_API_TOKEN}",
-  }, # If you have no messages to retry, you can specify an empty array - retries: []
-  body=json.dumps({
-    "acks": [
-      {"lease_id": "lease_id1"},
-      {"lease_id": "lease_id2"},
-      {"lease_id": "etc"},
-    ],
-    "retries": [{"lease_id": "lease_id4"}],
-  }),
+	f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/queues/{QUEUE_ID}/messages/ack",
+	method="POST",
+	headers={
+		"content-type": "application/json",
+		"authorization": f"Bearer {QUEUES_API_TOKEN}",
+	}, # If you have no messages to retry, you can specify an empty array - retries: []
+	body=json.dumps({
+		"acks": [
+			{"lease_id": "lease_id1"},
+			{"lease_id": "lease_id2"},
+			{"lease_id": "etc"},
+		],
+		"retries": [{"lease_id": "lease_id4"}],
+	}),
 )
 ```
 
@@ -319,12 +297,12 @@ You may optionally specify the number of seconds to delay a message for when mar
 
 ```json
 {
-  "acks": [
-    { "lease_id": "lease_id1" },
-    { "lease_id": "lease_id2" },
-    { "lease_id": "lease_id3" }
-  ],
-  "retries": [{ "lease_id": "lease_id4", "delay_seconds": 600 }]
+	"acks": [
+		{ "lease_id": "lease_id1" },
+		{ "lease_id": "lease_id2" },
+		{ "lease_id": "lease_id3" }
+	],
+	"retries": [{ "lease_id": "lease_id4", "delay_seconds": 600 }]
 }
 ```
 
@@ -338,7 +316,7 @@ Queues aims to be permissive when it comes to lease IDs: if a consumer acknowled
 
 ## Content types
 
-Warning
+Caution
 
 When attaching a pull-based consumer to a queue, you should ensure that messages are sent with only a `text`, `bytes` or `json` [content type](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queuescontenttype).
 
@@ -358,7 +336,14 @@ Your consumer will need to decode the `json` and `bytes` types before operating 
 * Learn more about [how to make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) to the Cloudflare API.
 * Understand [what limit apply](https://developers.cloudflare.com/queues/platform/limits/) when consuming and writing to a queue.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/pull-consumers/","name":"Pull consumers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

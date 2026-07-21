@@ -109,19 +109,20 @@ curl -s https://api.openai.com/v1/responses \
 ```
 
 ```javascript
+/** @type {OpenAI.ChatCompletionMessageParam[] & OpenAI.Responses.ResponseInput} */
 const context = [
-  { role: 'system', content: 'You are a helpful assistant.' },
-  { role: 'user', content: 'Hello!' }
+  { role: "system", content: "You are a helpful assistant." },
+  { role: "user", content: "Hello!" },
 ];
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5.6',
-  messages: context
+  model: "gpt-5.6",
+  messages: context,
 });
 
 const response = await client.responses.create({
   model: "gpt-5.6",
-  input: context
+  input: context,
 });
 ```
 
@@ -152,15 +153,15 @@ response = client.responses.create(
     Generate text from a model
 
 ```javascript
-import OpenAI from 'openai';
+import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5.6',
+  model: "gpt-5.6",
   messages: [
-    { 'role': 'system', 'content': 'You are a helpful assistant.' },
-    { 'role': 'user', 'content': 'Hello!' }
-  ]
+    { role: "system", content: "You are a helpful assistant." },
+    { role: "user", content: "Hello!" },
+  ],
 });
 console.log(completion.choices[0].message.content);
 ```
@@ -201,13 +202,13 @@ curl https://api.openai.com/v1/chat/completions \
     Generate text from a model
 
 ```javascript
-import OpenAI from 'openai';
+import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const response = await client.responses.create({
-  model: 'gpt-5.6',
-  instructions: 'You are a helpful assistant.',
-  input: 'Hello!'
+  model: "gpt-5.6",
+  instructions: "You are a helpful assistant.",
+  input: "Hello!",
 });
 
 console.log(response.output_text);
@@ -274,21 +275,22 @@ If you have multi-turn conversations in your application, update your context lo
     Multi-turn conversation
 
 ```javascript
+/** @type {OpenAI.ChatCompletionMessageParam[]} */
 let messages = [
-    { 'role': 'system', 'content': 'You are a helpful assistant.' },
-    { 'role': 'user', 'content': 'What is the capital of France?' }
-  ];
+  { role: "system", content: "You are a helpful assistant." },
+  { role: "user", content: "What is the capital of France?" },
+];
 const res1 = await client.chat.completions.create({
-  model: 'gpt-5.6',
-  messages
+  model: "gpt-5.6",
+  messages,
 });
 
 messages = messages.concat([res1.choices[0].message]);
-messages.push({ 'role': 'user', 'content': 'And its population?' });
+messages.push({ role: "user", content: "And its population?" });
 
 const res2 = await client.chat.completions.create({
-  model: 'gpt-5.6',
-  messages
+  model: "gpt-5.6",
+  messages,
 });
 ```
 
@@ -337,9 +339,8 @@ res2 = client.responses.create(
 ```
 
 ```javascript
-let context = [
-  { role: "user", content: "What is the capital of France?" }
-];
+/** @type {OpenAI.Responses.ResponseInput} */
+let context = [{ role: "user", content: "What is the capital of France?" }];
 
 const res1 = await client.responses.create({
   model: "gpt-5.6",
@@ -364,16 +365,16 @@ const res2 = await client.responses.create({
 
 ```javascript
 const res1 = await client.responses.create({
-  model: 'gpt-5.6',
-  input: 'What is the capital of France?',
-  store: true
+  model: "gpt-5.6",
+  input: "What is the capital of France?",
+  store: true,
 });
 
 const res2 = await client.responses.create({
-  model: 'gpt-5.6',
-  input: 'And its population?',
+  model: "gpt-5.6",
+  input: "And its population?",
   previous_response_id: res1.id,
-  store: true
+  store: true,
 });
 ```
 
@@ -526,9 +527,9 @@ const completion = await openai.chat.completions.create({
   model: "gpt-5.6",
   messages: [
     {
-      "role": "user",
-      "content": "Jane, 54 years old",
-    }
+      role: "user",
+      content: "Jane, 54 years old",
+    },
   ],
   response_format: {
     type: "json_schema",
@@ -540,23 +541,20 @@ const completion = await openai.chat.completions.create({
         properties: {
           name: {
             type: "string",
-            minLength: 1
+            minLength: 1,
           },
           age: {
             type: "number",
             minimum: 0,
-            maximum: 130
-          }
+            maximum: 130,
+          },
         },
-        required: [
-          "name",
-          "age"
-        ],
-        additionalProperties: false
-      }
-    }
+        required: ["name", "age"],
+        additionalProperties: false,
+      },
+    },
   },
-  reasoning_effort: "medium"
+  reasoning_effort: "medium",
 });
 ```
 
@@ -648,22 +646,19 @@ const response = await openai.responses.create({
         properties: {
           name: {
             type: "string",
-            minLength: 1
+            minLength: 1,
           },
           age: {
             type: "number",
             minimum: 0,
-            maximum: 130
-          }
+            maximum: 130,
+          },
         },
-        required: [
-          "name",
-          "age"
-        ],
-        additionalProperties: false
-      }
+        required: ["name", "age"],
+        additionalProperties: false,
+      },
     },
-  }
+  },
 });
 ```
 
@@ -698,29 +693,28 @@ If your application has use cases that would benefit from OpenAI's native [tools
 
 ```javascript
 async function web_search(query) {
-  const fetch = (await import('node-fetch')).default;
   const res = await fetch(`https://api.example.com/search?q=${query}`);
   const data = await res.json();
   return data.results;
 }
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5.6',
+  model: "gpt-5.6",
   messages: [
-    { role: 'system', content: 'You are a helpful assistant.' },
-    { role: 'user', content: 'Who is the current president of France?' }
+    { role: "system", content: "You are a helpful assistant." },
+    { role: "user", content: "Who is the current president of France?" },
   ],
   functions: [
     {
-      name: 'web_search',
-      description: 'Search the web for information',
+      name: "web_search",
+      description: "Search the web for information",
       parameters: {
-        type: 'object',
-        properties: { query: { type: 'string' } },
-        required: ['query']
-      }
-    }
-  ]
+        type: "object",
+        properties: { query: { type: "string" } },
+        required: ["query"],
+      },
+    },
+  ],
 });
 ```
 
@@ -766,9 +760,9 @@ curl https://api.example.com/search \
 
 ```javascript
 const answer = await client.responses.create({
-  model: 'gpt-5.6',
-  input: 'Who is the current president of France?',
-  tools: [{ type: 'web_search' }]
+  model: "gpt-5.6",
+  input: "Who is the current president of France?",
+  tools: [{ type: "web_search" }],
 });
 
 console.log(answer.output_text);

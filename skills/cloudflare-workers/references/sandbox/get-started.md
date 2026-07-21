@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create your first Sandbox SDK Worker to execute Python code in isolated containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build your first application with Sandbox SDK - a secure code execution environment. In this guide, you'll create a Worker that can execute Python code and work with files in isolated containers.
 
@@ -67,54 +69,45 @@ cd my-sandbox
 
 The template provides a minimal Worker that demonstrates core sandbox capabilities:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 type Env = {
-  Sandbox: DurableObjectNamespace<Sandbox>;
+	Sandbox: DurableObjectNamespace<Sandbox>;
 };
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Get or create a sandbox instance. For user-facing apps,
+		// derive this ID from the authenticated user.
+		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
-    // Get or create a sandbox instance. For user-facing apps,
-    // derive this ID from the authenticated user.
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+		// Execute Python code
+		if (url.pathname === "/run") {
+			const result = await sandbox.exec('python3 -c "print(2 + 2)"');
+			return Response.json({
+				output: result.stdout,
+				error: result.stderr,
+				exitCode: result.exitCode,
+				success: result.success,
+			});
+		}
 
+		// Work with files
+		if (url.pathname === "/file") {
+			await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");
+			const file = await sandbox.readFile("/workspace/hello.txt");
+			return Response.json({
+				content: file.content,
+			});
+		}
 
-    // Execute Python code
-    if (url.pathname === "/run") {
-      const result = await sandbox.exec('python3 -c "print(2 + 2)"');
-      return Response.json({
-        output: result.stdout,
-        error: result.stderr,
-        exitCode: result.exitCode,
-        success: result.success,
-      });
-    }
-
-
-    // Work with files
-    if (url.pathname === "/file") {
-      await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");
-      const file = await sandbox.readFile("/workspace/hello.txt");
-      return Response.json({
-        content: file.content,
-      });
-    }
-
-
-    return new Response("Try /run or /file");
-  },
+		return new Response("Try /run or /file");
+	},
 };
 ```
 
@@ -142,7 +135,6 @@ Test the endpoints:
 ```sh
 # Execute Python code
 curl http://localhost:8787/run
-
 
 # File operations
 curl http://localhost:8787/file
@@ -189,39 +181,32 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-11109)
-* [  wrangler.toml ](#tab-panel-11110)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "class_name": "Sandbox",
-      "image": "./Dockerfile",
-      "instance_type": "lite",
-      "max_instances": 1,
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "Sandbox",
-        "name": "Sandbox",
-      },
-    ],
-  },
-  "migrations": [
-    {
-      "new_sqlite_classes": ["Sandbox"],
-      "tag": "v1",
-    },
-  ],
+	"containers": [
+		{
+			"class_name": "Sandbox",
+			"image": "./Dockerfile",
+			"instance_type": "lite",
+			"max_instances": 1,
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "Sandbox",
+				"name": "Sandbox",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"new_sqlite_classes": ["Sandbox"],
+			"tag": "v1",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -230,11 +215,9 @@ image = "./Dockerfile"
 instance_type = "lite"
 max_instances = 1
 
-
 [[durable_objects.bindings]]
 class_name = "Sandbox"
 name = "Sandbox"
-
 
 [[migrations]]
 new_sqlite_classes = [ "Sandbox" ]
@@ -259,7 +242,14 @@ Now that you have a working sandbox, explore more capabilities:
 * [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) \- Set up custom domains for preview URLs
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete API documentation
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started · Cloudflare Sandbox SDK docs","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started · Cloudflare Sandbox SDK docs","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

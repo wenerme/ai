@@ -1,16 +1,18 @@
 ---
-title: Test APIs
 description: Runtime helpers for writing tests, exported from `cloudflare:workers` and `cloudflare:test`.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Test APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Test APIs
 
-# Test APIs
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides runtime helpers for writing tests. Some helpers are exported from the `cloudflare:workers` module, and others from the `cloudflare:test` module. Both modules are provided by the `@cloudflare/vitest-pool-workers` package, but can only be imported from test files that execute in the Workers runtime.
 
@@ -20,8 +22,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Exposes the [env object](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for use as the second argument passed to ES modules format exported handlers. This provides access to [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) that you have defined in your [Vitest configuration file](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/).
 
-
-**JavaScript**
   ```js
   import { env } from "cloudflare:workers";
   it("uses binding", async () => {
@@ -30,8 +30,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
   });
   ```
   To configure the type of this value, use an ambient module type:
-
-**TypeScript**
   ```ts
   declare module "cloudflare:workers" {
     interface ProvidedEnv {
@@ -45,8 +43,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Provides access to the exports of the `main` Worker. Use `exports.default.fetch()` to write integration tests against your Worker's default export handler. The `main` Worker runs in the same isolate/context as tests so any global mocks will apply to it too. Unlike the previous `SELF` binding, `exports` does not expose Assets. To test assets, use [startDevWorker()](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/).
 
-
-**JavaScript**
   ```js
   import { exports } from "cloudflare:workers";
   it("dispatches fetch event", async () => {
@@ -66,8 +62,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Use this to wait for all Promises passed to `ctx.waitUntil()` to settle, before running test assertions on any side effects. Only accepts instances of `ExecutionContext` returned by `createExecutionContext()`.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
@@ -85,8 +79,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Creates an instance of `ScheduledController` for use as the first argument to modules-format [scheduled()](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) exported handlers.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { createScheduledController, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
@@ -109,8 +101,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Gets the acknowledged/retry state of messages in the `MessageBatch`, and waits for all `ExecutionContext#waitUntil()`ed `Promise`s to settle. Only accepts instances of `MessageBatch` returned by `createMessageBatch()`, and instances of `ExecutionContext` returned by `createExecutionContext()`.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { createMessageBatch, createExecutionContext, getQueueResult } from "cloudflare:test";
@@ -142,8 +132,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   This temporarily replaces your Durable Object's `fetch()` handler with `callback`, then sends a request to it, returning the result. This can be used to call/spy-on Durable Object methods or seed/get persisted data. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 
-
-**TypeScript**
   ```ts
   export class Counter {
     constructor(readonly state: DurableObjectState) {}
@@ -151,11 +139,9 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
       let count = (await this.state.storage.get<number>("count")) ?? 0;
       void this.state.storage.put("count", ++count);
       return new Response(count.toString());
-    }
+  	}
   }
   ```
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { runInDurableObject } from "cloudflare:test";
@@ -186,8 +172,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   Rejects if `stub` is not a Durable Object stub, if the target Durable Object is not currently running, or if its namespace has eviction prevented. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { evictDurableObject } from "cloudflare:test";
@@ -214,8 +198,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Gets the IDs of all objects that have been created in the `namespace`. Respects per-file storage isolation, meaning objects created in a different test file will not be returned.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { listDurableObjectIds } from "cloudflare:test";
@@ -234,8 +216,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Deletes all data from all attached bindings. This is useful for resetting state between test blocks.
 
-
-**TypeScript**
   ```ts
   import { reset } from "cloudflare:test";
   import { afterEach } from "vitest";
@@ -247,8 +227,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Resets all Durable Object instances. Unlike `reset()`, this does not delete persisted data. This forcibly tears down all running Durable Object instances, discarding in-memory state without waiting for in-flight requests to drain.
 
-
-**TypeScript**
   ```ts
   import { abortAllDurableObjects } from "cloudflare:test";
   import { afterEach } from "vitest";
@@ -262,8 +240,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   Non-running or idle Durable Objects are skipped, and namespaces with eviction prevented are respected. Accepts the same [DurableObjectEvictionOptions](#durable-objects) as `evictDurableObject()`.
 
-
-**TypeScript**
   ```ts
   import { evictAllDurableObjects } from "cloudflare:test";
   import { afterEach } from "vitest";
@@ -295,8 +271,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
 
   * Creates an **introspector** for a specific Workflow instance, used to **modify** its behavior, **await** outcomes, and **clear** its state during tests. This is the primary entry point for testing individual Workflow instances with a known ID.
 
-
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { introspectWorkflowInstance } from "cloudflare:test";
@@ -332,8 +306,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
 
   * Creates an **introspector** for a Workflow where instance IDs are unknown beforehand. This allows for defining modifications that will apply to **all subsequently created instances**.
 
-
-**TypeScript**
   ```ts
   import { env, exports } from "cloudflare:workers";
   import { introspectWorkflow } from "cloudflare:test";
@@ -360,8 +332,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
   });
   ```
   The workflow instance doesn't have to be created directly inside the test. The introspector will capture **all** instances created after it is initialized. For example, you could trigger the creation of **one or multiple** instances via a single `fetch` event to your Worker:
-
-**JavaScript**
   ```js
   // This also works for the EXECUTION phase:
   await exports.default.fetch("https://example.com/trigger-workflows");
@@ -384,7 +354,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
     * `mockEvent(event: { type: string; payload: unknown })`: Sends a mock event to the Workflow instance, causing a `step.waitForEvent()` to resolve with the provided payload. `type` must match the `waitForEvent` type.
     * `forceEventTimeout(step: { name: string; index?: number })`: Forces a `step.waitForEvent()` to time out instantly, causing the step to fail.
 
-**TypeScript**
   ```ts
   import { env } from "cloudflare:workers";
   import { introspectWorkflowInstance } from "cloudflare:test";
@@ -440,7 +409,14 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
   ```
   When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/test-apis/","name":"Test APIs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

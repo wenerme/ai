@@ -1,16 +1,18 @@
 ---
-title: Talk to your knowledge base
 description: Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Talk to your knowledge base
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Talk to your knowledge base
 
-# Talk to your knowledge base
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses the [Cloudflare Agents](https://developers.cloudflare.com/agents/) [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-channels/voice/) package for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
 
@@ -84,71 +86,60 @@ The [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-c
 
 Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), alongside the Workers AI binding and the agent's Durable Object. Replace `my-instance` with the name of your instance.
 
-* [  wrangler.jsonc ](#tab-panel-7267)
-* [  wrangler.toml ](#tab-panel-7268)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "voice-knowledge-base",
-  "main": "src/server.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "ai": {
-    "binding": "AI",
-    "remote": true
-  },
-  "ai_search": [
-    {
-      "binding": "AI_SEARCH",
-      "instance_name": "my-instance",
-      "remote": true
-    }
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "TalkToDocs",
-        "class_name": "TalkToDocs"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["TalkToDocs"]
-    }
-  ]
+	"name": "voice-knowledge-base",
+	"main": "src/server.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"ai": {
+		"binding": "AI",
+		"remote": true
+	},
+	"ai_search": [
+		{
+			"binding": "AI_SEARCH",
+			"instance_name": "my-instance",
+			"remote": true
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "TalkToDocs",
+				"class_name": "TalkToDocs"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["TalkToDocs"]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 name = "voice-knowledge-base"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [ai]
 binding = "AI"
 remote = true
-
 
 [[ai_search]]
 binding = "AI_SEARCH"
 instance_name = "my-instance"
 remote = true
 
-
 [[durable_objects.bindings]]
 name = "TalkToDocs"
 class_name = "TalkToDocs"
-
 
 [[migrations]]
 tag = "v1"
@@ -181,11 +172,6 @@ Update `src/server.ts`. Build the agent with the `withVoice` mixin, set the STT 
 
 The model is given a `searchKnowledgeBase` tool that calls AI Search's `search()` for retrieval. It calls the tool when it needs facts from your knowledge base, grounds its answer in the returned chunks, and you return the generated text for the pipeline to speak. The agent stores conversation history automatically, so you can pass `context.messages` for follow-up questions.
 
-* [  JavaScript ](#tab-panel-7269)
-* [  TypeScript ](#tab-panel-7270)
-
-**src/server.js**
-
 ```js
 import { Agent, routeAgentRequest } from "agents";
 import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
@@ -193,155 +179,141 @@ import { generateText, tool, stepCountIs } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 import { z } from "zod";
 
-
 const VoiceAgent = withVoice(Agent);
 
-
 export class TalkToDocs extends VoiceAgent {
-  // Workers AI powers speech-to-text and text-to-speech (no API keys needed).
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	// Workers AI powers speech-to-text and text-to-speech (no API keys needed).
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	// Called each time the user finishes speaking. The agent's model generates
+	// the reply, calling AI Search as a retrieval tool when it needs facts from
+	// your knowledge base.
+	async onTurn(transcript, context) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  // Called each time the user finishes speaking. The agent's model generates
-  // the reply, calling AI Search as a retrieval tool when it needs facts from
-  // your knowledge base.
-  async onTurn(transcript, context) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = await generateText({
+			// Use a Workers AI model that supports function calling.
+			model: workersai("@cf/zai-org/glm-5.2"),
+			system:
+				"You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
+				"For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
+				"Skip the tool for greetings and small talk. Keep replies short and conversational.",
+			messages: [
+				...context.messages.map((message) => ({
+					role: message.role,
+					content: message.content,
+				})),
+				{ role: "user", content: transcript },
+			],
+			tools: {
+				searchKnowledgeBase: tool({
+					description:
+						"Search the knowledge base for information to answer the user's question.",
+					inputSchema: z.object({
+						query: z.string().describe("A focused search query"),
+					}),
+					execute: async ({ query }) => {
+						// search() runs retrieval only and returns the matching chunks.
+						const res = await this.env.AI_SEARCH.search({
+							query,
+							ai_search_options: { retrieval: { max_num_results: 5 } },
+						});
+						return res.chunks.map((chunk) => chunk.text).join("\n\n");
+					},
+				}),
+			},
+			// Let the model call the tool, then answer from the results.
+			stopWhen: stepCountIs(4),
+		});
 
-
-    const result = await generateText({
-      // Use a Workers AI model that supports function calling.
-      model: workersai("@cf/zai-org/glm-5.2"),
-      system:
-        "You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
-        "For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
-        "Skip the tool for greetings and small talk. Keep replies short and conversational.",
-      messages: [
-        ...context.messages.map((message) => ({
-          role: message.role,
-          content: message.content,
-        })),
-        { role: "user", content: transcript },
-      ],
-      tools: {
-        searchKnowledgeBase: tool({
-          description:
-            "Search the knowledge base for information to answer the user's question.",
-          inputSchema: z.object({
-            query: z.string().describe("A focused search query"),
-          }),
-          execute: async ({ query }) => {
-            // search() runs retrieval only and returns the matching chunks.
-            const res = await this.env.AI_SEARCH.search({
-              query,
-              ai_search_options: { retrieval: { max_num_results: 5 } },
-            });
-            return res.chunks.map((chunk) => chunk.text).join("\n\n");
-          },
-        }),
-      },
-      // Let the model call the tool, then answer from the results.
-      stopWhen: stepCountIs(4),
-    });
-
-
-    // Return the generated answer for the pipeline to speak.
-    return result.text;
-  }
+		// Return the generated answer for the pipeline to speak.
+		return result.text;
+	}
 }
 
-
 export default {
-  async fetch(request, env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request, env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
-
-**src/server.ts**
 
 ```ts
 import { Agent, routeAgentRequest } from "agents";
 import {
-  withVoice,
-  WorkersAIFluxSTT,
-  WorkersAITTS,
-  type VoiceTurnContext,
+	withVoice,
+	WorkersAIFluxSTT,
+	WorkersAITTS,
+	type VoiceTurnContext,
 } from "@cloudflare/voice";
 import { generateText, tool, stepCountIs } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 import { z } from "zod";
 
-
 const VoiceAgent = withVoice(Agent);
 
-
 export class TalkToDocs extends VoiceAgent<Env> {
-  // Workers AI powers speech-to-text and text-to-speech (no API keys needed).
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	// Workers AI powers speech-to-text and text-to-speech (no API keys needed).
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	// Called each time the user finishes speaking. The agent's model generates
+	// the reply, calling AI Search as a retrieval tool when it needs facts from
+	// your knowledge base.
+	async onTurn(transcript: string, context: VoiceTurnContext) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  // Called each time the user finishes speaking. The agent's model generates
-  // the reply, calling AI Search as a retrieval tool when it needs facts from
-  // your knowledge base.
-  async onTurn(transcript: string, context: VoiceTurnContext) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = await generateText({
+			// Use a Workers AI model that supports function calling.
+			model: workersai("@cf/zai-org/glm-5.2"),
+			system:
+				"You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
+				"For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
+				"Skip the tool for greetings and small talk. Keep replies short and conversational.",
+			messages: [
+				...context.messages.map((message) => ({
+					role: message.role as "user" | "assistant",
+					content: message.content,
+				})),
+				{ role: "user" as const, content: transcript },
+			],
+			tools: {
+				searchKnowledgeBase: tool({
+					description:
+						"Search the knowledge base for information to answer the user's question.",
+					inputSchema: z.object({
+						query: z.string().describe("A focused search query"),
+					}),
+					execute: async ({ query }) => {
+						// search() runs retrieval only and returns the matching chunks.
+						const res = await this.env.AI_SEARCH.search({
+							query,
+							ai_search_options: { retrieval: { max_num_results: 5 } },
+						});
+						return res.chunks.map((chunk) => chunk.text).join("\n\n");
+					},
+				}),
+			},
+			// Let the model call the tool, then answer from the results.
+			stopWhen: stepCountIs(4),
+		});
 
-
-    const result = await generateText({
-      // Use a Workers AI model that supports function calling.
-      model: workersai("@cf/zai-org/glm-5.2"),
-      system:
-        "You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
-        "For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
-        "Skip the tool for greetings and small talk. Keep replies short and conversational.",
-      messages: [
-        ...context.messages.map((message) => ({
-          role: message.role as "user" | "assistant",
-          content: message.content,
-        })),
-        { role: "user" as const, content: transcript },
-      ],
-      tools: {
-        searchKnowledgeBase: tool({
-          description:
-            "Search the knowledge base for information to answer the user's question.",
-          inputSchema: z.object({
-            query: z.string().describe("A focused search query"),
-          }),
-          execute: async ({ query }) => {
-            // search() runs retrieval only and returns the matching chunks.
-            const res = await this.env.AI_SEARCH.search({
-              query,
-              ai_search_options: { retrieval: { max_num_results: 5 } },
-            });
-            return res.chunks.map((chunk) => chunk.text).join("\n\n");
-          },
-        }),
-      },
-      // Let the model call the tool, then answer from the results.
-      stopWhen: stepCountIs(4),
-    });
-
-
-    // Return the generated answer for the pipeline to speak.
-    return result.text;
-  }
+		// Return the generated answer for the pipeline to speak.
+		return result.text;
+	}
 }
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -355,81 +327,69 @@ Use a Workers AI model that supports function calling so the model can call the 
 
 Replace `src/client.tsx` with a React component that uses the [useVoiceAgent](https://developers.cloudflare.com/agents/communication-channels/voice/) hook. The hook manages the microphone, the WebSocket connection to your agent, audio playback, and interrupt detection, so the component only needs to render controls. Set `agent` to your agent class name, `TalkToDocs`.
 
-**src/client.tsx**
-
 ```tsx
 import { useVoiceAgent } from "@cloudflare/voice/react";
 
-
 function App() {
-  // useVoiceAgent connects to your agent over WebSocket, captures the
-  // microphone, plays the spoken response, and exposes the live call state.
-  // `agent` matches your Durable Object class name.
-  const {
-    // Pipeline state: "idle" | "listening" | "thinking" | "speaking".
-    status,
-    // Finalized conversation turns (your speech and the agent's replies).
-    transcript,
-    // Live partial transcription of what you are currently saying.
-    interimTranscript,
-    // Whether the WebSocket connection to the agent is open.
-    connected,
-    startCall,
-    endCall,
-    toggleMute,
-    isMuted,
-  } = useVoiceAgent({ agent: "TalkToDocs" });
+	// useVoiceAgent connects to your agent over WebSocket, captures the
+	// microphone, plays the spoken response, and exposes the live call state.
+	// `agent` matches your Durable Object class name.
+	const {
+		// Pipeline state: "idle" | "listening" | "thinking" | "speaking".
+		status,
+		// Finalized conversation turns (your speech and the agent's replies).
+		transcript,
+		// Live partial transcription of what you are currently saying.
+		interimTranscript,
+		// Whether the WebSocket connection to the agent is open.
+		connected,
+		startCall,
+		endCall,
+		toggleMute,
+		isMuted,
+	} = useVoiceAgent({ agent: "TalkToDocs" });
 
+	const inCall = status !== "idle";
 
-  const inCall = status !== "idle";
+	return (
+		<div>
+			<h1>Talk to your knowledge base</h1>
 
+			{/* Shows "thinking" while the agent searches the KB and generates a reply. */}
+			<p>Status: {status}</p>
 
-  return (
-    <div>
-      <h1>Talk to your knowledge base</h1>
+			{/* Toggle the call. Disabled until the agent connection is open. */}
+			<button
+				onClick={inCall ? endCall : startCall}
+				disabled={!connected && !inCall}
+			>
+				{!connected ? "Connecting…" : inCall ? "End call" : "Start call"}
+			</button>
 
+			{/* Mute only applies once a call is active. */}
+			{inCall && (
+				<button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
+			)}
 
-      {/* Shows "thinking" while the agent searches the KB and generates a reply. */}
-      <p>Status: {status}</p>
+			{/* Lightweight loading state while the agent works on a reply. */}
+			{status === "thinking" && <p>Thinking…</p>}
 
+			{/* Live partial transcript, updated as you speak. */}
+			{interimTranscript && (
+				<p>
+					<em>{interimTranscript}</em>
+				</p>
+			)}
 
-      {/* Toggle the call. Disabled until the agent connection is open. */}
-      <button
-        onClick={inCall ? endCall : startCall}
-        disabled={!connected && !inCall}
-      >
-        {!connected ? "Connecting…" : inCall ? "End call" : "Start call"}
-      </button>
-
-
-      {/* Mute only applies once a call is active. */}
-      {inCall && (
-        <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
-      )}
-
-
-      {/* Lightweight loading state while the agent works on a reply. */}
-      {status === "thinking" && <p>Thinking…</p>}
-
-
-      {/* Live partial transcript, updated as you speak. */}
-      {interimTranscript && (
-        <p>
-          <em>{interimTranscript}</em>
-        </p>
-      )}
-
-
-      {/* Finalized turns from both you and the agent. */}
-      {transcript.map((message, index) => (
-        <p key={index}>
-          <strong>{message.role}:</strong> {message.text}
-        </p>
-      ))}
-    </div>
-  );
+			{/* Finalized turns from both you and the agent. */}
+			{transcript.map((message, index) => (
+				<p key={index}>
+					<strong>{message.role}:</strong> {message.text}
+				</p>
+			))}
+		</div>
+	);
 }
-
 
 export default App;
 ```
@@ -480,15 +440,30 @@ This tutorial builds a single-user voice agent. If you instead need several peop
 
 ## Next steps
 
-[ Voice agents API reference ](https://developers.cloudflare.com/agents/communication-channels/voice/) The @cloudflare/voice pipeline, providers, and onTurn contract.
+### [ Voice agents API reference ](https://developers.cloudflare.com/agents/communication-channels/voice/)
 
-[ Voice agent example ](https://developers.cloudflare.com/agents/examples/voice-agent/) A full walkthrough of the voice agent and its browser client.
+ The @cloudflare/voice pipeline, providers, and onTurn contract.
 
-[ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for chatCompletions() and search() from a Worker.
+### [ Voice agent example ](https://developers.cloudflare.com/agents/examples/voice-agent/)
 
-[ Bring your own generation model ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/) Use a third-party model for generation while AI Search handles retrieval.
+ A full walkthrough of the voice agent and its browser client.
+
+### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+
+ Full reference for chatCompletions() and search() from a Worker.
+
+### [ Bring your own generation model ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/)
+
+ Use a third-party model for generation while AI Search handles retrieval.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base · Cloudflare AI Search docs","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/talk-to-your-knowledge-base/","name":"Talk to your knowledge base"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base · Cloudflare AI Search docs","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

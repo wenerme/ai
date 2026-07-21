@@ -1,39 +1,32 @@
 ---
-title: Read key-value pairs
 description: Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Read key-value pairs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Read key-value pairs
 
-# Read key-value pairs
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
-
-* [  JavaScript ](#tab-panel-9775)
-* [  Python ](#tab-panel-9776)
-
-**JavaScript**
 
 ```js
 // Read individual key
 env.NAMESPACE.get(key);
 
-
 // Read multiple keys
 env.NAMESPACE.get(keys);
 ```
 
-**Python**
-
 ```py
 # Read individual key
 self.env.NAMESPACE.get(key)
-
 
 # Read multiple keys
 self.env.NAMESPACE.get(keys)
@@ -45,49 +38,37 @@ If you request a single key as a string, you will get a single response in the p
 
 You can also request an array of keys. The return value with be a `Map` of the key-value pairs found, with keys not found having `null` values.
 
-* [  JavaScript ](#tab-panel-9777)
-* [  Python ](#tab-panel-9778)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    try {
-      // Read single key, returns value or null
-      const value = await env.NAMESPACE.get("first-key");
+	async fetch(request, env, ctx) {
+		try {
+			// Read single key, returns value or null
+			const value = await env.NAMESPACE.get("first-key");
 
+			// Read multiple keys, returns Map of values
+			const values = await env.NAMESPACE.get(["first-key", "second-key"]);
 
-      // Read multiple keys, returns Map of values
-      const values = await env.NAMESPACE.get(["first-key", "second-key"]);
+			// Read single key with metadata, returns value or null
+			const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
 
+			// Read multiple keys with metadata, returns Map of values
+			const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
 
-      // Read single key with metadata, returns value or null
-      const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
-
-
-      // Read multiple keys with metadata, returns Map of values
-      const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
-
-
-      return new Response({
-        value: value,
-        values: Object.fromEntries(values),
-        valueWithMetadata: valueWithMetadata,
-        valuesWithMetadata: Object.fromEntries(valuesWithMetadata)
-      });
-    } catch (e) {
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			return new Response({
+				value: value,
+				values: Object.fromEntries(values),
+				valueWithMetadata: valueWithMetadata,
+				valuesWithMetadata: Object.fromEntries(valuesWithMetadata)
+			});
+		} catch (e) {
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -95,18 +76,14 @@ class Default(WorkerEntrypoint):
             # Read single key, returns value or None
             value = await self.env.NAMESPACE.get("first-key")
 
-
             # Read multiple keys, returns dict of values
             values = await self.env.NAMESPACE.get(["first-key", "second-key"])
-
 
             # Read single key with metadata
             value_with_metadata = await self.env.NAMESPACE.getWithMetadata("first-key")
 
-
             # Read multiple keys with metadata
             values_with_metadata = await self.env.NAMESPACE.getWithMetadata(["first-key", "second-key"])
-
 
             return Response.json({
                 "value": value,
@@ -140,18 +117,11 @@ Use the `get()` method to get a single value, or multiple values if given multip
 
 To get the value for a single key, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9779)
-* [  Python ](#tab-panel-9780)
-
-**JavaScript**
-
 ```js
 env.NAMESPACE.get(key, type?);
 // OR
 env.NAMESPACE.get(key, options?);
 ```
-
-**Python**
 
 ```py
 self.env.NAMESPACE.get(key, type)
@@ -181,18 +151,11 @@ self.env.NAMESPACE.get(key, options)
 
 To get the values for multiple keys, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9781)
-* [  Python ](#tab-panel-9782)
-
-**JavaScript**
-
 ```js
 env.NAMESPACE.get(keys, type?);
 // OR
 env.NAMESPACE.get(keys, options?);
 ```
-
-**Python**
 
 ```py
 self.env.NAMESPACE.get(keys, type)
@@ -233,18 +196,11 @@ Use the `getWithMetadata()` method to get a single value along with its metadata
 
 To get the value for a given key along with its metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9783)
-* [  Python ](#tab-panel-9784)
-
-**JavaScript**
-
 ```js
 env.NAMESPACE.getWithMetadata(key, type?);
 // OR
 env.NAMESPACE.getWithMetadata(key, options?);
 ```
-
-**Python**
 
 ```py
 self.env.NAMESPACE.getWithMetadata(key, type)
@@ -279,18 +235,11 @@ If there is no metadata associated with the requested key-value pair, `null` wil
 
 To get the values for a given set of keys along with their metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9785)
-* [  Python ](#tab-panel-9786)
-
-**JavaScript**
-
 ```js
 env.NAMESPACE.getWithMetadata(keys, type?);
 // OR
 env.NAMESPACE.getWithMetadata(keys, options?);
 ```
-
-**Python**
 
 ```py
 self.env.NAMESPACE.getWithMetadata(keys, type)
@@ -389,7 +338,14 @@ This works best if you are not expecting the need to update the values independe
 
 You can [read key-value pairs from the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-key-get) and [from the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/get/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/#page","headline":"Read key-value pairs · Cloudflare Workers KV docs","description":"Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.","url":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/read-key-value-pairs/","name":"Read key-value pairs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/#page","headline":"Read key-value pairs · Cloudflare Workers KV docs","description":"Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.","url":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

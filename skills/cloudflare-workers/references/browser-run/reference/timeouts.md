@@ -1,16 +1,18 @@
 ---
-title: Quick Actions timeouts
 description: Configure Browser Run Quick Actions timeout settings for page load, selector wait, and action execution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Quick Actions timeouts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Quick Actions timeouts
 
-# Quick Actions timeouts
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/reference/timeouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browser Run uses several independent timers to manage how long different parts of a request can take. If any of these timers exceed their limit, the request returns a timeout error.
 
@@ -48,7 +50,14 @@ If you are not getting the expected output:
 * If waiting for a specific element, use `waitForSelector`. Otherwise, use `goToOptions.waitUntil` set to `networkidle2` to ensure the page has finished loading dynamic content.
 * If you are getting a `422`, it may be the action itself (ex: taking a screenshot, extracting the html content) that takes a long time. Try increasing the `actionTimeout` instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/timeouts/#page","headline":"Quick Actions timeouts · Cloudflare Browser Run docs","description":"Configure Browser Run Quick Actions timeout settings for page load, selector wait, and action execution.","url":"https://developers.cloudflare.com/browser-run/reference/timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/timeouts/","name":"Quick Actions timeouts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/timeouts/#page","headline":"Quick Actions timeouts · Cloudflare Browser Run docs","description":"Configure Browser Run Quick Actions timeout settings for page load, selector wait, and action execution.","url":"https://developers.cloudflare.com/browser-run/reference/timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

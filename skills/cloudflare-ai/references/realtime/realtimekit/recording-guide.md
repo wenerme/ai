@@ -1,33 +1,35 @@
 ---
-title: Recording
 description: Record RealtimeKit meetings as composite recordings or separate participant audio tracks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Recording
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Recording
 
-# Recording
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn how RealtimeKit records meetings as a single composite file or as separate participant audio tracks.
 
 Visit the following pages to learn more about recording meetings:
 
+* [ Start Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/)
+* [ Stop Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/stop-recording/)
+* [ Monitor Recording Status ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/monitor-status/)
 * [ Configure Video Settings ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/configure-codecs/)
 * [ Set Audio Configurations ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/configure-audio-codec/)
 * [ Add Watermark ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/add-watermark/)
 * [ Disable Upload to RealtimeKit Bucket ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/configure-realtimekit-bucket-config/)
+* [ Track recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/)
 * [ Create Custom Recording App Using Recording SDKs ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/)
 * [ Interactive Recordings with Timed Metadata ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/)
 * [ Manage Recording Config Precedence Order ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/manage-recording-config-hierarchy/)
 * [ Upload Recording to Your Cloud ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/)
-* [ Start Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/)
-* [ Stop Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/stop-recording/)
-* [ Monitor Recording Status ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/monitor-status/)
-* [ Track recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/)
 
 RealtimeKit can record the audio and video of multiple users in a meeting, as well as interactions with RealtimeKit plugins, in a single file using composite recording mode. RealtimeKit can also record separate participant audio tracks using [track recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/).
 
@@ -56,7 +58,14 @@ A typical workflow for recording a meeting involves the following steps:
 
 For separate participant audio files, refer to [Track recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/#page","headline":"Recording · Cloudflare Realtime docs","description":"Record RealtimeKit meetings as composite recordings or separate participant audio tracks.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/#page","headline":"Recording · Cloudflare Realtime docs","description":"Record RealtimeKit meetings as composite recordings or separate participant audio tracks.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

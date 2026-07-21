@@ -1,16 +1,18 @@
 ---
-title: Create indexes
 description: Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create indexes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create indexes
 
-# Create indexes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Indexes are the "atom" of Vectorize. Vectors are inserted into an index and enable you to query the index for similar vectors for a given input vector.
 
@@ -58,32 +60,25 @@ Vectorize also supports creating indexes via [REST API](https://developers.cloud
 
 For example, to create an index directly from a Python script:
 
-**Python**
-
 ```py
 import requests
 
-
 url = "https://api.cloudflare.com/client/v4/accounts/{}/vectorize/v2/indexes".format("your-account-id")
-
 
 headers = {
     "Authorization": "Bearer <your-api-token>"
 }
 
-
 body = {
-  "name": "demo-index",
-  "description": "some index description",
+	"name": "demo-index",
+	"description": "some index description",
   "config": {
     "dimensions": 1024,
     "metric": "euclidean"
   },
 }
 
-
 resp = requests.post(url, headers=headers, json=body)
-
 
 print('Status Code:', resp.status_code)
 print('Response JSON:', resp.json())
@@ -131,7 +126,14 @@ When querying vectors, you can specify Vectorize to use either:
 
 Distance metrics cannot be changed after index creation, and that each metric has a different scoring function.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#page","headline":"Create indexes · Cloudflare Vectorize docs","description":"Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.","url":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/best-practices/create-indexes/","name":"Create indexes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#page","headline":"Create indexes · Cloudflare Vectorize docs","description":"Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.","url":"https://developers.cloudflare.com/vectorize/best-practices/create-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -231,6 +231,7 @@ const implementations = {
   get_demand: async ({ sku }) => ({ sku, requested_units: 31 }),
 };
 
+/** @type {OpenAI.Responses.Tool[]} */
 const tools = [
   {
     type: "function",
@@ -253,6 +254,7 @@ const tools = [
       additionalProperties: false,
     },
     allowed_callers: ["programmatic"],
+    strict: true,
   },
   {
     type: "function",
@@ -275,10 +277,12 @@ const tools = [
       additionalProperties: false,
     },
     allowed_callers: ["programmatic"],
+    strict: true,
   },
   { type: "programmatic_tool_calling" },
 ];
 
+/** @type {OpenAI.Responses.ResponseInput} */
 const input = [
   {
     role: "user",
@@ -301,9 +305,7 @@ while (true) {
   // Preserve every output item, including program and reasoning items.
   input.push(...response.output);
 
-  const calls = response.output.filter(
-    (item) => item.type === "function_call",
-  );
+  const calls = response.output.filter((item) => item.type === "function_call");
 
   if (calls.length === 0) {
     const message = response.output.find((item) => item.type === "message");
@@ -321,14 +323,14 @@ while (true) {
       if (!run) throw new Error(`Unknown tool: ${call.name}`);
 
       const result = await run(JSON.parse(call.arguments));
-      return {
+      return /** @type {const} */ ({
         type: "function_call_output",
         call_id: call.call_id,
         output: JSON.stringify(result),
         // Preserve caller so the runtime can resume the correct program.
         caller: call.caller,
-      };
-    }),
+      });
+    })
   );
 
   input.push(...outputs);

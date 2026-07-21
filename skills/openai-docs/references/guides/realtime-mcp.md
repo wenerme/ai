@@ -315,7 +315,11 @@ ws.on("message", (rawMessage) => {
       }
 
       if (event.item.type === "mcp_approval_request") {
-        console.log("Approval required for:", event.item.name, event.item.arguments);
+        console.log(
+          "Approval required for:",
+          event.item.name,
+          event.item.arguments
+        );
       }
       break;
 

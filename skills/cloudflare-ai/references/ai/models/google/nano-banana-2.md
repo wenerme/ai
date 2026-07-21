@@ -1,38 +1,38 @@
 ---
-title: Nano Banana 2
 description: Google's second-generation image generation model with improved quality and speed.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Nano Banana 2
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
 #  Nano Banana 2
 
-Text-to-Image • Google
+ Text-to-Image • Google
 
-`google/nano-banana-2`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` google/nano-banana-2 `
+
+* Third-party
+* Zero data retention
 
 Google's second-generation image generation model with improved quality and speed.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                       |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                 |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                  |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-726)
-* [ cURL ](#tab-panel-727)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -59,9 +59,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-724)
-* [ Raw response ](#tab-panel-725)
-
 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png)
 
 ```json
@@ -79,11 +76,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Abstract Art**  — Modern abstract expressionist painting
-
-* [ TypeScript ](#tab-panel-730)
-* [ cURL ](#tab-panel-731)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -112,9 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-728)
-* [ Raw response ](#tab-panel-729)
-
 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png)
 
 ```json
@@ -130,11 +119,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **With Google Search**  — Use web search grounding for current events
-
-* [ TypeScript ](#tab-panel-734)
-* [ cURL ](#tab-panel-735)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -162,9 +146,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-732)
-* [ Raw response ](#tab-panel-733)
-
 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png)
 
 ```json
@@ -180,11 +161,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio
-
-* [ TypeScript ](#tab-panel-738)
-* [ cURL ](#tab-panel-739)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -215,9 +191,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-736)
-* [ Raw response ](#tab-panel-737)
-
 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg)
 
 ```json
@@ -233,9 +206,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-740)
-* [ Output ](#tab-panel-741)
 
 prompt
 
@@ -275,7 +245,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schem
 
 Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana-2/#page","headline":"Nano Banana 2 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's second-generation image generation model with improved quality and speed.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana-2/#page","headline":"Nano Banana 2 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's second-generation image generation model with improved quality and speed.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

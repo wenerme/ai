@@ -1,18 +1,20 @@
 ---
-title: AWS RDS and Aurora
 description: Connect Hyperdrive to an AWS RDS database instance.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: AWS RDS and Aurora
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# AWS RDS and Aurora
+#  AWS RDS and Aurora
 
 Connect Hyperdrive to an AWS RDS or AWS Aurora MySQL database instance.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example shows you how to connect Hyperdrive to an Amazon Relational Database Service (Amazon RDS) or Amazon Aurora MySQL database instance.
 
@@ -36,7 +38,7 @@ When creating or modifying an instance in the AWS console:
 4. Select an **Existing VPC security group** that allows public Internet access from `0.0.0.0/0` to the port your database instance is configured to listen on (default: `3306` for MySQL instances).
 5. Select **Create database**.
 
-Warning
+Caution
 
 You must ensure that the [VPC security group ↗](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) associated with your database allows public IPv4 access to your database port.
 
@@ -81,18 +83,14 @@ Run the following SQL statements:
 -- Create a role for Hyperdrive
 CREATE ROLE hyperdrive;
 
-
 -- Allow Hyperdrive to connect
 GRANT USAGE ON mysql_db.* TO hyperdrive;
-
 
 -- Grant database privileges to the hyperdrive role
 GRANT ALL PRIVILEGES ON mysql_db.* to hyperdrive;
 
-
 -- Create a specific user for Hyperdrive to log in as
 CREATE USER 'hyperdrive_user'@'%' IDENTIFIED WITH caching_sha2_password BY 'sufficientlyRandomPassword';
-
 
 -- Grant this new user the hyperdrive role privileges
 GRANT hyperdrive to 'hyperdrive_user'@'%';
@@ -134,41 +132,33 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9485)
-* [  wrangler.toml ](#tab-panel-9486)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hyperdrive-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hyperdrive-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -203,35 +193,27 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9487)
-* [  wrangler.toml ](#tab-panel-9488)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -240,45 +222,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-**TypeScript**
-
 ```ts
 // mysql2 v3.13.0 or later is required
 import { createConnection } from "mysql2/promise";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new connection is fast.
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new connection on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new connection is fast.
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// Required to enable mysql2 compatibility for Workers
+			disableEval: true,
+		});
 
-      // Required to enable mysql2 compatibility for Workers
-      disableEval: true,
-    });
+		try {
+			// Sample query
+			const [results, fields] = await connection.query("SHOW tables;");
 
-
-    try {
-      // Sample query
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-      return Response.json({ results, fields });
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return Response.json({ results, fields });
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -292,7 +268,14 @@ The minimum version of `mysql2` required for Hyperdrive is `3.13.0`.
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/#page","headline":"AWS RDS and Aurora · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to an AWS RDS database instance.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/","name":"Connect to MySQL"}},{"@type":"ListItem","position":5,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/mysql-database-providers/","name":"Database Providers"}},{"@type":"ListItem","position":6,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/","name":"AWS RDS and Aurora"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/#page","headline":"AWS RDS and Aurora · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to an AWS RDS database instance.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

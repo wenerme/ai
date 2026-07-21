@@ -1,16 +1,18 @@
 ---
-title: Stream live video
 description: Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Stream live video
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stream live video
 
-# Stream live video
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Stream lets you or your users [stream live video ↗](https://www.cloudflare.com/learning/video/what-is-live-streaming/), and play live video in your website or app, without managing and configuring any of your own infrastructure.
 
@@ -63,7 +65,14 @@ Stream Live is billed identically to the rest of Cloudflare Stream.
 
 All Stream Live videos are automatically recorded. There is no additional cost for encoding and packaging live videos.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/stream-live/#page","headline":"Stream live video · Cloudflare Stream docs","description":"Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/stream-live/#page","headline":"Stream live video · Cloudflare Stream docs","description":"Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Video resolution and simulcast
 description: Choose the right video resolution, simulcast settings, and frame rate for your RealtimeKit use case to optimize quality and bandwidth.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Video resolution and simulcast
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Video resolution and simulcast
 
-# Video resolution and simulcast
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure video resolution, simulcast, and frame rate in RealtimeKit to balance quality against bandwidth. The right settings depend on your grid layout, participant count, and use case.
 
@@ -54,7 +56,7 @@ The following table shows per-sender upload bandwidth and hourly data transfer a
 
 Each viewer downloads one stream. The download bitrate matches the sender upload bitrate, or a lower simulcast layer if the viewer's network is constrained.
 
-Warning
+Caution
 
 4K requires 14–56 Mbps upload bandwidth per sender depending on scene complexity. Verify that the host network supports this before selecting it in the preset.
 
@@ -171,7 +173,14 @@ For large-grid use cases like virtual classrooms or all-hands meetings, `320×24
 
 For more information on configuring presets, refer to [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#page","headline":"Video resolution and simulcast · Cloudflare Realtime docs","description":"Choose the right video resolution, simulcast settings, and frame rate for your RealtimeKit use case to optimize quality and bandwidth.","url":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/best-practices/video-and-simulcast/","name":"Video resolution and simulcast"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#page","headline":"Video resolution and simulcast · Cloudflare Realtime docs","description":"Choose the right video resolution, simulcast settings, and frame rate for your RealtimeKit use case to optimize quality and bandwidth.","url":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

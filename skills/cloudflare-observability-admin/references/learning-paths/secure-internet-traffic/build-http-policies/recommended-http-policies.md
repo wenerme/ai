@@ -1,16 +1,18 @@
 ---
-title: Recommended HTTP policies
 description: Deploy recommended HTTP security policies.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Recommended HTTP policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Recommended HTTP policies
 
-# Recommended HTTP policies
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 We recommend you add the following HTTP policies to build an Internet and SaaS app security strategy for your organization.
 
@@ -20,31 +22,25 @@ For additional commonly used HTTP policy examples, refer to [Common HTTP policie
 
 Bypass HTTP inspection for applications that use embedded certificates. This will help avoid any certificate pinning errors that may arise from an initial rollout.
 
-* [ Dashboard ](#tab-panel-10060)
-* [ API ](#tab-panel-10061)
-* [ Terraform ](#tab-panel-10062)
-
 | Selector    | Operator | Value            | Action         |
 | ----------- | -------- | ---------------- | -------------- |
 | Application | in       | _Do Not Inspect_ | Do Not Inspect |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-Application-InspectBypass",
-    "description": "Bypass HTTP inspection for applications that use embedded certificates",
-    "precedence": 0,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.type.ids[*] in {16})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-Application-InspectBypass",
+		"description": "Bypass HTTP inspection for applications that use embedded certificates",
+		"precedence": 0,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.type.ids[*] in {16})"
+	}'
 ```
 
 ```tf
@@ -64,33 +60,27 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_inspect_by
 
 Bypass HTTPS inspection for Android applications (such as Google Drive) that use certificate pinning, which is incompatible with Gateway inspection.
 
-* [ Dashboard ](#tab-panel-10063)
-* [ API ](#tab-panel-10064)
-* [ Terraform ](#tab-panel-10065)
-
 | Selector                     | Operator | Value                             | Logic | Action         |
 | ---------------------------- | -------- | --------------------------------- | ----- | -------------- |
 | Application                  | in       | _Google Drive_                    | And   | Do Not Inspect |
 | Passed Device Posture Checks | in       | _OS Version Android (OS version)_ |       |                |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Android-HTTP-Application-InspectionBypass",
-    "description": "Bypass HTTPS inspection for Android applications with certificate pinning",
-    "precedence": 10,
-    "enabled": true,
-    "action": "off",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.ids[] in {554})",
-    "device_posture": "any(device_posture.checks.passed[] in {\"<ANDROID_VERSION_POSTURE_CHECK_UUID >\"})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Android-HTTP-Application-InspectionBypass",
+		"description": "Bypass HTTPS inspection for Android applications with certificate pinning",
+		"precedence": 10,
+		"enabled": true,
+		"action": "off",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.ids[] in {554})",
+		"device_posture": "any(device_posture.checks.passed[] in {\"<ANDROID_VERSION_POSTURE_CHECK_UUID >\"})"
+	}'
 ```
 
 ```tf
@@ -111,32 +101,26 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection.
 
-* [ Dashboard ](#tab-panel-10066)
-* [ API ](#tab-panel-10067)
-* [ Terraform ](#tab-panel-10068)
-
 | Selector | Operator | Value                    | Logic | Action         |
 | -------- | -------- | ------------------------ | ----- | -------------- |
 | Domain   | in list  | _DomainInspectionBypass_ | Or    | Do Not Inspect |
 | Domain   | in list  | _Known Domains_          |       |                |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-Domain-Inspection-Bypass",
-    "description": "Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection",
-    "precedence": 20,
-    "enabled": true,
-    "action": "off",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.domains[*] in $<DOMAIN_INSPECTION_BYPASS_LIST_UUID>) or any(http.request.domains[*] in $<KNOWN_DOMAINS_LIST_UUID>)"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-Domain-Inspection-Bypass",
+		"description": "Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection",
+		"precedence": 20,
+		"enabled": true,
+		"action": "off",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.domains[*] in $<DOMAIN_INSPECTION_BYPASS_LIST_UUID>) or any(http.request.domains[*] in $<KNOWN_DOMAINS_LIST_UUID>)"
+	}'
 ```
 
 ```tf
@@ -156,31 +140,25 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-10069)
-* [ API ](#tab-panel-10070)
-* [ Terraform ](#tab-panel-10071)
-
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
 | Security Categories | in       | _All security risks_ | Block  |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-SecurityRisks-Blocklist",
-    "description": "Block security categories based on Cloudflare'\''s threat intelligence",
-    "precedence": 30,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-SecurityRisks-Blocklist",
+		"description": "Block security categories based on Cloudflare'\''s threat intelligence",
+		"precedence": 30,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"
+	}'
 ```
 
 ```tf
@@ -202,33 +180,27 @@ Entries in the [security risk content subcategory](https://developers.cloudflare
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-10084)
-* [ API ](#tab-panel-10085)
-* [ Terraform ](#tab-panel-10086)
-
 | Selector           | Operator | Value                                                                                 | Action |
 | ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
 | Content Categories | in       | _Questionable Content_, _Security Risks_, _Miscellaneous_, _Adult Themes_, _Gambling_ | Block  |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-ContentCategories-Blocklist",
-    "description": "Block access to questionable content and potential security risks",
-    "precedence": 40,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.content_category[*] in {17 85 87 102 157 135 138 180 162 32 169 177 128 15 115 119 124 141 161 2 67 125 133 99})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-ContentCategories-Blocklist",
+		"description": "Block access to questionable content and potential security risks",
+		"precedence": 40,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.content_category[*] in {17 85 87 102 157 135 138 180 162 32 169 177 128 15 115 119 124 141 161 2 67 125 133 99})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ```tf
@@ -236,7 +208,7 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
   account_id     = var.cloudflare_account_id
   name           = "All-HTTP-ContentCategories-Blocklist"
   description    = "Block access to questionable content and potential security risks"
-  precedence     = 40
+	precedence     = 40
   enabled        = true
   action         = "block"
   filters        = ["http"]
@@ -250,33 +222,27 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-HTTP-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-10072)
-* [ API ](#tab-panel-10073)
-* [ Terraform ](#tab-panel-10074)
-
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |
 | Domain   | in list       | _Domain Blocklist_ | Or    | Block  |
 | Host     | in list       | _Host Blocklist_   | Or    |        |
 | Host     | matches regex | .\*example\\.com   |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-DomainHost-Blocklist",
-    "description": "Block specific domains or hosts that are malicious or pose a threat to your organization",
-    "precedence": 50,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.domains[*] in $<DOMAIN_BLOCKLIST_UUID>) or http.request.host in $<HOST_BLOCKLIST_UUID> or http.request.host matches \".*example.com\""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-DomainHost-Blocklist",
+		"description": "Block specific domains or hosts that are malicious or pose a threat to your organization",
+		"precedence": 50,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.domains[*] in $<DOMAIN_BLOCKLIST_UUID>) or http.request.host in $<HOST_BLOCKLIST_UUID> or http.request.host matches \".*example.com\""
+	}'
 ```
 
 ```tf
@@ -296,33 +262,27 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domainhost_blocklist" 
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-10087)
-* [ API ](#tab-panel-10088)
-* [ Terraform ](#tab-panel-10089)
-
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
 | Application | in       | _Artificial Intelligence_ | Block  |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-Application-Blocklist",
-    "description": "Limit access to shadow IT by blocking web-based tools and applications",
-    "precedence": 60,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.type.ids[*] in {25})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-Application-Blocklist",
+		"description": "Limit access to shadow IT by blocking web-based tools and applications",
+		"precedence": 60,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.type.ids[*] in {25})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ```tf
@@ -346,31 +306,25 @@ Isolate traffic for privileged users who regularly access critical systems or ex
 
 Security teams often need to perform threat analysis or malware testing that could trigger malware detection. Likewise, privileged users could be the target of attackers trying to gain access to critical systems.
 
-* [ Dashboard ](#tab-panel-10075)
-* [ API ](#tab-panel-10076)
-* [ Terraform ](#tab-panel-10077)
-
 | Selector         | Operator | Value              | Action  |
 | ---------------- | -------- | ------------------ | ------- |
 | User Group Names | in       | _Privileged Users_ | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "PrivilegedUsers-HTTP-Any-Isolate",
-    "description": "Isolate traffic for privileged users who regularly access critical or testing systems",
-    "precedence": 70,
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "identity": "any(identity.groups.name[*] in {\"Privileged Users\"})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "PrivilegedUsers-HTTP-Any-Isolate",
+		"description": "Isolate traffic for privileged users who regularly access critical or testing systems",
+		"precedence": 70,
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"identity": "any(identity.groups.name[*] in {\"Privileged Users\"})"
+	}'
 ```
 
 ```tf
@@ -390,33 +344,27 @@ resource "cloudflare_zero_trust_gateway_policy" "privileged_users_http_any_isola
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-10078)
-* [ API ](#tab-panel-10079)
-* [ Terraform ](#tab-panel-10080)
-
 | Selector         | Operator    | Value                           | Logic | Action |
 | ---------------- | ----------- | ------------------------------- | ----- | ------ |
 | Destination IP   | not in list | _Quarantined-Users-IPAllowlist_ | And   | Block  |
 | User Group Names | in          | _Quarantined Users_             |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Quarantined-Users-HTTP-Restricted-Access",
-    "description": "Restrict access for users included in an identity provider (IdP) user group for risky users",
-    "precedence": 80,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "not(any(http.conn.dst_ip[] in $<QUARANTINED_USERS_IP_ALLOWLIST_UUID>))",
-    "identity": "any(identity.groups.name[] in {\"Quarantined Users\"})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Quarantined-Users-HTTP-Restricted-Access",
+		"description": "Restrict access for users included in an identity provider (IdP) user group for risky users",
+		"precedence": 80,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "not(any(http.conn.dst_ip[] in $<QUARANTINED_USERS_IP_ALLOWLIST_UUID>))",
+		"identity": "any(identity.groups.name[] in {\"Quarantined Users\"})"
+	}'
 ```
 
 ```tf
@@ -437,32 +385,26 @@ resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_http_restrict
 
 Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection. Ideally, your incident response teams can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-10081)
-* [ API ](#tab-panel-10082)
-* [ Terraform ](#tab-panel-10083)
-
 | Selector           | Operator | Value                               | Logic | Action  |
 | ------------------ | -------- | ----------------------------------- | ----- | ------- |
 | Content Categories | in       | _New Domains_, _Newly Seen Domains_ | Or    | Isolate |
 | Domain             | in list  | _Domain Isolation_                  |       |         |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "All-HTTP-Domain-Isolate",
-    "description": "Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection",
-    "precedence": 90,
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.content_category[*] in {169 177}) or any(http.request.domains[*] in $<DOMAIN_ISOLATE_LIST_UUID>)"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "All-HTTP-Domain-Isolate",
+		"description": "Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection",
+		"precedence": 90,
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.content_category[*] in {169 177}) or any(http.request.domains[*] in $<DOMAIN_ISOLATE_LIST_UUID>)"
+	}'
 ```
 
 ```tf
@@ -478,7 +420,14 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domain_isolate" {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/#page","headline":"Recommended HTTP policies · Cloudflare Learning Paths","description":"Deploy recommended HTTP security policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/","name":"Recommended HTTP policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/#page","headline":"Recommended HTTP policies · Cloudflare Learning Paths","description":"Deploy recommended HTTP security policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

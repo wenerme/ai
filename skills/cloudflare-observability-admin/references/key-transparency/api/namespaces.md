@@ -1,16 +1,18 @@
 ---
-title: Namespaces
 description: Create and manage namespaces representing logs monitored by the Cloudflare Auditor.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Namespaces
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Namespaces
 
-# Namespaces
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/key-transparency/api/namespaces/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Key Transparency API is organized in namespaces, each one representing a Log monitored by Cloudflare Auditor. If you want to register a namespace, contact us.
 
@@ -31,12 +33,12 @@ This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/acc
 
 ```sh
 curl 'https://plexi.key-transparency.cloudflare.com/namespaces' \
-          --header 'Content-Type: application/json' \
-          --data '{
-   "name": "your.new.log.com",
-   "root": "1/1111111111111111111111111111111111111111111111111111111111111111",
-   "log_directory": "https://your.new.log.com/path/to/proofs",
-  "signature_version": 1
+        	--header 'Content-Type: application/json' \
+        	--data '{
+ 	"name": "your.new.log.com",
+ 	"root": "1/1111111111111111111111111111111111111111111111111111111111111111",
+ 	"log_directory": "https://your.new.log.com/path/to/proofs",
+	"signature_version": 1
   }'
 {
   "name": "your.new.log.com",
@@ -77,9 +79,9 @@ This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/acc
 
 ```sh
 curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}' \
-          -H 'Content-Type: application/json' \
-          -d '{
-   "status": "Disabled"
+        	-H 'Content-Type: application/json' \
+        	-d '{
+ 	"status": "Disabled"
   }'
 {
   "name": "your.new.log.com",
@@ -92,7 +94,14 @@ curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespa
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces · Cloudflare Key Transparency Auditor docs","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/key-transparency/","name":"Key Transparency Auditor"}},{"@type":"ListItem","position":3,"item":{"@id":"/key-transparency/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/key-transparency/api/namespaces/","name":"Namespaces"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces · Cloudflare Key Transparency Auditor docs","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
 ```

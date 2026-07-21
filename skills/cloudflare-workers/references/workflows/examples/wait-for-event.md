@@ -1,18 +1,20 @@
 ---
-title: Human-in-the-Loop Image Tagging with waitForEvent
 description: Human-in-the-loop Workflow with waitForEvent API
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Human-in-the-Loop Image Tagging with waitForEvent
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Human-in-the-Loop Image Tagging with waitForEvent
+#  Human-in-the-Loop Image Tagging with waitForEvent
 
 Implement a Cloudflare Workflow that processes user-uploaded images, awaits human approval, and performs AI-based image tagging upon approval.
+
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/examples/wait-for-event/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to use the `waitForEvent()` API in Cloudflare Workflows to introduce a human-in-the-loop step. The Workflow is triggered by an image upload, during which metadata is stored in a D1 database. The Workflow then waits for user approval, and upon approval, it uses Workers AI to generate image tags, which are stored in the database. An accompanying Next.js frontend application facilitates the image upload and approval process.
 
@@ -43,117 +45,94 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-14047)
-* [  TypeScript ](#tab-panel-14048)
-
-**JavaScript**
-
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
-  db;
+	db;
 
+	async run(event, step) {
+		this.db = new DatabaseService(this.env.DB);
+		const { imageKey } = event.payload;
 
-  async run(event, step) {
-    this.db = new DatabaseService(this.env.DB);
-    const { imageKey } = event.payload;
+		await step.do("Insert image name into database", async () => {
+			await this.db.insertImage(imageKey, event.instanceId);
+		});
 
+		const waitForApproval = await step.waitForEvent(
+			"Wait for AI Image tagging approval",
+			{
+				type: "approval-for-ai-tagging",
+				timeout: "5 minute",
+			},
+		);
 
-    await step.do("Insert image name into database", async () => {
-      await this.db.insertImage(imageKey, event.instanceId);
-    });
+		const approvalPayload = waitForApproval.payload;
+		if (approvalPayload?.approved) {
+			const aiTags = await step.do("Generate AI tags", async () => {
+				const image = await this.env.workflow_demo_bucket.get(imageKey);
+				if (!image) throw new Error("Image not found");
 
+				const arrayBuffer = await image.arrayBuffer();
+				const uint8Array = new Uint8Array(arrayBuffer);
 
-    const waitForApproval = await step.waitForEvent(
-      "Wait for AI Image tagging approval",
-      {
-        type: "approval-for-ai-tagging",
-        timeout: "5 minute",
-      },
-    );
+				const input = {
+					image: Array.from(uint8Array),
+					prompt: AI_CONFIG.PROMPT,
+					max_tokens: AI_CONFIG.MAX_TOKENS,
+				};
 
+				const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
+				return response.description;
+			});
 
-    const approvalPayload = waitForApproval.payload;
-    if (approvalPayload?.approved) {
-      const aiTags = await step.do("Generate AI tags", async () => {
-        const image = await this.env.workflow_demo_bucket.get(imageKey);
-        if (!image) throw new Error("Image not found");
-
-
-        const arrayBuffer = await image.arrayBuffer();
-        const uint8Array = new Uint8Array(arrayBuffer);
-
-
-        const input = {
-          image: Array.from(uint8Array),
-          prompt: AI_CONFIG.PROMPT,
-          max_tokens: AI_CONFIG.MAX_TOKENS,
-        };
-
-
-        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
-        return response.description;
-      });
-
-
-      await step.do("Update DB with AI tags", async () => {
-        await this.db.updateImageTags(event.instanceId, aiTags);
-      });
-    }
-  }
+			await step.do("Update DB with AI tags", async () => {
+				await this.db.updateImageTags(event.instanceId, aiTags);
+			});
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
-  private db!: DatabaseService;
+	private db!: DatabaseService;
 
+	async run(event: WorkflowEvent<WorkflowParams>, step: WorkflowStep) {
+		this.db = new DatabaseService(this.env.DB);
+		const { imageKey } = event.payload;
 
-  async run(event: WorkflowEvent<WorkflowParams>, step: WorkflowStep) {
-    this.db = new DatabaseService(this.env.DB);
-    const { imageKey } = event.payload;
+		await step.do('Insert image name into database', async () => {
+			await this.db.insertImage(imageKey, event.instanceId);
+		});
 
+		const waitForApproval = await step.waitForEvent('Wait for AI Image tagging approval', {
+			type: 'approval-for-ai-tagging',
+			timeout: '5 minute',
+		});
 
-    await step.do('Insert image name into database', async () => {
-      await this.db.insertImage(imageKey, event.instanceId);
-    });
+		const approvalPayload = waitForApproval.payload as ApprovalRequest;
+		if (approvalPayload?.approved) {
+			const aiTags = await step.do('Generate AI tags', async () => {
+				const image = await this.env.workflow_demo_bucket.get(imageKey);
+				if (!image) throw new Error('Image not found');
 
+				const arrayBuffer = await image.arrayBuffer();
+				const uint8Array = new Uint8Array(arrayBuffer);
 
-    const waitForApproval = await step.waitForEvent('Wait for AI Image tagging approval', {
-      type: 'approval-for-ai-tagging',
-      timeout: '5 minute',
-    });
+				const input = {
+					image: Array.from(uint8Array),
+					prompt: AI_CONFIG.PROMPT,
+					max_tokens: AI_CONFIG.MAX_TOKENS,
+				};
 
+				const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
+				return response.description;
+			});
 
-    const approvalPayload = waitForApproval.payload as ApprovalRequest;
-    if (approvalPayload?.approved) {
-      const aiTags = await step.do('Generate AI tags', async () => {
-        const image = await this.env.workflow_demo_bucket.get(imageKey);
-        if (!image) throw new Error('Image not found');
-
-
-        const arrayBuffer = await image.arrayBuffer();
-        const uint8Array = new Uint8Array(arrayBuffer);
-
-
-        const input = {
-          image: Array.from(uint8Array),
-          prompt: AI_CONFIG.PROMPT,
-          max_tokens: AI_CONFIG.MAX_TOKENS,
-        };
-
-
-        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
-        return response.description;
-      });
-
-
-      await step.do('Update DB with AI tags', async () => {
-        await this.db.updateImageTags(event.instanceId, aiTags);
-      });
-    }
-  }
+			await step.do('Update DB with AI tags', async () => {
+				await this.db.updateImageTags(event.instanceId, aiTags);
+			});
+		}
+	}
 }
 ```
 
@@ -161,77 +140,65 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-14045)
-* [  wrangler.toml ](#tab-panel-14046)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "workflows-waitforevent",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1,
-  },
-  "ai": {
-    "binding": "AI"
-  },
-  "workflows": [
-    {
-      "name": "workflows-starter",
-      "binding": "MY_WORKFLOW",
-      "class_name": "MyWorkflow"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "bucket_name": "workflow-demo",
-      "binding": "workflow_demo_bucket"
-    }
-  ],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "workflows-demo-d1",
-      "database_id": "66e4fbe9-06ac-4548-abba-2dc42088e13a"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "workflows-waitforevent",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1,
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"workflows": [
+		{
+			"name": "workflows-starter",
+			"binding": "MY_WORKFLOW",
+			"class_name": "MyWorkflow"
+		}
+	],
+	"r2_buckets": [
+		{
+			"bucket_name": "workflow-demo",
+			"binding": "workflow_demo_bucket"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "workflows-demo-d1",
+			"database_id": "66e4fbe9-06ac-4548-abba-2dc42088e13a"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "workflows-waitforevent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [observability]
 enabled = true
 head_sampling_rate = 1
 
-
 [ai]
 binding = "AI"
-
 
 [[workflows]]
 name = "workflows-starter"
 binding = "MY_WORKFLOW"
 class_name = "MyWorkflow"
 
-
 [[r2_buckets]]
 bucket_name = "workflow-demo"
 binding = "workflow_demo_bucket"
-
 
 [[d1_databases]]
 binding = "DB"
@@ -241,7 +208,14 @@ database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent · Cloudflare Workflows docs","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/wait-for-event/","name":"Human-in-the-Loop Image Tagging with waitForEvent"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent · Cloudflare Workflows docs","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
 ```

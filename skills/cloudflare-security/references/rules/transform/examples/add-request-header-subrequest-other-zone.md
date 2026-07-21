@@ -1,18 +1,20 @@
 ---
-title: Add a request header for subrequests from other zones
 description: Create a request header transform rule to add an HTTP header when the Workers subrequest comes from a different zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add a request header for subrequests from other zones
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Add a request header for subrequests from other zones
+#  Add a request header for subrequests from other zones
 
 Create a request header transform rule to add an HTTP header when the Workers subrequest comes from a different zone.
+
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following request header transform rule adds an HTTP header to Workers subrequests coming from a different zone:
 
@@ -30,7 +32,14 @@ Selected operation under **Modify request header**: _Set static_
 
 The [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field used in the rule expression is set to empty if the current request is not a Workers subrequest.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/#page","headline":"Add a request header for subrequests from other zones · Cloudflare Rules docs","description":"Create a request header transform rule to add an HTTP header when the Workers subrequest comes from a different zone.","url":"https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/examples/","name":"Transform Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/examples/add-request-header-subrequest-other-zone/","name":"Add a request header for subrequests from other zones"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/#page","headline":"Add a request header for subrequests from other zones · Cloudflare Rules docs","description":"Create a request header transform rule to add an HTTP header when the Workers subrequest comes from a different zone.","url":"https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification"]}
 ```

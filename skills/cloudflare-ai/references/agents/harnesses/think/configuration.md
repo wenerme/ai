@@ -1,16 +1,18 @@
 ---
-title: Configuration
 description: Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Think is configured by overriding methods and properties on your `Think` subclass. Most agents only override `getModel()`.
 
@@ -42,39 +44,31 @@ For `chatRecovery` and `chatStreamStallTimeoutMs` behavior, refer to [Durable re
 
 Think's class generics match `Agent<Env, State, Props>`. Persisted runtime configuration is typed at the `configure<T>()` and `getConfig<T>()` call sites, stored in SQLite, and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-6089)
-* [  TypeScript ](#tab-panel-6090)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Think {
-  getModel() {
-    const tier = this.getConfig()?.modelTier ?? "fast";
-    const models = {
-      fast: "@cf/moonshotai/kimi-k2.6",
-      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
-    };
-    return createWorkersAI({ binding: this.env.AI })(models[tier]);
-  }
+	getModel() {
+		const tier = this.getConfig()?.modelTier ?? "fast";
+		const models = {
+			fast: "@cf/moonshotai/kimi-k2.6",
+			capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
+		};
+		return createWorkersAI({ binding: this.env.AI })(models[tier]);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 type MyConfig = { modelTier: "fast" | "capable"; theme: string };
 
-
 export class MyAgent extends Think<Env> {
-  getModel() {
-    const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";
-    const models = {
-      fast: "@cf/moonshotai/kimi-k2.6",
-      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
-    };
-    return createWorkersAI({ binding: this.env.AI })(models[tier]);
-  }
+	getModel() {
+		const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";
+		const models = {
+			fast: "@cf/moonshotai/kimi-k2.6",
+			capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
+		};
+		return createWorkersAI({ binding: this.env.AI })(models[tier]);
+	}
 }
 ```
 
@@ -85,44 +79,33 @@ export class MyAgent extends Think<Env> {
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-6091)
-* [  TypeScript ](#tab-panel-6092)
-
-**JavaScript**
-
 ```js
 import { callable } from "agents";
 
-
 export class MyAgent extends Think {
-  getModel() {
-    /* ... */
-  }
+	getModel() {
+		/* ... */
+	}
 
-
-  @callable()
-  updateConfig(config) {
-    this.configure(config);
-  }
+	@callable()
+	updateConfig(config) {
+		this.configure(config);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { callable } from "agents";
 
-
 export class MyAgent extends Think<Env> {
-  getModel() {
-    /* ... */
-  }
+	getModel() {
+		/* ... */
+	}
 
-
-  @callable()
-  updateConfig(config: MyConfig) {
-    this.configure<MyConfig>(config);
-  }
+	@callable()
+	updateConfig(config: MyConfig) {
+		this.configure<MyConfig>(config);
+	}
 }
 ```
 
@@ -130,58 +113,47 @@ export class MyAgent extends Think<Env> {
 
 Think stores conversations in a [Session](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) — the storage layer that holds your messages and gives the model writable memory. Two concepts come up here: **context blocks** are labelled sections of the system prompt the model can read and update (for example, a `memory` block of facts about the user), and **compaction** summarizes older messages so long conversations stay within the model's context window. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-6093)
-* [  TypeScript ](#tab-panel-6094)
-
-**JavaScript**
-
 ```js
 import { Think, Session } from "@cloudflare/think";
 
-
 export class MyAgent extends Think {
-  getModel() {
-    /* ... */
-  }
+	getModel() {
+		/* ... */
+	}
 
-
-  configureSession(session) {
-    return session
-      .withContext("soul", {
-        provider: { get: async () => "You are a helpful coding assistant." },
-      })
-      .withContext("memory", {
-        description: "Important facts learned during conversation.",
-        maxTokens: 2000,
-      })
-      .withCachedPrompt();
-  }
+	configureSession(session) {
+		return session
+			.withContext("soul", {
+				provider: { get: async () => "You are a helpful coding assistant." },
+			})
+			.withContext("memory", {
+				description: "Important facts learned during conversation.",
+				maxTokens: 2000,
+			})
+			.withCachedPrompt();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, Session } from "@cloudflare/think";
 
-
 export class MyAgent extends Think<Env> {
-  getModel() {
-    /* ... */
-  }
+	getModel() {
+		/* ... */
+	}
 
-
-  configureSession(session: Session) {
-    return session
-      .withContext("soul", {
-        provider: { get: async () => "You are a helpful coding assistant." },
-      })
-      .withContext("memory", {
-        description: "Important facts learned during conversation.",
-        maxTokens: 2000,
-      })
-      .withCachedPrompt();
-  }
+	configureSession(session: Session) {
+		return session
+			.withContext("soul", {
+				provider: { get: async () => "You are a helpful coding assistant." },
+			})
+			.withContext("memory", {
+				description: "Important facts learned during conversation.",
+				maxTokens: 2000,
+			})
+			.withCachedPrompt();
+	}
 }
 ```
 
@@ -224,7 +196,14 @@ Bundled with `@cloudflare/think`:
 
 The Agent Skills engine and its script runner live in [agents/skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

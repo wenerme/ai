@@ -1,16 +1,18 @@
 ---
-title: Insert vectors
 description: Insert and upsert vectors into a Vectorize index, including supported formats and namespaces.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Insert vectors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Insert vectors
 
-# Insert vectors
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize indexes allow you to insert vectors at any point: Vectorize will optimize the index behind the scenes to ensure that vector search remains efficient, even as new vectors are added or existing vectors updated.
 
@@ -48,8 +50,6 @@ Metadata can be used to:
 
 For example, a vector embedding representing an image could include the path to the [R2 object](https://developers.cloudflare.com/r2/) it was generated from, the format, and a category lookup:
 
-**TypeScript**
-
 ```ts
 { id: '1', values: [32.4, 74.1, 3.2, ...], metadata: { path: 'r2://bucket-name/path/to/image.png', format: 'png', category: 'profile_image' } }
 ```
@@ -80,30 +80,27 @@ When a namespace is specified in a query operation, only vectors within that nam
 
 To insert vectors with a namespace:
 
-**TypeScript**
-
 ```ts
 // Mock vectors
 // Vectors from a machine-learning model are typically ~100 to 1536 dimensions
 // wide (or wider still).
 const sampleVectors: Array<VectorizeVector> = [
-  {
-    id: "1",
-    values: [32.4, 74.1, 3.2, ...],
-    namespace: "text",
-  },
-  {
-    id: "2",
-    values: [15.1, 19.2, 15.8, ...],
-    namespace: "images",
-  },
-  {
-    id: "3",
-    values: [0.16, 1.2, 3.8, ...],
-    namespace: "pdfs",
-  },
+	{
+		id: "1",
+		values: [32.4, 74.1, 3.2, ...],
+		namespace: "text",
+	},
+	{
+		id: "2",
+		values: [15.1, 19.2, 15.8, ...],
+		namespace: "images",
+	},
+	{
+		id: "3",
+		values: [0.16, 1.2, 3.8, ...],
+		namespace: "pdfs",
+	},
 ];
-
 
 // Insert your vectors, returning a count of the vectors inserted and their vector IDs.
 let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
@@ -111,12 +108,10 @@ let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
 
 To query vectors within a namespace:
 
-**TypeScript**
-
 ```ts
 // Your queryVector will be searched against vectors within the namespace (only)
 let matches = await env.TUTORIAL_INDEX.query(queryVector, {
-  namespace: "images",
+	namespace: "images",
 });
 ```
 
@@ -136,30 +131,27 @@ The better approach is to batch our updates. For example, we can split our 250,0
 
 Use the `insert()` and `upsert()` methods available on an index from within a Cloudflare Worker to insert vectors into the current index.
 
-**TypeScript**
-
 ```ts
 // Mock vectors
 // Vectors from a machine-learning model are typically ~100 to 1536 dimensions
 // wide (or wider still).
 const sampleVectors: Array<VectorizeVector> = [
-  {
-    id: "1",
-    values: [32.4, 74.1, 3.2, ...],
-    metadata: { url: "/products/sku/13913913" },
-  },
-  {
-    id: "2",
-    values: [15.1, 19.2, 15.8, ...],
-    metadata: { url: "/products/sku/10148191" },
-  },
-  {
-    id: "3",
-    values: [0.16, 1.2, 3.8, ...],
-    metadata: { url: "/products/sku/97913813" },
-  },
+	{
+		id: "1",
+		values: [32.4, 74.1, 3.2, ...],
+		metadata: { url: "/products/sku/13913913" },
+	},
+	{
+		id: "2",
+		values: [15.1, 19.2, 15.8, ...],
+		metadata: { url: "/products/sku/10148191" },
+	},
+	{
+		id: "3",
+		values: [0.16, 1.2, 3.8, ...],
+		metadata: { url: "/products/sku/97913813" },
+	},
 ];
-
 
 // Insert your vectors, returning a count of the vectors inserted and their vector IDs.
 let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
@@ -200,19 +192,14 @@ Vectorize also supports inserting vectors via the [REST API](https://developers.
 
 For example, to insert embeddings in [NDJSON format](#workers-api) directly from a Python script:
 
-**Python**
-
 ```py
 import requests
 
-
 url = "https://api.cloudflare.com/client/v4/accounts/{}/vectorize/v2/indexes/{}/insert".format("your-account-id", "index-name")
-
 
 headers = {
     "Authorization": "Bearer <your-api-token>"
 }
-
 
 with open('embeddings.ndjson', 'rb') as embeddings:
     resp = requests.post(url, headers=headers, files=dict(vectors=embeddings))
@@ -221,14 +208,19 @@ with open('embeddings.ndjson', 'rb') as embeddings:
 
 This code would insert the vectors defined in `embeddings.ndjson` into the provided index. Python libraries, including Pandas, also support the NDJSON format via the built-in `read_json` method:
 
-**Python**
-
 ```py
 import pandas as pd
 data = pd.read_json('embeddings.ndjson', lines=True)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#page","headline":"Insert vectors · Cloudflare Vectorize docs","description":"Insert and upsert vectors into a Vectorize index, including supported formats and namespaces.","url":"https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/best-practices/insert-vectors/","name":"Insert vectors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#page","headline":"Insert vectors · Cloudflare Vectorize docs","description":"Insert and upsert vectors into a Vectorize index, including supported formats and namespaces.","url":"https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

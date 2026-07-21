@@ -1,16 +1,18 @@
 ---
-title: MCP
 description: Connect agents to external Model Context Protocol servers and use their tools in model calls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: MCP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  MCP
 
-# MCP
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) as clients. Connect an agent to external MCP servers, discover the tools those servers expose, and pass those tools into model calls.
 
@@ -27,66 +29,51 @@ To build an MCP server instead, refer to [Model Context Protocol (MCP)](https://
 
 Call `addMcpServer()` to connect to a remote MCP server, then pass `this.mcp.getAITools()` to the AI SDK.
 
-* [  JavaScript ](#tab-panel-7095)
-* [  TypeScript ](#tab-panel-7096)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { generateText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 export class ToolAgent extends Agent {
-  async onStart() {
-    await this.addMcpServer("github", "https://mcp.github.com/mcp");
-  }
+	async onStart() {
+		await this.addMcpServer("github", "https://mcp.github.com/mcp");
+	}
 
+	async onRequest(request) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  async onRequest(request) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const response = await generateText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			prompt: "Use available tools to summarize the latest issue activity.",
+			tools: this.mcp.getAITools(),
+		});
 
-
-    const response = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: "Use available tools to summarize the latest issue activity.",
-      tools: this.mcp.getAITools(),
-    });
-
-
-    return new Response(response.text);
-  }
+		return new Response(response.text);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import { generateText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 export class ToolAgent extends Agent<Env> {
-  async onStart() {
-    await this.addMcpServer("github", "https://mcp.github.com/mcp");
-  }
+	async onStart() {
+		await this.addMcpServer("github", "https://mcp.github.com/mcp");
+	}
 
+	async onRequest(request: Request) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  async onRequest(request: Request) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const response = await generateText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			prompt: "Use available tools to summarize the latest issue activity.",
+			tools: this.mcp.getAITools(),
+		});
 
-
-    const response = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: "Use available tools to summarize the latest issue activity.",
-      tools: this.mcp.getAITools(),
-    });
-
-
-    return new Response(response.text);
-  }
+		return new Response(response.text);
+	}
 }
 ```
 
@@ -98,48 +85,56 @@ For public MCP servers, no binding configuration is required. Store server URLs,
 
 For MCP servers that require bearer tokens or Cloudflare Access headers, pass custom transport headers when connecting.
 
-* [  JavaScript ](#tab-panel-7093)
-* [  TypeScript ](#tab-panel-7094)
-
-**JavaScript**
-
 ```js
 await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
-  transport: {
-    headers: {
-      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
-      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
-      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
-    },
-  },
+	transport: {
+		headers: {
+			Authorization: `Bearer ${this.env.MCP_TOKEN}`,
+			"CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
+			"CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
+		},
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
-  transport: {
-    headers: {
-      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
-      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
-      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
-    },
-  },
+	transport: {
+		headers: {
+			Authorization: `Bearer ${this.env.MCP_TOKEN}`,
+			"CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
+			"CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
+		},
+	},
 });
 ```
 
 ## Related resources
 
-[ McpClient API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect Agents to external MCP servers and use their tools, resources, and prompts.
+### [ McpClient API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
-[ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/) Create an Agent that connects to an external MCP server and uses its tools.
+ Connect Agents to external MCP servers and use their tools, resources, and prompts.
 
-[ Use MCP tools with Code Mode ](https://developers.cloudflare.com/agents/tools/codemode/mcp/) Use progressive discovery, code-based composition, and durable approvals with MCP tools.
+### [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 
-[ Model Context Protocol specification ](https://modelcontextprotocol.io/) Learn about the open protocol for connecting AI applications to external tools and data.
+ Create an Agent that connects to an external MCP server and uses its tools.
+
+### [ Use MCP tools with Code Mode ](https://developers.cloudflare.com/agents/tools/codemode/mcp/)
+
+ Use progressive discovery, code-based composition, and durable approvals with MCP tools.
+
+### [ Model Context Protocol specification ](https://modelcontextprotocol.io/)
+
+ Learn about the open protocol for connecting AI applications to external tools and data.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/mcp/","name":"MCP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

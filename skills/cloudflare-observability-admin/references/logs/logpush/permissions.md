@@ -1,16 +1,18 @@
 ---
-title: Permissions
 description: Review API permissions required for Cloudflare Logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Permissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Permissions
 
-# Permissions
+Last updated Apr 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is a description of the available permissions for tokens and roles as they relate to Logs. For information about how to create an API token, refer to [Creating API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
@@ -57,7 +59,14 @@ To check the list of members in your account, or to manage roles and permissions
 
 For more information, refer to [Managing roles within your Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-members/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/permissions/#page","headline":"Permissions · Cloudflare Logs docs","description":"Review API permissions required for Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/logpush/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/permissions/","name":"Permissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/permissions/#page","headline":"Permissions · Cloudflare Logs docs","description":"Review API permissions required for Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/logpush/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Filter different views
 description: Filter analytics views in the Network Firewall dashboard.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Filter different views
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Filter different views
 
-# Filter different views
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can utilize different [Log filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) to only view specific data from Cloudflare Network Firewall (formerly Magic Firewall).
 
@@ -104,7 +106,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/#page","headline":"Filter different views · Cloudflare Network Firewall docs","description":"Filter analytics views in the Network Firewall dashboard.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/filter-views/","name":"Filter different views"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/#page","headline":"Filter different views · Cloudflare Network Firewall docs","description":"Filter analytics views in the Network Firewall dashboard.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

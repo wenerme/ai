@@ -1,16 +1,18 @@
 ---
-title: Rule IDs change when I modify a ruleset
 description: Prevent rule ID changes in Cloudflare rulesets managed by Terraform by using the ref field.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rule IDs change when I modify a ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rule IDs change when I modify a ruleset
 
-# Rule IDs change when I modify a ruleset
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources, the Cloudflare provider may delete a rule and create a new one when you modify a ruleset in your Terraform configuration. This happens because the API cannot match rules in your new Terraform configuration with existing rules in your Cloudflare configuration. Modifying a ruleset in your Terraform configuration and applying the changes will create new rules with different rule IDs in your Cloudflare account or zone.
 
@@ -34,7 +36,14 @@ When you [import your existing Cloudflare configuration to Terraform](https://de
 
 If you manually created your Terraform configuration and your rules' configuration does not have a `ref` field, add a `ref` field to each rule so that each ruleset modification does not generate new rule IDs.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#page","headline":"Rule IDs change when I modify a ruleset · Cloudflare Terraform docs","description":"Prevent rule ID changes in Cloudflare rulesets managed by Terraform by using the ref field.","url":"https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/troubleshooting/rule-id-changes/","name":"Rule IDs change when I modify a ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#page","headline":"Rule IDs change when I modify a ruleset · Cloudflare Terraform docs","description":"Prevent rule ID changes in Cloudflare rulesets managed by Terraform by using the ref field.","url":"https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

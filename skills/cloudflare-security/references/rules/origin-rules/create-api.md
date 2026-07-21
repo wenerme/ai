@@ -1,16 +1,18 @@
 ---
-title: Create an origin rule via API
 description: Create origin rules using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create an origin rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create an origin rule via API
 
-# Create an origin rule via API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create origin rules via API.
 
@@ -66,62 +68,60 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "hr_app_overrides",
-            "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-            "description": "Origin rule for the company HR application",
-            "action": "route",
-            "action_parameters": {
-                "host_header": "hr-server.example.com",
-                "origin": {
-                    "host": "hr-server.example.com"
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "hr_app_overrides",
+						"expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
+						"description": "Origin rule for the company HR application",
+						"action": "route",
+						"action_parameters": {
+								"host_header": "hr-server.example.com",
+								"origin": {
+										"host": "hr-server.example.com"
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Origin Rules ruleset",
-    "description": "Zone-level ruleset that will execute origin rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "hr_app_overrides",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "route",
-        "action_parameters": {
-          "host_header": "hr-server.example.com",
-          "origin": {
-            "host": "hr-server.example.com"
-          }
-        },
-        "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-        "description": "Origin rule for the company HR application",
-        "last_updated": "2022-06-03T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2022-06-03T14:42:04.219025Z",
-    "phase": "http_request_origin"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Origin Rules ruleset",
+		"description": "Zone-level ruleset that will execute origin rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "hr_app_overrides",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "route",
+				"action_parameters": {
+					"host_header": "hr-server.example.com",
+					"origin": {
+						"host": "hr-server.example.com"
+					}
+				},
+				"expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
+				"description": "Origin rule for the company HR application",
+				"last_updated": "2022-06-03T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2022-06-03T14:42:04.219025Z",
+		"phase": "http_request_origin"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -156,60 +156,58 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "calendar_app_change_port",
-            "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
-            "description": "Origin rule for the team calendar application",
-            "action": "route",
-            "action_parameters": {
-                "origin": {
-                    "port": 8081
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "calendar_app_change_port",
+						"expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
+						"description": "Origin rule for the team calendar application",
+						"action": "route",
+						"action_parameters": {
+								"origin": {
+										"port": 8081
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Origin Rules ruleset",
-    "description": "Zone-level ruleset that will execute origin rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "calendar_app_change_port",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "route",
-        "action_parameters": {
-          "origin": {
-            "port": 8081
-          }
-        },
-        "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
-        "description": "Origin rule for the team calendar application",
-        "last_updated": "2022-06-03T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2022-06-03T14:42:04.219025Z",
-    "phase": "http_request_origin"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Origin Rules ruleset",
+		"description": "Zone-level ruleset that will execute origin rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "calendar_app_change_port",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "route",
+				"action_parameters": {
+					"origin": {
+						"port": 8081
+					}
+				},
+				"expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
+				"description": "Origin rule for the team calendar application",
+				"last_updated": "2022-06-03T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2022-06-03T14:42:04.219025Z",
+		"phase": "http_request_origin"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -244,27 +242,25 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "override_sni_for_admin",
-            "expression": "http.host eq \"admin.example.com\"",
-            "description": "SNI Override for the admin area",
-            "action": "route",
-            "action_parameters": {
-                "sni": {
-                    "value": "sni.example.com"
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "override_sni_for_admin",
+						"expression": "http.host eq \"admin.example.com\"",
+						"description": "SNI Override for the admin area",
+						"action": "route",
+						"action_parameters": {
+								"sni": {
+										"value": "sni.example.com"
+								}
+						}
+				}
+		]
+	}'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -277,7 +273,14 @@ The API token used in API requests to manage origin rules must have at least the
 
 * _Zone_ \> _Origin Rules_ \> _Edit_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/create-api/#page","headline":"Create an origin rule via API · Cloudflare Rules docs","description":"Create origin rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/origin-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/origin-rules/","name":"Origin Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/origin-rules/create-api/","name":"Create an origin rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/create-api/#page","headline":"Create an origin rule via API · Cloudflare Rules docs","description":"Create origin rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/origin-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

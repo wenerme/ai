@@ -42,7 +42,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const transcription = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("/path/to/file/audio.mp3"),
+  file: fs.createReadStream("fixtures/audio.wav"),
   model: "gpt-4o-transcribe",
 });
 
@@ -101,12 +101,12 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const transcription = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("/path/to/file/speech.mp3"),
+  file: fs.createReadStream("fixtures/speech.wav"),
   model: "gpt-4o-transcribe",
   response_format: "text",
 });
 
-console.log(transcription.text);
+console.log(transcription);
 ```
 
 ```python
@@ -157,21 +157,27 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const agentRef = fs.readFileSync("agent.wav").toString("base64");
+const agentRef = fs.readFileSync("fixtures/agent.wav").toString("base64");
 
-const transcript = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("meeting.wav"),
-  model: "gpt-4o-transcribe-diarize",
-  response_format: "diarized_json",
-  chunking_strategy: "auto",
-  extra_body: {
+const transcript = /** @type {OpenAI.Audio.TranscriptionDiarized} */ (
+  await openai.audio.transcriptions.create({
+    file: fs.createReadStream("fixtures/meeting.wav"),
+    model: "gpt-4o-transcribe-diarize",
+    response_format: "diarized_json",
+    chunking_strategy: "auto",
     known_speaker_names: ["agent"],
     known_speaker_references: ["data:audio/wav;base64," + agentRef],
-  },
-});
+  })
+);
 
 for (const segment of transcript.segments) {
-  console.log(`${segment.speaker}: ${segment.text}`, segment.start, segment.end);
+  if (!("speaker" in segment)) continue;
+
+  console.log(
+    `${segment.speaker}: ${segment.text}`,
+    segment.start,
+    segment.end
+  );
 }
 ```
 
@@ -233,7 +239,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const translation = await openai.audio.translations.create({
-  file: fs.createReadStream("/path/to/file/german.mp3"),
+  file: fs.createReadStream("fixtures/german.wav"),
   model: "whisper-1",
 });
 
@@ -295,10 +301,10 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const transcription = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("audio.mp3"),
+  file: fs.createReadStream("fixtures/audio.wav"),
   model: "whisper-1",
   response_format: "verbose_json",
-  timestamp_granularities: ["word"]
+  timestamp_granularities: ["word"],
 });
 
 console.log(transcription.words);
@@ -367,13 +373,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const transcription = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("/path/to/file/speech.mp3"),
+  file: fs.createReadStream("fixtures/speech.wav"),
   model: "gpt-4o-transcribe",
   response_format: "text",
-  prompt:"The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI.",
+  prompt:
+    "The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI.",
 });
 
-console.log(transcription.text);
+console.log(transcription);
 ```
 
 ```python
@@ -438,7 +445,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const stream = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("/path/to/file/speech.mp3"),
+  file: fs.createReadStream("fixtures/speech.wav"),
   model: "gpt-4o-mini-transcribe",
   response_format: "text",
   // highlight-start
@@ -515,13 +522,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const transcription = await openai.audio.transcriptions.create({
-  file: fs.createReadStream("/path/to/file/speech.mp3"),
+  file: fs.createReadStream("fixtures/speech.wav"),
   model: "whisper-1",
   response_format: "text",
-  prompt:"ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
+  prompt:
+    "ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
 });
 
-console.log(transcription.text);
+console.log(transcription);
 ```
 
 ```python
@@ -563,30 +571,30 @@ Post-processing
 
 ```javascript
 const systemPrompt = `
-You are a helpful assistant for the company ZyntriQix. Your task is 
-to correct any spelling discrepancies in the transcribed text. Make 
-sure that the names of the following products are spelled correctly: 
-ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, 
-OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., 
-Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as 
+You are a helpful assistant for the company ZyntriQix. Your task is
+to correct any spelling discrepancies in the transcribed text. Make
+sure that the names of the following products are spelled correctly:
+ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array,
+OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K.,
+Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as
 periods, commas, and capitalization, and use only the context provided.
 `;
 
 const transcript = await transcribe(audioFile);
 const completion = await openai.chat.completions.create({
-model: "gpt-4.1",
-temperature: temperature,
-messages: [
-  {
-    role: "system",
-    content: systemPrompt
-  },
-  {
-    role: "user",
-    content: transcript
-  }
-],
-store: true,
+  model: "gpt-4.1",
+  temperature: temperature,
+  messages: [
+    {
+      role: "system",
+      content: systemPrompt,
+    },
+    {
+      role: "user",
+      content: transcript,
+    },
+  ],
+  store: true,
 });
 
 console.log(completion.choices[0].message.content);

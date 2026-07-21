@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Enable Smart Shield and configure origin protection features for your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield reduces the load on your origin server and improves content delivery by consolidating requests through Cloudflare's caching infrastructure. It is available to all customers as an opt-in configuration.
 
@@ -31,9 +33,6 @@ After setup, you can monitor origin performance and cache effectiveness through 
 ## Packages and availability
 
 Pro, Business, and Enterprise customers have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) for monitoring origin availability across all packages.
-
-* [ Enterprise ](#tab-panel-11406)
-* [ Free / Pro / Business ](#tab-panel-11407)
 
 Enterprise customers have access to all Smart Shield packages, including Smart Shield Advanced.
 
@@ -82,7 +81,14 @@ Smart Shield Advanced is not currently available for Free, Pro, and Business cus
 * [ Network diagram ](https://developers.cloudflare.com/smart-shield/concepts/network-diagram/)
 * [ Connection reuse ](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/get-started/#page","headline":"Get started · Cloudflare Smart Shield docs","description":"Enable Smart Shield and configure origin protection features for your domain.","url":"https://developers.cloudflare.com/smart-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/get-started/#page","headline":"Get started · Cloudflare Smart Shield docs","description":"Enable Smart Shield and configure origin protection features for your domain.","url":"https://developers.cloudflare.com/smart-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

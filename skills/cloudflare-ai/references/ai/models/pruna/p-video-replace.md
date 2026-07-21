@@ -1,36 +1,35 @@
 ---
-title: P-Video-Replace
 description: Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: P-Video-Replace
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.BVOvqoaI.svg)
 
 #  P-Video-Replace
 
-Image-to-Video • Pruna AI
+ Image-to-Video • Pruna AI
 
-`pruna/p-video-replace`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` pruna/p-video-replace `
+
+* Third-party
 
 Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.
 
-| Model Info       |                                                                                                                         |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                   |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-replace) |
+| Model Info       |                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                    |
+| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-replace) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1764)
-* [ cURL ](#tab-panel-1765)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +61,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1762)
-* [ Raw response ](#tab-panel-1763)
-
 ```json
 {
   "state": "Completed",
@@ -78,9 +74,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-1766)
-* [ Output ](#tab-panel-1767)
 
 video
 
@@ -132,7 +125,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/sche
 
 Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-video-replace/#page","headline":"P-Video-Replace (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.","url":"https://developers.cloudflare.com/ai/models/pruna/p-video-replace/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-video-replace/#page","headline":"P-Video-Replace (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.","url":"https://developers.cloudflare.com/ai/models/pruna/p-video-replace/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

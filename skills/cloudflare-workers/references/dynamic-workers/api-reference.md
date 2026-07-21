@@ -1,16 +1,18 @@
 ---
-title: API reference
 description: Reference for the Worker Loader binding and the WorkerCode object.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: API reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API reference
 
-# API reference
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the Worker Loader binding API, assuming you have [configured such a binding](https://developers.cloudflare.com/dynamic-workers/getting-started/#configure-worker-loader) as `env.LOADER`.
 
@@ -50,11 +52,11 @@ This is the structure returned by `getCodeCallback` to represent a worker.
 
 The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) for the Worker. This has the same meaning as the `compatibility_date` setting in a Wrangler config file.
 
-#### `` compatibilityFlags ` string[] ` Optional ``
+#### `` compatibilityFlags ` string[] `Optional ``
 
 An optional list of [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags) augmenting the compatibility date. This has the same meaning as the `compatibility_flags` setting in a Wrangler config file.
 
-#### `` allowExperimental ` boolean ` Optional ``
+#### `` allowExperimental ` boolean `Optional ``
 
 If true, then experimental compatibility flags will be permitted in `compatibilityFlags`. In order to set this, the worker calling the loader must itself have the compatibility flag `"experimental"` set. Experimental flags cannot be enabled in production.
 
@@ -79,7 +81,7 @@ Warning
 
 While Dynamic Workers support Python, Python Workers are currently much slower to start than JavaScript Workers. For one-off AI-generated code, we strongly recommend using JavaScript. AI can write either language equally well.
 
-#### `` globalOutbound ` ServiceStub | null ` Optional ``
+#### `` globalOutbound ` ServiceStub | null `Optional ``
 
 Controls whether the dynamic Worker has access to the network. The global `fetch()` and `connect()` functions (for making HTTP requests and TCP connections, respectively) can be blocked or redirected to isolate the Worker.
 
@@ -93,36 +95,30 @@ Using `ctx.exports` is particularly useful as it allows you to customize the bin
 
 For example:
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class Greeter extends WorkerEntrypoint {
-  fetch(request) {
-    return new Response(`Hello, ${this.ctx.props.name}!`);
-  }
+	fetch(request) {
+		return new Response(`Hello, ${this.ctx.props.name}!`);
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    let worker = env.LOADER.get("alice", () => {
-      return {
-        // Redirect the worker's global outbound to send all requests
-        // to the `Greeter` class, filling in `ctx.props.name` with
-        // the name "Alice", so that it always responds "Hello, Alice!".
-        globalOutbound: ctx.exports.Greeter({ props: { name: "Alice" } }),
+	async fetch(request, env, ctx) {
+		let worker = env.LOADER.get("alice", () => {
+			return {
+				// Redirect the worker's global outbound to send all requests
+				// to the `Greeter` class, filling in `ctx.props.name` with
+				// the name "Alice", so that it always responds "Hello, Alice!".
+				globalOutbound: ctx.exports.Greeter({ props: { name: "Alice" } }),
 
+				// ... code ...
+			};
+		});
 
-        // ... code ...
-      };
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-  },
+		return worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
@@ -141,90 +137,84 @@ The second point is the key to creating custom bindings: you can define a bindin
 
 Moreover, by using `ctx.exports` loopback bindings, you can further customize the bindings for the specific dynamic Worker by setting `ctx.props`, just as described for `globalOutbound`, above.
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 // Implement a binding which can be called by the dynamic Worker.
 export class Greeter extends WorkerEntrypoint {
-  greet() {
-    return `Hello, ${this.ctx.props.name}!`;
-  }
+	greet() {
+		return `Hello, ${this.ctx.props.name}!`;
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    let worker = env.LOADER.get("alice", () => {
-      return {
-        env: {
-          // Provide a binding which has a method greet() which can be called
-          // to receive a greeting. The binding knows the Worker's name.
-          GREETER: ctx.exports.Greeter({ props: { name: "Alice" } }),
-        },
+	async fetch(request, env, ctx) {
+		let worker = env.LOADER.get("alice", () => {
+			return {
+				env: {
+					// Provide a binding which has a method greet() which can be called
+					// to receive a greeting. The binding knows the Worker's name.
+					GREETER: ctx.exports.Greeter({ props: { name: "Alice" } }),
+				},
 
+				// ... code ...
+			};
+		});
 
-        // ... code ...
-      };
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-  },
+		return worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
-#### `` tails ` ServiceStub[] ` Optional ``
+#### `` tails ` ServiceStub[] `Optional ``
 
 You may specify one or more [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) which will observe console logs, errors, and other details about the dynamically-loaded worker's execution. A tail event will be delivered to the Tail Worker upon completion of a request to the dynamically-loaded Worker. As always, you can implement the Tail Worker as an alternative entrypoint in your parent Worker, referring to it using `ctx.exports`:
-
-**JavaScript**
 
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    let worker = env.LOADER.get("alice", () => {
-      return {
-        // Send logs, errors, etc. to `LogTailer`. We pass `name` in the
-        // `ctx.props` so that `LogTailer` knows what generated the logs.
-        // (You can pass anything you want in `props`.)
-        tails: [ctx.exports.LogTailer({ props: { name: "alice" } })],
+	async fetch(request, env, ctx) {
+		let worker = env.LOADER.get("alice", () => {
+			return {
+				// Send logs, errors, etc. to `LogTailer`. We pass `name` in the
+				// `ctx.props` so that `LogTailer` knows what generated the logs.
+				// (You can pass anything you want in `props`.)
+				tails: [ctx.exports.LogTailer({ props: { name: "alice" } })],
 
+				// ... code ...
+			};
+		});
 
-        // ... code ...
-      };
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-  },
+		return worker.getEntrypoint().fetch(request);
+	},
 };
 
-
 export class LogTailer extends WorkerEntrypoint {
-  async tail(events) {
-    let name = this.ctx.props.name;
+	async tail(events) {
+		let name = this.ctx.props.name;
 
-
-    // Send the logs off to our log endpoint, specifying the worker name in
-    // the URL.
-    //
-    // Note that `events` will always be an array of size 1 in this scenario,
-    // describing the event delivered to the dynamically-loaded Worker.
-    await fetch(`https://example.com/submit-logs/${name}`, {
-      method: "POST",
-      body: JSON.stringify(events),
-    });
-  }
+		// Send the logs off to our log endpoint, specifying the worker name in
+		// the URL.
+		//
+		// Note that `events` will always be an array of size 1 in this scenario,
+		// describing the event delivered to the dynamically-loaded Worker.
+		await fetch(`https://example.com/submit-logs/${name}`, {
+			method: "POST",
+			body: JSON.stringify(events),
+		});
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/api-reference/#page","headline":"API reference · Cloudflare Dynamic Workers docs","description":"Reference for the Worker Loader binding and the WorkerCode object.","url":"https://developers.cloudflare.com/dynamic-workers/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/api-reference/","name":"API reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/api-reference/#page","headline":"API reference · Cloudflare Dynamic Workers docs","description":"Reference for the Worker Loader binding and the WorkerCode object.","url":"https://developers.cloudflare.com/dynamic-workers/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

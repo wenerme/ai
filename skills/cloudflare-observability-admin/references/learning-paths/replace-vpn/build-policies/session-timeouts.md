@@ -1,16 +1,18 @@
 ---
-title: Session timeouts
 description: Configure WARP session timeout settings.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Session timeouts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Session timeouts
 
-# Session timeouts
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Most legacy VPNs have a global timeout setting that requires end users to log in every X hours or resets VPN profiles at a certain frequency. By doing continuous identity evaluation, a Zero Trust security model eliminates the need for most of the user-interrupting workflows triggered by session timeouts. However, there can still be valid reasons to want users to reauthenticate, either on a recurring basis or to access specific, highly-sensitive or regulated internal services.
 
@@ -32,9 +34,6 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-9963)
-* [ Terraform (v5) ](#tab-panel-9964)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
 3. Under **Step 4 - Configure policy settings**, select **Edit** next to **Enforce Cloudflare One Client session duration**.
@@ -48,21 +47,21 @@ To configure a session timeout for a Gateway policy:
 3. In the policy's [rule\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy), use the `check_session` argument to enable and configure a session timeout:
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
-  name        = "Company Wiki Network policy"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "Managed by Terraform - Allow employees to access company wiki IPs."
-  precedence  = 103
-  action      = "allow"
-  filters     = ["l4"]
-  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
-  identity    = "identity.email matches \".*@example.com\""
-  rule_settings = {
-    check_session = {
-      enforce = true
-      duration = "1h30m0s"
-    }
-  }
+	name        = "Company Wiki Network policy"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "Managed by Terraform - Allow employees to access company wiki IPs."
+	precedence  = 103
+	action      = "allow"
+	filters     = ["l4"]
+	traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
+	identity    = "identity.email matches \".*@example.com\""
+	rule_settings = {
+		check_session = {
+			enforce = true
+			duration = "1h30m0s"
+		}
+	}
 }
 ```
 
@@ -82,7 +81,14 @@ A global timeout does not necessarily fit all customer needs. With the increased
 
 When configuring a global Cloudflare One Client session duration, a common mistake is to build a single policy that covers your entire private network range. An example would be an Allow policy that requires reauthentication every 7 days for all users with traffic to a destination IP in `10.0.0.0/8`. This type of global policy may result in a suboptimal user experience because an expired session blocks the user from the entire internal network (including private DNS functionality) instead of specific applications. If a user misses the one-time reauth notification, they may not know that they need to manually go into their Cloudflare One Client settings to reauthenticate.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/#page","headline":"Session timeouts · Cloudflare Learning Paths","description":"Configure WARP session timeout settings.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/session-timeouts/","name":"Session timeouts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/#page","headline":"Session timeouts · Cloudflare Learning Paths","description":"Configure WARP session timeout settings.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

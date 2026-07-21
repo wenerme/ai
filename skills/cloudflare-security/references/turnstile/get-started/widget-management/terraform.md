@@ -1,16 +1,18 @@
 ---
-title: Create and manage widgets using Terraform
 description: Create and manage Turnstile widgets using the Terraform provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create and manage widgets using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create and manage widgets using Terraform
 
-# Create and manage widgets using Terraform
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage Turnstile widgets as code using Terraform for version control and automated deployments.
 
@@ -42,18 +44,15 @@ terraform {
   }
 }
 
-
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
-
 
 variable "cloudflare_api_token" {
   description = "Cloudflare API Token"
   type        = string
   sensitive   = true
 }
-
 
 variable "account_id" {
   description = "Cloudflare Account ID"
@@ -72,7 +71,6 @@ resource "cloudflare_turnstile_widget" "login_form" {
   region     = "world"
 }
 
-
 resource "cloudflare_turnstile_widget" "api_protection" {
   account_id = var.account_id
   name       = "API Protection"
@@ -81,12 +79,10 @@ resource "cloudflare_turnstile_widget" "api_protection" {
   region     = "world"
 }
 
-
 # Output the sitekeys for use in your application
 output "login_sitekey" {
   value = cloudflare_turnstile_widget.login_form.sitekey
 }
-
 
 output "api_sitekey" {
   value = cloudflare_turnstile_widget.api_protection.sitekey
@@ -108,19 +104,13 @@ export TF_VAR_account_id="your-account-id"
 
 ### Initialize and plan
 
-**Initialize Terraform**
-
 ```shell
 terraform init
 ```
 
-**Plan changes**
-
 ```shell
 terraform plan
 ```
-
-**Apply configuration**
 
 ```shell
 terraform apply
@@ -128,19 +118,13 @@ terraform apply
 
 ### Manage changes
 
-**Update widget configuration**
-
 ```shell
 terraform plan
 ```
 
-**Apply changes**
-
 ```shell
 terraform apply
 ```
-
-**Destroy widgets**
 
 ```shell
 terraform destroy
@@ -170,10 +154,8 @@ locals {
   }
 }
 
-
 resource "cloudflare_turnstile_widget" "app_widget" {
   for_each = local.environments
-
 
   account_id = var.account_id
   name       = "App Widget - ${each.key}"
@@ -203,13 +185,9 @@ resource "cloudflare_turnstile_widget" "enterprise_widget" {
 
 Use [cf-terraforming](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#cf-terraforming) to import existing widgets.
 
-**Install cf-terraforming**
-
 ```shell
 go install github.com/cloudflare/cf-terraforming/cmd/cf-terraforming@latest
 ```
-
-**Generate Terraform configuration from existing widgets**
 
 ```shell
 cf-terraforming generate \
@@ -217,14 +195,19 @@ cf-terraforming generate \
   --account $ACCOUNT_ID
 ```
 
-**Import existing widget**
-
 ```shell
 terraform import cloudflare_turnstile_widget.existing_widget \
   $ACCOUNT_ID/$WIDGET_SITEKEY
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/#page","headline":"Create and manage widgets using Terraform · Cloudflare Turnstile docs","description":"Create and manage Turnstile widgets using the Terraform provider.","url":"https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/get-started/widget-management/","name":"Widget management"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/get-started/widget-management/terraform/","name":"Create and manage widgets using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/#page","headline":"Create and manage widgets using Terraform · Cloudflare Turnstile docs","description":"Create and manage Turnstile widgets using the Terraform provider.","url":"https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

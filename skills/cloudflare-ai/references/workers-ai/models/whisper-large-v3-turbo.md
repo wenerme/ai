@@ -1,22 +1,27 @@
 ---
-title: whisper-large-v3-turbo
 description: Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: whisper-large-v3-turbo
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  whisper-large-v3-turbo
 
-Automatic Speech Recognition • OpenAI
+ Automatic Speech Recognition • OpenAI
 
-`@cf/openai/whisper-large-v3-turbo`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/openai/whisper-large-v3-turbo `
+
+* Cloudflare-hosted
+* Batch
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.
 
@@ -25,94 +30,7 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 | Batch        | Yes                       |
 | Unit Pricing | $0.00051 per audio minute |
 
-## Usage
-
-* [  TypeScript ](#tab-panel-5586)
-* [  Python ](#tab-panel-5587)
-* [  curl ](#tab-panel-5588)
-
-```ts
-import { Buffer } from 'node:buffer';
-export interface Env {
-    AI: Ai;
-}
-const URL = "https://pub-dbcf9f0bd3af47ca9d40971179ee62de.r2.dev/02f6edc0-1f7b-4272-bd17-f05335104725/audio.mp3";
-export default {
-    async fetch(request, env, ctx): Promise<Response> {
-        const mp3 = await fetch(URL);
-        if (!mp3.ok) {
-          return Response.json({ error: `Failed to fetch MP3: ${mp3.status}` });
-        }
-        const mp3Buffer = await mp3.arrayBuffer();
-        const base64 = Buffer.from(mp3Buffer, 'binary').toString("base64");
-        try {
-            const res = await env.AI.run("@cf/openai/whisper-large-v3-turbo", {
-                audio: base64,
-                // Specify the language using an ISO 639-1 code.
-                // Examples: "en" (English), "es" (Spanish), "fr" (French)
-                // If omitted, the model will auto-detect the language.
-                language: "en",
-            });
-            return Response.json(res);
-        }
-        catch (e) {
-            console.error(e);
-            return Response.json({ error: "An unexpected error occurred" });
-        }
-    },
-} satisfies ExportedHandler<Env>
-```
-
-Note
-
-To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
-
-```py
-import requests
-import base64
-
-
-API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
-headers = {"Authorization": "Bearer {API_KEY}"}
-
-
-def run(model, input):
-    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)
-    return response.json()
-
-
-with open("audio.mp3", "rb") as audio_file:
-    audio_base64 = base64.b64encode(audio_file.read()).decode("utf-8")
-
-
-# Specify the language using an ISO 639-1 code.
-# Examples: "en" (English), "es" (Spanish), "fr" (French)
-# If omitted, the model will auto-detect the language.
-output = run("@cf/openai/whisper-large-v3-turbo", {
-    "audio": audio_base64,
-    "language": "en"
-})
-print(output)
-```
-
-```sh
-# Encode the audio file as base64
-AUDIO_BASE64=$(base64 -i audio.mp3)
-
-
-# Specify the language using an ISO 639-1 code.
-# Examples: "en" (English), "es" (Spanish), "fr" (French)
-# If omitted, the model will auto-detect the language.
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper-large-v3-turbo \
-  -X POST \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  -d "{\"audio\": \"$AUDIO_BASE64\", \"language\": \"en\"}"
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5589)
-* [ Output ](#tab-panel-5590)
 
 ▶audio
 
@@ -188,7 +106,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-t
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/#page","headline":"whisper-large-v3-turbo (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.","url":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/#page","headline":"whisper-large-v3-turbo (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.","url":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Load Balancing Reference Architecture
 description: This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Load Balancing Reference Architecture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Load Balancing Reference Architecture
 
-# Load Balancing Reference Architecture
+Last updated Jun 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -841,7 +843,14 @@ These load balancers operate within approximately 50ms of about 95% of the Inter
 
 With Cloudflare Tunnel, endpoints can be located within private networks and still be utilized by Cloudflare Load Balancers. Cloudflare offers public layer 7 load balancers — that supports both HTTP(S) and WebSockets, as well as public layer 4 load balancers that can steer any TCP or UDP traffic. This means that Cloudflare can offer load balancing services to all organizations and users, no matter their location, use cases, or existing configurations.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/#page","headline":"Load Balancing Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/load-balancing/","name":"Load Balancing Reference Architecture"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/#page","headline":"Load Balancing Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

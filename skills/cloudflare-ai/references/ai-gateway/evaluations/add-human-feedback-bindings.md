@@ -1,16 +1,18 @@
 ---
-title: Add human feedback using Worker Bindings
 description: Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add human feedback using Worker Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add human feedback using Worker Bindings
 
-# Add human feedback using Worker Bindings
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to provide human feedback for AI Gateway evaluations using Worker bindings.
 
@@ -18,21 +20,18 @@ This guide explains how to provide human feedback for AI Gateway evaluations usi
 
 Start by sending a prompt to the AI model through your AI Gateway.
 
-**JavaScript**
-
 ```javascript
 const resp = await env.AI.run(
-  "@cf/meta/llama-3.1-8b-instruct",
-  {
-    prompt: "tell me a joke",
-  },
-  {
-    gateway: {
-      id: "my-gateway",
-    },
-  },
+	"@cf/meta/llama-3.1-8b-instruct",
+	{
+		prompt: "tell me a joke",
+	},
+	{
+		gateway: {
+			id: "my-gateway",
+		},
+	},
 );
-
 
 const myLogId = env.AI.aiGatewayLogId;
 ```
@@ -43,15 +42,13 @@ Let the user interact with or evaluate the AI response. This interaction will in
 
 Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
 
-**JavaScript**
-
 ```javascript
 await env.AI.gateway("my-gateway").patchLog(myLogId, {
-  feedback: 1, // all fields are optional; set values that fit your use case
-  score: 100,
-  metadata: {
-    user: "123", // Optional metadata to provide additional context
-  },
+	feedback: 1, // all fields are optional; set values that fit your use case
+	score: 100,
+	metadata: {
+		user: "123", // Optional metadata to provide additional context
+	},
 });
 ```
 
@@ -65,21 +62,26 @@ await env.AI.gateway("my-gateway").patchLog(myLogId, {
 
 The `patchLog` method allows you to send feedback, score, and metadata for a specific log ID. All object properties are optional, so you can include any combination of the parameters:
 
-**JavaScript**
-
 ```javascript
 gateway.patchLog("my-log-id", {
-  feedback: 1,
-  score: 100,
-  metadata: {
-    user: "123",
-  },
+	feedback: 1,
+	score: 100,
+	metadata: {
+		user: "123",
+	},
 });
 ```
 
 Returns: `Promise<void>` (Make sure to `await` the request.)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/#page","headline":"Add human feedback using Worker Bindings · Cloudflare AI Gateway docs","description":"Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/evaluations/","name":"Evaluations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/evaluations/add-human-feedback-bindings/","name":"Add human feedback using Worker Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/#page","headline":"Add human feedback using Worker Bindings · Cloudflare AI Gateway docs","description":"Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

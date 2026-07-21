@@ -1,20 +1,22 @@
 ---
-title: Create a partial zone using Terraform
 description: Automate the setup of a Cloudflare partial (CNAME) zone using the Terraform provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a partial zone using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a partial zone using Terraform
 
-# Create a partial zone using Terraform
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
-Warning
+Caution
 
 A partial zone cannot be created in the same Cloudflare account as the parent domain's full zone.
 
@@ -73,7 +75,14 @@ Refer to the [cloudflare\_zone docs ↗](https://registry.terraform.io/providers
 * [Convert a full zone to partial](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)
 * [cloudflare\_zone resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/how-to/create-partial-zone/#page","headline":"Create a partial zone using Terraform · Cloudflare Terraform docs","description":"Automate the setup of a Cloudflare partial (CNAME) zone using the Terraform provider.","url":"https://developers.cloudflare.com/terraform/how-to/create-partial-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/how-to/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/how-to/create-partial-zone/","name":"Create a partial zone using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/how-to/create-partial-zone/#page","headline":"Create a partial zone using Terraform · Cloudflare Terraform docs","description":"Automate the setup of a Cloudflare partial (CNAME) zone using the Terraform provider.","url":"https://developers.cloudflare.com/terraform/how-to/create-partial-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

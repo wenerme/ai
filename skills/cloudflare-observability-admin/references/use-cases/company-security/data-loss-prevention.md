@@ -1,16 +1,18 @@
 ---
-title: Prevent data loss
 description: Protect sensitive data from exfiltration with DLP and CASB.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Prevent data loss
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prevent data loss
 
-# Prevent data loss
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sensitive data — Personally Identifiable Information (PII), payment card numbers, health records — can leave your network through employee uploads, SaaS misconfigurations, or compromised applications. Cloudflare One detects sensitive data patterns in traffic and blocks exfiltration in real time.
 
@@ -31,7 +33,14 @@ Secure your organization with a cloud security platform that replaces legacy per
 2. [Set up CASB integrations](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/)
 3. [Create Gateway HTTP policies for DLP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/#page","headline":"Prevent data loss · Cloudflare use cases","description":"Protect sensitive data from exfiltration with DLP and CASB.","url":"https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/company-security/","name":"Company security"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/company-security/data-loss-prevention/","name":"Prevent data loss"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/#page","headline":"Prevent data loss · Cloudflare use cases","description":"Protect sensitive data from exfiltration with DLP and CASB.","url":"https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

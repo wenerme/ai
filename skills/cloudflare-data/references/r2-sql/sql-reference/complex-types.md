@@ -1,16 +1,18 @@
 ---
-title: Complex types
 description: Reference for querying struct, array, and map column types in R2 SQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Complex types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Complex types
 
-# Complex types
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 SQL supports querying struct, array, and map column types stored in Iceberg tables. This page covers access patterns, supported functions, and examples for each type.
 
@@ -76,7 +78,6 @@ SELECT named_struct('id', customer_id, 'amount', total_amount) AS info
 FROM my_namespace.sales_data
 WHERE total_amount IS NOT NULL
 LIMIT 1
-
 
 -- struct creates a struct with positional fields
 SELECT struct(customer_id, total_amount, region) AS info
@@ -628,7 +629,14 @@ LIMIT 1
 | map\_values(map)          | All values as array                  |
 | map\_extract(map, key)    | Value for a specific key             |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/#page","headline":"Complex types · R2 SQL docs","description":"Reference for querying struct, array, and map column types in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/sql-reference/complex-types/","name":"Complex types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/#page","headline":"Complex types · R2 SQL docs","description":"Reference for querying struct, array, and map column types in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

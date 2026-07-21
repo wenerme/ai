@@ -1,16 +1,18 @@
 ---
-title: Durable Object Namespace
 description: API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object Namespace
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object Namespace
 
-# Durable Object Namespace
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/namespace/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -20,21 +22,13 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-8905)
-* [  TypeScript ](#tab-panel-8906)
-* [  Python ](#tab-panel-8907)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
-
 
 // Durable Object
 export class MyDurableObject extends DurableObject {
   ...
 }
-
 
 // Worker
 export default {
@@ -46,22 +40,17 @@ export default {
 }
 ```
 
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
-
 
 export interface Env {
   MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
 }
 
-
 // Durable Object
 export class MyDurableObject extends DurableObject {
   ...
 }
-
 
 // Worker
 export default {
@@ -73,16 +62,12 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject, WorkerEntrypoint
-
 
 # Durable Object
 class MyDurableObject(DurableObject):
   pass
-
 
 # Worker
 class Default(WorkerEntrypoint):
@@ -97,8 +82,6 @@ class Default(WorkerEntrypoint):
 ### `idFromName`
 
 `idFromName` creates a unique [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) which refers to an individual instance of the Durable Object class. Named Durable Objects are the most common method of referring to Durable Objects.
-
-**JavaScript**
 
 ```js
 const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");
@@ -117,14 +100,12 @@ const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
 
 `newUniqueId` creates a randomly generated and unique [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) which refers to an individual instance of the Durable Object class. IDs created using `newUniqueId`, will need to be stored as a string in order to refer to the same Durable Object again in the future. For example, the ID can be stored in Workers KV, another Durable Object, or in a cookie in the user's browser.
 
-**JavaScript**
-
 ```js
 const id = env.MY_DURABLE_OBJECT.newUniqueId();
 const euId = env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" });
 ```
 
-`newUniqueId` results in lower request latency at first use
+\`newUniqueId\` results in lower request latency at first use
 
 The first time you get a Durable Object stub based on an ID derived from a name, the system has to take into account the possibility that a Worker on the opposite side of the world could have coincidentally accessed the same named Durable Object at the same time. To guarantee that only one instance of the Durable Object is created, the system must check that the Durable Object has not been created anywhere else. Due to the inherent limit of the speed of light, this round-the-world check can take up to a few hundred milliseconds. `newUniqueId` can skip this check.
 
@@ -142,14 +123,11 @@ After this first use, the location of the Durable Object will be cached around t
 
 `idFromString` creates a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) from a previously generated ID that has been converted to a string. This method throws an exception if the ID is invalid, for example, if the ID was not created from the same `DurableObjectNamespace`.
 
-**JavaScript**
-
 ```js
 // Create a new unique ID
 const id = env.MY_DURABLE_OBJECT.newUniqueId();
 // Convert the ID to a string to be saved elsewhere, e.g. a session cookie
 const session_id = id.toString();
-
 
 ...
 // Recreate the ID from the string
@@ -169,8 +147,6 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 `get` obtains a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) which can be used to invoke methods on a Durable Object.
 
 This method returns the stub immediately, often before a connection has been established to the Durable Object. This allows requests to be sent to the instance right away, without waiting for a network round trip.
-
-**JavaScript**
 
 ```js
 const id = env.MY_DURABLE_OBJECT.newUniqueId();
@@ -192,8 +168,6 @@ const stub = env.MY_DURABLE_OBJECT.get(id);
 
 This method returns the stub immediately, often before a connection has been established to the Durable Object. This allows requests to be sent to the instance right away, without waiting for a network round trip.
 
-**JavaScript**
-
 ```js
 const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");
 const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
@@ -212,8 +186,6 @@ const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
 
 `jurisdiction` creates a subnamespace from a namespace where all Durable Object IDs and references created from that subnamespace will be restricted to the specified [jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction).
 
-**JavaScript**
-
 ```js
 const subnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
 const euStub = subnamespace.getByName("foo");
@@ -231,7 +203,14 @@ const euStub = subnamespace.getByName("foo");
 
 * [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/namespace/#page","headline":"Durable Object Namespace · Cloudflare Durable Objects docs","description":"API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/api/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/namespace/","name":"Durable Object Namespace"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/namespace/#page","headline":"Durable Object Namespace · Cloudflare Durable Objects docs","description":"API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/api/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

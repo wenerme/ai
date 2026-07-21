@@ -1,16 +1,18 @@
 ---
-title: Export to Honeycomb
 description: Send OpenTelemetry traces and logs from Cloudflare Workers to Honeycomb.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Export to Honeycomb
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Export to Honeycomb
 
-# Export to Honeycomb
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Honeycomb is an observability platform built for high-cardinality data that helps you understand and debug your applications. By exporting your Cloudflare Workers application telemetry to Honeycomb, you can:
 
@@ -86,11 +88,6 @@ Repeat the process for logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-12732)
-* [  wrangler.toml ](#tab-panel-12733)
-
-**JSONC**
-
 ```jsonc
 {
   "observability": {
@@ -108,13 +105,10 @@ With your destinations created in the Cloudflare dashboard, update your Worker's
 }
 ```
 
-**TOML**
-
 ```toml
 [observability.traces]
 enabled = true
 destinations = [ "honeycomb-traces" ]
-
 
 [observability.logs]
 enabled = true
@@ -127,7 +121,14 @@ Note
 
 It may take a few minutes after deployment for data to appear in Honeycomb.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/#page","headline":"Export to Honeycomb · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Honeycomb.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/honeycomb/","name":"Export to Honeycomb"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/#page","headline":"Export to Honeycomb · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Honeycomb.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

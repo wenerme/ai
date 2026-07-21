@@ -1,16 +1,18 @@
 ---
-title: Monitors
 description: Health monitors that check origin server availability.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitors
 
-# Monitors
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/monitors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
@@ -74,7 +76,7 @@ Three health monitor probes per region are sent to each endpoint in the associat
 
 Three health monitor probes are sent from each specified region within the pool configuration.
 
-Warning
+Caution
 
 Because of how Cloudflare checks health from [multiple regions](#health-monitor-regions), adding multiple regions — or choosing to check health from **All Data Centers** — can send a lot of traffic to your endpoint.
 
@@ -120,7 +122,14 @@ The following table summarizes the different types of monitors available in Clou
 | UDP-ICMP     | Public and Tunnel  | UDP-ICMP monitor works by sending a UDP probe packet after ICMP Ping monitor completes as healthy.                                                                                         | After receiving a successful ICMP reply, the monitor sends a UDP probe packet to the endpoint. If no ICMP Port Unreachable message is received, the endpoint is considered healthy.                                                                                                                                                                                                                                                                                            | If the monitor receives an ICMP Port Unreachable message within the configured timeout and retries, the endpoint is considered unhealthy.          |
 | SMTP         | Public             | Verifies SMTP availability at the application layer.                                                                                                                                       | The monitor establishes a TCP connection and sends an SMTP HELO command. It expects a reply with code 250\. The monitor then sends an SMTP QUIT command, expecting a reply with code 221\. At the end of each interval, the TCP connection is closed by sending a TCP FIN packet.                                                                                                                                                                                              | The endpoint must respond with correct SMTP codes (250 for HELO, 221 for QUIT) within the configured timeout and retries to be considered healthy. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/#page","headline":"Monitors · Cloudflare Load Balancing docs","description":"Health monitors that check origin server availability.","url":"https://developers.cloudflare.com/load-balancing/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/monitors/","name":"Monitors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/#page","headline":"Monitors · Cloudflare Load Balancing docs","description":"Health monitors that check origin server availability.","url":"https://developers.cloudflare.com/load-balancing/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

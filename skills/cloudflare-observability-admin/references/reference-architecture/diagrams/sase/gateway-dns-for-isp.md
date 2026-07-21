@@ -1,16 +1,18 @@
 ---
-title: DNS filtering solution for Internet service providers
 description: Learn how to use Cloudflare Gateway as a DNS filtering solution for Internet service providers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DNS filtering solution for Internet service providers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS filtering solution for Internet service providers
 
-# DNS filtering solution for Internet service providers
+Last updated Nov 21, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -70,7 +72,14 @@ To differentiate these additional services from the core DNS security offering, 
 * [Cloudflare Blog: Using the power of Cloudflare's global network to detect malicious domains using machine learning ↗](https://blog.cloudflare.com/threat-detection-machine-learning-models/)
 * [Protect ISP and telecommunications networks from DDoS attacks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/#page","headline":"DNS filtering solution for Internet service providers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare Gateway as a DNS filtering solution for Internet service providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-11-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/sase/","name":"Secure Access Service Edge (SASE)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/sase/gateway-dns-for-isp/","name":"DNS filtering solution for Internet service providers"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/#page","headline":"DNS filtering solution for Internet service providers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare Gateway as a DNS filtering solution for Internet service providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-11-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

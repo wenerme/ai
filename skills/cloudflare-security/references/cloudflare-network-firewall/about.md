@@ -1,16 +1,18 @@
 ---
-title: About
 description: How Cloudflare Network Firewall protects your network traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the content below to learn more about concepts related to Cloudflare Network Firewall (formerly Magic Firewall).
 
@@ -29,7 +31,14 @@ When using Cloudflare Network Firewall alongside other Cloudflare services that 
 * [ Ruleset logic ](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/)
 * [ Traffic types ](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/#page","headline":"About · Cloudflare Network Firewall docs","description":"How Cloudflare Network Firewall protects your network traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/about/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/#page","headline":"About · Cloudflare Network Firewall docs","description":"How Cloudflare Network Firewall protects your network traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

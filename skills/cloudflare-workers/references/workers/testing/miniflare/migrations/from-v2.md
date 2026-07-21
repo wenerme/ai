@@ -1,16 +1,18 @@
 ---
-title: Migrating from Version 2
 description: Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrating from Version 2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrating from Version 2
 
-# Migrating from Version 2
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Miniflare v3 now uses [workerd ↗](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗](https://blog.cloudflare.com/wrangler3/) for more information.
 
@@ -39,15 +41,13 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 * `queueConsumers`
 
   * Either accepts a `Record<string, QueueConsumerOptions>` mapping queue names to consumer options, or a `string[]` of queue names to consume with default options. `QueueConsumerOptions` has the following type:
-
-**TypeScript**
   ```ts
   interface QueueConsumerOptions {
-    // /queues/platform/configuration/#consumer
-    maxBatchSize?: number; // default: 5
-    maxBatchTimeout?: number /* seconds */; // default: 1
-    maxRetries?: number; // default: 2
-    deadLetterQueue?: string; // default: none
+  	// /queues/platform/configuration/#consumer
+  	maxBatchSize?: number; // default: 5
+  	maxBatchTimeout?: number /* seconds */; // default: 1
+  	maxRetries?: number; // default: 2
+  	deadLetterQueue?: string; // default: none
   }
   ```
 * `cfFetch`
@@ -80,32 +80,30 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 * `mounts`
 
   * Miniflare no longer has the concept of parent and child Workers. Instead, all Workers can be defined at the same level, using the new `workers`option. Here's an example that uses a service binding to increment a value in a shared KV namespace:
-
-**TypeScript**
   ```ts
   import { Miniflare, Response } from "miniflare";
   const message = "The count is ";
   const mf = new Miniflare({
-    // Options shared between Workers such as HTTP and persistence configuration
-    // should always be defined at the top level.
-    host: "0.0.0.0",
-    port: 8787,
-    kvPersist: true,
-    workers: [
-      {
-        name: "worker",
-        kvNamespaces: { COUNTS: "counts" },
-        serviceBindings: {
-          INCREMENTER: "incrementer",
-          // Service bindings can also be defined as custom functions, with access
-          // to anything defined outside Miniflare.
-          async CUSTOM(request) {
-            // `request` is the incoming `Request` object.
-            return new Response(message);
-          },
-        },
-        modules: true,
-        script: `export default {
+  	// Options shared between Workers such as HTTP and persistence configuration
+  	// should always be defined at the top level.
+  	host: "0.0.0.0",
+  	port: 8787,
+  	kvPersist: true,
+  	workers: [
+  		{
+  			name: "worker",
+  			kvNamespaces: { COUNTS: "counts" },
+  			serviceBindings: {
+  				INCREMENTER: "incrementer",
+  				// Service bindings can also be defined as custom functions, with access
+  				// to anything defined outside Miniflare.
+  				async CUSTOM(request) {
+  					// `request` is the incoming `Request` object.
+  					return new Response(message);
+  				},
+  			},
+  			modules: true,
+  			script: `export default {
           async fetch(request, env, ctx) {
             // Get the message defined outside
             const response = await env.CUSTOM.fetch("http://host/");
@@ -118,14 +116,14 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
             return new Response(message + count);
           }
         }`,
-      },
-      {
-        name: "incrementer",
-        // Note we're using the same `COUNTS` namespace as before, but binding it
-        // to `NUMBERS` instead.
-        kvNamespaces: { NUMBERS: "counts" },
-        // Worker formats can be mixed-and-matched
-        script: `addEventListener("fetch", (event) => {
+  		},
+  		{
+  			name: "incrementer",
+  			// Note we're using the same `COUNTS` namespace as before, but binding it
+  			// to `NUMBERS` instead.
+  			kvNamespaces: { NUMBERS: "counts" },
+  			// Worker formats can be mixed-and-matched
+  			script: `addEventListener("fetch", (event) => {
           event.respondWith(handleRequest());
         })
         async function handleRequest() {
@@ -133,8 +131,8 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
           await NUMBERS.put("count", count.toString());
           return new Response(count.toString());
         }`,
-      },
-    ],
+  		},
+  	],
   });
   const res = await mf.dispatchFetch("http://localhost");
   console.log(await res.text()); // "The count is 3"
@@ -183,7 +181,14 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 * `@miniflare/*`
   * Miniflare is now contained within a single `miniflare` package.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/#page","headline":"Migrating from Version 2 · Cloudflare Workers docs","description":"Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.","url":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/migrations/","name":"Migrations"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/migrations/from-v2/","name":"Migrating from Version 2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/#page","headline":"Migrating from Version 2 · Cloudflare Workers docs","description":"Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.","url":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: JSON Configuration
 description: Define AI Gateway dynamic routing flows using the REST API and JSON element structure.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: JSON Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  JSON Configuration
 
-# JSON Configuration
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/json-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Instead of using the **dashboard editor UI** to define the route graph, you can do it using the REST API. Routes are internally represented using a simple JSON structure:
 
@@ -36,11 +38,11 @@ Marks the beginning of a route. Every route must start with a Start element.
 
 ```json
 {
-  "id": "<id>",
-  "type": "start",
-  "outputs": {
-    "next": { "elementId": "<id>" }
-  }
+	"id": "<id>",
+	"type": "start",
+	"outputs": {
+		"next": { "elementId": "<id>" }
+	}
 }
 ```
 
@@ -57,17 +59,17 @@ Evaluates a condition based on request parameters and routes the request accordi
 
 ```json
 {
-  "id": "<id>",
-  "type": "conditional",
-  "properties": {
-    "conditions": {
-      "metadata.plan": { "$eq": "free" }
-    }
-  },
-  "outputs": {
-    "true": { "elementId": "<id>" },
-    "false": { "elementId": "<id>" }
-  }
+	"id": "<id>",
+	"type": "conditional",
+	"properties": {
+		"conditions": {
+			"metadata.plan": { "$eq": "free" }
+		}
+	},
+	"outputs": {
+		"true": { "elementId": "<id>" },
+		"false": { "elementId": "<id>" }
+	}
 }
 ```
 
@@ -81,13 +83,13 @@ Routes requests probabilistically across multiple outputs, useful for A/B testin
 
 ```json
 {
-  "id": "<id>",
-  "type": "percentage",
-  "outputs": {
-    "10%": { "elementId": "<id>" },
-    "40%": { "elementId": "<id>" },
-    "50%": { "elementId": "<id>" }
-  }
+	"id": "<id>",
+	"type": "percentage",
+	"outputs": {
+		"10%": { "elementId": "<id>" },
+		"40%": { "elementId": "<id>" },
+		"50%": { "elementId": "<id>" }
+	}
 }
 ```
 
@@ -109,18 +111,18 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 
 ```json
 {
-  "id": "<id>",
-  "type": "rate",
-  "properties": {
-    "limitType": "count",
-    "key": "metadata.user_id",
-    "limit": 100,
-    "window": 3600
-  },
-  "outputs": {
-    "success": { "elementId": "node_model_workers_ai" },
-    "fallback": { "elementId": "node_model_openai_mini" }
-  }
+	"id": "<id>",
+	"type": "rate",
+	"properties": {
+		"limitType": "count",
+		"key": "metadata.user_id",
+		"limit": 100,
+		"window": 3600
+	},
+	"outputs": {
+		"success": { "elementId": "node_model_workers_ai" },
+		"fallback": { "elementId": "node_model_openai_mini" }
+	}
 }
 ```
 
@@ -142,18 +144,18 @@ Executes inference using a specified model and provider with configurable timeou
 
 ```json
 {
-  "id": "<id>",
-  "type": "model",
-  "properties": {
-    "provider": "openai",
-    "model": "gpt-4o-mini",
-    "timeout": 60000,
-    "retries": 4
-  },
-  "outputs": {
-    "success": { "elementId": "<id>" },
-    "fallback": { "elementId": "<id>" }
-  }
+	"id": "<id>",
+	"type": "model",
+	"properties": {
+		"provider": "openai",
+		"model": "gpt-4o-mini",
+		"timeout": 60000,
+		"retries": 4
+	},
+	"outputs": {
+		"success": { "elementId": "<id>" },
+		"fallback": { "elementId": "<id>" }
+	}
 }
 ```
 
@@ -166,13 +168,20 @@ Marks the end of a route. Returns the last successful model response, or an erro
 
 ```json
 {
-  "id": "<id>",
-  "type": "end",
-  "outputs": {}
+	"id": "<id>",
+	"type": "end",
+	"outputs": {}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/json-configuration/#page","headline":"JSON Configuration · Cloudflare AI Gateway docs","description":"Define AI Gateway dynamic routing flows using the REST API and JSON element structure.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/json-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/dynamic-routing/","name":"Dynamic routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/features/dynamic-routing/json-configuration/","name":"JSON Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/json-configuration/#page","headline":"JSON Configuration · Cloudflare AI Gateway docs","description":"Define AI Gateway dynamic routing flows using the REST API and JSON element structure.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/json-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Puppeteer
 description: Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Puppeteer
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Puppeteer
 
-# Puppeteer
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/puppeteer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Puppeteer ↗](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
@@ -46,47 +48,37 @@ The current version is [@cloudflare/puppeteer v1.1.0 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-7553)
-* [  TypeScript ](#tab-panel-7554)
-
-**JavaScript**
-
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 export default {
-  async fetch(request, env) {
-    const browser = await puppeteer.launch(env.MYBROWSER);
-    const page = await browser.newPage();
-    await page.goto("https://example.com");
-    const metrics = await page.metrics();
-    await browser.close();
-    return Response.json(metrics);
-  },
+	async fetch(request, env) {
+		const browser = await puppeteer.launch(env.MYBROWSER);
+		const page = await browser.newPage();
+		await page.goto("https://example.com");
+		const metrics = await page.metrics();
+		await browser.close();
+		return Response.json(metrics);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  MYBROWSER: Fetcher;
+	MYBROWSER: Fetcher;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const browser = await puppeteer.launch(env.MYBROWSER);
-    const page = await browser.newPage();
-    await page.goto("https://example.com");
-    const metrics = await page.metrics();
-    await browser.close();
-    return Response.json(metrics);
-  },
+	async fetch(request, env): Promise<Response> {
+		const browser = await puppeteer.launch(env.MYBROWSER);
+		const page = await browser.newPage();
+		await page.goto("https://example.com");
+		const metrics = await page.metrics();
+		await browser.close();
+		return Response.json(metrics);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -95,8 +87,6 @@ This script [launches ↗](https://pptr.dev/api/puppeteer.puppeteernode.launch) 
 ### Keep Alive
 
 If users omit the `browser.close()` statement, it will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
-
-**JavaScript**
 
 ```js
 const browser = await puppeteer.launch(env.MYBROWSER, { keep_alive: 600000 });
@@ -112,11 +102,9 @@ This is an inactivity timeout, not a maximum session duration. Sessions can rema
 
 To specify a custom user agent in Puppeteer, use the `page.setUserAgent()` method. This is useful if the target website serves different content based on the user agent.
 
-**JavaScript**
-
 ```js
 await page.setUserAgent(
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
 );
 ```
 
@@ -146,18 +134,16 @@ Puppeteer provides multiple methods for selecting elements on a page. While CSS 
 
 Instead of using Xpath selectors, you can use CSS selectors or `page.evaluate()` to run XPath queries in the browser context:
 
-**TypeScript**
-
 ```ts
 const innerHtml = await page.evaluate(() => {
-  return (
-    // @ts-ignore this runs on browser context
-    new XPathEvaluator()
-      .createExpression("/html/body/div/h1")
-      // @ts-ignore this runs on browser context
-      .evaluate(document, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue
-      .innerHTML
-  );
+	return (
+		// @ts-ignore this runs on browser context
+		new XPathEvaluator()
+			.createExpression("/html/body/div/h1")
+			// @ts-ignore this runs on browser context
+			.evaluate(document, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue
+			.innerHTML
+	);
 });
 ```
 
@@ -175,16 +161,16 @@ In order to facilitate browser session management, we've added new methods to `p
 
 ```json
 [
-  {
-    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
-    "connectionStartTime": 1711621704607,
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-    "startTime": 1711621703708
-  },
-  {
-    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
-    "startTime": 1711621703808
-  }
+	{
+		"connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
+		"connectionStartTime": 1711621704607,
+		"sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+		"startTime": 1711621703708
+	},
+	{
+		"sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
+		"startTime": 1711621703808
+	}
 ]
 ```
 
@@ -196,20 +182,20 @@ Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active wor
 
 ```json
 [
-  {
-    "closeReason": 2,
-    "closeReasonText": "BrowserIdle",
-    "endTime": 1711621769485,
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-    "startTime": 1711621703708
-  },
-  {
-    "closeReason": 1,
-    "closeReasonText": "NormalClosure",
-    "endTime": 1711123501771,
-    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
-    "startTime": 1711123430918
-  }
+	{
+		"closeReason": 2,
+		"closeReasonText": "BrowserIdle",
+		"endTime": 1711621769485,
+		"sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+		"startTime": 1711621703708
+	},
+	{
+		"closeReason": 1,
+		"closeReasonText": "NormalClosure",
+		"endTime": 1711123501771,
+		"sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
+		"startTime": 1711123430918
+	}
 ]
 ```
 
@@ -223,13 +209,13 @@ You should also be able to access this information in the dashboard, albeit with
 
 ```json
 {
-  "activeSessions": [
-    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
-    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
-  ],
-  "allowedBrowserAcquisitions": 1,
-  "maxConcurrentSessions": 2,
-  "timeUntilNextAllowedBrowserAcquisition": 0
+	"activeSessions": [
+		{ "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
+		{ "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
+	],
+	"allowedBrowserAcquisitions": 1,
+	"maxConcurrentSessions": 2,
+	"timeUntilNextAllowedBrowserAcquisition": 0
 }
 ```
 
@@ -242,7 +228,14 @@ You should also be able to access this information in the dashboard, albeit with
 
 The full Puppeteer API can be found in the [Cloudflare's fork of Puppeteer ↗](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer · Cloudflare Browser Run docs","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/puppeteer/","name":"Puppeteer"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer · Cloudflare Browser Run docs","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

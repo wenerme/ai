@@ -1,16 +1,18 @@
 ---
-title: 2026 deprecation migration guide
 description: Migrate away from Sandbox SDK features deprecated in June 2026.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: 2026 deprecation migration guide
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  2026 deprecation migration guide
 
-# 2026 deprecation migration guide
+Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks through migrating away from the Sandbox SDK features deprecated in June 2026\. These features will no longer be present in future Sandbox SDK versions after July 9, 2026.
 
@@ -34,20 +36,13 @@ HTTP and WebSocket transports will no longer be present in Sandbox SDK versions 
 
 To configure RPC transport for every sandbox in your Worker, set `SANDBOX_TRANSPORT` in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11111)
-* [  wrangler.toml ](#tab-panel-11112)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_TRANSPORT": "rpc"
-  }
+	"vars": {
+		"SANDBOX_TRANSPORT": "rpc"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -56,14 +51,11 @@ SANDBOX_TRANSPORT = "rpc"
 
 To configure RPC transport for a specific sandbox, pass `transport: "rpc"` to `getSandbox()`:
 
-**TypeScript**
-
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "user-123", {
-  transport: "rpc",
+	transport: "rpc",
 });
 ```
 
@@ -81,20 +73,15 @@ Replace `exposePort()` with the tunnels API for public URLs. The tunnels API req
 
 Use quick tunnels for development, demos, and short-lived URLs. Use named tunnels for production traffic, webhook receivers, OAuth callbacks, and stable hostnames on a zone you control.
 
-**TypeScript**
-
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox", {
-  transport: "rpc",
+	transport: "rpc",
 });
-
 
 const server = await sandbox.startProcess("python -m http.server 8080");
 await server.waitForPort(8080);
-
 
 const tunnel = await sandbox.tunnels.get(8080);
 return Response.json({ url: tunnel.url });
@@ -108,28 +95,22 @@ For more information, refer to [Tunnels](https://developers.cloudflare.com/sandb
 
 Set `enableDefaultSession: false` on `getSandbox()`. Operations without an explicit session will then run in isolation and will not inherit shell state from earlier calls.
 
-**TypeScript**
-
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "user-123", {
-  enableDefaultSession: false,
-  transport: "rpc",
+	enableDefaultSession: false,
+	transport: "rpc",
 });
 ```
 
 If your code expects commands like `cd /workspace/app` to affect later `exec()` calls, create an explicit session and run related commands through that session:
 
-**TypeScript**
-
 ```ts
 const buildSession = await sandbox.createSession({
-  id: "build",
-  cwd: "/workspace/app",
+	id: "build",
+	cwd: "/workspace/app",
 });
-
 
 await buildSession.exec("npm install");
 await buildSession.exec("npm test");
@@ -137,14 +118,12 @@ await buildSession.exec("npm test");
 
 For one-off commands, pass `cwd` or `env` directly to `exec()` instead of relying on persisted shell state:
 
-**TypeScript**
-
 ```ts
 await sandbox.exec("npm test", {
-  cwd: "/workspace/app",
-  env: {
-    NODE_ENV: "test",
-  },
+	cwd: "/workspace/app",
+	env: {
+		NODE_ENV: "test",
+	},
 });
 ```
 
@@ -156,40 +135,32 @@ The Sandbox SDK is consolidating separate streaming APIs into the base `exec()`,
 
 For command output, use `exec()` with streaming callbacks:
 
-**TypeScript**
-
 ```ts
 await sandbox.exec("npm install", {
-  stream: true,
-  onOutput: (stream, data) => {
-    console.log(`[${stream}] ${data}`);
-  },
+	stream: true,
+	onOutput: (stream, data) => {
+		console.log(`[${stream}] ${data}`);
+	},
 });
 ```
 
 For large or binary files, use the base file APIs with RPC transport. Pass a `ReadableStream` to `writeFile()`, or read a file as a stream with `encoding: "none"`:
 
-**TypeScript**
-
 ```ts
 const request = await fetch("https://example.com/archive.tar.gz");
 
-
 if (!request.body) {
-  throw new Error("Expected archive response body");
+	throw new Error("Expected archive response body");
 }
-
 
 await sandbox.writeFile("/workspace/archive.tar.gz", request.body);
 
-
 const file = await sandbox.readFile("/workspace/archive.tar.gz", {
-  encoding: "none",
+	encoding: "none",
 });
 
-
 return new Response(file.content, {
-  headers: { "Content-Type": file.mimeType },
+	headers: { "Content-Type": file.mimeType },
 });
 ```
 
@@ -212,7 +183,14 @@ Use this checklist before upgrading to a Sandbox SDK version released after July
 
 An agent skill is available to assist with the migration: [SKILL.md](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/SKILL.md).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/2026-deprecation/#page","headline":"2026 deprecation migration guide · Cloudflare Sandbox SDK docs","description":"Migrate away from Sandbox SDK features deprecated in June 2026.","url":"https://developers.cloudflare.com/sandbox/guides/2026-deprecation/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/2026-deprecation/","name":"2026 deprecation migration guide"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/2026-deprecation/#page","headline":"2026 deprecation migration guide · Cloudflare Sandbox SDK docs","description":"Migrate away from Sandbox SDK features deprecated in June 2026.","url":"https://developers.cloudflare.com/sandbox/guides/2026-deprecation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

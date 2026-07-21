@@ -1,16 +1,18 @@
 ---
-title: Zero Trust GitLab SSH &amp; HTTP
 description: Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Zero Trust GitLab SSH &amp; HTTP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Zero Trust GitLab SSH & HTTP
 
-# Zero Trust GitLab SSH & HTTP
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use Cloudflare Access to add Zero Trust rules to a self-hosted instance of GitLab. Combined with Cloudflare Tunnel, users can connect through HTTP and SSH and authenticate with your team's identity provider.
 
@@ -53,7 +55,6 @@ Run the following commands to begin.
 
 ```sh
 sudo apt-get update
-
 
 sudo apt-get install -y curl openssh-server ca-certificates
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
@@ -205,7 +206,6 @@ vim ~/.cloudflared/config.yml
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
 
-
 ingress:
   - hostname: gitlab.widgetcorp.tech
     service: http://localhost:80
@@ -240,7 +240,7 @@ This command should be run as a `systemd` service for long-term use; if it termi
 You can now create DNS records for GitLab in the Cloudflare dashboard. Remember, you will still need two records - one for the web application and one for SSH traffic.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**. Choose `CNAME` as the record type.
 3. In the **Name** field, input `gitlab`.
 4. In the **Target** field, input the ID of the Tunnel created followed by `cfargotunnel.com`. In this example, that value is:
@@ -324,7 +324,14 @@ cloudflared access login <your-git-access-url>
 
 Replace `<your-git-access-url>` with the Cloudflare Access-protected URL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/#page","headline":"Zero Trust GitLab SSH & HTTP · Cloudflare One docs","description":"Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/gitlab/","name":"Zero Trust GitLab SSH & HTTP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/#page","headline":"Zero Trust GitLab SSH & HTTP · Cloudflare One docs","description":"Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

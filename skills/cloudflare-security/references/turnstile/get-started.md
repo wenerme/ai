@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Turnstile to verify visitors without a traditional CAPTCHA.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile protects your website forms from bots. It works in two steps: a JavaScript widget runs challenges in the visitor's browser and produces a token, then your server sends that token to Cloudflare to confirm it is valid. This guide covers how to set up both steps.
 
@@ -63,7 +65,7 @@ First, you must create a Turnstile widget to get your sitekey and secret key.
 
 Select your preferred implementation method:
 
-[ Cloudflare dashboard ](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/) [ API ](https://developers.cloudflare.com/turnstile/get-started/widget-management/api/) [ Terraform ](https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/)
+[ Cloudflare dashboard ](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/)[ API ](https://developers.cloudflare.com/turnstile/get-started/widget-management/api/)[ Terraform ](https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/)
 
 ### 2\. Embed the widget
 
@@ -128,7 +130,14 @@ Refer to [Migration](https://developers.cloudflare.com/turnstile/migration/) for
 * Keep track of which widgets are used at which locations.
 * Store your widget configurations in version control when using Terraform.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/#page","headline":"Get started · Cloudflare Turnstile docs","description":"Set up Turnstile to verify visitors without a traditional CAPTCHA.","url":"https://developers.cloudflare.com/turnstile/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/#page","headline":"Get started · Cloudflare Turnstile docs","description":"Set up Turnstile to verify visitors without a traditional CAPTCHA.","url":"https://developers.cloudflare.com/turnstile/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms"]}
 ```

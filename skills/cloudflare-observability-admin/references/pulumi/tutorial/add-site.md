@@ -1,16 +1,18 @@
 ---
-title: Add a site
 description: This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add a site
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add a site
 
-# Add a site
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pulumi/tutorial/add-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will follow step-by-step instructions to bring an existing site to Cloudflare using Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle. In particular, you will create a Zone and a DNS record to resolve your newly added site. This tutorial adopts the IaC principle to complete the steps listed in the [Add site tutorial](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
 
@@ -59,14 +61,6 @@ pulumi login
 A Pulumi program is code written in a [supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) that defines infrastructure resources.
 
 To create a program, select your language of choice and run the `pulumi` command:
-
-* [  JavaScript ](#tab-panel-10359)
-* [  TypeScript ](#tab-panel-10360)
-* [  Python ](#tab-panel-10361)
-* [ go ](#tab-panel-10362)
-* [ Java ](#tab-panel-10363)
-* [ .NET ](#tab-panel-10364)
-* [ YAML ](#tab-panel-10365)
 
 ```sh
 pulumi new javascript --name addsite-cloudflare --yes
@@ -127,7 +121,6 @@ In this step, you will store your settings in a Pulumi [ESC Environment ↗](htt
 # Define an ESC Environment name
 E=cloudflare/my-dev-env
 
-
 # Create a new Pulumi ESC Environment
 pulumi config env init --env $E --yes
 ```
@@ -140,10 +133,8 @@ Creating environment cloudflare/my-dev-env for stack dev...
 # Replace abc123 with your Cloudflare Account ID
 pulumi env set $E --plaintext pulumiConfig.accountId abc123
 
-
 # Replace API_TOKEN with your Cloudflare API Token
 pulumi env set $E --secret  pulumiConfig.cloudflare:apiToken API_TOKEN
-
 
 # Replace example.com with your registered domain, or leave as is
 pulumi env set $E --plaintext pulumiConfig.domain example.com
@@ -154,14 +145,6 @@ pulumi env set $E --plaintext pulumiConfig.domain example.com
 You need to install the Cloudflare package for your language of choice in order to define Cloudflare resources in your Pulumi program.
 
 Install the Cloudflare package by running the following command:
-
-* [  JavaScript ](#tab-panel-10366)
-* [  TypeScript ](#tab-panel-10367)
-* [  Python ](#tab-panel-10368)
-* [ go ](#tab-panel-10369)
-* [ Java ](#tab-panel-10370)
-* [ .NET ](#tab-panel-10371)
-* [ YAML ](#tab-panel-10372)
 
 ```sh
 npm install @pulumi/cloudflare
@@ -242,37 +225,24 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-10373)
-* [  TypeScript ](#tab-panel-10374)
-* [  Python ](#tab-panel-10375)
-* [ go ](#tab-panel-10376)
-* [ Java ](#tab-panel-10377)
-* [ .NET ](#tab-panel-10378)
-* [ YAML ](#tab-panel-10379)
-
 **Filename: `index.js`**
-
-**JavaScript**
 
 ```js
 "use strict";
 const pulumi = require("@pulumi/pulumi");
 const cloudflare = require("@pulumi/cloudflare");
 
-
 const config = new pulumi.Config();
 const accountId = config.require("accountId");
 const domain = config.require("domain");
 
-
 // Create a Cloudflare resource (Zone)
 const zone = new cloudflare.Zone("my-zone", {
-  zone: domain,
-  accountId: accountId,
-  plan: "free",
-  jumpStart: true,
+	zone: domain,
+	accountId: accountId,
+	plan: "free",
+	jumpStart: true,
 });
-
 
 exports.zoneId = zone.id;
 exports.nameservers = zone.nameServers;
@@ -281,26 +251,21 @@ exports.status = zone.status;
 
 **Filename: `index.ts`**
 
-**TypeScript**
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as cloudflare from "@pulumi/cloudflare";
-
 
 const config = new pulumi.Config();
 const accountId = config.require("accountId");
 const domain = config.require("domain");
 
-
 // Create a Cloudflare resource (Zone)
 const zone = new cloudflare.Zone("my-zone", {
-  zone: domain,
-  accountId: accountId,
-  plan: "free",
-  jumpStart: true,
+	zone: domain,
+	accountId: accountId,
+	plan: "free",
+	jumpStart: true,
 });
-
 
 export const zoneId = zone.id;
 export const nameservers = zone.nameServers;
@@ -309,16 +274,12 @@ export const status = zone.status;
 
 **Filename: `__main__.py`**
 
-**Python**
-
 ```py
 import pulumi
 import pulumi_cloudflare as cloudflare
 
-
 account_id = pulumi.Config().require("accountId")
 domain = pulumi.Config().require("domain")
-
 
 # Create a Cloudflare resource (Zone)
 zone = cloudflare.Zone("my-zone",
@@ -326,7 +287,6 @@ zone = cloudflare.Zone("my-zone",
     account_id=account_id,
     plan="free",
     jump_start=True)
-
 
 pulumi.export("zoneId", zone.id)
 pulumi.export('nameservers', zone.name_servers)
@@ -338,17 +298,14 @@ pulumi.export('status', zone.status)
 ```go
 package main
 
-
 import (
     "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
     cloudflare "github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
 )
 
-
 func main() {
     pulumi.Run(func(ctx *pulumi.Context) error {
         domain, _ := ctx.GetConfig("domain")
-
 
         // Create a Cloudflare resource (Zone)
         zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{
@@ -359,7 +316,6 @@ func main() {
         if err != nil {
             return err
         }
-
 
         ctx.Export("zoneId", zone.ID())
         ctx.Export("nameservers", zone.NameServers)
@@ -374,7 +330,6 @@ func main() {
 ```java
 package myproject;
 
-
 import com.pulumi.Pulumi;
 import com.pulumi.Context;
 import com.pulumi.cloudflare.ZoneArgs;
@@ -386,10 +341,8 @@ public class App {
         Pulumi.run(ctx -> {
             var config = ctx.config();
 
-
             String accountId = config.require("accountId");
             String domain = config.require("domain");
-
 
             var zone = new Zone("my-zone", ZoneArgs.builder()
                 .zone(domain)
@@ -397,7 +350,6 @@ public class App {
                 .plan("free")
                 .jumpStart(true)
                 .build());
-
 
             ctx.export("zoneId", zone.id());
             ctx.export("nameservers", zone.nameServers());
@@ -415,11 +367,9 @@ using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Cloudflare;
 
-
 class Program
 {
     static Task<int> Main() => Deployment.RunAsync<MyStack>();
-
 
     class MyStack : Stack
     {
@@ -429,7 +379,6 @@ class Program
             var accountId = config.Require("accountId");
             var domain = config.Require("domain");
 
-
             var zone = new Zone("my-zone", new ZoneArgs
             {
                 ZoneName = domain,
@@ -438,12 +387,10 @@ class Program
                 JumpStart = true
             });
 
-
             this.ZoneId = zone.Id;
             this.Nameservers = zone.NameServers;
             this.Status = zone.Status;
         }
-
 
         [Output]
         public Output<string> ZoneId { get; set; }
@@ -454,8 +401,6 @@ class Program
 ```
 
 **Filename: `Pulumi.yaml`**
-
-**YAML**
 
 ```yaml
 name: addsite-cloudflare
@@ -468,7 +413,6 @@ resources:
       accountId: ${accountId}
       plan: "free"
       jumpStart: true
-
 
 outputs:
   zoneId: ${myZone.id}
@@ -484,45 +428,31 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-10380)
-* [  TypeScript ](#tab-panel-10381)
-* [  Python ](#tab-panel-10382)
-* [ go ](#tab-panel-10383)
-* [ Java ](#tab-panel-10384)
-* [ .NET ](#tab-panel-10385)
-* [ YAML ](#tab-panel-10386)
-
 **Filename: `index.js`**
-
-**JavaScript**
 
 ```js
 const record = new cloudflare.Record("my-record", {
-  zoneId: zone.id,
-  name: domain,
-  content: "192.0.2.1",
-  type: "A",
-  proxied: true,
+	zoneId: zone.id,
+	name: domain,
+	content: "192.0.2.1",
+	type: "A",
+	proxied: true,
 });
 ```
 
 **Filename: `index.ts`**
 
-**TypeScript**
-
 ```typescript
 const record = new cloudflare.Record("my-record", {
-  zoneId: zone.id,
-  name: domain,
-  content: "192.0.2.1",
-  type: "A",
-  proxied: true,
+	zoneId: zone.id,
+	name: domain,
+	content: "192.0.2.1",
+	type: "A",
+	proxied: true,
 });
 ```
 
 **Filename: `__main__.py`**
-
-**Python**
 
 ```py
 record = cloudflare.Record("my-record",
@@ -537,6 +467,7 @@ record = cloudflare.Record("my-record",
 **Filename: `main.go`**
 
 ```go
+
     _, err = cloudflare.NewRecord(ctx, "my-record", &cloudflare.RecordArgs{
       ZoneId:  zone.ID(),
       Name:    pulumi.String(domain),
@@ -552,10 +483,10 @@ record = cloudflare.Record("my-record",
 **Filename: `src/main/java/myproject/App.java`**
 
 ```java
+
 // Add imports
 import com.pulumi.cloudflare.Record;
 import com.pulumi.cloudflare.RecordArgs;
-
 
 // Below the Zone resource, add
 new Record("my-record", RecordArgs.builder()
@@ -581,8 +512,6 @@ new Record("my-record", new RecordArgs
 ```
 
 **Filename: `Pulumi.yaml`**
-
-**YAML**
 
 ```yaml
 myRecord:
@@ -635,7 +564,7 @@ pulumi stack output
 
 Update the nameservers at your registrar to activate Cloudflare services for your domain. The instructions are registrar-specific. You may be able to find guidance under [this consolidated list of common registrars](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar).
 
-Warning
+Caution
 
 Registrars take up to 24 hours to process nameserver changes.
 
@@ -691,7 +620,14 @@ You have incrementally defined Cloudflare resources needed to add a site to Clou
 
 To deploy a serverless app with Pulumi, follow the [Deploy a Worker tutorial](https://developers.cloudflare.com/pulumi/tutorial/hello-world/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/add-site/","name":"Add a site"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
 ```

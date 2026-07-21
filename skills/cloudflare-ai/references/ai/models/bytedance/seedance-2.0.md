@@ -1,36 +1,35 @@
 ---
-title: Seedance 2.0
 description: ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Seedance 2.0
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)
 
 #  Seedance 2.0
 
-Text-to-Video • ByteDance
+ Text-to-Video • ByteDance
 
-`bytedance/seedance-2.0`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` bytedance/seedance-2.0 `
+
+* Third-party
 
 ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.
 
-| Model Info       |                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedance2%5F0)                                                                    |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0) |
+| Model Info       |                                                                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedance2%5F0)                                                                     |
+| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-424)
-* [ cURL ](#tab-panel-425)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -60,9 +59,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-420)
-* [ Raw response ](#tab-panel-421)
-
 ```json
 {
   "state": "Completed",
@@ -78,11 +74,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **High Resolution Cinematic**  — Cinematic video in 1080p
-
-* [ TypeScript ](#tab-panel-428)
-* [ cURL ](#tab-panel-429)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -113,9 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-422)
-* [ Raw response ](#tab-panel-423)
-
 ```json
 {
   "state": "Completed",
@@ -129,11 +117,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Image to Video**  — Generate video from a reference image
-
-* [ TypeScript ](#tab-panel-432)
-* [ cURL ](#tab-panel-433)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -166,9 +149,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-426)
-* [ Raw response ](#tab-panel-427)
-
 ```json
 {
   "state": "Completed",
@@ -182,11 +162,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Portrait Video**  — Vertical video for social media
-
-* [ TypeScript ](#tab-panel-436)
-* [ cURL ](#tab-panel-437)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -216,9 +191,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-430)
-* [ Raw response ](#tab-panel-431)
-
 ```json
 {
   "state": "Completed",
@@ -232,11 +204,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **4K Cinematic Video**  — Generate a detailed cinematic video in 4K
-
-* [ TypeScript ](#tab-panel-438)
-* [ cURL ](#tab-panel-439)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -267,9 +234,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-434)
-* [ Raw response ](#tab-panel-435)
-
 ```json
 {
   "state": "Completed",
@@ -283,9 +247,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-440)
-* [ Output ](#tab-panel-441)
 
 prompt
 
@@ -349,7 +310,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/sch
 
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/#page","headline":"Seedance 2.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/#page","headline":"Seedance 2.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

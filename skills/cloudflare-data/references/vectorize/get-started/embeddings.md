@@ -1,16 +1,18 @@
 ---
-title: Vectorize and Workers AI
 description: Generate vector embeddings with Workers AI and store them in a Vectorize index.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vectorize and Workers AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vectorize and Workers AI
 
-# Vectorize and Workers AI
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/get-started/embeddings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize is now Generally Available
 
@@ -115,7 +117,6 @@ npx wrangler vectorize create embeddings-index --dimensions=768 --metric=cosine
 ```sh
 ✅ Successfully created index 'embeddings-index'
 
-
 [[vectorize]]
 binding = "VECTORIZE" # available in your Worker on env.VECTORIZE
 index_name = "embeddings-index"
@@ -129,23 +130,16 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11898)
-* [  wrangler.toml ](#tab-panel-11899)
-
-**JSONC**
-
 ```jsonc
 {
-  "vectorize": [
-    {
-      "binding": "VECTORIZE", // available in your Worker on env.VECTORIZE
-      "index_name": "embeddings-index"
-    }
-  ]
+	"vectorize": [
+		{
+			"binding": "VECTORIZE", // available in your Worker on env.VECTORIZE
+			"index_name": "embeddings-index"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[vectorize]]
@@ -165,32 +159,24 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11900)
-* [  wrangler.toml ](#tab-panel-11901)
-
-**JSONC**
-
 ```jsonc
 {
-  "vectorize": [
-    {
-      "binding": "VECTORIZE",
-      "index_name": "embeddings-index"
-    }
-  ],
-  "ai": {
-    "binding": "AI" // available in your Worker on env.AI
-  }
+	"vectorize": [
+		{
+			"binding": "VECTORIZE",
+			"index_name": "embeddings-index"
+		}
+	],
+	"ai": {
+		"binding": "AI" // available in your Worker on env.AI
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[vectorize]]
 binding = "VECTORIZE"
 index_name = "embeddings-index"
-
 
 [ai]
 binding = "AI"
@@ -204,83 +190,75 @@ To write code in your Worker, go to your `embeddings-tutorial` Worker and open t
 
 Clear the content of `index.ts`. Paste the following code snippet into your `index.ts` file. On the `env` parameter, replace `<BINDING_NAME>` with `VECTORIZE`:
 
-**TypeScript**
-
 ```typescript
 export interface Env {
-  VECTORIZE: Vectorize;
-  AI: Ai;
+	VECTORIZE: Vectorize;
+	AI: Ai;
 }
 interface EmbeddingResponse {
-  shape: number[];
-  data: number[][];
+	shape: number[];
+	data: number[][];
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    let path = new URL(request.url).pathname;
-    if (path.startsWith("/favicon")) {
-      return new Response("", { status: 404 });
-    }
+	async fetch(request, env, ctx): Promise<Response> {
+		let path = new URL(request.url).pathname;
+		if (path.startsWith("/favicon")) {
+			return new Response("", { status: 404 });
+		}
 
+		// You only need to generate vector embeddings once (or as
+		// data changes), not on every request
+		if (path === "/insert") {
+			// In a real-world application, you could read content from R2 or
+			// a SQL database (like D1) and pass it to Workers AI
+			const stories = [
+				"This is a story about an orange cloud",
+				"This is a story about a llama",
+				"This is a story about a hugging emoji",
+			];
+			const modelResp: EmbeddingResponse = await env.AI.run(
+				"@cf/baai/bge-base-en-v1.5",
+				{
+					text: stories,
+				},
+			);
 
-    // You only need to generate vector embeddings once (or as
-    // data changes), not on every request
-    if (path === "/insert") {
-      // In a real-world application, you could read content from R2 or
-      // a SQL database (like D1) and pass it to Workers AI
-      const stories = [
-        "This is a story about an orange cloud",
-        "This is a story about a llama",
-        "This is a story about a hugging emoji",
-      ];
-      const modelResp: EmbeddingResponse = await env.AI.run(
-        "@cf/baai/bge-base-en-v1.5",
-        {
-          text: stories,
-        },
-      );
+			// Convert the vector embeddings into a format Vectorize can accept.
+			// Each vector needs an ID, a value (the vector) and optional metadata.
+			// In a real application, your ID would be bound to the ID of the source
+			// document.
+			let vectors: VectorizeVector[] = [];
+			let id = 1;
+			modelResp.data.forEach((vector) => {
+				vectors.push({ id: `${id}`, values: vector });
+				id++;
+			});
 
+			let inserted = await env.VECTORIZE.upsert(vectors);
+			return Response.json(inserted);
+		}
 
-      // Convert the vector embeddings into a format Vectorize can accept.
-      // Each vector needs an ID, a value (the vector) and optional metadata.
-      // In a real application, your ID would be bound to the ID of the source
-      // document.
-      let vectors: VectorizeVector[] = [];
-      let id = 1;
-      modelResp.data.forEach((vector) => {
-        vectors.push({ id: `${id}`, values: vector });
-        id++;
-      });
+		// Your query: expect this to match vector ID. 1 in this example
+		let userQuery = "orange cloud";
+		const queryVector: EmbeddingResponse = await env.AI.run(
+			"@cf/baai/bge-base-en-v1.5",
+			{
+				text: [userQuery],
+			},
+		);
 
-
-      let inserted = await env.VECTORIZE.upsert(vectors);
-      return Response.json(inserted);
-    }
-
-
-    // Your query: expect this to match vector ID. 1 in this example
-    let userQuery = "orange cloud";
-    const queryVector: EmbeddingResponse = await env.AI.run(
-      "@cf/baai/bge-base-en-v1.5",
-      {
-        text: [userQuery],
-      },
-    );
-
-
-    let matches = await env.VECTORIZE.query(queryVector.data[0], {
-      topK: 1,
-    });
-    return Response.json({
-      // Expect a vector ID. 1 to be your top match with a score of
-      // ~0.89693683
-      // This tutorial uses a cosine distance metric, where the closer to one,
-      // the more similar.
-      matches: matches,
-    });
-  },
+		let matches = await env.VECTORIZE.query(queryVector.data[0], {
+			topK: 1,
+		});
+		return Response.json({
+			// Expect a vector ID. 1 to be your top match with a score of
+			// ~0.89693683
+			// This tutorial uses a cosine distance metric, where the closer to one,
+			// the more similar.
+			matches: matches,
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -315,15 +293,15 @@ This should return the following JSON:
 
 ```json
 {
-  "matches": {
-    "count": 1,
-    "matches": [
-      {
-        "id": "1",
-        "score": 0.89693683
-      }
-    ]
-  }
+	"matches": {
+		"count": 1,
+		"matches": [
+			{
+				"id": "1",
+				"score": 0.89693683
+			}
+		]
+	}
 }
 ```
 
@@ -341,7 +319,14 @@ By finishing this tutorial, you have successfully created a Vectorize index, use
 * Learn more about [how vector databases work](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/).
 * Read [examples](https://developers.cloudflare.com/vectorize/reference/client-api/) on how to use the Vectorize API from Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/get-started/embeddings/","name":"Vectorize and Workers AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

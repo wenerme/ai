@@ -1,16 +1,18 @@
 ---
-title: TypeScript Server SDK
 description: Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TypeScript Server SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TypeScript Server SDK
 
-# TypeScript Server SDK
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `FlagshipServerProvider` implements the OpenFeature server provider interface. The provider works in [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and any server-side JavaScript runtime that supports the Fetch API.
 
@@ -18,134 +20,101 @@ Inside a Cloudflare Worker, you can pass the Flagship [binding](https://develope
 
 ## Setup
 
-* [ With binding ](#tab-panel-9371)
-* [ With app ID ](#tab-panel-9372)
-
 Pass the Flagship binding directly to the provider. This is the recommended approach inside a Worker.
-
-* [  JavaScript ](#tab-panel-9369)
-* [  TypeScript ](#tab-panel-9370)
-
-**JavaScript**
 
 ```js
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 export default {
-  async fetch(request, env) {
-    await OpenFeature.setProviderAndWait(
-      new FlagshipServerProvider({ binding: env.FLAGS }),
-    );
+	async fetch(request, env) {
+		await OpenFeature.setProviderAndWait(
+			new FlagshipServerProvider({ binding: env.FLAGS }),
+		);
 
+		const client = OpenFeature.getClient();
 
-    const client = OpenFeature.getClient();
+		const showNewCheckout = await client.getBooleanValue(
+			"new-checkout",
+			false,
+			{ targetingKey: "user-42", plan: "enterprise" },
+		);
 
+		if (showNewCheckout) {
+			return new Response("New checkout enabled!");
+		}
 
-    const showNewCheckout = await client.getBooleanValue(
-      "new-checkout",
-      false,
-      { targetingKey: "user-42", plan: "enterprise" },
-    );
-
-
-    if (showNewCheckout) {
-      return new Response("New checkout enabled!");
-    }
-
-
-    return new Response("Standard checkout.");
-  },
+		return new Response("Standard checkout.");
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    await OpenFeature.setProviderAndWait(
-      new FlagshipServerProvider({ binding: env.FLAGS }),
-    );
+	async fetch(request: Request, env: Env): Promise<Response> {
+		await OpenFeature.setProviderAndWait(
+			new FlagshipServerProvider({ binding: env.FLAGS }),
+		);
 
+		const client = OpenFeature.getClient();
 
-    const client = OpenFeature.getClient();
+		const showNewCheckout = await client.getBooleanValue(
+			"new-checkout",
+			false,
+			{ targetingKey: "user-42", plan: "enterprise" },
+		);
 
+		if (showNewCheckout) {
+			return new Response("New checkout enabled!");
+		}
 
-    const showNewCheckout = await client.getBooleanValue(
-      "new-checkout",
-      false,
-      { targetingKey: "user-42", plan: "enterprise" },
-    );
-
-
-    if (showNewCheckout) {
-      return new Response("New checkout enabled!");
-    }
-
-
-    return new Response("Standard checkout.");
-  },
+		return new Response("Standard checkout.");
+	},
 };
 ```
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship read permissions.
 
-* [  JavaScript ](#tab-panel-9365)
-* [  TypeScript ](#tab-panel-9366)
-
-**JavaScript**
-
 ```js
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
-
 
 const client = OpenFeature.getClient();
 
-
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
-  plan: "enterprise",
+	targetingKey: "user-42",
+	plan: "enterprise",
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
-
 
 const client = OpenFeature.getClient();
 
-
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
-  plan: "enterprise",
+	targetingKey: "user-42",
+	plan: "enterprise",
 });
 ```
 
@@ -170,15 +139,13 @@ Provide either `binding` or `appId`, `accountId`, and `authToken`.
 
 Server-side response caching is off by default. Enable it with `cacheTtl` when you want repeated evaluations for the same flag, type, and evaluation context to reuse a recent result.
 
-**TypeScript**
-
 ```ts
 new FlagshipServerProvider({
-  appId: "<APP_ID>",
-  accountId: "<ACCOUNT_ID>",
-  authToken: "<API_TOKEN>",
-  cacheTtl: 30_000,
-  cacheMaxSize: 1000,
+	appId: "<APP_ID>",
+	accountId: "<ACCOUNT_ID>",
+	authToken: "<API_TOKEN>",
+	cacheTtl: 30_000,
+	cacheMaxSize: 1000,
 });
 ```
 
@@ -192,26 +159,19 @@ Pass additional attributes alongside `targetingKey` to match [targeting rules](h
 
 Use primitive context values such as strings, numbers, booleans, and `Date` objects. The provider rejects objects and arrays as invalid context.
 
-* [  JavaScript ](#tab-panel-9361)
-* [  TypeScript ](#tab-panel-9362)
-
-**JavaScript**
-
 ```js
 const value = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
-  plan: "enterprise",
-  country: "US",
+	targetingKey: "user-42",
+	plan: "enterprise",
+	country: "US",
 });
 ```
 
-**TypeScript**
-
 ```ts
 const value = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
-  plan: "enterprise",
-  country: "US",
+	targetingKey: "user-42",
+	plan: "enterprise",
+	country: "US",
 });
 ```
 
@@ -222,23 +182,14 @@ The SDK ships with two hooks that you can attach to the OpenFeature client.
 * **LoggingHook** — Logs structured information for every evaluation.
 * **TelemetryHook** — Captures timing and event data for observability.
 
-* [  JavaScript ](#tab-panel-9363)
-* [  TypeScript ](#tab-panel-9364)
-
-**JavaScript**
-
 ```js
 import { LoggingHook, TelemetryHook } from "@cloudflare/flagship/server";
-
 
 OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
 ```
 
-**TypeScript**
-
 ```ts
 import { LoggingHook, TelemetryHook } from "@cloudflare/flagship/server";
-
 
 OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
 ```
@@ -247,48 +198,46 @@ OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
 
 If you use another OpenFeature-compatible provider (for example, LaunchDarkly or Flagsmith), switch to Flagship by replacing the provider initialization. No changes are needed at evaluation call sites.
 
-* [  JavaScript ](#tab-panel-9367)
-* [  TypeScript ](#tab-panel-9368)
-
-**JavaScript**
-
 ```js
 // Before
 await OpenFeature.setProviderAndWait(
-  new LaunchDarklyProvider({ sdkKey: "..." }),
+	new LaunchDarklyProvider({ sdkKey: "..." }),
 );
-
 
 // After
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
 ```
-
-**TypeScript**
 
 ```ts
 // Before
 await OpenFeature.setProviderAndWait(
-  new LaunchDarklyProvider({ sdkKey: "..." }),
+	new LaunchDarklyProvider({ sdkKey: "..." }),
 );
-
 
 // After
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/server-provider/#page","headline":"TypeScript Server SDK · Cloudflare Flagship docs","description":"Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/server-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/server-provider/","name":"TypeScript Server SDK"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/server-provider/#page","headline":"TypeScript Server SDK · Cloudflare Flagship docs","description":"Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/server-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

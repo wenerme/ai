@@ -1,16 +1,18 @@
 ---
-title: Deploy a real-time chat application
 description: This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy a real-time chat application
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy a real-time chat application
 
-# Deploy a real-time chat application
+Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will deploy a serverless, real-time chat application that runs using [Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
@@ -52,23 +54,16 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-13063)
-* [  wrangler.toml ](#tab-panel-13064)
-
-**JSONC**
-
 ```jsonc
 {
-  "routes": [
-    {
-      "pattern": "example.com/about",
-      "zone_id": "<YOUR_ZONE_ID>"
-    }
-  ]
+	"routes": [
+		{
+			"pattern": "example.com/about",
+			"zone_id": "<YOUR_ZONE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[routes]]
@@ -80,23 +75,16 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-13065)
-* [  wrangler.toml ](#tab-panel-13066)
-
-**JSONC**
-
 ```jsonc
 {
-  "routes": [
-    {
-      "pattern": "subdomain.example.com",
-      "custom_domain": true
-    }
-  ]
+	"routes": [
+		{
+			"pattern": "subdomain.example.com",
+			"custom_domain": true
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[routes]]
@@ -107,7 +95,7 @@ custom_domain = true
 To test your live application:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Triggers** \> **Routes** \> Select the `edge-chat-demo.<SUBDOMAIN>.workers.dev` route.
 3. Enter a name in the **your name** field.
 4. Choose whether to enter a public room or create a private room.
@@ -117,47 +105,38 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-13067)
-* [  wrangler.toml ](#tab-panel-13068)
-
-**JSONC**
-
 ```jsonc
 {
-  "durable_objects": {
-    "bindings": []
-  },
-  // Indicate that you want the ChatRoom and RateLimiter classes to be callable as Durable Objects.
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": [
-        "ChatRoom",
-        "RateLimiter"
-      ]
-    },
-    {
-      "tag": "v2", // Should be unique for each entry
-      "deleted_classes": [
-        "ChatRoom",
-        "RateLimiter"
-      ]
-    }
-  ]
+	"durable_objects": {
+		"bindings": []
+	},
+	// Indicate that you want the ChatRoom and RateLimiter classes to be callable as Durable Objects.
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"ChatRoom",
+				"RateLimiter"
+			]
+		},
+		{
+			"tag": "v2", // Should be unique for each entry
+			"deleted_classes": [
+				"ChatRoom",
+				"RateLimiter"
+			]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [durable_objects]
 bindings = [ ]
 
-
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = [ "ChatRoom", "RateLimiter" ]
-
 
 [[migrations]]
 tag = "v2"
@@ -169,7 +148,7 @@ Then run `npx wrangler deploy`.
 To delete your Worker:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Select **Manage Service** \> **Delete**. For complete instructions on set up and deletion, refer to the `README.md` in your cloned repository.
 
@@ -183,7 +162,14 @@ Continue building with other Cloudflare Workers tutorials below.
 * [Create SMS notifications for your GitHub repository using Twilio](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/)
 * [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/#page","headline":"Deploy a real-time chat application · Cloudflare Workers docs","description":"This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/deploy-a-realtime-chat-app/","name":"Deploy a real-time chat application"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/#page","headline":"Deploy a real-time chat application · Cloudflare Workers docs","description":"This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

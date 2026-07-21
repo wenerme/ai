@@ -1,16 +1,18 @@
 ---
-title: Run Claude Code on a Sandbox
 description: Use Claude Code to implement a task in your GitHub repository.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Run Claude Code on a Sandbox
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Run Claude Code on a Sandbox
 
-# Run Claude Code on a Sandbox
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/claude-code/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a Worker that takes a repository URL and a task description and uses Sandbox SDK to run Claude Code to implement your task.
 
@@ -92,8 +94,8 @@ Response:
 
 ```json
 {
-  "logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",
-  "diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "
+	"logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",
+	"diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "
 }
 ```
 
@@ -113,7 +115,7 @@ npx wrangler secret put ANTHROPIC_API_KEY
 
 Paste your API key from the [Anthropic Console ↗](https://console.anthropic.com/) when prompted.
 
-Warning
+Caution
 
 After first deployment, wait 2-3 minutes for container provisioning. Check status with `npx wrangler containers list`.
 
@@ -138,7 +140,14 @@ You created an API that:
 * [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
 * [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Use Cloudflare's built-in models
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/#page","headline":"Run Claude Code on a Sandbox · Cloudflare Sandbox SDK docs","description":"Use Claude Code to implement a task in your GitHub repository.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/claude-code/","name":"Run Claude Code on a Sandbox"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/#page","headline":"Run Claude Code on a Sandbox · Cloudflare Sandbox SDK docs","description":"Use Claude Code to implement a task in your GitHub repository.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

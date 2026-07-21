@@ -1,16 +1,18 @@
 ---
-title: Endpoints
 description: API endpoints for managing filters and firewall rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Endpoints
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Endpoints
 
-# Endpoints
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To invoke a Cloudflare Firewall Rules API operation, append the endpoint to the Cloudflare API base URL:
 
@@ -40,7 +42,14 @@ The Cloudflare Firewall Rules API supports the operations outlined below. Visit 
 | [Delete firewall rules](https://developers.cloudflare.com/api/resources/firewall/subresources/rules/methods/bulk%5Fdelete/) | DELETE zones/<ZONE\_ID>/firewall/rules            | Delete existing firewall rules. Must specify list of firewall rule IDs.Empty requests result in no deletion. Returns HTTP status code 200 if a specified rule does not exist. |
 | [Delete a firewall rule](https://developers.cloudflare.com/api/resources/firewall/subresources/rules/methods/delete/)       | DELETE zones/<ZONE\_ID>/firewall/rules/<RULE\_ID> | Delete a firewall rule by ID.                                                                                                                                                 |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/#page","headline":"Endpoints - Firewall rules · Cloudflare Firewall Rules (deprecated) docs","description":"API endpoints for managing filters and firewall rules.","url":"https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/api/","name":"Manage rules via the APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/api/cf-firewall-rules/","name":"Firewall Rules API"}},{"@type":"ListItem","position":5,"item":{"@id":"/firewall/api/cf-firewall-rules/endpoints/","name":"Endpoints"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/#page","headline":"Endpoints - Firewall rules · Cloudflare Firewall Rules (deprecated) docs","description":"API endpoints for managing filters and firewall rules.","url":"https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

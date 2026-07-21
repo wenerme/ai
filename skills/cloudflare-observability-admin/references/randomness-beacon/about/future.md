@@ -1,16 +1,18 @@
 ---
-title: Future of drand
 description: Future directions for the drand randomness beacon.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Future of drand
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/randomness-beacon/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Future of drand
 
-# Future of drand
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/randomness-beacon/about/future/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 As of spring 2020, the drand network is production-ready and can now be considered foundational Internet infrastructure, much like DNS or BGP.
 
@@ -22,7 +24,14 @@ While the project has reached a mature state, we believe there are several ways 
 
 We are proud to be a part of these efforts and hope to see even more adoption of drand in third-party applications and systems.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/future/#page","headline":"Future of drand · Cloudflare Randomness Beacon docs","description":"Future directions for the drand randomness beacon.","url":"https://developers.cloudflare.com/randomness-beacon/about/future/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/about/","name":"About drand"}},{"@type":"ListItem","position":4,"item":{"@id":"/randomness-beacon/about/future/","name":"Future of drand"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/future/#page","headline":"Future of drand · Cloudflare Randomness Beacon docs","description":"Future directions for the drand randomness beacon.","url":"https://developers.cloudflare.com/randomness-beacon/about/future/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

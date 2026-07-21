@@ -1,16 +1,18 @@
 ---
-title: Star domains
 description: Star up to ten frequently used domains per account in the Cloudflare dashboard for quick access.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Star domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Star domains
 
-# Star domains
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For quick access to commonly configured domains (also known as "zones"), star up to ten domains per account in the Cloudflare dashboard.
 
@@ -31,7 +33,14 @@ To view only starred domains in your account:
 2. Select your account.
 3. On the account **Home**, select **Starred**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/#page","headline":"Star domains · Cloudflare Fundamentals docs","description":"Star up to ten frequently used domains per account in the Cloudflare dashboard for quick access.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/star-zones/","name":"Star domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/#page","headline":"Star domains · Cloudflare Fundamentals docs","description":"Star up to ten frequently used domains per account in the Cloudflare dashboard for quick access.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

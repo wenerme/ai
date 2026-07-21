@@ -1,16 +1,18 @@
 ---
-title: Temporary credentials
 description: Learn about temporary credentials in r2.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Temporary credentials
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Temporary credentials
 
-# Temporary credentials
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Temporary credentials are short-lived, scoped S3 credentials derived from an existing [R2 API token](https://developers.cloudflare.com/r2/api/tokens/). They authenticate with AWS Signature Version 4, the same as a long-lived token, but include a session token and expire automatically. The session token is sent with every request via the `X-Amz-Security-Token` header; all S3-compatible clients expose this as a standard session token credential field.
 
@@ -104,8 +106,6 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 
 **Temporary Credentials API:** pass `prefixes` and `objects` as top-level fields on the request body.
 
-**JSONC**
-
 ```jsonc
 {
   "prefixes": ["uploads/user-123/"],
@@ -114,8 +114,6 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 ```
 
 **Local signing:** set `paths.prefixPaths` and `paths.objectPaths` on the JWT payload.
-
-**JSONC**
 
 ```jsonc
 {
@@ -133,35 +131,23 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-10587)
-* [ Python ](#tab-panel-10588)
-* [ Environment variables ](#tab-panel-10589)
-
-**TypeScript**
-
 ```ts
 import { AwsClient } from "aws4fetch";
 
-
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
 
-
 const client = new AwsClient({
-  accessKeyId: ACCESS_KEY_ID,
-  secretAccessKey: SECRET_ACCESS_KEY,
-  sessionToken: SESSION_TOKEN,
-  service: "s3",
+	accessKeyId: ACCESS_KEY_ID,
+	secretAccessKey: SECRET_ACCESS_KEY,
+	sessionToken: SESSION_TOKEN,
+	service: "s3",
 });
-
 
 const response = await client.fetch(`${R2_URL}/my-bucket/image.png`);
 ```
 
-**Python**
-
 ```python
 import boto3
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -192,15 +178,30 @@ Treat temporary credentials as bearer tokens. Anyone in possession of all three 
 
 ## Related resources
 
-[ Authenticate against R2 with temporary credentials ](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/) End-to-end examples for both the Temporary Credentials API and local JWT signing.
+### [ Authenticate against R2 with temporary credentials ](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/)
 
-[ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) Grant single-operation access to a specific object without issuing credentials.
+ End-to-end examples for both the Temporary Credentials API and local JWT signing.
 
-[ R2 API tokens ](https://developers.cloudflare.com/r2/api/tokens/) Create the parent token that temporary credentials derive from.
+### [ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
 
-[ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/) Authentication and authorization error codes returned by R2.
+ Grant single-operation access to a specific object without issuing credentials.
+
+### [ R2 API tokens ](https://developers.cloudflare.com/r2/api/tokens/)
+
+ Create the parent token that temporary credentials derive from.
+
+### [ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/)
+
+ Authentication and authorization error codes returned by R2\.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/#page","headline":"Temporary credentials · Cloudflare R2 docs","description":"Learn about temporary credentials in r2.","url":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/temporary-credentials/","name":"Temporary credentials"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/#page","headline":"Temporary credentials · Cloudflare R2 docs","description":"Learn about temporary credentials in r2.","url":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

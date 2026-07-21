@@ -1,16 +1,18 @@
 ---
-title: Cloudflare analytics with Workers
 description: Understand how Workers subrequests affect analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare analytics with Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare analytics with Workers
 
-# Cloudflare analytics with Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn how Cloudflare analytics tracks requests made by [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
@@ -49,7 +51,14 @@ No, [billing for Workers](https://developers.cloudflare.com/workers/platform/pri
 
 Requests served by a Worker always show as cached. For an accurate cache hit ratio on subrequests, refer to the **Subrequests** graph in the **Analytics** app under the **Workers** analytics tab.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/#page","headline":"Cloudflare analytics with Workers · Cloudflare Analytics docs","description":"Understand how Workers subrequests affect analytics.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/account-and-zone-analytics/analytics-with-workers/","name":"Cloudflare analytics with Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/#page","headline":"Cloudflare analytics with Workers · Cloudflare Analytics docs","description":"Understand how Workers subrequests affect analytics.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,40 +1,40 @@
 ---
-title: GPT-5.4 mini
 description: GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.4 mini
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.4 mini
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.4-mini`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.4-mini `
+
+* Third-party
+* Zero data retention
 
 GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
 
-| Model Info                                                                 |                                                                                                                       |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                        | Yes                                                                                                                   |
-| Request formats                                                            | Responses, Chat Completions                                                                                           |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-mini) |
+| Model Info                                                                  |                                                                                                                        |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                         |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
+| Zero data retention                                                         | Yes                                                                                                                    |
+| Request formats                                                             | Responses, Chat Completions                                                                                            |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-mini) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1358)
-* [ cURL ](#tab-panel-1359)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -58,9 +58,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1370)
-* [ Raw response ](#tab-panel-1371)
 
 The three laws of thermodynamics are:
 
@@ -125,11 +122,6 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1360)
-* [ cURL ](#tab-panel-1361)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-mini',
@@ -161,9 +153,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1372)
-* [ Raw response ](#tab-panel-1373)
 
 Use Python’s built-in `json` module.
 
@@ -242,11 +231,6 @@ If you want, I can also show how to:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1364)
-* [ cURL ](#tab-panel-1365)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-mini',
@@ -292,9 +276,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1374)
-* [ Raw response ](#tab-panel-1375)
 
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
@@ -411,11 +392,6 @@ If you want, I can also make you:
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1362)
-* [ cURL ](#tab-panel-1363)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-mini',
@@ -447,9 +423,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1376)
-* [ Raw response ](#tab-panel-1377)
 
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
@@ -516,11 +489,6 @@ And somehow, they had expected her to come.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1366)
-* [ cURL ](#tab-panel-1367)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-mini',
@@ -551,9 +519,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-1380)
-* [ Raw response ](#tab-panel-1381)
 
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
@@ -5376,11 +5341,6 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
 **Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-1368)
-* [ cURL ](#tab-panel-1369)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-mini',
@@ -5408,9 +5368,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1378)
-* [ Raw response ](#tab-panel-1379)
 
 Here are the top Cloudflare stories from **this week** I found, in three bullets:
 
@@ -5573,9 +5530,6 @@ Schema variant
 
 ResponsesChat Completions
 
-* [ Input ](#tab-panel-1382)
-* [ Output ](#tab-panel-1383)
-
 ▶input
 
 `one of`required
@@ -5734,7 +5688,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/#page","headline":"GPT-5.4 mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/#page","headline":"GPT-5.4 mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

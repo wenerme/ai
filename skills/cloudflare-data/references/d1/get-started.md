@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create your first D1 database, define a schema, and query it from a Cloudflare Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide instructs you through:
 
@@ -47,9 +49,6 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Create a new Worker as the means to query your database.
 
-* [ CLI ](#tab-panel-8597)
-* [ Dashboard ](#tab-panel-8598)
-
 1. Create a new project named `d1-tutorial` by running:
  npm  yarn  pnpm
 ```
@@ -70,12 +69,10 @@ For setup, select the following options:
   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 This creates a new `d1-tutorial` directory as illustrated below.
 
-  * Directoryd1-tutorial
-    * Directorynode\_modules/
-      * …
-    * Directorytest/
-      * …
-    * Directorysrc
+  * d1-tutorial
+    * node\_modules/
+    * test/
+    * src
       * **index.ts**
     * package-lock.json
     * package.json
@@ -94,7 +91,7 @@ If you are familiar with Cloudflare Workers, or initializing projects in a Conti
 
 For example: `CI=true npm create cloudflare@latest d1-tutorial --type=simple --git --ts --deploy=false` creates a basic "Hello World" project ready to build on.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select **Start with Hello World!** \> **Get started**.
 4. Name your Worker. For this tutorial, name your Worker `d1-tutorial`.
@@ -105,9 +102,6 @@ For example: `CI=true npm create cloudflare@latest d1-tutorial --type=simple --g
 A D1 database is conceptually similar to many other SQL databases: a database may contain one or more tables, the ability to query those tables, and optional indexes. D1 uses the familiar [SQL query language ↗](https://www.sqlite.org/lang.html) (as used by SQLite).
 
 To create your first D1 database:
-
-* [ CLI ](#tab-panel-8587)
-* [ Dashboard ](#tab-panel-8588)
 
 1. Change into the directory you just created for your Workers project:
 ```sh
@@ -124,13 +118,13 @@ npx wrangler@latest d1 create prod-d1-tutorial
 ✅ Successfully created DB 'prod-d1-tutorial' in region WEUR
 Created your new D1 database.
 {
-  "d1_databases": [
-    {
-      "binding": "prod_d1_tutorial",
-      "database_name": "prod-d1-tutorial",
-      "database_id": "<unique-ID-for-your-database>"
-    }
-  ]
+	"d1_databases": [
+		{
+			"binding": "prod_d1_tutorial",
+			"database_name": "prod-d1-tutorial",
+			"database_id": "<unique-ID-for-your-database>"
+		}
+	]
 }
 ```
 3. When prompted: `Would you like Wrangler to add it on your behalf?`, select `Yes`. This will automatically add the binding to your Wrangler configuration file.
@@ -138,7 +132,7 @@ Created your new D1 database.
 This creates a new D1 database and outputs the [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) configuration needed in the next step.
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select **Create Database**.
 3. Name your database. For this tutorial, name your D1 database `prod-d1-tutorial`.
 4. (Optional) Provide a location hint. Location hint is an optional parameter you can provide to indicate your desired geographical location for your database. Refer to [Provide a location hint](https://developers.cloudflare.com/d1/configuration/data-location/#provide-a-location-hint) for more information.
@@ -158,20 +152,12 @@ You must create a binding for your Worker to connect to your D1 database. [Bindi
 
 To bind your D1 database to your Worker:
 
-* [ CLI ](#tab-panel-8604)
-* [ Dashboard ](#tab-panel-8605)
-
 You can automatically add the binding to your Wrangler configuration file when you run the `wrangler d1 create` command (step 3 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database)).
 
 But if you wish to add the binding manually, follow the steps below:
 
 1. Copy the lines obtained from step 2 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database) from your terminal.
 2. Add them to the end of your Wrangler file.
-
-  * [  wrangler.jsonc ](#tab-panel-8599)
-  * [  wrangler.toml ](#tab-panel-8600)
-
-**JSONC**
 ```jsonc
 {
   "d1_databases": [
@@ -183,8 +169,6 @@ But if you wish to add the binding manually, follow the steps below:
   ]
 }
 ```
-
-**TOML**
 ```toml
 [[d1_databases]]
 binding = "prod_d1_tutorial"
@@ -205,7 +189,7 @@ You can also bind your D1 database to a [Pages Function](https://developers.clou
 
 You create bindings by adding them to the Worker you have created.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `d1-tutorial` Worker you created in [step 1](https://developers.cloudflare.com/d1/get-started/#1-create-a-worker).
 3. Go to the **Bindings** tab.
 4. Select **Add binding**.
@@ -216,9 +200,6 @@ You create bindings by adding them to the Worker you have created.
 ## 4\. Run a query against your D1 database
 
 ### Populate your D1 database
-
-* [ CLI ](#tab-panel-8595)
-* [ Dashboard ](#tab-panel-8596)
 
 After correctly preparing your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), set up your database. Create a `schema.sql` file using the SQL syntax below to initialize your database.
 
@@ -265,7 +246,7 @@ npx wrangler d1 execute prod-d1-tutorial --local --command="SELECT * FROM Custom
 Use the Dashboard to create a table and populate it with data.
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select the `prod-d1-tutorial` database you created in [step 2](https://developers.cloudflare.com/d1/get-started/#2-create-a-database).
 3. Select **Console**.
 4. Paste the following SQL snippet.
@@ -281,64 +262,51 @@ INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds
 
 After you have set up your database, run an SQL query from within your Worker.
 
-* [ CLI ](#tab-panel-8606)
-* [ Dashboard ](#tab-panel-8607)
-
 1. Navigate to your `d1-tutorial` Worker and open the `index.ts` file. The `index.ts` file is where you configure your Worker's interactions with D1.
 2. Clear the content of `index.ts`.
 3. Paste the following code snippet into your `index.ts` file:
-
-  * [  JavaScript ](#tab-panel-8601)
-  * [  TypeScript ](#tab-panel-8602)
-  * [  Python ](#tab-panel-8603)
-
-**index.js**
 ```js
 export default {
-  async fetch(request, env) {
-    const { pathname } = new URL(request.url);
-    if (pathname === "/api/beverages") {
-      // If you did not use `DB` as your binding name, change it here
-      const { results } = await env.prod_d1_tutorial
-        .prepare("SELECT * FROM Customers WHERE CompanyName = ?")
-        .bind("Bs Beverages")
-        .run();
-      return Response.json(results);
-    }
-    return new Response(
-      "Call /api/beverages to see everyone who works at Bs Beverages",
-    );
-  },
+	async fetch(request, env) {
+		const { pathname } = new URL(request.url);
+		if (pathname === "/api/beverages") {
+			// If you did not use `DB` as your binding name, change it here
+			const { results } = await env.prod_d1_tutorial
+				.prepare("SELECT * FROM Customers WHERE CompanyName = ?")
+				.bind("Bs Beverages")
+				.run();
+			return Response.json(results);
+		}
+		return new Response(
+			"Call /api/beverages to see everyone who works at Bs Beverages",
+		);
+	},
 };
 ```
-
-**index.ts**
 ```ts
 export interface Env {
-  // If you set another name in the Wrangler config file for the value for 'binding',
-  // replace "DB" with the variable name you defined.
-  prod_d1_tutorial: D1Database;
+	// If you set another name in the Wrangler config file for the value for 'binding',
+	// replace "DB" with the variable name you defined.
+	prod_d1_tutorial: D1Database;
 }
 export default {
-  async fetch(request, env): Promise<Response> {
-    const { pathname } = new URL(request.url);
-    if (pathname === "/api/beverages") {
-      // If you did not use `DB` as your binding name, change it here
-      const { results } = await env.prod_d1_tutorial.prepare(
-        "SELECT * FROM Customers WHERE CompanyName = ?",
-      )
-        .bind("Bs Beverages")
-        .run();
-      return Response.json(results);
-    }
-    return new Response(
-      "Call /api/beverages to see everyone who works at Bs Beverages",
-    );
-  },
+	async fetch(request, env): Promise<Response> {
+		const { pathname } = new URL(request.url);
+		if (pathname === "/api/beverages") {
+			// If you did not use `DB` as your binding name, change it here
+			const { results } = await env.prod_d1_tutorial.prepare(
+				"SELECT * FROM Customers WHERE CompanyName = ?",
+			)
+				.bind("Bs Beverages")
+				.run();
+			return Response.json(results);
+		}
+		return new Response(
+			"Call /api/beverages to see everyone who works at Bs Beverages",
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
-
-**entry.py**
 ```python
 from workers import Response, WorkerEntrypoint
 from urllib.parse import urlparse
@@ -371,31 +339,29 @@ After configuring your Worker, you can test your project locally before you depl
 You can query your D1 database using your Worker.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `d1-tutorial` Worker you created.
 3. Select the **Edit code** icon (**</>**).
 4. Clear the contents of the `worker.js` file, then paste the following code:
-
-**JavaScript**
 ```js
 export default {
-  async fetch(request, env) {
-    const { pathname } = new URL(request.url);
-    if (pathname === "/api/beverages") {
-      // If you did not use `DB` as your binding name, change it here
-      const { results } = await env.prod_d1_tutorial.prepare(
-        "SELECT * FROM Customers WHERE CompanyName = ?"
-      )
-        .bind("Bs Beverages")
-        .run();
-      return new Response(JSON.stringify(results), {
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-    return new Response(
-      "Call /api/beverages to see everyone who works at Bs Beverages"
-    );
-  },
+	async fetch(request, env) {
+		const { pathname } = new URL(request.url);
+		if (pathname === "/api/beverages") {
+			// If you did not use `DB` as your binding name, change it here
+			const { results } = await env.prod_d1_tutorial.prepare(
+				"SELECT * FROM Customers WHERE CompanyName = ?"
+			)
+				.bind("Bs Beverages")
+				.run();
+			return new Response(JSON.stringify(results), {
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
+		return new Response(
+			"Call /api/beverages to see everyone who works at Bs Beverages"
+		);
+	},
 };
 ```
 5. Select **Save**.
@@ -403,9 +369,6 @@ export default {
 ## 5\. Deploy your application
 
 Deploy your application on Cloudflare's global network.
-
-* [ CLI ](#tab-panel-8593)
-* [ Dashboard ](#tab-panel-8594)
 
 To deploy your Worker to production using Wrangler, you must first repeat the [database configuration](https://developers.cloudflare.com/d1/get-started/#populate-your-d1-database) steps after replacing the `--local` flag with the `--remote` flag to give your Worker data to read. This creates the database tables and imports the data into the production version of your database.
 
@@ -472,7 +435,7 @@ You can now visit the URL for your newly created project to query your live data
 For example, if the URL of your new Worker is `d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages` sends a request to your Worker that queries your live database directly.
 4. Test your database is running successfully. Add `/api/beverages` to the provided Wrangler URL. For example, `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages`.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your `d1-tutorial` Worker.
 3. Select **Deployments**.
 4. From the **Version History** table, select **Deploy version**.
@@ -503,9 +466,6 @@ You can only develop locally if you are using Wrangler. You cannot develop local
 
 To delete your database:
 
-* [ CLI ](#tab-panel-8589)
-* [ Dashboard ](#tab-panel-8590)
-
 Run:
 
 ```sh
@@ -513,20 +473,17 @@ npx wrangler d1 delete prod-d1-tutorial
 ```
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select your `prod-d1-tutorial` D1 database.
 3. Select **Settings**.
 4. Select **Delete**.
 5. Type the name of the database (`prod-d1-tutorial`) to confirm the deletion.
 
-Warning
+Caution
 
 Note that deleting your D1 database will stop your application from functioning as before.
 
 If you want to delete your Worker:
-
-* [ CLI ](#tab-panel-8591)
-* [ Dashboard ](#tab-panel-8592)
 
 Run:
 
@@ -535,7 +492,7 @@ npx wrangler delete d1-tutorial
 ```
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your `d1-tutorial` Worker.
 3. Select **Settings**.
 4. Scroll to the bottom of the page, then select **Delete**.
@@ -557,7 +514,14 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Learn how to use [D1 Worker Binding APIs](https://developers.cloudflare.com/d1/worker-api/) within your Worker, and test them from the [API playground](https://developers.cloudflare.com/d1/worker-api/#api-playground).
 * Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

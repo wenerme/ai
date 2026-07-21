@@ -1,16 +1,18 @@
 ---
-title: Add multiple sites via automation
 description: To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add multiple sites via automation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add multiple sites via automation
 
-# Add multiple sites via automation
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
 
@@ -77,7 +79,6 @@ If your previous provider allows you to add DNSKEY records on the zone apex and 
   for domain in $(cat domains.txt); do
     printf "Adding ${domain}:\n"
 
-
     curl https://api.cloudflare.com/client/v4/zones \
     --header "Authorization: Bearer <API_TOKEN>" \
     --header "Content-Type: application/json" \
@@ -89,7 +90,6 @@ If your previous provider allows you to add DNSKEY records on the zone apex and 
       "type": "full"
     }'
 
-
     printf "\n\n"
   done
 ```
@@ -100,7 +100,7 @@ If your previous provider allows you to add DNSKEY records on the zone apex and 
 bash add-multiple-zones.sh
 ```
 
-Warning
+Caution
 
 There are limitations on the number of domains you can add at a time. Refer to [limitations](#limitations) for details.
 
@@ -131,12 +131,9 @@ This API call requires the domain ID. This can be found in the following locatio
 
 Using `jq` with the first option above, modify your script `add-multiple-zones.sh` to extract the domain ID and run a subsequent API call to quick scan DNS records.
 
-**JavaScript**
-
 ```js
   for domain in $(cat domains.txt); do
     printf "Adding ${domain}:\n"
-
 
     add_output=`curl https://api.cloudflare.com/client/v4/zones \
       --header "Authorization: Bearer <API_TOKEN>" \
@@ -149,24 +146,18 @@ Using `jq` with the first option above, modify your script `add-multiple-zones.s
         "type": "full"
       }'`
 
-
     echo $add_output | jq .
-
 
     domain_id=`echo $add_output | jq -r .result.id`
 
-
     printf "\n\n"
     printf "DNS quick scanning ${domain}:\n"
-
 
     scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \
       --header "X-Auth-Email: <EMAIL>" \
       --header "X-Auth-Key: <API_KEY>"`
 
-
     echo $scan_output | jq .
-
 
   done
 ```
@@ -181,12 +172,9 @@ You can find your zones nameservers in the following locations:
 * [Zone Details](https://developers.cloudflare.com/api/resources/zones/methods/get/)
 1. Modify your script `add-multiple-zones.sh` to print a CSV with data from the `Create Zone` JSON response.
 
-**JavaScript**
-
 ```js
   for domain in $(cat domains.txt); do
     printf "Adding ${domain}:\n"
-
 
     add_output=`curl https://api.cloudflare.com/client/v4/zones \
       --header "Authorization: Bearer <API_TOKEN>" \
@@ -199,28 +187,21 @@ You can find your zones nameservers in the following locations:
         "type": "full"
       }'`
 
-
     # Create csv of nameservers
     echo $add_output | jq -r '[.result.name,.result.id,.result.name_servers[]] | @csv' >> /tmp/domain_nameservers.csv
 
-
     domain_id=`echo $add_output | jq -r .result.id`
-
 
     printf "\n\n"
     printf "DNS quick scanning ${domain}:\n"
-
 
     scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \
       --header "X-Auth-Email: <EMAIL>" \
       --header "X-Auth-Key: <API_KEY>"`
 
-
     echo $scan_output | jq .
 
-
   done
-
 
   printf "name_servers are saved in /tmp/domain_nameservers"
   cat /tmp/domain_nameservers.csv
@@ -244,7 +225,14 @@ In addition, if you have over 50 domains and, of those domains, more are pending
 
 If any errors were returned in this process, the domain may not be registered (or only just registered), be a subdomain, or be otherwise invalid. For more details, refer to [Cannot add domain](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/#page","headline":"Add multiple sites via automation · Cloudflare Fundamentals docs","description":"To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/add-multiple-sites-automation/","name":"Add multiple sites via automation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/#page","headline":"Add multiple sites via automation · Cloudflare Fundamentals docs","description":"To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

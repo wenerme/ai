@@ -1,16 +1,18 @@
 ---
-title: Start a live stream
 description: Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Start a live stream
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Start a live stream
 
-# Start a live stream
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
@@ -24,7 +26,7 @@ Stream only supports the SRT caller mode, which is responsible for broadcasting 
 
 **Step 1:** In the Cloudflare dashboard, go to the **Live inputs** page and create a live input.
 
-[ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs) ![Create live input field from dashboard](https://developers.cloudflare.com/_astro/create-live-input-from-stream-dashboard.BPPM6pVj_Pmc3d.webp)
+[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)![Create live input field from dashboard](https://developers.cloudflare.com/_astro/create-live-input-from-stream-dashboard.BPPM6pVj_Pmc3d.webp)
 
 **Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
 
@@ -38,8 +40,6 @@ In the Stream Dashboard, within seconds of going live, you will see a preview of
 
 To start a live stream programmatically, make a `POST` request to the `/live_inputs` endpoint:
 
-**Request**
-
 ```bash
 curl -X POST \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -47,30 +47,28 @@ curl -X POST \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 ```
 
-**Response**
-
 ```json
 {
-  "uid": "f256e6ea9341d51eea64c9454659e576",
-  "rtmps": {
-    "url": "rtmps://live.cloudflare.com:443/live/",
-    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"
-  },
-  "created": "2021-09-23T05:05:53.451415Z",
-  "modified": "2021-09-23T05:05:53.451415Z",
-  "meta": {
-    "name": "test stream"
-  },
-  "status": null,
-  "recording": {
-    "mode": "automatic",
-    "requireSignedURLs": false,
-    "allowedOrigins": null,
-    "hideLiveViewerCount": false
-  },
-  "enabled": true,
-  "deleteRecordingAfterDays": null,
-  "preferLowLatency": false
+	"uid": "f256e6ea9341d51eea64c9454659e576",
+	"rtmps": {
+		"url": "rtmps://live.cloudflare.com:443/live/",
+		"streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"
+	},
+	"created": "2021-09-23T05:05:53.451415Z",
+	"modified": "2021-09-23T05:05:53.451415Z",
+	"meta": {
+		"name": "test stream"
+	},
+	"status": null,
+	"recording": {
+		"mode": "automatic",
+		"requireSignedURLs": false,
+		"allowedOrigins": null,
+		"hideLiveViewerCount": false
+	},
+	"enabled": true,
+	"deleteRecordingAfterDays": null,
+	"preferLowLatency": false
 }
 ```
 
@@ -81,7 +79,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 * `enabled` boolean default: `true`
 
   * Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
-* `preferLowLatency` boolean default: `false` Beta
+* `preferLowLatency` boolean default: `false`  Beta
 
   * When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
 * `deleteRecordingAfterDays` integer default: `null` (any)
@@ -112,8 +110,6 @@ The following four properties are nested under the `recording` object.
 
 You can update live inputs by making a `PUT` request:
 
-**Request**
-
 ```bash
 curl --request PUT \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
@@ -122,8 +118,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{i
 ```
 
 Delete a live input by making a `DELETE` request:
-
-**Request**
 
 ```bash
 curl --request DELETE \
@@ -141,7 +135,7 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 * Your creators should use a [GOP duration ↗](https://en.wikipedia.org/wiki/Group%5Fof%5Fpictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
 * When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
 
-#### Low-Latency HLS broadcast recommendations Beta
+#### Low-Latency HLS broadcast recommendations  Beta
 
 * Turn off B Frames or set them to 0\. B Frames are incompatible with LL-HLS and will result in jitter and sporadic buffering delays.
 * For lowest latency, use a GOP size (or "keyframe interval") of 2 - 4 seconds.
@@ -159,7 +153,14 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 * Watermarks cannot yet be used with live videos.
 * If a live video exceeds seven days in length, the recording will be truncated to seven days. Only the first seven days of live video content will be recorded.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/start-stream-live/","name":"Start a live stream"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

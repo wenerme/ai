@@ -1,18 +1,20 @@
 ---
-title: Remove locale from URL path
 description: Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remove locale from URL path
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Remove locale from URL path
+#  Remove locale from URL path
 
 Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.
+
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example single redirect for zone `example.com` will redirect visitors from an old URL format that included the locale (for example, `/en-us/<page_name>`) to the new format `/<page_name>`.
 
@@ -44,7 +46,14 @@ For example, the redirect rule would perform the following redirects:
 | example.com/meet-our-team             | (unchanged)                     | n/a         |
 | example.com/robots.txt                | (unchanged)                     | n/a         |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/#page","headline":"Remove locale from URL path · Cloudflare Rules docs","description":"Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects","Localization"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/examples/","name":"Redirect examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/examples/remove-locale-url/","name":"Remove locale from URL path"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/#page","headline":"Remove locale from URL path · Cloudflare Rules docs","description":"Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects","Localization"]}
 ```

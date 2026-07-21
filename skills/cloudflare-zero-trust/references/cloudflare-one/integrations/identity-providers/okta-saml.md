@@ -1,16 +1,18 @@
 ---
-title: Okta (SAML)
 description: Integrate Okta as a SAML identity provider with Cloudflare One.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Okta (SAML)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Okta (SAML)
 
-# Okta (SAML)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One can integrate SAML with Okta as an identity provider.
 
@@ -61,7 +63,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 To test that your connection is working, go to **Integrations** \> **Identity providers** and select **Test** next to Okta. A success response should return the configured SAML attributes.
 
-Warning
+Caution
 
 SAML attributes are only refreshed during authentications with the Okta identity provider. This means the Okta group membership is not updated unless a user logs in and out of the Cloudflare One Client, or logs in to an Access application.
 
@@ -69,22 +71,29 @@ SAML attributes are only refreshed during authentications with the Okta identity
 
 ```json
 {
-  "config": {
-    "issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",
-    "sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",
-    "attributes": ["email", "group"],
-    "email_attribute_name": "",
-    "sign_request": false,
-    "idp_public_certs": [
-      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
-    ]
-  },
-  "type": "saml",
-  "name": "okta saml example"
+	"config": {
+		"issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",
+		"sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",
+		"attributes": ["email", "group"],
+		"email_attribute_name": "",
+		"sign_request": false,
+		"idp_public_certs": [
+			"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+		]
+	},
+	"type": "saml",
+	"name": "okta saml example"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/#page","headline":"Okta (SAML) · Cloudflare One docs","description":"Integrate Okta as a SAML identity provider with Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta","SAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/okta-saml/","name":"Okta (SAML)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/#page","headline":"Okta (SAML) · Cloudflare One docs","description":"Integrate Okta as a SAML identity provider with Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta","SAML"]}
 ```

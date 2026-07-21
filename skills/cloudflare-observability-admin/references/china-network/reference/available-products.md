@@ -1,16 +1,18 @@
 ---
-title: Available products and features
 description: Cloudflare products and features supported on the China Network operated by JD Cloud.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available products and features
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available products and features
 
-# Available products and features
+Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/reference/available-products/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following products and features are available on the Cloudflare China Network operated by JD Cloud:
 
@@ -79,7 +81,14 @@ For more details or specific product features, refer to the [FAQ](https://develo
 3. R2 buckets cannot be created within Mainland China and [custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#add-your-domain-to-cloudflare) are not supported within Mainland China. However, R2 can be extended into Mainland China through [Global Acceleration](https://developers.cloudflare.com/china-network/concepts/global-acceleration/). [↩](#user-content-fnref-3)
 4. Image Resizing works [within Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/), but may not be available [through URL format](https://developers.cloudflare.com/images/optimization/features/). [↩](#user-content-fnref-4)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/available-products/#page","headline":"Available products and features · Cloudflare China Network docs","description":"Cloudflare products and features supported on the China Network operated by JD Cloud.","url":"https://developers.cloudflare.com/china-network/reference/available-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/reference/available-products/","name":"Available products and features"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/available-products/#page","headline":"Available products and features · Cloudflare China Network docs","description":"Cloudflare products and features supported on the China Network operated by JD Cloud.","url":"https://developers.cloudflare.com/china-network/reference/available-products/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

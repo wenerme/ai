@@ -1,16 +1,18 @@
 ---
-title: Proxy status
 description: Control whether Cloudflare proxies traffic for DNS records.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Proxy status
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proxy status
 
-# Proxy status
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/proxy-status/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 While your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.
 
@@ -32,7 +34,7 @@ When you set a DNS record to **Proxied** — shown as an orange cloud icon in th
 * [Optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) all requests to your application.
 * Apply your Cloudflare product configurations (such as [WAF](https://developers.cloudflare.com/waf/) rules, [caching](https://developers.cloudflare.com/cache/), and [redirect rules](https://developers.cloudflare.com/rules/url-forwarding/)) to incoming traffic.
 
-Warning
+Caution
 
 When you [add a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, Cloudflare protection will be in a [pending state](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) until we can verify ownership. This could take up to 24 hours to complete. Refer to [Limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/#pending-domains) for further guidance.
 
@@ -153,7 +155,14 @@ Certain DNS records should be DNS-only because the services they support are not
 
 For a detailed list of scenarios, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/). For hard constraints on proxying, refer to [Proxying limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/#page","headline":"Proxy status · Cloudflare DNS docs","description":"Control whether Cloudflare proxies traffic for DNS records.","url":"https://developers.cloudflare.com/dns/proxy-status/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/#page","headline":"Proxy status · Cloudflare DNS docs","description":"Control whether Cloudflare proxies traffic for DNS records.","url":"https://developers.cloudflare.com/dns/proxy-status/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
 ```

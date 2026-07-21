@@ -1,16 +1,18 @@
 ---
-title: Actions
 description: Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Actions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Actions
 
-# Actions
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/actions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Experimental
 
@@ -29,74 +31,63 @@ Actions compile into Think tools, so the model calls them exactly like any other
 
 Use the `action()` descriptor factory and return a map of actions from `getActions()`. The map key is the tool name the model sees (unless you set `name`). The `execute` input type is inferred from `inputSchema`:
 
-* [  JavaScript ](#tab-panel-6067)
-* [  TypeScript ](#tab-panel-6068)
-
-**JavaScript**
-
 ```js
 import { Think, action } from "@cloudflare/think";
 import { z } from "zod";
 
-
 export class Support extends Think {
-  getActions() {
-    return {
-      refundOrder: action({
-        description: "Refund a customer order.",
-        inputSchema: z.object({
-          orderId: z.string(),
-          amountCents: z.number().int().positive(),
-        }),
-        execute: async ({ orderId, amountCents }, ctx) => {
-          const result = await refund(orderId, amountCents);
-          return { refundId: result.id, status: result.status };
-        },
-      }),
-    };
-  }
+	getActions() {
+		return {
+			refundOrder: action({
+				description: "Refund a customer order.",
+				inputSchema: z.object({
+					orderId: z.string(),
+					amountCents: z.number().int().positive(),
+				}),
+				execute: async ({ orderId, amountCents }, ctx) => {
+					const result = await refund(orderId, amountCents);
+					return { refundId: result.id, status: result.status };
+				},
+			}),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, action } from "@cloudflare/think";
 import { z } from "zod";
 
-
 export class Support extends Think<Env> {
-  getActions() {
-    return {
-      refundOrder: action({
-        description: "Refund a customer order.",
-        inputSchema: z.object({
-          orderId: z.string(),
-          amountCents: z.number().int().positive(),
-        }),
-        execute: async ({ orderId, amountCents }, ctx) => {
-          const result = await refund(orderId, amountCents);
-          return { refundId: result.id, status: result.status };
-        },
-      }),
-    };
-  }
+	getActions() {
+		return {
+			refundOrder: action({
+				description: "Refund a customer order.",
+				inputSchema: z.object({
+					orderId: z.string(),
+					amountCents: z.number().int().positive(),
+				}),
+				execute: async ({ orderId, amountCents }, ctx) => {
+					const result = await refund(orderId, amountCents);
+					return { refundId: result.id, status: result.status };
+				},
+			}),
+		};
+	}
 }
 ```
 
 The `execute` callback receives the validated input and an `ActionContext`:
 
-**TypeScript**
-
 ```ts
 type ActionContext = {
-  agent: Think;
-  env: Cloudflare.Env;
-  requestId: string;
-  toolCallId: string;
-  messages: ReadonlyArray<ModelMessage>;
-  signal: AbortSignal; // aborts on turn cancel or after `timeoutMs`
-  attachReply(attachment: ReplyAttachment): void;
+	agent: Think;
+	env: Cloudflare.Env;
+	requestId: string;
+	toolCallId: string;
+	messages: ReadonlyArray<ModelMessage>;
+	signal: AbortSignal; // aborts on turn cancel or after `timeoutMs`
+	attachReply(attachment: ReplyAttachment): void;
 };
 ```
 
@@ -110,30 +101,23 @@ A plain `tool()` from `getTools()` still works and is the right choice for a rea
 
 When an action declares an `idempotencyKey`, Think records the settled result in a durable ledger keyed by `action:<name>:<key>`. If the same key is seen again — on a recovery retry, a reconnect, or a duplicate inbound event — Think returns the stored result **without** re-running `execute`, so the side effect happens at most once on the happy path.
 
-* [  JavaScript ](#tab-panel-6055)
-* [  TypeScript ](#tab-panel-6056)
-
-**JavaScript**
-
 ```js
 const chargeInvoice = action({
-  description: "Charge an invoice.",
-  inputSchema: z.object({ invoiceId: z.string() }),
-  // Use a stable domain identifier — never a timestamp, request id, or random value.
-  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
-  execute: async ({ invoiceId }) => charge(invoiceId),
+	description: "Charge an invoice.",
+	inputSchema: z.object({ invoiceId: z.string() }),
+	// Use a stable domain identifier — never a timestamp, request id, or random value.
+	idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
+	execute: async ({ invoiceId }) => charge(invoiceId),
 });
 ```
 
-**TypeScript**
-
 ```ts
 const chargeInvoice = action({
-  description: "Charge an invoice.",
-  inputSchema: z.object({ invoiceId: z.string() }),
-  // Use a stable domain identifier — never a timestamp, request id, or random value.
-  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
-  execute: async ({ invoiceId }) => charge(invoiceId),
+	description: "Charge an invoice.",
+	inputSchema: z.object({ invoiceId: z.string() }),
+	// Use a stable domain identifier — never a timestamp, request id, or random value.
+	idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
+	execute: async ({ invoiceId }) => charge(invoiceId),
 });
 ```
 
@@ -151,32 +135,25 @@ Gate an action behind a human with `approval`. There are two mechanisms, selecte
 
 The default when you set `approval` without a `kind`. The action compiles to a tool with the AI SDK `needsApproval` flag: the stream pauses with an `approval-requested` part, the client approves or rejects, and the turn continues inline. `execute` runs only after approval.
 
-* [  JavaScript ](#tab-panel-6057)
-* [  TypeScript ](#tab-panel-6058)
-
-**JavaScript**
-
 ```js
 const deleteAccount = action({
-  description: "Permanently delete a user account.",
-  inputSchema: z.object({ userId: z.string() }),
-  approval: true, // or ({ input }) => input.userId !== currentUser
-  approvalSummary: "Delete an account",
-  approvalRisk: "high",
-  execute: async ({ userId }) => deleteAccount(userId),
+	description: "Permanently delete a user account.",
+	inputSchema: z.object({ userId: z.string() }),
+	approval: true, // or ({ input }) => input.userId !== currentUser
+	approvalSummary: "Delete an account",
+	approvalRisk: "high",
+	execute: async ({ userId }) => deleteAccount(userId),
 });
 ```
 
-**TypeScript**
-
 ```ts
 const deleteAccount = action({
-  description: "Permanently delete a user account.",
-  inputSchema: z.object({ userId: z.string() }),
-  approval: true, // or ({ input }) => input.userId !== currentUser
-  approvalSummary: "Delete an account",
-  approvalRisk: "high",
-  execute: async ({ userId }) => deleteAccount(userId),
+	description: "Permanently delete a user account.",
+	inputSchema: z.object({ userId: z.string() }),
+	approval: true, // or ({ input }) => input.userId !== currentUser
+	approvalSummary: "Delete an account",
+	approvalRisk: "high",
+	execute: async ({ userId }) => deleteAccount(userId),
 });
 ```
 
@@ -186,60 +163,44 @@ const deleteAccount = action({
 
 Set `kind: "durable-pause"` when approval may take minutes or days and you do not want to hold a connection open. The action parks into a durable store and the turn ends; `execute` does not run yet. Resume later — from anywhere, including a dashboard with no live WebSocket — with `approveExecution()` or `rejectExecution()`:
 
-* [  JavaScript ](#tab-panel-6059)
-* [  TypeScript ](#tab-panel-6060)
-
-**JavaScript**
-
 ```js
 const deploy = action({
-  description: "Deploy to production.",
-  inputSchema: z.object({ ref: z.string() }),
-  kind: "durable-pause",
-  approvalSummary: "Deploy to production",
-  approvalRisk: "high",
-  permissions: ["deploy:run"],
-  execute: async ({ ref }) => deploy(ref),
+	description: "Deploy to production.",
+	inputSchema: z.object({ ref: z.string() }),
+	kind: "durable-pause",
+	approvalSummary: "Deploy to production",
+	approvalRisk: "high",
+	permissions: ["deploy:run"],
+	execute: async ({ ref }) => deploy(ref),
 });
 ```
-
-**TypeScript**
 
 ```ts
 const deploy = action({
-  description: "Deploy to production.",
-  inputSchema: z.object({ ref: z.string() }),
-  kind: "durable-pause",
-  approvalSummary: "Deploy to production",
-  approvalRisk: "high",
-  permissions: ["deploy:run"],
-  execute: async ({ ref }) => deploy(ref),
+	description: "Deploy to production.",
+	inputSchema: z.object({ ref: z.string() }),
+	kind: "durable-pause",
+	approvalSummary: "Deploy to production",
+	approvalRisk: "high",
+	permissions: ["deploy:run"],
+	execute: async ({ ref }) => deploy(ref),
 });
 ```
-
-* [  JavaScript ](#tab-panel-6061)
-* [  TypeScript ](#tab-panel-6062)
-
-**JavaScript**
 
 ```js
 // List everything waiting on a human (cold-load reconciliation):
 const pending = await agent.pendingApprovals();
 // [{ executionId, source: "action" | "codemode", descriptor }]
-
 
 // Approve or reject by execution id (idempotent — a second call is a no-op):
 await agent.approveExecution(executionId);
 await agent.rejectExecution(executionId, "Not this release");
 ```
 
-**TypeScript**
-
 ```ts
 // List everything waiting on a human (cold-load reconciliation):
 const pending = await agent.pendingApprovals();
 // [{ executionId, source: "action" | "codemode", descriptor }]
-
 
 // Approve or reject by execution id (idempotent — a second call is a no-op):
 await agent.approveExecution(executionId);
@@ -254,57 +215,43 @@ Both approval-gated and durable-pause parts carry a stable `ActionApprovalDescri
 
 Declare the permissions an action requires with `permissions`, then grant them per turn. By default every turn is fully authorized, so authorization is opt-in.
 
-* [  JavaScript ](#tab-panel-6063)
-* [  TypeScript ](#tab-panel-6064)
-
-**JavaScript**
-
 ```js
 const refundOrder = action({
-  description: "Refund a customer order.",
-  inputSchema: z.object({ orderId: z.string() }),
-  permissions: ["billing:refund"], // or ({ input }) => [...]
-  execute: async ({ orderId }) => refund(orderId),
+	description: "Refund a customer order.",
+	inputSchema: z.object({ orderId: z.string() }),
+	permissions: ["billing:refund"], // or ({ input }) => [...]
+	execute: async ({ orderId }) => refund(orderId),
 });
 ```
 
-**TypeScript**
-
 ```ts
 const refundOrder = action({
-  description: "Refund a customer order.",
-  inputSchema: z.object({ orderId: z.string() }),
-  permissions: ["billing:refund"], // or ({ input }) => [...]
-  execute: async ({ orderId }) => refund(orderId),
+	description: "Refund a customer order.",
+	inputSchema: z.object({ orderId: z.string() }),
+	permissions: ["billing:refund"], // or ({ input }) => [...]
+	execute: async ({ orderId }) => refund(orderId),
 });
 ```
 
 Override `authorizeTurn()` to decide, once per turn, which permissions are granted. Returning a list narrows the grant; any action requiring a permission outside the set is denied with a structured `ActionAuthorizationError` (the model never calls `execute`):
 
-* [  JavaScript ](#tab-panel-6065)
-* [  TypeScript ](#tab-panel-6066)
-
-**JavaScript**
-
 ```js
 export class Support extends Think {
-  authorizeTurn(ctx) {
-    const role = ctx.body?.role;
-    if (role === "admin") return true; // full grant (the default)
-    return { allowed: true, grantedPermissions: ["billing:read"] };
-  }
+	authorizeTurn(ctx) {
+		const role = ctx.body?.role;
+		if (role === "admin") return true; // full grant (the default)
+		return { allowed: true, grantedPermissions: ["billing:read"] };
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Support extends Think<Env> {
-  override authorizeTurn(ctx: TurnContext): ActionAuthorizationDecision {
-    const role = (ctx.body as { role?: string })?.role;
-    if (role === "admin") return true; // full grant (the default)
-    return { allowed: true, grantedPermissions: ["billing:read"] };
-  }
+	override authorizeTurn(ctx: TurnContext): ActionAuthorizationDecision {
+		const role = (ctx.body as { role?: string })?.role;
+		if (role === "admin") return true; // full grant (the default)
+		return { allowed: true, grantedPermissions: ["billing:read"] };
+	}
 }
 ```
 
@@ -314,61 +261,47 @@ export class Support extends Think<Env> {
 
 An action can record advisory delivery metadata for the turn — a drafted email, a card, a voice note — with `ctx.attachReply()`. Attachments never change the tool output the model sees; they ride alongside the response for your delivery layer to render.
 
-* [  JavaScript ](#tab-panel-6069)
-* [  TypeScript ](#tab-panel-6070)
-
-**JavaScript**
-
 ```js
 const draftReply = action({
-  description: "Draft an email reply.",
-  inputSchema: z.object({ to: z.string(), subject: z.string() }),
-  execute: async ({ to, subject }, ctx) => {
-    ctx.attachReply({ type: "email_draft", to: [to], subject });
-    return { drafted: true };
-  },
+	description: "Draft an email reply.",
+	inputSchema: z.object({ to: z.string(), subject: z.string() }),
+	execute: async ({ to, subject }, ctx) => {
+		ctx.attachReply({ type: "email_draft", to: [to], subject });
+		return { drafted: true };
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const draftReply = action({
-  description: "Draft an email reply.",
-  inputSchema: z.object({ to: z.string(), subject: z.string() }),
-  execute: async ({ to, subject }, ctx) => {
-    ctx.attachReply({ type: "email_draft", to: [to], subject });
-    return { drafted: true };
-  },
+	description: "Draft an email reply.",
+	inputSchema: z.object({ to: z.string(), subject: z.string() }),
+	execute: async ({ to, subject }, ctx) => {
+		ctx.attachReply({ type: "email_draft", to: [to], subject });
+		return { drafted: true };
+	},
 });
 ```
 
 Read the attachments after the turn from the `onChatResponse()` hook, or from the `replyAttachments(requestId?)` getter:
 
-* [  JavaScript ](#tab-panel-6071)
-* [  TypeScript ](#tab-panel-6072)
-
-**JavaScript**
-
 ```js
 export class Support extends Think {
-  async onChatResponse(result) {
-    for (const attachment of result.attachments ?? []) {
-      // attachment.type === "email_draft" | "card" | "voice_note" | custom
-    }
-  }
+	async onChatResponse(result) {
+		for (const attachment of result.attachments ?? []) {
+			// attachment.type === "email_draft" | "card" | "voice_note" | custom
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Support extends Think<Env> {
-  override async onChatResponse(result: ChatResponseResult) {
-    for (const attachment of result.attachments ?? []) {
-      // attachment.type === "email_draft" | "card" | "voice_note" | custom
-    }
-  }
+	override async onChatResponse(result: ChatResponseResult) {
+		for (const attachment of result.attachments ?? []) {
+			// attachment.type === "email_draft" | "card" | "voice_note" | custom
+		}
+	}
 }
 ```
 
@@ -413,7 +346,14 @@ A built-in `ReplyAttachment` covers `email_draft`, `card`, and `voice_note`; any
 * [Human in the loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — the approval flow end to end.
 * [Channels](https://developers.cloudflare.com/agents/harnesses/think/channels/) — deliver attachments and out-of-band notices.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/actions/#page","headline":"Actions · Cloudflare Agents docs","description":"Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.","url":"https://developers.cloudflare.com/agents/harnesses/think/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/actions/","name":"Actions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/actions/#page","headline":"Actions · Cloudflare Agents docs","description":"Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.","url":"https://developers.cloudflare.com/agents/harnesses/think/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

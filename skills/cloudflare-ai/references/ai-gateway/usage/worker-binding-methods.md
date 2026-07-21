@@ -1,16 +1,18 @@
 ---
-title: Workers Bindings
 description: Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, and URLs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Bindings
 
-# Workers Bindings
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The AI binding (`env.AI`) lets you call AI models and access AI Gateway features directly from your Worker.
 
@@ -20,20 +22,13 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7188)
-* [  wrangler.toml ](#tab-panel-7189)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI",
-  },
+	"ai": {
+		"binding": "AI",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -50,75 +45,61 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-7190)
-* [  TypeScript ](#tab-panel-7191)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "@cf/moonshotai/kimi-k2.5",
-  {
-    prompt: "tell me a joke",
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"@cf/moonshotai/kimi-k2.5",
+	{
+		prompt: "tell me a joke",
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "@cf/moonshotai/kimi-k2.5",
-  {
-    prompt: "tell me a joke",
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"@cf/moonshotai/kimi-k2.5",
+	{
+		prompt: "tell me a joke",
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-7192)
-* [  TypeScript ](#tab-panel-7193)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "openai/gpt-4.1-mini",
-  {
-    messages: [{ role: "user", content: "tell me a joke" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"openai/gpt-4.1-mini",
+	{
+		messages: [{ role: "user", content: "tell me a joke" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "openai/gpt-4.1-mini",
-  {
-    messages: [{ role: "user", content: "tell me a joke" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"openai/gpt-4.1-mini",
+	{
+		messages: [{ role: "user", content: "tell me a joke" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
@@ -147,8 +128,6 @@ The third argument to `env.AI.run()` accepts a `gateway` object with the followi
 
 Returns the log ID from the most recent `env.AI.run()` request.
 
-**TypeScript**
-
 ```typescript
 const myLogId = env.AI.aiGatewayLogId;
 ```
@@ -156,8 +135,6 @@ const myLogId = env.AI.aiGatewayLogId;
 ## `env.AI.gateway()`
 
 Returns a gateway instance for accessing AI Gateway methods directly.
-
-**TypeScript**
 
 ```typescript
 const gateway = env.AI.gateway("my-gateway");
@@ -169,15 +146,13 @@ The gateway instance exposes the following methods.
 
 Sends feedback, score, and metadata for a specific log entry. All properties in the second argument are optional.
 
-**TypeScript**
-
 ```typescript
 await gateway.patchLog("my-log-id", {
-  feedback: 1,
-  score: 100,
-  metadata: {
-    user: "123",
-  },
+	feedback: 1,
+	score: 100,
+	metadata: {
+		user: "123",
+	},
 });
 ```
 
@@ -186,8 +161,6 @@ await gateway.patchLog("my-log-id", {
 ### `getLog()`
 
 Retrieves details of a specific log entry. If the `AiGatewayLog` type is missing, run [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types).
-
-**TypeScript**
 
 ```typescript
 const log = await gateway.getLog("my-log-id");
@@ -199,12 +172,9 @@ const log = await gateway.getLog("my-log-id");
 
 Returns the base URL for your AI Gateway. Pass an optional provider name to get the provider-specific endpoint.
 
-**TypeScript**
-
 ```typescript
 const baseUrl = await gateway.getUrl();
 // https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/
-
 
 const openaiUrl = await gateway.getUrl("openai");
 // https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/openai
@@ -218,45 +188,43 @@ const openaiUrl = await gateway.getUrl("openai");
 
 **OpenAI SDK:**
 
-**TypeScript**
-
 ```typescript
 import OpenAI from "openai";
 
-
 const openai = new OpenAI({
-  apiKey: "my api key", // defaults to process.env["OPENAI_API_KEY"]
-  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
+	apiKey: "my api key", // defaults to process.env["OPENAI_API_KEY"]
+	baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
 });
 ```
 
 **Vercel AI SDK with OpenAI:**
 
-**TypeScript**
-
 ```typescript
 import { createOpenAI } from "@ai-sdk/openai";
 
-
 const openai = createOpenAI({
-  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
+	baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
 });
 ```
 
 **Vercel AI SDK with Anthropic:**
 
-**TypeScript**
-
 ```typescript
 import { createAnthropic } from "@ai-sdk/anthropic";
 
-
 const anthropic = createAnthropic({
-  baseURL: await env.AI.gateway("my-gateway").getUrl("anthropic"),
+	baseURL: await env.AI.gateway("my-gateway").getUrl("anthropic"),
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#page","headline":"Workers Bindings · Cloudflare AI Gateway docs","description":"Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, and URLs.","url":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bindings"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/worker-binding-methods/","name":"Workers Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#page","headline":"Workers Bindings · Cloudflare AI Gateway docs","description":"Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, and URLs.","url":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bindings"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Remove a domain
 description: Remove a domain from your Cloudflare account, including required steps for DNS, subscriptions, and registrar settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remove a domain
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Remove a domain
 
-# Remove a domain
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/). If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
 
@@ -47,7 +49,7 @@ If you have just added a domain and have not configured its plan yet, the domain
 ## Remove a domain activated in Cloudflare
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your domain.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
 2. On the domain **Overview** page, find **Advanced Actions** and then select **Remove from Cloudflare**.
 Note
 If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove from Cloudflare**.
@@ -55,7 +57,14 @@ If you are using an Enterprise domain, [change your domain plan](https://develop
 If this does not work, contact your Customer Success Manager.
 3. Select **Confirm**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/#page","headline":"Remove a domain from Cloudflare · Cloudflare Fundamentals docs","description":"Remove a domain from your Cloudflare account, including required steps for DNS, subscriptions, and registrar settings.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/remove-domain/","name":"Remove a domain"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/#page","headline":"Remove a domain from Cloudflare · Cloudflare Fundamentals docs","description":"Remove a domain from your Cloudflare account, including required steps for DNS, subscriptions, and registrar settings.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

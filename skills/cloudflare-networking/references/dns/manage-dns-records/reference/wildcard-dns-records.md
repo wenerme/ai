@@ -1,16 +1,18 @@
 ---
-title: Wildcard DNS records
 description: How wildcard DNS records work on Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Wildcard DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wildcard DNS records
 
-# Wildcard DNS records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Normal DNS records map a domain name to one or multiple IP addresses or other associated resources to a specific domain name (a one-to-many mapping). Wildcard DNS records allow you to have a many-to-many mapping, for example if you had hundreds or thousands of subdomains you wanted to point to the same resources.
 
@@ -24,7 +26,7 @@ To create a wildcard DNS record, [create a DNS record](https://developers.cloudf
 | ---- | ---- | ------------ | ------------ |
 | A    | \*   | 192.0.2.1    | Proxied      |
 
-Warning
+Caution
 
 If your project is on [Cloudflare Pages](https://developers.cloudflare.com/pages/), note that wildcard custom domains are not supported. Refer to [known issues](https://developers.cloudflare.com/pages/platform/known-issues/#custom-domains) for details.
 
@@ -100,7 +102,14 @@ For more information on wildcard records — as well as more details about their
 
 1. An opt-in configuration available for Enterprise customers. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#page","headline":"Wildcard DNS records · Cloudflare DNS docs","description":"How wildcard DNS records work on Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/wildcard-dns-records/","name":"Wildcard DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#page","headline":"Wildcard DNS records · Cloudflare DNS docs","description":"How wildcard DNS records work on Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

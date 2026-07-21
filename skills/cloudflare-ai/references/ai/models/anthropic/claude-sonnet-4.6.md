@@ -1,40 +1,40 @@
 ---
-title: Claude Sonnet 4.6
 description: Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Sonnet 4.6
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Sonnet 4.6
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-sonnet-4.6`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-sonnet-4.6 `
+
+* Third-party
+* Zero data retention
 
 Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.
 
-| Model Info                                                                 |                                                                                                                               |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                           |
-| Request formats                                                            | Anthropic Messages                                                                                                            |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.6) |
+| Model Info                                                                  |                                                                                                                                |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                 |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                     |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                            |
+| Request formats                                                             | Anthropic Messages                                                                                                             |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.6) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-316)
-* [ cURL ](#tab-panel-317)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-320)
-* [ Raw response ](#tab-panel-321)
 
 There are actually **four** laws of thermodynamics (including the Zeroth Law):
 
@@ -120,11 +117,6 @@ Would you like more detail on any of these?
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-318)
-* [ cURL ](#tab-panel-319)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.6',
@@ -155,9 +147,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.3
 }'
 ```
-
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
 
 ## Reading a JSON File in Python
 
@@ -269,11 +258,6 @@ data['hobbies'] # → ["reading", "coding"]
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-328)
-* [ cURL ](#tab-panel-329)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.6',
@@ -319,9 +303,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-330)
-* [ Raw response ](#tab-panel-331)
 
 Here are some great stops depending on which route you take:
 
@@ -378,11 +359,6 @@ Would you like more details about any specific stop or help planning an overnigh
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-322)
-* [ cURL ](#tab-panel-323)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.6',
@@ -416,9 +392,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.8
 }'
 ```
-
-* [ Output ](#tab-panel-332)
-* [ Raw response ](#tab-panel-333)
 
 # The Weight of Paper
 
@@ -473,11 +446,6 @@ She stood up slowly, slipping her hands into her pockets.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-326)
-* [ cURL ](#tab-panel-327)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.6',
@@ -506,9 +474,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-338)
-* [ Raw response ](#tab-panel-339)
 
 # Recursion
 
@@ -880,11 +845,6 @@ def broken(n):
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-334)
-* [ cURL ](#tab-panel-335)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.6',
@@ -925,9 +885,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-336)
-* [ Raw response ](#tab-panel-337)
 
 Here's a summary of the top Cloudflare news stories this week:
 
@@ -1130,9 +1087,6 @@ Here's a summary of the top Cloudflare news stories this week:
 
 ## Parameters
 
-* [ Input ](#tab-panel-340)
-* [ Output ](#tab-panel-341)
-
 ▶messages\[\]
 
 `array`required
@@ -1199,7 +1153,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/#page","headline":"Claude Sonnet 4.6 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/#page","headline":"Claude Sonnet 4.6 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

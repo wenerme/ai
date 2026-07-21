@@ -40,7 +40,7 @@ export default User;
 const openai = new OpenAI();
 
 const refactorPrompt = `
-Replace the "username" property with an "email" property. Respond only 
+Replace the "username" property with an "email" property. Respond only
 with code, and with no markdown formatting.
 `;
 
@@ -49,18 +49,18 @@ const completion = await openai.chat.completions.create({
   messages: [
     {
       role: "user",
-      content: refactorPrompt
+      content: refactorPrompt,
     },
     {
       role: "user",
-      content: code
-    }
+      content: code,
+    },
   ],
   store: true,
   prediction: {
     type: "content",
-    content: code
-  }
+    content: code,
+  },
 });
 
 // Inspect returned data
@@ -187,7 +187,7 @@ export default User;
 const openai = new OpenAI();
 
 const refactorPrompt = `
-Replace the "username" property with an "email" property. Respond only 
+Replace the "username" property with an "email" property. Respond only
 with code, and with no markdown formatting.
 `;
 
@@ -196,23 +196,23 @@ const completion = await openai.chat.completions.create({
   messages: [
     {
       role: "user",
-      content: refactorPrompt
+      content: refactorPrompt,
     },
     {
       role: "user",
-      content: code
-    }
+      content: code,
+    },
   ],
   store: true,
   prediction: {
     type: "content",
-    content: code
+    content: code,
   },
-  stream: true
+  stream: true,
 });
 
 // Inspect returned data
-for await (const chunk of stream) {
+for await (const chunk of completion) {
   process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
 ```

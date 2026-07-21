@@ -1,16 +1,18 @@
 ---
-title: Turnstile
 description: Embed a CAPTCHA-alternative widget that verifies visitors without interrupting their experience.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Turnstile
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Turnstile
 
-# Turnstile
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Turnstile](https://developers.cloudflare.com/turnstile/) is Cloudflare's CAPTCHA-alternative solution. You can embed Turnstile as a widget on your website or application, where it runs a client-side challenge directly in the background of the visitor's browser.
 
@@ -46,7 +48,14 @@ The sitekey is used with [client-side rendering](https://developers.cloudflare.c
 
 Refer to the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/) for guidance on implementing a widget to your website or application.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/#page","headline":"Turnstile · Cloudflare challenges docs","description":"Embed a CAPTCHA-alternative widget that verifies visitors without interrupting their experience.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/turnstile/","name":"Turnstile"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/#page","headline":"Turnstile · Cloudflare challenges docs","description":"Embed a CAPTCHA-alternative widget that verifies visitors without interrupting their experience.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

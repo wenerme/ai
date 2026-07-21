@@ -1,20 +1,22 @@
 ---
-title: Business
 description: Bot protection features included in the Business and Enterprise plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Business
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Business
 
-# Business
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/plans/biz-and-ent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To learn more about features and functionality, select a plan.
 
-[ Free ](https://developers.cloudflare.com/bots/plans/free/) [ Pro ](https://developers.cloudflare.com/bots/plans/pro/) [ Business ](https://developers.cloudflare.com/bots/plans/biz-and-ent/) [ Bot Management for Enterprise ](https://developers.cloudflare.com/bots/plans/bm-subscription/)
+[ Free ](https://developers.cloudflare.com/bots/plans/free/)[ Pro ](https://developers.cloudflare.com/bots/plans/pro/)[ Business ](https://developers.cloudflare.com/bots/plans/biz-and-ent/)[ Bot Management for Enterprise ](https://developers.cloudflare.com/bots/plans/bm-subscription/)
 
 |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +51,14 @@ To get started, review our [setup guides](https://developers.cloudflare.com/bots
 
 1. When users purchase Bot Management for Enterprise, Cloudflare automatically replaces and disables other bot products to prevent overlap. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/plans/biz-and-ent/#page","headline":"Plans — Business and Enterprise · Cloudflare bot solutions docs","description":"Bot protection features included in the Business and Enterprise plans.","url":"https://developers.cloudflare.com/bots/plans/biz-and-ent/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/plans/","name":"Plans"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/plans/biz-and-ent/","name":"Business"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/plans/biz-and-ent/#page","headline":"Plans — Business and Enterprise · Cloudflare bot solutions docs","description":"Bot protection features included in the Business and Enterprise plans.","url":"https://developers.cloudflare.com/bots/plans/biz-and-ent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

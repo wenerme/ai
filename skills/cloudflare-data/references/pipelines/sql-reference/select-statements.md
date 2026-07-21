@@ -1,16 +1,18 @@
 ---
-title: SELECT statements
 description: Query syntax for data transformation in Cloudflare Pipelines SQL
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SELECT statements
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SELECT statements
 
-# SELECT statements
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 SELECT statements are used to transform data in Cloudflare Pipelines. The general form is:
 
@@ -58,14 +60,12 @@ Examples:
 -- Select specific columns
 SELECT user_id, event_type, amount FROM events
 
-
 -- Use expressions and aliases
 SELECT
     user_id,
     amount * 1.1 as amount_with_tax,
     UPPER(event_type) as event_type_upper
 FROM events
-
 
 -- Select all columns
 SELECT * FROM events
@@ -101,16 +101,13 @@ Examples:
 -- Filter by field value
 SELECT * FROM events WHERE event_type = 'purchase'
 
-
 -- Multiple conditions
 SELECT * FROM events
 WHERE event_type = 'purchase' AND amount > 50
 
-
 -- String operations
 SELECT * FROM events
 WHERE user_id LIKE 'user_%'
-
 
 -- Null checks
 SELECT * FROM events
@@ -155,7 +152,6 @@ INSERT INTO purchases_sink
 SELECT user_id, product_id, amount FROM events
 WHERE event_type = 'purchase';
 
-
 INSERT INTO signups_sink
 SELECT user_id, created_at FROM events
 WHERE event_type = 'signup';
@@ -169,7 +165,14 @@ npx wrangler pipelines create my-pipeline --sql-file pipeline.sql
 
 For a worked example, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sql-reference/select-statements/","name":"SELECT statements"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

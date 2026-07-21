@@ -1,16 +1,18 @@
 ---
-title: Indexing error codes
 description: Resolve asynchronous indexing, sync, and crawl error codes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Indexing error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Indexing error codes
 
-# Indexing error codes
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After AI Search accepts an upload, sync, or crawl request, it processes your content in the background so it can be searched. When processing fails, AI Search records one of the error codes on this page. Some errors affect a single item; others pause the whole instance.
 
@@ -140,7 +142,14 @@ These errors pause the whole instance and stop all indexing until the underlying
 | ai\_gateway\_not\_configured          | Pauses the instance. The AI Gateway set on the instance was not found.                                                                        | Update the instance's [ai\_gateway\_id](https://developers.cloudflare.com/ai-search/api/instances/rest-api/) to an existing gateway in [AI Gateway](https://developers.cloudflare.com/ai-gateway/), then resume the instance.              |
 | hybrid\_search\_is\_full              | Pauses the instance. The hybrid search index is full. Its file limit is lower than the standard instance limit, so it can be reached earlier. | [Request a higher limit ↗](https://forms.gle/wnizxrEUW33Y15CT8) to resume the instance, or create another instance to index additional content. See [limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits). |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes · Cloudflare AI Search docs","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/troubleshooting/indexing-error-codes/","name":"Indexing error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes · Cloudflare AI Search docs","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

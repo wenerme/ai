@@ -1,18 +1,20 @@
 ---
-title: Send emails
 description: Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Send emails
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Send emails
+#  Send emails
 
 Send your first email using the Workers binding, the REST API, or SMTP.
+
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Send emails from your applications using Cloudflare Email Service. You can use the **Workers binding** for applications built on Cloudflare Workers, the **REST API** from any platform, or **SMTP** from any SMTP-capable application or mail client.
 
@@ -25,7 +27,7 @@ You must be using Cloudflare DNS to use Email Service.
 Before using Email Sending, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.
-[ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+[ Go to **Email Sending** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
 
@@ -45,10 +47,6 @@ Once your domain is onboarded, you can start sending emails.
 
 You can send your first email using the Workers binding, the REST API, or SMTP.
 
-* [ Workers ](#tab-panel-9261)
-* [ API ](#tab-panel-9262)
-* [ SMTP ](#tab-panel-9263)
-
 If you are building on Cloudflare Workers, you can use the Workers binding for native email sending. Start by creating a new Worker project.
 
 1. Create a new Worker project:
@@ -64,47 +62,38 @@ pnpm create cloudflare@latest email-service-tutorial
 ```
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:
-
-  * [  wrangler.jsonc ](#tab-panel-9259)
-  * [  wrangler.toml ](#tab-panel-9260)
-
-**JSONC**
 ```jsonc
 {
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "remote": true,
-    },
-  ],
+	"send_email": [
+		{
+			"name": "EMAIL",
+			"remote": true,
+		},
+	],
 }
 ```
-
-**TOML**
 ```toml
 [[send_email]]
 name = "EMAIL"
 remote = true
 ```
 3. Create your Worker code in `src/index.ts`:
-
-**TypeScript**
 ```ts
 // Configuration - Update these values
 const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domain
 const RECIPIENT_EMAIL = "recipient@example.com"; // Replace with your email to receive test emails
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    // Send a welcome email
-    const response = await env.EMAIL.send({
-      to: RECIPIENT_EMAIL,
-      from: `welcome@${YOUR_DOMAIN}`,
-      subject: "Welcome to our service!",
-      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-      text: "Welcome! Thanks for signing up.",
-    });
-    return new Response(`Email sent: ${response.messageId}`);
-  },
+	async fetch(request: Request, env: Env): Promise<Response> {
+		// Send a welcome email
+		const response = await env.EMAIL.send({
+			to: RECIPIENT_EMAIL,
+			from: `welcome@${YOUR_DOMAIN}`,
+			subject: "Welcome to our service!",
+			html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+			text: "Welcome! Thanks for signing up.",
+		});
+		return new Response(`Email sent: ${response.messageId}`);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)).
@@ -144,14 +133,14 @@ A successful response includes the delivery status for each recipient:
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "delivered": ["recipient@example.com"],
-    "permanent_bounces": [],
-    "queued": []
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"delivered": ["recipient@example.com"],
+		"permanent_bounces": [],
+		"queued": []
+	}
 }
 ```
 
@@ -165,10 +154,8 @@ From: welcome@yourdomain.com
 To: recipient@example.com
 Subject: Welcome to our service!
 
-
 Thanks for signing up.
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -190,7 +177,14 @@ Now that you can send emails, explore advanced features:
 * **[API reference](https://developers.cloudflare.com/email-service/api/send-emails/)** \- Complete API documentation
 * **[Examples](https://developers.cloudflare.com/email-service/examples/)** \- Real-world implementation patterns
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/get-started/send-emails/","name":"Send emails"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Create an Artifacts repo over HTTP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
 
@@ -54,9 +56,6 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-7457)
-* [ jq ](#tab-panel-7458)
-
 ```bash
 curl --request POST "$ARTIFACTS_BASE_URL/repos" \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -68,17 +67,17 @@ The response resembles the following:
 
 ```json
 {
-  "result": {
-    "id": "repo_123",
-    "name": "starter-repo",
-    "description": null,
-    "default_branch": "main",
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
-    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_123",
+		"name": "starter-repo",
+		"description": null,
+		"default_branch": "main",
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
+		"token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -102,7 +101,6 @@ CREATE_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos" \
   --header "Content-Type: application/json" \
   --data "{\"name\":\"$ARTIFACTS_REPO\"}")
 
-
 export ARTIFACTS_REMOTE=$(printf '%s' "$CREATE_RESPONSE" | jq -r '.result.remote')
 export ARTIFACTS_TOKEN=$(printf '%s' "$CREATE_RESPONSE" | jq -r '.result.token')
 ```
@@ -118,21 +116,21 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 ```json
 {
-  "result": {
-    "id": "repo_123",
-    "name": "starter-repo",
-    "description": null,
-    "default_branch": "main",
-    "created_at": "<ISO_TIMESTAMP>",
-    "updated_at": "<ISO_TIMESTAMP>",
-    "last_push_at": null,
-    "source": null,
-    "read_only": false,
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_123",
+		"name": "starter-repo",
+		"description": null,
+		"default_branch": "main",
+		"created_at": "<ISO_TIMESTAMP>",
+		"updated_at": "<ISO_TIMESTAMP>",
+		"last_push_at": null,
+		"source": null,
+		"read_only": false,
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -183,13 +181,26 @@ git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 
 ## Next steps
 
-[ REST API reference ](https://developers.cloudflare.com/artifacts/api/rest-api/) Review every repo and token endpoint with request and response examples.
+### [ REST API reference ](https://developers.cloudflare.com/artifacts/api/rest-api/)
 
-[ Git client example ](https://developers.cloudflare.com/artifacts/examples/git-client/) Use repo discovery and token minting with a standard Git client flow.
+ Review every repo and token endpoint with request and response examples.
 
-[ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/) Use repo isolation, least-privilege tokens, and namespace separation effectively.
+### [ Git client example ](https://developers.cloudflare.com/artifacts/examples/git-client/)
+
+ Use repo discovery and token minting with a standard Git client flow.
+
+### [ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
+
+ Use repo isolation, least-privilege tokens, and namespace separation effectively.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Artifacts docs","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/get-started/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Artifacts docs","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

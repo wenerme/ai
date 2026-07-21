@@ -1,16 +1,18 @@
 ---
-title: Configure token authentication
 description: Configure token-based authentication with custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure token authentication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure token authentication
 
-# Configure token authentication
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
 
@@ -61,7 +63,7 @@ Where:
 * `1484063787` represents the timestamp when the token was issued, expressed as UNIX time in seconds.
 * `9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D` is a Base64-encoded MAC.
 
-Warning
+Caution
 
 When you do not use the optional `flags` argument for `is_timed_hmac_valid_v0()`, you must URL encode the Base64-encoded MAC value. For more information, refer to [HMAC validation](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation).
 
@@ -95,20 +97,12 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-11957)
-* [  Python 2.7 ](#tab-panel-11958)
-* [  PHP ](#tab-panel-11959)
-* [ Workers ](#tab-panel-11960)
-
-**Python**
-
 ```python
 import hmac
 import base64
 import time
 import urllib.parse
 from hashlib import sha256
-
 
 message = "/images/cat.jpg"
 secret = "mysecrettoken"
@@ -119,15 +113,12 @@ token = urllib.parse.quote_plus(base64.b64encode(digest.digest()))
 print("{}={}-{}".format(separator, timestamp, token))
 ```
 
-**Python**
-
 ```python
 import hmac
 import base64
 import time
 import urllib
 from hashlib import sha256
-
 
 message = "/images/cat.jpg"
 secret = "mysecrettoken"
@@ -164,7 +155,7 @@ You will need to append this parameter to the URL you are protecting:
 /images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D
 ```
 
-Warning
+Caution
 
 The authentication token parameter (`verify=<VALUE>` in the example) must be the last parameter in the query string.
 
@@ -225,7 +216,14 @@ The first two URI paths can use the same HMAC signature because they share the s
 
 The third URI path needs a different HMAC signature, since the prefix is different.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#page","headline":"Configure token authentication · Cloudflare Web Application Firewall (WAF) docs","description":"Configure token-based authentication with custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/configure-token-authentication/","name":"Configure token authentication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#page","headline":"Configure token authentication · Cloudflare Web Application Firewall (WAF) docs","description":"Configure token-based authentication with custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Python"]}
 ```

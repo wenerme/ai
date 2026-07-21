@@ -1,26 +1,24 @@
 ---
-title: Run parameters
 description: Command-line flags for running cloudflared tunnel.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Run parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Run parameters
 
-# Run parameters
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/advanced/run-parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the configuration flags for the `cloudflared tunnel run` command. For a remotely-managed tunnel, add these flags to the [tunnel service](#add-run-parameters-to-tunnel-service). If you are using a locally-managed tunnel, add these flags to your [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/) as key/value pairs.
 
 ## Add run parameters to tunnel service
 
 Remotely-managed tunnels run as a service on your OS. To add run parameters to the tunnel service file:
-
-* [ Linux ](#tab-panel-11782)
-* [ macOS ](#tab-panel-11783)
-* [ Windows ](#tab-panel-11784)
 
 On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl`. By default, the service will be named `cloudflared.service`. To configure your tunnel on Linux:
 
@@ -110,7 +108,6 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
 ```txt
 C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
 ```
-
 ![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/_astro/remote-management-windows.BFUIIr2f_Z1Rbddd.webp)
 
 ## Parameters
@@ -317,7 +314,14 @@ For remotely-managed tunnels only. Requires `2025.4.0` or later.
 
 Associates the `cloudflared` instance with a specific tunnel using a file which contains the token.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/#page","headline":"Run parameters · Cloudflare Docs","description":"Command-line flags for running cloudflared tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/run-parameters/","name":"Run parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/#page","headline":"Run parameters · Cloudflare Docs","description":"Command-line flags for running cloudflared tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 ```

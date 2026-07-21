@@ -1,16 +1,18 @@
 ---
-title: Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 description: Learn how to use the Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 
-# Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -24,8 +26,6 @@ Before you begin, ensure you have the following:
 ## 1\. Agree to Meta's license
 
 The first time you use the [Llama 3.2 11B Vision Instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct) model, you need to agree to Meta's License and Acceptable Use Policy.
-
-**curl**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \
@@ -78,13 +78,10 @@ cd llama-vision-tutorial
 
 Edit the `src/index.ts` (or `index.js` if you are not using TypeScript) file and replace the content with the following code:
 
-**JavaScript**
-
 ```javascript
 export interface Env {
   AI: Ai;
 }
-
 
 export default {
   async fetch(request, env): Promise<Response> {
@@ -93,16 +90,13 @@ export default {
       { role: "user", content: "Describe the image I'm providing." },
     ];
 
-
     // Replace this with your image data encoded as base64 or a URL
     const imageBase64 = "data:image/png;base64,IMAGE_DATA_HERE";
-
 
     const response = await env.AI.run("@cf/meta/llama-3.2-11b-vision-instruct", {
       messages,
       image: imageBase64,
     });
-
 
     return Response.json(response);
   },
@@ -113,25 +107,17 @@ export default {
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12130)
-* [  wrangler.toml ](#tab-panel-12131)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {},
-  "ai": {
-    "binding": "AI"
-  }
+	"env": {},
+	"ai": {
+		"binding": "AI"
+	}
 }
 ```
 
-**TOML**
-
 ```toml
 env = { }
-
 
 [ai]
 binding = "AI"
@@ -167,11 +153,18 @@ Example response:
 
 ```json
 {
-  "result": "This is a golden retriever sitting in a grassy park."
+	"result": "This is a golden retriever sitting in a grassy park."
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/#page","headline":"Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to use the Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/llama-vision-tutorial/","name":"Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/#page","headline":"Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to use the Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

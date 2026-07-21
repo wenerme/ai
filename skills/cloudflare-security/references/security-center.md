@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Security Center
 description: Review security insights, investigate threats, and protect your brand from impersonation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Security Center
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Security Center
 
-# Cloudflare Security Center
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Security Center brings together your Cloudflare security products, threat intelligence from Cloudflare's global network, and configuration analysis into a unified security intelligence solution. Security Center enables you to strengthen your security posture by:
 
@@ -43,7 +45,14 @@ If you have any comments, questions, or bugs to report, create a post in the [Cl
 * Users with an [Administrator Read Only](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles) role cannot access the Cloudflare Security Center.
 * Only Cloudflare accounts with at least one Business or Enterprise zone (domain on your account), or accounts on the Teams Standard or Teams Enterprise plans, can manually start a new scan.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/#page","headline":"Overview · Cloudflare Security Center docs","description":"Review security insights, investigate threats, and protect your brand from impersonation.","url":"https://developers.cloudflare.com/security-center/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/#page","headline":"Overview · Cloudflare Security Center docs","description":"Review security insights, investigate threats, and protect your brand from impersonation.","url":"https://developers.cloudflare.com/security-center/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

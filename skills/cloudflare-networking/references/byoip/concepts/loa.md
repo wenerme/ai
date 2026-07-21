@@ -1,16 +1,18 @@
 ---
-title: Letter of Agency
 description: Letter of Agency requirements for onboarding IP prefixes to Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Letter of Agency
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Letter of Agency
 
-# Letter of Agency
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/loa/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A Letter of Agency (LOA), sometimes referred to as a Letter of Authorization, is a document that authorizes Cloudflare to announce your IP prefixes on your behalf. Cloudflare's transit providers — the upstream networks that Cloudflare peers with to exchange routing information — require an LOA before they will accept the routes Cloudflare advertises for you.
 
@@ -32,36 +34,27 @@ Auto-generated LOAs rely on [RPKI-signed ROAs](https://developers.cloudflare.com
 
 If you need to create an LOA document, you can use the template below.
 
-**Letter of Agency template**
-
 ```txt
 [COMPANY LETTERHEAD]
 
-
 LETTER OF AGENCY ("LOA")
-
 
 [DATE]
 
 
 To whom it may concern:
 
-
 [COMPANY NAME] (the "Company") authorizes Cloudflare, Inc. with AS13335 to advertise the following IP address blocks / originating ASNs:
 
-
 - - - - - - - - - - - - - - - - - - -
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 - - - - - - - - - - - - - - - - - - -
-
 
 As a representative of the Company that is the owner of the aforementioned IP address blocks / originating ASNs, I hereby declare that I am authorized to sign this LOA on the Company’s behalf.
 
-
 Should you have any questions please email me at [E-MAIL ADDRESS], or call: [TELEPHONE NUMBER]
-
 
 Regards,
 
@@ -76,7 +69,14 @@ Regards,
 [COMPANY STAMP]
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/loa/#page","headline":"Letter of Agency (LOA) · Cloudflare BYOIP docs","description":"Letter of Agency requirements for onboarding IP prefixes to Cloudflare.","url":"https://developers.cloudflare.com/byoip/concepts/loa/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/loa/","name":"Letter of Agency"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/loa/#page","headline":"Letter of Agency (LOA) · Cloudflare BYOIP docs","description":"Letter of Agency requirements for onboarding IP prefixes to Cloudflare.","url":"https://developers.cloudflare.com/byoip/concepts/loa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

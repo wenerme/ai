@@ -1,16 +1,18 @@
 ---
-title: Change your domain version
 description: Version Management allows you to safely test, deploy, and roll back changes to your zone configurations. By default, Version Management is not enabled on a zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Change your domain version
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Change your domain version
 
-# Change your domain version
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Version Management](https://developers.cloudflare.com/version-management/) is available for Enterprise customers and allows you to safely test, deploy, and roll back changes to your zone configurations.
 
@@ -21,7 +23,7 @@ By default, Version Management is not enabled on a zone.
 To enable [Version Management ↗](https://dash.cloudflare.com/?to=/:account/:zone/versioning):
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
 3. Go to **Version Management**.
 4. Select **Enable versioning**.
@@ -60,7 +62,7 @@ Before making changes, make sure you are inside the correct version of your zone
 To change between different versions of your zone:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and a domain that has version management. The Global Configuration of your domain will load.
 3. Go to the product or feature you wish to modify.
 
@@ -83,7 +85,7 @@ From within a version, you can update configurations just as you would with your
 Once you have made changes to a version, apply that version to your lowest-ranked environment.
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
 3. Go to **Version Management**.
 4. Go to **Environments**.
@@ -100,7 +102,7 @@ Next, [promote](https://developers.cloudflare.com/version-management/how-to/envi
 To promote a version:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
 3. Go to **Version Management**.
 4. Select **Environments**.
@@ -114,7 +116,14 @@ After promoting to each environment, test the new version in your new environmen
 
 For new changes to your zone, [create a new version](https://developers.cloudflare.com/version-management/how-to/versions/#create-version) and repeat this process.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/#page","headline":"Change your domain version · Cloudflare Fundamentals docs","description":"Version Management allows you to safely test, deploy, and roll back changes to your zone configurations. By default, Version Management is not enabled on a zone.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/domain-version/","name":"Change your domain version"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/#page","headline":"Change your domain version · Cloudflare Fundamentals docs","description":"Version Management allows you to safely test, deploy, and roll back changes to your zone configurations. By default, Version Management is not enabled on a zone.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

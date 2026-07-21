@@ -1,16 +1,18 @@
 ---
-title: Secrets Store access control
 description: Learn about role-based access control with Cloudflare Secrets Store
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Secrets Store access control
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secrets Store access control
 
-# Secrets Store access control
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/secrets-store/access-control/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Secrets Store allows security administrators to have more control by implementing role-based access. For details about roles at Cloudflare, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/manage-members/).
 
@@ -77,7 +79,14 @@ A request to bind or associate a secret with a service will be rejected if that 
 
 You can set scopes when [creating a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/) using the dashboard, the API (`scopes` field), or Wrangler (`--scopes` flag).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/access-control/#page","headline":"Secrets Store access control · Cloudflare Secrets Store docs","description":"Learn about role-based access control with Cloudflare Secrets Store","url":"https://developers.cloudflare.com/secrets-store/access-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/access-control/","name":"Secrets Store access control"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/access-control/#page","headline":"Secrets Store access control · Cloudflare Secrets Store docs","description":"Learn about role-based access control with Cloudflare Secrets Store","url":"https://developers.cloudflare.com/secrets-store/access-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

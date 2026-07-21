@@ -1,22 +1,21 @@
 ---
-title: Create a rate limiting rule in the dashboard
 description: Create a rate limiting rule for your zone in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a rate limiting rule in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a rate limiting rule in the dashboard
 
-# Create a rate limiting rule in the dashboard
-
-* [  New dashboard ](#tab-panel-12059)
-* [ Old dashboard ](#tab-panel-12060)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Rate limiting rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.
 ![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.qwL_1SJt_Z1hMrFF.webp)
@@ -82,7 +81,14 @@ The custom response has three settings:
 * **With response code**: Choose an HTTP status code for the response, in the range 400-499\. The default response code is 429.
 * **Response body**: The body of the response. Configure a valid body according to the response type you selected. The maximum field size is 30 KB.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#page","headline":"Create a rate limiting rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create a rate limiting rule for your zone in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/create-zone-dashboard/","name":"Create a rate limiting rule in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#page","headline":"Create a rate limiting rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create a rate limiting rule for your zone in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

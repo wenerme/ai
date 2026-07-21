@@ -1,16 +1,18 @@
 ---
-title: Enterprise AI Vibe Coding Platform
 description: Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enterprise AI Vibe Coding Platform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enterprise AI Vibe Coding Platform
 
-# Enterprise AI Vibe Coding Platform
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -85,7 +87,14 @@ Observability operates at two levels. At the platform level, [Workers Trace Even
 
 As the number of vibe-coded applications grows, the platform metadata store serves as an application registry, surfacing the owner, team, description, connected data sources, and usage metrics for each deployment. As with the development plane, this metadata can be stored in any preferred data store such as [D1](https://developers.cloudflare.com/d1/), [KV](https://developers.cloudflare.com/kv/), or [R2](https://developers.cloudflare.com/r2/). This allows employees to find existing tools before duplicating efforts. [Resource tagging](https://developers.cloudflare.com/resource-tagging/) applied to the underlying Cloudflare resources links each user worker back to its owner and cost attribution.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/#page","headline":"Enterprise AI Vibe Coding Platform · Cloudflare Reference Architecture docs","description":"Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/ai/","name":"Artificial Intelligence (AI)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/","name":"Enterprise AI Vibe Coding Platform"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/#page","headline":"Enterprise AI Vibe Coding Platform · Cloudflare Reference Architecture docs","description":"Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

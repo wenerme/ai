@@ -1,18 +1,20 @@
 ---
-title: Commands
 description: Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Commands
 
-# Commands
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
@@ -114,7 +116,7 @@ This command only invalidates OAuth tokens acquired through the `wrangler login`
 To delete your API token:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In the **Overview** \> **Get your API token** in the right side menu.
 3. Select the three-dot menu on your Wrangler token and select **Delete**.
 
@@ -454,8 +456,6 @@ kv_namespaces = [
 
 Successful operations will print a new configuration block that should be copied into your Wrangler file. Add the output to the existing `kv_namespaces` configuration if already present. You can now access the binding from within a Worker:
 
-**JavaScript**
-
 ```js
 let value = await MY_KV.get("my-key");
 ```
@@ -484,41 +484,33 @@ Additionally, KV namespaces can be used with environments. This is useful for wh
 
 A Wrangler file with two environments:
 
-* [  wrangler.jsonc ](#tab-panel-13927)
-* [  wrangler.toml ](#tab-panel-13928)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {
-    "staging": {
-      "kv_namespaces": [
-        {
-          "binding": "MY_KV",
-          "id": "e29b263ab50e42ce9b637fa8370175e8"
-        }
-      ]
-    },
-    "production": {
-      "kv_namespaces": [
-        {
-          "binding": "MY_KV",
-          "id": "a825455ce00f4f7282403da85269f8ea"
-        }
-      ]
-    }
-  }
+	"env": {
+		"staging": {
+			"kv_namespaces": [
+				{
+					"binding": "MY_KV",
+					"id": "e29b263ab50e42ce9b637fa8370175e8"
+				}
+			]
+		},
+		"production": {
+			"kv_namespaces": [
+				{
+					"binding": "MY_KV",
+					"id": "a825455ce00f4f7282403da85269f8ea"
+				}
+			]
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[env.staging.kv_namespaces]]
 binding = "MY_KV"
 id = "e29b263ab50e42ce9b637fa8370175e8"
-
 
 [[env.production.kv_namespaces]]
 binding = "MY_KV"
@@ -554,40 +546,33 @@ wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish Workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13929)
-* [  wrangler.toml ](#tab-panel-13930)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "type": "webpack",
-  "name": "my-worker",
-  "account_id": "<account id here>",
-  "route": "staging.example.com/*",
-  "workers_dev": false,
-  "kv_namespaces": [
-    {
-      "binding": "MY_KV",
-      "id": "06779da6940b431db6e566b4846d64db"
-    }
-  ],
-  "env": {
-    "production": {
-      "route": "example.com/*",
-      "kv_namespaces": [
-        {
-          "binding": "MY_KV",
-          "id": "07bc1f3d1f2a4fd8a45a7e026e2681c6"
-        }
-      ]
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"type": "webpack",
+	"name": "my-worker",
+	"account_id": "<account id here>",
+	"route": "staging.example.com/*",
+	"workers_dev": false,
+	"kv_namespaces": [
+		{
+			"binding": "MY_KV",
+			"id": "06779da6940b431db6e566b4846d64db"
+		}
+	],
+	"env": {
+		"production": {
+			"route": "example.com/*",
+			"kv_namespaces": [
+				{
+					"binding": "MY_KV",
+					"id": "07bc1f3d1f2a4fd8a45a7e026e2681c6"
+				}
+			]
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -597,15 +582,12 @@ account_id = "<account id here>"
 route = "staging.example.com/*"
 workers_dev = false
 
-
 [[kv_namespaces]]
 binding = "MY_KV"
 id = "06779da6940b431db6e566b4846d64db"
 
-
 [env.production]
 route = "example.com/*"
-
 
   [[env.production.kv_namespaces]]
   binding = "MY_KV"
@@ -920,11 +902,11 @@ This command takes a JSON file as an argument with a list of key-value pairs to 
 
 ```json
 [
-  {
-    "key": "test_key",
-    "value": "test_value",
-    "expiration_ttl": 3600
-  }
+	{
+		"key": "test_key",
+		"value": "test_value",
+		"expiration_ttl": 3600
+	}
 ]
 ```
 
@@ -932,20 +914,20 @@ In order to save JSON data, cast `value` to a string:
 
 ```json
 [
-  {
-    "key": "test_key",
-    "value": "{\"name\": \"test_value\"}",
-    "expiration_ttl": 3600
-  }
+	{
+		"key": "test_key",
+		"value": "{\"name\": \"test_value\"}",
+		"expiration_ttl": 3600
+	}
 ]
 ```
 
 The schema below is the full schema for key-value entries uploaded via the bulk API:
 
-* `key` ` string ` required
+* `key` ` string `required
 
   * The key’s name. The name may be 512 bytes maximum. All printable, non-whitespace characters are valid.
-* `value` ` string ` required
+* `value` ` string `required
 
   * The UTF-8 encoded string to be stored, up to 25 MB in length.
 * `expiration` int optional
@@ -996,17 +978,17 @@ This command takes a JSON file as an argument with a list of key-value pairs to 
 
 ```json
 [
-  {
-    "key": "test_key",
-    "value": ""
-  }
+	{
+		"key": "test_key",
+		"value": ""
+	}
 ]
 ```
 
-* `key` ` string ` required
+* `key` ` string `required
 
   * The key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
-* `value` ` string ` required
+* `value` ` string `required
 
   * This field must be specified for deserialization purposes, but is unused because the provided keys are being deleted, not written.
 
@@ -1043,15 +1025,12 @@ wrangler --help
 👷 ✨  wrangler 1.12.3
 The Wrangler Team <wrangler@cloudflare.com>
 
-
 USAGE:
     wrangler [SUBCOMMAND]
-
 
 FLAGS:
     -h, --help       Prints help information
     -V, --version    Prints version information
-
 
 SUBCOMMANDS:
     kv:namespace    🗂️  Interact with your Workers KV Namespaces
@@ -1074,7 +1053,14 @@ SUBCOMMANDS:
     help            Prints this message or the help of the given subcommand(s)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/","name":"Commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

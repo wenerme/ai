@@ -1,16 +1,18 @@
 ---
-title: /screenshot - Capture screenshot
 description: Capture a screenshot of a fully rendered webpage using the Browser Run /screenshot endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: /screenshot - Capture screenshot
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  /screenshot - Capture screenshot
 
-# /screenshot - Capture screenshot
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `/screenshot` endpoint renders the webpage by processing its HTML and JavaScript, then captures a screenshot of the fully rendered page.
 
@@ -43,10 +45,6 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-7576)
-* [ TypeScript SDK ](#tab-panel-7577)
-* [ Workers binding ](#tab-panel-7578)
-
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 
 ```bash
@@ -62,46 +60,38 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
   --output "screenshot.png"
 ```
 
-**TypeScript**
-
 ```typescript
 import Cloudflare from "cloudflare";
 
-
 const client = new Cloudflare({
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+	apiToken: process.env["CLOUDFLARE_API_TOKEN"],
 });
-
 
 const screenshot = await client.browserRendering.screenshot.create({
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-  html: "Hello World!",
-  screenshotOptions: {
-    omitBackground: true,
-  },
+	account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+	html: "Hello World!",
+	screenshotOptions: {
+		omitBackground: true,
+	},
 });
-
 
 console.log(screenshot.status);
 ```
 
-**TypeScript**
-
 ```typescript
 interface Env {
-  BROWSER: BrowserRun;
+	BROWSER: BrowserRun;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    return await env.BROWSER.quickAction("screenshot", {
-      html: "Hello World!",
-      screenshotOptions: {
-        omitBackground: true,
-      },
-    });
-  },
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("screenshot", {
+			html: "Hello World!",
+			screenshotOptions: {
+				omitBackground: true,
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -287,10 +277,10 @@ The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `ne
 
 ```json
 {
-  "url": "https://example.com",
-  "gotoOptions": {
-    "waitUntil": "networkidle0"
-  }
+	"url": "https://example.com",
+	"gotoOptions": {
+		"waitUntil": "networkidle0"
+	}
 }
 ```
 
@@ -308,7 +298,14 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#page","headline":"/screenshot - Capture screenshot · Cloudflare Browser Run docs","description":"Capture a screenshot of a fully rendered webpage using the Browser Run /screenshot endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/screenshot-endpoint/","name":"/screenshot - Capture screenshot"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#page","headline":"/screenshot - Capture screenshot · Cloudflare Browser Run docs","description":"Capture a screenshot of a fully rendered webpage using the Browser Run /screenshot endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Errors
 description: Reference table of Workers AI error codes, HTTP statuses, and descriptions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Errors
 
-# Errors
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/platform/errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is a list of Workers AI errors.
 
@@ -33,7 +35,14 @@ Below is a list of Workers AI errors.
 | Account limited                       | 3036              | 429           | You have used up your daily free allocation of 10,000 neurons. Please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage. |
 | Out of capacity                       | 3040              | 429           | No more data centers to forward the request to                                                                                                       |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/errors/#page","headline":"Errors · Cloudflare Workers AI docs","description":"Reference table of Workers AI error codes, HTTP statuses, and descriptions.","url":"https://developers.cloudflare.com/workers-ai/platform/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/platform/errors/","name":"Errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/errors/#page","headline":"Errors · Cloudflare Workers AI docs","description":"Reference table of Workers AI error codes, HTTP statuses, and descriptions.","url":"https://developers.cloudflare.com/workers-ai/platform/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

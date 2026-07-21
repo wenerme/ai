@@ -1,16 +1,18 @@
 ---
-title: Google Vertex AI
 description: Route Google Vertex AI requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Google Vertex AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Google Vertex AI
 
-# Google Vertex AI
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Google Vertex AI ↗](https://cloud.google.com/vertex-ai) enables developers to easily build and deploy enterprise ready generative AI experiences.
 
@@ -115,17 +117,17 @@ When passing the service account JSON directly in the header (not using BYOK), y
 
 ```json
 {
-  "type": "service_account",
-  "project_id": "your-project-id",
-  "private_key_id": "your-private-key-id",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY\n-----END PRIVATE KEY-----\n",
-  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
-  "client_id": "your-client-id",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40your-project.iam.gserviceaccount.com",
-  "region": "us-central1"
+	"type": "service_account",
+	"project_id": "your-project-id",
+	"private_key_id": "your-private-key-id",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY\n-----END PRIVATE KEY-----\n",
+	"client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+	"client_id": "your-client-id",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40your-project.iam.gserviceaccount.com",
+	"region": "us-central1"
 }
 ```
 
@@ -189,41 +191,35 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat
 
 If not using BYOK, pass the base64-encoded service account JSON (with `region` key included) as the API key:
 
-**JavaScript**
-
 ```javascript
 import OpenAI from "openai";
 
-
 // Service account JSON must include "region" key when not using BYOK
 const serviceAccountJson = JSON.stringify({
-  type: "service_account",
-  project_id: "your-project-id",
-  // ... other fields from your downloaded JSON
-  region: "us-central1", // Required: add this to your service account JSON
+	type: "service_account",
+	project_id: "your-project-id",
+	// ... other fields from your downloaded JSON
+	region: "us-central1", // Required: add this to your service account JSON
 });
-
 
 const client = new OpenAI({
-  apiKey: Buffer.from(serviceAccountJson).toString("base64"),
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
-  defaultHeaders: {
-    "cf-aig-authorization": `Bearer {cf_aig_token}`,
-  },
+	apiKey: Buffer.from(serviceAccountJson).toString("base64"),
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	defaultHeaders: {
+		"cf-aig-authorization": `Bearer {cf_aig_token}`,
+	},
 });
-
 
 const response = await client.chat.completions.create({
-  model: "google-vertex-ai/google/gemini-2.5-pro",
-  messages: [
-    {
-      role: "user",
-      content: "What is Cloudflare?",
-    },
-  ],
+	model: "google-vertex-ai/google/gemini-2.5-pro",
+	messages: [
+		{
+			role: "user",
+			content: "What is Cloudflare?",
+		},
+	],
 });
-
 
 console.log(response.choices[0].message.content);
 ```
@@ -233,7 +229,6 @@ console.log(response.choices[0].message.content);
 ```bash
 # First, base64-encode your service account JSON (must include "region" key)
 SERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
-
 
 curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \
     -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
@@ -288,7 +283,6 @@ If not using BYOK, pass the base64-encoded service account JSON (with `region` k
 # First, base64-encode your service account JSON (must include "region" key) as a single line
 SERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
 
-
 curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \
     -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
     -H "Authorization: Bearer $SERVICE_ACCOUNT_BASE64" \
@@ -323,7 +317,14 @@ If you receive a `CREDENTIALS_MISSING` or `UNAUTHENTICATED` error from Google, c
 3. **Check service account permissions**: Ensure your service account has the `Vertex AI User` role or equivalent permissions in Google Cloud.
 4. **Verify the region key** (non-BYOK only): If passing service account JSON directly in the `Authorization` header, make sure the JSON includes the `region` key.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#page","headline":"Google Vertex AI · Cloudflare AI Gateway docs","description":"Route Google Vertex AI requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/vertex/","name":"Google Vertex AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#page","headline":"Google Vertex AI · Cloudflare AI Gateway docs","description":"Route Google Vertex AI requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

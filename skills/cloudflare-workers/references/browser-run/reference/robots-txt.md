@@ -1,16 +1,18 @@
 ---
-title: robots.txt and sitemaps
 description: Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: robots.txt and sitemaps
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  robots.txt and sitemaps
 
-# robots.txt and sitemaps
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/reference/robots-txt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides general guidance on configuring `robots.txt` and sitemaps for websites you plan to access with Browser Run.
 
@@ -38,24 +40,18 @@ A well-configured `robots.txt` helps crawlers understand which parts of your sit
 
 Include a reference to your sitemap in `robots.txt` so crawlers can discover your URLs:
 
-**robots.txt**
-
 ```txt
 User-agent: *
 Allow: /
-
 
 Sitemap: https://example.com/sitemap.xml
 ```
 
 You can list multiple sitemaps:
 
-**robots.txt**
-
 ```txt
 User-agent: *
 Allow: /
-
 
 Sitemap: https://example.com/sitemap.xml
 Sitemap: https://example.com/blog-sitemap.xml
@@ -65,13 +61,10 @@ Sitemap: https://example.com/blog-sitemap.xml
 
 Use `crawl-delay` to control how frequently crawlers request pages from your server:
 
-**robots.txt**
-
 ```txt
 User-agent: *
 Crawl-delay: 2
 Allow: /
-
 
 Sitemap: https://example.com/sitemap.xml
 ```
@@ -86,8 +79,6 @@ If you want to prevent Browser Run (or other crawlers) from accessing your site,
 
 To prevent all crawlers from accessing any page on your site:
 
-**robots.txt**
-
 ```txt
 User-agent: *
 Disallow: /
@@ -99,12 +90,9 @@ This is the most restrictive configuration and blocks all compliant bots, not ju
 
 The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) identifies itself with the User-Agent `CloudflareBrowserRenderingCrawler/1.0`. To block the `/crawl` endpoint while allowing all other traffic (including other Browser Run [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) endpoints, which use a [different User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent)):
 
-**robots.txt**
-
 ```txt
 User-agent: CloudflareBrowserRenderingCrawler
 Disallow: /
-
 
 User-agent: *
 Allow: /
@@ -114,14 +102,11 @@ Allow: /
 
 To allow the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) to access your site but block specific sections:
 
-**robots.txt**
-
 ```txt
 User-agent: CloudflareBrowserRenderingCrawler
 Disallow: /admin/
 Disallow: /private/
 Allow: /
-
 
 User-agent: *
 Allow: /
@@ -130,8 +115,6 @@ Allow: /
 ## Best practices for sitemaps
 
 Structure your sitemap to help crawlers process your site efficiently:
-
-**sitemap.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -158,8 +141,6 @@ Structure your sitemap to help crawlers process your site efficiently:
 ### Sitemap index files
 
 For large sites with multiple sitemaps, use a sitemap index file. Browser Run uses the `depth` parameter to control how many levels of nested sitemaps are crawled:
-
-**sitemap.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -192,7 +173,14 @@ Browser Run periodically refetches sitemaps to keep content fresh. Serve your si
 * [FAQ: Will Browser Run be detected by Bot Management?](https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management) — How Browser Run interacts with bot protection and how to create a WAF skip rule
 * [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) — User-Agent strings and non-configurable headers used by Browser Run
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/robots-txt/#page","headline":"robots.txt and sitemaps · Cloudflare Browser Run docs","description":"Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.","url":"https://developers.cloudflare.com/browser-run/reference/robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/robots-txt/","name":"robots.txt and sitemaps"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/robots-txt/#page","headline":"robots.txt and sitemaps · Cloudflare Browser Run docs","description":"Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.","url":"https://developers.cloudflare.com/browser-run/reference/robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

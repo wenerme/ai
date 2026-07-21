@@ -1,16 +1,18 @@
 ---
-title: Known limitations
 description: Reference information for Known limitations in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Known limitations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Known limitations
 
-# Known limitations
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information on devices, software, and configurations that are incompatible with the Cloudflare One Client (formerly WARP).
 
@@ -62,7 +64,6 @@ C:\Users\JohnDoe>nslookup google.com
 Server:  UnKnown
 Address:  ::ffff:127.0.2.2
 
-
 *** UnKnown can't find google.com: No response from server
 ```
 
@@ -73,8 +74,6 @@ C:\Users\JohnDoe>nslookup google.com 127.0.2.2
 ```
 
 Alternatively, use PowerShell:
-
-**PowerShell**
 
 ```powershell
 Resolve-DnsName -Name google.com
@@ -123,7 +122,7 @@ To work around this issue, users of the Cloudflare One Client with Docker on Lin
 
 ```json
 {
-  "mtu": 1420
+	"mtu": 1420
 }
 ```
 
@@ -152,15 +151,12 @@ The following example uses a special host (`connectivity-check.warp-svc`) that i
 Server:         8.8.8.8
 Address:        8.8.8.8:53
 
-
 ** server can't find connectivity-check.warp-svc.: NXDOMAIN
 ** server can't find connectivity-check.warp-svc.: NXDOMAIN
-
 
 # Create a bridge network called demo
 ❯ docker network create demo
 e1e1943a6995a7e8c115a1c60357fe64f87a3ae90074ce6e4c3f0d2bba3fa892
-
 
 # The host is resolvable by running a container under this custom network
 ❯ docker run --rm --net demo alpine nslookup connectivity-check.warp-svc.
@@ -174,7 +170,6 @@ Name:   connectivity-check.warp-svc
 Address: 127.0.2.2
 Name:   connectivity-check.warp-svc
 Address: 127.0.2.3
-
 
 # The host is also resolvable by running a container using a host network
 ❯ docker run --rm --net host alpine nslookup connectivity-check.warp-svc.
@@ -289,7 +284,14 @@ For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to
 
 Windows devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to version [1.429.19.0 ↗](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#page","headline":"Known limitations - Cloudflare One Client · Cloudflare One docs","description":"Reference information for Known limitations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/","name":"Troubleshoot the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","name":"Known limitations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#page","headline":"Known limitations - Cloudflare One Client · Cloudflare One docs","description":"Reference information for Known limitations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","DNS"]}
 ```

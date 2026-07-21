@@ -1,16 +1,18 @@
 ---
-title: Background
 description: History and development of the drand project.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Background
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/randomness-beacon/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Background
 
-# Background
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/randomness-beacon/about/background/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Over the years, a generation of public randomness (often referred to as _common coins_) has attracted interest from the cryptography research community. Many distributed systems, including various consensus mechanisms, anonymity networks such as Tor, or blockchain systems, assume access to such public randomness. However, it remained a major unsolved issue to generate public randomness in a distributed, scalable, and robust way. Currently, there is no service deployed to produce this type of randomness. The only choice is a centralized, prototype-only randomness beacon run by [NIST ↗](https://www.nist.gov/).
 
@@ -26,7 +28,14 @@ As drand gained maturity, an increasing number of organizations (including NIST,
 
 In spring 2020, a team at Protocol Labs led efforts to take drand from an experimental to production-ready network. These efforts included significant protocol upgrades, establishment of a governance model for the distributed network, and increased operational security of node operators. Check out the [drand blog ↗](https://drand.love/blog/2020/08/10/drand-launches-v1-0/) for more details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/background/#page","headline":"Background · Cloudflare Randomness Beacon docs","description":"History and development of the drand project.","url":"https://developers.cloudflare.com/randomness-beacon/about/background/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/about/","name":"About drand"}},{"@type":"ListItem","position":4,"item":{"@id":"/randomness-beacon/about/background/","name":"Background"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/background/#page","headline":"Background · Cloudflare Randomness Beacon docs","description":"History and development of the drand project.","url":"https://developers.cloudflare.com/randomness-beacon/about/background/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

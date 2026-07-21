@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: Learn about the limits associated with Browser Run.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated May 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browser Run limits are based on your [Cloudflare Workers plan](https://developers.cloudflare.com/workers/platform/pricing/).
 
@@ -22,7 +24,7 @@ Need higher limits?
 
 If you are on a Workers Free plan and you want to increase your limits, upgrade to a Workers Paid plan in the **Workers plans** page of the Cloudflare dashboard:
 
-[ Go to **Workers plans** ](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[ Go to **Workers plans** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 | Feature                                                                         | Limit                              |
 | ------------------------------------------------------------------------------- | ---------------------------------- |
@@ -92,7 +94,7 @@ To minimize usage:
 
 You can monitor your usage and view session close reasons in the Cloudflare dashboard on the **Browser Run** page:
 
-[ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+[ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 
 Refer to [Browser close reasons](https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/) for more information.
 
@@ -104,11 +106,6 @@ When you make too many requests in a short period of time, Browser Run will resp
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ Quick Actions ](#tab-panel-7545)
-* [ Puppeteer ](#tab-panel-7546)
-
-**JavaScript**
-
 ```js
 const response = await fetch('https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content', {
     method: 'POST',
@@ -119,48 +116,39 @@ const response = await fetch('https://api.cloudflare.com/client/v4/accounts/<acc
     body: JSON.stringify({ url: 'https://example.com' })
 });
 
-
 if (response.status === 429) {
 const retryAfter = response.headers.get('Retry-After');
 console.log(`Rate limited. Waiting ${retryAfter} seconds...`);
 await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
 
-
     // Retry the request
     const retryResponse = await fetch(/* same request as above */);
-
 
 }
 ```
 
-**JavaScript**
-
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 try {
-  const browser = await puppeteer.launch(env.MYBROWSER);
+	const browser = await puppeteer.launch(env.MYBROWSER);
 
+	const page = await browser.newPage();
+	await page.goto("https://example.com");
+	const content = await page.content();
 
-  const page = await browser.newPage();
-  await page.goto("https://example.com");
-  const content = await page.content();
-
-
-  await browser.close();
+	await browser.close();
 } catch (error) {
-  if (error.status === 429) {
-    const retryAfter = error.headers.get("Retry-After");
-    console.log(
-      `Browser instance limit reached. Waiting ${retryAfter} seconds...`,
-    );
-    await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
+	if (error.status === 429) {
+		const retryAfter = error.headers.get("Retry-After");
+		console.log(
+			`Browser instance limit reached. Waiting ${retryAfter} seconds...`,
+		);
+		await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
 
-
-    // Retry launching browser
-    const browser = await puppeteer.launch(env.MYBROWSER);
-  }
+		// Retry launching browser
+		const browser = await puppeteer.launch(env.MYBROWSER);
+	}
 }
 ```
 
@@ -170,7 +158,7 @@ This `Error processing the request: Unable to create new browser: code: 429: mes
 
 You can [increase your limits](#workers-paid) by upgrading to a Workers Paid plan on the **Workers plans** page of the Cloudflare dashboard:
 
-[ Go to **Workers plans** ](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[ Go to **Workers plans** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 If you recently upgraded but still encounter the 10-minute per day limit, redeploy your Worker to ensure your usage is correctly associated with the new plan.
 
@@ -180,7 +168,14 @@ If you recently upgraded but still encounter the 10-minute per day limit, redepl
 2. By default, a browser will time out after 60 seconds of inactivity. You can extend this to up to 10 minutes using the [keep\_alive option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive). Call `browser.close()` to release the browser instance immediately. [↩](#user-content-fnref-2) [↩2](#user-content-fnref-2-2)
 3. If you exceed the per-second rate limit, you will receive a `429` response. Refer to [troubleshooting the 429 Too many requests error](#error-429-too-many-requests). [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits · Cloudflare Browser Run docs","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits · Cloudflare Browser Run docs","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -5,22 +5,6 @@ Use the Member Roles API to manage custom roles for GitLab.com groups or GitLab 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/96996) in GitLab 15.4. [Deployed behind the `customizable_roles` flag](../administration/feature_flags/_index.md), disabled by default.
-- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/110810) in GitLab 15.9.
-- [Read vulnerability added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/114734) in GitLab 16.0.
-- [Admin vulnerability added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121534) in GitLab 16.1.
-- [Read dependency added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/126247) in GitLab 16.3.
-- [Name and description fields added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/126423) in GitLab 16.3.
-- [Admin merge request introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128302) in GitLab 16.4 [with a feature flag](../administration/feature_flags/_index.md) named `admin_merge_request`. Disabled by default.
-- [Feature flag `admin_merge_request` removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132578) in GitLab 16.5.
-- [Admin group members introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131914) in GitLab 16.5 [with a feature flag](../administration/feature_flags/_index.md) named `admin_group_member`. Disabled by default. The feature flag has been removed in GitLab 16.6.
-- [Manage project access tokens introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132342) in GitLab 16.5 [with a feature flag](../administration/feature_flags/_index.md) named `manage_project_access_tokens`. Disabled by default.
-- [Archive project introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134998) in GitLab 16.7.
-- [Delete project introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/139696) in GitLab 16.8.
-- [Manage group access tokens introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140115) in GitLab 16.8.
-- [Admin terraform state introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140759) in GitLab 16.8.
-- Allow to create and remove an instance-wide custom role on GitLab Self-Managed [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141562) in GitLab 16.9.
-
 Use this API to interact with member roles for your GitLab.com groups or entire GitLab Self-Managed instance.
 
 ## Manage instance member roles
@@ -96,10 +80,10 @@ Supported attributes:
 |:----------|:--------|:---------|:-------------------------------------|
 | `name`         | string         | yes      | The name of the member role. |
 | `description`  | string         | no       | The description of the member role. |
-| `base_access_level` | integer   | yes      | Base access level for configured role. Valid values are `10` (Guest), `15` (Planner), `20` (Reporter), `25` (Security Manager), `30` (Developer), `40` (Maintainer), or `50` (Owner).|
+| `base_access_level` | integer   | yes      | Base access level for configured role. Valid values are `10` (Guest), `15` (Planner), `20` (Reporter), `25` (Security Manager), `30` (Developer), `40` (Maintainer), or `50` (Owner). |
 | `admin_cicd_variables` | boolean | no       | Permission to create, read, update, and delete CI/CD variables. |
 | `admin_compliance_framework` | boolean | no       | Permission to administer compliance frameworks. |
-| `admin_group_member` | boolean | no       | Permission to add, remove and assign members in a group. |
+| `admin_group_member` | boolean | no       | Permission to add, remove, and assign members in a group. |
 | `admin_merge_request` | boolean | no       | Permission to approve merge requests. |
 | `admin_push_rules` | boolean | no       | Permission to configure push rules for repositories at group or project level. |
 | `admin_terraform_state` | boolean | no       | Permission to administer project terraform state. |
@@ -279,8 +263,6 @@ Example response:
 
 ### Add a member role to a group
 
-- Ability to add a name and description when creating a custom role [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/126423) in GitLab 16.3.
-
 Adds a member role to a group. You can only add member roles at the root level of the group.
 
 ```plaintext
@@ -294,7 +276,7 @@ Parameters:
 | `id`      | integer or string      | yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group of the group. |
 | `admin_cicd_variables` | boolean | no       | Permission to create, read, update, and delete CI/CD variables. |
 | `admin_compliance_framework` | boolean | no       | Permission to administer compliance frameworks. |
-| `admin_group_member` | boolean | no       | Permission to add, remove and assign members in a group. |
+| `admin_group_member` | boolean | no       | Permission to add, remove, and assign members in a group. |
 | `admin_merge_request` | boolean | no       | Permission to approve merge requests. |
 | `admin_push_rules` | boolean | no       | Permission to configure push rules for repositories at group or project level. |
 | `admin_terraform_state` | boolean | no       | Permission to admin project terraform state. |
@@ -355,7 +337,7 @@ Example response:
 }
 ```
 
-In GitLab 16.3 and later, you can use the API to:
+You can use the API to:
 
 - Add a name (required) and description (optional) when you
   [create a new custom role](../user/custom_roles/_index.md#create-a-custom-member-role).

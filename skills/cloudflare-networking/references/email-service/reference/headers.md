@@ -1,18 +1,20 @@
 ---
-title: Email headers
 description: Allowed, platform-controlled, and custom email headers for Email Service with validation rules.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Email headers
+#  Email headers
 
 Which email headers you can set, which are auto-generated, and how they are validated
+
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/reference/headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
@@ -106,9 +108,6 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-9270)
-* [ Workers binding ](#tab-panel-9271)
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
   --header "Authorization: Bearer <API_TOKEN>" \
@@ -129,29 +128,25 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
   }'
 ```
 
-**TypeScript**
-
 ```typescript
 const response = await env.EMAIL.send({
-  to: "user@example.com",
-  from: "notifications@yourdomain.com",
-  subject: "Your weekly digest",
-  html: "<h1>Weekly Digest</h1>",
-  headers: {
-    // Threading
-    "In-Reply-To": "<original-message-id@yourdomain.com>",
-    References: "<original-message-id@yourdomain.com>",
+	to: "user@example.com",
+	from: "notifications@yourdomain.com",
+	subject: "Your weekly digest",
+	html: "<h1>Weekly Digest</h1>",
+	headers: {
+		// Threading
+		"In-Reply-To": "<original-message-id@yourdomain.com>",
+		References: "<original-message-id@yourdomain.com>",
 
+		// List management (required by Gmail/Yahoo for bulk senders)
+		"List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
+		"List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
 
-    // List management (required by Gmail/Yahoo for bulk senders)
-    "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
-    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-
-
-    // Custom tracking
-    "X-Campaign-ID": "weekly-digest-2026-03",
-    "X-User-Segment": "premium",
-  },
+		// Custom tracking
+		"X-Campaign-ID": "weekly-digest-2026-03",
+		"X-User-Segment": "premium",
+	},
 });
 ```
 
@@ -186,7 +181,14 @@ The total payload is calculated as `sum(len(name) + 2 + len(value) + 2)` for all
 | E\_HEADERS\_TOO\_LARGE      | Total custom headers payload exceeds 16 KB                   | Total custom headers payload (17.2KB) exceeds 16KB limit.                     |
 | E\_HEADERS\_TOO\_MANY       | Too many allowlisted (non-X) custom headers                  | 21 allowlisted headers provided, maximum is 20.                               |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers · Cloudflare Email Service docs","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/headers/","name":"Email headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers · Cloudflare Email Service docs","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Vike
 description: Create a Vike application and deploy it to Cloudflare Workers
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vike
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vike
 
-# Vike
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy your [Vike ↗](https://vike.dev) app to Cloudflare using the Vike extension [vike-photon ↗](https://vike.dev/vike-photon).
 
@@ -83,47 +85,40 @@ pnpm add wrangler vike-photon @photonjs/cloudflare
 ```
 bun add wrangler vike-photon @photonjs/cloudflare
 ```
-2. **pages/+config.ts**
-```ts
-import type { Config } from 'vike/types'
-import vikePhoton from 'vike-photon/config'
-export default {
-  extends: [vikePhoton]
-} satisfies Config
+2. ```diff
+  import type { Config } from 'vike/types'
++ import vikePhoton from 'vike-photon/config'
+  export default {
++   extends: [vikePhoton]
+  } satisfies Config
 ```
-3. **package.json**
-```json
-{
-  "scripts": {
-    "dev": "vike dev",
-    "preview": "vike build && vike preview",
-    "deploy": "vike build && wrangler deploy"
+3. ```diff
+  {
+    "scripts": {
+      "dev": "vike dev",
++     "preview": "vike build && vike preview",
++     "deploy": "vike build && wrangler deploy"
+    }
   }
-}
 ```
-
-**wrangler.jsonc**
-```jsonc
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "compatibility_date": "2025-08-06",
-  "name": "my-vike-cloudflare-app",
-  "main": "virtual:photon:cloudflare:server-entry",
-  // Only required if your app depends a Node.js API
-  "compatibility_flags": ["nodejs_compat"]
-}
+```diff
++ {
++   "$schema": "node_modules/wrangler/config-schema.json",
++   "compatibility_date": "2025-08-06",
++   "name": "my-vike-cloudflare-app",
++   "main": "virtual:photon:cloudflare:server-entry",
++   // Only required if your app depends a Node.js API
++   "compatibility_flags": ["nodejs_compat"]
++ }
 ```
-4. **.gitignore**
-```bash
-.wrangler/
+4. ```diff
++ .wrangler/
 ```
 5. **(Optional)** By default, Photon uses a built-in server that supports basic features like SSR. If you need additional server functionalities (e.g. [file uploads ↗](https://hono.dev/examples/file-upload) or [API routes ↗](https://vike.dev/api-routes)), then [create your own server ↗](https://vike.dev/vike-photon#server).
 
 ## Cloudflare APIs (bindings)
 
 To access Cloudflare APIs (such as [D1](https://developers.cloudflare.com/d1/) and [KV](https://developers.cloudflare.com/kv/)), use [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) which are available via the `env` object [imported from cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
-
-**TypeScript**
 
 ```ts
 import { env } from 'cloudflare:workers'
@@ -178,14 +173,12 @@ git commit -am "update cloudflare types"
 
 Make sure TypeScript loads it:
 
-**tsconfig.json**
-
-```json
-{
-  "compilerOptions": {
-    "types": ["./worker-configuration.d.ts"]
- }
-}
+```diff
+  {
+    "compilerOptions": {
++     "types": ["./worker-configuration.d.ts"]
+   }
+  }
 ```
 
 See also: [Cloudflare Workers > TypeScript](https://developers.cloudflare.com/workers/languages/typescript/).
@@ -194,7 +187,14 @@ See also: [Cloudflare Workers > TypeScript](https://developers.cloudflare.com/wo
 
 * [Vike Docs > Cloudflare ↗](https://vike.dev/cloudflare)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/#page","headline":"Vike · Cloudflare Workers docs","description":"Create a Vike application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/vike/","name":"Vike"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/#page","headline":"Vike · Cloudflare Workers docs","description":"Create a Vike application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Terminal
 description: Connect browser-based terminal UIs to sandbox shells via WebSocket.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Terminal
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terminal
 
-# Terminal
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/api/terminal/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Connect browser-based terminal UIs to sandbox shells via WebSocket. The server-side `terminal()` method proxies WebSocket connections to the container, and the client-side `SandboxAddon` integrates with xterm.js for terminal rendering.
 
@@ -19,8 +21,6 @@ Connect browser-based terminal UIs to sandbox shells via WebSocket. The server-s
 ### `terminal()`
 
 Proxy a WebSocket upgrade request to create a terminal connection.
-
-**TypeScript**
 
 ```ts
 const response = await sandbox.terminal(request: Request, options?: PtyOptions): Promise<Response>
@@ -35,17 +35,10 @@ const response = await sandbox.terminal(request: Request, options?: PtyOptions):
 
 **Returns**: `Promise<Response>` — WebSocket upgrade response
 
-* [  JavaScript ](#tab-panel-11053)
-* [  TypeScript ](#tab-panel-11054)
-
-**JavaScript**
-
 ```js
 // In your Worker's fetch handler
 return await sandbox.terminal(request, { cols: 120, rows: 30 });
 ```
-
-**TypeScript**
 
 ```ts
 // In your Worker's fetch handler
@@ -54,27 +47,18 @@ return await sandbox.terminal(request, { cols: 120, rows: 30 });
 
 Works with both [default and explicitly created sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/):
 
-* [  JavaScript ](#tab-panel-11055)
-* [  TypeScript ](#tab-panel-11056)
-
-**JavaScript**
-
 ```js
 // Default session
 return await sandbox.terminal(request);
-
 
 // Specific session
 const session = await sandbox.getSession("dev");
 return await session.terminal(request);
 ```
 
-**TypeScript**
-
 ```ts
 // Default session
 return await sandbox.terminal(request);
-
 
 // Specific session
 const session = await sandbox.getSession('dev');
@@ -87,11 +71,8 @@ The `@cloudflare/sandbox/xterm` module provides `SandboxAddon` for xterm.js, whi
 
 ### `SandboxAddon`
 
-**TypeScript**
-
 ```ts
 import { SandboxAddon } from '@cloudflare/sandbox/xterm';
-
 
 const addon = new SandboxAddon(options: SandboxAddonOptions);
 ```
@@ -105,46 +86,34 @@ const addon = new SandboxAddon(options: SandboxAddonOptions);
 * `reconnect` \- Enable automatic reconnection with exponential backoff (default: `true`)
 * `onStateChange(state, error?)` \- Callback for connection state changes
 
-* [  JavaScript ](#tab-panel-11057)
-* [  TypeScript ](#tab-panel-11058)
-
-**JavaScript**
-
 ```js
 import { Terminal } from "@xterm/xterm";
 import { SandboxAddon } from "@cloudflare/sandbox/xterm";
 
-
 const terminal = new Terminal({ cursorBlink: true });
 terminal.open(document.getElementById("terminal"));
 
-
 const addon = new SandboxAddon({
-  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
-    const params = new URLSearchParams({ id: sandboxId });
-    if (sessionId) params.set("session", sessionId);
-    return `${origin}/ws/terminal?${params}`;
-  },
-  onStateChange: (state, error) => {
-    console.log(`Terminal ${state}`, error);
-  },
+	getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+		const params = new URLSearchParams({ id: sandboxId });
+		if (sessionId) params.set("session", sessionId);
+		return `${origin}/ws/terminal?${params}`;
+	},
+	onStateChange: (state, error) => {
+		console.log(`Terminal ${state}`, error);
+	},
 });
-
 
 terminal.loadAddon(addon);
 addon.connect({ sandboxId: "my-sandbox" });
 ```
 
-**TypeScript**
-
 ```ts
 import { Terminal } from '@xterm/xterm';
 import { SandboxAddon } from '@cloudflare/sandbox/xterm';
 
-
 const terminal = new Terminal({ cursorBlink: true });
 terminal.open(document.getElementById('terminal'));
-
 
 const addon = new SandboxAddon({
   getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
@@ -157,7 +126,6 @@ const addon = new SandboxAddon({
   }
 });
 
-
 terminal.loadAddon(addon);
 addon.connect({ sandboxId: 'my-sandbox' });
 ```
@@ -165,8 +133,6 @@ addon.connect({ sandboxId: 'my-sandbox' });
 ### `connect()`
 
 Establish a connection to a sandbox terminal.
-
-**TypeScript**
 
 ```ts
 addon.connect(target: ConnectionTarget): void
@@ -183,8 +149,6 @@ Calling `connect()` with a new target disconnects from the current target and co
 ### `disconnect()`
 
 Close the connection and stop any reconnection attempts.
-
-**TypeScript**
 
 ```ts
 addon.disconnect(): void
@@ -244,32 +208,27 @@ The server sends JSON text frames for lifecycle events.
 
 ## Types
 
-**TypeScript**
-
 ```ts
 interface PtyOptions {
-  cols?: number;
-  rows?: number;
+	cols?: number;
+	rows?: number;
 }
-
 
 type ConnectionState = "disconnected" | "connecting" | "connected";
 
-
 interface ConnectionTarget {
-  sandboxId: string;
-  sessionId?: string;
+	sandboxId: string;
+	sessionId?: string;
 }
 
-
 interface SandboxAddonOptions {
-  getWebSocketUrl: (params: {
-    sandboxId: string;
-    sessionId?: string;
-    origin: string;
-  }) => string;
-  reconnect?: boolean;
-  onStateChange?: (state: ConnectionState, error?: Error) => void;
+	getWebSocketUrl: (params: {
+		sandboxId: string;
+		sessionId?: string;
+		origin: string;
+	}) => string;
+	reconnect?: boolean;
+	onStateChange?: (state: ConnectionState, error?: Error) => void;
 }
 ```
 
@@ -280,7 +239,14 @@ interface SandboxAddonOptions {
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) — Session management
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) — Non-interactive command execution
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/terminal/#page","headline":"Terminal · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminal UIs to sandbox shells via WebSocket.","url":"https://developers.cloudflare.com/sandbox/api/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/terminal/","name":"Terminal"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/terminal/#page","headline":"Terminal · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminal UIs to sandbox shells via WebSocket.","url":"https://developers.cloudflare.com/sandbox/api/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

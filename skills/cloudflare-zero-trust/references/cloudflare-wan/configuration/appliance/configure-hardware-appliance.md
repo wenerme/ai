@@ -1,16 +1,18 @@
 ---
-title: Configure hardware Appliance
 description: Configure the hardware Cloudflare One Appliance.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure hardware Appliance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure hardware Appliance
 
-# Configure hardware Appliance
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the [Maintenance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/) section where you will find instructions on how to update your settings.
 
@@ -34,12 +36,12 @@ In this type of high availability (HA) configuration, you will choose a reliable
 
 You must decide the type of configuration you want for your site from the beginning: no redundancy or with redundancy. You cannot add redundancy after finishing the configuration of your dashboard settings. If, at a later stage, you decide to enable redundancy, you will need to delete your Cloudflare One Appliance device in the Cloudflare dashboard, and start again.
 
-Do you need a high availability configuration?
+### Do you need a high availability configuration?
 
 * If you need a high availability configuration for your premises, refer to [About high availability configurations](#about-high-availability-configurations) for details and learn how to configure your Cloudflare One Appliance device in this mode.
 * If you do not need a high availability configuration for you premises, check if you need a [DHCP or a static IP setup](#decide-on-dhcp-vs-static-ip-connections) before proceeding to [Set up Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
-Warning
+Caution
 
 You cannot enable high availability for an existing Cloudflare One Appliance on-ramp. To add high availability to an existing Cloudflare One Appliance on-ramp in the Cloudflare dashboard, you need to delete the on-ramp and start again. Plan accordingly to create a high availability configuration from the start if needed.
 
@@ -76,7 +78,7 @@ Refer to [](/cloudflare-wan/configuration/appliance/configure-hardware-appliance
 To set up and use the hardware version of Cloudflare One Appliance (formerly Magic WAN Connector), you first need to register it with your account. This is not applicable to Virtual Cloudflare One Appliance.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. In the **Appliances** tab > **Appliances**, select **Register an appliance**.
 1. In **Appliance details** \> **Serial number**, insert the serial number for your device. You can optionally add notes about the Cloudflare One Appliance you are adding to the dashboard.
 2. (Optional) Select **Add** under **Serial number** to add multiple Cloudflare One Appliances at once to your account.
@@ -91,7 +93,7 @@ You need to create a profile for your appliance before connecting it to the Inte
 To create a profile:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Go to the **Appliances** tab > **Profiles** \> **Create a new profile**.
 1. In **Name**, enter a descriptive name for your Cloudflare One Appliance. Optionally, you can also add a description for it.
 2. You need to decide if you want to turn on high availability for the Cloudflare One Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
@@ -103,9 +105,6 @@ To create a profile:
 7. Select **Continue** to proceed to creating your WAN and LAN networks.
 
 ### Create a WAN
-
-* [ Dashboard ](#tab-panel-8409)
-* [ API ](#tab-panel-8410)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -119,13 +118,14 @@ This is not the same as a high availability (HA) configuration. HA configuration
 5. In **Priority**, choose the priority for your WAN. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
 6. In **Health check rate** configure the health check frequency for your site. Options are `low`, `mid`, and `high`. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
 7. **Addressing**: Select **DHCP**. This is needed the first time you set up your Cloudflare One Appliance to successfully download all settings to the machine and activate it. If you need a static IP address in your network environment:
+
   1. Continue the set up flow to activate your Cloudflare One Appliance.
   2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
 8. Select **Save** when you are finished.
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
@@ -139,17 +139,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 --header "X-Auth-Key: <API_KEY>" \
 --header "Content-Type: application/json" \
 --data '{
-  "name": "<YOUR_WAN_NAME>",
-  "physport": 1,
-  "priority": 0,
-  "vlan_tag": 0
+	"name": "<YOUR_WAN_NAME>",
+	"physport": 1,
+	"priority": 0,
+	"vlan_tag": 0
 }'
 ```
 
 ### Create a LAN
-
-* [ Dashboard ](#tab-panel-8411)
-* [ API ](#tab-panel-8412)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -170,7 +167,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/create/) to create a LAN.
 
@@ -182,12 +179,12 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 --header "X-Auth-Key: <API_KEY>" \
 --header "Content-Type: application/json" \
 --data '{
-  "name": "<YOUR_LAN_NAME>",
-  "physport": 2,
-  "static_addressing": {
-    "address": "172.16.14.0/24"
-  },
-  "vlan_tag": 0
+	"name": "<YOUR_LAN_NAME>",
+	"physport": 2,
+	"static_addressing": {
+		"address": "172.16.14.0/24"
+	},
+	"vlan_tag": 0
 }'
 ```
 
@@ -277,14 +274,14 @@ When Cloudflare One Appliance is first activated, you need to have Internet conn
 
  If you set up your Cloudflare One Appliance with a static IP through the bootstrap method, you do not need a DHCP port. For details, refer to [ DHCP vs static IP connections](#decide-on-dhcp-vs-static-ip-connections).
 
-Warning
+Caution
 
-Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work.
+ Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work.
 
 When you are ready to connect your Cloudflare One Appliance to the Cloudflare network:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**.
 2. Find the Cloudflare One Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Cloudflare One Appliance you want to activate.
 3. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
@@ -297,9 +294,9 @@ When you are ready to connect your Cloudflare One Appliance to the Cloudflare ne
 
 After activating your device, you can use it in a network configuration with the WAN interface set to a static IP address — that is, an Internet configuration that is not automatically set by DHCP. To use your Cloudflare One Appliance on a network configuration with a static IP, follow these steps:
 
-Warning
+Caution
 
-Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP.
+ Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP.
 
 1. Connect Cloudflare One Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.
@@ -320,7 +317,7 @@ The following is a detailed description of how to use the serial port to configu
 
 Note
 
-The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots.
+ The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots.
 
 ### Equipment required
 
@@ -394,7 +391,7 @@ The `reset device` option in your Cloudflare One Appliance clears most of the co
 
 Note
 
-The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance [via the dashboard](#set-up-cloudflare-dashboard).
+ The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance[via the dashboard](#set-up-cloudflare-dashboard).
 
 1. Enter the IP address you would like the appliance to have in CIDR form (for example, `10.0.0.2/24`).
 2. Enter the IP address of the Internet gateway (this must be in the same subnet as the previous IP address you entered and must not be the same address).
@@ -448,10 +445,10 @@ Cloudflare One Appliance automatically creates [IPsec tunnels](https://developer
 To check the IPsec tunnels and static routes created by your Cloudflare One Appliance:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. The **IPsec/GRE tunnels** tab shows a list of all the IPsec tunnels created by your Cloudflare One Appliance.
 2. Go to the **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Here you can inspect the static routes created by your Cloudflare One Appliance.
 
 ---
@@ -463,7 +460,14 @@ To check the IPsec tunnels and static routes created by your Cloudflare One Appl
 * [Reference information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/)
 * [Troubleshooting](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#page","headline":"Configure hardware Appliance · Cloudflare WAN docs","description":"Configure the hardware Cloudflare One Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","name":"Configure hardware Appliance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#page","headline":"Configure hardware Appliance · Cloudflare WAN docs","description":"Configure the hardware Cloudflare One Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Honeycomb
 description: Send traces from Pages Functions to Honeycomb for observability using this Plugin.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Honeycomb
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Honeycomb
 
-# Honeycomb
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/honeycomb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Honeycomb Pages Plugin automatically sends traces to Honeycomb for analysis and observability.
 
@@ -38,34 +40,28 @@ bun add @cloudflare/pages-plugin-honeycomb
 
 The following usage example uses environment variables you will need to set in your Pages project settings.
 
-**TypeScript**
-
 ```typescript
 import honeycombPlugin from "@cloudflare/pages-plugin-honeycomb";
 
-
 export const onRequest: PagesFunction<{
-  HONEYCOMB_API_KEY: string;
-  HONEYCOMB_DATASET: string;
+	HONEYCOMB_API_KEY: string;
+	HONEYCOMB_DATASET: string;
 }> = (context) => {
-  return honeycombPlugin({
-    apiKey: context.env.HONEYCOMB_API_KEY,
-    dataset: context.env.HONEYCOMB_DATASET,
-  })(context);
+	return honeycombPlugin({
+		apiKey: context.env.HONEYCOMB_API_KEY,
+		dataset: context.env.HONEYCOMB_DATASET,
+	})(context);
 };
 ```
 
 Alternatively, you can hard-code (not advisable for API key) your settings the following way:
 
-**TypeScript**
-
 ```typescript
 import honeycombPlugin from "@cloudflare/pages-plugin-honeycomb";
 
-
 export const onRequest = honeycombPlugin({
-  apiKey: "YOUR_HONEYCOMB_API_KEY",
-  dataset: "YOUR_HONEYCOMB_DATASET_NAME",
+	apiKey: "YOUR_HONEYCOMB_API_KEY",
+	dataset: "YOUR_HONEYCOMB_DATASET_NAME",
 });
 ```
 
@@ -86,29 +82,31 @@ More information about these methods can be seen on [@cloudflare/workers-honeyco
 
 For example, if you wanted to use the `addData` method to attach user information:
 
-**TypeScript**
-
 ```typescript
 import type { PluginData } from "@cloudflare/pages-plugin-honeycomb";
 
-
 export const onRequest: PagesFunction<unknown, any, PluginData> = async ({
-  data,
-  next,
-  request,
+	data,
+	next,
+	request,
 }) => {
-  // Authenticate the user from the request and extract user's email address
-  const email = await getEmailFromRequest(request);
+	// Authenticate the user from the request and extract user's email address
+	const email = await getEmailFromRequest(request);
 
+	data.honeycomb.tracer.addData({ email });
 
-  data.honeycomb.tracer.addData({ email });
-
-
-  return next();
+	return next();
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/honeycomb/#page","headline":"Honeycomb · Cloudflare Pages docs","description":"Send traces from Pages Functions to Honeycomb for observability using this Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/honeycomb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/honeycomb/","name":"Honeycomb"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/honeycomb/#page","headline":"Honeycomb · Cloudflare Pages docs","description":"Send traces from Pages Functions to Honeycomb for observability using this Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/honeycomb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

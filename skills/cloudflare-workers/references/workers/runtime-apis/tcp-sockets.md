@@ -1,16 +1,18 @@
 ---
-title: TCP sockets
 description: Use the `connect()` API to create outbound TCP connections from Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TCP sockets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TCP sockets
 
-# TCP sockets
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Workers runtime provides the `connect()` API for creating outbound [TCP connections ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) from Workers.
 
@@ -30,28 +32,22 @@ The `connect()` function returns a TCP socket, with both a [readable](https://de
 
 `connect()` is provided as a [Runtime API](https://developers.cloudflare.com/workers/runtime-apis/), and is accessed by importing the `connect` function from `cloudflare:sockets`. This process is similar to how one imports built-in modules in Node.js. Refer to the following codeblock for an example of creating a TCP socket, writing to it, and returning the readable side of the socket as a response:
 
-**TypeScript**
-
 ```typescript
 import { connect } from 'cloudflare:sockets';
-
 
 export default {
   async fetch(req): Promise<Response> {
     const gopherAddr = { hostname: "gopher.floodgap.com", port: 70 };
     const url = new URL(req.url);
 
-
     try {
       const socket = connect(gopherAddr);
-
 
       const writer = socket.writable.getWriter()
       const encoder = new TextEncoder();
       const encoded = encoder.encode(url.pathname + "\r\n");
       await writer.write(encoded);
       await writer.close();
-
 
       return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
     } catch (error) {
@@ -121,11 +117,8 @@ export default {
 
 Many TCP-based systems, including databases and email servers, require that clients use opportunistic TLS (otherwise known as [StartTLS ↗](https://en.wikipedia.org/wiki/Opportunistic%5FTLS)) when connecting. In this pattern, the client first creates an insecure TCP socket, without TLS, and then upgrades it to a secure TCP socket, that uses TLS. The `connect()` API simplifies this by providing a method, `startTls()`, which returns a new `Socket` instance that uses TLS:
 
-**TypeScript**
-
 ```typescript
 import { connect } from "cloudflare:sockets"
-
 
 const address = {
   hostname: "example-postgres-db.com",
@@ -143,8 +136,6 @@ const secureSocket = socket.startTls();
 
 To handle errors when creating a new TCP socket, reading from a socket, or writing to a socket, wrap these calls inside [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement blocks. The following example opens a connection to Google.com, initiates a HTTP request, and returns the response. If this fails and throws an exception, it returns a [500](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-500/) response:
 
-**TypeScript**
-
 ```typescript
 import { connect } from 'cloudflare:sockets';
 const connectionUrl = { hostname: "google.com", port: 80 };
@@ -159,7 +150,6 @@ export default {
       await writer.write(encoded);
       await writer.close();
 
-
       return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
     } catch (error) {
       return new Response(`Socket connection failed: ${error}`, { status: 500 });
@@ -172,16 +162,12 @@ export default {
 
 You can close a TCP connection by calling `close()` on the socket. This will close both the readable and writable sides of the socket.
 
-**TypeScript**
-
 ```typescript
 import { connect } from "cloudflare:sockets"
-
 
 const socket = connect({ hostname: "my-url.com", port: 70 });
 const reader = socket.readable.getReader();
 socket.close();
-
 
 // After close() is called, you can no longer read from the readable side of the socket
 const reader = socket.readable.getReader(); // This fails
@@ -214,7 +200,14 @@ Your socket is connecting back to the Worker that initiated the outbound connect
 
 Your socket is connecting to an address on port `25`. This is usually the port used for SMTP mail servers. Workers cannot create outbound connections on port `25`. Consider using [Cloudflare Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#page","headline":"TCP sockets · Cloudflare Workers docs","description":"Use the connect() API to create outbound TCP connections from Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/tcp-sockets/","name":"TCP sockets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#page","headline":"TCP sockets · Cloudflare Workers docs","description":"Use the connect() API to create outbound TCP connections from Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

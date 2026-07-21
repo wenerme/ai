@@ -1,37 +1,36 @@
 ---
-title: Grok Imagine Image Quality
 description: xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Grok Imagine Image Quality
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
 #  Grok Imagine Image Quality
 
-Text-to-Image • xAI
+ Text-to-Image • xAI
 
-`xai/grok-imagine-image-quality`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` xai/grok-imagine-image-quality `
+
+* Third-party
 
 xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.
 
-| Model Info        |                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
-| More information  | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image-quality)                                                         |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-quality) |
+| Model Info        |                                                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                                     |
+| More information  | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image-quality)                                                          |
+| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-quality) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-2210)
-* [ cURL ](#tab-panel-2211)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -53,9 +52,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2208)
-* [ Raw response ](#tab-panel-2209)
-
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/simple-generation.jpeg)
 
 ```json
@@ -73,11 +69,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **High Quality Portrait**  — High-quality portrait-orientation render at 2K resolution
-
-* [ TypeScript ](#tab-panel-2216)
-* [ cURL ](#tab-panel-2217)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -108,9 +99,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2212)
-* [ Raw response ](#tab-panel-2213)
-
 ![High Quality Portrait](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/high-quality-portrait.png)
 
 ```json
@@ -126,11 +114,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Cinematic Widescreen**  — Widescreen cinematic composition
-
-* [ TypeScript ](#tab-panel-2220)
-* [ cURL ](#tab-panel-2221)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -161,9 +144,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2214)
-* [ Raw response ](#tab-panel-2215)
-
 ![Cinematic Widescreen](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/cinematic-widescreen.png)
 
 ```json
@@ -179,11 +159,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Medium Quality Landscape**  — Balanced quality landscape render
-
-* [ TypeScript ](#tab-panel-2224)
-* [ cURL ](#tab-panel-2225)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -214,9 +189,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2218)
-* [ Raw response ](#tab-panel-2219)
-
 ![Medium Quality Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/medium-quality-landscape.jpeg)
 
 ```json
@@ -232,11 +204,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Square Low Quality Draft**  — Fast, rough draft for iteration
-
-* [ TypeScript ](#tab-panel-2226)
-* [ cURL ](#tab-panel-2227)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -266,9 +233,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2222)
-* [ Raw response ](#tab-panel-2223)
-
 ![Square Low Quality Draft](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/square-low-quality-draft.jpeg)
 
 ```json
@@ -284,9 +248,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-2228)
-* [ Output ](#tab-panel-2229)
 
 prompt
 
@@ -338,7 +299,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-qua
 
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/#page","headline":"Grok Imagine Image Quality (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/#page","headline":"Grok Imagine Image Quality (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

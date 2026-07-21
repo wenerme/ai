@@ -1,16 +1,18 @@
 ---
-title: Dashboard
 description: Create and deploy a Cloudflare Worker using the Cloudflare dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dashboard
 
-# Dashboard
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/get-started/dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this guide to create a Workers application using the Cloudflare dashboard.
 
@@ -27,7 +29,7 @@ The quickest way to experiment with Cloudflare Workers is in the [Playground ↗
 To get started with a new Workers application:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**. From here, you can:
 
   * Select from the gallery of production-ready templates
@@ -44,7 +46,6 @@ Applications started in the dashboard are set up with Git to help kickstart your
 # clone your repository locally
 git clone <git repo URL>
 
-
 # make sure you are in the root directory
 cd <directory>
 ```
@@ -55,10 +56,8 @@ Now, you can preview and test your changes by [running Wrangler in your local de
 # adds the files to git tracking
 git add .
 
-
 # commits the changes
 git commit -m "your message"
-
 
 # push the changes to your Git provider
 git push origin main
@@ -71,7 +70,14 @@ To do more:
 * Learn how to [test and debug](https://developers.cloudflare.com/workers/testing/) your Workers.
 * Read about [Workers limits and pricing](https://developers.cloudflare.com/workers/platform/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers docs","description":"Create and deploy a Cloudflare Worker using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/get-started/dashboard/","name":"Dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers docs","description":"Create and deploy a Cloudflare Worker using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

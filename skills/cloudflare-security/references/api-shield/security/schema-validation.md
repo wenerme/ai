@@ -1,16 +1,18 @@
 ---
-title: Schema validation
 description: Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Schema validation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Schema validation
 
-# Schema validation
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/schema-validation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
  Available on all plans
 
@@ -40,11 +42,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-7364)
-* [ Old dashboard ](#tab-panel-7365)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Add validation**.
 4. Upload a schema file.
@@ -64,11 +63,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-7366)
-* [ Old dashboard ](#tab-panel-7367)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Add validation**.
 4. Select **Apply learned schema**.
@@ -84,11 +80,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-7368)
-* [ Old dashboard ](#tab-panel-7369)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Add validation**.
 4. Select **Apply learned schema**.
@@ -116,11 +109,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-7382)
-* [ Old dashboard ](#tab-panel-7383)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**.
 3. Search for the template named `Mitigate API requests to unidentified endpoints` and select **Preview template**.
 4. Give your rule a descriptive name.
@@ -146,11 +136,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-7370)
-* [ Old dashboard ](#tab-panel-7371)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Check the multi-select box to select all endpoints associated with the schema.
 4. Select **Change action**.
@@ -176,11 +163,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-7372)
-* [ Old dashboard ](#tab-panel-7373)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. Under **Schema validation** \> **Configurations**, select the edit icon next to **Default action**.
 4. Choose a new action from the dropdown menu.
@@ -203,11 +187,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-7374)
-* [ Old dashboard ](#tab-panel-7375)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Search for the endpoint to change.
 4. Select the three dots on the endpoint's row > **Change action**.
@@ -226,11 +207,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-7376)
-* [ Old dashboard ](#tab-panel-7377)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Schema settings**.
 4. Filter by **API abuse**.
@@ -245,11 +223,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-7378)
-* [ Old dashboard ](#tab-panel-7379)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Schema settings**.
 4. Filter by **API abuse**.
@@ -271,11 +246,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-7380)
-* [ Old dashboard ](#tab-panel-7381)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Schema settings**.
 4. Filter by **API abuse**.
@@ -471,7 +443,14 @@ Schema validation is available for all customers. Refer to [Plans](https://devel
 
 [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) is only available for customers subscribed to API Shield.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/schema-validation/","name":"Schema validation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

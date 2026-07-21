@@ -1,16 +1,18 @@
 ---
-title: Container runtime
 description: Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Container runtime
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Container runtime
 
-# Container runtime
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/containers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Each sandbox runs in an isolated Linux container with Python, Node.js, and common development tools pre-installed. For a complete list of pre-installed software and how to customize the container image, see [Dockerfile reference](https://developers.cloudflare.com/sandbox/configuration/dockerfile/).
 
@@ -22,10 +24,8 @@ Install additional software at runtime using standard package managers:
 # Python packages
 pip install scikit-learn tensorflow
 
-
 # Node.js packages
 npm install express
-
 
 # System packages (requires apt-get update first)
 apt-get update && apt-get install -y redis-server
@@ -44,8 +44,6 @@ The container provides a standard Linux filesystem. You can read and write anywh
 
 **Example**:
 
-**TypeScript**
-
 ```typescript
 await sandbox.writeFile('/workspace/app.py', 'print("Hello")');
 await sandbox.writeFile('/tmp/cache.json', '{}');
@@ -58,16 +56,12 @@ Processes run as you'd expect in a regular Linux environment.
 
 **Foreground processes** (`exec()`):
 
-**TypeScript**
-
 ```typescript
 const result = await sandbox.exec('npm test');
 // Waits for completion, returns output
 ```
 
 **Background processes** (`startProcess()`):
-
-**TypeScript**
 
 ```typescript
 const process = await sandbox.startProcess('node server.js');
@@ -85,8 +79,6 @@ npm install express
 ```
 
 **Inbound connections** require port exposure:
-
-**TypeScript**
 
 ```typescript
 const { hostname } = new URL(request.url);
@@ -121,8 +113,6 @@ redis-cli ping      # Connect locally
 
 To run untrusted code, use separate sandboxes per user:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
@@ -140,7 +130,14 @@ const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 * [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Container lifecycle management
 * [Docker-in-Docker](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/) \- Run Docker containers inside a Sandbox
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/containers/#page","headline":"Container runtime · Cloudflare Sandbox SDK docs","description":"Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.","url":"https://developers.cloudflare.com/sandbox/concepts/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/containers/","name":"Container runtime"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/containers/#page","headline":"Container runtime · Cloudflare Sandbox SDK docs","description":"Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.","url":"https://developers.cloudflare.com/sandbox/concepts/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

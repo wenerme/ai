@@ -1,16 +1,18 @@
 ---
-title: Secure your first application
 description: Create policies for your first application.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Secure your first application
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secure your first application
 
-# Secure your first application
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To ensure holistic security precautions, we recommend securing each distinct private application with at least two policies:
 
@@ -22,10 +24,6 @@ To ensure holistic security precautions, we recommend securing each distinct pri
 To create a new policy, open the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 
 ## Example DNS policy
-
-* [ Dashboard ](#tab-panel-9954)
-* [ API ](#tab-panel-9955)
-* [ Terraform (v5) ](#tab-panel-9956)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -81,23 +79,19 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
-  name        = "Company Wiki DNS policy"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "Managed by Terraform - Allow employees to access company wiki domains."
-  precedence  = 102
-  action      = "allow"
-  filters     = ["dns"]
-  traffic     = "any(dns.domains[*] in ${"$"}${cloudflare_zero_trust_list.wiki_domains.id})"
-  identity    = "identity.email matches \".*@example.com\""
+	name        = "Company Wiki DNS policy"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "Managed by Terraform - Allow employees to access company wiki domains."
+	precedence  = 102
+	action      = "allow"
+	filters     = ["dns"]
+	traffic     = "any(dns.domains[*] in ${"$"}${cloudflare_zero_trust_list.wiki_domains.id})"
+	identity    = "identity.email matches \".*@example.com\""
 }
 ```
 
 ## Example network policy
-
-* [ Dashboard ](#tab-panel-9957)
-* [ API ](#tab-panel-9958)
-* [ Terraform (v5) ](#tab-panel-9959)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -149,25 +143,21 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
-  name        = "Company Wiki Network policy"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "Managed by Terraform - Allow employees to access company wiki IPs."
-  precedence  = 103
-  action      = "allow"
-  filters     = ["l4"]
-  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
-  identity    = "identity.email matches \".*@example.com\""
+	name        = "Company Wiki Network policy"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "Managed by Terraform - Allow employees to access company wiki IPs."
+	precedence  = 103
+	action      = "allow"
+	filters     = ["l4"]
+	traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
+	identity    = "identity.email matches \".*@example.com\""
 }
 ```
 
 ### Catch-all policy
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
-
-* [ Dashboard ](#tab-panel-9960)
-* [ API ](#tab-panel-9961)
-* [ Terraform (v5) ](#tab-panel-9962)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |
@@ -238,7 +228,14 @@ Note
 
 It is not recommended to employ a default-deny model while testing. Instead, build your explicit application policies and [monitor your logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to determine if your policies are working as expected. If you do not see the policies triggering in your logs, you may need to tune your policies and review what kind of information (identity groups, device posture values, etc.) is being sent with your traffic.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/#page","headline":"Secure your first application · Cloudflare Learning Paths","description":"Create policies for your first application.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/create-policy/","name":"Secure your first application"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/#page","headline":"Secure your first application · Cloudflare Learning Paths","description":"Create policies for your first application.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

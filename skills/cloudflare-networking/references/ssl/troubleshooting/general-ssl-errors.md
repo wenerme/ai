@@ -1,16 +1,18 @@
 ---
-title: General SSL errors
 description: Learn how to troubleshoot various SSL/TLS errors with Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: General SSL errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  General SSL errors
 
-# General SSL errors
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Let's Encrypt chain update
 
@@ -117,7 +119,7 @@ The HSTS headers (`Strict-Transport-Security` and `X-Content-Type-Options`) in t
 You may have configured [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification) that are overriding the HSTS header values defined in the **SSL/TLS** app.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Under **Response Header Transform Rules**, search for a rule setting the value of one of the HSTS headers (`Strict-Transport-Security` or `X-Content-Type-Options`).
 3. Delete (or edit) the rule so that the HSTS configuration settings defined in the **SSL/TLS** app are applied.
 4. Repeat this procedure for the other HSTS header.
@@ -167,7 +169,14 @@ When clicking `Approve Certificate` on a Certificate Approval renewal email, you
 
 Check the status of the certificate on the [Cloudflare dashboard ↗](https://dash.cloudflare.com?to=/:account/:zone/ssl-tls). If the status is `Active`, you can disregard this email and the error message.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/#page","headline":"General SSL errors · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot various SSL/TLS errors with Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/general-ssl-errors/","name":"General SSL errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/#page","headline":"General SSL errors · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot various SSL/TLS errors with Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Vectorize API
 description: Vectorize Workers binding API for inserting, upserting, querying, and managing vectors.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vectorize API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vectorize API
 
-# Vectorize API
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/reference/client-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page covers the Vectorize API available within [Cloudflare Workers](https://developers.cloudflare.com/workers/), including usage examples.
 
@@ -18,12 +20,10 @@ This page covers the Vectorize API available within [Cloudflare Workers](https:/
 
 ### Insert vectors
 
-**TypeScript**
-
 ```ts
 let vectorsToInsert = [
-  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
-  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
+	{ id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
+	{ id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
 ];
 let inserted = await env.YOUR_INDEX.insert(vectorsToInsert);
 ```
@@ -36,13 +36,11 @@ If you need to update existing vectors, use the [upsert](#upsert-vectors) operat
 
 ### Upsert vectors
 
-**TypeScript**
-
 ```ts
 let vectorsToUpsert = [
-  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
-  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
-  { id: "768", values: [29.1, 5.7, 12.9, 15.4, 1.1] },
+	{ id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
+	{ id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
+	{ id: "768", values: [29.1, 5.7, 12.9, 15.4, 1.1] },
 ];
 let upserted = await env.YOUR_INDEX.upsert(vectorsToUpsert);
 ```
@@ -55,8 +53,6 @@ Upserting does not merge or combine the values or metadata of an existing vector
 
 ### Query vectors
 
-**TypeScript**
-
 ```ts
 let queryVector = [32.4, 6.55, 11.2, 10.3, 87.9];
 let matches = await env.YOUR_INDEX.query(queryVector);
@@ -68,13 +64,11 @@ Query an index with the provided vector, returning the score(s) of the closest v
 * Return vector values by setting `returnValues: true` (default: false)
 * Return vector metadata by setting `returnMetadata: 'indexed'` or `returnMetadata: 'all'` (default: 'none')
 
-**TypeScript**
-
 ```ts
 let matches = await env.YOUR_INDEX.query(queryVector, {
-  topK: 5,
-  returnValues: true,
-  returnMetadata: "all",
+	topK: 5,
+	returnValues: true,
+	returnMetadata: "all",
 });
 ```
 
@@ -90,13 +84,11 @@ The `returnMetadata` field provides three ways to fetch vector metadata while qu
 2. `indexed`: Fetched metadata only for the indexed metadata fields. There is no latency overhead with this option, but long text fields may be truncated.
 3. `all`: Fetch all metadata associated with a vector. Queries may run slower with this option, and `topK` is limited to 50.
 
-`topK` and `returnMetadata` for legacy Vectorize indexes
+\`topK\` and \`returnMetadata\` for legacy Vectorize indexes
 
 For legacy Vectorize (V1) indexes, `topK` is limited to 20, and the `returnMetadata` is a boolean field.
 
 ### Query vectors by ID
-
-**TypeScript**
 
 ```ts
 let matches = await env.YOUR_INDEX.queryById("some-vector-id");
@@ -106,19 +98,15 @@ Query an index using a vector that is already present in the index.
 
 Query options remain the same as the query operation described above.
 
-**TypeScript**
-
 ```ts
 let matches = await env.YOUR_INDEX.queryById("some-vector-id", {
-  topK: 5,
-  returnValues: true,
-  returnMetadata: "all",
+	topK: 5,
+	returnValues: true,
+	returnMetadata: "all",
 });
 ```
 
 ### Get vectors by ID
-
-**TypeScript**
 
 ```ts
 let ids = ["11", "22", "33", "44"];
@@ -129,8 +117,6 @@ Retrieves the specified vectors by their ID, including values and metadata.
 
 ### Delete vectors by ID
 
-**TypeScript**
-
 ```ts
 let idsToDelete = ["11", "22", "33", "44"];
 const deleted = await env.YOUR_INDEX.deleteByIds(idsToDelete);
@@ -139,8 +125,6 @@ const deleted = await env.YOUR_INDEX.deleteByIds(idsToDelete);
 Deletes the vector IDs provided from the current index. Vectorize deletes are asynchronous and the delete operation returns a mutation identifier unique for that operation. It typically takes a few seconds for vectors to be removed from the Vectorize index.
 
 ### Retrieve index details
-
-**TypeScript**
 
 ```ts
 const details = await env.YOUR_INDEX.describe();
@@ -233,17 +217,15 @@ A vector represents the vector embedding output from a machine learning model.
 * `values` \- an array of `number`, `Float32Array`, or `Float64Array` as the vector embedding itself. This must be a dense array, and the length of this array must match the `dimensions` configured on the index.
 * `metadata` \- an optional set of key-value pairs that can be used to store additional metadata alongside a vector.
 
-**TypeScript**
-
 ```ts
 let vectorExample = {
-  id: "12345",
-  values: [32.4, 6.55, 11.2, 10.3, 87.9],
-  metadata: {
-    key: "value",
-    hello: "world",
-    url: "r2://bucket/some/object.json",
-  },
+	id: "12345",
+	values: [32.4, 6.55, 11.2, 10.3, 87.9],
+	metadata: {
+		key: "value",
+		hello: "world",
+		url: "r2://bucket/some/object.json",
+	},
 };
 ```
 
@@ -255,23 +237,16 @@ Bindings are defined in either the [Wrangler configuration file](https://develop
 
 Vectorize indexes are bound by name. A binding for an index named `production-doc-search` would resemble the below:
 
-* [  wrangler.jsonc ](#tab-panel-11904)
-* [  wrangler.toml ](#tab-panel-11905)
-
-**JSONC**
-
 ```jsonc
 {
-  "vectorize": [
-    {
-      "binding": "PROD_SEARCH", // the index will be available as env.PROD_SEARCH in your Worker
-      "index_name": "production-doc-search",
-    },
-  ],
+	"vectorize": [
+		{
+			"binding": "PROD_SEARCH", // the index will be available as env.PROD_SEARCH in your Worker
+			"index_name": "production-doc-search",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[vectorize]]
@@ -285,7 +260,14 @@ Refer to the [bindings documentation](https://developers.cloudflare.com/workers/
 
 If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/client-api/#page","headline":"Vectorize API · Cloudflare Vectorize docs","description":"Vectorize Workers binding API for inserting, upserting, querying, and managing vectors.","url":"https://developers.cloudflare.com/vectorize/reference/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/client-api/","name":"Vectorize API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/client-api/#page","headline":"Vectorize API · Cloudflare Vectorize docs","description":"Vectorize Workers binding API for inserting, upserting, querying, and managing vectors.","url":"https://developers.cloudflare.com/vectorize/reference/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

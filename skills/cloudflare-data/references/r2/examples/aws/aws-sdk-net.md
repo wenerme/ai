@@ -1,16 +1,18 @@
 ---
-title: aws-sdk-net
 description: Configure the AWS SDK for .NET to work with Cloudflare R2 object storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws-sdk-net
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws-sdk-net
 
-# aws-sdk-net
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -24,18 +26,17 @@ In this example, you will pass credentials explicitly to the `IAmazonS3` initial
 ```csharp
 private static IAmazonS3 s3Client;
 
-
 public static void Main(string[] args)
 {
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-  var accessKey = "<ACCESS_KEY_ID>";
-  var secretKey = "<SECRET_ACCESS_KEY>";
-  var credentials = new BasicAWSCredentials(accessKey, secretKey);
-  s3Client = new AmazonS3Client(credentials, new AmazonS3Config
-    {
-      // Provide your Cloudflare account ID
-      ServiceURL = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
-    });
+	// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+	var accessKey = "<ACCESS_KEY_ID>";
+	var secretKey = "<SECRET_ACCESS_KEY>";
+	var credentials = new BasicAWSCredentials(accessKey, secretKey);
+	s3Client = new AmazonS3Client(credentials, new AmazonS3Config
+		{
+			// Provide your Cloudflare account ID
+			ServiceURL = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
+		});
 }
 ```
 
@@ -46,13 +47,12 @@ The [ListBucketsAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/item
 ```csharp
 static async Task ListBuckets()
 {
-  var response = await s3Client.ListBucketsAsync();
+	var response = await s3Client.ListBucketsAsync();
 
-
-  foreach (var s3Bucket in response.Buckets)
-  {
-    Console.WriteLine("{0}", s3Bucket.BucketName);
-  }
+	foreach (var s3Bucket in response.Buckets)
+	{
+		Console.WriteLine("{0}", s3Bucket.BucketName);
+	}
 }
 ```
 
@@ -64,19 +64,17 @@ my-bucket
 ```csharp
 static async Task ListObjectsV2()
 {
-  var request = new ListObjectsV2Request
-  {
-    BucketName = "my-bucket"
-  };
+	var request = new ListObjectsV2Request
+	{
+		BucketName = "my-bucket"
+	};
 
+	var response = await s3Client.ListObjectsV2Async(request);
 
-  var response = await s3Client.ListObjectsV2Async(request);
-
-
-  foreach (var s3Object in response.S3Objects)
-  {
-    Console.WriteLine("{0}", s3Object.Key);
-  }
+	foreach (var s3Object in response.S3Objects)
+	{
+		Console.WriteLine("{0}", s3Object.Key);
+	}
 }
 ```
 
@@ -89,26 +87,24 @@ cat.png
 
 The [PutObjectAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3PutObjectAsyncPutObjectRequestCancellationToken.html) and [GetObjectAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3GetObjectAsyncStringStringCancellationToken.html) methods can be used to upload objects and download objects from an R2 bucket respectively.
 
-Warning
+Caution
 
 `DisablePayloadSigning = true` and `DisableDefaultChecksumValidation = true` must be passed as Cloudflare R2 does not currently support the Streaming SigV4 implementation used by AWSSDK.S3.
 
 ```csharp
 static async Task PutObject()
 {
-  var request = new PutObjectRequest
-  {
-    FilePath = @"/path/file.txt",
-    BucketName = "my-bucket",
-    DisablePayloadSigning = true,
-    DisableDefaultChecksumValidation = true
-  };
+	var request = new PutObjectRequest
+	{
+		FilePath = @"/path/file.txt",
+		BucketName = "my-bucket",
+		DisablePayloadSigning = true,
+		DisableDefaultChecksumValidation = true
+	};
 
+	var response = await s3Client.PutObjectAsync(request);
 
-  var response = await s3Client.PutObjectAsync(request);
-
-
-  Console.WriteLine("ETag: {0}", response.ETag);
+	Console.WriteLine("ETag: {0}", response.ETag);
 }
 ```
 
@@ -119,14 +115,12 @@ ETag: "186a71ee365d9686c3b98b6976e1f196"
 ```csharp
 static async Task GetObject()
 {
-  var bucket = "my-bucket";
-  var key = "file.txt";
+	var bucket = "my-bucket";
+	var key = "file.txt";
 
+	var response = await s3Client.GetObjectAsync(bucket, key);
 
-  var response = await s3Client.GetObjectAsync(bucket, key);
-
-
-  Console.WriteLine("ETag: {0}", response.ETag);
+	Console.WriteLine("ETag: {0}", response.ETag);
 }
 ```
 
@@ -141,23 +135,20 @@ The [GetPreSignedURL ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items
 ```csharp
 static string? GeneratePresignedUrl()
 {
-  AWSConfigsS3.UseSignatureVersion4 = true;
-  var presign = new GetPreSignedUrlRequest
-  {
-    BucketName = "my-bucket",
-    Key = "file.txt",
-    Verb = HttpVerb.GET,
-    Expires = DateTime.Now.AddDays(7),
-  };
+	AWSConfigsS3.UseSignatureVersion4 = true;
+	var presign = new GetPreSignedUrlRequest
+	{
+		BucketName = "my-bucket",
+		Key = "file.txt",
+		Verb = HttpVerb.GET,
+		Expires = DateTime.Now.AddDays(7),
+	};
 
+	var presignedUrl = s3Client.GetPreSignedURL(presign);
 
-  var presignedUrl = s3Client.GetPreSignedURL(presign);
+	Console.WriteLine(presignedUrl);
 
-
-  Console.WriteLine(presignedUrl);
-
-
-  return presignedUrl;
+	return presignedUrl;
 }
 ```
 
@@ -165,7 +156,14 @@ static string? GeneratePresignedUrl()
 https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/file.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/#page","headline":"aws-sdk-net · Cloudflare R2 docs","description":"Configure the AWS SDK for .NET to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-net/","name":"aws-sdk-net"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/#page","headline":"aws-sdk-net · Cloudflare R2 docs","description":"Configure the AWS SDK for .NET to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

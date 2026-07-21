@@ -1,16 +1,18 @@
 ---
-title: HTTP Events API
 description: Send server-side events to Zaraz with the HTTP Events API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: HTTP Events API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP Events API
 
-# HTTP Events API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/http-events-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Zaraz HTTP Events API allows you to send information to Zaraz from places that cannot run the [Web API](https://developers.cloudflare.com/zaraz/web-api/), such as your server or your mobile app. It is useful for tracking events that are happening outside the browser, like successful transactions, sign-ups and more. The API also allows sending multiple events in batches.
 
@@ -21,7 +23,7 @@ The API is disabled unless you configure an endpoint for it. The endpoint determ
 To enable the API endpoint:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Under **Endpoints** \> **HTTP Events API**, set your desired path. Remember the path is relative to your domain, and it must start with a `/`.
 
 Important
@@ -117,7 +119,14 @@ Depending on what tools you are loading using Zaraz, the body of the response co
 
 You do not have to process the information above, but some tools might depend on this to work properly. You can start using the HTTP Events API without processing the information in the table above, and adjust accordingly later.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/http-events-api/#page","headline":"HTTP Events API · Cloudflare Zaraz docs","description":"Send server-side events to Zaraz with the HTTP Events API.","url":"https://developers.cloudflare.com/zaraz/http-events-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/http-events-api/","name":"HTTP Events API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/http-events-api/#page","headline":"HTTP Events API · Cloudflare Zaraz docs","description":"Send server-side events to Zaraz with the HTTP Events API.","url":"https://developers.cloudflare.com/zaraz/http-events-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting builds
 description: Resolve common Cloudflare Pages git integration errors related to deployments and installations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Troubleshooting builds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting builds
 
-# Troubleshooting builds
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your git integration is experiencing issues, you may find the following banners in the Deployment page of your Pages project.
 
@@ -66,7 +68,14 @@ This is an internal error in the Cloudflare Pages SCM system. You can attempt to
 
 This indicates that GitHub or GitLab may be experiencing an incident affecting push events to Cloudflare. It is recommended to monitor their status page ([GitHub ↗](https://www.githubstatus.com/), [GitLab ↗](https://status.gitlab.com/)) for updates and try deploying again later.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/#page","headline":"Troubleshooting builds · Cloudflare Pages docs","description":"Resolve common Cloudflare Pages git integration errors related to deployments and installations.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/configuration/git-integration/troubleshooting/","name":"Troubleshooting builds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/#page","headline":"Troubleshooting builds · Cloudflare Pages docs","description":"Resolve common Cloudflare Pages git integration errors related to deployments and installations.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

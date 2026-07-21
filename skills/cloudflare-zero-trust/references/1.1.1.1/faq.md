@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
 
@@ -66,7 +68,14 @@ Yes. 1.1.1.1 has full IPv6 support. Refer to [IP addresses](https://developers.c
 
 Authoritative DNS providers may want to allowlist the IP addresses that 1.1.1.1 uses when querying upstream nameservers. The full list of Cloudflare IP addresses is available at [https://www.cloudflare.com/ips/ ↗](https://www.cloudflare.com/ips/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/faq/#page","headline":"FAQ | Cloudflare Docs","description":"Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.","url":"https://developers.cloudflare.com/1.1.1.1/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/faq/#page","headline":"FAQ | Cloudflare Docs","description":"Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.","url":"https://developers.cloudflare.com/1.1.1.1/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

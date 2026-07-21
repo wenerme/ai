@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Create and deploy your first Pages Function on Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you on creating and deploying a Pages Function.
 
@@ -30,11 +32,9 @@ Writing your Functions files in the `/functions` directory will automatically ge
 
 Copy and paste the following code into a `helloworld.js` file that you create in your `/functions` folder:
 
-**JavaScript**
-
 ```js
 export function onRequest(context) {
-  return new Response("Hello, world!");
+	return new Response("Hello, world!");
 }
 ```
 
@@ -64,7 +64,7 @@ After you have set up your Function, deploy your Pages project. Deploy your proj
 * Connecting your [Git provider](https://developers.cloudflare.com/pages/get-started/git-integration/).
 * Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages) from the command line.
 
-Warning
+Caution
 
 [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) from the Cloudflare dashboard is currently not supported with Functions.
 
@@ -74,7 +74,14 @@ Warning
 * Review the [API reference](https://developers.cloudflare.com/pages/functions/api-reference/)
 * Learn how to [debug your Function](https://developers.cloudflare.com/pages/functions/debugging-and-logging/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/get-started/#page","headline":"Functions - Get started · Cloudflare Pages docs","description":"Create and deploy your first Pages Function on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/functions/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/get-started/#page","headline":"Functions - Get started · Cloudflare Pages docs","description":"Create and deploy your first Pages Function on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/functions/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

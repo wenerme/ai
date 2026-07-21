@@ -1,16 +1,18 @@
 ---
-title: FAQs
 description: Commonly asked questions about Cloudflare's Customer Metadata Boundary.
-image: https://developers.cloudflare.com/zt-preview.png
+title: FAQs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQs
 
-# FAQs
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/metadata-boundary/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What data is covered by the Customer Metadata Boundary?
 
@@ -42,7 +44,14 @@ HTTP and Firewall analytics are available.
 
 At the moment, there are no analytics available for Workers, DNS, and Load Balancing. Additionally, there are no dashboard logs or analytics for [Gateway](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#limitations). Enterprise users can still export Gateway logs via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Commonly asked questions about Cloudflare's Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Privacy"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/metadata-boundary/","name":"Customer Metadata Boundary"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/metadata-boundary/faq/","name":"FAQs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Commonly asked questions about Cloudflare's Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Privacy"]}
 ```

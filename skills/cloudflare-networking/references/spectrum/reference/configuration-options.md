@@ -1,16 +1,18 @@
 ---
-title: Configuration options
 description: Configurable options for Spectrum applications, including edge and origin ports and protocols.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configuration options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration options
 
-# Configuration options
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
 
@@ -61,12 +63,12 @@ For direct origins:
 
 ```json
 {
-  "protocol": "tcp/1000-2000",
-  "dns": {
-    "type": "CNAME",
-    "name": "range.example.com"
-  },
-  "origin_direct": ["tcp://192.0.2.1:3000-4000"]
+	"protocol": "tcp/1000-2000",
+	"dns": {
+		"type": "CNAME",
+		"name": "range.example.com"
+	},
+	"origin_direct": ["tcp://192.0.2.1:3000-4000"]
 }
 ```
 
@@ -74,16 +76,16 @@ For DNS origins:
 
 ```json
 {
-  "protocol": "tcp/1000-2000",
-  "dns": {
-    "type": "CNAME",
-    "name": "range.example.com"
-  },
-  "origin_dns": {
-    "name": "origin.example.com",
-    "ttl": 1200
-  },
-  "origin_port": "3000-4000"
+	"protocol": "tcp/1000-2000",
+	"dns": {
+		"type": "CNAME",
+		"name": "range.example.com"
+	},
+	"origin_dns": {
+		"name": "origin.example.com",
+		"ttl": 1200
+	},
+	"origin_port": "3000-4000"
 }
 ```
 
@@ -144,11 +146,11 @@ Note
 
 If you have the TLS termination setting configured to **off**, this means that Spectrum will then proxy connections to the origin without decrypting. The certificate that is presented in this case will be the certificate installed at your origin server, instead of the Edge Certificate from Cloudflare.
 
-Warning
+Caution
 
 Do not configure a TCP-type Spectrum application's origin to point to another Cloudflare-proxied hostname (for example, `origin.example.com.cdn.cloudflare.net`). This creates an unsupported double-proxy path that may result in TLS handshake failures at the origin. For TCP applications, a failed TLS handshake to the origin is reported as an origin connection failure (`521` or `522`), not error `525` — `525` applies to HTTP/HTTPS applications. Use a direct origin IP address or a DNS hostname that resolves to your origin server without passing through Cloudflare's proxy. Refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/#tls-handshake-failures-error-525) for details.
 
-Warning
+Caution
 
 If you need to control TLS settings, like the minimum TLS version or cipher suites, you need to use an HTTPS application. For TCP applications, default settings will apply. The minimum TLS version will be 1.1 and the cipher suites are:
 
@@ -201,7 +203,14 @@ The cipher suites below are ordered based on how they appear in the ClientHello,
 
 1. Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used with TLS 1.2\. Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)). BoringSSL also hard-codes cipher preferences in this order for TLS 1.3\. Refer to [TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/configuration-options/","name":"Configuration options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

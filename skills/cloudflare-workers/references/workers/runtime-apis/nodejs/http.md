@@ -1,16 +1,18 @@
 ---
-title: http
 description: Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: http
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  http
 
-# http
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,21 +26,14 @@ To use the HTTP client-side methods (`http.get`, `http.request`, etc.), you must
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12897)
-* [  wrangler.toml ](#tab-panel-12898)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat",
-    "enable_nodejs_http_modules"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat",
+		"enable_nodejs_http_modules"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_modules" ]
@@ -50,21 +45,14 @@ To use the HTTP server-side methods (`http.createServer`, `http.Server`, `http.S
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12899)
-* [  wrangler.toml ](#tab-panel-12900)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat",
-    "enable_nodejs_http_server_modules"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat",
+		"enable_nodejs_http_server_modules"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
@@ -72,22 +60,15 @@ compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
 
 To use both client-side and server-side methods, enable both flags:
 
-* [  wrangler.jsonc ](#tab-panel-12901)
-* [  wrangler.toml ](#tab-panel-12902)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat",
-    "enable_nodejs_http_modules",
-    "enable_nodejs_http_server_modules"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat",
+		"enable_nodejs_http_modules",
+		"enable_nodejs_http_server_modules"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [
@@ -105,28 +86,25 @@ The `get` method performs a GET request to the specified URL and invokes the cal
 
 Because `get` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `get` will throw an error.
 
-**JavaScript**
-
 ```js
 import { get } from "node:http";
 
-
 export default {
-  async fetch() {
-    const { promise, resolve, reject } = Promise.withResolvers();
-    get("http://example.org", (res) => {
-      let data = "";
-      res.setEncoding("utf8");
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-      res.on("end", () => {
-        resolve(new Response(data));
-      });
-      res.on("error", reject);
-    }).on("error", reject);
-    return promise;
-  },
+	async fetch() {
+		const { promise, resolve, reject } = Promise.withResolvers();
+		get("http://example.org", (res) => {
+			let data = "";
+			res.setEncoding("utf8");
+			res.on("data", (chunk) => {
+				data += chunk;
+			});
+			res.on("end", () => {
+				resolve(new Response(data));
+			});
+			res.on("error", reject);
+		}).on("error", reject);
+		return promise;
+	},
 };
 ```
 
@@ -142,38 +120,35 @@ The `request` method creates an HTTP request with customizable options like meth
 
 Because `request` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `request` will throw an error.
 
-**JavaScript**
-
 ```js
 import { get } from "node:http";
 
-
 export default {
-  async fetch() {
-    const { promise, resolve, reject } = Promise.withResolvers();
-    get(
-      {
-        method: "GET",
-        protocol: "http:",
-        hostname: "example.org",
-        path: "/",
-      },
-      (res) => {
-        let data = "";
-        res.setEncoding("utf8");
-        res.on("data", (chunk) => {
-          data += chunk;
-        });
-        res.on("end", () => {
-          resolve(new Response(data));
-        });
-        res.on("error", reject);
-      },
-    )
-      .on("error", reject)
-      .end();
-    return promise;
-  },
+	async fetch() {
+		const { promise, resolve, reject } = Promise.withResolvers();
+		get(
+			{
+				method: "GET",
+				protocol: "http:",
+				hostname: "example.org",
+				path: "/",
+			},
+			(res) => {
+				let data = "";
+				res.setEncoding("utf8");
+				res.on("data", (chunk) => {
+					data += chunk;
+				});
+				res.on("end", () => {
+					resolve(new Response(data));
+				});
+				res.on("error", reject);
+			},
+		)
+			.on("error", reject)
+			.end();
+		return promise;
+	},
 };
 ```
 
@@ -199,43 +174,35 @@ The `IncomingMessage` class represents an HTTP request that is received from the
 
 The `IncomingMessage` class represents an HTTP message (request or response). It provides methods for reading headers and body data. `IncomingMessage` extends from the `Readable` stream class.
 
-**JavaScript**
-
 ```js
 import { get, IncomingMessage } from "node:http";
 import { ok, strictEqual } from "node:assert";
 
-
 export default {
-  async fetch() {
-    // ...
-    get("http://example.org", (res) => {
-      ok(res instanceof IncomingMessage);
-    });
-    // ...
-  },
+	async fetch() {
+		// ...
+		get("http://example.org", (res) => {
+			ok(res instanceof IncomingMessage);
+		});
+		// ...
+	},
 };
 ```
 
 The Workers implementation includes a `cloudflare` property on `IncomingMessage` objects:
 
-**JavaScript**
-
 ```js
 import { createServer } from "node:http";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = createServer((req, res) => {
-  console.log(req.cloudflare.cf.country);
-  console.log(req.cloudflare.cf.ray);
-  res.write("Hello, World!");
-  res.end();
+	console.log(req.cloudflare.cf.country);
+	console.log(req.cloudflare.cf.ray);
+	res.write("Hello, World!");
+	res.end();
 });
 
-
 server.listen(8080);
-
 
 export default httpServerHandler({ port: 8080 });
 ```
@@ -259,12 +226,9 @@ A partial implementation of the Node.js [\`http.Agent' ↗](https://nodejs.org/d
 
 An `Agent` manages HTTP connection reuse by maintaining request queues per host/port. In the workers environment, however, such low-level management of the network connection, ports, etc, is not relevant because it is handled by the Cloudflare infrastructure instead. Accordingly, the implementation of `Agent` in Workers is a stub implementation that does not support connection pooling or keep-alive.
 
-**JavaScript**
-
 ```js
 import { Agent } from "node:http";
 import { strictEqual } from "node:assert";
-
 
 const agent = new Agent();
 strictEqual(agent.protocol, "http:");
@@ -276,18 +240,14 @@ An implementation of the Node.js [http.createServer ↗](https://nodejs.org/docs
 
 The `createServer` method creates an HTTP server instance that can handle incoming requests.
 
-**JavaScript**
-
 ```js
 import { createServer } from "node:http";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello from Node.js HTTP server!");
+	res.writeHead(200, { "Content-Type": "text/plain" });
+	res.end("Hello from Node.js HTTP server!");
 });
-
 
 server.listen(8080);
 export default httpServerHandler({ port: 8080 });
@@ -299,21 +259,16 @@ export default httpServerHandler({ port: 8080 });
 
 The `httpServerHandler` function integrates Node.js HTTP servers with the Cloudflare Workers request model. It supports two API patterns:
 
-**JavaScript**
-
 ```js
 import http from "node:http";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = http.createServer((req, res) => {
-  res.end("hello world");
+	res.end("hello world");
 });
-
 
 // Pass server directly (simplified) - automatically calls listen() if needed
 export default httpServerHandler(server);
-
 
 // Or use port-based routing for multiple servers
 server.listen(8080);
@@ -326,26 +281,21 @@ The handler automatically routes incoming Worker requests to your Node.js server
 
 For more direct control over request routing, you can use the `handleAsNodeRequest` function from `cloudflare:node`. This function directly routes a Worker request to a Node.js server running on a specific port:
 
-**JavaScript**
-
 ```js
 import { createServer } from "node:http";
 import { handleAsNodeRequest } from "cloudflare:node";
 
-
 const server = createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello from Node.js HTTP server!");
+	res.writeHead(200, { "Content-Type": "text/plain" });
+	res.end("Hello from Node.js HTTP server!");
 });
-
 
 server.listen(8080);
 
-
 export default {
-  fetch(request) {
-    return handleAsNodeRequest(8080, request);
-  },
+	fetch(request) {
+		return handleAsNodeRequest(8080, request);
+	},
 };
 ```
 
@@ -363,18 +313,14 @@ The `Server` class represents an HTTP server and provides methods for handling i
 
 When using `httpServerHandler`, the port number specified in `server.listen()` acts as a routing key rather than an actual network port. The handler uses this port to determine which HTTP server instance should handle incoming requests, allowing multiple servers to coexist within the same Worker by using different port numbers for identification. Using a port value of `0` (or `null` or `undefined`) will result in a random port number being assigned.
 
-**JavaScript**
-
 ```js
 import { Server } from "node:http";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = new Server((req, res) => {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ message: "Hello from HTTP Server!" }));
+	res.writeHead(200, { "Content-Type": "application/json" });
+	res.end(JSON.stringify({ message: "Hello from HTTP Server!" }));
 });
-
 
 server.listen(8080);
 export default httpServerHandler({ port: 8080 });
@@ -392,36 +338,29 @@ An implementation of the Node.js [http.ServerResponse ↗](https://nodejs.org/do
 
 The `ServerResponse` class represents the server-side response object that is passed to request handlers. It provides methods for writing response headers and body data, and extends the Node.js `Writable` stream class.
 
-**JavaScript**
-
 ```js
 import { createServer, ServerResponse } from "node:http";
 import { httpServerHandler } from "cloudflare:node";
 import { ok } from "node:assert";
 
-
 const server = createServer((req, res) => {
-  ok(res instanceof ServerResponse);
+	ok(res instanceof ServerResponse);
 
+	// Set multiple headers at once
+	res.writeHead(200, {
+		"Content-Type": "application/json",
+		"X-Custom-Header": "Workers-HTTP",
+	});
 
-  // Set multiple headers at once
-  res.writeHead(200, {
-    "Content-Type": "application/json",
-    "X-Custom-Header": "Workers-HTTP",
-  });
+	// Stream response data
+	res.write('{"data": [');
+	res.write('{"id": 1, "name": "Item 1"},');
+	res.write('{"id": 2, "name": "Item 2"}');
+	res.write("]}");
 
-
-  // Stream response data
-  res.write('{"data": [');
-  res.write('{"id": 1, "name": "Item 1"},');
-  res.write('{"id": 2, "name": "Item 2"}');
-  res.write("]}");
-
-
-  // End the response
-  res.end();
+	// End the response
+	res.end();
 });
-
 
 export default httpServerHandler(server);
 ```
@@ -447,7 +386,14 @@ Because the Workers implementation of `node:http` is a wrapper around the global
 * The `'upgrade'` event is not supported.
 * Gaining direct access to the underlying `socket` is not supported.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/#page","headline":"http · Cloudflare Workers docs","description":"Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/http/","name":"http"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/#page","headline":"http · Cloudflare Workers docs","description":"Use the Node.js http module in Cloudflare Workers for client and server-side HTTP functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

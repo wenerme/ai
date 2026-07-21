@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. By following this guide, you will create your first queue, a Worker to publish messages to that queue, and a consumer Worker to consume messages from that queue.
 
@@ -83,25 +85,18 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-10481)
-* [  wrangler.toml ](#tab-panel-10482)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "producers": [
-      {
-        "queue": "MY-QUEUE-NAME",
-        "binding": "MY_QUEUE"
-      }
-    ]
-  }
+	"queues": {
+		"producers": [
+			{
+				"queue": "MY-QUEUE-NAME",
+				"binding": "MY_QUEUE"
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.producers]]
@@ -121,8 +116,6 @@ You will now configure your producer Worker to create messages to publish to you
 
 In your Worker project directory, open the `src` folder and add the following to your `index.ts` file:
 
-**TypeScript**
-
 ```ts
 export default {
   async fetch(request, env, ctx): Promise<Response> {
@@ -140,8 +133,6 @@ export default {
 Replace `MY_QUEUE` with the name you have set for your binding from your `wrangler.jsonc` file.
 
 Also add the queue to `Env` interface in `index.ts`.
-
-**TypeScript**
 
 ```ts
 export interface Env {
@@ -185,8 +176,6 @@ Queues also supports [pull-based consumers](https://developers.cloudflare.com/qu
 
 To create a consumer Worker, open your `index.ts` file and add the following `queue` handler to your existing `fetch` handler:
 
-**TypeScript**
-
 ```ts
 export default {
   async fetch(request, env, ctx): Promise<Response> {
@@ -222,28 +211,21 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-10483)
-* [  wrangler.toml ](#tab-panel-10484)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "consumers": [
-      {
-        "queue": "<MY-QUEUE-NAME>",
-        // Required: this should match the name of the queue you created in step 3.
-        // If you misspell the name, you will receive an error when attempting to publish your Worker.
-        "max_batch_size": 10, // optional: defaults to 10
-        "max_batch_timeout": 5 // optional: defaults to 5 seconds
-      }
-    ]
-  }
+	"queues": {
+		"consumers": [
+			{
+				"queue": "<MY-QUEUE-NAME>",
+				// Required: this should match the name of the queue you created in step 3.
+				// If you misspell the name, you will receive an error when attempting to publish your Worker.
+				"max_batch_size": 10, // optional: defaults to 10
+				"max_batch_timeout": 5 // optional: defaults to 5 seconds
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.consumers]]
@@ -296,7 +278,14 @@ By completing this guide, you have now created a queue, a producer Worker that p
 
 * Learn more about [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the applications you can build on Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

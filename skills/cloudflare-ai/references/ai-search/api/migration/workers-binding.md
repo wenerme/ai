@@ -1,16 +1,18 @@
 ---
-title: Workers binding migration
 description: Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers binding migration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers binding migration
 
-# Workers binding migration
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [env.AI.autorag() binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
 
@@ -31,33 +33,29 @@ AI Search provides two new bindings:
 
 **Instance binding (`ai_search`)** binds directly to a single instance. This is the simplest migration path from `env.AI.autorag()`.
 
-**JSONC**
-
 ```jsonc
 // wrangler.jsonc
 {
-  "ai_search": [
-    {
-      "binding": "MY_SEARCH",
-      "instance_name": "my-instance",
-    },
-  ],
+	"ai_search": [
+		{
+			"binding": "MY_SEARCH",
+			"instance_name": "my-instance",
+		},
+	],
 }
 ```
 
 **Namespace binding (`ai_search_namespaces`)** gives you access to all instances within a namespace. Use this if you need dynamic instance management, cross-instance search, or the Items API.
 
-**JSONC**
-
 ```jsonc
 // wrangler.jsonc
 {
-  "ai_search_namespaces": [
-    {
-      "binding": "AI_SEARCH",
-      "namespace": "default",
-    },
-  ],
+	"ai_search_namespaces": [
+		{
+			"binding": "AI_SEARCH",
+			"namespace": "default",
+		},
+	],
 }
 ```
 
@@ -78,11 +76,6 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-7202)
-* [  wrangler.toml ](#tab-panel-7203)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -92,19 +85,12 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 }
 ```
 
-**TOML**
-
 ```toml
 [ai]
 binding = "AI"
 ```
 
 **After:**
-
-* [  wrangler.jsonc ](#tab-panel-7204)
-* [  wrangler.toml ](#tab-panel-7205)
-
-**JSONC**
 
 ```jsonc
 {
@@ -119,11 +105,8 @@ binding = "AI"
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_date = "2026-03-27"
-
 
 [[ai_search]]
 binding = "MY_INSTANCE"
@@ -136,21 +119,17 @@ Update the `Env` interface to use the new binding type.
 
 **Before:**
 
-**TypeScript**
-
 ```ts
 export interface Env {
-  AI: Ai;
+	AI: Ai;
 }
 ```
 
 **After:**
 
-**TypeScript**
-
 ```ts
 export interface Env {
-  MY_INSTANCE: AiSearchInstance;
+	MY_INSTANCE: AiSearchInstance;
 }
 ```
 
@@ -160,21 +139,17 @@ Replace `env.AI.autorag()` calls with the new binding.
 
 **Before:**
 
-**TypeScript**
-
 ```ts
 const result = await env.AI.autorag("my-instance").search({
-  query: "What is Cloudflare?",
+	query: "What is Cloudflare?",
 });
 ```
 
 **After:**
 
-**TypeScript**
-
 ```ts
 const result = await env.MY_INSTANCE.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
 });
 ```
 
@@ -222,31 +197,27 @@ Filter by a single metadata field using implicit equality:
 
 **Before:**
 
-**TypeScript**
-
 ```ts
 const result = await env.AI.autorag("my-instance").search({
-  query: "What is Cloudflare?",
-  filters: {
-    type: "eq",
-    key: "folder",
-    value: "customer-a/",
-  },
+	query: "What is Cloudflare?",
+	filters: {
+		type: "eq",
+		key: "folder",
+		value: "customer-a/",
+	},
 });
 ```
 
 **After:**
 
-**TypeScript**
-
 ```ts
 const result = await env.MY_INSTANCE.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      filters: { folder: "customer-a/" },
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			filters: { folder: "customer-a/" },
+		},
+	},
 });
 ```
 
@@ -256,36 +227,32 @@ Combine multiple conditions where all must match:
 
 **Before:**
 
-**TypeScript**
-
 ```ts
 const result = await env.AI.autorag("my-instance").search({
-  query: "What is Cloudflare?",
-  filters: {
-    type: "and",
-    filters: [
-      { type: "eq", key: "folder", value: "customer-a/" },
-      { type: "gte", key: "timestamp", value: "1735689600000" },
-    ],
-  },
+	query: "What is Cloudflare?",
+	filters: {
+		type: "and",
+		filters: [
+			{ type: "eq", key: "folder", value: "customer-a/" },
+			{ type: "gte", key: "timestamp", value: "1735689600000" },
+		],
+	},
 });
 ```
 
 **After:**
 
-**TypeScript**
-
 ```ts
 const result = await env.MY_INSTANCE.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      filters: {
-        folder: "customer-a/",
-        timestamp: { $gte: 1735689600 },
-      },
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			filters: {
+				folder: "customer-a/",
+				timestamp: { $gte: 1735689600 },
+			},
+		},
+	},
 });
 ```
 
@@ -295,7 +262,14 @@ The `env.AI.autorag()` binding will continue to work indefinitely. You do not ne
 
 For the legacy API reference, refer to [Workers binding (legacy)](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/#page","headline":"Workers binding migration · Cloudflare AI Search docs","description":"Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/migration/","name":"API Migration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/migration/workers-binding/","name":"Workers binding migration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/#page","headline":"Workers binding migration · Cloudflare AI Search docs","description":"Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

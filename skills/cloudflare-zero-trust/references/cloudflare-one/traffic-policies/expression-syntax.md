@@ -1,16 +1,18 @@
 ---
-title: Gateway policy expressions
 description: Learn about the expression syntax used to build Gateway DNS, HTTP, Network, Egress, and Resolver policies.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Gateway policy expressions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway policy expressions
 
-# Gateway policy expressions
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Gateway policies use a wirefilter-based expression language to match traffic against selectors (criteria). This syntax is similar to, but distinct from, the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) used by WAF, Rules, and other Cloudflare products. Refer to [Gateway versus Ruleset Engine](#gateway-versus-ruleset-engine) for details on the differences.
 
@@ -167,7 +169,14 @@ Do not reference the [Ruleset Engine fields reference](https://developers.cloudf
 * [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/)
 * [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/#page","headline":"Gateway policy expressions · Cloudflare One docs","description":"Learn about the expression syntax used to build Gateway DNS, HTTP, Network, Egress, and Resolver policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/expression-syntax/","name":"Gateway policy expressions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/#page","headline":"Gateway policy expressions · Cloudflare One docs","description":"Learn about the expression syntax used to build Gateway DNS, HTTP, Network, Egress, and Resolver policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Protect hybrid cloud networks with Cloudflare Magic Transit
 description: Cloudflare Magic Transit provides cloud-native, in-line DDoS protection, and traffic acceleration for all Internet-facing networks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Protect hybrid cloud networks with Cloudflare Magic Transit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protect hybrid cloud networks with Cloudflare Magic Transit
 
-# Protect hybrid cloud networks with Cloudflare Magic Transit
+Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -127,7 +129,14 @@ _Note_: Alternatively, customers can choose to also route the on-premise network
 * [Cloudflare IPsec Device Compatibility Matrix](https://developers.cloudflare.com/cloudflare-wan/reference/device-compatibility/)
 * [Cloudflare Magic Transit Leased IP](https://developers.cloudflare.com/magic-transit/cloudflare-ips/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/#page","headline":"Protect hybrid cloud networks with Cloudflare Magic Transit · Cloudflare Reference Architecture docs","description":"Cloudflare Magic Transit provides cloud-native, in-line DDoS protection, and traffic acceleration for all Internet-facing networks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/","name":"Protect hybrid cloud networks with Cloudflare Magic Transit"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/#page","headline":"Protect hybrid cloud networks with Cloudflare Magic Transit · Cloudflare Reference Architecture docs","description":"Cloudflare Magic Transit provides cloud-native, in-line DDoS protection, and traffic acceleration for all Internet-facing networks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

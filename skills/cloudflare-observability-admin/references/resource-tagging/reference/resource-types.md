@@ -1,16 +1,18 @@
 ---
-title: Supported resource types
 description: Resource types that support tagging and their required fields.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported resource types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported resource types
 
-# Supported resource types
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Tagging API supports the following resource types across account-level and zone-level scopes.
 
@@ -77,7 +79,6 @@ Include the `worker_id` field:
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker_version&resource_id=$VERSION_ID&worker_id=$WORKER_ID" \
   -H "Authorization: Bearer $API_TOKEN"
 
-
 # PUT
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
   -H "Authorization: Bearer $API_TOKEN" \
@@ -102,7 +103,6 @@ Include the `access_application_id` field:
 curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags?resource_type=access_application_policy&resource_id=$POLICY_ID&access_application_id=$APP_ID" \
   -H "Authorization: Bearer $API_TOKEN"
 
-
 # PUT
 curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
   -H "Authorization: Bearer $API_TOKEN" \
@@ -118,7 +118,14 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
   }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/#page","headline":"Supported resource types · Cloudflare Resource Tagging docs","description":"Resource types that support tagging and their required fields.","url":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}},{"@type":"ListItem","position":3,"item":{"@id":"/resource-tagging/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/resource-tagging/reference/resource-types/","name":"Supported resource types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/#page","headline":"Supported resource types · Cloudflare Resource Tagging docs","description":"Resource types that support tagging and their required fields.","url":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

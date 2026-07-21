@@ -1,16 +1,18 @@
 ---
-title: Bindings (env)
 description: Worker Bindings that allow for interaction with other Cloudflare Resources.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bindings (env)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bindings (env)
 
-# Bindings (env)
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform. Bindings provide better performance and less restrictions when accessing resources from Workers than the [REST APIs](https://developers.cloudflare.com/api/) which are intended for non-Workers applications.
 
@@ -45,63 +47,47 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-12812)
-* [  wrangler.toml ](#tab-panel-12813)
-
-**JSONC**
-
 ```jsonc
 {
-  "main": "./src/index.js",
-  "r2_buckets": [
-    {
-      "binding": "MY_BUCKET",
-      "bucket_name": "<MY_BUCKET_NAME>"
-    }
-  ]
+	"main": "./src/index.js",
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET",
+			"bucket_name": "<MY_BUCKET_NAME>"
+		}
+	]
 }
 ```
 
-**TOML**
-
 ```toml
 main = "./src/index.js"
-
 
 [[r2_buckets]]
 binding = "MY_BUCKET"
 bucket_name = "<MY_BUCKET_NAME>"
 ```
 
-* [  JavaScript ](#tab-panel-12798)
-* [  Python ](#tab-panel-12799)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    await env.MY_BUCKET.put(key, request.body);
-    return new Response(`Put ${key} successfully!`);
-  },
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		await env.MY_BUCKET.put(key, request.body);
+		return new Response(`Put ${key} successfully!`);
+	},
 };
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse
 
-
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    url = urlparse(request.url)
-    key = url.path.slice(1)
-    await self.env.MY_BUCKET.put(key, request.body)
-    return Response(f"Put {key} successfully!")
+	async def fetch(self, request):
+		url = urlparse(request.url)
+		key = url.path.slice(1)
+		await self.env.MY_BUCKET.put(key, request.body)
+		return Response(f"Put {key} successfully!")
 ```
 
 You can think of a binding as a permission and an API in one piece. With bindings, you never have to add secret keys or tokens to your Worker in order to access resources on your Cloudflare account — the permission is embedded within the API itself. The underlying secret is never exposed to your Worker's code, and therefore can't be accidentally leaked.
@@ -114,34 +100,27 @@ As a result, you must be careful when "polluting" global scope with derivatives 
 
 The following is a good approach:
 
-**TypeScript**
-
 ```ts
 export default {
-  fetch(request, env) {
-    let client = new Client(env.MY_SECRET); // `client` is guaranteed to be up-to-date with the latest value of `env.MY_SECRET` since a new instance is constructed with every incoming request
+	fetch(request, env) {
+		let client = new Client(env.MY_SECRET); // `client` is guaranteed to be up-to-date with the latest value of `env.MY_SECRET` since a new instance is constructed with every incoming request
 
-
-    // ... do things with `client`
-  },
+		// ... do things with `client`
+	},
 };
 ```
 
 Compared to this alternative, which might have surprising and unwanted behavior:
 
-**TypeScript**
-
 ```ts
 let client = undefined;
 
-
 export default {
-  fetch(request, env) {
-    client ??= new Client(env.MY_SECRET); // `client` here might not be updated when `env.MY_SECRET` changes, since it may already exist in global scope
+	fetch(request, env) {
+		client ??= new Client(env.MY_SECRET); // `client` here might not be updated when `env.MY_SECRET` changes, since it may already exist in global scope
 
-
-    // ... do things with `client`
-  },
+		// ... do things with `client`
+	},
 };
 ```
 
@@ -152,48 +131,32 @@ If you have more advanced needs, explore the [AsyncLocalStorage API](https://dev
 Bindings are located on the `env` object, which can be accessed in several ways:
 
 * It is an argument to entrypoint handlers such as [fetch](https://developers.cloudflare.com/workers/runtime-apis/fetch/):
-
-**JavaScript**
 ```js
 export default {
-  async fetch(request, env) {
-    return new Response(`Hi, ${env.NAME}`);
-  },
+	async fetch(request, env) {
+		return new Response(`Hi, ${env.NAME}`);
+	},
 };
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
-
-  * [  JavaScript ](#tab-panel-12800)
-  * [  Python ](#tab-panel-12801)
-
-**JavaScript**
 ```js
 export class MyDurableObject extends DurableObject {
-  async sayHello() {
-    return `Hi, ${this.env.NAME}!`;
-  }
+	async sayHello() {
+		return `Hi, ${this.env.NAME}!`;
+	}
 }
 ```
-
-**Python**
 ```python
 from workers import WorkerEntrypoint, Response
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    return Response(f"Hi {self.env.NAME}")
+	async def fetch(self, request):
+		return Response(f"Hi {self.env.NAME}")
 ```
 * It can be imported from `cloudflare:workers`:
-
-  * [  JavaScript ](#tab-panel-12802)
-  * [  Python ](#tab-panel-12803)
-
-**JavaScript**
 ```js
 import { env } from "cloudflare:workers";
 console.log(`Hi, ${env.Name}`);
 ```
-
-**Python**
 ```python
 from workers import env
 print(f"Hi, {env.NAME}")
@@ -203,138 +166,103 @@ print(f"Hi, {env.NAME}")
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-12804)
-* [  Python ](#tab-panel-12805)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
 import ApiClient from "example-api-client";
-
 
 // API_KEY and LOG_LEVEL now usable in top-level scope
 let apiClient = ApiClient.new({ apiKey: env.API_KEY });
 const LOG_LEVEL = env.LOG_LEVEL || "info";
 
-
 export default {
-  fetch(req) {
-    // you can use apiClient or LOG_LEVEL, configured before any request is handled
-  },
+	fetch(req) {
+		// you can use apiClient or LOG_LEVEL, configured before any request is handled
+	},
 };
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, env
 from example_api_client import ApiClient
 
-
 api_client = ApiClient(api_key=env.API_KEY)
 LOG_LEVEL = getattr(env, "LOG_LEVEL", "info")
 
-
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    # ...
+	async def fetch(self, request):
+		# ...
 ```
 
 Workers do not allow I/O from outside a request context. This means that even though `env` is accessible from the top-level scope, you will not be able to access every binding's methods.
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-12806)
-* [  Python ](#tab-panel-12807)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
-
 
 // This would error!
 // env.KV.get('my-key')
 
-
 export default {
-  async fetch(req) {
-    // This works
-    let myVal = await env.KV.get("my-key");
-    Response.new(myVal);
-  },
+	async fetch(req) {
+		// This works
+		let myVal = await env.KV.get("my-key");
+		Response.new(myVal);
+	},
 };
 ```
 
-**Python**
-
 ```python
 from workers import Response, WorkerEntrypoint, env
-
 
 # This would fail!
 # env.KV.get('my-key')
 
-
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    # This works
-    mv_val = await env.KV.get("my-key")
-    return Response(my_val)
+	async def fetch(self, request):
+		# This works
+		mv_val = await env.KV.get("my-key")
+		return Response(my_val)
 ```
 
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-12808)
-* [  Python ](#tab-panel-12809)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
 
-
 export default {
-  fetch(req) {
-    Response.new(sayHello());
-  },
+	fetch(req) {
+		Response.new(sayHello());
+	},
 };
-
 
 // env is not an argument to sayHello...
 function sayHello() {
-  let myName = getName();
-  return `Hello, ${myName}`;
+	let myName = getName();
+	return `Hello, ${myName}`;
 }
-
 
 // ...nor is it an argument to getName
 function getName() {
-  return env.MY_NAME;
+	return env.MY_NAME;
 }
 ```
-
-**Python**
 
 ```python
 from workers import Response, WorkerEntrypoint, env
 
-
 class Default(WorkerEntrypoint):
-  def fetch(req):
-    return Response(say_hello())
-
+	def fetch(req):
+		return Response(say_hello())
 
 # env is not an argument to say_hello...
 def say_hello():
-  my_name = get_name()
-  return f"Hello, {myName}"
-
+	my_name = get_name()
+	return f"Hello, {myName}"
 
 # ...nor is it an argument to getName
 def get_name():
-  return env.MY_NAME
+	return env.MY_NAME
 ```
 
 Note
@@ -347,64 +275,56 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging `env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-12810)
-* [  Python ](#tab-panel-12811)
-
-**JavaScript**
-
 ```js
 import { env, withEnv } from "cloudflare:workers";
 
-
 function logName() {
-  console.log(env.NAME);
+	console.log(env.NAME);
 }
 
-
 export default {
-  fetch(req) {
-    // this will log "Alice"
-    logName();
+	fetch(req) {
+		// this will log "Alice"
+		logName();
 
+		withEnv({ NAME: "Bob" }, () => {
+			// this will log "Bob"
+			logName();
+		});
 
-    withEnv({ NAME: "Bob" }, () => {
-      // this will log "Bob"
-      logName();
-    });
-
-
-    // ...etc...
-  },
+		// ...etc...
+	},
 };
 ```
-
-**Python**
 
 ```python
 from workers import Response, WorkerEntrypoint, env, patch_env
 
-
 def log_name():
-  print(env.NAME)
-
+	print(env.NAME)
 
 class Default(WorkerEntrypoint):
-  async def fetch(req):
-    # this will log "Alice"
-    log_name()
+	async def fetch(req):
+		# this will log "Alice"
+		log_name()
 
+		with patch_env(NAME="Bob"):
+			# this will log "Bob"
+			log_name()
 
-    with patch_env(NAME="Bob"):
-      # this will log "Bob"
-      log_name()
-
-
-    # ...etc...
+		# ...etc...
 ```
 
 This can be useful when testing code that relies on an imported `env` object.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Application Granular Controls
 description: How Application Granular Controls works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Application Granular Controls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application Granular Controls
 
-# Application Granular Controls
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Application Granular Controls, you can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to control specific user actions within supported SaaS applications. This allows you to give users access to an application while restricting the actions that they can take within the application.
 
@@ -28,9 +30,6 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-8317)
-* [ API ](#tab-panel-8318)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
 3. Name the policy.
@@ -45,24 +44,22 @@ To create a Gateway HTTP policy with Application Granular Controls:
 
 Use the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint to create a policy. For example, you can create a policy to block file uploads to ChatGPT:
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Block ChatGPT uploads",
-    "description": "Block file uploads to ChatGPT while allowing other usage",
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Block ChatGPT uploads",
+		"description": "Block file uploads to ChatGPT while allowing other usage",
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
@@ -119,7 +116,14 @@ File Sharing
 * ShareFile
 * Smash
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#page","headline":"Application Granular Controls · Cloudflare One docs","description":"How Application Granular Controls works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/granular-controls/","name":"Application Granular Controls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#page","headline":"Application Granular Controls · Cloudflare One docs","description":"How Application Granular Controls works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

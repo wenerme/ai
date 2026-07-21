@@ -1,16 +1,18 @@
 ---
-title: Metrics
 description: Review the metrics exposed by Artifacts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics
 
-# Metrics
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/observability/metrics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts exposes analytics that let you inspect repo activity, errors, and operation duration across your account.
 
@@ -81,33 +83,33 @@ Use this query to find the busiest repos in one namespace over a time range. It 
 
 ```graphql
 query ArtifactsOperationsByRepo(
-  $accountTag: String!
-  $datetimeStart: Time
-  $datetimeEnd: Time
-  $repositoryNamespace: String!
+	$accountTag: String!
+	$datetimeStart: Time
+	$datetimeEnd: Time
+	$repositoryNamespace: String!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      artifactsEventsAdaptiveGroups(
-        limit: 100
-        filter: {
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-          repositoryNamespace: $repositoryNamespace
-          eventKind: "action"
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        avg {
-          durationMs
-        }
-        dimensions {
-          repositoryName
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			artifactsEventsAdaptiveGroups(
+				limit: 100
+				filter: {
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+					repositoryNamespace: $repositoryNamespace
+					eventKind: "action"
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				avg {
+					durationMs
+				}
+				dimensions {
+					repositoryName
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -117,29 +119,29 @@ Use this query to rank repos by error volume. It helps you spot which repos fail
 
 ```graphql
 query ArtifactsErrorsByRepo(
-  $accountTag: String!
-  $datetimeStart: Time
-  $datetimeEnd: Time
+	$accountTag: String!
+	$datetimeStart: Time
+	$datetimeEnd: Time
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      artifactsEventsAdaptiveGroups(
-        limit: 100
-        filter: {
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-          eventKind: "error"
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          repository
-          eventType
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			artifactsEventsAdaptiveGroups(
+				limit: 100
+				filter: {
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+					eventKind: "error"
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					repository
+					eventType
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -149,33 +151,40 @@ Use this query to see which repos receive the most pushes in a time window. It i
 
 ```graphql
 query ArtifactsPushesByRepo(
-  $accountTag: String!
-  $datetimeStart: Time
-  $datetimeEnd: Time
+	$accountTag: String!
+	$datetimeStart: Time
+	$datetimeEnd: Time
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      artifactsEventsAdaptiveGroups(
-        limit: 100
-        filter: {
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-          eventKind: "action"
-          eventType: "push"
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          repository
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			artifactsEventsAdaptiveGroups(
+				limit: 100
+				filter: {
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+					eventKind: "action"
+					eventType: "push"
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					repository
+				}
+			}
+		}
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/observability/metrics/#page","headline":"Metrics · Cloudflare Artifacts docs","description":"Review the metrics exposed by Artifacts.","url":"https://developers.cloudflare.com/artifacts/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/observability/metrics/","name":"Metrics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/observability/metrics/#page","headline":"Metrics · Cloudflare Artifacts docs","description":"Review the metrics exposed by Artifacts.","url":"https://developers.cloudflare.com/artifacts/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

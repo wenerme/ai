@@ -1,16 +1,18 @@
 ---
-title: Using with MCP clients (CDP)
 description: Configure AI coding agents to control Browser Run sessions through the Model Context Protocol (MCP) using the chrome-devtools-mcp package.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using with MCP clients (CDP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using with MCP clients (CDP)
 
-# Using with MCP clients (CDP)
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use the CDP endpoints with AI coding agents through the [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/). The [chrome-devtools-mcp ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) package provides an MCP server that allows AI assistants to control and inspect browser sessions.
 
@@ -36,17 +38,17 @@ Add to `claude_desktop_config.json` (Claude Desktop) or `~/.claude.json` (Claude
 
 ```json
 {
-  "mcpServers": {
-    "browser-rendering": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
-        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
-      ]
-    }
-  }
+	"mcpServers": {
+		"browser-rendering": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"chrome-devtools-mcp@latest",
+				"--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+				"--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+			]
+		}
+	}
 }
 ```
 
@@ -56,19 +58,19 @@ Add to `.opencode.jsonc`:
 
 ```json
 {
-  "mcp": {
-    "browser-rendering": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
-        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
-      ],
-      "enabled": true
-    }
-  }
+	"mcp": {
+		"browser-rendering": {
+			"type": "local",
+			"command": [
+				"npx",
+				"-y",
+				"chrome-devtools-mcp@latest",
+				"--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+				"--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+			],
+			"enabled": true
+		}
+	}
 }
 ```
 
@@ -78,17 +80,17 @@ Add to `~/.cursor/mcp.json`:
 
 ```json
 {
-  "mcpServers": {
-    "browser-rendering": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
-        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
-      ]
-    }
-  }
+	"mcpServers": {
+		"browser-rendering": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"chrome-devtools-mcp@latest",
+				"--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+				"--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+			]
+		}
+	}
 }
 ```
 
@@ -138,7 +140,14 @@ The `--wsEndpoint` parameter creates a new browser session automatically when th
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/mcp-clients/#page","headline":"Using with MCP clients (CDP) · Cloudflare Browser Run docs","description":"Configure AI coding agents to control Browser Run sessions through the Model Context Protocol (MCP) using the chrome-devtools-mcp package.","url":"https://developers.cloudflare.com/browser-run/cdp/mcp-clients/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/cdp/","name":"Chrome DevTools Protocol (CDP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/cdp/mcp-clients/","name":"Using with MCP clients (CDP)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/mcp-clients/#page","headline":"Using with MCP clients (CDP) · Cloudflare Browser Run docs","description":"Configure AI coding agents to control Browser Run sessions through the Model Context Protocol (MCP) using the chrome-devtools-mcp package.","url":"https://developers.cloudflare.com/browser-run/cdp/mcp-clients/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

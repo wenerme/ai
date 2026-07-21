@@ -1,16 +1,18 @@
 ---
-title: Origin Cache Control
 description: How origin Cache-Control headers affect Cloudflare caching behavior.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Origin Cache Control
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Origin Cache Control
 
-# Origin Cache Control
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/concepts/cache-control/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Origin Cache Control is a Cloudflare feature. When enabled on an Enterprise customer's website, it indicates that Cloudflare should strictly respect `Cache-Control` directives received from the origin server. Free, Pro and Business customers have this feature enabled by default.
 
@@ -62,7 +64,7 @@ When setting `no-cache` with Origin Cache Control off, Cloudflare does not cache
 * `max-age=seconds` — Indicates the response is stale after its age is greater than the specified number of seconds. Age is defined as the time in seconds since the asset was served from the origin server. The `seconds` argument is an unquoted integer.
 * `s-maxage=seconds` — Indicates that in shared caches, the maximum age specified by this directive overrides the maximum age specified by either the `max-age` directive or the `Expires` header field. The `s-maxage` directive also implies the semantics of the `proxy-revalidate` response directive. Browsers ignore `s-maxage`.
 
-`s-maxage` disables `stale-while-revalidate`
+\`s-maxage\` disables \`stale-while-revalidate\`
 
 Per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.10-4), `s-maxage` incorporates the semantics of `proxy-revalidate`, which means a shared cache must not serve stale content without first revalidating with the origin. For a complete list of directives that disable `stale-while-revalidate` and workarounds, refer to [Controlling stale behavior](https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior).
 
@@ -241,7 +243,14 @@ Compression is disabled when the `no-transform` directive is present. If the ori
 
 [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) injection is disabled when the `no-transform` directive is present. The `cf.bot_management.js_detection.passed` field will show as `missing` for affected requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cache-control/","name":"Origin Cache Control"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 ```

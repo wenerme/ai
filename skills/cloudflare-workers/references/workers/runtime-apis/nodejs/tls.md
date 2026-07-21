@@ -1,16 +1,18 @@
 ---
-title: tls
 description: Use the Node.js tls module in Cloudflare Workers to create secure TLS connections to external services.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: tls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  tls
 
-# tls
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -18,28 +20,23 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:tls ↗](https://nodejs.org/api/tls.html) to create secure connections to external services using [TLS ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Transport%5FLayer%5FSecurity) (Transport Layer Security).
 
-**JavaScript**
-
 ```js
 import { connect } from "node:tls";
-
 
 // ... in a request handler ...
 const connectionOptions = { key: env.KEY, cert: env.CERT };
 const socket = connect(url, connectionOptions, () => {
-  if (socket.authorized) {
-    console.log("Connection authorized");
-  }
+	if (socket.authorized) {
+		console.log("Connection authorized");
+	}
 });
-
 
 socket.on("data", (data) => {
-  console.log(data);
+	console.log(data);
 });
 
-
 socket.on("end", () => {
-  console.log("server ends connection");
+	console.log("server ends connection");
 });
 ```
 
@@ -54,7 +51,14 @@ All other APIs, including [tls.Server ↗](https://nodejs.org/api/tls.html#class
 
 The full `node:tls` API is documented in the [Node.js documentation for node:tls ↗](https://nodejs.org/api/tls.html).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/#page","headline":"tls · Cloudflare Workers docs","description":"Use the Node.js tls module in Cloudflare Workers to create secure TLS connections to external services.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/tls/","name":"tls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/#page","headline":"tls · Cloudflare Workers docs","description":"Use the Node.js tls module in Cloudflare Workers to create secure TLS connections to external services.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

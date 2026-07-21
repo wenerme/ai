@@ -1,16 +1,18 @@
 ---
-title: Lists API endpoints
 description: API endpoints for managing lists and list items.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Lists API endpoints
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Lists API endpoints
 
-# Lists API endpoints
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To invoke a [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) operation, append the endpoint to the Cloudflare API base URL:
 
@@ -117,7 +119,14 @@ When you make requests to a list while a bulk operation on that list is in progr
   * Deletes specified list items.
   * The response includes an `operation_id`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/#page","headline":"Lists API endpoints · Cloudflare Web Application Firewall (WAF) docs","description":"API endpoints for managing lists and list items.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/lists/","name":"Lists"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/lists/lists-api/","name":"Lists API"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/tools/lists/lists-api/endpoints/","name":"Lists API endpoints"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/#page","headline":"Lists API endpoints · Cloudflare Web Application Firewall (WAF) docs","description":"API endpoints for managing lists and list items.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

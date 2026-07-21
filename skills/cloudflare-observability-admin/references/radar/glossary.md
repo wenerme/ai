@@ -1,16 +1,18 @@
 ---
-title: Glossary
 description: Definitions of key terms and concepts used across Cloudflare Radar, including traffic types, attack categories, and ranking methodologies.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Glossary
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Glossary
 
-# Glossary
+Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides a list of terms and concepts to help you understand Radar and the information shown.
 
@@ -304,7 +306,14 @@ WHOIS is a standard for publishing the contact and nameserver information for al
 
 [Workers AI](https://developers.cloudflare.com/workers-ai/) allows you to run machine learning models, on the Cloudflare network, from your own code -- whether that be from Workers, Pages, or anywhere via the Cloudflare API. The data displayed for Workers AI is based on the number of inferences run on a model during a specific time interval.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/glossary/#page","headline":"Glossary · Cloudflare Radar docs","description":"Definitions of key terms and concepts used across Cloudflare Radar, including traffic types, attack categories, and ranking methodologies.","url":"https://developers.cloudflare.com/radar/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/glossary/","name":"Glossary"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/glossary/#page","headline":"Glossary · Cloudflare Radar docs","description":"Definitions of key terms and concepts used across Cloudflare Radar, including traffic types, attack categories, and ranking methodologies.","url":"https://developers.cloudflare.com/radar/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

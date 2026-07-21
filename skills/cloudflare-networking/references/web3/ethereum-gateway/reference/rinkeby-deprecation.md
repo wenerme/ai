@@ -1,16 +1,18 @@
 ---
-title: Rinkeby deprecation
 description: Deprecation notice for the Rinkeby test network.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rinkeby deprecation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rinkeby deprecation
 
-# Rinkeby deprecation
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Though Cloudflare's Ethereum Gateway launched with support for the Rinkeby testnet, Rinkeby did not run through [The Merge ↗](https://ethereum.org/en/upgrades/merge/) and - as a result - will no longer be a reliable staging environment for mainnet.
 
@@ -24,8 +26,6 @@ To migrate, you should update the endpoints you use when [reading from or writin
 
 For example, you might have been using the previous endpoints to interact with your Ethereum Gateway.
 
-**Previous curl**
-
 ```bash
 curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \
 --header 'Content-Type: application/json' \
@@ -36,8 +36,6 @@ curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \
   "id": 1
 }'
 ```
-
-**Previous JS Fetch API**
 
 ```js
 await fetch(
@@ -60,8 +58,6 @@ await fetch(
 
 To migrate away from Rinkeby, change the end of your endpoint to use another testnet.
 
-**New curl**
-
 ```bash
 curl https://web3-trial.cloudflare-eth.com/v1/sepolia \
 --header 'Content-Type: application/json' \
@@ -72,8 +68,6 @@ curl https://web3-trial.cloudflare-eth.com/v1/sepolia \
   "id": 1
 }'
 ```
-
-**New JS Fetch API**
 
 ```js
 await fetch(
@@ -94,7 +88,14 @@ await fetch(
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/#page","headline":"Rinkeby deprecation · Cloudflare Web3 docs","description":"Deprecation notice for the Rinkeby test network.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/rinkeby-deprecation/","name":"Rinkeby deprecation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/#page","headline":"Rinkeby deprecation · Cloudflare Web3 docs","description":"Deprecation notice for the Rinkeby test network.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

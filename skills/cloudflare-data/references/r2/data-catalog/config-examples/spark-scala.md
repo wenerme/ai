@@ -1,16 +1,18 @@
 ---
-title: Spark (Scala)
 description: Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Spark (Scala)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Spark (Scala)
 
-# Spark (Scala)
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of how you can build an [Apache Spark ↗](https://spark.apache.org/) application (with Scala) which connects to R2 Data Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
 
@@ -32,18 +34,14 @@ Inside that directory, create the following file at `src/main/scala/com/example/
 ```java
 package com.example
 
-
 import org.apache.spark.sql.SparkSession
-
 
 object R2DataCatalogDemo {
     def main(args: Array[String]): Unit = {
 
-
         val uri = sys.env("CATALOG_URI")
         val warehouse = sys.env("WAREHOUSE")
         val token = sys.env("TOKEN")
-
 
         val spark = SparkSession.builder()
             .appName("My R2 Data Catalog Demo")
@@ -56,9 +54,7 @@ object R2DataCatalogDemo {
             .config("spark.sql.catalog.mydemo.token", token)
             .getOrCreate()
 
-
         import spark.implicits._
-
 
         val data = Seq(
             (1, "Alice", 25),
@@ -67,15 +63,11 @@ object R2DataCatalogDemo {
             (4, "Diana", 40)
         ).toDF("id", "name", "age")
 
-
         spark.sql("USE mydemo")
-
 
         spark.sql("CREATE NAMESPACE IF NOT EXISTS demoNamespace")
 
-
         data.writeTo("demoNamespace.demotable").createOrReplace()
-
 
         val readResult = spark.sql("SELECT * FROM demoNamespace.demotable WHERE age > 30")
         println("Records with age > 30:")
@@ -89,18 +81,14 @@ For building this application and managing dependencies, we will use [sbt (“si
 ```java
 name := "R2DataCatalogDemo"
 
-
 version := "1.0"
-
 
 val sparkVersion = "3.5.3"
 val icebergVersion = "1.8.1"
 
-
 // You need to use binaries of Spark compiled with either 2.12 or 2.13; and 2.12 is more common.
 // If you download Spark 3.5.3 with sdkman, then it comes with 2.12.18
 scalaVersion := "2.12.18"
-
 
 libraryDependencies ++= Seq(
     "org.apache.spark" %% "spark-core" % sparkVersion,
@@ -109,7 +97,6 @@ libraryDependencies ++= Seq(
     "org.apache.iceberg" % "iceberg-spark-runtime-3.5_2.12" % icebergVersion,
     "org.apache.iceberg" % "iceberg-aws-bundle" % icebergVersion,
 )
-
 
 // build a fat JAR with all dependencies
 assembly / assemblyMergeStrategy := {
@@ -120,7 +107,6 @@ assembly / assemblyMergeStrategy := {
     case x if x.endsWith(".properties") => MergeStrategy.first
     case x => MergeStrategy.first
 }
-
 
 // For Java  17 Compatibility
 Compile / javacOptions ++= Seq("--release", "17")
@@ -155,7 +141,6 @@ To run the application, you will use `spark-submit`. Below is an example shell s
 # parts of the JVM which have been modularized and made internal).
 JAVA_17_COMPATIBILITY="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED"
 
-
 spark-submit \
 --conf "spark.driver.extraJavaOptions=$JAVA_17_COMPATIBILITY" \
 --conf "spark.executor.extraJavaOptions=$JAVA_17_COMPATIBILITY" \
@@ -173,16 +158,16 @@ At this point, your project directory should be structured like this:
 * Makefile
 * README.md
 * build.sbt
-* Directoryproject
+* project
   * assembly.sbt
   * build.properties
   * project
 * spark-submit.sh
-* Directorysrc
-  * Directorymain
-    * Directoryscala
-      * Directorycom
-        * Directoryexample
+* src
+  * main
+    * scala
+      * com
+        * example
           * R2DataCatalogDemo.scala
 
 Before submitting the job, make sure you have the required environment variable set for your catalog URI, warehouse, and [Cloudflare API token](https://developers.cloudflare.com/r2/api/tokens/).
@@ -199,7 +184,14 @@ You are now ready to run the job:
 ./submit.sh
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/#page","headline":"Spark (Scala) · Cloudflare R2 docs","description":"Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/spark-scala/","name":"Spark (Scala)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/#page","headline":"Spark (Scala) · Cloudflare R2 docs","description":"Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

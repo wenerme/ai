@@ -1,22 +1,24 @@
 ---
-title: BYOIP
 description: Use your own IP addresses with Spectrum applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: BYOIP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  BYOIP
 
-# BYOIP
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/about/byoip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When creating a Spectrum application, Cloudflare normally assigns an arbitrary IP from Cloudflare’s IP pool to your application. If you want to be explicit in your network setup or use your own IP addresses, BYOIP with Spectrum allows you to do just that.
 
 BYOIP stands for [Bring Your Own IP](https://developers.cloudflare.com/byoip/). If you own an IP prefix you can migrate it to Cloudflare. After migration, Cloudflare broadcasts your IP prefix and traffic is routed to the global Cloudflare network. However, without configuration, Cloudflare will not know how to handle this traffic. The last step is to add Spectrum applications for all applications that you wish to protect with the IP addresses you want associated with them.
 
-Warning
+Caution
 
 When switching from non-BYOIP to BYOIP, if you are already using a Spectrum application, you need to delete your configurations and recreate new ones.
 
@@ -62,34 +64,39 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "protocol": "tcp/80",
-    "dns": {
-        "type": "ADDRESS",
-        "name": "www.example.com"
-    },
-    "origin_direct": [
-        "tcp://192.0.2.1:80"
-    ],
-    "tls": "off",
-    "traffic_type": "http",
-    "edge_ips": {
-        "type": "static",
-        "ips": [
-            "198.51.100.10",
-            "2001:DB8::1"
-        ]
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"protocol": "tcp/80",
+		"dns": {
+				"type": "ADDRESS",
+				"name": "www.example.com"
+		},
+		"origin_direct": [
+				"tcp://192.0.2.1:80"
+		],
+		"tls": "off",
+		"traffic_type": "http",
+		"edge_ips": {
+				"type": "static",
+				"ips": [
+						"198.51.100.10",
+						"2001:DB8::1"
+				]
+		}
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/byoip/#page","headline":"BYOIP · Cloudflare Spectrum docs","description":"Use your own IP addresses with Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/byoip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/byoip/","name":"BYOIP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/byoip/#page","headline":"BYOIP · Cloudflare Spectrum docs","description":"Use your own IP addresses with Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/byoip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

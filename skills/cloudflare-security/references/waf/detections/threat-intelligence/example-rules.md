@@ -1,20 +1,22 @@
 ---
-title: Example rules
 description: Mitigate high-risk traffic using threat intelligence fields in WAF rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Example rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Example rules
 
-# Example rules
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Custom rule](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) examples using [threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/). All fields are arrays — use [any()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#any) with `[*]`.
 
-Warning
+Caution
 
 Test rules with _Log_ before enforcing. IP-based threat intelligence is a seven-day lookback over shared infrastructure — combine with other signals such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/) before you block.
 
@@ -62,7 +64,14 @@ Block requests flagged by the WAF threat intelligence dataset that also have a l
 `any(cf.intel.ip.datasets[*] == "ddos") and starts_with(http.request.uri.path, "/api/")`
 * **Action:** _Block_ when the rate is exceeded.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/#page","headline":"Example rules using threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Mitigate high-risk traffic using threat intelligence fields in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/threat-intelligence/","name":"Threat intelligence"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/threat-intelligence/example-rules/","name":"Example rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/#page","headline":"Example rules using threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Mitigate high-risk traffic using threat intelligence fields in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
 ```

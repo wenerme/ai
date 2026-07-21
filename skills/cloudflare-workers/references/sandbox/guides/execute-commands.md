@@ -1,16 +1,18 @@
 ---
-title: Execute commands
 description: Run commands with streaming output, error handling, and shell access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Execute commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Execute commands
 
-# Execute commands
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/execute-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to execute commands in the sandbox, handle output, and manage errors effectively.
 
@@ -30,39 +32,26 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-11193)
-* [  TypeScript ](#tab-panel-11194)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
 
 // Execute a single command
 const result = await sandbox.exec("python --version");
-
 
 console.log(result.stdout); // "Python 3.11.0"
 console.log(result.exitCode); // 0
 console.log(result.success); // true
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox } from '@cloudflare/sandbox';
-
 
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
 
-
 // Execute a single command
 const result = await sandbox.exec('python --version');
-
 
 console.log(result.stdout);   // "Python 3.11.0"
 console.log(result.exitCode); // 0
@@ -73,39 +62,28 @@ console.log(result.success);  // true
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-11195)
-* [  TypeScript ](#tab-panel-11196)
-
-**JavaScript**
-
 ```js
 // Unsafe - vulnerable to injection
 const filename = userInput;
 await sandbox.exec(`cat ${filename}`);
 
-
 // Safe - use proper escaping or validation
 const safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, "");
 await sandbox.exec(`cat ${safeFilename}`);
-
 
 // Better - write to file and execute
 await sandbox.writeFile("/tmp/input.txt", userInput);
 await sandbox.exec("python process.py /tmp/input.txt");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Unsafe - vulnerable to injection
 const filename = userInput;
 await sandbox.exec(`cat ${filename}`);
 
-
 // Safe - use proper escaping or validation
 const safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, '');
 await sandbox.exec(`cat ${safeFilename}`);
-
 
 // Better - write to file and execute
 await sandbox.writeFile('/tmp/input.txt', userInput);
@@ -119,52 +97,40 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-11209)
-* [  TypeScript ](#tab-panel-11210)
-
-**JavaScript**
-
 ```js
 try {
-  const result = await sandbox.exec("python analyze.py");
+	const result = await sandbox.exec("python analyze.py");
 
+	if (!result.success) {
+		// Command failed (non-zero exit code)
+		console.error("Analysis failed:", result.stderr);
+		console.log("Exit code:", result.exitCode);
 
-  if (!result.success) {
-    // Command failed (non-zero exit code)
-    console.error("Analysis failed:", result.stderr);
-    console.log("Exit code:", result.exitCode);
+		// Handle specific exit codes
+		if (result.exitCode === 1) {
+			throw new Error("Invalid input data");
+		} else if (result.exitCode === 2) {
+			throw new Error("Missing dependencies");
+		}
+	}
 
-
-    // Handle specific exit codes
-    if (result.exitCode === 1) {
-      throw new Error("Invalid input data");
-    } else if (result.exitCode === 2) {
-      throw new Error("Missing dependencies");
-    }
-  }
-
-
-  // Success - process output
-  return JSON.parse(result.stdout);
+	// Success - process output
+	return JSON.parse(result.stdout);
 } catch (error) {
-  // Execution error (couldn't start command)
-  console.error("Execution failed:", error.message);
-  throw error;
+	// Execution error (couldn't start command)
+	console.error("Execution failed:", error.message);
+	throw error;
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 try {
   const result = await sandbox.exec('python analyze.py');
-
 
   if (!result.success) {
     // Command failed (non-zero exit code)
     console.error('Analysis failed:', result.stderr);
     console.log('Exit code:', result.exitCode);
-
 
     // Handle specific exit codes
     if (result.exitCode === 1) {
@@ -174,10 +140,8 @@ try {
     }
   }
 
-
   // Success - process output
   return JSON.parse(result.stdout);
-
 
 } catch (error) {
   // Execution error (couldn't start command)
@@ -190,36 +154,25 @@ try {
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-11199)
-* [  TypeScript ](#tab-panel-11200)
-
-**JavaScript**
-
 ```js
 // Pipes and filters
 const result = await sandbox.exec('ls -la | grep ".py" | wc -l');
 console.log("Python files:", result.stdout.trim());
 
-
 // Output redirection
 await sandbox.exec("python generate.py > output.txt 2> errors.txt");
-
 
 // Multiple commands
 await sandbox.exec("cd /workspace && npm install && npm test");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Pipes and filters
 const result = await sandbox.exec('ls -la | grep ".py" | wc -l');
 console.log('Python files:', result.stdout.trim());
 
-
 // Output redirection
 await sandbox.exec('python generate.py > output.txt 2> errors.txt');
-
 
 // Multiple commands
 await sandbox.exec('cd /workspace && npm install && npm test');
@@ -227,44 +180,33 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-11207)
-* [  TypeScript ](#tab-panel-11208)
-
-**JavaScript**
-
 ```js
 // Run inline Python
 const result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');
 console.log("Sum:", result.stdout.trim()); // "15"
 
-
 // Run a script file
 await sandbox.writeFile(
-  "/workspace/analyze.py",
-  `
+	"/workspace/analyze.py",
+	`
 import sys
 print(f"Argument: {sys.argv[1]}")
 `,
 );
 
-
 await sandbox.exec("python /workspace/analyze.py data.csv");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Run inline Python
 const result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');
 console.log('Sum:', result.stdout.trim()); // "15"
-
 
 // Run a script file
 await sandbox.writeFile('/workspace/analyze.py', `
 import sys
 print(f"Argument: {sys.argv[1]}")
 `);
-
 
 await sandbox.exec('python /workspace/analyze.py data.csv');
 ```
@@ -277,20 +219,13 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-11197)
-* [  TypeScript ](#tab-panel-11198)
-
-**JavaScript**
-
 ```js
 const result = await sandbox.exec("npm run build", {
-  timeout: 30000, // 30 seconds
+	timeout: 30000, // 30 seconds
 });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const result = await sandbox.exec('npm run build', {
   timeout: 30000 // 30 seconds
 });
@@ -300,36 +235,25 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-11203)
-* [  TypeScript ](#tab-panel-11204)
-
-**JavaScript**
-
 ```js
 const session = await sandbox.createSession({
-  commandTimeoutMs: 10000, // 10s default for all commands
+	commandTimeoutMs: 10000, // 10s default for all commands
 });
-
 
 await session.exec("npm install"); // Times out after 10s
 await session.exec("npm run build"); // Times out after 10s
-
 
 // Per-command timeout overrides the session default
 await session.exec("npm test", { timeout: 60000 }); // 60s for this command
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const session = await sandbox.createSession({
   commandTimeoutMs: 10000 // 10s default for all commands
 });
 
-
 await session.exec('npm install');    // Times out after 10s
 await session.exec('npm run build');  // Times out after 10s
-
 
 // Per-command timeout overrides the session default
 await session.exec('npm test', { timeout: 60000 }); // 60s for this command
@@ -351,7 +275,7 @@ If none are set, commands run without a timeout.
 
 ### Timeout does not kill the process
 
-Warning
+Caution
 
 When a command times out, the SDK raises an error and closes the connection. The underlying process **continues running** inside the container. To stop a timed-out process, delete the session with [deleteSession()](https://developers.cloudflare.com/sandbox/api/sessions/#deletesession) or destroy the sandbox with [destroy()](https://developers.cloudflare.com/sandbox/api/lifecycle/#destroy).
 
@@ -369,21 +293,14 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-11201)
-* [  TypeScript ](#tab-panel-11202)
-
-**JavaScript**
-
 ```js
 const check = await sandbox.exec("which python3");
 if (!check.success) {
-  console.error("python3 not found");
+	console.error("python3 not found");
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const check = await sandbox.exec('which python3');
 if (!check.success) {
   console.error('python3 not found');
@@ -394,26 +311,17 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-11205)
-* [  TypeScript ](#tab-panel-11206)
-
-**JavaScript**
-
 ```js
 // Use absolute path
 await sandbox.exec("python /workspace/my-app/script.py");
-
 
 // Or change directory
 await sandbox.exec("cd /workspace/my-app && python script.py");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Use absolute path
 await sandbox.exec('python /workspace/my-app/script.py');
-
 
 // Or change directory
 await sandbox.exec('cd /workspace/my-app && python script.py');
@@ -426,7 +334,14 @@ await sandbox.exec('cd /workspace/my-app && python script.py');
 * [Streaming output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Advanced streaming patterns
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Higher-level code execution
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/execute-commands/","name":"Execute commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

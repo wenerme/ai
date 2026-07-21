@@ -1,16 +1,18 @@
 ---
-title: Prisma ORM
 description: Use Prisma ORM with Hyperdrive to query PostgreSQL databases from Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Prisma ORM
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prisma ORM
 
-# Prisma ORM
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Prisma ORM ↗](https://www.prisma.io/docs) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
@@ -85,35 +87,27 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9613)
-* [  wrangler.toml ](#tab-panel-9614)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -136,20 +130,16 @@ This creates a `prisma` folder with a `schema.prisma` file and an `.env` file.
 
 Define your database schema in the `prisma/schema.prisma` file:
 
-**prisma/schema.prisma**
-
 ```prisma
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
 }
 
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 
 model User {
   id        Int      @id @default(autoincrement())
@@ -163,15 +153,11 @@ model User {
 
 Add your database connection string to the `.env` file created by Prisma:
 
-**.env**
-
 ```txt
 DATABASE_URL="postgres://user:password@host:port/database"
 ```
 
 Add helper scripts to your `package.json`:
-
-**package.json**
 
 ```json
 "scripts": {
@@ -203,42 +189,35 @@ When prompted, provide a name for the migration (for example, `init`).
 
 Use your Hyperdrive configuration when using Prisma ORM. Update your `src/index.ts` file:
 
-**src/index.ts**
-
 ```ts
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-
 export interface Env {
-  HYPERDRIVE: Hyperdrive;
+	HYPERDRIVE: Hyperdrive;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create Prisma client using driver adapter with Hyperdrive connection string
-    const adapter = new PrismaPg({ connectionString: env.HYPERDRIVE.connectionString });
-    const prisma = new PrismaClient({ adapter });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create Prisma client using driver adapter with Hyperdrive connection string
+		const adapter = new PrismaPg({ connectionString: env.HYPERDRIVE.connectionString });
+		const prisma = new PrismaClient({ adapter });
 
+		// Sample query to create and fetch users
+		const user = await prisma.user.create({
+			data: {
+				name: "John Doe",
+				email: `john.doe.${Date.now()}@example.com`,
+			},
+		});
 
-    // Sample query to create and fetch users
-    const user = await prisma.user.create({
-      data: {
-        name: "John Doe",
-        email: `john.doe.${Date.now()}@example.com`,
-      },
-    });
+		const allUsers = await prisma.user.findMany();
 
-
-    const allUsers = await prisma.user.findMany();
-
-
-    return Response.json({
-      newUser: user,
-      allUsers: allUsers,
-    });
-  },
+		return Response.json({
+			newUser: user,
+			allUsers: allUsers,
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -260,7 +239,14 @@ npx wrangler deploy
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/#page","headline":"Prisma ORM · Cloudflare Hyperdrive docs","description":"Use Prisma ORM with Hyperdrive to query PostgreSQL databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/","name":"Connect to PostgreSQL"}},{"@type":"ListItem","position":5,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/","name":"Libraries and Drivers"}},{"@type":"ListItem","position":6,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/","name":"Prisma ORM"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/#page","headline":"Prisma ORM · Cloudflare Hyperdrive docs","description":"Use Prisma ORM with Hyperdrive to query PostgreSQL databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Values
 description: Learn about values in Cloudflare's Rules language, including string, boolean, array, and map types, and how to use them in rule expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Values
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Values
 
-# Values
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When an HTTP request reaches the Cloudflare global network, Cloudflare creates a table of field–value pairs against which to match expressions. This table exists for as long as the current request is being processed.
 
@@ -43,22 +45,18 @@ The quoted string syntax has the following additional escaping requirements:
 * When used to specify a regular expression on the right-hand side of the [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) (`matches` or `~`), the string is parsed using regex escaping rules.
 * When used on the right hand-side of expressions with other operators, or in [function parameters](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/), the string is parsed using basic escaping rules.
 
-**Examples**
-
 ```txt
 # Test if URI path contains 'a"b'
 http.request.uri.path matches "a\"b"
 
-
 # Test if URI path contains 'a"#b'
 http.request.uri.path matches "a\"#b"
-
 
 # Replace 'a' with '\' (backslash)
 regex_replace(http.host, "a", "\\")
 ```
 
-Warning
+Caution
 
 In some situations you will need to double-escape a string — for example, when using the [regex\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex%5Freplace) function with a regular expression matching a backslash (`\`).
 
@@ -83,21 +81,16 @@ In a raw string there are no special characters, so all characters up to the end
 
 Unlike the quoted string syntax, the raw string syntax is always the same, regardless of the context where it is being used (for example, as a regular expression with a [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) or as a parameter of a [function call](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/)).
 
-**Examples**
-
 ```txt
 # Test if URI path contains 'a"b'
 http.request.uri.path matches r#"a"b"#
 
-
 # Test if URI path contains 'a"#b'
 http.request.uri.path matches r##"a"#b"##
-
 
 # Replace '\' (backslash) with 'a'
 # You must still escape the '\' character in the following raw string because it has a special meaning in regular expressions
 regex_replace(http.host, r"\\", "a")
-
 
 # Test if URI path ends with '/api/login.aspx'
 # You must still escape the '.' character in the following raw string because it has a special meaning in regular expressions ("any character")
@@ -202,7 +195,6 @@ If an incoming HTTP request included a single `Accept: application/json` HTTP he
 http.request.headers["accept"]     # ==> ["application/json"]
 http.request.headers["accept"][0]  # ==> "application/json"
 
-
 any(http.request.headers["accept"][*] == "application/json") # ==> true
 any(http.request.headers["accept"][*] == "text/plain")       # ==> false
 ```
@@ -215,24 +207,18 @@ If an HTTP request included three `filter` URI arguments `waf`, `botm`, and `cdn
 # Example request URL:
 # https://example.com/?filter=waf&filter=botm&filter=cdn
 
-
 http.request.uri.args["filter"]          # ==> ["waf", "botm", "cdn"]
 
-
 len(http.request.uri.args["filter"][1])  # ==> 4
-
 
 # Check if the length of all 'filter' values is always 3 or 4
 all(len(http.request.uri.args["filter"][*])[*] in {3 4})      # ==> true
 
-
 # Check if the length of 'filter' values (if any) is never 3 or 4
 all(not len(http.request.uri.args["filter"][*])[*] in {3 4})  # ==> false
 
-
 # Check if the http.request.uri.args map contains a "filter" key
 len(http.request.uri.args["filter"]) >= 0     # ==> true
-
 
 # Check if the http.request.uri.args map does not contain an "order" key
 not len(http.request.uri.args["order"]) >= 0  # ==> true
@@ -278,19 +264,22 @@ Additionally, for some data types you can use ranges as elements:
   * CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).
 An inline list can contain explicit IP ranges, CIDR ranges, and individual IP addresses.
 
-**Examples**
-
 ```sql
 http.host in {"example.com" "example.net"}
 
-
 ip.src in {198.51.100.1 198.51.100.3..198.51.100.7 192.0.2.0/24 2001:0db8::/32}
-
 
 tcp.dstport in {8000..8009 8080..8089}
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/#page","headline":"Values · Cloudflare Ruleset Engine docs","description":"Learn about values in Cloudflare's Rules language, including string, boolean, array, and map types, and how to use them in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/values/","name":"Values"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/#page","headline":"Values · Cloudflare Ruleset Engine docs","description":"Learn about values in Cloudflare's Rules language, including string, boolean, array, and map types, and how to use them in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

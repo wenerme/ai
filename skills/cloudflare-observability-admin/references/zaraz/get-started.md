@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Cloudflare Zaraz to manage third-party tools from the dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before being able to use Zaraz, it is recommended that you proxy your website through Cloudflare. Refer to [Set up Cloudflare](https://developers.cloudflare.com/fundamentals/account/) for more information. If you do not want to proxy your website through Cloudflare, refer to [Use Zaraz on domains not proxied by Cloudflare](https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied/).
 
@@ -19,7 +21,7 @@ Before being able to use Zaraz, it is recommended that you proxy your website th
 You can add new third-party tools and load them into your website through the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Tag Setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. If you have already added a tool before, select **Third-party tools** and click on **Add new tool**.
 3. Choose a tool from the tools catalog. Select **Continue** to confirm your selection.
 4. In **Set up**, configure the settings for your new tool. The information you need to enter will depend on the tool you choose. If you want to use any dynamic properties or variables, select the `+` sign in the drop-down menu next to the relevant field.
@@ -58,7 +60,14 @@ Users and companies have developed plugins that make using Zaraz easier on speci
 
 1. Some tools do not supported Automatic Actions, see the section about [Custom Actions](https://developers.cloudflare.com/zaraz/custom-actions) if the tool you are adding doesn't present Automatic Actions. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/get-started/#page","headline":"Get started · Cloudflare Zaraz docs","description":"Set up Cloudflare Zaraz to manage third-party tools from the dashboard.","url":"https://developers.cloudflare.com/zaraz/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/get-started/#page","headline":"Get started · Cloudflare Zaraz docs","description":"Set up Cloudflare Zaraz to manage third-party tools from the dashboard.","url":"https://developers.cloudflare.com/zaraz/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

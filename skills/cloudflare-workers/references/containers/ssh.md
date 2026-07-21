@@ -1,16 +1,18 @@
 ---
-title: SSH
 description: Connect to running container instances with SSH.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SSH
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SSH
 
-# SSH
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/ssh/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Anyone with write access to a Container can SSH into it with Wrangler as long as a matching public key is listed in `authorized_keys`.
 
@@ -26,28 +28,21 @@ The `ssh.enabled` property only controls whether you can SSH into a Container th
 
 To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8557)
-* [  wrangler.toml ](#tab-panel-8558)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      // other options here...
-      "authorized_keys": [
-        {
-          "name": "<NAME>",
-          "public_key": "<YOUR_PUBLIC_KEY_HERE>"
-        }
-      ]
-    }
-  ]
+	"containers": [
+		{
+			// other options here...
+			"authorized_keys": [
+				{
+					"name": "<NAME>",
+					"public_key": "<YOUR_PUBLIC_KEY_HERE>"
+				}
+			]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -80,7 +75,14 @@ When used this way, Wrangler pipes standard input and output to the SSH server i
 
 Without the [containers\_pid\_namespace](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#use-an-isolated-pid-namespace-for-containers) compatibility flag, all processes inside the VM are visible when you connect to your Container through SSH. This flag is turned on by default for Workers with a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2026-04-01` or later.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/ssh/#page","headline":"SSH · Cloudflare Containers docs","description":"Connect to running container instances with SSH.","url":"https://developers.cloudflare.com/containers/ssh/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/ssh/","name":"SSH"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/ssh/#page","headline":"SSH · Cloudflare Containers docs","description":"Connect to running container instances with SSH.","url":"https://developers.cloudflare.com/containers/ssh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

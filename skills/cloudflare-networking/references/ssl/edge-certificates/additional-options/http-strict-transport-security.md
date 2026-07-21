@@ -1,16 +1,18 @@
 ---
-title: HTTP Strict Transport Security (HSTS)
 description: Enforce HTTPS connections with HSTS response headers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: HTTP Strict Transport Security (HSTS)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP Strict Transport Security (HSTS)
 
-# HTTP Strict Transport Security (HSTS)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 HSTS protects HTTPS web servers from downgrade attacks. These attacks redirect web browsers from an HTTPS web server to an attacker-controlled server, allowing bad actors to compromise user data and cookies.
 
@@ -46,19 +48,16 @@ Once you enabled HSTS, avoid the following actions to ensure visitors can still 
 * Redirecting HTTPS to HTTP
 * Disabling SSL (invalid or expired certificates or certificates with mismatched hostnames)
 
-Warning
+Caution
 
 If you remove HTTPS before disabling HSTS or before waiting for the duration of the original **Max Age Header** specified in your Cloudflare HSTS configuration, your website becomes inaccessible to visitors for the duration of the Max Age Header or until you enable HTTPS.
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-11456)
-* [ API ](#tab-panel-11457)
-
 To enable HSTS using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Read the dialog and select **I understand**.
 4. Select **Next**.
@@ -76,7 +75,7 @@ To enable HSTS on a specific subdomain only, configure a [subdomain setup](https
 To disable HSTS on your website:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Set the **Max Age Header** to **0 (Disable)**.
 4. If you previously enabled the **No-Sniff** header and want to remove it, set it to **Off**.
@@ -96,7 +95,14 @@ Note
 
 Once HSTS **Preload** is configured, submit requests for addition to each browser’s preload list. Chrome, Firefox/Mozilla, and Safari use the Chrome preload list. A minimum **Max Age Header** of 12 months is required for inclusion in HSTS preload lists.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/#page","headline":"HTTP Strict Transport Security (HSTS) · Cloudflare SSL/TLS docs","description":"Enforce HTTPS connections with HSTS response headers.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/http-strict-transport-security/","name":"HTTP Strict Transport Security (HSTS)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/#page","headline":"HTTP Strict Transport Security (HSTS) · Cloudflare SSL/TLS docs","description":"Enforce HTTPS connections with HSTS response headers.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 ```

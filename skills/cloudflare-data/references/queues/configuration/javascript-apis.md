@@ -1,16 +1,18 @@
 ---
-title: JavaScript APIs
 description: Produce and consume Cloudflare Queues messages using the Workers JavaScript API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: JavaScript APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  JavaScript APIs
 
-# JavaScript APIs
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/javascript-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues is integrated with [Cloudflare Workers](https://developers.cloudflare.com/workers). To send and receive messages, you must use a Worker.
 
@@ -24,32 +26,23 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-10463)
-* [  TypeScript ](#tab-panel-10464)
-* [  Python ](#tab-panel-10465)
-
-**index.js**
-
 ```js
 export default {
-  async fetch(req, env, ctx) {
-    await env.MY_QUEUE.send({
-      url: req.url,
-      method: req.method,
-      headers: Object.fromEntries(req.headers),
-    });
-    return new Response("Sent!");
-  },
+	async fetch(req, env, ctx) {
+		await env.MY_QUEUE.send({
+			url: req.url,
+			method: req.method,
+			headers: Object.fromEntries(req.headers),
+		});
+		return new Response("Sent!");
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 interface Env {
   readonly MY_QUEUE: Queue;
 }
-
 
 export default {
   async fetch(req, env, ctx): Promise<Response> {
@@ -63,11 +56,8 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import Response, WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -81,33 +71,23 @@ class Default(WorkerEntrypoint):
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-10460)
-* [  TypeScript ](#tab-panel-10461)
-* [  Python ](#tab-panel-10462)
-
-**index.js**
-
 ```js
 const sendResultsToQueue = async (results, env) => {
-  const batch = results.map((value) => ({
-    body: value,
-  }));
-  await env.MY_QUEUE.sendBatch(batch);
+	const batch = results.map((value) => ({
+		body: value,
+	}));
+	await env.MY_QUEUE.sendBatch(batch);
 };
 ```
-
-**index.ts**
 
 ```ts
 const sendResultsToQueue = async (results: Array<unknown>, env: Env) => {
-  const batch: MessageSendRequest[] = results.map((value) => ({
-    body: value,
-  }));
-  await env.MY_QUEUE.sendBatch(batch);
+	const batch: MessageSendRequest[] = results.map((value) => ({
+		body: value,
+	}));
+	await env.MY_QUEUE.sendBatch(batch);
 };
 ```
-
-**Python**
 
 ```python
 async def send_results_to_queue(results, env):
@@ -121,8 +101,6 @@ async def send_results_to_queue(results, env):
 ### `Queue`
 
 A binding that allows a producer to send messages to a Queue.
-
-**TypeScript**
 
 ```ts
 interface Queue<Body = unknown> {
@@ -149,8 +127,6 @@ interface Queue<Body = unknown> {
 ### `MessageSendRequest`
 
 A wrapper type used for sending message batches.
-
-**TypeScript**
 
 ```ts
 interface MessageSendRequest<Body = unknown> {
@@ -194,8 +170,6 @@ Optional configuration that applies when sending a batch of messages to a queue.
 
 A union type containing valid message content types.
 
-**TypeScript**
-
 ```ts
 // Default: json
 type QueuesContentType = "text" | "bytes" | "json" | "v8";
@@ -216,13 +190,11 @@ If you specify an invalid content type, or if your specified content type does n
 
 The result of a successful send operation.
 
-**TypeScript**
-
 ```ts
 interface QueueSendResult {
-  metadata: {
-    metrics: QueueMetrics;
-  };
+	metadata: {
+		metrics: QueueMetrics;
+	};
 }
 ```
 
@@ -235,13 +207,11 @@ interface QueueSendResult {
 
 Realtime metrics for a queue.
 
-**TypeScript**
-
 ```ts
 interface QueueMetrics {
-  backlogCount: number;
-  backlogBytes: number;
-  oldestMessageTimestamp: number;
+	backlogCount: number;
+	backlogBytes: number;
+	oldestMessageTimestamp: number;
 }
 ```
 
@@ -270,29 +240,20 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-10466)
-* [  TypeScript ](#tab-panel-10467)
-* [  Python ](#tab-panel-10468)
-
-**index.js**
-
 ```js
 export default {
-  async queue(batch, env, ctx) {
-    for (const message of batch.messages) {
-      console.log("Received", message.body);
-    }
-  },
+	async queue(batch, env, ctx) {
+		for (const message of batch.messages) {
+			console.log("Received", message.body);
+		}
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 interface Env {
   // Add your bindings here
 }
-
 
 export default {
   async queue(batch, env, ctx): Promise<void> {
@@ -303,11 +264,8 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -321,18 +279,14 @@ The `env` and `ctx` fields are as [documented in the Workers documentation](http
 
 You can type queue messages with `Queue<T>` on the producer and `ExportedHandler<Env, T>` on the consumer.
 
-**TypeScript**
-
 ```ts
 type MyMessage = {
   id: string;
 };
 
-
 interface Env {
   MY_QUEUE: Queue<MyMessage>;
 }
-
 
 export default {
   async queue(batch) {
@@ -347,11 +301,9 @@ For primitive messages, use `Queue<number>` or `satisfies ExportedHandler<Env, n
 
 Or alternatively, a queue consumer can be written using the (deprecated) service worker syntax:
 
-**JavaScript**
-
 ```js
 addEventListener('queue', (event) => {
-  event.waitUntil(handleMessages(event));
+	event.waitUntil(handleMessages(event));
 });
 ```
 
@@ -364,8 +316,6 @@ When performing asynchronous tasks in your queue handler that iterates through m
 ### `MessageBatch`
 
 A batch of messages that are sent to a consumer Worker.
-
-**TypeScript**
 
 ```ts
 interface MessageBatch<Body = unknown> {
@@ -390,14 +340,12 @@ interface MessageBatch<Body = unknown> {
 
 A message that is sent to a consumer Worker.
 
-**TypeScript**
-
 ```ts
 interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
-  readonly attempts: number;
+	readonly attempts: number;
   ack(): void;
   retry(options?: QueueRetryOptions): void;
 }
@@ -422,8 +370,6 @@ interface Message<Body = unknown> {
 
 Optional configuration when marking a message or a batch of messages for retry.
 
-**TypeScript**
-
 ```ts
 interface QueueRetryOptions {
   delaySeconds?: number;
@@ -437,7 +383,14 @@ interface QueueRetryOptions {
 
   * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/javascript-apis/","name":"JavaScript APIs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

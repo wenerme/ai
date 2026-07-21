@@ -1,16 +1,18 @@
 ---
-title: /scrape - Scrape HTML elements
 description: Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: /scrape - Scrape HTML elements
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  /scrape - Scrape HTML elements
 
-# /scrape - Scrape HTML elements
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `/scrape` endpoint extracts structured data from specific elements on a webpage, returning details such as element dimensions and inner HTML.
 
@@ -44,10 +46,6 @@ You must provide `elements` and exactly one of `url` or `html`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-7573)
-* [ TypeScript SDK ](#tab-panel-7574)
-* [ Workers binding ](#tab-panel-7575)
-
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
 ```bash
@@ -67,78 +65,70 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```json
 {
-  "success": true,
-  "result": [
-    {
-      "results": [
-        {
-          "attributes": [],
-          "height": 39,
-          "html": "Example Domain",
-          "left": 100,
-          "text": "Example Domain",
-          "top": 133.4375,
-          "width": 600
-        }
-      ],
-      "selector": "h1"
-    },
-    {
-      "results": [
-        {
-          "attributes": [
-            { "name": "href", "value": "https://www.iana.org/domains/example" }
-          ],
-          "height": 20,
-          "html": "More information...",
-          "left": 100,
-          "text": "More information...",
-          "top": 249.875,
-          "width": 142
-        }
-      ],
-      "selector": "a"
-    }
-  ]
+	"success": true,
+	"result": [
+		{
+			"results": [
+				{
+					"attributes": [],
+					"height": 39,
+					"html": "Example Domain",
+					"left": 100,
+					"text": "Example Domain",
+					"top": 133.4375,
+					"width": 600
+				}
+			],
+			"selector": "h1"
+		},
+		{
+			"results": [
+				{
+					"attributes": [
+						{ "name": "href", "value": "https://www.iana.org/domains/example" }
+					],
+					"height": 20,
+					"html": "More information...",
+					"left": 100,
+					"text": "More information...",
+					"top": 249.875,
+					"width": 142
+				}
+			],
+			"selector": "a"
+		}
+	]
 }
 ```
-
-**TypeScript**
 
 ```typescript
 import Cloudflare from "cloudflare";
 
-
 const client = new Cloudflare({
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+	apiToken: process.env["CLOUDFLARE_API_TOKEN"],
 });
-
 
 const scrapes = await client.browserRendering.scrape.create({
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-  url: "https://example.com/",
-  elements: [{ selector: "h1" }, { selector: "a" }],
+	account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+	url: "https://example.com/",
+	elements: [{ selector: "h1" }, { selector: "a" }],
 });
-
 
 console.log(scrapes);
 ```
 
-**TypeScript**
-
 ```typescript
 interface Env {
-  BROWSER: BrowserRun;
+	BROWSER: BrowserRun;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    return await env.BROWSER.quickAction("scrape", {
-      url: "https://example.com/",
-      elements: [{ selector: "h1" }, { selector: "a" }],
-    });
-  },
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("scrape", {
+			url: "https://example.com/",
+			elements: [{ selector: "h1" }, { selector: "a" }],
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -168,10 +158,10 @@ The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `ne
 
 ```json
 {
-  "url": "https://example.com",
-  "gotoOptions": {
-    "waitUntil": "networkidle0"
-  }
+	"url": "https://example.com",
+	"gotoOptions": {
+		"waitUntil": "networkidle0"
+	}
 }
 ```
 
@@ -189,7 +179,14 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/#page","headline":"/scrape - Scrape HTML elements · Cloudflare Browser Run docs","description":"Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/scrape-endpoint/","name":"/scrape - Scrape HTML elements"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/#page","headline":"/scrape - Scrape HTML elements · Cloudflare Browser Run docs","description":"Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

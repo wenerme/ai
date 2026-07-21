@@ -1,16 +1,18 @@
 ---
-title: Configure mTLS
 description: Set up mTLS authentication rules to require client certificates for API hosts.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure mTLS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure mTLS
 
-# Configure mTLS
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/mtls/configure/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you specify API hosts in [mTLS authentication](https://developers.cloudflare.com/api-shield/security/mtls/), Cloudflare will block all requests that do not have a [client certificate](https://developers.cloudflare.com/ssl/client-certificates/) for mTLS authentication.
 
@@ -27,14 +29,14 @@ Note
 
 While API Shield is not required to use mTLS, many teams may use mTLS to protect their APIs.
 
-Warning
+Caution
 
 By default, API Shield mTLS uses client certificates issued by a Cloudflare-managed CA. If you need to use certificates issued by another CA, refer to [Bring your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
 ## Create an mTLS rule via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to **Client Certificates** page.
-[ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+[ Go to **Client Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. Select **Create a mTLS rule**.
 3. In **Custom rules**, several rule parameters have already been filled in. Enter the URI path you want to protect in **Value**.
 4. (Optional) Add a `Hostname` field and enter the mTLS-enabled hostnames you wish to protect in **Value**.
@@ -83,11 +85,18 @@ When a request includes a revoked certificate, the `cf.tls_client_auth.cert_revo
 ((not cf.tls_client_auth.cert_verified or cf.tls_client_auth.cert_revoked) and http.request.uri.path in {"/admin"})
 ```
 
-Warning
+Caution
 
 This check only applies to client certificates issued by the Cloudflare-managed CA. Cloudflare currently does not check certificate revocation lists (CRL) for [CAs that have been uploaded](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/mtls/configure/#page","headline":"Configure mTLS · Cloudflare API Shield docs","description":"Set up mTLS authentication rules to require client certificates for API hosts.","url":"https://developers.cloudflare.com/api-shield/security/mtls/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/mtls/","name":"Mutual TLS (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/mtls/configure/","name":"Configure mTLS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/mtls/configure/#page","headline":"Configure mTLS · Cloudflare API Shield docs","description":"Set up mTLS authentication rules to require client certificates for API hosts.","url":"https://developers.cloudflare.com/api-shield/security/mtls/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

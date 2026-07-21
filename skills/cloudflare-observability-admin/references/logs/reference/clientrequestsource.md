@@ -1,16 +1,18 @@
 ---
-title: ClientRequestSource field
 description: Understand ClientRequestSource field values in logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: ClientRequestSource field
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ClientRequestSource field
 
-# ClientRequestSource field
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/reference/clientrequestsource/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The possible values for the `ClientRequestSource` field are the following:
 
@@ -30,7 +32,14 @@ The possible values for the `ClientRequestSource` field are the following:
 | 11    | earlyHintsCache    | An [Early Hint request ↗](https://blog.cloudflare.com/early-hints/).                                                                    |
 | 12    | inBrowserChallenge | An end user request caused by a Cloudflare security product (Challenges, JavaScript Detections). These requests never reach the origin. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/clientrequestsource/#page","headline":"ClientRequestSource field · Cloudflare Logs docs","description":"Understand ClientRequestSource field values in logs.","url":"https://developers.cloudflare.com/logs/reference/clientrequestsource/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/reference/clientrequestsource/","name":"ClientRequestSource field"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/clientrequestsource/#page","headline":"ClientRequestSource field · Cloudflare Logs docs","description":"Understand ClientRequestSource field values in logs.","url":"https://developers.cloudflare.com/logs/reference/clientrequestsource/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

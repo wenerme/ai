@@ -1,14 +1,10 @@
 ---
-title: Cloudflare Developer Docs
 description: Connect, protect, and build everywhere.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Cloudflare Developer Docs
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
+[Skip to content ](#main-content)
 
 # Cloudflare Developer Docs
 
@@ -26,7 +22,7 @@ Compute AI Storage & Databases Media
 
 ` npm create cloudflare@latest my-app `
 
-[  Create your first Worker ](https://developers.cloudflare.com/workers/get-started/guide/)
+[ Create your first Worker ](https://developers.cloudflare.com/workers/get-started/guide/)
 
 [ Workers ](https://developers.cloudflare.com/workers/) · [ Containers ](https://developers.cloudflare.com/containers/) · [ Durable Objects ](https://developers.cloudflare.com/durable-objects/) · [ Queues ](https://developers.cloudflare.com/queues/)
 
@@ -36,7 +32,7 @@ Compute AI Storage & Databases Media
 
 ` npx wrangler ai models `
 
-[  Browse available models ](https://developers.cloudflare.com/workers-ai/models/)
+[ Browse available models ](https://developers.cloudflare.com/workers-ai/models/)
 
 [ Workers AI ](https://developers.cloudflare.com/workers-ai/) · [ AI Gateway ](https://developers.cloudflare.com/ai-gateway/) · [ AI Search ](https://developers.cloudflare.com/ai-search/) · [ Agents ](https://developers.cloudflare.com/agents/) · [ Vectorize ](https://developers.cloudflare.com/vectorize/) · [ Browser Run ](https://developers.cloudflare.com/browser-run/)
 
@@ -46,9 +42,9 @@ Compute AI Storage & Databases Media
 
 ` npx wrangler d1 create my-database `
 
-[  Get started with D1 ](https://developers.cloudflare.com/d1/get-started/)
+[ Get started with D1 ](https://developers.cloudflare.com/d1/get-started/)
 
-[ R2 ](https://developers.cloudflare.com/r2/) · [ Pipelines ](https://developers.cloudflare.com/pipelines/) · [ D1 ](https://developers.cloudflare.com/d1/) · [ KV ](https://developers.cloudflare.com/kv/) · [ Postgres & MySQL (Hyperdrive) ](https://developers.cloudflare.com/hyperdrive/)
+[ R2 ](https://developers.cloudflare.com/r2/) · [ Pipelines ](https://developers.cloudflare.com/pipelines/) · [ D1 ](https://developers.cloudflare.com/d1/) · [ KV ](https://developers.cloudflare.com/kv/) · [ Hyperdrive ](https://developers.cloudflare.com/hyperdrive/)
 
 ###  Build media pipelines without infrastructure headaches
 
@@ -56,7 +52,7 @@ Compute AI Storage & Databases Media
 
 ` curl --request POST https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 `
 
-[  Get started with Images ](https://developers.cloudflare.com/images/get-started/introduction/)
+[ Get started with Images ](https://developers.cloudflare.com/images/get-started/introduction/)
 
 [ Images ](https://developers.cloudflare.com/images/) · [ Stream ](https://developers.cloudflare.com/stream/) · [ Realtime ](https://developers.cloudflare.com/realtime/)
 
@@ -76,7 +72,7 @@ The latest features and improvements shipping across Cloudflare.
 
 [ View Changelog ](https://developers.cloudflare.com/changelog/)
 
-[Jul 20, 2026AccessBrowser-based login for plaintext HTTP private applicationsPlaintext HTTP private apps now use the same in-browser Access login flow as HTTPS apps, instead of the Cloudflare One Client notification.Read update ](https://developers.cloudflare.com/changelog/post/2026-07-20-http-private-apps-l7-auth/)[Jul 17Email ServicePreview sent emails in the Activity logInspect the HTML, text, headers, attachments, and raw source of sent emails from the Email Service Activity log.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-17-email-message-preview/)[Jul 17WAFWAF Release - 2026-07-17 - EmergencyCloudflare WAF managed rulesets 2026-07-17 emergency releaseRead more ](https://developers.cloudflare.com/changelog/post/2026-07-17-emergency-waf-release/)[Jul 16AccessBulk print PDFs for browser-based RDPUsers can print multiple PDF files from a browser-based RDP session as a single print job.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-16-rdp-bulk-print/)[Jul 16FlagshipManage Flagship from the command line with WranglerCreate Flagship apps, bind them to Workers, switch feature flags, and run rollouts with wrangler flagship.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-16-wrangler-commands/)[Jul 15GatewayInternal DNS is now generally availableCloudflare Internal DNS is now generally available, consolidating public and private DNS onto a single global control plane.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-15-internal-dns-ga/)[Jul 15Email ServiceSubscribe to Email Sending events with QueuesReceive outbound transactional email lifecycle events on a queue by subscribing per sending domain.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-15-event-subscriptions/)[Jul 15KVDeprecate legacy Workers KV namespace API routesThe legacy Workers KV API routes under /accounts/{account\_id}/workers/namespaces/\* are deprecated. Migrate to /accounts/{account\_id}/storage/kv/namespaces/\* before October 15, 2026.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-15-kv-legacy-namespace-routes-deprecation/)
+[Jul 21, 2026WAFWAF Release - 2026-07-21Cloudflare WAF managed rulesets 2026-07-21Read update ](https://developers.cloudflare.com/changelog/post/2026-07-21-waf-release/)[Jul 21WAFWAF Release - Scheduled changes for 2026-07-27WAF managed ruleset changes scheduled for 2026-07-27Read more ](https://developers.cloudflare.com/changelog/post/scheduled-waf-release/)[Jul 20AccessBrowser-based login for plaintext HTTP private applicationsPlaintext HTTP private apps now use the same in-browser Access login flow as HTTPS apps, instead of the Cloudflare One Client notification.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-20-http-private-apps-l7-auth/)[Jul 17Email ServicePreview sent emails in the Activity logInspect the HTML, text, headers, attachments, and raw source of sent emails from the Email Service Activity log.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-17-email-message-preview/)[Jul 17WAFWAF Release - 2026-07-17 - EmergencyCloudflare WAF managed rulesets 2026-07-17 emergency releaseRead more ](https://developers.cloudflare.com/changelog/post/2026-07-17-emergency-waf-release/)[Jul 16AccessBulk print PDFs for browser-based RDPUsers can print multiple PDF files from a browser-based RDP session as a single print job.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-16-rdp-bulk-print/)[Jul 16FlagshipManage Flagship from the command line with WranglerCreate Flagship apps, bind them to Workers, switch feature flags, and run rollouts with wrangler flagship.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-16-wrangler-commands/)[Jul 15GatewayInternal DNS is now generally availableCloudflare Internal DNS is now generally available, consolidating public and private DNS onto a single global control plane.Read more ](https://developers.cloudflare.com/changelog/post/2026-07-15-internal-dns-ga/)
 
 ##  Security that scales
 
@@ -126,6 +122,8 @@ Find community, read the blog, and explore open source projects.
 
 [ blog.cloudflare.com ](https://blog.cloudflare.com/)
 
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)  Cloudflare Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/#page","headline":"Cloudflare Developer Docs | Cloudflare Docs","description":"Connect, protect, and build everywhere.","url":"https://developers.cloudflare.com/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/#page","headline":"Cloudflare Developer Docs | Cloudflare Docs","description":"Connect, protect, and build everywhere.","url":"https://developers.cloudflare.com/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

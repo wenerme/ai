@@ -1,16 +1,18 @@
 ---
-title: Time Travel and backups
 description: Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Time Travel and backups
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Time Travel and backups
 
-# Time Travel and backups
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/reference/time-travel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Time Travel is D1's approach to backups and point-in-time-recovery, and allows you to restore a database to any minute within the last 30 days.
 
@@ -66,8 +68,6 @@ wrangler d1 time-travel info YOUR_DATABASE
 
 To retrieve the bookmark for a timestamp in the past, pass the `--timestamp` flag with a valid Unix or RFC3339 timestamp:
 
-**Using an RFC3339 timestamp, including the timezone**
-
 ```sh
 wrangler d1 time-travel info YOUR_DATABASE --timestamp="2023-07-09T17:31:11+00:00"
 ```
@@ -76,7 +76,7 @@ wrangler d1 time-travel info YOUR_DATABASE --timestamp="2023-07-09T17:31:11+00:0
 
 To restore a database to a specific point-in-time:
 
-Warning
+Caution
 
 Restoring a database to a specific point-in-time is a _destructive_ operation, and overwrites the database in place. In the future, D1 will support branching & cloning databases using Time Travel.
 
@@ -87,15 +87,12 @@ wrangler d1 time-travel restore YOUR_DATABASE --timestamp=UNIX_TIMESTAMP
 ```sh
 🚧 Restoring database YOUR_DATABASE from bookmark 00000080-ffffffff-00004c60-390376cb1c4dd679b74a19d19f5ca5be
 
-
 ⚠️ This will overwrite all data in database YOUR_DATABASE.
 In-flight queries and transactions will be cancelled.
-
 
 ✔ OK to proceed (y/N) … yes
 ⚡️ Time travel in progress...
 ✅ Database YOUR_DATABASE restored back to bookmark 00000080-ffffffff-00004c60-390376cb1c4dd679b74a19d19f5ca5be
-
 
 ↩️ To undo this operation, you can restore to the previous bookmark: 00000085-ffffffff-00004c6d-2510c8b03a2eb2c48b2422bb3b33fad5
 ```
@@ -138,7 +135,14 @@ Refer to the guide [Export and save D1 database](https://developers.cloudflare.c
 * Time Travel does not yet allow you to clone or fork an existing database to a new copy. In the future, Time Travel will allow you to fork (clone) an existing database into a new database, or overwrite an existing database.
 * You can restore a database back to a point in time up to 30 days in the past (Workers Paid plan) or 7 days (Workers Free plan). Refer to [Limits](https://developers.cloudflare.com/d1/platform/limits/) for details on Time Travel's limits.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/time-travel/#page","headline":"Time Travel and backups · Cloudflare D1 docs","description":"Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.","url":"https://developers.cloudflare.com/d1/reference/time-travel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/time-travel/","name":"Time Travel and backups"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/time-travel/#page","headline":"Time Travel and backups · Cloudflare D1 docs","description":"Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.","url":"https://developers.cloudflare.com/d1/reference/time-travel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

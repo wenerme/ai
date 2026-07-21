@@ -1,16 +1,18 @@
 ---
-title: HPE Juniper Networking SRX Series Firewalls
 description: Connect HPE Juniper SRX to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: HPE Juniper Networking SRX Series Firewalls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HPE Juniper Networking SRX Series Firewalls
 
-# HPE Juniper Networking SRX Series Firewalls
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -253,7 +255,6 @@ set security ike policy cf-wan-ike-pol-01 mode main
 set security ike policy cf-wan-ike-pol-01 proposals ike-aes256cbc-sha256-dh20
 set security ike policy cf-wan-ike-pol-01 pre-shared-key ascii-text "Cloudflare-WAN-T1-PSK-1234!"
 
-
 set security ike policy cf-wan-ike-pol-02 mode main
 set security ike policy cf-wan-ike-pol-02 proposals ike-aes256cbc-sha256-dh20
 set security ike policy cf-wan-ike-pol-02 pre-shared-key ascii-text "Cloudflare-WAN-T2-PSK-1234!"
@@ -270,7 +271,6 @@ set security ike gateway cf-wan-ike-gw-01 local-identity hostname bf6c493d03<RED
 set security ike gateway cf-wan-ike-gw-01 external-interface ge-0/0/0.0
 set security ike gateway cf-wan-ike-gw-01 local-address 203.0.113.100
 set security ike gateway cf-wan-ike-gw-01 version v2-only
-
 
 set security ike gateway cf-wan-ike-gw-02 ike-policy cf-wan-ike-pol-02
 set security ike gateway cf-wan-ike-gw-02 address 172.64.135.1
@@ -326,7 +326,6 @@ set security ipsec vpn cf-wan-ipsec-vpn-01 ike no-anti-replay
 set security ipsec vpn cf-wan-ipsec-vpn-01 ike ipsec-policy ipsec-aes256cbc-sha256-128-dh20
 set security ipsec vpn cf-wan-ipsec-vpn-01 establish-tunnels immediately
 
-
 set security ipsec vpn cf-wan-ipsec-vpn-02 bind-interface st0.2
 set security ipsec vpn cf-wan-ipsec-vpn-02 ike gateway cf-wan-ike-gw-02
 set security ipsec vpn cf-wan-ipsec-vpn-02 ike no-anti-replay
@@ -380,7 +379,6 @@ set security policies from-zone cloudflare to-zone trust policy cloudflare-to-tr
 set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match application any
 set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then permit
 set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then log session-close
-
 
 set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match source-address any
 set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match destination-address any
@@ -646,9 +644,7 @@ Reverse the process with the `activate` command:
 ```txt
 activate security ike gateway cf-wan-ike-gw-01
 
-
 activate security ipsec vpn cf-wan-ipsec-vpn-01
-
 
 commit
 ```
@@ -704,10 +700,8 @@ _Perform in Operational Mode_
 ```txt
 show route table inet.0
 
-
 inet.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
 + = Active Route, - = Last Active, * = Both
-
 
 169.254.247.0/31   *[Direct/0] 00:02:10
                     > via st0.1
@@ -738,10 +732,8 @@ inet.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
 ```txt
 show route table CF_WAN_RI.inet.0
 
-
 CF_WAN_RI.inet.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
 + = Active Route, - = Last Active, * = Both
-
 
 0.0.0.0/0          *[Static/5] 00:01:04
                     > to 169.254.250.0 via st0.1
@@ -775,7 +767,6 @@ CF_WAN_RI.inet.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
 ```txt
 admin@srx> show firewall counter filter CF_WAN_FBF_ALL CF_WAN_FWD_RI_count
 
-
 Filter: CF_WAN_FBF_ALL
 Counters:
 Name                                Bytes              Packets
@@ -784,7 +775,6 @@ CF_WAN_FWD_RI_count                 14855935          189746
 
 ```txt
 admin@srx> show firewall counter filter CF_WAN_FBF_ALL EVERYTHING_ELSE_count
-
 
 Filter: CF_WAN_FBF_ALL
 Counters:
@@ -811,7 +801,14 @@ Valid support credentials may be required to view some/all of the following docu
 * [\[SRX\] How to troubleshoot IKE Phase 2 VPN connection issues - KB10099 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-troubleshoot-IKE-Phase-2-VPN-connection-issues)
 * [\[SRX\] How to enable VPN (IKE/IPsec) traceoptions for specific SAs (Security Associations) - KB19943 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-enable-VPN-IKE-IPsec-traceoptions-for-specific-SAs-Security-Associations)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls · Cloudflare WAN docs","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/juniper/","name":"HPE Juniper Networking SRX Series Firewalls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls · Cloudflare WAN docs","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

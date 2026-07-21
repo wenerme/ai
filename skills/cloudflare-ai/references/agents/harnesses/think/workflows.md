@@ -1,16 +1,18 @@
 ---
-title: Workflows
 description: Run a durable model-driven reasoning step inside a Cloudflare Workflow with ThinkWorkflow and step.prompt(), including structured output and timeouts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workflows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workflows
 
-# Workflows
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 `ThinkWorkflow` connects Think to Cloudflare Workflows when a durable job needs one model-driven reasoning step.
 
@@ -27,48 +29,36 @@ Keep recurring prompts as [scheduled tasks](https://developers.cloudflare.com/ag
 
 Import from `@cloudflare/think/workflows`:
 
-**TypeScript**
-
 ```ts
 import { ThinkWorkflow } from "@cloudflare/think/workflows";
 ```
 
 Extend `ThinkWorkflow` and call `step.prompt()` inside `run()`:
 
-* [  JavaScript ](#tab-panel-6205)
-* [  TypeScript ](#tab-panel-6206)
-
-**JavaScript**
-
 ```js
 import { z } from "zod";
 import { ThinkWorkflow } from "@cloudflare/think/workflows";
 
-
 const draftSchema = z.object({
-  title: z.string(),
-  summary: z.string(),
-  labels: z.array(z.string()),
+	title: z.string(),
+	summary: z.string(),
+	labels: z.array(z.string()),
 });
 
-
 export class TriageWorkflow extends ThinkWorkflow {
-  async run(event, step) {
-    const draft = await step.prompt("triage-issue", {
-      prompt: `Triage issue #${event.payload.issueNumber}`,
-      output: draftSchema,
-      timeout: "3 days",
-    });
+	async run(event, step) {
+		const draft = await step.prompt("triage-issue", {
+			prompt: `Triage issue #${event.payload.issueNumber}`,
+			output: draftSchema,
+			timeout: "3 days",
+		});
 
-
-    await step.do("apply-labels", async () => {
-      await this.agent.applyLabels(draft.labels);
-    });
-  }
+		await step.do("apply-labels", async () => {
+			await this.agent.applyLabels(draft.labels);
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { z } from "zod";
@@ -76,66 +66,54 @@ import { ThinkWorkflow } from "@cloudflare/think/workflows";
 import type { ThinkWorkflowStep } from "@cloudflare/think/workflows";
 import type { AgentWorkflowEvent } from "agents/workflows";
 
-
 const draftSchema = z.object({
-  title: z.string(),
-  summary: z.string(),
-  labels: z.array(z.string()),
+	title: z.string(),
+	summary: z.string(),
+	labels: z.array(z.string()),
 });
 
-
 export class TriageWorkflow extends ThinkWorkflow<TriageAgent, Params> {
-  async run(event: AgentWorkflowEvent<Params>, step: ThinkWorkflowStep) {
-    const draft = await step.prompt("triage-issue", {
-      prompt: `Triage issue #${event.payload.issueNumber}`,
-      output: draftSchema,
-      timeout: "3 days",
-    });
+	async run(event: AgentWorkflowEvent<Params>, step: ThinkWorkflowStep) {
+		const draft = await step.prompt("triage-issue", {
+			prompt: `Triage issue #${event.payload.issueNumber}`,
+			output: draftSchema,
+			timeout: "3 days",
+		});
 
-
-    await step.do("apply-labels", async () => {
-      await this.agent.applyLabels(draft.labels);
-    });
-  }
+		await step.do("apply-labels", async () => {
+			await this.agent.applyLabels(draft.labels);
+		});
+	}
 }
 ```
 
 Start the Workflow from inside your Think Agent with `runWorkflow()`:
 
-* [  JavaScript ](#tab-panel-6203)
-* [  TypeScript ](#tab-panel-6204)
-
-**JavaScript**
-
 ```js
 export class TriageAgent extends Think {
-  async triageIssue(issueNumber) {
-    return this.runWorkflow(
-      "TRIAGE_WORKFLOW",
-      { issueNumber },
-      { metadata: { issueNumber } },
-    );
-  }
+	async triageIssue(issueNumber) {
+		return this.runWorkflow(
+			"TRIAGE_WORKFLOW",
+			{ issueNumber },
+			{ metadata: { issueNumber } },
+		);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class TriageAgent extends Think<Env> {
-  async triageIssue(issueNumber: number): Promise<string> {
-    return this.runWorkflow(
-      "TRIAGE_WORKFLOW",
-      { issueNumber },
-      { metadata: { issueNumber } },
-    );
-  }
+	async triageIssue(issueNumber: number): Promise<string> {
+		return this.runWorkflow(
+			"TRIAGE_WORKFLOW",
+			{ issueNumber },
+			{ metadata: { issueNumber } },
+		);
+	}
 }
 ```
 
 `runWorkflow()` creates the Workflow instance and injects the Agent identity that `ThinkWorkflow` needs to reconnect to `this.agent` inside `run()`. Prefer it over calling the Workflows binding directly:
-
-**TypeScript**
 
 ```ts
 // Avoid this for Agent workflows. It does not include Agent context.
@@ -144,12 +122,10 @@ await this.env.TRIAGE_WORKFLOW.create({ params: { issueNumber } });
 
 Use `sendWorkflowEvent()` from the Agent when a waiting Workflow needs an external signal, such as human approval:
 
-**TypeScript**
-
 ```ts
 await this.sendWorkflowEvent("TRIAGE_WORKFLOW", workflowId, {
-  type: "approval",
-  payload: { approved: true },
+	type: "approval",
+	payload: { approved: true },
 });
 ```
 
@@ -187,13 +163,11 @@ think-workflow:<workflowName>:<workflowId>:<stepName>
 
 For loops, pass a string `key` to distinguish repeated uses of the same step name:
 
-**TypeScript**
-
 ```ts
 await step.prompt("summarize-file", {
-  key: file.path,
-  prompt: `Summarize ${file.path}`,
-  output: summarySchema,
+	key: file.path,
+	prompt: `Summarize ${file.path}`,
+	output: summarySchema,
 });
 ```
 
@@ -209,28 +183,26 @@ Set `cancelOnTimeout: false` when you intentionally want the Think submission to
 
 Use [getScheduledTasks()](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) for recurring prompt submissions or deterministic scheduled handlers:
 
-**TypeScript**
-
 ```ts
 getScheduledTasks() {
-  return {
-    dailySummary: {
-      schedule: "every day at 09:00",
-      timezone: "UTC",
-      prompt: "Generate the daily report."
-    },
-    dailyWorkflow: {
-      schedule: "every day at 09:00",
-      timezone: "UTC",
-      retry: { maxAttempts: 3 },
-      handler: async ({ idempotencyKey, scheduledFor, timezone }) => {
-        await this.env.REPORT_WORKFLOW.create({
-          id: idempotencyKey,
-          params: { scheduledFor, timezone }
-        });
-      }
-    }
-  };
+	return {
+		dailySummary: {
+			schedule: "every day at 09:00",
+			timezone: "UTC",
+			prompt: "Generate the daily report."
+		},
+		dailyWorkflow: {
+			schedule: "every day at 09:00",
+			timezone: "UTC",
+			retry: { maxAttempts: 3 },
+			handler: async ({ idempotencyKey, scheduledFor, timezone }) => {
+				await this.env.REPORT_WORKFLOW.create({
+					id: idempotencyKey,
+					params: { scheduledFor, timezone }
+				});
+			}
+		}
+	};
 }
 ```
 
@@ -240,7 +212,14 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 
 Use Workflows when the process has multiple deterministic steps, long waits, or human approval.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/workflows/#page","headline":"Workflows · Cloudflare Agents docs","description":"Run a durable model-driven reasoning step inside a Cloudflare Workflow with ThinkWorkflow and step.prompt(), including structured output and timeouts.","url":"https://developers.cloudflare.com/agents/harnesses/think/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/workflows/","name":"Workflows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/workflows/#page","headline":"Workflows · Cloudflare Agents docs","description":"Run a durable model-driven reasoning step inside a Cloudflare Workflow with ThinkWorkflow and step.prompt(), including structured output and timeouts.","url":"https://developers.cloudflare.com/agents/harnesses/think/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

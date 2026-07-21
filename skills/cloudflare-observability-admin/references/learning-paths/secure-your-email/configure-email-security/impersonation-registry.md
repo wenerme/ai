@@ -1,16 +1,18 @@
 ---
-title: Add user to the impersonation registry
 description: Protect executives from BEC impersonation attacks.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Add user to the impersonation registry
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add user to the impersonation registry
 
-# Add user to the impersonation registry
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Attackers often try to impersonate executives within an organization when sending malicious emails (with requests about banking information, trade secrets, and more), which is known as a [Business Email Compromise (BEC) ↗](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) attack.
 
@@ -36,7 +38,14 @@ To add a user to the impersonation registry:
 
 For more information on how to edit and remove users, refer to [Impersonation Registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/#edit-users).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/#page","headline":"Add user to the impersonation registry · Cloudflare Learning Paths","description":"Protect executives from BEC impersonation attacks.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/","name":"Configure Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/impersonation-registry/","name":"Add user to the impersonation registry"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/#page","headline":"Add user to the impersonation registry · Cloudflare Learning Paths","description":"Protect executives from BEC impersonation attacks.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

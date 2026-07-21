@@ -1,16 +1,18 @@
 ---
-title: Lists
 description: Use lists to reference groups of items in rule expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Lists
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Lists
 
-# Lists
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Lists allow you to group items such as IP addresses, hostnames, or autonomous system numbers (ASNs), and reference them by name in Cloudflare [rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). Instead of adding each item individually to every rule that needs it, you define the group once and reuse it across rules and zones.
 
@@ -64,7 +66,7 @@ Both the Cloudflare dashboard and the Cloudflare API support lists:
 * To use lists in an expression from the Cloudflare dashboard, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
 * To reference a list in an API expression, refer to [Lists](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#lists) in the Rules language reference.
 
-Warning
+Caution
 
 Currently, not all Cloudflare products support lists in their expressions. Refer to the documentation of each [individual product](https://developers.cloudflare.com/directory/) for details on list support.
 
@@ -123,7 +125,14 @@ To replace the entire contents of a list at once, format the data as an array an
 
 The Cloudflare dashboard does not support downloading a list as a CSV file. To export list contents, use the [Get list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/list/) API operation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/tools/lists/#page","headline":"Lists · Cloudflare Web Application Firewall (WAF) docs","description":"Use lists to reference groups of items in rule expressions.","url":"https://developers.cloudflare.com/waf/tools/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/lists/","name":"Lists"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/tools/lists/#page","headline":"Lists · Cloudflare Web Application Firewall (WAF) docs","description":"Use lists to reference groups of items in rule expressions.","url":"https://developers.cloudflare.com/waf/tools/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

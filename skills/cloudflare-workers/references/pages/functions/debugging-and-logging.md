@@ -1,16 +1,18 @@
 ---
-title: Debugging and logging
 description: Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Debugging and logging
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Debugging and logging
 
-# Debugging and logging
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Access your Functions logs by using the Cloudflare dashboard or the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail).
 
@@ -35,16 +37,13 @@ Custom logs are `console.log()` statements that you can add yourself inside your
 
 Below is an example of a custom `console.log` statement inside a Pages Function:
 
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  console.log(
-    `[LOGGING FROM /hello]: Request came from ${context.request.url}`,
-  );
+	console.log(
+		`[LOGGING FROM /hello]: Request came from ${context.request.url}`,
+	);
 
-
-  return new Response("Hello, world!");
+	return new Response("Hello, world!");
 }
 ```
 
@@ -63,8 +62,6 @@ Your dashboard will display:
 To get started, run `wrangler pages deployment tail` in your Pages project directory. This will log any incoming requests to your application in your local terminal.
 
 The output of each `wrangler pages deployment tail` log is a structured JSON object:
-
-**JavaScript**
 
 ```js
 {
@@ -102,7 +99,7 @@ The output of each `wrangler pages deployment tail` log is a structured JSON obj
 To view logs for your `production` or `preview` environments associated with any deployment:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project, go to the deployment you want to view logs for and select **View details** \> **Functions**.
 
 Logging is available for all customers (Free, Paid, Enterprise).
@@ -126,7 +123,14 @@ When developing fullstack applications, many build tools (including wrangler for
 
 Refer to [Source maps and stack traces](https://developers.cloudflare.com/pages/functions/source-maps/) for an in-depth explanation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/#page","headline":"Debugging and logging · Cloudflare Pages docs","description":"Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.","url":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/debugging-and-logging/","name":"Debugging and logging"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/#page","headline":"Debugging and logging · Cloudflare Pages docs","description":"Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.","url":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

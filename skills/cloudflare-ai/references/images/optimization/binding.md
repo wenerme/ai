@@ -1,16 +1,18 @@
 ---
-title: Optimize with Workers
 description: Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Optimize with Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Optimize with Workers
 
-# Optimize with Workers
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -38,20 +40,13 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9648)
-* [  wrangler.toml ](#tab-panel-9649)
-
-**JSONC**
-
 ```jsonc
 {
-  "images": {
-    "binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
-  },
+	"images": {
+		"binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [images]
@@ -68,20 +63,13 @@ Responses from the Images binding are not automatically cached. Every uncached c
 
 We strongly recommend enabling [Workers Cache](https://developers.cloudflare.com/workers/cache/) so that repeat requests are served from cache without re-running your Worker or re-transforming the image. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9650)
-* [  wrangler.toml ](#tab-panel-9651)
-
-**JSONC**
-
 ```jsonc
 {
-  "cache": {
-    "enabled": true,
-  },
+	"cache": {
+		"enabled": true,
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [cache]
@@ -90,42 +78,33 @@ enabled = true
 
 Then set `Cache-Control` headers on your response to control how long transformed images are cached:
 
-* [  JavaScript ](#tab-panel-9652)
-* [  TypeScript ](#tab-panel-9653)
-
-**JavaScript**
-
 ```js
 const response = (
-  await env.IMAGES.input(stream)
-    .transform({ width: 800 })
-    .output({ format: "image/webp" })
+	await env.IMAGES.input(stream)
+		.transform({ width: 800 })
+		.output({ format: "image/webp" })
 ).response();
 
-
 return new Response(response.body, {
-  headers: {
-    ...Object.fromEntries(response.headers),
-    "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
-  },
+	headers: {
+		...Object.fromEntries(response.headers),
+		"Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const response = (
-  await env.IMAGES.input(stream)
-    .transform({ width: 800 })
-    .output({ format: "image/webp" })
+	await env.IMAGES.input(stream)
+		.transform({ width: 800 })
+		.output({ format: "image/webp" })
 ).response();
 
-
 return new Response(response.body, {
-  headers: {
-    ...Object.fromEntries(response.headers),
-    "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
-  },
+	headers: {
+		...Object.fromEntries(response.headers),
+		"Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+	},
 });
 ```
 
@@ -135,47 +114,36 @@ Creates an optimization handle for an image. All operations begin with this meth
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
-* [  JavaScript ](#tab-panel-9658)
-* [  TypeScript ](#tab-panel-9659)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const imageURL = "https://example.com/photo.jpg";
+	async fetch(request, env) {
+		const imageURL = "https://example.com/photo.jpg";
 
+		const response = await fetch(imageURL);
 
-    const response = await fetch(imageURL);
-
-
-    return (
-      await env.IMAGES.input(response.body)
-        .transform({ width: 800 })
-        .output({ format: "image/webp" })
-    ).response();
-  },
+		return (
+			await env.IMAGES.input(response.body)
+				.transform({ width: 800 })
+				.output({ format: "image/webp" })
+		).response();
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const imageURL = "https://example.com/photo.jpg";
+	async fetch(request, env) {
+		const imageURL = "https://example.com/photo.jpg";
 
+		const response = await fetch(imageURL);
 
-    const response = await fetch(imageURL);
-
-
-    return (
-      await env.IMAGES
-        .input(response.body)
-        .transform({ width: 800 })
-        .output({ format: "image/webp" })
-    ).response();
-  },
+		return (
+			await env.IMAGES
+				.input(response.body)
+				.transform({ width: 800 })
+				.output({ format: "image/webp" })
+		).response();
+	},
 };
 ```
 
@@ -187,41 +155,30 @@ For the full list of parameters, refer to [Features](https://developers.cloudfla
 
 The example below shows how you can resize an image that is [stored in Images](https://developers.cloudflare.com/images/storage/binding/) by getting the image bytes:
 
-* [  JavaScript ](#tab-panel-9654)
-* [  TypeScript ](#tab-panel-9655)
-
-**JavaScript**
-
 ```js
 // Get the raw bytes of a hosted image
 const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
 
-
 // Resize and transcode the image
 const response = (
-  await env.IMAGES.input(bytes)
-    .transform({ width: 400 })
-    .output({ format: "image/webp" })
+	await env.IMAGES.input(bytes)
+		.transform({ width: 400 })
+		.output({ format: "image/webp" })
 ).response();
-
 
 return response;
 ```
-
-**TypeScript**
 
 ```ts
 // Get the raw bytes of a hosted image
 const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
 
-
 // Resize and transcode the image
 const response = (
   await env.IMAGES.input(bytes)
     .transform({ width: 400 })
     .output({ format: "image/webp" })
 ).response();
-
 
 return response;
 ```
@@ -244,35 +201,26 @@ Accepts the following options:
 * `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
 * `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
-* [  JavaScript ](#tab-panel-9656)
-* [  TypeScript ](#tab-panel-9657)
-
-**JavaScript**
-
 ```js
 const response = (
-  await env.IMAGES.input(stream)
-    .transform({ rotate: 90 })
-    .transform({ width: 128 })
-    .transform({ blur: 20 })
-    .output({ format: "image/avif" })
+	await env.IMAGES.input(stream)
+		.transform({ rotate: 90 })
+		.transform({ width: 128 })
+		.transform({ blur: 20 })
+		.output({ format: "image/avif" })
 ).response();
-
 
 return response;
 ```
 
-**TypeScript**
-
 ```ts
 const response = (
-  await env.IMAGES.input(stream)
-    .transform({ rotate: 90 })
-    .transform({ width: 128 })
-    .transform({ blur: 20 })
-    .output({ format: "image/avif" })
+	await env.IMAGES.input(stream)
+		.transform({ rotate: 90 })
+		.transform({ width: 128 })
+		.transform({ blur: 20 })
+		.output({ format: "image/avif" })
 ).response();
-
 
 return response;
 ```
@@ -306,7 +254,14 @@ npx wrangler dev --remote
 
 When testing with the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/), the low-fidelity offline version is used by default, to avoid hitting the Cloudflare API in tests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/binding/","name":"Optimize with Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

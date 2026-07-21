@@ -1,16 +1,18 @@
 ---
-title: Pricing
 description: R2 Data Catalog pricing for catalog operations, compaction, and included usage details.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pricing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pricing
 
-# Pricing
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/platform/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Catalog charges based on two dimensions in addition to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/):
 
@@ -91,7 +93,14 @@ To learn more about how usage is billed, refer to [Cloudflare Billing Policy](ht
 
 1. Only applies when compaction is enabled for a table. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 Data Catalog pricing for catalog operations, compaction, and included usage details.","url":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/platform/","name":"Platform"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/platform/pricing/","name":"Pricing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 Data Catalog pricing for catalog operations, compaction, and included usage details.","url":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

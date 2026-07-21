@@ -1,16 +1,18 @@
 ---
-title: Bindings
 description: Give Dynamic Workers access to external APIs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bindings
 
-# Bindings
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Bindings let you control what a Dynamic Worker can access. When you create a Dynamic Worker, you decide exactly what resources and operations it can use.
 
@@ -33,11 +35,8 @@ With custom bindings, you:
 
 To create a custom binding, your loader Worker needs to implement a [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc#the-workerentrypoint-class) and export it. The methods you define on this class are the methods the Dynamic Worker will be able to call.
 
-**TypeScript**
-
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export class ChatRoom extends WorkerEntrypoint {
   async post(text: string): Promise<void> {
@@ -50,11 +49,8 @@ export class ChatRoom extends WorkerEntrypoint {
 
 Your loader Worker will then create an instance of the exported class, called a stub, and pass it into the Dynamic Worker's `env`.
 
-**TypeScript**
-
 ```ts
 let chatRoom = ctx.exports.ChatRoom({ props: { roomName: "#bot-chat" } });
-
 
 let worker = env.LOADER.load({
   env: { CHAT_ROOM: chatRoom },
@@ -63,8 +59,6 @@ let worker = env.LOADER.load({
 ```
 
 From the Dynamic Worker's perspective, `CHAT_ROOM` just looks like a regular binding with methods it can call:
-
-**TypeScript**
 
 ```ts
 // Inside the Dynamic Worker
@@ -75,8 +69,6 @@ await this.env.CHAT_ROOM.post("Hello!");
 
 One class can serve many different Dynamic Workers. Instead of defining a separate class for each user, you pass in `props` when creating the stub, which contains information specific to that user.
 
-**TypeScript**
-
 ```ts
 // Same class, different props per user
 let aliceRoom = ctx.exports.ChatRoom({ props: { roomName: "#alice", apiKey: ALICE_KEY } });
@@ -84,8 +76,6 @@ let bobRoom   = ctx.exports.ChatRoom({ props: { roomName: "#bob", apiKey: BOB_KE
 ```
 
 When the Dynamic Worker calls a method on the binding, it's actually making a call back to your loader Worker, that's where the method runs. Inside that method, you can read the `props` via [this.ctx.props](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props, the Dynamic Worker never sees them.
-
-**TypeScript**
 
 ```ts
 export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
@@ -103,26 +93,20 @@ Here's a complete example putting it all together. Say you're building a platfor
 
 You define a `ChatRoom` class in your parent Worker. This class has a `post` method, the only method the Dynamic Worker can call on this binding. Inside this class, you control which room the message goes to, which API key is used, and what name is attached to the message.
 
-**TypeScript**
-
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
   async post(text: string): Promise<void> {
     let { apiKey, botName, roomName } = this.ctx.props;
 
-
     // Prefix the message with the bot's name.
     text = `[${botName}]: ${text}`;
-
 
     // Send it to the chat service.
     await postToChat(apiKey, roomName, text);
   }
 }
-
 
 type ChatRoomProps = {
   apiKey: string;
@@ -135,8 +119,6 @@ You export one `ChatRoom` class, but each stub you create can have different `pr
 
 Now pass it to a Dynamic Worker:
 
-**TypeScript**
-
 ```ts
 // Create a stub scoped to a specific room.
 let chatRoom = ctx.exports.ChatRoom({
@@ -146,7 +128,6 @@ let chatRoom = ctx.exports.ChatRoom({
     botName: "Robo",
   },
 });
-
 
 let worker = env.LOADER.load({
   env: {
@@ -167,7 +148,6 @@ let worker = env.LOADER.load({
   globalOutbound: null,
 });
 
-
 return worker.getEntrypoint("Agent").run();
 ```
 
@@ -187,11 +167,8 @@ To pass resources like a [KV](https://developers.cloudflare.com/kv/) namespace o
 
 First, bind the KV namespace to your loader Worker. Then in your loader Worker, export a class that uses the KV binding and defines the methods Dynamic Workers can call:
 
-**TypeScript**
-
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export class MyStorage extends WorkerEntrypoint<Cloudflare.Env, MyStorageProps> {
   // Export this class from your loader Worker
@@ -201,12 +178,10 @@ export class MyStorage extends WorkerEntrypoint<Cloudflare.Env, MyStorageProps> 
     return this.env.MY_KV.get(`${this.ctx.props.prefix}:${key}`);
   }
 
-
   async put(key: string, value: string): Promise<void> {
     await this.env.MY_KV.put(`${this.ctx.props.prefix}:${key}`, value);
   }
 }
-
 
 type MyStorageProps = {
   prefix: string;
@@ -215,14 +190,11 @@ type MyStorageProps = {
 
 Then pass it to the Dynamic Worker with a customer-specific prefix:
 
-**TypeScript**
-
 ```ts
 // Create a stub scoped to this customer's prefix
 let storage = ctx.exports.MyStorage({
   props: { prefix: `customer-${customerId}` },
 });
-
 
 let worker = env.LOADER.load({
   env: { STORAGE: storage },
@@ -231,8 +203,6 @@ let worker = env.LOADER.load({
 ```
 
 The Dynamic Worker just uses it like any other binding:
-
-**TypeScript**
 
 ```ts
 // Inside the Dynamic Worker, it just sees STORAGE with get and put
@@ -252,7 +222,14 @@ This is powered by Workers RPC, also known as [Cap'n Web ↗](https://github.com
 
 Capability-based security is essential to the design of most successful sandboxes, though it's usually hidden as an implementation detail — Android has Binder, Chrome has Mojo, and Cloudflare Workers has Cap'n Web. Dynamic Workers directly expose this power to you, the developer, so that you can build your own strong sandbox.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings · Cloudflare Dynamic Workers docs","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/bindings/","name":"Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings · Cloudflare Dynamic Workers docs","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

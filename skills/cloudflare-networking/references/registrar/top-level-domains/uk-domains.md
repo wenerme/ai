@@ -1,23 +1,25 @@
 ---
-title: .UK domains
 description: Manage .UK domains with Cloudflare Registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: .UK domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  .UK domains
 
-# .UK domains
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## How to transfer a .UK domain to Cloudflare
 
 Cloudflare currently supports the transfer of `.uk`, `co.uk`, `org.uk`, and `me.uk` domains. To transfer a `.uk` domain to Cloudflare from another registrar follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Transfer domains** page.
-[ Go to **Transfer domains** ](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
+[ Go to **Transfer domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
 
 Cloudflare will show you a list of domains that are eligible for transfer (see below for restrictions). If you do not see your domain, [add the domain you want to transfer](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to your Cloudflare account before you try to transfer your `.uk` domain. 2\. Select the domains you wish to transfer. 3\. Proceed to checkout. Note that there is no fee to transfer a `.uk` domain and an additional year is NOT added during the transfer process. 4\. After checkout, request your current registrar to update the [IPS tag ↗](https://en.wikipedia.org/wiki/Internet%5FProvider%5FSecurity) to `CLOUDFLARE`. If the transfer is not completed within 24 hours, ask your registrar again to update the IPS tag. The transfer will be automatically canceled if not completed within 30 days. 5\. Cloudflare will receive a notice once your registrar updates the IPS tag. After that, we will finish transferring your domain.
 
@@ -41,7 +43,14 @@ Note
 
 If you do not know the IPS tag, contact your new registrar for instructions. Your new registrar may require you to follow some additional steps before starting the transfer process.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/#page","headline":"Learn how to manage a .UK domain with Cloudflare. · Cloudflare Registrar docs","description":"Manage .UK domains with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/top-level-domains/","name":"Top Level Domains supported"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/top-level-domains/uk-domains/","name":".UK domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/#page","headline":"Learn how to manage a .UK domain with Cloudflare. · Cloudflare Registrar docs","description":"Manage .UK domains with Cloudflare Registrar.","url":"https://developers.cloudflare.com/registrar/top-level-domains/uk-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

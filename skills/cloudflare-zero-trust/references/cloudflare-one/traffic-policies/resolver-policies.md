@@ -1,16 +1,18 @@
 ---
-title: Resolver policies
 description: Configure Resolver policies in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Resolver policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resolver policies
 
-# Resolver policies
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -93,9 +95,6 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-8359)
-* [ Terraform (v5) ](#tab-panel-8360)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:
@@ -118,31 +117,31 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
 2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
-  name        = "Example resolver policy"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "TERRAFORM MANAGED resolver policy"
-  action      = "resolve"
-  traffic     = "dns.fqdn in {\"internal.example.com\"}"
-  identity    = "identity.email in {\"jdoe@example.com\"}"
-  precedence  = 1
-  rule_settings = {
-      dns_resolvers = {
-      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
-        ipv4 = [{
-          ip = "192.0.2.24"
-          port = 53
-          route_through_private_network = true
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-        }]
-        ipv6 = [{
-          ip = "2001:DB8::"
-          port = 53
-          route_through_private_network = true
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-        }]
-      }
-  }
+	name        = "Example resolver policy"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "TERRAFORM MANAGED resolver policy"
+	action      = "resolve"
+	traffic     = "dns.fqdn in {\"internal.example.com\"}"
+	identity    = "identity.email in {\"jdoe@example.com\"}"
+	precedence  = 1
+	rule_settings = {
+			dns_resolvers = {
+			# You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
+				ipv4 = [{
+					ip = "192.0.2.24"
+					port = 53
+					route_through_private_network = true
+					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+				}]
+				ipv6 = [{
+					ip = "2001:DB8::"
+					port = 53
+					route_through_private_network = true
+					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+				}]
+			}
+	}
 }
 ```
 
@@ -334,7 +333,14 @@ To evaluate multiple conditions in an expression, select the **And** logical ope
 
 The **Or** operator will only work with conditions in the same expression group. For example, you cannot compare conditions in **Traffic** with conditions in Identity.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/resolver-policies/","name":"Resolver policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
 ```

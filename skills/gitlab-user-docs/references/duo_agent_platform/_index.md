@@ -69,6 +69,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Fix CI/CD Pipeline Flow](flows/foundational_flows/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
 | [Software Development Flow](flows/foundational_flows/software_development.md)  Create a full, multi-step plan before executing it. | Yes | Yes  | Yes |
 | [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension. <sup>1</sup> | Yes | Yes | Yes |
+| [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [SAST False Positive Detection Flow](flows/foundational_flows/sast_false_positive_detection.md)  Automatically identify and filter out false positives in SAST security scans. | No | No  | Yes |
 | [SAST Vulnerability Resolution Flow](flows/foundational_flows/agentic_sast_vulnerability_resolution.md)  Automatically generate fixes and remediation steps for SAST vulnerabilities. | No | No  | Yes |
 | [Security Analyst Agent](agents/foundational_agents/security_analyst_agent.md)  Automate repetitive security tasks: Triage issues, analyze vulnerabilities, and generate fixes. | No | No  | Yes |
@@ -92,7 +93,6 @@ but you require credits in your Monthly Commitment Pool to access them.
 |---------|---|---|---|
 | [Agent tool governance](agents/tool-governance.md)  Configure tool-level approval policies to gate sensitive agent actions with human approval at execution time. | Yes | Yes | Yes |
 | [AI audit event report](ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
-| [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Initialize project context](onboarding.md#initialize-project-context)  Automatically generate an `AGENTS.md` file that documents your project conventions for use by AI agents. | Yes | Yes | Yes |
 | [Improve CI/CD setup](onboarding.md#improve-cicd-setup)  Analyze your CI/CD configuration and generate a merge request with suggested improvements. | Yes | Yes | Yes |
 | [MCP server](../model_context_protocol/mcp_server.md)  Securely connect AI tools and applications to your GitLab instance. | No | Yes | Yes |

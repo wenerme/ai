@@ -1,16 +1,18 @@
 ---
-title: Bindings
 description: Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bindings
 
-# Bindings
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
 
@@ -29,7 +31,7 @@ To bind your KV namespace to your Pages Function, you can configure a KV namespa
 To configure a KV namespace binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **KV namespace**.
 4. Give your binding a name under **Variable name**.
@@ -38,29 +40,21 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10256)
-* [  TypeScript ](#tab-panel-10257)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  const task = await context.env.TODO_LIST.get("Task:123");
-  return new Response(task);
+	const task = await context.env.TODO_LIST.get("Task:123");
+	return new Response(task);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  TODO_LIST: KVNamespace;
+	TODO_LIST: KVNamespace;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const task = await context.env.TODO_LIST.get("Task:123");
-  return new Response(task);
+	const task = await context.env.TODO_LIST.get("Task:123");
+	return new Response(task);
 };
 ```
 
@@ -92,7 +86,7 @@ To bind your Durable Object to your Pages Function, you can configure a Durable 
 To configure a Durable Object binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Durable Object**.
 4. Give your binding a name under **Variable name**.
@@ -101,37 +95,27 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10258)
-* [  TypeScript ](#tab-panel-10259)
-
-**JavaScript**
-
 ```js
 export async function onRequestGet(context) {
-  const id = context.env.DURABLE_OBJECT.newUniqueId();
-  const stub = context.env.DURABLE_OBJECT.get(id);
+	const id = context.env.DURABLE_OBJECT.newUniqueId();
+	const stub = context.env.DURABLE_OBJECT.get(id);
 
-
-  // Pass the request down to the durable object
-  return stub.fetch(context.request);
+	// Pass the request down to the durable object
+	return stub.fetch(context.request);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  DURABLE_OBJECT: DurableObjectNamespace;
+	DURABLE_OBJECT: DurableObjectNamespace;
 }
 
-
 export const onRequestGet: PagesFunction<Env> = async (context) => {
-  const id = context.env.DURABLE_OBJECT.newUniqueId();
-  const stub = context.env.DURABLE_OBJECT.get(id);
+	const id = context.env.DURABLE_OBJECT.newUniqueId();
+	const stub = context.env.DURABLE_OBJECT.get(id);
 
-
-  // Pass the request down to the durable object
-  return stub.fetch(context.request);
+	// Pass the request down to the durable object
+	return stub.fetch(context.request);
 };
 ```
 
@@ -161,7 +145,7 @@ To bind your R2 bucket to your Pages Function, you can configure a R2 bucket bin
 To configure a R2 bucket binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **R2 bucket**.
 4. Give your binding a name under **Variable name**.
@@ -170,35 +154,27 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10260)
-* [  TypeScript ](#tab-panel-10261)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  const obj = await context.env.BUCKET.get("some-key");
-  if (obj === null) {
-    return new Response("Not found", { status: 404 });
-  }
-  return new Response(obj.body);
+	const obj = await context.env.BUCKET.get("some-key");
+	if (obj === null) {
+		return new Response("Not found", { status: 404 });
+	}
+	return new Response(obj.body);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  BUCKET: R2Bucket;
+	BUCKET: R2Bucket;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const obj = await context.env.BUCKET.get("some-key");
-  if (obj === null) {
-    return new Response("Not found", { status: 404 });
-  }
-  return new Response(obj.body);
+	const obj = await context.env.BUCKET.get("some-key");
+	if (obj === null) {
+		return new Response("Not found", { status: 404 });
+	}
+	return new Response(obj.body);
 };
 ```
 
@@ -234,7 +210,7 @@ To bind your D1 database to your Pages Function, you can configure a D1 database
 To configure a D1 database binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add**\> **D1 database bindings**.
 4. Give your binding a name under **Variable name**.
@@ -243,37 +219,27 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10262)
-* [  TypeScript ](#tab-panel-10263)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  // Create a prepared statement with our query
-  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
-  const data = await ps.first();
+	// Create a prepared statement with our query
+	const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
+	const data = await ps.first();
 
-
-  return Response.json(data);
+	return Response.json(data);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  NORTHWIND_DB: D1Database;
+	NORTHWIND_DB: D1Database;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  // Create a prepared statement with our query
-  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
-  const data = await ps.first();
+	// Create a prepared statement with our query
+	const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
+	const data = await ps.first();
 
-
-  return Response.json(data);
+	return Response.json(data);
 };
 ```
 
@@ -313,7 +279,7 @@ To bind your Vectorize index to your Pages Function, you can configure a Vectori
 To configure a Vectorize index binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Choose whether you would like to set up the binding in your **Production** or **Preview** environment.
 3. Select your Pages project > **Settings**.
 4. Go to **Bindings** \> **Add** \> **Vectorize index**.
@@ -325,127 +291,113 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-10264)
-* [  TypeScript ](#tab-panel-10265)
-
-**JavaScript**
-
 ```js
 // Sample vectors: 3 dimensions wide.
 //
 // Vectors from a machine-learning model are typically ~100 to 1536 dimensions
 // wide (or wider still).
 const sampleVectors = [
-  {
-    id: "1",
-    values: [32.4, 74.1, 3.2],
-    metadata: { url: "/products/sku/13913913" },
-  },
-  {
-    id: "2",
-    values: [15.1, 19.2, 15.8],
-    metadata: { url: "/products/sku/10148191" },
-  },
-  {
-    id: "3",
-    values: [0.16, 1.2, 3.8],
-    metadata: { url: "/products/sku/97913813" },
-  },
-  {
-    id: "4",
-    values: [75.1, 67.1, 29.9],
-    metadata: { url: "/products/sku/418313" },
-  },
-  {
-    id: "5",
-    values: [58.8, 6.7, 3.4],
-    metadata: { url: "/products/sku/55519183" },
-  },
+	{
+		id: "1",
+		values: [32.4, 74.1, 3.2],
+		metadata: { url: "/products/sku/13913913" },
+	},
+	{
+		id: "2",
+		values: [15.1, 19.2, 15.8],
+		metadata: { url: "/products/sku/10148191" },
+	},
+	{
+		id: "3",
+		values: [0.16, 1.2, 3.8],
+		metadata: { url: "/products/sku/97913813" },
+	},
+	{
+		id: "4",
+		values: [75.1, 67.1, 29.9],
+		metadata: { url: "/products/sku/418313" },
+	},
+	{
+		id: "5",
+		values: [58.8, 6.7, 3.4],
+		metadata: { url: "/products/sku/55519183" },
+	},
 ];
 
-
 export async function onRequest(context) {
-  let path = new URL(context.request.url).pathname;
-  if (path.startsWith("/favicon")) {
-    return new Response("", { status: 404 });
-  }
+	let path = new URL(context.request.url).pathname;
+	if (path.startsWith("/favicon")) {
+		return new Response("", { status: 404 });
+	}
 
+	// You only need to insert vectors into your index once
+	if (path.startsWith("/insert")) {
+		// Insert some sample vectors into your index
+		// In a real application, these vectors would be the output of a machine learning (ML) model,
+		// such as Workers AI, OpenAI, or Cohere.
+		let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
 
-  // You only need to insert vectors into your index once
-  if (path.startsWith("/insert")) {
-    // Insert some sample vectors into your index
-    // In a real application, these vectors would be the output of a machine learning (ML) model,
-    // such as Workers AI, OpenAI, or Cohere.
-    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
-
-
-    // Return the number of IDs we successfully inserted
-    return Response.json(inserted);
-  }
+		// Return the number of IDs we successfully inserted
+		return Response.json(inserted);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export interface Env {
-  // This makes our vector index methods available on context.env.VECTORIZE_INDEX.*
-  // For example, context.env.VECTORIZE_INDEX.insert() or query()
-  VECTORIZE_INDEX: VectorizeIndex;
+	// This makes our vector index methods available on context.env.VECTORIZE_INDEX.*
+	// For example, context.env.VECTORIZE_INDEX.insert() or query()
+	VECTORIZE_INDEX: VectorizeIndex;
 }
-
 
 // Sample vectors: 3 dimensions wide.
 //
 // Vectors from a machine-learning model are typically ~100 to 1536 dimensions
 // wide (or wider still).
 const sampleVectors: Array<VectorizeVector> = [
-  {
-    id: "1",
-    values: [32.4, 74.1, 3.2],
-    metadata: { url: "/products/sku/13913913" },
-  },
-  {
-    id: "2",
-    values: [15.1, 19.2, 15.8],
-    metadata: { url: "/products/sku/10148191" },
-  },
-  {
-    id: "3",
-    values: [0.16, 1.2, 3.8],
-    metadata: { url: "/products/sku/97913813" },
-  },
-  {
-    id: "4",
-    values: [75.1, 67.1, 29.9],
-    metadata: { url: "/products/sku/418313" },
-  },
-  {
-    id: "5",
-    values: [58.8, 6.7, 3.4],
-    metadata: { url: "/products/sku/55519183" },
-  },
+	{
+		id: "1",
+		values: [32.4, 74.1, 3.2],
+		metadata: { url: "/products/sku/13913913" },
+	},
+	{
+		id: "2",
+		values: [15.1, 19.2, 15.8],
+		metadata: { url: "/products/sku/10148191" },
+	},
+	{
+		id: "3",
+		values: [0.16, 1.2, 3.8],
+		metadata: { url: "/products/sku/97913813" },
+	},
+	{
+		id: "4",
+		values: [75.1, 67.1, 29.9],
+		metadata: { url: "/products/sku/418313" },
+	},
+	{
+		id: "5",
+		values: [58.8, 6.7, 3.4],
+		metadata: { url: "/products/sku/55519183" },
+	},
 ];
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  let path = new URL(context.request.url).pathname;
-  if (path.startsWith("/favicon")) {
-    return new Response("", { status: 404 });
-  }
+	let path = new URL(context.request.url).pathname;
+	if (path.startsWith("/favicon")) {
+		return new Response("", { status: 404 });
+	}
 
+	// You only need to insert vectors into your index once
+	if (path.startsWith("/insert")) {
+		// Insert some sample vectors into your index
+		// In a real application, these vectors would be the output of a machine learning (ML) model,
+		// such as Workers AI, OpenAI, or Cohere.
+		let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
 
-  // You only need to insert vectors into your index once
-  if (path.startsWith("/insert")) {
-    // Insert some sample vectors into your index
-    // In a real application, these vectors would be the output of a machine learning (ML) model,
-    // such as Workers AI, OpenAI, or Cohere.
-    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
-
-
-    // Return the number of IDs we successfully inserted
-    return Response.json(inserted);
-  }
+		// Return the number of IDs we successfully inserted
+		return Response.json(inserted);
+	}
 };
 ```
 
@@ -460,7 +412,7 @@ When developing locally using Wrangler, you can define an AI binding using the `
 To configure a Workers AI binding via the Cloudflare dashboard:
 
 1. Go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings**.
 3. Select your Pages environment > **Bindings** \> **Add** \> **Workers AI**.
 4. Give your binding a name under **Variable name**.
@@ -470,45 +422,33 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-10266)
-* [  TypeScript ](#tab-panel-10267)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  const input = { prompt: "What is the origin of the phrase Hello, World" };
+	const input = { prompt: "What is the origin of the phrase Hello, World" };
 
+	const answer = await context.env.AI.run(
+		"@cf/meta/llama-3.1-8b-instruct",
+		input,
+	);
 
-  const answer = await context.env.AI.run(
-    "@cf/meta/llama-3.1-8b-instruct",
-    input,
-  );
-
-
-  return Response.json(answer);
+	return Response.json(answer);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  AI: Ai;
+	AI: Ai;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const input = { prompt: "What is the origin of the phrase Hello, World" };
+	const input = { prompt: "What is the origin of the phrase Hello, World" };
 
+	const answer = await context.env.AI.run(
+		"@cf/meta/llama-3.1-8b-instruct",
+		input,
+	);
 
-  const answer = await context.env.AI.run(
-    "@cf/meta/llama-3.1-8b-instruct",
-    input,
-  );
-
-
-  return Response.json(answer);
+	return Response.json(answer);
 };
 ```
 
@@ -542,7 +482,7 @@ To bind your Pages Function to a Worker, configure a Service binding in your Pag
 To configure a Service binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Service binding**.
 4. Give your binding a name under **Variable name**.
@@ -551,27 +491,19 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10268)
-* [  TypeScript ](#tab-panel-10269)
-
-**JavaScript**
-
 ```js
 export async function onRequestGet(context) {
-  return context.env.SERVICE.fetch(context.request);
+	return context.env.SERVICE.fetch(context.request);
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  SERVICE: Fetcher;
+	SERVICE: Fetcher;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  return context.env.SERVICE.fetch(context.request);
+	return context.env.SERVICE.fetch(context.request);
 };
 ```
 
@@ -590,7 +522,7 @@ For example, to develop locally, if your Worker is called `my-worker`, run `npx 
 
 Wrangler also supports running your Pages project and bound Workers in the same dev session with one command. To try it out, pass multiple -c flags to Wrangler, like this: `wrangler pages dev -c wrangler.jsonc -c ../other-worker/wrangler.jsonc`. The first argument must point to your Pages configuration file, and the subsequent configurations will be accessible via a Service binding from your Pages project.
 
-Warning
+Caution
 
 Support for running multiple Workers in the same dev session with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
 
@@ -607,7 +539,7 @@ To bind a queue to your Pages Function, configure a queue producer binding in yo
 To configure a queue producer binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Queue**.
 4. Give your binding a name under **Variable name**.
@@ -616,41 +548,31 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10270)
-* [  TypeScript ](#tab-panel-10271)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  await context.env.MY_QUEUE.send({
-    url: request.url,
-    method: request.method,
-    headers: Object.fromEntries(request.headers),
-  });
+	await context.env.MY_QUEUE.send({
+		url: request.url,
+		method: request.method,
+		headers: Object.fromEntries(request.headers),
+	});
 
-
-  return new Response("Sent!");
+	return new Response("Sent!");
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  MY_QUEUE: Queue<any>;
+	MY_QUEUE: Queue<any>;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  await context.env.MY_QUEUE.send({
-    url: request.url,
-    method: request.method,
-    headers: Object.fromEntries(request.headers),
-  });
+	await context.env.MY_QUEUE.send({
+		url: request.url,
+		method: request.method,
+		headers: Object.fromEntries(request.headers),
+	});
 
-
-  return new Response("Sent!");
+	return new Response("Sent!");
 };
 ```
 
@@ -664,27 +586,20 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-10278)
-* [  wrangler.toml ](#tab-panel-10279)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -694,7 +609,7 @@ To bind your Hyperdrive config to your Pages Function, you can configure a Hyper
 To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Hyperdrive**.
 4. Give your binding a name under **Variable name**.
@@ -703,62 +618,47 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10272)
-* [  TypeScript ](#tab-panel-10273)
-
-**JavaScript**
-
 ```js
 import postgres from "postgres";
 
-
 export async function onRequest(context) {
-  // create connection to postgres database
-  const sql = postgres(context.env.HYPERDRIVE.connectionString);
+	// create connection to postgres database
+	const sql = postgres(context.env.HYPERDRIVE.connectionString);
 
+	try {
+		const result = await sql`SELECT id, name, value FROM records`;
 
-  try {
-    const result = await sql`SELECT id, name, value FROM records`;
-
-
-    return Response.json({result: result})
-  } catch (e) {
-    return Response.json({error: e.message, {status: 500}});
-  }
+		return Response.json({result: result})
+	} catch (e) {
+		return Response.json({error: e.message, {status: 500}});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import postgres from "postgres";
 
-
 interface Env {
-  HYPERDRIVE: Hyperdrive;
+	HYPERDRIVE: Hyperdrive;
 }
 
-
 type MyRecord = {
-  id: number;
-  name: string;
-  value: string;
+	id: number;
+	name: string;
+	value: string;
 };
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  // create connection to postgres database
-  const sql = postgres(context.env.HYPERDRIVE.connectionString);
+	// create connection to postgres database
+	const sql = postgres(context.env.HYPERDRIVE.connectionString);
 
+	try {
+		const result = await sql<MyRecord[]>`SELECT id, name, value FROM records`;
 
-  try {
-    const result = await sql<MyRecord[]>`SELECT id, name, value FROM records`;
-
-
-    return Response.json({result: result})
-  } catch (e) {
-    return Response.json({error: e.message, {status: 500}});
-  }
+		return Response.json({result: result})
+	} catch (e) {
+		return Response.json({error: e.message, {status: 500}});
+	}
 };
 ```
 
@@ -775,7 +675,7 @@ To bind an Analytics Engine dataset to your Pages Function, you must configure a
 To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Analytics engine**.
 4. Give your binding a name under **Variable name**.
@@ -784,47 +684,35 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-10274)
-* [  TypeScript ](#tab-panel-10275)
-
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  const url = new URL(context.request.url);
+	const url = new URL(context.request.url);
 
+	context.env.ANALYTICS_ENGINE.writeDataPoint({
+		indexes: [],
+		blobs: [url.hostname, url.pathname],
+		doubles: [],
+	});
 
-  context.env.ANALYTICS_ENGINE.writeDataPoint({
-    indexes: [],
-    blobs: [url.hostname, url.pathname],
-    doubles: [],
-  });
-
-
-  return new Response("Logged analytic");
+	return new Response("Logged analytic");
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  ANALYTICS_ENGINE: AnalyticsEngineDataset;
+	ANALYTICS_ENGINE: AnalyticsEngineDataset;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const url = new URL(context.request.url);
+	const url = new URL(context.request.url);
 
+	context.env.ANALYTICS_ENGINE.writeDataPoint({
+		indexes: [],
+		blobs: [url.hostname, url.pathname],
+		doubles: [],
+	});
 
-  context.env.ANALYTICS_ENGINE.writeDataPoint({
-    indexes: [],
-    blobs: [url.hostname, url.pathname],
-    doubles: [],
-  });
-
-
-  return new Response("Logged analytic");
+	return new Response("Logged analytic");
 };
 ```
 
@@ -841,42 +729,34 @@ To add environment variables to your Pages project, you can use the [Wrangler co
 To configure an environment variable via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Variables and Secrets** \> **Add** .
 4. After setting a variable name and value, select **Save**.
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-10276)
-* [  TypeScript ](#tab-panel-10277)
-
-**JavaScript**
-
 ```js
 export function onRequest(context) {
-  if (context.env.ENVIRONMENT === "development") {
-    return new Response("This is a local environment!");
-  } else {
-    return new Response("This is a live environment");
-  }
+	if (context.env.ENVIRONMENT === "development") {
+		return new Response("This is a local environment!");
+	} else {
+		return new Response("This is a live environment");
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  ENVIRONMENT: string;
+	ENVIRONMENT: string;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  if (context.env.ENVIRONMENT === "development") {
-    return new Response("This is a local environment!");
-  } else {
-    return new Response("This is a live environment");
-  }
+	if (context.env.ENVIRONMENT === "development") {
+		return new Response("This is a local environment!");
+	} else {
+		return new Response("This is a live environment");
+	}
 };
 ```
 
@@ -900,7 +780,7 @@ Secrets are a type of binding that allow you to attach encrypted text values to 
 To add secrets to your Pages project:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Variables and Secrets** \> **Add**.
 4. Set a variable name and value.
@@ -911,7 +791,7 @@ You use secrets the same way as environment variables. When setting secrets with
 
 ### Local development with secrets
 
-Warning
+Caution
 
 Do not use `vars` to store sensitive information in your Worker's Wrangler configuration file. Use secrets instead.
 
@@ -921,11 +801,11 @@ Note
 
 You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
+Note
+
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
-
-**.dev.vars / .env**
 
 ```bash
 SECRET_KEY="value"
@@ -947,14 +827,21 @@ When you select a Cloudflare environment in your local development, the correspo
   * `.env.<environment-name>`
   * `.env` (least specific)
 
-Controlling `.env` handling
+Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
 * To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
 * To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings · Cloudflare Pages docs","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/bindings/","name":"Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings · Cloudflare Pages docs","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

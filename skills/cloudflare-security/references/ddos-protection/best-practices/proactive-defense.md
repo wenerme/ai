@@ -1,16 +1,18 @@
 ---
-title: Proactive DDoS defense
 description: Strengthen your application against DDoS attacks before they happen.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Proactive DDoS defense
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proactive DDoS defense
 
-# Proactive DDoS defense
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's network automatically mitigates large [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), but these attacks can still affect your application.
 
@@ -33,7 +35,14 @@ In addition to the steps for all customers, Cloudflare Enterprise customers subs
 
 In addition to the steps for all customers, Cloudflare Magic Transit customers should ensure that the [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/), [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/), and [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/) are enabled and that their configurations are optimized.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/#page","headline":"Proactive DDoS defense · Cloudflare DDoS Protection docs","description":"Strengthen your application against DDoS attacks before they happen.","url":"https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/best-practices/proactive-defense/","name":"Proactive DDoS defense"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/#page","headline":"Proactive DDoS defense · Cloudflare DDoS Protection docs","description":"Strengthen your application against DDoS attacks before they happen.","url":"https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 ```

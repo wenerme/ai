@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Find answers to common Log Explorer questions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to the most commonly asked questions regarding Cloudflare Logs. If you cannot find the answer you are looking for, go to the [community page ↗](https://community.cloudflare.com/) and post your question there.
 
@@ -64,7 +66,14 @@ For questions about correlating the initial Worker request with the Worker-to-or
 
 [ Worker subrequests ❯ ](https://developers.cloudflare.com/logs/faq/worker-subrequests/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/logs/faq/#page","headline":"FAQ · Cloudflare Logs docs","description":"Find answers to common Log Explorer questions.","url":"https://developers.cloudflare.com/logs/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/logs/faq/#page","headline":"FAQ · Cloudflare Logs docs","description":"Find answers to common Log Explorer questions.","url":"https://developers.cloudflare.com/logs/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

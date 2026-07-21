@@ -1,22 +1,24 @@
 ---
-title: Aruba EdgeConnect Enterprise
 description: Integrate Aruba EdgeConnect Enterprise with Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Aruba EdgeConnect Enterprise
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Aruba EdgeConnect Enterprise
 
-# Aruba EdgeConnect Enterprise
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare partners with Aruba's EdgeConnect SD-WAN solution to provide users with an integrated solution. The EdgeConnect appliances manage subnets associated with branch offices or retail locations. Anycast tunnels are set up between the EdgeConnect appliances and Cloudflare to securely route traffic.
 
 This tutorial describes how to configure the EdgeConnect device for both east-west (branch to branch) and north-south (Internet-bound) use cases.
 
-Warning
+Caution
 
 Note that north-south traffic routed through Cloudflare's Secure Web Gateway is an optional add-on feature set and requires a Cloudflare Zero Trust account.
 
@@ -39,7 +41,6 @@ There are 2 branch offices each with distinct subnets.
 
 * The east branch office has a `10.3.0.0/16` network with an EdgeConnect terminating the anycast GRE tunnel.
 * The west branch office has a `10.30.0.0/16` network with an EdgeConnect terminating the anycast GRE tunnel.
-
 ![Table of branch subnet information](https://developers.cloudflare.com/_astro/branch-subnets.DXU4G0d8_Z1FO83x.webp)
 
 _Note: Labels in this image may reflect a previous product name._
@@ -95,9 +96,7 @@ Cloudflare's [tunnel health checks](https://developers.cloudflare.com/cloudflare
 To create the overlay policy:
 
 1. Create a compound application, which is a combination of all [Cloudflare public IPs ↗](https://www.cloudflare.com/ips/) and ICMP packets.
-
 ![Application definition screen with IP values](https://developers.cloudflare.com/_astro/app-definition.rcGh7Hqx_2gtAxy.webp)
-
 1. Create a breakout Business Intent Overlay (BIO) to bypass the GRE tunnel as the first policy and use this newly created application as the match criteria.
 2. Define at least one additional overlay policy and the traffic you want to send to Cloudflare over the GRE tunnels.
 
@@ -114,9 +113,7 @@ Cloudflare's [tunnel health checks](https://developers.cloudflare.com/cloudflare
 To create the overlay policy:
 
 1. Create a compound application, which is a combination of all [Cloudflare public IPs ↗](https://www.cloudflare.com/ips/) and ICMP packets.
-
 ![Application definition screen with IP values](https://developers.cloudflare.com/_astro/app-definition.rcGh7Hqx_2gtAxy.webp)
-
 1. Create a breakout Business Intent Overlay (BIO) to bypass the IPsec tunnel as the first policy and use this newly created application as the match criteria.
 2. Define at least one additional overlay policy and the traffic you want to send to Cloudflare over the IPsec tunnels.
 
@@ -136,13 +133,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 1. Create a tunnel on the EdgeConnect using Cloudflare's assigned public anycast IP and the service used in the overlay policy in the [previous step](#2-configure-overlay-policies).
 2. Create a Virtual Tunnel Interface (VTI) using the private IP pair shared with CF GRE tunnel endpoint and the passthrough tunnel to match the newly created tunnel alias (**CF\_GRE\_east** in our example).
-
-![Modify Passthrough Tunnel screen](https://developers.cloudflare.com/_astro/modify-passthrough._Sp9J4KQ_1WgQok.webp)
-
-![Edit Virtual Tunnel Interface screen](https://developers.cloudflare.com/_astro/edit-vti.BFWttrT1_Z1m7h1H.webp)
-
+![Modify Passthrough Tunnel screen](https://developers.cloudflare.com/_astro/modify-passthrough._Sp9J4KQ_1WgQok.webp)![Edit Virtual Tunnel Interface screen](https://developers.cloudflare.com/_astro/edit-vti.BFWttrT1_Z1m7h1H.webp)
 1. Define a GRE tunnel on the Cloudflare dashboard using the EdgeConnect appliance's public IP and the private IP pair /31 shared with the appliance.
-
 ![GRE tunnels information for each branch](https://developers.cloudflare.com/_astro/gre-tunnels-edgeconnect.CPxCqhiR_Z1wtVPz.webp)
 
 IPsec tunnel configuration
@@ -198,28 +190,28 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunn
 
 ```json
 {
-  "result": {
-    "ipsec_tunnels": [
-      {
-        "id": "tunnel_id",
-        "interface_address": "192.168.10.11/31",
-        "created_on": "2022-04-14T19:57:43.938376Z",
-        "modified_on": "2022-04-14T19:57:43.938376Z",
-        "name": "EdgeConnect_IPSEC_1",
-        "cloudflare_endpoint": "172.64.241.205",
-        "customer_endpoint": "35.188.72.56",
-        "description": "Tunnel for EdgeConnect - GCP Central",
-        "health_check": {
-          "enabled": true,
-          "target": "35.188.72.56",
-          "type": "reply"
-        }
-      }
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"ipsec_tunnels": [
+			{
+				"id": "tunnel_id",
+				"interface_address": "192.168.10.11/31",
+				"created_on": "2022-04-14T19:57:43.938376Z",
+				"modified_on": "2022-04-14T19:57:43.938376Z",
+				"name": "EdgeConnect_IPSEC_1",
+				"cloudflare_endpoint": "172.64.241.205",
+				"customer_endpoint": "35.188.72.56",
+				"description": "Tunnel for EdgeConnect - GCP Central",
+				"health_check": {
+					"enabled": true,
+					"target": "35.188.72.56",
+					"type": "reply"
+				}
+			}
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -236,17 +228,17 @@ curl --request POST \
 
 ```json
 {
-  "result": {
-    "ipsec_id": "<ipsec_id>",
-    "ipsec_tunnel_id": "<tunnel_id>",
-    "psk": "XXXXXXXXXXXXXXXXX",
-    "psk_metadata": {
-      "last_generated_on": "2022-04-14T20:05:29.756514071Z"
-    }
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"ipsec_id": "<ipsec_id>",
+		"ipsec_tunnel_id": "<tunnel_id>",
+		"psk": "XXXXXXXXXXXXXXXXX",
+		"psk_metadata": {
+			"last_generated_on": "2022-04-14T20:05:29.756514071Z"
+		}
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -254,11 +246,7 @@ curl --request POST \
 
 You can create a tunnel after the Business Intent Overlay policies have been defined. Use the correct policy or service created in [configure overlay policy](#2-configure-overlay-policies). The local IP is the local WAN interface of the EdgeConnect device, and the remote IP is the Cloudflare public IP assigned as the tunnel endpoint.
 
-![Modify Passthrough Tunnel dialog with General values](https://developers.cloudflare.com/_astro/general-modify-passthrough.3ViqT0DH_ZfWR5P.webp)
-
-![Modify Passthrough Tunnel dialog with IKE values](https://developers.cloudflare.com/_astro/ike-modify-passthrough.BbQLufk__yvGnM.webp)
-
-![Modify Passthrough Tunnel dialog with IPsec values](https://developers.cloudflare.com/_astro/ipsec-modify-passthrough.gtfn_fS__1ek6eo.webp)
+![Modify Passthrough Tunnel dialog with General values](https://developers.cloudflare.com/_astro/general-modify-passthrough.3ViqT0DH_ZfWR5P.webp)![Modify Passthrough Tunnel dialog with IKE values](https://developers.cloudflare.com/_astro/ike-modify-passthrough.BbQLufk__yvGnM.webp)![Modify Passthrough Tunnel dialog with IPsec values](https://developers.cloudflare.com/_astro/ipsec-modify-passthrough.gtfn_fS__1ek6eo.webp)
 
 **Create a Virtual Tunnel Interface (VTI) on the EdgeConnect appliance**
 
@@ -270,12 +258,9 @@ GRE tunnel configuration
 
 1. Define static routes on the Cloudflare dashboard for the LAN subnet(s) attached to the EdgeConnect appliance. Use the private IP pair for the EdgeConnect tunnel endpoint.
 In this example, the traffic to subnet `10.3.0.0/16` attached to the **east\_branch** EdgeConnect appliance has a next hop of `10.40.8.10`.
-
 ![Static route information for each branch](https://developers.cloudflare.com/_astro/static-routes-cf.7x1mHyLW_ZPbNgG.webp)
-
 1. Define static routes on the Orchestrator so Cloudflare can route traffic between sites.
 This example creates a route for the subnet `10.30.0.0/24` on the **west\_branch** to route via the established GRE tunnel between the EdgeConnect appliance and Cloudflare.
-
 ![Static route information for each branch](https://developers.cloudflare.com/_astro/static-routes-edgeconnect.UNNAmHeW_Z1L6bfF.webp)
 
 IPsec tunnel configuration
@@ -356,7 +341,14 @@ At this point, the GRE or IPsec tunnels should be connected from the EdgeConnect
 
 To begin filtering traffic and gathering analytics, refer to the [Cloudflare Network Firewall documentation](https://developers.cloudflare.com/cloudflare-network-firewall/) to learn how to create filters for east-west inter-branch traffic and the [Secure Web Gateway documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to learn how to configure Gateway policies if you decide to send traffic from your local private subnets to the Internet through Cloudflare Gateway.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/#page","headline":"Aruba EdgeConnect Enterprise · Cloudflare One docs","description":"Integrate Aruba EdgeConnect Enterprise with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/","name":"Aruba EdgeConnect Enterprise"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/#page","headline":"Aruba EdgeConnect Enterprise · Cloudflare One docs","description":"Integrate Aruba EdgeConnect Enterprise with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

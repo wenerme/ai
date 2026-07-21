@@ -1,16 +1,18 @@
 ---
-title: Customize device profiles
 description: Configure WARP client device profiles.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Customize device profiles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Customize device profiles
 
-# Customize device profiles
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A device profile defines [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) for a specific set of devices in your organization. You can create multiple profiles and apply different settings based on the user's identity, the device's location, and other criteria.
 
@@ -21,10 +23,6 @@ For example, users in one identity provider group (signifying a specific office 
 Set your default device profile to be applicable to a majority of your userbase, or any user without known explicit considerations.
 
 To customize the default settings:
-
-* [ Dashboard ](#tab-panel-9969)
-* [ API ](#tab-panel-9970)
-* [ Terraform (v5) ](#tab-panel-9971)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.
@@ -91,27 +89,27 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \
 2. Configure default profile settings using the [cloudflare\_zero\_trust\_device\_default\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile) resource:
 ```tf
 resource "cloudflare_zero_trust_device_default_profile" "default_profile" {
-  account_id            = var.cloudflare_account_id
-  allow_mode_switch     = false
-  allow_updates         = false
-  allowed_to_leave      = false
-  auto_connect          = 600
-  captive_portal        = 180
-  disable_auto_fallback = true
-  exclude_office_ips    = false
-  service_mode_v2       = {mode = "warp"}
-  support_url           = "https://support.example.com"
-  switch_locked         = true
-  tunnel_protocol       = "wireguard"
+	account_id            = var.cloudflare_account_id
+	allow_mode_switch     = false
+	allow_updates         = false
+	allowed_to_leave      = false
+	auto_connect          = 600
+	captive_portal        = 180
+	disable_auto_fallback = true
+	exclude_office_ips    = false
+	service_mode_v2       = {mode = "warp"}
+	support_url           = "https://support.example.com"
+	switch_locked         = true
+	tunnel_protocol       = "wireguard"
 }
 ```
 3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
 ```tf
 resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {
-  account_id            = var.cloudflare_account_id
-  disable_for_time      = 3600
-  root_certificate_installation_enabled = true
-  use_zt_virtual_ip     = false
+	account_id            = var.cloudflare_account_id
+	disable_for_time      = 3600
+	root_certificate_installation_enabled = true
+	use_zt_virtual_ip     = false
 }
 ```
 
@@ -121,7 +119,14 @@ You can configure a device settings profile to take effect when the device is co
 
 For setup instructions, refer to [Add a managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/#page","headline":"Customize device profiles · Cloudflare Learning Paths","description":"Configure WARP client device profiles.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/device-profiles/","name":"Customize device profiles"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/#page","headline":"Customize device profiles · Cloudflare Learning Paths","description":"Configure WARP client device profiles.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

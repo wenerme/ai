@@ -1,16 +1,18 @@
 ---
-title: Create Custom Recording App Using Recording SDKs
 description: Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for effective app creation and integration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create Custom Recording App Using Recording SDKs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create Custom Recording App Using Recording SDKs
 
-# Create Custom Recording App Using Recording SDKs
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid ↗](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
 
@@ -47,15 +49,11 @@ Creates an instance of the `RealtimeKitRecording` class.
 
 ### Methods
 
-**JavaScript**
-
 ```js
 init(client: RealtimeKitClient)
 ```
 
 Initiates the SDK by providing a `RealtimeKitClient` object. Call this after creating the meeting object and before calling `meeting.joinRoom()`.
-
-**JavaScript**
 
 ```js
 startRecording();
@@ -63,15 +61,11 @@ startRecording();
 
 Manually starts the recording. Ensure that `autoStart` is passed as true in the constructor options.
 
-**JavaScript**
-
 ```js
 stopRecording();
 ```
 
 Manually stops the recording. Ensure that `autoStop` is passed as true in the constructor options.
-
-**JavaScript**
 
 ```js
 cleanup();
@@ -85,23 +79,17 @@ Perform the following steps to create the recording app for your RealtimeKit mee
 
 ### Step 1: Install the SDK
 
-**JavaScript**
-
 ```js
 npm i @cloudflare/realtimekit-recording-sdk
 ```
 
 ### Step 2: Import the `RealtimeKitRecording` object
 
-**JavaScript**
-
 ```js
 import { RealtimeKitRecording } from '@cloudflare/realtimekit-recording-sdk';
 ```
 
 ### Step 3: Create the `RealtimeKitRecording` object
-
-**JavaScript**
 
 ```js
 const recordingSdk = new RealtimeKitRecording(options);
@@ -110,8 +98,6 @@ const recordingSdk = new RealtimeKitRecording(options);
 ### Step 4: Initialize the recording SDK
 
 Call `init` after creating the meeting object and before `joinRoom` is called.
-
-**JavaScript**
 
 ```js
 // Call this after you have called initMeeting
@@ -122,8 +108,6 @@ await recordingSdk.init();
 
 To manually start the recording, call the `startRecording()` function. For example, you want to start a recording after you have loaded your UI content in the app and `autoStart` is not set to true. In such cases, you can manually call the `startRecording()` function when you are ready to begin the recording.
 
-**JavaScript**
-
 ```js
 // This throws an exception if autoStart is set to false.
 await recordingSdk.startRecording();
@@ -132,8 +116,6 @@ await recordingSdk.startRecording();
 ### (Optional) Step 6: Manually stop the recording
 
 To manually stop the recording, use `stopRecording`.
-
-**JavaScript**
 
 ```js
 // This throws an exception if autoStop is set to false.
@@ -150,7 +132,14 @@ Once you've created the app, deploy it using a platform like [Cloudflare Workers
 
 In the [Start Recording a Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) API, provide the custom URL (obtained from the previous step) to indicate the location of your deployed app.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/#page","headline":"Create Custom Recording App Using Recording SDKs · Cloudflare Realtime docs","description":"Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for effective app creation and integration.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/recording-guide/create-record-app-using-sdks/","name":"Create Custom Recording App Using Recording SDKs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/#page","headline":"Create Custom Recording App Using Recording SDKs · Cloudflare Realtime docs","description":"Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for effective app creation and integration.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

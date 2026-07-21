@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create and deploy your first Durable Object with SQLite storage and a companion Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -83,8 +85,6 @@ Adding a Durable Object to an existing Worker
 To add a Durable Object to an existing Worker, you need to:
 
 * Modify the code of the existing Worker to include the following:
-
-**TypeScript**
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
   constructor(ctx: DurableObjectState, env: Env) {
@@ -112,37 +112,26 @@ If you do not use JavaScript or TypeScript, you will need a [shim ↗](https://d
 
 Your `MyDurableObject` class will have a constructor with two parameters. The first parameter, `ctx`, passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter, `env`, contains any bindings you have associated with the Worker when you uploaded it.
 
-* [  JavaScript ](#tab-panel-9080)
-* [  TypeScript ](#tab-panel-9081)
-* [  Python ](#tab-panel-9082)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    // Required, as we're extending the base class.
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		// Required, as we're extending the base class.
+		super(ctx, env);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  constructor(ctx: DurableObjectState, env: Env) {
-    // Required, as we're extending the base class.
-    super(ctx, env)
-  }
+	constructor(ctx: DurableObjectState, env: Env) {
+		// Required, as we're extending the base class.
+		super(ctx, env)
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     def __init__(self, ctx, env):
@@ -153,62 +142,47 @@ Workers communicate with a Durable Object using [remote-procedure call](https://
 
 Your file should now look like:
 
-* [  JavaScript ](#tab-panel-9086)
-* [  TypeScript ](#tab-panel-9087)
-* [  Python ](#tab-panel-9088)
-
-**JavaScript**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    // Required, as we're extending the base class.
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		// Required, as we're extending the base class.
+		super(ctx, env);
+	}
 
-
-  async sayHello() {
-    let result = this.ctx.storage.sql
-      .exec("SELECT 'Hello, World!' as greeting")
-      .one();
-    return result.greeting;
-  }
+	async sayHello() {
+		let result = this.ctx.storage.sql
+			.exec("SELECT 'Hello, World!' as greeting")
+			.one();
+		return result.greeting;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  constructor(ctx: DurableObjectState, env: Env) {
-    // Required, as we're extending the base class.
-    super(ctx, env)
-  }
-
+	constructor(ctx: DurableObjectState, env: Env) {
+		// Required, as we're extending the base class.
+		super(ctx, env)
+	}
 
     async sayHello(): Promise<string> {
-      let result = this.ctx.storage.sql
-        .exec("SELECT 'Hello, World!' as greeting")
-        .one();
-      return result.greeting;
+    	let result = this.ctx.storage.sql
+    		.exec("SELECT 'Hello, World!' as greeting")
+    		.one();
+    	return result.greeting;
     }
-
 
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
     async def say_hello(self):
         result = self.ctx.storage.sql.exec(
             "SELECT 'Hello, World!' as greeting"
         ).one()
-
 
         return result.greeting
 ```
@@ -230,50 +204,34 @@ A Worker is used to [access Durable Objects](https://developers.cloudflare.com/d
 
 To communicate with a Durable Object, the Worker's fetch handler should look like the following:
 
-* [  JavaScript ](#tab-panel-9083)
-* [  TypeScript ](#tab-panel-9084)
-* [  Python ](#tab-panel-9085)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
+	async fetch(request, env, ctx) {
+		const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
 
+		const greeting = await stub.sayHello();
 
-    const greeting = await stub.sayHello();
-
-
-    return new Response(greeting);
-  },
+		return new Response(greeting);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-      const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
+	async fetch(request, env, ctx): Promise<Response> {
+    	const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
 
+    	const greeting = await stub.sayHello();
 
-      const greeting = await stub.sayHello();
-
-
-      return new Response(greeting);
+    	return new Response(greeting);
     },
-
 
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import handler, Response, WorkerEntrypoint
 from urllib.parse import urlparse
-
 
 class Default(WorkerEntrypoint):
     async def fetch(request):
@@ -297,25 +255,18 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
-* [  wrangler.jsonc ](#tab-panel-9076)
-* [  wrangler.toml ](#tab-panel-9077)
-
-**JSONC**
-
 ```jsonc
 {
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_DURABLE_OBJECT",
-        "class_name": "MyDurableObject"
-      }
-    ]
-  }
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MY_DURABLE_OBJECT",
+				"class_name": "MyDurableObject"
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[durable_objects.bindings]]
@@ -335,23 +286,16 @@ You declare each Durable Object class your Worker exports in the `exports` field
 
 The minimal `exports` block to register a new Durable Object class with SQLite storage looks like:
 
-* [  wrangler.jsonc ](#tab-panel-9078)
-* [  wrangler.toml ](#tab-panel-9079)
-
-**JSONC**
-
 ```jsonc
 {
-  "exports": {
-    "MyDurableObject": {
-      "type": "durable-object",
-      "storage": "sqlite"
-    }
-  }
+	"exports": {
+		"MyDurableObject": {
+			"type": "durable-object",
+			"storage": "sqlite"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [exports.MyDurableObject]
@@ -381,7 +325,7 @@ npx wrangler deploy
 
 Once deployed, you should be able to see your newly created Durable Object Worker on the Cloudflare dashboard.
 
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 
 Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
 
@@ -389,82 +333,63 @@ Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.de
 
 Your final code should look like this:
 
-* [  JavaScript ](#tab-panel-9089)
-* [  TypeScript ](#tab-panel-9090)
-* [  Python ](#tab-panel-9091)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    // Required, as we are extending the base class.
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		// Required, as we are extending the base class.
+		super(ctx, env);
+	}
 
-
-  async sayHello() {
-    let result = this.ctx.storage.sql
-      .exec("SELECT 'Hello, World!' as greeting")
-      .one();
-    return result.greeting;
-  }
+	async sayHello() {
+		let result = this.ctx.storage.sql
+			.exec("SELECT 'Hello, World!' as greeting")
+			.one();
+		return result.greeting;
+	}
 }
 export default {
-  async fetch(request, env, ctx) {
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
+	async fetch(request, env, ctx) {
+		const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
 
+		const greeting = await stub.sayHello();
 
-    const greeting = await stub.sayHello();
-
-
-    return new Response(greeting);
-  },
+		return new Response(greeting);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
 export class MyDurableObject extends DurableObject<Env> {
-  constructor(ctx: DurableObjectState, env: Env) {
-    // Required, as we are extending the base class.
-    super(ctx, env)
-  }
-
+	constructor(ctx: DurableObjectState, env: Env) {
+		// Required, as we are extending the base class.
+		super(ctx, env)
+	}
 
     async sayHello():Promise<string> {
-      let result = this.ctx.storage.sql
-        .exec("SELECT 'Hello, World!' as greeting")
-        .one();
-      return result.greeting;
+    	let result = this.ctx.storage.sql
+    		.exec("SELECT 'Hello, World!' as greeting")
+    		.one();
+    	return result.greeting;
     }
-
 
 }
 export default {
 async fetch(request, env, ctx): Promise<Response> {
 const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
 
+    	const greeting = await stub.sayHello();
 
-      const greeting = await stub.sayHello();
-
-
-      return new Response(greeting);
+    	return new Response(greeting);
     },
-
 
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject, handler, Response
 from urllib.parse import urlparse
-
 
 class MyDurableObject(DurableObject):
     async def say_hello(self):
@@ -472,9 +397,7 @@ class MyDurableObject(DurableObject):
             "SELECT 'Hello, World!' as greeting"
         ).one()
 
-
         return result.greeting
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -496,7 +419,14 @@ By finishing this tutorial, you have:
 * [Access Durable Objects Storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/)
 * [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) \- Helpful tools for mocking and testing your Durable Objects.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

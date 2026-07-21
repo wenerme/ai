@@ -1,16 +1,18 @@
 ---
-title: Build a data class
 description: Create reusable data classes in Cloudflare DLP Data Classification.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Build a data class
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a data class
 
-# Build a data class
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Data classes are reusable classification rules built from detection entries, other data classes, sensitivity levels, and data tags.
 
@@ -70,7 +72,14 @@ After you create a data class, you can add it to a custom DLP profile.
 
 Custom DLP profiles can combine direct detection entries, data classes, and labels in the same profile.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/#page","headline":"Build a data class · Cloudflare One docs","description":"Create reusable data classes in Cloudflare DLP Data Classification.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/data-classification/","name":"Data classification"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/","name":"Build a data class"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/#page","headline":"Build a data class · Cloudflare One docs","description":"Create reusable data classes in Cloudflare DLP Data Classification.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

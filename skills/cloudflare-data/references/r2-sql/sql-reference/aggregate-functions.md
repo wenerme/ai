@@ -1,16 +1,18 @@
 ---
-title: Aggregate functions
 description: Reference for the aggregate functions supported in R2 SQL, organized by category.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Aggregate functions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Aggregate functions
 
-# Aggregate functions
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Aggregate functions collapse multiple rows into a single result. They are used with `GROUP BY` to compute summaries per group, or without `GROUP BY` to compute a single result across all rows.
 
@@ -32,7 +34,6 @@ Counts rows. `COUNT(*)` counts all rows. `COUNT(column)` counts non-NULL values.
 SELECT COUNT(*) AS total_rows
 FROM my_namespace.sales_data
 
-
 SELECT department, COUNT(*) AS dept_count
 FROM my_namespace.sales_data
 GROUP BY department
@@ -46,7 +47,6 @@ Returns the sum of values in a column.
 ```sql
 SELECT SUM(total_amount) AS grand_total
 FROM my_namespace.sales_data
-
 
 SELECT department, SUM(total_amount) AS dept_total
 FROM my_namespace.sales_data
@@ -62,7 +62,6 @@ Returns the average of values in a column. Alias: `mean`.
 SELECT AVG(total_amount) AS avg_amount
 FROM my_namespace.sales_data
 
-
 SELECT department, AVG(total_amount) AS avg_amount
 FROM my_namespace.sales_data
 GROUP BY department
@@ -77,7 +76,6 @@ Returns the minimum value. Works on numeric and string columns.
 SELECT MIN(total_amount) AS min_amount, MIN(customer_id) AS first_customer
 FROM my_namespace.sales_data
 
-
 SELECT department, MIN(total_amount) AS min_amount
 FROM my_namespace.sales_data
 GROUP BY department
@@ -91,7 +89,6 @@ Returns the maximum value. Works on numeric and string columns.
 SELECT MAX(total_amount) AS max_amount, MAX(customer_id) AS last_customer
 FROM my_namespace.sales_data
 
-
 SELECT department, MAX(total_amount) AS max_amount
 FROM my_namespace.sales_data
 GROUP BY department
@@ -104,7 +101,6 @@ Returns the exact median value. For large datasets, use [approx\_median](#approx
 ```sql
 SELECT MEDIAN(total_amount) AS median_amount
 FROM my_namespace.sales_data
-
 
 SELECT department, MEDIAN(total_amount) AS median_amount
 FROM my_namespace.sales_data
@@ -140,7 +136,6 @@ SELECT approx_percentile_cont(total_amount, 0.5) AS median,
        approx_percentile_cont(total_amount, 0.95) AS p95
 FROM my_namespace.sales_data
 
-
 SELECT department,
        approx_percentile_cont(total_amount, 0.5) AS median
 FROM my_namespace.sales_data
@@ -166,7 +161,6 @@ Returns the approximate median. Equivalent to `approx_percentile_cont(column, 0.
 SELECT approx_median(total_amount) AS median_amount
 FROM my_namespace.sales_data
 
-
 SELECT department, approx_median(total_amount) AS median
 FROM my_namespace.sales_data
 GROUP BY department
@@ -179,7 +173,6 @@ Returns the approximate count of distinct values using HyperLogLog.
 ```sql
 SELECT approx_distinct(customer_id) AS unique_customers
 FROM my_namespace.sales_data
-
 
 SELECT department, approx_distinct(customer_id) AS unique_customers
 FROM my_namespace.sales_data
@@ -207,7 +200,6 @@ Returns the sample variance.
 SELECT var(total_amount) AS variance
 FROM my_namespace.sales_data
 
-
 SELECT department, var(total_amount) AS variance
 FROM my_namespace.sales_data
 GROUP BY department
@@ -229,7 +221,6 @@ Returns the sample standard deviation.
 ```sql
 SELECT stddev(total_amount) AS std_dev
 FROM my_namespace.sales_data
-
 
 SELECT department, stddev(total_amount) AS std_dev
 FROM my_namespace.sales_data
@@ -482,7 +473,14 @@ FROM my_namespace.sales_data
 GROUP BY department
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#page","headline":"Aggregate functions · R2 SQL docs","description":"Reference for the aggregate functions supported in R2 SQL, organized by category.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/sql-reference/aggregate-functions/","name":"Aggregate functions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#page","headline":"Aggregate functions · R2 SQL docs","description":"Reference for the aggregate functions supported in R2 SQL, organized by category.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

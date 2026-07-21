@@ -1,16 +1,18 @@
 ---
-title: VPC Networks
 description: Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: VPC Networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  VPC Networks
 
-# VPC Networks
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
@@ -28,11 +30,6 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-12136)
-* [  wrangler.toml ](#tab-panel-12137)
-
-**JSONC**
-
 ```jsonc
 {
   "vpc_networks": [
@@ -44,8 +41,6 @@ Reference a specific Cloudflare Tunnel directly by its UUID:
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[vpc_networks]]
@@ -82,11 +77,6 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-12138)
-* [  wrangler.toml ](#tab-panel-12139)
-
-**JSONC**
-
 ```jsonc
 {
   "vpc_networks": [
@@ -98,8 +88,6 @@ Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[vpc_networks]]
@@ -114,21 +102,17 @@ remote = true
 
 Access any HTTP service in your network at runtime using `fetch()`:
 
-**TypeScript**
-
 ```typescript
 export default {
-  async fetch(request: Request, env: Env) {
-    // Access a service by private IP
-    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
+	async fetch(request: Request, env: Env) {
+		// Access a service by private IP
+		const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
 
+		// Access another service on a different port
+		const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
 
-    // Access another service on a different port
-    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
-
-
-    return response;
-  },
+		return response;
+	},
 };
 ```
 
@@ -138,23 +122,19 @@ When a VPC Network cannot establish a connection to your target service, `fetch(
 
 Open raw TCP connections to any private destination using [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/). This is useful for non-HTTP protocols like Redis, Memcached, MQTT, or custom binary protocols:
 
-**TypeScript**
-
 ```typescript
 export default {
-  async fetch(request: Request, env: Env) {
-    // Open a TCP connection to a private Redis instance
-    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
+	async fetch(request: Request, env: Env) {
+		// Open a TCP connection to a private Redis instance
+		const socket = await env.MY_VPC.connect("10.0.1.50:6379");
 
+		// Write a Redis PING command
+		const writer = socket.writable.getWriter();
+		await writer.write(new TextEncoder().encode("PING\r\n"));
+		await writer.close();
 
-    // Write a Redis PING command
-    const writer = socket.writable.getWriter();
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-    await writer.close();
-
-
-    return new Response(socket.readable);
-  },
+		return new Response(socket.readable);
+	},
 };
 ```
 
@@ -189,7 +169,14 @@ The following table summarizes the differences:
 * Try the [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) example
 * Learn about the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks · Cloudflare Workers VPC","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-networks/","name":"VPC Networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks · Cloudflare Workers VPC","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

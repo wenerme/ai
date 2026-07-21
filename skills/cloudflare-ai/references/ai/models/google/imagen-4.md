@@ -1,38 +1,38 @@
 ---
-title: Imagen 4
 description: Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Imagen 4
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
 #  Imagen 4
 
-Text-to-Image • Google
+ Text-to-Image • Google
 
-`google/imagen-4`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/imagen-4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` google/imagen-4 `
+
+* Third-party
+* Zero data retention
 
 Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.
 
-| Model Info          |                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                            |
-| Zero data retention | Yes                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/imagen-4) |
+| Model Info          |                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                   |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                             |
+| Zero data retention | Yes                                                                                                                |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/imagen-4) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-682)
-* [ cURL ](#tab-panel-683)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -54,9 +54,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-680)
-* [ Raw response ](#tab-panel-681)
-
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png)
 
 ```json
@@ -74,11 +71,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Widescreen Landscape**  — Generate a widescreen landscape image
-
-* [ TypeScript ](#tab-panel-686)
-* [ cURL ](#tab-panel-687)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -105,9 +97,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-684)
-* [ Raw response ](#tab-panel-685)
-
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png)
 
 ```json
@@ -123,11 +112,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Portrait Format**  — Vertical portrait-style image
-
-* [ TypeScript ](#tab-panel-690)
-* [ cURL ](#tab-panel-691)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -153,9 +137,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-688)
-* [ Raw response ](#tab-panel-689)
-
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png)
 
 ```json
@@ -171,11 +152,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **With People**  — Allow generation of adult people
-
-* [ TypeScript ](#tab-panel-694)
-* [ cURL ](#tab-panel-695)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -201,9 +177,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-692)
-* [ Raw response ](#tab-panel-693)
-
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png)
 
 ```json
@@ -219,11 +192,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Product Photo**  — Square product photography
-
-* [ TypeScript ](#tab-panel-698)
-* [ cURL ](#tab-panel-699)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -250,9 +218,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-696)
-* [ Raw response ](#tab-panel-697)
-
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png)
 
 ```json
@@ -268,9 +233,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-700)
-* [ Output ](#tab-panel-701)
 
 prompt
 
@@ -294,7 +256,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-inp
 
 Output [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/imagen-4/#page","headline":"Imagen 4 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.","url":"https://developers.cloudflare.com/ai/models/google/imagen-4/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/imagen-4/#page","headline":"Imagen 4 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.","url":"https://developers.cloudflare.com/ai/models/google/imagen-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

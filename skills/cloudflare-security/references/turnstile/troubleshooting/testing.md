@@ -1,16 +1,18 @@
 ---
-title: Test your Turnstile implementation
 description: Test your Turnstile implementation with test site keys.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Test your Turnstile implementation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Test your Turnstile implementation
 
-# Test your Turnstile implementation
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/troubleshooting/testing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use dummy sitekeys and secret keys to test your Turnstile implementation without triggering real challenges that would interfere with automated testing suites.
 
@@ -66,7 +68,6 @@ Replace your production sitekey with a test sitekey.
 <!-- Development/Testing -->
 <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
 
-
 <!-- Production -->
 <div class="cf-turnstile" data-sitekey="your-real-sitekey"></div>
 ```
@@ -75,14 +76,11 @@ Replace your production sitekey with a test sitekey.
 
 Replace your production secret key with a test secret key.
 
-**JavaScript**
-
 ```js
 // Environment-based configuration
 const SECRET_KEY = process.env.NODE_ENV === 'production'
   ? process.env.TURNSTILE_SECRET_KEY
   : '1x0000000000000000000000000000000AA';
-
 
 // Use in validation
 const validation = await validateTurnstile(token, SECRET_KEY);
@@ -93,15 +91,14 @@ const validation = await validateTurnstile(token, SECRET_KEY);
 Set up different keys for different environments.
 
 ```shell
+
 # .env.development
 TURNSTILE_SITEKEY=1x00000000000000000000AA
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
 
-
 # .env.test
 TURNSTILE_SITEKEY=2x00000000000000000000AB
 TURNSTILE_SECRET_KEY=2x0000000000000000000000000000000AA
-
 
 # .env.production
 TURNSTILE_SITEKEY=your-real-sitekey
@@ -127,8 +124,6 @@ Production secret keys will reject the dummy token. You must also use a dummy se
 
 ### Validation response
 
-**Success response**
-
 ```json
 {
   "success": true,
@@ -140,16 +135,12 @@ Production secret keys will reject the dummy token. You must also use a dummy se
 }
 ```
 
-**Failure response**
-
 ```json
 {
   "success": false,
   "error-codes": ["invalid-input-response"]
 }
 ```
-
-**Token already redeemed**
 
 ```json
 {
@@ -168,7 +159,14 @@ Production secret keys will reject the dummy token. You must also use a dummy se
 | 2x00000000000000000000AB | 2x0000000000000000000000000000000AA | This combination will always fail.                                   |
 | 1x00000000000000000000AA | 3x0000000000000000000000000000000AA | This combination will always fail with "timeout-or-duplicate" error. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/#page","headline":"Test your Turnstile implementation · Cloudflare Turnstile docs","description":"Test your Turnstile implementation with test site keys.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/testing/","name":"Test your Turnstile implementation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/#page","headline":"Test your Turnstile implementation · Cloudflare Turnstile docs","description":"Test your Turnstile implementation with test site keys.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: PlanetScale
 description: Connect Cloudflare Workers to a PlanetScale MySQL-compatible database using Hyperdrive or the PlanetScale serverless driver.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: PlanetScale
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PlanetScale
 
-# PlanetScale
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [PlanetScale ↗](https://planetscale.com/) is a database platform that provides MySQL-compatible and PostgreSQL databases, making them more scalable, easier and safer to manage.
 
@@ -19,9 +21,6 @@ Note
 You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive) (recommended), or using the PlanetScale serverless driver, `@planetscale/database`. Both provide connection pooling and reduce the amount of round trips required to create a secure connection from Workers to your database.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-
-* [ Hyperdrive (recommended) ](#tab-panel-12409)
-* [ PlanetScale serverless driver ](#tab-panel-12410)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -41,14 +40,12 @@ Note
 
 To reduce latency, use a [Placement Hint](https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints) to run your Worker close to your PlanetScale database. This is especially useful when a single request makes multiple queries.
 
-**wrangler.jsonc**
-
 ```jsonc
 {
-  "placement": {
-    // Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"
-    "region": "gcp:us-east4",
-  },
+	"placement": {
+		// Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"
+		"region": "gcp:us-east4",
+	},
 }
 ```
 
@@ -84,41 +81,33 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12405)
-* [  wrangler.toml ](#tab-panel-12406)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hyperdrive-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hyperdrive-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -153,35 +142,27 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-12407)
-* [  wrangler.toml ](#tab-panel-12408)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -190,45 +171,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-**TypeScript**
-
 ```ts
 // mysql2 v3.13.0 or later is required
 import { createConnection } from "mysql2/promise";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new connection is fast.
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new connection on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new connection is fast.
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// Required to enable mysql2 compatibility for Workers
+			disableEval: true,
+		});
 
-      // Required to enable mysql2 compatibility for Workers
-      disableEval: true,
-    });
+		try {
+			// Sample query
+			const [results, fields] = await connection.query("SHOW tables;");
 
-
-    try {
-      // Sample query
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-      return Response.json({ results, fields });
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return Response.json({ results, fields });
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -294,37 +269,42 @@ pnpm add @planetscale/database
 bun add @planetscale/database
 ```
 6. The following example shows how to make a query to your PlanetScale database in a Worker. The credentials needed to connect to PlanetScale have been added as secrets to your Worker.
-
-**JavaScript**
 ```js
 import { connect } from "@planetscale/database";
 export default {
-  async fetch(request, env) {
-    const config = {
-      host: env.DATABASE_HOST,
-      username: env.DATABASE_USERNAME,
-      password: env.DATABASE_PASSWORD,
-      // see https://github.com/cloudflare/workerd/issues/698
-      fetch: (url, init) => {
-        delete init["cache"];
-        return fetch(url, init);
-      },
-    };
-    const conn = connect(config);
-    const data = await conn.execute("SELECT * FROM products;");
-    return new Response(JSON.stringify(data.rows), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  },
+	async fetch(request, env) {
+		const config = {
+			host: env.DATABASE_HOST,
+			username: env.DATABASE_USERNAME,
+			password: env.DATABASE_PASSWORD,
+			// see https://github.com/cloudflare/workerd/issues/698
+			fetch: (url, init) => {
+				delete init["cache"];
+				return fetch(url, init);
+			},
+		};
+		const conn = connect(config);
+		const data = await conn.execute("SELECT * FROM products;");
+		return new Response(JSON.stringify(data.rows), {
+			status: 200,
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	},
 };
 ```
 
 To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗](https://docs.planetscale.com/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/#page","headline":"PlanetScale · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a PlanetScale MySQL-compatible database using Hyperdrive or the PlanetScale serverless driver.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/planetscale/","name":"PlanetScale"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/#page","headline":"PlanetScale · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a PlanetScale MySQL-compatible database using Hyperdrive or the PlanetScale serverless driver.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

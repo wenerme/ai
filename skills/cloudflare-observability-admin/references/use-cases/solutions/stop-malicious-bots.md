@@ -1,16 +1,18 @@
 ---
-title: Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
 description: Block malicious bots while allowing legitimate traffic using Bot Fight Mode, Turnstile, custom rules, and rate limiting on Free, Pro, and Business plans.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
 
-# Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The right defense against malicious bot traffic depends on the traffic patterns on your site and your plan. This guide covers a layered approach using [Cloudflare Bots](https://developers.cloudflare.com/bots/), [Cloudflare Application Security](https://developers.cloudflare.com/waf/) (also known as Web Application Firewall or WAF), and [Turnstile](https://developers.cloudflare.com/turnstile/), from baseline protection to targeted custom rules. The core workflow uses features on Free, Pro, and Business plans, with callouts for Enterprise options.
 
@@ -30,11 +32,8 @@ Bot Analytics requires a Business plan or above
 
 Bot score distribution data and detailed bot analytics are available on Business and Enterprise plans. Free and Pro plan users can review basic security metrics through [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For full bot analytics capabilities, refer to [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/).
 
-* [  New dashboard ](#tab-panel-11880)
-* [ Old dashboard ](#tab-panel-11881)
-
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Bot analysis** tab.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account and domain.
@@ -73,11 +72,8 @@ For more details, refer to [Bot Fight Mode considerations](https://developers.cl
 
 ### Turn on Bot Fight Mode (Free plan)
 
-* [  New dashboard ](#tab-panel-11894)
-* [ Old dashboard ](#tab-panel-11895)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -97,11 +93,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-11896)
-* [ Old dashboard ](#tab-panel-11897)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
@@ -126,7 +119,7 @@ Plan availability
 
 Super Bot Fight Mode is available on Pro, Business, and Enterprise plans. Free plan users can use Bot Fight Mode for baseline protection. Enterprise customers who need machine learning-based bot scoring and custom allow/block rules can add [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/).
 
-Warning
+Caution
 
 If your organization uses [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), keep **Definitely Automated** set to **Allow** in Super Bot Fight Mode. Otherwise, tunnels might fail with a `websocket: bad handshake` error.
 
@@ -151,7 +144,7 @@ Adding Turnstile involves three steps: create a widget, add the client-side snip
 Turnstile is configured at the account level.
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. Fill out the required information:
 
@@ -170,16 +163,15 @@ Add the Turnstile script and widget container to your form HTML:
 
 ```html
 <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-  async
-  defer
+	src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+	async
+	defer
 ></script>
 
-
 <form action="/submit" method="POST">
-  <!-- Your existing form fields -->
-  <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>
-  <button type="submit">Submit</button>
+	<!-- Your existing form fields -->
+	<div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>
+	<button type="submit">Submit</button>
 </form>
 ```
 
@@ -212,11 +204,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Short-window rule:** Challenge an IP that sends too many failed login requests in a short window.
 
-* [  New dashboard ](#tab-panel-11884)
-* [ Old dashboard ](#tab-panel-11885)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Rate limiting rules**.
 3. Enter a descriptive name in **Rule name**.
 4. Under **If incoming requests match**, select **Edit expression** and enter: `http.request.uri.path eq "/login" and http.request.method eq "POST"`
@@ -239,11 +228,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Long-window rule:** Block an IP that accumulates failed login attempts over a longer period.
 
-* [  New dashboard ](#tab-panel-11886)
-* [ Old dashboard ](#tab-panel-11887)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Rate limiting rules**.
 3. Enter a descriptive name in **Rule name**.
 4. Under **If incoming requests match**, select **Edit expression** and enter: `http.request.uri.path eq "/login" and http.request.method eq "POST"`
@@ -286,11 +272,8 @@ If the built-in settings do not cover your needs, create custom rules. Start by 
 
 Navigate to custom rules, then create both rules:
 
-* [  New dashboard ](#tab-panel-11888)
-* [ Old dashboard ](#tab-panel-11889)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
@@ -331,11 +314,8 @@ Rate limiting options vary by plan
 
 Available periods, actions, and counting options vary by plan. The example below uses a 1-minute period with Managed Challenge. Refer to [Rate limiting rules availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for your plan's options.
 
-* [  New dashboard ](#tab-panel-11890)
-* [ Old dashboard ](#tab-panel-11891)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Rate limiting rules**.
 3. Enter a descriptive name in **Rule name**.
 4. Under **If incoming requests match**, select **Edit expression** and enter: `http.request.uri.path eq "/api/checkout" and http.request.method eq "POST"`
@@ -374,11 +354,8 @@ After you deploy bot protection rules, use [Security Events](https://developers.
 
 Security Events displays requests that Cloudflare security products acted on or flagged, including blocks, challenges, and flags.
 
-* [  New dashboard ](#tab-panel-11882)
-* [ Old dashboard ](#tab-panel-11883)
-
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 
 1. In the Cloudflare dashboard, go to **Security** \> **Events**.
@@ -411,7 +388,7 @@ Internal monitoring tools, health check services, or partner APIs appear in bloc
 * If [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) (Pro and above) is blocking the traffic, create a custom rule with a Skip action matching the tool IP address or user agent:
 
   1. Go to the **Security rules** page.
-  [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+  [ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
   2. Select **Create rule** \> **Custom rules**.
   3. Enter a descriptive name.
   4. Under **When incoming requests match**, select **Edit expression** and enter: `(ip.src eq 192.0.2.1)` (replace with your tool's IP address).
@@ -425,11 +402,8 @@ For details on Skip action configuration, refer to [Configure a rule with the Sk
 
 Bot activity appears in Security Events that your current rules do not catch. Bots that stay under rate limits or evade single-signal rules require combining multiple signals. For example, to challenge `POST` requests to `/login` that are not from verified bots:
 
-* [  New dashboard ](#tab-panel-11892)
-* [ Old dashboard ](#tab-panel-11893)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name.
 4. Under **When incoming requests match**, select **Edit expression** and enter:
@@ -483,7 +457,14 @@ Enterprise customers with [Bot Management](https://developers.cloudflare.com/bot
 
 * [Turnstile](https://developers.cloudflare.com/turnstile/) — Free, privacy-preserving challenge for forms and user interactions
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/#page","headline":"Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business) · Cloudflare use cases","description":"Block malicious bots while allowing legitimate traffic using Bot Fight Mode, Turnstile, custom rules, and rate limiting on Free, Pro, and Business plans.","url":"https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solution guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/stop-malicious-bots/","name":"Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/#page","headline":"Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business) · Cloudflare use cases","description":"Block malicious bots while allowing legitimate traffic using Bot Fight Mode, Turnstile, custom rules, and rate limiting on Free, Pro, and Business plans.","url":"https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

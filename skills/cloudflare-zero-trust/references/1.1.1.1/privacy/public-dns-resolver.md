@@ -1,16 +1,18 @@
 ---
-title: 1.1.1.1 Public DNS Resolver
 description: Learn more about Cloudflare's commitment to privacy with the 1.1.1.1 Public DNS Resolver.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: 1.1.1.1 Public DNS Resolver
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  1.1.1.1 Public DNS Resolver
 
-# 1.1.1.1 Public DNS Resolver
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 _Last updated March 27, 2024_
 
@@ -130,7 +132,14 @@ In general, Cloudflare views government or civil requests to block content at th
 
 Given the broad extraterritorial effect, if Cloudflare were to receive written requests from law enforcement and government agencies to block access to domains or content through the 1.1.1.1 Public DNS Resolver or to block access to domains or content through 1.1.1.1 for Families that is outside the scope of the filtering in that product, Cloudflare would pursue its legal remedies before complying with such a request. We also commit to documenting any government request to block access in our semi-annual transparency report, unless legally prohibited from doing so.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/#page","headline":"1.1.1.1 Public DNS Resolver | Cloudflare Docs","description":"Learn more about Cloudflare's commitment to privacy with the 1.1.1.1 Public DNS Resolver.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","Privacy"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/privacy/","name":"Privacy"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/privacy/public-dns-resolver/","name":"1.1.1.1 Public DNS Resolver"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/#page","headline":"1.1.1.1 Public DNS Resolver | Cloudflare Docs","description":"Learn more about Cloudflare's commitment to privacy with the 1.1.1.1 Public DNS Resolver.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","Privacy"]}
 ```

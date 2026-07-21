@@ -1,16 +1,18 @@
 ---
-title: Role scopes
 description: Choose account, domain, or resource-level scopes to control where Cloudflare member permissions apply.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Role scopes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Role scopes
 
-# Role scopes
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/scope/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Scopes are one of three constituent parts of a policy that allows granting of access to users.
 
@@ -61,7 +63,7 @@ If you have a set of domains that are all categorized similarly (e.g. all of you
 To create a domain group:
 
 1. In the Cloudflare dashboard, go to the **Settings** \> **Lists** page. (You must be logged in as a **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/)).
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. For **Domain Group Manager**, select **Create**.
 3. Create your domain group:
 
@@ -114,7 +116,14 @@ Note
 
 When using scopes for specific resources, you can only assign [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) to these members.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/scope/#page","headline":"Role scopes · Cloudflare Fundamentals docs","description":"Choose account, domain, or resource-level scopes to control where Cloudflare member permissions apply.","url":"https://developers.cloudflare.com/fundamentals/manage-members/scope/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/scope/","name":"Role scopes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/scope/#page","headline":"Role scopes · Cloudflare Fundamentals docs","description":"Choose account, domain, or resource-level scopes to control where Cloudflare member permissions apply.","url":"https://developers.cloudflare.com/fundamentals/manage-members/scope/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

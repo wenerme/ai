@@ -1,16 +1,18 @@
 ---
-title: GraphQL malicious query protection
 description: Scan GraphQL traffic and block queries that could overload your origin.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: GraphQL malicious query protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GraphQL malicious query protection
 
-# GraphQL malicious query protection
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/graphql-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 GraphQL is a query language for APIs. In addition to protecting RESTful APIs, Cloudflare can also protect GraphQL APIs.
 
@@ -29,7 +31,14 @@ The following limitations apply:
 * Queries containing fragments or multiple operations are not supported.
 * Parsing and rules are limited to paths ending in `/graphql`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/#page","headline":"GraphQL malicious query protection · Cloudflare API Shield docs","description":"Scan GraphQL traffic and block queries that could overload your origin.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/graphql-protection/","name":"GraphQL malicious query protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/#page","headline":"GraphQL malicious query protection · Cloudflare API Shield docs","description":"Scan GraphQL traffic and block queries that could overload your origin.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

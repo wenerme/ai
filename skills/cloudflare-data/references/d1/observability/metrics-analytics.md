@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/observability/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 exposes database analytics that allow you to inspect query volume, query latency, and storage size across all and/or each database in your account.
 
@@ -45,7 +47,7 @@ Refer to the [Pricing documentation](https://developers.cloudflare.com/d1/platfo
 Per-database analytics for D1 are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
 1. In the Cloudflare dashboard, go to the **D1** page.
-[ Go to **D1 SQL database** ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select an existing D1 database.
 3. Select the **Metrics** tab.
 
@@ -67,91 +69,85 @@ To query the sum of `readQueries`, `writeQueries` for a given `$databaseId`, gro
 
 ```graphql
 query D1ObservabilitySampleQuery(
-  $accountTag: string!
-  $start: Date
-  $end: Date
-  $databaseId: string
+	$accountTag: string!
+	$start: Date
+	$end: Date
+	$databaseId: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      d1AnalyticsAdaptiveGroups(
-        limit: 10000
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-        orderBy: [date_DESC]
-      ) {
-        sum {
-          readQueries
-          writeQueries
-        }
-        dimensions {
-          date
-          databaseId
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			d1AnalyticsAdaptiveGroups(
+				limit: 10000
+				filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
+				orderBy: [date_DESC]
+			) {
+				sum {
+					readQueries
+					writeQueries
+				}
+				dimensions {
+					date
+					databaseId
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaACgCgYYASbAYx4HsQAO2IAVbAHMAXDDTEIeIRICE7LnOwRiMuNmJg1nMEIAmOvQY6cTe3NgwBJM7PmKJrAJQwA3msx4wAHdIHzUOXgFhYjRmADNCfQgZbxgIwRFxaS40qMyYAF8vXw4SmBMEAEEhbAIoYjweNAqbanrMMABxCEFqGLDSmCJKEhkEAAYJsf7S+IJE5LKLAH0JMGAZTg0tABpF-SW6da5jE12bYjtHZ2tbFHswJwLpkv4IE0gAISgZAG1zsCWcAAomQAMIAXWeRWeHDQIEooQGAwgYGwJkYkACaBhJUCCn0GIUYGxSI4+RxJjwlGMaDw-CEaERpI4-xxLNu9ycOPJSJ5JT55PyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgHYhARgCcDEAFN4AEy59BI8X1mKwrAEZgmcqsuwAlAKIAFADL5zFAOpVkACWp0AvkA)
 
 To query both the average `queryBatchTimeMs` and the 90th percentile `queryBatchTimeMs` per database:
 
 ```graphql
 query D1ObservabilitySampleQuery2(
-  $accountTag: string!
-  $start: Date
-  $end: Date
-  $databaseId: string
+	$accountTag: string!
+	$start: Date
+	$end: Date
+	$databaseId: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      d1AnalyticsAdaptiveGroups(
-        limit: 10000
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-        orderBy: [date_DESC]
-      ) {
-        quantiles {
-          queryBatchTimeMsP90
-        }
-        dimensions {
-          date
-          databaseId
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			d1AnalyticsAdaptiveGroups(
+				limit: 10000
+				filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
+				orderBy: [date_DESC]
+			) {
+				quantiles {
+					queryBatchTimeMsP90
+				}
+				dimensions {
+					date
+					databaseId
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAJgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmJcYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwAsLZssEIM0gAISg5AG1LmAVnAAKJkADCAF1XiVXlxQNgxIQwGhwkMhqBIFAvgY+AALcR4ShgACyaAACgBOGborgvWkVImmNB4QQiVGlBkHaxcy7XJ5mOFFV70sqil6FIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgHYhARgCcDEAFN4AEy59BI8X1mKwrAEZgmcqsuwAlAKIAFADL5zFAOpVkACWp0AvkA)
 
 To query your account-wide `readQueries` and `writeQueries`:
 
 ```graphql
 query D1ObservabilitySampleQuery3(
-  $accountTag: string!
-  $start: Date
-  $end: Date
-  $databaseId: string
+	$accountTag: string!
+	$start: Date
+	$end: Date
+	$databaseId: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      d1AnalyticsAdaptiveGroups(
-        limit: 10000
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-      ) {
-        sum {
-          readQueries
-          writeQueries
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			d1AnalyticsAdaptiveGroups(
+				limit: 10000
+				filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
+			) {
+				sum {
+					readQueries
+					writeQueries
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAZgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmOyYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwFyLZmBLXrjQQSnChoYgwNgzIxIEE0B8ysElIYQUowOC-lxCq9keVUS9CkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgHYhARgCcDEAFN4AEy59BI8X1mKwrAEZgmcqsuwAlAKIAFADL5zFAOpVkACWp0AvkA)
 
 ## Query `insights`
 
@@ -184,12 +180,10 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=count --limit
  ⛅️ wrangler 3.95.0
 -------------------
 
-
 -------------------
 🚧 `wrangler d1 insights` is an experimental command.
 🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
 -------------------
-
 
 [
   {
@@ -238,12 +232,10 @@ npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --limit=
 ⛅️ wrangler 3.95.0
 -------------------
 
-
 -------------------
 🚧 `wrangler d1 insights` is an experimental command.
 🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
 -------------------
-
 
 [
   {
@@ -292,12 +284,10 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=writes --limi
 ⛅️ wrangler 3.95.0
 -------------------
 
-
 -------------------
 🚧 `wrangler d1 insights` is an experimental command.
 🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
 -------------------
-
 
 [
   {
@@ -342,7 +332,14 @@ The quantity `queryEfficiency` measures how efficient your query was. It is calc
 
 Generally, you should try to get `queryEfficiency` as close to `1` as possible. Refer to [Use indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/) for more information on efficient querying.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

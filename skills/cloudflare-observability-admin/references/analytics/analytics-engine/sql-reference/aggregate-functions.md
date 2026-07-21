@@ -1,16 +1,18 @@
 ---
-title: Aggregate functions
 description: SQL aggregate functions for Analytics Engine queries.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Aggregate functions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Aggregate functions
 
-# Aggregate functions
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## count
 
@@ -122,14 +124,13 @@ Example:
 -- estimate the median value of <double1>
 quantileExactWeighted(0.5)(double1, _sample_interval)
 
-
 -- in a table of query times, estimate the 95th centile query time
 quantileExactWeighted(0.95)(query_time, _sample_interval)
 ```
 
 For backwards compatibility, this is also available as `quantileWeighted(q, column_name, weight_column_name)`.
 
-## argMax New
+## argMax  New
 
 Usage:
 
@@ -147,12 +148,11 @@ Example:
 -- find the <blob1> value for the row with the highest <double1>
 argMax(blob1, double1)
 
-
 -- find the <blob1> value from the most heavily sampled row
 argMax(blob1, _sample_interval)
 ```
 
-## argMin New
+## argMin  New
 
 Usage:
 
@@ -170,12 +170,11 @@ Example:
 -- find the <blob1> value for the row with the lowest <double1>
 argMin(blob1, double1)
 
-
 -- find the <blob1> value from the least heavily sampled row
 argMin(blob1, _sample_interval)
 ```
 
-## first\_value New
+## first\_value  New
 
 Usage:
 
@@ -192,7 +191,7 @@ Example:
 SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
 ```
 
-## last\_value New
+## last\_value  New
 
 Usage:
 
@@ -209,7 +208,7 @@ Example:
 SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
 ```
 
-## topK New
+## topK  New
 
 Usage:
 
@@ -227,12 +226,11 @@ Example:
 -- find the 10 most common values of <double1>
 SELECT topK(double1) FROM my_dataset
 
-
 -- find the 15 most common values of <blob1>
 SELECT topK(15)(blob1) FROM my_dataset
 ```
 
-## topKWeighted New
+## topKWeighted  New
 
 Usage:
 
@@ -250,12 +248,11 @@ Example:
 -- find the 10 most common values of <double1>, weighted by `_sample_interval`
 SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
 
-
 -- find the 15 most common values of <blob1>, weighted by `_sample_interval`
 SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
 ```
 
-## countIf New
+## countIf  New
 
 Usage:
 
@@ -272,7 +269,7 @@ Example:
 countIf(double1 > 5)
 ```
 
-## sumIf New
+## sumIf  New
 
 Usage:
 
@@ -289,7 +286,7 @@ Example:
 sumIf(item_cost, in_stock > 0)
 ```
 
-## avgIf New
+## avgIf  New
 
 Usage:
 
@@ -306,7 +303,14 @@ Example:
 avgIf(item_cost, in_stock > 0)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"SQL aggregate functions for Analytics Engine queries.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-engine/","name":"Workers Analytics Engine"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-engine/sql-reference/","name":"SQL Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/analytics-engine/sql-reference/aggregate-functions/","name":"Aggregate functions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"SQL aggregate functions for Analytics Engine queries.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Review audit logs - v1
 description: Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Review audit logs - v1
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Review audit logs - v1
 
-# Review audit logs - v1
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -32,7 +34,7 @@ To access audit logs in the Cloudflare dashboard:
 
 In the Cloudflare dashboard, go to the **Audit Logs** page.
 
-[ Go to **Audit logs** ](https://dash.cloudflare.com/?to=/:account/audit-log)
+[ Go to **Audit logs** ↗ ](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 You can search these audit logs by user email or domain and filter by date range. To download audit logs, click **Download CSV**.
 
@@ -52,7 +54,14 @@ To maintain Audit Logs query performance, the Audit Logs API was modified on 201
 
 Audit Logs are retained for 18 months before being deleted. Enterprise customers can use [Logpush](https://developers.cloudflare.com/logs/logpush/) to store Audit Logs for longer periods of time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Fundamentals docs","description":"Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/review-audit-logs/","name":"Review audit logs - v1"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Fundamentals docs","description":"Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

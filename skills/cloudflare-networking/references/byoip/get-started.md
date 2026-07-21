@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Onboard your IP prefixes to Cloudflare with BYOIP.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To use your own IP addresses with Cloudflare, please check with your account team to confirm your contract covers this functionality. You will need to configure settings specific to the services you want to use, as well as meet some standard requirements for all BYOIP customers.
 
@@ -50,25 +52,22 @@ Use Cloudflare's ASN
 
 The process described on this page only supports using Cloudflare's ASN (AS13335). If you must announce the prefixes under your own ASN, contact your account team.
 
-**Add Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "cidr": "203.0.113.0/24",
-    "asn": 13335,
-    "delegate_loa_creation": true
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"cidr": "203.0.113.0/24",
+		"asn": 13335,
+		"delegate_loa_creation": true
+	}'
 ```
 
-**Response**
-
 ```json
+
  "result": {
-   "id": "72823e95d6c64d48a8111fec81179816",
+	 "id": "72823e95d6c64d48a8111fec81179816",
     "created_at": "2025-02-25T00:34:11.423722Z",
     "modified_at": "2025-02-25T00:34:11.423722Z",
     "cidr": "203.0.113.0/24",
@@ -99,9 +98,6 @@ The process described on this page leverages automated [LOA](https://developers.
 
 1. Validate prefix ownership using one of the following methods:
 
-  * [ IRR record ](#tab-panel-7607)
-  * [ Reverse DNS zone and TXT record ](#tab-panel-7608)
-
   1. Copy the `ownership_validation_token` returned by the API call.
   2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.
 ```plaintext
@@ -131,13 +127,11 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic Transit Write`
   * `IP Prefixes: Write`
-
-**Validate Prefix**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 Once the ownership validation is successful, you can remove the token.
@@ -155,17 +149,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `IP Prefixes: Write`
 
-**Create Prefix Delegation**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/delegations" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "cidr": "<IP_PREFIX_TO_DELEGATE>",
-    "delegated_account_id": "<ACCOUNT_ID>"
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"cidr": "<IP_PREFIX_TO_DELEGATE>",
+		"delegated_account_id": "<ACCOUNT_ID>"
+	}'
 ```
 
 Note
@@ -196,17 +188,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `IP Prefixes: Write`
 
-**Create Service Binding**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "cidr": "203.0.113.0/24",
-    "service_id": "<DEFAULT_SERVICE>"
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"cidr": "203.0.113.0/24",
+		"service_id": "<DEFAULT_SERVICE>"
+	}'
 ```
 
 A corresponding BGP prefix will be created automatically. Allow five hours before you advertise the prefix.
@@ -245,22 +235,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `IP Prefixes: Write`
 
-**Create Service Binding**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "cidr": "203.0.113.16/29",
-    "service_id": "<SERVICE_ID>"
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"cidr": "203.0.113.16/29",
+		"service_id": "<SERVICE_ID>"
+	}'
 ```
 
 In the response body, the initial provisioning state should be `provisioning`.
 
 ```json
+
    {
      "errors": [],
      "messages": [],
@@ -298,18 +287,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
 
-**Update BGP Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-  --request PATCH \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "on_demand": {
-        "advertised": true
-    }
-  }'
+	--request PATCH \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"on_demand": {
+				"advertised": true
+		}
+	}'
 ```
 
 ## Footnotes
@@ -317,7 +304,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 1. Mappings that control through which pipeline traffic destined for a given IP address will be routed. [↩](#user-content-fnref-1)
 2. Mappings that specify which IP addresses should be used when Cloudflare responds to DNS queries for proxied hostnames. [↩](#user-content-fnref-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started · Cloudflare BYOIP docs","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started · Cloudflare BYOIP docs","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

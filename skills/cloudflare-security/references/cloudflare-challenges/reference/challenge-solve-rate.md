@@ -1,16 +1,18 @@
 ---
-title: Challenge solve rate (CSR)
 description: Measure the percentage of issued challenges that visitors solve successfully.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Challenge solve rate (CSR)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Challenge solve rate (CSR)
 
-# Challenge solve rate (CSR)
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Challenge solve rate (CSR) is the percentage of issued challenges — Non-Interactive Challenge, Managed Challenge, or Interactive Challenge actions — that were solved.
 
@@ -28,9 +30,6 @@ CSR = number of challenges solved / number of challenges issued
 CSR indicates the false positive percentage of a rule. A high CSR means a large share of issued challenges were solved by real visitors, which may indicate the rule is matching too much legitimate traffic. Use CSR to evaluate whether your rule's criteria or action needs adjustment.
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
-
-* [  New dashboard ](#tab-panel-7669)
-* [ Old dashboard ](#tab-panel-7670)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 
@@ -70,7 +69,14 @@ Key reasons a challenge may be issued but never solved:
 * The system receives an invalid or malformed answer from the client.
 * The script environment (often a bot's controlled browser) fails to run the necessary client-side checks.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/#page","headline":"Challenge solve rate (CSR) · Cloudflare challenges docs","description":"Measure the percentage of issued challenges that visitors solve successfully.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/reference/challenge-solve-rate/","name":"Challenge solve rate (CSR)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/#page","headline":"Challenge solve rate (CSR) · Cloudflare challenges docs","description":"Measure the percentage of issued challenges that visitors solve successfully.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

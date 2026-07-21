@@ -1,16 +1,18 @@
 ---
-title: Override HTTP Host headers
 description: Override HTTP Host headers sent to origin servers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Override HTTP Host headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Override HTTP Host headers
 
-# Override HTTP Host headers
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When your application needs specialized routing (`CNAME` setup or custom hosts like Heroku), you can customize the `Host` header used in health monitors on a per-endpoint or per-monitor level.
 
@@ -61,7 +63,14 @@ For a list of endpoints that override a monitor's `Host` header:
 3. If you have endpoint overrides, you will see **Endpoint host header overrides**.
 ![Example configuration of endpoint host header overrides](https://developers.cloudflare.com/_astro/origin-host-header-override.CJNvqMtO_RYlCt.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/#page","headline":"Override HTTP Host headers · Cloudflare Load Balancing docs","description":"Override HTTP Host headers sent to origin servers.","url":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/override-http-host-headers/","name":"Override HTTP Host headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/#page","headline":"Override HTTP Host headers · Cloudflare Load Balancing docs","description":"Override HTTP Host headers sent to origin servers.","url":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

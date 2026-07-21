@@ -1,16 +1,18 @@
 ---
-title: Localize a website with HTMLRewriter
 description: This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Localize a website with HTMLRewriter
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Localize a website with HTMLRewriter
 
-# Localize a website with HTMLRewriter
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build an example internationalization and localization engine (commonly referred to as **i18n** and **l10n**) for your application, serve the content of your site, and automatically translate the content based on your visitors’ location in the world.
 
@@ -94,11 +96,10 @@ What is unique about this page is the addition of [data attributes ↗](https://
 ```html
 <!-- source clipped from i18n-example site -->
 
-
 <div class="inner">
-  <h1 data-i18n-key="headline">Example Site</h1>
-  <p data-i18n-key="subtitle">This is my example site. Depending o...</p>
-  <p data-i18n-key="disclaimer">Disclaimer: the initial translations...</p>
+	<h1 data-i18n-key="headline">Example Site</h1>
+	<p data-i18n-key="subtitle">This is my example site. Depending o...</p>
+	<p data-i18n-key="disclaimer">Disclaimer: the initial translations...</p>
 </div>
 ```
 
@@ -112,25 +113,21 @@ Begin with the `functions/index.js` file. Your application in this tutorial will
 
 Inside of this file, start by adding the default code for running a [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/#create-a-function).
 
-**JavaScript**
-
 ```js
 export function onRequest(context) {
-  return new Response("Hello, world!");
+	return new Response("Hello, world!");
 }
 ```
 
 The important part of the code lives in the `onRequest` function. To implement translations on the site, take the HTML response retrieved from `env.ASSETS.fetch(request)` this allows you to fetch a static asset from your Pages project and pass it into a new instance of `HTMLRewriter`. When instantiating `HTMLRewriter`, you can attach handlers using the `on` function. For this tutorial, you will use the `[data-i18n-key]` selector (refer to the [HTMLRewriter documentation](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) for more advanced usage) to locate all elements with the `data-i18n-key` attribute, which means that they must be translated. Any matching element will be passed to an instance of your `ElementHandler` class, which will contain the translation logic. With the created instance of `HTMLRewriter`, the `transform` function takes a `response` and can be returned to the client:
 
-**JavaScript**
-
 ```js
 export async function onRequest(context) {
-  const { request, env } = context;
-  const response = await env.ASSETS.fetch(request);
-  return new HTMLRewriter()
-    .on("[data-i18n-key]", new ElementHandler(countryStrings))
-    .transform(response);
+	const { request, env } = context;
+	const response = await env.ASSETS.fetch(request);
+	return new HTMLRewriter()
+		.on("[data-i18n-key]", new ElementHandler(countryStrings))
+		.transform(response);
 }
 ```
 
@@ -140,52 +137,44 @@ Your `ElementHandler` will receive every element parsed by the `HTMLRewriter` in
 
 In [How it works](#understanding-data-i18n-key), the documentation describes `data-i18n-key`, a custom data attribute that could be used to find a corresponding translated string for the website’s user interface. In `ElementHandler`, you can define an `element` function, which will be called as each element is parsed. Inside of the `element` function, you can query for the custom data attribute using `getAttribute`:
 
-**JavaScript**
-
 ```js
 class ElementHandler {
-  element(element) {
-    const i18nKey = element.getAttribute("data-i18n-key");
-  }
+	element(element) {
+		const i18nKey = element.getAttribute("data-i18n-key");
+	}
 }
 ```
 
 With `i18nKey` defined, you can use it to search for a corresponding translated string. You will now set up a `strings` object with key-value pairs corresponding to the `data-i18n-key` value. For now, you will define a single example string, `headline`, with a German `string`, `"Beispielseite"` (`"Example Site"`), and retrieve it in the `element` function:
 
-**JavaScript**
-
 ```js
 const strings = {
-  headline: "Beispielseite",
+	headline: "Beispielseite",
 };
 
-
 class ElementHandler {
-  element(element) {
-    const i18nKey = element.getAttribute("data-i18n-key");
-    const string = strings[i18nKey];
-  }
+	element(element) {
+		const i18nKey = element.getAttribute("data-i18n-key");
+		const string = strings[i18nKey];
+	}
 }
 ```
 
 Take your translated `string` and insert it into the original element, using the `setInnerContent` function:
 
-**JavaScript**
-
 ```js
 const strings = {
-  headline: "Beispielseite",
+	headline: "Beispielseite",
 };
 
-
 class ElementHandler {
-  element(element) {
-    const i18nKey = element.getAttribute("data-i18n-key");
-    const string = strings[i18nKey];
-    if (string) {
-      element.setInnerContent(string);
-    }
-  }
+	element(element) {
+		const i18nKey = element.getAttribute("data-i18n-key");
+		const string = strings[i18nKey];
+		if (string) {
+			element.setInnerContent(string);
+		}
+	}
 }
 ```
 
@@ -207,89 +196,81 @@ npm i accept-language-parser
 
 Once imported into your code, use the package to parse the most relevant language for a client based on `Accept-Language` header, and pass it to `ElementHandler`. Your final code for the project, with an included sample translation for Germany and Japan (using Google Translate) looks like this:
 
-**JavaScript**
-
 ```js
 import parser from "accept-language-parser";
-
 
 // do not set to true in production!
 const DEBUG = false;
 
-
 const strings = {
-  de: {
-    title: "Beispielseite",
-    headline: "Beispielseite",
-    subtitle:
-      "Dies ist meine Beispielseite. Abhängig davon, wo auf der Welt Sie diese Site besuchen, wird dieser Text in die entsprechende Sprache übersetzt.",
-    disclaimer:
-      "Haftungsausschluss: Die anfänglichen Übersetzungen stammen von Google Translate, daher sind sie möglicherweise nicht perfekt!",
-    tutorial:
-      "Das Tutorial für dieses Projekt finden Sie in der Cloudflare Workers-Dokumentation.",
-    copyright: "Design von HTML5 UP.",
-  },
-  ja: {
-    title: "サンプルサイト",
-    headline: "サンプルサイト",
-    subtitle:
-      "これは私の例のサイトです。 このサイトにアクセスする世界の場所に応じて、このテキストは対応する言語に翻訳されます。",
-    disclaimer:
-      "免責事項：最初の翻訳はGoogle翻訳からのものですので、完璧ではないかもしれません！",
-    tutorial:
-      "Cloudflare Workersのドキュメントでこのプロジェクトのチュートリアルを見つけてください。",
-    copyright: "HTML5 UPによる設計。",
-  },
+	de: {
+		title: "Beispielseite",
+		headline: "Beispielseite",
+		subtitle:
+			"Dies ist meine Beispielseite. Abhängig davon, wo auf der Welt Sie diese Site besuchen, wird dieser Text in die entsprechende Sprache übersetzt.",
+		disclaimer:
+			"Haftungsausschluss: Die anfänglichen Übersetzungen stammen von Google Translate, daher sind sie möglicherweise nicht perfekt!",
+		tutorial:
+			"Das Tutorial für dieses Projekt finden Sie in der Cloudflare Workers-Dokumentation.",
+		copyright: "Design von HTML5 UP.",
+	},
+	ja: {
+		title: "サンプルサイト",
+		headline: "サンプルサイト",
+		subtitle:
+			"これは私の例のサイトです。 このサイトにアクセスする世界の場所に応じて、このテキストは対応する言語に翻訳されます。",
+		disclaimer:
+			"免責事項：最初の翻訳はGoogle翻訳からのものですので、完璧ではないかもしれません！",
+		tutorial:
+			"Cloudflare Workersのドキュメントでこのプロジェクトのチュートリアルを見つけてください。",
+		copyright: "HTML5 UPによる設計。",
+	},
 };
 
-
 class ElementHandler {
-  constructor(countryStrings) {
-    this.countryStrings = countryStrings;
-  }
+	constructor(countryStrings) {
+		this.countryStrings = countryStrings;
+	}
 
-
-  element(element) {
-    const i18nKey = element.getAttribute("data-i18n-key");
-    if (i18nKey) {
-      const translation = this.countryStrings[i18nKey];
-      if (translation) {
-        element.setInnerContent(translation);
-      }
-    }
-  }
+	element(element) {
+		const i18nKey = element.getAttribute("data-i18n-key");
+		if (i18nKey) {
+			const translation = this.countryStrings[i18nKey];
+			if (translation) {
+				element.setInnerContent(translation);
+			}
+		}
+	}
 }
 
-
 export async function onRequest(context) {
-  const { request, env } = context;
-  try {
-    let options = {};
-    if (DEBUG) {
-      options = {
-        cacheControl: {
-          bypassCache: true,
-        },
-      };
-    }
-    const languageHeader = request.headers.get("Accept-Language");
-    const language = parser.pick(["de", "ja"], languageHeader);
-    const countryStrings = strings[language] || {};
+	const { request, env } = context;
+	try {
+		let options = {};
+		if (DEBUG) {
+			options = {
+				cacheControl: {
+					bypassCache: true,
+				},
+			};
+		}
+		const languageHeader = request.headers.get("Accept-Language");
+		const language = parser.pick(["de", "ja"], languageHeader);
+		const countryStrings = strings[language] || {};
 
-
-    const response = await env.ASSETS.fetch(request);
-    return new HTMLRewriter()
-      .on("[data-i18n-key]", new ElementHandler(countryStrings))
-      .transform(response);
-  } catch (e) {
-    if (DEBUG) {
-      return new Response(e.message || e.toString(), {
-        status: 404,
-      });
-    } else {
-      return env.ASSETS.fetch(request);
-    }
-  }
+		const response = await env.ASSETS.fetch(request);
+		return new HTMLRewriter()
+			.on("[data-i18n-key]", new ElementHandler(countryStrings))
+			.transform(response);
+	} catch (e) {
+		if (DEBUG) {
+			return new Response(e.message || e.toString(), {
+				status: 404,
+			});
+		} else {
+			return env.ASSETS.fetch(request);
+		}
+	}
 }
 ```
 
@@ -299,29 +280,22 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-10301)
-* [  wrangler.toml ](#tab-panel-10302)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "i18n-example",
-  "pages_build_output_dir": "./public",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "i18n-example",
+	"pages_build_output_dir": "./public",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
@@ -347,7 +321,14 @@ In this tutorial, you built and deployed an i18n tool using `HTMLRewriter`. To r
 
 If you want to get started building your own projects, review the existing list of [Quickstart templates](https://developers.cloudflare.com/workers/get-started/quickstarts/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter · Cloudflare Pages docs","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/tutorials/localize-a-website/","name":"Localize a website with HTMLRewriter"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter · Cloudflare Pages docs","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

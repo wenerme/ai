@@ -1,16 +1,18 @@
 ---
-title: DDoS Protection for Spectrum
 description: Layer 3 and 4 DDoS protection for TCP and UDP Spectrum applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DDoS Protection for Spectrum
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DDoS Protection for Spectrum
 
-# DDoS Protection for Spectrum
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum provides DDoS Protection at layers 3-4 of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), that is against TCP and UDP based DDoS attacks.
 
@@ -42,7 +44,14 @@ The mitigation reasons are the following:
 | **Unexpected**         | Packet dropped because it was not expected given the current state of the connection it was associated with.         |
 | **Not found**          | Packet dropped because it does not match any configured Spectrum application on the destination IP address and port. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/#page","headline":"DDoS Protection for Spectrum · Cloudflare Spectrum docs","description":"Layer 3 and 4 DDoS protection for TCP and UDP Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/ddos-for-spectrum/","name":"DDoS Protection for Spectrum"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/#page","headline":"DDoS Protection for Spectrum · Cloudflare Spectrum docs","description":"Layer 3 and 4 DDoS protection for TCP and UDP Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

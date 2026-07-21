@@ -1,16 +1,18 @@
 ---
-title: Network segmentation
 description: Define policies to determine if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Network segmentation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network segmentation
 
-# Network segmentation
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can define policies in your Cloudflare One Appliance (formerly Magic WAN Connector) to either allow traffic to flow between your LANs without it leaving your local premises or to forward it via the Cloudflare network where you can add additional security features. The default behavior is to drop all LAN-to-LAN traffic. These policies can be created for specific subnets, and link two LANs.
 
@@ -45,13 +47,10 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-8437)
-* [ API ](#tab-panel-8438)
-
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Cloudflare One Appliance you want to configure > **Edit**.
 2. Go to **Network Configuration** \> **LAN configuration**.
@@ -72,7 +71,7 @@ Follow these steps to create a new LAN policy to segment your network. Only the 
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/acls/methods/create/) to create a network policy.
 
@@ -84,40 +83,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Create a new Site ACL**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "<POLICY_DESCRIPTION>",
-    "forward_locally": true,
-    "lan_1": {
-        "lan_id": "<LAN_ID>",
-        "lan_name": "<LAN_NAME>",
-        "ports": [
-            1
-        ],
-        "subnets": [
-            "192.0.2.1"
-        ]
-    },
-    "lan_2": {
-        "lan_id": "<LAN_ID>",
-        "lan_name": "<LAN_NAME",
-        "ports": [
-            1
-        ],
-        "subnets": [
-            "192.0.2.1"
-        ]
-    },
-    "name": "<POLICY_NAME>",
-    "protocols": [
-        "tcp"
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "<POLICY_DESCRIPTION>",
+		"forward_locally": true,
+		"lan_1": {
+				"lan_id": "<LAN_ID>",
+				"lan_name": "<LAN_NAME>",
+				"ports": [
+						1
+				],
+				"subnets": [
+						"192.0.2.1"
+				]
+		},
+		"lan_2": {
+				"lan_id": "<LAN_ID>",
+				"lan_name": "<LAN_NAME",
+				"ports": [
+						1
+				],
+				"subnets": [
+						"192.0.2.1"
+				]
+		},
+		"name": "<POLICY_NAME>",
+		"protocols": [
+				"tcp"
+		]
+	}'
 ```
 
 ```json
@@ -180,11 +177,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-8439)
-* [ API ](#tab-panel-8440)
-
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Cloudflare One Appliance you want to configure > **Edit**.
 2. Go to **Network Configuration** \> **LAN configuration**.
@@ -194,7 +188,7 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `PUT` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/acls/methods/update/) to edit a network policy.
 
@@ -206,40 +200,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Update Site ACL**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "<POLICY_DESCRIPTION>",
-    "forward_locally": true,
-    "lan_1": {
-        "lan_id": "<LAN_ID>",
-        "lan_name": "<LAN_NAME>",
-        "ports": [
-            1
-        ],
-        "subnets": [
-            "192.0.2.1"
-        ]
-    },
-    "lan_2": {
-        "lan_id": "<LAN_ID>",
-        "lan_name": "<LAN_NAME>",
-        "ports": [
-            1
-        ],
-        "subnets": [
-            "192.0.2.1"
-        ]
-    },
-    "name": "<POLICY_NAME>",
-    "protocols": [
-        "tcp"
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "<POLICY_DESCRIPTION>",
+		"forward_locally": true,
+		"lan_1": {
+				"lan_id": "<LAN_ID>",
+				"lan_name": "<LAN_NAME>",
+				"ports": [
+						1
+				],
+				"subnets": [
+						"192.0.2.1"
+				]
+		},
+		"lan_2": {
+				"lan_id": "<LAN_ID>",
+				"lan_name": "<LAN_NAME>",
+				"ports": [
+						1
+				],
+				"subnets": [
+						"192.0.2.1"
+				]
+		},
+		"name": "<POLICY_NAME>",
+		"protocols": [
+				"tcp"
+		]
+	}'
 ```
 
 ```json
@@ -274,11 +266,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-8435)
-* [ API ](#tab-panel-8436)
-
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Cloudflare One Appliance you want to configure > **Edit**.
 2. Go to **Network Configuration** \> **LAN configuration**.
@@ -289,7 +278,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `DELETE` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/acls/methods/delete/) to delete a network policy.
 
@@ -301,15 +290,20 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Delete Site ACL**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/#page","headline":"Network segmentation · Cloudflare WAN docs","description":"Define policies to determine if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","name":"Network segmentation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/#page","headline":"Network segmentation · Cloudflare WAN docs","description":"Define policies to determine if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

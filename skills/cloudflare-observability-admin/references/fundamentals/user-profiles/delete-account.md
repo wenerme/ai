@@ -1,16 +1,18 @@
 ---
-title: Delete your Cloudflare account
 description: Permanently delete your Cloudflare user profile and remove all associated domains and billing information.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Delete your Cloudflare account
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Delete your Cloudflare account
 
-# Delete your Cloudflare account
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -49,7 +51,7 @@ After you delete your profile, you can use the email address with your profile t
 All domains, subscriptions, and billing information on your account will be removed from Cloudflare.
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **My Profile**.
 3. Select **Delete this user**.
 4. Select **Delete user**.
@@ -59,7 +61,14 @@ Note
 
 Cloudflare will purge your personal information within a year of a deletion request unless required to retain it for legal obligations (such as ongoing abuse investigations or pending litigation). Refer to the [Cloudflare Data Processing Addendum ↗](https://www.cloudflare.com/cloudflare-customer-dpa/) for further information about the deletion of personal information following the cancellation of your account.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/#page","headline":"Delete your Cloudflare account · Cloudflare Fundamentals docs","description":"Permanently delete your Cloudflare user profile and remove all associated domains and billing information.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/delete-account/","name":"Delete your Cloudflare account"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/#page","headline":"Delete your Cloudflare account · Cloudflare Fundamentals docs","description":"Permanently delete your Cloudflare user profile and remove all associated domains and billing information.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

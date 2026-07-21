@@ -1,16 +1,18 @@
 ---
-title: Configure PagerDuty
 description: Route Cloudflare notifications to PagerDuty.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure PagerDuty
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure PagerDuty
 
-# Configure PagerDuty
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -29,7 +31,7 @@ According to PagerDuty, you will need an account with the following permissions 
 ## Connect PagerDuty to a Cloudflare account
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **Connect**.
 4. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) to connect it to your Cloudflare account.
@@ -47,14 +49,21 @@ Disconnecting PagerDuty will disable any notifications being sent to PagerDuty w
 If other delivery destinations were selected, then those notifications will still be routed as configured.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **View** on the PagerDuty service you want to disconnect.
 4. Select **Disconnect** \> **Confirm**.
 5. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) and make the required changes.
 6. [Reconnect PagerDuty to Cloudflare](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/#page","headline":"Configure PagerDuty · Cloudflare Notifications docs","description":"Route Cloudflare notifications to PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/get-started/","name":"Configure Cloudflare Notifications"}},{"@type":"ListItem","position":4,"item":{"@id":"/notifications/get-started/configure-pagerduty/","name":"Configure PagerDuty"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/#page","headline":"Configure PagerDuty · Cloudflare Notifications docs","description":"Route Cloudflare notifications to PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

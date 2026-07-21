@@ -1,16 +1,18 @@
 ---
-title: Analytics
 description: Monitor traffic with Cloudflare analytics.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analytics
 
-# Analytics
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Workers Analytics Engine
 
@@ -28,7 +30,14 @@ Use [Cloudflare Network Analytics](https://developers.cloudflare.com/analytics/n
 
 Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to provide\\ all of your performance, security, and reliability data from one endpoint. Select exactly what you need, from one metric for a domain to multiple metrics aggregated for your account.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/#page","headline":"Analytics · Cloudflare Learning Paths","description":"Monitor traffic with Cloudflare analytics.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/performance/analytics/","name":"Analytics"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/#page","headline":"Analytics · Cloudflare Learning Paths","description":"Monitor traffic with Cloudflare analytics.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

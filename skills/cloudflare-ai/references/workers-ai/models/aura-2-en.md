@@ -1,22 +1,29 @@
 ---
-title: aura-2-en
 description: Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aura-2-en
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
 #  aura-2-en
 
-Text-to-Speech • Deepgram
+ Text-to-Speech • Deepgram
 
-`@cf/deepgram/aura-2-en`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/deepgram/aura-2-en `
+
+* Cloudflare-hosted
+* Batch
+* Partner
+* Real-time
 
 Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.
 
@@ -29,9 +36,6 @@ Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing
 | Unit Pricing      | $0.03 per 1k characters              |
 
 ## Parameters
-
-* [ Input ](#tab-panel-5203)
-* [ Output ](#tab-panel-5204)
 
 speaker
 
@@ -65,7 +69,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-i
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-2-en/#page","headline":"aura-2-en (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-2-en/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-2-en/#page","headline":"aura-2-en (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-2-en/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

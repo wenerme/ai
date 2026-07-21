@@ -1,16 +1,18 @@
 ---
-title: Sentry
 description: Capture and log exceptions in Pages Functions using the Sentry Pages Plugin.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sentry
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sentry
 
-# Sentry
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/sentry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -40,14 +42,11 @@ bun add @cloudflare/pages-plugin-sentry
 
 ## Usage
 
-**TypeScript**
-
 ```typescript
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
 
-
 export const onRequest: PagesFunction = sentryPlugin({
-  dsn: "https://sentry.io/welcome/xyz",
+	dsn: "https://sentry.io/welcome/xyz",
 });
 ```
 
@@ -55,29 +54,23 @@ The Plugin uses [Toucan ↗](https://github.com/robertcepa/toucan-js). Refer to 
 
 If your [DSN ↗](https://docs.sentry.io/product/sentry-basics/dsn-explainer/) is held as an environment variable or in KV, you can access it like so:
 
-**TypeScript**
-
 ```typescript
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
 
-
 export const onRequest: PagesFunction<{
-  SENTRY_DSN: string;
+	SENTRY_DSN: string;
 }> = (context) => {
-  return sentryPlugin({ dsn: context.env.SENTRY_DSN })(context);
+	return sentryPlugin({ dsn: context.env.SENTRY_DSN })(context);
 };
 ```
 
-**TypeScript**
-
 ```typescript
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
 
-
 export const onRequest: PagesFunction<{
-  KV: KVNamespace;
+	KV: KVNamespace;
 }> = async (context) => {
-  return sentryPlugin({ dsn: await context.env.KV.get("SENTRY_DSN") })(context);
+	return sentryPlugin({ dsn: await context.env.KV.get("SENTRY_DSN") })(context);
 };
 ```
 
@@ -87,30 +80,32 @@ If you need to set additional context for Sentry (for example, user information 
 
 For example, you can access `data.sentry` and set user information like so:
 
-**TypeScript**
-
 ```typescript
 import type { PluginData } from "@cloudflare/pages-plugin-sentry";
 
-
 export const onRequest: PagesFunction<unknown, any, PluginData> = async ({
-  data,
-  next,
+	data,
+	next,
 }) => {
-  // Authenticate the user from the request and extract user's email address
-  const email = await getEmailFromRequest(request);
+	// Authenticate the user from the request and extract user's email address
+	const email = await getEmailFromRequest(request);
 
+	data.sentry.setUser({ email });
 
-  data.sentry.setUser({ email });
-
-
-  return next();
+	return next();
 };
 ```
 
 Again, the full list of features can be found in [Toucan's documentation ↗](https://github.com/robertcepa/toucan-js#features).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/sentry/#page","headline":"Sentry · Cloudflare Pages docs","description":"Capture and log exceptions in Pages Functions using the Sentry Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/sentry/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/sentry/","name":"Sentry"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/sentry/#page","headline":"Sentry · Cloudflare Pages docs","description":"Capture and log exceptions in Pages Functions using the Sentry Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/sentry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

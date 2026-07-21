@@ -1,16 +1,18 @@
 ---
-title: Monitor Groups
 description: Group monitors for coordinated health checking.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor Groups
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor Groups
 
-# Monitor Groups
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Group multiple health monitors together to create sophisticated health checks for your applications, ensuring more intelligent and resilient traffic steering.
 
@@ -56,7 +58,14 @@ For pools using Dynamic Steering, the pool's latency is calculated as the averag
 
 If monitors in a group have different check intervals, the group uses the last available result from each monitor until it is refreshed. For example, if one monitor runs every 10 seconds and another every 30 seconds, the 30-second monitor's result is considered valid for the full 30 seconds until its next run completes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/#page","headline":"Monitor Groups · Cloudflare Load Balancing docs","description":"Group monitors for coordinated health checking.","url":"https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/monitors/","name":"Monitors"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/monitors/monitor-groups/","name":"Monitor Groups"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/#page","headline":"Monitor Groups · Cloudflare Load Balancing docs","description":"Group monitors for coordinated health checking.","url":"https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

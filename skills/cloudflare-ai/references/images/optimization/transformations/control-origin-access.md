@@ -1,30 +1,30 @@
 ---
-title: Control origin access
 description: Hide original image sources and restrict access using Cloudflare Workers with image transformations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Control origin access
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Control origin access
 
-# Control origin access
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can serve resized images without giving access to the original image. Images can be hosted on another server outside of your zone, and the true source of the image can be entirely hidden. The origin server may require authentication to disclose the original image, without needing visitors to be aware of it. Access to the full-size image may be prevented by making it impossible to manipulate resizing parameters.
 
 All these behaviors are completely customizable, because they are handled by custom code of a script running [on the edge in a Cloudflare Worker](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/).
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Here you can compute arbitrary imageURL and
-    // resizingOptions from any request data ...
-    return fetch(imageURL, { cf: { image: resizingOptions } });
-  },
+	async fetch(request, env, ctx) {
+		// Here you can compute arbitrary imageURL and
+		// resizingOptions from any request data ...
+		return fetch(imageURL, { cf: { image: resizingOptions } });
+	},
 };
 ```
 
@@ -38,26 +38,23 @@ When testing image transformations, make sure you deploy the script and test it 
 
 ## Hiding the image server
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const resizingOptions = {
-      /* resizing options will be demonstrated in the next example */
-    };
+	async fetch(request, env, ctx) {
+		const resizingOptions = {
+			/* resizing options will be demonstrated in the next example */
+		};
 
-
-    const hiddenImageOrigin = "https://secret.example.com/hidden-directory";
-    const requestURL = new URL(request.url);
-    // Append the request path such as "/assets/image1.jpg" to the hiddenImageOrigin.
-    // You could also process the path to add or remove directories, modify filenames, etc.
-    const imageURL = hiddenImageOrigin + requestURL.pathname;
-    // This will fetch image from the given URL, but to the website's visitors this
-    // will appear as a response to the original request. Visitor’s browser will
-    // not see this URL.
-    return fetch(imageURL, { cf: { image: resizingOptions } });
-  },
+		const hiddenImageOrigin = "https://secret.example.com/hidden-directory";
+		const requestURL = new URL(request.url);
+		// Append the request path such as "/assets/image1.jpg" to the hiddenImageOrigin.
+		// You could also process the path to add or remove directories, modify filenames, etc.
+		const imageURL = hiddenImageOrigin + requestURL.pathname;
+		// This will fetch image from the given URL, but to the website's visitors this
+		// will appear as a response to the original request. Visitor’s browser will
+		// not see this URL.
+		return fetch(imageURL, { cf: { image: resizingOptions } });
+	},
 };
 ```
 
@@ -65,13 +62,10 @@ export default {
 
 On top of protecting the original image URL, you can also validate that only certain image sizes are allowed:
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
   const imageURL = … // detail omitted in this example, see the previous example
-
 
   const requestURL = new URL(request.url)
   const width = parseInt(requestURL.searchParams.get("width"), 10);
@@ -89,43 +83,38 @@ export default {
 
 You do not have to include actual pixel dimensions in the URL. You can embed sizes in the Worker script, and select the size in some other way — for example, by naming a preset in the URL:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const requestURL = new URL(request.url);
-    const resizingOptions = {};
+	async fetch(request, env, ctx) {
+		const requestURL = new URL(request.url);
+		const resizingOptions = {};
 
+		// The regex selects the first path component after the "images"
+		// prefix, and the rest of the path (e.g. "/images/first/rest")
+		const match = requestURL.pathname.match(/images\/([^/]+)\/(.+)/);
 
-    // The regex selects the first path component after the "images"
-    // prefix, and the rest of the path (e.g. "/images/first/rest")
-    const match = requestURL.pathname.match(/images\/([^/]+)\/(.+)/);
+		// You can require the first path component to be one of the
+		// predefined sizes only, and set actual dimensions accordingly.
+		switch (match && match[1]) {
+			case "small":
+				resizingOptions.width = 300;
+				break;
+			case "medium":
+				resizingOptions.width = 600;
+				break;
+			case "large":
+				resizingOptions.width = 900;
+				break;
+			default:
+				throw Error("invalid size");
+		}
 
-
-    // You can require the first path component to be one of the
-    // predefined sizes only, and set actual dimensions accordingly.
-    switch (match && match[1]) {
-      case "small":
-        resizingOptions.width = 300;
-        break;
-      case "medium":
-        resizingOptions.width = 600;
-        break;
-      case "large":
-        resizingOptions.width = 900;
-        break;
-      default:
-        throw Error("invalid size");
-    }
-
-
-    // The remainder of the path may be used to locate the original
-    // image, e.g. here "/images/small/image1.jpg" would map to
-    // "https://storage.example.com/bucket/image1.jpg" resized to 300px.
-    const imageURL = "https://storage.example.com/bucket/" + match[2];
-    return fetch(imageURL, { cf: { image: resizingOptions } });
-  },
+		// The remainder of the path may be used to locate the original
+		// image, e.g. here "/images/small/image1.jpg" would map to
+		// "https://storage.example.com/bucket/image1.jpg" resized to 300px.
+		const imageURL = "https://storage.example.com/bucket/" + match[2];
+		return fetch(imageURL, { cf: { image: resizingOptions } });
+	},
 };
 ```
 
@@ -133,21 +122,18 @@ export default {
 
 Cloudflare image transformations cache resized images to aid performance. Images stored with restricted access are generally not recommended for resizing because sharing images customized for individual visitors is unsafe. However, in cases where the customer agrees to store such images in public cache, Cloudflare supports resizing images through Workers. At the moment, this is supported on authenticated AWS, Azure, Google Cloud, SecureAuth origins and origins behind Cloudflare Access.
 
-**JavaScript**
-
 ```js
 // generate signed headers (application specific)
 const signedHeaders = generatedSignedHeaders();
 
-
 fetch(private_url, {
-  headers: signedHeaders,
-  cf: {
-    image: {
-      format: "auto",
-      "origin-auth": "share-publicly",
-    },
-  },
+	headers: signedHeaders,
+	cf: {
+		image: {
+			format: "auto",
+			"origin-auth": "share-publicly",
+		},
+	},
 });
 ```
 
@@ -171,7 +157,14 @@ For more information, refer to:
 * [Cloudflare Zero Trust docs](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
 * [SecureAuth docs ↗](https://docs.secureauth.com/2104/en/authentication-api-guide.html)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/#page","headline":"Control origin access · Cloudflare Images docs","description":"Hide original image sources and restrict access using Cloudflare Workers with image transformations.","url":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/control-origin-access/","name":"Control origin access"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/#page","headline":"Control origin access · Cloudflare Images docs","description":"Hide original image sources and restrict access using Cloudflare Workers with image transformations.","url":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

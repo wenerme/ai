@@ -1,16 +1,18 @@
 ---
-title: Deploy an Express.js application on Cloudflare Workers
 description: Learn how to deploy an Express.js application on Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy an Express.js application on Cloudflare Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy an Express.js application on Cloudflare Workers
 
-# Deploy an Express.js application on Cloudflare Workers
+Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to deploy an [Express.js ↗](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
@@ -84,20 +86,13 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-13069)
-* [  wrangler.toml ](#tab-panel-13070)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
@@ -123,7 +118,6 @@ The command will create a new D1 database and ask you the following questions:
 ✅ Successfully created DB 'members-db' in region WNAM
 Created your new D1 database.
 
-
 To access your new D1 Database in your Worker, add the following snippet to your configuration file:
 {
   "d1_databases": [
@@ -141,24 +135,17 @@ To access your new D1 Database in your Worker, add the following snippet to your
 
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-13071)
-* [  wrangler.toml ](#tab-panel-13072)
-
-**JSONC**
-
 ```jsonc
 {
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "members-db",
-      "database_id": "<unique-ID-for-your-database>"
-    }
-  ]
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "members-db",
+			"database_id": "<unique-ID-for-your-database>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[d1_databases]]
@@ -171,8 +158,6 @@ database_id = "<unique-ID-for-your-database>"
 
 Create a directory called `schemas` in your project root, and inside it, create a file called `schema.sql`:
 
-**schemas/schema.sql**
-
 ```sql
 DROP TABLE IF EXISTS members;
 CREATE TABLE IF NOT EXISTS members (
@@ -181,7 +166,6 @@ CREATE TABLE IF NOT EXISTS members (
   email TEXT NOT NULL UNIQUE,
   joined_date TEXT NOT NULL
 );
-
 
 -- Insert sample data
 INSERT INTO members (name, email, joined_date) VALUES
@@ -204,26 +188,20 @@ The above command creates the table in your local development database. You will
 
 Update your `src/index.ts` file to set up Express with TypeScript. Replace the file content with the following:
 
-**src/index.ts**
-
 ```ts
 import { env } from "cloudflare:workers";
 import { httpServerHandler } from "cloudflare:node";
 import express from "express";
 
-
 const app = express();
-
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-
 // Health check endpoint
 app.get("/", (req, res) => {
-  res.json({ message: "Express.js running on Cloudflare Workers!" });
+	res.json({ message: "Express.js running on Cloudflare Workers!" });
 });
-
 
 app.listen(3000);
 export default httpServerHandler({ port: 3000 });
@@ -241,40 +219,33 @@ npm run cf-typegen
 
 Add endpoints to retrieve members from the database. Update your `src/index.ts` file by adding the following routes after the health check endpoint:
 
-**src/index.ts**
-
 ```typescript
 // GET all members
 app.get('/api/members', async (req, res) => {
-  try {
-    const { results } = await env.DB.prepare('SELECT * FROM members ORDER BY joined_date DESC').all();
+	try {
+		const { results } = await env.DB.prepare('SELECT * FROM members ORDER BY joined_date DESC').all();
 
-
-    res.json({ success: true, members: results });
-  } catch (error) {
-    res.status(500).json({ success: false, error: 'Failed to fetch members' });
-  }
+		res.json({ success: true, members: results });
+	} catch (error) {
+		res.status(500).json({ success: false, error: 'Failed to fetch members' });
+	}
 });
-
 
 // GET a single member by ID
 app.get('/api/members/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
+	try {
+		const { id } = req.params;
 
+		const { results } = await env.DB.prepare('SELECT * FROM members WHERE id = ?').bind(id).all();
 
-    const { results } = await env.DB.prepare('SELECT * FROM members WHERE id = ?').bind(id).all();
+		if (results.length === 0) {
+			return res.status(404).json({ success: false, error: 'Member not found' });
+		}
 
-
-    if (results.length === 0) {
-      return res.status(404).json({ success: false, error: 'Member not found' });
-    }
-
-
-    res.json({ success: true, member: results[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, error: 'Failed to fetch member' });
-  }
+		res.json({ success: true, member: results[0] });
+	} catch (error) {
+		res.status(500).json({ success: false, error: 'Failed to fetch member' });
+	}
 });
 ```
 
@@ -284,14 +255,11 @@ These routes use the D1 binding (`env.DB`) to prepare SQL statements and execute
 
 Add an endpoint to create new members. Add the following route to your `src/index.ts` file:
 
-**src/index.ts**
-
 ```typescript
 // POST - Create a new member
 app.post("/api/members", async (req, res) => {
   try {
     const { name, email } = req.body;
-
 
     // Validate input
     if (!name || !email) {
@@ -300,7 +268,6 @@ app.post("/api/members", async (req, res) => {
         error: "Name and email are required",
       });
     }
-
 
     // Basic email validation (simplified for tutorial purposes)
     // For production, consider using a validation library or more comprehensive checks
@@ -311,16 +278,13 @@ app.post("/api/members", async (req, res) => {
       });
     }
 
-
     const joined_date = new Date().toISOString().split("T")[0];
-
 
     const result = await env.DB.prepare(
       "INSERT INTO members (name, email, joined_date) VALUES (?, ?, ?)"
     )
       .bind(name, email, joined_date)
       .run();
-
 
     if (result.success) {
       res.status(201).json({
@@ -352,14 +316,11 @@ This endpoint validates the input, checks the email format, and inserts a new me
 
 Add an endpoint to update existing members. Add the following route to your `src/index.ts` file:
 
-**src/index.ts**
-
 ```typescript
 app.put("/api/members/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, email } = req.body;
-
 
     // Validate input
     if (!name && !email) {
@@ -368,7 +329,6 @@ app.put("/api/members/:id", async (req, res) => {
         error: "At least one field (name or email) is required",
       });
     }
-
 
     // Basic email validation if provided (simplified for tutorial purposes)
     // For production, consider using a validation library or more comprehensive checks
@@ -379,11 +339,9 @@ app.put("/api/members/:id", async (req, res) => {
       });
     }
 
-
     // Build dynamic update query
     const updates: string[] = [];
     const values: any[] = [];
-
 
     if (name) {
       updates.push("name = ?");
@@ -394,9 +352,7 @@ app.put("/api/members/:id", async (req, res) => {
       values.push(email);
     }
 
-
     values.push(id);
-
 
     const result = await env.DB.prepare(
       `UPDATE members SET ${updates.join(", ")} WHERE id = ?`
@@ -404,13 +360,11 @@ app.put("/api/members/:id", async (req, res) => {
       .bind(...values)
       .run();
 
-
     if (result.meta.changes === 0) {
       return res
         .status(404)
         .json({ success: false, error: "Member not found" });
     }
-
 
     res.json({ success: true, message: "Member updated successfully" });
   } catch (error: any) {
@@ -431,26 +385,21 @@ This endpoint allows updating either the name, email, or both fields of an exist
 
 Add an endpoint to delete members. Add the following route to your `src/index.ts` file:
 
-**src/index.ts**
-
 ```typescript
 // DELETE - Delete a member
 app.delete("/api/members/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-
     const result = await env.DB.prepare("DELETE FROM members WHERE id = ?")
       .bind(id)
       .run();
-
 
     if (result.meta.changes === 0) {
       return res
         .status(404)
         .json({ success: false, error: "Member not found" });
     }
-
 
     res.json({ success: true, message: "Member deleted successfully" });
   } catch (error) {
@@ -473,41 +422,37 @@ The development server will start, and you can access your API at `http://localh
 
 Open a new terminal window and test the endpoints using `curl`:
 
-**Get all members**
-
 ```sh
 curl http://localhost:8787/api/members
 ```
 
 ```json
 {
-  "success": true,
-  "members": [
-    {
-      "id": 1,
-      "name": "Alice Johnson",
-      "email": "alice@example.com",
-      "joined_date": "2024-01-15"
-    },
-    {
-      "id": 2,
-      "name": "Bob Smith",
-      "email": "bob@example.com",
-      "joined_date": "2024-02-20"
-    },
-    {
-      "id": 3,
-      "name": "Carol Williams",
-      "email": "carol@example.com",
-      "joined_date": "2024-03-10"
-    }
-  ]
+	"success": true,
+	"members": [
+		{
+			"id": 1,
+			"name": "Alice Johnson",
+			"email": "alice@example.com",
+			"joined_date": "2024-01-15"
+		},
+		{
+			"id": 2,
+			"name": "Bob Smith",
+			"email": "bob@example.com",
+			"joined_date": "2024-02-20"
+		},
+		{
+			"id": 3,
+			"name": "Carol Williams",
+			"email": "carol@example.com",
+			"joined_date": "2024-03-10"
+		}
+	]
 }
 ```
 
 Test creating a new member:
-
-**Create a member**
 
 ```sh
 curl -X POST http://localhost:8787/api/members \
@@ -517,23 +462,19 @@ curl -X POST http://localhost:8787/api/members \
 
 ```json
 {
-  "success": true,
-  "message": "Member created successfully",
-  "id": 4
+	"success": true,
+	"message": "Member created successfully",
+	"id": 4
 }
 ```
 
 Test getting a single member:
-
-**Get a member by ID**
 
 ```sh
 curl http://localhost:8787/api/members/1
 ```
 
 Test updating a member:
-
-**Update a member**
 
 ```sh
 curl -X PUT http://localhost:8787/api/members/1 \
@@ -542,8 +483,6 @@ curl -X PUT http://localhost:8787/api/members/1 \
 ```
 
 Test deleting a member:
-
-**Delete a member**
 
 ```sh
 curl -X DELETE http://localhost:8787/api/members/4
@@ -572,7 +511,6 @@ Your Worker has access to the following bindings:
 Binding                  Resource
 env.DB (members-db)      D1 Database
 
-
 Uploaded express-d1-app (2.99 sec)
 Deployed express-d1-app triggers (5.26 sec)
   https://<your-subdomain>.workers.dev
@@ -585,8 +523,6 @@ After successful deployment, Wrangler will output your Worker's URL.
 
 Test your deployed API using the provided URL. Replace `<your-worker-url>` with your actual Worker URL:
 
-**Test production API**
-
 ```sh
 curl https://<your-worker-url>/api/members
 ```
@@ -594,8 +530,6 @@ curl https://<your-worker-url>/api/members
 You should see the same member data you created in the production database.
 
 Create a new member in production:
-
-**Create a member in production**
 
 ```sh
 curl -X POST https://<your-worker-url>/api/members \
@@ -621,7 +555,14 @@ In this tutorial, you built a Members Registry API using Express.js and D1 datab
 * Add authentication to your API using [Workers authentication](https://developers.cloudflare.com/workers/runtime-apis/handlers/)
 * Implement pagination for large datasets using [D1 query optimization](https://developers.cloudflare.com/d1/worker-api/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/deploy-an-express-app/","name":"Deploy an Express.js application on Cloudflare Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

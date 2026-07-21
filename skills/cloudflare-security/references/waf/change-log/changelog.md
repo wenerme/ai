@@ -1,18 +1,51 @@
 ---
+description: This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Adobe ColdFusion and WordPress, alongside enhanced generic protections against enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS) obfuscation techniques. To strengthen overall detection capabilities across emerging threat vectors, new emergency detection rules have also been deployed for Generic Rules - Unauthenticated Remote Code Execution (RCE), Generic Rules - Authentication Bypass (Auth Bypass - 2) and Generic Rules - Information Disclosure.
 title: Changelog
-description: This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-07-21
+
+
+**WAF Release - 2026-07-21**
+
+This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Adobe ColdFusion and WordPress, alongside enhanced generic protections against enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS) obfuscation techniques. To strengthen overall detection capabilities across emerging threat vectors, new emergency detection rules have also been deployed for Generic Rules - Unauthenticated Remote Code Execution (RCE), Generic Rules - Authentication Bypass (Auth Bypass - 2) and Generic Rules - Information Disclosure.
+
+**Key Findings**
+
+* CVE-2026-48276: A path traversal vulnerability in Adobe ColdFusion file upload mechanisms allows unauthenticated attackers to write or upload files to arbitrary locations outside designated directories on the origin server.
+* CVE-2026-48282: A path traversal vulnerability in Adobe ColdFusion enables unauthenticated attackers to manipulate directory sequences and access restricted system files on the host filesystem.
+* CVE-2026-60137: An unauthenticated SQL injection vulnerability affecting WordPress. Threat actors exploit unsanitized input parameters to execute arbitrary SQL queries, leading to unauthorized database access, record manipulation, or data exfiltration.
+* CVE-2026-63030: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                        | Previous Action | New Action | Comments                                                 |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------------------------ | --------------- | ---------- | -------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...215e7d31 | N/A            | SSRF - Restricted Protocol                                         | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...a935ee5d | N/A            | SSRF - Obfuscated Host                                             | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...1b0230ac | N/A            | LFI - Path Traversal                                               | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...61349c8b | N/A            | Adobe ColdFusion - File Upload Path Traversal - CVE:CVE-2026-48276 | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...9cb61eac | N/A            | Adobe ColdFusion - Path Traversal - CVE:CVE-2026-48282             | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...4ac5e21f | N/A            | XSS — JS Bracket Concat Obfuscation - Body                         | Log             | Disabled   | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...f31f5559 | N/A            | XSS — JS Bracket Concat Obfuscation - Headers                      | Log             | Disabled   | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...987984fd | N/A            | XSS — JS Bracket Concat Obfuscation - URI                          | Log             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...ed933fcc | N/A            | Wordpress - SQL Injection - CVE:CVE-2026-60137                     | N/A             | Block      | This was labeled as Generic Rules - SQLi.                |
+| Cloudflare Managed Ruleset | ...550664b6 | N/A            | Wordpress - Remote Code Execution - CVE:CVE-2026-63030             | N/A             | Block      | This was labeled as Generic Rules - Unauthenticated RCE. |
+| Cloudflare Free Ruleset    | ...33697a1a | N/A            | Wordpress - SQL Injection - CVE:CVE-2026-60137                     | N/A             | Block      | This was labeled as Generic Rules - SQLi.                |
+| Cloudflare Free Ruleset    | ...b5ec246a | N/A            | Wordpress - Remote Code Execution - CVE:CVE-2026-63030             | N/A             | Block      | This was labeled as Generic Rules - Unauthenticated RCE. |
+| Cloudflare Managed Ruleset | ...63167195 | N/A            | Generic Rules - RCE                                                | N/A             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...72952826 | N/A            | Generic Rules - Information Disclosure                             | N/A             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...930091a3 | N/A            | Generic Rules - Auth Bypass - 2                                    | N/A             | Block      | This is a new detection.                                 |
+| Cloudflare Managed Ruleset | ...2049a60c | N/A            | Generic Rules - Command Execution - Body - Beta                    | Disabled        | \-         | This detection has been removed.                         |
+| Cloudflare Managed Ruleset | ...836855a4 | N/A            | Generic Rules - Command Execution - Header - Beta                  | Disabled        | \-         | This detection has been removed.                         |
+| Cloudflare Managed Ruleset | ...6d060a0d | N/A            | Generic Rules - Command Execution - URI - Beta                     | Disabled        | \-         | This detection has been removed.                         |
 
 ## 2026-07-17
 
@@ -596,18 +629,8 @@ This week’s release introduces new detections for CVE-2025-68645 and CVE-2025-
 | Cloudflare Managed Ruleset | ...833761f7 | N/A            | Zimbra - Local File Inclusion - CVE:CVE-2025-68645     | Log             | Block      | This is a new detection. |
 | Cloudflare Managed Ruleset | ...950ed8c8 | N/A            | Vite - WASM Import Path Traversal - CVE:CVE-2025-31125 | Log             | Block      | This is a new detection. |
 
-## 2026-02-10
-
-
-**WAF Release - 2026-02-10**
-
-This week’s release changes the rule action from BLOCK to Disabled for Anomaly:Header:User-Agent - Fake Google Bot.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                 | Previous Action | New Action | Comments                                                        |
-| -------------------------- | ----------- | -------------- | ------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...6aa0bef8 | N/A            | Anomaly:Header:User-Agent - Fake Google Bot | Enabled         | Disabled   | We are changing the action for this rule from BLOCK to Disabled |
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Adobe ColdFusion and WordPress, alongside enhanced generic protections against enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS) obfuscation techniques. To strengthen overall detection capabilities across emerging threat vectors, new emergency detection rules have also been deployed for Generic Rules - Unauthenticated Remote Code Execution (RCE), Generic Rules - Authentication Bypass (Auth Bypass - 2) and Generic Rules - Information Disclosure.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

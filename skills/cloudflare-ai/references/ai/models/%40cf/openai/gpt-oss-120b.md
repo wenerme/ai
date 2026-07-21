@@ -1,46 +1,86 @@
 ---
-title: gpt-oss-120b
 description: OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: gpt-oss-120b
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  gpt-oss-120b
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`@cf/openai/gpt-oss-120b`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-120b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/openai/gpt-oss-120b `
+
+* Cloudflare-hosted
+* Function calling
+* Reasoning
 
 OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
 
 | Model Info                                                                           |                                                     |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 128,000 tokens                                      |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 128,000 tokens                                      |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                 |
 | Reasoning                                                                            | Yes                                                 |
 | Unit Pricing                                                                         | $0.35 per M input tokens, $0.75 per M output tokens |
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2436)
-* [  Python ](#tab-panel-2437)
-* [  curl ](#tab-panel-2438)
-
 ```ts
+
+export interface Env {
+  AI: Ai;
+}
+
 export default {
   async fetch(request, env): Promise<Response> {
-    const response = await env.AI.run('@cf/openai/gpt-oss-120b', {
-      instructions: 'You are a concise assistant.',
-      input: 'What is the origin of the phrase Hello, World?',
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+
+    const stream = await env.AI.run("@cf/openai/gpt-oss-120b", {
+      messages,
+      stream: true,
     });
 
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  },
+} satisfies ExportedHandler<Env>;
+```
+
+```ts
+
+export interface Env {
+  AI: Ai;
+}
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+    const response = await env.AI.run("@cf/openai/gpt-oss-120b", { messages });
 
     return Response.json(response);
   },
@@ -48,21 +88,22 @@ export default {
 ```
 
 ```py
+
 import os
 import requests
 
-
-ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
+ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
 
 prompt = "Tell me all about PEP-8"
 response = requests.post(
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/responses",
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/openai/gpt-oss-120b",
     headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
     json={
-      "model": "@cf/openai/gpt-oss-120b",
-      "input": "Tell me all about PEP-8"
+      "messages": [
+        {"role": "system", "content": "You are a friendly assistant"},
+        {"role": "user", "content": prompt}
+      ]
     }
 )
 result = response.json()
@@ -70,25 +111,20 @@ print(result)
 ```
 
 ```sh
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses   -H "Content-Type: application/json"   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN"   -d '{
-    "model": "@cf/openai/gpt-oss-120b",
-    "input": "What are the benefits of open-source models?"
-  }'
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/gpt-oss-120b \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
-Multiple API format support
+OpenAI compatible endpoints
 
-This model supports three different API formats:
-* **Responses API** (`/ai/v1/responses`) - Native OpenAI responses format shown above with `input` parameter
-* **Workers AI Run** (`/ai/run`) - Dynamic format detection, accepts Chat Completions (`messages`), legacy Completions (`prompt`), or Responses API (`input`)
-* **Chat Completions** (`/v1/chat/completions`) - OpenAI-compatible endpoint with `messages` array. Refer to [OpenAI Compatibility ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/) for details.
+ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
-
-* [ Input ](#tab-panel-2439)
-* [ Output ](#tab-panel-2440)
+Synchronous  — Send a request and receive a complete response
 
 Input format
 
@@ -164,10 +200,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
-
-* [ Input ](#tab-panel-2441)
-* [ Output ](#tab-panel-2442)
+Streaming  — Send a request with \`stream: true\` and receive server-sent events
 
 Input format
 
@@ -251,10 +284,7 @@ format
 
 `binary`
 
-Batch — Send multiple requests in a single API call
-
-* [ Input ](#tab-panel-2443)
-* [ Output ](#tab-panel-2444)
+Batch  — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -274,19 +304,26 @@ response
 
 ## API Schemas (Raw)
 
- Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/sync-input.json "Download")
+Synchronous Input [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/sync-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/sync-input.json "Download")
 
- Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/sync-output.json "Download")
+Synchronous Output [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/sync-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/sync-output.json "Download")
 
- Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/streaming-input.json "Download")
+Streaming Input [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/streaming-input.json "Download")
 
- Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/streaming-output.json "Download")
+Streaming Output [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/streaming-output.json "Download")
 
- Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-input.json "Download")
+Batch Input [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/batch-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/batch-input.json "Download")
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-output.json "Download")
+Batch Output [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/batch-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/batch-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-120b/#page","headline":"gpt-oss-120b (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-120b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-120b/#page","headline":"gpt-oss-120b (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-120b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

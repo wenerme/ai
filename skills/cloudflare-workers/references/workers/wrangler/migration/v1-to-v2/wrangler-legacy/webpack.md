@@ -1,18 +1,20 @@
 ---
-title: Webpack
 description: Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Webpack
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Webpack
 
-# Webpack
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/webpack/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
@@ -28,12 +30,10 @@ You must set `type = "webpack"` in your Wrangler file to use Wrangler's webpack 
 
 This is the default webpack configuration that Wrangler uses to build your Worker:
 
-**JavaScript**
-
 ```js
 module.exports = {
-  target: "webworker",
-  entry: "./index.js", // inferred from "main" in package.json
+	target: "webworker",
+	entry: "./index.js", // inferred from "main" in package.json
 };
 ```
 
@@ -47,33 +47,24 @@ You can tell Wrangler to use a custom webpack configuration file by setting `web
 
 ### Example
 
-**JavaScript**
-
 ```js
 module.exports = {
-  target: "webworker",
-  entry: "./index.js",
-  mode: "production",
+	target: "webworker",
+	entry: "./index.js",
+	mode: "production",
 };
 ```
 
-* [  wrangler.jsonc ](#tab-panel-13961)
-* [  wrangler.toml ](#tab-panel-13962)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "type": "webpack",
-  "name": "my-worker",
-  "account_id": "12345678901234567890",
-  "workers_dev": true,
-  "webpack_config": "webpack.config.js"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"type": "webpack",
+	"name": "my-worker",
+	"account_id": "12345678901234567890",
+	"workers_dev": true,
+	"webpack_config": "webpack.config.js"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -88,33 +79,26 @@ webpack_config = "webpack.config.js"
 
 It is possible to use different webpack configuration files within different [Wrangler environments](https://developers.cloudflare.com/workers/wrangler/environments/). For example, the `"webpack.development.js"` configuration file is used during `wrangler dev` for development, but other, more production-ready configurations are used when building for the staging or production environments:
 
-* [  wrangler.jsonc ](#tab-panel-13963)
-* [  wrangler.toml ](#tab-panel-13964)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "type": "webpack",
-  "name": "my-worker-dev",
-  "account_id": "12345678901234567890",
-  "workers_dev": true,
-  "webpack_config": "webpack.development.js",
-  "env": {
-    "staging": {
-      "name": "my-worker-staging",
-      "webpack_config": "webpack.staging.js"
-    },
-    "production": {
-      "name": "my-worker-production",
-      "webpack_config": "webpack.production.js"
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"type": "webpack",
+	"name": "my-worker-dev",
+	"account_id": "12345678901234567890",
+	"workers_dev": true,
+	"webpack_config": "webpack.development.js",
+	"env": {
+		"staging": {
+			"name": "my-worker-staging",
+			"webpack_config": "webpack.staging.js"
+		},
+		"production": {
+			"name": "my-worker-production",
+			"webpack_config": "webpack.production.js"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -124,35 +108,29 @@ account_id = "12345678901234567890"
 workers_dev = true
 webpack_config = "webpack.development.js"
 
-
 [env.staging]
 name = "my-worker-staging"
 webpack_config = "webpack.staging.js"
-
 
 [env.production]
 name = "my-worker-production"
 webpack_config = "webpack.production.js"
 ```
 
-**JavaScript**
-
 ```js
 module.exports = {
-  target: "webworker",
-  devtool: "cheap-module-source-map", // avoid "eval": Workers environment doesn’t allow it
-  entry: "./index.js",
-  mode: "development",
+	target: "webworker",
+	devtool: "cheap-module-source-map", // avoid "eval": Workers environment doesn’t allow it
+	entry: "./index.js",
+	mode: "development",
 };
 ```
 
-**JavaScript**
-
 ```js
 module.exports = {
-  target: "webworker",
-  entry: "./index.js",
-  mode: "production",
+	target: "webworker",
+	entry: "./index.js",
+	mode: "production",
 };
 ```
 
@@ -175,14 +153,12 @@ Wrangler commands are run from the project root. Ensure your `entry` and `contex
 
 The corresponding `webpack.config.js` file should look like this:
 
-**JavaScript**
-
 ```js
 module.exports = {
-  context: __dirname,
-  target: "webworker",
-  entry: "./index.js",
-  mode: "production",
+	context: __dirname,
+	target: "webworker",
+	entry: "./index.js",
+	mode: "production",
 };
 ```
 
@@ -194,21 +170,18 @@ For example, you may want to replace the `URL` global class with the `url-polyfi
 
 ### Example with webpack plugin
 
-**JavaScript**
-
 ```js
 const webpack = require("webpack");
 
-
 module.exports = {
-  target: "webworker",
-  entry: "./index.js",
-  mode: "production",
-  plugins: [
-    new webpack.ProvidePlugin({
-      URL: "url-polyfill",
-    }),
-  ],
+	target: "webworker",
+	entry: "./index.js",
+	mode: "production",
+	plugins: [
+		new webpack.ProvidePlugin({
+			URL: "url-polyfill",
+		}),
+	],
 };
 ```
 
@@ -218,7 +191,14 @@ If you are using `wrangler@1.6.0` or earlier, a `webpack.config.js` file at the 
 
 When [upgrading from wrangler@1.6.0](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/install-update/), you may encounter webpack configuration warnings. To resolve this, add `webpack_config = "webpack.config.js"` to your Wrangler file.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/#page","headline":"Webpack · Cloudflare Workers docs","description":"Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/webpack/","name":"Webpack"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/#page","headline":"Webpack · Cloudflare Workers docs","description":"Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

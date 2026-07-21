@@ -1,24 +1,24 @@
 ---
-title: Response
 description: Interface that represents an HTTP response.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Response
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Response
 
-# Response
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/response/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `Response` interface represents an HTTP response and is part of the Fetch API.
 
 ---
 
 ## Constructor
-
-**JavaScript**
 
 ```js
 let response = new Response(body, init);
@@ -112,17 +112,13 @@ The `Content-Length` header will be automatically set by the runtime based on wh
 
 A `FixedLengthStream` is an identity `TransformStream` that permits only a fixed number of bytes to be written to it.
 
-**JavaScript**
-
 ```js
   const { writable, readable } = new FixedLengthStream(11);
-
 
   const enc = new TextEncoder();
   const writer = writable.getWriter();
   writer.write(enc.encode("hello world"));
   writer.end();
-
 
   return new Response(readable);
 ```
@@ -164,7 +160,14 @@ The `headers` property returns a Workers-specific [Headers](https://developers.c
 * [Reference: Request](https://developers.cloudflare.com/workers/runtime-apis/request/)
 * Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/response/#page","headline":"Response · Cloudflare Workers docs","description":"Interface that represents an HTTP response.","url":"https://developers.cloudflare.com/workers/runtime-apis/response/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/response/","name":"Response"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/response/#page","headline":"Response · Cloudflare Workers docs","description":"Interface that represents an HTTP response.","url":"https://developers.cloudflare.com/workers/runtime-apis/response/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

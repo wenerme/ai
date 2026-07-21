@@ -1,16 +1,18 @@
 ---
-title: SDK ecosystem support policy
 description: Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SDK ecosystem support policy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SDK ecosystem support policy
 
-# SDK ecosystem support policy
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Lifecycle
 
@@ -50,7 +52,7 @@ The SDK ecosystem follows semantic versioning, which defines versions as follows
 * MINOR version when functionality is added in a backward compatible-manner.
 * PATCH version for backward-compatible bug fixes (without any improvements).
 
-Warning
+Caution
 
 As Cloudflare has recently swapped to [automatically generating our libraries using OpenAPI ↗](https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline), we have relaxed the strict versioning requirements on the libraries (Terraform is not changing). Minor releases _may_ contain breaking changes in the forms of method, structure, or type renames as the service owners stabilize their schemas and iterate on usability improvements.
 
@@ -69,7 +71,14 @@ Alongside the automatic migration approach, we provide documentation on the chan
 * [Semantic versioning definitions ↗](https://semver.org/)
 * [Cloudflare's Terraform documentation](https://developers.cloudflare.com/terraform/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/#page","headline":"SDK ecosystem support policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.","url":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/sdk-ecosystem-support-policy/","name":"SDK ecosystem support policy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/#page","headline":"SDK ecosystem support policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.","url":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

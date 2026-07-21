@@ -1,16 +1,18 @@
 ---
-title: Analytics
 description: Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analytics
 
-# Analytics
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime TURN service counts ingress and egress usage in bytes. You can access this real-time and historical data using the TURN analytics API. You can see TURN usage data in a time series or aggregate that shows traffic in bytes over time.
 
@@ -79,25 +81,25 @@ This comprehensive query shows how to retrieve multiple metrics simultaneously, 
 
 ```graphql
 query concurrentConnections {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 10000
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-      ) {
-        dimensions {
-          datetimeFiveMinutes
-        }
-        avg {
-          concurrentConnectionsFiveMinutes
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 10000
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+			) {
+				dimensions {
+					datetimeFiveMinutes
+				}
+				avg {
+					concurrentConnectionsFiveMinutes
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -135,12 +137,11 @@ Example response:
               }
             },
 
-
-          ]
-        }
-      ]
-    }
-  ]
+					]
+				}
+			]
+		}
+	]
 }
 ```
 
@@ -167,8 +168,9 @@ query egressByTurnKey{
         }
       }
     },
-    "errors": null
+		"errors": null
   }
+
 ```
 
 Example response:
@@ -201,22 +203,22 @@ Example response:
 
 ```graphql
 query topTurnCustomIdentifiers {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-        limit: 1
-        orderBy: [sum_egressBytes_DESC]
-      ) {
-        dimensions {
-          customIdentifier
-        }
-        sum {
-          egressBytes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+				limit: 1
+				orderBy: [sum_egressBytes_DESC]
+			) {
+				dimensions {
+					customIdentifier
+				}
+				sum {
+					egressBytes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -250,27 +252,27 @@ Example response:
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        filter: {
-          date_geq: $dateFrom
-          date_leq: $dateTo
-          customIdentifier: "tango"
-        }
-        limit: 100
-        orderBy: []
-      ) {
-        dimensions {
-          keyId
-          customIdentifier
-        }
-        sum {
-          egressBytes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				filter: {
+					date_geq: $dateFrom
+					date_leq: $dateTo
+					customIdentifier: "tango"
+				}
+				limit: 100
+				orderBy: []
+			) {
+				dimensions {
+					keyId
+					customIdentifier
+				}
+				sum {
+					egressBytes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -305,22 +307,22 @@ Example response:
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-        limit: 100
-        orderBy: [datetimeMinute_ASC]
-      ) {
-        dimensions {
-          datetimeMinute
-        }
-        sum {
-          egressBytes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+				limit: 100
+				orderBy: [datetimeMinute_ASC]
+			) {
+				dimensions {
+					datetimeMinute
+				}
+				sum {
+					egressBytes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -365,29 +367,29 @@ You can break down usage data by Cloudflare data center location to understand w
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 100
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-        orderBy: [sum_egressBytes_DESC]
-      ) {
-        dimensions {
-          datacenterCity
-          datacenterCode
-          datacenterRegion
-          datacenterCountry
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-        avg {
-          concurrentConnectionsFiveMinutes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 100
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+				orderBy: [sum_egressBytes_DESC]
+			) {
+				dimensions {
+					datacenterCity
+					datacenterCode
+					datacenterRegion
+					datacenterCountry
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+				avg {
+					concurrentConnectionsFiveMinutes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -431,31 +433,31 @@ You can filter data to analyze a specific TURN key or custom identifier. This is
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 1000
-        filter: {
-          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
-          date_geq: $dateFrom
-          date_leq: $dateTo
-        }
-        orderBy: [datetimeFiveMinutes_ASC]
-      ) {
-        dimensions {
-          datetimeFiveMinutes
-          keyId
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-        avg {
-          concurrentConnectionsFiveMinutes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 1000
+				filter: {
+					keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+					date_geq: $dateFrom
+					date_leq: $dateTo
+				}
+				orderBy: [datetimeFiveMinutes_ASC]
+			) {
+				dimensions {
+					datetimeFiveMinutes
+					keyId
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+				avg {
+					concurrentConnectionsFiveMinutes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -517,31 +519,31 @@ Example query with hourly aggregation:
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 1000
-        filter: {
-          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
-          date_geq: $dateFrom
-          date_leq: $dateTo
-        }
-        orderBy: [datetimeFiveMinutes_ASC]
-      ) {
-        dimensions {
-          datetimeFiveMinutes
-          keyId
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-        avg {
-          concurrentConnectionsFiveMinutes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 1000
+				filter: {
+					keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+					date_geq: $dateFrom
+					date_leq: $dateTo
+				}
+				orderBy: [datetimeFiveMinutes_ASC]
+			) {
+				dimensions {
+					datetimeFiveMinutes
+					keyId
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+				avg {
+					concurrentConnectionsFiveMinutes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -598,25 +600,25 @@ You can combine multiple dimensions in a single query to get more detailed break
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 10000
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-        orderBy: [datetimeHour_ASC, sum_egressBytes_DESC]
-      ) {
-        dimensions {
-          datetimeHour
-          datacenterCity
-          datacenterCountry
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 10000
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+				orderBy: [datetimeHour_ASC, sum_egressBytes_DESC]
+			) {
+				dimensions {
+					datetimeHour
+					datacenterCity
+					datacenterCountry
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -651,7 +653,7 @@ Example response:
                 "ingressBytes": 1140140
               }
             },
-            ...
+						...
           ]
         }
       ]
@@ -667,27 +669,27 @@ To find which keys or custom identifiers are using the most bandwidth:
 
 ```graphql
 query {
-  viewer {
-    accounts(filter: { accountTag: $accountId }) {
-      callsTurnUsageAdaptiveGroups(
-        limit: 10
-        filter: { date_geq: $dateFrom, date_leq: $dateTo }
-        orderBy: [sum_egressBytes_DESC, sum_ingressBytes_DESC]
-      ) {
-        dimensions {
-          keyId
-          customIdentifier
-        }
-        sum {
-          egressBytes
-          ingressBytes
-        }
-        avg {
-          concurrentConnectionsFiveMinutes
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountId }) {
+			callsTurnUsageAdaptiveGroups(
+				limit: 10
+				filter: { date_geq: $dateFrom, date_leq: $dateTo }
+				orderBy: [sum_egressBytes_DESC, sum_ingressBytes_DESC]
+			) {
+				dimensions {
+					keyId
+					customIdentifier
+				}
+				sum {
+					egressBytes
+					ingressBytes
+				}
+				avg {
+					concurrentConnectionsFiveMinutes
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -695,30 +697,30 @@ Example response:
 
 ```json
 {
-  "data": {
-    "viewer": {
-      "accounts": [
-        {
-          "callsTurnUsageAdaptiveGroups": [
-            {
-              "avg": {
-                "concurrentConnectionsFiveMinutes": 837305
-              },
-              "dimensions": {
-                "customIdentifier": "",
-                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
-              },
-              "sum": {
-                "egressBytes": 160040068147,
-                "ingressBytes": 154955460564
-              }
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "errors": null
+	"data": {
+		"viewer": {
+			"accounts": [
+				{
+					"callsTurnUsageAdaptiveGroups": [
+						{
+							"avg": {
+								"concurrentConnectionsFiveMinutes": 837305
+							},
+							"dimensions": {
+								"customIdentifier": "",
+								"keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+							},
+							"sum": {
+								"egressBytes": 160040068147,
+								"ingressBytes": 154955460564
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"errors": null
 }
 ```
 
@@ -731,7 +733,14 @@ For more information on GraphQL introspection and schema exploration, refer to:
 * [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/)
 * [GraphQL introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/analytics/#page","headline":"Analytics · Cloudflare Realtime docs","description":"Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.","url":"https://developers.cloudflare.com/realtime/turn/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/analytics/","name":"Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/analytics/#page","headline":"Analytics · Cloudflare Realtime docs","description":"Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.","url":"https://developers.cloudflare.com/realtime/turn/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

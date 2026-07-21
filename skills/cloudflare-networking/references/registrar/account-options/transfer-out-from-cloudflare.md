@@ -1,16 +1,18 @@
 ---
-title: Transfer domain out from Cloudflare
 description: Transfer your domain to another registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Transfer domain out from Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transfer domain out from Cloudflare
 
-# Transfer domain out from Cloudflare
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Registrar makes it easy to transfer your domain to another registrar. Be aware that ICANN rules prohibit a domain from being transferred if:
 
@@ -27,7 +29,7 @@ Anyone with super-admin and admin permissions for a zone can also manage your do
 ## 1\. Unlock your domain at Cloudflare
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to transfer, and select **Manage**.
 3. Select **Configuration** \> **Unlock**.
 4. Select **Confirm and Unlock** to confirm that you want to unlock your domain.
@@ -46,7 +48,14 @@ If you lose your authentication code, you can get a new one by:
 4. You will need to confirm the approval. You can also reject it at this stage. If you reject it, Cloudflare will reapply the registrar lock.
 5. If you do not manually approve the transfer, the transfer will auto-approve on the fifth day after receiving the request. In either case, when your transfer out completes Cloudflare will remove the domain from your account and you will not be charged for future renewals.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/#page","headline":"Transfer domain from Cloudflare to another registrar · Cloudflare Registrar docs","description":"Transfer your domain to another registrar.","url":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/transfer-out-from-cloudflare/","name":"Transfer domain out from Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/#page","headline":"Transfer domain from Cloudflare to another registrar · Cloudflare Registrar docs","description":"Transfer your domain to another registrar.","url":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

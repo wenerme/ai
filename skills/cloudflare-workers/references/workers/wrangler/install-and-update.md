@@ -1,16 +1,18 @@
 ---
-title: Install/Update Wrangler
 description: Get started by installing Wrangler, and update to newer versions by following this guide.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Install/Update Wrangler
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Install/Update Wrangler
 
-# Install/Update Wrangler
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler is a command-line tool for building with Cloudflare developer products.
 
@@ -48,7 +50,7 @@ bun add -d wrangler@latest
 
 Since Cloudflare recommends installing Wrangler locally in your project (rather than globally), the way to run Wrangler will depend on your specific setup and package manager. Refer to [How to run Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/#how-to-run-wrangler-commands) for more information.
 
-Warning
+Caution
 
 If Wrangler is not installed, running `npx wrangler` will use the latest version of Wrangler.
 
@@ -89,7 +91,14 @@ bun add -d wrangler@latest
 * [Commands](https://developers.cloudflare.com/workers/wrangler/commands/) \- A detailed list of the commands that Wrangler supports.
 * [Configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) \- Learn more about Wrangler's configuration file.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/install-and-update/#page","headline":"Install/Update Wrangler · Cloudflare Workers docs","description":"Get started by installing Wrangler, and update to newer versions by following this guide.","url":"https://developers.cloudflare.com/workers/wrangler/install-and-update/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/install-and-update/","name":"Install/Update Wrangler"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/install-and-update/#page","headline":"Install/Update Wrangler · Cloudflare Workers docs","description":"Get started by installing Wrangler, and update to newer versions by following this guide.","url":"https://developers.cloudflare.com/workers/wrangler/install-and-update/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

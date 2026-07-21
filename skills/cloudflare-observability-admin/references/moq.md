@@ -1,16 +1,18 @@
 ---
-title: Media over QUIC at Cloudflare
 description: Deliver low-latency live media content using the MoQ protocol over QUIC transport on Cloudflare's network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Media over QUIC at Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/moq/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Media over QUIC at Cloudflare
 
-# Media over QUIC at Cloudflare
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/moq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 MoQ (Media over QUIC) is a protocol for delivering live media content using QUIC transport. It provides efficient, low-latency media streaming by leveraging QUIC's multiplexing and connection management capabilities.
 
@@ -51,7 +53,14 @@ STREAM_HEADER_SUBGROUP Message {
 ```
 This was erroroneously left over from a previous draft version and will be fixed in a future release. Thank you to [@yuki-uchida ↗](https://github.com/yuki-uchida) for reporting.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/moq/#page","headline":"Overview · Cloudflare MoQ docs","description":"Deliver low-latency live media content using the MoQ protocol over QUIC transport on Cloudflare's network.","url":"https://developers.cloudflare.com/moq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/moq/","name":"MoQ"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/moq/#page","headline":"Overview · Cloudflare MoQ docs","description":"Deliver low-latency live media content using the MoQ protocol over QUIC transport on Cloudflare's network.","url":"https://developers.cloudflare.com/moq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

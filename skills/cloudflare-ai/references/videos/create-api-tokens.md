@@ -1,19 +1,12 @@
 ---
-title: Create an API token
 description: In this video, learn the difference between account and user API tokens how to create one.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Create an API token
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
-
-# Create an API token
+[Skip to content ](#main-content)
 
 In this video, learn the difference between account and user API tokens how to create one.
-
 
 Transcript
 
@@ -126,5 +119,5 @@ With that, you've successfully created an API token and can begin using it with 
 Cloudflare API. For more information, visit our developer documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/create-api-tokens/#page","headline":"Create an API token | Cloudflare Docs","description":"In this video, learn the difference between account and user API tokens how to create one.","url":"https://developers.cloudflare.com/videos/create-api-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/create-api-tokens/#page","headline":"Create an API token | Cloudflare Docs","description":"In this video, learn the difference between account and user API tokens how to create one.","url":"https://developers.cloudflare.com/videos/create-api-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

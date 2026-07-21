@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot routing and BGP
 description: Troubleshoot Magic Transit routing and BGP issues.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot routing and BGP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot routing and BGP
 
-# Troubleshoot routing and BGP
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common routing and BGP issues with Magic Transit. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
 
@@ -31,7 +33,7 @@ When you advertise or withdraw a BYOIP prefix, changes propagate across Cloudfla
 
 ISP route refresh delays may impact traffic
 
-Cloudflare's action to advertise or withdraw a route takes effect across the global network within minutes. However, Cloudflare has no control over how quickly external ISPs refresh their BGP tables after the change.
+ Cloudflare's action to advertise or withdraw a route takes effect across the global network within minutes. However, Cloudflare has no control over how quickly external ISPs refresh their BGP tables after the change.
 
 | Action               | Cloudflare propagation | Global Internet propagation     |
 | -------------------- | ---------------------- | ------------------------------- |
@@ -50,7 +52,7 @@ During path hunting, traffic may be routed suboptimally or dropped entirely.
 
 Note
 
-When failing traffic off Cloudflare, use the same-length prefix strategy. Advertise the identical prefix from your alternate provider before withdrawing from Cloudflare. This prevents path hunting because BGP does not need to search for alternative routes.
+ When failing traffic off Cloudflare, use the same-length prefix strategy. Advertise the identical prefix from your alternate provider before withdrawing from Cloudflare. This prevents path hunting because BGP does not need to search for alternative routes.
 
 Refer to [Safely withdraw a BYOIP prefix](https://developers.cloudflare.com/magic-transit/how-to/safely-withdraw-byoip-prefix/) for the recommended procedure.
 
@@ -273,18 +275,14 @@ Collect output from these commands (syntax varies by vendor):
 # Show BGP neighbor status
 show bgp neighbors
 
-
 # Show BGP summary
 show bgp ipv4 unicast summary
-
 
 # Show specific prefix in BGP table
 show bgp ipv4 unicast <YOUR_PREFIX>
 
-
 # Show interface status (for CNI)
 show interface <YOUR_INTERFACE_NAME>
-
 
 # Show received and advertised routes
 show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> routes
@@ -301,7 +299,14 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 * [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Traffic analysis and monitoring
 * [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit routing and BGP issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/routing-and-bgp/","name":"Troubleshoot routing and BGP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit routing and BGP issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Zone Lockdown
 description: Restrict access to specific URLs by allowlisted IP addresses.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Zone Lockdown
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Zone Lockdown
 
-# Zone Lockdown
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. You can configure multiple destinations, including IPv4/IPv6 addresses, in a single zone lockdown rule.
 
@@ -38,10 +40,6 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-12079)
-* [ Old dashboard ](#tab-panel-12080)
-* [ API ](#tab-panel-12081)
-
 Note
 
 Zone Lockdown is only available in the [new security dashboard](https://developers.cloudflare.com/security/) if you have configured at least one zone lockdown rule.
@@ -49,7 +47,7 @@ Zone Lockdown is only available in the [new security dashboard](https://develope
 **If you have access to Zone Lockdown rules**
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Zone lockdown rules**.
 If this option is not available, refer to the instructions below.
 3. Enter a descriptive name for the rule in **Name**.
@@ -63,7 +61,7 @@ If this option is not available, refer to the instructions below.
 Create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to perform zone lockdown:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**, and then select the template **Allow only specified IP addresses**.
 3. Fill in the required fields and select **Deploy**.
 
@@ -83,33 +81,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Firewall Services Write`
 
-**Create a Zone Lockdown rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",
-    "urls": [
-        "staging.example.com/*",
-        "example.com/wiki/*"
-    ],
-    "configurations": [
-        {
-            "target": "ip_range",
-            "value": "192.0.2.0/24"
-        },
-        {
-            "target": "ip_range",
-            "value": "2001:DB8::/64"
-        },
-        {
-            "target": "ip",
-            "value": "203.0.133.1"
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",
+		"urls": [
+				"staging.example.com/*",
+				"example.com/wiki/*"
+		],
+		"configurations": [
+				{
+						"target": "ip_range",
+						"value": "192.0.2.0/24"
+				},
+				{
+						"target": "ip_range",
+						"value": "2001:DB8::/64"
+				},
+				{
+						"target": "ip",
+						"value": "203.0.133.1"
+				}
+		]
+	}'
 ```
 
 ### Example rule
@@ -163,7 +159,14 @@ A visitor from an unauthorized IP will get the following error when there is a m
 * [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
 * [Allow Health Checks to bypass Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/zone-lockdown/","name":"Zone Lockdown"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Enable Elastic
 description: Push Cloudflare logs to Elastic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable Elastic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable Elastic
 
-# Enable Elastic
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Push your Cloudflare logs to Elastic for instant visibility and insights. Enabling this integration with Elastic comes with a predefined dashboard to view all of your Cloudflare observability and security data with ease.
 
@@ -43,24 +45,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<PUBLIC_DOMAIN>",
-    "destination_conf": "https://<PUBLIC_DOMAIN>:<PUBLIC_PORT>?header_<SECRET_HEADER>=<SECRET_VALUE>",
-    "dataset": "http_requests",
-    "output_options": {
-        "field_names": [
-            "RayID",
-            "EdgeStartTimestamp"
-        ],
-        "timestamp_format": "rfc3339"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<PUBLIC_DOMAIN>",
+		"destination_conf": "https://<PUBLIC_DOMAIN>:<PUBLIC_PORT>?header_<SECRET_HEADER>=<SECRET_VALUE>",
+		"dataset": "http_requests",
+		"output_options": {
+				"field_names": [
+						"RayID",
+						"EdgeStartTimestamp"
+				],
+				"timestamp_format": "rfc3339"
+		}
+	}'
 ```
 
 ## Enable the Integration in Elastic
@@ -71,7 +71,14 @@ Once the Logpush job is configured, follow Elastics instructions for [setting up
 
 Log in to your [Elastic account ↗](https://www.elastic.co/) to view prebuilt dashboards and configure alerts.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/#page","headline":"Enable Logpush to Elastic · Cloudflare Logs docs","description":"Push Cloudflare logs to Elastic.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/elastic/","name":"Enable Elastic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/#page","headline":"Enable Logpush to Elastic · Cloudflare Logs docs","description":"Push Cloudflare logs to Elastic.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

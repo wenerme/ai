@@ -1,16 +1,18 @@
 ---
-title: Create subdomain records
 description: Add DNS records for subdomains.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create subdomain records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create subdomain records
 
-# Create subdomain records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.
 
@@ -26,11 +28,8 @@ Then, you would create a corresponding [IP address resolution record](https://de
 | ---- | ---- | ------------ | ------------ |
 | A    | blog | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-8796)
-* [ API ](#tab-panel-8797)
-
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:
 
@@ -76,7 +75,14 @@ All other customers can set up subdomain-specific [Configuration Rules](https://
 
 If you want a subdomain's DNS settings managed totally outside of Cloudflare — meaning this subdomain can be managed by individuals without access to your Cloudflare account — refer to [Delegating subdomains outside of Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/#page","headline":"Create subdomain records · Cloudflare DNS docs","description":"Add DNS records for subdomains.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/create-subdomain/","name":"Create subdomain records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/#page","headline":"Create subdomain records · Cloudflare DNS docs","description":"Add DNS records for subdomains.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

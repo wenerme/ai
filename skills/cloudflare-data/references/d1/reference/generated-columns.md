@@ -1,16 +1,18 @@
 ---
-title: Generated columns
 description: Define virtual or stored generated columns in D1 to automatically compute values from other columns, SQL functions, or JSON data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Generated columns
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generated columns
 
-# Generated columns
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/reference/generated-columns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to define generated columns based on the values of one or more other columns, SQL functions, or even [extracted JSON values](https://developers.cloudflare.com/d1/sql-api/query-json/).
 
@@ -108,7 +110,14 @@ ADD COLUMN expires_at AS (date(timestamp, '+30 days'));
 * Expressions can only reference other columns in the same table and row, and must only use [deterministic functions ↗](https://www.sqlite.org/deterministic.html). Functions like `random()`, sub-queries or aggregation functions cannot be used to define a generated column.
 * Columns added to an existing table via `ALTER TABLE ... ADD COLUMN` must be `VIRTUAL`. You cannot add a `STORED` column to an existing table.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/generated-columns/#page","headline":"Generated columns · Cloudflare D1 docs","description":"Define virtual or stored generated columns in D1 to automatically compute values from other columns, SQL functions, or JSON data.","url":"https://developers.cloudflare.com/d1/reference/generated-columns/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/generated-columns/","name":"Generated columns"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/generated-columns/#page","headline":"Generated columns · Cloudflare D1 docs","description":"Define virtual or stored generated columns in D1 to automatically compute values from other columns, SQL functions, or JSON data.","url":"https://developers.cloudflare.com/d1/reference/generated-columns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

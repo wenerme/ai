@@ -1,16 +1,18 @@
 ---
-title: Traces
 description: Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Traces
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Traces
 
-# Traces
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/traces/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ### What is Workers tracing?
 
@@ -41,24 +43,17 @@ For more information, refer to [Custom spans](https://developers.cloudflare.com/
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-12756)
-* [  wrangler.toml ](#tab-panel-12757)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "traces": {
-      "enabled": true,
-      // optional sampling rate (recommended for high-traffic workloads)
-      "head_sampling_rate": 0.05
-    }
-  }
+	"observability": {
+		"traces": {
+			"enabled": true,
+			// optional sampling rate (recommended for high-traffic workloads)
+			"head_sampling_rate": 0.05
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.traces]
@@ -92,35 +87,27 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-12758)
-* [  wrangler.toml ](#tab-panel-12759)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "traces": {
-      "enabled": true,
-      // set tracing sampling rate to 5%
-      "head_sampling_rate": 0.05
-    },
-    "logs": {
-      "enabled": true,
-      // set logging sampling rate to 60%
-      "head_sampling_rate": 0.6
-    }
-  }
+	"observability": {
+		"traces": {
+			"enabled": true,
+			// set tracing sampling rate to 5%
+			"head_sampling_rate": 0.05
+		},
+		"logs": {
+			"enabled": true,
+			// set logging sampling rate to 60%
+			"head_sampling_rate": 0.6
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.traces]
 enabled = true
 head_sampling_rate = 0.05
-
 
 [observability.logs]
 enabled = true
@@ -142,7 +129,14 @@ Starting on March 1, 2026, tracing will be billed as part of your usage on the W
 | **Workers Free** | 200,000 per day                                                    | 3 Days    |
 | **Workers Paid** | 10 million included per month +$0.60 per additional million events | 7 Days    |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces · Cloudflare Workers docs","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces · Cloudflare Workers docs","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

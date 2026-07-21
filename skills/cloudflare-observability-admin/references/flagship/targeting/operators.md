@@ -1,16 +1,18 @@
 ---
-title: Operators
 description: Reference for the 11 comparison operators available in Flagship targeting rule conditions, including equality, comparison, string, and array operators.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Operators
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Operators
 
-# Operators
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/targeting/operators/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Flagship supports 11 comparison operators for targeting rule conditions. Each operator compares an attribute from the [evaluation context](https://developers.cloudflare.com/flagship/concepts/#evaluation-context) against a specified value.
 
@@ -56,7 +58,14 @@ These operators perform substring matching against the attribute value. All stri
 
 The value must be an array. Flagship checks whether the attribute value is a member of the specified array.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/operators/#page","headline":"Operators · Cloudflare Flagship docs","description":"Reference for the 11 comparison operators available in Flagship targeting rule conditions, including equality, comparison, string, and array operators.","url":"https://developers.cloudflare.com/flagship/targeting/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/targeting/","name":"Targeting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/targeting/operators/","name":"Operators"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/operators/#page","headline":"Operators · Cloudflare Flagship docs","description":"Reference for the 11 comparison operators available in Flagship targeting rule conditions, including equality, comparison, string, and array operators.","url":"https://developers.cloudflare.com/flagship/targeting/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

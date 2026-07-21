@@ -1,16 +1,18 @@
 ---
-title: Resolve &quot;you cannot modify this subscription&quot;
 description: Fix errors when modifying a canceled subscription.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Resolve &quot;you cannot modify this subscription&quot;
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resolve "you cannot modify this subscription"
 
-# Resolve "you cannot modify this subscription"
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When attempting to cancel or modify a subscription, you may see the following error message:
 
@@ -31,7 +33,7 @@ After requesting cancellation, the **Subscriptions** page shows the end date und
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you canceled.
 5. Under **Service status**, confirm that the status shows **Ending on** and the cancellation date.
@@ -44,7 +46,7 @@ If you do not want to pay for the next billing period, cancel your subscription 
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you want to cancel.
 5. Under **Service status**, confirm the next renewal date.
@@ -55,7 +57,7 @@ If you changed your decision and the cancellation has not taken effect yet, you 
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you canceled.
 5. Under **Action**, select **Cancel Downgrade**.
@@ -70,7 +72,14 @@ After you cancel the downgrade, return to the subscription and retry the change 
 * [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and billing terms
 * [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/#page","headline":"Resolve \"you cannot modify this subscription\" · Cloudflare Billing docs","description":"Fix errors when modifying a canceled subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","name":"Resolve \"you cannot modify this subscription\""}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/#page","headline":"Resolve \"you cannot modify this subscription\" · Cloudflare Billing docs","description":"Fix errors when modifying a canceled subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

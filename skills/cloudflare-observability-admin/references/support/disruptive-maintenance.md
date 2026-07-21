@@ -1,16 +1,18 @@
 ---
-title: Disruptive Maintenance
 description: Understand Cloudflare scheduled maintenance windows.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Disruptive Maintenance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Disruptive Maintenance
 
-# Disruptive Maintenance
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/disruptive-maintenance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Scheduled Maintenance Windows
 
@@ -68,7 +70,14 @@ In the Magic family of products, the routing is defined explicitly using [static
 * [Subscribe to Cloudflare Status](https://developers.cloudflare.com/support/cloudflare-status/)
 * [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/disruptive-maintenance/#page","headline":"Disruptive Maintenance · Cloudflare Support docs","description":"Understand Cloudflare scheduled maintenance windows.","url":"https://developers.cloudflare.com/support/disruptive-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/disruptive-maintenance/","name":"Disruptive Maintenance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/disruptive-maintenance/#page","headline":"Disruptive Maintenance · Cloudflare Support docs","description":"Understand Cloudflare scheduled maintenance windows.","url":"https://developers.cloudflare.com/support/disruptive-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Limits and formats
 description: Supported file formats, size limits, and dimension constraints for Cloudflare Images.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits and formats
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits and formats
 
-# Limits and formats
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/get-started/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This section covers limits and supported formats for Images.
 
@@ -121,7 +123,14 @@ The `svg-hush` tool filters SVGs and removes potentially risky features, such as
 * **Hyperlinks to other documents.** Removing hyperlinking makes SVG files less attractive for SEO spam and phishing.
 * **References to cross-origin resources.** We stop third parties from tracking who is viewing the image.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/get-started/limits/#page","headline":"Limits and formats · Cloudflare Images docs","description":"Supported file formats, size limits, and dimension constraints for Cloudflare Images.","url":"https://developers.cloudflare.com/images/get-started/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/get-started/limits/","name":"Limits and formats"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/get-started/limits/#page","headline":"Limits and formats · Cloudflare Images docs","description":"Supported file formats, size limits, and dimension constraints for Cloudflare Images.","url":"https://developers.cloudflare.com/images/get-started/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

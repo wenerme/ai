@@ -1,16 +1,18 @@
 ---
-title: Workers API
 description: Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers API
 
-# Workers API
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/workers-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -18,13 +20,11 @@ This guide details the Workflows API within Cloudflare Workers, including method
 
 The `WorkflowEntrypoint` class is the core element of a Workflow definition. A Workflow must extend this class and define a `run` method with at least one `step` call to be considered a valid Workflow.
 
-**TypeScript**
-
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-    // Steps here
-  }
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		// Steps here
+	}
 }
 ```
 
@@ -36,18 +36,15 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 The `run` method can optionally return data, which is available when querying the instance status via the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus), [REST API](https://developers.cloudflare.com/api/resources/workflows/subresources/instances/subresources/status/) and the Workflows dashboard. This can be useful if your Workflow is computing a result, returning the key to data stored in object storage, or generating some kind of identifier you need to act on.
 
-**TypeScript**
-
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-    // Steps here
-    let someComputedState = await step.do("my step", async () => {});
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		// Steps here
+		let someComputedState = await step.do("my step", async () => {});
 
-
-    // Optional: return state from our run() method
-    return someComputedState;
-  }
+		// Optional: return state from our run() method
+		return someComputedState;
+	}
 }
 ```
 
@@ -59,23 +56,20 @@ Finally, any JS control-flow primitive (if conditions, loops, `try...catch` bloc
 
 ## WorkflowEvent
 
-**TypeScript**
-
 ```ts
 export type WorkflowCronSchedule = {
-  /** Cron expression that triggered this event. */
-  cron: string;
-  /** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */
-  scheduledTime: number;
+	/** Cron expression that triggered this event. */
+	cron: string;
+	/** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */
+	scheduledTime: number;
 };
 
-
 export type WorkflowEvent<T> = {
-  payload: Readonly<T>;
-  timestamp: Date;
-  instanceId: string;
-  workflowName: string;
-  schedule?: WorkflowCronSchedule;
+	payload: Readonly<T>;
+	timestamp: Date;
+	instanceId: string;
+	workflowName: string;
+	schedule?: WorkflowCronSchedule;
 };
 ```
 
@@ -116,67 +110,51 @@ In JavaScript Workflows, `ReadableStream<Uint8Array>` is a supported serializabl
 
 Return a new stream from the callback.
 
-Warning
-
-Do not return a locked stream or a stream that has already been read. BYOB streams and BYOB readers are not supported.
+:::caution Do not return a locked stream or a stream that has already been read. BYOB streams and BYOB readers are not supported.
 
 After a `ReadableStream<Uint8Array>` object has been persisted within a step, it should not be reused - rely on the new fresh stream that gets returned from step. The bytes are preserved from the original stream, but the implementation might differ.
 
 :::
 
-* [  JavaScript ](#tab-panel-14035)
-* [  TypeScript ](#tab-panel-14036)
-
-**JavaScript**
-
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
-  async run(_event, step) {
-    const reportStream = await step.do("read report from R2", async () => {
-      const object = await this.env.MY_BUCKET.get("reports/latest.csv");
+	async run(_event, step) {
+		const reportStream = await step.do("read report from R2", async () => {
+			const object = await this.env.MY_BUCKET.get("reports/latest.csv");
 
+			if (!object?.body) {
+				throw new Error("Could not read reports/latest.csv from R2.");
+			}
 
-      if (!object?.body) {
-        throw new Error("Could not read reports/latest.csv from R2.");
-      }
+			return object.body;
+		});
 
-
-      return object.body;
-    });
-
-
-    const preview = await new Response(reportStream).text();
-    return { preview };
-  }
+		const preview = await new Response(reportStream).text();
+		return { preview };
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 type Env = {
-  MY_BUCKET: R2Bucket;
+	MY_BUCKET: R2Bucket;
 };
 
-
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
-  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
-    const reportStream = await step.do("read report from R2", async () => {
-      const object = await this.env.MY_BUCKET.get("reports/latest.csv");
+	async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
+		const reportStream = await step.do("read report from R2", async () => {
+			const object = await this.env.MY_BUCKET.get("reports/latest.csv");
 
+			if (!object?.body) {
+				throw new Error("Could not read reports/latest.csv from R2.");
+			}
 
-      if (!object?.body) {
-        throw new Error("Could not read reports/latest.csv from R2.");
-      }
+			return object.body;
+		});
 
-
-      return object.body;
-    });
-
-
-    const preview = await new Response(reportStream).text();
-    return { preview };
-  }
+		const preview = await new Response(reportStream).text();
+		return { preview };
+	}
 }
 ```
 
@@ -196,36 +174,29 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\- `name` \- the name of the step. - `options` \- an object with properties for `type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this `waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-14031)
-* [  TypeScript ](#tab-panel-14032)
-
-**JavaScript**
-
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
-  async run(event, step) {
-    // Other steps in your Workflow
-    let stripeEvent = await step.waitForEvent(
-      "receive invoice paid webhook from Stripe",
-      { type: "stripe-webhook", timeout: "1 hour" },
-    );
-    // Rest of your Workflow
-  }
+	async run(event, step) {
+		// Other steps in your Workflow
+		let stripeEvent = await step.waitForEvent(
+			"receive invoice paid webhook from Stripe",
+			{ type: "stripe-webhook", timeout: "1 hour" },
+		);
+		// Rest of your Workflow
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-    // Other steps in your Workflow
-    let stripeEvent = await step.waitForEvent<IncomingStripeWebhook>(
-      "receive invoice paid webhook from Stripe",
-      { type: "stripe-webhook", timeout: "1 hour" },
-    );
-    // Rest of your Workflow
-  }
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		// Other steps in your Workflow
+		let stripeEvent = await step.waitForEvent<IncomingStripeWebhook>(
+			"receive invoice paid webhook from Stripe",
+			{ type: "stripe-webhook", timeout: "1 hour" },
+		);
+		// Rest of your Workflow
+	}
 }
 ```
 
@@ -233,27 +204,23 @@ Review the documentation on [events and parameters](https://developers.cloudflar
 
 ## WorkflowStepConfig
 
-**TypeScript**
-
 ```ts
 export type WorkflowDynamicDelayContext = {
-  ctx: WorkflowStepContext;
-  error: Error;
+	ctx: WorkflowStepContext;
+	error: Error;
 };
 
-
 export type WorkflowDelayFunction = (
-  input: WorkflowDynamicDelayContext,
+	input: WorkflowDynamicDelayContext,
 ) => string | number | Promise<string | number>;
 
-
 export type WorkflowStepConfig = {
-  retries?: {
-    limit: number;
-    delay: string | number | WorkflowDelayFunction;
-    backoff?: WorkflowBackoff;
-  };
-  timeout?: string | number;
+	retries?: {
+		limit: number;
+		delay: string | number | WorkflowDelayFunction;
+		backoff?: WorkflowBackoff;
+	};
+	timeout?: string | number;
 };
 ```
 
@@ -264,30 +231,25 @@ Refer to the [documentation on sleeping and retrying](https://developers.cloudfl
 
 ## Rollback options
 
-**TypeScript**
-
 ```ts
 type WorkflowRollbackContext<T = unknown> = {
-  ctx: WorkflowStepContext;
-  error: Error;
-  output: T | undefined;
+	ctx: WorkflowStepContext;
+	error: Error;
+	output: T | undefined;
 };
 
-
 type WorkflowRollbackHandler<T = unknown> = (
-  ctx: WorkflowRollbackContext<T>,
+	ctx: WorkflowRollbackContext<T>,
 ) => Promise<void>;
 
-
 type WorkflowStepRollbackConfig = Pick<
-  WorkflowStepConfig,
-  "retries" | "timeout"
+	WorkflowStepConfig,
+	"retries" | "timeout"
 >;
 
-
 type WorkflowStepRollbackOptions<T = unknown> = {
-  rollback: WorkflowRollbackHandler<T>;
-  rollbackConfig?: WorkflowStepRollbackConfig;
+	rollback: WorkflowRollbackHandler<T>;
+	rollbackConfig?: WorkflowStepRollbackConfig;
 };
 ```
 
@@ -295,85 +257,76 @@ type WorkflowStepRollbackOptions<T = unknown> = {
 * `rollback` receives the original step context, the error that caused the Workflow to fail, and the step output returned by the forward step.
 * `rollbackConfig` applies retry and timeout settings to the rollback handler itself.
 
-* [  JavaScript ](#tab-panel-14039)
-* [  TypeScript ](#tab-panel-14040)
-
-**JavaScript**
-
 ```js
 export class BillingWorkflow extends WorkflowEntrypoint {
-  async run(_event, step) {
-    await step.do(
-      "create charge",
-      async () => {
-        const charge = await createCharge();
-        return { chargeId: charge.id };
-      },
-      {
-        rollback: async ({ ctx, output, error }) => {
-          const { chargeId } = output;
-          await refundCharge(chargeId, {
-            reason: `${ctx.step.name}: ${error.message}`,
-          });
-        },
-        rollbackConfig: {
-          retries: {
-            limit: 3,
-            delay: "30 seconds",
-            backoff: "linear",
-          },
-          timeout: "5 minutes",
-        },
-      },
-    );
-  }
+	async run(_event, step) {
+		await step.do(
+			"create charge",
+			async () => {
+				const charge = await createCharge();
+				return { chargeId: charge.id };
+			},
+			{
+				rollback: async ({ ctx, output, error }) => {
+					const { chargeId } = output;
+					await refundCharge(chargeId, {
+						reason: `${ctx.step.name}: ${error.message}`,
+					});
+				},
+				rollbackConfig: {
+					retries: {
+						limit: 3,
+						delay: "30 seconds",
+						backoff: "linear",
+					},
+					timeout: "5 minutes",
+				},
+			},
+		);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class BillingWorkflow extends WorkflowEntrypoint<Env> {
-  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
-    await step.do(
-      "create charge",
-      async () => {
-        const charge = await createCharge();
-        return { chargeId: charge.id };
-      },
-      {
-        rollback: async ({ ctx, output, error }) => {
-          const { chargeId } = output as { chargeId: string };
-          await refundCharge(chargeId, {
-            reason: `${ctx.step.name}: ${error.message}`,
-          });
-        },
-        rollbackConfig: {
-          retries: {
-            limit: 3,
-            delay: "30 seconds",
-            backoff: "linear",
-          },
-          timeout: "5 minutes",
-        },
-      },
-    );
-  }
+	async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
+		await step.do(
+			"create charge",
+			async () => {
+				const charge = await createCharge();
+				return { chargeId: charge.id };
+			},
+			{
+				rollback: async ({ ctx, output, error }) => {
+					const { chargeId } = output as { chargeId: string };
+					await refundCharge(chargeId, {
+						reason: `${ctx.step.name}: ${error.message}`,
+					});
+				},
+				rollbackConfig: {
+					retries: {
+						limit: 3,
+						delay: "30 seconds",
+						backoff: "linear",
+					},
+					timeout: "5 minutes",
+				},
+			},
+		);
+	}
 }
 ```
 
 ## WorkflowStepContext
 
-**TypeScript**
-
 ```ts
 export type WorkflowStepContext = {
-  step: {
-    name: string;
-    count: number;
-  };
-  attempt: number;
-  config: WorkflowStepConfig;
+	step: {
+		name: string;
+		count: number;
+	};
+	attempt: number;
+	config: WorkflowStepConfig;
 };
 ```
 
@@ -388,11 +341,6 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 ## Workflow step limits
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
-
-* [  wrangler.jsonc ](#tab-panel-14027)
-* [  wrangler.toml ](#tab-panel-14028)
-
-**JSONC**
 
 ```jsonc
 {
@@ -410,14 +358,11 @@ Each workflow on Workers Paid supports 10,000 steps by default. You can increase
 }
 ```
 
-**TOML**
-
 ```toml
 [[workflows]]
 name = "my-workflow"
 binding = "MY_WORKFLOW"
 class_name = "MyWorkflow"
-
 
 [workflows.limits]
 steps = 25_000
@@ -429,7 +374,7 @@ Note that Workflows on Workers Free have a limit of 1,024 steps. Refer to [Workf
 
 ## NonRetryableError
 
-* `` throw new NonRetryableError(message: ` string `, name ` string ` optional) ``: ` NonRetryableError `
+* `` throw new NonRetryableError(message: ` string `, name ` string `optional) ``: ` NonRetryableError `
   * When thrown inside [step.do()](https://developers.cloudflare.com/workflows/build/workers-api/#step), this error stops step retries, propagating the error to the top level (the [run](https://developers.cloudflare.com/workflows/build/workers-api/#run) function). Any error not handled at this top level will cause the Workflow instance to fail.
   * Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows steps are retried.
 
@@ -441,40 +386,32 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-14029)
-* [  wrangler.toml ](#tab-panel-14030)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "workflows-starter",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "workflows": [
-    {
-      // name of your workflow
-      "name": "workflows-starter",
-      // binding name env.MY_WORKFLOW
-      "binding": "MY_WORKFLOW",
-      // this is class that extends the Workflow class in src/index.ts
-      "class_name": "MyWorkflow",
-    },
-  ],
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "workflows-starter",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"workflows": [
+		{
+			// name of your workflow
+			"name": "workflows-starter",
+			// binding name env.MY_WORKFLOW
+			"binding": "MY_WORKFLOW",
+			// this is class that extends the Workflow class in src/index.ts
+			"class_name": "MyWorkflow",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[workflows]]
 name = "workflows-starter"
@@ -494,43 +431,35 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-14033)
-* [  wrangler.toml ](#tab-panel-14034)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "web-api-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "workflows": [
-    {
-      // name of your workflow
-      "name": "billing-workflow",
-      // binding name env.MY_WORKFLOW
-      "binding": "MY_WORKFLOW",
-      // this is class that extends the Workflow class in src/index.ts
-      "class_name": "MyWorkflow",
-      // the script name where the Workflow is defined.
-      // required if the Workflow is defined in another script.
-      "script_name": "billing-worker",
-    },
-  ],
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "web-api-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"workflows": [
+		{
+			// name of your workflow
+			"name": "billing-workflow",
+			// binding name env.MY_WORKFLOW
+			"binding": "MY_WORKFLOW",
+			// this is class that extends the Workflow class in src/index.ts
+			"class_name": "MyWorkflow",
+			// the script name where the Workflow is defined.
+			// required if the Workflow is defined in another script.
+			"script_name": "billing-worker",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[workflows]]
 name = "billing-workflow"
@@ -549,12 +478,10 @@ Ensure you have a compatibility date `2024-10-22` or later installed when bindin
 
 The `Workflow` type provides methods that allow you to create, inspect the status, and manage running Workflow instances from within a Worker script. It is part of the generated types produced by [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
 
-**./worker-configuration.d.ts**
-
 ```ts
 interface Env {
-  // The 'MY_WORKFLOW' variable should match the "binding" value set in the Wrangler config file
-  MY_WORKFLOW: Workflow;
+	// The 'MY_WORKFLOW' variable should match the "binding" value set in the Wrangler config file
+	MY_WORKFLOW: Workflow;
 }
 ```
 
@@ -569,17 +496,15 @@ Create (trigger) a new instance of the given Workflow.
 
 An ID is automatically generated, but a user-provided ID can be specified (up to 100 characters [1](#user-content-fn-1)). This can be useful when mapping Workflows to users, merchants or other identifiers in your system. You can also provide a JSON object as the `params` property, allowing you to pass data for the Workflow instance to act on as its [WorkflowEvent](https://developers.cloudflare.com/workflows/build/events-and-parameters/).
 
-**TypeScript**
-
 ```ts
 // Create a new Workflow instance with your own ID and pass params to the Workflow instance
 let instance = await env.MY_WORKFLOW.create({
-  id: myIdDefinedFromOtherSystem,
-  params: { hello: "world" },
+	id: myIdDefinedFromOtherSystem,
+	params: { hello: "world" },
 });
 return Response.json({
-  id: instance.id,
-  details: await instance.status(),
+	id: instance.id,
+	details: await instance.status(),
 });
 ```
 
@@ -587,7 +512,7 @@ Returns a `WorkflowInstance`.
 
 Throws an error if the provided ID is already used by an existing instance that has not yet passed its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/). To re-run a workflow with the same ID, you can [restart](https://developers.cloudflare.com/workflows/build/trigger-workflows/#restart-a-workflow) the existing instance.
 
-Warning
+Caution
 
 Providing a type parameter does _not_ validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
 
@@ -595,41 +520,35 @@ You can also provide a type parameter to the `Workflows` type when creating (tri
 
 To provide an optional type parameter to the `Workflow`, pass a type argument with your type when defining your Workflow bindings:
 
-**TypeScript**
-
 ```ts
 interface User {
-  email: string;
-  createdTimestamp: number;
+	email: string;
+	createdTimestamp: number;
 }
 
-
 interface Env {
-  // Pass our User type as the type parameter to the Workflow definition
+	// Pass our User type as the type parameter to the Workflow definition
   MY_WORKFLOW: Workflow<User>;
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // More likely to come from your database or via the request body!
-    const user: User = {
-      email: user@example.com,
-      createdTimestamp: Date.now()
-    }
+	async fetch(request, env, ctx) {
+		// More likely to come from your database or via the request body!
+		const user: User = {
+			email: user@example.com,
+			createdTimestamp: Date.now()
+		}
 
+		let instance = await env.MY_WORKFLOW.create({
+			// params expects the type User
+			params: user
+		})
 
-    let instance = await env.MY_WORKFLOW.create({
-      // params expects the type User
-      params: user
-    })
-
-
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  }
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	}
 }
 ```
 
@@ -644,14 +563,12 @@ This is useful when you are scheduling multiple instances at once. A call to `cr
 
 Each element of the `batch` list is expected to include both `id` and `params` properties:
 
-**TypeScript**
-
 ```ts
 // Create a new batch of 3 Workflow instances, each with its own ID and pass params to the Workflow instances
 const listOfInstances = [
-  { id: "id-abc123", params: { hello: "world-0" } },
-  { id: "id-def456", params: { hello: "world-1" } },
-  { id: "id-ghi789", params: { hello: "world-2" } },
+	{ id: "id-abc123", params: { hello: "world-0" } },
+	{ id: "id-def456", params: { hello: "world-1" } },
+	{ id: "id-ghi789", params: { hello: "world-2" } },
 ];
 let instances = await env.MY_WORKFLOW.createBatch(listOfInstances);
 ```
@@ -668,22 +585,20 @@ Get a specific Workflow instance by ID.
 
 Returns a `WorkflowInstance`. Throws an exception if the instance ID does not exist.
 
-**TypeScript**
-
 ```ts
 // Fetch an existing Workflow instance by ID:
 try {
-  let instance = await env.MY_WORKFLOW.get(id);
-  return Response.json({
-    id: instance.id,
-    details: await instance.status(),
-  });
+	let instance = await env.MY_WORKFLOW.get(id);
+	return Response.json({
+		id: instance.id,
+		details: await instance.status(),
+	});
 } catch (e: any) {
-  // Handle errors
-  // .get will throw an exception if the ID doesn't exist or is invalid.
-  const msg = `failed to get instance ${id}: ${e.message}`;
-  console.error(msg);
-  return Response.json({ error: msg }, { status: 400 });
+	// Handle errors
+	// .get will throw an exception if the ID doesn't exist or is invalid.
+	const msg = `failed to get instance ${id}: ${e.message}`;
+	console.error(msg);
+	return Response.json({ error: msg }, { status: 400 });
 }
 ```
 
@@ -691,34 +606,31 @@ try {
 
 Optional properties to pass when creating an instance.
 
-**TypeScript**
-
 ```ts
 interface WorkflowInstanceCreateOptions {
-  /**
-   * An id for your Workflow instance. Must be unique within the Workflow.
-   */
-  id?: string;
-  /**
-   * The event payload the Workflow instance is triggered with
-   */
-  params?: unknown;
-  /**
-   * The retention policy for the Workflow instance.
-   * Defaults to the maximum retention period available for the owner's account.
-   */
-  retention?: {
-    /**
-     * How long to retain instance state after the Workflow completes successfully.
-     */
-    successRetention?: WorkflowRetentionDuration;
-    /**
-     * How long to retain instance state after the Workflow ends in an errored or terminated state.
-     */
-    errorRetention?: WorkflowRetentionDuration;
-  };
+	/**
+	 * An id for your Workflow instance. Must be unique within the Workflow.
+	 */
+	id?: string;
+	/**
+	 * The event payload the Workflow instance is triggered with
+	 */
+	params?: unknown;
+	/**
+	 * The retention policy for the Workflow instance.
+	 * Defaults to the maximum retention period available for the owner's account.
+	 */
+	retention?: {
+		/**
+		 * How long to retain instance state after the Workflow completes successfully.
+		 */
+		successRetention?: WorkflowRetentionDuration;
+		/**
+		 * How long to retain instance state after the Workflow ends in an errored or terminated state.
+		 */
+		errorRetention?: WorkflowRetentionDuration;
+	};
 }
-
 
 type WorkflowRetentionDuration = WorkflowSleepDuration;
 ```
@@ -727,16 +639,14 @@ If `retention` is not set, instance state is retained for the maximum retention 
 
 The following example creates an instance that retains state for 1 day after success and 7 days after an error:
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.create({
-  id: myIdDefinedFromOtherSystem,
-  params: { hello: "world" },
-  retention: {
-    successRetention: "1 day",
-    errorRetention: "7 days",
-  },
+	id: myIdDefinedFromOtherSystem,
+	params: { hello: "world" },
+	retention: {
+		successRetention: "1 day",
+		errorRetention: "7 days",
+	},
 });
 ```
 
@@ -744,31 +654,29 @@ let instance = await env.MY_WORKFLOW.create({
 
 Represents a specific instance of a Workflow, and provides methods to manage the instance.
 
-**TypeScript**
-
 ```ts
 declare abstract class WorkflowInstance {
-  public id: string;
-  /**
-   * Pause the instance.
-   */
-  public pause(): Promise<void>;
-  /**
-   * Resume the instance. If it is already running, an error will be thrown.
-   */
-  public resume(): Promise<void>;
-  /**
-   * Terminate the instance. If it is errored, terminated or complete, an error will be thrown.
-   */
-  public terminate(options?: WorkflowInstanceTerminateOptions): Promise<void>;
-  /**
-   * Restart the instance from the beginning, or from a specific step.
-   */
-  public restart(options?: WorkflowInstanceRestartOptions): Promise<void>;
-  /**
-   * Returns the current status of the instance.
-   */
-  public status(): Promise<InstanceStatus>;
+	public id: string;
+	/**
+	 * Pause the instance.
+	 */
+	public pause(): Promise<void>;
+	/**
+	 * Resume the instance. If it is already running, an error will be thrown.
+	 */
+	public resume(): Promise<void>;
+	/**
+	 * Terminate the instance. If it is errored, terminated or complete, an error will be thrown.
+	 */
+	public terminate(options?: WorkflowInstanceTerminateOptions): Promise<void>;
+	/**
+	 * Restart the instance from the beginning, or from a specific step.
+	 */
+	public restart(options?: WorkflowInstanceRestartOptions): Promise<void>;
+	/**
+	 * Returns the current status of the instance.
+	 */
+	public status(): Promise<InstanceStatus>;
 }
 ```
 
@@ -803,19 +711,14 @@ Restart a Workflow instance from the beginning, or from a specific step.
 * `restart(options?: WorkflowInstanceRestartOptions): Promise<void>`
   * `options` \- optional properties that control from where the instance restarts.
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
-
 
 // Restart the instance from the beginning.
 await instance.restart();
 
-
 // Restart the instance from the step named "aggregate".
 await instance.restart({ from: { name: "aggregate" } });
-
 
 // Restart the instance from the third call to a step named "process".
 await instance.restart({ from: { name: "process", count: 3 } });
@@ -825,28 +728,26 @@ When restarting from a specific step, the cached results of every earlier step a
 
 #### WorkflowInstanceRestartOptions
 
-**TypeScript**
-
 ```ts
 interface WorkflowInstanceRestartOptions {
-  /**
-   * The step to restart the instance from.
-   * If omitted, the instance restarts from the beginning.
-   */
-  from?: {
-    /**
-     * The name of the step.
-     */
-    name: string;
-    /**
-     * The 1-based index of the step, used when multiple steps share the same name and type. Defaults to 1 (the first occurrence).
-     */
-    count?: number;
-    /**
-     * The step type. Use this to disambiguate when the same name is shared across step types. Defaults to "do".
-     */
-    type?: "do" | "sleep" | "waitForEvent";
-  };
+	/**
+	 * The step to restart the instance from.
+	 * If omitted, the instance restarts from the beginning.
+	 */
+	from?: {
+		/**
+		 * The name of the step.
+		 */
+		name: string;
+		/**
+		 * The 1-based index of the step, used when multiple steps share the same name and type. Defaults to 1 (the first occurrence).
+		 */
+		count?: number;
+		/**
+		 * The step type. Use this to disambiguate when the same name is shared across step types. Defaults to "do".
+		 */
+		type?: "do" | "sleep" | "waitForEvent";
+	};
 }
 ```
 
@@ -863,15 +764,11 @@ Terminate a Workflow instance.
 * `terminate(options?: WorkflowInstanceTerminateOptions): Promise<void>`
   * `options` \- optional properties that control how the instance is terminated.
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
 
-
 // Terminate without running rollback handlers.
 await instance.terminate();
-
 
 // Run registered rollback handlers before terminating.
 await instance.terminate({ rollback: true });
@@ -881,14 +778,12 @@ If `rollback` is `true`, Workflows runs the rollback handlers registered by comp
 
 #### WorkflowInstanceTerminateOptions
 
-**TypeScript**
-
 ```ts
 interface WorkflowInstanceTerminateOptions {
-  /**
-   * If true, run registered rollback handlers before terminating the instance.
-   */
-  rollback?: boolean;
+	/**
+	 * If true, run registered rollback handlers before terminating the instance.
+	 */
+	rollback?: boolean;
 }
 ```
 
@@ -900,56 +795,45 @@ interface WorkflowInstanceTerminateOptions {
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-14037)
-* [  TypeScript ](#tab-panel-14038)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(req, env) {
-    const instanceId = new URL(req.url).searchParams.get("instanceId");
-    const webhookPayload = await req.json();
+	async fetch(req, env) {
+		const instanceId = new URL(req.url).searchParams.get("instanceId");
+		const webhookPayload = await req.json();
 
+		let instance = await env.MY_WORKFLOW.get(instanceId);
+		// Send our event, with `type` matching the event type defined in
+		// our step.waitForEvent call
+		await instance.sendEvent({
+			type: "stripe-webhook",
+			payload: webhookPayload,
+		});
 
-    let instance = await env.MY_WORKFLOW.get(instanceId);
-    // Send our event, with `type` matching the event type defined in
-    // our step.waitForEvent call
-    await instance.sendEvent({
-      type: "stripe-webhook",
-      payload: webhookPayload,
-    });
-
-
-    return Response.json({
-      status: await instance.status(),
-    });
-  },
+		return Response.json({
+			status: await instance.status(),
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(req: Request, env: Env) {
-    const instanceId = new URL(req.url).searchParams.get("instanceId");
-    const webhookPayload = await req.json<Payload>();
+	async fetch(req: Request, env: Env) {
+		const instanceId = new URL(req.url).searchParams.get("instanceId");
+		const webhookPayload = await req.json<Payload>();
 
+		let instance = await env.MY_WORKFLOW.get(instanceId);
+		// Send our event, with `type` matching the event type defined in
+		// our step.waitForEvent call
+		await instance.sendEvent({
+			type: "stripe-webhook",
+			payload: webhookPayload,
+		});
 
-    let instance = await env.MY_WORKFLOW.get(instanceId);
-    // Send our event, with `type` matching the event type defined in
-    // our step.waitForEvent call
-    await instance.sendEvent({
-      type: "stripe-webhook",
-      payload: webhookPayload,
-    });
-
-
-    return Response.json({
-      status: await instance.status(),
-    });
-  },
+		return Response.json({
+			status: await instance.status(),
+		});
+	},
 };
 ```
 
@@ -961,32 +845,30 @@ This allows you to wait for multiple events at once, or use `Promise.race` to wa
 
 Details the status of a Workflow instance.
 
-**TypeScript**
-
 ```ts
 type InstanceStatus = {
-  status:
-    | "queued" // means that instance is waiting to be started (see concurrency limits)
-    | "running"
-    | "paused"
-    | "errored"
-    | "terminated" // user terminated the instance while it was running
-    | "complete"
-    | "waiting" // instance is hibernating and waiting for sleep or event to finish
-    | "waitingForPause" // instance is finishing the current work to pause
-    | "unknown";
-  error?: {
-    name: string;
-    message: string;
-  };
-  output?: unknown;
-  rollback: {
-    outcome: "complete" | "failed";
-    error: {
-      name: string;
-      message: string;
-    } | null;
-  } | null;
+	status:
+		| "queued" // means that instance is waiting to be started (see concurrency limits)
+		| "running"
+		| "paused"
+		| "errored"
+		| "terminated" // user terminated the instance while it was running
+		| "complete"
+		| "waiting" // instance is hibernating and waiting for sleep or event to finish
+		| "waitingForPause" // instance is finishing the current work to pause
+		| "unknown";
+	error?: {
+		name: string;
+		message: string;
+	};
+	output?: unknown;
+	rollback: {
+		outcome: "complete" | "failed";
+		error: {
+			name: string;
+			message: string;
+		} | null;
+	} | null;
 };
 ```
 
@@ -996,7 +878,14 @@ If a Workflow enters rollback, the Workers API continues to report `status: "run
 
 1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/workers-api/","name":"Workers API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

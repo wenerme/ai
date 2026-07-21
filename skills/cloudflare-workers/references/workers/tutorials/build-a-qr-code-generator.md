@@ -1,16 +1,18 @@
 ---
-title: Build a QR code generator
 description: This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build a QR code generator
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a QR code generator
 
-# Build a QR code generator
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build and publish a Worker application that generates QR codes.
 
@@ -56,13 +58,11 @@ Inside of your new `qr-code-generator` Worker project directory, `index.js` repr
 
 All Cloudflare Workers applications start by listening for `fetch` events, which are triggered when a client makes a request to a Workers route. After a request is received by the Worker, the response your application constructs will be returned to the user. This tutorial will guide you through understanding how the request/response pattern works and how you can use it to build fully featured applications.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello Worker!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello Worker!");
+	},
 };
 ```
 
@@ -78,67 +78,57 @@ The QR code generator you will build in this tutorial will be a Worker that runs
 
 At this point in the tutorial, your Worker function can receive requests and return a simple response with the text `"Hello Worker!"`. To handle data coming into your Worker, check if the incoming request is a `POST` request:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      return new Response("Hello Worker!");
-    }
-  },
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			return new Response("Hello Worker!");
+		}
+	},
 };
 ```
 
 Currently, if an incoming request is not a `POST`, the function will return `undefined`. However, a Worker always needs to return a `Response`. Since the function should only accept incoming `POST` requests, return a new `Response` with a [405 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/405) if the incoming request is not a `POST`:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      return new Response("Hello Worker!");
-    }
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			return new Response("Hello Worker!");
+		}
 
-
-    return new Response("Expected POST request", {
-      status: 405,
-    });
-  },
+		return new Response("Expected POST request", {
+			status: 405,
+		});
+	},
 };
 ```
 
 You have established the basic flow of the request. You will now set up a response to incoming valid requests. If a `POST` request comes in, the function should generate a QR code. To start, move the `"Hello Worker!"` response into a new function, `generateQRCode`, which will ultimately contain the bulk of your function’s logic:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-    }
-  },
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+		}
+	},
 };
 
-
 async function generateQRCode(request) {
-  // TODO: Include QR code generation
-  return new Response("Hello worker!");
+	// TODO: Include QR code generation
+	return new Response("Hello worker!");
 }
 ```
 
 With the `generateQRCode` function filled out, call it within `fetch` function and return its result directly to the client:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      return generateQRCode(request);
-    }
-  },
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			return generateQRCode(request);
+		}
+	},
 };
 ```
 
@@ -166,18 +156,15 @@ bun add qrcode-svg
 
 In `index.js`, import the `qrcode-svg` package as the variable `QRCode`. In the `generateQRCode` function, parse the incoming request as JSON using `request.json`, and generate a new QR code using the `qrcode-svg` package. The QR code is generated as an SVG. Construct a new instance of `Response`, passing in the SVG data as the body, and a `Content-Type` header of `image/svg+xml`. This will allow browsers to properly parse the data coming back from your Worker as an image:
 
-**JavaScript**
-
 ```js
 import QRCode from "qrcode-svg";
 
-
 async function generateQRCode(request) {
-  const { text } = await request.json();
-  const qr = new QRCode({ content: text || "https://workers.dev" });
-  return new Response(qr.svg(), {
-    headers: { "Content-Type": "image/svg+xml" },
-  });
+	const { text } = await request.json();
+	const qr = new QRCode({ content: text || "https://workers.dev" });
+	return new Response(qr.svg(), {
+		headers: { "Content-Type": "image/svg+xml" },
+	});
 }
 ```
 
@@ -185,33 +172,28 @@ async function generateQRCode(request) {
 
 The Worker will execute when a user sends a `POST` request to a route, but it is best practice to also provide a proper interface for testing the function. At this point in the tutorial, if any request is received by your function that is not a `POST`, a `405` response is returned. The new version of `fetch` should return a new `Response` with a static HTML document instead of the `405` error:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      return generateQRCode(request);
-    }
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			return generateQRCode(request);
+		}
 
-
-    return new Response(landing, {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    });
-  },
+		return new Response(landing, {
+			headers: {
+				"Content-Type": "text/html",
+			},
+		});
+	},
 };
 
-
 async function generateQRCode(request) {
-  const { text } = await request.json();
-  const qr = new QRCode({ content: text || "https://workers.dev" });
-  return new Response(qr.svg(), {
-    headers: { "Content-Type": "image/svg+xml" },
-  });
+	const { text } = await request.json();
+	const qr = new QRCode({ content: text || "https://workers.dev" });
+	return new Response(qr.svg(), {
+		headers: { "Content-Type": "image/svg+xml" },
+	});
 }
-
 
 const landing = `
 <h1>QR Generator</h1>
@@ -221,21 +203,21 @@ const landing = `
 <p>Generated QR Code Image</p>
 <img id="qr" src="#" />
 <script>
-  function generate() {
-    fetch(window.location.pathname, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: document.querySelector("#text").value })
-    })
-    .then(response => response.blob())
-    .then(blob => {
-      const reader = new FileReader();
-      reader.onloadend = function () {
-        document.querySelector("#qr").src = reader.result; // Update the image source with the newly generated QR code
-      }
-      reader.readAsDataURL(blob);
-    })
-  }
+	function generate() {
+		fetch(window.location.pathname, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ text: document.querySelector("#text").value })
+		})
+		.then(response => response.blob())
+		.then(blob => {
+			const reader = new FileReader();
+			reader.onloadend = function () {
+				document.querySelector("#qr").src = reader.result; // Update the image source with the newly generated QR code
+			}
+			reader.readAsDataURL(blob);
+		})
+	}
 </script>
 `;
 ```
@@ -244,36 +226,30 @@ The `landing` variable, which is a static HTML string, sets up an `input` tag an
 
 With the above steps complete, your Worker is ready. The full version of the code looks like this:
 
-**JavaScript**
-
 ```js
 const QRCode = require("qrcode-svg");
 
-
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      return generateQRCode(request);
-    }
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			return generateQRCode(request);
+		}
 
-
-    return new Response(landing, {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    });
-  },
+		return new Response(landing, {
+			headers: {
+				"Content-Type": "text/html",
+			},
+		});
+	},
 };
 
-
 async function generateQRCode(request) {
-  const { text } = await request.json();
-  const qr = new QRCode({ content: text || "https://workers.dev" });
-  return new Response(qr.svg(), {
-    headers: { "Content-Type": "image/svg+xml" },
-  });
+	const { text } = await request.json();
+	const qr = new QRCode({ content: text || "https://workers.dev" });
+	return new Response(qr.svg(), {
+		headers: { "Content-Type": "image/svg+xml" },
+	});
 }
-
 
 const landing = `
 <h1>QR Generator</h1>
@@ -283,21 +259,21 @@ const landing = `
 <p>Generated QR Code Image</p>
 <img id="qr" src="#" />
 <script>
-  function generate() {
-    fetch(window.location.pathname, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: document.querySelector("#text").value })
-    })
-    .then(response => response.blob())
-    .then(blob => {
-      const reader = new FileReader();
-      reader.onloadend = function () {
-        document.querySelector("#qr").src = reader.result; // Update the image source with the newly generated QR code
-      }
-      reader.readAsDataURL(blob);
-    })
-  }
+	function generate() {
+		fetch(window.location.pathname, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ text: document.querySelector("#text").value })
+		})
+		.then(response => response.blob())
+		.then(blob => {
+			const reader = new FileReader();
+			reader.onloadend = function () {
+				document.querySelector("#qr").src = reader.result; // Update the image source with the newly generated QR code
+			}
+			reader.readAsDataURL(blob);
+		})
+	}
 </script>
 `;
 ```
@@ -307,8 +283,6 @@ const landing = `
 With all the above steps complete, you have written the code for a QR code generator on Cloudflare Workers.
 
 Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, run `npx wrangler deploy`, which will build and deploy your code.
-
-**Deploy your Worker project**
 
 ```sh
 npx wrangler deploy
@@ -320,7 +294,14 @@ In this tutorial, you built and deployed a Worker application for generating QR 
 
 If you want to get started building your own projects, review the existing list of [Quickstart templates](https://developers.cloudflare.com/workers/get-started/quickstarts/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/#page","headline":"Build a QR code generator · Cloudflare Workers docs","description":"This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.","url":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/build-a-qr-code-generator/","name":"Build a QR code generator"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/#page","headline":"Build a QR code generator · Cloudflare Workers docs","description":"This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.","url":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

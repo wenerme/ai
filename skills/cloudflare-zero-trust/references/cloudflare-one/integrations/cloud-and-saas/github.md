@@ -1,16 +1,18 @@
 ---
-title: GitHub
 description: Reference information for GitHub in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: GitHub
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GitHub
 
-# GitHub
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The GitHub integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated GitHub Organization that could leave you and your organization vulnerable.
 
@@ -60,7 +62,14 @@ Learn more about [GitHub branch protection rules ↗](https://docs.github.com/en
 | GitHub: Organization two-factor authentication disabled      | 47d01030-0ed8-496d-9484-f77899b21d59 | High     | An organization does not have its organization-wide two-factor authentication (2FA) requirement enabled. |
 | GitHub: Organization user two-factor authentication disabled | dfed92b2-a45e-46ed-a86b-8c7e3db01f3c | High     | A member of the organization does not have two-factor authentication (2FA) enabled.                      |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/#page","headline":"GitHub - CASB · Cloudflare One docs","description":"Reference information for GitHub in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GitHub"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/","name":"Cloud and SaaS integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/github/","name":"GitHub"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/#page","headline":"GitHub - CASB · Cloudflare One docs","description":"Reference information for GitHub in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GitHub"]}
 ```

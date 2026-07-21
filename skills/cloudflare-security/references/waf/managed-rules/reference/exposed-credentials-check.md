@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Exposed Credentials Check Managed Ruleset
 description: Rules in the Cloudflare Exposed Credentials Check managed ruleset.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Exposed Credentials Check Managed Ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Exposed Credentials Check Managed Ruleset
 
-# Cloudflare Exposed Credentials Check Managed Ruleset
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -66,105 +68,99 @@ To enable the Cloudflare Exposed Credentials Check Managed Ruleset for a given z
 This example deploys the Cloudflare Exposed Credentials Check Managed Ruleset to the `http_request_firewall_managed` phase of a given zone (`$ZONE_ID`) by creating a rule that executes the managed ruleset. The rules in the managed ruleset are executed for all incoming requests.
 
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_managed` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.
-
-**Get a zone entry point ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "result": {
-    "description": "Zone-level phase entry point",
-    "id": "<ENTRY_POINT_RULESET_ID>",
-    "kind": "zone",
-    "last_updated": "2024-03-16T15:40:08.202335Z",
-    "name": "zone",
-    "phase": "http_request_firewall_managed",
-    "rules": [
-      // ...
-    ],
-    "source": "firewall_managed",
-    "version": "10"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"description": "Zone-level phase entry point",
+		"id": "<ENTRY_POINT_RULESET_ID>",
+		"kind": "zone",
+		"last_updated": "2024-03-16T15:40:08.202335Z",
+		"name": "zone",
+		"phase": "http_request_firewall_managed",
+		"rules": [
+			// ...
+		],
+		"source": "firewall_managed",
+		"version": "10"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`). By default, the rule will be added at the end of the list of rules already in the ruleset.
-
-**Create a zone ruleset rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "execute",
-    "action_parameters": {
-        "id": "c2e184081120413c86c3ab7e14069605"
-    },
-    "expression": "true",
-    "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "execute",
+		"action_parameters": {
+				"id": "c2e184081120413c86c3ab7e14069605"
+		},
+		"expression": "true",
+		"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
+	}'
 ```
 ```json
 {
-  "result": {
-    "id": "<ENTRY_POINT_RULESET_ID>",
-    "name": "Zone-level phase entry point",
-    "description": "",
-    "kind": "zone",
-    "version": "11",
-    "rules": [
-      // ... any existing rules
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "c2e184081120413c86c3ab7e14069605",
-          "version": "latest"
-        },
-        "expression": "true",
-        "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",
-        "last_updated": "2024-03-18T18:08:14.003361Z",
-        "ref": "<RULE_REF>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2024-03-18T18:08:14.003361Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ENTRY_POINT_RULESET_ID>",
+		"name": "Zone-level phase entry point",
+		"description": "",
+		"kind": "zone",
+		"version": "11",
+		"rules": [
+			// ... any existing rules
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "c2e184081120413c86c3ab7e14069605",
+					"version": "latest"
+				},
+				"expression": "true",
+				"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",
+				"last_updated": "2024-03-18T18:08:14.003361Z",
+				"ref": "<RULE_REF>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2024-03-18T18:08:14.003361Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`) for all incoming requests in the zone.
-
-**Create a zone ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "My ruleset",
-    "description": "Entry point ruleset for WAF managed rulesets",
-    "kind": "zone",
-    "phase": "http_request_firewall_managed",
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "c2e184081120413c86c3ab7e14069605"
-            },
-            "expression": "true",
-            "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "My ruleset",
+		"description": "Entry point ruleset for WAF managed rulesets",
+		"kind": "zone",
+		"phase": "http_request_firewall_managed",
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "c2e184081120413c86c3ab7e14069605"
+						},
+						"expression": "true",
+						"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
+				}
+		]
+	}'
 ```
 
 ### Next steps
@@ -186,7 +182,14 @@ For more information, refer to [Create a custom rule checking for exposed creden
 
 For more information on working with managed rulesets via API, refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/) in the Ruleset Engine documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/#page","headline":"Cloudflare Exposed Credentials Check Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules in the Cloudflare Exposed Credentials Check managed ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/exposed-credentials-check/","name":"Cloudflare Exposed Credentials Check Managed Ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/#page","headline":"Cloudflare Exposed Credentials Check Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules in the Cloudflare Exposed Credentials Check managed ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 ```

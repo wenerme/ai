@@ -1,16 +1,18 @@
 ---
-title: Embeds
 description: Embed third-party widgets like chat and support tools with Zaraz.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Embeds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Embeds
 
-# Embeds
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/embeds/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Embeds are tools for incorporating external content, like social media posts, directly onto webpages, enhancing user engagement without compromising site performance and security.
 
@@ -19,7 +21,7 @@ Cloudflare Zaraz introduces server-side rendering for embeds, avoiding third-par
 To add an Embed to Your Website:
 
 1. In the Cloudflare dashboard, go to the **Tag Setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. Go to **Tools Configuration**.
 3. Click "add new tool" and activate the desired tools on your Cloudflare Zaraz dashboard.
 4. Add a placeholder in your HTML, specifying the necessary attributes. For a generic embed, the snippet looks like this:
@@ -48,7 +50,14 @@ Replace `tweet-id` with the actual tweet ID for the content you wish to embed.
 
 Replace `post-url` with the actual URL for the content you wish to embed. To include posts captions set captions attribute to `true`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/embeds/#page","headline":"Embeds · Cloudflare Zaraz docs","description":"Embed third-party widgets like chat and support tools with Zaraz.","url":"https://developers.cloudflare.com/zaraz/embeds/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/embeds/","name":"Embeds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/embeds/#page","headline":"Embeds · Cloudflare Zaraz docs","description":"Embed third-party widgets like chat and support tools with Zaraz.","url":"https://developers.cloudflare.com/zaraz/embeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,40 +1,40 @@
 ---
-title: Claude Opus 4.6
 description: Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-step work in coding, financial analysis, and legal reasoning. It uses extended thinking to work through complex problems carefully and features a one million token context window.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Opus 4.6
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Opus 4.6
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-opus-4.6`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-opus-4.6 `
+
+* Third-party
+* Zero data retention
 
 Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-step work in coding, financial analysis, and legal reasoning. It uses extended thinking to work through complex problems carefully and features a one million token context window.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                         |
-| Request formats                                                            | Anthropic Messages                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.6) |
+| Model Info                                                                  |                                                                                                                              |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                             |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/opus)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                          |
+| Request formats                                                             | Anthropic Messages                                                                                                           |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.6) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-212)
-* [ cURL ](#tab-panel-213)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-216)
-* [ Raw response ](#tab-panel-217)
 
 # The Laws of Thermodynamics
 
@@ -115,11 +112,6 @@ Together, these laws govern how energy behaves in all physical and chemical proc
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-214)
-* [ cURL ](#tab-panel-215)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.6',
@@ -150,9 +142,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.3
 }'
 ```
-
-* [ Output ](#tab-panel-220)
-* [ Raw response ](#tab-panel-221)
 
 # Reading a JSON File in Python
 
@@ -270,11 +259,6 @@ with open('data.json', 'r', encoding='utf-8') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-224)
-* [ cURL ](#tab-panel-225)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.6',
@@ -320,9 +304,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-226)
-* [ Raw response ](#tab-panel-227)
 
 # Great Stops Between SF & LA
 
@@ -379,11 +360,6 @@ This is the fastest route (~5-6 hours):
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-218)
-* [ cURL ](#tab-panel-219)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.6',
@@ -417,9 +393,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.8
 }'
 ```
-
-* [ Output ](#tab-panel-228)
-* [ Raw response ](#tab-panel-229)
 
 # The Orchid on the Windowsill
 
@@ -470,11 +443,6 @@ She read it again—not because she needed to, but because some part of her reco
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-222)
-* [ cURL ](#tab-panel-223)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.6',
@@ -503,9 +471,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-232)
-* [ Raw response ](#tab-panel-233)
 
 # Understanding Recursion
 
@@ -808,11 +773,6 @@ factorial(5)
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-230)
-* [ cURL ](#tab-panel-231)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.6',
@@ -853,9 +813,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-234)
-* [ Raw response ](#tab-panel-235)
 
 Here are the top Cloudflare stories from this week:
 
@@ -1177,9 +1134,6 @@ Here are the top Cloudflare stories from this week:
 
 ## Parameters
 
-* [ Input ](#tab-panel-236)
-* [ Output ](#tab-panel-237)
-
 ▶messages\[\]
 
 `array`required
@@ -1246,7 +1200,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/#page","headline":"Claude Opus 4.6 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-step work in coding, financial analysis, and legal reasoning. It uses extended thinking to work through complex problems carefully and features a one million token context window.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/#page","headline":"Claude Opus 4.6 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-step work in coding, financial analysis, and legal reasoning. It uses extended thinking to work through complex problems carefully and features a one million token context window.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

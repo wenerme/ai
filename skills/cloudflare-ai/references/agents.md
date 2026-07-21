@@ -1,16 +1,18 @@
 ---
-title: Build Agents on Cloudflare
 description: Create stateful AI agents with persistent memory, real-time WebSocket connections, and scheduled tasks using the Cloudflare Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build Agents on Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build Agents on Cloudflare
 
-# Build Agents on Cloudflare
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build and host Agents on Cloudflare, connect chat, voice, email, Slack, and webhooks to a durable agent runtime with Browser, Sandbox, AI Search, MCP, Payments, and other MCP tools.
 
@@ -59,27 +61,34 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 ### Example agents
 
-**[Chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)**
+[Chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
 Build a streaming AI chat agent with tools and human-in-the-loop approvals.
 
-**[Slack agent](https://developers.cloudflare.com/agents/examples/slack-agent/)**
+[Slack agent](https://developers.cloudflare.com/agents/examples/slack-agent/)
 
 Build an agent that responds to Slack messages, mentions, and commands.
 
-**[Voice agent](https://developers.cloudflare.com/agents/examples/voice-agent/)**
+[Voice agent](https://developers.cloudflare.com/agents/examples/voice-agent/)
 
 Build a real-time voice agent with speech-to-text and text-to-speech.
 
-**[Browser agent](https://developers.cloudflare.com/agents/examples/browser-agent/)**
+[Browser agent](https://developers.cloudflare.com/agents/examples/browser-agent/)
 
 Build an agent that can inspect pages, capture screenshots, and use browser tools.
 
-**[Email agent](https://developers.cloudflare.com/agents/examples/email-agent/)**
+[Email agent](https://developers.cloudflare.com/agents/examples/email-agent/)
 
 Build an agent that sends, receives, routes, and replies to email.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/#page","headline":"Agents · Cloudflare Agents docs","description":"Create stateful AI agents with persistent memory, real-time WebSocket connections, and scheduled tasks using the Cloudflare Agents SDK.","url":"https://developers.cloudflare.com/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/#page","headline":"Agents · Cloudflare Agents docs","description":"Create stateful AI agents with persistent memory, real-time WebSocket connections, and scheduled tasks using the Cloudflare Agents SDK.","url":"https://developers.cloudflare.com/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

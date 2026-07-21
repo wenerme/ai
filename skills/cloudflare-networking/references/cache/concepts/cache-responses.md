@@ -1,20 +1,22 @@
 ---
-title: Cloudflare cache responses
 description: Cache status headers returned by Cloudflare in HTTP responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare cache responses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare cache responses
 
-# Cloudflare cache responses
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/concepts/cache-responses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `CF-Cache-Status` header output indicates whether a resource is cached or not. To investigate cache responses returned by this header, use services like [Redbot ↗](https://redbot.org/), [webpagetest.org ↗](http://www.webpagetest.org/), or a visual tool like [Cloudflare Optics plugin ↗](https://chromewebstore.google.com/detail/cloudflare-optics/mdjgbjnbdnhneejmmaabmccfehigbjbe).
 
-`Age` response header
+\`Age\` response header
 
 The `Age` response header is a header returned from cache that specifies the time in seconds that an asset has been in Cloudflare's cache. This value resets if the asset is revalidated, purged, or evicted and then re-cached.
 
@@ -65,7 +67,14 @@ The resource was expired but served from Cloudflare's cache while the origin upd
 
 Cloudflare does not consider the asset eligible to cache and your Cloudflare settings do not explicitly instruct Cloudflare to cache the asset. Instead, the asset was requested from the origin web server. Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to implement custom caching options.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cache-responses/","name":"Cloudflare cache responses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

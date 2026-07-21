@@ -1,16 +1,18 @@
 ---
-title: Egress policies
 description: Configure Egress policies in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Egress policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Egress policies
 
-# Egress policies
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -95,7 +97,7 @@ To learn more about IPv4 and IPv6 egress behavior, refer to [Egress locations](h
 
 Selectors are the criteria that Gateway uses to match egress traffic against a policy. Gateway evaluates the following selectors:
 
-### Application Beta
+### Application  Beta
 
 You can apply egress policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/) for more information.
 
@@ -105,7 +107,7 @@ You can apply egress policies to a growing list of popular web applications. Ref
 
 This selector is only available for traffic onboarded to Traffic and DNS mode, PAC files, or Browser Isolation. For more information, refer to [Selector prerequisites](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
-### Content Categories Beta
+### Content Categories  Beta
 
 Applications within a specific [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) as categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
@@ -168,7 +170,7 @@ For more information on device posture checks, refer to [Device posture](https:/
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Passed Device Posture Checks | any(device\_posture.checks.failed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"}), any(device\_posture.checks.passed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})" |
 
-### Domain Beta
+### Domain  Beta
 
 Use this selector to match against a domain and all subdomains. For example, you can match `example.com` and its subdomains, such as `www.example.com`.
 
@@ -180,7 +182,7 @@ Gateway policies do not support domains with non-Latin characters directly. To u
 
 This selector is only available for traffic onboarded to Traffic and DNS mode, PAC files, or Browser Isolation. For more information, refer to [Selector prerequisites](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
-### Host Beta
+### Host  Beta
 
 Use this selector to match against only the hostname specified. For example, you can match `test.example.com` but not `example.com` or `www.test.example.com`.
 
@@ -332,7 +334,14 @@ The [Application](#application), [Content Categories](#content-categories), [Dom
 
 These selectors also resolve the destination IP address when Gateway processes the DNS query, not when the egress policy is applied. If the resolved destination IP and your egress IP are in different regions, connections to destinations that enforce geo-restriction or IP-allowlisting may fail. Refer to [DNS resolution location](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#dns-resolution-location) for details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#page","headline":"Egress policies · Cloudflare One docs","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/","name":"Egress policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#page","headline":"Egress policies · Cloudflare One docs","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 ```

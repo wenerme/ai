@@ -21,19 +21,19 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const prompt = `
-Write a bash script that takes a matrix represented as a string with 
+Write a bash script that takes a matrix represented as a string with
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 `;
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "low" },
-    input: [
-        {
-            role: "user",
-            content: prompt,
-        },
-    ],
+  model: "gpt-5.6",
+  reasoning: { effort: "low" },
+  input: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -182,32 +182,32 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const prompt = `
-Write a bash script that takes a matrix represented as a string with 
+Write a bash script that takes a matrix represented as a string with
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 `;
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "medium" },
-    input: [
-        {
-            role: "user",
-            content: prompt,
-        },
-    ],
-    max_output_tokens: 300,
+  model: "gpt-5.6",
+  reasoning: { effort: "medium" },
+  input: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
+  max_output_tokens: 300,
 });
 
 if (
-    response.status === "incomplete" &&
-    response.incomplete_details.reason === "max_output_tokens"
+  response.status === "incomplete" &&
+  response.incomplete_details.reason === "max_output_tokens"
 ) {
-    console.log("Ran out of tokens");
-    if (response.output_text?.length > 0) {
-        console.log("Partial output:", response.output_text);
-    } else {
-        console.log("Ran out of tokens during reasoning");
-    }
+  console.log("Ran out of tokens");
+  if (response.output_text?.length > 0) {
+    console.log("Partial output:", response.output_text);
+  } else {
+    console.log("Ran out of tokens during reasoning");
+  }
 }
 ```
 
@@ -354,6 +354,7 @@ import OpenAI from "openai";
 
 const client = new OpenAI();
 
+/** @type {OpenAI.Responses.ResponseInput} */
 const history = [
   {
     role: "user",

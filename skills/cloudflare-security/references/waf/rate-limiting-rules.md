@@ -1,16 +1,18 @@
 ---
-title: Rate limiting rules
 description: Define rate limits for requests matching an expression and the action when limits are reached.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rate limiting rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rate limiting rules
 
-# Rate limiting rules
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Rate limiting rules allow you to define rate limits for requests matching an expression, and the action to perform when those rate limits are reached. Use rate limiting rules to prevent abuse of your websites and APIs — for example, to protect a login endpoint from brute-force attacks or to cap how many API calls a single client can make in a given time window.
 
@@ -111,7 +113,12 @@ For Terraform examples, refer to [Rate limiting rules configuration using Terraf
 * [Learning Center: What is rate limiting? ↗](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/)
 * [Cloudflare Rate Limiting (previous version, no longer available)](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/): Documentation for the previous version of rate limiting rules (billed based on usage).
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/#page","headline":"Rate limiting rules · Cloudflare Web Application Firewall (WAF) docs","description":"Define rate limits for requests matching an expression and the action when limits are reached.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/#page","headline":"Rate limiting rules · Cloudflare Web Application Firewall (WAF) docs","description":"Define rate limits for requests matching an expression and the action when limits are reached.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

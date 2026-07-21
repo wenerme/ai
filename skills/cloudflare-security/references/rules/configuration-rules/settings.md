@@ -1,16 +1,18 @@
 ---
-title: Configuration Rules settings
 description: Available settings you can customize with Configuration Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configuration Rules settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration Rules settings
 
-# Configuration Rules settings
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/configuration-rules/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can change the configuration settings described below in a configuration rule.
 
@@ -23,8 +25,6 @@ Use this setting to turn on or off Automatic HTTPS Rewrites for matching request
 API information
 
 API configuration property name: `"automatic_https_rewrites"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -43,8 +43,6 @@ Use this setting to turn on or off Browser Integrity Check for matching requests
 API information
 
 API configuration property name: `"bic"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -68,8 +66,6 @@ API information
 
 API configuration property name: `"disable_rum"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "disable_rum": true
@@ -87,8 +83,6 @@ Use this setting to turn off Zaraz for matching requests.
 API information
 
 API configuration property name: `"disable_zaraz"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -108,8 +102,6 @@ API information
 
 API configuration property name: `"email_obfuscation"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "email_obfuscation": false
@@ -128,8 +120,6 @@ API information
 
 API configuration property name: `"fonts"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "fonts": false
@@ -147,8 +137,6 @@ Use this setting to turn on or off Hotlink Protection for matching requests.
 API information
 
 API configuration property name: `"hotlink_protection"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -170,8 +158,6 @@ API configuration property name: `"security_level"` (string).
 
 API values: `"off"`, `"essentially_off"`, `"under_attack"`.
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "security_level": "under_attack"
@@ -190,8 +176,6 @@ API information
 
 API configuration property name: `"content_converter"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "content_converter": true
@@ -209,8 +193,6 @@ Use this setting to turn on or off Opportunistic Encryption for matching request
 API information
 
 API configuration property name: `"opportunistic_encryption"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -239,8 +221,6 @@ API configuration property name: `"polish"` (string).
 
 API values: `"off"`, `"lossless"`, `"lossy"`, `"webp"`.
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "polish": "webp"
@@ -257,7 +237,7 @@ Use the Request Body Buffering setting to configure the request body buffering m
 * **Full**: Buffers the entire request body before sending the request to your origin server.
 * **None**: Strictly no buffering. The request body is streamed directly to the origin server without inspection.
 
-Warning
+Caution
 
 Setting request body buffering to **None** may break functionality that requires body inspection. In particular, this can impact the effectiveness of the Web Application Firewall (WAF) and other security features that rely on analyzing request bodies to detect and block threats.
 
@@ -266,8 +246,6 @@ API information
 API configuration property name: `"request_body_buffering"` (string).
 
 API values: `"standard"`, `"full"`, `"none"`.
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -284,7 +262,7 @@ Use the Response Body Buffering setting to configure the response body buffering
 * **Standard** (default): Allows Cloudflare products to inspect a prefix of the response body when necessary for enabled functionality on your zone.
 * **None**: Strictly no buffering. The response body is streamed directly to the client without inspection.
 
-Warning
+Caution
 
 Setting response body buffering to **None** may break functionality that requires body inspection. In particular, this can impact the effectiveness of the Web Application Firewall (WAF) and other security features that rely on analyzing response bodies to detect and block threats.
 
@@ -293,8 +271,6 @@ API information
 API configuration property name: `"response_body_buffering"` (string).
 
 API values: `"standard"`, `"none"`.
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -313,8 +289,6 @@ Use this setting to turn on or off Rocket Loader for matching requests.
 API information
 
 API configuration property name: `"rocket_loader"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -344,8 +318,6 @@ API configuration property name: `"ssl"` (string).
 
 API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "ssl": "flexible"
@@ -354,7 +326,14 @@ API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/settings/#page","headline":"Configuration Rules settings · Cloudflare Rules docs","description":"Available settings you can customize with Configuration Rules.","url":"https://developers.cloudflare.com/rules/configuration-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/configuration-rules/","name":"Configuration Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/configuration-rules/settings/","name":"Configuration Rules settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/settings/#page","headline":"Configuration Rules settings · Cloudflare Rules docs","description":"Available settings you can customize with Configuration Rules.","url":"https://developers.cloudflare.com/rules/configuration-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

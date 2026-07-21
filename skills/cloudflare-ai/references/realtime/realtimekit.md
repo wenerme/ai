@@ -1,16 +1,18 @@
 ---
-title: RealtimeKit
 description: Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: RealtimeKit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  RealtimeKit
 
-# RealtimeKit
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add live video and voice to your web or mobile apps in minutes — customizable SDKs, Integrate in just a few lines of code.
 
@@ -22,7 +24,7 @@ With RealtimeKit, you can expect:
 
 Experience the product:
 
-[ Try A Demo Meeting ](https://examples.realtime.cloudflare.com/) [ Build using Examples ](https://github.com/cloudflare/realtimekit-web-examples) [ RealtimeKit Dashboard ](https://dash.cloudflare.com/?to=/:account/realtime/kit)
+[ Try A Demo Meeting ](https://examples.realtime.cloudflare.com/)[ Build using Examples ](https://github.com/cloudflare/realtimekit-web-examples)[ RealtimeKit Dashboard ](https://dash.cloudflare.com/?to=/:account/realtime/kit)
 
 ## Build with RealtimeKit
 
@@ -48,7 +50,14 @@ Host audio-only calls — perfect for team discussions, support lines, and commu
 
 The **Backend Infrastructure** Powering the SDKs is a robust layer that includes REST APIs for managing meetings, participants, recordings and more, along with webhooks for server-side events. A dedicated signalling server coordinates real-time updates.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

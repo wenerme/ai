@@ -1,16 +1,18 @@
 ---
-title: Gateway locations
 description: Set up Gateway DNS locations.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Gateway locations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway locations
 
-# Gateway locations
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-locations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 DNS locations are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes, or data centers.
 
@@ -44,7 +46,14 @@ Deploying Gateway DNS filtering using static IP addresses may prevent users from
 
 To avoid this issue, use the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to connect your devices to Cloudflare One.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-locations/#page","headline":"Gateway locations · Cloudflare Learning Paths","description":"Set up Gateway DNS locations.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-locations/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/cybersafe/gateway-onboarding/","name":"Onboarding Cloudflare Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/cybersafe/gateway-onboarding/gateway-locations/","name":"Gateway locations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-locations/#page","headline":"Gateway locations · Cloudflare Learning Paths","description":"Set up Gateway DNS locations.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-locations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

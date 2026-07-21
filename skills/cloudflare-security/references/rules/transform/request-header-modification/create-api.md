@@ -1,16 +1,18 @@
 ---
-title: Create a request header transform rule via API
 description: Create request header modification rules using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a request header transform rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a request header transform rule via API
 
-# Create a request header transform rule via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create Request Header Transform Rules via API. Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Request+modification) for common use cases.
 
@@ -68,66 +70,64 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "add_header_source",
-            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-            "description": "My first request header transform rule",
-            "action": "rewrite",
-            "action_parameters": {
-                "headers": {
-                    "X-Source": {
-                        "operation": "set",
-                        "value": "Cloudflare"
-                    }
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "add_header_source",
+						"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+						"description": "My first request header transform rule",
+						"action": "rewrite",
+						"action_parameters": {
+								"headers": {
+										"X-Source": {
+												"operation": "set",
+												"value": "Cloudflare"
+										}
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level Late Transform Ruleset",
-    "description": "Zone-level ruleset that will execute Late Transform Rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "add_header_source",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "rewrite",
-        "action_parameters": {
-          "headers": {
-            "X-Source": {
-              "operation": "set",
-              "value": "Cloudflare"
-            }
-          }
-        },
-        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-        "description": "My first request header transform rule",
-        "last_updated": "2021-04-14T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2021-04-14T14:42:04.219025Z",
-    "phase": "http_request_late_transform"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level Late Transform Ruleset",
+		"description": "Zone-level ruleset that will execute Late Transform Rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "add_header_source",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "rewrite",
+				"action_parameters": {
+					"headers": {
+						"X-Source": {
+							"operation": "set",
+							"value": "Cloudflare"
+						}
+					}
+				},
+				"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+				"description": "My first request header transform rule",
+				"last_updated": "2021-04-14T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2021-04-14T14:42:04.219025Z",
+		"phase": "http_request_late_transform"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -162,66 +162,64 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "add_header_bot_score",
-            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-            "description": "My first request header transform rule",
-            "action": "rewrite",
-            "action_parameters": {
-                "headers": {
-                    "X-Bot-Score": {
-                        "operation": "set",
-                        "expression": "to_string(cf.bot_management.score)"
-                    }
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "add_header_bot_score",
+						"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+						"description": "My first request header transform rule",
+						"action": "rewrite",
+						"action_parameters": {
+								"headers": {
+										"X-Bot-Score": {
+												"operation": "set",
+												"expression": "to_string(cf.bot_management.score)"
+										}
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level Late Transform Ruleset",
-    "description": "Zone-level ruleset that will execute Late Transform Rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "add_header_bot_score",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "rewrite",
-        "action_parameters": {
-          "headers": {
-            "X-Bot-Score": {
-              "operation": "set",
-              "expression": "to_string(cf.bot_management.score)"
-            }
-          }
-        },
-        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-        "description": "My first request header transform rule",
-        "last_updated": "2021-04-14T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2021-04-14T14:42:04.219025Z",
-    "phase": "http_request_late_transform"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level Late Transform Ruleset",
+		"description": "Zone-level ruleset that will execute Late Transform Rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "add_header_bot_score",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "rewrite",
+				"action_parameters": {
+					"headers": {
+						"X-Bot-Score": {
+							"operation": "set",
+							"expression": "to_string(cf.bot_management.score)"
+						}
+					}
+				},
+				"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+				"description": "My first request header transform rule",
+				"last_updated": "2021-04-14T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2021-04-14T14:42:04.219025Z",
+		"phase": "http_request_late_transform"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -256,64 +254,62 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "remove_header_cf_connecting_ip",
-            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-            "description": "My first request header transform rule",
-            "action": "rewrite",
-            "action_parameters": {
-                "headers": {
-                    "cf-connecting-ip": {
-                        "operation": "remove"
-                    }
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "remove_header_cf_connecting_ip",
+						"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+						"description": "My first request header transform rule",
+						"action": "rewrite",
+						"action_parameters": {
+								"headers": {
+										"cf-connecting-ip": {
+												"operation": "remove"
+										}
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level Late Transform Ruleset",
-    "description": "Zone-level ruleset that will execute Late Transform Rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "remove_header_cf_connecting_ip",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "rewrite",
-        "action_parameters": {
-          "headers": {
-            "cf-connecting-ip": {
-              "operation": "remove"
-            }
-          }
-        },
-        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
-        "description": "My first request header transform rule",
-        "last_updated": "2021-04-14T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2021-04-14T14:42:04.219025Z",
-    "phase": "http_request_late_transform"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level Late Transform Ruleset",
+		"description": "Zone-level ruleset that will execute Late Transform Rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "remove_header_cf_connecting_ip",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "rewrite",
+				"action_parameters": {
+					"headers": {
+						"cf-connecting-ip": {
+							"operation": "remove"
+						}
+					}
+				},
+				"expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+				"description": "My first request header transform rule",
+				"last_updated": "2021-04-14T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2021-04-14T14:42:04.219025Z",
+		"phase": "http_request_late_transform"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -328,7 +324,14 @@ The API token used in API requests to manage Request Header Transform Rules must
 * _Transform Rules_ \> _Edit_
 * _Account Rulesets_ \> _Read_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/#page","headline":"Create a request header transform rule via API · Cloudflare Rules docs","description":"Create request header modification rules using the API.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Request modification"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/request-header-modification/","name":"Request Header Transform Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/request-header-modification/create-api/","name":"Create a request header transform rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/#page","headline":"Create a request header transform rule via API · Cloudflare Rules docs","description":"Create request header modification rules using the API.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Request modification"]}
 ```

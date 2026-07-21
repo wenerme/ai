@@ -1,16 +1,18 @@
 ---
-title: Supported routers
 description: A list of open source, NetFlow, and sFlow routers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported routers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported routers
 
-# Supported routers
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/routers/supported-routers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The majority of enterprise-grade routers are capable of exporting NetFlow or sFlow, and popular router brands that support either NetFlow or sFlow are listed below.
 
@@ -162,7 +164,14 @@ ZyXEL
 
 * **Supported hardware model or plugin**: MGS3520 series, XGS1900 series, XGS2210 series, XGS3700 series, XGS4600 series, XGS4700 series
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/supported-routers/#page","headline":"Supported routers · Cloudflare Network Flow docs","description":"A list of open source, NetFlow, and sFlow routers.","url":"https://developers.cloudflare.com/network-flow/routers/supported-routers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/routers/","name":"Routers"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/routers/supported-routers/","name":"Supported routers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/supported-routers/#page","headline":"Supported routers · Cloudflare Network Flow docs","description":"A list of open source, NetFlow, and sFlow routers.","url":"https://developers.cloudflare.com/network-flow/routers/supported-routers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow"]}
 ```

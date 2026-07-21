@@ -1,16 +1,18 @@
 ---
-title: Prerequisites
 description: Prepare your site for traffic surges.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Prerequisites
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prerequisites
 
-# Prerequisites
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Reach out to your Customer Success Manager at least 30 days prior to the expected traffic surge to schedule a Security Optimization walkthrough with your Customer Solution Engineer.
 
@@ -21,7 +23,7 @@ To learn more about our service offerings, refer to [Customer Success offerings 
 For the security and protection of your account, be sure to register all account users.
 
 1. In the Cloudflare dashboard, go to the **Manage Account** \> **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 2. Select more than one Super Administrator to ensure appropriate access when needed.
 
 Note
@@ -45,12 +47,20 @@ We strongly advise against credential-sharing which can jeopardize the trust and
 Note
 Certificates managed by Cloudflare are auto-renewed.
 * Review your Operational and Disaster recovery preparedness
+
   * Enable Load Balancing with smart cache strategies: Use [Cloudflare Load Balancing](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to distribute traffic across multiple healthy origins, and increase cache-hit ratios by leveraging [custom cache rules](https://developers.cloudflare.com/cache/performance-review/cache-analytics) and [edge compute ↗](https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content/) (e.g., Cloudflare Workers) to offload origin traffic during high-demand periods.
   * Configure failover pools and back up DNS with a playbook: Set up [Cloudflare Load Balancer failover pools](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to automatically redirect traffic to healthy origins if one fails. Export DNS records for safekeeping and prepare a clear [incident response plan ↗](https://www.cloudflare.com/learning/performance/preventing-downtime) that includes steps for re-routing or recovery.
 * Review and update your current users' access
 * Check your domain registry validity
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/#page","headline":"Prerequisites · Cloudflare Learning Paths","description":"Prepare your site for traffic surges.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/concepts/","name":"Prerequisites"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/#page","headline":"Prerequisites · Cloudflare Learning Paths","description":"Prepare your site for traffic surges.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

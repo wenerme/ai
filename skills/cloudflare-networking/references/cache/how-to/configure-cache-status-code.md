@@ -1,16 +1,18 @@
 ---
-title: Cache by status code
 description: Cache responses based on origin HTTP status codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cache by status code
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache by status code
 
-# Cache by status code
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Customers can set cache time-to-live (TTL) based on the response status from the origin web server. Cache TTL refers to the duration of a resource in the Cloudflare network before being marked as `STALE` or discarded from cache. Status codes are returned by a resource's origin.
 
@@ -37,8 +39,6 @@ All other status codes are not cached by default.
 To set cache TTL by response status, [create a Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) for [**Cache TTL by status code**](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl).
 
 ## Set cache TTL by response status via the Cloudflare API
-
-**Request**
 
 ```bash
 curl --request PUT \
@@ -106,7 +106,14 @@ For example, if a user specifies a TTL of one hour for status `200` and 0 second
 
 This behavior is likely undesirable unless the user has a specific use case. Therefore, users should ensure that the TTL for `304` matches the TTL for `200` unless they intentionally require this behavior.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#page","headline":"Cache by status code · Cloudflare Cache (CDN) docs","description":"Cache responses based on origin HTTP status codes.","url":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/configure-cache-status-code/","name":"Cache by status code"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#page","headline":"Cache by status code · Cloudflare Cache (CDN) docs","description":"Cache responses based on origin HTTP status codes.","url":"https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

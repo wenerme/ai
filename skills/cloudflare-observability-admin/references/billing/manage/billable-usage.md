@@ -1,16 +1,18 @@
 ---
-title: Monitor billable usage
 description: Track daily usage-based costs across products.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor billable usage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor billable usage
 
-# Monitor billable usage
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/manage/billable-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The billable usage dashboard gives you daily visibility into usage-based costs across your Cloudflare account. The data comes from the same system that generates your monthly invoice, so the figures match your bill.
 
@@ -26,7 +28,7 @@ To access the dashboard, you must have the Billing read permission on your accou
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Billable Usage**.
 
 ## Cost breakdown chart
@@ -84,7 +86,14 @@ To get notified when your spend crosses a dollar threshold, you can create budge
 * [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
 * [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/billable-usage/#page","headline":"Monitor billable usage · Cloudflare Billing docs","description":"Track daily usage-based costs across products.","url":"https://developers.cloudflare.com/billing/manage/billable-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/billable-usage/","name":"Monitor billable usage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/billable-usage/#page","headline":"Monitor billable usage · Cloudflare Billing docs","description":"Track daily usage-based costs across products.","url":"https://developers.cloudflare.com/billing/manage/billable-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

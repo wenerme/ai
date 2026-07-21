@@ -1,16 +1,18 @@
 ---
-title: Phase 2: Preparation
 description: Prepare for DNS migration with minimal downtime.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Phase 2: Preparation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Phase 2: Preparation
 
-# Phase 2: Preparation
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Careful preparation will minimize downtime and issues during the cutover.
 
@@ -29,14 +31,14 @@ Obtain a clean and current export of your zone files from your BIND servers in s
 ## 3\. Add domains to Cloudflare
 
 1. Log in to your Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Add each domain you intend to migrate. Cloudflare will attempt to scan for existing DNS records.
 
 ## 4\. Import DNS Records into Cloudflare
 
 Use Cloudflare's **Import and Export** feature (under **DNS** \> **Records**) to upload your BIND zone files.
 
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 * Verification (Crucial):
   * After import, meticulously compare the records in Cloudflare with your BIND zone files or a `dig` output of your current zone.
   * Pay close attention to `MX` records, `SRV` records, `TXT` records (especially for `SPF`, `DKIM`, `DMARC`), and any complex `CNAME` configurations.
@@ -58,7 +60,14 @@ For more detailed guidance, refer to [DNSSEC](https://developers.cloudflare.com/
 * **Wait for DS TTL:** Wait at least the full DS record TTL published at the parent zone, and preferably up to 1.5 times that TTL, before you change nameservers. This ensures that validating resolvers stop expecting the old DNSSEC chain. The typical TTL duration for DS records is set to +24 hours (86,400 seconds).
 * **Impact of incorrect timing:** If you change nameservers while resolvers still expect the old DS record, DNSSEC validation will fail and your domain may become unreachable for validating resolvers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/#page","headline":"Phase 2: Preparation · Cloudflare Learning Paths","description":"Prepare for DNS migration with minimal downtime.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/dns-best-practices/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/dns-best-practices/concepts/phase-2/","name":"Phase 2: Preparation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/#page","headline":"Phase 2: Preparation · Cloudflare Learning Paths","description":"Prepare for DNS migration with minimal downtime.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Functions
 description: Functions available for transforming values in rule expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Functions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Functions
 
-# Functions
+Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
 
@@ -200,7 +202,6 @@ Examples:
 # Check if an HTTP request header exists:
 has_key(http.request.headers, "x-my-header")
 
-
 # Check if a request header exists based on the name of the first query argument:
 has_key(http.request.headers, lower(http.request.uri.args.names[0]))
 ```
@@ -220,7 +221,6 @@ Examples:
 ```txt
 # Check if there is an HTTP request header with the exact name 'X-My-Header'
 has_value(http.request.headers.names, "X-My-Header")
-
 
 # Check if there is a request header with the exact name provided as the first query argument:
 has_value(http.request.headers.names, http.request.uri.args.names[0])
@@ -270,7 +270,7 @@ For example, if the value of `http.host` is `"example.com"`, then `len(http.host
 
 ### `lookup_json_integer`
 
-`` lookup_json_integer(field ` String `, key ` String | Integer `, key ` String | Integer ` optional, ...) ``: ` Integer `
+`` lookup_json_integer(field ` String `, key ` String | Integer `, key ` String | Integer `optional, ...) ``: ` Integer `
 
 Returns the integer value associated with the supplied `key` in `field`.
 
@@ -300,7 +300,7 @@ Then `lookup_json_integer(http.request.body.raw, 1, "product_id")` will return `
 
 ### `lookup_json_string`
 
-`` lookup_json_string(field ` String `, key ` String | Integer `, key ` String | Integer ` optional, ...) ``: ` String `
+`` lookup_json_string(field ` String `, key ` String | Integer `, key ` String | Integer `optional, ...) ``: ` String `
 
 Returns the string value associated with the supplied `key` in `field`.
 
@@ -393,14 +393,11 @@ Examples:
 ```txt
 // If http.request.uri.query is "order=asc&country=GB":
 
-
 remove_query_args(http.request.uri.query, "country")  will return "order=asc"
 remove_query_args(http.request.uri.query, "order")    will return "country=GB"
 remove_query_args(http.request.uri.query, "search")   will return "order=asc&country=GB" (unchanged)
 
-
 // If http.request.uri.query is "category=Foo&order=desc&category=Bar":
-
 
 remove_query_args(http.request.uri.query, "order")    will return "category=Foo&category=Bar"
 remove_query_args(http.request.uri.query, "category") will return "order=desc"
@@ -465,18 +462,14 @@ Examples:
 ```txt
 # Split a comma-separated list of categories obtained from an HTTP request header.
 
-
 # A) Consider the following HTTP request header:
 x-categories: groceries,electronics,diy,auto
-
 
 split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries", "electronics", "diy", "auto"]
 split(http.request.headers["x-categories"][0], ",", 3)   will return ["groceries", "electronics", "diy,auto"]
 
-
 # B) Consider the following HTTP request header:
 x-categories: groceries,,electronics
-
 
 split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries", "", "electronics"]
 ```
@@ -495,7 +488,7 @@ For example, if `http.request.uri.path` is `"/blog/first-post"`, then `starts_wi
 
 ### `substring`
 
-`` substring(field ` String | Bytes `, start ` Integer `, end ` Integer ` optional) ``: ` String `
+`` substring(field ` String | Bytes `, start ` Integer `, end ` Integer `optional) ``: ` String `
 
 Returns part of the `field` value (the value of a String or Bytes [field](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/)) from the `start` byte index up to (but excluding) the `end` byte index. The first byte in `field` has index `0`. If you do not provide the optional `end` index, the function returns the part of the string from `start` index to the end of the string.
 
@@ -505,7 +498,6 @@ Examples:
 
 ```txt
 // If http.request.body.raw is "asdfghjk":
-
 
 substring(http.request.body.raw, 2, 5)   will return "dfg"
 substring(http.request.body.raw, 2)      will return "dfghjk"
@@ -525,7 +517,6 @@ Examples:
 // If cf.bot_management.score is 5:
 to_string(cf.bot_management.score)   will return "5"
 
-
 // If ssl is true:
 to_string(ssl)                       will return "true"
 ```
@@ -544,7 +535,7 @@ For example, if `http.host` is`"www.cloudflare.com"`, then `upper(http.host)` wi
 
 ### `url_decode`
 
-`` url_decode(source ` String `, options ` String ` optional) ``: ` String `
+`` url_decode(source ` String `, options ` String `optional) ``: ` String `
 
 Decodes a URL-formatted string defined in `source`, as in the following:
 
@@ -566,10 +557,8 @@ url_decode("John+Doe")     will return "John Doe"
 url_decode("%2520")        will return "%20"
 url_decode("%2520", "r")   will return " "
 
-
 // Using url_decode() with the any() function:
 any(url_decode(http.request.body.form.values[*])[*] contains "an xss attack")
-
 
 // Using the u option to match a specific alphabet
 url_decode(http.request.uri.path) matches "(?u)\p{Hangul}+"
@@ -589,7 +578,7 @@ You can only use the `uuidv4()` function in [rewrite expressions of Transform Ru
 
 ### `wildcard_replace`
 
-`` wildcard_replace(source ` Bytes `, wildcard_pattern ` Bytes `, replacement ` Bytes `, flags ` Bytes ` optional) ``: ` String `
+`` wildcard_replace(source ` Bytes `, wildcard_pattern ` Bytes `, replacement ` Bytes `, flags ` Bytes `optional) ``: ` String `
 
 Replaces a `source` string, matched by a literal with zero or more `*` wildcard metacharacters, with a replacement string, returning the result. The replacement string can contain references to wildcard capture groups (for example, `${1}` and `${2}`), up to eight replacement references.
 
@@ -679,10 +668,10 @@ The `is_timed_hmac_valid_v0()` function has these parameter definitions:
 * `currentTimeStamp` ` Integer `
 
   * Represents the UNIX timestamp when Cloudflare received the request, expressed in seconds. Pass the `http.request.timestamp.sec` field as an approximate value to this argument.
-* `lengthOfSeparator` ` Integer literal ` optional
+* `lengthOfSeparator` ` Integer literal `optional
 
   * Specifies the length of the `separator` between the `timestamp` and the `message` in the `MessageMAC`. Expressed in bytes, with a default value of `0`.
-* `flags` ` String literal ` optional
+* `flags` ` String literal `optional
 
   * When you set this optional argument to `'s'`, the function expects the value of the Base64-encoded `mac` in the `MessageMAC` argument to use the URL-safe character set with no padding.
   * When you do **not** set the value of `flags` to `'s'`, you must URL encode the Base64 value for `mac` in the `MessageMAC` argument.
@@ -776,7 +765,14 @@ is_timed_hmac_valid_v0(
 )
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions reference · Cloudflare Ruleset Engine docs","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/functions/","name":"Functions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions reference · Cloudflare Ruleset Engine docs","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

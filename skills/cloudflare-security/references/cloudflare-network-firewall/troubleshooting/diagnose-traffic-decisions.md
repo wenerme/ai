@@ -1,16 +1,18 @@
 ---
-title: Diagnose traffic decisions
 description: Diagnose why the Network Firewall allowed or blocked traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Diagnose traffic decisions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Diagnose traffic decisions
 
-# Diagnose traffic decisions
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When traffic is unexpectedly blocked, multiple Cloudflare systems could be responsible. This guide walks you through identifying what is blocking your traffic and how to resolve it.
 
@@ -22,7 +24,7 @@ Traffic passing through Cloudflare's network is evaluated by several independent
 
 Each system operates independently. Traffic blocked by an earlier system never reaches later systems for evaluation.
 
-Warning
+Caution
 
 Creating an allow rule in Network Firewall does **not** bypass DDoS protection. If traffic is blocked by Advanced TCP Protection or DDoS managed rules, you must configure bypasses in those systems separately.
 
@@ -99,7 +101,14 @@ If you cannot identify the issue from Network Analytics, use [packet captures](h
 * [Network Firewall rule configuration](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/)
 * [Packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/#page","headline":"Diagnose traffic decisions · Cloudflare Network Firewall docs","description":"Diagnose why the Network Firewall allowed or blocked traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/","name":"Diagnose traffic decisions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/#page","headline":"Diagnose traffic decisions · Cloudflare Network Firewall docs","description":"Diagnose why the Network Firewall allowed or blocked traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

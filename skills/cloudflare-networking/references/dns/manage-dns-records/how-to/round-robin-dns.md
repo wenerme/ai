@@ -1,16 +1,18 @@
 ---
-title: Round-robin DNS
 description: Distribute traffic across multiple origins with round-robin DNS.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Round-robin DNS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Round-robin DNS
 
-# Round-robin DNS
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To randomly distribute traffic across multiple servers, set up multiple DNS `A` or `AAAA` records for the same hostname.
 
@@ -52,7 +54,14 @@ This approach is not typically recommended because it can lead to unexpected beh
 
 We recommend either using all proxied or all unproxied records to avoid surprises when you make changes to your DNS records.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/#page","headline":"Round-robin DNS · Cloudflare DNS docs","description":"Distribute traffic across multiple origins with round-robin DNS.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/round-robin-dns/","name":"Round-robin DNS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/#page","headline":"Round-robin DNS · Cloudflare DNS docs","description":"Distribute traffic across multiple origins with round-robin DNS.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

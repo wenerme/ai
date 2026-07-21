@@ -1,16 +1,18 @@
 ---
-title: Connect with Cloudflare Tunnel
 description: Create a tunnel to your private network.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Connect with Cloudflare Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect with Cloudflare Tunnel
 
-# Connect with Cloudflare Tunnel
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any host machine and proxies local traffic once validated from the Cloudflare network. User traffic initiated from the Cloudflare One Client onramps to Cloudflare, passes down your Cloudflare Tunnel connections, and terminates automatically in your local network. Traffic reaching your internal applications or services will carry the local source IP address of the host machine running the `cloudflared` daemon.
 
@@ -18,11 +20,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-9994)
-* [ Terraform (v5) ](#tab-panel-9995)
-
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -37,25 +36,25 @@ To connect your private network:
 2. Create a tunnel using the [cloudflare\_zero\_trust\_tunnel\_cloudflare ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fcloudflared) resource.
 ```tf
 resource "cloudflare_zero_trust_tunnel_cloudflared" "example_tunnel" {
-  account_id = var.cloudflare_account_id
-  name       = "Example tunnel"
-  config_src = "cloudflare"
+	account_id = var.cloudflare_account_id
+	name       = "Example tunnel"
+	config_src = "cloudflare"
 }
 ```
 3. Route the CIDR of your private network through the tunnel using the [cloudflare\_zero\_trust\_tunnel\_cloudflared\_route ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fcloudflared%5Froute) resource:
 ```tf
 resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {
-  account_id         = var.cloudflare_account_id
-  tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
-  network            = "10.0.0.0/8"
-  comment            = "Example tunnel route"
+	account_id         = var.cloudflare_account_id
+	tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+	network            = "10.0.0.0/8"
+	comment            = "Example tunnel route"
 }
 ```
 4. Get the [token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/) used to run the tunnel:
 ```tf
 data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {
-  account_id = var.cloudflare_account_id
-  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+	account_id = var.cloudflare_account_id
+	tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
 }
 ```
 If your host machine is not managed in Terraform or you want to install the tunnel manually, you can output the token value to the CLI.
@@ -64,8 +63,8 @@ Example: Output to CLI
   1. Output the tunnel token to the Terraform state file:
   ```tf
   output "tunnel_token" {
-    value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
-    sensitive   = true
+  	value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+  	sensitive   = true
   }
   ```
   2. Apply the configuration:
@@ -83,18 +82,13 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
 Example: Store in HashiCorp Vault
 ```tf
 resource "vault_generic_secret" "tunnel_token" {
-  path         = "kv/cloudflare/tunnel_token"
-  data_json = jsonencode({
-    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
-  })
+	path         = "kv/cloudflare/tunnel_token"
+	data_json = jsonencode({
+		"TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+	})
 }
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:
-
-  * [ Linux ](#tab-panel-9990)
-  * [ Windows ](#tab-panel-9991)
-  * [ macOS ](#tab-panel-9992)
-  * [ Docker ](#tab-panel-9993)
 
   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
   2. Run the following command:
@@ -139,7 +133,14 @@ If the tunnel is disconnected:
 * [Monitor performance metrics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/) to identify potential bottlenecks.
 * [Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/) regularly.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/#page","headline":"Connect with Cloudflare Tunnel · Cloudflare Learning Paths","description":"Create a tunnel to your private network.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/cloudflared/","name":"Connect with Cloudflare Tunnel"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/#page","headline":"Connect with Cloudflare Tunnel · Cloudflare Learning Paths","description":"Create a tunnel to your private network.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,21 +1,23 @@
 ---
-title: Create a trigger
 description: Create triggers that fire actions based on page events.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create a trigger
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a trigger
 
-# Create a trigger
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Triggers define the conditions under which a tool will start an action. Since a tool must have actions in order to work, and actions must have triggers, it is important to set up your website's triggers correctly. A trigger can be made out of one or more Rules. Zaraz supports [multiple types of Trigger Rules](https://developers.cloudflare.com/zaraz/reference/triggers/).
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. Go to **Tools Configuration**.
 3. Select the **Triggers** tab.
 4. Select **Create trigger**.
@@ -29,7 +31,14 @@ Triggers define the conditions under which a tool will start an action. Since a 
 
 Your trigger is now complete. If you go back to the main page you will see it listed under **Triggers**, as well as which tools use it. You can also [**Edit** or **Delete** your trigger](https://developers.cloudflare.com/zaraz/custom-actions/edit-triggers/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/#page","headline":"Create a trigger · Cloudflare Zaraz docs","description":"Create triggers that fire actions based on page events.","url":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/custom-actions/","name":"Custom actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/custom-actions/create-trigger/","name":"Create a trigger"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/#page","headline":"Create a trigger · Cloudflare Zaraz docs","description":"Create triggers that fire actions based on page events.","url":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

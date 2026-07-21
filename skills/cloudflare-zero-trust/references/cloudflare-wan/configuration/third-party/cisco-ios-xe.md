@@ -1,16 +1,18 @@
 ---
-title: Cisco IOS XE
 description: Connect Cisco IOS XE to Cloudflare WAN with or without Post-Quantum Cryptography (ML-KEM 768).
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cisco IOS XE
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cisco IOS XE
 
-# Cisco IOS XE
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial provides a comprehensive configuration example for establishing a secure Internet Protocol Security (IPsec) tunnel between Cisco IOS XE and Cloudflare using Post-Quantum Cryptography (PQC).
 
@@ -481,7 +483,6 @@ show crypto ikev2 sa detailed
 ```txt
  IPv4 Crypto IKEv2  SA
 
-
 Tunnel-id Local                 Remote                fvrf/ivrf            Status
 1     203.0.113.100/500     162.159.135.1/500     none/none            READY
       Encr: AES-GCM, keysize: 256, PRF: SHA512, Hash: None, DH Grp:20, Auth sign: PSK, Auth verify: PSK
@@ -520,14 +521,12 @@ Another option to restart the IPsec tunnels is to administratively disable and r
 int Tunnel1
 shutdown
 
-
 no shutdown
 ```
 
 ```txt
 int Tunnel2
 shutdown
-
 
 no shutdown
 ```
@@ -554,7 +553,6 @@ route-map CF_WAN_PBR_RM, permit, sequence 10
 ```txt
 show ip route vrf CF_WAN_PBR_VRF
 
-
 Routing Table: CF_WAN_PBR_VRF
 Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
        D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
@@ -569,9 +567,7 @@ Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
        + - replicated route, % - next hop override, p - overrides from PfR
        & - replicated local route overrides by connected
 
-
 Gateway of last resort is 169.254.244.6 to network 0.0.0.0
-
 
 S*    0.0.0.0/0 [1/0] via 169.254.250.0
                 [1/0] via 169.254.250.2
@@ -612,7 +608,6 @@ show ip sla statistics
 ```txt
 IPSLAs Latest Operation Statistics
 
-
 IPSLA operation id: 1
         Latest RTT: 6 milliseconds
 Latest operation start time: 15:23:03 CDT Mon Jun 1 2026
@@ -620,7 +615,6 @@ Latest operation return code: OK
 Number of successes: 380
 Number of failures: 1
 Operation time to live: Forever
-
 
 IPSLA operation id: 2
         Latest RTT: 6 milliseconds
@@ -644,7 +638,14 @@ To validate failover, administratively shut one tunnel interface or block ICMP a
 * [IPsec Virtual Tunnel Interfaces - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m%5Fsec-ipsec-virt-tunnl-0.html)
 * [Configuring Security for VPNs with IPsec - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m%5Fsec-cfg-vpn-ipsec-0.html)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/#page","headline":"Cisco IOS XE · Cloudflare WAN docs","description":"Connect Cisco IOS XE to Cloudflare WAN with or without Post-Quantum Cryptography (ML-KEM 768).","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/cisco-ios-xe/","name":"Cisco IOS XE"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/#page","headline":"Cisco IOS XE · Cloudflare WAN docs","description":"Connect Cisco IOS XE to Cloudflare WAN with or without Post-Quantum Cryptography (ML-KEM 768).","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

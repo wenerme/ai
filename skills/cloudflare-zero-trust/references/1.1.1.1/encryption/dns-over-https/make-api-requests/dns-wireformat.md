@@ -1,16 +1,18 @@
 ---
-title: DNS Wireformat
 description: Query 1.1.1.1 DNS over HTTPS using wireformat.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: DNS Wireformat
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS Wireformat
 
-# DNS Wireformat
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare respects DNS wireformat as defined in [RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035.html).
 
@@ -33,7 +35,6 @@ accept = application/dns-message
 content-type = application/dns-message
 content-length = 33
 
-
 <33 bytes represented by the following hex encoding>
 00 00 01 00 00 01 00 00  00 00 00 00 03 77 77 77
 07 65 78 61 6d 70 6c 65  03 63 6f 6d 00 00 01 00
@@ -47,7 +48,6 @@ And would return the answer in wireformat:
 content-type = application/dns-message
 content-length = 64
 cache-control = max-age=128
-
 
 <64 bytes represented by the following hex encoding>
 00 00 81 80 00 01 00 01  00 00 00 00 03 77 77 77
@@ -82,7 +82,6 @@ Host: cloudflare-dns.com
 User-Agent: curl/7.54.0
 accept: application/dns-message
 
-
 * Connection state changed (MAX_CONCURRENT_STREAMS updated)!
 HTTP/2 200
 date: Fri, 23 Mar 2018 05:14:02 GMT
@@ -92,7 +91,6 @@ cache-control: max-age=0
 set-cookie: \__cfduid=dd1fb65f0185fadf50bbb6cd14ecbc5b01521782042; expires=Sat, 23-Mar-19 05:14:02 GMT; path=/; domain=.cloudflare.com; HttpOnly
 server: cloudflare-nginx
 cf-ray: 3ffe69838a418c4c-SFO-DOG
-
 
 { [49 bytes data]
 100    49  100    49    0     0    493      0 --:--:-- --:--:-- --:--:--   494
@@ -104,7 +102,14 @@ cf-ray: 3ffe69838a418c4c-SFO-DOG
 0000031
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/#page","headline":"Using DNS Wireformat","description":"Query 1.1.1.1 DNS over HTTPS using wireformat.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/","name":"DNS over HTTPS"}},{"@type":"ListItem","position":5,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/","name":"Make API requests to 1.1.1.1"}},{"@type":"ListItem","position":6,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/","name":"DNS Wireformat"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/#page","headline":"Using DNS Wireformat","description":"Query 1.1.1.1 DNS over HTTPS using wireformat.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

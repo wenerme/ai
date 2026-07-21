@@ -1,16 +1,18 @@
 ---
-title: Monitor the Auditor
 description: Verify Key Transparency audit proofs locally using the Plexi CLI tool.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor the Auditor
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor the Auditor
 
-# Monitor the Auditor
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/key-transparency/monitor-the-auditor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
 
@@ -73,16 +75,22 @@ Namespace
   Name               : whatsapp.key-transparency.v1
   Ciphersuite        : ed25519(protobuf)
 
-
 Signature (2024-09-23T16:53:45Z)
-  Epoch height        : 489193
-  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe
-  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08
+  Epoch height      	: 489193
+  Epoch digest      	: cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe
+  Signature         	: fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08
   Signature verification: success
-  Proof verification  : success
+  Proof verification	: success
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/#page","headline":"Monitor the Auditor · Cloudflare Key Transparency Auditor docs","description":"Verify Key Transparency audit proofs locally using the Plexi CLI tool.","url":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/key-transparency/","name":"Key Transparency Auditor"}},{"@type":"ListItem","position":3,"item":{"@id":"/key-transparency/monitor-the-auditor/","name":"Monitor the Auditor"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/#page","headline":"Monitor the Auditor · Cloudflare Key Transparency Auditor docs","description":"Verify Key Transparency audit proofs locally using the Plexi CLI tool.","url":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 ```

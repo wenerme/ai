@@ -1,16 +1,18 @@
 ---
-title: Namespaces
 description: Group AI Search instances into namespaces and manage them dynamically from a Workers binding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Namespaces
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Namespaces
 
-# Namespaces
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
 
@@ -45,11 +47,6 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-7210)
-* [  wrangler.toml ](#tab-panel-7211)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -62,8 +59,6 @@ When you add an `ai_search_namespaces` binding to your Wrangler configuration, y
 }
 ```
 
-**TOML**
-
 ```toml
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -72,12 +67,10 @@ namespace = "my-namespace"
 
 At runtime, `env.AI_SEARCH` is the namespace handle. Use `env.AI_SEARCH.get("my-instance")` to get a handle to a specific instance:
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 const results = await instance.search({
-  messages: [{ role: "user", content: "How does caching work?" }],
+	messages: [{ role: "user", content: "How does caching work?" }],
 });
 ```
 
@@ -88,11 +81,6 @@ The `get()` method is synchronous and does not make a network call. The instance
 A `default` namespace is automatically created for every account. If you do not need multiple namespaces, use `default` for all your instances.
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
-
-* [  wrangler.jsonc ](#tab-panel-7212)
-* [  wrangler.toml ](#tab-panel-7213)
-
-**JSONC**
 
 ```jsonc
 {
@@ -110,13 +98,10 @@ You can also bind directly to specific instances in the default namespace using 
 }
 ```
 
-**TOML**
-
 ```toml
 [[ai_search]]
 binding = "PROD_SEARCH"
 instance_name = "production"
-
 
 [[ai_search]]
 binding = "STAGING_SEARCH"
@@ -128,11 +113,6 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 ## Multiple namespaces
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
-
-* [  wrangler.jsonc ](#tab-panel-7214)
-* [  wrangler.toml ](#tab-panel-7215)
-
-**JSONC**
 
 ```jsonc
 {
@@ -150,13 +130,10 @@ You can declare multiple namespace bindings in the same Worker. Each binding map
 }
 ```
 
-**TOML**
-
 ```toml
 [[ai_search_namespaces]]
 binding = "BLOG_SEARCH"
 namespace = "blog"
-
 
 [[ai_search_namespaces]]
 binding = "SUPPORT_SEARCH"
@@ -167,7 +144,14 @@ namespace = "support"
 
 An instance name must be unique within a namespace. This means you can have an instance named `docs` in both the `blog` and `support` namespaces without conflict.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/concepts/namespaces/","name":"Namespaces"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

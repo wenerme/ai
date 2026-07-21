@@ -1,16 +1,18 @@
 ---
-title: Log mode versus production mode
 description: Differences between log mode and production mode for AI security detections.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log mode versus production mode
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log mode versus production mode
 
-# Log mode versus production mode
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can operate in two distinct modes. Understanding the trade-offs between them helps you choose the right approach for your stage of deployment.
 
@@ -59,11 +61,8 @@ In log mode:
 
 ### Enable log mode
 
-* [ Dashboard ](#tab-panel-11973)
-* [ API ](#tab-panel-11974)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Under **AI Security for Apps**, find the **Managed Ruleset** section.
 3. Enable the **AI Security Log Mode Ruleset**.
 4. Set the action to _Log_.
@@ -77,30 +76,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "b7cd52df92f74c848cec0c2ed385e336"
-            },
-            "expression": "true"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "b7cd52df92f74c848cec0c2ed385e336"
+						},
+						"expression": "true"
+				}
+		]
+	}'
 ```
 
 The ID of the AI Security Log Mode Ruleset is ...d385e336 .
 
 To set individual rule actions to `log`, override the rules within the managed ruleset using `action_parameters.overrides`. For more information, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 
-Warning
+Caution
 
 Since the managed ruleset uses broad, binary detection logic (detected/not detected), it can be too aggressive for production traffic. Without score-based thresholds, you should expect a higher rate of false positives if the action is set to _Block_.
 
@@ -116,7 +113,14 @@ Note
 
 You can run both modes simultaneously during a transition period. The managed ruleset (log mode) operates in the managed rules phase, while your custom rules operate in the custom rules phase. Custom rules are evaluated before managed rules — if a custom rule blocks a request, it will not reach the managed ruleset. During evaluation, consider setting your custom rules to _Log_ as well.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode · Cloudflare Web Application Firewall (WAF) docs","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","name":"Log mode versus production mode"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode · Cloudflare Web Application Firewall (WAF) docs","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

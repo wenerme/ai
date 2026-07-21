@@ -1,16 +1,18 @@
 ---
-title: Optimize and transform images for the web
 description: Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Optimize and transform images for the web
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Optimize and transform images for the web
 
-# Optimize and transform images for the web
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Serving images at multiple sizes and formats traditionally requires pre-generating variants for every resolution and device. Cloudflare Images transforms images on-the-fly via URL parameters — resizing, cropping, and converting to WebP or AVIF — while Polish compresses originals without visible quality loss.
 
@@ -36,7 +38,14 @@ Automatic image compression without quality loss. [Learn more about Polish](http
 2. [Enable Polish](https://developers.cloudflare.com/images/polish/)
 3. [Transform images via URL](https://developers.cloudflare.com/images/optimization/transformations/overview/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/#page","headline":"Optimize and transform images for the web · Cloudflare use cases","description":"Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.","url":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/media-streaming/image-optimization/","name":"Optimize and transform images for the web"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/#page","headline":"Optimize and transform images for the web · Cloudflare use cases","description":"Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.","url":"https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

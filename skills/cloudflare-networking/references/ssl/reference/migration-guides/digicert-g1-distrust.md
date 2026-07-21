@@ -1,16 +1,18 @@
 ---
-title: DigiCert Legacy Root (G1) distrust by major browsers
 description: Learn how the DigiCert G1 root distrust may affect your Cloudflare configuration.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DigiCert Legacy Root (G1) distrust by major browsers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DigiCert Legacy Root (G1) distrust by major browsers
 
-# DigiCert Legacy Root (G1) distrust by major browsers
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browsers and operating systems are completing the removal of DigiCert's legacy G1 root certificates from their trust stores, effective **April 15, 2026**.
 
@@ -44,7 +46,14 @@ Since Cloudflare does not use DigiCert roots, you can avoid this dependency enti
 * [Custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)
 * [Certificate bundling methodologies](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/#page","headline":"DigiCert Legacy Root (G1) distrust by major browsers · Cloudflare SSL/TLS docs","description":"Learn how the DigiCert G1 root distrust may affect your Cloudflare configuration.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/reference/migration-guides/digicert-g1-distrust/","name":"DigiCert Legacy Root (G1) distrust by major browsers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/#page","headline":"DigiCert Legacy Root (G1) distrust by major browsers · Cloudflare SSL/TLS docs","description":"Learn how the DigiCert G1 root distrust may affect your Cloudflare configuration.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

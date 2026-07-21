@@ -114,7 +114,7 @@ Authenticate from a Google metadata server identity token
 
 ```typescript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const metadataEndpoint =
   "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity";
@@ -129,7 +129,9 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function googleMetadataIdentityTokenProvider(audience: string): SubjectTokenProvider {
+function googleMetadataIdentityTokenProvider(
+  audience: string
+): SubjectTokenProvider {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -149,7 +151,9 @@ function googleMetadataIdentityTokenProvider(audience: string): SubjectTokenProv
 
       const token = (await response.text()).trim();
       if (!token) {
-        throw new Error("Google metadata server did not return an identity token.");
+        throw new Error(
+          "Google metadata server did not return an identity token."
+        );
       }
 
       return token;
@@ -665,17 +669,21 @@ Authenticate from a GKE projected service account token
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
 
 if (!identityProviderId || !serviceAccountId) {
-  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID"
+  );
 }
 
-function mountedGkeServiceAccountTokenProvider(path: string): SubjectTokenProvider {
+function mountedGkeServiceAccountTokenProvider(
+  path: string
+): SubjectTokenProvider {
   return {
     tokenType: "jwt",
     getToken: async () => {

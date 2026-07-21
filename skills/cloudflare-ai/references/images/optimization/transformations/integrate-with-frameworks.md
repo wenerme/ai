@@ -1,16 +1,18 @@
 ---
-title: Integrate with frameworks
 description: Use Cloudflare Images transformations with Next.js and Nuxt image components.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Integrate with frameworks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Integrate with frameworks
 
-# Integrate with frameworks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Next.js
 
@@ -28,43 +30,37 @@ To use Images with **all** your app's images, define a global [loaderFile ↗](h
 
 Add the following settings to the **next.config.js** file located at the root of your Next.js application.
 
-**TypeScript**
-
 ```ts
 module.exports = {
-  images: {
-    loader: "custom",
-    loaderFile: "./imageLoader.ts",
-  },
+	images: {
+		loader: "custom",
+		loaderFile: "./imageLoader.ts",
+	},
 };
 ```
 
 Next, create the `imageLoader.ts` file in the specified path (relative to the root of your Next.js application).
 
-**TypeScript**
-
 ```ts
 import type { ImageLoaderProps } from "next/image";
 
-
 const normalizeSrc = (src: string) => {
-  return src.startsWith("/") ? src.slice(1) : src;
+	return src.startsWith("/") ? src.slice(1) : src;
 };
 
-
 export default function cloudflareLoader({
-  src,
-  width,
-  quality,
+	src,
+	width,
+	quality,
 }: ImageLoaderProps) {
-  const params = [`width=${width}`];
-  if (quality) {
-    params.push(`quality=${quality}`);
-  }
-  if (process.env.NODE_ENV === "development") {
-    return `${src}?${params.join("&")}`;
-  }
-  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
+	const params = [`width=${width}`];
+	if (quality) {
+		params.push(`quality=${quality}`);
+	}
+	if (process.env.NODE_ENV === "development") {
+		return `${src}?${params.join("&")}`;
+	}
+	return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
 }
 ```
 
@@ -72,40 +68,35 @@ export default function cloudflareLoader({
 
 Alternatively, define a loader for each `<Image />` component.
 
-**JavaScript**
-
 ```js
 import Image from "next/image";
 
-
 const normalizeSrc = (src) => {
-  return src.startsWith("/") ? src.slice(1) : src;
+	return src.startsWith("/") ? src.slice(1) : src;
 };
-
 
 const cloudflareLoader = ({ src, width, quality }) => {
-  const params = [`width=${width}`];
-  if (quality) {
-    params.push(`quality=${quality}`);
-  }
-  if (process.env.NODE_ENV === "development") {
-    return `${src}?${params.join("&")}`;
-  }
-  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
+	const params = [`width=${width}`];
+	if (quality) {
+		params.push(`quality=${quality}`);
+	}
+	if (process.env.NODE_ENV === "development") {
+		return `${src}?${params.join("&")}`;
+	}
+	return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
 };
 
-
 const MyImage = (props) => {
-  return (
-    <Image
-      loader={cloudflareLoader}
-      src="/me.png"
-      alt="Picture of the author"
-      width={500}
-      height={500}
-      {...props}
-    />
-  );
+	return (
+		<Image
+			loader={cloudflareLoader}
+			src="/me.png"
+			alt="Picture of the author"
+			width={500}
+			height={500}
+			{...props}
+		/>
+	);
 };
 ```
 
@@ -115,7 +106,14 @@ For local development, you can enable [Resize images from any origin checkbox](h
 
 `https://<YOUR_DOMAIN.COM>/cdn-cgi/image/${paramsString}/${normalizeSrc(src)}`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/#page","headline":"Integrate with frameworks · Cloudflare Images docs","description":"Use Cloudflare Images transformations with Next.js and Nuxt image components.","url":"https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/integrate-with-frameworks/","name":"Integrate with frameworks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/#page","headline":"Integrate with frameworks · Cloudflare Images docs","description":"Use Cloudflare Images transformations with Next.js and Nuxt image components.","url":"https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

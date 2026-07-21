@@ -1,22 +1,26 @@
 ---
-title: dreamshaper-8-lcm
 description: Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: dreamshaper-8-lcm
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
  l
 
 #  dreamshaper-8-lcm
 
-Text-to-Image • lykon
+ Text-to-Image • lykon
 
-`@cf/lykon/dreamshaper-8-lcm`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/lykon/dreamshaper-8-lcm `
+
+* Cloudflare-hosted
 
 Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
 
@@ -24,52 +28,7 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 | ---------------- | -------------------------------------------------- |
 | More information | [link ↗](https://huggingface.co/Lykon/DreamShaper) |
 
-## Usage
-
-* [  TypeScript ](#tab-panel-5257)
-* [  curl ](#tab-panel-5258)
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request, env): Promise<Response> {
-
-
-    const inputs = {
-      prompt: "cyberpunk cat",
-    };
-
-
-    const response = await env.AI.run(
-      "@cf/lykon/dreamshaper-8-lcm",
-      inputs
-    );
-
-
-    return new Response(response, {
-      headers: {
-        "content-type": "image/jpg",
-      },
-    });
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-```sh
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/lykon/dreamshaper-8-lcm  \
-  -X POST  \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-  -d '{ "prompt": "cyberpunk cat" }'
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5259)
-* [ Output ](#tab-panel-5260)
 
 prompt
 
@@ -123,7 +82,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/#page","headline":"dreamshaper-8-lcm (lykon) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.","url":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/#page","headline":"dreamshaper-8-lcm (lykon) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.","url":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Using JSONata
 description: Transform and filter event data with JSONata expressions in Zaraz.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using JSONata
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using JSONata
 
-# Using JSONata
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For advanced use cases, it is sometimes useful to be able to retrieve a value in a particular way. For instance, you might be using `zaraz.track` to send a list of products to Zaraz, but the third-party tool you want to send this data to requires the total cost of the products. Alternatively, you may want to manipulate a value, such as converting it to lowercase.
 
@@ -19,7 +21,7 @@ Cloudflare Zaraz uses JSONata to enable you to perform complex operations on you
 To use JSONata inside Zaraz, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Tools configuration** \> **Tools**.
 3. Select **Edit** next to a tool that you have already configured.
 4. Select an action or add a new one.
@@ -36,8 +38,6 @@ Converting a string to lowercase is useful if you want to compare it to somethin
 ### Sending a sum of all products in the cart
 
 Assuming you are using `zaraz.ecommerce()` to send the cart content like this:
-
-**JavaScript**
 
 ```js
 zaraz.track('Product List Viewed',
@@ -61,7 +61,14 @@ zaraz.track('Product List Viewed',
 
 If the field in which you want to show the sum, you will enter `{{ $sum(client.products.(price * quantity)) }}`. This will multiply the price of each product by its quantity, and then sum up the total.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/#page","headline":"Using JSONata · Cloudflare Zaraz docs","description":"Transform and filter event data with JSONata expressions in Zaraz.","url":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/using-jsonata/","name":"Using JSONata"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/#page","headline":"Using JSONata · Cloudflare Zaraz docs","description":"Transform and filter event data with JSONata expressions in Zaraz.","url":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Agents as tools
 description: Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Agents as tools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Agents as tools
 
-# Agents as tools
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents as tools let one chat agent dispatch another chat-capable sub-agent as part of its work. The child is a real sub-agent with its own Durable Object storage, messages, tools, resumable stream, and drill-in URL. The parent keeps a small run registry so clients can render the child timeline, replay it after refresh, and clean it up later.
 
@@ -26,124 +28,102 @@ Use `agentTool()` or `runAgentTool()` when a parent model or workflow delegates 
 
 Use `agentTool()` when the parent model should decide when to call the helper.
 
-* [  JavaScript ](#tab-panel-6541)
-* [  TypeScript ](#tab-panel-6542)
-
-**JavaScript**
-
 ```js
 import { Think } from "@cloudflare/think";
 import { agentTool } from "agents/agent-tools";
 import { z } from "zod";
 
-
 export class Researcher extends Think {
-  getSystemPrompt() {
-    return "Research the user's topic and end with a concise summary.";
-  }
+	getSystemPrompt() {
+		return "Research the user's topic and end with a concise summary.";
+	}
 }
-
 
 export class Assistant extends Think {
-  getTools() {
-    return {
-      research: agentTool(Researcher, {
-        description: "Research one topic in depth.",
-        displayName: "Researcher",
-        inputSchema: z.object({
-          query: z.string().min(3),
-        }),
-      }),
-    };
-  }
+	getTools() {
+		return {
+			research: agentTool(Researcher, {
+				description: "Research one topic in depth.",
+				displayName: "Researcher",
+				inputSchema: z.object({
+					query: z.string().min(3),
+				}),
+			}),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think } from "@cloudflare/think";
 import { agentTool } from "agents/agent-tools";
 import { z } from "zod";
 
-
 export class Researcher extends Think<Env> {
-  getSystemPrompt() {
-    return "Research the user's topic and end with a concise summary.";
-  }
+	getSystemPrompt() {
+		return "Research the user's topic and end with a concise summary.";
+	}
 }
 
-
 export class Assistant extends Think<Env> {
-  getTools() {
-    return {
-      research: agentTool(Researcher, {
-        description: "Research one topic in depth.",
-        displayName: "Researcher",
-        inputSchema: z.object({
-          query: z.string().min(3),
-        }),
-      }),
-    };
-  }
+	getTools() {
+		return {
+			research: agentTool(Researcher, {
+				description: "Research one topic in depth.",
+				displayName: "Researcher",
+				inputSchema: z.object({
+					query: z.string().min(3),
+				}),
+			}),
+		};
+	}
 }
 ```
 
 The child can also be an `AIChatAgent`:
 
-* [  JavaScript ](#tab-panel-6561)
-* [  TypeScript ](#tab-panel-6562)
-
-**JavaScript**
-
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { agentTool } from "agents/agent-tools";
 import { convertToModelMessages, stepCountIs, streamText } from "ai";
 import { z } from "zod";
 
-
 export class Summarizer extends AIChatAgent {
-  formatAgentToolInput(input, request) {
-    return {
-      id: `agent-tool-${request.runId}-input`,
-      role: "user",
-      parts: [{ type: "text", text: `Summarize:\n\n${input.text}` }],
-    };
-  }
+	formatAgentToolInput(input, request) {
+		return {
+			id: `agent-tool-${request.runId}-input`,
+			role: "user",
+			parts: [{ type: "text", text: `Summarize:\n\n${input.text}` }],
+		};
+	}
 
-
-  async onChatMessage() {
-    const result = streamText({
-      model: this.env.MODEL,
-      messages: await convertToModelMessages(this.messages),
-    });
-    return result.toUIMessageStreamResponse();
-  }
+	async onChatMessage() {
+		const result = streamText({
+			model: this.env.MODEL,
+			messages: await convertToModelMessages(this.messages),
+		});
+		return result.toUIMessageStreamResponse();
+	}
 }
-
 
 export class Assistant extends AIChatAgent {
-  async onChatMessage() {
-    const result = streamText({
-      model: this.env.MODEL,
-      messages: await convertToModelMessages(this.messages),
-      tools: {
-        summarize: agentTool(Summarizer, {
-          description: "Summarize long text in a separate retained agent.",
-          inputSchema: z.object({ text: z.string() }),
-        }),
-      },
-      stopWhen: stepCountIs(5),
-    });
+	async onChatMessage() {
+		const result = streamText({
+			model: this.env.MODEL,
+			messages: await convertToModelMessages(this.messages),
+			tools: {
+				summarize: agentTool(Summarizer, {
+					description: "Summarize long text in a separate retained agent.",
+					inputSchema: z.object({ text: z.string() }),
+				}),
+			},
+			stopWhen: stepCountIs(5),
+		});
 
-
-    return result.toUIMessageStreamResponse();
-  }
+		return result.toUIMessageStreamResponse();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
@@ -151,71 +131,64 @@ import { agentTool } from "agents/agent-tools";
 import { convertToModelMessages, stepCountIs, streamText } from "ai";
 import { z } from "zod";
 
-
 export class Summarizer extends AIChatAgent<Env> {
-  protected override formatAgentToolInput(input: { text: string }, request) {
-    return {
-      id: `agent-tool-${request.runId}-input`,
-      role: "user",
-      parts: [{ type: "text", text: `Summarize:\n\n${input.text}` }],
-    };
-  }
+	protected override formatAgentToolInput(input: { text: string }, request) {
+		return {
+			id: `agent-tool-${request.runId}-input`,
+			role: "user",
+			parts: [{ type: "text", text: `Summarize:\n\n${input.text}` }],
+		};
+	}
 
-
-  async onChatMessage() {
-    const result = streamText({
-      model: this.env.MODEL,
-      messages: await convertToModelMessages(this.messages),
-    });
-    return result.toUIMessageStreamResponse();
-  }
+	async onChatMessage() {
+		const result = streamText({
+			model: this.env.MODEL,
+			messages: await convertToModelMessages(this.messages),
+		});
+		return result.toUIMessageStreamResponse();
+	}
 }
 
-
 export class Assistant extends AIChatAgent<Env> {
-  async onChatMessage() {
-    const result = streamText({
-      model: this.env.MODEL,
-      messages: await convertToModelMessages(this.messages),
-      tools: {
-        summarize: agentTool(Summarizer, {
-          description: "Summarize long text in a separate retained agent.",
-          inputSchema: z.object({ text: z.string() }),
-        }),
-      },
-      stopWhen: stepCountIs(5),
-    });
+	async onChatMessage() {
+		const result = streamText({
+			model: this.env.MODEL,
+			messages: await convertToModelMessages(this.messages),
+			tools: {
+				summarize: agentTool(Summarizer, {
+					description: "Summarize long text in a separate retained agent.",
+					inputSchema: z.object({ text: z.string() }),
+				}),
+			},
+			stopWhen: stepCountIs(5),
+		});
 
-
-    return result.toUIMessageStreamResponse();
-  }
+		return result.toUIMessageStreamResponse();
+	}
 }
 ```
 
 The generated tool calls `this.runAgentTool(ChildAgent, ...)`, streams `agent-tool-event` frames on the parent WebSocket, and returns the child summary to the parent model. If the run fails, aborts, or is interrupted, the tool returns a structured `AgentToolFailure` instead of an empty success value:
 
-**TypeScript**
-
 ```ts
 type AgentToolFailure = {
-  ok: false;
-  status: "error" | "aborted" | "interrupted";
-  error: string; // human-readable, safe to surface
-  retryable: boolean;
-  // Present only when `status` is "interrupted":
-  reason?: AgentToolInterruptedReason;
-  childStillRunning?: boolean;
+	ok: false;
+	status: "error" | "aborted" | "interrupted";
+	error: string; // human-readable, safe to surface
+	retryable: boolean;
+	// Present only when `status` is "interrupted":
+	reason?: AgentToolInterruptedReason;
+	childStillRunning?: boolean;
 };
 
-
 type AgentToolInterruptedReason =
-  | "no-progress"
-  | "window-exceeded"
-  | "not-tailable"
-  | "inspect-timeout"
-  | "inspect-failed"
-  | "recovery-deadline"
-  | "budget-exceeded";
+	| "no-progress"
+	| "window-exceeded"
+	| "not-tailable"
+	| "inspect-timeout"
+	| "inspect-failed"
+	| "recovery-deadline"
+	| "budget-exceeded";
 ```
 
 `retryable` is `true` only for an `interrupted` run — the child was reset or superseded by a deploy or parent recovery and never reached a logical outcome, so re-dispatching the same call can succeed. A genuine `error` or an intentional `aborted` is `retryable: false`. This lets a parent prompt convention or an orchestration harness re-run a transient interruption rather than reporting it to the user as a final failure. `AgentToolFailure` is exported from `agents`.
@@ -226,42 +199,33 @@ For Think children that do workflow-style work without user-facing assistant tex
 
 Persist any structured output before the child turn finishes, because `getAgentToolOutput()` is read as soon as `saveMessages()` resolves. Keep `getAgentToolSummary()` concise for display; the full structured value is stored separately as the tool output.
 
-* [  JavaScript ](#tab-panel-6535)
-* [  TypeScript ](#tab-panel-6536)
-
-**JavaScript**
-
 ```js
 export class Extractor extends Think {
-  getAgentToolOutput(runId) {
-    const rows = this.sql`
-      SELECT result_json FROM extraction_runs WHERE id = ${runId}
-    `;
-    return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
-  }
+	getAgentToolOutput(runId) {
+		const rows = this.sql`
+			SELECT result_json FROM extraction_runs WHERE id = ${runId}
+		`;
+		return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
+	}
 
-
-  getAgentToolSummary(_runId, output) {
-    return output ? "Extraction complete" : "";
-  }
+	getAgentToolSummary(_runId, output) {
+		return output ? "Extraction complete" : "";
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Extractor extends Think<Env> {
-  protected override getAgentToolOutput(runId: string) {
-    const rows = this.sql<{ result_json: string }>`
-      SELECT result_json FROM extraction_runs WHERE id = ${runId}
-    `;
-    return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
-  }
+	protected override getAgentToolOutput(runId: string) {
+		const rows = this.sql<{ result_json: string }>`
+			SELECT result_json FROM extraction_runs WHERE id = ${runId}
+		`;
+		return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
+	}
 
-
-  protected override getAgentToolSummary(_runId: string, output: unknown) {
-    return output ? "Extraction complete" : "";
-  }
+	protected override getAgentToolSummary(_runId: string, output: unknown) {
+		return output ? "Extraction complete" : "";
+	}
 }
 ```
 
@@ -269,40 +233,33 @@ export class Extractor extends Think<Env> {
 
 Use `runAgentTool()` for deterministic workflows, scheduled work, HTTP handlers, or fan-out code.
 
-* [  JavaScript ](#tab-panel-6537)
-* [  TypeScript ](#tab-panel-6538)
-
-**JavaScript**
-
 ```js
 const [a, b] = await Promise.allSettled([
-  this.runAgentTool(Researcher, {
-    input: { query: "HTTP/3" },
-    parentToolCallId: toolCallId,
-    displayOrder: 0,
-  }),
-  this.runAgentTool(Researcher, {
-    input: { query: "gRPC" },
-    parentToolCallId: toolCallId,
-    displayOrder: 1,
-  }),
+	this.runAgentTool(Researcher, {
+		input: { query: "HTTP/3" },
+		parentToolCallId: toolCallId,
+		displayOrder: 0,
+	}),
+	this.runAgentTool(Researcher, {
+		input: { query: "gRPC" },
+		parentToolCallId: toolCallId,
+		displayOrder: 1,
+	}),
 ]);
 ```
 
-**TypeScript**
-
 ```ts
 const [a, b] = await Promise.allSettled([
-  this.runAgentTool(Researcher, {
-    input: { query: "HTTP/3" },
-    parentToolCallId: toolCallId,
-    displayOrder: 0,
-  }),
-  this.runAgentTool(Researcher, {
-    input: { query: "gRPC" },
-    parentToolCallId: toolCallId,
-    displayOrder: 1,
-  }),
+	this.runAgentTool(Researcher, {
+		input: { query: "HTTP/3" },
+		parentToolCallId: toolCallId,
+		displayOrder: 0,
+	}),
+	this.runAgentTool(Researcher, {
+		input: { query: "gRPC" },
+		parentToolCallId: toolCallId,
+		displayOrder: 1,
+	}),
 ]);
 ```
 
@@ -312,86 +269,75 @@ const [a, b] = await Promise.allSettled([
 
 By default `runAgentTool()` **awaits** the child to terminal before returning. For long-running work — large imports, video renders, deep research — that you do not want to block the dispatching turn on, pass `detached`. The run is dispatched, the current turn continues, and `runAgentTool()` returns a handle immediately:
 
-**TypeScript**
-
 ```ts
 type DetachedRunAgentToolResult = {
-  runId: string;
-  agentType: string;
-  status: "running" | "error"; // "error" only if dispatch itself was rejected
+	runId: string;
+	agentType: string;
+	status: "running" | "error"; // "error" only if dispatch itself was rejected
 };
 ```
 
 `detached: true` is fire-and-forget — observe the run through `agent-tool-event` frames (the same ones `useAgentToolEvents()` consumes) and the global `onAgentToolFinish()` hook. Pass an object to wire a targeted, durable completion callback:
 
-* [  JavaScript ](#tab-panel-6555)
-* [  TypeScript ](#tab-panel-6556)
-
-**JavaScript**
-
 ```js
 export class Importer extends Think {
-  async startImport(input) {
-    const { runId } = await this.runAgentTool(ImportAgent, {
-      input,
-      detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
-    });
-    return runId;
-  }
+	async startImport(input) {
+		const { runId } = await this.runAgentTool(ImportAgent, {
+			input,
+			detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
+		});
+		return runId;
+	}
 
-
-  // Fires once, even if the Durable Object was evicted and rehydrated while the
-  // child ran. Referenced by METHOD NAME (like schedule()) — never a closure,
-  // which cannot survive eviction.
-  async onImportDone(run, result) {
-    switch (result.status) {
-      case "completed":
-        await this.markImportReady(run.runId, result.summary);
-        break;
-      case "error":
-        await this.markImportFailed(run.runId, result.error);
-        break;
-      case "interrupted":
-        // reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.
-        // interrupted is soft: a child that finishes anyway re-fires this
-        // hook with "completed", so make the handler idempotent.
-        break;
-    }
-  }
+	// Fires once, even if the Durable Object was evicted and rehydrated while the
+	// child ran. Referenced by METHOD NAME (like schedule()) — never a closure,
+	// which cannot survive eviction.
+	async onImportDone(run, result) {
+		switch (result.status) {
+			case "completed":
+				await this.markImportReady(run.runId, result.summary);
+				break;
+			case "error":
+				await this.markImportFailed(run.runId, result.error);
+				break;
+			case "interrupted":
+				// reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.
+				// interrupted is soft: a child that finishes anyway re-fires this
+				// hook with "completed", so make the handler idempotent.
+				break;
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Importer extends Think<Env> {
-  async startImport(input: ImportInput) {
-    const { runId } = await this.runAgentTool(ImportAgent, {
-      input,
-      detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
-    });
-    return runId;
-  }
+	async startImport(input: ImportInput) {
+		const { runId } = await this.runAgentTool(ImportAgent, {
+			input,
+			detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },
+		});
+		return runId;
+	}
 
-
-  // Fires once, even if the Durable Object was evicted and rehydrated while the
-  // child ran. Referenced by METHOD NAME (like schedule()) — never a closure,
-  // which cannot survive eviction.
-  async onImportDone(run: AgentToolRunInfo, result: AgentToolLifecycleResult) {
-    switch (result.status) {
-      case "completed":
-        await this.markImportReady(run.runId, result.summary);
-        break;
-      case "error":
-        await this.markImportFailed(run.runId, result.error);
-        break;
-      case "interrupted":
-        // reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.
-        // interrupted is soft: a child that finishes anyway re-fires this
-        // hook with "completed", so make the handler idempotent.
-        break;
-    }
-  }
+	// Fires once, even if the Durable Object was evicted and rehydrated while the
+	// child ran. Referenced by METHOD NAME (like schedule()) — never a closure,
+	// which cannot survive eviction.
+	async onImportDone(run: AgentToolRunInfo, result: AgentToolLifecycleResult) {
+		switch (result.status) {
+			case "completed":
+				await this.markImportReady(run.runId, result.summary);
+				break;
+			case "error":
+				await this.markImportFailed(run.runId, result.error);
+				break;
+			case "interrupted":
+				// reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.
+				// interrupted is soft: a child that finishes anyway re-fires this
+				// hook with "completed", so make the handler idempotent.
+				break;
+		}
+	}
 }
 ```
 
@@ -402,16 +348,9 @@ Key behaviors:
 * **Bounded.** Every detached run has an absolute `maxBudgetMs` ceiling (per-run, or the `detachedMaxBudgetMs` static option; default 24h). On expiry the parent gives up watching and tears the child down so an abandoned run cannot hold a `maxConcurrentAgentTools` slot forever.
 * **No inherited signal.** A detached run must outlive the spawning turn, so it does **not** inherit `options.signal`. Cancel it explicitly:
 
-* [  JavaScript ](#tab-panel-6531)
-* [  TypeScript ](#tab-panel-6532)
-
-**JavaScript**
-
 ```js
 await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
 ```
-
-**TypeScript**
 
 ```ts
 await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
@@ -421,16 +360,9 @@ await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
 
 On a chat agent (`@cloudflare/think` or `AIChatAgent`) you usually want the model to _react_ to a finished background run. Instead of wiring `onFinish` by hand, pass `notify: true` — when the run finishes the agent injects a message into the chat (idempotent per run + status, so an exactly-once finish never duplicates) and the model takes its next turn with the result in context:
 
-* [  JavaScript ](#tab-panel-6533)
-* [  TypeScript ](#tab-panel-6534)
-
-**JavaScript**
-
 ```js
 await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
 ```
-
-**TypeScript**
 
 ```ts
 await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
@@ -438,24 +370,17 @@ await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
 
 If your app routes or hides synthetic messages by `metadata.source`, pass your own source:
 
-* [  JavaScript ](#tab-panel-6539)
-* [  TypeScript ](#tab-panel-6540)
-
-**JavaScript**
-
 ```js
 await this.runAgentTool(ResearchAgent, {
-  input,
-  detached: { notify: { source: "research-background" } },
+	input,
+	detached: { notify: { source: "research-background" } },
 });
 ```
 
-**TypeScript**
-
 ```ts
 await this.runAgentTool(ResearchAgent, {
-  input,
-  detached: { notify: { source: "research-background" } },
+	input,
+	detached: { notify: { source: "research-background" } },
 });
 ```
 
@@ -469,69 +394,60 @@ A child's `inspectAgentToolRun(runId)` returns the run's current status snapshot
 
 A sub-agent running as an agent tool — awaited or detached — can report mid-run progress so a parent can render a live status line, meter the run server-side, or react to a named checkpoint before the run finishes. Call `reportProgress()` from inside the child (for example, from a tool's `execute`):
 
-* [  JavaScript ](#tab-panel-6551)
-* [  TypeScript ](#tab-panel-6552)
-
-**JavaScript**
-
 ```js
 export class ImportAgent extends Think {
-  getTools() {
-    return {
-      ingest: tool({
-        inputSchema: z.object({ url: z.string() }),
-        execute: async ({ url }) => {
-          // Ephemeral progress: drives a generic bar / phase / status line.
-          await this.reportProgress({
-            fraction: 0.6,
-            phase: "ingesting",
-            message: "Ingested 40k/80k rows",
-          });
-          // ...
-        },
-      }),
-    };
-  }
+	getTools() {
+		return {
+			ingest: tool({
+				inputSchema: z.object({ url: z.string() }),
+				execute: async ({ url }) => {
+					// Ephemeral progress: drives a generic bar / phase / status line.
+					await this.reportProgress({
+						fraction: 0.6,
+						phase: "ingesting",
+						message: "Ingested 40k/80k rows",
+					});
+					// ...
+				},
+			}),
+		};
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ImportAgent extends Think<Env> {
-  getTools() {
-    return {
-      ingest: tool({
-        inputSchema: z.object({ url: z.string() }),
-        execute: async ({ url }) => {
-          // Ephemeral progress: drives a generic bar / phase / status line.
-          await this.reportProgress({
-            fraction: 0.6,
-            phase: "ingesting",
-            message: "Ingested 40k/80k rows",
-          });
-          // ...
-        },
-      }),
-    };
-  }
+	getTools() {
+		return {
+			ingest: tool({
+				inputSchema: z.object({ url: z.string() }),
+				execute: async ({ url }) => {
+					// Ephemeral progress: drives a generic bar / phase / status line.
+					await this.reportProgress({
+						fraction: 0.6,
+						phase: "ingesting",
+						message: "Ingested 40k/80k rows",
+					});
+					// ...
+				},
+			}),
+		};
+	}
 }
 ```
 
 `reportProgress()` is available on chat agents (`@cloudflare/think` and `AIChatAgent`). It is a no-op with a development warning on the base `Agent` class and when called outside an active agent-tool run, so the same child code is safe to run standalone. The framework resolves the active run from the current turn — you never thread a run ID.
 
-**TypeScript**
-
 ```ts
 reportProgress<T>(
-  progress: {
-    fraction?: number; // 0..1 — drives a progress bar
-    message?: string; // human-readable status line
-    phase?: string; // coarse phase label, e.g. "ingesting"
-    milestone?: string; // present ⇒ a durable milestone (see below)
-    data?: T; // app-specific payload; live-only unless persisted
-  },
-  options?: { persist?: boolean },
+	progress: {
+		fraction?: number; // 0..1 — drives a progress bar
+		message?: string; // human-readable status line
+		phase?: string; // coarse phase label, e.g. "ingesting"
+		milestone?: string; // present ⇒ a durable milestone (see below)
+		data?: T; // app-specific payload; live-only unless persisted
+	},
+	options?: { persist?: boolean },
 ): Promise<void>;
 ```
 
@@ -541,35 +457,28 @@ Ephemeral signals ride the child's own turn stream as a transient `data-agent-pr
 
 Override `onProgress()` to meter, steer, or surface progress server-side. It fires best-effort whenever a child progress signal is forwarded through the parent, for both awaited and detached runs:
 
-* [  JavaScript ](#tab-panel-6545)
-* [  TypeScript ](#tab-panel-6546)
-
-**JavaScript**
-
 ```js
 export class Assistant extends Think {
-  async onProgress(run, progress) {
-    if (progress.milestone) {
-      // A durable milestone landed — branch on it.
-    }
-    console.log(run.runId, progress.phase, progress.fraction);
-  }
+	async onProgress(run, progress) {
+		if (progress.milestone) {
+			// A durable milestone landed — branch on it.
+		}
+		console.log(run.runId, progress.phase, progress.fraction);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Assistant extends Think<Env> {
-  override async onProgress(
-    run: AgentToolRunInfo,
-    progress: AgentToolProgressSnapshot,
-  ) {
-    if (progress.milestone) {
-      // A durable milestone landed — branch on it.
-    }
-    console.log(run.runId, progress.phase, progress.fraction);
-  }
+	override async onProgress(
+		run: AgentToolRunInfo,
+		progress: AgentToolProgressSnapshot,
+	) {
+		if (progress.milestone) {
+			// A durable milestone landed — branch on it.
+		}
+		console.log(run.runId, progress.phase, progress.fraction);
+	}
 }
 ```
 
@@ -579,24 +488,17 @@ export class Assistant extends Think<Env> {
 
 Naming a `milestone` promotes a signal from the ephemeral tier to a **durable** one — there is still only one emit method:
 
-* [  JavaScript ](#tab-panel-6543)
-* [  TypeScript ](#tab-panel-6544)
-
-**JavaScript**
-
 ```js
 await this.reportProgress({
-  milestone: "sources-gathered",
-  data: { sources: 2 },
+	milestone: "sources-gathered",
+	data: { sources: 2 },
 });
 ```
 
-**TypeScript**
-
 ```ts
 await this.reportProgress({
-  milestone: "sources-gathered",
-  data: { sources: 2 },
+	milestone: "sources-gathered",
+	data: { sources: 2 },
 });
 ```
 
@@ -606,42 +508,33 @@ A milestone is persisted as one row on the child with a monotonic per-run `seque
 
 For a detached run on a chat agent, `detached: { onMilestones }` surfaces a chat message when a configured milestone lands, _before_ the run finishes. Each `(runId, name)` fires at most once — whether observed live or reconciled after eviction — so the deterministic ID collapses warm and cold delivery to at-most-once:
 
-* [  JavaScript ](#tab-panel-6553)
-* [  TypeScript ](#tab-panel-6554)
-
-**JavaScript**
-
 ```js
 // "narrate" (default): inject a synthetic assistant status line — no model turn.
 await this.runAgentTool(Researcher, {
-  input,
-  detached: { onMilestones: ["sources-gathered"] },
+	input,
+	detached: { onMilestones: ["sources-gathered"] },
 });
-
 
 // "react": post a user-role turn so the model responds (steer, start dependent
 // work). Costs a model turn.
 await this.runAgentTool(Researcher, {
-  input,
-  detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },
+	input,
+	detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },
 });
 ```
-
-**TypeScript**
 
 ```ts
 // "narrate" (default): inject a synthetic assistant status line — no model turn.
 await this.runAgentTool(Researcher, {
-  input,
-  detached: { onMilestones: ["sources-gathered"] },
+	input,
+	detached: { onMilestones: ["sources-gathered"] },
 });
-
 
 // "react": post a user-role turn so the model responds (steer, start dependent
 // work). Costs a model turn.
 await this.runAgentTool(Researcher, {
-  input,
-  detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },
+	input,
+	detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },
 });
 ```
 
@@ -655,50 +548,39 @@ Once a detached child has reported at least one signal, the reconcile backbone g
 
 `useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID. Each run state carries `progress` and `milestones`, so a background-runs tray can render a live bar, phase, and milestone chips without drilling in.
 
-* [  JavaScript ](#tab-panel-6559)
-* [  TypeScript ](#tab-panel-6560)
-
-**JavaScript**
-
 ```js
 import { useAgent, useAgentToolEvents } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
 
-
 const agent = useAgent({ agent: "Assistant", name: userId });
 const { messages } = useAgentChat({ agent });
 const agentTools = useAgentToolEvents({ agent });
 
-
 for (const message of messages) {
-  for (const part of message.parts) {
-    if (part.type === "tool-call") {
-      const runs = agentTools.getRunsForToolCall(part.toolCallId);
-      // Render the child runs beside this tool call.
-    }
-  }
+	for (const part of message.parts) {
+		if (part.type === "tool-call") {
+			const runs = agentTools.getRunsForToolCall(part.toolCallId);
+			// Render the child runs beside this tool call.
+		}
+	}
 }
 ```
 
-**TypeScript**
-
-```ts
+```tsx
 import { useAgent, useAgentToolEvents } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
-
 
 const agent = useAgent({ agent: "Assistant", name: userId });
 const { messages } = useAgentChat({ agent });
 const agentTools = useAgentToolEvents({ agent });
 
-
 for (const message of messages) {
-  for (const part of message.parts) {
-    if (part.type === "tool-call") {
-      const runs = agentTools.getRunsForToolCall(part.toolCallId);
-      // Render the child runs beside this tool call.
-    }
-  }
+	for (const part of message.parts) {
+		if (part.type === "tool-call") {
+			const runs = agentTools.getRunsForToolCall(part.toolCallId);
+			// Render the child runs beside this tool call.
+		}
+	}
 }
 ```
 
@@ -708,38 +590,29 @@ Imperative runs without a parent tool call are available as `agentTools.unboundR
 
 Agents as tools are normal sub-agents. Connect to a retained child through the parent route:
 
-* [  JavaScript ](#tab-panel-6547)
-* [  TypeScript ](#tab-panel-6548)
-
-**JavaScript**
-
 ```js
 useAgent({
-  agent: "Assistant",
-  name: userId,
-  sub: [{ agent: "Researcher", name: runId }],
+	agent: "Assistant",
+	name: userId,
+	sub: [{ agent: "Researcher", name: runId }],
 });
 ```
 
-**TypeScript**
-
 ```ts
 useAgent({
-  agent: "Assistant",
-  name: userId,
-  sub: [{ agent: "Researcher", name: runId }],
+	agent: "Assistant",
+	name: userId,
+	sub: [{ agent: "Researcher", name: runId }],
 });
 ```
 
 Gate external access with the parent registry so guessed run IDs cannot spawn fresh child facets:
 
-**TypeScript**
-
 ```ts
 override async onBeforeSubAgent(_request, child) {
-  if (!this.hasAgentToolRun(child.className, child.name)) {
-    return new Response("Not found", { status: 404 });
-  }
+	if (!this.hasAgentToolRun(child.className, child.name)) {
+		return new Response("Not found", { status: 404 });
+	}
 }
 ```
 
@@ -747,25 +620,18 @@ override async onBeforeSubAgent(_request, child) {
 
 Runs and child facets are retained by default for refresh, drill-in, and later inspection. Delete them explicitly when clearing chat history or applying your own retention policy:
 
-* [  JavaScript ](#tab-panel-6549)
-* [  TypeScript ](#tab-panel-6550)
-
-**JavaScript**
-
 ```js
 await this.clearAgentToolRuns();
 await this.clearAgentToolRuns({
-  status: ["completed", "error", "aborted", "interrupted"],
+	status: ["completed", "error", "aborted", "interrupted"],
 });
 await this.clearAgentToolRuns({ olderThan: Date.now() - 7 * 24 * 60 * 60_000 });
 ```
 
-**TypeScript**
-
 ```ts
 await this.clearAgentToolRuns();
 await this.clearAgentToolRuns({
-  status: ["completed", "error", "aborted", "interrupted"],
+	status: ["completed", "error", "aborted", "interrupted"],
 });
 await this.clearAgentToolRuns({ olderThan: Date.now() - 7 * 24 * 60 * 60_000 });
 ```
@@ -793,32 +659,23 @@ A hung child can never block recovery forever. The no-progress budget bounds a s
 
 Monitor parent reconciliation through the `agentTool` observability channel:
 
-* [  JavaScript ](#tab-panel-6557)
-* [  TypeScript ](#tab-panel-6558)
-
-**JavaScript**
-
 ```js
 import { subscribe } from "agents/observability";
 
-
 const unsubscribe = subscribe("agentTool", (event) => {
-  if (event.type === "agent_tool:recovery:row") {
-    console.log("Recovered agent-tool row", event.payload);
-  }
+	if (event.type === "agent_tool:recovery:row") {
+		console.log("Recovered agent-tool row", event.payload);
+	}
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { subscribe } from "agents/observability";
 
-
 const unsubscribe = subscribe("agentTool", (event) => {
-  if (event.type === "agent_tool:recovery:row") {
-    console.log("Recovered agent-tool row", event.payload);
-  }
+	if (event.type === "agent_tool:recovery:row") {
+		console.log("Recovered agent-tool row", event.payload);
+	}
 });
 ```
 
@@ -826,15 +683,28 @@ Raw `diagnostics_channel` subscribers should use the channel name `agents:agent_
 
 ## Example
 
-[ Agents as tools example ](https://github.com/cloudflare/agents/tree/main/examples/agents-as-tools) Run chat-capable sub-agents as retained tools, stream their timelines inline, and drill into child agents.
+### [ Agents as tools example ](https://github.com/cloudflare/agents/tree/main/examples/agents-as-tools)
+
+ Run chat-capable sub-agents as retained tools, stream their timelines inline, and drill into child agents.
 
 ## Related
 
-[ Sub-agents ](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/) Spawn child agents with isolated storage, typed RPC, and nested client routing.
+### [ Sub-agents ](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)
 
-[ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) Build AI chat interfaces with AIChatAgent and useAgentChat.
+ Spawn child agents with isolated storage, typed RPC, and nested client routing.
+
+### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+
+ Build AI chat interfaces with AIChatAgent and useAgentChat.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-tools/","name":"Agents as tools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

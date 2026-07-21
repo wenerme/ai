@@ -1,16 +1,18 @@
 ---
-title: Version metadata
 description: Exposes Worker version metadata (`versionID` and `versionTag`). These fields can be added to events emitted from the Worker to send to downstream observability systems.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Version metadata
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Version metadata
 
-# Version metadata
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The version metadata binding can be used to access metadata associated with a [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) from inside the Workers runtime.
 
@@ -18,20 +20,13 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12868)
-* [  wrangler.toml ](#tab-panel-12869)
-
-**JSONC**
-
 ```jsonc
 {
-  "version_metadata": {
-    "binding": "CF_VERSION_METADATA"
-  }
+	"version_metadata": {
+		"binding": "CF_VERSION_METADATA"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [version_metadata]
@@ -41,11 +36,6 @@ binding = "CF_VERSION_METADATA"
 ### Interface
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
-
-* [  JavaScript ](#tab-panel-12866)
-* [  TypeScript ](#tab-panel-12867)
-
-**JavaScript**
 
 ```js
 export default {
@@ -61,14 +51,11 @@ export default {
 };
 ```
 
-**TypeScript**
-
 ```ts
 interface Environment {
   CF_VERSION_METADATA: WorkerVersionMetadata;
   WAE: AnalyticsEngineDataset;
 }
-
 
 export default {
   async fetch(request, env, ctx) {
@@ -83,7 +70,14 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/#page","headline":"Version metadata binding · Cloudflare Workers docs","description":"Exposes Worker version metadata (versionID and versionTag). These fields can be added to events emitted from the Worker to send to downstream observability systems.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/version-metadata/","name":"Version metadata"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/#page","headline":"Version metadata binding · Cloudflare Workers docs","description":"Exposes Worker version metadata (versionID and versionTag). These fields can be added to events emitted from the Worker to send to downstream observability systems.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

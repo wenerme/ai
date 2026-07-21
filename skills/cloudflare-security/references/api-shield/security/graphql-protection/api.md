@@ -1,16 +1,18 @@
 ---
-title: Configure GraphQL malicious query protection via the API
 description: Use the GraphQL API to configure query size and depth limits for your API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure GraphQL malicious query protection via the API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure GraphQL malicious query protection via the API
 
-# Configure GraphQL malicious query protection via the API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/getting-started/) to gather data about your GraphQL API’s current usage and configure Cloudflare’s GraphQL malicious query protection to log or block malicious queries.
 
@@ -18,18 +20,16 @@ Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/gra
 
 Query size is defined as the number of terminal fields (leaves) in the query, whereas query depth is the deepest level at which a leaf is present. For example, the size of this query will be reported as `4 (terminalField[1-4] all contribute to this counter)`, and the depth will be reported as `3 (terminalField3 and terminalField4 are at depth level 3)`.
 
-**GraphQL query**
-
 ```graphql
 {
-  terminalField1
-  nonTerminalField1(filter: 123) {
-    terminalField2
-    nonTerminalField2 {
-      terminalField3
-      terminalField4
-    }
-  }
+	terminalField1
+	nonTerminalField1(filter: 123) {
+		terminalField2
+		nonTerminalField2 {
+			terminalField3
+			terminalField4
+		}
+	}
 }
 ```
 
@@ -37,68 +37,62 @@ Query size is defined as the number of terminal fields (leaves) in the query, wh
 
 Using the new `apiGatewayGraphqlQueryAnalyticsGroups` node in the Cloudflare GraphQL API, you can retrieve `apiGatewayGraphqlQuerySize` and `apiGatewayGraphqlQueryDepth` dimensions.
 
-**GraphQL query**
-
 ```graphql
 query ApiGatewayGraphqlQueryAnalytics(
-  $zoneTag: string
-  $start: Time
-  $end: Time
+	$zoneTag: string
+	$start: Time
+	$end: Time
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      apiGatewayGraphqlQueryAnalyticsGroups(
-        limit: 100
-        orderBy: [
-          apiGatewayGraphqlQuerySize_DESC
-          apiGatewayGraphqlQueryDepth_DESC
-        ]
-        filter: { datetime_geq: $start, datetime_leq: $end }
-      ) {
-        count
-        dimensions {
-          apiGatewayGraphqlQuerySize
-          apiGatewayGraphqlQueryDepth
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			apiGatewayGraphqlQueryAnalyticsGroups(
+				limit: 100
+				orderBy: [
+					apiGatewayGraphqlQuerySize_DESC
+					apiGatewayGraphqlQueryDepth_DESC
+				]
+				filter: { datetime_geq: $start, datetime_leq: $end }
+			) {
+				count
+				dimensions {
+					apiGatewayGraphqlQuerySize
+					apiGatewayGraphqlQueryDepth
+				}
+			}
+		}
+	}
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVMM4YKIGFAAmzdl14ChLYRKky5AXyA)
-
 With the above query, you will get the following response:
-
-**Response**
 
 ```json
 {
-  "data": {
-    "viewer": {
-      "zones": [
-        {
-          "apiGatewayGraphqlQueryAnalyticsGroups": [
-            {
-              "count": 10,
-              "dimensions": {
-                "apiGatewayGraphqlQueryDepth": 1,
-                "apiGatewayGraphqlQuerySize": 11
-              }
-            },
-            {
-              "count": 10,
-              "dimensions": {
-                "apiGatewayGraphqlQueryDepth": 1,
-                "apiGatewayGraphqlQuerySize": 2
-              }
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "errors": null
+	"data": {
+		"viewer": {
+			"zones": [
+				{
+					"apiGatewayGraphqlQueryAnalyticsGroups": [
+						{
+							"count": 10,
+							"dimensions": {
+								"apiGatewayGraphqlQueryDepth": 1,
+								"apiGatewayGraphqlQuerySize": 11
+							}
+						},
+						{
+							"count": 10,
+							"dimensions": {
+								"apiGatewayGraphqlQueryDepth": 1,
+								"apiGatewayGraphqlQuerySize": 2
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"errors": null
 }
 ```
 
@@ -110,16 +104,12 @@ You can use the response to compute percentiles across the attributes and set a 
 
 Here is a simple Python script that will report query size and depth p-levels given the GraphQL API response output above (as a JSON file):
 
-**Python script**
-
 ```python
 #!/usr/bin/env python3
-
 
 import json
 import numpy as np
 import argparse
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--response", help="Path to the API JSON response file with the apiGatewayGraphqlQueryAnalyticsGroups node", required=True)
@@ -131,7 +121,6 @@ with open(args.response) as f:
     for datapoint in data:
         query_sizes = np.append(query_sizes, [datapoint['dimensions']['apiGatewayGraphqlQuerySize']] * datapoint['count'])
         query_depths = np.append(query_depths, [datapoint['dimensions']['apiGatewayGraphqlQueryDepth']] * datapoint['count'])
-
 
     quantiles = [0.99, 0.95, 0.75, 0.5]
     print('\n'.join([f"Query size {int(q * 100)}th percentile is {v}" for q, v in zip(quantiles, np.quantile(query_sizes, quantiles))]))
@@ -170,7 +159,14 @@ Note
 
 You are not able to configure which endpoints the GraphQL parsing runs on. Requests are parsed if they are targeting a path ending in `/graphql`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection · Cloudflare API Shield docs","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/graphql-protection/","name":"GraphQL malicious query protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/graphql-protection/api/","name":"Configure GraphQL malicious query protection via the API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection · Cloudflare API Shield docs","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

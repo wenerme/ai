@@ -1,16 +1,18 @@
 ---
-title: AI security
 description: Reference information for AI security in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: AI security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI security
 
-# AI security
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The AI security report dashboard summarizes your organization's AI usage and potential security risks.
 
@@ -70,7 +72,14 @@ Displays the number of Model Context Protocol (MCP) servers protected by [Cloudf
 
 Reports the number of login events to MCP servers protected by Access policies. Use this panel to identify unusual login patterns, such as spikes in access from unexpected users.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/#page","headline":"AI security · Cloudflare One docs","description":"Reference information for AI security in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/analytics/ai-security/","name":"AI security"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/#page","headline":"AI security · Cloudflare One docs","description":"Reference information for AI security in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

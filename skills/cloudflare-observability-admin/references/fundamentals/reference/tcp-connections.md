@@ -1,16 +1,18 @@
 ---
-title: TCP connections
 description: Understand how Cloudflare handles TCP connections, keep-alives, and TCP Fast Open between visitors and origin servers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: TCP connections
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TCP connections
 
-# TCP connections
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following section explains how Cloudflare directs traffic efficiently with anycast routing and serves as an intermediary between users and origin servers. The second part covers TCP connections and keep-alives for performance optimization, and lastly, TCP Fast Open (TFO), a protocol extension that enhances the speed of TCP connections.
 
@@ -49,7 +51,14 @@ TCP connection settings between the user and Cloudflare, and between Cloudflare 
 
 When a client initiates a connection to a web server protected by Cloudflare, it sends a TCP SYN packet to request a connection. Cloudflare, acting as a reverse proxy, intercepts the SYN packet and responds with a SYN-ACK packet to establish the connection. With TFO enabled, Cloudflare can also send initial data (such as HTTP request data) in the SYN-ACK packet, eliminating the need for an additional round-trip for data transmission. The client receives the SYN-ACK packet with data and acknowledges it with an ACK packet. This fast tracks the connection setup.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#page","headline":"TCP connections · Cloudflare Fundamentals docs","description":"Understand how Cloudflare handles TCP connections, keep-alives, and TCP Fast Open between visitors and origin servers.","url":"https://developers.cloudflare.com/fundamentals/reference/tcp-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/tcp-connections/","name":"TCP connections"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#page","headline":"TCP connections · Cloudflare Fundamentals docs","description":"Understand how Cloudflare handles TCP connections, keep-alives, and TCP Fast Open between visitors and origin servers.","url":"https://developers.cloudflare.com/fundamentals/reference/tcp-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

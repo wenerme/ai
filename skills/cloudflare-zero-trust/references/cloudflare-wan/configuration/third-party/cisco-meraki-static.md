@@ -1,16 +1,18 @@
 ---
-title: Cisco Meraki MX (static routing)
 description: Configure static routing on Cisco Meraki MX with Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cisco Meraki MX (static routing)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cisco Meraki MX (static routing)
 
-# Cisco Meraki MX (static routing)
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide provides step-by-step instructions for configuring Cisco Meraki MX appliances to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with Cisco Meraki administration and have an active Cloudflare WAN subscription.
 
@@ -739,7 +741,14 @@ Ensure tunnel health checks for both `CF_WAN_TUN_01` and `CF_WAN_TUN_02` are con
 * [Primary and Secondary IPsec VPN Tunnels ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Primary%5Fand%5FSecondary%5FIPsec%5FVPN%5FTunnels)
 * [Site-to-Site VPN ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Site-to-Site%5FVPN%5FSettings#Peer%5Favailability)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/#page","headline":"Cisco Meraki MX (static routing) · Cloudflare WAN docs","description":"Configure static routing on Cisco Meraki MX with Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/cisco-meraki-static/","name":"Cisco Meraki MX (static routing)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/#page","headline":"Cisco Meraki MX (static routing) · Cloudflare WAN docs","description":"Configure static routing on Cisco Meraki MX with Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Limitations
 description: Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limitations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limitations
 
-# Limitations
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/limitations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
@@ -65,7 +67,7 @@ There is no API to pre-populate the cache with responses generated at build time
 
 Response size limits are the same as Cloudflare's zone cache. For per-plan limits, refer to [Cacheable size limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#cacheable-size-limits).
 
-Warning
+Caution
 
 At launch, all Workers Caching responses are subject to the Free plan size limit regardless of your account's plan. This restriction is temporary and will be lifted in a future update, after which the limits in [Cacheable size limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#cacheable-size-limits) will apply based on your account.
 
@@ -126,7 +128,14 @@ The following surfaces are in development:
 * **Dashboard UI** for enabling caching without Wrangler.
 * **Cache Analytics in Workers Observability**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations · Cloudflare Workers docs","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/limitations/","name":"Limitations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations · Cloudflare Workers docs","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

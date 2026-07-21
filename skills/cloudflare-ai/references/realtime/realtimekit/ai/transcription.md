@@ -1,16 +1,18 @@
 ---
-title: Transcription
 description: Turn on real-time and post-meeting speech-to-text transcription in RealtimeKit.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Transcription
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transcription
 
-# Transcription
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit provides two transcription modes powered by [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/):
 
@@ -105,22 +107,18 @@ Real-time transcription sends interim and final transcript updates to the client
 
 #### Client SDK
 
-**JavaScript**
-
 ```js
 // Get transcript entries already received by the client.
 const transcripts = meeting.ai.transcripts;
 
-
 // Listen for transcript updates during the meeting.
 meeting.ai.on("transcript", (transcript) => {
-  if (transcript.isPartialTranscript) {
-    updateLiveCaption(transcript.peerId, transcript.transcript);
-    return;
-  }
+	if (transcript.isPartialTranscript) {
+		updateLiveCaption(transcript.peerId, transcript.transcript);
+		return;
+	}
 
-
-  appendFinalTranscript(transcript);
+	appendFinalTranscript(transcript);
 });
 ```
 
@@ -128,14 +126,14 @@ meeting.ai.on("transcript", (transcript) => {
 
 ```json
 {
-  "id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",
-  "name": "Alice",
-  "peerId": "4f5g6h7i-8j9k-0lmn-opqr-1234567890st",
-  "userId": "uvwxyz-1234-5678-90ab-cdefghijklmn",
-  "customParticipantId": "abc123xyz",
-  "transcript": "Hello everyone",
-  "isPartialTranscript": false,
-  "timestamp": 1716700000000
+	"id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",
+	"name": "Alice",
+	"peerId": "4f5g6h7i-8j9k-0lmn-opqr-1234567890st",
+	"userId": "uvwxyz-1234-5678-90ab-cdefghijklmn",
+	"customParticipantId": "abc123xyz",
+	"transcript": "Hello everyone",
+	"isPartialTranscript": false,
+	"timestamp": 1716700000000
 }
 ```
 
@@ -296,10 +294,6 @@ Post-meeting transcripts are available in multiple formats. Use CSV or JSON for 
 
 #### Examples
 
-* [ CSV ](#tab-panel-10806)
-* [ JSON ](#tab-panel-10807)
-* [ SRT ](#tab-panel-10808)
-
 ```csv
 "1000","peer-123","user-456","cust-789","Alice","Hello everyone"
 "3000","peer-234","user-567","cust-890","Bob","Hi Alice"
@@ -309,19 +303,19 @@ CSV rows use the following field order: start time in milliseconds, peer ID, use
 
 ```json
 [
-  {
-    "startTime": 1000,
-    "endTime": 2500,
-    "sentence": "Hello everyone",
-    "peerData": {
-      "id": "peer-123",
-      "userId": "user-456",
-      "displayName": "Alice",
-      "cpi": "cust-789",
-      "joinedAt": "2024-08-07T10:15:29.000Z",
-      "leftAt": ""
-    }
-  }
+	{
+		"startTime": 1000,
+		"endTime": 2500,
+		"sentence": "Hello everyone",
+		"peerData": {
+			"id": "peer-123",
+			"userId": "user-456",
+			"displayName": "Alice",
+			"cpi": "cust-789",
+			"joinedAt": "2024-08-07T10:15:29.000Z",
+			"leftAt": ""
+		}
+	}
 ]
 ```
 
@@ -329,7 +323,6 @@ CSV rows use the following field order: start time in milliseconds, peer ID, use
 1
 00:00:01,000 --> 00:00:02,500
 Alice: Hello everyone
-
 
 2
 00:00:03,000 --> 00:00:04,500
@@ -346,22 +339,22 @@ Configure the `meeting.transcript` event in [RealtimeKit webhooks](https://devel
 
 ```json
 {
-  "event": "meeting.transcript",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "title": "Weekly sync",
-    "endedAt": "2026-06-03T10:30:00.000Z",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "status": "LIVE",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "transcriptDownloadUrl": "https://example.com/transcript.csv",
-  "transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+	"event": "meeting.transcript",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"title": "Weekly sync",
+		"endedAt": "2026-06-03T10:30:00.000Z",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"status": "LIVE",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"transcriptDownloadUrl": "https://example.com/transcript.csv",
+	"transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
 }
 ```
 
@@ -407,7 +400,14 @@ Post-meeting transcription uses RealtimeKit-managed storage for intermediate par
 
 For workloads with stricter storage, retention, or processing requirements, use [RealtimeKit recording with custom cloud storage](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/) instead of managed transcription. You can then run your own transcription pipeline with your preferred infrastructure, access controls, and retention policy.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/#page","headline":"Transcription · Cloudflare Realtime docs","description":"Turn on real-time and post-meeting speech-to-text transcription in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ai/","name":"AI"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ai/transcription/","name":"Transcription"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/#page","headline":"Transcription · Cloudflare Realtime docs","description":"Turn on real-time and post-meeting speech-to-text transcription in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

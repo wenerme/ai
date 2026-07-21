@@ -1,16 +1,18 @@
 ---
-title: Understanding the True-Client-IP Header
 description: Send the visitor's IP to your origin via True-Client-IP header.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Understanding the True-Client-IP Header
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Understanding the True-Client-IP Header
 
-# Understanding the True-Client-IP Header
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/true-client-ip-header/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Enabling the True-Client-IP Header adds the [True-Client-IP header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#true-client-ip-enterprise-plan-only) to all requests to your origin server, which includes the end user's IP address.
 
@@ -36,7 +38,14 @@ For additional guidance on using True-Client-IP Header with Cloudflare, refer to
 * [Cloudflare HTTP headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/#true-client-ip-enterprise-plan-only)
 * [Restoring original visitor IPs](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/true-client-ip-header/#page","headline":"Understanding the True-Client-IP Header · Cloudflare Network settings docs","description":"Send the visitor's IP to your origin via True-Client-IP header.","url":"https://developers.cloudflare.com/network/true-client-ip-header/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/true-client-ip-header/","name":"Understanding the True-Client-IP Header"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/true-client-ip-header/#page","headline":"Understanding the True-Client-IP Header · Cloudflare Network settings docs","description":"Send the visitor's IP to your origin via True-Client-IP header.","url":"https://developers.cloudflare.com/network/true-client-ip-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

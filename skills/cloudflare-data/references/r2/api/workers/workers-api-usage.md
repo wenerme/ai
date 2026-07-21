@@ -1,16 +1,18 @@
 ---
-title: Use R2 from Workers
 description: Bind an R2 bucket to a Worker and perform read, write, and list operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use R2 from Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use R2 from Workers
 
-# Use R2 from Workers
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Create a new application with C3
 
@@ -74,23 +76,16 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-10601)
-* [  wrangler.toml ](#tab-panel-10602)
-
-**JSONC**
-
 ```jsonc
 {
-  "r2_buckets": [
-    {
-      "binding": "MY_BUCKET", // <~ valid JavaScript variable name
-      "bucket_name": "<YOUR_BUCKET_NAME>"
-    }
-  ]
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET", // <~ valid JavaScript variable name
+			"bucket_name": "<YOUR_BUCKET_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -112,21 +107,13 @@ If you want the R2 operations that are performed during development to be perfor
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-10596)
-* [  JavaScript ](#tab-panel-10597)
-* [  Python ](#tab-panel-10598)
-
-**TypeScript**
-
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export default class extends WorkerEntrypoint<Env> {
   async fetch(request: Request) {
     const url = new URL(request.url);
     const key = url.pathname.slice(1);
-
 
     switch (request.method) {
       case "PUT": {
@@ -142,16 +129,13 @@ export default class extends WorkerEntrypoint<Env> {
           range: request.headers,
         });
 
-
         if (object === null) {
           return new Response("Object Not Found", { status: 404 });
         }
 
-
         const headers = new Headers();
         object.writeHttpMetadata(headers);
         headers.set("etag", object.httpEtag);
-
 
         // When no body is present, preconditions have failed
         return new Response("body" in object ? object.body : undefined, {
@@ -175,14 +159,11 @@ export default class extends WorkerEntrypoint<Env> {
 };
 ```
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const key = url.pathname.slice(1);
-
 
     switch (request.method) {
       case "PUT": {
@@ -198,16 +179,13 @@ export default {
           range: request.headers,
         });
 
-
         if (object === null) {
           return new Response("Object Not Found", { status: 404 });
         }
 
-
         const headers = new Headers();
         object.writeHttpMetadata(headers);
         headers.set("etag", object.httpEtag);
-
 
         // When no body is present, preconditions have failed
         return new Response("body" in object ? object.body : undefined, {
@@ -231,55 +209,49 @@ export default {
 }
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse
 
 
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    url = urlparse(request.url)
-    key = url.path[1:]
+	async def fetch(self, request):
+		url = urlparse(request.url)
+		key = url.path[1:]
 
+		if request.method == "PUT":
+			await self.env.MY_BUCKET.put(
+				key,
+				request.body,
+				onlyIf=request.headers,
+				httpMetadata=request.headers,
+			)
+			return Response(f"Put {key} successfully!")
+		elif request.method == "GET":
+			obj = await self.env.MY_BUCKET.get(
+				key,
+				onlyIf=request.headers,
+				range=request.headers,
+			)
 
-    if request.method == "PUT":
-      await self.env.MY_BUCKET.put(
-        key,
-        request.body,
-        onlyIf=request.headers,
-        httpMetadata=request.headers,
-      )
-      return Response(f"Put {key} successfully!")
-    elif request.method == "GET":
-      obj = await self.env.MY_BUCKET.get(
-        key,
-        onlyIf=request.headers,
-        range=request.headers,
-      )
+			if obj is None:
+				return Response("Object Not Found", status=404)
 
+			# When no body is present, preconditions have failed
+			body = obj.body if hasattr(obj, "body") else None
+			status = 200 if hasattr(obj, "body") else 412
 
-      if obj is None:
-        return Response("Object Not Found", status=404)
-
-
-      # When no body is present, preconditions have failed
-      body = obj.body if hasattr(obj, "body") else None
-      status = 200 if hasattr(obj, "body") else 412
-
-
-      headers = {"etag": obj.httpEtag}
-      return Response(body, status=status, headers=headers)
-    elif request.method == "DELETE":
-      await self.env.MY_BUCKET.delete(key)
-      return Response("Deleted!")
-    else:
-      return Response(
-        "Method Not Allowed",
-        status=405,
-        headers={"Allow": "PUT, GET, DELETE"},
-      )
+			headers = {"etag": obj.httpEtag}
+			return Response(body, status=status, headers=headers)
+		elif request.method == "DELETE":
+			await self.env.MY_BUCKET.delete(key)
+			return Response("Deleted!")
+		else:
+			return Response(
+				"Method Not Allowed",
+				status=405,
+				headers={"Allow": "PUT, GET, DELETE"},
+			)
 ```
 
 Prevent potential errors when accessing request.body
@@ -303,85 +275,67 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-10599)
-* [  Python ](#tab-panel-10600)
-
-**JavaScript**
-
 ```js
 const ALLOW_LIST = ["cat-pic.jpg"];
 
-
 // Check requests for a pre-shared secret
 const hasValidHeader = (request, env) => {
-  return request.headers.get("X-Custom-Auth-Key") === env.AUTH_KEY_SECRET;
+	return request.headers.get("X-Custom-Auth-Key") === env.AUTH_KEY_SECRET;
 };
-
 
 function authorizeRequest(request, env, key) {
-  switch (request.method) {
-    case "PUT":
-    case "DELETE":
-      return hasValidHeader(request, env);
-    case "GET":
-      return ALLOW_LIST.includes(key);
-    default:
-      return false;
-  }
+	switch (request.method) {
+		case "PUT":
+		case "DELETE":
+			return hasValidHeader(request, env);
+		case "GET":
+			return ALLOW_LIST.includes(key);
+		default:
+			return false;
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
 
+		if (!authorizeRequest(request, env, key)) {
+			return new Response("Forbidden", { status: 403 });
+		}
 
-    if (!authorizeRequest(request, env, key)) {
-      return new Response("Forbidden", { status: 403 });
-    }
-
-
-    // ...
-  },
+		// ...
+	},
 };
 ```
-
-**Python**
 
 ```py
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse
 
-
 ALLOW_LIST = ["cat-pic.jpg"]
-
 
 # Check requests for a pre-shared secret
 def has_valid_header(request, env):
-  return request.headers.get("X-Custom-Auth-Key") == env.AUTH_KEY_SECRET
-
+	return request.headers.get("X-Custom-Auth-Key") == env.AUTH_KEY_SECRET
 
 def authorize_request(request, env, key):
-  if request.method in ["PUT", "DELETE"]:
-    return has_valid_header(request, env)
-  elif request.method == "GET":
-    return key in ALLOW_LIST
-  else:
-    return False
-
+	if request.method in ["PUT", "DELETE"]:
+		return has_valid_header(request, env)
+	elif request.method == "GET":
+		return key in ALLOW_LIST
+	else:
+		return False
 
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    url = urlparse(request.url)
-    key = url.path[1:]
+	async def fetch(self, request):
+		url = urlparse(request.url)
+		key = url.path[1:]
 
+		if not authorize_request(request, self.env, key):
+			return Response("Forbidden", status=403)
 
-    if not authorize_request(request, self.env, key):
-      return Response("Forbidden", status=403)
-
-
-    # ...
+		# ...
 ```
 
 For this to work, you need to create a secret via Wrangler:
@@ -415,7 +369,7 @@ npx wrangler deploy
 
 You can verify your authorization logic is working through the following commands, using your deployed Worker endpoint:
 
-Warning
+Caution
 
 When uploading files to R2 via `curl`, ensure you use **[\--data-binary ↗](https://everything.curl.dev/http/post/binary)** instead of `--data` or `-d`. Files will otherwise be truncated.
 
@@ -425,24 +379,20 @@ curl https://your-worker.dev/cat-pic.jpg -X PUT --data-binary 'test'
 #=> Forbidden
 # Expected because header was missing
 
-
 # Attempt to write an object with the wrong "X-Custom-Auth-Key" header value
 curl https://your-worker.dev/cat-pic.jpg -X PUT --header "X-Custom-Auth-Key: hotdog" --data-binary 'test'
 #=> Forbidden
 # Expected because header value did not match the AUTH_KEY_SECRET value
-
 
 # Attempt to write an object with the correct "X-Custom-Auth-Key" header value
 # Note: Assume that "*********" is the value of your AUTH_KEY_SECRET Wrangler secret
 curl https://your-worker.dev/cat-pic.jpg -X PUT --header "X-Custom-Auth-Key: *********" --data-binary 'test'
 #=> Put cat-pic.jpg successfully!
 
-
 # Attempt to read object called "foo"
 curl https://your-worker.dev/foo
 #=> Forbidden
 # Expected because "foo" is not in the ALLOW_LIST
-
 
 # Attempt to read an object called "cat-pic.jpg"
 curl https://your-worker.dev/cat-pic.jpg
@@ -457,7 +407,14 @@ By completing this guide, you have successfully installed Wrangler and deployed 
 1. [Workers Tutorials](https://developers.cloudflare.com/workers/tutorials/)
 2. [Workers Examples](https://developers.cloudflare.com/workers/examples/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-api-usage/","name":"Use R2 from Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

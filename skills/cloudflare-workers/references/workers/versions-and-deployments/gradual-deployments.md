@@ -1,16 +1,18 @@
 ---
-title: Gradual deployments
 description: Incrementally deploy code changes to your Workers with gradual deployments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Gradual deployments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gradual deployments
 
-# Gradual deployments
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Gradual deployments let you incrementally deploy new [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker by splitting traffic across versions. Instead of shifting all traffic to a new version at once, you can route a percentage of requests to the new version while the rest continue to be handled by the previous version.
 
@@ -126,7 +128,7 @@ pnpm wrangler versions deploy
 ### Via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Hello World** template > deploy your Worker.
 3. Once the Worker is deployed, go to the online code editor through **Edit code**. Edit the Worker code (change the `Response` content).
 4. To save changes without deploying, select the **down arrow** next to **Deploy** \> **Save**. This will create a new version of your Worker.
@@ -179,11 +181,11 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush
 
 ```json
 {
-  "ScriptVersion": {
-    "id": "<UUID>",
-    "message": "<MESSAGE>",
-    "tag": "<TAG>"
-  }
+	"ScriptVersion": {
+		"id": "<UUID>",
+		"message": "<MESSAGE>",
+		"tag": "<TAG>"
+	}
 }
 ```
 
@@ -197,7 +199,14 @@ Use the [Version metadata binding](https://developers.cloudflare.com/workers/run
 
 You can only create a gradual deployment with the last 100 uploaded versions of your Worker.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments · Cloudflare Workers docs","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/gradual-deployments/","name":"Gradual deployments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments · Cloudflare Workers docs","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Compatibility flags
 description: Opt into a specific features of the Workers runtime for your Workers project.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Compatibility flags
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Compatibility flags
 
-# Compatibility flags
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/compatibility-flags/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Compatibility flags enable specific features. They can be useful if you want to help the Workers team test upcoming changes that are not yet enabled by default, or if you need to hold back a change that your code depends on but still want to apply other compatibility changes.
 
@@ -26,23 +28,16 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-12321)
-* [  wrangler.toml ](#tab-panel-12322)
-
-**JSONC**
-
 ```jsonc
 {
-  // Opt into backwards-incompatible changes through September 14, 2021.
-  "compatibility_date": "2021-09-14",
-  // Also opt into an upcoming fix to the FormData API.
-  "compatibility_flags": [
-    "formdata_parser_supports_files"
-  ]
+	// Opt into backwards-incompatible changes through September 14, 2021.
+	"compatibility_date": "2021-09-14",
+	// Also opt into an upcoming fix to the FormData API.
+	"compatibility_flags": [
+		"formdata_parser_supports_files"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_date = "2021-09-14"
@@ -69,43 +64,29 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-12325)
-* [  wrangler.toml ](#tab-panel-12326)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
-
-* [  wrangler.jsonc ](#tab-panel-12319)
-* [  wrangler.toml ](#tab-panel-12320)
-
-**JSONC**
 
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
@@ -115,20 +96,13 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-12323)
-* [  wrangler.toml ](#tab-panel-12324)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_als"
-  ]
+	"compatibility_flags": [
+		"nodejs_als"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_als" ]
@@ -206,11 +180,8 @@ When enabled, if a [Workflow](https://developers.cloudflare.com/workflows/) step
 
 Previously, throwing a `NonRetryableError` with a custom message would result in the original error message being lost and replaced with `"The execution of the Workflow instance was terminated, as a step threw an NonRetryableError and it was not handled"`:
 
-**JavaScript**
-
 ```js
 import { WorkflowEntrypoint, NonRetryableError } from "cloudflare:workers";
-
 
 export class MyWorkflow extends WorkflowEntrypoint {
   async run(event, step) {
@@ -384,19 +355,15 @@ This flag controls the default value of the [binaryType](https://developers.clou
 
 The `binaryType` property itself is available on every `WebSocket` regardless of the flag. Assigning a value overrides the default for that specific WebSocket:
 
-**JavaScript**
-
 ```js
 const resp = await fetch("https://example.com", {
   headers: { Upgrade: "websocket" },
 });
 const ws = resp.webSocket;
 
-
 // Opt back into ArrayBuffer delivery before calling accept().
 ws.binaryType = "arraybuffer";
 ws.accept();
-
 
 ws.addEventListener("message", (event) => {
   // event.data is an ArrayBuffer for binary frames.
@@ -427,12 +394,9 @@ When a server sends a WebSocket Close frame, the Workers runtime now automatical
 
 Previously, receiving a server-initiated Close frame left the WebSocket in `CLOSING` and required the application to call `close()` itself. With this flag active, you no longer need to call `close()` in your `close` event handler. The runtime handles the close handshake automatically.
 
-**JavaScript**
-
 ```js
 const [client, server] = Object.values(new WebSocketPair());
 server.accept();
-
 
 server.addEventListener("close", (event) => {
   // readyState is already CLOSED — no need to call server.close().
@@ -446,21 +410,16 @@ If you do still call `close()` inside the handler, the call is silently ignored.
 
 The automatic close behavior can interfere with WebSocket proxying. When a Worker proxies between a client and a backend, the old behavior allowed the Worker to observe a backend Close frame without the runtime tearing down the connection, giving the Worker time to coordinate a clean close on the client side. To support this pattern, the `accept()` method now accepts an option `allowHalfOpen`. Call `ws.accept({ allowHalfOpen: true })` to restore the old half-open behavior regardless of the compatibility flag.
 
-**JavaScript**
-
 ```js
 const [client, server] = Object.values(new WebSocketPair());
 
-
 // Opt into half-open mode for proxying
 server.accept({ allowHalfOpen: true });
-
 
 server.addEventListener("close", (event) => {
   // With allowHalfOpen true, readyState is still CLOSING here,
   // giving you time to coordinate the close on the other side.
   console.log(server.readyState); // WebSocket.CLOSING
-
 
   // Manually close when ready.
   server.close(1000, "done");
@@ -469,12 +428,9 @@ server.addEventListener("close", (event) => {
 
 Note that there is no corresponding option to the `WebSocket` constructor. WebSockets constructed with `new WebSocket` will always auto-reply to closes after this flag takes effect. WebSockets constructed this way are automatically "accepted", so there is no opportunity to pass the option to `accept()`. If you are creating a WebSocket with `new WebSocket`, but you need half-open behavior, you will need to switch to using `fetch()` instead.
 
-**JavaScript**
-
 ```js
 // This does not allow half-open:
 let ws = new WebSocket("wss://example.com");
-
 
 // But you can do this instead:
 let resp = await fetch("https://example.com", {
@@ -762,9 +718,9 @@ This flag will enable [Workers Tracing](https://developers.cloudflare.com/worker
 
 ```json
 {
-  "observability": {
-    "enabled": true
-  }
+	"observability": {
+		"enabled": true
+	}
 }
 ```
 
@@ -772,11 +728,11 @@ You can also explictly turn on automatic tracing without the flag and with older
 
 ```json
 {
-  "observability": {
-    "traces": {
-      "enabled": true
-    }
-  }
+	"observability": {
+		"traces": {
+			"enabled": true
+		}
+	}
 }
 ```
 
@@ -992,15 +948,11 @@ Revalidating with the origin means that the Worker request will first look for a
 
 Examples using `cache: 'no-cache'`:
 
-**JavaScript**
-
 ```js
 const response = await fetch("https://example.com", { cache: "no-cache" });
 ```
 
 The cache value can also be set on a `Request` object.
-
-**JavaScript**
 
 ```js
 const request = new Request("https://example.com", { cache: "no-cache" });
@@ -1120,11 +1072,9 @@ Enables the use of [FinalizationRegistry ↗](https://developer.mozilla.org/en-U
 * `FinalizationRegistry` allows you to register a cleanup callback that runs after an object has been garbage-collected.
 * `WeakRef` creates a weak reference to an object, allowing it to be garbage-collected if no other strong references exist.
 
-Behaviour
+:::note\[Behaviour\] `FinalizationRegistry` cleanup callbacks may execute at any point during your request lifecycle, even after your invoked handler has completed (similar to `ctx.waitUntil()`). These callbacks do not have an associated async context. You cannot perform any I/O within them, including emitting events to a tail Worker. :::
 
-`FinalizationRegistry` cleanup callbacks may execute at any point during your request lifecycle, even after your invoked handler has completed (similar to `ctx.waitUntil()`). These callbacks do not have an associated async context. You cannot perform any I/O within them, including emitting events to a tail Worker.
-
-These APIs are fundamentally non-deterministic. The timing and execution of garbage collection are unpredictable, and you **should not rely on them for essential program logic**. Additionally, cleanup callbacks registered with `FinalizationRegistry` may **never be executed**, including but not limited to cases where garbage collection is not triggered, or your Worker gets evicted.
+:::caution These APIs are fundamentally non-deterministic. The timing and execution of garbage collection are unpredictable, and you **should not rely on them for essential program logic**. Additionally, cleanup callbacks registered with `FinalizationRegistry` may **never be executed**, including but not limited to cases where garbage collection is not triggered, or your Worker gets evicted. :::
 
 ### Passthrough AbortSignal of incoming request to subrequests
 
@@ -1171,8 +1121,6 @@ When `assets.run_worker_first = true` is set, this compatibility flag has no eff
 
 When you enable the `nodejs_compat_populate_process_env` compatibility flag and the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/)flag is also enabled, `process.env` will be populated with values from any bindings with text or JSON values. This means that if you have added [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [secrets](https://developers.cloudflare.com/workers/configuration/secrets/), or [version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/)bindings, these values can be accessed on `process.env`.
 
-**JavaScript**
-
 ```js
 const apiClient = ApiClient.new({ apiKey: process.env.API_KEY });
 const LOG_LEVEL = process.env.LOG_LEVEL || "info";
@@ -1193,14 +1141,11 @@ By default, [Queues](https://developers.cloudflare.com/queues/) Consumer Workers
 
 This Consumer Worker is an example of a Worker which utilizes `ctx.waitUntil()`. Under the default behavior, this consumer Worker will only acknowledge a batch of messages after the sleep function has resolved.
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
     // omitted
   },
-
 
   async queue(batch, env, ctx) {
     console.log(`received batch of ${batch.messages.length} messages to queue ${batch.queue}`);
@@ -1210,7 +1155,6 @@ export default {
     ctx.waitUntil(sleep(30 * 1000));
   }
 };
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -1267,15 +1211,11 @@ When `no-store` is specified:
 
 Examples using `cache: 'no-store'`:
 
-**JavaScript**
-
 ```js
 const response = await fetch("https://example.com", { cache: "no-store" });
 ```
 
 The cache value can also be set on a `Request` object.
-
-**JavaScript**
 
 ```js
 const request = new Request("https://example.com", { cache: "no-store" });
@@ -1353,8 +1293,6 @@ When you make a subrequest to a website that does not use Cloudflare ("Grey Clou
 
 For example:
 
-**JavaScript**
-
 ```js
 const response = await fetch("https://example.com:8000");
 ```
@@ -1403,18 +1341,14 @@ In the original implementation of BYOB ("Bring your own buffer") `ReadableStream
 
 When the `internal_stream_byob_return_view` flag is used, the BYOB `read()` will implement standard behavior.
 
-**JavaScript**
-
 ```js
 const resp = await fetch('https://example.org');
 const reader = resp.body.getReader({ mode: 'byob' });
 await result = await reader.read(new Uint8Array(10));
 
-
 if (result.done) {
   // The result gives us an empty Uint8Array...
   console.log(result.value.byteLength); // 0
-
 
   // However, it is backed by the same underlying memory that was passed
   // into the read call.
@@ -1450,8 +1384,6 @@ For most applications, this change will have no impact unless you use it. Howeve
 | **Flag to disable** | no\_unwrap\_custom\_thenables |
 
 With the `unwrap_custom_thenables` flag set, various Workers APIs that accept promises will also correctly handle custom thenables (objects with a `then` method) that are not native promises, but are intended to be treated as such). For example, the `waitUntil` method of the `ExecutionContext`object will correctly handle custom thenables, allowing them to be used in place of native promises.
-
-**JavaScript**
 
 ```js
 async fetch(req, env, ctx) {
@@ -1598,8 +1530,6 @@ The WHATWG introduced additional optional arguments to the `URLSearchParams` obj
 
 For an example of how this change could break existing code, consider code that uses the `Array` `forEach()` method to iterate through a number of parameters to delete:
 
-**JavaScript**
-
 ```js
 const usp = new URLSearchParams();
 // ...
@@ -1609,8 +1539,6 @@ const usp = new URLSearchParams();
 The `forEach()` automatically passes multiple parameters to the function that is passed in. Prior to the addition of the new standard parameters, these extra arguments would have been ignored.
 
 Now, however, the additional arguments have meaning and change the behavior of the function. With this flag, the example above would need to be changed to:
-
-**JavaScript**
 
 ```js
 const usp = new URLSearchParams();
@@ -1644,8 +1572,6 @@ Previously, when using Workers for Platforms' [dynamic dispatch API](https://dev
 | **Flag to disable** | no\_http\_headers\_getsetcookie |
 
 Adds the [getSetCookie() ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers/getSetCookie) method to the [Headers ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers) API in Workers.
-
-**JavaScript**
 
 ```js
 const response = await fetch("https://example.com");
@@ -1864,8 +1790,6 @@ Originally, the Workers runtime did not detach the `ArrayBuffer`s from user-prov
 
 User code should never try to reuse an `ArrayBuffer` that has been passed into a [BYOB reader's read() method](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/#methods). Instead, user code can reuse the `ArrayBuffer` backing the result of the `read()` promise, as in the example below.
 
-**JavaScript**
-
 ```js
 // Consume and discard `readable` using a single 4KiB buffer.
 let reader = readable.getReader({ mode: "byob" });
@@ -1919,14 +1843,11 @@ By default, [Queues](https://developers.cloudflare.com/queues/) Consumer Workers
 
 This Consumer Worker is an example of a Worker which utilizes `ctx.waitUntil()`. Under the default behavior, this consumer Worker will only acknowledge a batch of messages after the sleep function has resolved.
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
     // omitted
   },
-
 
   async queue(batch, env, ctx) {
     console.log(`received batch of ${batch.messages.length} messages to queue ${batch.queue}`);
@@ -1936,7 +1857,6 @@ export default {
     ctx.waitUntil(sleep(30 * 1000));
   }
 };
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -1960,7 +1880,14 @@ HTML5 does not recognize XML self-closing tag syntax. For example, `<script src=
 
 `HTMLRewriter` was designed to parse standard HTML5, not ESI. However, it would be useful to be able to implement some parts of ESI using `HTMLRewriter`. To that end, this compatibility flag causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, so that they can be parsed and handled properly.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/#page","headline":"Compatibility flags · Cloudflare Workers docs","description":"Opt into a specific features of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/compatibility-flags/","name":"Compatibility flags"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/#page","headline":"Compatibility flags · Cloudflare Workers docs","description":"Opt into a specific features of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

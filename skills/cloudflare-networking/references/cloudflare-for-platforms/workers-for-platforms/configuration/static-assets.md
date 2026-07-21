@@ -1,16 +1,18 @@
 ---
-title: Static assets
 description: Host static assets on Cloudflare's global network and deliver faster load times worldwide with Workers for Platforms.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Static assets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Static assets
 
-# Static assets
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers for Platforms lets you deploy front-end applications at scale. By hosting static assets on Cloudflare's global network, you can deliver faster load times worldwide and eliminate the need for external infrastructure. You can also combine these static assets with dynamic logic in Cloudflare Workers, providing a full-stack experience for your customers.
 
@@ -73,14 +75,14 @@ If strict isolation of assets is required, we recommend either salting with a ra
 
 ```json
 {
-  "/index.html": {
-    "hash": "08f1dfda4574284ab3c21666d1ee8c7d4",
-    "size": 1234
-  },
-  "/styles.css": {
-    "hash": "36b8be012ee77df5f269b11b975611d3",
-    "size": 5678
-  }
+	"/index.html": {
+		"hash": "08f1dfda4574284ab3c21666d1ee8c7d4",
+		"size": 1234
+	},
+	"/styles.css": {
+		"hash": "36b8be012ee77df5f269b11b975611d3",
+		"size": 5678
+	}
 }
 ```
 
@@ -139,7 +141,7 @@ If the response to the Upload Session API returns `buckets`, that means you have
 
 Use the [Workers Assets Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/assets/subresources/upload/) to transmit the raw file bytes in base64-encoded format for any missing or changed files. Once uploaded, Cloudflare will store these files so they can then be attached to a User Worker.
 
-Warning
+Caution
 
 Asset uniqueness is determined by the provided hash and are associated globally to their namespace rather than with each specific User Worker. If an asset has already been uploaded for that namespace earlier, Cloudflare will automatically omit sending this asset hash back in the `buckets` response to save you from re-uploading the same thing twice. This means that an asset can be shared between multiple User Workers if it shares the same hash unless you **explicitly make the hash unique**. If you require full isolation between assets across User Workers, incorporate a unique identifier within your asset hashing process (either salting it with something entirely random each time, or by including the end-user account ID or their Worker name to retain per-customer re-use).
 
@@ -195,12 +197,12 @@ Once every file in the manifest has been uploaded, a status code of `201` will b
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "jwt": "<completion-token>"
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"jwt": "<completion-token>"
+	}
 }
 ```
 
@@ -246,34 +248,26 @@ If you prefer a CLI-based approach and your platform setup allows direct publish
 
 Create or update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to specify where Wrangler should look for static files:
 
-* [  wrangler.jsonc ](#tab-panel-7695)
-* [  wrangler.toml ](#tab-panel-7696)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-static-site",
-  "main": "./src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-  },
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-static-site",
+	"main": "./src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"directory": "./public",
+		"binding": "ASSETS",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-static-site"
 main = "./src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [assets]
 directory = "./public"
@@ -289,13 +283,11 @@ Place your static files (HTML, CSS, images, etc.) in the specified directory (in
 
 If you need to reference these files in your Worker script to serve them dynamically, you can use the `ASSETS` binding like this:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return env.ASSETS.fetch(request);
-  },
+	async fetch(request, env, ctx) {
+		return env.ASSETS.fetch(request);
+	},
 };
 ```
 
@@ -309,7 +301,14 @@ npx wrangler deploy --name <USER_WORKER_NAME> --dispatch-namespace <NAMESPACE_NA
 
 Wrangler will automatically detect your static files, bundle them, and upload them to Cloudflare along with your Worker code.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/#page","headline":"Static assets · Cloudflare for Platforms docs","description":"Host static assets on Cloudflare's global network and deliver faster load times worldwide with Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/","name":"Static assets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/#page","headline":"Static assets · Cloudflare for Platforms docs","description":"Host static assets on Cloudflare's global network and deliver faster load times worldwide with Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

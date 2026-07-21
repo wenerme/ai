@@ -1,16 +1,18 @@
 ---
-title: Security fields
 description: Review security action and rule field values.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Security fields
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Security fields
 
-# Security fields
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/reference/security-fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Security fields contain rules to block requests that contain specific types of content.
 
@@ -60,7 +62,14 @@ The Security fields contain rules to block requests that contain specific types 
 | firewallManaged | Allow or block based on WAF Managed Rules' settings.                                                             |
 | firewallCustom  | Allow or block based on a rule configured in WAF custom rules.                                                   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/security-fields/#page","headline":"Security fields · Cloudflare Logs docs","description":"Review security action and rule field values.","url":"https://developers.cloudflare.com/logs/reference/security-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/reference/security-fields/","name":"Security fields"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/security-fields/#page","headline":"Security fields · Cloudflare Logs docs","description":"Review security action and rule field values.","url":"https://developers.cloudflare.com/logs/reference/security-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

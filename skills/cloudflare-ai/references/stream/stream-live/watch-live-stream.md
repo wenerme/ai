@@ -1,16 +1,18 @@
 ---
-title: Watch a live stream
 description: Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Watch a live stream
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Watch a live stream
 
-# Watch a live stream
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a [Live Input](https://developers.cloudflare.com/stream/stream-live/start-stream-live/) begins receiving a broadcast, a new video is automatically created if the input's `mode` property is set to `automatic`.
 
@@ -53,7 +55,7 @@ You can also retrieve the embed code or manifest URLs from Dash or the API.
 To get the Stream built-in player embed code or HLS Manifest URL for a custom player:
 
 1. In the Cloudflare dashboard, go to the **Live inputs** page.
-[ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 2. Select a live input from the list.
 3. Locate the **Embed** and **HLS Manifest URL** beneath the video.
 4. Determine which option to use and then select **Click to copy** beneath your choice.
@@ -63,8 +65,6 @@ The embed code or manifest URL retrieved in Dash will reference the Live Input I
 ## Use the API
 
 To retrieve the player code or manifest URLs via the API, fetch the Live Input's list of videos:
-
-**Request**
 
 ```bash
 curl -X GET \
@@ -82,15 +82,12 @@ Each video in the response, including the active broadcast if there is one, cont
 
 In the example below, the state of the live video is `live-inprogress` and the state for previously recorded video is `ready`.
 
-**Response**
-
 ```json
 {
   "result": [
     {
       "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
       "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
-
 
       "status": {
         "state": "live-inprogress",
@@ -105,7 +102,6 @@ In the example below, the state of the live video is `live-inprogress` and the s
       "size": 0,
       "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
       ...
-
 
       "playback": {
         "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",
@@ -157,17 +153,17 @@ In the example below, the response indicates the `ID` is for an input with an ac
 
 ```json
 {
-  "isInput": true,
-  "videoUID": "55b9b5ce48c3968c6b514c458959d6a",
-  "live": true
+	"isInput": true,
+	"videoUID": "55b9b5ce48c3968c6b514c458959d6a",
+	"live": true
 }
 ```
 
 ```json
 {
-  "isInput": true,
-  "videoUID": null,
-  "live": false
+	"isInput": true,
+	"videoUID": null,
+	"live": false
 }
 ```
 
@@ -184,7 +180,14 @@ While the recording of the live stream is generating, the video may report as `n
 
 If you are not using the Stream player for live stream recordings, refer to [Record and replay live streams](https://developers.cloudflare.com/stream/stream-live/replay-recordings/) for more information on how to replay a live stream recording.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#page","headline":"Watch a live stream · Cloudflare Stream docs","description":"Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.","url":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/watch-live-stream/","name":"Watch a live stream"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#page","headline":"Watch a live stream · Cloudflare Stream docs","description":"Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.","url":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

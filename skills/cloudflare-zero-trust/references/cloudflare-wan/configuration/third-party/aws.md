@@ -1,16 +1,18 @@
 ---
-title: Amazon AWS Transit Gateway
 description: Connect Amazon AWS Transit Gateway to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Amazon AWS Transit Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Amazon AWS Transit Gateway
 
-# Amazon AWS Transit Gateway
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial provides information and examples of how to configure IPsec VPN between Cloudflare WAN (formerly Magic WAN) with an AWS Transit Gateway.
 
@@ -42,7 +44,7 @@ Additionally, you also need to configure the necessary route table entries for t
 5. Take note of the **IP address** you chose, as this corresponds to the customer endpoint IP that you will need to configure on the Cloudflare side of the IPsec tunnel.
 6. The number of options for the VPN connection will expand. Take note of the **Pre-shared key**. You will need it to create the IPsec tunnel on Cloudflare's side.
 7. In **Inside IPv4 CIDR**, AWS enforces that only a `/30` block within the `169.254.0.0/16` range can be used. To accommodate this, Cloudflare supports a subset of this IP block. Namely, Cloudflare supports `169.254.240.0/20` to be assigned as the IPsec tunnel's (internal) interface IPs. This example will use `169.254.244.0/30` as the CIDR block for the IPsec tunnel: `169.254.244.1` for the AWS side of the tunnel, and `169.254.244.2` for the Cloudflare side of the tunnel.
-Warning
+Caution
 Make sure you input an IP address supported by Cloudflare. If you do not input a value here, AWS will randomly generate an IP address that might not be supported by Cloudflare.
 8. Configure the following settings for the IPsec tunnel. Note that the **Startup action** needs to be set to **Start**, which means the AWS side will initiate IPsec negotiation. Settings not mentioned here can be left at their default settings:
 
@@ -91,7 +93,14 @@ To create a static route:
 3. For the **Tunnel/Next hop**, select the IPsec tunnel you created in the previous step.
 4. Repeat the steps above for the second IPsec tunnel you created.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/#page","headline":"Amazon AWS Transit Gateway · Cloudflare WAN docs","description":"Connect Amazon AWS Transit Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/aws/","name":"Amazon AWS Transit Gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/#page","headline":"Amazon AWS Transit Gateway · Cloudflare WAN docs","description":"Connect Amazon AWS Transit Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

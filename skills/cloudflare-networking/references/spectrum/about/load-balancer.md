@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Load Balancing
 description: Add TCP health checks, failover, and traffic steering to Spectrum applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Load Balancing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Load Balancing
 
-# Cloudflare Load Balancing
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/about/load-balancer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can configure Spectrum with Cloudflare [Load Balancing](https://developers.cloudflare.com/load-balancing/) to provide TCP healthchecks, failover, and traffic steering, bringing resiliency to your Spectrum applications.
 
@@ -46,21 +48,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Create Monitor**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Spectrum Health Check",
-    "type": "tcp",
-    "port": 2048,
-    "interval": 30,
-    "retries": 2,
-    "timeout": 5,
-    "method": "connection_established"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Spectrum Health Check",
+		"type": "tcp",
+		"port": 2048,
+		"interval": 30,
+		"retries": 2,
+		"timeout": 5,
+		"method": "connection_established"
+	}'
 ```
 
 ```json
@@ -105,7 +105,14 @@ Weight configured within a load balancer pool will be honored with load balancin
 * UDP health checks are only available with public monitoring. TCP can be used with both public and private monitoring.
 * This feature requires an Enterprise plan. If you would like to upgrade, contact your account team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/load-balancer/#page","headline":"Cloudflare Load Balancing · Cloudflare Spectrum docs","description":"Add TCP health checks, failover, and traffic steering to Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/load-balancer/","name":"Cloudflare Load Balancing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/load-balancer/#page","headline":"Cloudflare Load Balancing · Cloudflare Spectrum docs","description":"Add TCP health checks, failover, and traffic steering to Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

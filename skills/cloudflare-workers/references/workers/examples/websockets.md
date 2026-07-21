@@ -1,18 +1,20 @@
 ---
-title: Using the WebSockets API
 description: Use the WebSockets API to communicate in real time with your Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using the WebSockets API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Using the WebSockets API
+#  Using the WebSockets API
 
 Use the WebSockets API to communicate in real time with your Cloudflare Workers.
+
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 WebSockets allow you to communicate in real time with your Cloudflare Workers serverless functions. In this guide, you will learn the basics of WebSockets on Cloudflare Workers, both from the perspective of writing WebSocket servers in your Workers functions, as well as connecting to and working with those WebSocket servers as a client.
 
@@ -32,12 +34,10 @@ WebSocket servers in Cloudflare Workers allow you to receive messages from a cli
 
 A client can make a WebSocket request in the browser by instantiating a new instance of `WebSocket`, passing in the URL for your Workers function:
 
-**JavaScript**
-
 ```js
 // In client-side JavaScript, connect to your Workers function using WebSockets:
 const websocket = new WebSocket(
-  "wss://example-websocket.signalnerve.workers.dev",
+	"wss://example-websocket.signalnerve.workers.dev",
 );
 ```
 
@@ -46,11 +46,6 @@ Note
 For more details about creating and working with WebSockets in the client, refer to [Writing a WebSocket client](#write-a-websocket-client).
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
-
-* [  JavaScript ](#tab-panel-12637)
-* [  Rust ](#tab-panel-12638)
-
-**JavaScript**
 
 ```js
 async function handleRequest(request) {
@@ -63,7 +58,6 @@ async function handleRequest(request) {
 
 ```rs
 use worker::*;
-
 
 #[event(fetch)]
 async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
@@ -79,11 +73,6 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-12639)
-* [  Rust ](#tab-panel-12640)
-
-**JavaScript**
-
 ```js
 async function handleRequest(request) {
   const upgradeHeader = request.headers.get('Upgrade');
@@ -91,11 +80,9 @@ async function handleRequest(request) {
     return new Response('Expected Upgrade: websocket', { status: 426 });
   }
 
-
   const webSocketPair = new WebSocketPair();
   const client = webSocketPair[0],
     server = webSocketPair[1];
-
 
   return new Response(null, {
     status: 101,
@@ -107,7 +94,6 @@ async function handleRequest(request) {
 ```rs
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
     let upgrade_header = match req.headers().get("Upgrade") {
@@ -118,15 +104,12 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
         return worker::Response::error("Expected Upgrade: websocket", 426);
     }
 
-
     let ws = WebSocketPair::new()?;
     let client = ws.client;
     let server = ws.server;
     server.accept()?;
 
-
     worker::Response::from_websocket(client)
-
 
 }
 ```
@@ -135,11 +118,6 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-12641)
-* [  Rust ](#tab-panel-12642)
-
-**JavaScript**
-
 ```js
 async function handleRequest(request) {
   const upgradeHeader = request.headers.get('Upgrade');
@@ -147,13 +125,10 @@ async function handleRequest(request) {
     return new Response('Expected Upgrade: websocket', { status: 426 });
   }
 
-
   const webSocketPair = new WebSocketPair();
   const [client, server] = Object.values(webSocketPair);
 
-
   server.accept();
-
 
   return new Response(null, {
     status: 101,
@@ -165,7 +140,6 @@ async function handleRequest(request) {
 ```rs
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
     let upgrade_header = match req.headers().get("Upgrade") {
@@ -176,26 +150,17 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
         return worker::Response::error("Expected Upgrade: websocket", 426);
     }
 
-
     let ws = WebSocketPair::new()?;
     let client = ws.client;
     let server = ws.server;
     server.accept()?;
 
-
     worker::Response::from_websocket(client)
-
 
 }
 ```
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
-
-* [  JavaScript ](#tab-panel-12643)
-* [  Rust ](#tab-panel-12644)
-* [  Hono ](#tab-panel-12645)
-
-**JavaScript**
 
 ```js
 async function handleRequest(request) {
@@ -204,16 +169,13 @@ async function handleRequest(request) {
     return new Response('Expected Upgrade: websocket', { status: 426 });
   }
 
-
   const webSocketPair = new WebSocketPair();
   const [client, server] = Object.values(webSocketPair);
-
 
   server.accept();
   server.addEventListener('message', event => {
     console.log(event.data);
   });
-
 
   return new Response(null, {
     status: 101,
@@ -226,7 +188,6 @@ async function handleRequest(request) {
 use futures::StreamExt;
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
     let upgrade_header = match req.headers().get("Upgrade") {
@@ -237,12 +198,10 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
         return worker::Response::error("Expected Upgrade: websocket", 426);
     }
 
-
     let ws = WebSocketPair::new()?;
     let client = ws.client;
     let server = ws.server;
     server.accept()?;
-
 
     wasm_bindgen_futures::spawn_local(async move {
         let mut event_stream = server.events().expect("could not open stream");
@@ -255,19 +214,14 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
     });
     worker::Response::from_websocket(client)
 
-
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Hono } from 'hono'
 import { upgradeWebSocket } from 'hono/cloudflare-workers'
 
-
 const app = new Hono()
-
 
 app.get(
   '*',
@@ -287,7 +241,6 @@ app.get(
   })
 )
 
-
 export default app;
 ```
 
@@ -295,29 +248,23 @@ export default app;
 
 Writing WebSocket clients that communicate with your Workers function is a two-step process: first, create the WebSocket instance, and then attach event listeners to it:
 
-**JavaScript**
-
 ```js
 const websocket = new WebSocket(
-  "wss://websocket-example.signalnerve.workers.dev",
+	"wss://websocket-example.signalnerve.workers.dev",
 );
 websocket.addEventListener("message", (event) => {
-  console.log("Message received from server");
-  console.log(event.data);
+	console.log("Message received from server");
+	console.log(event.data);
 });
 ```
 
 WebSocket clients can send messages back to the server using the [send](https://developers.cloudflare.com/workers/runtime-apis/websockets/#send) function:
-
-**JavaScript**
 
 ```js
 websocket.send("MESSAGE");
 ```
 
 When the WebSocket interaction is complete, the client can close the connection using [close](https://developers.cloudflare.com/workers/runtime-apis/websockets/#close):
-
-**JavaScript**
 
 ```js
 websocket.close();
@@ -331,40 +278,35 @@ Cloudflare Workers supports the `new WebSocket(url)` constructor. A Worker can e
 
 Additionally, Cloudflare supports establishing WebSocket connections by making a fetch request to a URL with the `Upgrade` header set.
 
-**JavaScript**
-
 ```js
 async function websocket(url) {
-  // Make a fetch request including `Upgrade: websocket` header.
-  // The Workers Runtime will automatically handle other requirements
-  // of the WebSocket protocol, like the Sec-WebSocket-Key header.
-  let resp = await fetch(url, {
-    headers: {
-      Upgrade: "websocket",
-    },
-  });
+	// Make a fetch request including `Upgrade: websocket` header.
+	// The Workers Runtime will automatically handle other requirements
+	// of the WebSocket protocol, like the Sec-WebSocket-Key header.
+	let resp = await fetch(url, {
+		headers: {
+			Upgrade: "websocket",
+		},
+	});
 
+	// If the WebSocket handshake completed successfully, then the
+	// response has a `webSocket` property.
+	let ws = resp.webSocket;
+	if (!ws) {
+		throw new Error("server didn't accept WebSocket");
+	}
 
-  // If the WebSocket handshake completed successfully, then the
-  // response has a `webSocket` property.
-  let ws = resp.webSocket;
-  if (!ws) {
-    throw new Error("server didn't accept WebSocket");
-  }
+	// Call accept() to indicate that you'll be handling the socket here
+	// in JavaScript, as opposed to returning it on to a client.
+	// You can pass { allowHalfOpen: true } if you need to coordinate
+	// the close handshake manually (for example, when proxying).
+	ws.accept();
 
-
-  // Call accept() to indicate that you'll be handling the socket here
-  // in JavaScript, as opposed to returning it on to a client.
-  // You can pass { allowHalfOpen: true } if you need to coordinate
-  // the close handshake manually (for example, when proxying).
-  ws.accept();
-
-
-  // Now you can send and receive messages like before.
-  ws.send("hello");
-  ws.addEventListener("message", (msg) => {
-    console.log(msg.data);
-  });
+	// Now you can send and receive messages like before.
+	ws.send("hello");
+	ws.addEventListener("message", (msg) => {
+		console.log(msg.data);
+	});
 }
 ```
 
@@ -380,7 +322,14 @@ For more details, refer to [WebSocket close behavior](https://developers.cloudfl
 
 Cloudflare Workers supports WebSocket compression. Refer to [WebSocket Compression](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-compression) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/websockets/","name":"Using the WebSockets API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
 ```

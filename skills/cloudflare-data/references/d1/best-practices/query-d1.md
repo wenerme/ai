@@ -1,16 +1,18 @@
 ---
-title: Query a database
 description: Query D1 using SQL statements through the Workers Binding API, REST API, or Wrangler commands.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query a database
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query a database
 
-# Query a database
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/best-practices/query-d1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. You can use SQL commands to query D1.
 
@@ -35,7 +37,6 @@ CREATE TABLE users (
     name TEXT,
     metadata TEXT
 )
-
 
 CREATE TABLE orders (
     order_id INTEGER PRIMARY KEY,
@@ -84,8 +85,6 @@ This requires you to:
 2. Prepare a statement.
 3. Run the statement.
 
-**index.js**
-
 ```js
 export default {
     async fetch(request, env) {
@@ -94,16 +93,14 @@ export default {
         const companyName2 = `Around the Horn`;
         const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
 
-
         if (pathname === `/RUN`) {
             const returnValue = await stmt.bind(companyName1).run();
             return Response.json(returnValue);
         }
 
-
         return new Response(
             `Welcome to the D1 API Playground!
-            \nChange the URL to test the various methods inside your index.js file.`,
+						\nChange the URL to test the various methods inside your index.js file.`,
         );
     },
 };
@@ -141,7 +138,14 @@ npx wrangler d1 execute prod-d1-tutorial --command="SELECT * FROM Customers"
 └────────────┴─────────────────────┴───────────────────┘
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/query-d1/#page","headline":"Query a database · Cloudflare D1 docs","description":"Query D1 using SQL statements through the Workers Binding API, REST API, or Wrangler commands.","url":"https://developers.cloudflare.com/d1/best-practices/query-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/query-d1/","name":"Query a database"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/query-d1/#page","headline":"Query a database · Cloudflare D1 docs","description":"Query D1 using SQL statements through the Workers Binding API, REST API, or Wrangler commands.","url":"https://developers.cloudflare.com/d1/best-practices/query-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

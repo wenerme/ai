@@ -1,16 +1,18 @@
 ---
-title: Network operators
 description: Information for network operators peering with 1.1.1.1.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Network operators
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network operators
 
-# Network operators
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Network operators, including Internet Service Providers (ISPs), device manufacturers, public Wi-Fi networks, municipal broadband providers, and security scanning services can use [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/setup/) in place of operating their own recursive DNS infrastructure — DNS servers that resolve queries on behalf of clients by querying authoritative nameservers across the internet.
 
@@ -61,7 +63,14 @@ Best practices include:
 
 If you are a network operator and still have outstanding questions, contact `resolver@cloudflare.com` with your use case, so it can be discussed further. Make sure to visit [1.1.1.1/help ↗](https://one.one.one.one/help) from within your network and share the resulting report when contacting Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/#page","headline":"Network operators | Cloudflare Docs","description":"Information for network operators peering with 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/infrastructure/network-operators/","name":"Network operators"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/#page","headline":"Network operators | Cloudflare Docs","description":"Information for network operators peering with 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

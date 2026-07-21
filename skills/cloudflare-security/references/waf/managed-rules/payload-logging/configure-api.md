@@ -1,16 +1,18 @@
 ---
-title: Configure payload logging via API
 description: Configure payload logging for managed rulesets using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure payload logging via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure payload logging via API
 
-# Configure payload logging via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure payload logging for a managed ruleset via API.
 
@@ -44,45 +46,43 @@ To configure payload logging for a managed ruleset deployed at the account level
 This example configures payload logging for the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/), which is already deployed for a zone with ID `$ZONE_ID`.
 
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the rules currently configured in the entry point ruleset of the `http_request_firewall_managed` phase.
-
-**Get a zone entry point ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "result": {
-    "id": "060013b1eeb14c93b0dcd896537e0d2c", // entry point ruleset ID
-    "name": "default",
-    "description": "",
-    "source": "firewall_managed",
-    "kind": "zone",
-    "version": "3",
-    "rules": [
-      // (...)
-      {
-        "id": "1bdb49371c1f46958fc8b985efcb79e7", // `execute` rule ID
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "last_updated": "2024-01-20T14:21:28.643979Z",
-        "ref": "1bdb49371c1f46958fc8b985efcb79e7",
-        "enabled": true,
-        "action_parameters": {
-          "id": "efb7b8c949ac4650a09736fc376e9aee", // "Cloudflare Managed Ruleset" ID
-          "version": "latest"
-        }
-      }
-      // (...)
-    ],
-    "last_updated": "2024-01-20T14:29:00.190643Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "060013b1eeb14c93b0dcd896537e0d2c", // entry point ruleset ID
+		"name": "default",
+		"description": "",
+		"source": "firewall_managed",
+		"kind": "zone",
+		"version": "3",
+		"rules": [
+			// (...)
+			{
+				"id": "1bdb49371c1f46958fc8b985efcb79e7", // `execute` rule ID
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"last_updated": "2024-01-20T14:21:28.643979Z",
+				"ref": "1bdb49371c1f46958fc8b985efcb79e7",
+				"enabled": true,
+				"action_parameters": {
+					"id": "efb7b8c949ac4650a09736fc376e9aee", // "Cloudflare Managed Ruleset" ID
+					"version": "latest"
+				}
+			}
+			// (...)
+		],
+		"last_updated": "2024-01-20T14:29:00.190643Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 2. Save the following IDs for the next step:
@@ -93,22 +93,20 @@ To find the correct rule in the `rules` array, search for an `execute` rule cont
 Note
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.
 3. Invoke the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to update the configuration of the rule you identified. The rule will now include the payload logging configuration (`matched_data` object).
-
-**Update a zone ruleset rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/060013b1eeb14c93b0dcd896537e0d2c/rules/1bdb49371c1f46958fc8b985efcb79e7" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "execute",
-    "action_parameters": {
-        "id": "efb7b8c949ac4650a09736fc376e9aee",
-        "matched_data": {
-            "public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
-        }
-    },
-    "expression": "true"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "execute",
+		"action_parameters": {
+				"id": "efb7b8c949ac4650a09736fc376e9aee",
+				"matched_data": {
+						"public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
+				}
+		},
+		"expression": "true"
+	}'
 ```
 The response will include the complete ruleset after updating the rule.
 
@@ -125,24 +123,29 @@ To disable payload logging for a managed ruleset:
 
 For example, the following `PATCH` request updates the rule with ID `$RULE_ID` deploying the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) so that payload logging is disabled:
 
-**Update a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "execute",
-    "action_parameters": {
-        "id": "efb7b8c949ac4650a09736fc376e9aee"
-    },
-    "expression": "true"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "execute",
+		"action_parameters": {
+				"id": "efb7b8c949ac4650a09736fc376e9aee"
+		},
+		"expression": "true"
+	}'
 ```
 
 For details on obtaining the entry point ruleset ID and the ID of the rule to update, refer to [Configure and enable payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#configure-and-enable-payload-logging).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#page","headline":"Configure payload logging for a managed ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/configure-api/","name":"Configure payload logging via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#page","headline":"Configure payload logging for a managed ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

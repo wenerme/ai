@@ -1,18 +1,20 @@
 ---
-title: Query D1 from Python Workers
 description: Learn how to query D1 from a Python Worker
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query D1 from Python Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Query D1 from Python Workers
+#  Query D1 from Python Workers
 
 Learn how to query D1 from a Python Worker
+
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Workers platform supports [multiple languages](https://developers.cloudflare.com/workers/languages/), including TypeScript, JavaScript, Rust and Python. This guide shows you how to query a D1 database from [Python](https://developers.cloudflare.com/workers/languages/python/) and deploy your application globally.
 
@@ -36,13 +38,9 @@ This example assumes you have an existing D1 database. To allow your Python Work
 
 You will need the `database_name` and `database_id` for a D1 database. You can use the `wrangler` CLI to create a new database or fetch the ID for an existing database as follows:
 
-**Create a database**
-
 ```sh
 npx wrangler d1 create my-first-db
 ```
-
-**Retrieve a database ID**
 
 ```sh
 npx wrangler d1 info some-existing-db
@@ -62,32 +60,25 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-8585)
-* [  wrangler.toml ](#tab-panel-8586)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "python-and-d1",
-  "main": "src/entry.py",
-  "compatibility_flags": [ // Required for Python Workers
-    "python_workers"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "d1_databases": [
-    {
-      "binding": "DB", // This will be how you refer to your database in your Worker
-      "database_name": "YOUR_DATABASE_NAME",
-      "database_id": "YOUR_DATABASE_ID"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "python-and-d1",
+	"main": "src/entry.py",
+	"compatibility_flags": [ // Required for Python Workers
+		"python_workers"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"d1_databases": [
+		{
+			"binding": "DB", // This will be how you refer to your database in your Worker
+			"database_name": "YOUR_DATABASE_NAME",
+			"database_id": "YOUR_DATABASE_ID"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -95,8 +86,7 @@ name = "python-and-d1"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[d1_databases]]
 binding = "DB"
@@ -110,16 +100,12 @@ The value of `binding` is how you will refer to your database from within your W
 
 To create a Python Worker, create an empty file at `src/entry.py`, matching the value of `main` in your Wrangler file with the contents below:
 
-**Python**
-
 ```python
 from workers import Response, WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         # Do anything else you'd like on request here!
-
 
         try:
             # Query D1 - we'll list all tables in our database in this example
@@ -165,7 +151,14 @@ If you receive an error deploying:
 * Review the [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) and how to query D1 databases.
 * Learn [how to import data](https://developers.cloudflare.com/d1/best-practices/import-export-data/) to your D1 database.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/query-d1-from-python-workers/","name":"Query D1 from Python Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
 ```

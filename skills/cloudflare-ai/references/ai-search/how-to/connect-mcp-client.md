@@ -1,16 +1,18 @@
 ---
-title: Connect your AI Search to an MCP client
 description: Expose your indexed content as a search tool for any MCP client or agent using the built-in MCP endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect your AI Search to an MCP client
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect your AI Search to an MCP client
 
-# Connect your AI Search to an MCP client
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance can expose a built-in [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/) endpoint. The endpoint provides a `search` tool over your indexed content, so any MCP client or agent, such as an AI assistant or IDE, can search your knowledge base without any code.
 
@@ -52,7 +54,7 @@ Once indexing completes, your instance has content to expose over MCP.
 Your instance's public endpoint serves the MCP endpoint.
 
 1. Go to **AI Search** in the Cloudflare dashboard.
-[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your `docs-search` instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**, then turn on the **MCP** endpoint.
@@ -79,11 +81,11 @@ Add the MCP URL to your client as a remote MCP server. Many clients use an `mcpS
 
 ```json
 {
-  "mcpServers": {
-    "ai-search": {
-      "url": "https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp"
-    }
-  }
+	"mcpServers": {
+		"ai-search": {
+			"url": "https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp"
+		}
+	}
 }
 ```
 
@@ -103,13 +105,26 @@ Refer to [Public endpoint settings](https://developers.cloudflare.com/ai-search/
 
 ## Next steps
 
-[ MCP endpoint reference ](https://developers.cloudflare.com/ai-search/api/search/mcp/) The MCP endpoint tools and request format.
+### [ MCP endpoint reference ](https://developers.cloudflare.com/ai-search/api/search/mcp/)
 
-[ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) Rate limiting, CORS, and tool description.
+ The MCP endpoint tools and request format.
 
-[ AI Search as an agent tool ](https://developers.cloudflare.com/agents/tools/ai-search/) Query AI Search in code from a Cloudflare Agent.
+### [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
+
+ Rate limiting, CORS, and tool description.
+
+### [ AI Search as an agent tool ](https://developers.cloudflare.com/agents/tools/ai-search/)
+
+ Query AI Search in code from a Cloudflare Agent.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/#page","headline":"Connect your AI Search to an MCP client · Cloudflare AI Search docs","description":"Expose your indexed content as a search tool for any MCP client or agent using the built-in MCP endpoint.","url":"https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/connect-mcp-client/","name":"Connect your AI Search to an MCP client"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/#page","headline":"Connect your AI Search to an MCP client · Cloudflare AI Search docs","description":"Expose your indexed content as a search tool for any MCP client or agent using the built-in MCP endpoint.","url":"https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

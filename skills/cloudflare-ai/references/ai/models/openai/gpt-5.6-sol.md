@@ -1,39 +1,38 @@
 ---
-title: GPT-5.6 Sol
 description: GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.6 Sol
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.6 Sol
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.6-sol`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.6-sol `
+
+* Third-party
 
 GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.
 
-| Model Info                                                                 |                                                                                                                      |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                     |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                        |
-| Request formats                                                            | Responses                                                                                                            |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-sol) |
+| Model Info                                                                  |                                                                                                                       |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                      |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                         |
+| Request formats                                                             | Responses                                                                                                             |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-sol) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1494)
-* [ cURL ](#tab-panel-1495)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -58,9 +57,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 512
 }'
 ```
-
-* [ Output ](#tab-panel-1498)
-* [ Raw response ](#tab-panel-1499)
 
 - **Validate readiness:** Confirm capacity, quotas, security controls, certificates, secrets, dependencies, and compliance requirements in the new region.
 - **Protect data:** Take verified backups; validate replication consistency, encryption, retention, and restore procedures before cutover.
@@ -175,11 +171,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Operational Reasoning**  — Using reasoning effort for a multi-step operational decision
 
-* [ TypeScript ](#tab-panel-1496)
-* [ cURL ](#tab-panel-1497)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.6-sol',
@@ -206,9 +197,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-1500)
-* [ Raw response ](#tab-panel-1501)
 
 - Total minutes in 30 days: \(30 \times 24 \times 60 = 43{,}200\)
 - Error budget at 99.9% availability: \(43{,}200 \times 0.001 = 43.2\) minutes
@@ -321,9 +309,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ## Parameters
 
-* [ Input ](#tab-panel-1502)
-* [ Output ](#tab-panel-1503)
-
 ▶input
 
 `one of`required
@@ -402,7 +387,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/#page","headline":"GPT-5.6 Sol (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/#page","headline":"GPT-5.6 Sol (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

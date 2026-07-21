@@ -72,12 +72,16 @@ Audit events have a predictable schema in the body of the response.
 
 When an audit event is related to the GitLab Duo Agent Platform, the `details` object
 includes a `duo_related` field set to `true`.
-For example, when the membership of a GitLab Duo Agent Platform service account is removed,
-the `member_destroyed` audit event includes this field.
+
+The following events can include this field:
+
+| Event type                    | Description                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| `application_setting_updated` | An application setting related to the GitLab Duo Agent Platform is updated. |
+| `member_destroyed`            | The membership of a GitLab Duo Agent Platform service account is removed.   |
 
 Use this field to identify GitLab Duo Agent Platform activity in your Security Information and
-Event Management (SIEM) tool or other external tools, instead of service account naming
-patterns.
+Event Management (SIEM) tool or other external tools, instead of service account naming patterns.
 
 ### Headers
 

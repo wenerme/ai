@@ -1,18 +1,20 @@
 ---
-title: Env Vars and Secrets
 description: Pass in environment variables and secrets to your container
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Env Vars and Secrets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Env Vars and Secrets
+#  Env Vars and Secrets
 
 Pass in environment variables and secrets to your container
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Environment variables can be passed into a Container using the `envVars` field in the [Container](https://developers.cloudflare.com/containers/container-class/) class, or by setting manually when the Container starts.
 
@@ -113,49 +115,39 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-8505)
-* [  wrangler.toml ](#tab-panel-8506)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-container-worker",
-  "vars": {
-    "ENV_VAR": "my-env-var"
-  },
-  "secrets_store_secrets": [
-    {
-      "binding": "SECRET_STORE",
-      "store_id": "demo",
-      "secret_name": "SECRET_STORE_SECRET"
-    }
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "DEMO_KV",
-      "id": "<your-kv-namespace-id>"
-    }
-  ]
-  // rest of the configuration...
+	"name": "my-container-worker",
+	"vars": {
+		"ENV_VAR": "my-env-var"
+	},
+	"secrets_store_secrets": [
+		{
+			"binding": "SECRET_STORE",
+			"store_id": "demo",
+			"secret_name": "SECRET_STORE_SECRET"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "DEMO_KV",
+			"id": "<your-kv-namespace-id>"
+		}
+	]
+	// rest of the configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-container-worker"
 
-
 [vars]
 ENV_VAR = "my-env-var"
-
 
 [[secrets_store_secrets]]
 binding = "SECRET_STORE"
 store_id = "demo"
 secret_name = "SECRET_STORE_SECRET"
-
 
 [[kv_namespaces]]
 binding = "DEMO_KV"
@@ -170,19 +162,17 @@ Also note that we did not configure anything specific for environment variables,
 
 Now, let's pass the env vars and secrets to our container using the `envVars` field in the `Container` class:
 
-**JavaScript**
-
 ```js
 // https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global
 import { env } from "cloudflare:workers";
 export class MyContainer extends Container {
-  defaultPort = 8080;
-  sleepAfter = "10s";
-  envVars = {
-    WORKER_SECRET: env.WORKER_SECRET,
-    ENV_VAR: env.ENV_VAR,
-    // we can't set the secret store binding or KV values as defaults here, as getting their values is asynchronous
-  };
+	defaultPort = 8080;
+	sleepAfter = "10s";
+	envVars = {
+		WORKER_SECRET: env.WORKER_SECRET,
+		ENV_VAR: env.ENV_VAR,
+		// we can't set the secret store binding or KV values as defaults here, as getting their values is asynchronous
+	};
 }
 ```
 
@@ -194,55 +184,48 @@ But what if you want to set environment variables on a per-instance basis?
 
 In this case, use the `startAndWaitForPorts()` method to pass in environment variables for each instance.
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
-  defaultPort = 8080;
-  sleepAfter = "10s";
+	defaultPort = 8080;
+	sleepAfter = "10s";
 }
 
-
 export default {
-  async fetch(request, env) {
-    if (new URL(request.url).pathname === "/launch-instances") {
-      let instanceOne = env.MY_CONTAINER.getByName("foo");
-      let instanceTwo = env.MY_CONTAINER.getByName("bar");
+	async fetch(request, env) {
+		if (new URL(request.url).pathname === "/launch-instances") {
+			let instanceOne = env.MY_CONTAINER.getByName("foo");
+			let instanceTwo = env.MY_CONTAINER.getByName("bar");
 
+			// Each instance gets a different set of environment variables
 
-      // Each instance gets a different set of environment variables
+			await instanceOne.startAndWaitForPorts({
+				startOptions: {
+					envVars: {
+						ENV_VAR: env.ENV_VAR + "foo",
+						WORKER_SECRET: env.WORKER_SECRET,
+						SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
+						KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
+					},
+				},
+			});
 
+			await instanceTwo.startAndWaitForPorts({
+				startOptions: {
+					envVars: {
+						ENV_VAR: env.ENV_VAR + "bar",
+						WORKER_SECRET: env.WORKER_SECRET,
+						SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
+						KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
+						// You can also read different KV keys for different instances
+						INSTANCE_CONFIG: await env.DEMO_KV.get("instance-bar-config"),
+					},
+				},
+			});
+			return new Response("Container instances launched");
+		}
 
-      await instanceOne.startAndWaitForPorts({
-        startOptions: {
-          envVars: {
-            ENV_VAR: env.ENV_VAR + "foo",
-            WORKER_SECRET: env.WORKER_SECRET,
-            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
-            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
-          },
-        },
-      });
-
-
-      await instanceTwo.startAndWaitForPorts({
-        startOptions: {
-          envVars: {
-            ENV_VAR: env.ENV_VAR + "bar",
-            WORKER_SECRET: env.WORKER_SECRET,
-            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
-            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
-            // You can also read different KV keys for different instances
-            INSTANCE_CONFIG: await env.DEMO_KV.get("instance-bar-config"),
-          },
-        },
-      });
-      return new Response("Container instances launched");
-    }
-
-
-    // ... etc ...
-  },
+		// ... etc ...
+	},
 };
 ```
 
@@ -254,69 +237,59 @@ Here are common patterns for using KV with containers:
 
 ### Configuration data
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    if (new URL(request.url).pathname === "/configure-container") {
-      // Read configuration from KV
-      const config = await env.DEMO_KV.get("container-config", "json");
-      const apiUrl = await env.DEMO_KV.get("api-endpoint");
+	async fetch(request, env) {
+		if (new URL(request.url).pathname === "/configure-container") {
+			// Read configuration from KV
+			const config = await env.DEMO_KV.get("container-config", "json");
+			const apiUrl = await env.DEMO_KV.get("api-endpoint");
 
+			let container = env.MY_CONTAINER.getByName("configured");
 
-      let container = env.MY_CONTAINER.getByName("configured");
+			await container.startAndWaitForPorts({
+				startOptions: {
+					envVars: {
+						CONFIG_JSON: JSON.stringify(config),
+						API_ENDPOINT: apiUrl,
+						DEPLOYMENT_ENV: await env.DEMO_KV.get("deployment-env"),
+					},
+				},
+			});
 
-
-      await container.startAndWaitForPorts({
-        startOptions: {
-          envVars: {
-            CONFIG_JSON: JSON.stringify(config),
-            API_ENDPOINT: apiUrl,
-            DEPLOYMENT_ENV: await env.DEMO_KV.get("deployment-env"),
-          },
-        },
-      });
-
-
-      return new Response("Container configured and launched");
-    }
-  },
+			return new Response("Container configured and launched");
+		}
+	},
 };
 ```
 
 ### Feature flags
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    if (new URL(request.url).pathname === "/launch-with-features") {
-      // Read feature flags from KV
-      const featureFlags = {
-        ENABLE_FEATURE_A: await env.DEMO_KV.get("feature-a-enabled"),
-        ENABLE_FEATURE_B: await env.DEMO_KV.get("feature-b-enabled"),
-        DEBUG_MODE: await env.DEMO_KV.get("debug-enabled"),
-      };
+	async fetch(request, env) {
+		if (new URL(request.url).pathname === "/launch-with-features") {
+			// Read feature flags from KV
+			const featureFlags = {
+				ENABLE_FEATURE_A: await env.DEMO_KV.get("feature-a-enabled"),
+				ENABLE_FEATURE_B: await env.DEMO_KV.get("feature-b-enabled"),
+				DEBUG_MODE: await env.DEMO_KV.get("debug-enabled"),
+			};
 
+			let container = env.MY_CONTAINER.getByName("features");
 
-      let container = env.MY_CONTAINER.getByName("features");
+			await container.startAndWaitForPorts({
+				startOptions: {
+					envVars: {
+						...featureFlags,
+						CONTAINER_VERSION: "1.2.3",
+					},
+				},
+			});
 
-
-      await container.startAndWaitForPorts({
-        startOptions: {
-          envVars: {
-            ...featureFlags,
-            CONTAINER_VERSION: "1.2.3",
-          },
-        },
-      });
-
-
-      return new Response("Container launched with feature flags");
-    }
-  },
+			return new Response("Container launched with feature flags");
+		}
+	},
 };
 ```
 
@@ -324,7 +297,14 @@ export default {
 
 Finally, you can also set build-time environment variables that are only available when building the container image via the `image_vars` field in the Wrangler configuration.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Env Vars and Secrets · Cloudflare Containers docs","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/examples/env-vars-and-secrets/","name":"Env Vars and Secrets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Env Vars and Secrets · Cloudflare Containers docs","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

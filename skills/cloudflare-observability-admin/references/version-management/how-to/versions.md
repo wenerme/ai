@@ -1,16 +1,18 @@
 ---
-title: Manage versions
 description: Create, edit, and deploy configuration versions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage versions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage versions
 
-# Manage versions
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/how-to/versions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A version is a collection of configurations related to your zone, such as WAF custom rules and [other optimization configurations](https://developers.cloudflare.com/version-management/reference/available-configurations/).
 
@@ -34,7 +36,7 @@ If you need to test out different implementations of configurations at the same 
 To create a new version:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. On an existing version, select **Clone**. This will copy over all configurations from that version.
 4. If needed, you can also **Edit Description** to provide more detail about the purpose of this version.
@@ -61,7 +63,7 @@ Before making changes, make sure you are inside the correct version of your zone
 To change between different versions of your zone:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and a domain that has version management. The Global Configuration of your domain will load.
 3. Go to the product or feature you wish to modify.
 
@@ -102,7 +104,7 @@ Once you begin [sending traffic](https://developers.cloudflare.com/version-manag
 To view metrics:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. On an existing version, select **View Metrics**.
 
@@ -110,7 +112,14 @@ Note
 
 You will only see metrics for the specific version that is active in the Cloudflare dashboard during the time frame that you select.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/versions/#page","headline":"Manage versions · Cloudflare Version Management docs","description":"Create, edit, and deploy configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/versions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/version-management/","name":"Version Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/version-management/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/version-management/how-to/versions/","name":"Manage versions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/versions/#page","headline":"Manage versions · Cloudflare Version Management docs","description":"Create, edit, and deploy configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/versions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

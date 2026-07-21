@@ -1,16 +1,18 @@
 ---
-title: Example diagram
 description: Consider an example use case and the main steps involved in CNAME flattening.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Example diagram
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Example diagram
 
-# Example diagram
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With CNAME flattening, Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. This process supports a few features and delivers better performance and flexibility, as mentioned in the [CNAME flattening concept page](https://developers.cloudflare.com/dns/cname-flattening/).
 
@@ -73,7 +75,14 @@ accDescr: Diagram of CNAME flattening process when there is a request for a doma
 * If the CNAME record is proxied in Cloudflare, the answer is made up of multiple [Cloudflare IPs ↗](https://www.cloudflare.com/ips/) and its Time to Live (TTL) is set to `300`.
 * If the CNAME record in Cloudflare is not proxied, the flattened answer consists of the IP address from the external DNS provider and its TTL corresponds to the lower value between the external record and the Cloudflare CNAME record.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/#page","headline":"CNAME flattening diagram · Cloudflare DNS docs","description":"Consider an example use case and the main steps involved in CNAME flattening.","url":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/cname-flattening/","name":"CNAME flattening"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/cname-flattening/cname-flattening-diagram/","name":"Example diagram"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/#page","headline":"CNAME flattening diagram · Cloudflare DNS docs","description":"Consider an example use case and the main steps involved in CNAME flattening.","url":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

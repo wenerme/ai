@@ -1,16 +1,18 @@
 ---
-title: Access Durable Objects Storage
 description: Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Access Durable Objects Storage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Access Durable Objects Storage
 
-# Access Durable Objects Storage
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects are a powerful compute API that provides a compute with storage building block. Each Durable Object has its own private, transactional, and strongly consistent storage. Durable Objects Storage API provides access to a Durable Object's attached storage.
 
@@ -38,25 +40,18 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8932)
-* [  wrangler.toml ](#tab-panel-8933)
-
-**JSONC**
-
 ```jsonc
 {
-  "migrations": [
-    {
-      "tag": "v1", // Should be unique for each entry
-      "new_sqlite_classes": [ // Array of new classes
-        "MyDurableObject"
-      ]
-    }
-  ]
+	"migrations": [
+		{
+			"tag": "v1", // Should be unique for each entry
+			"new_sqlite_classes": [ // Array of new classes
+				"MyDurableObject"
+			]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[migrations]]
@@ -72,32 +67,26 @@ SQLite-backed Durable Objects also offer [point-in-time recovery API](https://de
 
 A common pattern is to initialize a Durable Object from [persistent storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and set instance variables the first time it is accessed. Since future accesses are routed to the same Durable Object, it is then possible to return any initialized values without making further calls to persistent storage.
 
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
 
-
 export class Counter extends DurableObject {
-  value: number;
+	value: number;
 
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
 
-  constructor(ctx: DurableObjectState, env: Env) {
-    super(ctx, env);
+		// `blockConcurrencyWhile()` ensures no requests are delivered until
+		// initialization completes.
+		ctx.blockConcurrencyWhile(async () => {
+			// After initialization, future reads do not need to access storage.
+			this.value = (await ctx.storage.get("value")) || 0;
+		});
+	}
 
-
-    // `blockConcurrencyWhile()` ensures no requests are delivered until
-    // initialization completes.
-    ctx.blockConcurrencyWhile(async () => {
-      // After initialization, future reads do not need to access storage.
-      this.value = (await ctx.storage.get("value")) || 0;
-    });
-  }
-
-
-  async getCounterValue() {
-    return this.value;
-  }
+	async getCounterValue() {
+		return this.value;
+	}
 }
 ```
 
@@ -107,25 +96,21 @@ A Durable Object fully ceases to exist if, when it shuts down, its storage is em
 
 However if you ever write using [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), including setting alarms, then you must explicitly call [storage.deleteAll()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall) to empty storage and [storage.deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deletealarm) if you've configured an alarm. It is not sufficient to simply delete the specific data that you wrote, such as deleting a key or dropping a table, as some metadata may remain. The only way to remove all storage is to call `deleteAll()`. Calling `deleteAll()` ensures that a Durable Object will not be billed for storage.
 
-**TypeScript**
-
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
-  constructor(ctx: DurableObjectState, env: Env) {
-    super(ctx, env);
-  }
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+	}
 
+	// Clears Durable Object storage
+	async clearDo(): Promise<void> {
+		// If you've configured a Durable Object alarm
+		await this.ctx.storage.deleteAlarm();
 
-  // Clears Durable Object storage
-  async clearDo(): Promise<void> {
-    // If you've configured a Durable Object alarm
-    await this.ctx.storage.deleteAlarm();
-
-
-    // This will delete all the storage associated with this Durable Object instance
-    // This will also delete the Durable Object instance itself
-    await this.ctx.storage.deleteAll();
-  }
+		// This will delete all the storage associated with this Durable Object instance
+		// This will also delete the Durable Object instance itself
+		await this.ctx.storage.deleteAll();
+	}
 }
 ```
 
@@ -133,18 +118,14 @@ export class MyDurableObject extends DurableObject<Env> {
 
 [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) examples below use the following SQL schema:
 
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
-
 
 export class MyDurableObject extends DurableObject {
   sql: SqlStorage
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     this.sql = ctx.storage.sql;
-
 
     this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(
       artistid    INTEGER PRIMARY KEY,
@@ -160,11 +141,8 @@ export class MyDurableObject extends DurableObject {
 
 Iterate over query results as row objects:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
-
 
   for (let row of cursor) {
     // Iterate over row object and do something
@@ -172,8 +150,6 @@ Iterate over query results as row objects:
 ```
 
 Convert query results to an array of row objects:
-
-**TypeScript**
 
 ```ts
   // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]
@@ -186,21 +162,16 @@ Convert query results to an array of row objects:
 
 Convert query results to an array of row values arrays:
 
-**TypeScript**
-
 ```ts
   // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]
   let cursor = this.sql.exec("SELECT * FROM artist;");
   let resultsArray = cursor.raw().toArray();
-
 
   // Returns ["artistid","artistname"]
   let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
 ```
 
 Get first row object of query results:
-
-**TypeScript**
 
 ```ts
   // Returns {"artistid":123,"artistname":"Alice"}
@@ -209,20 +180,15 @@ Get first row object of query results:
 
 Check if query results have exactly one row:
 
-**TypeScript**
-
 ```ts
   // returns error
   this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
-
 
   // returns { artistid: 123, artistname: 'Alice' }
   let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
 ```
 
 Returned cursor behavior:
-
-**TypeScript**
 
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
@@ -233,19 +199,15 @@ Returned cursor behavior:
     // query returned zero results
   }
 
-
   let remainingRows = cursor.toArray();
   console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 Returned cursor and `raw()` iterator iterate over the same query results:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
   let result = cursor.raw().next();
-
 
   if (!result.done) {
     console.log(result.value); // prints [ 123, 'Alice' ]
@@ -253,19 +215,15 @@ Returned cursor and `raw()` iterator iterate over the same query results:
     // query returned zero results
   }
 
-
   console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 `sql.exec().rowsRead()`:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
   cursor.next()
   console.log(cursor.rowsRead); // prints 1
-
 
   cursor.toArray(); // consumes remaining cursor
   console.log(cursor.rowsRead); // prints 3
@@ -275,7 +233,7 @@ Returned cursor and `raw()` iterator iterate over the same query results:
 
 You can use TypeScript [type parameters ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) to provide a type for your results, allowing you to benefit from type hints and checks when iterating over the results of a query.
 
-Warning
+Caution
 
 Providing a type parameter does _not_ validate that the query result matches your type definition. In TypeScript, properties (fields) that do not exist in your result type will be silently dropped.
 
@@ -283,62 +241,54 @@ Your type must conform to the shape of a TypeScript [Record ↗](https://www.typ
 
 For example,
 
-**TypeScript**
-
 ```ts
 type User = {
-  id: string;
-  name: string;
-  email_address: string;
-  version: number;
+	id: string;
+	name: string;
+	email_address: string;
+	version: number;
 };
 ```
 
 This type can then be passed as the type parameter to a `sql.exec()` call:
 
-**TypeScript**
-
 ```ts
 // The type parameter is passed between angle brackets before the function argument:
 const result = this.ctx.storage.sql
-  .exec<User>(
-    "SELECT id, name, email_address, version FROM users WHERE id = ?",
-    user_id,
-  )
-  .one();
+	.exec<User>(
+		"SELECT id, name, email_address, version FROM users WHERE id = ?",
+		user_id,
+	)
+	.one();
 // result will now have a type of "User"
-
 
 // Alternatively, if you are iterating over results using a cursor
 let cursor = this.sql.exec<User>(
-  "SELECT id, name, email_address, version FROM users WHERE id = ?",
-  user_id,
+	"SELECT id, name, email_address, version FROM users WHERE id = ?",
+	user_id,
 );
 for (let row of cursor) {
-  // Each row object will be of type User
+	// Each row object will be of type User
 }
-
 
 // Or, if you are using raw() to convert results into an array, define an array type:
 type UserRow = [
-  id: string,
-  name: string,
-  email_address: string,
-  version: number,
+	id: string,
+	name: string,
+	email_address: string,
+	version: number,
 ];
-
 
 // ... and then pass it as the type argument to the raw() method:
 let cursor = sql
-  .exec(
-    "SELECT id, name, email_address, version FROM users WHERE id = ?",
-    user_id,
-  )
-  .raw<UserRow>();
-
+	.exec(
+		"SELECT id, name, email_address, version FROM users WHERE id = ?",
+		user_id,
+	)
+	.raw<UserRow>();
 
 for (let row of cursor) {
-  // row is of type User
+	// row is of type User
 }
 ```
 
@@ -374,7 +324,14 @@ SQL query pricing and limits are intended to be identical between D1 ([pricing](
 
 * [Zero-latency SQLite storage in every Durable Object blog post ↗](https://blog.cloudflare.com/sqlite-in-durable-objects)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#page","headline":"Access Durable Objects Storage · Cloudflare Durable Objects docs","description":"Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.","url":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/access-durable-objects-storage/","name":"Access Durable Objects Storage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#page","headline":"Access Durable Objects Storage · Cloudflare Durable Objects docs","description":"Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.","url":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Bot Feedback Loop
 description: Submit feedback to improve bot detection accuracy for your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bot Feedback Loop
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bot Feedback Loop
 
-# Bot Feedback Loop
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/) incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
 
@@ -46,11 +48,8 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ## Submit a report
 
-* [  New dashboard ](#tab-panel-7489)
-* [ Old dashboard ](#tab-panel-7490)
-
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Apply one or more filters.
 3. Under **Request activity**, filter by **Bot analysis**.
 4. Select **Report incorrect data** and fill out the form.
@@ -113,37 +112,37 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```json
 [
-  {
-    "created_at": "2022-08-19T00:05:24.749712Z",
-    "type": "false_positive",
-    "description": "Legitimate customers having low score",
-    "expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",
-    "first_request_seen_at": "2022-08-01T00:00:00Z",
-    "last_request_seen_at": "2022-08-10T00:00:00Z",
-    "requests": 100,
-    "requests_by_score": {
-      "1": 50,
-      "10": 50
-    },
-    "requests_by_score_src": {
-      "heuristics": 25,
-      "machine_learning": 75
-    },
-    "requests_by_attribute": {
-      "topIPs": [
-        {
-          "metric": "10.75.34.1",
-          "requests": 100
-        }
-      ],
-      "topUserAgents": [
-        {
-          "metric": "curl/7.68.0",
-          "requests": 100
-        }
-      ]
-    }
-  }
+	{
+		"created_at": "2022-08-19T00:05:24.749712Z",
+		"type": "false_positive",
+		"description": "Legitimate customers having low score",
+		"expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",
+		"first_request_seen_at": "2022-08-01T00:00:00Z",
+		"last_request_seen_at": "2022-08-10T00:00:00Z",
+		"requests": 100,
+		"requests_by_score": {
+			"1": 50,
+			"10": 50
+		},
+		"requests_by_score_src": {
+			"heuristics": 25,
+			"machine_learning": 75
+		},
+		"requests_by_attribute": {
+			"topIPs": [
+				{
+					"metric": "10.75.34.1",
+					"requests": 100
+				}
+			],
+			"topUserAgents": [
+				{
+					"metric": "curl/7.68.0",
+					"requests": 100
+				}
+			]
+		}
+	}
 ]
 ```
 
@@ -165,8 +164,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```json
 {
-  "1": 50,
-  "10": 50
+	"1": 50,
+	"10": 50
 }
 ```
 
@@ -174,8 +173,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```json
 {
-  "machine_learning": 75,
-  "heuristics": 25
+	"machine_learning": 75,
+	"heuristics": 25
 }
 ```
 
@@ -183,18 +182,18 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```json
 {
-  "topIPs": [
-    {
-      "metric": "10.75.34.1"
-      "requests": 100
-    }
-  ],
-  "topUserAgents": [
-    {
-      "metric": "curl/7.68.0",
-      "requests": 100
-    }
-  ]
+	"topIPs": [
+		{
+			"metric": "10.75.34.1"
+			"requests": 100
+		}
+	],
+	"topUserAgents": [
+		{
+			"metric": "curl/7.68.0",
+			"requests": 100
+		}
+	]
 }
 ```
 
@@ -242,7 +241,14 @@ If the traffic you want to allow shares an IP with other traffic sources, or if 
 
 After submitting a false negative report, you can explicitly block or rate-limit the incorrectly scored traffic using a combination of characteristics such as IP address, JA3 fingerprint, ASN, and user-agent. Before blocking or rate-limiting based on JA3 fingerprint, please use Bot Analytics to confirm that fingerprint is not being used by legitimate traffic sources.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/concepts/feedback-loop/#page","headline":"Bot Feedback Loop · Cloudflare bot solutions docs","description":"Submit feedback to improve bot detection accuracy for your domain.","url":"https://developers.cloudflare.com/bots/concepts/feedback-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/feedback-loop/","name":"Bot Feedback Loop"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/concepts/feedback-loop/#page","headline":"Bot Feedback Loop · Cloudflare bot solutions docs","description":"Submit feedback to improve bot detection accuracy for your domain.","url":"https://developers.cloudflare.com/bots/concepts/feedback-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

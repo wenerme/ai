@@ -1,16 +1,18 @@
 ---
-title: Upload objects
 description: Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Upload objects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Upload objects
 
-# Upload objects
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/objects/upload-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are several ways to upload objects to R2\. Which approach you choose depends on the size of your objects and your performance requirements.
 
@@ -34,7 +36,7 @@ Most S3-compatible SDKs and tools (such as `rclone`) automatically choose multip
 To upload objects to your bucket from the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Upload**.
 4. Drag and drop your file into the upload area or **select from computer**.
@@ -53,70 +55,59 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-10663)
-* [  TypeScript ](#tab-panel-10664)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      const object = await env.MY_BUCKET.put("image.png", request.body, {
-        httpMetadata: {
-          contentType: "image/png",
-        },
-      });
+	async fetch(request, env) {
+		try {
+			const object = await env.MY_BUCKET.put("image.png", request.body, {
+				httpMetadata: {
+					contentType: "image/png",
+				},
+			});
 
+			if (object === null) {
+				return new Response("Precondition failed or upload returned null", {
+					status: 412,
+				});
+			}
 
-      if (object === null) {
-        return new Response("Precondition failed or upload returned null", {
-          status: 412,
-        });
-      }
-
-
-      return Response.json({
-        key: object.key,
-        size: object.size,
-        etag: object.etag,
-      });
-    } catch (err) {
-      return new Response(`Upload failed: ${err}`, { status: 500 });
-    }
-  },
+			return Response.json({
+				key: object.key,
+				size: object.size,
+				etag: object.etag,
+			});
+		} catch (err) {
+			return new Response(`Upload failed: ${err}`, { status: 500 });
+		}
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    try {
-      const object = await env.MY_BUCKET.put("image.png", request.body, {
-        httpMetadata: {
-          contentType: "image/png",
-        },
-      });
+	async fetch(request: Request, env: Env): Promise<Response> {
+		try {
+			const object = await env.MY_BUCKET.put("image.png", request.body, {
+				httpMetadata: {
+					contentType: "image/png",
+				},
+			});
 
+			if (object === null) {
+				return new Response("Precondition failed or upload returned null", {
+					status: 412,
+				});
+			}
 
-      if (object === null) {
-        return new Response("Precondition failed or upload returned null", {
-          status: 412,
-        });
-      }
-
-
-      return Response.json({
-        key: object.key,
-        size: object.size,
-        etag: object.etag,
-      });
-    } catch (err) {
-      return new Response(`Upload failed: ${err}`, { status: 500 });
-    }
-  },
+			return Response.json({
+				key: object.key,
+				size: object.size,
+				etag: object.etag,
+			});
+		} catch (err) {
+			return new Response(`Upload failed: ${err}`, { status: 500 });
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -124,259 +115,223 @@ export default {
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-10665)
-* [  TypeScript ](#tab-panel-10666)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const key = "large-file.bin";
+	async fetch(request, env) {
+		const key = "large-file.bin";
 
+		// Create a new multipart upload
+		const multipartUpload = await env.MY_BUCKET.createMultipartUpload(key);
 
-    // Create a new multipart upload
-    const multipartUpload = await env.MY_BUCKET.createMultipartUpload(key);
+		try {
+			// In a real application, these would be actual data chunks.
+			// Each part except the last must be at least 5 MiB.
+			const firstChunk = new Uint8Array(5 * 1024 * 1024); // placeholder
+			const secondChunk = new Uint8Array(1024); // placeholder
 
+			const part1 = await multipartUpload.uploadPart(1, firstChunk);
+			const part2 = await multipartUpload.uploadPart(2, secondChunk);
 
-    try {
-      // In a real application, these would be actual data chunks.
-      // Each part except the last must be at least 5 MiB.
-      const firstChunk = new Uint8Array(5 * 1024 * 1024); // placeholder
-      const secondChunk = new Uint8Array(1024); // placeholder
+			// Complete the upload with all parts
+			const object = await multipartUpload.complete([part1, part2]);
 
-
-      const part1 = await multipartUpload.uploadPart(1, firstChunk);
-      const part2 = await multipartUpload.uploadPart(2, secondChunk);
-
-
-      // Complete the upload with all parts
-      const object = await multipartUpload.complete([part1, part2]);
-
-
-      return Response.json({
-        key: object.key,
-        etag: object.httpEtag,
-      });
-    } catch (err) {
-      // Abort on failure so incomplete uploads do not count against storage
-      await multipartUpload.abort();
-      return new Response(`Multipart upload failed: ${err}`, { status: 500 });
-    }
-  },
+			return Response.json({
+				key: object.key,
+				etag: object.httpEtag,
+			});
+		} catch (err) {
+			// Abort on failure so incomplete uploads do not count against storage
+			await multipartUpload.abort();
+			return new Response(`Multipart upload failed: ${err}`, { status: 500 });
+		}
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const key = "large-file.bin";
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const key = "large-file.bin";
 
+		// Create a new multipart upload
+		const multipartUpload = await env.MY_BUCKET.createMultipartUpload(key);
 
-    // Create a new multipart upload
-    const multipartUpload = await env.MY_BUCKET.createMultipartUpload(key);
+		try {
+			// In a real application, these would be actual data chunks.
+			// Each part except the last must be at least 5 MiB.
+			const firstChunk = new Uint8Array(5 * 1024 * 1024); // placeholder
+			const secondChunk = new Uint8Array(1024); // placeholder
 
+			const part1 = await multipartUpload.uploadPart(1, firstChunk);
+			const part2 = await multipartUpload.uploadPart(2, secondChunk);
 
-    try {
-      // In a real application, these would be actual data chunks.
-      // Each part except the last must be at least 5 MiB.
-      const firstChunk = new Uint8Array(5 * 1024 * 1024); // placeholder
-      const secondChunk = new Uint8Array(1024); // placeholder
+			// Complete the upload with all parts
+			const object = await multipartUpload.complete([part1, part2]);
 
-
-      const part1 = await multipartUpload.uploadPart(1, firstChunk);
-      const part2 = await multipartUpload.uploadPart(2, secondChunk);
-
-
-      // Complete the upload with all parts
-      const object = await multipartUpload.complete([part1, part2]);
-
-
-      return Response.json({
-        key: object.key,
-        etag: object.httpEtag,
-      });
-    } catch (err) {
-      // Abort on failure so incomplete uploads do not count against storage
-      await multipartUpload.abort();
-      return new Response(`Multipart upload failed: ${err}`, { status: 500 });
-    }
-  },
+			return Response.json({
+				key: object.key,
+				etag: object.httpEtag,
+			});
+		} catch (err) {
+			// Abort on failure so incomplete uploads do not count against storage
+			await multipartUpload.abort();
+			return new Response(`Multipart upload failed: ${err}`, { status: 500 });
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-10669)
-* [  TypeScript ](#tab-panel-10670)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    const action = url.searchParams.get("action");
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		const action = url.searchParams.get("action");
 
+		if (!key || !action) {
+			return new Response("Missing key or action", { status: 400 });
+		}
 
-    if (!key || !action) {
-      return new Response("Missing key or action", { status: 400 });
-    }
+		switch (action) {
+			// Step 1: Client calls POST /<key>?action=mpu-create
+			case "mpu-create": {
+				const upload = await env.MY_BUCKET.createMultipartUpload(key);
+				return Response.json({ key: upload.key, uploadId: upload.uploadId });
+			}
 
+			// Step 2: Client calls PUT /<key>?action=mpu-uploadpart&uploadId=...&partNumber=...
+			case "mpu-uploadpart": {
+				const uploadId = url.searchParams.get("uploadId");
+				const partNumber = Number(url.searchParams.get("partNumber"));
+				if (!uploadId || !partNumber || !request.body) {
+					return new Response("Missing uploadId, partNumber, or body", {
+						status: 400,
+					});
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				try {
+					const part = await upload.uploadPart(partNumber, request.body);
+					return Response.json(part);
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+			}
 
-    switch (action) {
-      // Step 1: Client calls POST /<key>?action=mpu-create
-      case "mpu-create": {
-        const upload = await env.MY_BUCKET.createMultipartUpload(key);
-        return Response.json({ key: upload.key, uploadId: upload.uploadId });
-      }
+			// Step 3: Client calls POST /<key>?action=mpu-complete&uploadId=...
+			case "mpu-complete": {
+				const uploadId = url.searchParams.get("uploadId");
+				if (!uploadId) {
+					return new Response("Missing uploadId", { status: 400 });
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				const body = await request.json();
+				try {
+					const object = await upload.complete(body.parts);
+					return new Response(null, {
+						headers: { etag: object.httpEtag },
+					});
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+			}
 
+			// Abort an in-progress upload
+			case "mpu-abort": {
+				const uploadId = url.searchParams.get("uploadId");
+				if (!uploadId) {
+					return new Response("Missing uploadId", { status: 400 });
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				try {
+					await upload.abort();
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+				return new Response(null, { status: 204 });
+			}
 
-      // Step 2: Client calls PUT /<key>?action=mpu-uploadpart&uploadId=...&partNumber=...
-      case "mpu-uploadpart": {
-        const uploadId = url.searchParams.get("uploadId");
-        const partNumber = Number(url.searchParams.get("partNumber"));
-        if (!uploadId || !partNumber || !request.body) {
-          return new Response("Missing uploadId, partNumber, or body", {
-            status: 400,
-          });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        try {
-          const part = await upload.uploadPart(partNumber, request.body);
-          return Response.json(part);
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-      }
-
-
-      // Step 3: Client calls POST /<key>?action=mpu-complete&uploadId=...
-      case "mpu-complete": {
-        const uploadId = url.searchParams.get("uploadId");
-        if (!uploadId) {
-          return new Response("Missing uploadId", { status: 400 });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        const body = await request.json();
-        try {
-          const object = await upload.complete(body.parts);
-          return new Response(null, {
-            headers: { etag: object.httpEtag },
-          });
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-      }
-
-
-      // Abort an in-progress upload
-      case "mpu-abort": {
-        const uploadId = url.searchParams.get("uploadId");
-        if (!uploadId) {
-          return new Response("Missing uploadId", { status: 400 });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        try {
-          await upload.abort();
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-        return new Response(null, { status: 204 });
-      }
-
-
-      default:
-        return new Response(`Unknown action: ${action}`, { status: 400 });
-    }
-  },
+			default:
+				return new Response(`Unknown action: ${action}`, { status: 400 });
+		}
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    const action = url.searchParams.get("action");
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		const action = url.searchParams.get("action");
 
+		if (!key || !action) {
+			return new Response("Missing key or action", { status: 400 });
+		}
 
-    if (!key || !action) {
-      return new Response("Missing key or action", { status: 400 });
-    }
+		switch (action) {
+			// Step 1: Client calls POST /<key>?action=mpu-create
+			case "mpu-create": {
+				const upload = await env.MY_BUCKET.createMultipartUpload(key);
+				return Response.json({ key: upload.key, uploadId: upload.uploadId });
+			}
 
+			// Step 2: Client calls PUT /<key>?action=mpu-uploadpart&uploadId=...&partNumber=...
+			case "mpu-uploadpart": {
+				const uploadId = url.searchParams.get("uploadId");
+				const partNumber = Number(url.searchParams.get("partNumber"));
+				if (!uploadId || !partNumber || !request.body) {
+					return new Response("Missing uploadId, partNumber, or body", {
+						status: 400,
+					});
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				try {
+					const part = await upload.uploadPart(partNumber, request.body);
+					return Response.json(part);
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+			}
 
-    switch (action) {
-      // Step 1: Client calls POST /<key>?action=mpu-create
-      case "mpu-create": {
-        const upload = await env.MY_BUCKET.createMultipartUpload(key);
-        return Response.json({ key: upload.key, uploadId: upload.uploadId });
-      }
+			// Step 3: Client calls POST /<key>?action=mpu-complete&uploadId=...
+			case "mpu-complete": {
+				const uploadId = url.searchParams.get("uploadId");
+				if (!uploadId) {
+					return new Response("Missing uploadId", { status: 400 });
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				const body = await request.json<{ parts: R2UploadedPart[] }>();
+				try {
+					const object = await upload.complete(body.parts);
+					return new Response(null, {
+						headers: { etag: object.httpEtag },
+					});
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+			}
 
+			// Abort an in-progress upload
+			case "mpu-abort": {
+				const uploadId = url.searchParams.get("uploadId");
+				if (!uploadId) {
+					return new Response("Missing uploadId", { status: 400 });
+				}
+				const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
+				try {
+					await upload.abort();
+				} catch (err) {
+					return new Response(String(err), { status: 400 });
+				}
+				return new Response(null, { status: 204 });
+			}
 
-      // Step 2: Client calls PUT /<key>?action=mpu-uploadpart&uploadId=...&partNumber=...
-      case "mpu-uploadpart": {
-        const uploadId = url.searchParams.get("uploadId");
-        const partNumber = Number(url.searchParams.get("partNumber"));
-        if (!uploadId || !partNumber || !request.body) {
-          return new Response("Missing uploadId, partNumber, or body", {
-            status: 400,
-          });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        try {
-          const part = await upload.uploadPart(partNumber, request.body);
-          return Response.json(part);
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-      }
-
-
-      // Step 3: Client calls POST /<key>?action=mpu-complete&uploadId=...
-      case "mpu-complete": {
-        const uploadId = url.searchParams.get("uploadId");
-        if (!uploadId) {
-          return new Response("Missing uploadId", { status: 400 });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        const body = await request.json<{ parts: R2UploadedPart[] }>();
-        try {
-          const object = await upload.complete(body.parts);
-          return new Response(null, {
-            headers: { etag: object.httpEtag },
-          });
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-      }
-
-
-      // Abort an in-progress upload
-      case "mpu-abort": {
-        const uploadId = url.searchParams.get("uploadId");
-        if (!uploadId) {
-          return new Response("Missing uploadId", { status: 400 });
-        }
-        const upload = env.MY_BUCKET.resumeMultipartUpload(key, uploadId);
-        try {
-          await upload.abort();
-        } catch (err) {
-          return new Response(String(err), { status: 400 });
-        }
-        return new Response(null, { status: 204 });
-      }
-
-
-      default:
-        return new Response(`Unknown action: ${action}`, { status: 400 });
-    }
-  },
+			default:
+				return new Response(`Unknown action: ${action}`, { status: 400 });
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -386,76 +341,60 @@ For the complete Workers API reference, refer to [Workers API reference](https:/
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-10667)
-* [  TypeScript ](#tab-panel-10668)
-
-**JavaScript**
-
 ```js
 import { AwsClient } from "aws4fetch";
 
-
 export default {
-  async fetch(request, env) {
-    const r2 = new AwsClient({
-      accessKeyId: env.R2_ACCESS_KEY_ID,
-      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-    });
+	async fetch(request, env) {
+		const r2 = new AwsClient({
+			accessKeyId: env.R2_ACCESS_KEY_ID,
+			secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+		});
 
+		// Generate a presigned PUT URL valid for 1 hour
+		const url = new URL(
+			"https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png",
+		);
+		url.searchParams.set("X-Amz-Expires", "3600");
 
-    // Generate a presigned PUT URL valid for 1 hour
-    const url = new URL(
-      "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png",
-    );
-    url.searchParams.set("X-Amz-Expires", "3600");
+		const signed = await r2.sign(new Request(url, { method: "PUT" }), {
+			aws: { signQuery: true },
+		});
 
-
-    const signed = await r2.sign(new Request(url, { method: "PUT" }), {
-      aws: { signQuery: true },
-    });
-
-
-    // Return the signed URL to the client — they can PUT directly to R2
-    return Response.json({ url: signed.url });
-  },
+		// Return the signed URL to the client — they can PUT directly to R2
+		return Response.json({ url: signed.url });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { AwsClient } from "aws4fetch";
 
-
 interface Env {
-  R2_ACCESS_KEY_ID: string;
-  R2_SECRET_ACCESS_KEY: string;
+	R2_ACCESS_KEY_ID: string;
+	R2_SECRET_ACCESS_KEY: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const r2 = new AwsClient({
-      accessKeyId: env.R2_ACCESS_KEY_ID,
-      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-    });
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const r2 = new AwsClient({
+			accessKeyId: env.R2_ACCESS_KEY_ID,
+			secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+		});
 
+		// Generate a presigned PUT URL valid for 1 hour
+		const url = new URL(
+			"https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png",
+		);
+		url.searchParams.set("X-Amz-Expires", "3600");
 
-    // Generate a presigned PUT URL valid for 1 hour
-    const url = new URL(
-      "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png",
-    );
-    url.searchParams.set("X-Amz-Expires", "3600");
+		const signed = await r2.sign(new Request(url, { method: "PUT" }), {
+			aws: { signQuery: true },
+		});
 
-
-    const signed = await r2.sign(new Request(url, { method: "PUT" }), {
-      aws: { signQuery: true },
-    });
-
-
-    // Return the signed URL to the client — they can PUT directly to R2
-    return Response.json({ url: signed.url });
-  },
+		// Return the signed URL to the client — they can PUT directly to R2
+		return Response.json({ url: signed.url });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -467,77 +406,60 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-10651)
-* [  JavaScript ](#tab-panel-10652)
-* [  Python ](#tab-panel-10653)
-
-**TypeScript**
-
 ```ts
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { readFile } from "node:fs/promises";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const fileContent = await readFile("./image.png");
 
-
 const response = await S3.send(
-  new PutObjectCommand({
-    Bucket: "my-bucket",
-    Key: "image.png",
-    Body: fileContent,
-    ContentType: "image/png",
-  }),
+	new PutObjectCommand({
+		Bucket: "my-bucket",
+		Key: "image.png",
+		Body: fileContent,
+		ContentType: "image/png",
+	}),
 );
 console.log(`Uploaded successfully. ETag: ${response.ETag}`);
 ```
-
-**JavaScript**
 
 ```js
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { readFile } from "node:fs/promises";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const fileContent = await readFile("./image.png");
 
-
 const response = await S3.send(
-  new PutObjectCommand({
-    Bucket: "my-bucket",
-    Key: "image.png",
-    Body: fileContent,
-    ContentType: "image/png",
-  }),
+	new PutObjectCommand({
+		Bucket: "my-bucket",
+		Key: "image.png",
+		Body: fileContent,
+		ContentType: "image/png",
+	}),
 );
 console.log(`Uploaded successfully. ETag: ${response.ETag}`);
 ```
 
-**Python**
-
 ```python
 import boto3
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -546,7 +468,6 @@ s3 = boto3.client(
     aws_secret_access_key="<SECRET_ACCESS_KEY>",
     region_name="auto",
 )
-
 
 with open("./image.png", "rb") as f:
     response = s3.put_object(
@@ -566,92 +487,73 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-10654)
-* [  JavaScript ](#tab-panel-10655)
-* [  Python ](#tab-panel-10656)
-
-**TypeScript**
-
 ```ts
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import { createReadStream } from "node:fs";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const upload = new Upload({
-  client: S3,
-  params: {
-    Bucket: "my-bucket",
-    Key: "large-file.bin",
-    Body: createReadStream("./large-file.bin"),
-  },
-  // Upload parts in parallel (default: 4)
-  leavePartsOnError: false,
+	client: S3,
+	params: {
+		Bucket: "my-bucket",
+		Key: "large-file.bin",
+		Body: createReadStream("./large-file.bin"),
+	},
+	// Upload parts in parallel (default: 4)
+	leavePartsOnError: false,
 });
-
 
 upload.on("httpUploadProgress", (progress) => {
-  console.log(`Uploaded ${progress.loaded ?? 0} bytes`);
+	console.log(`Uploaded ${progress.loaded ?? 0} bytes`);
 });
-
 
 const result = await upload.done();
 console.log(`Upload complete. ETag: ${result.ETag}`);
 ```
-
-**JavaScript**
 
 ```js
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import { createReadStream } from "node:fs";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const upload = new Upload({
-  client: S3,
-  params: {
-    Bucket: "my-bucket",
-    Key: "large-file.bin",
-    Body: createReadStream("./large-file.bin"),
-  },
-  leavePartsOnError: false,
+	client: S3,
+	params: {
+		Bucket: "my-bucket",
+		Key: "large-file.bin",
+		Body: createReadStream("./large-file.bin"),
+	},
+	leavePartsOnError: false,
 });
-
 
 upload.on("httpUploadProgress", (progress) => {
-  console.log(`Uploaded ${progress.loaded ?? 0} bytes`);
+	console.log(`Uploaded ${progress.loaded ?? 0} bytes`);
 });
-
 
 const result = await upload.done();
 console.log(`Upload complete. ETag: ${result.ETag}`);
 ```
 
-**Python**
-
 ```python
 import boto3
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -660,7 +562,6 @@ s3 = boto3.client(
     aws_secret_access_key="<SECRET_ACCESS_KEY>",
     region_name="auto",
 )
-
 
 # upload_file automatically uses multipart for large files.
 # For better throughput with large objects, use the manual multipart example below.
@@ -675,181 +576,158 @@ s3.upload_file(
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-10657)
-* [  JavaScript ](#tab-panel-10658)
-* [  Python ](#tab-panel-10659)
-
-**TypeScript**
-
 ```ts
 import {
-  S3Client,
-  CreateMultipartUploadCommand,
-  UploadPartCommand,
-  CompleteMultipartUploadCommand,
-  AbortMultipartUploadCommand,
-  type CompletedPart,
+	S3Client,
+	CreateMultipartUploadCommand,
+	UploadPartCommand,
+	CompleteMultipartUploadCommand,
+	AbortMultipartUploadCommand,
+	type CompletedPart,
 } from "@aws-sdk/client-s3";
 import { createReadStream, statSync } from "node:fs";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const bucket = "my-bucket";
 const key = "large-file.bin";
 const partSize = 10 * 1024 * 1024; // 10 MiB per part
 
-
 // Step 1: Create the multipart upload
 const { UploadId } = await S3.send(
-  new CreateMultipartUploadCommand({ Bucket: bucket, Key: key }),
+	new CreateMultipartUploadCommand({ Bucket: bucket, Key: key }),
 );
 
-
 try {
-  const fileSize = statSync("./large-file.bin").size;
-  const partCount = Math.ceil(fileSize / partSize);
-  const parts: CompletedPart[] = [];
+	const fileSize = statSync("./large-file.bin").size;
+	const partCount = Math.ceil(fileSize / partSize);
+	const parts: CompletedPart[] = [];
 
+	// Step 2: Upload each part
+	for (let i = 0; i < partCount; i++) {
+		const start = i * partSize;
+		const end = Math.min(start + partSize, fileSize);
+		const { ETag } = await S3.send(
+			new UploadPartCommand({
+				Bucket: bucket,
+				Key: key,
+				UploadId,
+				PartNumber: i + 1,
+				Body: createReadStream("./large-file.bin", { start, end: end - 1 }),
+				ContentLength: end - start,
+			}),
+		);
+		parts.push({ PartNumber: i + 1, ETag });
+	}
 
-  // Step 2: Upload each part
-  for (let i = 0; i < partCount; i++) {
-    const start = i * partSize;
-    const end = Math.min(start + partSize, fileSize);
-    const { ETag } = await S3.send(
-      new UploadPartCommand({
-        Bucket: bucket,
-        Key: key,
-        UploadId,
-        PartNumber: i + 1,
-        Body: createReadStream("./large-file.bin", { start, end: end - 1 }),
-        ContentLength: end - start,
-      }),
-    );
-    parts.push({ PartNumber: i + 1, ETag });
-  }
-
-
-  // Step 3: Complete the upload
-  await S3.send(
-    new CompleteMultipartUploadCommand({
-      Bucket: bucket,
-      Key: key,
-      UploadId,
-      MultipartUpload: { Parts: parts },
-    }),
-  );
-  console.log("Multipart upload complete.");
+	// Step 3: Complete the upload
+	await S3.send(
+		new CompleteMultipartUploadCommand({
+			Bucket: bucket,
+			Key: key,
+			UploadId,
+			MultipartUpload: { Parts: parts },
+		}),
+	);
+	console.log("Multipart upload complete.");
 } catch (err) {
-  // Abort on failure to clean up incomplete parts
-  try {
-    await S3.send(
-      new AbortMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId }),
-    );
-  } catch (_abortErr) {
-    // Best-effort cleanup — the original error is more important
-  }
-  throw err;
+	// Abort on failure to clean up incomplete parts
+	try {
+		await S3.send(
+			new AbortMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId }),
+		);
+	} catch (_abortErr) {
+		// Best-effort cleanup — the original error is more important
+	}
+	throw err;
 }
 ```
-
-**JavaScript**
 
 ```js
 import {
-  S3Client,
-  CreateMultipartUploadCommand,
-  UploadPartCommand,
-  CompleteMultipartUploadCommand,
-  AbortMultipartUploadCommand,
+	S3Client,
+	CreateMultipartUploadCommand,
+	UploadPartCommand,
+	CompleteMultipartUploadCommand,
+	AbortMultipartUploadCommand,
 } from "@aws-sdk/client-s3";
 import { createReadStream, statSync } from "node:fs";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
-
 
 const bucket = "my-bucket";
 const key = "large-file.bin";
 const partSize = 10 * 1024 * 1024; // 10 MiB per part
 
-
 // Step 1: Create the multipart upload
 const { UploadId } = await S3.send(
-  new CreateMultipartUploadCommand({ Bucket: bucket, Key: key }),
+	new CreateMultipartUploadCommand({ Bucket: bucket, Key: key }),
 );
 
-
 try {
-  const fileSize = statSync("./large-file.bin").size;
-  const partCount = Math.ceil(fileSize / partSize);
-  const parts = [];
+	const fileSize = statSync("./large-file.bin").size;
+	const partCount = Math.ceil(fileSize / partSize);
+	const parts = [];
 
+	// Step 2: Upload each part
+	for (let i = 0; i < partCount; i++) {
+		const start = i * partSize;
+		const end = Math.min(start + partSize, fileSize);
+		const { ETag } = await S3.send(
+			new UploadPartCommand({
+				Bucket: bucket,
+				Key: key,
+				UploadId,
+				PartNumber: i + 1,
+				Body: createReadStream("./large-file.bin", { start, end: end - 1 }),
+				ContentLength: end - start,
+			}),
+		);
+		parts.push({ PartNumber: i + 1, ETag });
+	}
 
-  // Step 2: Upload each part
-  for (let i = 0; i < partCount; i++) {
-    const start = i * partSize;
-    const end = Math.min(start + partSize, fileSize);
-    const { ETag } = await S3.send(
-      new UploadPartCommand({
-        Bucket: bucket,
-        Key: key,
-        UploadId,
-        PartNumber: i + 1,
-        Body: createReadStream("./large-file.bin", { start, end: end - 1 }),
-        ContentLength: end - start,
-      }),
-    );
-    parts.push({ PartNumber: i + 1, ETag });
-  }
-
-
-  // Step 3: Complete the upload
-  await S3.send(
-    new CompleteMultipartUploadCommand({
-      Bucket: bucket,
-      Key: key,
-      UploadId,
-      MultipartUpload: { Parts: parts },
-    }),
-  );
-  console.log("Multipart upload complete.");
+	// Step 3: Complete the upload
+	await S3.send(
+		new CompleteMultipartUploadCommand({
+			Bucket: bucket,
+			Key: key,
+			UploadId,
+			MultipartUpload: { Parts: parts },
+		}),
+	);
+	console.log("Multipart upload complete.");
 } catch (err) {
-  // Abort on failure to clean up incomplete parts
-  try {
-    await S3.send(
-      new AbortMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId }),
-    );
-  } catch (_abortErr) {
-    // Best-effort cleanup — the original error is more important
-  }
-  throw err;
+	// Abort on failure to clean up incomplete parts
+	try {
+		await S3.send(
+			new AbortMultipartUploadCommand({ Bucket: bucket, Key: key, UploadId }),
+		);
+	} catch (_abortErr) {
+		// Best-effort cleanup — the original error is more important
+	}
+	throw err;
 }
 ```
-
-**Python**
 
 ```python
 import boto3
 import math
 import os
 from concurrent.futures import ThreadPoolExecutor
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -859,19 +737,16 @@ s3 = boto3.client(
     region_name="auto",
 )
 
-
 bucket = "my-bucket"
 key = "large-file.bin"
 file_path = "./large-file.bin"
 part_size = 16 * 1024 * 1024  # 16 MiB per part
 max_workers = 10  # Number of parallel upload threads
 
-
 # Step 1: Create the multipart upload
 upload_id = None
 mpu = s3.create_multipart_upload(Bucket=bucket, Key=key)
 upload_id = mpu["UploadId"]
-
 
 def upload_part(part_number, data):
     response = s3.upload_part(
@@ -883,11 +758,9 @@ def upload_part(part_number, data):
     )
     return {"PartNumber": part_number, "ETag": response["ETag"]}
 
-
 try:
     file_size = os.path.getsize(file_path)
     part_count = math.ceil(file_size / part_size)
-
 
     # Step 2: Upload parts in parallel
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
@@ -897,9 +770,7 @@ try:
                 data = f.read(part_size)
                 futures.append(pool.submit(upload_part, i + 1, data))
 
-
         parts = [future.result() for future in futures]
-
 
     # Step 3: Complete the upload
     s3.complete_multipart_upload(
@@ -923,79 +794,62 @@ except Exception:
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-10660)
-* [  JavaScript ](#tab-panel-10661)
-* [  Python ](#tab-panel-10662)
-
-**TypeScript**
-
 ```ts
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
 
-
 const presignedUrl = await getSignedUrl(
-  S3,
-  new PutObjectCommand({
-    Bucket: "my-bucket",
-    Key: "user-upload.png",
-    ContentType: "image/png",
-  }),
-  { expiresIn: 3600 }, // Valid for 1 hour
+	S3,
+	new PutObjectCommand({
+		Bucket: "my-bucket",
+		Key: "user-upload.png",
+		ContentType: "image/png",
+	}),
+	{ expiresIn: 3600 }, // Valid for 1 hour
 );
-
 
 console.log(presignedUrl);
 // Return presignedUrl to the client
 ```
-
-**JavaScript**
 
 ```js
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-
 const S3 = new S3Client({
-  region: "auto",
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: "<ACCESS_KEY_ID>",
-    secretAccessKey: "<SECRET_ACCESS_KEY>",
-  },
+	region: "auto",
+	endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+	credentials: {
+		accessKeyId: "<ACCESS_KEY_ID>",
+		secretAccessKey: "<SECRET_ACCESS_KEY>",
+	},
 });
 
-
 const presignedUrl = await getSignedUrl(
-  S3,
-  new PutObjectCommand({
-    Bucket: "my-bucket",
-    Key: "user-upload.png",
-    ContentType: "image/png",
-  }),
-  { expiresIn: 3600 }, // Valid for 1 hour
+	S3,
+	new PutObjectCommand({
+		Bucket: "my-bucket",
+		Key: "user-upload.png",
+		ContentType: "image/png",
+	}),
+	{ expiresIn: 3600 }, // Valid for 1 hour
 );
-
 
 console.log(presignedUrl);
 // Return presignedUrl to the client
 ```
 
-**Python**
-
 ```python
 import boto3
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -1004,7 +858,6 @@ s3 = boto3.client(
     aws_secret_access_key="<SECRET_ACCESS_KEY>",
     region_name="auto",
 )
-
 
 presigned_url = s3.generate_presigned_url(
     "put_object",
@@ -1015,7 +868,6 @@ presigned_url = s3.generate_presigned_url(
     },
     ExpiresIn=3600,  # Valid for 1 hour
 )
-
 
 print(presigned_url)
 # Return presigned_url to the client
@@ -1038,7 +890,6 @@ Upload files with the `rclone copy` command:
 ```sh
 # Upload a single file
 rclone copy /path/to/local/image.png r2:bucket_name
-
 
 # Upload everything in a directory
 rclone copy /path/to/local/folder r2:bucket_name
@@ -1087,15 +938,30 @@ For example, if a two-part upload has part ETags `bce6bf66aeb76c7040fdd5f4eccb78
 
 ## Related resources
 
-[ Workers API reference ](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) Full reference for the R2 Workers API including put(), createMultipartUpload(), and more.
+### [ Workers API reference ](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
 
-[ S3 API compatibility ](https://developers.cloudflare.com/r2/api/s3/api/) Supported S3 API operations and R2-specific behavior.
+ Full reference for the R2 Workers API including put(), createMultipartUpload(), and more.
 
-[ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) Generate temporary upload and download URLs for client-side access.
+### [ S3 API compatibility ](https://developers.cloudflare.com/r2/api/s3/api/)
 
-[ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Configure automatic cleanup of incomplete multipart uploads.
+ Supported S3 API operations and R2-specific behavior.
+
+### [ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
+
+ Generate temporary upload and download URLs for client-side access.
+
+### [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
+
+ Configure automatic cleanup of incomplete multipart uploads.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/objects/","name":"Objects"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/objects/upload-objects/","name":"Upload objects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

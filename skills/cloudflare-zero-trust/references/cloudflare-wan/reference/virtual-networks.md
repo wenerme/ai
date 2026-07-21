@@ -1,16 +1,18 @@
 ---
-title: Virtual networks
 description: Create virtual networks to segment WAN traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Virtual networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Virtual networks
 
-# Virtual networks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
 
@@ -132,7 +134,14 @@ To add static routes or configure BGP peering within the Cloudflare Virtual Netw
 * [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) — Define IP and hostname routes through your connectors
 * [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/) — Route prioritization, ECMP, and BGP within the Cloudflare Virtual Network
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/#page","headline":"Virtual networks · Cloudflare WAN docs","description":"Create virtual networks to segment WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/reference/virtual-networks/","name":"Virtual networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/#page","headline":"Virtual networks · Cloudflare WAN docs","description":"Create virtual networks to segment WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

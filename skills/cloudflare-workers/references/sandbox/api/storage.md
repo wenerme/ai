@@ -1,16 +1,18 @@
 ---
-title: Storage
 description: Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Storage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Storage
 
-# Storage
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/api/storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem for persistent data access. `mountBucket()` supports R2 binding mounts, local R2 binding sync during development, and remote S3-compatible endpoint mounts.
 
@@ -19,8 +21,6 @@ Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem fo
 ### `mountBucket()`
 
 Mount an S3-compatible bucket to a local path in the sandbox.
-
-**TypeScript**
 
 ```ts
 await sandbox.mountBucket(
@@ -38,55 +38,42 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-11051)
-* [  TypeScript ](#tab-panel-11052)
-
-**JavaScript**
-
 ```js
 // Mount an R2 bucket by Worker binding name
 await sandbox.mountBucket("MY_BUCKET", "/data");
-
 
 // Read/write files directly
 const data = await sandbox.readFile("/data/config.json");
 await sandbox.writeFile("/data/results.json", JSON.stringify(data));
 
-
 // Mount a remote S3-compatible bucket, including explicit R2 endpoints
 await sandbox.mountBucket("my-bucket", "/storage", {
-  endpoint: "https://s3.amazonaws.com",
-  credentials: {
-    accessKeyId: env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://s3.amazonaws.com",
+	credentials: {
+		accessKeyId: env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+	},
 });
-
 
 // Mount an R2 bucket during local development with wrangler dev
 await sandbox.mountBucket("MY_BUCKET", "/local-data", {
-  localBucket: true,
+	localBucket: true,
 });
-
 
 // Mount a prefix from an R2 binding
 await sandbox.mountBucket("MY_BUCKET", "/user-data", {
-  prefix: "/users/user-123",
-  readOnly: true,
+	prefix: "/users/user-123",
+	readOnly: true,
 });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Mount an R2 bucket by Worker binding name
 await sandbox.mountBucket('MY_BUCKET', '/data');
-
 
 // Read/write files directly
 const data = await sandbox.readFile('/data/config.json');
 await sandbox.writeFile('/data/results.json', JSON.stringify(data));
-
 
 // Mount a remote S3-compatible bucket, including explicit R2 endpoints
 await sandbox.mountBucket('my-bucket', '/storage', {
@@ -97,12 +84,10 @@ await sandbox.mountBucket('my-bucket', '/storage', {
   }
 });
 
-
 // Mount an R2 bucket during local development with wrangler dev
 await sandbox.mountBucket('MY_BUCKET', '/local-data', {
   localBucket: true
 });
-
 
 // Mount a prefix from an R2 binding
 await sandbox.mountBucket('MY_BUCKET', '/user-data', {
@@ -132,8 +117,6 @@ See the [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/m
 
 Unmount a previously mounted bucket.
 
-**TypeScript**
-
 ```ts
 await sandbox.unmountBucket(mountPath: string): Promise<void>
 ```
@@ -142,28 +125,19 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-11049)
-* [  TypeScript ](#tab-panel-11050)
-
-**JavaScript**
-
 ```js
 // Mount, process, unmount
 await sandbox.mountBucket("MY_BUCKET", "/data");
 await sandbox.exec("python process.py");
 
-
 // Unmount
 await sandbox.unmountBucket("/data");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Mount, process, unmount
 await sandbox.mountBucket('MY_BUCKET', '/data');
 await sandbox.exec('python process.py');
-
 
 // Unmount
 await sandbox.unmountBucket('/data');
@@ -177,8 +151,6 @@ Mounted buckets are automatically unmounted when the container is destroyed.
 
 ### `MountBucketOptions`
 
-**TypeScript**
-
 ```ts
 interface RemoteMountBucketOptions {
   endpoint: string;
@@ -190,13 +162,11 @@ interface RemoteMountBucketOptions {
   prefix?: string;
 }
 
-
 interface LocalMountBucketOptions {
   localBucket: true;
   prefix?: string;
   readOnly?: boolean;
 }
-
 
 interface R2BindingMountBucketOptions {
   endpoint?: never;
@@ -204,7 +174,6 @@ interface R2BindingMountBucketOptions {
   readOnly?: boolean;
   s3fsOptions?: string[];
 }
-
 
 type MountBucketOptions =
   | RemoteMountBucketOptions
@@ -269,8 +238,6 @@ type MountBucketOptions =
 
 Storage provider hint for automatic s3fs flag optimization.
 
-**TypeScript**
-
 ```ts
 type BucketProvider = "r2" | "s3" | "gcs";
 ```
@@ -284,7 +251,14 @@ type BucketProvider = "r2" | "s3" | "gcs";
 * [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) \- Complete bucket mounting walkthrough
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/storage/#page","headline":"Storage · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.","url":"https://developers.cloudflare.com/sandbox/api/storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/storage/","name":"Storage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/storage/#page","headline":"Storage · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.","url":"https://developers.cloudflare.com/sandbox/api/storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

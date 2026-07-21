@@ -1,16 +1,18 @@
 ---
-title: Zone holds
 description: Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Zone holds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Zone holds
 
-# Zone holds
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Zone holds prevent other teams in your organization from adding zones that are already active in another account.
 
@@ -54,7 +56,14 @@ To release a zone hold:
 5. Choose the length of your release.
 6. Select **Release hold**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/#page","headline":"Zone holds · Cloudflare Fundamentals docs","description":"Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/zone-holds/","name":"Zone holds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/#page","headline":"Zone holds · Cloudflare Fundamentals docs","description":"Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

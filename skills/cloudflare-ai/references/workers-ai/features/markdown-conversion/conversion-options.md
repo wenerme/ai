@@ -1,16 +1,18 @@
 ---
-title: Conversion Options
 description: Configure per-format options for Workers AI Markdown Conversion, including HTML and image settings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Conversion Options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Conversion Options
 
-# Conversion Options
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, the `toMarkdown` service extracts text content from your files. To further extend the capabilities of the conversion process, you can pass options to the service to control how specific file types are converted.
 
@@ -19,8 +21,6 @@ Options are organized by file type and are all optional.
 ## Available options
 
 ### Output
-
-**TypeScript**
 
 ```typescript
 {
@@ -36,8 +36,6 @@ When `format` is `text`, the `format` field of the [ConversionResult](https://de
 
 ### Images
 
-**TypeScript**
-
 ```typescript
 {
   image?: {
@@ -48,13 +46,11 @@ When `format` is `text`, the `format` field of the [ConversionResult](https://de
 
 * `descriptionLanguage`: controls the language of the AI-generated image descriptions.
 
-Warning
+Caution
 
 This option works on a _best-effort_ basis: it is not guaranteed that the resulting text will be in the desired language.
 
 ### HTML
-
-**TypeScript**
 
 ```typescript
 {
@@ -69,8 +65,6 @@ This option works on a _best-effort_ basis: it is not guaranteed that the result
 * `cssSelector`: string containing a CSS selector pattern to pick specific elements from your HTML. Refer to [how HTML is processed](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#html) for more details.
 
 ### PDF
-
-**TypeScript**
 
 ```typescript
 {
@@ -87,8 +81,6 @@ This option works on a _best-effort_ basis: it is not guaranteed that the result
 ### Binding
 
 To configure custom options, pass a `conversionOptions` object inside the second argument of the binding call, like this:
-
-**TypeScript**
 
 ```typescript
 await env.AI.toMarkdown(..., {
@@ -112,7 +104,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \
   -F 'conversionOptions={ "html": { ... }, ... }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#page","headline":"Conversion Options · Cloudflare Workers AI docs","description":"Configure per-format options for Workers AI Markdown Conversion, including HTML and image settings.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/conversion-options/","name":"Conversion Options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#page","headline":"Conversion Options · Cloudflare Workers AI docs","description":"Configure per-format options for Workers AI Markdown Conversion, including HTML and image settings.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

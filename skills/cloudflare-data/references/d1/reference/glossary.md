@@ -1,16 +1,18 @@
 ---
-title: Glossary
 description: Definitions of key terms used throughout the D1 documentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Glossary
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Glossary
 
-# Glossary
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/reference/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the definitions for terms used across Cloudflare's D1 documentation.
 
@@ -23,7 +25,14 @@ Review the definitions for terms used across Cloudflare's D1 documentation.
 | replica lag               | The time it takes for the primary database instance to replicate its changes to a specific read replica.                                                                                                                                          |
 | session                   | A session encapsulates all the queries from one logical session for your application. For example, a session may correspond to all queries coming from a particular web browser session.                                                          |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/glossary/#page","headline":"Glossary · Cloudflare D1 docs","description":"Definitions of key terms used throughout the D1 documentation.","url":"https://developers.cloudflare.com/d1/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/glossary/","name":"Glossary"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/glossary/#page","headline":"Glossary · Cloudflare D1 docs","description":"Definitions of key terms used throughout the D1 documentation.","url":"https://developers.cloudflare.com/d1/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

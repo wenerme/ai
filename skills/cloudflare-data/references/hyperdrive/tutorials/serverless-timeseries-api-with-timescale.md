@@ -1,16 +1,18 @@
 ---
-title: Create a serverless, globally distributed time-series API with Timescale
 description: In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create a serverless, globally distributed time-series API with Timescale
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a serverless, globally distributed time-series API with Timescale
 
-# Create a serverless, globally distributed time-series API with Timescale
+Last updated Feb 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
@@ -121,7 +123,6 @@ CREATE TABLE readings(
   value numeric NOT NULL
  );
 
-
 SELECT create_hypertable('readings', 'ts');
 ```
 
@@ -146,40 +147,32 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-9642)
-* [  wrangler.toml ](#tab-panel-9643)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "timescale-api",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "your-id-here"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "timescale-api",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "your-id-here"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "timescale-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -212,79 +205,66 @@ Now copy the below Worker code, and replace the current code in `./src/index.ts`
 2. Creates a `POST` route which accepts an array of JSON readings to insert into Timescale in one transaction.
 3. Creates a `GET` route which takes a `limit` parameter and returns the most recent readings. This could be adapted to filter by ID or by timestamp.
 
-**TypeScript**
-
 ```ts
 import { Client } from "pg";
 
-
 export interface Env {
-  HYPERDRIVE: Hyperdrive;
+	HYPERDRIVE: Hyperdrive;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new client on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new client is fast.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new client on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new client is fast.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
 
+		const url = new URL(request.url);
+		// Create a route for inserting JSON as readings
+		if (request.method === "POST" && url.pathname === "/readings") {
+			// Parse the request's JSON payload
+			const productData = await request.json();
 
-    const url = new URL(request.url);
-    // Create a route for inserting JSON as readings
-    if (request.method === "POST" && url.pathname === "/readings") {
-      // Parse the request's JSON payload
-      const productData = await request.json();
-
-
-      // Write the raw query. You are using jsonb_to_recordset to expand the JSON
-      // to PG INSERT format to insert all items at once, and using coalesce to
-      // insert with the current timestamp if no ts field exists
-      const insertQuery = `
+			// Write the raw query. You are using jsonb_to_recordset to expand the JSON
+			// to PG INSERT format to insert all items at once, and using coalesce to
+			// insert with the current timestamp if no ts field exists
+			const insertQuery = `
       INSERT INTO readings (ts, sensor, metadata, value)
       SELECT coalesce(ts, now()), sensor, metadata, value FROM jsonb_to_recordset($1::jsonb)
       AS t(ts timestamptz, sensor UUID, metadata jsonb, value numeric)
   `;
 
+			const insertResult = await client.query(insertQuery, [
+				JSON.stringify(productData),
+			]);
 
-      const insertResult = await client.query(insertQuery, [
-        JSON.stringify(productData),
-      ]);
+			// Collect the raw row count inserted to return
+			const resp = new Response(JSON.stringify(insertResult.rowCount), {
+				headers: { "Content-Type": "application/json" },
+			});
 
+			return resp;
 
-      // Collect the raw row count inserted to return
-      const resp = new Response(JSON.stringify(insertResult.rowCount), {
-        headers: { "Content-Type": "application/json" },
-      });
+			// Create a route for querying within a time-frame
+		} else if (request.method === "GET" && url.pathname === "/readings") {
+			const limit = url.searchParams.get("limit");
 
+			// Query the readings table using the limit param passed
+			const result = await client.query(
+				"SELECT * FROM readings ORDER BY ts DESC LIMIT $1",
+				[limit],
+			);
 
-      return resp;
+			// Return the result as JSON
+			const resp = new Response(JSON.stringify(result.rows), {
+				headers: { "Content-Type": "application/json" },
+			});
 
-
-      // Create a route for querying within a time-frame
-    } else if (request.method === "GET" && url.pathname === "/readings") {
-      const limit = url.searchParams.get("limit");
-
-
-      // Query the readings table using the limit param passed
-      const result = await client.query(
-        "SELECT * FROM readings ORDER BY ts DESC LIMIT $1",
-        [limit],
-      );
-
-
-      // Return the result as JSON
-      const resp = new Response(JSON.stringify(result.rows), {
-        headers: { "Content-Type": "application/json" },
-      });
-
-
-      return resp;
-    }
-  },
+			return resp;
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -304,13 +284,13 @@ You can now use your Cloudflare Worker to insert new rows into the `readings` ta
 
 ```json
 [
-  { "sensor": "6f3e43a4-d1c1-4cb6-b928-0ac0efaf84a5", "value": 0.3 },
-  { "sensor": "d538f9fa-f6de-46e5-9fa2-d7ee9a0f0a68", "value": 10.8 },
-  { "sensor": "5cb674a0-460d-4c80-8113-28927f658f5f", "value": 18.8 },
-  { "sensor": "03307bae-d5b8-42ad-8f17-1c810e0fbe63", "value": 20.0 },
-  { "sensor": "64494acc-4aa5-413c-bd09-2e5b3ece8ad7", "value": 13.1 },
-  { "sensor": "0a361f03-d7ec-4e61-822f-2857b52b74b3", "value": 1.1 },
-  { "sensor": "50f91cdc-fd19-40d2-b2b0-c90db3394981", "value": 10.3 }
+	{ "sensor": "6f3e43a4-d1c1-4cb6-b928-0ac0efaf84a5", "value": 0.3 },
+	{ "sensor": "d538f9fa-f6de-46e5-9fa2-d7ee9a0f0a68", "value": 10.8 },
+	{ "sensor": "5cb674a0-460d-4c80-8113-28927f658f5f", "value": 18.8 },
+	{ "sensor": "03307bae-d5b8-42ad-8f17-1c810e0fbe63", "value": 20.0 },
+	{ "sensor": "64494acc-4aa5-413c-bd09-2e5b3ece8ad7", "value": 13.1 },
+	{ "sensor": "0a361f03-d7ec-4e61-822f-2857b52b74b3", "value": 1.1 },
+	{ "sensor": "50f91cdc-fd19-40d2-b2b0-c90db3394981", "value": 10.3 }
 ]
 ```
 
@@ -319,8 +299,6 @@ This tutorial omits the `ts` (the timestamp) and `metadata` (the JSON blob) so t
 Once you have sent the `POST` request you can also issue a `GET` request to your Worker’s URL with the `/readings` path. Set the `limit` parameter to control the amount of returned records.
 
 If you have **curl** installed you can test with the following commands (replace `<YOUR_SUBDOMAIN>` with your subdomain from the deploy command above):
-
-**Ingest some data**
 
 ```bash
 curl --request POST --data @- 'https://timescale-api.<YOUR_SUBDOMAIN>.workers.dev/readings' <<EOF
@@ -336,8 +314,6 @@ curl --request POST --data @- 'https://timescale-api.<YOUR_SUBDOMAIN>.workers.de
 EOF
 ```
 
-**Query some data**
-
 ```sh
 curl "https://timescale-api.<YOUR_SUBDOMAIN>.workers.dev/readings?limit=10"
 ```
@@ -350,7 +326,14 @@ In this tutorial, you have learned how to create a working example to ingest and
 * Learn more about [Timescale ↗](https://timescale.com).
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale · Cloudflare Hyperdrive docs","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","name":"Create a serverless, globally distributed time-series API with Timescale"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale · Cloudflare Hyperdrive docs","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
 ```

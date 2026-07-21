@@ -1,16 +1,18 @@
 ---
-title: GRE and IPsec tunnels
 description: Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: GRE and IPsec tunnels
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GRE and IPsec tunnels
 
-# GRE and IPsec tunnels
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Tunnels and encapsulation
 
@@ -133,7 +135,7 @@ Documentation sometimes refers to IKE SA as Phase 1 as per IKEv1 language.
   * Classical DH group 20 (384-bit random ECP group)
   * Classical DH group 14 (2048-bit MODP group)
   * Classical DH group 5 (1536-bit MODP group)
-  Warning
+  Caution
   Cloudflare recommends the **ML-KEM-768 + DH Group 20** hybrid exchange for post-quantum key agreement. If your appliance does not yet support RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem, use DH group 20.
 * **Pseudorandom function (PRF)**
 Do not confuse this with Perfect Forward Secrecy (PFS). You often cannot configure PRF.
@@ -164,7 +166,7 @@ Documentation sometimes refers to this as Phase 2 Diffie-Hellman Group. Do not c
   * DH group 5 (1536-bit MODP group)
   Post-quantum security
   If the Child SA uses DH groups for Perfect Forward Secrecy, it is still protected against quantum threats if the parent IKE SA was established using a hybrid ML-KEM exchange.
-  Warning
+  Caution
   Cloudflare recommends that you use only one DH group when configuring your device, specifically **DH group 20**.
   Note
   Cloudflare recommends configuring the Child SA rekey interval (SA lifetime) between 30 minutes and 8 hours.
@@ -219,7 +221,7 @@ Additionally, Cloudflare supports the IKE ID type of `ID_IPV4_ADDR` if the follo
 1. You set the IPsec tunnel's `customer_endpoint` value.
 2. The combination of `cloudflare_endpoint` and `customer_endpoint` is unique among the customer's IPsec tunnels.
 
-Warning
+Caution
 
 Make sure each IPsec tunnel has a unique combination of a [Cloudflare endpoint and customer endpoint](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/). If this combination is not unique among your IPsec tunnels, you should use one of the custom IKE formats (`ID_RFC822_ADDR`, `ID_FQDN`, or `ID_KEY_ID`) to specify the tunnel ID and account ID. This helps Cloudflare link the IKE packet to the right IPsec tunnel for tasks like authentication.
 
@@ -273,7 +275,14 @@ For help resolving tunnel issues:
 * [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/) \- Diagnose and fix health check failures
 * [Troubleshoot with IPsec logs](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/) \- Use Logpush to analyze IPsec handshake issues
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/#page","headline":"GRE and IPsec tunnels · Cloudflare Magic Transit docs","description":"Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.","url":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","Post-quantum"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/gre-ipsec-tunnels/","name":"GRE and IPsec tunnels"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/#page","headline":"GRE and IPsec tunnels · Cloudflare Magic Transit docs","description":"Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.","url":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","Post-quantum"]}
 ```

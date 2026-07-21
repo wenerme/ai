@@ -1,16 +1,18 @@
 ---
-title: SQLite-backed Durable Object Storage
 description: API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SQLite-backed Durable Object Storage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SQLite-backed Durable Object Storage
 
-# SQLite-backed Durable Object Storage
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -56,36 +58,26 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8916)
-* [  TypeScript ](#tab-panel-8917)
-* [  Python ](#tab-panel-8918)
-
-**JavaScript**
-
 ```js
 export class Counter extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		super(ctx, env);
+	}
 
-
-  async increment() {
-    let value = (await this.ctx.storage.get("value")) || 0;
-    value += 1;
-    await this.ctx.storage.put("value", value);
-    return value;
-  }
+	async increment() {
+		let value = (await this.ctx.storage.get("value")) || 0;
+		value += 1;
+		await this.ctx.storage.put("value", value);
+		return value;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class Counter extends DurableObject {
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
   }
-
 
     async increment(): Promise<number> {
       let value: number = (await this.ctx.storage.get('value')) || 0;
@@ -94,20 +86,15 @@ export class Counter extends DurableObject {
       return value;
     }
 
-
 }
 ```
-
-**Python**
 
 ```python
 from workers import DurableObject
 
-
 class Counter(DurableObject):
   def __init__(self, ctx, env):
     super().__init__(ctx, env)
-
 
   async def increment(self):
     value = (await self.ctx.storage.get('value')) or 0
@@ -124,21 +111,14 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-8908)
-* [  Python ](#tab-panel-8909)
-
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
-
 
 export class MyDurableObject extends DurableObject {
   sql: SqlStorage;
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     this.sql = ctx.storage.sql;
-
 
     this.sql.exec(`
       CREATE TABLE IF NOT EXISTS artist(
@@ -154,17 +134,13 @@ export class MyDurableObject extends DurableObject {
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class MyDurableObject(DurableObject):
   def __init__(self, ctx, env):
     super().__init__(ctx, env)
     self.sql = ctx.storage.sql
-
 
     self.sql.exec("""
       CREATE TABLE IF NOT EXISTS artist(
@@ -198,7 +174,7 @@ Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4
 
 * `query`: ` string `
   * The SQL query string to be executed. `query` can contain `?` placeholders for parameter bindings. Multiple SQL statements, separated with a semicolon, can be executed in the `query`. With multiple SQL statements, any parameter bindings are applied to the last SQL statement in the `query`, and the returned cursor is only for the last SQL statement.
-* `...bindings`: ` any[] ` Optional
+* `...bindings`: ` any[] `Optional
   * Optional variable number of arguments that correspond to the `?` placeholders in `query`.
 
 #### Returns
@@ -211,15 +187,11 @@ Although a cursor object can technically be held across an `await`, it does not 
 
 For predictable behavior, fully consume cursors synchronously before the next `await`, for example with `.toArray()` or `Array.from(cursor)`. Treat cursors that cross `await` boundaries as having no snapshot isolation guarantees.
 
-**TypeScript**
-
 ```ts
 // ✅ Safe: cursor is fully consumed before any await
 const rows = this.ctx.storage.sql.exec("SELECT * FROM users").toArray();
 const result = await fetch("https://example.com", { method: "POST", body: JSON.stringify(rows) });
 ```
-
-**TypeScript**
 
 ```ts
 // ⚠️ No snapshot isolation: cursor may reflect changes made after it was created
@@ -243,15 +215,9 @@ const rows = cursor.toArray();
   * Returned Iterator supports `next()` and `toArray()` methods above.
   * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-8910)
-* [  Python ](#tab-panel-8911)
-
-**TypeScript**
-
 ```ts
 let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
 let rawResult = cursor.raw().next();
-
 
 if (!rawResult.done) {
   console.log(rawResult.value); // prints [ 123, 'Alice' ]
@@ -259,23 +225,18 @@ if (!rawResult.done) {
   // query returned zero results
 }
 
-
 console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
-
-**Python**
 
 ```python
 cursor = self.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;")
 raw_result = cursor.raw().next()
-
 
 if not raw_result.done:
   print(raw_result.value)  # prints [ 123, 'Alice' ]
 else:
   # query returned zero results
   pass
-
 
 print(cursor.toArray())  # prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
@@ -298,18 +259,14 @@ Note that `sql.exec()` cannot execute transaction-related statements like `BEGIN
 
 [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) examples below use the following SQL schema:
 
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
-
 
 export class MyDurableObject extends DurableObject {
   sql: SqlStorage
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     this.sql = ctx.storage.sql;
-
 
     this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(
       artistid    INTEGER PRIMARY KEY,
@@ -325,11 +282,8 @@ export class MyDurableObject extends DurableObject {
 
 Iterate over query results as row objects:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
-
 
   for (let row of cursor) {
     // Iterate over row object and do something
@@ -337,8 +291,6 @@ Iterate over query results as row objects:
 ```
 
 Convert query results to an array of row objects:
-
-**TypeScript**
 
 ```ts
   // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]
@@ -351,21 +303,16 @@ Convert query results to an array of row objects:
 
 Convert query results to an array of row values arrays:
 
-**TypeScript**
-
 ```ts
   // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]
   let cursor = this.sql.exec("SELECT * FROM artist;");
   let resultsArray = cursor.raw().toArray();
-
 
   // Returns ["artistid","artistname"]
   let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
 ```
 
 Get first row object of query results:
-
-**TypeScript**
 
 ```ts
   // Returns {"artistid":123,"artistname":"Alice"}
@@ -374,20 +321,15 @@ Get first row object of query results:
 
 Check if query results have exactly one row:
 
-**TypeScript**
-
 ```ts
   // returns error
   this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
-
 
   // returns { artistid: 123, artistname: 'Alice' }
   let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
 ```
 
 Returned cursor behavior:
-
-**TypeScript**
 
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
@@ -398,19 +340,15 @@ Returned cursor behavior:
     // query returned zero results
   }
 
-
   let remainingRows = cursor.toArray();
   console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 Returned cursor and `raw()` iterator iterate over the same query results:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
   let result = cursor.raw().next();
-
 
   if (!result.done) {
     console.log(result.value); // prints [ 123, 'Alice' ]
@@ -418,19 +356,15 @@ Returned cursor and `raw()` iterator iterate over the same query results:
     // query returned zero results
   }
 
-
   console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 `sql.exec().rowsRead()`:
 
-**TypeScript**
-
 ```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
   cursor.next()
   console.log(cursor.rowsRead); // prints 1
-
 
   cursor.toArray(); // consumes remaining cursor
   console.log(cursor.rowsRead); // prints 3
@@ -444,16 +378,9 @@ Returned cursor and `raw()` iterator iterate over the same query results:
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-8912)
-* [  Python ](#tab-panel-8913)
-
-**TypeScript**
-
 ```ts
 let size = ctx.storage.sql.databaseSize;
 ```
-
-**Python**
 
 ```python
 size = ctx.storage.sql.databaseSize
@@ -485,11 +412,6 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-8914)
-* [  Python ](#tab-panel-8915)
-
-**TypeScript**
-
 ```ts
 const DAY_MS = 24*60*60*1000;
 // restore to 2 days ago
@@ -497,11 +419,8 @@ let bookmark = ctx.storage.getBookmarkForTime(Date.now() - 2 * DAYS_MS);
 ctx.storage.onNextSessionRestoreBookmark(bookmark);
 ```
 
-**Python**
-
 ```python
 from datetime import datetime, timedelta
-
 
 now = datetime.now()
 # restore to 2 days ago
@@ -529,7 +448,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### `list`
 
-* `` ctx.storage.kv.list(options ` Object ` optional) ``: ` Iterable<string, any> `
+* `` ctx.storage.kv.list(options ` Object `optional) ``: ` Iterable<string, any> `
   * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   * The type of each returned value in the [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterable%5Fprotocol) will be whatever was previously written for the corresponding key.
   * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -563,7 +482,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 * `` ctx.storage.get(key ` string `, options ` Object ` optional) ``: ` Promise<any> `
 
   * Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
-* `` ctx.storage.get(keys ` Array<string> `, options ` Object ` optional) ``: ` Promise<Map<string, any>> `
+* `` ctx.storage.get(keys ` Array<string> `, options ` Object `optional) ``: ` Promise<Map<string, any>> `
 
   * Retrieves the values associated with each of the provided keys. The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
@@ -578,7 +497,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### put
 
-* `` put(key ` string `, value ` any `, options ` Object ` optional) ``: ` Promise `
+* `` put(key ` string `, value ` any `, options ` Object `optional) ``: ` Promise `
 
   * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
   The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
@@ -586,7 +505,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
     * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
     * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
   On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
-* `` put(entries ` Object `, options ` Object ` optional) ``: ` Promise `
+* `` put(entries ` Object `, options ` Object `optional) ``: ` Promise `
 
   * Takes an Object and stores each of its keys and values to storage.
   * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
@@ -596,10 +515,10 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### delete
 
-* `` delete(key ` string `, options ` Object ` optional) ``: ` Promise<boolean> `
+* `` delete(key ` string `, options ` Object `optional) ``: ` Promise<boolean> `
 
   * Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
-* `` delete(keys ` Array<string> `, options ` Object ` optional) ``: ` Promise<number> `
+* `` delete(keys ` Array<string> `, options ` Object `optional) ``: ` Promise<number> `
 
   * Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
 
@@ -628,7 +547,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### list
 
-* `` list(options ` Object ` optional) ``: ` Promise<Map<string, any>> `
+* `` list(options ` Object `optional) ``: ` Promise<Map<string, any>> `
   * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   * The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key.
   * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -665,7 +584,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `getAlarm`
 
-* `` getAlarm(options ` Object ` optional) ``: ` Promise<Number | null> `
+* `` getAlarm(options ` Object `optional) ``: ` Promise<Number | null> `
   * Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
 
 #### Supported options
@@ -674,14 +593,14 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `setAlarm`
 
-* `` setAlarm(scheduledTime ` Date | number `, options ` Object ` optional) ``: ` Promise `
+* `` setAlarm(scheduledTime ` Date | number `, options ` Object `optional) ``: ` Promise `
 
   * Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
 If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
 
 ### `deleteAlarm`
 
-* `` deleteAlarm(options ` Object ` optional) ``: ` Promise `
+* `` deleteAlarm(options ` Object `optional) ``: ` Promise `
   * Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
 
 #### Supported options
@@ -692,7 +611,7 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 
 ### `deleteAll`
 
-* `` deleteAll(options ` Object ` optional) ``: ` Promise `
+* `` deleteAll(options ` Object `optional) ``: ` Promise `
   * Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
   * For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
   * For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).
@@ -736,7 +655,14 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 * [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
 * [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/sqlite-storage-api/","name":"SQLite-backed Durable Object Storage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

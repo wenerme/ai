@@ -1,16 +1,18 @@
 ---
-title: Custom Errors
 description: Serve custom error pages for Cloudflare or origin server errors.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Custom Errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom Errors
 
-# Custom Errors
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including [Cloudflare Workers](https://developers.cloudflare.com/workers/)), or a [security challenge](https://developers.cloudflare.com/cloudflare-challenges/).
 
@@ -96,7 +98,14 @@ When you provide a URL for a custom error asset, Cloudflare fetches the page and
 
 If your custom error asset exceeds this size, reduce the number or size of referenced resources. You can also host large resources externally, as long as they remain accessible from Cloudflare's network when the asset is fetched.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/#page","headline":"Custom Errors · Cloudflare Rules docs","description":"Serve custom error pages for Cloudflare or origin server errors.","url":"https://developers.cloudflare.com/rules/custom-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/#page","headline":"Custom Errors · Cloudflare Rules docs","description":"Serve custom error pages for Cloudflare or origin server errors.","url":"https://developers.cloudflare.com/rules/custom-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

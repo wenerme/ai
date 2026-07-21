@@ -1,16 +1,18 @@
 ---
-title: Potential disruption of services for Russian users
 description: Understand ISP throttling affecting Russian users.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Potential disruption of services for Russian users
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Potential disruption of services for Russian users
 
-# Potential disruption of services for Russian users
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has observed that Internet Service Providers (ISPs) within Russia are systematically throttling traffic to websites and services, including those protected by Cloudflare.
 
@@ -27,7 +29,14 @@ If you are a Cloudflare enterprise customer, contact your account team for furth
 
 For further details, refer to the [Russian Internet users are unable to access the open Internet blog post ↗](https://blog.cloudflare.com/russian-internet-users-are-unable-to-access-the-open-internet/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/#page","headline":"Potential disruption of services for Russian users · Cloudflare Support docs","description":"Understand ISP throttling affecting Russian users.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/general-troubleshooting/","name":"General Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/general-troubleshooting/service-disruption/","name":"Potential disruption of services for Russian users"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/#page","headline":"Potential disruption of services for Russian users · Cloudflare Support docs","description":"Understand ISP throttling affecting Russian users.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

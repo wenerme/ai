@@ -119,22 +119,22 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_text",
-                    text: "Analyze the letter and provide a summary of the key points.",
-                },
-                {
-                    type: "input_file",
-                    file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
-                },
-            ],
+          type: "input_text",
+          text: "Analyze the letter and provide a summary of the key points.",
         },
-    ],
+        {
+          type: "input_file",
+          file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -263,27 +263,27 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const file = await client.files.create({
-    file: fs.createReadStream("draconomicon.pdf"),
-    purpose: "user_data",
+  file: fs.createReadStream("fixtures/draconomicon.pdf"),
+  purpose: "user_data",
 });
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_file",
-                    file_id: file.id,
-                },
-                {
-                    type: "input_text",
-                    text: "What is the first dragon in the book?",
-                },
-            ],
+          type: "input_file",
+          file_id: file.id,
         },
-    ],
+        {
+          type: "input_text",
+          text: "What is the first dragon in the book?",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -409,27 +409,27 @@ import fs from "fs";
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const data = fs.readFileSync("draconomicon.pdf");
+const data = fs.readFileSync("fixtures/draconomicon.pdf");
 const base64String = data.toString("base64");
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_file",
-                    filename: "draconomicon.pdf",
-                    file_data: `data:application/pdf;base64,${base64String}`,
-                },
-                {
-                    type: "input_text",
-                    text: "What is the first dragon in the book?",
-                },
-            ],
+          type: "input_file",
+          filename: "draconomicon.pdf",
+          file_data: `data:application/pdf;base64,${base64String}`,
         },
-    ],
+        {
+          type: "input_text",
+          text: "What is the first dragon in the book?",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);

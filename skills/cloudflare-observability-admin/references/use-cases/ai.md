@@ -1,16 +1,18 @@
 ---
-title: AI applications
 description: Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: AI applications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI applications
 
-# AI applications
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build and deploy AI applications on Cloudflare's global network with inference at the edge, vector databases, and model gateways. Workers AI runs Large Language Models (LLMs), text embeddings, image generation, and other models with pay-per-use pricing. AI Gateway proxies requests to OpenAI, Anthropic, and other providers with caching and unified analytics. Vectorize stores embeddings for Retrieval Augmented Generation (RAG) workflows.
 
@@ -66,15 +68,22 @@ Deploy low-latency AI features directly at the edge:
 
 ## Related resources
 
-[Workers AI models](https://developers.cloudflare.com/workers-ai/models/)
+### [ Workers AI models ](https://developers.cloudflare.com/workers-ai/models/)
 
 Browse available models for text generation, embeddings, image generation, and more.
 
-[AI Gateway providers](https://developers.cloudflare.com/ai-gateway/usage/providers/)
+### [ AI Gateway providers ](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 
 Connect to OpenAI, Anthropic, Google AI, and other providers through AI Gateway.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/ai/#page","headline":"AI applications · Use cases · Cloudflare use cases","description":"Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.","url":"https://developers.cloudflare.com/use-cases/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/ai/","name":"AI applications"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/ai/#page","headline":"AI applications · Use cases · Cloudflare use cases","description":"Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.","url":"https://developers.cloudflare.com/use-cases/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

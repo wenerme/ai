@@ -1,16 +1,18 @@
 ---
-title: Connectivity pre-checks
 description: Connectivity pre-checks in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Connectivity pre-checks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connectivity pre-checks
 
-# Connectivity pre-checks
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you validate connectivity between your environment and [Cloudflare Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/) before deploying [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). You will run DNS and network checks from the same host machine that will run `cloudflared` to help you identify issues that may prevent `cloudflared` from connecting to Cloudflare Tunnel endpoints.
 
@@ -61,26 +63,22 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-7963)
-* [ US region ](#tab-panel-7964)
-* [ FedRAMP High region ](#tab-panel-7965)
-
 ```sh
 dig A region1.v2.argotunnel.com
 ```
 
 ```sh
 ;; ANSWER SECTION:
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.167
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.67
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.57
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.107
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.27
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.7
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.227
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.47
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.37
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.77
 ...
 ```
 
@@ -90,16 +88,16 @@ dig AAAA region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::1
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::2
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::3
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::4
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::5
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::6
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::7
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::8
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::9
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::10
 ...
 ```
 
@@ -109,16 +107,16 @@ dig A region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.13
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.193
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.33
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.233
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.53
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.63
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.113
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.73
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.43
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.23
 ...
 ```
 
@@ -128,16 +126,16 @@ dig AAAA region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::1
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::2
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::3
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::4
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::5
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::6
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::7
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::8
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::9
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::10
 ...
 ```
 
@@ -147,16 +145,16 @@ dig A us-region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.1
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.2
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.3
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.4
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.5
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.6
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.7
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.8
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.9
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.10
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.1
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.2
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.3
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.4
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.5
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.6
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.7
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.8
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.9
+us-region1.v2.argotunnel.com. 86400 IN	A	198.41.218.10
 ...
 ```
 
@@ -166,16 +164,16 @@ dig AAAA us-region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::1
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::2
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::3
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::4
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::5
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::6
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::7
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::8
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::9
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::10
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::1
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::2
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::3
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::4
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::5
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::6
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::7
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::8
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::9
+us-region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a1::10
 ...
 ```
 
@@ -185,16 +183,16 @@ dig A us-region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.1
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.2
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.3
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.4
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.5
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.6
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.7
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.8
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.9
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.10
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.1
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.2
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.3
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.4
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.5
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.6
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.7
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.8
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.9
+us-region2.v2.argotunnel.com. 86400 IN	A	198.41.219.10
 ...
 ```
 
@@ -204,16 +202,16 @@ dig AAAA us-region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::1
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::2
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::3
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::4
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::5
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::6
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::7
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::8
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::9
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::10
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::1
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::2
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::3
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::4
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::5
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::6
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::7
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::8
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::9
+us-region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a9::10
 ...
 ```
 
@@ -223,16 +221,16 @@ dig A fed-region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.1
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.2
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.3
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.4
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.5
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.6
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.7
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.8
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.9
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.10
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.1
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.2
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.3
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.4
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.5
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.6
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.7
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.8
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.9
+fed-region1.v2.argotunnel.com. 300 IN	A	162.159.234.10
 ...
 ```
 
@@ -242,16 +240,16 @@ dig AAAA fed-region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::1
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::2
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::3
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::4
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::5
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::6
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::7
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::8
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::9
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::10
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::1
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::2
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::3
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::4
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::5
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::6
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::7
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::8
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::9
+fed-region1.v2.argotunnel.com. 300 IN	AAAA	2a06:98c1:4d::10
 ...
 ```
 
@@ -261,16 +259,16 @@ dig A fed-region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.1
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.2
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.3
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.4
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.5
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.6
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.7
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.8
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.9
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.10
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.1
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.2
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.3
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.4
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.5
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.6
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.7
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.8
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.9
+fed-region2.v2.argotunnel.com. 300 IN	A	172.64.234.10
 ...
 ```
 
@@ -280,16 +278,16 @@ dig AAAA fed-region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::1
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::2
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::3
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::4
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::5
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::6
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::7
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::8
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::9
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::10
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::1
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::2
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::3
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::4
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::5
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::6
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::7
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::8
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::9
+fed-region2.v2.argotunnel.com. 300 IN	AAAA	2606:4700:f6::10
 ...
 ```
 
@@ -423,7 +421,14 @@ Avoid vague descriptions and include scenario, timestamps, and steps taken to tr
 
 Acme Corp attempted to establish a tunnel connection on October 30, 2025, at approximately 3:45 PM UTC. DNS resolution and TCP connectivity tests passed, but the `cloudflared` daemon logs showed `failed to sufficiently increase receive buffer size` errors. The tunnel diagnostic logs collected at 3:50 PM UTC are attached, along with the output from the DNS and network connectivity pre-checks.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#page","headline":"Connectivity pre-checks · Cloudflare One docs","description":"Connectivity pre-checks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/","name":"Troubleshoot tunnels"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","name":"Connectivity pre-checks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#page","headline":"Connectivity pre-checks · Cloudflare One docs","description":"Connectivity pre-checks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","DNS"]}
 ```

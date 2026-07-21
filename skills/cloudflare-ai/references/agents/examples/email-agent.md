@@ -1,16 +1,18 @@
 ---
-title: Email agent
 description: Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email agent
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email agent
 
-# Email agent
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/examples/email-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents can send and receive email with Cloudflare [Email Service](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/). This guide shows how to send outbound email with the Workers binding, route inbound mail into Agents, and handle follow-up replies securely.
 
@@ -36,11 +38,6 @@ DNS changes usually complete within 5-15 minutes for domains using Cloudflare DN
 
 Add the email binding to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-5931)
-* [  wrangler.toml ](#tab-panel-5932)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -53,8 +50,6 @@ Add the email binding to your Worker:
 }
 ```
 
-**TOML**
-
 ```toml
 [[send_email]]
 name = "EMAIL"
@@ -65,102 +60,85 @@ The `remote = true` option lets you call the real Email Service API during local
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5957)
-* [  TypeScript ](#tab-panel-5958)
-
-**JavaScript**
-
 ```js
 import { Agent, callable, routeAgentEmail } from "agents";
 import { createAddressBasedEmailResolver } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 export class EmailAgent extends Agent {
-  @callable()
-  async sendWelcomeEmail(to) {
-    await this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: "support@yourdomain.com",
-      replyTo: "support@yourdomain.com",
-      subject: "Welcome to our service",
-      text: "Thanks for signing up. Reply to this email if you need help.",
-    });
-  }
+	@callable()
+	async sendWelcomeEmail(to) {
+		await this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: "support@yourdomain.com",
+			replyTo: "support@yourdomain.com",
+			subject: "Welcome to our service",
+			text: "Thanks for signing up. Reply to this email if you need help.",
+		});
+	}
 
+	async onEmail(email) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-  async onEmail(email) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+		console.log("Received email from:", email.from);
+		console.log("Subject:", parsed.subject);
 
-
-    console.log("Received email from:", email.from);
-    console.log("Subject:", parsed.subject);
-
-
-    await this.replyToEmail(email, {
-      fromName: "Support Agent",
-      body: "Thanks for your email! We received it.",
-    });
-  }
+		await this.replyToEmail(email, {
+			fromName: "Support Agent",
+			body: "Thanks for your email! We received it.",
+		});
+	}
 }
 
-
 export default {
-  async email(message, env) {
-    await routeAgentEmail(message, env, {
-      resolver: createAddressBasedEmailResolver("EmailAgent"),
-    });
-  },
+	async email(message, env) {
+		await routeAgentEmail(message, env, {
+			resolver: createAddressBasedEmailResolver("EmailAgent"),
+		});
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable, routeAgentEmail } from "agents";
 import { createAddressBasedEmailResolver, type AgentEmail } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 export class EmailAgent extends Agent {
-  @callable()
-  async sendWelcomeEmail(to: string) {
-    await this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: "support@yourdomain.com",
-      replyTo: "support@yourdomain.com",
-      subject: "Welcome to our service",
-      text: "Thanks for signing up. Reply to this email if you need help.",
-    });
-  }
+	@callable()
+	async sendWelcomeEmail(to: string) {
+		await this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: "support@yourdomain.com",
+			replyTo: "support@yourdomain.com",
+			subject: "Welcome to our service",
+			text: "Thanks for signing up. Reply to this email if you need help.",
+		});
+	}
 
+	async onEmail(email: AgentEmail) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-  async onEmail(email: AgentEmail) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+		console.log("Received email from:", email.from);
+		console.log("Subject:", parsed.subject);
 
-
-    console.log("Received email from:", email.from);
-    console.log("Subject:", parsed.subject);
-
-
-    await this.replyToEmail(email, {
-      fromName: "Support Agent",
-      body: "Thanks for your email! We received it.",
-    });
-  }
+		await this.replyToEmail(email, {
+			fromName: "Support Agent",
+			body: "Thanks for your email! We received it.",
+		});
+	}
 }
 
-
 export default {
-  async email(message, env) {
-    await routeAgentEmail(message, env, {
-      resolver: createAddressBasedEmailResolver("EmailAgent"),
-    });
-  },
+	async email(message, env) {
+		await routeAgentEmail(message, env, {
+			resolver: createAddressBasedEmailResolver("EmailAgent"),
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -170,50 +148,41 @@ export default {
 
 `sendEmail()` sends outbound email through a `send_email` binding that you pass explicitly. It automatically injects agent routing headers (`X-Agent-Name`, `X-Agent-ID`) into every message, and optionally signs them with HMAC-SHA256 so that replies can be routed back to the same agent instance.
 
-* [  JavaScript ](#tab-panel-5941)
-* [  TypeScript ](#tab-panel-5942)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  @callable()
-  async sendReceipt(to, orderId) {
-    const result = await this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: { email: "billing@yourdomain.com", name: "Billing Bot" },
-      replyTo: "billing@yourdomain.com",
-      subject: `Receipt for order ${orderId}`,
-      text: `Your receipt for order ${orderId} is ready.`,
-      secret: this.env.EMAIL_SECRET,
-    });
+	@callable()
+	async sendReceipt(to, orderId) {
+		const result = await this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: { email: "billing@yourdomain.com", name: "Billing Bot" },
+			replyTo: "billing@yourdomain.com",
+			subject: `Receipt for order ${orderId}`,
+			text: `Your receipt for order ${orderId} is ready.`,
+			secret: this.env.EMAIL_SECRET,
+		});
 
-
-    return result.messageId;
-  }
+		return result.messageId;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  @callable()
-  async sendReceipt(to: string, orderId: string) {
-    const result = await this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: { email: "billing@yourdomain.com", name: "Billing Bot" },
-      replyTo: "billing@yourdomain.com",
-      subject: `Receipt for order ${orderId}`,
-      text: `Your receipt for order ${orderId} is ready.`,
-      secret: this.env.EMAIL_SECRET,
-    });
+	@callable()
+	async sendReceipt(to: string, orderId: string) {
+		const result = await this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: { email: "billing@yourdomain.com", name: "Billing Bot" },
+			replyTo: "billing@yourdomain.com",
+			subject: `Receipt for order ${orderId}`,
+			text: `Your receipt for order ${orderId} is ready.`,
+			secret: this.env.EMAIL_SECRET,
+		});
 
-
-    return result.messageId;
-  }
+		return result.messageId;
+	}
 }
 ```
 
@@ -231,23 +200,14 @@ For basic Email Service sending and receiving, `createAddressBasedEmailResolver(
 
 Recommended for inbound mail. Routes emails based on the recipient address.
 
-* [  JavaScript ](#tab-panel-5935)
-* [  TypeScript ](#tab-panel-5936)
-
-**JavaScript**
-
 ```js
 import { createAddressBasedEmailResolver } from "agents/email";
-
 
 const resolver = createAddressBasedEmailResolver("EmailAgent");
 ```
 
-**TypeScript**
-
 ```ts
 import { createAddressBasedEmailResolver } from "agents/email";
-
 
 const resolver = createAddressBasedEmailResolver("EmailAgent");
 ```
@@ -270,23 +230,14 @@ Agent class names in the recipient address are matched case-insensitively. Email
 
 For reply flows with signature verification. Verifies that incoming emails are authentic replies to your outbound emails, preventing attackers from routing emails to arbitrary agent instances.
 
-* [  JavaScript ](#tab-panel-5937)
-* [  TypeScript ](#tab-panel-5938)
-
-**JavaScript**
-
 ```js
 import { createSecureReplyEmailResolver } from "agents/email";
-
 
 const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET);
 ```
 
-**TypeScript**
-
 ```ts
 import { createSecureReplyEmailResolver } from "agents/email";
-
 
 const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET);
 ```
@@ -295,38 +246,29 @@ When your agent sends an email with `replyToEmail()` or `sendEmail()` and a `sec
 
 **Options:**
 
-* [  JavaScript ](#tab-panel-5943)
-* [  TypeScript ](#tab-panel-5944)
-
-**JavaScript**
-
 ```js
 const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
-  // Maximum age of signature in seconds (default: 30 days)
-  maxAge: 7 * 24 * 60 * 60, // 7 days
+	// Maximum age of signature in seconds (default: 30 days)
+	maxAge: 7 * 24 * 60 * 60, // 7 days
 
-
-  // Callback for logging/debugging signature failures
-  onInvalidSignature: (email, reason) => {
-    console.warn(`Invalid signature from ${email.from}: ${reason}`);
-    // reason can be: "missing_headers", "expired", "invalid", "malformed_timestamp"
-  },
+	// Callback for logging/debugging signature failures
+	onInvalidSignature: (email, reason) => {
+		console.warn(`Invalid signature from ${email.from}: ${reason}`);
+		// reason can be: "missing_headers", "expired", "invalid", "malformed_timestamp"
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
-  // Maximum age of signature in seconds (default: 30 days)
-  maxAge: 7 * 24 * 60 * 60, // 7 days
+	// Maximum age of signature in seconds (default: 30 days)
+	maxAge: 7 * 24 * 60 * 60, // 7 days
 
-
-  // Callback for logging/debugging signature failures
-  onInvalidSignature: (email, reason) => {
-    console.warn(`Invalid signature from ${email.from}: ${reason}`);
-    // reason can be: "missing_headers", "expired", "invalid", "malformed_timestamp"
-  },
+	// Callback for logging/debugging signature failures
+	onInvalidSignature: (email, reason) => {
+		console.warn(`Invalid signature from ${email.from}: ${reason}`);
+		// reason can be: "missing_headers", "expired", "invalid", "malformed_timestamp"
+	},
 });
 ```
 
@@ -336,23 +278,14 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 For single-instance routing. Routes all emails to a specific agent instance regardless of the recipient address.
 
-* [  JavaScript ](#tab-panel-5939)
-* [  TypeScript ](#tab-panel-5940)
-
-**JavaScript**
-
 ```js
 import { createCatchAllEmailResolver } from "agents/email";
-
 
 const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 ```
 
-**TypeScript**
-
 ```ts
 import { createCatchAllEmailResolver } from "agents/email";
-
 
 const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 ```
@@ -363,72 +296,59 @@ const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 
 You can combine resolvers to handle different scenarios:
 
-* [  JavaScript ](#tab-panel-5955)
-* [  TypeScript ](#tab-panel-5956)
-
-**JavaScript**
-
 ```js
 export default {
-  async email(message, env) {
-    const secureReplyResolver = createSecureReplyEmailResolver(
-      env.EMAIL_SECRET,
-    );
-    const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+	async email(message, env) {
+		const secureReplyResolver = createSecureReplyEmailResolver(
+			env.EMAIL_SECRET,
+		);
+		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
 
+		await routeAgentEmail(message, env, {
+			resolver: async (email, env) => {
+				// First, check if this is a signed reply
+				const replyRouting = await secureReplyResolver(email, env);
+				if (replyRouting) return replyRouting;
 
-    await routeAgentEmail(message, env, {
-      resolver: async (email, env) => {
-        // First, check if this is a signed reply
-        const replyRouting = await secureReplyResolver(email, env);
-        if (replyRouting) return replyRouting;
+				// Otherwise, route based on recipient address
+				return addressResolver(email, env);
+			},
 
-
-        // Otherwise, route based on recipient address
-        return addressResolver(email, env);
-      },
-
-
-      // Handle emails that do not match any routing rule
-      onNoRoute: (email) => {
-        console.warn(`No route found for email from ${email.from}`);
-        email.setReject("Unknown recipient");
-      },
-    });
-  },
+			// Handle emails that do not match any routing rule
+			onNoRoute: (email) => {
+				console.warn(`No route found for email from ${email.from}`);
+				email.setReject("Unknown recipient");
+			},
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async email(message, env) {
-    const secureReplyResolver = createSecureReplyEmailResolver(
-      env.EMAIL_SECRET,
-    );
-    const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+	async email(message, env) {
+		const secureReplyResolver = createSecureReplyEmailResolver(
+			env.EMAIL_SECRET,
+		);
+		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
 
+		await routeAgentEmail(message, env, {
+			resolver: async (email, env) => {
+				// First, check if this is a signed reply
+				const replyRouting = await secureReplyResolver(email, env);
+				if (replyRouting) return replyRouting;
 
-    await routeAgentEmail(message, env, {
-      resolver: async (email, env) => {
-        // First, check if this is a signed reply
-        const replyRouting = await secureReplyResolver(email, env);
-        if (replyRouting) return replyRouting;
+				// Otherwise, route based on recipient address
+				return addressResolver(email, env);
+			},
 
-
-        // Otherwise, route based on recipient address
-        return addressResolver(email, env);
-      },
-
-
-      // Handle emails that do not match any routing rule
-      onNoRoute: (email) => {
-        console.warn(`No route found for email from ${email.from}`);
-        email.setReject("Unknown recipient");
-      },
-    });
-  },
+			// Handle emails that do not match any routing rule
+			onNoRoute: (email) => {
+				console.warn(`No route found for email from ${email.from}`);
+				email.setReject("Unknown recipient");
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -438,20 +358,17 @@ export default {
 
 When your agent's `onEmail` method is called, it receives an `AgentEmail` object:
 
-**TypeScript**
-
 ```ts
 type AgentEmail = {
-  from: string; // Sender's email address
-  to: string; // Recipient's email address
-  headers: Headers; // Email headers (subject, message-id, etc.)
-  rawSize: number; // Size of the raw email in bytes
+	from: string; // Sender's email address
+	to: string; // Recipient's email address
+	headers: Headers; // Email headers (subject, message-id, etc.)
+	rawSize: number; // Size of the raw email in bytes
 
-
-  getRaw(): Promise<Uint8Array>; // Get the full raw email content
-  reply(options): Promise<void>; // Send a reply
-  forward(rcptTo, headers?): Promise<void>; // Forward the email
-  setReject(reason): void; // Reject the email with a reason
+	getRaw(): Promise<Uint8Array>; // Get the full raw email content
+	reply(options): Promise<void>; // Send a reply
+	forward(rcptTo, headers?): Promise<void>; // Forward the email
+	setReject(reason): void; // Reject the email with a reason
 };
 ```
 
@@ -459,46 +376,35 @@ type AgentEmail = {
 
 Use a library like [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the raw email:
 
-* [  JavaScript ](#tab-panel-5945)
-* [  TypeScript ](#tab-panel-5946)
-
-**JavaScript**
-
 ```js
 import PostalMime from "postal-mime";
 
-
 class MyAgent extends Agent {
-  async onEmail(email) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-
-    console.log("Subject:", parsed.subject);
-    console.log("Text body:", parsed.text);
-    console.log("HTML body:", parsed.html);
-    console.log("Attachments:", parsed.attachments);
-  }
+		console.log("Subject:", parsed.subject);
+		console.log("Text body:", parsed.text);
+		console.log("HTML body:", parsed.html);
+		console.log("Attachments:", parsed.attachments);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import PostalMime from "postal-mime";
 
-
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email: AgentEmail) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-
-    console.log("Subject:", parsed.subject);
-    console.log("Text body:", parsed.text);
-    console.log("HTML body:", parsed.html);
-    console.log("Attachments:", parsed.attachments);
-  }
+		console.log("Subject:", parsed.subject);
+		console.log("Text body:", parsed.text);
+		console.log("HTML body:", parsed.html);
+		console.log("Attachments:", parsed.attachments);
+	}
 }
 ```
 
@@ -506,56 +412,43 @@ class MyAgent extends Agent {
 
 Use `isAutoReplyEmail()` to detect auto-reply emails and avoid mail loops:
 
-* [  JavaScript ](#tab-panel-5949)
-* [  TypeScript ](#tab-panel-5950)
-
-**JavaScript**
-
 ```js
 import { isAutoReplyEmail } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 class MyAgent extends Agent {
-  async onEmail(email) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
+		// Detect auto-reply emails to avoid sending duplicate responses
+		if (isAutoReplyEmail(parsed.headers)) {
+			console.log("Skipping auto-reply email");
+			return;
+		}
 
-    // Detect auto-reply emails to avoid sending duplicate responses
-    if (isAutoReplyEmail(parsed.headers)) {
-      console.log("Skipping auto-reply email");
-      return;
-    }
-
-
-    // Process the email...
-  }
+		// Process the email...
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { isAutoReplyEmail } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email: AgentEmail) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
+		// Detect auto-reply emails to avoid sending duplicate responses
+		if (isAutoReplyEmail(parsed.headers)) {
+			console.log("Skipping auto-reply email");
+			return;
+		}
 
-    // Detect auto-reply emails to avoid sending duplicate responses
-    if (isAutoReplyEmail(parsed.headers)) {
-      console.log("Skipping auto-reply email");
-      return;
-    }
-
-
-    // Process the email...
-  }
+		// Process the email...
+	}
 }
 ```
 
@@ -565,46 +458,39 @@ This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Su
 
 Use `this.replyToEmail()` to send a reply through the inbound email's reply channel:
 
-* [  JavaScript ](#tab-panel-5951)
-* [  TypeScript ](#tab-panel-5952)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    await this.replyToEmail(email, {
-      fromName: "Support Bot", // Display name for the sender
-      subject: "Re: Your inquiry", // Optional, defaults to "Re: "
-      body: "Thanks for contacting us!", // Email body
-      contentType: "text/plain", // Optional, defaults to "text/plain"
-      headers: {
-        // Optional custom headers
-        "X-Custom-Header": "value",
-      },
-      secret: this.env.EMAIL_SECRET, // Optional, signs headers for secure reply routing
-    });
-  }
+	async onEmail(email) {
+		await this.replyToEmail(email, {
+			fromName: "Support Bot", // Display name for the sender
+			subject: "Re: Your inquiry", // Optional, defaults to "Re: "
+			body: "Thanks for contacting us!", // Email body
+			contentType: "text/plain", // Optional, defaults to "text/plain"
+			headers: {
+				// Optional custom headers
+				"X-Custom-Header": "value",
+			},
+			secret: this.env.EMAIL_SECRET, // Optional, signs headers for secure reply routing
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    await this.replyToEmail(email, {
-      fromName: "Support Bot", // Display name for the sender
-      subject: "Re: Your inquiry", // Optional, defaults to "Re: "
-      body: "Thanks for contacting us!", // Email body
-      contentType: "text/plain", // Optional, defaults to "text/plain"
-      headers: {
-        // Optional custom headers
-        "X-Custom-Header": "value",
-      },
-      secret: this.env.EMAIL_SECRET, // Optional, signs headers for secure reply routing
-    });
-  }
+	async onEmail(email: AgentEmail) {
+		await this.replyToEmail(email, {
+			fromName: "Support Bot", // Display name for the sender
+			subject: "Re: Your inquiry", // Optional, defaults to "Re: "
+			body: "Thanks for contacting us!", // Email body
+			contentType: "text/plain", // Optional, defaults to "text/plain"
+			headers: {
+				// Optional custom headers
+				"X-Custom-Header": "value",
+			},
+			secret: this.env.EMAIL_SECRET, // Optional, signs headers for secure reply routing
+		});
+	}
 }
 ```
 
@@ -612,84 +498,71 @@ class MyAgent extends Agent {
 
 `replyToEmail()` requires a live `AgentEmail` object, so it only works inside `onEmail()`. If you need to reply later — from a scheduled task, a callable method, or after a human-in-the-loop approval — store the sender info in state and use `sendEmail()`:
 
-* [  JavaScript ](#tab-panel-5963)
-* [  TypeScript ](#tab-panel-5964)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
+		this.setState({
+			...this.state,
+			pendingReply: {
+				to: email.from,
+				messageId: parsed.messageId,
+				subject: parsed.subject,
+			},
+		});
+	}
 
-    this.setState({
-      ...this.state,
-      pendingReply: {
-        to: email.from,
-        messageId: parsed.messageId,
-        subject: parsed.subject,
-      },
-    });
-  }
+	@callable()
+	async sendDelayedReply(body) {
+		const { pendingReply } = this.state;
+		if (!pendingReply) return;
 
-
-  @callable()
-  async sendDelayedReply(body) {
-    const { pendingReply } = this.state;
-    if (!pendingReply) return;
-
-
-    await this.sendEmail({
-      binding: this.env.EMAIL,
-      to: pendingReply.to,
-      from: "support@yourdomain.com",
-      subject: `Re: ${pendingReply.subject}`,
-      text: body,
-      inReplyTo: pendingReply.messageId,
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+		await this.sendEmail({
+			binding: this.env.EMAIL,
+			to: pendingReply.to,
+			from: "support@yourdomain.com",
+			subject: `Re: ${pendingReply.subject}`,
+			text: body,
+			inReplyTo: pendingReply.messageId,
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+	async onEmail(email: AgentEmail) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
+		this.setState({
+			...this.state,
+			pendingReply: {
+				to: email.from,
+				messageId: parsed.messageId,
+				subject: parsed.subject,
+			},
+		});
+	}
 
-    this.setState({
-      ...this.state,
-      pendingReply: {
-        to: email.from,
-        messageId: parsed.messageId,
-        subject: parsed.subject,
-      },
-    });
-  }
+	@callable()
+	async sendDelayedReply(body: string) {
+		const { pendingReply } = this.state;
+		if (!pendingReply) return;
 
-
-  @callable()
-  async sendDelayedReply(body: string) {
-    const { pendingReply } = this.state;
-    if (!pendingReply) return;
-
-
-    await this.sendEmail({
-      binding: this.env.EMAIL,
-      to: pendingReply.to,
-      from: "support@yourdomain.com",
-      subject: `Re: ${pendingReply.subject}`,
-      text: body,
-      inReplyTo: pendingReply.messageId,
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+		await this.sendEmail({
+			binding: this.env.EMAIL,
+			to: pendingReply.to,
+			from: "support@yourdomain.com",
+			subject: `Re: ${pendingReply.subject}`,
+			text: body,
+			inReplyTo: pendingReply.messageId,
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 }
 ```
 
@@ -697,59 +570,45 @@ The `inReplyTo` field sets the `In-Reply-To` header so mail clients thread the r
 
 ### Forwarding emails
 
-* [  JavaScript ](#tab-panel-5947)
-* [  TypeScript ](#tab-panel-5948)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    await email.forward("admin@example.com");
-  }
+	async onEmail(email) {
+		await email.forward("admin@example.com");
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    await email.forward("admin@example.com");
-  }
+	async onEmail(email: AgentEmail) {
+		await email.forward("admin@example.com");
+	}
 }
 ```
 
 ### Rejecting emails
 
-* [  JavaScript ](#tab-panel-5953)
-* [  TypeScript ](#tab-panel-5954)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    if (isSpam(email)) {
-      email.setReject("Message rejected as spam");
-      return;
-    }
-    // Process the email...
-  }
+	async onEmail(email) {
+		if (isSpam(email)) {
+			email.setReject("Message rejected as spam");
+			return;
+		}
+		// Process the email...
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    if (isSpam(email)) {
-      email.setReject("Message rejected as spam");
-      return;
-    }
-    // Process the email...
-  }
+	async onEmail(email: AgentEmail) {
+		if (isSpam(email)) {
+			email.setReject("Message rejected as spam");
+			return;
+		}
+		// Process the email...
+	}
 }
 ```
 
@@ -757,70 +616,63 @@ class MyAgent extends Agent {
 
 When sending emails via `sendEmail()` or `replyToEmail()`, handle these common errors:
 
-* [  JavaScript ](#tab-panel-5965)
-* [  TypeScript ](#tab-panel-5966)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    try {
-      await this.replyToEmail(email, {
-        fromName: "Support Bot",
-        body: "Thanks for your email!",
-      });
-    } catch (error) {
-      switch (error.code) {
-        case "E_SENDER_NOT_VERIFIED":
-          console.error("Sender domain not verified. Verify in dashboard.");
-          break;
-        case "E_RATE_LIMIT_EXCEEDED":
-          console.error("Rate limit exceeded. Back off and retry.");
-          break;
-        case "E_DAILY_LIMIT_EXCEEDED":
-          console.error("Daily sending quota reached.");
-          break;
-        case "E_CONTENT_TOO_LARGE":
-          console.error("Email content exceeds size limit.");
-          break;
-        default:
-          console.error("Email sending failed:", error.message);
-      }
-    }
-  }
+	async onEmail(email) {
+		try {
+			await this.replyToEmail(email, {
+				fromName: "Support Bot",
+				body: "Thanks for your email!",
+			});
+		} catch (error) {
+			switch (error.code) {
+				case "E_SENDER_NOT_VERIFIED":
+					console.error("Sender domain not verified. Verify in dashboard.");
+					break;
+				case "E_RATE_LIMIT_EXCEEDED":
+					console.error("Rate limit exceeded. Back off and retry.");
+					break;
+				case "E_DAILY_LIMIT_EXCEEDED":
+					console.error("Daily sending quota reached.");
+					break;
+				case "E_CONTENT_TOO_LARGE":
+					console.error("Email content exceeds size limit.");
+					break;
+				default:
+					console.error("Email sending failed:", error.message);
+			}
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  async onEmail(email: AgentEmail) {
-    try {
-      await this.replyToEmail(email, {
-        fromName: "Support Bot",
-        body: "Thanks for your email!",
-      });
-    } catch (error) {
-      switch (error.code) {
-        case "E_SENDER_NOT_VERIFIED":
-          console.error("Sender domain not verified. Verify in dashboard.");
-          break;
-        case "E_RATE_LIMIT_EXCEEDED":
-          console.error("Rate limit exceeded. Back off and retry.");
-          break;
-        case "E_DAILY_LIMIT_EXCEEDED":
-          console.error("Daily sending quota reached.");
-          break;
-        case "E_CONTENT_TOO_LARGE":
-          console.error("Email content exceeds size limit.");
-          break;
-        default:
-          console.error("Email sending failed:", error.message);
-      }
-    }
-  }
+	async onEmail(email: AgentEmail) {
+		try {
+			await this.replyToEmail(email, {
+				fromName: "Support Bot",
+				body: "Thanks for your email!",
+			});
+		} catch (error) {
+			switch (error.code) {
+				case "E_SENDER_NOT_VERIFIED":
+					console.error("Sender domain not verified. Verify in dashboard.");
+					break;
+				case "E_RATE_LIMIT_EXCEEDED":
+					console.error("Rate limit exceeded. Back off and retry.");
+					break;
+				case "E_DAILY_LIMIT_EXCEEDED":
+					console.error("Daily sending quota reached.");
+					break;
+				case "E_CONTENT_TOO_LARGE":
+					console.error("Email content exceeds size limit.");
+					break;
+				default:
+					console.error("Email sending failed:", error.message);
+			}
+		}
+	}
 }
 ```
 
@@ -850,11 +702,6 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 ### Setup
 
 1. Add a secret to your Worker:
-
-  * [  wrangler.jsonc ](#tab-panel-5933)
-  * [  wrangler.toml ](#tab-panel-5934)
-
-**JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -863,8 +710,6 @@ When your agent sends emails and expects replies, use secure reply routing to pr
   }
 }
 ```
-
-**TOML**
 ```toml
 [vars]
 EMAIL_SECRET = "change-me-in-production"
@@ -874,30 +719,23 @@ For production, use Wrangler secrets instead:
 npx wrangler secret put EMAIL_SECRET
 ```
 2. Use the combined resolver pattern:
-
-  * [  JavaScript ](#tab-panel-5961)
-  * [  TypeScript ](#tab-panel-5962)
-
-**JavaScript**
 ```js
 export default {
-  async email(message, env) {
-    const secureReplyResolver = createSecureReplyEmailResolver(
-      env.EMAIL_SECRET,
-    );
-    const addressResolver = createAddressBasedEmailResolver("EmailAgent");
-    await routeAgentEmail(message, env, {
-      resolver: async (email, env) => {
-        const replyRouting = await secureReplyResolver(email, env);
-        if (replyRouting) return replyRouting;
-        return addressResolver(email, env);
-      },
-    });
-  },
+	async email(message, env) {
+		const secureReplyResolver = createSecureReplyEmailResolver(
+			env.EMAIL_SECRET,
+		);
+		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+		await routeAgentEmail(message, env, {
+			resolver: async (email, env) => {
+				const replyRouting = await secureReplyResolver(email, env);
+				if (replyRouting) return replyRouting;
+				return addressResolver(email, env);
+			},
+		});
+	},
 };
 ```
-
-**TypeScript**
 ```ts
 export default {
  async email(message, env) {
@@ -916,24 +754,17 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 3. Sign outbound emails:
-
-  * [  JavaScript ](#tab-panel-5959)
-  * [  TypeScript ](#tab-panel-5960)
-
-**JavaScript**
 ```js
 class MyAgent extends Agent {
-  async onEmail(email) {
-    await this.replyToEmail(email, {
-      fromName: "My Agent",
-      body: "Thanks for your email!",
-      secret: this.env.EMAIL_SECRET, // Signs the routing headers
-    });
-  }
+	async onEmail(email) {
+		await this.replyToEmail(email, {
+			fromName: "My Agent",
+			body: "Thanks for your email!",
+			secret: this.env.EMAIL_SECRET, // Signs the routing headers
+		});
+	}
 }
 ```
-
-**TypeScript**
 ```ts
 class MyAgent extends Agent {
  async onEmail(email: AgentEmail) {
@@ -960,174 +791,152 @@ When an email is routed via `createSecureReplyEmailResolver`, the `replyToEmail(
 
 Here is a complete Email Service agent that sends outbound mail and handles secure replies:
 
-* [  JavaScript ](#tab-panel-5967)
-* [  TypeScript ](#tab-panel-5968)
-
-**JavaScript**
-
 ```js
 import { Agent, callable, routeAgentEmail } from "agents";
 import {
-  createAddressBasedEmailResolver,
-  createSecureReplyEmailResolver,
+	createAddressBasedEmailResolver,
+	createSecureReplyEmailResolver,
 } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 export class EmailAgent extends Agent {
-  @callable()
-  async sendWelcome(to) {
-    return this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: "support@yourdomain.com",
-      subject: "Welcome!",
-      text: "Thanks for signing up.",
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+	@callable()
+	async sendWelcome(to) {
+		return this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: "support@yourdomain.com",
+			subject: "Welcome!",
+			text: "Thanks for signing up.",
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 
+	async onEmail(email) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-  async onEmail(email) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+		console.log(`Email from ${email.from}: ${parsed.subject}`);
 
+		const emails = this.state.emails || [];
+		emails.push({
+			from: email.from,
+			subject: parsed.subject,
+			receivedAt: new Date().toISOString(),
+		});
+		this.setState({ ...this.state, emails });
 
-    console.log(`Email from ${email.from}: ${parsed.subject}`);
-
-
-    const emails = this.state.emails || [];
-    emails.push({
-      from: email.from,
-      subject: parsed.subject,
-      receivedAt: new Date().toISOString(),
-    });
-    this.setState({ ...this.state, emails });
-
-
-    await this.replyToEmail(email, {
-      fromName: "Support Bot",
-      body: `Thanks for your email! We received: "${parsed.subject}"`,
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+		await this.replyToEmail(email, {
+			fromName: "Support Bot",
+			body: `Thanks for your email! We received: "${parsed.subject}"`,
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 }
 
-
 export default {
-  async email(message, env) {
-    const secureReplyResolver = createSecureReplyEmailResolver(
-      env.EMAIL_SECRET,
-      {
-        maxAge: 7 * 24 * 60 * 60, // 7 days
-        onInvalidSignature: (email, reason) => {
-          console.warn(`Invalid signature from ${email.from}: ${reason}`);
-        },
-      },
-    );
-    const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+	async email(message, env) {
+		const secureReplyResolver = createSecureReplyEmailResolver(
+			env.EMAIL_SECRET,
+			{
+				maxAge: 7 * 24 * 60 * 60, // 7 days
+				onInvalidSignature: (email, reason) => {
+					console.warn(`Invalid signature from ${email.from}: ${reason}`);
+				},
+			},
+		);
+		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
 
-
-    await routeAgentEmail(message, env, {
-      resolver: async (email, env) => {
-        const replyRouting = await secureReplyResolver(email, env);
-        if (replyRouting) return replyRouting;
-        return addressResolver(email, env);
-      },
-      onNoRoute: (email) => {
-        console.warn(`No route found for email from ${email.from}`);
-        email.setReject("Unknown recipient");
-      },
-    });
-  },
+		await routeAgentEmail(message, env, {
+			resolver: async (email, env) => {
+				const replyRouting = await secureReplyResolver(email, env);
+				if (replyRouting) return replyRouting;
+				return addressResolver(email, env);
+			},
+			onNoRoute: (email) => {
+				console.warn(`No route found for email from ${email.from}`);
+				email.setReject("Unknown recipient");
+			},
+		});
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable, routeAgentEmail } from "agents";
 import {
-  createAddressBasedEmailResolver,
-  createSecureReplyEmailResolver,
-  type AgentEmail,
+	createAddressBasedEmailResolver,
+	createSecureReplyEmailResolver,
+	type AgentEmail,
 } from "agents/email";
 import PostalMime from "postal-mime";
 
-
 interface Env {
-  EmailAgent: DurableObjectNamespace<EmailAgent>;
-  EMAIL: SendEmail;
-  EMAIL_SECRET: string;
+	EmailAgent: DurableObjectNamespace<EmailAgent>;
+	EMAIL: SendEmail;
+	EMAIL_SECRET: string;
 }
-
 
 export class EmailAgent extends Agent<Env> {
-  @callable()
-  async sendWelcome(to: string) {
-    return this.sendEmail({
-      binding: this.env.EMAIL,
-      to,
-      from: "support@yourdomain.com",
-      subject: "Welcome!",
-      text: "Thanks for signing up.",
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+	@callable()
+	async sendWelcome(to: string) {
+		return this.sendEmail({
+			binding: this.env.EMAIL,
+			to,
+			from: "support@yourdomain.com",
+			subject: "Welcome!",
+			text: "Thanks for signing up.",
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 
+	async onEmail(email: AgentEmail) {
+		const raw = await email.getRaw();
+		const parsed = await PostalMime.parse(raw);
 
-  async onEmail(email: AgentEmail) {
-    const raw = await email.getRaw();
-    const parsed = await PostalMime.parse(raw);
+		console.log(`Email from ${email.from}: ${parsed.subject}`);
 
+		const emails = this.state.emails || [];
+		emails.push({
+			from: email.from,
+			subject: parsed.subject,
+			receivedAt: new Date().toISOString(),
+		});
+		this.setState({ ...this.state, emails });
 
-    console.log(`Email from ${email.from}: ${parsed.subject}`);
-
-
-    const emails = this.state.emails || [];
-    emails.push({
-      from: email.from,
-      subject: parsed.subject,
-      receivedAt: new Date().toISOString(),
-    });
-    this.setState({ ...this.state, emails });
-
-
-    await this.replyToEmail(email, {
-      fromName: "Support Bot",
-      body: `Thanks for your email! We received: "${parsed.subject}"`,
-      secret: this.env.EMAIL_SECRET,
-    });
-  }
+		await this.replyToEmail(email, {
+			fromName: "Support Bot",
+			body: `Thanks for your email! We received: "${parsed.subject}"`,
+			secret: this.env.EMAIL_SECRET,
+		});
+	}
 }
 
-
 export default {
-  async email(message, env: Env) {
-    const secureReplyResolver = createSecureReplyEmailResolver(
-      env.EMAIL_SECRET,
-      {
-        maxAge: 7 * 24 * 60 * 60, // 7 days
-        onInvalidSignature: (email, reason) => {
-          console.warn(`Invalid signature from ${email.from}: ${reason}`);
-        },
-      },
-    );
-    const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+	async email(message, env: Env) {
+		const secureReplyResolver = createSecureReplyEmailResolver(
+			env.EMAIL_SECRET,
+			{
+				maxAge: 7 * 24 * 60 * 60, // 7 days
+				onInvalidSignature: (email, reason) => {
+					console.warn(`Invalid signature from ${email.from}: ${reason}`);
+				},
+			},
+		);
+		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
 
-
-    await routeAgentEmail(message, env, {
-      resolver: async (email, env) => {
-        const replyRouting = await secureReplyResolver(email, env);
-        if (replyRouting) return replyRouting;
-        return addressResolver(email, env);
-      },
-      onNoRoute: (email) => {
-        console.warn(`No route found for email from ${email.from}`);
-        email.setReject("Unknown recipient");
-      },
-    });
-  },
+		await routeAgentEmail(message, env, {
+			resolver: async (email, env) => {
+				const replyRouting = await secureReplyResolver(email, env);
+				if (replyRouting) return replyRouting;
+				return addressResolver(email, env);
+			},
+			onNoRoute: (email) => {
+				console.warn(`No route found for email from ${email.from}`);
+				email.setReject("Unknown recipient");
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -1135,33 +944,29 @@ export default {
 
 ### `EmailAddress`
 
-**TypeScript**
-
 ```ts
 interface EmailAddress {
-  email: string;
-  name?: string;
+	email: string;
+	name?: string;
 }
 ```
 
 ### `sendEmail`
 
-**TypeScript**
-
 ```ts
 async sendEmail(options: {
-  binding: EmailSendBinding;
-  to: string | EmailAddress | (string | EmailAddress)[];
-  from: string | EmailAddress;
-  subject: string;
-  text?: string;
-  html?: string;
-  replyTo?: string | EmailAddress;
-  cc?: string | EmailAddress | (string | EmailAddress)[];
-  bcc?: string | EmailAddress | (string | EmailAddress)[];
-  inReplyTo?: string;
-  headers?: Record<string, string>;
-  secret?: string;
+	binding: EmailSendBinding;
+	to: string | EmailAddress | (string | EmailAddress)[];
+	from: string | EmailAddress;
+	subject: string;
+	text?: string;
+	html?: string;
+	replyTo?: string | EmailAddress;
+	cc?: string | EmailAddress | (string | EmailAddress)[];
+	bcc?: string | EmailAddress | (string | EmailAddress)[];
+	inReplyTo?: string;
+	headers?: Record<string, string>;
+	secret?: string;
 }): Promise<EmailSendResult>;
 ```
 
@@ -1184,16 +989,14 @@ Send an outbound email through the Email Service binding. Automatically injects 
 
 ### `routeAgentEmail`
 
-**TypeScript**
-
 ```ts
 function routeAgentEmail<Env>(
-  email: ForwardableEmailMessage,
-  env: Env,
-  options: {
-    resolver: EmailResolver;
-    onNoRoute?: (email: ForwardableEmailMessage) => void | Promise<void>;
-  },
+	email: ForwardableEmailMessage,
+	env: Env,
+	options: {
+		resolver: EmailResolver;
+		onNoRoute?: (email: ForwardableEmailMessage) => void | Promise<void>;
+	},
 ): Promise<void>;
 ```
 
@@ -1206,26 +1009,23 @@ Routes an incoming email to the appropriate Agent based on the resolver's decisi
 
 ### `createSecureReplyEmailResolver`
 
-**TypeScript**
-
 ```ts
 function createSecureReplyEmailResolver(
-  secret: string,
-  options?: {
-    maxAge?: number;
-    onInvalidSignature?: (
-      email: ForwardableEmailMessage,
-      reason: SignatureFailureReason,
-    ) => void;
-  },
+	secret: string,
+	options?: {
+		maxAge?: number;
+		onInvalidSignature?: (
+			email: ForwardableEmailMessage,
+			reason: SignatureFailureReason,
+		) => void;
+	},
 ): EmailResolver;
 
-
 type SignatureFailureReason =
-  | "missing_headers"
-  | "expired"
-  | "invalid"
-  | "malformed_timestamp";
+	| "missing_headers"
+	| "expired"
+	| "invalid"
+	| "malformed_timestamp";
 ```
 
 Creates a resolver for routing email replies with signature verification.
@@ -1238,13 +1038,11 @@ Creates a resolver for routing email replies with signature verification.
 
 ### `signAgentHeaders`
 
-**TypeScript**
-
 ```ts
 function signAgentHeaders(
-  secret: string,
-  agentName: string,
-  agentId: string,
+	secret: string,
+	agentName: string,
+	agentId: string,
 ): Promise<Record<string, string>>;
 ```
 
@@ -1254,13 +1052,26 @@ Useful when sending emails through external services while maintaining secure re
 
 ## Next steps
 
-[ HTTP and SSE ](https://developers.cloudflare.com/agents/runtime/communication/http-sse/) Handle HTTP requests in your Agent.
+### [ HTTP and SSE ](https://developers.cloudflare.com/agents/runtime/communication/http-sse/)
 
-[ Webhooks ](https://developers.cloudflare.com/agents/communication-channels/webhooks/) Receive events from external services.
+ Handle HTTP requests in your Agent.
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
+### [ Webhooks ](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
+
+ Receive events from external services.
+
+### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+
+ Complete API reference for the Agents SDK.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/email-agent/#page","headline":"Email agent · Cloudflare Agents docs","description":"Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/email-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/email-agent/","name":"Email agent"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/email-agent/#page","headline":"Email agent · Cloudflare Agents docs","description":"Build an agent that sends, receives, routes, and replies to email using Cloudflare Email Service and the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/email-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

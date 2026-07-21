@@ -1,16 +1,18 @@
 ---
-title: Configure a Cloud Connector rule via API
 description: Create Cloud Connector rules using the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure a Cloud Connector rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure a Cloud Connector rule via API
 
-# Configure a Cloud Connector rule via API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can configure Cloud Connector rules using the [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -53,38 +55,36 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloud Connector Read`
 * `Cloud Connector Write`
 
-**Rules**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
-  --request GET \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request GET \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "<RULE_1_ID>",
-      "provider": "aws_s3",
-      "expression": "http.request.uri.path wildcard \"/images/*\"",
-      "description": "Connect to S3 bucket containing images",
-      "enabled": true,
-      "parameters": {
-        "host": "examplebucketwithimages.s3.north-eu.amazonaws.com"
-      }
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "<RULE_1_ID>",
+			"provider": "aws_s3",
+			"expression": "http.request.uri.path wildcard \"/images/*\"",
+			"description": "Connect to S3 bucket containing images",
+			"enabled": true,
+			"parameters": {
+				"host": "examplebucketwithimages.s3.north-eu.amazonaws.com"
+			}
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
 ### Create/update/delete Cloud Connector rules
 
-Warning
+Caution
 
 To create a new rule and keep all existing rules, you must include them all in your request body. Omitting an existing rule in the request body will delete the corresponding Cloud Connector rule.
 
@@ -95,30 +95,35 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cloud Connector Write`
 
-**Put Rules**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
-  --request PUT \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '[
-    {
-        "expression": "http.request.uri.path wildcard \"/images/*\"",
-        "provider": "cloudflare_r2",
-        "description": "Connect to R2 bucket containing images",
-        "parameters": {
-            "host": "mybucketcustomdomain.example.com"
-        }
-    }
-  ]'
+	--request PUT \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '[
+		{
+				"expression": "http.request.uri.path wildcard \"/images/*\"",
+				"provider": "cloudflare_r2",
+				"description": "Connect to R2 bucket containing images",
+				"parameters": {
+						"host": "mybucketcustomdomain.example.com"
+				}
+		}
+	]'
 ```
 
 The required body parameters for each rule are: `expression`, `provider`, and `parameters.host`.
 
 The `provider` value must be one of the following: `cloudflare_r2`, `aws_s3`, `azure_storage`, and `gcp_storage`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/create-api/#page","headline":"Configure a Cloud Connector rule via API · Cloudflare Rules docs","description":"Create Cloud Connector rules using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/cloud-connector/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/create-api/","name":"Configure a Cloud Connector rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/create-api/#page","headline":"Configure a Cloud Connector rule via API · Cloudflare Rules docs","description":"Create Cloud Connector rules using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/cloud-connector/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Buckets
 description: Configure cloud storage buckets for full packet captures.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Buckets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Buckets
 
-# Buckets
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before you can begin a full packet capture, you must configure a cloud storage bucket where Cloudflare can write the captured traffic data. Setting up a bucket is not required for sample packet captures, which complete immediately and can be downloaded directly from the API.
 
@@ -19,9 +21,6 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 ## Set up a bucket
 
 Learn how to set up a bucket for use with full packet captures.
-
-* [ Dashboard ](#tab-panel-7852)
-* [ API ](#tab-panel-7853)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -41,9 +40,6 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket setup, you need to confirm you have access to the bucket via an ownership challenge. This verification prevents Cloudflare from writing capture data to a bucket you do not control. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-7854)
-* [ API ](#tab-panel-7855)
-
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. Find the ownership challenge file that Cloudflare placed in your bucket, copy its contents, and enter them in the **Ownership token** field.
 3. When you are done, select **Create**. The **Packet captures** page displays.
@@ -51,8 +47,6 @@ After the initial bucket setup, you need to confirm you have access to the bucke
 The **Buckets** tab displays a list of the buckets associated with your account. Refer to the **Status** column to see the status of your bucket configuration.
 
 The `bucket` field should be the URI of the bucket. For Amazon S3, the `bucket` field is in the form `s3://<bucket-name>/<directory>?region=<bucket-region>`, and for Google Cloud Storage the form is `gs://<bucket-name>/<directory>`.
-
-**Ownership challenge request example**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
@@ -66,27 +60,23 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership 
 
 The response has a `"filename"` parameter which contains the content of the `ownership-challenge` text. Find the file in your bucket and copy the contents of the file.
 
-**Ownership challenge response example**
-
 ```json
 {
-  "result": {
-    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",
-    "status": "pending",
-    "submitted": "2022-04-22T18:54:13.397413Z",
-    "validated": "",
-    "destination_conf": "gs://bucket-test", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard.
-    "filename": "ownership-challenge-1234.txt"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "cc20c2d6c62e11ecbe646b173af3b6b9",
+		"status": "pending",
+		"submitted": "2022-04-22T18:54:13.397413Z",
+		"validated": "",
+		"destination_conf": "gs://bucket-test", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard.
+		"filename": "ownership-challenge-1234.txt"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
 Validate the bucket by inserting the copied text in the `ownership_text` below:
-
-**Bucket validation example**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/validate \
@@ -99,21 +89,19 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/
 }'
 ```
 
-**Bucket validation response**
-
 ```json
 {
-  "result": {
-    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",
-    "status": "success",
-    "submitted": "2022-04-22T18:54:13.397413Z",
-    "validated": "2022-04-27T14:54:46.440548Z",
-    "destination_conf": "gs://<bucket-name>", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
-    "filename": "ownership-challenge-1234.txt"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "cc20c2d6c62e11ecbe646b173af3b6b9",
+		"status": "success",
+		"submitted": "2022-04-22T18:54:13.397413Z",
+		"validated": "2022-04-27T14:54:46.440548Z",
+		"destination_conf": "gs://<bucket-name>", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
+		"filename": "ownership-challenge-1234.txt"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -129,15 +117,10 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-7856)
-* [ API ](#tab-panel-7857)
-
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to _**Insights** \> Network visibility_ \> **Diagnostics**.
 2. Select the **Buckets** tab.
 
 The list of buckets associated with your account displays.
-
-**Bucket list request example**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
@@ -145,23 +128,21 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership 
 --header "X-Auth-Key: <API_KEY>"
 ```
 
-**Bucket list response example**
-
 ```json
 {
-  "result": [
-    {
-      "id": "9a993aa6c58711ec89d3037647342e63",
-      "status": "success",
-      "submitted": "2022-04-26T16:58:24.550762Z",
-      "validated": "2022-04-26T17:01:18.426458Z",
-      "destination_conf": "s3://test-bucket?region=us-east-1",
-      "filename": "ownership-challenge-1234.txt"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "9a993aa6c58711ec89d3037647342e63",
+			"status": "success",
+			"submitted": "2022-04-26T16:58:24.550762Z",
+			"validated": "2022-04-26T17:01:18.426458Z",
+			"destination_conf": "s3://test-bucket?region=us-east-1",
+			"filename": "ownership-challenge-1234.txt"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -178,7 +159,7 @@ When you validate an R2 bucket, exclude the `access-key-id` and `secret-access-k
 ### Create bucket and API token
 
 1. In the Cloudflare dashboard, go to the **R2** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Give your bucket a name > **Create bucket**.
 4. Go to the R2 Overview page, and select **Manage R2 API Tokens**.
@@ -205,17 +186,17 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 
 ```json
 {
-  "errors": [],
-  "messages": [],
-  "result": {
-    "destination_conf": "<YOUR_R2_BUCKET>",
-    "filename": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-    "id": "9883874ecac311ec8475433579a6bf5f",
-    "status": "success",
-    "submitted": "2020-01-01T08:00:00Z",
-    "validated": "2020-01-01T08:00:00Z"
-  },
-  "success": true
+	"errors": [],
+	"messages": [],
+	"result": {
+		"destination_conf": "<YOUR_R2_BUCKET>",
+		"filename": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
+		"id": "9883874ecac311ec8475433579a6bf5f",
+		"status": "success",
+		"submitted": "2020-01-01T08:00:00Z",
+		"validated": "2020-01-01T08:00:00Z"
+	},
+	"success": true
 }
 ```
 
@@ -223,7 +204,14 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 
 Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/buckets/","name":"Buckets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 ```

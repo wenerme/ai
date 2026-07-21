@@ -1,16 +1,18 @@
 ---
-title: Stagehand
 description: Deploy a Stagehand server that uses Browser Run to provide browser automation capabilities to your agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Stagehand
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stagehand
 
-# Stagehand
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/stagehand/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Stagehand ↗](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
 
@@ -58,47 +60,37 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-7599)
-* [  wrangler.toml ](#tab-panel-7600)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "stagehand-example",
-  "main": "src/index.ts",
-  "compatibility_flags": ["nodejs_compat"],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "observability": {
-    "enabled": true
-  },
-  "browser": {
-    "binding": "BROWSER"
-  },
-  "ai": {
-    "binding": "AI"
-  }
+	"name": "stagehand-example",
+	"main": "src/index.ts",
+	"compatibility_flags": ["nodejs_compat"],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"observability": {
+		"enabled": true
+	},
+	"browser": {
+		"binding": "BROWSER"
+	},
+	"ai": {
+		"binding": "AI"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 name = "stagehand-example"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [observability]
 enabled = true
 
-
 [browser]
 binding = "BROWSER"
-
 
 [ai]
 binding = "AI"
@@ -106,29 +98,25 @@ binding = "AI"
 
 If you are using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
 
-**TypeScript**
-
 ```ts
 export default defineConfig({
-  // ...
-  resolve: {
-    alias: {
-      playwright: "@cloudflare/playwright",
-    },
-  },
+	// ...
+	resolve: {
+		alias: {
+			playwright: "@cloudflare/playwright",
+		},
+	},
 });
 ```
 
 If you are not using the Cloudflare Vite plugin, you need to include the following [module alias ↗](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) to the wrangler configuration:
 
-**JSONC**
-
 ```jsonc
 {
-  // ...
-  "alias": {
-    "playwright": "@cloudflare/playwright",
-  },
+	// ...
+	"alias": {
+		"playwright": "@cloudflare/playwright",
+	},
 }
 ```
 
@@ -138,65 +126,53 @@ Copy [workersAIClient.ts ↗](https://github.com/cloudflare/playwright/blob/main
 
 Then, in your Worker code, import the `workersAIClient.ts` file and use it to configure a new `Stagehand` instance:
 
-**src/index.ts**
-
 ```ts
 import { Stagehand } from "@browserbasehq/stagehand";
 import { z } from "zod";
 import { endpointURLString } from "@cloudflare/playwright";
 import { WorkersAIClient } from "./workersAIClient";
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    if (new URL(request.url).pathname !== "/")
-      return new Response("Not found", { status: 404 });
+	async fetch(request: Request, env: Env) {
+		if (new URL(request.url).pathname !== "/")
+			return new Response("Not found", { status: 404 });
 
+		const stagehand = new Stagehand({
+			env: "LOCAL",
+			localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+			llmClient: new WorkersAIClient(env.AI),
+			verbose: 1,
+		});
 
-    const stagehand = new Stagehand({
-      env: "LOCAL",
-      localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
-      llmClient: new WorkersAIClient(env.AI),
-      verbose: 1,
-    });
+		await stagehand.init();
+		const page = stagehand.page;
 
+		await page.goto("https://demo.playwright.dev/movies");
 
-    await stagehand.init();
-    const page = stagehand.page;
+		// if search is a multi-step action, stagehand will return an array of actions it needs to act on
+		const actions = await page.observe('Search for "Furiosa"');
+		for (const action of actions) await page.act(action);
 
+		await page.act("Click the search result");
 
-    await page.goto("https://demo.playwright.dev/movies");
+		// normal playwright functions work as expected
+		await page.waitForSelector(".info-wrapper .cast");
 
+		let movieInfo = await page.extract({
+			instruction: "Extract movie information",
+			schema: z.object({
+				title: z.string(),
+				year: z.number(),
+				rating: z.number(),
+				genres: z.array(z.string()),
+				duration: z.number().describe("Duration in minutes"),
+			}),
+		});
 
-    // if search is a multi-step action, stagehand will return an array of actions it needs to act on
-    const actions = await page.observe('Search for "Furiosa"');
-    for (const action of actions) await page.act(action);
+		await stagehand.close();
 
-
-    await page.act("Click the search result");
-
-
-    // normal playwright functions work as expected
-    await page.waitForSelector(".info-wrapper .cast");
-
-
-    let movieInfo = await page.extract({
-      instruction: "Extract movie information",
-      schema: z.object({
-        title: z.string(),
-        year: z.number(),
-        rating: z.number(),
-        genres: z.array(z.string()),
-        duration: z.number().describe("Duration in minutes"),
-      }),
-    });
-
-
-    await stagehand.close();
-
-
-    return Response.json(movieInfo);
-  },
+		return Response.json(movieInfo);
+	},
 };
 ```
 
@@ -208,14 +184,14 @@ Ensure your `package.json` has the following dependencies:
 
 ```json
 {
-  // ...
-  "dependencies": {
-    "@browserbasehq/stagehand": "2.5.x",
-    "@cloudflare/playwright": "^1.0.0",
-    "zod": "^3.25.76",
-    "zod-to-json-schema": "^3.24.6"
-    // ...
-  }
+	// ...
+	"dependencies": {
+		"@browserbasehq/stagehand": "2.5.x",
+		"@cloudflare/playwright": "^1.0.0",
+		"zod": "^3.25.76",
+		"zod-to-json-schema": "^3.24.6"
+		// ...
+	}
 }
 ```
 
@@ -243,21 +219,19 @@ npm run deploy
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we've named the gateway `stagehand-example-gateway`.
 
-**TypeScript**
-
 ```typescript
 const stagehand = new Stagehand({
-  env: "LOCAL",
-  localBrowserLaunchOptions: { cdpUrl },
-  llmClient: new WorkersAIClient(env.AI, {
-    gateway: {
-      id: "stagehand-example-gateway",
-    },
-  }),
+	env: "LOCAL",
+	localBrowserLaunchOptions: { cdpUrl },
+	llmClient: new WorkersAIClient(env.AI, {
+		gateway: {
+			id: "stagehand-example-gateway",
+		},
+	}),
 });
 ```
 
@@ -273,16 +247,14 @@ npx wrangler secret put OPENAI_API_KEY
 
 Then, configure Stagehand with your provider, model, and API key.
 
-**TypeScript**
-
 ```typescript
 const stagehand = new Stagehand({
-  env: "LOCAL",
-  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
-  modelName: "openai/gpt-4.1",
-  modelClientOptions: {
-    apiKey: env.OPENAI_API_KEY,
-  },
+	env: "LOCAL",
+	localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+	modelName: "openai/gpt-4.1",
+	modelClientOptions: {
+		apiKey: env.OPENAI_API_KEY,
+	},
 });
 ```
 
@@ -292,23 +264,21 @@ const stagehand = new Stagehand({
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we are using [OpenAI with AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/). Make sure to add the `baseURL` as shown below, with your own Account ID and Gateway ID.
 
 You must specify the `apiKey` in the `modelClientOptions`:
 
-**TypeScript**
-
 ```typescript
 const stagehand = new Stagehand({
-  env: "LOCAL",
-  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
-  modelName: "openai/gpt-4.1",
-  modelClientOptions: {
-    apiKey: env.OPENAI_API_KEY,
-    baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai`,
-  },
+	env: "LOCAL",
+	localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+	modelName: "openai/gpt-4.1",
+	modelClientOptions: {
+		apiKey: env.OPENAI_API_KEY,
+		baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai`,
+	},
 });
 ```
 
@@ -318,7 +288,14 @@ If you are using an authenticated AI Gateway, follow the instructions in [AI Gat
 
 For the full list of Stagehand methods and capabilities, refer to the official [Stagehand API documentation ↗](https://docs.stagehand.dev/first-steps/introduction).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/stagehand/#page","headline":"Stagehand · Cloudflare Browser Run docs","description":"Deploy a Stagehand server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/stagehand/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/stagehand/","name":"Stagehand"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/stagehand/#page","headline":"Stagehand · Cloudflare Browser Run docs","description":"Deploy a Stagehand server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/stagehand/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Durable Object class exports
 description: Use the declarative `exports` field in `wrangler.json` to manage Durable Object class lifecycle — create, delete, rename, and transfer Durable Object classes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object class exports
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object class exports
 
-# Durable Object class exports
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `exports` field in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is the declarative way to manage [Durable Object class](https://developers.cloudflare.com/durable-objects/) lifecycle. You declare each Durable Object class your Worker exports — along with whether it is live, deleted, renamed, or transferred — and Cloudflare reconciles your declaration against the namespaces that have already been provisioned for your Worker.
 
@@ -21,7 +23,7 @@ This page covers how to:
 * [Rename](#rename-a-durable-object-class) a Durable Object class.
 * [Transfer](#transfer-a-durable-object-class-between-workers) a Durable Object class between Workers.
 
-Looking for the legacy `migrations` array?
+Looking for the legacy \`migrations\` array?
 
 The `exports` field replaces the imperative [migrations array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) used by older Workers. Both flows are supported, but a Worker can only use one at a time. To move an existing Worker from `migrations` to `exports`, refer to [Migrate from the legacy migrations flow](#migrate-from-the-legacy-migrations-flow).
 
@@ -37,37 +39,29 @@ A class that appears only in your code is ignored until you declare it in `expor
 
 A minimal `exports` block declares each Durable Object class as a live entry:
 
-* [  wrangler.jsonc ](#tab-panel-9118)
-* [  wrangler.toml ](#tab-panel-9119)
-
-**JSONC**
-
 ```jsonc
 {
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_DURABLE_OBJECT",
-        "class_name": "MyDurableObject",
-      },
-    ],
-  },
-  "exports": {
-    "MyDurableObject": {
-      "type": "durable-object",
-      "storage": "sqlite",
-    },
-  },
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MY_DURABLE_OBJECT",
+				"class_name": "MyDurableObject",
+			},
+		],
+	},
+	"exports": {
+		"MyDurableObject": {
+			"type": "durable-object",
+			"storage": "sqlite",
+		},
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [[durable_objects.bindings]]
 name = "MY_DURABLE_OBJECT"
 class_name = "MyDurableObject"
-
 
 [exports.MyDurableObject]
 type = "durable-object"
@@ -99,8 +93,6 @@ Additionally, SQLite-backed Durable Objects allow you to store more types of dat
 Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is no longer supported for accounts without an existing key-value-backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
 
 1. Add the class to your Worker code and export it:
-
-**src/index.ts**
 ```ts
 import { DurableObject } from "cloudflare:workers";
 export class MyDurableObject extends DurableObject {
@@ -108,11 +100,6 @@ export class MyDurableObject extends DurableObject {
 }
 ```
 2. Add a binding for the class (if your Worker needs to access it through `env`) and declare the class in `exports`:
-
-  * [  wrangler.jsonc ](#tab-panel-9120)
-  * [  wrangler.toml ](#tab-panel-9121)
-
-**JSONC**
 ```jsonc
 {
   "durable_objects": {
@@ -131,8 +118,6 @@ export class MyDurableObject extends DurableObject {
   }
 }
 ```
-
-**TOML**
 ```toml
 [[durable_objects.bindings]]
 name = "MY_DURABLE_OBJECT"
@@ -159,11 +144,6 @@ Replace the live entry with a `deleted` tombstone to retire a Durable Object cla
 1. Remove the class from your Worker code.
 2. Remove the binding for the class from `durable_objects.bindings`.
 3. Change the `exports` entry for the class to a `deleted` tombstone:
-
-  * [  wrangler.jsonc ](#tab-panel-9114)
-  * [  wrangler.toml ](#tab-panel-9115)
-
-**JSONC**
 ```jsonc
 {
   "exports": {
@@ -174,8 +154,6 @@ Replace the live entry with a `deleted` tombstone to retire a Durable Object cla
   }
 }
 ```
-
-**TOML**
 ```toml
 [exports.OldDurableObject]
 type = "durable-object"
@@ -206,35 +184,27 @@ Renaming a Durable Object class moves stored data from one class to another with
 
 For a brand-new deploy where the old class is no longer in your code, a single deploy is enough:
 
-* [  wrangler.jsonc ](#tab-panel-9122)
-* [  wrangler.toml ](#tab-panel-9123)
-
-**JSONC**
-
 ```jsonc
 {
-  "exports": {
-    "OldName": {
-      "type": "durable-object",
-      "state": "renamed",
-      "renamed_to": "NewName"
-    },
-    "NewName": {
-      "type": "durable-object",
-      "storage": "sqlite"
-    }
-  }
+	"exports": {
+		"OldName": {
+			"type": "durable-object",
+			"state": "renamed",
+			"renamed_to": "NewName"
+		},
+		"NewName": {
+			"type": "durable-object",
+			"storage": "sqlite"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [exports.OldName]
 type = "durable-object"
 state = "renamed"
 renamed_to = "NewName"
-
 
 [exports.NewName]
 type = "durable-object"
@@ -248,8 +218,6 @@ After the rename applies, the namespace's class name is updated to `NewName` and
 A Durable Object class rename involves two updates that are not perfectly atomic at the runtime layer: the namespace's class pointer and the Worker code that exports the class. During a deploy rollout, one update may be visible before the other for a few seconds. To avoid runtime errors during this window, use a **three-deploy rename**:
 
 1. **Alias the new name to the old class.** Add the new class name to your code as the canonical class, and re-export it under the old name so existing instances keep resolving:
-
-**src/index.ts**
 ```ts
 import { DurableObject } from "cloudflare:workers";
 export class NewName extends DurableObject {
@@ -259,11 +227,6 @@ export { NewName as OldName };
 ```
 Leave `exports` unchanged. Deploy.
 2. **Apply the rename while the alias is still in place.** Update `exports` to add the `renamed` tombstone and the new live entry:
-
-  * [  wrangler.jsonc ](#tab-panel-9124)
-  * [  wrangler.toml ](#tab-panel-9125)
-
-**JSONC**
 ```jsonc
 {
   "exports": {
@@ -279,8 +242,6 @@ Leave `exports` unchanged. Deploy.
   }
 }
 ```
-
-**TOML**
 ```toml
 [exports.OldName]
 type = "durable-object"
@@ -292,8 +253,6 @@ storage = "sqlite"
 ```
 Deploy. Cloudflare applies the rename and surfaces a `tombstone_class_still_in_code` info notice — this is expected and confirms the safe rollout pattern.
 3. **Remove the alias.** Once the previous deploy has fully rolled out, remove the `OldName` alias from your code:
-
-**src/index.ts**
 ```ts
 import { DurableObject } from "cloudflare:workers";
 export class NewName extends DurableObject {
@@ -317,11 +276,6 @@ The target Worker declares an `expecting-transfer` entry that names the source W
 The recommended sequence is four deploys:
 
 1. **Source Worker — initial state.** The source declares `MyDO` as a live class. Nothing else has changed yet.
-
-  * [  wrangler.jsonc ](#tab-panel-9116)
-  * [  wrangler.toml ](#tab-panel-9117)
-
-**JSONC**
 ```jsonc
 {
   "exports": {
@@ -329,19 +283,12 @@ The recommended sequence is four deploys:
   }
 }
 ```
-
-**TOML**
 ```toml
 [exports.MyDO]
 type = "durable-object"
 storage = "sqlite"
 ```
 2. **Target Worker — receive the transfer.** The target adds `MyDO` to its code and declares an `expecting-transfer` entry naming the source Worker. Do **not** add a `durable_objects.bindings` entry for `MyDO` on the target yet — Cloudflare does not route self-referencing bindings through the source's namespace during this phase.
-
-  * [  wrangler.jsonc ](#tab-panel-9126)
-  * [  wrangler.toml ](#tab-panel-9127)
-
-**JSONC**
 ```jsonc
 {
   "exports": {
@@ -354,8 +301,6 @@ storage = "sqlite"
   }
 }
 ```
-
-**TOML**
 ```toml
 [exports.MyDO]
 type = "durable-object"
@@ -365,11 +310,6 @@ transfer_from = "source-worker"
 ```
 Deploy the target. Cloudflare records a pending transfer and emits a `Transfer pending` notice in the [reconciliation output](#reading-the-reconciliation-output).
 3. **Source Worker — commit the transfer.** Change the source's `MyDO` entry to a `transferred` tombstone naming the target Worker. Leave the class in the source code for now:
-
-  * [  wrangler.jsonc ](#tab-panel-9128)
-  * [  wrangler.toml ](#tab-panel-9129)
-
-**JSONC**
 ```jsonc
 {
   "exports": {
@@ -381,8 +321,6 @@ Deploy the target. Cloudflare records a pending transfer and emits a `Transfer p
   }
 }
 ```
-
-**TOML**
 ```toml
 [exports.MyDO]
 type = "durable-object"
@@ -391,11 +329,6 @@ transferred_to = "target-worker"
 ```
 Deploy the source. Cloudflare matches the pending transfer and atomically reassigns the namespace to the target Worker. The reconciliation output reports `Transferred (committed): MyDO → target-worker`.
 If the source Worker still needs to access `MyDO` after the transfer commits, update its `durable_objects.bindings` entry to point at the target Worker with `script_name`:
-
-  * [  wrangler.jsonc ](#tab-panel-9130)
-  * [  wrangler.toml ](#tab-panel-9131)
-
-**JSONC**
 ```jsonc
 {
   "durable_objects": {
@@ -409,8 +342,6 @@ If the source Worker still needs to access `MyDO` after the transfer commits, up
   }
 }
 ```
-
-**TOML**
 ```toml
 [[durable_objects.bindings]]
 name = "MY_DURABLE_OBJECT"
@@ -419,11 +350,6 @@ script_name = "target-worker"
 ```
 If the source Worker no longer needs to access `MyDO`, remove the binding when you remove `MyDO` from the source Worker's code.
 4. **Target Worker — bind the class.** Once the source's deploy has fully rolled out, redeploy the target with a `durable_objects.bindings` entry for `MyDO`. The binding now resolves to the namespace on the target Worker.
-
-  * [  wrangler.jsonc ](#tab-panel-9136)
-  * [  wrangler.toml ](#tab-panel-9137)
-
-**JSONC**
 ```jsonc
 {
   "durable_objects": {
@@ -439,8 +365,6 @@ If the source Worker no longer needs to access `MyDO`, remove the binding when y
   }
 }
 ```
-
-**TOML**
 ```toml
 [[durable_objects.bindings]]
 name = "MY_DURABLE_OBJECT"
@@ -493,11 +417,9 @@ Durable Object exports reconciliation:
   Transferred (committed): Widget → target-worker
   Transfer pending: Incoming ← source-worker
 
-
   Info:
     [tombstone_class_still_in_code] OldRoom: Tombstone of type 'renamed' applied. Class 'OldRoom' is still exported in code; this is the supported pattern for zero-downtime rename rollouts.
     [stale_tombstone] OldGone: Tombstone of type 'deleted' for class 'OldGone' has no effect (no namespace exists with this class name). Safe to remove from `exports`.
-
 
   Safe to remove from `exports`: OldGone
 ```
@@ -535,35 +457,27 @@ The top-level "Safe to remove from `exports`" line in the reconciliation output 
 
 `exports` can be specified at the top level of your Wrangler configuration file and overridden per [environment](https://developers.cloudflare.com/durable-objects/reference/environments/):
 
-* [  wrangler.jsonc ](#tab-panel-9138)
-* [  wrangler.toml ](#tab-panel-9139)
-
-**JSONC**
-
 ```jsonc
 {
-  // top-level exports apply to the default environment
-  "exports": {
-    "MyDO": { "type": "durable-object", "storage": "sqlite" }
-  },
-  "env": {
-    "staging": {
-      // override for the staging environment
-      "exports": {
-        "MyDO": { "type": "durable-object", "storage": "sqlite" }
-      }
-    }
-  }
+	// top-level exports apply to the default environment
+	"exports": {
+		"MyDO": { "type": "durable-object", "storage": "sqlite" }
+	},
+	"env": {
+		"staging": {
+			// override for the staging environment
+			"exports": {
+				"MyDO": { "type": "durable-object", "storage": "sqlite" }
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [exports.MyDO]
 type = "durable-object"
 storage = "sqlite"
-
 
 [env.staging.exports.MyDO]
 type = "durable-object"
@@ -578,22 +492,22 @@ If `exports` is only declared at the top level, named environments inherit the s
 
 The `exports` field is a map keyed by Durable Object class name. Each value is an object whose fields depend on `state`:
 
-* `type` ` string ` required
+* `type` ` string `required
 
   * For Durable Object class entries, set this to `"durable-object"`.
-* `state` ` string ` optional
+* `state` ` string `optional
 
   * The lifecycle state. One of `"created"` (the default, omit to use), `"deleted"`, `"renamed"`, `"transferred"`, or `"expecting-transfer"`.
-* `storage` ` string ` conditional
+* `storage` ` string `conditional
 
   * Required when `state` is `"created"` or `"expecting-transfer"`. One of `"sqlite"` (recommended, the only valid value for new namespaces) or `"legacy-kv"` (only for existing key-value-backed namespaces). Forbidden on tombstone states.
-* `renamed_to` ` string ` conditional
+* `renamed_to` ` string `conditional
 
   * Required when `state` is `"renamed"`. The destination class name. Must be a valid JavaScript identifier, differ from the source class name, and appear as a live entry in the same `exports` map.
-* `transferred_to` ` string ` conditional
+* `transferred_to` ` string `conditional
 
   * Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
-* `transfer_from` ` string ` conditional
+* `transfer_from` ` string `conditional
 
   * Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
 
@@ -661,20 +575,13 @@ To determine a class's existing storage backend, trace it to the migration that 
 
 Side-by-side, the equivalent of a typical `migrations` history is:
 
-* [  wrangler.jsonc ](#tab-panel-9132)
-* [  wrangler.toml ](#tab-panel-9133)
-
-**JSONC**
-
 ```jsonc
 {
-  "migrations": [
-    { "tag": "v1", "new_sqlite_classes": ["ChatRoom"] }
-  ]
+	"migrations": [
+		{ "tag": "v1", "new_sqlite_classes": ["ChatRoom"] }
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[migrations]]
@@ -682,20 +589,13 @@ tag = "v1"
 new_sqlite_classes = [ "ChatRoom" ]
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9134)
-* [  wrangler.toml ](#tab-panel-9135)
-
-**JSONC**
-
 ```jsonc
 {
-  "exports": {
-    "ChatRoom": { "type": "durable-object", "storage": "sqlite" }
-  }
+	"exports": {
+		"ChatRoom": { "type": "durable-object", "storage": "sqlite" }
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [exports.ChatRoom]
@@ -705,11 +605,18 @@ storage = "sqlite"
 
 Future lifecycle changes (deletes, renames, transfers) happen entirely through `exports` — there is no equivalent of the `tag` field and no need to keep historical entries. The current state of your `exports` map is the source of truth.
 
-Warning
+Caution
 
 Once a Worker has been deployed with `exports`, subsequent deploys cannot return to the legacy `migrations` array. Plan your transition accordingly.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#page","headline":"Durable Object class exports · Cloudflare Durable Objects docs","description":"Use the declarative exports field in wrangler.json to manage Durable Object class lifecycle — create, delete, rename, and transfer Durable Object classes.","url":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/durable-objects-migrations/","name":"Durable Object class exports"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#page","headline":"Durable Object class exports · Cloudflare Durable Objects docs","description":"Use the declarative exports field in wrangler.json to manage Durable Object class lifecycle — create, delete, rename, and transfer Durable Object classes.","url":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

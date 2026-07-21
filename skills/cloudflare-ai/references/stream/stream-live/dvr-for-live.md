@@ -1,22 +1,22 @@
 ---
-title: DVR for Live
 description: Enable DVR mode in Cloudflare Stream to let viewers rewind, resume, and fast-forward live broadcasts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: DVR for Live
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DVR for Live
 
-# DVR for Live
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/dvr-for-live/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, resume, and fast-forward a live broadcast. To enable DVR mode, add the `dvrEnabled=true` query parameter to the Stream Player embed source or the HLS manifest URL.
 
 ## Stream Player
-
-**Stream Player embed format**
 
 ```html
 <div style="position: relative; padding-top: 56.25%;">
@@ -36,8 +36,6 @@ When DVR mode is enabled the Stream Player will:
 * If the viewer pauses the player, it will resume playback from that time instead of jumping forward to the live edge.
 
 ## HLS manifest for custom players
-
-**HLS manifest URL format**
 
 ```text
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/manifest/video.m3u8?dvrEnabled=true
@@ -65,7 +63,14 @@ DVR Mode on a Live Input ID URL:
 * DVR Mode relies on Version 8 of the HLS manifest specification. Stream uses HLS Version 6 in all other contexts. HLS v8 offers extremely broad compatibility but may not work with certain old player libraries or older devices.
 * DVR Mode is not available for DASH manifests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/dvr-for-live/#page","headline":"DVR for Live · Cloudflare Stream docs","description":"Enable DVR mode in Cloudflare Stream to let viewers rewind, resume, and fast-forward live broadcasts.","url":"https://developers.cloudflare.com/stream/stream-live/dvr-for-live/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/dvr-for-live/","name":"DVR for Live"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/dvr-for-live/#page","headline":"DVR for Live · Cloudflare Stream docs","description":"Enable DVR mode in Cloudflare Stream to let viewers rewind, resume, and fast-forward live broadcasts.","url":"https://developers.cloudflare.com/stream/stream-live/dvr-for-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

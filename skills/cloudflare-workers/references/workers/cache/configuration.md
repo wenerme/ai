@@ -1,16 +1,18 @@
 ---
-title: Configuration
 description: Enable and configure Workers Caching.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
 
@@ -30,31 +32,23 @@ Requires Wrangler 4.69.0 or above.
 
 Add a `cache` block to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12245)
-* [  wrangler.toml ](#tab-panel-12246)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": {
-    "enabled": true,
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": {
+		"enabled": true,
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
@@ -68,31 +62,23 @@ The `cache` block accepts two fields: `enabled` (required) and [cross\_version\_
 
 To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block) and redeploy:
 
-* [  wrangler.jsonc ](#tab-panel-12247)
-* [  wrangler.toml ](#tab-panel-12248)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": {
-    "enabled": false,
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": {
+		"enabled": false,
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = false
@@ -108,53 +94,41 @@ Requires Wrangler 4.107.0 or above.
 
 `cache.enabled` sets the default for the whole Worker, but a Worker can expose several [entrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — the default export and any number of named `WorkerEntrypoint` classes — and you can turn caching on or off for each one independently. Use the `exports` map, keyed by entrypoint name, with `"default"` referring to the default export:
 
-* [  wrangler.jsonc ](#tab-panel-12251)
-* [  wrangler.toml ](#tab-panel-12252)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": {
-    "enabled": true,
-  },
-  "exports": {
-    // Opt the default entrypoint out of caching.
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    // Keep caching on for the Admin entrypoint.
-    "Admin": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": {
+		"enabled": true,
+	},
+	"exports": {
+		// Opt the default entrypoint out of caching.
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		// Keep caching on for the Admin entrypoint.
+		"Admin": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.Admin]
 type = "worker"
-
 
   [exports.Admin.cache]
   enabled = true
@@ -167,7 +141,7 @@ This lets you **opt specific entrypoints in and out** without changing your Work
 * **Opt an entrypoint out** to keep it running on every request — the natural fit for a gateway or router entrypoint that authenticates, normalizes, or dispatches, and should never itself be served from cache. This is the recommended way to build the [gateway pattern](https://developers.cloudflare.com/workers/cache/examples/): disable caching on the gateway entrypoint and enable it on the inner entrypoint the gateway calls through `ctx.exports`.
 * **Opt an entrypoint in** to cache only the specific entrypoints that return reusable responses, leaving the rest of the Worker uncached.
 
-For lowest latency, disable cache for an entrypoint instead of returning `Cache-Control: no-store` for all responses
+For lowest latency, disable cache for an entrypoint instead of returning \`Cache-Control: no-store\` for all responses
 
 Do not enable caching on a gateway entrypoint and then return `Cache-Control: no-store` on every response to keep it running. With caching enabled, each request to that entrypoint still consults the lower and upper cache tiers first — incurring the [tiered-cache](https://developers.cloudflare.com/workers/cache/#tiered-cache) round trip — only to run the Worker and discard an uncacheable response. That adds latency for no benefit. Disable caching on the entrypoint in the `exports` map instead, so requests skip the cache lookup and go straight to your gateway logic.
 
@@ -191,32 +165,24 @@ The trade-off is that **cache hit rate resets on every deployment**. Because a n
 
 If you want to maximize cache hit rate and are willing to accept slower rollouts of cache-affecting changes, set `cross_version_cache` to `true`. Cached responses are then shared across versions — a response written by one version can be served by a later version as long as its TTL has not expired:
 
-* [  wrangler.jsonc ](#tab-panel-12249)
-* [  wrangler.toml ](#tab-panel-12250)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": {
-    "enabled": true,
-    "cross_version_cache": true,
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": {
+		"enabled": true,
+		"cross_version_cache": true,
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
@@ -231,42 +197,33 @@ Advanced users who deploy frequently and whose responses do not change between m
 
 The `cache` block can be set at the top level and overridden per [environment](https://developers.cloudflare.com/workers/wrangler/environments/). The typical pattern is to turn caching on in production once you are confident it is safe, while keeping staging uncached for easier debugging:
 
-* [  wrangler.jsonc ](#tab-panel-12253)
-* [  wrangler.toml ](#tab-panel-12254)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": {
-    "enabled": false,
-  },
-  "env": {
-    "production": {
-      "cache": {
-        "enabled": true,
-      },
-    },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": {
+		"enabled": false,
+	},
+	"env": {
+		"production": {
+			"cache": {
+				"enabled": true,
+			},
+		},
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = false
-
 
 [env.production.cache]
 enabled = true
@@ -276,7 +233,7 @@ enabled = true
 
 With caching enabled, your Worker is the origin for Cloudflare's cache. Standard HTTP `Cache-Control` directives on the response your Worker returns determine whether and for how long Cloudflare caches it. For the full list of directives and how they interact, refer to [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/).
 
-Responses with no `Cache-Control` header are still cached
+Responses with no \`Cache-Control\` header are still cached
 
 If your Worker returns a response with **no** `Cache-Control` header (and no `Expires` header), Cloudflare applies [RFC 9111 heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) with the per-status default TTLs in the following table. Responses whose status is not in the table are not cached by default.
 
@@ -313,56 +270,45 @@ Setting any explicit `Cache-Control` directive skips the check entirely — Cach
 
 Use `max-age` to control how long the response is treated as fresh:
 
-* [  JavaScript ](#tab-panel-12257)
-* [  TypeScript ](#tab-panel-12258)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const body = await renderPage(request);
+	async fetch(request) {
+		const body = await renderPage(request);
 
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "text/html",
-        // Cached for 1 hour at Cloudflare's edge and in the browser.
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+				// Cached for 1 hour at Cloudflare's edge and in the browser.
+				"Cache-Control": "public, max-age=3600",
+			},
+		});
+	},
 };
-
 
 // Replace with your own rendering logic.
 async function renderPage(request) {
-  return `<!doctype html><title>Home</title><h1>Hello</h1>`;
+	return `<!doctype html><title>Home</title><h1>Hello</h1>`;
 }
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const body = await renderPage(request);
+	async fetch(request): Promise<Response> {
+		const body = await renderPage(request);
 
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "text/html",
-        // Cached for 1 hour at Cloudflare's edge and in the browser.
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+				// Cached for 1 hour at Cloudflare's edge and in the browser.
+				"Cache-Control": "public, max-age=3600",
+			},
+		});
+	},
 } satisfies ExportedHandler;
-
 
 // Replace with your own rendering logic.
 async function renderPage(request: Request): Promise<string> {
-  return `<!doctype html><title>Home</title><h1>Hello</h1>`;
+	return `<!doctype html><title>Home</title><h1>Hello</h1>`;
 }
 ```
 
@@ -372,50 +318,41 @@ If you need browsers and the edge to cache for different durations, use `cdn-cac
 
 When a cached response becomes stale, `stale-while-revalidate` lets Cloudflare return the stale response immediately and refresh it in the background:
 
-* [  JavaScript ](#tab-panel-12255)
-* [  TypeScript ](#tab-panel-12256)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const data = { timestamp: Date.now() };
+	async fetch(request) {
+		const data = { timestamp: Date.now() };
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        // Fresh for 10 minutes; may be served stale for up to 1 minute
-        // while a background revalidation runs.
-        "Cache-Control": "public, max-age=600, stale-while-revalidate=60",
-      },
-    });
-  },
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				// Fresh for 10 minutes; may be served stale for up to 1 minute
+				// while a background revalidation runs.
+				"Cache-Control": "public, max-age=600, stale-while-revalidate=60",
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const data = { timestamp: Date.now() };
+	async fetch(request): Promise<Response> {
+		const data = { timestamp: Date.now() };
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        // Fresh for 10 minutes; may be served stale for up to 1 minute
-        // while a background revalidation runs.
-        "Cache-Control": "public, max-age=600, stale-while-revalidate=60",
-      },
-    });
-  },
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				// Fresh for 10 minutes; may be served stale for up to 1 minute
+				// while a background revalidation runs.
+				"Cache-Control": "public, max-age=600, stale-while-revalidate=60",
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
-`s-maxage`, `must-revalidate`, and `proxy-revalidate` disable `stale-while-revalidate`
+\`s-maxage\`, \`must-revalidate\`, and \`proxy-revalidate\` disable \`stale-while-revalidate\`
 
 If your response includes any of `s-maxage`, `must-revalidate`, or `proxy-revalidate`, the stale-serving behavior is disabled and Cloudflare will block on a fresh revalidation when the response expires. The same is true for `stale-if-error`. This follows [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4): those three directives forbid serving stale content.
 
@@ -433,8 +370,6 @@ Two common patterns:
 ### Serve stale on error with `stale-if-error`
 
 `stale-if-error` lets Cloudflare return a previously cached response when the Worker fails while refreshing an expired cache entry — for example, when it throws, times out, or returns a `5xx` response. This insulates clients from transient Worker failures.
-
-**TypeScript**
 
 ```ts
 "Cache-Control": "public, max-age=600, stale-if-error=86400",
@@ -464,60 +399,49 @@ Normally the callee decides how its responses are cached by setting `Cache-Contr
 
 Here the `Backend` entrypoint returns no `Cache-Control` of its own; the default entrypoint decides the caching policy when it calls `Backend` through `ctx.exports`:
 
-* [  JavaScript ](#tab-panel-12261)
-* [  TypeScript ](#tab-panel-12262)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 // Cached entrypoint. It does not set Cache-Control itself.
 export class Backend extends WorkerEntrypoint {
-  async fetch(request) {
-    return new Response("Hello from the backend", {
-      headers: { "Content-Type": "text/html" },
-    });
-  }
+	async fetch(request) {
+		return new Response("Hello from the backend", {
+			headers: { "Content-Type": "text/html" },
+		});
+	}
 }
-
 
 // Gateway entrypoint. Caches the Backend's response for this call for
 // 5 minutes, without the Backend needing to set Cache-Control itself.
 export default {
-  async fetch(request, env, ctx) {
-    return ctx.exports.Backend.fetch(request, {
-      cf: { cacheControl: "public, max-age=300" },
-    });
-  },
+	async fetch(request, env, ctx) {
+		return ctx.exports.Backend.fetch(request, {
+			cf: { cacheControl: "public, max-age=300" },
+		});
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 // Cached entrypoint. It does not set Cache-Control itself.
 export class Backend extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
-    return new Response("Hello from the backend", {
-      headers: { "Content-Type": "text/html" },
-    });
-  }
+	async fetch(request: Request): Promise<Response> {
+		return new Response("Hello from the backend", {
+			headers: { "Content-Type": "text/html" },
+		});
+	}
 }
-
 
 // Gateway entrypoint. Caches the Backend's response for this call for
 // 5 minutes, without the Backend needing to set Cache-Control itself.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return ctx.exports.Backend.fetch(request, {
-      cf: { cacheControl: "public, max-age=300" },
-    });
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		return ctx.exports.Backend.fetch(request, {
+			cf: { cacheControl: "public, max-age=300" },
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -535,44 +459,35 @@ Every response carries a `Cf-Cache-Status` header indicating what happened for t
 
 The [Cache-Tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) response header attaches tags to a cached response so you can purge it later in bulk. Cloudflare consumes this header and strips it before the response reaches the client.
 
-* [  JavaScript ](#tab-panel-12259)
-* [  TypeScript ](#tab-panel-12260)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const html = `<!doctype html><title>Post</title>`;
+	async fetch(request) {
+		const html = `<!doctype html><title>Post</title>`;
 
-
-    return new Response(html, {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": "blog,posts,post-123",
-      },
-    });
-  },
+		return new Response(html, {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": "blog,posts,post-123",
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const html = `<!doctype html><title>Post</title>`;
+	async fetch(request): Promise<Response> {
+		const html = `<!doctype html><title>Post</title>`;
 
-
-    return new Response(html, {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": "blog,posts,post-123",
-      },
-    });
-  },
+		return new Response(html, {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": "blog,posts,post-123",
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -595,7 +510,7 @@ Workers Caching inherits Cloudflare's standard [cache bypass rules](https://deve
 
 When any of these apply, `Cf-Cache-Status` is `BYPASS` and your Worker runs on every request.
 
-`no-cache` is not a bypass
+\`no-cache\` is not a bypass
 
 `Cache-Control: no-cache` does not bypass the cache. The response is stored, but the cached entry is treated as stale immediately — so the next request always needs to consult your Worker before serving. The exact behavior depends on what other directives accompany `no-cache`:
 
@@ -643,7 +558,14 @@ If your Worker needs to return different encodings to different clients, you hav
 * **Pick one canonical encoding inside your Worker.** Decide based on the `Accept-Encoding` request header, encode the body once, and return a single representation. Subsequent requests for that URL hit the same cached entry regardless of what they accept. This produces the highest cache hit rate but requires you to decide which clients you serve which encoding to.
 * **Vary on `Accept-Encoding`.** Return a different `Content-Encoding` per request and set `Vary: Accept-Encoding`. Cloudflare stores one variant per distinct `Accept-Encoding` value the Worker has seen. Because comparison is verbatim, clients that send semantically equivalent values in different orders or with different quality factors produce separate variants — keep cache fan-out under control by normalizing `Accept-Encoding` (for example, in a gateway Worker) before the response is generated.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

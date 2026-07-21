@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Workers
 description: Build and deploy serverless applications across Cloudflare's global network with Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cloudflare Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Workers
 
-# Cloudflare Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A serverless platform for building, deploying, and scaling apps across [Cloudflare's global network ↗](https://www.cloudflare.com/network/) with a single command — no infrastructure to manage, no complex configuration
 
@@ -24,7 +26,7 @@ With Cloudflare Workers, you can expect to:
 
 Get started with your first project:
 
-[ Deploy a template ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/templates) [ Deploy with Wrangler CLI ](https://developers.cloudflare.com/workers/get-started/guide/)
+[ Deploy a template ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/templates)[ Deploy with Wrangler CLI ](https://developers.cloudflare.com/workers/get-started/guide/)
 
 ---
 
@@ -58,55 +60,55 @@ Connect to external services like databases, APIs, and storage via [Bindings](ht
 
 **Storage**
 
-**[Durable Objects](https://developers.cloudflare.com/durable-objects/)**
+[Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
 Scalable stateful storage for real-time coordination.
 
-**[D1](https://developers.cloudflare.com/d1/)**
+[D1](https://developers.cloudflare.com/d1/)
 
 Serverless SQL database built for fast, global queries.
 
-**[KV](https://developers.cloudflare.com/kv/)**
+[KV](https://developers.cloudflare.com/kv/)
 
 Low-latency key-value storage for fast, edge-cached reads.
 
-**[Queues](https://developers.cloudflare.com/queues/)**
+[Queues](https://developers.cloudflare.com/queues/)
 
 Guaranteed delivery with no charges for egress bandwidth.
 
-**[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)**
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
 
 Connect to your external database with accelerated queries, cached at the edge.
 
 **Compute**
 
-**[Workers AI](https://developers.cloudflare.com/workers-ai/)**
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Machine learning models powered by serverless GPUs.
 
-**[Workflows](https://developers.cloudflare.com/workflows/)**
+[Workflows](https://developers.cloudflare.com/workflows/)
 
 Durable, long-running operations with automatic retries.
 
-**[Vectorize](https://developers.cloudflare.com/vectorize/)**
+[Vectorize](https://developers.cloudflare.com/vectorize/)
 
 Vector database for AI-powered semantic search.
 
-**[R2](https://developers.cloudflare.com/r2/)**
+[R2](https://developers.cloudflare.com/r2/)
 
 Zero-egress object storage for cost-efficient data access.
 
-**[Browser Run](https://developers.cloudflare.com/browser-run/)**
+[Browser Run](https://developers.cloudflare.com/browser-run/)
 
 Programmatic serverless browser instances.
 
 **Media**
 
-**[Cache / CDN](https://developers.cloudflare.com/cache/)**
+[Cache / CDN](https://developers.cloudflare.com/cache/)
 
 Global caching for high-performance, low-latency delivery.
 
-**[Images](https://developers.cloudflare.com/images/)**
+[Images](https://developers.cloudflare.com/images/)
 
 Streamlined image infrastructure from a single API.
 
@@ -114,7 +116,14 @@ Streamlined image infrastructure from a single API.
 
 Want to connect with the Workers community? [Join our Discord ↗](https://discord.cloudflare.com)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/#page","headline":"Overview · Cloudflare Workers docs","description":"Build and deploy serverless applications across Cloudflare's global network with Workers.","url":"https://developers.cloudflare.com/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/#page","headline":"Overview · Cloudflare Workers docs","description":"Build and deploy serverless applications across Cloudflare's global network with Workers.","url":"https://developers.cloudflare.com/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: API configuration
 description: Configure Logpush jobs via the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: API configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API configuration
 
-# API configuration
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
@@ -43,12 +45,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**List Logpush jobs**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Ownership
@@ -62,15 +62,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get ownership challenge**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+	}'
 ```
 
 A challenge file will be written to the destination, and the filename will be in the response (the filename may be expressed as a path, if appropriate for your destination):
@@ -155,15 +153,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Check destination exists**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/destination/exists" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "destination_conf": "s3://foo"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"destination_conf": "s3://foo"
+	}'
 ```
 
 Response
@@ -196,32 +192,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<DOMAIN_NAME>",
-    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
-    "dataset": "http_requests",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            " ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "kind": "edge"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<DOMAIN_NAME>",
+		"destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+		"dataset": "http_requests",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						" ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"kind": "edge"
+	}'
 ```
 
 ## Options
@@ -245,16 +239,14 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Validate origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/origin" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "logpull_options": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339&CVE-2021-44228=true",
-    "dataset": "http_requests"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"logpull_options": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339&CVE-2021-44228=true",
+		"dataset": "http_requests"
+	}'
 ```
 
 Response
@@ -340,7 +332,14 @@ You can add custom fields to your HTTP request log entries in the form of HTTP r
 
 The following Logpush actions are recorded in **Cloudflare Audit Logs**: create, update, and delete job.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/api-configuration/","name":"API configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

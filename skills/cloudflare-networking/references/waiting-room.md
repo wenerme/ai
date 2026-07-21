@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Waiting Room
 description: Queue visitors in a virtual waiting room during traffic surges.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Waiting Room
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Waiting Room
 
-# Cloudflare Waiting Room
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A virtual waiting room to manage peak traffic.
 
@@ -36,43 +38,43 @@ Waiting Room also benefits your visitors by:
 
 ## Features
 
-###  Scheduled Event
+[Scheduled Event](https://developers.cloudflare.com/waiting-room/additional-options/create-events/)
 
 Customize the behavior of a waiting room for a specific period of time.
 
-[ Use Scheduled Event ](https://developers.cloudflare.com/waiting-room/additional-options/create-events/)
+ Use Scheduled Event
 
-###  Waiting Room Rules
+[Waiting Room Rules](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/)
 
 Create rules to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to.
 
-[ Use Waiting Room Rules ](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/)
+ Use Waiting Room Rules
 
-###  Waiting Room Analytics
+[Waiting Room Analytics](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/)
 
 Get insights into the traffic going through your waiting room.
 
-[ Use Waiting Room Analytics ](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/)
+ Use Waiting Room Analytics
 
-###  Additional hostname and path coverage
+[Additional hostname and path coverage](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/)
 
 Apply a single waiting room to multiple hostnames and paths within the same zone.
 
-[ Use Additional hostname and path coverage ](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/)
+ Use Additional hostname and path coverage
 
 ---
 
 ## Related products
 
-**[Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)**
+[Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)
 
 Cloudflare for SaaS allows you to extend the security and performance benefits of Cloudflare’s network to your customers via their own custom or vanity domains.
 
-**[Rules](https://developers.cloudflare.com/rules/)**
+[Rules](https://developers.cloudflare.com/rules/)
 
 Cloudflare Rules allows you to make adjustments to requests and responses, configure Cloudflare settings, and trigger specific actions for matching requests.
 
-**[SSL/TLS](https://developers.cloudflare.com/ssl/)**
+[SSL/TLS](https://developers.cloudflare.com/ssl/)
 
 Cloudflare SSL/TLS encrypts your web traffic to prevent data theft and other tampering.
 
@@ -103,11 +105,18 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## More resources
 
-[Pricing](https://www.cloudflare.com/plans/)
+### [ Pricing ](https://www.cloudflare.com/plans/)
 
 Explore pricing options for Waiting Room.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/#page","headline":"Cloudflare Waiting Room · Cloudflare Waiting Room docs","description":"Queue visitors in a virtual waiting room during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/#page","headline":"Cloudflare Waiting Room · Cloudflare Waiting Room docs","description":"Queue visitors in a virtual waiting room during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

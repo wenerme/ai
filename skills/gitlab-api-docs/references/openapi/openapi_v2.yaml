@@ -32231,9 +32231,9 @@ paths:
     post:
       summary: Trigger a test webhook
       description: Triggers a test webhook. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_test_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       produces:
       - application/json
       consumes:
@@ -32294,9 +32294,9 @@ paths:
     post:
       summary: Resend a webhook event
       description: Resends a webhook event. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_event_resend_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       produces:
       - application/json
       consumes:

@@ -1,16 +1,18 @@
 ---
-title: Page Rules
 description: Review the interaction between various Page Rules and Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Page Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Page Rules
 
-# Page Rules
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Page Rules trigger certain actions whenever a request matches one of the URL patterns you define. You can define a page rule to trigger one or more actions whenever a certain URL pattern is matched. Refer to [Page Rules](https://developers.cloudflare.com/rules/page-rules/) to learn more about configuring Page Rules.
 
@@ -185,7 +187,14 @@ A same zone subrequest is a request the Worker makes to an orange-clouded hostna
 | Worker | Same Zone  | Rule Respected |
 | Worker | Other Zone | Rule Ignored   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#page","headline":"Page Rules with Workers · Cloudflare Workers docs","description":"Review the interaction between various Page Rules and Workers.","url":"https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/workers-with-page-rules/","name":"Page Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#page","headline":"Page Rules with Workers · Cloudflare Workers docs","description":"Review the interaction between various Page Rules and Workers.","url":"https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

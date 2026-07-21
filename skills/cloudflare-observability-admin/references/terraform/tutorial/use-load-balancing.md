@@ -1,16 +1,18 @@
 ---
-title: 4 – Improve performance
 description: Learn how to use Terraform with Cloudflare Load Balancing product to fail traffic over as needed.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 4 – Improve performance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  4 – Improve performance
 
-# 4 – Improve performance
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will add a second origin for some basic round robining, and then use the [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) product to fail traffic over as needed. You will also enhance your load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.
 
@@ -113,19 +115,16 @@ resource "cloudflare_load_balancer_monitor" "health_check" {
   description    = "Health check for www origins"
   type           = "https"
 
-
   header = {
     Host = ["${var.domain}"]
   }
 }
-
 
 # Origin pool
 resource "cloudflare_load_balancer_pool" "www_pool" {
   account_id = var.account_id
   name       = "www-origins"
   monitor    = cloudflare_load_balancer_monitor.health_check.id
-
 
   origins = [{
     name    = "www-us"
@@ -137,14 +136,12 @@ resource "cloudflare_load_balancer_pool" "www_pool" {
     enabled = true
   }]
 
-
   description     = "Primary www server pool"
   enabled         = true
   minimum_origins = 1
   notification_email = "<YOUR_EMAIL>"
   check_regions   = ["WEU", "EEU", "WNAM", "ENAM", "SEAS", "NEAS"]
 }
-
 
 # Load balancer
 resource "cloudflare_load_balancer" "www_lb" {
@@ -212,7 +209,14 @@ Verify the configuration is working by checking the Cloudflare dashboard under *
 * Automatically route around unhealthy servers
 * Provide real-time health monitoring
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/#page","headline":"Improve performance and reliability · Cloudflare Terraform docs","description":"Learn how to use Terraform with Cloudflare Load Balancing product to fail traffic over as needed.","url":"https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/use-load-balancing/","name":"4 – Improve performance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/#page","headline":"Improve performance and reliability · Cloudflare Terraform docs","description":"Learn how to use Terraform with Cloudflare Load Balancing product to fail traffic over as needed.","url":"https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

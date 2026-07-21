@@ -1,16 +1,18 @@
 ---
-title: Make comparisons
 description: Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Make comparisons
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Make comparisons
 
-# Make comparisons
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/get-started/making-comparisons/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When comparing time series, across locations/time ranges/etc., in endpoints that normalize values using [min-max](https://developers.cloudflare.com/radar/concepts/normalization), you must do so in the same request. This is done by asking for multiple series. All values will then be normalized using the same minimum and maximum value and can safely be compared against each other.
 
@@ -56,7 +58,7 @@ The response (shortened below for brevity) uses the provided `name` property to 
         "endTime": "2022-11-02T17:00:00Z"
       },
       "aggInterval": "ONE_HOUR",
-      // ...
+			// ...
     }
   }
 }
@@ -121,14 +123,14 @@ The `result` property should return a response like this:
 
 ```json
 {
-  "tonga": {
-    "timestamps": ["2022-10-15T02:00:00Z", "2022-10-15T03:00:00Z", "2022-10-15T04:00:00Z", "2022-10-15T05:00:00Z"],
-    "values": ["1.0", "0.832473", "0.820083", "0.79408"]
-  },
-  "tonga_outage": {
-    "timestamps": ["2022-01-15T02:00:00Z", "2022-01-15T03:00:00Z", "2022-01-15T04:00:00Z", "2022-01-15T05:00:00Z"],
-    "values": ["0.354105", "0.357287", "0.181811", "0.044198"]
-  }
+	"tonga": {
+		"timestamps": ["2022-10-15T02:00:00Z", "2022-10-15T03:00:00Z", "2022-10-15T04:00:00Z", "2022-10-15T05:00:00Z"],
+		"values": ["1.0", "0.832473", "0.820083", "0.79408"]
+	},
+	"tonga_outage": {
+		"timestamps": ["2022-01-15T02:00:00Z", "2022-01-15T03:00:00Z", "2022-01-15T04:00:00Z", "2022-01-15T05:00:00Z"],
+		"values": ["0.354105", "0.357287", "0.181811", "0.044198"]
+	}
 }
 ```
 
@@ -140,7 +142,14 @@ This shows how traffic dropped to almost zero during the outage. If we chart it 
 
 Refer to the Investigate section to drill down on the data Radar returns, such as [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/making-comparisons/#page","headline":"Make comparisons · Cloudflare Radar docs","description":"Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.","url":"https://developers.cloudflare.com/radar/get-started/making-comparisons/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/get-started/making-comparisons/","name":"Make comparisons"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/making-comparisons/#page","headline":"Make comparisons · Cloudflare Radar docs","description":"Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.","url":"https://developers.cloudflare.com/radar/get-started/making-comparisons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

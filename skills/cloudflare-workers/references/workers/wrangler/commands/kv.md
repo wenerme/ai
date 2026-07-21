@@ -1,16 +1,18 @@
 ---
-title: KV
 description: Wrangler commands for managing Workers KV namespaces and key-value pairs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: KV
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  KV
 
-# KV
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/kv/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage [Workers KV](https://developers.cloudflare.com/kv/) using Wrangler.
 
@@ -22,7 +24,7 @@ Note
 
 The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
 
-Warning
+Caution
 
 Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/#deprecations) for KV page.
 
@@ -30,20 +32,18 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-13330)
-* [  pnpm ](#tab-panel-13331)
-* [  yarn ](#tab-panel-13332)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv namespace create [NAMESPACE]
 ```
 
-```sh
-pnpm wrangler kv namespace create [NAMESPACE]
+```
+yarn wrangler kv namespace create [NAMESPACE]
 ```
 
-```sh
-yarn wrangler kv namespace create [NAMESPACE]
+```
+pnpm wrangler kv namespace create [NAMESPACE]
 ```
 
 * `[NAMESPACE]` ` string ` required
@@ -82,20 +82,18 @@ Use a specific auth profile
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-13333)
-* [  pnpm ](#tab-panel-13334)
-* [  yarn ](#tab-panel-13335)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv namespace list
 ```
 
-```sh
-pnpm wrangler kv namespace list
+```
+yarn wrangler kv namespace list
 ```
 
-```sh
-yarn wrangler kv namespace list
+```
+pnpm wrangler kv namespace list
 ```
 
 Global flags
@@ -123,20 +121,18 @@ Use a specific auth profile
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-13336)
-* [  pnpm ](#tab-panel-13337)
-* [  yarn ](#tab-panel-13338)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv namespace delete [NAMESPACE]
 ```
 
-```sh
-pnpm wrangler kv namespace delete [NAMESPACE]
+```
+yarn wrangler kv namespace delete [NAMESPACE]
 ```
 
-```sh
-yarn wrangler kv namespace delete [NAMESPACE]
+```
+pnpm wrangler kv namespace delete [NAMESPACE]
 ```
 
 * `[NAMESPACE]` ` string `
@@ -175,20 +171,18 @@ Use a specific auth profile
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-13339)
-* [  pnpm ](#tab-panel-13340)
-* [  yarn ](#tab-panel-13341)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv namespace rename [OLD-NAME]
 ```
 
-```sh
-pnpm wrangler kv namespace rename [OLD-NAME]
+```
+yarn wrangler kv namespace rename [OLD-NAME]
 ```
 
-```sh
-yarn wrangler kv namespace rename [OLD-NAME]
+```
+pnpm wrangler kv namespace rename [OLD-NAME]
 ```
 
 * `[OLD-NAME]` ` string `
@@ -227,7 +221,7 @@ Note
 
 The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
 
-Warning
+Caution
 
 Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/) for KV page.
 
@@ -235,20 +229,18 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-13342)
-* [  pnpm ](#tab-panel-13343)
-* [  yarn ](#tab-panel-13344)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv key put [KEY] [VALUE]
 ```
 
-```sh
-pnpm wrangler kv key put [KEY] [VALUE]
+```
+yarn wrangler kv key put [KEY] [VALUE]
 ```
 
-```sh
-yarn wrangler kv key put [KEY] [VALUE]
+```
+pnpm wrangler kv key put [KEY] [VALUE]
 ```
 
 * `[KEY]` ` string ` required
@@ -301,20 +293,18 @@ Use a specific auth profile
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-13345)
-* [  pnpm ](#tab-panel-13346)
-* [  yarn ](#tab-panel-13347)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv key list
 ```
 
-```sh
-pnpm wrangler kv key list
+```
+yarn wrangler kv key list
 ```
 
-```sh
-yarn wrangler kv key list
+```
+pnpm wrangler kv key list
 ```
 
 * `--binding` ` string `
@@ -357,20 +347,18 @@ Use a specific auth profile
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-13348)
-* [  pnpm ](#tab-panel-13349)
-* [  yarn ](#tab-panel-13350)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv key get [KEY]
 ```
 
-```sh
-pnpm wrangler kv key get [KEY]
+```
+yarn wrangler kv key get [KEY]
 ```
 
-```sh
-yarn wrangler kv key get [KEY]
+```
+pnpm wrangler kv key get [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -415,20 +403,18 @@ Use a specific auth profile
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-13351)
-* [  pnpm ](#tab-panel-13352)
-* [  yarn ](#tab-panel-13353)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv key delete [KEY]
 ```
 
-```sh
-pnpm wrangler kv key delete [KEY]
+```
+yarn wrangler kv key delete [KEY]
 ```
 
-```sh
-yarn wrangler kv key delete [KEY]
+```
+pnpm wrangler kv key delete [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -475,7 +461,7 @@ Note
 
 The `kv ...` commands allow you to manage your Workers KV resources in the Cloudflare network. Learn more about using Workers KV with Wrangler in the [Workers KV guide](https://developers.cloudflare.com/kv/get-started/).
 
-Warning
+Caution
 
 Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using versions below 3.60.0, the command follows the `kv:...` syntax. Learn more about the deprecation of the `kv:...` syntax in the [Wrangler commands](https://developers.cloudflare.com/kv/reference/kv-commands/) for KV page.
 
@@ -483,20 +469,18 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-13354)
-* [  pnpm ](#tab-panel-13355)
-* [  yarn ](#tab-panel-13356)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv bulk get [FILENAME]
 ```
 
-```sh
-pnpm wrangler kv bulk get [FILENAME]
+```
+yarn wrangler kv bulk get [FILENAME]
 ```
 
-```sh
-yarn wrangler kv bulk get [FILENAME]
+```
+pnpm wrangler kv bulk get [FILENAME]
 ```
 
 * `[FILENAME]` ` string ` required
@@ -539,20 +523,18 @@ Use a specific auth profile
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-13357)
-* [  pnpm ](#tab-panel-13358)
-* [  yarn ](#tab-panel-13359)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv bulk put [FILENAME]
 ```
 
-```sh
-pnpm wrangler kv bulk put [FILENAME]
+```
+yarn wrangler kv bulk put [FILENAME]
 ```
 
-```sh
-yarn wrangler kv bulk put [FILENAME]
+```
+pnpm wrangler kv bulk put [FILENAME]
 ```
 
 * `[FILENAME]` ` string ` required
@@ -601,20 +583,18 @@ Use a specific auth profile
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-13360)
-* [  pnpm ](#tab-panel-13361)
-* [  yarn ](#tab-panel-13362)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler kv bulk delete [FILENAME]
 ```
 
-```sh
-pnpm wrangler kv bulk delete [FILENAME]
+```
+yarn wrangler kv bulk delete [FILENAME]
 ```
 
-```sh
-yarn wrangler kv bulk delete [FILENAME]
+```
+pnpm wrangler kv bulk delete [FILENAME]
 ```
 
 * `[FILENAME]` ` string ` required
@@ -655,7 +635,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/kv/#page","headline":"KV · Cloudflare Workers docs","description":"Wrangler commands for managing Workers KV namespaces and key-value pairs.","url":"https://developers.cloudflare.com/workers/wrangler/commands/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/kv/","name":"KV"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/kv/#page","headline":"KV · Cloudflare Workers docs","description":"Wrangler commands for managing Workers KV namespaces and key-value pairs.","url":"https://developers.cloudflare.com/workers/wrangler/commands/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Cookies
 description: Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Cookies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Cookies
 
-# Cloudflare Cookies
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare uses various cookies to maximize network resources, manage traffic, and protect our customers’ sites from malicious traffic.
 
@@ -95,7 +97,7 @@ The table below shows additional cookies used by the Challenge Platform.
 | cf\_clearance                                   | Clearance Cookie stores the proof of challenge passed. It is used to no longer issue a challenge if present. It is required to reach an origin server. |
 | cf\_chl\_rc\_i; cf\_chl\_rc\_ni; cf\_chl\_rc\_m | These cookies are for internal use which allows Cloudflare to identify production issues on clients.                                                   |
 
-Warning
+Caution
 
 If your website is not [using HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/), you may experience issues with the [cf\_clearance cookie](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#known-issues-with-samesite-and-cf%5Fclearance-cookies).
 
@@ -103,7 +105,14 @@ If your website is not [using HTTPS](https://developers.cloudflare.com/ssl/edge-
 
 To review Cloudflare Access cookies and their behavior, refer to [Access cookies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-cookies).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#page","headline":"Cloudflare Cookies · Cloudflare Fundamentals docs","description":"Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/policies-compliances/cloudflare-cookies/","name":"Cloudflare Cookies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#page","headline":"Cloudflare Cookies · Cloudflare Fundamentals docs","description":"Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: API reference
 description: Learn about the APIs used within Pages Functions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: API reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API reference
 
-# API reference
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following methods can be used to configure your Pages Function.
 
@@ -71,19 +73,15 @@ Passes the request through to the next Function or to the asset server if no oth
 * `params` Params<P>
 Holds the values from [dynamic routing](https://developers.cloudflare.com/pages/functions/routing/#dynamic-routes).
 In the following example, you have a dynamic path that is `/users/[user].js`. When you visit the site on `/users/nevi` the `params` object would look like:
-
-**JavaScript**
 ```js
 {
-  user: "nevi";
+	user: "nevi";
 }
 ```
 This allows you fetch the dynamic value from the path:
-
-**JavaScript**
 ```js
 export function onRequest(context) {
-  return new Response(`Hello ${context.params.user}`);
+	return new Response(`Hello ${context.params.user}`);
 }
 ```
 Which would return `"Hello nevi"`.
@@ -93,7 +91,14 @@ Which would return `"Hello nevi"`.
 
 Holds the environment variables, secrets, and bindings for a Function. This also holds the `ASSETS` binding which is how you can fallback to the asset-serving behavior.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/api-reference/#page","headline":"API reference · Cloudflare Pages docs","description":"Learn about the APIs used within Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/api-reference/","name":"API reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/api-reference/#page","headline":"API reference · Cloudflare Pages docs","description":"Learn about the APIs used within Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Run endpoint health checks (beta)
 description: Run endpoint health checks for Magic Transit origins.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Run endpoint health checks (beta)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Run endpoint health checks (beta)
 
-# Run endpoint health checks (beta)
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit uses endpoint health checks to determine the overall health of your [inter-network connections](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/). Probes originate from Cloudflare infrastructure, outside customer network namespaces, and target IP addresses deep within your network, beyond the tunnel-terminating border router. These "long distance" probes are purely diagnostic.
 
@@ -38,16 +40,16 @@ Refer to the [API documentation](https://developers.cloudflare.com/api/resources
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \
-  --request POST \
-  --json '{
-    "check_type": "icmp",
-    "endpoint": "8.31.160.1",
-    "name": "Datacenter 1 - primary"
-  }'
+	--request POST \
+	--json '{
+		"check_type": "icmp",
+		"endpoint": "8.31.160.1",
+		"name": "Datacenter 1 - primary"
+	}'
 ```
 
 ```json
@@ -225,7 +227,7 @@ You can set up alerts to be notified when the state of your endpoint's health is
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \
-  --request GET
+	--request GET
 ```
 
 ```json
@@ -246,7 +248,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 
 1. Take note of the `id` value for the endpoint you want to get alerts for.
 2. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 1. Select **Add**.
 2. From the drop-down menu, select _Magic Transit_.
 3. Select **Magic Endpoint Health Check Alert**.
@@ -261,7 +263,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 
 You will now receive notifications through your preferred method whenever the SLO for your endpoint health checks falls below your chosen threshold.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/#page","headline":"Run endpoint health checks (beta) · Cloudflare Magic Transit docs","description":"Run endpoint health checks for Magic Transit origins.","url":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","ICMP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-health/","name":"Network health"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/network-health/run-endpoint-health-checks/","name":"Run endpoint health checks (beta)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/#page","headline":"Run endpoint health checks (beta) · Cloudflare Magic Transit docs","description":"Run endpoint health checks for Magic Transit origins.","url":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","ICMP"]}
 ```

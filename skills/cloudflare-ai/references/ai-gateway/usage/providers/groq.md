@@ -1,16 +1,18 @@
 ---
-title: Groq
 description: Route Groq API requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Groq
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Groq
 
-# Groq
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Groq ↗](https://groq.com/) delivers high-speed processing and low-latency performance.
 
@@ -37,8 +39,6 @@ When making requests to Groq, ensure you have the following:
 
 ### cURL
 
-**Example fetch request**
-
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/completions \
   --header 'Authorization: Bearer {groq_api_key}' \
@@ -58,31 +58,25 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/co
 
 If using the [groq-sdk ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
 
-**JavaScript**
-
 ```js
 import Groq from "groq-sdk";
-
 
 const apiKey = env.GROQ_API_KEY;
 const accountId = "{account_id}";
 const gatewayId = "{gateway_id}";
 const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/groq`;
 
-
 const groq = new Groq({
-  apiKey,
-  baseURL,
+	apiKey,
+	baseURL,
 });
-
 
 const messages = [{ role: "user", content: "What is Cloudflare?" }];
 const model = "llama3-8b-8192";
 
-
 const chatCompletion = await groq.chat.completions.create({
-  messages,
-  model,
+	messages,
+	model,
 });
 ```
 
@@ -97,12 +91,20 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
+
 {
 "model": "groq/{model}"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/groq/#page","headline":"Groq · Cloudflare AI Gateway docs","description":"Route Groq API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/groq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/groq/","name":"Groq"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/groq/#page","headline":"Groq · Cloudflare AI Gateway docs","description":"Route Groq API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/groq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

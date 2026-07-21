@@ -1,16 +1,18 @@
 ---
-title: Enable IBM QRadar
 description: Learn about enable ibm qradar in Cloudflare Logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable IBM QRadar
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable IBM QRadar
 
-# Enable IBM QRadar
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To configure a QRadar/Cloudflare integration you have the option to use one of the following methods:
 
@@ -28,53 +30,51 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<NAME>",
-    "output_options": {
-        "field_names": [
-            "Action",
-            "ClientIP",
-            "ClientASN",
-            "ClientASNDescription",
-            "ClientCountry",
-            "ClientIPClass",
-            "ClientRefererHost",
-            "ClientRefererPath",
-            "ClientRefererQuery",
-            "ClientRefererScheme",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestPath",
-            "ClientRequestProtocol",
-            "ClientRequestQuery",
-            "ClientRequestScheme",
-            "ClientRequestUserAgent",
-            "EdgeColoCode",
-            "EdgeResponseStatus",
-            "Kind",
-            "MatchIndex",
-            "Metadata",
-            "OriginResponseStatus",
-            "OriginatorRayID",
-            "RayID",
-            "RuleID",
-            "Source",
-            "Datetime"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
-    "max_upload_bytes": 5000000,
-    "max_upload_records": 1000,
-    "dataset": "firewall_events",
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<NAME>",
+		"output_options": {
+				"field_names": [
+						"Action",
+						"ClientIP",
+						"ClientASN",
+						"ClientASNDescription",
+						"ClientCountry",
+						"ClientIPClass",
+						"ClientRefererHost",
+						"ClientRefererPath",
+						"ClientRefererQuery",
+						"ClientRefererScheme",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestPath",
+						"ClientRequestProtocol",
+						"ClientRequestQuery",
+						"ClientRequestScheme",
+						"ClientRequestUserAgent",
+						"EdgeColoCode",
+						"EdgeResponseStatus",
+						"Kind",
+						"MatchIndex",
+						"Metadata",
+						"OriginResponseStatus",
+						"OriginatorRayID",
+						"RayID",
+						"RuleID",
+						"Source",
+						"Datetime"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
+		"max_upload_bytes": 5000000,
+		"max_upload_records": 1000,
+		"dataset": "firewall_events",
+		"enabled": true
+	}'
 ```
 
 ### Cloudflare HTTP events
@@ -84,69 +84,67 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<NAME>",
-    "output_options": {
-        "field_names": [
-            "ClientRequestMethod",
-            "EdgeResponseStatus",
-            "ClientIP",
-            "ClientSrcPort",
-            "CacheCacheStatus",
-            "ClientCountry",
-            "ClientDeviceType",
-            "ClientIPClass",
-            "ClientMTLSAuthCertFingerprint",
-            "ClientMTLSAuthStatus",
-            "ClientRegionCode",
-            "ClientRequestBytes",
-            "ClientRequestHost",
-            "ClientRequestPath",
-            "ClientRequestProtocol",
-            "ClientRequestReferer",
-            "ClientRequestScheme",
-            "ClientRequestSource",
-            "ClientRequestURI",
-            "ClientRequestUserAgent",
-            "ClientSSLCipher",
-            "ClientSSLProtocol",
-            "ClientXRequestedWith",
-            "EdgeEndTimestamp",
-            "EdgeRequestHost",
-            "EdgeResponseBodyBytes",
-            "EdgeResponseBytes",
-            "EdgeServerIP",
-            "EdgeStartTimestamp",
-            "SecurityActions",
-            "SecurityRuleIDs",
-            "SecuritySources",
-            "OriginIP",
-            "OriginResponseStatus",
-            "OriginSSLProtocol",
-            "ParentRayID",
-            "RayID",
-            "SecurityAction",
-            "WAFAttackScore",
-            "SecurityRuleID",
-            "SecurityRuleDescription",
-            "WAFSQLiAttackScore",
-            "WAFXSSAttackScore",
-            "EdgeStartTimestamp"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
-    "max_upload_bytes": 5000000,
-    "max_upload_records": 1000,
-    "dataset": "http_requests",
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<NAME>",
+		"output_options": {
+				"field_names": [
+						"ClientRequestMethod",
+						"EdgeResponseStatus",
+						"ClientIP",
+						"ClientSrcPort",
+						"CacheCacheStatus",
+						"ClientCountry",
+						"ClientDeviceType",
+						"ClientIPClass",
+						"ClientMTLSAuthCertFingerprint",
+						"ClientMTLSAuthStatus",
+						"ClientRegionCode",
+						"ClientRequestBytes",
+						"ClientRequestHost",
+						"ClientRequestPath",
+						"ClientRequestProtocol",
+						"ClientRequestReferer",
+						"ClientRequestScheme",
+						"ClientRequestSource",
+						"ClientRequestURI",
+						"ClientRequestUserAgent",
+						"ClientSSLCipher",
+						"ClientSSLProtocol",
+						"ClientXRequestedWith",
+						"EdgeEndTimestamp",
+						"EdgeRequestHost",
+						"EdgeResponseBodyBytes",
+						"EdgeResponseBytes",
+						"EdgeServerIP",
+						"EdgeStartTimestamp",
+						"SecurityActions",
+						"SecurityRuleIDs",
+						"SecuritySources",
+						"OriginIP",
+						"OriginResponseStatus",
+						"OriginSSLProtocol",
+						"ParentRayID",
+						"RayID",
+						"SecurityAction",
+						"WAFAttackScore",
+						"SecurityRuleID",
+						"SecurityRuleDescription",
+						"WAFSQLiAttackScore",
+						"WAFXSSAttackScore",
+						"EdgeStartTimestamp"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
+		"max_upload_bytes": 5000000,
+		"max_upload_records": 1000,
+		"dataset": "http_requests",
+		"enabled": true
+	}'
 ```
 
 Cloudflare checks the accessibility of the IP address, port, and validates the certificate of the HTTP Receive log source. If all parameters are valid, a Logpush is created, and starts to send events to HTTP Receiver log source.
@@ -161,7 +159,14 @@ When you use the Amazon S3 REST API protocol, IBM QRadar collects Cloudflare Log
 4. Follow the steps in [Integrate Cloudflare Logs with QRadar by using the Amazon AWS S3 REST API protocol ↗](https://www.ibm.com/docs/en/dsm?topic=configuration-cloudflare-logs).
 5. Test the configuration by generating some logs in Cloudflare and ensuring that they are delivered to the S3 bucket and subsequently forwarded to QRadar.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#page","headline":"Enable IBM QRadar · Cloudflare Logs docs","description":"Learn about enable ibm qradar in Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/ibm-qradar/","name":"Enable IBM QRadar"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#page","headline":"Enable IBM QRadar · Cloudflare Logs docs","description":"Learn about enable ibm qradar in Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

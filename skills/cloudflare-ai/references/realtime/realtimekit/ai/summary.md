@@ -1,16 +1,18 @@
 ---
-title: Summary
 description: Generate AI-powered meeting summaries from transcript data in RealtimeKit.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Summary
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Summary
 
-# Summary
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit generates AI-powered meeting summaries from transcript data.
 
@@ -75,17 +77,17 @@ Configure the `meeting.summary` event in [RealtimeKit webhooks](https://develope
 
 ```json
 {
-  "event": "meeting.summary",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "summaryDownloadUrl": "https://example.com/summary.txt",
-  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+	"event": "meeting.summary",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"summaryDownloadUrl": "https://example.com/summary.txt",
+	"summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
 }
 ```
 
@@ -116,25 +118,19 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 ```markdown
 ## Meeting Summary
 
-
 ### Key Discussion Points
-
 
 - Reviewed Q4 roadmap priorities
 - Discussed deployment timeline for v2.0
 - Identified blockers for the auth migration
 
-
 ### Action Items
-
 
 - @alice: Update design specs by Friday
 - @bob: Schedule security review
 - @charlie: Create migration runbook
 
-
 ### Decisions Made
-
 
 - Approved moving forward with Kubernetes migration
 - Delayed analytics dashboard to next sprint
@@ -144,7 +140,14 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 Summaries are stored for **7 days** after the meeting ends.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ai/summary/#page","headline":"Summary · Cloudflare Realtime docs","description":"Generate AI-powered meeting summaries from transcript data in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ai/summary/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ai/","name":"AI"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ai/summary/","name":"Summary"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ai/summary/#page","headline":"Summary · Cloudflare Realtime docs","description":"Generate AI-powered meeting summaries from transcript data in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ai/summary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

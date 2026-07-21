@@ -1,16 +1,18 @@
 ---
-title: Enable Managed Rulesets
 description: Enable Managed Rulesets in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Enable Managed Rulesets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable Managed Rulesets
 
-# Enable Managed Rulesets
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With [managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/), you can quickly deploy pre-built firewall rules maintained by Cloudflare. You use Cloudflare Network Firewall to control which managed rules are enabled.
 
@@ -47,8 +49,6 @@ Additionally, you need the properties you want to override. The properties you c
 The `enabled` and `action` properties for a rule are set in the Managed phase Managed kind ruleset. All rules in the Managed phase are currently disabled by default.
 
 The example below contains a request for a Managed phase Managed Kind ruleset.
-
-**Example request - Create a Managed phase Managed Kind ruleset**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets
@@ -88,8 +88,6 @@ Because the root ruleset can only contain one rule, you must PATCH that existing
 
 Building off the example from the previous step, the example below enables a category to select multiple rules instead of a single rule. The category will be set to `log` mode, which means the rule can produce logs but will not accept or drop packets.
 
-**Example request - Patch a Managed phase Managed kind ruleset**
-
 ```bash
 curl --request PATCH \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_ruleset}/rules/{root_kind_rule} \
@@ -123,8 +121,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_r
 ### 3\. Enable all rules
 
 To enable the complete ruleset or enable all rules, send the request below.
-
-**Example request to enable all rules**
 
 ```bash
 curl --request PATCH \
@@ -175,7 +171,14 @@ To view basic information about your rules:
 2. Select **Managed rulesets**. This is where the dashboard lists all your managed rules.
 3. Locate your managed rule, select the three dots > **View**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/#page","headline":"Enable Managed Rulesets · Cloudflare One docs","description":"Enable Managed Rulesets in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/packet-filtering/","name":"Packet filtering"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/","name":"Enable Managed Rulesets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/#page","headline":"Enable Managed Rulesets · Cloudflare One docs","description":"Enable Managed Rulesets in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/enable-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

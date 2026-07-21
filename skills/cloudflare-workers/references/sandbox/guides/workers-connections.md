@@ -1,16 +1,18 @@
 ---
-title: Connect to Workers bindings
 description: Access KV, R2, Durable Objects, and other bindings from a sandbox.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to Workers bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to Workers bindings
 
-# Connect to Workers bindings
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/workers-connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sandboxes can access [Workers bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) — KV, R2, D1, Durable Objects, and others — through [outbound handlers](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/#define-outbound-handlers). An outbound handler intercepts HTTP requests from the sandbox and runs inside the Workers runtime, where all of your configured bindings are available.
 
@@ -20,52 +22,43 @@ The sandbox makes a plain HTTP request to a virtual hostname (for example, `http
 
 Define an `outboundByHost` handler for each virtual hostname. The `env` argument gives you access to every binding declared in your Wrangler configuration.
 
-* [  JavaScript ](#tab-panel-11383)
-* [  TypeScript ](#tab-panel-11384)
-
-**JavaScript**
-
 ```js
 export class MySandbox extends Sandbox {}
 
-
 MySandbox.outboundByHost = {
-  "my.kv": async (request, env, ctx) => {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    const value = await env.KV.get(key);
-    return new Response(value ?? "", { status: value ? 200 : 404 });
-  },
-  "my.r2": async (request, env, ctx) => {
-    const url = new URL(request.url);
-    // Scope access to this sandbox's ID
-    const path = `${ctx.containerId}${url.pathname}`;
-    const object = await env.R2.get(path);
-    return new Response(object?.body ?? null, { status: object ? 200 : 404 });
-  },
+	"my.kv": async (request, env, ctx) => {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		const value = await env.KV.get(key);
+		return new Response(value ?? "", { status: value ? 200 : 404 });
+	},
+	"my.r2": async (request, env, ctx) => {
+		const url = new URL(request.url);
+		// Scope access to this sandbox's ID
+		const path = `${ctx.containerId}${url.pathname}`;
+		const object = await env.R2.get(path);
+		return new Response(object?.body ?? null, { status: object ? 200 : 404 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export class MySandbox extends Sandbox {}
 
-
 MySandbox.outboundByHost = {
-  "my.kv": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    const value = await env.KV.get(key);
-    return new Response(value ?? "", { status: value ? 200 : 404 });
-  },
-  "my.r2": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
-    const url = new URL(request.url);
-    // Scope access to this sandbox's ID
-    const path = `${ctx.containerId}${url.pathname}`;
-    const object = await env.R2.get(path);
-    return new Response(object?.body ?? null, { status: object ? 200 : 404 });
-  },
+	"my.kv": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		const value = await env.KV.get(key);
+		return new Response(value ?? "", { status: value ? 200 : 404 });
+	},
+	"my.r2": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
+		const url = new URL(request.url);
+		// Scope access to this sandbox's ID
+		const path = `${ctx.containerId}${url.pathname}`;
+		const object = await env.R2.get(path);
+		return new Response(object?.body ?? null, { status: object ? 200 : 404 });
+	},
 };
 ```
 
@@ -79,42 +72,33 @@ You can use `ctx.containerId` to apply different rules per sandbox instance — 
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-11381)
-* [  TypeScript ](#tab-panel-11382)
-
-**JavaScript**
-
 ```js
 export class MySandbox extends Sandbox {}
 
-
 MySandbox.outboundByHost = {
-  "get-state.do": async (request, env, ctx) => {
-    const id = env.MY_SANDBOX.idFromString(ctx.containerId);
-    const stub = env.MY_SANDBOX.get(id);
-    // Assumes getStateForKey is defined on your DO
-    return stub.getStateForKey(request.body);
-  },
+	"get-state.do": async (request, env, ctx) => {
+		const id = env.MY_SANDBOX.idFromString(ctx.containerId);
+		const stub = env.MY_SANDBOX.get(id);
+		// Assumes getStateForKey is defined on your DO
+		return stub.getStateForKey(request.body);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export class MySandbox extends Sandbox {}
 
-
 MySandbox.outboundByHost = {
-  "get-state.do": async (
-    request: Request,
-    env: Env,
-    ctx: { containerId: string },
-  ) => {
-    const id = env.MY_SANDBOX.idFromString(ctx.containerId);
-    const stub = env.MY_SANDBOX.get(id);
-    // Assumes getStateForKey is defined on your DO
-    return stub.getStateForKey(request.body);
-  },
+	"get-state.do": async (
+		request: Request,
+		env: Env,
+		ctx: { containerId: string },
+	) => {
+		const id = env.MY_SANDBOX.idFromString(ctx.containerId);
+		const stub = env.MY_SANDBOX.get(id);
+		// Assumes getStateForKey is defined on your DO
+		return stub.getStateForKey(request.body);
+	},
 };
 ```
 
@@ -124,7 +108,14 @@ MySandbox.outboundByHost = {
 * [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) — Configure sandbox behavior
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — Configure secrets and environment variables
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/workers-connections/#page","headline":"Connect to Workers bindings · Cloudflare Sandbox SDK docs","description":"Access KV, R2, Durable Objects, and other bindings from a sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/workers-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/workers-connections/","name":"Connect to Workers bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/workers-connections/#page","headline":"Connect to Workers bindings · Cloudflare Sandbox SDK docs","description":"Access KV, R2, Durable Objects, and other bindings from a sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/workers-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

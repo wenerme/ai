@@ -1,16 +1,18 @@
 ---
-title: Deploy APIs at the edge
 description: Deploy globally distributed APIs that scale automatically with no servers to manage.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Deploy APIs at the edge
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy APIs at the edge
 
-# Deploy APIs at the edge
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/apis/deploy-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deploying APIs on traditional infrastructure means managing servers, configuring regions, and provisioning for traffic spikes. Cloudflare Workers runs your API handlers in 300+ locations worldwide with automatic scaling and fast startup times.
 
@@ -41,7 +43,14 @@ Serverless SQL database built on SQLite, with global read replication ([learn mo
 2. [D1 get started](https://developers.cloudflare.com/d1/get-started/)
 3. [Queues get started](https://developers.cloudflare.com/queues/get-started/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/#page","headline":"Deploy APIs at the edge · Cloudflare use cases","description":"Deploy globally distributed APIs that scale automatically with no servers to manage.","url":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/apis/","name":"APIs and microservices"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/apis/deploy-apis/","name":"Deploy APIs at the edge"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/#page","headline":"Deploy APIs at the edge · Cloudflare use cases","description":"Deploy globally distributed APIs that scale automatically with no servers to manage.","url":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

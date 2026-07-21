@@ -1,16 +1,18 @@
 ---
-title: Build watch paths
 description: Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build watch paths
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build watch paths
 
-# Build watch paths
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/build-watch-paths/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you connect a git repository to Pages, by default a change to any file in the repository will trigger a Pages build. You can configure Pages to include or exclude specific paths to specify if Pages should skip a build for a given path. This can be especially helpful if you are using a monorepo project structure and want to limit the amount of builds being kicked off.
 
@@ -19,7 +21,7 @@ When you connect a git repository to Pages, by default a change to any file in t
 To configure which paths are included and excluded:
 
 1. Go to the **Workers & Pages** in the Cloudflare dashboard.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Find your Pages project.
 3. Go to **Settings** \> **Build** \> **Build watch paths**. Pages will default to setting your project's includes paths to everything (\[\*\]) and excludes paths to nothing (`[]`).
 
@@ -77,7 +79,14 @@ If you want to trigger a build for changes in `src/` but want to ignore changes 
 * Include paths: `src/*`
 * Exclude paths: `src/tests/*`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Pages docs","description":"Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.","url":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/build-watch-paths/","name":"Build watch paths"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Pages docs","description":"Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.","url":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

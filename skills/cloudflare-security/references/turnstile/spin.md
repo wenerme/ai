@@ -1,16 +1,18 @@
 ---
-title: Turnstile Spin
 description: Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Turnstile Spin
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Turnstile Spin
 
-# Turnstile Spin
+Last updated Jul 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/spin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile Spin is a setup flow for Cloudflare Turnstile. It creates the widget for you, then hands your AI coding agent the materials (sitekey, secret, and a curated prompt) to embed the widget on the right forms and wire canonical server-side siteverify into your existing backend. Spin runs three ways:
 
@@ -23,7 +25,7 @@ All three paths produce the same widget. The only difference is where the create
 ## Set up from the dashboard
 
 1. Go to the Turnstile dashboard.
-[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Set up with Spin** in the page header.
 3. Enter the domains your Turnstile widget should accept tokens from. The first chip is pre-filled from your account's first active Cloudflare zone. Add more domains, or remove the pre-filled one and type any domain (Turnstile does not require a Cloudflare-managed zone). `localhost` and `127.0.0.1` are added automatically for local development.
 4. Select **Set up**. Spin creates the widget and returns to a success card.
@@ -39,14 +41,12 @@ If Spin fails before it finishes, the dialog shows the error and offers a fallba
 
 If you prefer to drive setup from your terminal without an AI coding agent, use [Wrangler](https://developers.cloudflare.com/workers/wrangler/):
 
-**Create a widget from Wrangler**
-
 ```sh
 npx wrangler turnstile widget create "myproject" \
-  --domain example.com \
-  --domain localhost \
-  --domain 127.0.0.1 \
-  --mode managed
+	--domain example.com \
+	--domain localhost \
+	--domain 127.0.0.1 \
+	--mode managed
 ```
 
 Wrangler prints the sitekey and the secret. Copy the sitekey into your widget HTML, store the secret as `TURNSTILE_SECRET` in your backend's env, and wire the canonical siteverify call as described in [Wire up the frontend](#wire-up-the-frontend).
@@ -68,8 +68,6 @@ If you do not see the **Set up with Spin** button in your dashboard, or you want
 
 1. **Open your AI coding agent** in your project (Claude Code, Cursor, Codex, OpenCode, GitHub Copilot Chat).
 2. **Paste this prompt into your agent:**
-
-**Spin prompt**
 ```txt
 Set up Cloudflare Turnstile in this project end to end. Plan insertion points, create the widget, embed it on the right forms, wire canonical server-side siteverify in my existing backend, and validate the integration.
 The full Turnstile Spin skill is at https://developers.cloudflare.com/turnstile/spin/prompt.md. Fetch it now if you do not already have it loaded.
@@ -82,20 +80,16 @@ Replace `<DOMAINS>` with your site domains (comma-separated, no spaces; include 
 
 If you would rather install the skill locally first so the agent has it on disk:
 
-**One-line install per agent**
-
 ```sh
 # Claude Code
 mkdir -p .claude/skills/turnstile-spin && \
   curl -sSL https://developers.cloudflare.com/turnstile/spin/prompt.md \
   -o .claude/skills/turnstile-spin/SKILL.md
 
-
 # Cursor
 mkdir -p .cursor/rules && \
   curl -sSL https://developers.cloudflare.com/turnstile/spin/prompt.md \
   -o .cursor/rules/turnstile-spin.md
-
 
 # OpenCode
 mkdir -p .opencode/skills/turnstile-spin && \
@@ -132,46 +126,42 @@ Whichever setup path you use, Spin gives you a sitekey and a secret. The dashboa
 
 If you set up from the dashboard and want to wire it by hand, the minimal pattern is:
 
-**Turnstile widget on your form**
-
 ```html
 <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-  async
-  defer
+	src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+	async
+	defer
 ></script>
 <form action="/api/subscribe" method="POST">
-  <input name="email" type="email" required />
-  <div
-    class="cf-turnstile"
-    data-sitekey="YOUR_SITEKEY"
-    data-action="turnstile-spin-v2"
-  ></div>
-  <button type="submit">Submit</button>
+	<input name="email" type="email" required />
+	<div
+		class="cf-turnstile"
+		data-sitekey="YOUR_SITEKEY"
+		data-action="turnstile-spin-v2"
+	></div>
+	<button type="submit">Submit</button>
 </form>
 ```
 
 In your existing backend handler for `/api/subscribe`, call canonical siteverify and gate the rest of the handler on `success === true`:
 
-**Canonical server-side siteverify (Node / Workers fetch idiom)**
-
 ```js
 const token = request.body["cf-turnstile-response"];
 const r = await fetch(
-  "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      secret: process.env.TURNSTILE_SECRET,
-      response: token,
-      remoteip: request.ip,
-    }),
-  },
+	"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+	{
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			secret: process.env.TURNSTILE_SECRET,
+			response: token,
+			remoteip: request.ip,
+		}),
+	},
 );
 const { success } = await r.json();
 if (!success) {
-  return new Response("forbidden", { status: 403 });
+	return new Response("forbidden", { status: 403 });
 }
 // existing handler logic runs here, unchanged
 ```
@@ -183,8 +173,6 @@ Equivalent calls in other backend languages (Ruby, Python, Go, PHP) are in the p
 If you already have a Turnstile widget without server-side siteverify wired up, recover it from the dashboard. A banner appears above the widgets table when a widget has no matching siteverify traffic; select **Fix with Spin** to get a curated agent prompt that targets your existing widget. The prompt tells your AI coding agent to fetch the secret via API (no rotation), embed the widget on the right forms, and add the canonical siteverify call to your existing backend.
 
 If you do not see the **Fix with Spin** banner in your dashboard, drive the same recovery from your AI coding agent directly. Paste this prompt:
-
-**Recovery prompt**
 
 ```txt
 I already have a Turnstile widget. The site key is <SITEKEY>. Use the turnstile-spin skill to wire siteverify against the existing widget: fetch the secret via the Cloudflare API (don't rotate), embed the widget on the right forms, and add canonical server-side siteverify to my existing backend.
@@ -243,7 +231,14 @@ Spin applies the marker automatically. If you edit the widget snippet by hand an
 * [Cloudflare Radar bot traffic ↗](https://radar.cloudflare.com/traffic/bot-classes)
 * [Cloudflare Docs for Agents](https://developers.cloudflare.com/docs-for-agents/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/spin/#page","headline":"Turnstile Spin · Cloudflare Turnstile docs","description":"Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.","url":"https://developers.cloudflare.com/turnstile/spin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/spin/","name":"Turnstile Spin"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/spin/#page","headline":"Turnstile Spin · Cloudflare Turnstile docs","description":"Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.","url":"https://developers.cloudflare.com/turnstile/spin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

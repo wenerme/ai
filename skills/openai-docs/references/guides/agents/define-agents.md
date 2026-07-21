@@ -41,7 +41,7 @@ const getWeather = tool({
 const agent = new Agent({
   name: "Weather bot",
   instructions: "You are a helpful weather bot.",
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [getWeather],
 });
 ```
@@ -59,7 +59,7 @@ def get_weather(city: str) -> str:
 agent = Agent(
     name="Weather bot",
     instructions="You are a helpful weather bot.",
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[get_weather],
 )
 ```
@@ -91,10 +91,7 @@ const agent = new Agent({
   outputType: calendarEvent,
 });
 
-const result = await run(
-  agent,
-  "Dinner with Priya and Sam on Friday.",
-);
+const result = await run(agent, "Dinner with Priya and Sam on Friday.");
 
 console.log(result.finalOutput);
 ```

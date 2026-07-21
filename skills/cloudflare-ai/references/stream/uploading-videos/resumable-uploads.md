@@ -1,16 +1,18 @@
 ---
-title: Resumable and large files (tus)
 description: Upload large or resumable video files to Cloudflare Stream using the tus protocol.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Resumable and large files (tus)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resumable and large files (tus)
 
-# Resumable and large files (tus)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you need to upload a video that is over 200 MB, you must use the [tus protocol ↗](https://tus.io/). Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
 
@@ -30,23 +32,17 @@ Before you can upload a video using tus, you will need to download a tus client.
 
 For more information, refer to the [tus Python client ↗](https://github.com/tus/tus-py-client) which is available through pip, Python's package manager.
 
-**Install Python client**
-
 ```python
 pip install -U tus.py
 ```
 
 ## Upload a video using tus
 
-**Upload using tus**
-
 ```sh
 tus-upload --chunk-size 52428800 --header \
 Authorization "Bearer <API_TOKEN>"
 <PATH_TO_VIDEO> https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream
 ```
-
-**tus response**
 
 ```sh
 INFO Creating file endpoint
@@ -60,71 +56,54 @@ Before you begin, import a tus client such as [go-tus ↗](https://github.com/ev
 
 The `go-tus` library does not return the response headers to the calling function, which makes it difficult to read the video ID from the `stream-media-id` header. As a workaround, create a [Direct Creator Upload](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/) link. That API response will include the TUS endpoint as well as the video ID. Setting a Creator ID is not required.
 
-**Upload with Golang**
-
 ```go
 package main
 
-
 import (
-  "net/http"
-  "os"
+	"net/http"
+	"os"
 
-
-  tus "github.com/eventials/go-tus"
+	tus "github.com/eventials/go-tus"
 )
 
-
 func main() {
-  accountID := "<ACCOUNT_ID>"
+	accountID := "<ACCOUNT_ID>"
 
+	f, err := os.Open("videofile.mp4")
 
-  f, err := os.Open("videofile.mp4")
+	if err != nil {
+		panic(err)
+	}
 
+	defer f.Close()
 
-  if err != nil {
-    panic(err)
-  }
+	headers := make(http.Header)
+	headers.Add("Authorization", "Bearer <API_TOKEN>")
 
+	config := &tus.Config{
+		ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.
+		Resume:              false,
+		OverridePatchMethod: false,
+		Store:               nil,
+		Header:              headers,
+		HttpClient:          nil,
+	}
 
-  defer f.Close()
+	client, _ := tus.NewClient("https://api.cloudflare.com/client/v4/accounts/"+ accountID +"/stream", config)
 
+	upload, _ := tus.NewUploadFromFile(f)
 
-  headers := make(http.Header)
-  headers.Add("Authorization", "Bearer <API_TOKEN>")
+	uploader, _ := client.CreateUpload(upload)
 
-
-  config := &tus.Config{
-    ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.
-    Resume:              false,
-    OverridePatchMethod: false,
-    Store:               nil,
-    Header:              headers,
-    HttpClient:          nil,
-  }
-
-
-  client, _ := tus.NewClient("https://api.cloudflare.com/client/v4/accounts/"+ accountID +"/stream", config)
-
-
-  upload, _ := tus.NewUploadFromFile(f)
-
-
-  uploader, _ := client.CreateUpload(upload)
-
-
-  uploader.Upload()
+	uploader.Upload()
 }
 ```
 
 You can also get the progress of the upload if you are running the upload in a goroutine.
 
-**Get progress of upload**
-
 ```go
 // returns the progress percentage.
 upload.Progress()
-
 
 // returns whether or not the upload is complete.
 upload.Finished()
@@ -159,12 +138,9 @@ Create an `index.js` file and configure:
 * The API endpoint with your Cloudflare Account ID.
 * The request headers to include an API token.
 
-**Configure index.js**
-
 ```js
 var fs = require("fs");
 var tus = require("tus-js-client");
-
 
 // Specify location of file you would like to upload below
 var path = __dirname + "/test.mp4";
@@ -172,42 +148,40 @@ var file = fs.createReadStream(path);
 var size = fs.statSync(path).size;
 var mediaId = "";
 
-
 var options = {
-  endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",
-  headers: {
-    Authorization: "Bearer <API_TOKEN>",
-  },
-  chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.
-  retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.
-  metadata: {
-    name: "test.mp4",
-    filetype: "video/mp4",
-    // Optional if you want to include a watermark
-    // watermark: '<WATERMARK_UID>',
-  },
-  uploadSize: size,
-  onError: function (error) {
-    throw error;
-  },
-  onProgress: function (bytesUploaded, bytesTotal) {
-    var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
-    console.log(bytesUploaded, bytesTotal, percentage + "%");
-  },
-  onSuccess: function () {
-    console.log("Upload finished");
-  },
-  onAfterResponse: function (req, res) {
-    return new Promise((resolve) => {
-      var mediaIdHeader = res.getHeader("stream-media-id");
-      if (mediaIdHeader) {
-        mediaId = mediaIdHeader;
-      }
-      resolve();
-    });
-  },
+	endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",
+	headers: {
+		Authorization: "Bearer <API_TOKEN>",
+	},
+	chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.
+	retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.
+	metadata: {
+		name: "test.mp4",
+		filetype: "video/mp4",
+		// Optional if you want to include a watermark
+		// watermark: '<WATERMARK_UID>',
+	},
+	uploadSize: size,
+	onError: function (error) {
+		throw error;
+	},
+	onProgress: function (bytesUploaded, bytesTotal) {
+		var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+		console.log(bytesUploaded, bytesTotal, percentage + "%");
+	},
+	onSuccess: function () {
+		console.log("Upload finished");
+	},
+	onAfterResponse: function (req, res) {
+		return new Promise((resolve) => {
+			var mediaIdHeader = res.getHeader("stream-media-id");
+			if (mediaIdHeader) {
+				mediaId = mediaIdHeader;
+			}
+			resolve();
+		});
+	},
 };
-
 
 var upload = new tus.Upload(file, options);
 upload.start();
@@ -258,7 +232,14 @@ For example, a request made to `https://api.cloudflare.com/client/v4/accounts/<A
 stream-media-id: cab807e0c477d01baq20f66c3d1dfc26cf
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus) · Cloudflare Stream docs","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/resumable-uploads/","name":"Resumable and large files (tus)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus) · Cloudflare Stream docs","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

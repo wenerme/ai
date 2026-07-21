@@ -1,16 +1,18 @@
 ---
-title: Supported options
 description: Learn which options are supported for Geo Key Manager.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported options
 
-# Supported options
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Available regions
 
@@ -65,7 +67,14 @@ Interior points of ingress/egress are controlled by the access control subsystem
 
 Exterior walls are airtight and may incorporate additional security measures such as reinforced concrete, Kevlar bullet board, vapor barriers, or bullet-proof front doors.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#page","headline":"Supported options - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn which options are supported for Geo Key Manager.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/geokey-manager/","name":"Geo Key Manager"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/geokey-manager/supported-options/","name":"Supported options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#page","headline":"Supported options - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn which options are supported for Geo Key Manager.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","Compliance"]}
 ```

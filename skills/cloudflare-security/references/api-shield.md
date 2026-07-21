@@ -1,16 +1,18 @@
 ---
-title: Cloudflare API Shield
 description: Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare API Shield
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare API Shield
 
-# Cloudflare API Shield
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Identify and address your API vulnerabilities.
 
@@ -35,17 +37,17 @@ Refer to the [Get started](https://developers.cloudflare.com/api-shield/get-star
 
 ## Features
 
-###  Security features
+[Security features](https://developers.cloudflare.com/api-shield/security/)
 
 Secure your APIs using API Shield's security features.
 
-[ Use Security features ](https://developers.cloudflare.com/api-shield/security/)
+ Use Security features
 
-###  Management, monitoring, and more
+[Management, monitoring, and more](https://developers.cloudflare.com/api-shield/management-and-monitoring/)
 
 Monitor the health of your API endpoints.
 
-[ Use Management, monitoring, and more ](https://developers.cloudflare.com/api-shield/management-and-monitoring/)
+ Use Management, monitoring, and more
 
 ## Availability
 
@@ -59,11 +61,18 @@ API Shield currently does not work for JDCloud customers.
 
 ## Related products
 
-**[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)**
+[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)
 
 Cloudflare DDoS protection secures websites, applications, and entire networks while ensuring the performance of legitimate traffic is not compromised.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/#page","headline":"Overview · Cloudflare API Shield docs","description":"Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.","url":"https://developers.cloudflare.com/api-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/#page","headline":"Overview · Cloudflare API Shield docs","description":"Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.","url":"https://developers.cloudflare.com/api-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

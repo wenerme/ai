@@ -1,18 +1,20 @@
 ---
-title: Build an end to end data pipeline
 description: This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build an end to end data pipeline
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Build an end to end data pipeline
+#  Build an end to end data pipeline
 
 Learn how to create an end-to-end data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL for real-time transaction analysis.
+
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL. This also includes a sample Python script that creates and sends financial transaction data to your Pipeline that can be queried by R2 SQL or any Apache Iceberg-compatible query engine.
 
@@ -40,7 +42,7 @@ Wrangler requires a Node version of 16.17.0 or later.
 You will need API tokens to interact with Cloudflare services.
 
 1. In the Cloudflare dashboard, go to the **API tokens** page.
-[ Go to **Account API tokens** ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Select **Get started** next to Create Custom Token.
 4. Enter a name for your API token.
@@ -69,9 +71,6 @@ npx wrangler login
 
 ## 2\. Create an R2 bucket and enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-10576)
-* [ Dashboard ](#tab-panel-10577)
-
 Create an R2 bucket:
 
 ```bash
@@ -79,15 +78,12 @@ npx wrangler r2 bucket create fraud-pipeline
 ```
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter the bucket name: `fraud-pipeline`
 4. Select **Create bucket**.
 
 Enable the catalog on your R2 bucket:
-
-* [ Wrangler CLI ](#tab-panel-10578)
-* [ Dashboard ](#tab-panel-10579)
 
 ```bash
 npx wrangler r2 bucket catalog enable fraud-pipeline
@@ -96,7 +92,7 @@ npx wrangler r2 bucket catalog enable fraud-pipeline
 When you run this command, take note of the "Warehouse" and "Catalog URI". You will need these later.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket: `fraud-pipeline`.
 3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
 4. Once enabled, note the **Catalog URI** and **Warehouse name**.
@@ -113,15 +109,12 @@ export WAREHOUSE= #Paste your warehouse here
 
 R2 Data Catalog can automatically compact tables for you. In production event streaming use cases, it is common to end up with many small files, so it is recommended to enable compaction. Since the tutorial only demonstrates a sample use case, this step is optional.
 
-* [ Wrangler CLI ](#tab-panel-10580)
-* [ Dashboard ](#tab-panel-10581)
-
 ```bash
 npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLER_R2_SQL_AUTH_TOKEN
 ```
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket: `fraud-pipeline`.
 3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, click on edit icon, and select **Enable**.
 4. You can choose a target file size or leave the default. Click save.
@@ -130,22 +123,19 @@ npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLE
 
 ### 3.1\. Create the Pipeline stream
 
-* [ Wrangler CLI ](#tab-panel-10582)
-* [ Dashboard ](#tab-panel-10583)
-
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 
 ```json
 {
-  "fields": [
-    { "name": "transaction_id", "type": "string", "required": true },
-    { "name": "user_id", "type": "int64", "required": true },
-    { "name": "amount", "type": "float64", "required": false },
-    { "name": "transaction_timestamp", "type": "string", "required": false },
-    { "name": "location", "type": "string", "required": false },
-    { "name": "merchant_category", "type": "string", "required": false },
-    { "name": "is_fraud", "type": "bool", "required": false }
-  ]
+	"fields": [
+		{ "name": "transaction_id", "type": "string", "required": true },
+		{ "name": "user_id", "type": "int64", "required": true },
+		{ "name": "amount", "type": "float64", "required": false },
+		{ "name": "transaction_timestamp", "type": "string", "required": false },
+		{ "name": "location", "type": "string", "required": false },
+		{ "name": "merchant_category", "type": "string", "required": false },
+		{ "name": "is_fraud", "type": "bool", "required": false }
+	]
 }
 ```
 
@@ -173,18 +163,15 @@ The output should look like this:
 🌀 Creating stream 'raw_events_stream'...
 ✨ Successfully created stream 'raw_events_stream' with id 'stream_id'.
 
-
 Creation Summary:
 General:
   Name:  raw_events_stream
-
 
 HTTP Ingest:
   Enabled:         Yes
   Authentication:  Yes
   Endpoint:        https://stream_id.ingest.cloudflare.com
   CORS Origins:    None
-
 
 Input Schema:
 ┌───────────────────────┬────────┬────────────┬──────────┐
@@ -234,7 +221,7 @@ npx wrangler pipelines create raw_events_pipeline \
 ```
 
 1. In the Cloudflare dashboard, go to **Pipelines** \> **Pipelines**.
-[ Go to **Pipelines** ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline**.
 3. **Connect to a Stream**:
 
@@ -248,19 +235,19 @@ npx wrangler pipelines create raw_events_pipeline \
   * Copy in the schema:
   ```json
   {
-    "fields": [
-      { "name": "transaction_id", "type": "string", "required": true },
-      { "name": "user_id", "type": "int64", "required": true },
-      { "name": "amount", "type": "float64", "required": false },
-      {
-        "name": "transaction_timestamp",
-        "type": "string",
-        "required": false
-      },
-      { "name": "location", "type": "string", "required": false },
-      { "name": "merchant_category", "type": "string", "required": false },
-      { "name": "is_fraud", "type": "bool", "required": false }
-    ]
+  	"fields": [
+  		{ "name": "transaction_id", "type": "string", "required": true },
+  		{ "name": "user_id", "type": "int64", "required": true },
+  		{ "name": "amount", "type": "float64", "required": false },
+  		{
+  			"name": "transaction_timestamp",
+  			"type": "string",
+  			"required": false
+  		},
+  		{ "name": "location", "type": "string", "required": false },
+  		{ "name": "merchant_category", "type": "string", "required": false },
+  		{ "name": "is_fraud", "type": "bool", "required": false }
+  	]
   }
   ```
   * Select **Next**
@@ -290,8 +277,6 @@ npx wrangler pipelines create raw_events_pipeline \
 
 Create a Python script to generate realistic transaction data with fraud patterns:
 
-**fraud\_data\_generator.py**
-
 ```python
 import requests
 import json
@@ -301,25 +286,20 @@ import time
 import os
 from datetime import datetime, timezone, timedelta
 
-
 # Configuration - exported from the prior steps
 STREAM_ENDPOINT = os.environ["STREAM_ENDPOINT"]# From the stream you created
 API_TOKEN = os.environ["WRANGLER_R2_SQL_AUTH_TOKEN"] #the same one created earlier
 EVENTS_TO_SEND = 1000 # Feel free to adjust this
 
-
 def generate_transaction():
     """Generate some random transactions with occasional fraud"""
-
 
     # User IDs
     high_risk_users = [1001, 1002, 1003, 1004, 1005]
     normal_users = list(range(1006, 2000))
 
-
     user_id = random.choice(high_risk_users + normal_users)
     is_high_risk_user = user_id in high_risk_users
-
 
     # Generate amounts
     if random.random() < 0.05:
@@ -329,28 +309,23 @@ def generate_transaction():
     else:
         amount = round(random.uniform(10, 500), 2)
 
-
     # Locations
     normal_locations = ["NEW_YORK", "LOS_ANGELES", "CHICAGO", "MIAMI", "SEATTLE", "SAN FRANCISCO"]
     high_risk_locations = ["UNKNOWN_LOCATION", "VPN_EXIT", "MARS", "BAT_CAVE"]
-
 
     if is_high_risk_user and random.random() < 0.3:
         location = random.choice(high_risk_locations)
     else:
         location = random.choice(normal_locations)
 
-
     # Merchant categories
     normal_merchants = ["GROCERY", "GAS_STATION", "RESTAURANT", "RETAIL"]
     high_risk_merchants = ["GAMBLING", "CRYPTO", "MONEY_TRANSFER", "GIFT_CARDS"]
-
 
     if random.random() < 0.1:  # 10% high-risk merchants
         merchant_category = random.choice(high_risk_merchants)
     else:
         merchant_category = random.choice(normal_merchants)
-
 
     # Series of checks to either increase fraud score by a certain margin
     fraud_score = 0
@@ -360,10 +335,8 @@ def generate_transaction():
     if merchant_category in high_risk_merchants: fraud_score += 0.3
     if is_high_risk_user: fraud_score += 0.2
 
-
     # Compare the fraud scores
     is_fraud = random.random() < min(fraud_score * 0.3, 0.8)
-
 
     # Generate timestamps (some fraud happens at unusual hours)
     base_time = datetime.now(timezone.utc)
@@ -375,7 +348,6 @@ def generate_transaction():
             hours=random.randint(0, 168)  # Last week
         )
 
-
     return {
         "transaction_id": str(uuid.uuid4()),
         "user_id": user_id,
@@ -386,29 +358,23 @@ def generate_transaction():
         "is_fraud": True if is_fraud else False
     }
 
-
 def send_batch_to_stream(events, batch_size=100):
     """Send events to Cloudflare Stream in batches"""
-
 
     headers = {
         "Authorization": f"Bearer {API_TOKEN}",
         "Content-Type": "application/json"
     }
 
-
     total_sent = 0
     fraud_count = 0
-
 
     for i in range(0, len(events), batch_size):
         batch = events[i:i + batch_size]
         fraud_in_batch = sum(1 for event in batch if event["is_fraud"] == True)
 
-
         try:
             response = requests.post(STREAM_ENDPOINT, headers=headers, json=batch)
-
 
             if response.status_code in [200, 201]:
                 total_sent += len(batch)
@@ -417,20 +383,15 @@ def send_batch_to_stream(events, batch_size=100):
             else:
                 print(f"Failed to send batch: {response.status_code} - {response.text}")
 
-
         except Exception as e:
             print(f"Error sending batch: {e}")
 
-
         time.sleep(0.1)
-
 
     return total_sent, fraud_count
 
-
 def main():
     print("Generating fraud detection data...")
-
 
     # Generate events
     events = []
@@ -439,21 +400,17 @@ def main():
         if (i + 1) % 100 == 0:
             print(f"Generated {i + 1} events...")
 
-
     fraud_events = sum(1 for event in events if event["is_fraud"] == True)
     print(f"📊 Generated {len(events)} total events ({fraud_events} fraud, {fraud_events/len(events)*100:.1f}%)")
-
 
     # Send to stream
     print("Sending data to Pipeline stream...")
     sent, fraud_sent = send_batch_to_stream(events)
 
-
     print(f"\nComplete!")
     print(f"   Events sent: {sent:,}")
     print(f"   Fraud events: {fraud_sent:,} ({fraud_sent/sent*100:.1f}%)")
     print(f"   Data is now flowing through your pipeline!")
-
 
 if __name__ == "__main__":
     main()
@@ -561,7 +518,14 @@ You have successfully built an end to end data pipeline using Cloudflare's data 
 3. **Generated sample data**: Created transaction data with some basic fraud patterns
 4. **Query your tables with R2 SQL**: Access raw and processed data tables stored in R2 Data Catalog
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/#page","headline":"Build an end to end data pipeline · R2 SQL docs","description":"This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/tutorials/end-to-end-pipeline/","name":"Build an end to end data pipeline"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/#page","headline":"Build an end to end data pipeline · R2 SQL docs","description":"This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

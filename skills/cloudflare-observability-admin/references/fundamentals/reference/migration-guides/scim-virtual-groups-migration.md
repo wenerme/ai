@@ -1,16 +1,18 @@
 ---
-title: SCIM v1 to v2 Migration
 description: Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SCIM v1 to v2 Migration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SCIM v1 to v2 Migration
 
-# SCIM v1 to v2 Migration
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's first iteration of SCIM integration introduced a concept called _Virtual Groups_, typically identified by the pattern `CF-<accountID>-<Role Name>` in your IdP. Virtual Groups were an early implementation of group-based access control: they acted as placeholders created automatically by SCIM to map IdP groups to account memberships.
 
@@ -40,7 +42,14 @@ If you have never synced a group linked to a `CF-<accountID>-<Role Name>` Virtua
 * [Create an Account Owned Token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/#create-an-account-owned-token)
 * [SCIM provisioning setup guide](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/#page","headline":"SCIM v1 to v2 Migration · Cloudflare Fundamentals docs","description":"Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups","url":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/migration-guides/scim-virtual-groups-migration/","name":"SCIM v1 to v2 Migration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/#page","headline":"SCIM v1 to v2 Migration · Cloudflare Fundamentals docs","description":"Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups","url":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

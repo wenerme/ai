@@ -1,16 +1,18 @@
 ---
-title: Terraform example
 description: Create Cache Rules using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Terraform example
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform example
 
-# Terraform example
+Last updated Jun 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example defines a single cache rule for a zone using Terraform. The rule configures several cache settings and sets a custom cache key for incoming requests addressed at `example.net`.
 
@@ -25,14 +27,12 @@ resource "cloudflare_ruleset" "cache_rules_example" {
   kind        = "zone"
   phase       = "http_request_cache_settings"
 
-
   rules = [
     {
       ref         = "cache_settings_custom_cache_key"
       description = "Set cache settings and custom cache key for example.net"
       expression  = "(http.host eq \"example.net\")"
       action      = "set_cache_settings"
-
 
       action_parameters = {
         edge_ttl = {
@@ -104,14 +104,12 @@ variable "zone_id" {
   type = string
 }
 
-
 resource "cloudflare_ruleset" "cache_vary_example" {
   zone_id     = var.zone_id
   name        = "Set cache settings"
   description = "Set cache settings for incoming requests"
   kind        = "zone"
   phase       = "http_request_cache_settings"
-
 
   rules = [
     {
@@ -120,10 +118,8 @@ resource "cloudflare_ruleset" "cache_vary_example" {
       expression  = "(http.host eq \"example.com\")"
       action      = "set_cache_settings"
 
-
       action_parameters = {
         cache = true
-
 
         vary = {
           default = {
@@ -157,7 +153,14 @@ Use the `ref` field to get stable rule IDs across updates when using Terraform. 
 
 For additional guidance on using Terraform with Cloudflare, refer to [Terraform](https://developers.cloudflare.com/terraform/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/#page","headline":"Cache Rules — Terraform example · Cloudflare Cache (CDN) docs","description":"Create Cache Rules using Terraform.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/terraform-example/","name":"Terraform example"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/#page","headline":"Cache Rules — Terraform example · Cloudflare Cache (CDN) docs","description":"Create Cache Rules using Terraform.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

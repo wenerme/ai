@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Learn how to diagnose and report issues with Cloudflare's DNS Resolver
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with Cloudflare's DNS Resolver. Before proceeding with manual troubleshooting steps, [verify your connection](https://developers.cloudflare.com/1.1.1.1/check/) to automatically gather relevant information.
 
@@ -26,11 +28,9 @@ dig example.com @1.1.1.1
 dig example.com @1.0.0.1
 dig example.com @8.8.8.8
 
-
 # Check connected nameserver
 dig +short CHAOS TXT id.server @1.1.1.1
 dig +short CHAOS TXT id.server @1.0.0.1
-
 
 # Optional: Network information
 dig @ns3.cloudflare.com whoami.cloudflare.com txt +short
@@ -44,17 +44,15 @@ nslookup example.com 1.1.1.1
 nslookup example.com 1.0.0.1
 nslookup example.com 8.8.8.8
 
-
 # Check connected nameserver
 nslookup -class=chaos -type=txt id.server 1.1.1.1
 nslookup -class=chaos -type=txt id.server 1.0.0.1
-
 
 # Optional: Network information
 nslookup -type=txt whoami.cloudflare.com ns3.cloudflare.com
 ```
 
-Warning
+Caution
 
 The network information command reveals your IP address. Only include this in reports to Cloudflare if you are comfortable sharing this information.
 
@@ -76,11 +74,9 @@ Before reporting connectivity issues:
 traceroute 1.1.1.1
 traceroute 1.0.0.1
 
-
 # If reachable, check nameserver identity
 dig +short CHAOS TXT id.server @1.1.1.1
 dig +short CHAOS TXT id.server @1.0.0.1
-
 
 # TCP connection tests
 dig +tcp @1.1.1.1 id.server CH TXT
@@ -94,11 +90,9 @@ dig +tcp @1.0.0.1 id.server CH TXT
 tracert 1.1.1.1
 tracert 1.0.0.1
 
-
 # If reachable, check nameserver identity
 nslookup -class=chaos -type=txt id.server 1.1.1.1
 nslookup -class=chaos -type=txt id.server 1.0.0.1
-
 
 # TCP connection tests
 nslookup -vc -class=chaos -type=txt id.server 1.1.1.1
@@ -115,7 +109,6 @@ DNS over TLS encrypts DNS queries using TLS on port `853`. If your DoT connectio
 # Test TLS connectivity
 openssl s_client -connect 1.1.1.1:853
 openssl s_client -connect 1.0.0.1:853
-
 
 # Test DNS resolution over TLS
 kdig +tls @1.1.1.1 id.server CH TXT
@@ -138,8 +131,6 @@ curl -H 'accept: application/dns-json' 'https://cloudflare-dns.com/dns-query?nam
 
 ### Windows
 
-**PowerShell**
-
 ```powershell
 (Invoke-WebRequest -Uri 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&type=AAAA').RawContent
 ```
@@ -160,7 +151,14 @@ If your traceroute fails at the first hop (the first network device after your c
 * [DNS over TLS documentation](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/)
 * [Diagnostic tool ↗](https://one.one.one.one/help/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/#page","headline":"Troubleshooting DNS Resolver","description":"Learn how to diagnose and report issues with Cloudflare's DNS Resolver","url":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/#page","headline":"Troubleshooting DNS Resolver","description":"Learn how to diagnose and report issues with Cloudflare's DNS Resolver","url":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","CLI"]}
 ```

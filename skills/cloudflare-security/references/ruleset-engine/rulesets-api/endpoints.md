@@ -1,16 +1,18 @@
 ---
-title: Endpoints
 description: Available Rulesets API endpoints for zones and accounts.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Endpoints
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Endpoints
 
-# Endpoints
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For some operations, you can use specific endpoints provided by the Rulesets API for managing phase entry point rulesets. These endpoints include the phase name in the endpoint instead of the ruleset ID.
 
@@ -78,7 +80,14 @@ The Cloudflare Rulesets API supports the operations outlined below. Visit the as
 | [Delete a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset)                 | DELETE | Deletes all the versions of a ruleset.   |
 | [Delete a ruleset version](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset-version) | DELETE | Deletes a specific version of a ruleset. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/#page","headline":"Endpoints · Cloudflare Ruleset Engine docs","description":"Available Rulesets API endpoints for zones and accounts.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/endpoints/","name":"Endpoints"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/#page","headline":"Endpoints · Cloudflare Ruleset Engine docs","description":"Available Rulesets API endpoints for zones and accounts.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

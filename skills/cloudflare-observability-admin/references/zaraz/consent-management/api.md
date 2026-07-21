@@ -1,16 +1,18 @@
 ---
-title: Consent API
 description: Control consent programmatically with the Zaraz Consent API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Consent API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Consent API
 
-# Consent API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/consent-management/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -26,8 +28,6 @@ Using the Consent API, you can integrate Zaraz Consent preferences with an exter
 
 It can be useful to know when the Consent API is fully loaded on the page so that code interacting with its methods and properties is not called prematurely.
 
-**JavaScript**
-
 ```js
 document.addEventListener("zarazConsentAPIReady", () => {
   // do things with the Consent API
@@ -37,8 +37,6 @@ document.addEventListener("zarazConsentAPIReady", () => {
 ### `Consent Choices Updated`
 
 This event is fired every time the user makes changes to their consent preferences. It can be used to act on changes to the consent, for example when updating a tool with the new consent preferences.
-
-**JavaScript**
 
 ```js
 document.addEventListener("zarazConsentChoicesUpdated", () => {
@@ -68,8 +66,6 @@ The following are properties of the `zaraz.consent` object.
 
 ### `Get`
 
-**JavaScript**
-
 ```js
 zaraz.consent.get(purposeId);
 ```
@@ -90,8 +86,6 @@ Get the current consent status for a purpose using the purpose ID.
 
 ### `Set`
 
-**JavaScript**
-
 ```js
 zaraz.consent.set(consentPreferences);
 ```
@@ -108,8 +102,6 @@ Set the consent status for some purposes using the purpose ID.
 
 ### `Get All`
 
-**JavaScript**
-
 ```js
 zaraz.consent.getAll();
 ```
@@ -119,8 +111,6 @@ zaraz.consent.getAll();
 Returns an object with the consent status of all purposes.
 
 ### `Set All`
-
-**JavaScript**
 
 ```js
 zaraz.consent.setAll(consentStatus);
@@ -138,8 +128,6 @@ Set the consent status for all purposes at once.
 
 ### `Get All Checkboxes`
 
-**JavaScript**
-
 ```js
 zaraz.consent.getAllCheckboxes();
 ```
@@ -149,8 +137,6 @@ zaraz.consent.getAllCheckboxes();
 Returns an object with the checkbox status of all purposes.
 
 ### `Set Checkboxes`
-
-**JavaScript**
 
 ```js
 zaraz.consent.setCheckboxes(checkboxesStatus);
@@ -168,8 +154,6 @@ Set the consent status for some purposes using the purpose ID.
 
 ### `Set All Checkboxes`
 
-**JavaScript**
-
 ```js
 zaraz.consent.setAllCheckboxes(checkboxStatus);
 ```
@@ -185,8 +169,6 @@ Set the `checkboxStatus` status for all purposes in the consent modal at once.
   * Indicates whether the purposes should be marked as checked or not.
 
 ### `Send queued events`
-
-**JavaScript**
 
 ```js
 zaraz.consent.sendQueuedEvents();
@@ -209,7 +191,6 @@ function getCookie(name) {
   return value?.split(`; ${name}=`)[1]?.split(";")[0]
 }
 
-
 function handleZarazConsentAPIReady() {
   const consent_cookie = getCookie("cf_consent")
   const isEUCountry = "{{system.device.location.isEUCountry}}" === "1"
@@ -223,7 +204,6 @@ function handleZarazConsentAPIReady() {
   }
 }
 
-
 if (zaraz.consent?.APIReady) {
   handleZarazConsentAPIReady()
 } else {
@@ -236,7 +216,14 @@ Note: If you've customized the cookie name for the Consent Manager, use that cus
 
 By letting this Custom HTML tool to run without consent requirements, the modal will appear to all EU visitors, while for other visitors consent will be automatically granted. The `{{ system.device.location.isEUCountry }}` property will be `1` if the visitor is from an EU country and `0` otherwise. You can use any other property or variable to customize the Consent Management behavior in a similar manner, such as `{{ system.device.location.country }}` to restrict consent checks based on country code.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/consent-management/api/#page","headline":"Consent API · Cloudflare Zaraz docs","description":"Control consent programmatically with the Zaraz Consent API.","url":"https://developers.cloudflare.com/zaraz/consent-management/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/consent-management/","name":"Consent management"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/consent-management/api/","name":"Consent API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/consent-management/api/#page","headline":"Consent API · Cloudflare Zaraz docs","description":"Control consent programmatically with the Zaraz Consent API.","url":"https://developers.cloudflare.com/zaraz/consent-management/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

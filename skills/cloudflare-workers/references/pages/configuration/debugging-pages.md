@@ -1,16 +1,18 @@
 ---
-title: Debugging Pages
 description: Troubleshoot common Cloudflare Pages build errors and deployment failures.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Debugging Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Debugging Pages
 
-# Debugging Pages
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When setting up your Pages project, you may encounter various errors that prevent you from successfully deploying your site. This guide gives an overview of some common errors and solutions.
 
@@ -19,7 +21,7 @@ When setting up your Pages project, you may encounter various errors that preven
 You can review build errors in your Pages build log. To access your build log:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Deployments** \> **View details** \> **Build log**.
 ![After logging in to the Cloudflare dashboard, access the build log by following the instructions above](https://developers.cloudflare.com/_astro/pages-build-log.Dc14wrt1_1PKYri.webp)
@@ -53,26 +55,20 @@ Make sure to also review your submodule configuration by going to the `.gitmodul
 
 Example of a valid configuration:
 
-**JavaScript**
-
 ```js
 [submodule "example"]
-  path = example/path
-  url = git://github.com/example/repo.git
+	path = example/path
+	url = git://github.com/example/repo.git
 ```
 
 Example of an invalid configuration:
 
-**JavaScript**
-
 ```js
 [submodule "example"]
-  path = example/path
+	path = example/path
 ```
 
 or
-
-**JavaScript**
 
 ```js
 [submodule "example"]
@@ -116,6 +112,7 @@ curl -s -o /dev/null -D - https://example.com/.well-known/acme-challenge/randoms
 ```
 
 ```sh
+
 HTTP/2 302
 date: Mon, 03 Apr 2023 08:37:39 GMT
 location: https://example.cloudflareaccess.com/cdn-cgi/access/login/example.com?kid=...&redirect_url=%2F.well-known%2Facme-challenge%2F...
@@ -142,22 +139,20 @@ dig CAA example.com
 ```
 
 ```sh
+
 ; <<>> DiG 9.10.6 <<>> CAA example.com
 ;; global options: +cmd
 ;; Got answer:
 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59018
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
 
-
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 4096
 ;; QUESTION SECTION:
-;example.com.    IN  CAA
-
+;example.com.		IN	CAA
 
 ;; ANSWER SECTION:
-example.com.  300  IN  CAA  0 issue "amazon.com"
-
+example.com.	300	IN	CAA	0 issue "amazon.com"
 
 ;; Query time: 92 msec
 ;; SERVER: 127.0.2.2#53(127.0.2.2)
@@ -202,7 +197,14 @@ If you need additional guidance on build errors, contact your Cloudflare account
 
 You can also ask questions in the Pages section of the [Cloudflare Developers Discord ↗](https://discord.com/invite/cloudflaredev).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages · Cloudflare Pages docs","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/debugging-pages/","name":"Debugging Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages · Cloudflare Pages docs","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

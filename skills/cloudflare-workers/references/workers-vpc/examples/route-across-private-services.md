@@ -1,16 +1,18 @@
 ---
-title: Route to private services from Workers
 description: Build a Worker gateway that routes and load balances across multiple private VPC Services.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Route to private services from Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Route to private services from Workers
 
-# Route to private services from Workers
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to use Workers VPC to create a centralized gateway that routes requests based on URL paths, provides authentication and rate limiting, and load balances across internal services.
 
@@ -31,7 +33,6 @@ npx wrangler vpc service create user-service \
   --tunnel-id <YOUR_TUNNEL_ID> \
   --hostname user-api.internal.example.com
 
-
 # Create orders service
 npx wrangler vpc service create order-service \
   --type http \
@@ -45,45 +46,36 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12156)
-* [  wrangler.toml ](#tab-panel-12157)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "api-gateway",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "vpc_services": [
-    {
-      "binding": "USER_SERVICE",
-      "service_id": "<YOUR_USER_SERVICE_ID>"
-    },
-    {
-      "binding": "ORDER_SERVICE",
-      "service_id": "<YOUR_ORDER_SERVICE_ID>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "api-gateway",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"vpc_services": [
+		{
+			"binding": "USER_SERVICE",
+			"service_id": "<YOUR_USER_SERVICE_ID>"
+		},
+		{
+			"binding": "ORDER_SERVICE",
+			"service_id": "<YOUR_ORDER_SERVICE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "api-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[vpc_services]]
 binding = "USER_SERVICE"
 service_id = "<YOUR_USER_SERVICE_ID>"
-
 
 [[vpc_services]]
 binding = "ORDER_SERVICE"
@@ -94,26 +86,22 @@ service_id = "<YOUR_ORDER_SERVICE_ID>"
 
 In your Workers code, use the VPC Service bindings to route requests to the appropriate services:
 
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 
+		// Route to internal services
+		if (url.pathname.startsWith('/api/users')) {
+			const response = await env.USER_SERVICE.fetch("https://user-api.internal.example.com" + url.pathname);
+			return response;
+		} else if (url.pathname.startsWith('/api/orders')) {
+			const response = await env.ORDER_SERVICE.fetch("https://orders-api.internal.example.com" + url.pathname);
+			return response;
+		}
 
-    // Route to internal services
-    if (url.pathname.startsWith('/api/users')) {
-      const response = await env.USER_SERVICE.fetch("https://user-api.internal.example.com" + url.pathname);
-      return response;
-    } else if (url.pathname.startsWith('/api/orders')) {
-      const response = await env.ORDER_SERVICE.fetch("https://orders-api.internal.example.com" + url.pathname);
-      return response;
-    }
-
-
-    return new Response('Not Found', { status: 404 });
-  },
+		return new Response('Not Found', { status: 404 });
+	},
 };
 ```
 
@@ -129,7 +117,6 @@ npx wrangler deploy
 # Test user service requests
 curl https://api-gateway.workers.dev/api/users
 
-
 # Test orders service requests
 curl https://api-gateway.workers.dev/api/orders
 ```
@@ -141,7 +128,14 @@ curl https://api-gateway.workers.dev/api/orders
 * Set up [monitoring and alerting](https://developers.cloudflare.com/analytics/analytics-engine/)
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/#page","headline":"Route to private services from Workers · Cloudflare Workers VPC","description":"Build a Worker gateway that routes and load balances across multiple private VPC Services.","url":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/route-across-private-services/","name":"Route to private services from Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/#page","headline":"Route to private services from Workers · Cloudflare Workers VPC","description":"Build a Worker gateway that routes and load balances across multiple private VPC Services.","url":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

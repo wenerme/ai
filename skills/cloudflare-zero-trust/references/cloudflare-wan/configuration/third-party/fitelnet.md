@@ -1,16 +1,18 @@
 ---
-title: Furukawa Electric FITELnet
 description: Connect Furukawa Electric FITELnet to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Furukawa Electric FITELnet
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Furukawa Electric FITELnet
 
-# Furukawa Electric FITELnet
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial describes how to configure the Furukawa Electric's FITELnet F220 and F70 devices to connect to Cloudflare WAN (formerly Magic WAN) via IPsec (Internet Protocol Security) tunnels. The use cases described in this tutorial are for both east-west (branch to branch) and north-south (Internet-bound).
 
@@ -52,7 +54,6 @@ interface Tunnel 1
  link-state sync-sa
 exit
 !
-
 
 crypto ipsec policy IPsec_POLICY
  set security-association always-up
@@ -119,7 +120,6 @@ interface Tunnel 2
  link-state sync-sa
 exit
 !
-
 
 crypto ipsec policy IPsec_POLICY
  set security-association always-up
@@ -216,7 +216,6 @@ In the FITELnet router CLI, you can run `show crypto sa` to check the status of 
 ```txt
 show crypto sa
 
-
   IKE_SA
     Mode: <I>
     Local IP : <LOCAL_IP>/500
@@ -232,7 +231,6 @@ show crypto sa
     Responder Cookie : cccccccc dddddddd
     Life time : 6852/14400 sec
     DPD : on
-
 
   CHILD_SA <I>
     Selector :
@@ -258,7 +256,6 @@ show crypto sa
       Octets        : 0
       Seq lapped    : 0
 
-
   Total number of ISAKMP SA 1
   Total number of IPSEC SA 1
 ```
@@ -270,13 +267,11 @@ In the FITELnet router CLI, you can run `show ip route` to check the route infor
 ```txt
 show ip route
 
-
 Codes: K - kernel route, C - connected, S - static, R - RIP, O - OSPF,
        B - BGP, T - Tunnel, i - IS-IS, V - VRRP track,
        Iu - ISAKMP SA up, It - ISAKMP tunnel route, Ip - ISAKMP l2tpv2-ppp
        Dc - DHCP-client, L - Local Breakout
        > - selected route, * - FIB route, p - stale info
-
 
 <snip>
 S > * 192.168.1.0/24 [100/0] is directly connected, Tunnel1
@@ -284,7 +279,14 @@ S > * 192.168.1.0/24 [100/0] is directly connected, Tunnel1
 #
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/#page","headline":"Furukawa Electric FITELnet · Cloudflare WAN docs","description":"Connect Furukawa Electric FITELnet to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/fitelnet/","name":"Furukawa Electric FITELnet"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/#page","headline":"Furukawa Electric FITELnet · Cloudflare WAN docs","description":"Connect Furukawa Electric FITELnet to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

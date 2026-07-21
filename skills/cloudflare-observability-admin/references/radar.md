@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Radar
 description: Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Cloudflare Radar
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Radar
 
-# Cloudflare Radar
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Get access to Cloudflare's data on global Internet traffic.
 
@@ -22,59 +24,66 @@ Using [Radar's API](https://developers.cloudflare.com/api/resources/radar/) you 
 
 Data available via Radar API endpoints is made available under the [CC BY-NC 4.0 ↗](https://creativecommons.org/licenses/by-nc/4.0/) license.
 
-[ Get started ](https://developers.cloudflare.com/radar/get-started/) [ Radar website ](https://radar.cloudflare.com/)
+[ Get started ](https://developers.cloudflare.com/radar/get-started/)[ Radar website ](https://radar.cloudflare.com/)
 
 ---
 
 ## Features
 
-###  Make your first API request
+[Make your first API request](https://developers.cloudflare.com/radar/get-started/first-request/)
 
 Start learning how to use Radar's API by making your first request.
 
-[ Make your first API request ](https://developers.cloudflare.com/radar/get-started/first-request/)
+ Make your first API request
 
-###  Compare data
+[Compare data](https://developers.cloudflare.com/radar/get-started/making-comparisons/)
 
 What to know before making comparisons between locations, [autonomous systems ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/), and more.
 
-[ Compare data ](https://developers.cloudflare.com/radar/get-started/making-comparisons/)
+ Compare data
 
-###  URL Scanner
+[URL Scanner](https://developers.cloudflare.com/radar/investigate/url-scanner/)
 
 Understand the security, performance, technology, and network details of a URL with a publicly shareable report.
 
-[ Use URL Scanner ](https://developers.cloudflare.com/radar/investigate/url-scanner/)
+ Use URL Scanner
 
 ---
 
 ## More resources
 
-[Investigate](https://developers.cloudflare.com/radar/investigate/)
+### [ Investigate ](https://developers.cloudflare.com/radar/investigate/)
 
 Explore the diverse data available in Cloudflare Radar, including NetFlows, HTTP requests, DNS queries, and much more.
 
-[@CloudflareRadar](https://x.com/cloudflareradar)
+### [ @CloudflareRadar ](https://x.com/cloudflareradar)
 
 Follow @CloudflareRadar on X to learn about Internet trends, as seen by the Cloudflare global network.
 
-[@cloudflareradar](https://noc.social/@cloudflareradar)
+### [ @cloudflareradar ](https://noc.social/@cloudflareradar)
 
 Follow @cloudflareradar on Mastodon to learn about Internet trends, as seen by the Cloudflare global network.
 
-[@radar.cloudflare.com](https://bsky.app/profile/radar.cloudflare.com)
+### [ @radar.cloudflare.com ](https://bsky.app/profile/radar.cloudflare.com)
 
 Follow @radar.cloudflare.com on Bluesky to learn about Internet trends, as seen by the Cloudflare global network.
 
-[Cloudflare blog](https://blog.cloudflare.com/tag/cloudflare-radar/)
+### [ Cloudflare blog ](https://blog.cloudflare.com/tag/cloudflare-radar/)
 
 Read articles about the latest trends and updates on Cloudflare Radar.
 
-[MCP Server](https://github.com/cloudflare/mcp#cloudflare-mcp-server)
+### [ MCP Server ](https://github.com/cloudflare/mcp#cloudflare-mcp-server)
 
 Enable any MCP client to access and explore trends and insights on Cloudflare Radar.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/#page","headline":"Overview · Cloudflare Radar docs","description":"Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.","url":"https://developers.cloudflare.com/radar/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/#page","headline":"Overview · Cloudflare Radar docs","description":"Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.","url":"https://developers.cloudflare.com/radar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

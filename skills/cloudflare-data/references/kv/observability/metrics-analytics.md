@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/observability/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 KV exposes analytics that allow you to inspect requests and storage across all namespaces in your account.
 
@@ -32,7 +34,7 @@ Metrics can be queried (and are retained) for the past 31 days.
 Per-namespace analytics for KV are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.
-[ Go to **Workers KV** ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+[ Go to **Workers KV** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Select an existing namespace.
 3. Select the **Metrics** tab.
 
@@ -55,10 +57,10 @@ The following are common GraphQL queries that you can use to retrieve informatio
 
 ```json
 {
-  "accountTag": "<YOUR_ACCOUNT_ID>",
-  "namespaceId": "<YOUR_KV_NAMESPACE_ID>",
-  "date_geq": "2024-07-15",
-  "date_leq": "2024-07-30"
+	"accountTag": "<YOUR_ACCOUNT_ID>",
+	"namespaceId": "<YOUR_KV_NAMESPACE_ID>",
+	"date_geq": "2024-07-15",
+	"date_leq": "2024-07-30"
 }
 ```
 
@@ -68,98 +70,92 @@ To query the sum of read, write, delete, and list operations for a given `namesp
 
 ```graphql
 query KvOperationsSample(
-  $accountTag: string!
-  $namespaceId: string
-  $start: Date
-  $end: Date
+	$accountTag: string!
+	$namespaceId: string
+	$start: Date
+	$end: Date
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      kvOperationsAdaptiveGroups(
-        filter: { namespaceId: $namespaceId, date_geq: $start, date_leq: $end }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        sum {
-          requests
-        }
-        dimensions {
-          date
-          actionType
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			kvOperationsAdaptiveGroups(
+				filter: { namespaceId: $namespaceId, date_geq: $start, date_leq: $end }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				sum {
+					requests
+				}
+				dimensions {
+					date
+					actionType
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBldAWxQBswAKAKBhgBJ0BjV3EfTAFXQHMAXDEKYI2fPwCEDZvnJhCKNmACSAE2Gjxk2U1HoImYQBEsYPWHyaYZzBYCUMAN6yE2MAHdIL2YzYcXJiENABm2JT2EMLOMAGc3HxCzPFBSTAAvk6ujLkwANbIaBBYeEQAguroKDgIYADiEJwoIX55MOGRkDEw8mSKyqxqNkx9AyoaADQwVfYA+vxgwML6mIaY07Ngc9TLzFbqmW15lNhk2MYwAIwADHc3x7m4EOqQAEJQwgDaW3MmAKLEADCAF1HtlHoxCCAyL52u0IEtwKJCJCjvDGOozlZCGVCHCMZjzGj-KwcAQeFA0GiMo9aXl6UcMkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGA7KYCMATgYg28QdkMnzVwyAC+QA)
 
 To query the distribution of the latency for read operations for a given `namespaceId` within a given date range (`start`, `end`):
 
 ```graphql
 query KvOperationsSample2(
-  $accountTag: string!
-  $namespaceId: string
-  $start: Date
-  $end: Date
+	$accountTag: string!
+	$namespaceId: string
+	$start: Date
+	$end: Date
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      kvOperationsAdaptiveGroups(
-        filter: {
-          namespaceId: $namespaceId
-          date_geq: $start
-          date_leq: $end
-          actionType: "read"
-        }
-        limit: 10000
-      ) {
-        sum {
-          requests
-        }
-        dimensions {
-          actionType
-        }
-        quantiles {
-          latencyMsP25
-          latencyMsP50
-          latencyMsP75
-          latencyMsP90
-          latencyMsP99
-          latencyMsP999
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			kvOperationsAdaptiveGroups(
+				filter: {
+					namespaceId: $namespaceId
+					date_geq: $start
+					date_leq: $end
+					actionType: "read"
+				}
+				limit: 10000
+			) {
+				sum {
+					requests
+				}
+				dimensions {
+					actionType
+				}
+				quantiles {
+					latencyMsP25
+					latencyMsP50
+					latencyMsP75
+					latencyMsP90
+					latencyMsP99
+					latencyMsP999
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBldAWxQBswAmACgCgYYASdAY3dxH0wBV0AcwBcMQpgjZ8ggIRNW+cmEIoOYAJIATUeMnT5LcegiZRAESxgDYfNpgXMVgJQwA3vITYwAd0hv5zBxcPJiEdABm2JSOEKKuMEHcvAIirIkhKTAAvi7uzPkwANbIaBBYeEQAgproKDgIYADiENwoYQEFMJHRkHEdnTCKZMqq7Bp2LEMjalr9nTWOAPqCYMCihpjGmHMFC2CL1GusNpo7+Rw4BHxQaKIARBBg6Jp3Z1lnlNhk2KYwAIwABiBALmuTOhBAZH8AwKj1AylCbzOmi+NkIFUI0JhgXYl3w1zQSOxoHQvCiyix2Molnw7CgAFlCAAFGgAVjOzGpjlpDOZrJB2M5NLpjKZAHZ2YKYFybCLmQBOAWCmU80Xy+Uc6XC3lM9Ua7HvAaG-LG95ZIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGA7KYCMATgYg28QdkMnzVwyAC+QA)
 
 To query your account-wide read, write, delete, and list operations across all KV namespaces:
 
 ```graphql
 query KvOperationsAllSample($accountTag: string!, $start: Date, $end: Date) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      kvOperationsAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end }
-        limit: 10000
-      ) {
-        sum {
-          requests
-        }
-        dimensions {
-          actionType
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			kvOperationsAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end }
+				limit: 10000
+			) {
+				sum {
+					requests
+				}
+				dimensions {
+					actionType
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBBAG1IGV0BbFUsACgBJ0BjV3EfTAFXQHMAXDEKYI2fPwCEAGhhNR6CJmEARLGDlMw+ACZqNAShgBvAFAwYCbGADukUxcsw2HLpkIMAZtlKZIwiYu7JzcfELyrqG8AjAAvsbmzs4A1shoEFh4RMS66Cg4CGAA4hCcKJ5OyZY+fgGmMHn+APr8YMDCCphKmHJNYM30HfI6uvFV1aTY1NgqMACMAAzLixOWiWvOhCDUjtXVEO3gooSblnFnjdM6hNmEe-vObDgEPFBolxf7X84-F3FAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgHYhARgCcDEAFN4AEy59BI8XxABfIA)
 
 #### Storage
 
@@ -167,34 +163,39 @@ To query the storage details (`keyCount` and `byteCount`) of a KV namespace for 
 
 ```graphql
 query Viewer(
-  $accountTag: string!
-  $namespaceId: string
-  $start: Date
-  $end: Date
+	$accountTag: string!
+	$namespaceId: string
+	$start: Date
+	$end: Date
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      kvStorageAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end, namespaceId: $namespaceId }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        max {
-          keyCount
-          byteCount
-        }
-        dimensions {
-          date
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			kvStorageAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end, namespaceId: $namespaceId }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				max {
+					keyCount
+					byteCount
+				}
+				dimensions {
+					date
+				}
+			}
+		}
+	}
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAagSzAd0gCgFAxgEgIYDGBA9iAHYAuAKngOYBcMAzhRAmbQIRa5l4C2YJgAdCYAJIATRizYceOFnggVGAETwUwCsGWkwNWjAEoYAbx4A3JKgjme2QiXIUmaAGYIANloiMzME6klDQMuEEuoTAAvqYW2AkwANaWAMoUxBB0YACCknjCFAiWYADiEKTCbg6JMJ4+kP4w+VoA+rRgwIyKFMoUADTNmmCtXp3dupKDfIIiYlLdM0KiBBKSMTWJXgj8CKowAIwADCdHmwmZkpAAQlCMANotI2oAoqkAwgC653Hn2Px4AAe9lqtSSYCg72CFD+CQARlAtFCXLDorDJDtdEwEMQyEwQaCEk9Uec0YkyRtokA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGA7KYCMATgYg28QdkMnzVwyAC+QA)
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers KV docs","description":"Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.","url":"https://developers.cloudflare.com/kv/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers KV docs","description":"Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.","url":"https://developers.cloudflare.com/kv/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

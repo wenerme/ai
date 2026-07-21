@@ -1,16 +1,18 @@
 ---
-title: Deploy rulesets
 description: Deploy rulesets to a phase entry point using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Deploy rulesets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy rulesets
 
-# Deploy rulesets
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to deploy a ruleset. To deploy a ruleset, add a rule with `"action": "execute"` to a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset), specifying the ruleset ID to execute as an action parameter. Use a separate rule for each ruleset you want to deploy.
 
@@ -55,60 +57,58 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "efb7b8c949ac4650a09736fc376e9aee"
-            },
-            "expression": "true",
-            "description": "Execute Cloudflare Managed Ruleset on my zone ruleset"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "efb7b8c949ac4650a09736fc376e9aee"
+						},
+						"expression": "true",
+						"description": "Execute Cloudflare Managed Ruleset on my zone ruleset"
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<ZONE_PHASE_RULESET_ID>",
-    "name": "Zone-level Ruleset 1",
-    "description": "",
-    "kind": "zone",
-    "version": "latest",
-    "rules": [
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "efb7b8c949ac4650a09736fc376e9aee",
-          "version": "3"
-        },
-        "expression": "true",
-        "description": "Execute Cloudflare Managed Ruleset on my zone ruleset",
-        "last_updated": "2021-03-18T18:08:14.003361Z",
-        "ref": "<RULE_REF>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2021-03-18T18:08:14.003361Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ZONE_PHASE_RULESET_ID>",
+		"name": "Zone-level Ruleset 1",
+		"description": "",
+		"kind": "zone",
+		"version": "latest",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "efb7b8c949ac4650a09736fc376e9aee",
+					"version": "3"
+				},
+				"expression": "true",
+				"description": "Execute Cloudflare Managed Ruleset on my zone ruleset",
+				"last_updated": "2021-03-18T18:08:14.003361Z",
+				"ref": "<RULE_REF>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2021-03-18T18:08:14.003361Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
-Warning
+Caution
 
 This API request replaces any existing rules in the `http_request_firewall_managed` phase entry point ruleset with a single rule.
 
@@ -124,7 +124,14 @@ Refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-
 
 For more information on the available API endpoints for editing and deploying rulesets, refer to [Update or deploy a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/#page","headline":"Deploy rulesets · Cloudflare Ruleset Engine docs","description":"Deploy rulesets to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/basic-operations/","name":"Basic API operations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/basic-operations/deploy-rulesets/","name":"Deploy rulesets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/#page","headline":"Deploy rulesets · Cloudflare Ruleset Engine docs","description":"Deploy rulesets to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

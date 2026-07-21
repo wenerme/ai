@@ -1,16 +1,18 @@
 ---
-title: Amazon Bedrock
 description: Route Amazon Bedrock requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Amazon Bedrock
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Amazon Bedrock
 
-# Amazon Bedrock
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Amazon Bedrock ↗](https://aws.amazon.com/bedrock/) allows you to build and scale generative AI applications with foundation models.
 
@@ -65,9 +67,9 @@ The recommended approach is to store your AWS credentials using AI Gateway's [Br
 3. Enter your AWS credentials as a JSON object with the following structure:
 ```json
 {
-  "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-  "region": "us-east-1"
+	"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+	"secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+	"region": "us-east-1"
 }
 ```
 4. Select **Save**.
@@ -76,10 +78,10 @@ If you are using temporary credentials from AWS STS (for example, from assuming 
 
 ```json
 {
-  "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
-  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-  "region": "us-east-1",
-  "sessionToken": "FwoGZXIvYXdzEBY..."
+	"accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+	"secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+	"region": "us-east-1",
+	"sessionToken": "FwoGZXIvYXdzEBY..."
 }
 ```
 
@@ -115,77 +117,65 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock
 
 If you are not using BYOK, you must sign the request before sending it through AI Gateway. The following example uses the `aws4fetch` library in a Cloudflare Worker:
 
-**TypeScript**
-
 ```typescript
 import { AwsClient } from "aws4fetch";
 
-
 interface Env {
-  accessKey: string;
-  secretAccessKey: string;
+	accessKey: string;
+	secretAccessKey: string;
 }
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    const cfAccountId = "{account_id}";
-    const gatewayName = "{gateway_id}";
-    const region = "us-east-1";
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		const cfAccountId = "{account_id}";
+		const gatewayName = "{gateway_id}";
+		const region = "us-east-1";
 
+		const awsClient = new AwsClient({
+			accessKeyId: env.accessKey,
+			secretAccessKey: env.secretAccessKey,
+			region: region,
+			service: "bedrock",
+		});
 
-    const awsClient = new AwsClient({
-      accessKeyId: env.accessKey,
-      secretAccessKey: env.secretAccessKey,
-      region: region,
-      service: "bedrock",
-    });
+		const body = JSON.stringify({
+			messages: [{ role: "user", content: "What does ethereal mean?" }],
+			max_tokens: 256,
+			anthropic_version: "bedrock-2023-05-31",
+		});
 
+		// Sign against the original AWS URL
+		const awsUrl = `https://bedrock-runtime.${region}.amazonaws.com/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
 
-    const body = JSON.stringify({
-      messages: [{ role: "user", content: "What does ethereal mean?" }],
-      max_tokens: 256,
-      anthropic_version: "bedrock-2023-05-31",
-    });
+		const presignedRequest = await awsClient.sign(awsUrl, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: body,
+		});
 
+		// Send through AI Gateway
+		const gatewayUrl = `https://gateway.ai.cloudflare.com/v1/${cfAccountId}/${gatewayName}/aws-bedrock/bedrock-runtime/${region}/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
 
-    // Sign against the original AWS URL
-    const awsUrl = `https://bedrock-runtime.${region}.amazonaws.com/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
+		const response = await fetch(gatewayUrl, {
+			method: "POST",
+			headers: presignedRequest.headers,
+			body: body,
+		});
 
+		if (
+			response.ok &&
+			response.headers.get("content-type")?.includes("application/json")
+		) {
+			const data = await response.json();
+			return new Response(JSON.stringify(data));
+		}
 
-    const presignedRequest = await awsClient.sign(awsUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: body,
-    });
-
-
-    // Send through AI Gateway
-    const gatewayUrl = `https://gateway.ai.cloudflare.com/v1/${cfAccountId}/${gatewayName}/aws-bedrock/bedrock-runtime/${region}/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
-
-
-    const response = await fetch(gatewayUrl, {
-      method: "POST",
-      headers: presignedRequest.headers,
-      body: body,
-    });
-
-
-    if (
-      response.ok &&
-      response.headers.get("content-type")?.includes("application/json")
-    ) {
-      const data = await response.json();
-      return new Response(JSON.stringify(data));
-    }
-
-
-    return new Response("Invalid response", { status: 500 });
-  },
+		return new Response("Invalid response", { status: 500 });
+	},
 };
 ```
 
@@ -220,34 +210,36 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat
 
 ### OpenAI SDK
 
-**JavaScript**
-
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{CF_AIG_TOKEN}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{CF_AIG_TOKEN}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
-
 
 const response = await client.chat.completions.create({
-  model: "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
-  messages: [
-    {
-      role: "user",
-      content: "What is Cloudflare?",
-    },
-  ],
+	model: "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+	messages: [
+		{
+			role: "user",
+			content: "What is Cloudflare?",
+		},
+	],
 });
-
 
 console.log(response.choices[0].message.content);
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/#page","headline":"Amazon Bedrock · Cloudflare AI Gateway docs","description":"Route Amazon Bedrock requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/bedrock/","name":"Amazon Bedrock"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/#page","headline":"Amazon Bedrock · Cloudflare AI Gateway docs","description":"Route Amazon Bedrock requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

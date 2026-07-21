@@ -1,16 +1,18 @@
 ---
-title: Aggregated Internet Measurement
 description: Measure real-world internet quality metrics for your visitors.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Aggregated Internet Measurement
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Aggregated Internet Measurement
 
-# Aggregated Internet Measurement
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/aim/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Aggregated Internet Measurement (AIM) helps you understand your Internet quality to identify scenarios that your Internet connection is good or bad for. Typically, an Internet speed test provides you with upload and download speeds, which may not always provide a holistic view of your Internet quality.
 
@@ -46,7 +48,14 @@ You have a few options to help improve network scores.
 * **Upgrade your router.** Ensure you are using a router capable of handling smarter queueing with hardware that will not fall over under load.
 * **Contact your ISP.** If you’re using a wired connection or have a good connection to your wireless router and are still seeing issues, you may have issues with your Internet connection and should reach out to your ISP.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/aim/#page","headline":"Aggregated Internet Measurement · Cloudflare Speed docs","description":"Measure real-world internet quality metrics for your visitors.","url":"https://developers.cloudflare.com/speed/aim/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/aim/","name":"Aggregated Internet Measurement"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/aim/#page","headline":"Aggregated Internet Measurement · Cloudflare Speed docs","description":"Measure real-world internet quality metrics for your visitors.","url":"https://developers.cloudflare.com/speed/aim/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

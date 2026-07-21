@@ -1,16 +1,18 @@
 ---
-title: Public LoRA adapters
 description: Cloudflare offers a few public LoRA adapters that are immediately ready for use.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Public LoRA adapters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Public LoRA adapters
 
-# Public LoRA adapters
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗](https://playground.ai.cloudflare.com).
 
@@ -34,12 +36,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Workers AI Write`
 * `Workers AI Read`
 
-**List Public Finetunes**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes/public" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Running inference with public LoRAs
@@ -66,24 +66,29 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/mistr
 
 ### JavaScript
 
-**JavaScript**
-
 ```js
 const answer = await env.AI.run("@cf/mistral/mistral-7b-instruct-v0.1", {
-  stream: true,
-  raw: true,
-  messages: [
-    {
-      role: "user",
-      content:
-        "Summarize the following: Some newspapers, TV channels and well-known companies publish false news stories to fool people on 1 April. One of the earliest examples of this was in 1957 when a programme on the BBC, the UKs national TV channel, broadcast a report on how spaghetti grew on trees. The film showed a family in Switzerland collecting spaghetti from trees and many people were fooled into believing it, as in the 1950s British people didn't eat much pasta and many didn't know how it was made! Most British people wouldnt fall for the spaghetti trick today, but in 2008 the BBC managed to fool their audience again with their Miracles of Evolution trailer, which appeared to show some special penguins that had regained the ability to fly. Two major UK newspapers, The Daily Telegraph and the Daily Mirror, published the important story on their front pages.",
-    },
-  ],
-  lora: "cf-public-cnn-summarization",
+	stream: true,
+	raw: true,
+	messages: [
+		{
+			role: "user",
+			content:
+				"Summarize the following: Some newspapers, TV channels and well-known companies publish false news stories to fool people on 1 April. One of the earliest examples of this was in 1957 when a programme on the BBC, the UKs national TV channel, broadcast a report on how spaghetti grew on trees. The film showed a family in Switzerland collecting spaghetti from trees and many people were fooled into believing it, as in the 1950s British people didn't eat much pasta and many didn't know how it was made! Most British people wouldnt fall for the spaghetti trick today, but in 2008 the BBC managed to fool their audience again with their Miracles of Evolution trailer, which appeared to show some special penguins that had regained the ability to fly. Two major UK newspapers, The Daily Telegraph and the Daily Mirror, published the important story on their front pages.",
+		},
+	],
+	lora: "cf-public-cnn-summarization",
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/#page","headline":"Public LoRA adapters · Cloudflare Workers AI docs","description":"Cloudflare offers a few public LoRA adapters that are immediately ready for use.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/fine-tunes/","name":"Fine-tunes"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/fine-tunes/public-loras/","name":"Public LoRA adapters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/#page","headline":"Public LoRA adapters · Cloudflare Workers AI docs","description":"Cloudflare offers a few public LoRA adapters that are immediately ready for use.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

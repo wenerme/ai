@@ -1,16 +1,18 @@
 ---
-title: Workers
 description: Create an Artifacts repo from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers
 
-# Workers
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/get-started/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
 
@@ -64,18 +66,13 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-7461)
-* [  wrangler.toml ](#tab-panel-7462)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -85,14 +82,11 @@ Open your Wrangler config file and add the Artifacts binding:
 }
 ```
 
-**TOML**
-
 ```toml
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[artifacts]]
 binding = "ARTIFACTS"
@@ -124,78 +118,61 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-7463)
-* [  TypeScript ](#tab-panel-7464)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		if (request.method === "POST" && url.pathname === "/repos") {
+			// Read the repo name from the request body so the route is reusable.
+			const body = await request.json().catch(() => ({}));
 
-    if (request.method === "POST" && url.pathname === "/repos") {
-      // Read the repo name from the request body so the route is reusable.
-      const body = await request.json().catch(() => ({}));
+			const repoName = body.name ?? "starter-repo";
 
+			// Create the repo and return the remote URL plus initial write token.
+			const created = await env.ARTIFACTS.create(repoName);
 
-      const repoName = body.name ?? "starter-repo";
+			return Response.json({
+				name: created.name,
+				remote: created.remote,
+				token: created.token,
+			});
+		}
 
-
-      // Create the repo and return the remote URL plus initial write token.
-      const created = await env.ARTIFACTS.create(repoName);
-
-
-      return Response.json({
-        name: created.name,
-        remote: created.remote,
-        token: created.token,
-      });
-    }
-
-
-    return new Response("Use POST /repos to create an Artifacts repo.", {
-      status: 405,
-      headers: { Allow: "POST" },
-    });
-  },
+		return new Response("Use POST /repos to create an Artifacts repo.", {
+			status: 405,
+			headers: { Allow: "POST" },
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		if (request.method === "POST" && url.pathname === "/repos") {
+			// Read the repo name from the request body so the route is reusable.
+			const body = await request.json().catch(() => ({}));
 
-    if (request.method === "POST" && url.pathname === "/repos") {
-      // Read the repo name from the request body so the route is reusable.
-      const body = await request.json().catch(() => ({}));
+			const repoName = body.name ?? "starter-repo";
 
+			// Create the repo and return the remote URL plus initial write token.
+			const created = await env.ARTIFACTS.create(repoName);
 
-      const repoName = body.name ?? "starter-repo";
+			return Response.json({
+				name: created.name,
+				remote: created.remote,
+				token: created.token,
+			});
+		}
 
-
-      // Create the repo and return the remote URL plus initial write token.
-      const created = await env.ARTIFACTS.create(repoName);
-
-
-      return Response.json({
-        name: created.name,
-        remote: created.remote,
-        token: created.token,
-      });
-    }
-
-
-    return new Response("Use POST /repos to create an Artifacts repo.", {
-      status: 405,
-      headers: { Allow: "POST" },
-    });
-  },
+		return new Response("Use POST /repos to create an Artifacts repo.", {
+			status: 405,
+			headers: { Allow: "POST" },
+		});
+	},
 };
 ```
 
@@ -227,9 +204,6 @@ pnpm wrangler dev
 
 Then, open a second terminal and send a request to your Worker to create a new Artifacts repo:
 
-* [ Manual ](#tab-panel-7459)
-* [ jq ](#tab-panel-7460)
-
 ```bash
 curl http://localhost:8787/repos \
   --header "Content-Type: application/json" \
@@ -242,9 +216,9 @@ Your Worker will call `env.ARTIFACTS.create()` and return three values you will 
 
 ```json
 {
-  "name": "starter-repo",
-  "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
-  "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
+	"name": "starter-repo",
+	"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
+	"token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
 }
 ```
 
@@ -263,7 +237,6 @@ export ARTIFACTS_TOKEN="<PASTE_TOKEN_FROM_RESPONSE>"
 RESPONSE=$(curl --silent http://localhost:8787/repos \
   --header "Content-Type: application/json" \
   --data '{"name":"starter-repo"}')
-
 
 export ARTIFACTS_REMOTE=$(printf '%s' "$RESPONSE" | jq -r '.remote')
 export ARTIFACTS_TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.token')
@@ -340,13 +313,26 @@ Wrangler prints your `workers.dev` URL. Use the same `curl` request against that
 
 ## Next steps
 
-[ Workers binding reference ](https://developers.cloudflare.com/artifacts/api/workers-binding/) Review the binding surface, return types, and method-by-method examples.
+### [ Workers binding reference ](https://developers.cloudflare.com/artifacts/api/workers-binding/)
 
-[ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/) Use repo isolation, least-privilege tokens, and namespace separation effectively.
+ Review the binding surface, return types, and method-by-method examples.
 
-[ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`.
+### [ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
+
+ Use repo isolation, least-privilege tokens, and namespace separation effectively.
+
+### [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
+
+ Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/get-started/workers/","name":"Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Data persistence with R2
 description: Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Data persistence with R2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data persistence with R2
 
-# Data persistence with R2
+Last updated May 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Mount object storage buckets as local filesystem paths to persist data across sandbox lifecycles. This tutorial uses Cloudflare R2, but the same approach works with any S3-compatible provider.
 
@@ -66,8 +68,6 @@ cd data-pipeline
 
 Add an R2 bucket binding to your `wrangler.json`:
 
-**wrangler.json**
-
 ```json
 {
   "name": "data-pipeline",
@@ -92,40 +92,30 @@ Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in th
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-11387)
-* [  TypeScript ](#tab-panel-11388)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const sandbox = getSandbox(env.Sandbox, "data-processor");
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const sandbox = getSandbox(env.Sandbox, "data-processor");
 
+		// Mount R2 bucket to /data directory
+		await sandbox.mountBucket("my-data-bucket", "/data", {
+			endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+		});
 
-    // Mount R2 bucket to /data directory
-    await sandbox.mountBucket("my-data-bucket", "/data", {
-      endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-    });
-
-
-    if (url.pathname === "/process") {
-      // Process data and save to mounted R2
-      const result = await sandbox.exec("python", {
-        args: [
-          "-c",
-          `
+		if (url.pathname === "/process") {
+			// Process data and save to mounted R2
+			const result = await sandbox.exec("python", {
+				args: [
+					"-c",
+					`
 import json
 import os
 from datetime import datetime
-
 
 # Read input (or create sample data)
 data = [
@@ -134,11 +124,9 @@ data = [
     {'id': 3, 'value': 15}
 ]
 
-
 # Process: calculate sum and average
 total = sum(item['value'] for item in data)
 avg = total / len(data)
-
 
 # Save results to mounted R2 (/data is the mounted bucket)
 result = {
@@ -148,113 +136,95 @@ result = {
     'processed_count': len(data)
 }
 
-
 os.makedirs('/data/results', exist_ok=True)
 with open('/data/results/latest.json', 'w') as f:
     json.dump(result, f, indent=2)
 
-
 print(json.dumps(result))
-        `,
-        ],
-      });
+				`,
+				],
+			});
 
+			return Response.json({
+				message: "Data processed and saved to R2",
+				result: JSON.parse(result.stdout),
+			});
+		}
 
-      return Response.json({
-        message: "Data processed and saved to R2",
-        result: JSON.parse(result.stdout),
-      });
-    }
+		if (url.pathname === "/results") {
+			// Read results from mounted R2
+			const result = await sandbox.exec("cat", {
+				args: ["/data/results/latest.json"],
+			});
 
+			if (!result.success) {
+				return Response.json(
+					{ error: "No results found yet" },
+					{ status: 404 },
+				);
+			}
 
-    if (url.pathname === "/results") {
-      // Read results from mounted R2
-      const result = await sandbox.exec("cat", {
-        args: ["/data/results/latest.json"],
-      });
+			return Response.json({
+				message: "Results retrieved from R2",
+				data: JSON.parse(result.stdout),
+			});
+		}
 
+		if (url.pathname === "/destroy") {
+			// Destroy sandbox to demonstrate persistence
+			await sandbox.destroy();
+			return Response.json({
+				message: "Sandbox destroyed. Data persists in R2!",
+			});
+		}
 
-      if (!result.success) {
-        return Response.json(
-          { error: "No results found yet" },
-          { status: 404 },
-        );
-      }
-
-
-      return Response.json({
-        message: "Results retrieved from R2",
-        data: JSON.parse(result.stdout),
-      });
-    }
-
-
-    if (url.pathname === "/destroy") {
-      // Destroy sandbox to demonstrate persistence
-      await sandbox.destroy();
-      return Response.json({
-        message: "Sandbox destroyed. Data persists in R2!",
-      });
-    }
-
-
-    return new Response(
-      `
+		return new Response(
+			`
 Data Pipeline with Persistent Storage
-
 
 Endpoints:
 - POST /process  - Process data and save to R2
 - GET /results   - Retrieve results from R2
 - POST /destroy  - Destroy sandbox (data survives!)
 
-
 Try this flow:
 1. POST /process  (processes and saves to R2)
 2. POST /destroy  (destroys sandbox)
 3. GET /results   (data still accessible from R2)
-    `,
-      { headers: { "Content-Type": "text/plain" } },
-    );
-  },
+		`,
+			{ headers: { "Content-Type": "text/plain" } },
+		);
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 import { getSandbox, type Sandbox } from '@cloudflare/sandbox';
-
 
 export { Sandbox } from '@cloudflare/sandbox';
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  DATA_BUCKET: R2Bucket;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	DATA_BUCKET: R2Bucket;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
-    const sandbox = getSandbox(env.Sandbox, 'data-processor');
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
+		const sandbox = getSandbox(env.Sandbox, 'data-processor');
 
+		// Mount R2 bucket to /data directory
+		await sandbox.mountBucket('my-data-bucket', '/data', {
+			endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'
+		});
 
-    // Mount R2 bucket to /data directory
-    await sandbox.mountBucket('my-data-bucket', '/data', {
-      endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'
-    });
-
-
-    if (url.pathname === '/process') {
-      // Process data and save to mounted R2
-      const result = await sandbox.exec('python', {
-        args: ['-c', `
+		if (url.pathname === '/process') {
+			// Process data and save to mounted R2
+			const result = await sandbox.exec('python', {
+				args: ['-c', `
 import json
 import os
 from datetime import datetime
-
 
 # Read input (or create sample data)
 data = [
@@ -263,11 +233,9 @@ data = [
     {'id': 3, 'value': 15}
 ]
 
-
 # Process: calculate sum and average
 total = sum(item['value'] for item in data)
 avg = total / len(data)
-
 
 # Save results to mounted R2 (/data is the mounted bucket)
 result = {
@@ -277,66 +245,56 @@ result = {
     'processed_count': len(data)
 }
 
-
 os.makedirs('/data/results', exist_ok=True)
 with open('/data/results/latest.json', 'w') as f:
     json.dump(result, f, indent=2)
 
-
 print(json.dumps(result))
-        `]
-      });
+				`]
+			});
 
+			return Response.json({
+				message: 'Data processed and saved to R2',
+				result: JSON.parse(result.stdout)
+			});
+		}
 
-      return Response.json({
-        message: 'Data processed and saved to R2',
-        result: JSON.parse(result.stdout)
-      });
-    }
+		if (url.pathname === '/results') {
+			// Read results from mounted R2
+			const result = await sandbox.exec('cat', {
+				args: ['/data/results/latest.json']
+			});
 
+			if (!result.success) {
+				return Response.json({ error: 'No results found yet' }, { status: 404 });
+			}
 
-    if (url.pathname === '/results') {
-      // Read results from mounted R2
-      const result = await sandbox.exec('cat', {
-        args: ['/data/results/latest.json']
-      });
+			return Response.json({
+				message: 'Results retrieved from R2',
+				data: JSON.parse(result.stdout)
+			});
+		}
 
+		if (url.pathname === '/destroy') {
+			// Destroy sandbox to demonstrate persistence
+			await sandbox.destroy();
+			return Response.json({ message: 'Sandbox destroyed. Data persists in R2!' });
+		}
 
-      if (!result.success) {
-        return Response.json({ error: 'No results found yet' }, { status: 404 });
-      }
-
-
-      return Response.json({
-        message: 'Results retrieved from R2',
-        data: JSON.parse(result.stdout)
-      });
-    }
-
-
-    if (url.pathname === '/destroy') {
-      // Destroy sandbox to demonstrate persistence
-      await sandbox.destroy();
-      return Response.json({ message: 'Sandbox destroyed. Data persists in R2!' });
-    }
-
-
-    return new Response(`
+		return new Response(`
 Data Pipeline with Persistent Storage
-
 
 Endpoints:
 - POST /process  - Process data and save to R2
 - GET /results   - Retrieve results from R2
 - POST /destroy  - Destroy sandbox (data survives!)
 
-
 Try this flow:
 1. POST /process  (processes and saves to R2)
 2. POST /destroy  (destroys sandbox)
 3. GET /results   (data still accessible from R2)
-    `, { headers: { 'Content-Type': 'text/plain' } });
-  }
+		`, { headers: { 'Content-Type': 'text/plain' } });
+	}
 };
 ```
 
@@ -358,7 +316,6 @@ Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. F
 ```sh
 npx wrangler secret put AWS_ACCESS_KEY_ID
 # Paste your R2 Access Key ID
-
 
 npx wrangler secret put AWS_SECRET_ACCESS_KEY
 # Paste your R2 Secret Access Key
@@ -383,16 +340,13 @@ Now test against your deployed Worker. Replace `YOUR_WORKER_URL` with your actua
 curl -X POST https://YOUR_WORKER_URL/process
 # Returns: { "message": "Data processed...", "result": { "total": 144, "average": 48, ... } }
 
-
 # 2. Verify data is accessible
 curl https://YOUR_WORKER_URL/results
 # Returns the same results from R2
 
-
 # 3. Destroy the sandbox
 curl -X POST https://YOUR_WORKER_URL/destroy
 # Returns: { "message": "Sandbox destroyed. Data persists in R2!" }
-
 
 # 4. Access results again (from new sandbox)
 curl https://YOUR_WORKER_URL/results
@@ -423,7 +377,14 @@ In this tutorial, you built a data pipeline that demonstrates filesystem persist
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Long-running data processing
 * [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/#page","headline":"Data persistence with R2 · Cloudflare Sandbox SDK docs","description":"Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.","url":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/persistent-storage/","name":"Data persistence with R2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/#page","headline":"Data persistence with R2 · Cloudflare Sandbox SDK docs","description":"Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.","url":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

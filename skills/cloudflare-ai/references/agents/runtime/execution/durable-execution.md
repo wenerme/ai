@@ -1,16 +1,18 @@
 ---
-title: Durable execution with fibers
 description: Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable execution with fibers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable execution with fibers
 
-# Durable execution with fibers
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Run work that survives Durable Object eviction. `runFiber()` registers a task in SQLite, keeps the agent alive during execution, lets you checkpoint intermediate state with `stash()`, and calls `onFiberRecovered()` on the next activation if the agent was evicted mid-task.
 
@@ -22,34 +24,29 @@ For how fibers fit into the bigger picture of building agents that run for weeks
 
 ## Quick start
 
-**TypeScript**
-
 ```ts
 import { Agent } from "agents";
 import type { FiberRecoveryContext } from "agents";
 
-
 class MyAgent extends Agent {
-  async doWork() {
-    await this.runFiber("my-task", async (ctx) => {
-      const step1 = await expensiveOperation();
-      ctx.stash({ step1 });
+	async doWork() {
+		await this.runFiber("my-task", async (ctx) => {
+			const step1 = await expensiveOperation();
+			ctx.stash({ step1 });
 
+			const step2 = await anotherExpensiveOperation(step1);
+			this.setState({ ...this.state, result: step2 });
+		});
+	}
 
-      const step2 = await anotherExpensiveOperation(step1);
-      this.setState({ ...this.state, result: step2 });
-    });
-  }
-
-
-  async onFiberRecovered(ctx: FiberRecoveryContext) {
-    if (ctx.name !== "my-task") return;
-    const snapshot = ctx.snapshot as { step1: unknown } | null;
-    if (snapshot) {
-      const step2 = await anotherExpensiveOperation(snapshot.step1);
-      this.setState({ ...this.state, result: step2 });
-    }
-  }
+	async onFiberRecovered(ctx: FiberRecoveryContext) {
+		if (ctx.name !== "my-task") return;
+		const snapshot = ctx.snapshot as { step1: unknown } | null;
+		if (snapshot) {
+			const step2 = await anotherExpensiveOperation(snapshot.step1);
+			this.setState({ ...this.state, result: step2 });
+		}
+	}
 }
 ```
 
@@ -71,35 +68,29 @@ For work that should run independently of the agent with per-step retries and mu
 
 Prevents idle eviction by creating a 30-second alarm heartbeat that resets the inactivity timer.
 
-**TypeScript**
-
 ```ts
 class Agent {
-  keepAlive(): Promise<() => void>;
-  keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>;
+	keepAlive(): Promise<() => void>;
+	keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>;
 }
 ```
 
 `keepAliveWhile()` is the recommended approach — it runs an async function and automatically cleans up the heartbeat when it completes or throws:
 
-**TypeScript**
-
 ```ts
 const result = await this.keepAliveWhile(async () => {
-  return await slowAPICall();
+	return await slowAPICall();
 });
 ```
 
 For manual control, `keepAlive()` returns a disposer. Always call it when done — otherwise the heartbeat continues indefinitely:
 
-**TypeScript**
-
 ```ts
 const dispose = await this.keepAlive();
 try {
-  await longWork();
+	await longWork();
 } finally {
-  dispose();
+	dispose();
 }
 ```
 
@@ -113,11 +104,9 @@ The heartbeat is invisible to `listSchedules()` — no schedule rows are created
 
 Default: 30 seconds. The inactivity timeout is \~70–140 seconds, so 30 seconds gives comfortable margin. Override via static options:
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent {
-  static options = { keepAliveIntervalMs: 2_000 };
+	static options = { keepAliveIntervalMs: 2_000 };
 }
 ```
 
@@ -139,56 +128,51 @@ class MyAgent extends Agent {
 
 Durable execution with checkpointing and recovery.
 
-**TypeScript**
-
 ```ts
 class Agent {
-  runFiber<T>(name: string, fn: (ctx: FiberContext) => Promise<T>): Promise<T>;
-  startFiber(
-    name: string,
-    fn: (ctx: FiberContext) => Promise<void>,
-    options?: StartFiberOptions,
-  ): Promise<StartFiberResult>;
-  inspectFiber(fiberId: string): Promise<FiberInspection | null>;
-  inspectFiberByKey(idempotencyKey: string): Promise<FiberInspection | null>;
-  listFibers(options?: ListFibersOptions): Promise<FiberInspection[]>;
-  cancelFiber(fiberId: string, reason?: string): Promise<boolean>;
-  cancelFiberByKey(idempotencyKey: string, reason?: string): Promise<boolean>;
-  deleteFibers(options?: DeleteFibersOptions): Promise<number>;
-  resolveFiber(fiberId: string, result: FiberRecoveryResult): Promise<boolean>;
-  stash(data: unknown): void;
-  onFiberRecovered(
-    ctx: FiberRecoveryContext,
-  ): Promise<void | FiberRecoveryResult>;
+	runFiber<T>(name: string, fn: (ctx: FiberContext) => Promise<T>): Promise<T>;
+	startFiber(
+		name: string,
+		fn: (ctx: FiberContext) => Promise<void>,
+		options?: StartFiberOptions,
+	): Promise<StartFiberResult>;
+	inspectFiber(fiberId: string): Promise<FiberInspection | null>;
+	inspectFiberByKey(idempotencyKey: string): Promise<FiberInspection | null>;
+	listFibers(options?: ListFibersOptions): Promise<FiberInspection[]>;
+	cancelFiber(fiberId: string, reason?: string): Promise<boolean>;
+	cancelFiberByKey(idempotencyKey: string, reason?: string): Promise<boolean>;
+	deleteFibers(options?: DeleteFibersOptions): Promise<number>;
+	resolveFiber(fiberId: string, result: FiberRecoveryResult): Promise<boolean>;
+	stash(data: unknown): void;
+	onFiberRecovered(
+		ctx: FiberRecoveryContext,
+	): Promise<void | FiberRecoveryResult>;
 }
 
-
 type FiberContext = {
-  id: string;
-  signal: AbortSignal;
-  stash(data: unknown): void;
-  snapshot: unknown | null;
+	id: string;
+	signal: AbortSignal;
+	stash(data: unknown): void;
+	snapshot: unknown | null;
 };
 
-
 type FiberStatus =
-  | "pending"
-  | "running"
-  | "completed"
-  | "aborted"
-  | "interrupted"
-  | "error";
-
+	| "pending"
+	| "running"
+	| "completed"
+	| "aborted"
+	| "interrupted"
+	| "error";
 
 type FiberRecoveryContext = {
-  id: string;
-  name: string;
-  status?: FiberStatus;
-  idempotencyKey?: string;
-  metadata?: Record<string, unknown> | null;
-  snapshot: unknown | null;
-  createdAt: number;
-  recoveryReason: "interrupted";
+	id: string;
+	name: string;
+	status?: FiberStatus;
+	idempotencyKey?: string;
+	metadata?: Record<string, unknown> | null;
+	snapshot: unknown | null;
+	createdAt: number;
+	recoveryReason: "interrupted";
 };
 ```
 
@@ -214,12 +198,10 @@ runFiber("work", fn)
 ```txt
 [DO evicted — all in-memory state lost]
 
-
   On next activation:
   ├─ Request/connection → onStart() → check for orphaned fibers  [primary path]
   │  OR
   ├─ Persisted alarm fires → housekeeping check                   [fallback path]
-
 
   Recovery:
   ├─ Load interrupted fibers from storage
@@ -255,18 +237,15 @@ No automatic retries. Recovery logic belongs in `onFiberRecovered`, where you ha
 
 `runFiber()` supports both patterns:
 
-**TypeScript**
-
 ```ts
 // Inline — await the result
 const result = await this.runFiber("work", async (ctx) => {
-  return computeExpensiveThing();
+	return computeExpensiveThing();
 });
-
 
 // Fire-and-forget — caller does not wait
 void this.runFiber("background", async (ctx) => {
-  await longRunningProcess();
+	await longRunningProcess();
 });
 ```
 
@@ -276,59 +255,49 @@ If the DO is evicted during an inline `await`, the caller is gone. On recovery, 
 
 Use `startFiber()` when a caller needs to durably accept background work, return quickly, and safely dedupe retries. It stores a retained fiber record before the callback runs, then starts the callback in the background using the same keep-alive and recovery machinery as `runFiber()`.
 
-**TypeScript**
-
 ```ts
 const receipt = await this.startFiber(
-  "reply-to-webhook",
-  async (ctx) => {
-    ctx.stash({ webhookId, threadId });
-    await postReply(threadId);
-  },
-  {
-    idempotencyKey: `webhook:${webhookId}`,
-    metadata: { threadId },
-  },
+	"reply-to-webhook",
+	async (ctx) => {
+		ctx.stash({ webhookId, threadId });
+		await postReply(threadId);
+	},
+	{
+		idempotencyKey: `webhook:${webhookId}`,
+		metadata: { threadId },
+	},
 );
 
-
 if (!receipt.accepted) {
-  // This webhook was already accepted by an earlier delivery.
+	// This webhook was already accepted by an earlier delivery.
 }
 ```
 
 By default, `startFiber()` returns after the work is durably accepted. Pass `waitForCompletion: true` when the caller should remain open until the accepted fiber reaches a terminal status. Duplicate calls with the same idempotency key join an active in-memory execution when possible, then return the retained status with `accepted: false`.
 
-**TypeScript**
-
 ```ts
 const result = await this.startFiber("reply-to-webhook", reply, {
-  idempotencyKey: `webhook:${webhookId}`,
-  waitForCompletion: true,
+	idempotencyKey: `webhook:${webhookId}`,
+	waitForCompletion: true,
 });
 
-
 if (result.status === "error") {
-  console.error(result.error);
+	console.error(result.error);
 }
 ```
 
 `startFiber()` is a durable acceptance API, not a value-return API. It returns the managed fiber status, but not the callback's result. Inspect status later with `inspectFiber()` or `inspectFiberByKey()`.
 
-**TypeScript**
-
 ```ts
 const current = await this.inspectFiberByKey(`webhook:${webhookId}`);
 
-
 if (current) {
-  await this.cancelFiber(current.fiberId, "No longer needed");
+	await this.cancelFiber(current.fiberId, "No longer needed");
 }
 
-
 await this.deleteFibers({
-  status: ["completed", "error", "aborted"],
-  settledBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+	status: ["completed", "error", "aborted"],
+	settledBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
 });
 ```
 
@@ -340,21 +309,17 @@ If the Durable Object is evicted mid-fiber, the retained record is marked `inter
 
 Return a `FiberRecoveryResult` from `onFiberRecovered()` to record the policy decision:
 
-**TypeScript**
-
 ```ts
 async onFiberRecovered(ctx: FiberRecoveryContext) {
-  if (ctx.name !== "reply-to-webhook") return;
+	if (ctx.name !== "reply-to-webhook") return;
 
+	const snapshot = ctx.snapshot as { webhookId: string; threadId: string };
+	await postRecoveryMessage(snapshot.threadId);
 
-  const snapshot = ctx.snapshot as { webhookId: string; threadId: string };
-  await postRecoveryMessage(snapshot.threadId);
-
-
-  return {
-    status: "completed",
-    snapshot: { ...snapshot, recovered: true },
-  };
+	return {
+		status: "completed",
+		snapshot: { ...snapshot, recovered: true },
+	};
 }
 ```
 
@@ -368,26 +333,22 @@ If recovery is triggered by a later duplicate webhook instead of `onFiberRecover
 
 Each call **fully replaces** the previous snapshot — it is not a merge. Write the complete recovery state you need:
 
-**TypeScript**
-
 ```ts
 await this.runFiber("research", async (ctx) => {
-  const steps = ["search", "analyze", "synthesize"];
-  const completed: string[] = [];
-  const results: Record<string, unknown> = {};
+	const steps = ["search", "analyze", "synthesize"];
+	const completed: string[] = [];
+	const results: Record<string, unknown> = {};
 
+	for (const step of steps) {
+		results[step] = await executeStep(step);
+		completed.push(step);
 
-  for (const step of steps) {
-    results[step] = await executeStep(step);
-    completed.push(step);
-
-
-    ctx.stash({
-      completed,
-      results,
-      pendingSteps: steps.slice(completed.length),
-    });
-  }
+		ctx.stash({
+			completed,
+			results,
+			pendingSteps: steps.slice(completed.length),
+		});
+	}
 });
 ```
 
@@ -401,40 +362,34 @@ Both do the same thing. `ctx.stash()` uses a direct closure over the fiber ID. `
 
 Override `onFiberRecovered` to handle interrupted fibers. The default implementation logs a warning and deletes the row.
 
-**TypeScript**
-
 ```ts
 class ResearchAgent extends Agent {
-  async onFiberRecovered(ctx: FiberRecoveryContext) {
-    if (ctx.name !== "research") return;
+	async onFiberRecovered(ctx: FiberRecoveryContext) {
+		if (ctx.name !== "research") return;
 
+		const snapshot = ctx.snapshot as {
+			completed: string[];
+			results: Record<string, unknown>;
+			pendingSteps: string[];
+		} | null;
 
-    const snapshot = ctx.snapshot as {
-      completed: string[];
-      results: Record<string, unknown>;
-      pendingSteps: string[];
-    } | null;
+		if (snapshot && snapshot.pendingSteps.length > 0) {
+			void this.runFiber("research", async (fiberCtx) => {
+				const { completed, results, pendingSteps } = snapshot;
 
+				for (const step of pendingSteps) {
+					results[step] = await this.executeStep(step);
+					completed.push(step);
 
-    if (snapshot && snapshot.pendingSteps.length > 0) {
-      void this.runFiber("research", async (fiberCtx) => {
-        const { completed, results, pendingSteps } = snapshot;
-
-
-        for (const step of pendingSteps) {
-          results[step] = await this.executeStep(step);
-          completed.push(step);
-
-
-          fiberCtx.stash({
-            completed,
-            results,
-            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1),
-          });
-        }
-      });
-    }
-  }
+					fiberCtx.stash({
+						completed,
+						results,
+						pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1),
+					});
+				}
+			});
+		}
+	}
 }
 ```
 
@@ -454,14 +409,12 @@ Key points:
 
 Multiple fibers can run at the same time. Each has its own row in SQLite with its own snapshot, and each calls `keepAlive()` independently (ref-counted, so the DO stays alive until all fibers complete).
 
-**TypeScript**
-
 ```ts
 void this.runFiber("fetch-data", async (ctx) => {
-  /* ... */
+	/* ... */
 });
 void this.runFiber("process-queue", async (ctx) => {
-  /* ... */
+	/* ... */
 });
 ```
 
@@ -549,7 +502,14 @@ Run an async function while keeping the DO alive. Heartbeat starts before `fn` a
 * [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step execution outside the agent
 * [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `chatRecovery` and `onChatRecovery`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#page","headline":"Durable execution with fibers · Cloudflare Agents docs","description":"Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/durable-execution/","name":"Durable execution with fibers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#page","headline":"Durable execution with fibers · Cloudflare Agents docs","description":"Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

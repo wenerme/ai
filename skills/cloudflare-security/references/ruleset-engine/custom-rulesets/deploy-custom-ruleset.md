@@ -1,16 +1,18 @@
 ---
-title: Deploy a custom ruleset
 description: Learn how to deploy a custom ruleset to your Cloudflare account.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Deploy a custom ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy a custom ruleset
 
-# Deploy a custom ruleset
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To deploy a custom ruleset, add a rule with `execute` action to the list of rules of a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account or zone level. The expression of the new rule will define when the custom ruleset will run.
 
@@ -48,92 +50,90 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "description": "Execute custom ruleset",
-            "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
-            "action_parameters": {
-                "id": "<CUSTOM_RULESET_ID>"
-            }
-        },
-        {
-            "id": "<EXISTING_PHASE_RULE_ID_1>"
-        },
-        {
-            "id": "<EXISTING_PHASE_RULE_ID_2>"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"description": "Execute custom ruleset",
+						"expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
+						"action_parameters": {
+								"id": "<CUSTOM_RULESET_ID>"
+						}
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_1>"
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_2>"
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<ACCOUNT_PHASE_RULESET_ID>",
-    "name": "http_request_firewall_custom phase entry point ruleset for my account",
-    "description": "Execute several rulesets",
-    "kind": "root",
-    "version": "3",
-    "rules": [
-      {
-        "id": "<PHASE_RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "description": "Execute custom ruleset",
-        "action_parameters": {
-          "id": "<CUSTOM_RULESET_ID>",
-          "version": "latest"
-        },
-        "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
-        "last_updated": "2021-03-18T18:35:14.135697Z",
-        "ref": "<PHASE_RULE_REF>",
-        "enabled": true
-      },
-      {
-        "id": "<EXISTING_PHASE_RULE_ID_1>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "<EXECUTED_RULESET_ID_1>",
-          "version": "latest"
-        },
-        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
-        "last_updated": "2021-03-16T15:51:49.180378Z",
-        "ref": "<EXISTING_PHASE_RULE_REF_1>",
-        "enabled": true
-      },
-      {
-        "id": "<EXISTING_PHASE_RULE_ID_2>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "<EXECUTED_RULESET_ID_2>",
-          "version": "latest"
-        },
-        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
-        "last_updated": "2021-03-16T15:50:29.861157Z",
-        "ref": "<EXISTING_PHASE_RULE_REF_2>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2021-03-18T18:35:14.135697Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ACCOUNT_PHASE_RULESET_ID>",
+		"name": "http_request_firewall_custom phase entry point ruleset for my account",
+		"description": "Execute several rulesets",
+		"kind": "root",
+		"version": "3",
+		"rules": [
+			{
+				"id": "<PHASE_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"description": "Execute custom ruleset",
+				"action_parameters": {
+					"id": "<CUSTOM_RULESET_ID>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-18T18:35:14.135697Z",
+				"ref": "<PHASE_RULE_REF>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_1>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "<EXECUTED_RULESET_ID_1>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-16T15:51:49.180378Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_1>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_2>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "<EXECUTED_RULESET_ID_2>",
+					"version": "latest"
+				},
+				"expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
+				"last_updated": "2021-03-16T15:50:29.861157Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_2>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2021-03-18T18:35:14.135697Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
-Warning
+Caution
 
 When deploying the custom ruleset at the account level, you must use parentheses to enclose any custom conditions and end your expression with `and cf.zone.plan eq "ENT"` like in the example above, or else the API operation will fail.
 
@@ -168,68 +168,66 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "description": "Execute custom ruleset (zone)",
-            "expression": "(http.request.uri.path eq \"/login\")",
-            "action_parameters": {
-                "id": "<CUSTOM_RULESET_ID>"
-            }
-        },
-        {
-            "id": "<EXISTING_PHASE_RULE_ID_1>"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"description": "Execute custom ruleset (zone)",
+						"expression": "(http.request.uri.path eq \"/login\")",
+						"action_parameters": {
+								"id": "<CUSTOM_RULESET_ID>"
+						}
+				},
+				{
+						"id": "<EXISTING_PHASE_RULE_ID_1>"
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<ZONE_PHASE_RULESET_ID>",
-    "name": "http_request_firewall_custom phase entry point ruleset for my zone",
-    "description": "",
-    "kind": "zone",
-    "version": "3",
-    "rules": [
-      {
-        "id": "<PHASE_RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "description": "Execute custom ruleset (zone)",
-        "action_parameters": {
-          "id": "<CUSTOM_RULESET_ID>",
-          "version": "latest"
-        },
-        "expression": "(http.request.uri.path eq \"/login\")",
-        "last_updated": "2025-08-18T18:35:14.135697Z",
-        "ref": "<PHASE_RULE_REF>",
-        "enabled": true
-      },
-      {
-        "id": "<EXISTING_PHASE_RULE_ID_1>",
-        "version": "1",
-        "action": "managed_challenge",
-        "expression": "(cf.waf.score lt 20 and http.request.uri.path wildcard \"/admin/*\")",
-        "last_updated": "2025-08-16T15:51:49.180378Z",
-        "ref": "<EXISTING_PHASE_RULE_REF_1>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2025-08-18T18:35:14.135697Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ZONE_PHASE_RULESET_ID>",
+		"name": "http_request_firewall_custom phase entry point ruleset for my zone",
+		"description": "",
+		"kind": "zone",
+		"version": "3",
+		"rules": [
+			{
+				"id": "<PHASE_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"description": "Execute custom ruleset (zone)",
+				"action_parameters": {
+					"id": "<CUSTOM_RULESET_ID>",
+					"version": "latest"
+				},
+				"expression": "(http.request.uri.path eq \"/login\")",
+				"last_updated": "2025-08-18T18:35:14.135697Z",
+				"ref": "<PHASE_RULE_REF>",
+				"enabled": true
+			},
+			{
+				"id": "<EXISTING_PHASE_RULE_ID_1>",
+				"version": "1",
+				"action": "managed_challenge",
+				"expression": "(cf.waf.score lt 20 and http.request.uri.path wildcard \"/admin/*\")",
+				"last_updated": "2025-08-16T15:51:49.180378Z",
+				"ref": "<EXISTING_PHASE_RULE_REF_1>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2025-08-18T18:35:14.135697Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -237,7 +235,14 @@ Note
 
 Currently, zone-level custom rulesets are only available in the [http\_request\_firewall\_custom](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/#page","headline":"Deploy a custom ruleset · Cloudflare Ruleset Engine docs","description":"Learn how to deploy a custom ruleset to your Cloudflare account.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/custom-rulesets/","name":"Work with custom rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/custom-rulesets/deploy-custom-ruleset/","name":"Deploy a custom ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/#page","headline":"Deploy a custom ruleset · Cloudflare Ruleset Engine docs","description":"Learn how to deploy a custom ruleset to your Cloudflare account.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Protocol validation rules
 description: Protocol validation rules for network traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Protocol validation rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protocol validation rules
 
-# Protocol validation rules
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Network Firewall (formerly Magic Firewall) supports [Session Initiation Protocol (SIP) ↗](https://datatracker.ietf.org/doc/html/rfc2543) to inspect traffic validity and enforce a positive security model.
 
@@ -18,7 +20,14 @@ You can use the `sip` field when creating a rule to determine if packets are val
 
 Contact your account manager if you need Cloudflare Network Firewall to support additional protocols.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/#page","headline":"Protocol validation rules · Cloudflare Network Firewall docs","description":"Protocol validation rules for network traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/about/protocol-validation-rules/","name":"Protocol validation rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/#page","headline":"Protocol validation rules · Cloudflare Network Firewall docs","description":"Protocol validation rules for network traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Deploy Hooks
 description: Generate unique URLs that trigger new builds when they receive an HTTP POST request.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy Hooks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy Hooks
 
-# Deploy Hooks
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Workers Builds triggers a build when you push a commit to your [connected Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/). Deploy Hooks provide another way to trigger a build. Each hook is a unique URL that triggers a manual build for one branch when it receives an HTTP POST request. Use Deploy Hooks to connect Workers Builds with workflows such as:
 
@@ -23,7 +25,7 @@ By default, Workers Builds triggers a build when you push a commit to your [conn
 Before creating a Deploy Hook, ensure your Worker is [connected to a Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/).
 
 1. Go to **Workers & Pages** and select your Worker.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Go to **Settings** \> **Builds** \> **Deploy Hooks**.
 3. Enter a **name** and select the **branch** to build.
 4. Select **Create** and copy the generated URL.
@@ -112,37 +114,27 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-12315)
-* [  TypeScript ](#tab-panel-12316)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const body = await request.formData();
-    const command = body.get("command");
-    const token = body.get("token");
+	async fetch(request, env) {
+		const body = await request.formData();
+		const command = body.get("command");
+		const token = body.get("token");
 
+		if (token !== env.SLACK_VERIFICATION_TOKEN) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
-    if (token !== env.SLACK_VERIFICATION_TOKEN) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+		if (command === "/deploy") {
+			const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+			const { result } = await res.json();
+			return new Response(`Build started: ${result.build_uuid}`);
+		}
 
-
-    if (command === "/deploy") {
-      const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
-      const { result } = await res.json();
-      return new Response(`Build started: ${result.build_uuid}`);
-    }
-
-
-    return new Response("Unknown command", { status: 400 });
-  },
+		return new Response("Unknown command", { status: 400 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export default {
@@ -151,18 +143,15 @@ export default {
     const command = body.get("command");
     const token = body.get("token");
 
-
     if (token !== env.SLACK_VERIFICATION_TOKEN) {
       return new Response("Unauthorized", { status: 401 });
     }
-
 
     if (command === "/deploy") {
       const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
       const { result } = await res.json<{ result: { build_uuid: string } }>();
       return new Response(`Build started: ${result.build_uuid}`);
     }
-
 
     return new Response("Unknown command", { status: 400 });
   },
@@ -173,20 +162,13 @@ export default {
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-12313)
-* [  TypeScript ](#tab-panel-12314)
-
-**JavaScript**
-
 ```js
 export default {
-  async scheduled(event, env) {
-    await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
-  },
+	async scheduled(event, env) {
+		await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export default {
@@ -198,7 +180,7 @@ export default {
 
 ## Security considerations
 
-Warning
+Caution
 
 Deploy Hook URLs do not require a separate authorization header. Anyone with access to the URL can trigger builds for your Worker, so store them like other sensitive credentials.
 
@@ -214,7 +196,14 @@ If your external system supports custom headers, you can call the [manual build 
 
 Deploy Hooks are rate limited to 10 builds per minute per Worker and 100 builds per minute per account. For all Workers Builds limits, see [Limits & pricing](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Workers docs","description":"Generate unique URLs that trigger new builds when they receive an HTTP POST request.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/deploy-hooks/","name":"Deploy Hooks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Workers docs","description":"Generate unique URLs that trigger new builds when they receive an HTTP POST request.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

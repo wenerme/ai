@@ -1,16 +1,18 @@
 ---
-title: Think
 description: Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Think
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Think
 
-# Think
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
@@ -30,60 +32,49 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-6049)
-* [  TypeScript ](#tab-panel-6050)
-
-**JavaScript**
-
 ```js
 import { Think } from "@cloudflare/think";
 import { createWorkersAI } from "workers-ai-provider";
 import { routeAgentRequest } from "agents";
 
-
 export class MyAgent extends Think {
-  getModel() {
-    return createWorkersAI({ binding: this.env.AI })(
-      "@cf/moonshotai/kimi-k2.6",
-    );
-  }
+	getModel() {
+		return createWorkersAI({ binding: this.env.AI })(
+			"@cf/moonshotai/kimi-k2.6",
+		);
+	}
 }
 
-
 export default {
-  async fetch(request, env) {
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request, env) {
+		return (
+			(await routeAgentRequest(request, env)) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Think } from "@cloudflare/think";
 import { createWorkersAI } from "workers-ai-provider";
 import { routeAgentRequest } from "agents";
 
-
 export class MyAgent extends Think<Env> {
-  getModel() {
-    return createWorkersAI({ binding: this.env.AI })(
-      "@cf/moonshotai/kimi-k2.6",
-    );
-  }
+	getModel() {
+		return createWorkersAI({ binding: this.env.AI })(
+			"@cf/moonshotai/kimi-k2.6",
+		);
+	}
 }
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			(await routeAgentRequest(request, env)) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -91,103 +82,85 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-6051)
-* [  TypeScript ](#tab-panel-6052)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
 
-
 function Chat() {
-  const agent = useAgent({ agent: "MyAgent" });
-  const { messages, sendMessage, status } = useAgentChat({ agent });
+	const agent = useAgent({ agent: "MyAgent" });
+	const { messages, sendMessage, status } = useAgentChat({ agent });
 
+	return (
+		<div>
+			{messages.map((msg) => (
+				<div key={msg.id}>
+					<strong>{msg.role}:</strong>
+					{msg.parts.map((part, i) =>
+						part.type === "text" ? <span key={i}>{part.text}</span> : null,
+					)}
+				</div>
+			))}
 
-  return (
-    <div>
-      {messages.map((msg) => (
-        <div key={msg.id}>
-          <strong>{msg.role}:</strong>
-          {msg.parts.map((part, i) =>
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-          )}
-        </div>
-      ))}
-
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const input = e.currentTarget.elements.namedItem("input");
-          sendMessage({ text: input.value });
-          input.value = "";
-        }}
-      >
-        <input name="input" placeholder="Send a message..." />
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  );
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					const input = e.currentTarget.elements.namedItem("input");
+					sendMessage({ text: input.value });
+					input.value = "";
+				}}
+			>
+				<input name="input" placeholder="Send a message..." />
+				<button type="submit">Send</button>
+			</form>
+		</div>
+	);
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { useAgent } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
 
-
 function Chat() {
-  const agent = useAgent({ agent: "MyAgent" });
-  const { messages, sendMessage, status } = useAgentChat({ agent });
+	const agent = useAgent({ agent: "MyAgent" });
+	const { messages, sendMessage, status } = useAgentChat({ agent });
 
+	return (
+		<div>
+			{messages.map((msg) => (
+				<div key={msg.id}>
+					<strong>{msg.role}:</strong>
+					{msg.parts.map((part, i) =>
+						part.type === "text" ? <span key={i}>{part.text}</span> : null,
+					)}
+				</div>
+			))}
 
-  return (
-    <div>
-      {messages.map((msg) => (
-        <div key={msg.id}>
-          <strong>{msg.role}:</strong>
-          {msg.parts.map((part, i) =>
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-          )}
-        </div>
-      ))}
-
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const input = e.currentTarget.elements.namedItem(
-            "input",
-          ) as HTMLInputElement;
-          sendMessage({ text: input.value });
-          input.value = "";
-        }}
-      >
-        <input name="input" placeholder="Send a message..." />
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  );
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					const input = e.currentTarget.elements.namedItem(
+						"input",
+					) as HTMLInputElement;
+					sendMessage({ text: input.value });
+					input.value = "";
+				}}
+			>
+				<input name="input" placeholder="Send a message..." />
+				<button type="submit">Send</button>
+			</form>
+		</div>
+	);
 }
 ```
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-6045)
-* [  wrangler.toml ](#tab-panel-6046)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -213,22 +186,17 @@ function Chat() {
 }
 ```
 
-**TOML**
-
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = ["nodejs_compat"]
-
 
 [ai]
 binding = "AI"
 
-
 [[durable_objects.bindings]]
 class_name = "MyAgent"
 name = "MyAgent"
-
 
 [[migrations]]
 new_sqlite_classes = ["MyAgent"]
@@ -290,86 +258,73 @@ Experimental
 
 The `input` accepts a string, a `UIMessage`, an array of messages, or — in `wait` and `stream` modes — a function `(current) => UIMessage[]` evaluated at admission. (`submit` does not accept function input.)
 
-* [  JavaScript ](#tab-panel-6053)
-* [  TypeScript ](#tab-panel-6054)
-
-**JavaScript**
-
 ```js
 export class Assistant extends Think {
-  async examples(inboundEventId) {
-    // wait — block for the result
-    const result = await this.runTurn({ input: "Summarize the latest thread" });
-    if (result.status === "completed") {
-      // result.message is the assistant message; result.continuation is false
-    }
+	async examples(inboundEventId) {
+		// wait — block for the result
+		const result = await this.runTurn({ input: "Summarize the latest thread" });
+		if (result.status === "completed") {
+			// result.message is the assistant message; result.continuation is false
+		}
 
+		// submit — durable acceptance, check status later
+		const submission = await this.runTurn({
+			mode: "submit",
+			input: "Process this webhook",
+			idempotencyKey: inboundEventId, // dedupe; safe to retry
+		});
+		// submission.accepted is true on first accept; submission.status is "pending"
 
-    // submit — durable acceptance, check status later
-    const submission = await this.runTurn({
-      mode: "submit",
-      input: "Process this webhook",
-      idempotencyKey: inboundEventId, // dedupe; safe to retry
-    });
-    // submission.accepted is true on first accept; submission.status is "pending"
+		// stream — drive a callback (the same surface as chat())
+		await this.runTurn({
+			mode: "stream",
+			input: "Stream me",
+			callback: {
+				onStart({ requestId }) {},
+				onEvent(json) {}, // UIMessageChunk JSON
+				onDone() {},
+				onError(error) {},
+			},
+		});
 
-
-    // stream — drive a callback (the same surface as chat())
-    await this.runTurn({
-      mode: "stream",
-      input: "Stream me",
-      callback: {
-        onStart({ requestId }) {},
-        onEvent(json) {}, // UIMessageChunk JSON
-        onDone() {},
-        onError(error) {},
-      },
-    });
-
-
-    // continuation — continue the last assistant turn instead of sending input
-    await this.runTurn({ continuation: true });
-  }
+		// continuation — continue the last assistant turn instead of sending input
+		await this.runTurn({ continuation: true });
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Assistant extends Think<Env> {
-  async examples(inboundEventId: string) {
-    // wait — block for the result
-    const result = await this.runTurn({ input: "Summarize the latest thread" });
-    if (result.status === "completed") {
-      // result.message is the assistant message; result.continuation is false
-    }
+	async examples(inboundEventId: string) {
+		// wait — block for the result
+		const result = await this.runTurn({ input: "Summarize the latest thread" });
+		if (result.status === "completed") {
+			// result.message is the assistant message; result.continuation is false
+		}
 
+		// submit — durable acceptance, check status later
+		const submission = await this.runTurn({
+			mode: "submit",
+			input: "Process this webhook",
+			idempotencyKey: inboundEventId, // dedupe; safe to retry
+		});
+		// submission.accepted is true on first accept; submission.status is "pending"
 
-    // submit — durable acceptance, check status later
-    const submission = await this.runTurn({
-      mode: "submit",
-      input: "Process this webhook",
-      idempotencyKey: inboundEventId, // dedupe; safe to retry
-    });
-    // submission.accepted is true on first accept; submission.status is "pending"
+		// stream — drive a callback (the same surface as chat())
+		await this.runTurn({
+			mode: "stream",
+			input: "Stream me",
+			callback: {
+				onStart({ requestId }) {},
+				onEvent(json) {}, // UIMessageChunk JSON
+				onDone() {},
+				onError(error) {},
+			},
+		});
 
-
-    // stream — drive a callback (the same surface as chat())
-    await this.runTurn({
-      mode: "stream",
-      input: "Stream me",
-      callback: {
-        onStart({ requestId }) {},
-        onEvent(json) {}, // UIMessageChunk JSON
-        onDone() {},
-        onError(error) {},
-      },
-    });
-
-
-    // continuation — continue the last assistant turn instead of sending input
-    await this.runTurn({ continuation: true });
-  }
+		// continuation — continue the last assistant turn instead of sending input
+		await this.runTurn({ continuation: true });
+	}
 }
 ```
 
@@ -404,38 +359,31 @@ Use `saveMessages()` when the caller owns the trigger and can wait for the turn 
 
 Use `addMessages()` to write to the transcript **without** starting a model turn — for importing prior history or injecting background context the next turn should see:
 
-* [  JavaScript ](#tab-panel-6047)
-* [  TypeScript ](#tab-panel-6048)
-
-**JavaScript**
-
 ```js
 export class Assistant extends Think {
-  async importContext() {
-    await this.addMessages([
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [{ type: "text", text: "Imported context" }],
-      },
-    ]);
-  }
+	async importContext() {
+		await this.addMessages([
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [{ type: "text", text: "Imported context" }],
+			},
+		]);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Assistant extends Think<Env> {
-  async importContext() {
-    await this.addMessages([
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [{ type: "text", text: "Imported context" }],
-      },
-    ]);
-  }
+	async importContext() {
+		await this.addMessages([
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [{ type: "text", text: "Imported context" }],
+			},
+		]);
+	}
 }
 ```
 
@@ -453,33 +401,61 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 
 ## In this section
 
-[ Getting started ](https://developers.cloudflare.com/agents/harnesses/think/getting-started/) Build a Think agent step by step.
+### [ Getting started ](https://developers.cloudflare.com/agents/harnesses/think/getting-started/)
 
-[ Configuration ](https://developers.cloudflare.com/agents/harnesses/think/configuration/) Configuration overrides, dynamic configuration, and Session integration.
+ Build a Think agent step by step.
 
-[ Tools ](https://developers.cloudflare.com/agents/harnesses/think/tools/) Workspace tools, code execution, browser tools, and extensions.
+### [ Configuration ](https://developers.cloudflare.com/agents/harnesses/think/configuration/)
 
-[ Actions ](https://developers.cloudflare.com/agents/harnesses/think/actions/) Server actions with idempotency, approvals, authorization, and reply attachments.
+ Configuration overrides, dynamic configuration, and Session integration.
 
-[ Channels ](https://developers.cloudflare.com/agents/harnesses/think/channels/) Per-channel policy, channel selection, and out-of-band notices.
+### [ Tools ](https://developers.cloudflare.com/agents/harnesses/think/tools/)
 
-[ Lifecycle hooks ](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/) beforeTurn, beforeStep, onStepFinish, onChatResponse, and more.
+ Workspace tools, code execution, browser tools, and extensions.
 
-[ Client tools ](https://developers.cloudflare.com/agents/harnesses/think/client-tools/) Browser-side tools, approvals, and concurrency.
+### [ Actions ](https://developers.cloudflare.com/agents/harnesses/think/actions/)
 
-[ Messengers ](https://developers.cloudflare.com/agents/harnesses/think/messengers/) Receive and reply to Chat SDK messenger webhooks.
+ Server actions with idempotency, approvals, authorization, and reply attachments.
 
-[ Scheduled tasks ](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) Declarative recurring prompts and handlers.
+### [ Channels ](https://developers.cloudflare.com/agents/harnesses/think/channels/)
 
-[ Workflows ](https://developers.cloudflare.com/agents/harnesses/think/workflows/) Durable model-driven reasoning steps inside Cloudflare Workflows.
+ Per-channel policy, channel selection, and out-of-band notices.
 
-[ Sub-agent RPC ](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/) chat() streaming, saveMessages, continueLastTurn, and abort.
+### [ Lifecycle hooks ](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/)
 
-[ Programmatic submissions ](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/) Durable turn admission for webhooks and RPC callers.
+ beforeTurn, beforeStep, onStepFinish, onChatResponse, and more.
 
-[ Durable recovery ](https://developers.cloudflare.com/agents/harnesses/think/recovery/) Chat recovery, stream-stall watchdog, and stability detection.
+### [ Client tools ](https://developers.cloudflare.com/agents/harnesses/think/client-tools/)
 
-[ Agent Skills ](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) On-demand instructions, resources, and scripts via getSkills().
+ Browser-side tools, approvals, and concurrency.
+
+### [ Messengers ](https://developers.cloudflare.com/agents/harnesses/think/messengers/)
+
+ Receive and reply to Chat SDK messenger webhooks.
+
+### [ Scheduled tasks ](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/)
+
+ Declarative recurring prompts and handlers.
+
+### [ Workflows ](https://developers.cloudflare.com/agents/harnesses/think/workflows/)
+
+ Durable model-driven reasoning steps inside Cloudflare Workflows.
+
+### [ Sub-agent RPC ](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/)
+
+ chat() streaming, saveMessages, continueLastTurn, and abort.
+
+### [ Programmatic submissions ](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/)
+
+ Durable turn admission for webhooks and RPC callers.
+
+### [ Durable recovery ](https://developers.cloudflare.com/agents/harnesses/think/recovery/)
+
+ Chat recovery, stream-stall watchdog, and stability detection.
+
+### [ Agent Skills ](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)
+
+ On-demand instructions, resources, and scripts via getSkills().
 
 ## Acknowledgments
 
@@ -487,7 +463,9 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 
 ## Example
 
-[ Assistant example ](https://github.com/cloudflare/agents/tree/main/examples/assistant) Explore a multi-session Think assistant with sub-agent routing, shared workspace, MCP, chat recovery, and GitHub OAuth.
+### [ Assistant example ](https://github.com/cloudflare/agents/tree/main/examples/assistant)
+
+ Explore a multi-session Think assistant with sub-agent routing, shared workspace, MCP, chat recovery, and GitHub OAuth.
 
 ## Related
 
@@ -498,7 +476,14 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 * [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) — `runFiber()` and crash recovery (used by `chatRecovery`)
 * [Browse the web](https://developers.cloudflare.com/agents/tools/browser/) — full CDP helper API reference
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

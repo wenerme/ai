@@ -1,16 +1,18 @@
 ---
-title: Build an AI coding agent with OpenAI Agents SDK
 description: Use the OpenAI Agents SDK with Cloudflare Sandbox to build a Python agent that writes, tests, and delivers code in an isolated environment.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build an AI coding agent with OpenAI Agents SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build an AI coding agent with OpenAI Agents SDK
 
-# Build an AI coding agent with OpenAI Agents SDK
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [OpenAI Agents SDK ↗](https://openai.github.io/openai-agents-python/) is a lightweight Python framework for building multi-agent workflows. A Cloudflare Sandbox integration is provided out of the box and ensures that the SDK includes a first-class Cloudflare backend that gives your agents isolated containers for running code, installing packages, and managing files.
 
@@ -75,8 +77,6 @@ mkdir openai-sandbox-agent && cd openai-sandbox-agent
 
 Create a `.env` file with your credentials:
 
-**.env**
-
 ```sh
 OPENAI_API_KEY=sk-your-openai-key
 CLOUDFLARE_SANDBOX_API_KEY=your-bridge-token
@@ -87,8 +87,6 @@ CLOUDFLARE_SANDBOX_WORKER_URL=https://cloudflare-sandbox-bridge.your-subdomain.w
 
 Create `main.py` with the following content. The inline script metadata tells `uv` which dependencies to install, so everything is contained in a single file:
 
-**main.py**
-
 ```python
 # /// script
 # requires-python = ">=3.12"
@@ -96,15 +94,12 @@ Create `main.py` with the following content. The inline script metadata tells `u
 # ///
 """One-shot coding agent backed by a Cloudflare Sandbox."""
 
-
 from __future__ import annotations
-
 
 import asyncio
 import os
 import sys
 from pathlib import Path
-
 
 from agents import Runner
 from agents.extensions.sandbox.cloudflare import (
@@ -115,9 +110,7 @@ from agents.run import RunConfig
 from agents.sandbox import SandboxAgent, SandboxRunConfig
 from agents.sandbox.capabilities import Shell
 
-
 MODEL = "gpt-5.4"
-
 
 INSTRUCTIONS = """\
 You are an expert developer working inside a sandbox.
@@ -147,7 +140,6 @@ async def run(prompt: str, output_dir: Path) -> None:
     if not worker_url:
         sys.exit("Error: CLOUDFLARE_SANDBOX_WORKER_URL is not set.")
 
-
     agent = SandboxAgent(
         name="Developer",
         model=MODEL,
@@ -155,11 +147,9 @@ async def run(prompt: str, output_dir: Path) -> None:
         capabilities=[Shell()],
     )
 
-
     client = CloudflareSandboxClient()
     options = CloudflareSandboxClientOptions(worker_url=worker_url)
     session = await client.create(manifest=agent.default_manifest, options=options)
-
 
     try:
         async with session:
@@ -168,7 +158,6 @@ async def run(prompt: str, output_dir: Path) -> None:
                 tracing_disabled=True,
             )
 
-
             # Stream tool calls so the user can follow progress.
             result = Runner.run_streamed(agent, prompt, run_config=run_config)
             async for ev in result.stream_events():
@@ -176,7 +165,6 @@ async def run(prompt: str, output_dir: Path) -> None:
                     print(f"  [tool] {getattr(ev.item.raw_item, 'name', '')}")
                 elif ev.type == "run_item_stream_event" and ev.name == "tool_output":
                     print(f"  [output] {str(getattr(ev.item, 'output', ''))[:200]}")
-
 
             # Copy output files from the sandbox to the local machine.
             copied = await copy_output(session, output_dir)
@@ -221,7 +209,6 @@ Sending task to sandbox agent (gpt-5.4)...
   [tool] exec_command
   [output] exit_code=0 stdout: Listening on http://localhost:3000
 
-
 Copied 1 file(s) to output:
    output/server.ts
 ```
@@ -254,7 +241,14 @@ The Cloudflare Sandbox provides more capabilities you can integrate into your ag
 * [HTTP API reference](https://developers.cloudflare.com/sandbox/bridge/http-api/) — Complete route reference for the bridge API.
 * [Sandbox tutorials](https://developers.cloudflare.com/sandbox/tutorials/) — More tutorials covering code execution, data analysis, and CI/CD pipelines.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/#page","headline":"Build an AI coding agent with OpenAI Agents SDK · Cloudflare Sandbox SDK docs","description":"Use the OpenAI Agents SDK with Cloudflare Sandbox to build a Python agent that writes, tests, and delivers code in an isolated environment.","url":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","OpenAI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/openai-agents/","name":"Build an AI coding agent with OpenAI Agents SDK"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/#page","headline":"Build an AI coding agent with OpenAI Agents SDK · Cloudflare Sandbox SDK docs","description":"Use the OpenAI Agents SDK with Cloudflare Sandbox to build a Python agent that writes, tests, and delivers code in an isolated environment.","url":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","OpenAI"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Deprecation - Version 1
 description: Deprecation notice and migration guide for SSL for SaaS Version 1.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deprecation - Version 1
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deprecation - Version 1
 
-# Deprecation - Version 1
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The first version of SSL for SaaS will be deprecated on September 1, 2021.
 
@@ -107,7 +109,14 @@ If you would like to begin the migration process before March 31, 2021, please c
 
 If you have any questions, please contact your account team or [SaaSv2@cloudflare.com](mailto:saasv2@cloudflare.com).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/#page","headline":"Deprecation notice for SSL for SaaS - Version 1 · Cloudflare for Platforms docs","description":"Deprecation notice and migration guide for SSL for SaaS Version 1.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","name":"Deprecation - Version 1"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/#page","headline":"Deprecation notice for SSL for SaaS - Version 1 · Cloudflare for Platforms docs","description":"Deprecation notice and migration guide for SSL for SaaS Version 1.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

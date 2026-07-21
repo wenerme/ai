@@ -1,16 +1,18 @@
 ---
-title: Configuration Rules
 description: Customize Cloudflare settings for matching incoming requests, such as security level and caching.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configuration Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration Rules
 
-# Configuration Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/configuration-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configuration Rules allow you to customize certain Cloudflare [configuration settings](https://developers.cloudflare.com/rules/configuration-rules/settings/) for matching incoming requests. For example, you can turn off specific features for certain URL paths or change settings based on the visitor's country.
 
@@ -27,7 +29,7 @@ Configuration Rules require that you [proxy the DNS records](https://developers.
 Cloudflare provides you with rules templates for common use cases.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Templates**, and then select one of the available templates.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
@@ -64,7 +66,7 @@ For example, if multiple rules with the _Redirect_ action match, Cloudflare will
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 
-Warning
+Caution
 
 Using Cloudflare challenges along with Rules features may cause challenge loops. Refer to [Rules troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/) for more information.
 
@@ -72,7 +74,14 @@ Using Cloudflare challenges along with Rules features may cause challenge loops.
 
 When troubleshooting Configuration Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/#page","headline":"Configuration Rules · Cloudflare Rules docs","description":"Customize Cloudflare settings for matching incoming requests, such as security level and caching.","url":"https://developers.cloudflare.com/rules/configuration-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/configuration-rules/","name":"Configuration Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/#page","headline":"Configuration Rules · Cloudflare Rules docs","description":"Customize Cloudflare settings for matching incoming requests, such as security level and caching.","url":"https://developers.cloudflare.com/rules/configuration-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

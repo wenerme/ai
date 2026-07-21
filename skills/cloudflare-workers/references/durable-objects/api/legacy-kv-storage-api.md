@@ -1,16 +1,18 @@
 ---
-title: KV-backed Durable Object Storage (Legacy)
 description: API reference for the legacy KV-backed Durable Objects storage methods, including get, put, delete, and list.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: KV-backed Durable Object Storage (Legacy)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  KV-backed Durable Object Storage (Legacy)
 
-# KV-backed Durable Object Storage (Legacy)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -52,36 +54,26 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8902)
-* [  TypeScript ](#tab-panel-8903)
-* [  Python ](#tab-panel-8904)
-
-**JavaScript**
-
 ```js
 export class Counter extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		super(ctx, env);
+	}
 
-
-  async increment() {
-    let value = (await this.ctx.storage.get("value")) || 0;
-    value += 1;
-    await this.ctx.storage.put("value", value);
-    return value;
-  }
+	async increment() {
+		let value = (await this.ctx.storage.get("value")) || 0;
+		value += 1;
+		await this.ctx.storage.put("value", value);
+		return value;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class Counter extends DurableObject {
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
   }
-
 
   async increment(): Promise<number> {
     let value: number = (await this.ctx.storage.get("value")) || 0;
@@ -92,16 +84,12 @@ export class Counter extends DurableObject {
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class Counter(DurableObject):
   def __init__(self, ctx, env):
     super().__init__(ctx, env)
-
 
   async def increment(self):
     value = (await self.ctx.storage.get("value")) or 0
@@ -121,7 +109,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 * `` ctx.storage.get(key ` string `, options ` Object ` optional) ``: ` Promise<any> `
 
   * Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
-* `` ctx.storage.get(keys ` Array<string> `, options ` Object ` optional) ``: ` Promise<Map<string, any>> `
+* `` ctx.storage.get(keys ` Array<string> `, options ` Object `optional) ``: ` Promise<Map<string, any>> `
 
   * Retrieves the values associated with each of the provided keys. The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
@@ -136,7 +124,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 
 ### put
 
-* `` put(key ` string `, value ` any `, options ` Object ` optional) ``: ` Promise `
+* `` put(key ` string `, value ` any `, options ` Object `optional) ``: ` Promise `
 
   * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
   The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
@@ -144,7 +132,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
     * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
     * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
   On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
-* `` put(entries ` Object `, options ` Object ` optional) ``: ` Promise `
+* `` put(entries ` Object `, options ` Object `optional) ``: ` Promise `
 
   * Takes an Object and stores each of its keys and values to storage.
   * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
@@ -154,10 +142,10 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 
 ### delete
 
-* `` delete(key ` string `, options ` Object ` optional) ``: ` Promise<boolean> `
+* `` delete(key ` string `, options ` Object `optional) ``: ` Promise<boolean> `
 
   * Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
-* `` delete(keys ` Array<string> `, options ` Object ` optional) ``: ` Promise<number> `
+* `` delete(keys ` Array<string> `, options ` Object `optional) ``: ` Promise<number> `
 
   * Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
 
@@ -186,7 +174,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### list
 
-* `` list(options ` Object ` optional) ``: ` Promise<Map<string, any>> `
+* `` list(options ` Object `optional) ``: ` Promise<Map<string, any>> `
   * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   * The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key.
   * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -223,7 +211,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `getAlarm`
 
-* `` getAlarm(options ` Object ` optional) ``: ` Promise<Number | null> `
+* `` getAlarm(options ` Object `optional) ``: ` Promise<Number | null> `
   * Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
 
 #### Supported options
@@ -232,14 +220,14 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `setAlarm`
 
-* `` setAlarm(scheduledTime ` Date | number `, options ` Object ` optional) ``: ` Promise `
+* `` setAlarm(scheduledTime ` Date | number `, options ` Object `optional) ``: ` Promise `
 
   * Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
 If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
 
 ### `deleteAlarm`
 
-* `` deleteAlarm(options ` Object ` optional) ``: ` Promise `
+* `` deleteAlarm(options ` Object `optional) ``: ` Promise `
   * Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
 
 #### Supported options
@@ -250,7 +238,7 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 
 ### `deleteAll`
 
-* `` deleteAll(options ` Object ` optional) ``: ` Promise `
+* `` deleteAll(options ` Object `optional) ``: ` Promise `
   * Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
   * For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
   * For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).
@@ -288,7 +276,14 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 * [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
 * [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#page","headline":"KV-backed Durable Object Storage (Legacy) · Cloudflare Durable Objects docs","description":"API reference for the legacy KV-backed Durable Objects storage methods, including get, put, delete, and list.","url":"https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/legacy-kv-storage-api/","name":"KV-backed Durable Object Storage (Legacy)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#page","headline":"KV-backed Durable Object Storage (Legacy) · Cloudflare Durable Objects docs","description":"API reference for the legacy KV-backed Durable Objects storage methods, including get, put, delete, and list.","url":"https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

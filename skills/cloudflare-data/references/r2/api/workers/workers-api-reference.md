@@ -1,16 +1,18 @@
 ---
-title: Workers API reference
 description: Complete reference for the R2 in-Worker API, including bucket and object operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers API reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers API reference
 
-# Workers API reference
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The in-Worker R2 API is accessed by binding an R2 bucket to a [Worker](https://developers.cloudflare.com/workers). The Worker you write can expose external access to buckets via a route or manipulate R2 objects internally.
 
@@ -30,23 +32,16 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-10594)
-* [  wrangler.toml ](#tab-panel-10595)
-
-**JSONC**
-
 ```jsonc
 {
-  "r2_buckets": [
-    {
-      "binding": "MY_BUCKET", // <~ valid JavaScript variable name
-      "bucket_name": "<YOUR_BUCKET_NAME>"
-    }
-  ]
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET", // <~ valid JavaScript variable name
+			"bucket_name": "<YOUR_BUCKET_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -62,58 +57,47 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-10590)
-* [  Python ](#tab-panel-10591)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
 
+		switch (request.method) {
+			case "PUT":
+				await env.MY_BUCKET.put(key, request.body);
+				return new Response(`Put ${key} successfully!`);
 
-    switch (request.method) {
-      case "PUT":
-        await env.MY_BUCKET.put(key, request.body);
-        return new Response(`Put ${key} successfully!`);
-
-
-      default:
-        return new Response(`${request.method} is not allowed.`, {
-          status: 405,
-          headers: {
-            Allow: "PUT",
-          },
-        });
-    }
-  },
+			default:
+				return new Response(`${request.method} is not allowed.`, {
+					status: 405,
+					headers: {
+						Allow: "PUT",
+					},
+				});
+		}
+	},
 };
 ```
-
-**Python**
 
 ```py
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse
 
-
 class Default(WorkerEntrypoint):
-  async def fetch(self, request):
-    url = urlparse(request.url)
-    key = url.path[1:]
+	async def fetch(self, request):
+		url = urlparse(request.url)
+		key = url.path[1:]
 
-
-    if request.method == "PUT":
-      await self.env.MY_BUCKET.put(key, request.body)
-      return Response(f"Put {key} successfully!")
-    else:
-      return Response(
-        f"{request.method} is not allowed.",
-        status=405,
-        headers={"Allow": "PUT"}
-      )
+		if request.method == "PUT":
+			await self.env.MY_BUCKET.put(key, request.body)
+			return Response(f"Put {key} successfully!")
+		else:
+			return Response(
+				f"{request.method} is not allowed.",
+				status=405,
+				headers={"Allow": "PUT"}
+			)
 ```
 
 * `head` ` (key: string): Promise<R2Object | null> `
@@ -287,10 +271,10 @@ There are 3 variations of arguments that can be used in a range:
 * `onlyIf` ` R2Conditional | Headers `
 
   * Specifies that the object should only be stored given satisfaction of certain conditions in the `R2Conditional`. Refer to [Conditional operations](#conditional-operations).
-* `httpMetadata` ` R2HTTPMetadata | Headers ` optional
+* `httpMetadata` ` R2HTTPMetadata | Headers `optional
 
   * Various HTTP headers associated with the object. Refer to [HTTP Metadata](#http-metadata).
-* `customMetadata` ` Record<string, string> ` optional
+* `customMetadata` ` Record<string, string> `optional
 
   * A map of custom, user-defined metadata that will be stored with the object.
 
@@ -298,19 +282,19 @@ Note
 
 Only a single hashing algorithm can be specified at once.
 
-* `md5` ` ArrayBuffer | string ` optional
+* `md5` ` ArrayBuffer | string `optional
 
   * A md5 hash to use to check the received object's integrity.
-* `sha1` ` ArrayBuffer | string ` optional
+* `sha1` ` ArrayBuffer | string `optional
 
   * A SHA-1 hash to use to check the received object's integrity.
-* `sha256` ` ArrayBuffer | string ` optional
+* `sha256` ` ArrayBuffer | string `optional
 
   * A SHA-256 hash to use to check the received object's integrity.
-* `sha384` ` ArrayBuffer | string ` optional
+* `sha384` ` ArrayBuffer | string `optional
 
   * A SHA-384 hash to use to check the received object's integrity.
-* `sha512` ` ArrayBuffer | string ` optional
+* `sha512` ` ArrayBuffer | string `optional
 
   * A SHA-512 hash to use to check the received object's integrity.
 * `storageClass` ` 'Standard' | 'InfrequentAccess' `
@@ -322,10 +306,10 @@ Only a single hashing algorithm can be specified at once.
 
 ### R2MultipartOptions
 
-* `httpMetadata` ` R2HTTPMetadata | Headers ` optional
+* `httpMetadata` ` R2HTTPMetadata | Headers `optional
 
   * Various HTTP headers associated with the object. Refer to [HTTP Metadata](#http-metadata).
-* `customMetadata` ` Record<string, string> ` optional
+* `customMetadata` ` Record<string, string> `optional
 
   * A map of custom, user-defined metadata that will be stored with the object.
 * `storageClass` ` string `
@@ -337,93 +321,76 @@ Only a single hashing algorithm can be specified at once.
 
 ### R2ListOptions
 
-* `limit` ` number ` optional
+* `limit` ` number `optional
 
   * The number of results to return. Defaults to `1000`, with a maximum of `1000`.
   * If `include` is set, you may receive fewer than `limit` results in your response to accommodate metadata.
-* `prefix` ` string ` optional
+* `prefix` ` string `optional
 
   * The prefix to match keys against. Keys will only be returned if they start with given prefix.
-* `cursor` ` string ` optional
+* `cursor` ` string `optional
 
   * An opaque token that indicates where to continue listing objects from. A cursor can be retrieved from a previous list operation.
-* `delimiter` ` string ` optional
+* `delimiter` ` string `optional
 
   * The character to use when grouping keys.
-* `include` ` Array<string> ` optional
+* `include` ` Array<string> `optional
 
   * Can include `httpMetadata` and/or `customMetadata`. If included, items returned by the list will include the specified metadata.
   * Note that there is a limit on the total amount of data that a single `list` operation can return. If you request data, you may receive fewer than `limit` results in your response to accommodate metadata.
   * The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) must be set to `2022-08-04` or later in your Wrangler file. If not, then the `r2_list_honor_include` compatibility flag must be set. Otherwise it is treated as `include: ['httpMetadata', 'customMetadata']` regardless of what the `include` option provided actually is.
 This means applications must be careful to avoid comparing the amount of returned objects against your `limit`. Instead, use the `truncated` property to determine if the `list` request has more data to be returned.
 
-* [  JavaScript ](#tab-panel-10592)
-* [  Python ](#tab-panel-10593)
-
-**JavaScript**
-
 ```js
 const options = {
-  limit: 500,
-  include: ["customMetadata"],
+	limit: 500,
+	include: ["customMetadata"],
 };
 
-
 const listed = await env.MY_BUCKET.list(options);
-
 
 let truncated = listed.truncated;
 let cursor = truncated ? listed.cursor : undefined;
 
-
 // ❌ - if your limit can't fit into a single response or your
 // bucket has less objects than the limit, it will get stuck here.
 while (listed.objects.length < options.limit) {
-  // ...
+	// ...
 }
-
 
 // ✅ - use the truncated property to check if there are more
 // objects to be returned
 while (truncated) {
-  const next = await env.MY_BUCKET.list({
-    ...options,
-    cursor: cursor,
-  });
-  listed.objects.push(...next.objects);
+	const next = await env.MY_BUCKET.list({
+		...options,
+		cursor: cursor,
+	});
+	listed.objects.push(...next.objects);
 
-
-  truncated = next.truncated;
-  cursor = next.cursor;
+	truncated = next.truncated;
+	cursor = next.cursor;
 }
 ```
-
-**Python**
 
 ```py
 limit = 500
 include = ["customMetadata"]
 
-
 listed = await self.env.MY_BUCKET.list(limit=limit, include=include)
-
 
 truncated = listed.truncated
 cursor = listed.cursor if truncated else None
-
 
 # ❌ - if your limit can't fit into a single response or your
 # bucket has less objects than the limit, it will get stuck here.
 while len(listed.objects) < limit:
     ...
 
-
 # ✅ - use the truncated property to check if there are more
 # objects to be returned
 while truncated:
     next_page = await self.env.MY_BUCKET.list(limit=limit, include=include, cursor=cursor)
     listed.objects.extend(next_page.objects)
-
 
     truncated = next_page.truncated
     cursor = next_page.cursor
@@ -439,7 +406,7 @@ An object containing an `R2Object` array, returned by `BUCKET_BINDING.list()`.
 * `truncated` boolean
 
   * If true, indicates there are more results to be retrieved for the current `list` request.
-* `cursor` ` string ` optional
+* `cursor` ` string `optional
 
   * A token that can be passed to future `list` calls to resume listing from that point. Only present if truncated is true.
 * `delimitedPrefixes` ` Array<string> `
@@ -453,16 +420,16 @@ You can pass an `R2Conditional` object to `R2GetOptions` and `R2PutOptions`. If 
 
 If the condition check for `put()` fails, `null` will be returned instead of the `R2Object`.
 
-* `etagMatches` ` string ` optional
+* `etagMatches` ` string `optional
 
   * Performs the operation if the object's etag matches the given string.
-* `etagDoesNotMatch` ` string ` optional
+* `etagDoesNotMatch` ` string `optional
 
   * Performs the operation if the object's etag does not match the given string.
-* `uploadedBefore` ` Date ` optional
+* `uploadedBefore` ` Date `optional
 
   * Performs the operation if the object was uploaded before the given date.
-* `uploadedAfter` ` Date ` optional
+* `uploadedAfter` ` Date `optional
 
   * Performs the operation if the object was uploaded after the given date.
 
@@ -474,30 +441,30 @@ For more specific information about conditional requests, refer to [RFC 7232 ↗
 
 Generally, these fields match the HTTP metadata passed when the object was created. They can be overridden when issuing `GET` requests, in which case, the given values will be echoed back in the response.
 
-* `contentType` ` string ` optional
-* `contentLanguage` ` string ` optional
-* `contentDisposition` ` string ` optional
-* `contentEncoding` ` string ` optional
-* `cacheControl` ` string ` optional
-* `cacheExpiry` ` Date ` optional
+* `contentType` ` string `optional
+* `contentLanguage` ` string `optional
+* `contentDisposition` ` string `optional
+* `contentEncoding` ` string `optional
+* `cacheControl` ` string `optional
+* `cacheExpiry` ` Date `optional
 
 ### Checksums
 
 If a checksum was provided when using the `put()` binding, it will be available on the returned object under the `checksums` property. The MD5 checksum will be included by default for non-multipart objects.
 
-* `md5` ` ArrayBuffer ` optional
+* `md5` ` ArrayBuffer `optional
 
   * The MD5 checksum of the object.
-* `sha1` ` ArrayBuffer ` optional
+* `sha1` ` ArrayBuffer `optional
 
   * The SHA-1 checksum of the object.
-* `sha256` ` ArrayBuffer ` optional
+* `sha256` ` ArrayBuffer `optional
 
   * The SHA-256 checksum of the object.
-* `sha384` ` ArrayBuffer ` optional
+* `sha384` ` ArrayBuffer `optional
 
   * The SHA-384 checksum of the object.
-* `sha512` ` ArrayBuffer ` optional
+* `sha512` ` ArrayBuffer `optional
 
   * The SHA-512 checksum of the object.
 
@@ -516,7 +483,14 @@ An `R2UploadedPart` object represents a part that has been uploaded. `R2Uploaded
 
 The storage class where an `R2Object` is stored. The available storage classes are `Standard` and `InfrequentAccess`. Refer to [Storage classes](https://developers.cloudflare.com/r2/buckets/storage-classes/)for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-api-reference/","name":"Workers API reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Build a search and execute MCP server
 description: Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build a search and execute MCP server
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a search and execute MCP server
 
-# Build a search and execute MCP server
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use `openApiMcpServer()` to publish a large OpenAPI service through two Model Context Protocol (MCP) tools:
 
@@ -19,7 +21,7 @@ Use `openApiMcpServer()` to publish a large OpenAPI service through two Model Co
 
 The OpenAPI document stays outside the model context unless search code returns part of it. Authentication remains in the host Worker.
 
-Warning
+Caution
 
 Code Mode is experimental and may have breaking changes. Use caution in production.
 
@@ -44,18 +46,13 @@ pnpm add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 ```
 2. Add a Worker Loader binding and the `nodejs_compat` compatibility flag:
-
-  * [  wrangler.jsonc ](#tab-panel-6315)
-  * [  wrangler.toml ](#tab-panel-6316)
-
-**JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "openapi-codemode-mcp",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -66,23 +63,16 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
   ]
 }
 ```
-
-**TOML**
 ```toml
 name = "openapi-codemode-mcp"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
 ```
 3. Load the OpenAPI document on the host. Create the MCP server with an authenticated `request` function:
-
-  * [  JavaScript ](#tab-panel-6317)
-  * [  TypeScript ](#tab-panel-6318)
-
-**src/server.js**
 ```js
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { openApiMcpServer } from "@cloudflare/codemode/mcp";
@@ -91,68 +81,66 @@ const SPEC_URL = "https://api.example.com/openapi.json";
 const API_ORIGIN = "https://api.example.com";
 let specCache;
 async function loadSpec() {
-  if (specCache) return specCache;
-  const response = await fetch(SPEC_URL);
-  if (!response.ok) {
-    throw new Error(`OpenAPI request failed: ${response.status}`);
-  }
-  specCache = await response.json();
-  return specCache;
+	if (specCache) return specCache;
+	const response = await fetch(SPEC_URL);
+	if (!response.ok) {
+		throw new Error(`OpenAPI request failed: ${response.status}`);
+	}
+	specCache = await response.json();
+	return specCache;
 }
 export default {
-  async fetch(request, env, ctx) {
-    const authorization = request.headers.get("Authorization");
-    if (!authorization?.startsWith("Bearer ")) {
-      return new Response("Bearer token required", { status: 401 });
-    }
-    const server = openApiMcpServer({
-      spec: await loadSpec(),
-      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
-      name: "example-api",
-      version: "1.0.0",
-      request: async (options) => {
-        if (!options.path.startsWith("/")) {
-          throw new Error("API path must start with a slash");
-        }
-        const url = new URL(`${API_ORIGIN}${options.path}`);
-        for (const [key, value] of Object.entries(options.query ?? {})) {
-          if (value !== undefined) {
-            url.searchParams.set(key, String(value));
-          }
-        }
-        const headers = { Authorization: authorization };
-        if (options.contentType) {
-          headers["Content-Type"] = options.contentType;
-        } else if (options.body !== undefined) {
-          headers["Content-Type"] = "application/json";
-        }
-        const response = await fetch(url, {
-          method: options.method,
-          headers,
-          body:
-            options.body === undefined
-              ? undefined
-              : options.rawBody
-                ? options.body
-                : JSON.stringify(options.body),
-        });
-        if (response.status === 204) return null;
-        const responseType = response.headers.get("Content-Type") ?? "";
-        const result = responseType.includes("application/json")
-          ? await response.json()
-          : await response.text();
-        if (!response.ok) {
-          throw new Error(`API request failed: ${response.status}`);
-        }
-        return result;
-      },
-    });
-    return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);
-  },
+	async fetch(request, env, ctx) {
+		const authorization = request.headers.get("Authorization");
+		if (!authorization?.startsWith("Bearer ")) {
+			return new Response("Bearer token required", { status: 401 });
+		}
+		const server = openApiMcpServer({
+			spec: await loadSpec(),
+			executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
+			name: "example-api",
+			version: "1.0.0",
+			request: async (options) => {
+				if (!options.path.startsWith("/")) {
+					throw new Error("API path must start with a slash");
+				}
+				const url = new URL(`${API_ORIGIN}${options.path}`);
+				for (const [key, value] of Object.entries(options.query ?? {})) {
+					if (value !== undefined) {
+						url.searchParams.set(key, String(value));
+					}
+				}
+				const headers = { Authorization: authorization };
+				if (options.contentType) {
+					headers["Content-Type"] = options.contentType;
+				} else if (options.body !== undefined) {
+					headers["Content-Type"] = "application/json";
+				}
+				const response = await fetch(url, {
+					method: options.method,
+					headers,
+					body:
+						options.body === undefined
+							? undefined
+							: options.rawBody
+								? options.body
+								: JSON.stringify(options.body),
+				});
+				if (response.status === 204) return null;
+				const responseType = response.headers.get("Content-Type") ?? "";
+				const result = responseType.includes("application/json")
+					? await response.json()
+					: await response.text();
+				if (!response.ok) {
+					throw new Error(`API request failed: ${response.status}`);
+				}
+				return result;
+			},
+		});
+		return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);
+	},
 };
 ```
-
-**src/server.ts**
 ```ts
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { openApiMcpServer } from "@cloudflare/codemode/mcp";
@@ -161,68 +149,68 @@ const SPEC_URL = "https://api.example.com/openapi.json";
 const API_ORIGIN = "https://api.example.com";
 let specCache: Record<string, unknown> | undefined;
 async function loadSpec(): Promise<Record<string, unknown>> {
-  if (specCache) return specCache;
-  const response = await fetch(SPEC_URL);
-  if (!response.ok) {
-    throw new Error(`OpenAPI request failed: ${response.status}`);
-  }
-  specCache = (await response.json()) as Record<string, unknown>;
-  return specCache;
+	if (specCache) return specCache;
+	const response = await fetch(SPEC_URL);
+	if (!response.ok) {
+		throw new Error(`OpenAPI request failed: ${response.status}`);
+	}
+	specCache = (await response.json()) as Record<string, unknown>;
+	return specCache;
 }
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const authorization = request.headers.get("Authorization");
-    if (!authorization?.startsWith("Bearer ")) {
-      return new Response("Bearer token required", { status: 401 });
-    }
-    const server = openApiMcpServer({
-      spec: await loadSpec(),
-      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
-      name: "example-api",
-      version: "1.0.0",
-      request: async (options) => {
-        if (!options.path.startsWith("/")) {
-          throw new Error("API path must start with a slash");
-        }
-        const url = new URL(`${API_ORIGIN}${options.path}`);
-        for (const [key, value] of Object.entries(options.query ?? {})) {
-          if (value !== undefined) {
-            url.searchParams.set(key, String(value));
-          }
-        }
-        const headers: Record<string, string> = { Authorization: authorization };
-        if (options.contentType) {
-          headers["Content-Type"] = options.contentType;
-        } else if (options.body !== undefined) {
-          headers["Content-Type"] = "application/json";
-        }
-        const response = await fetch(url, {
-          method: options.method,
-          headers,
-          body:
-            options.body === undefined
-              ? undefined
-              : options.rawBody
-                ? (options.body as string)
-                : JSON.stringify(options.body),
-        });
-        if (response.status === 204) return null;
-        const responseType = response.headers.get("Content-Type") ?? "";
-        const result = responseType.includes("application/json")
-          ? await response.json()
-          : await response.text();
-        if (!response.ok) {
-          throw new Error(`API request failed: ${response.status}`);
-        }
-        return result;
-      },
-    });
-    return createMcpHandler(server, { route: "/mcp" })(
-      request,
-      env,
-      ctx,
-    );
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		const authorization = request.headers.get("Authorization");
+		if (!authorization?.startsWith("Bearer ")) {
+			return new Response("Bearer token required", { status: 401 });
+		}
+		const server = openApiMcpServer({
+			spec: await loadSpec(),
+			executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
+			name: "example-api",
+			version: "1.0.0",
+			request: async (options) => {
+				if (!options.path.startsWith("/")) {
+					throw new Error("API path must start with a slash");
+				}
+				const url = new URL(`${API_ORIGIN}${options.path}`);
+				for (const [key, value] of Object.entries(options.query ?? {})) {
+					if (value !== undefined) {
+						url.searchParams.set(key, String(value));
+					}
+				}
+				const headers: Record<string, string> = { Authorization: authorization };
+				if (options.contentType) {
+					headers["Content-Type"] = options.contentType;
+				} else if (options.body !== undefined) {
+					headers["Content-Type"] = "application/json";
+				}
+				const response = await fetch(url, {
+					method: options.method,
+					headers,
+					body:
+						options.body === undefined
+							? undefined
+							: options.rawBody
+								? (options.body as string)
+								: JSON.stringify(options.body),
+				});
+				if (response.status === 204) return null;
+				const responseType = response.headers.get("Content-Type") ?? "";
+				const result = responseType.includes("application/json")
+					? await response.json()
+					: await response.text();
+				if (!response.ok) {
+					throw new Error(`API request failed: ${response.status}`);
+				}
+				return result;
+			},
+		});
+		return createMcpHandler(server, { route: "/mcp" })(
+			request,
+			env,
+			ctx,
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 4. Deploy the Worker:
@@ -243,17 +231,15 @@ pnpm wrangler deploy
 
 Call `search` before `execute`. Search code can inspect the document without making API requests:
 
-**JavaScript**
-
 ```js
 async () => {
-  const spec = await codemode.spec();
-  return Object.entries(spec.paths)
-    .filter(([path]) => path.includes("/orders"))
-    .map(([path, operations]) => ({
-      path,
-      methods: Object.keys(operations),
-    }));
+	const spec = await codemode.spec();
+	return Object.entries(spec.paths)
+		.filter(([path]) => path.includes("/orders"))
+		.map(([path, operations]) => ({
+			path,
+			methods: Object.keys(operations),
+		}));
 };
 ```
 
@@ -263,18 +249,15 @@ Local OpenAPI `$ref` values resolve inside the sandbox when code calls `codemode
 
 The `execute` tool includes the same `codemode.spec()` method and the host-provided `codemode.request()` method:
 
-**JavaScript**
-
 ```js
 async () => {
-  const response = await codemode.request({
-    method: "GET",
-    path: "/orders",
-    query: { status: "processing", limit: 20 },
-  });
+	const response = await codemode.request({
+		method: "GET",
+		path: "/orders",
+		query: { status: "processing", limit: 20 },
+	});
 
-
-  return response.items.map(({ id, status }) => ({ id, status }));
+	return response.items.map(({ id, status }) => ({ id, status }));
 };
 ```
 
@@ -298,7 +281,14 @@ Have model-written code select, map, aggregate, or paginate data before returnin
 
 Truncation does not reduce API work already performed. Return focused identifiers, status fields, counts, and errors that support the model's next decision.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","name":"Build a search and execute MCP server"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
 ```

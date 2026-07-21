@@ -1,16 +1,18 @@
 ---
-title: Useful terms
 description: Key terms for working with locally-managed Cloudflare Tunnels.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Useful terms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Useful terms
 
-# Useful terms
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page contains terminology specific to locally-managed Cloudflare Tunnels. For general Tunnel terminology, refer to the [Get started section](https://developers.cloudflare.com/tunnel/faq/).
 
@@ -41,7 +43,14 @@ This file is created when you run `cloudflared tunnel create <NAME>`. It stores 
 
 Ingress rules let you specify which local services traffic should be proxied to. If a rule does not specify a path, all paths will be matched. Ingress rules can be listed in your [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/) or when running `cloudflared tunnel ingress`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/#page","headline":"Useful terms · Cloudflare Docs","description":"Key terms for working with locally-managed Cloudflare Tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":5,"item":{"@id":"/tunnel/advanced/local-management/local-tunnel-terms/","name":"Useful terms"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/#page","headline":"Useful terms · Cloudflare Docs","description":"Key terms for working with locally-managed Cloudflare Tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

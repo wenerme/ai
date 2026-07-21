@@ -1,16 +1,18 @@
 ---
-title: Provision with Microsoft Entra
 description: Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Provision with Microsoft Entra
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Provision with Microsoft Entra
 
-# Provision with Microsoft Entra
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -65,15 +67,12 @@ Get an Entra access token. Note that the example below is using the Azure CLI.
 az login
 az account get-access-token --resource https://graph.microsoft.com
 
-
 (payload with accessToken returned)
 ```
 
 **2\. Create a new application via template.**
 
 The template ID 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 is the suggested template to create non-gallery apps in the Entra docs. Replace `<accessToken>` and `displayName` with your values.
-
-**Example request**
 
 ```curl
 curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b2-4cf2-a259-e3dc5476c621/instantiate' \
@@ -83,8 +82,6 @@ curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b
     "displayName": "Entra API create application test"
 }'
 ```
-
-**Example response**
 
 ```curl
 {
@@ -106,7 +103,7 @@ curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b
     "appId": "03d8207b-e837-4be9-b4e6-180492eb3b61",
     "applicationTemplateId": "8adf8e6e-67b2-4cf2-a259-e3dc5476c621",
     "appDisplayName": "Entra API create application test",
-  // ...snipped rest of JSON payload
+	// ...snipped rest of JSON payload
 }
 }
 ```
@@ -114,8 +111,6 @@ curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b
 **3\. Create a provisioning job**
 
 To enable provisioning, you will also need to create a job. Note the SERVICE\_PRINCIPAL\_ID in the previous request will be used in the request below. The SCIM templateId is an Entra provided template.
-
-**Example request**
 
 ```curl
 curl -X POST 'https://graph.microsoft.com/v1.0/servicePrincipals/<SERVICE_PRINCIPAL_ID>/synchronization/jobs' \
@@ -125,8 +120,6 @@ curl -X POST 'https://graph.microsoft.com/v1.0/servicePrincipals/<SERVICE_PRINCI
     "templateId": "scim"
 }'
 ```
-
-**Example response**
 
 ```curl
 {
@@ -147,8 +140,6 @@ curl -X POST 'https://graph.microsoft.com/v1.0/servicePrincipals/<SERVICE_PRINCI
 Next, configure the Tenant URL (Cloudflare SCIM endpoint) and API token (SCIM Provisioning API Token).
 
 Replace `<accessToken>`, `<ACCOUNT_ID>`, `<SCIM_PROVISIONING_API_TOKEN_VALUE>` with your values.
-
-**Example request**
 
 ```curl
  --header 'Content-Type: application/json' \
@@ -173,7 +164,14 @@ After completing the tasks above, the next steps in Entra include:
 * Test and save after updating the config.
 * Provisioning after configuration is complete
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/#page","headline":"Provision with Microsoft Entra · Cloudflare Fundamentals docs","description":"Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/scim-setup/","name":"SCIM provisioning"}},{"@type":"ListItem","position":6,"item":{"@id":"/fundamentals/account/account-security/scim-setup/entra/","name":"Provision with Microsoft Entra"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/#page","headline":"Provision with Microsoft Entra · Cloudflare Fundamentals docs","description":"Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

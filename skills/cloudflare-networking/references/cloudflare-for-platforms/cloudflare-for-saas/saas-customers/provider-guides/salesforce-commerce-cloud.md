@@ -1,16 +1,18 @@
 ---
-title: Salesforce Commerce Cloud
 description: Learn how to configure your Enterprise zone with Salesforce Commerce Cloud.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Salesforce Commerce Cloud
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Salesforce Commerce Cloud
 
-# Salesforce Commerce Cloud
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare partners with Salesforce Commerce Cloud to provide Salesforce Commerce Cloud customers’ websites with Cloudflare’s performance and security benefits.
 
@@ -18,7 +20,7 @@ If you use Salesforce Commerce Cloud and also have a Cloudflare plan, you can us
 
 ## Benefits
 
-O2O's benefits include applying your own Cloudflare zone's services and settings — such as [WAF](https://developers.cloudflare.com/waf/), [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/), [Waiting Room](https://developers.cloudflare.com/waiting-room/), and more — on the traffic destined for your Salesforce Commerce Cloud environment.
+O2O's benefits include applying your own Cloudflare zone's services and settings — such as [WAF](https://developers.cloudflare.com/waf/), [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/), [Waiting Room](https://developers.cloudflare.com/waiting-room/), and more — on the traffic destined for your Salesforce Commerce Cloudenvironment.
 
 ## How it works
 
@@ -136,7 +138,14 @@ If you do have a `CAA` record, verify that it permits SSL certificates to be iss
   1. The Custom Certificate you uploaded via **SFCC Business Manager** or **SFCC CDN-API**, which exists within your corresponding SFCC Proxy Zone, will terminate TLS connections for your SFCC storefront hostnames. Because of that, it is optional if you want to upload the same Custom Certificate to your own Cloudflare zone. Doing so will allow Cloudflare users with specific roles in your Cloudflare account to receive expiration notifications for your Custom Certificates. Please read [renew custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/#renew-custom-certificates) for further details.
   2. Additionally, since you now have your own Cloudflare zone, you have access to Cloudflare's various edge certificate products which means you could have more than one certificate covering the same SANs. In that scenario, a certificate priority process occurs to determine which certificate to serve at the Cloudflare edge. If you find your SFCC storefront hostnames are presenting a different certificate compared to what you uploaded via **SFCC Business Manager** or **SFCC CDN-API**, the certificate priority process is likely the reason. Please read [certificate priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#certificate-deployment) for further details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/#page","headline":"Salesforce Commerce Cloud · Cloudflare for Platforms docs","description":"Learn how to configure your Enterprise zone with Salesforce Commerce Cloud.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Salesforce"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/","name":"SaaS customers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/","name":"Provider guides"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/","name":"Salesforce Commerce Cloud"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/#page","headline":"Salesforce Commerce Cloud · Cloudflare for Platforms docs","description":"Learn how to configure your Enterprise zone with Salesforce Commerce Cloud.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Salesforce"]}
 ```

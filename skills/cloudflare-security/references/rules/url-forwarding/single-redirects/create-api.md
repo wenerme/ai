@@ -1,16 +1,18 @@
 ---
-title: Create a redirect rule via API
 description: Create Single Redirect rules using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a redirect rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a redirect rule via API
 
-# Create a redirect rule via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a redirect rule via API.
 
@@ -56,71 +58,69 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Create a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Redirect rules ruleset",
-    "kind": "zone",
-    "phase": "http_request_dynamic_redirect",
-    "rules": [
-        {
-            "ref": "redirect_gb_fr_to_localized",
-            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
-            "description": "Redirect GB and FR users in home page to localized site.",
-            "action": "redirect",
-            "action_parameters": {
-                "from_value": {
-                    "target_url": {
-                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
-                    },
-                    "status_code": 307,
-                    "preserve_query_string": true
-                }
-            }
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Redirect rules ruleset",
+		"kind": "zone",
+		"phase": "http_request_dynamic_redirect",
+		"rules": [
+				{
+						"ref": "redirect_gb_fr_to_localized",
+						"expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+						"description": "Redirect GB and FR users in home page to localized site.",
+						"action": "redirect",
+						"action_parameters": {
+								"from_value": {
+										"target_url": {
+												"expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+										},
+										"status_code": 307,
+										"preserve_query_string": true
+								}
+						}
+				}
+		]
+	}'
 ```
 
 Response
 
 ```json
 {
-  "result": {
-    "id": "528f4f03bf0da53a29907199625867be",
-    "name": "Redirect rules ruleset",
-    "kind": "zone",
-    "version": "1",
-    "rules": [
-      {
-        "ref": "redirect_gb_fr_to_localized",
-        "id": "235e557b92fd4e5e8753ee665a9ddd75",
-        "version": "1",
-        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
-        "description": "Redirect GB and FR users in home page to localized site.",
-        "action": "redirect",
-        "action_parameters": {
-          "from_value": {
-            "target_url": {
-              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
-            },
-            "status_code": 307,
-            "preserve_query_string": true
-          }
-        },
-        "last_updated": "2022-09-28T09:20:42Z"
-      }
-    ],
-    "last_updated": "2022-09-28T09:20:42Z",
-    "phase": "http_request_dynamic_redirect"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "528f4f03bf0da53a29907199625867be",
+		"name": "Redirect rules ruleset",
+		"kind": "zone",
+		"version": "1",
+		"rules": [
+			{
+				"ref": "redirect_gb_fr_to_localized",
+				"id": "235e557b92fd4e5e8753ee665a9ddd75",
+				"version": "1",
+				"expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+				"description": "Redirect GB and FR users in home page to localized site.",
+				"action": "redirect",
+				"action_parameters": {
+					"from_value": {
+						"target_url": {
+							"expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+						},
+						"status_code": 307,
+						"preserve_query_string": true
+					}
+				},
+				"last_updated": "2022-09-28T09:20:42Z"
+			}
+		],
+		"last_updated": "2022-09-28T09:20:42Z",
+		"phase": "http_request_dynamic_redirect"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -153,107 +153,105 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Redirect rules ruleset",
-    "kind": "zone",
-    "phase": "http_request_dynamic_redirect",
-    "rules": [
-        {
-            "ref": "redirect_gb_fr_to_localized",
-            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
-            "description": "Redirect GB and FR users in home page to localized site.",
-            "action": "redirect",
-            "action_parameters": {
-                "from_value": {
-                    "target_url": {
-                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
-                    },
-                    "status_code": 307,
-                    "preserve_query_string": true
-                }
-            }
-        },
-        {
-            "ref": "redirect_contacts_to_new_page",
-            "expression": "http.request.uri.path eq \"/contacts.html\"",
-            "description": "Redirect to new contacts page.",
-            "action": "redirect",
-            "action_parameters": {
-                "from_value": {
-                    "target_url": {
-                        "value": "https://example.com/contact-us/"
-                    },
-                    "status_code": 308
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Redirect rules ruleset",
+		"kind": "zone",
+		"phase": "http_request_dynamic_redirect",
+		"rules": [
+				{
+						"ref": "redirect_gb_fr_to_localized",
+						"expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+						"description": "Redirect GB and FR users in home page to localized site.",
+						"action": "redirect",
+						"action_parameters": {
+								"from_value": {
+										"target_url": {
+												"expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+										},
+										"status_code": 307,
+										"preserve_query_string": true
+								}
+						}
+				},
+				{
+						"ref": "redirect_contacts_to_new_page",
+						"expression": "http.request.uri.path eq \"/contacts.html\"",
+						"description": "Redirect to new contacts page.",
+						"action": "redirect",
+						"action_parameters": {
+								"from_value": {
+										"target_url": {
+												"value": "https://example.com/contact-us/"
+										},
+										"status_code": 308
+								}
+						}
+				}
+		]
+	}'
 ```
 
 Response
 
 ```json
 {
-  "result": {
-    "id": "528f4f03bf0da53a29907199625867be",
-    "name": "Redirect rules ruleset",
-    "description": "",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "redirect_gb_fr_to_localized",
-        "id": "235e557b92fd4e5e8753ee665a9ddd75",
-        "version": "1",
-        "action": "redirect",
-        "action_parameters": {
-          "from_value": {
-            "target_url": {
-              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
-            },
-            "status_code": 307,
-            "preserve_query_string": true
-          }
-        },
-        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
-        "description": "Redirect GB and FR users in home page to localized site.",
-        "last_updated": "2022-10-03T15:38:51.658387Z",
-        "ref": "235e557b92fd4e5e8753ee665a9ddd75",
-        "enabled": true
-      },
-      {
-        "ref": "redirect_contacts_to_new_page",
-        "id": "cfad5efbfcd1440fb5b30cf30f95ece3",
-        "version": "1",
-        "action": "redirect",
-        "action_parameters": {
-          "from_value": {
-            "target_url": {
-              "value": "https://example.com/contact-us/"
-            },
-            "status_code": 308
-          }
-        },
-        "expression": "http.request.uri.path eq \"/contacts.html\"",
-        "description": "Redirect to new contacts page.",
-        "last_updated": "2022-10-03T15:38:51.658387Z",
-        "ref": "cfad5efbfcd1440fb5b30cf30f95ece3",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2022-10-03T15:38:51.658387Z",
-    "phase": "http_request_dynamic_redirect"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "528f4f03bf0da53a29907199625867be",
+		"name": "Redirect rules ruleset",
+		"description": "",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "redirect_gb_fr_to_localized",
+				"id": "235e557b92fd4e5e8753ee665a9ddd75",
+				"version": "1",
+				"action": "redirect",
+				"action_parameters": {
+					"from_value": {
+						"target_url": {
+							"expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+						},
+						"status_code": 307,
+						"preserve_query_string": true
+					}
+				},
+				"expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+				"description": "Redirect GB and FR users in home page to localized site.",
+				"last_updated": "2022-10-03T15:38:51.658387Z",
+				"ref": "235e557b92fd4e5e8753ee665a9ddd75",
+				"enabled": true
+			},
+			{
+				"ref": "redirect_contacts_to_new_page",
+				"id": "cfad5efbfcd1440fb5b30cf30f95ece3",
+				"version": "1",
+				"action": "redirect",
+				"action_parameters": {
+					"from_value": {
+						"target_url": {
+							"value": "https://example.com/contact-us/"
+						},
+						"status_code": 308
+					}
+				},
+				"expression": "http.request.uri.path eq \"/contacts.html\"",
+				"description": "Redirect to new contacts page.",
+				"last_updated": "2022-10-03T15:38:51.658387Z",
+				"ref": "cfad5efbfcd1440fb5b30cf30f95ece3",
+				"enabled": true
+			}
+		],
+		"last_updated": "2022-10-03T15:38:51.658387Z",
+		"phase": "http_request_dynamic_redirect"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -265,7 +263,14 @@ The API token used in API requests to manage redirect rules must have at least t
 
 * _Zone_ \> _Single Redirect_ \> _Edit_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/#page","headline":"Create a redirect rule via API · Cloudflare Rules docs","description":"Create Single Redirect rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/single-redirects/","name":"Single Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/single-redirects/create-api/","name":"Create a redirect rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/#page","headline":"Create a redirect rule via API · Cloudflare Rules docs","description":"Create Single Redirect rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Local development
 description: Develop and test Hyperdrive-connected Workers locally using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Local development
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Local development
 
-# Local development
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/configuration/local-development/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can be used when developing and testing your Workers locally. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers, provides two options for local development:
 
@@ -55,24 +57,17 @@ npx wrangler dev
 
 Alternatively, you can set `localConnectionString` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9464)
-* [  wrangler.toml ](#tab-panel-9465)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "c020574a-5623-407b-be0c-cd192bab9545",
-      "localConnectionString": "postgres://user:password@localhost:5432/databasename"
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "c020574a-5623-407b-be0c-cd192bab9545",
+			"localConnectionString": "postgres://user:password@localhost:5432/databasename"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -96,23 +91,16 @@ This mode is useful for testing how your Worker behaves with Hyperdrive's featur
 
 Configure your Hyperdrive binding in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-9466)
-* [  wrangler.toml ](#tab-panel-9467)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "your-hyperdrive-id",
-    },
-  ],
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "your-hyperdrive-id",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -130,7 +118,7 @@ Note
 
 The `localConnectionString` field is not used with `wrangler dev --remote`. Instead, your Worker connects to the database configured in your deployed Hyperdrive configuration.
 
-Warning
+Caution
 
 Use `wrangler dev --remote` with caution. Since your Worker runs in Cloudflare's production environment, any database writes or side effects will affect your production data.
 
@@ -142,7 +130,14 @@ Refer to the [wrangler dev documentation](https://developers.cloudflare.com/work
 * Learn [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 * Understand how to [configure query caching in Hyperdrive](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/local-development/#page","headline":"Local development · Cloudflare Hyperdrive docs","description":"Develop and test Hyperdrive-connected Workers locally using Wrangler.","url":"https://developers.cloudflare.com/hyperdrive/configuration/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/local-development/","name":"Local development"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/local-development/#page","headline":"Local development · Cloudflare Hyperdrive docs","description":"Develop and test Hyperdrive-connected Workers locally using Wrangler.","url":"https://developers.cloudflare.com/hyperdrive/configuration/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

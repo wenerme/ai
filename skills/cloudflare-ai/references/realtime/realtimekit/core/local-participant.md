@@ -1,16 +1,18 @@
 ---
-title: Local Participant
 description: Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Local Participant
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Local Participant
 
-# Local Participant
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage local user media devices, control audio, video, and screenshare, and handle events in RealtimeKit meetings.
 
@@ -32,8 +34,6 @@ ReactWeb ComponentsAngular
 
 Access participant identifiers and display information:
 
-**JavaScript**
-
 ```js
 // Participant identifiers
 meeting.self.id; // Peer ID (unique per session)
@@ -46,18 +46,15 @@ meeting.self.picture; // Display picture URL
 ```jsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
 
-
 // Participant identifiers
 const id = useRealtimeKitSelector((m) => m.self.id);
 const userId = useRealtimeKitSelector((m) => m.self.userId);
 const customParticipantId = useRealtimeKitSelector(
-  (m) => m.self.customParticipantId,
+	(m) => m.self.customParticipantId,
 );
 const name = useRealtimeKitSelector((m) => m.self.name);
 const picture = useRealtimeKitSelector((m) => m.self.picture);
 ```
-
-**Kotlin**
 
 ```kotlin
 // Participant identifiers
@@ -67,8 +64,6 @@ meeting.localUser.customParticipantId // Custom identifier set by developer
 meeting.localUser.name // Display name
 meeting.localUser.picture // Display picture URL
 ```
-
-**Swift**
 
 ```swift
 // Participant identifiers
@@ -82,18 +77,15 @@ meeting.localUser.picture // Display picture URL
 ```jsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
 
-
 // Participant identifiers
 const id = useRealtimeKitSelector((m) => m.self.id);
 const userId = useRealtimeKitSelector((m) => m.self.userId);
 const customParticipantId = useRealtimeKitSelector(
-  (m) => m.self.customParticipantId,
+	(m) => m.self.customParticipantId,
 );
 const name = useRealtimeKitSelector((m) => m.self.name);
 const picture = useRealtimeKitSelector((m) => m.self.picture);
 ```
-
-**Dart**
 
 ```dart
 // Participant identifiers
@@ -108,20 +100,16 @@ meeting.localUser.picture // Display picture URL
 
 Access the local user's media tracks and states:
 
-**JavaScript**
-
 ```js
 // Media state flags
 meeting.self.audioEnabled; // Boolean: Is audio enabled?
 meeting.self.videoEnabled; // Boolean: Is video enabled?
 meeting.self.screenShareEnabled; // Boolean: Is screen share active?
 
-
 // Media tracks (MediaStreamTrack objects)
 meeting.self.audioTrack; // Audio MediaStreamTrack (available when audioEnabled is true)
 meeting.self.videoTrack; // Video MediaStreamTrack (available when videoEnabled is true)
 meeting.self.screenShareTracks; // Object: { video: MediaStreamTrack, audio?: MediaStreamTrack }
-
 
 // Permissions granted by user
 meeting.self.mediaPermissions; // Current audio/video permissions
@@ -132,23 +120,19 @@ meeting.self.mediaPermissions; // Current audio/video permissions
 const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 const screenShareEnabled = useRealtimeKitSelector(
-  (m) => m.self.screenShareEnabled,
+	(m) => m.self.screenShareEnabled,
 );
-
 
 // Media tracks (MediaStreamTrack objects)
 const audioTrack = useRealtimeKitSelector((m) => m.self.audioTrack);
 const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
 const screenShareTracks = useRealtimeKitSelector(
-  (m) => m.self.screenShareTracks,
+	(m) => m.self.screenShareTracks,
 );
-
 
 // Permissions granted by user
 const mediaPermissions = useRealtimeKitSelector((m) => m.self.mediaPermissions);
 ```
-
-**Kotlin**
 
 ```kotlin
 // Media state flags
@@ -156,20 +140,16 @@ meeting.localUser.audioEnabled // Boolean: Is audio enabled?
 meeting.localUser.videoEnabled // Boolean: Is video enabled?
 meeting.localUser.screenShareEnabled // Boolean: Is screen share active?
 
-
 // Permissions granted by user
 meeting.localUser.isCameraPermissionGranted // Camera permission status
 meeting.localUser.isMicrophonePermissionGranted // Microphone permission status
 ```
-
-**Swift**
 
 ```swift
 // Media state flags
 meeting.localUser.audioEnabled // Boolean: Is audio enabled?
 meeting.localUser.videoEnabled // Boolean: Is video enabled?
 meeting.localUser.screenShareEnabled // Boolean: Is screen share active?
-
 
 // Permissions granted by user
 meeting.localUser.isCameraPermissionGranted // Camera permission status
@@ -181,30 +161,25 @@ meeting.localUser.isMicrophonePermissionGranted // Microphone permission status
 const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 const screenShareEnabled = useRealtimeKitSelector(
-  (m) => m.self.screenShareEnabled,
+	(m) => m.self.screenShareEnabled,
 );
-
 
 // Media tracks (MediaStreamTrack objects)
 const audioTrack = useRealtimeKitSelector((m) => m.self.audioTrack);
 const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
 const screenShareTracks = useRealtimeKitSelector(
-  (m) => m.self.screenShareTracks,
+	(m) => m.self.screenShareTracks,
 );
-
 
 // Permissions granted by user
 const mediaPermissions = useRealtimeKitSelector((m) => m.self.mediaPermissions);
 ```
-
-**Dart**
 
 ```dart
 // Media state flags
 meeting.localUser.audioEnabled // Boolean: Is audio enabled?
 meeting.localUser.videoEnabled // Boolean: Is video enabled?
 meeting.localUser.screenShareEnabled // Boolean: Is screen share active?
-
 
 // Permissions granted by user
 meeting.localUser.isCameraPermissionGranted // Camera permission status
@@ -215,14 +190,11 @@ meeting.localUser.isMicrophonePermissionGranted // Microphone permission status
 
 Access room state and participant status:
 
-**JavaScript**
-
 ```js
 // Room state
 meeting.self.roomJoined; // Boolean: Has joined the meeting?
 meeting.self.roomState; // Current room state (see possible values below)
 meeting.self.isPinned; // Boolean: Is the local user pinned?
-
 
 // Permissions and config
 meeting.self.permissions; // Capabilities defined by preset
@@ -246,7 +218,6 @@ const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 const isPinned = useRealtimeKitSelector((m) => m.self.isPinned);
 
-
 // Permissions and config
 const permissions = useRealtimeKitSelector((m) => m.self.permissions);
 const config = useRealtimeKitSelector((m) => m.self.config);
@@ -257,13 +228,12 @@ const config = useRealtimeKitSelector((m) => m.self.config);
 ```jsx
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 
-
 return (
-  <>
-    {roomState === "disconnected" && <div>You are disconnected</div>}
-    {roomState === "waitlisted" && <div>Waiting for host to admit you</div>}
-    {roomState === "joined" && <div>You are in the meeting</div>}
-  </>
+	<>
+		{roomState === "disconnected" && <div>You are disconnected</div>}
+		{roomState === "waitlisted" && <div>Waiting for host to admit you</div>}
+		{roomState === "joined" && <div>You are in the meeting</div>}
+	</>
 );
 ```
 
@@ -278,14 +248,11 @@ return (
 * `'ended'` \- Meeting has ended
 * `'disconnected'` \- Disconnected from meeting
 
-**Kotlin**
-
 ```kotlin
 // Room state
 meeting.localUser.roomJoined // Boolean: Has joined the meeting?
 meeting.localUser.waitListStatus // Waitlist status (None, Waiting, Accepted, Rejected)
 meeting.localUser.isPinned // Boolean: Is the local user pinned?
-
 
 // Permissions and config
 meeting.localUser.permissions // Capabilities defined by preset
@@ -293,14 +260,11 @@ meeting.localUser.presetName // Name of preset for local user
 meeting.localUser.presetInfo // Typed object representing preset information
 ```
 
-**Swift**
-
 ```swift
 // Room state
 meeting.localUser.roomJoined // Boolean: Has joined the meeting?
 meeting.localUser.waitListStatus // Waitlist status (None, Waiting, Accepted, Rejected)
 meeting.localUser.isPinned // Boolean: Is the local user pinned?
-
 
 // Permissions and config
 meeting.localUser.permissions // Capabilities defined by preset
@@ -314,7 +278,6 @@ const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 const isPinned = useRealtimeKitSelector((m) => m.self.isPinned);
 
-
 // Permissions and config
 const permissions = useRealtimeKitSelector((m) => m.self.permissions);
 const config = useRealtimeKitSelector((m) => m.self.config);
@@ -325,13 +288,12 @@ const config = useRealtimeKitSelector((m) => m.self.config);
 ```jsx
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 
-
 return (
-  <>
-    {roomState === "disconnected" && <Text>You are disconnected</Text>}
-    {roomState === "waitlisted" && <Text>Waiting for host to admit you</Text>}
-    {roomState === "joined" && <Text>You are in the meeting</Text>}
-  </>
+	<>
+		{roomState === "disconnected" && <Text>You are disconnected</Text>}
+		{roomState === "waitlisted" && <Text>Waiting for host to admit you</Text>}
+		{roomState === "joined" && <Text>You are in the meeting</Text>}
+	</>
 );
 ```
 
@@ -346,14 +308,11 @@ return (
 * `'ended'` \- Meeting has ended
 * `'disconnected'` \- Disconnected from meeting
 
-**Dart**
-
 ```dart
 // Room state
 meeting.localUser.isHost // Boolean: Is the local user a host?
 meeting.localUser.isPinned // Boolean: Is the local user pinned?
 meeting.localUser.stageStatus // Stage status of the local user
-
 
 // Permissions and flags
 meeting.localUser.flags // ParticipantFlags (recorder, hidden)
@@ -365,16 +324,12 @@ meeting.localUser.flags // ParticipantFlags (recorder, hidden)
 
 Mute and unmute the microphone:
 
-**JavaScript**
-
 ```js
 // Enable audio (unmute)
 await meeting.self.enableAudio();
 
-
 // Disable audio (mute)
 await meeting.self.disableAudio();
-
 
 // Check current status
 const isAudioEnabled = meeting.self.audioEnabled;
@@ -383,52 +338,41 @@ const isAudioEnabled = meeting.self.audioEnabled;
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 function AudioControls() {
-  const [meeting] = useRealtimeKitClient();
-  const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
+	const [meeting] = useRealtimeKitClient();
+	const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 
+	const toggleAudio = async () => {
+		if (audioEnabled) {
+			await meeting.self.disableAudio();
+		} else {
+			await meeting.self.enableAudio();
+		}
+	};
 
-  const toggleAudio = async () => {
-    if (audioEnabled) {
-      await meeting.self.disableAudio();
-    } else {
-      await meeting.self.enableAudio();
-    }
-  };
-
-
-  return (
-    <button onClick={toggleAudio}>{audioEnabled ? "Mute" : "Unmute"}</button>
-  );
+	return (
+		<button onClick={toggleAudio}>{audioEnabled ? "Mute" : "Unmute"}</button>
+	);
 }
 ```
-
-**Kotlin**
 
 ```kotlin
 // Enable audio (unmute)
 meeting.localUser.enableAudio { error: AudioError? -> }
 
-
 // Disable audio (mute)
 meeting.localUser.disableAudio { error: AudioError? -> }
-
 
 // Check current status
 val isAudioEnabled = meeting.localUser.audioEnabled
 ```
 
-**Swift**
-
 ```swift
 // Enable audio (unmute)
 meeting.localUser.enableAudio { err in }
 
-
 // Disable audio (mute)
 meeting.localUser.disableAudio { err in }
-
 
 // Check current status
 let isAudioEnabled = meeting.localUser.audioEnabled
@@ -436,35 +380,30 @@ let isAudioEnabled = meeting.localUser.audioEnabled
 
 ```jsx
 import {
-  useRealtimeKitClient,
-  useRealtimeKitSelector,
+	useRealtimeKitClient,
+	useRealtimeKitSelector,
 } from "@cloudflare/realtimekit-react-native";
 import { TouchableHighlight, Text } from "react-native";
 
-
 function AudioControls() {
-  const [meeting] = useRealtimeKitClient();
-  const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
+	const [meeting] = useRealtimeKitClient();
+	const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 
+	const toggleAudio = async () => {
+		if (audioEnabled) {
+			await meeting.self.disableAudio();
+		} else {
+			await meeting.self.enableAudio();
+		}
+	};
 
-  const toggleAudio = async () => {
-    if (audioEnabled) {
-      await meeting.self.disableAudio();
-    } else {
-      await meeting.self.enableAudio();
-    }
-  };
-
-
-  return (
-    <TouchableHighlight onPress={toggleAudio}>
-      <Text>{audioEnabled ? "Mute" : "Unmute"}</Text>
-    </TouchableHighlight>
-  );
+	return (
+		<TouchableHighlight onPress={toggleAudio}>
+			<Text>{audioEnabled ? "Mute" : "Unmute"}</Text>
+		</TouchableHighlight>
+	);
 }
 ```
-
-**Dart**
 
 ```dart
 // Enable audio (unmute)
@@ -472,12 +411,10 @@ meeting.localUser.enableAudio(onResult: (e) {
   // handle error if any
 });
 
-
 // Disable audio (mute)
 meeting.localUser.disableAudio(onResult: (e) {
   // handle error if any
 });
-
 
 // Check current status
 final isAudioEnabled = meeting.localUser.audioEnabled;
@@ -487,16 +424,12 @@ final isAudioEnabled = meeting.localUser.audioEnabled;
 
 Enable and disable the camera:
 
-**JavaScript**
-
 ```js
 // Enable video
 await meeting.self.enableVideo();
 
-
 // Disable video
 await meeting.self.disableVideo();
-
 
 // Check current status
 const isVideoEnabled = meeting.self.videoEnabled;
@@ -504,52 +437,42 @@ const isVideoEnabled = meeting.self.videoEnabled;
 
 ```jsx
 function VideoControls() {
-  const [meeting] = useRealtimeKitClient();
-  const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
+	const [meeting] = useRealtimeKitClient();
+	const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 
+	const toggleVideo = async () => {
+		if (videoEnabled) {
+			await meeting.self.disableVideo();
+		} else {
+			await meeting.self.enableVideo();
+		}
+	};
 
-  const toggleVideo = async () => {
-    if (videoEnabled) {
-      await meeting.self.disableVideo();
-    } else {
-      await meeting.self.enableVideo();
-    }
-  };
-
-
-  return (
-    <button onClick={toggleVideo}>
-      {videoEnabled ? "Stop Video" : "Start Video"}
-    </button>
-  );
+	return (
+		<button onClick={toggleVideo}>
+			{videoEnabled ? "Stop Video" : "Start Video"}
+		</button>
+	);
 }
 ```
-
-**Kotlin**
 
 ```kotlin
 // Enable video
 meeting.localUser.enableVideo { error: VideoError? -> }
 
-
 // Disable video
 meeting.localUser.disableVideo { error: VideoError? -> }
-
 
 // Check current status
 val isVideoEnabled = meeting.localUser.videoEnabled
 ```
 
-**Swift**
-
 ```swift
 // Enable video
 meeting.localUser.enableVideo { err in }
 
-
 // Disable video
 meeting.localUser.disableVideo { err in }
-
 
 // Check current status
 let isVideoEnabled = meeting.localUser.videoEnabled
@@ -557,28 +480,24 @@ let isVideoEnabled = meeting.localUser.videoEnabled
 
 ```jsx
 function VideoControls() {
-  const [meeting] = useRealtimeKitClient();
-  const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
+	const [meeting] = useRealtimeKitClient();
+	const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 
+	const toggleVideo = async () => {
+		if (videoEnabled) {
+			await meeting.self.disableVideo();
+		} else {
+			await meeting.self.enableVideo();
+		}
+	};
 
-  const toggleVideo = async () => {
-    if (videoEnabled) {
-      await meeting.self.disableVideo();
-    } else {
-      await meeting.self.enableVideo();
-    }
-  };
-
-
-  return (
-    <TouchableHighlight onPress={toggleVideo}>
-      <Text>{videoEnabled ? "Stop Video" : "Start Video"}</Text>
-    </TouchableHighlight>
-  );
+	return (
+		<TouchableHighlight onPress={toggleVideo}>
+			<Text>{videoEnabled ? "Stop Video" : "Start Video"}</Text>
+		</TouchableHighlight>
+	);
 }
 ```
-
-**Dart**
 
 ```dart
 // Enable video
@@ -586,12 +505,10 @@ meeting.localUser.enableVideo(onResult: (e) {
   // handle error if any
 });
 
-
 // Disable video
 meeting.localUser.disableVideo(onResult: (e) {
   // handle error if any
 });
-
 
 // Check current status
 final isVideoEnabled = meeting.localUser.videoEnabled;
@@ -601,16 +518,12 @@ final isVideoEnabled = meeting.localUser.videoEnabled;
 
 Start and stop screen sharing:
 
-**JavaScript**
-
 ```js
 // Enable screen share
 await meeting.self.enableScreenShare();
 
-
 // Disable screen share
 await meeting.self.disableScreenShare();
-
 
 // Check current status
 const isScreenShareEnabled = meeting.self.screenShareEnabled;
@@ -618,39 +531,33 @@ const isScreenShareEnabled = meeting.self.screenShareEnabled;
 
 ```jsx
 function ScreenShareControls() {
-  const [meeting] = useRealtimeKitClient();
-  const screenShareEnabled = useRealtimeKitSelector(
-    (m) => m.self.screenShareEnabled,
-  );
+	const [meeting] = useRealtimeKitClient();
+	const screenShareEnabled = useRealtimeKitSelector(
+		(m) => m.self.screenShareEnabled,
+	);
 
+	const toggleScreenShare = async () => {
+		if (screenShareEnabled) {
+			await meeting.self.disableScreenShare();
+		} else {
+			await meeting.self.enableScreenShare();
+		}
+	};
 
-  const toggleScreenShare = async () => {
-    if (screenShareEnabled) {
-      await meeting.self.disableScreenShare();
-    } else {
-      await meeting.self.enableScreenShare();
-    }
-  };
-
-
-  return (
-    <button onClick={toggleScreenShare}>
-      {screenShareEnabled ? "Stop Sharing" : "Share Screen"}
-    </button>
-  );
+	return (
+		<button onClick={toggleScreenShare}>
+			{screenShareEnabled ? "Stop Sharing" : "Share Screen"}
+		</button>
+	);
 }
 ```
-
-**Kotlin**
 
 ```kotlin
 // Enable screen share
 meeting.localUser.enableScreenShare()
 
-
 // Disable screen share
 meeting.localUser.disableScreenShare()
-
 
 // Check current status
 val isScreenShareEnabled = meeting.localUser.screenShareEnabled
@@ -666,12 +573,9 @@ Declare the following permission in your app's AndroidManifest.xml to use screen
 
 Adding this permission requires extra steps on Google Play Console. Refer to [Google's documentation ↗](https://support.google.com/googleplay/android-developer/answer/13392821?hl=en#declare) for more information.
 
-**Swift**
-
 ```swift
 // Enable screen share
 let err: ScreenShareError? = meeting.localUser.enableScreenShare()
-
 
 // Disable screen share
 meeting.localUser.disableScreenShare()
@@ -681,35 +585,30 @@ Refer to the [Screen Share Setup (iOS)](#screen-share-setup-ios) section for pla
 
 ```jsx
 function ScreenShareControls() {
-  const [meeting] = useRealtimeKitClient();
-  const screenShareEnabled = useRealtimeKitSelector(
-    (m) => m.self.screenShareEnabled,
-  );
+	const [meeting] = useRealtimeKitClient();
+	const screenShareEnabled = useRealtimeKitSelector(
+		(m) => m.self.screenShareEnabled,
+	);
 
+	const toggleScreenShare = async () => {
+		if (screenShareEnabled) {
+			await meeting.self.disableScreenShare();
+		} else {
+			await meeting.self.enableScreenShare();
+		}
+	};
 
-  const toggleScreenShare = async () => {
-    if (screenShareEnabled) {
-      await meeting.self.disableScreenShare();
-    } else {
-      await meeting.self.enableScreenShare();
-    }
-  };
-
-
-  return (
-    <TouchableHighlight onPress={toggleScreenShare}>
-      <Text>{screenShareEnabled ? "Stop Sharing" : "Share Screen"}</Text>
-    </TouchableHighlight>
-  );
+	return (
+		<TouchableHighlight onPress={toggleScreenShare}>
+			<Text>{screenShareEnabled ? "Stop Sharing" : "Share Screen"}</Text>
+		</TouchableHighlight>
+	);
 }
 ```
-
-**Dart**
 
 ```dart
 // Enable screen share
 meeting.localUser.enableScreenShare();
-
 
 // Disable screen share
 meeting.localUser.disableScreenShare();
@@ -729,8 +628,6 @@ Platform-specific setup
 
 Update the display name before joining the meeting:
 
-**JavaScript**
-
 ```js
 await meeting.self.setName("New Name");
 ```
@@ -747,8 +644,6 @@ Note
 
 Name changes only reflect across all participants if done before joining the meeting.
 
-**Kotlin**
-
 ```kotlin
 meeting.localUser.setDisplayName("New Name")
 ```
@@ -756,8 +651,6 @@ meeting.localUser.setDisplayName("New Name")
 Note
 
 Name changes only reflect across all participants if done before joining the meeting.
-
-**Swift**
 
 ```swift
 meeting.localUser.setDisplayName(name: "New Name")
@@ -775,8 +668,6 @@ Note
 
 Name changes only reflect across all participants if done before joining the meeting.
 
-**Dart**
-
 ```dart
 if (meeting.permissions.miscellaneous.canEditDisplayName) {
   meeting.localUser.setDisplayName("New Name");
@@ -791,28 +682,21 @@ Name changes only reflect across all participants if done before joining the mee
 
 ### Get available devices
 
-**JavaScript**
-
 ```js
 // Get all media devices
 const devices = await meeting.self.getAllDevices();
 
-
 // Get all audio input devices (microphones)
 const audioDevices = await meeting.self.getAudioDevices();
-
 
 // Get all video input devices (cameras)
 const videoDevices = await meeting.self.getVideoDevices();
 
-
 // Get all audio output devices (speakers)
 const speakerDevices = await meeting.self.getSpeakerDevices();
 
-
 // Get device by ID
 const device = await meeting.self.getDeviceById("device-id", "audio");
-
 
 // Get current devices being used
 const currentDevices = meeting.self.getCurrentDevices();
@@ -823,52 +707,46 @@ const currentDevices = meeting.self.getCurrentDevices();
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 import { useState, useEffect } from "react";
 
-
 function DeviceSelector() {
-  const [meeting] = useRealtimeKitClient();
-  const [audioDevices, setAudioDevices] = useState([]);
-  const [videoDevices, setVideoDevices] = useState([]);
+	const [meeting] = useRealtimeKitClient();
+	const [audioDevices, setAudioDevices] = useState([]);
+	const [videoDevices, setVideoDevices] = useState([]);
 
+	useEffect(() => {
+		if (!meeting) return;
 
-  useEffect(() => {
-    if (!meeting) return;
+		const loadDevices = async () => {
+			const audio = await meeting.self.getAudioDevices();
+			const video = await meeting.self.getVideoDevices();
+			setAudioDevices(audio);
+			setVideoDevices(video);
+		};
 
+		loadDevices();
+	}, [meeting]);
 
-    const loadDevices = async () => {
-      const audio = await meeting.self.getAudioDevices();
-      const video = await meeting.self.getVideoDevices();
-      setAudioDevices(audio);
-      setVideoDevices(video);
-    };
+	const handleDeviceChange = async (device) => {
+		await meeting.self.setDevice(device);
+	};
 
-
-    loadDevices();
-  }, [meeting]);
-
-
-  const handleDeviceChange = async (device) => {
-    await meeting.self.setDevice(device);
-  };
-
-
-  return (
-    <div>
-      <select
-        onChange={(e) => {
-          const device = audioDevices.find(
-            (d) => d.deviceId === e.target.value,
-          );
-          handleDeviceChange(device);
-        }}
-      >
-        {audioDevices.map((device) => (
-          <option key={device.deviceId} value={device.deviceId}>
-            {device.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+	return (
+		<div>
+			<select
+				onChange={(e) => {
+					const device = audioDevices.find(
+						(d) => d.deviceId === e.target.value,
+					);
+					handleDeviceChange(device);
+				}}
+			>
+				{audioDevices.map((device) => (
+					<option key={device.deviceId} value={device.deviceId}>
+						{device.label}
+					</option>
+				))}
+			</select>
+		</div>
+	);
 }
 ```
 
@@ -879,39 +757,29 @@ const currentDevices = meeting.self.getCurrentDevices();
 // Returns: { audio: MediaDeviceInfo, video: MediaDeviceInfo, speaker: MediaDeviceInfo }
 ```
 
-**Kotlin**
-
 ```kotlin
 // Get all audio devices
 val audioDevices: List<AudioDevice> = meeting.localUser.getAudioDevices()
 
-
 // Get all video devices
 val videoDevices: List<VideoDevice> = meeting.localUser.getVideoDevices()
 
-
 // Get currently selected audio device
 val selectedAudioDevice: AudioDevice = meeting.localUser.getSelectedAudioDevice()
-
 
 // Get currently selected video device
 val selectedVideoDevice: VideoDevice = meeting.localUser.getSelectedVideoDevice()
 ```
 
-**Swift**
-
 ```swift
 // Get all audio devices
 let audioDevices = meeting.localUser.getAudioDevices()
 
-
 // Get all video devices
 let videoDevices = meeting.localUser.getVideoDevices()
 
-
 // Get currently selected audio device
 let selectedAudioDevice = meeting.localUser.getSelectedAudioDevice()
-
 
 // Get currently selected video device
 let selectedVideoDevice = meeting.localUser.getSelectedVideoDevice()
@@ -922,47 +790,41 @@ import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";
 import { useState, useEffect } from "react";
 import { FlatList, TouchableHighlight, Text, View } from "react-native";
 
-
 function DeviceSelector() {
-  const [meeting] = useRealtimeKitClient();
-  const [audioDevices, setAudioDevices] = useState([]);
-  const [videoDevices, setVideoDevices] = useState([]);
+	const [meeting] = useRealtimeKitClient();
+	const [audioDevices, setAudioDevices] = useState([]);
+	const [videoDevices, setVideoDevices] = useState([]);
 
+	useEffect(() => {
+		if (!meeting) return;
 
-  useEffect(() => {
-    if (!meeting) return;
+		const loadDevices = async () => {
+			const audio = await meeting.self.getAudioDevices();
+			const video = await meeting.self.getVideoDevices();
+			setAudioDevices(audio);
+			setVideoDevices(video);
+		};
 
+		loadDevices();
+	}, [meeting]);
 
-    const loadDevices = async () => {
-      const audio = await meeting.self.getAudioDevices();
-      const video = await meeting.self.getVideoDevices();
-      setAudioDevices(audio);
-      setVideoDevices(video);
-    };
+	const handleDeviceChange = async (device) => {
+		await meeting.self.setDevice(device);
+	};
 
-
-    loadDevices();
-  }, [meeting]);
-
-
-  const handleDeviceChange = async (device) => {
-    await meeting.self.setDevice(device);
-  };
-
-
-  return (
-    <View>
-      <FlatList
-        data={audioDevices}
-        renderItem={({ item }) => (
-          <TouchableHighlight onPress={() => handleDeviceChange(item)}>
-            <Text>{item.label}</Text>
-          </TouchableHighlight>
-        )}
-        keyExtractor={(item) => item.deviceId}
-      />
-    </View>
-  );
+	return (
+		<View>
+			<FlatList
+				data={audioDevices}
+				renderItem={({ item }) => (
+					<TouchableHighlight onPress={() => handleDeviceChange(item)}>
+						<Text>{item.label}</Text>
+					</TouchableHighlight>
+				)}
+				keyExtractor={(item) => item.deviceId}
+			/>
+		</View>
+	);
 }
 ```
 
@@ -973,20 +835,15 @@ const currentDevices = meeting.self.getCurrentDevices();
 // Returns: { audio: MediaDeviceInfo, video: MediaDeviceInfo, speaker: MediaDeviceInfo }
 ```
 
-**Dart**
-
 ```dart
 // Get all audio devices
 final audioDevices = await meeting.localUser.getAudioDevices();
 
-
 // Get all video devices
 final videoDevices = await meeting.localUser.getVideoDevices();
 
-
 // Get currently selected audio device
 final selectedAudioDevice = meeting.localUser.getSelectedAudioDevice();
-
 
 // Get currently selected video device
 final selectedVideoDevice = meeting.localUser.getSelectedVideoDevice();
@@ -996,12 +853,9 @@ final selectedVideoDevice = meeting.localUser.getSelectedVideoDevice();
 
 Switch to a different media device:
 
-**JavaScript**
-
 ```js
 // Get all devices
 const devices = await meeting.self.getAllDevices();
-
 
 // Set a specific device (replaces device of the same kind)
 await meeting.self.setDevice(devices[0]);
@@ -1009,39 +863,29 @@ await meeting.self.setDevice(devices[0]);
 
 Use the device selector example from the previous section. The `handleDeviceChange` function demonstrates how to switch devices.
 
-**Kotlin**
-
 ```kotlin
 // Get all audio devices
 val audioDevices = meeting.localUser.getAudioDevices()
 
-
 // Set audio device
 meeting.localUser.setAudioDevice(audioDevices[0])
-
 
 // Get all video devices
 val videoDevices = meeting.localUser.getVideoDevices()
 
-
 // Set video device
 meeting.localUser.setVideoDevice(videoDevices[0])
-
 
 // Switch between front and back camera on devices with 2 cameras
 meeting.localUser.switchCamera()
 ```
 
-**Swift**
-
 ```swift
 // Set audio device
 meeting.localUser.setAudioDevice(device)
 
-
 // Set video device
 meeting.localUser.setVideoDevice(videoDevice: device)
-
 
 // Switch between front and back camera
 meeting.localUser.switchCamera()
@@ -1049,32 +893,24 @@ meeting.localUser.switchCamera()
 
 Use the device selector example from the previous section. The `handleDeviceChange` function demonstrates how to switch devices.
 
-**JavaScript**
-
 ```js
 const handleDeviceChange = async (device) => {
-  await meeting.self.setDevice(device);
+	await meeting.self.setDevice(device);
 };
 ```
-
-**Dart**
 
 ```dart
 // Get all available audio devices
 final audioDevices = await meeting.localUser.getAudioDevices();
 
-
 // Switch audio device
 await meeting.localUser.setAudioDevice(audioDevices[1]);
-
 
 // Get all available video devices
 final videoDevices = await meeting.localUser.getVideoDevices();
 
-
 // Switch video device
 await meeting.localUser.setVideoDevice(videoDevices[1]);
-
 
 // Switch between available camera sources
 meeting.localUser.switchCamera();
@@ -1090,15 +926,11 @@ Attach the local video track to a `<video>` element:
 <video id="local-video" autoplay playsinline></video>
 ```
 
-**JavaScript**
-
 ```js
 const videoElement = document.getElementById("local-video");
 
-
 // Register the video element to display video
 meeting.self.registerVideoElement(videoElement);
-
 
 // For local preview (not sent to other users), pass true as second argument
 meeting.self.registerVideoElement(videoElement, true);
@@ -1107,8 +939,6 @@ meeting.self.registerVideoElement(videoElement, true);
 ### Deregister video element
 
 Remove the video element when no longer needed:
-
-**JavaScript**
 
 ```js
 meeting.self.deregisterVideoElement(videoElement);
@@ -1122,12 +952,10 @@ Display local video with the UI Kit video tile component:
 import { RtkParticipantTile } from "@cloudflare/realtimekit-react-ui";
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
 
-
 function LocalVideo() {
-  const localUser = useRealtimeKitSelector((m) => m.self);
+	const localUser = useRealtimeKitSelector((m) => m.self);
 
-
-  return <RtkParticipantTile participant={localUser} />;
+	return <RtkParticipantTile participant={localUser} />;
 }
 ```
 
@@ -1137,51 +965,44 @@ Create custom video element implementations:
 
 ```jsx
 import {
-  useRealtimeKitClient,
-  useRealtimeKitSelector,
+	useRealtimeKitClient,
+	useRealtimeKitSelector,
 } from "@cloudflare/realtimekit-react";
 import { useEffect, useRef } from "react";
 
-
 function LocalVideoCustom() {
-  const [meeting] = useRealtimeKitClient();
-  const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
-  const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
-  const videoRef = useRef(null);
+	const [meeting] = useRealtimeKitClient();
+	const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
+	const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
+	const videoRef = useRef(null);
 
+	useEffect(() => {
+		if (!videoRef.current || !meeting) return;
 
-  useEffect(() => {
-    if (!videoRef.current || !meeting) return;
+		// Register video element
+		meeting.self.registerVideoElement(videoRef.current);
 
+		return () => {
+			// Cleanup: deregister on unmount
+			meeting.self.deregisterVideoElement(videoRef.current);
+		};
+	}, [meeting]);
 
-    // Register video element
-    meeting.self.registerVideoElement(videoRef.current);
-
-
-    return () => {
-      // Cleanup: deregister on unmount
-      meeting.self.deregisterVideoElement(videoRef.current);
-    };
-  }, [meeting]);
-
-
-  return (
-    <video
-      ref={videoRef}
-      autoPlay
-      playsInline
-      muted
-      style={{ display: videoEnabled ? "block" : "none" }}
-    />
-  );
+	return (
+		<video
+			ref={videoRef}
+			autoPlay
+			playsInline
+			muted
+			style={{ display: videoEnabled ? "block" : "none" }}
+		/>
+	);
 }
 ```
 
 ### Get video view
 
 Retrieve a self-preview video view that renders the local camera stream:
-
-**Kotlin**
 
 ```kotlin
 // Get the self-preview video view
@@ -1190,12 +1011,9 @@ val videoView = meeting.localUser.getSelfPreview()
 
 For rendering other participants' video, use:
 
-**Kotlin**
-
 ```kotlin
 // Get video view for camera stream
 val participantVideoView = participant.getVideoView()
-
 
 // Get video view for screenshare stream
 val screenshareView = participant.getScreenShareVideoView()
@@ -1205,16 +1023,12 @@ val screenshareView = participant.getScreenShareVideoView()
 
 Control video rendering with lifecycle methods:
 
-**Kotlin**
-
 ```kotlin
 // Start rendering video
 videoView.renderVideo()
 
-
 // Stop rendering video (but keep the view)
 videoView.stopVideoRender()
-
 
 // Release native resources when done
 videoView.release()
@@ -1222,36 +1036,28 @@ videoView.release()
 
 ### Complete Example
 
-**Kotlin**
-
 ```kotlin
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import io.dyte.core.VideoView
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var videoView: VideoView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // Get the self-preview video view
         videoView = meeting.localUser.getSelfPreview()
-
 
         // Add to your layout
         val container = findViewById<FrameLayout>(R.id.video_container)
         container.addView(videoView)
 
-
         // Start rendering
         videoView.renderVideo()
     }
-
 
     override fun onPause() {
         super.onPause()
@@ -1259,13 +1065,11 @@ class MainActivity : AppCompatActivity() {
         videoView.stopVideoRender()
     }
 
-
     override fun onResume() {
         super.onResume()
         // Resume rendering when activity is resumed
         videoView.renderVideo()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -1279,12 +1083,9 @@ class MainActivity : AppCompatActivity() {
 
 Retrieve video views that render the participant's video streams:
 
-**Swift**
-
 ```swift
 // Get video view for local camera stream
 let videoView = meeting.localUser.getVideoView()
-
 
 // Get video view for screenshare stream
 let screenshareView = meeting.localUser.getScreenShareVideoView()
@@ -1296,24 +1097,18 @@ The `UIView` handles its own lifecycle automatically and cleans up native resour
 
 ### Example
 
-**Swift**
-
 ```swift
 import UIKit
 import RealtimeKit
 
-
 class VideoViewController: UIViewController {
     private var videoView: UIView?
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         // Get the video view for local camera
         videoView = meeting.localUser.getVideoView()
-
 
         // Add to your view hierarchy
         if let videoView = videoView {
@@ -1326,8 +1121,6 @@ class VideoViewController: UIViewController {
 ```
 
 For screenshare:
-
-**Swift**
 
 ```swift
 // Get and display screenshare view
@@ -1344,22 +1137,21 @@ import React from "react";
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
 import { MediaStream, RTCView } from "@cloudflare/react-native-webrtc";
 
-
 export default function VideoView() {
-  const { videoTrack } = useRealtimeKitSelector(
-    (m) => m.participants.active,
-  ).toArray()[0];
-  const stream = new MediaStream(undefined);
-  stream.addTrack(videoTrack);
-  return (
-    <RTCView
-      objectFit={"cover"}
-      style={{ flex: 1 }}
-      streamURL={stream.toURL()}
-      mirror={true}
-      zOrder={1}
-    />
-  );
+	const { videoTrack } = useRealtimeKitSelector(
+		(m) => m.participants.active,
+	).toArray()[0];
+	const stream = new MediaStream(undefined);
+	stream.addTrack(videoTrack);
+	return (
+		<RTCView
+			objectFit={"cover"}
+			style={{ flex: 1 }}
+			streamURL={stream.toURL()}
+			mirror={true}
+			zOrder={1}
+		/>
+	);
 }
 ```
 
@@ -1367,19 +1159,14 @@ export default function VideoView() {
 
 Display video streams with the `VideoView` widget:
 
-**Dart**
-
 ```dart
 import 'package:realtimekit_core/realtimekit_core.dart';
 import 'package:flutter/material.dart';
 
-
 class LocalVideoView extends StatelessWidget {
   final RtkMeetingParticipant localUser;
 
-
   const LocalVideoView({Key? key, required this.localUser}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -1401,19 +1188,14 @@ The `VideoView` widget accepts the following parameters:
 
 ### Example
 
-**Dart**
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:realtimekit_core/realtimekit_core.dart';
 
-
 class MeetingScreen extends StatelessWidget {
   final RtkMeeting meeting;
 
-
   const MeetingScreen({Key? key, required this.meeting}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -1431,8 +1213,6 @@ class MeetingScreen extends StatelessWidget {
 ```
 
 For displaying other participants' video:
-
-**Dart**
 
 ```dart
 // Display remote participant video
@@ -1463,11 +1243,8 @@ Add your extension to an app group:
 
 Edit your SampleHandler class:
 
-**Swift**
-
 ```swift
 import RealtimeKit
-
 
 class SampleHandler: RtkSampleHandler {}
 ```
@@ -1492,15 +1269,11 @@ Add this key inside the Info.plist of the main App:
 
 Launch the broadcast extension and enable screen share:
 
-**Swift**
-
 ```swift
 meeting.localUser.enableScreenShare()
 ```
 
 To stop the screen share:
-
-**Swift**
 
 ```swift
 meeting.localUser.disableScreenShare()
@@ -1524,11 +1297,8 @@ Add your extension to an app group:
 1. Place the `RtkSampleHandler.swift` file from [GitHub ↗](https://github.com/dyte-io/iOS-ScreenShare/blob/main/RtkSampleHandler.swift) in the `ios/<screenshare-folder>/` folder
 2. Create or replace `SampleHandler.swift`:
 
-**Swift**
-
 ```swift
 import ReplayKit
-
 
 class SampleHandler: RtkSampleHandler {
 }
@@ -1554,15 +1324,11 @@ Add this key inside the Info.plist of the main App:
 
 Launch the broadcast extension and enable screen share:
 
-**Dart**
-
 ```dart
 meeting.localUser.enableScreenShare()
 ```
 
 To stop the screen share:
-
-**Dart**
 
 ```dart
 meeting.localUser.disableScreenShare()
@@ -1592,21 +1358,19 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-
 target 'YourApp' do
   ...
   post_install do |installer|
     ...
-    # Add this line here
+	  # Add this line here
     add_screenshare_sources(
       installer,
       project_name: 'YourApp',              # your Xcode project name (without .xcodeproj)
       extension_target_name: 'YourAppScreenshare' # your Broadcast Upload Extension target name
     )
-    ...
+	  ...
   end
 end
-
 
 target 'YourAppScreenshare' do
 # Remove the old steps added if any
@@ -1622,8 +1386,6 @@ pod install
 ### Configure SampleHandler
 
 In your Broadcast Upload Extension, edit `SampleHandler.swift`:
-
-**Swift**
 
 ```swift
 class SampleHandler: RTKScreenshareHandler {
@@ -1656,15 +1418,11 @@ Add this key to the main app `Info.plist` only:
 
 ### Enable screen share
 
-**JavaScript**
-
 ```js
 meeting.self.enableScreenShare();
 ```
 
 To stop the screen share:
-
-**JavaScript**
 
 ```js
 meeting.self.disableScreenShare();
@@ -1676,22 +1434,19 @@ meeting.self.disableScreenShare();
 
 Fires when the local user joins the meeting:
 
-**JavaScript**
-
 ```js
 meeting.self.on("roomJoined", () => {
-  console.log("Successfully joined the meeting");
+	console.log("Successfully joined the meeting");
 });
 ```
 
 ```jsx
 const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 
-
 useEffect(() => {
-  if (roomJoined) {
-    console.log("Successfully joined the meeting");
-  }
+	if (roomJoined) {
+		console.log("Successfully joined the meeting");
+	}
 }, [roomJoined]);
 ```
 
@@ -1699,20 +1454,17 @@ Or use event listener:
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleRoomJoined = () => {
+		console.log("Successfully joined the meeting");
+	};
 
-  const handleRoomJoined = () => {
-    console.log("Successfully joined the meeting");
-  };
+	meeting.self.on("roomJoined", handleRoomJoined);
 
-
-  meeting.self.on("roomJoined", handleRoomJoined);
-
-
-  return () => {
-    meeting.self.off("roomJoined", handleRoomJoined);
-  };
+	return () => {
+		meeting.self.off("roomJoined", handleRoomJoined);
+	};
 }, [meeting]);
 ```
 
@@ -1723,11 +1475,10 @@ iOS SDK uses a different event model. Monitor `roomJoined` property changes or u
 ```jsx
 const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 
-
 useEffect(() => {
-  if (roomJoined) {
-    console.log("Successfully joined the meeting");
-  }
+	if (roomJoined) {
+		console.log("Successfully joined the meeting");
+	}
 }, [roomJoined]);
 ```
 
@@ -1735,20 +1486,17 @@ Or use event listener:
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleRoomJoined = () => {
+		console.log("Successfully joined the meeting");
+	};
 
-  const handleRoomJoined = () => {
-    console.log("Successfully joined the meeting");
-  };
+	meeting.self.on("roomJoined", handleRoomJoined);
 
-
-  meeting.self.on("roomJoined", handleRoomJoined);
-
-
-  return () => {
-    meeting.self.off("roomJoined", handleRoomJoined);
-  };
+	return () => {
+		meeting.self.off("roomJoined", handleRoomJoined);
+	};
 }, [meeting]);
 ```
 
@@ -1758,23 +1506,20 @@ Flutter SDK uses a different event model. Monitor `roomJoined` property changes 
 
 Fires when the local user leaves the meeting:
 
-**JavaScript**
-
 ```js
 meeting.self.on("roomLeft", ({ state }) => {
-  console.log("Left the meeting with state:", state);
+	console.log("Left the meeting with state:", state);
 
-
-  // Handle different leave states
-  if (state === "left") {
-    console.log("User voluntarily left");
-  } else if (state === "kicked") {
-    console.log("User was kicked from the meeting");
-  } else if (state === "ended") {
-    console.log("Meeting has ended");
-  } else if (state === "disconnected") {
-    console.log("Lost connection to meeting");
-  }
+	// Handle different leave states
+	if (state === "left") {
+		console.log("User voluntarily left");
+	} else if (state === "kicked") {
+		console.log("User was kicked from the meeting");
+	} else if (state === "ended") {
+		console.log("Meeting has ended");
+	} else if (state === "disconnected") {
+		console.log("Lost connection to meeting");
+	}
 });
 ```
 
@@ -1783,11 +1528,10 @@ meeting.self.on("roomLeft", ({ state }) => {
 ```jsx
 const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 
-
 useEffect(() => {
-  if (!roomJoined) {
-    console.log("Left the meeting");
-  }
+	if (!roomJoined) {
+		console.log("Left the meeting");
+	}
 }, [roomJoined]);
 ```
 
@@ -1795,17 +1539,15 @@ Or use event listener for detailed state:
 
 ```jsx
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "left") {
-    console.log("User voluntarily left");
-  } else if (state === "kicked") {
-    console.log("User was kicked");
-  }
+	if (state === "left") {
+		console.log("User voluntarily left");
+	} else if (state === "kicked") {
+		console.log("User was kicked");
+	}
 });
 ```
 
 Use `RtkSelfEventListener` to monitor when the local user is removed from the meeting:
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -1820,11 +1562,10 @@ iOS SDK uses a different event model. Monitor `roomJoined` property changes or u
 ```jsx
 const roomJoined = useRealtimeKitSelector((m) => m.self.roomJoined);
 
-
 useEffect(() => {
-  if (!roomJoined) {
-    console.log("Left the meeting");
-  }
+	if (!roomJoined) {
+		console.log("Left the meeting");
+	}
 }, [roomJoined]);
 ```
 
@@ -1832,15 +1573,13 @@ Or use event listener for detailed state:
 
 ```jsx
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "left") {
-    console.log("User voluntarily left");
-  } else if (state === "kicked") {
-    console.log("User was kicked");
-  }
+	if (state === "left") {
+		console.log("User voluntarily left");
+	} else if (state === "kicked") {
+		console.log("User was kicked");
+	}
 });
 ```
-
-**Dart**
 
 ```dart
 class MeetingSelfListener extends RtkSelfEventListener {
@@ -1851,7 +1590,6 @@ class MeetingSelfListener extends RtkSelfEventListener {
   }
 }
 
-
 // Add the listener
 meeting.addSelfEventListener(MeetingSelfListener());
 ```
@@ -1860,21 +1598,18 @@ meeting.addSelfEventListener(MeetingSelfListener());
 
 Fires when video is enabled or disabled:
 
-**JavaScript**
-
 ```js
 meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {
-  console.log("Video state:", videoEnabled);
+	console.log("Video state:", videoEnabled);
 
-
-  if (videoEnabled) {
-    // Video track is available, can display it
-    const videoElement = document.getElementById("my-video");
-    const stream = new MediaStream();
-    stream.addTrack(videoTrack);
-    videoElement.srcObject = stream;
-    videoElement.play();
-  }
+	if (videoEnabled) {
+		// Video track is available, can display it
+		const videoElement = document.getElementById("my-video");
+		const stream = new MediaStream();
+		stream.addTrack(videoTrack);
+		videoElement.srcObject = stream;
+		videoElement.play();
+	}
 });
 ```
 
@@ -1882,16 +1617,13 @@ meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {
 const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
 
-
 useEffect(() => {
-  if (videoEnabled && videoTrack) {
-    console.log("Video is enabled");
-    // Handle video track
-  }
+	if (videoEnabled && videoTrack) {
+		console.log("Video is enabled");
+		// Handle video track
+	}
 }, [videoEnabled, videoTrack]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -1904,8 +1636,6 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
     }
 })
 ```
-
-**Swift**
 
 ```swift
 extension MeetingViewModel: RtkSelfEventListener {
@@ -1923,12 +1653,11 @@ extension MeetingViewModel: RtkSelfEventListener {
 const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 const videoTrack = useRealtimeKitSelector((m) => m.self.videoTrack);
 
-
 useEffect(() => {
-  if (videoEnabled && videoTrack) {
-    console.log("Video is enabled");
-    // Handle video track
-  }
+	if (videoEnabled && videoTrack) {
+		console.log("Video is enabled");
+		// Handle video track
+	}
 }, [videoEnabled, videoTrack]);
 ```
 
@@ -1938,17 +1667,14 @@ Flutter SDK uses a different event model. Monitor `videoEnabled` property change
 
 Fires when audio is enabled or disabled:
 
-**JavaScript**
-
 ```js
 meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {
-  console.log("Audio state:", audioEnabled);
+	console.log("Audio state:", audioEnabled);
 
-
-  if (audioEnabled) {
-    // Audio track is available
-    console.log("Microphone is on");
-  }
+	if (audioEnabled) {
+		// Audio track is available
+		console.log("Microphone is on");
+	}
 });
 ```
 
@@ -1956,16 +1682,13 @@ meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {
 const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 const audioTrack = useRealtimeKitSelector((m) => m.self.audioTrack);
 
-
 useEffect(() => {
-  if (audioEnabled && audioTrack) {
-    console.log("Audio is enabled");
-    // Handle audio track
-  }
+	if (audioEnabled && audioTrack) {
+		console.log("Audio is enabled");
+		// Handle audio track
+	}
 }, [audioEnabled, audioTrack]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -1978,8 +1701,6 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
     }
 })
 ```
-
-**Swift**
 
 ```swift
 extension MeetingViewModel: RtkSelfEventListener {
@@ -1997,12 +1718,11 @@ extension MeetingViewModel: RtkSelfEventListener {
 const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
 const audioTrack = useRealtimeKitSelector((m) => m.self.audioTrack);
 
-
 useEffect(() => {
-  if (audioEnabled && audioTrack) {
-    console.log("Audio is enabled");
-    // Handle audio track
-  }
+	if (audioEnabled && audioTrack) {
+		console.log("Audio is enabled");
+		// Handle audio track
+	}
 }, [audioEnabled, audioTrack]);
 ```
 
@@ -2012,55 +1732,48 @@ Flutter SDK uses a different event model. Monitor `audioEnabled` property change
 
 Fires when screen sharing starts or stops:
 
-**JavaScript**
-
 ```js
 meeting.self.on(
-  "screenShareUpdate",
-  ({ screenShareEnabled, screenShareTracks }) => {
-    console.log("Screen share state:", screenShareEnabled);
+	"screenShareUpdate",
+	({ screenShareEnabled, screenShareTracks }) => {
+		console.log("Screen share state:", screenShareEnabled);
 
-
-    if (screenShareEnabled) {
-      // Screen share tracks are available
-      const screenElement = document.getElementById("my-screen-share");
-      const stream = new MediaStream();
-      stream.addTrack(screenShareTracks.video);
-      if (screenShareTracks.audio) {
-        stream.addTrack(screenShareTracks.audio);
-      }
-      screenElement.srcObject = stream;
-      screenElement.play();
-    }
-  },
+		if (screenShareEnabled) {
+			// Screen share tracks are available
+			const screenElement = document.getElementById("my-screen-share");
+			const stream = new MediaStream();
+			stream.addTrack(screenShareTracks.video);
+			if (screenShareTracks.audio) {
+				stream.addTrack(screenShareTracks.audio);
+			}
+			screenElement.srcObject = stream;
+			screenElement.play();
+		}
+	},
 );
 ```
 
 ```jsx
 const screenShareEnabled = useRealtimeKitSelector(
-  (m) => m.self.screenShareEnabled,
+	(m) => m.self.screenShareEnabled,
 );
 const screenShareTracks = useRealtimeKitSelector(
-  (m) => m.self.screenShareTracks,
+	(m) => m.self.screenShareTracks,
 );
 
-
 useEffect(() => {
-  if (screenShareEnabled && screenShareTracks) {
-    console.log("Screen sharing is active");
-    // Handle screen share tracks
-  }
+	if (screenShareEnabled && screenShareTracks) {
+		console.log("Screen sharing is active");
+		// Handle screen share tracks
+	}
 }, [screenShareEnabled, screenShareTracks]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
     override fun onScreenShareStartFailed(reason: String) {
         // screen share failed to start
     }
-
 
     override fun onScreenShareUpdate(isEnabled: Boolean) {
         if (isEnabled) {
@@ -2072,18 +1785,14 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
 })
 ```
 
-**Swift**
-
 ```swift
 meeting.addSelfEventListener(self)
-
 
 extension MeetingViewModel: RtkSelfEventListener {
     func onRemovedFromMeeting() {
         // User was removed from the meeting (kicked or meeting ended)
         // Display alert or navigate to exit screen
     }
-
 
     func onMeetingRoomDisconnected() {
         // Lost connection to the meeting room
@@ -2094,26 +1803,23 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 You can also monitor the `roomJoined` property for state changes:
 
-**Swift**
-
 ```swift
 let isInMeeting = meeting.localUser.roomJoined
 ```
 
 ```jsx
 const screenShareEnabled = useRealtimeKitSelector(
-  (m) => m.self.screenShareEnabled,
+	(m) => m.self.screenShareEnabled,
 );
 const screenShareTracks = useRealtimeKitSelector(
-  (m) => m.self.screenShareTracks,
+	(m) => m.self.screenShareTracks,
 );
 
-
 useEffect(() => {
-  if (screenShareEnabled && screenShareTracks) {
-    console.log("Screen sharing is active");
-    // Handle screen share tracks
-  }
+	if (screenShareEnabled && screenShareTracks) {
+		console.log("Screen sharing is active");
+		// Handle screen share tracks
+	}
 }, [screenShareEnabled, screenShareTracks]);
 ```
 
@@ -2123,45 +1829,38 @@ Flutter SDK uses a different event model. Monitor `screenShareEnabled` property 
 
 Fires when the active device changes:
 
-**JavaScript**
-
 ```js
 meeting.self.on("deviceUpdate", ({ device }) => {
-  // Handle device change
-  if (device.kind === "audioinput") {
-    console.log("Microphone changed:", device.label);
-  } else if (device.kind === "videoinput") {
-    console.log("Camera changed:", device.label);
-  } else if (device.kind === "audiooutput") {
-    console.log("Speaker changed:", device.label);
-  }
+	// Handle device change
+	if (device.kind === "audioinput") {
+		console.log("Microphone changed:", device.label);
+	} else if (device.kind === "videoinput") {
+		console.log("Camera changed:", device.label);
+	} else if (device.kind === "audiooutput") {
+		console.log("Speaker changed:", device.label);
+	}
 });
 ```
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleDeviceUpdate = ({ device }) => {
+		if (device.kind === "audioinput") {
+			console.log("Microphone changed:", device.label);
+		} else if (device.kind === "videoinput") {
+			console.log("Camera changed:", device.label);
+		}
+	};
 
-  const handleDeviceUpdate = ({ device }) => {
-    if (device.kind === "audioinput") {
-      console.log("Microphone changed:", device.label);
-    } else if (device.kind === "videoinput") {
-      console.log("Camera changed:", device.label);
-    }
-  };
+	meeting.self.on("deviceUpdate", handleDeviceUpdate);
 
-
-  meeting.self.on("deviceUpdate", handleDeviceUpdate);
-
-
-  return () => {
-    meeting.self.off("deviceUpdate", handleDeviceUpdate);
-  };
+	return () => {
+		meeting.self.off("deviceUpdate", handleDeviceUpdate);
+	};
 }, [meeting]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.self.addSelfEventListener(object : RtkSelfEventListener() {
@@ -2170,7 +1869,6 @@ meeting.self.addSelfEventListener(object : RtkSelfEventListener() {
         println("Audio device changed: ${device.label}")
     }
 
-
     override fun onVideoDeviceChanged(device: VideoDevice) {
         // Handle video device change
         println("Video device changed: ${device.label}")
@@ -2178,18 +1876,14 @@ meeting.self.addSelfEventListener(object : RtkSelfEventListener() {
 })
 ```
 
-**Swift**
-
 ```swift
 meeting.self.addSelfEventListener(self)
-
 
 // RtkSelfEventListener implementation
 func onAudioDeviceChanged(device: AudioDevice) {
     // Handle audio device change
     print("Audio device changed: \(device.label)")
 }
-
 
 func onVideoDeviceChanged(device: VideoDevice) {
     // Handle video device change
@@ -2199,28 +1893,23 @@ func onVideoDeviceChanged(device: VideoDevice) {
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleDeviceUpdate = ({ device }) => {
+		if (device.kind === "audioinput") {
+			console.log("Microphone changed:", device.label);
+		} else if (device.kind === "videoinput") {
+			console.log("Camera changed:", device.label);
+		}
+	};
 
-  const handleDeviceUpdate = ({ device }) => {
-    if (device.kind === "audioinput") {
-      console.log("Microphone changed:", device.label);
-    } else if (device.kind === "videoinput") {
-      console.log("Camera changed:", device.label);
-    }
-  };
+	meeting.self.on("deviceUpdate", handleDeviceUpdate);
 
-
-  meeting.self.on("deviceUpdate", handleDeviceUpdate);
-
-
-  return () => {
-    meeting.self.off("deviceUpdate", handleDeviceUpdate);
-  };
+	return () => {
+		meeting.self.off("deviceUpdate", handleDeviceUpdate);
+	};
 }, [meeting]);
 ```
-
-**Dart**
 
 ```dart
 class DeviceChangeListener extends RtkSelfEventListener {
@@ -2230,14 +1919,12 @@ class DeviceChangeListener extends RtkSelfEventListener {
     print('Audio device changed: ${audioDevice.label}');
   }
 
-
   @override
   void onVideoDeviceChanged(VideoDevice videoDevice) {
     // Handle video device change
     print('Video device changed: ${videoDevice.label}');
   }
 }
-
 
 // Add the listener
 meeting.addSelfEventListener(DeviceChangeListener());
@@ -2247,40 +1934,33 @@ meeting.addSelfEventListener(DeviceChangeListener());
 
 Triggered when the list of available devices changes (device plugged in or out):
 
-**JavaScript**
-
 ```js
 meeting.self.on("deviceListUpdate", ({ added, removed, devices }) => {
-  console.log("Device list updated");
-  console.log("Added devices:", added);
-  console.log("Removed devices:", removed);
-  console.log("All devices:", devices);
+	console.log("Device list updated");
+	console.log("Added devices:", added);
+	console.log("Removed devices:", removed);
+	console.log("All devices:", devices);
 });
 ```
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleDeviceListUpdate = ({ added, removed, devices }) => {
+		console.log("Device list updated");
+		console.log("Added devices:", added);
+		console.log("Removed devices:", removed);
+		console.log("All devices:", devices);
+	};
 
-  const handleDeviceListUpdate = ({ added, removed, devices }) => {
-    console.log("Device list updated");
-    console.log("Added devices:", added);
-    console.log("Removed devices:", removed);
-    console.log("All devices:", devices);
-  };
+	meeting.self.on("deviceListUpdate", handleDeviceListUpdate);
 
-
-  meeting.self.on("deviceListUpdate", handleDeviceListUpdate);
-
-
-  return () => {
-    meeting.self.off("deviceListUpdate", handleDeviceListUpdate);
-  };
+	return () => {
+		meeting.self.off("deviceListUpdate", handleDeviceListUpdate);
+	};
 }, [meeting]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -2291,8 +1971,6 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
     }
 })
 ```
-
-**Swift**
 
 ```swift
 meeting.addSelfEventListener(object: RtkSelfEventListener {
@@ -2306,35 +1984,28 @@ meeting.addSelfEventListener(object: RtkSelfEventListener {
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleDeviceListUpdate = ({ added, removed, devices }) => {
+		console.log("Device list updated");
+		console.log("Added devices:", added);
+		console.log("Removed devices:", removed);
+		console.log("All devices:", devices);
+	};
 
-  const handleDeviceListUpdate = ({ added, removed, devices }) => {
-    console.log("Device list updated");
-    console.log("Added devices:", added);
-    console.log("Removed devices:", removed);
-    console.log("All devices:", devices);
-  };
+	meeting.self.on("deviceListUpdate", handleDeviceListUpdate);
 
-
-  meeting.self.on("deviceListUpdate", handleDeviceListUpdate);
-
-
-  return () => {
-    meeting.self.off("deviceListUpdate", handleDeviceListUpdate);
-  };
+	return () => {
+		meeting.self.off("deviceListUpdate", handleDeviceListUpdate);
+	};
 }, [meeting]);
 ```
-
-**Dart**
 
 ```dart
 class DeviceListListener extends RtkSelfEventListener {
   final RealtimekitClient meeting;
 
-
   DeviceListListener(this.meeting);
-
 
   @override
   void onAudioDevicesUpdated(List<AudioDevice> devices) {
@@ -2342,14 +2013,12 @@ class DeviceListListener extends RtkSelfEventListener {
     // Update UI with new audio device list
   }
 
-
   @override
   void onVideoDeviceChanged(VideoDevice videoDevice) {
     // Handle video device change
     print('Video device changed to: ${videoDevice.label}');
   }
 }
-
 
 // Add the listener
 meeting.addSelfEventListener(DeviceListListener(meeting));
@@ -2359,35 +2028,29 @@ meeting.addSelfEventListener(DeviceListListener(meeting));
 
 Monitor your own network quality:
 
-**JavaScript**
-
 ```js
 meeting.self.on(
-  "mediaScoreUpdate",
-  ({ kind, isScreenshare, score, scoreStats }) => {
-    if (kind === "video") {
-      console.log(
-        `Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
-        score,
-      );
-    }
+	"mediaScoreUpdate",
+	({ kind, isScreenshare, score, scoreStats }) => {
+		if (kind === "video") {
+			console.log(
+				`Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
+				score,
+			);
+		}
 
+		if (kind === "audio") {
+			console.log("Your audio quality score is", score);
+		}
 
-    if (kind === "audio") {
-      console.log("Your audio quality score is", score);
-    }
-
-
-    if (score < 5) {
-      console.log("Your media quality is poor");
-    }
-  },
+		if (score < 5) {
+			console.log("Your media quality is poor");
+		}
+	},
 );
 ```
 
 The `scoreStats` object provides detailed statistics:
-
-**JavaScript**
 
 ```js
 // Audio Producer
@@ -2404,7 +2067,6 @@ The `scoreStats` object provides detailed statistics:
     "isScreenShare": false
   }
 }
-
 
 // Video Producer
 {
@@ -2429,35 +2091,31 @@ The `scoreStats` object provides detailed statistics:
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleMediaScoreUpdate = ({
+		kind,
+		isScreenshare,
+		score,
+		scoreStats,
+	}) => {
+		if (kind === "video") {
+			console.log(
+				`Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
+				score,
+			);
+		}
 
-  const handleMediaScoreUpdate = ({
-    kind,
-    isScreenshare,
-    score,
-    scoreStats,
-  }) => {
-    if (kind === "video") {
-      console.log(
-        `Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
-        score,
-      );
-    }
+		if (score < 5) {
+			console.log("Your media quality is poor");
+		}
+	};
 
+	meeting.self.on("mediaScoreUpdate", handleMediaScoreUpdate);
 
-    if (score < 5) {
-      console.log("Your media quality is poor");
-    }
-  };
-
-
-  meeting.self.on("mediaScoreUpdate", handleMediaScoreUpdate);
-
-
-  return () => {
-    meeting.self.off("mediaScoreUpdate", handleMediaScoreUpdate);
-  };
+	return () => {
+		meeting.self.off("mediaScoreUpdate", handleMediaScoreUpdate);
+	};
 }, [meeting]);
 ```
 
@@ -2467,35 +2125,31 @@ iOS SDK does not currently expose network quality scores.
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handleMediaScoreUpdate = ({
+		kind,
+		isScreenshare,
+		score,
+		scoreStats,
+	}) => {
+		if (kind === "video") {
+			console.log(
+				`Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
+				score,
+			);
+		}
 
-  const handleMediaScoreUpdate = ({
-    kind,
-    isScreenshare,
-    score,
-    scoreStats,
-  }) => {
-    if (kind === "video") {
-      console.log(
-        `Your ${isScreenshare ? "screenshare" : "video"} quality score is`,
-        score,
-      );
-    }
+		if (score < 5) {
+			console.log("Your media quality is poor");
+		}
+	};
 
+	meeting.self.on("mediaScoreUpdate", handleMediaScoreUpdate);
 
-    if (score < 5) {
-      console.log("Your media quality is poor");
-    }
-  };
-
-
-  meeting.self.on("mediaScoreUpdate", handleMediaScoreUpdate);
-
-
-  return () => {
-    meeting.self.off("mediaScoreUpdate", handleMediaScoreUpdate);
-  };
+	return () => {
+		meeting.self.off("mediaScoreUpdate", handleMediaScoreUpdate);
+	};
 }, [meeting]);
 ```
 
@@ -2505,29 +2159,24 @@ Flutter SDK does not currently expose network quality scores.
 
 Triggered when permissions are updated dynamically:
 
-**JavaScript**
-
 ```js
 // Listen to specific permission updates
 meeting.self.permissions.on("chatUpdate", () => {
-  console.log("Chat permissions updated");
-  // Check meeting.self.permissions for updated permissions
+	console.log("Chat permissions updated");
+	// Check meeting.self.permissions for updated permissions
 });
-
 
 meeting.self.permissions.on("pollsUpdate", () => {
-  console.log("Polls permissions updated");
+	console.log("Polls permissions updated");
 });
-
 
 meeting.self.permissions.on("pluginsUpdate", () => {
-  console.log("Plugins permissions updated");
+	console.log("Plugins permissions updated");
 });
-
 
 // Listen to all permission updates
 meeting.self.permissions.on("*", () => {
-  console.log("Permissions updated");
+	console.log("Permissions updated");
 });
 ```
 
@@ -2536,9 +2185,8 @@ Monitor permissions using selectors:
 ```jsx
 const permissions = useRealtimeKitSelector((m) => m.self.permissions);
 
-
 useEffect(() => {
-  console.log("Permissions updated:", permissions);
+	console.log("Permissions updated:", permissions);
 }, [permissions]);
 ```
 
@@ -2551,9 +2199,8 @@ Monitor permissions using selectors:
 ```jsx
 const permissions = useRealtimeKitSelector((m) => m.self.permissions);
 
-
 useEffect(() => {
-  console.log("Permissions updated:", permissions);
+	console.log("Permissions updated:", permissions);
 }, [permissions]);
 ```
 
@@ -2563,21 +2210,18 @@ Flutter SDK uses a different permissions model. Refer to the Flutter-specific do
 
 Triggered when media permissions are denied or media capture fails:
 
-**JavaScript**
-
 ```js
 meeting.self.on("mediaPermissionError", ({ message, kind }) => {
-  console.log(`Failed to capture ${kind}: ${message}`);
+	console.log(`Failed to capture ${kind}: ${message}`);
 
-
-  // Handle different error types
-  if (message === "DENIED") {
-    console.log("User denied permission");
-  } else if (message === "SYSTEM_DENIED") {
-    console.log("System denied permission");
-  } else if (message === "COULD_NOT_START") {
-    console.log("Failed to start media stream");
-  }
+	// Handle different error types
+	if (message === "DENIED") {
+		console.log("User denied permission");
+	} else if (message === "SYSTEM_DENIED") {
+		console.log("System denied permission");
+	} else if (message === "COULD_NOT_START") {
+		console.log("Failed to start media stream");
+	}
 });
 ```
 
@@ -2588,29 +2232,23 @@ meeting.self.on("mediaPermissionError", ({ message, kind }) => {
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handlePermissionError = ({ message, kind }) => {
+		console.log(`Failed to capture ${kind}: ${message}`);
 
-  const handlePermissionError = ({ message, kind }) => {
-    console.log(`Failed to capture ${kind}: ${message}`);
+		if (message === "DENIED") {
+			// Show UI to guide user to grant permissions
+		}
+	};
 
+	meeting.self.on("mediaPermissionError", handlePermissionError);
 
-    if (message === "DENIED") {
-      // Show UI to guide user to grant permissions
-    }
-  };
-
-
-  meeting.self.on("mediaPermissionError", handlePermissionError);
-
-
-  return () => {
-    meeting.self.off("mediaPermissionError", handlePermissionError);
-  };
+	return () => {
+		meeting.self.off("mediaPermissionError", handlePermissionError);
+	};
 }, [meeting]);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -2618,24 +2256,19 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
         // meeting joined without camera permission
     }
 
-
     override fun onMeetingRoomJoinedWithoutMicPermission() {
         // meeting joined without microphone permission
     }
 })
 ```
 
-**Swift**
-
 ```swift
 meeting.addSelfEventListener(self)
-
 
 extension MeetingViewModel: RtkSelfEventListener {
     func onMeetingRoomJoinedWithoutCameraPermission() {
         // meeting joined without camera permission
     }
-
 
     func onMeetingRoomJoinedWithoutMicPermission() {
         // meeting joined without microphone permission
@@ -2645,8 +2278,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 You can also check permission status using properties:
 
-**Swift**
-
 ```swift
 let hasCameraPermission = meeting.localUser.isCameraPermissionGranted
 let hasMicPermission = meeting.localUser.isMicrophonePermissionGranted
@@ -2654,29 +2285,23 @@ let hasMicPermission = meeting.localUser.isMicrophonePermissionGranted
 
 ```jsx
 useEffect(() => {
-  if (!meeting) return;
+	if (!meeting) return;
 
+	const handlePermissionError = ({ message, kind }) => {
+		console.log(`Failed to capture ${kind}: ${message}`);
 
-  const handlePermissionError = ({ message, kind }) => {
-    console.log(`Failed to capture ${kind}: ${message}`);
+		if (message === "DENIED") {
+			// Show UI to guide user to grant permissions
+		}
+	};
 
+	meeting.self.on("mediaPermissionError", handlePermissionError);
 
-    if (message === "DENIED") {
-      // Show UI to guide user to grant permissions
-    }
-  };
-
-
-  meeting.self.on("mediaPermissionError", handlePermissionError);
-
-
-  return () => {
-    meeting.self.off("mediaPermissionError", handlePermissionError);
-  };
+	return () => {
+		meeting.self.off("mediaPermissionError", handlePermissionError);
+	};
 }, [meeting]);
 ```
-
-**Dart**
 
 ```dart
 class PermissionListener extends RtkSelfEventListener {
@@ -2685,21 +2310,17 @@ class PermissionListener extends RtkSelfEventListener {
     // Meeting joined without camera permission
   }
 
-
   @override
   void onMeetingRoomJoinedWithoutMicPermission() {
     // Meeting joined without microphone permission
   }
 }
 
-
 // Add the listener
 meeting.addSelfEventListener(PermissionListener());
 ```
 
 You can also check permission status using properties:
-
-**Dart**
 
 ```dart
 final hasCameraPermission = meeting.localUser.isCameraPermissionGranted;
@@ -2715,20 +2336,16 @@ Monitor the `roomState` property for waitlist status. The value `'waitlisted'` i
 ```jsx
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 
-
 useEffect(() => {
-  if (roomState === "waitlisted") {
-    console.log("Waiting for host to admit you");
-  }
+	if (roomState === "waitlisted") {
+		console.log("Waiting for host to admit you");
+	}
 }, [roomState]);
 ```
-
-**Kotlin**
 
 ```kotlin
 // Get current waitlist status
 val waitListStatus = meeting.localUser.waitListStatus
-
 
 // Listen to waitlist status changes
 meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -2738,12 +2355,9 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
 })
 ```
 
-**Swift**
-
 ```swift
 // Get current waitlist status
 let waitListStatus = meeting.localUser.waitListStatus
-
 
 // Listen to waitlist status changes
 extension MeetingViewModel: RtkSelfEventListener {
@@ -2756,11 +2370,10 @@ extension MeetingViewModel: RtkSelfEventListener {
 ```jsx
 const roomState = useRealtimeKitSelector((m) => m.self.roomState);
 
-
 useEffect(() => {
-  if (roomState === "waitlisted") {
-    console.log("Waiting for host to admit you");
-  }
+	if (roomState === "waitlisted") {
+		console.log("Waiting for host to admit you");
+	}
 }, [roomState]);
 ```
 
@@ -2773,8 +2386,6 @@ The iOS SDK provides additional platform-specific events:
 #### Proximity Sensor
 
 Triggered when the proximity sensor detects a change (useful for earpiece detection):
-
-**Swift**
 
 ```swift
 extension MeetingViewModel: RtkSelfEventListener {
@@ -2789,14 +2400,11 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 For webinar-specific functionality:
 
-**Swift**
-
 ```swift
 extension MeetingViewModel: RtkSelfEventListener {
     func onWebinarPresentRequestReceived() {
         // Handle request to present in webinar
     }
-
 
     func onStoppedPresenting() {
         // Handle stopped presenting in webinar
@@ -2807,8 +2415,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 #### Room Messages
 
 Listen to broadcast messages in the room:
-
-**Swift**
 
 ```swift
 extension MeetingViewModel: RtkSelfEventListener {
@@ -2828,16 +2434,12 @@ Web SDK does not currently support pinning the local participant.
 
 Android SDK does not currently support pinning the local participant.
 
-**Swift**
-
 ```swift
 // Pin yourself
 meeting.localUser.pin()
 
-
 // Unpin yourself
 meeting.localUser.unpin()
-
 
 // Check if pinned
 let isPinned = meeting.localUser.isPinned
@@ -2847,10 +2449,8 @@ let isPinned = meeting.localUser.isPinned
 // Pin yourself
 await meeting.self.pin();
 
-
 // Unpin yourself
 await meeting.self.unpin();
-
 
 // Check if pinned
 const isPinned = meeting.self.isPinned;
@@ -2876,8 +2476,8 @@ Update camera resolution while already streaming:
 
 ```jsx
 meeting.self.updateVideoConstraints({
-  width: { ideal: 1920 },
-  height: { ideal: 1080 },
+	width: { ideal: 1920 },
+	height: { ideal: 1080 },
 });
 ```
 
@@ -2887,14 +2487,21 @@ Update screenshare resolution while already streaming:
 
 ```jsx
 meeting.self.updateScreenshareConstraints({
-  width: { ideal: 1920 },
-  height: { ideal: 1080 },
+	width: { ideal: 1920 },
+	height: { ideal: 1080 },
 });
 ```
 
 Flutter SDK does not currently expose runtime constraint updates.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/local-participant/","name":"Local Participant"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

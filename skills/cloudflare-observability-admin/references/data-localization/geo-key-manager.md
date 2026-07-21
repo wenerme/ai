@@ -1,16 +1,18 @@
 ---
-title: Geo Key Manager
 description: Control the geographic storage location of your private SSL/TLS keys.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Geo Key Manager
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Geo Key Manager
 
-# Geo Key Manager
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/geo-key-manager/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Geo Key Manager offers enhanced control over the storage location of your private SSL/TLS keys — the cryptographic keys that Cloudflare uses to decrypt your HTTPS traffic. By restricting where these keys are stored, you can ensure compliance with regional data regulations and security requirements.
 
@@ -43,7 +45,14 @@ sequenceDiagram
 
 For detailed information on setup and supported options, refer to [Geo Key Manager documentation](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/geo-key-manager/#page","headline":"Geo Key Manager · Cloudflare Data Localization Suite docs","description":"Control the geographic storage location of your private SSL/TLS keys.","url":"https://developers.cloudflare.com/data-localization/geo-key-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/geo-key-manager/","name":"Geo Key Manager"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/geo-key-manager/#page","headline":"Geo Key Manager · Cloudflare Data Localization Suite docs","description":"Control the geographic storage location of your private SSL/TLS keys.","url":"https://developers.cloudflare.com/data-localization/geo-key-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Compliance"]}
 ```

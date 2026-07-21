@@ -1,16 +1,18 @@
 ---
-title: AI Crawl Control
 description: Monitor and control how AI services access your website content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: AI Crawl Control
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI Crawl Control
 
-# AI Crawl Control
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
  Available on all plans
 
@@ -31,43 +33,43 @@ With AI Crawl Control, you can:
 
 ## Features
 
-###  Manage AI crawlers
+[Manage AI crawlers](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/)
 
 Control how AI crawlers interact with your domain.
 
-[ Manage AI crawlers ](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/)
+ Manage AI crawlers
 
-###  Analyze AI traffic
+[Analyze AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
 
 Gain insight into how AI crawlers are interacting with your pages.
 
-[ Analyze AI traffic ](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
+ Analyze AI traffic
 
-###  Track robots.txt
+[Track robots.txt](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/)
 
 Track the health of `robots.txt` files and identify which crawlers are violating your directives.
 
-[ Track robots.txt ](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/)
+ Track robots.txt
 
-###  Pay Per Crawl
+[Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/)
 
 Allow AI crawlers to access content by paying per crawl.
 
-[ Pay per crawl ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/)
+ Pay per crawl
 
 ---
 
 ## Use cases
 
-Publishers and content creators
+### Publishers and content creators
 
 Publishers and content creators can monitor which AI crawlers are accessing their articles and educational content. Set policies to allow beneficial crawlers while blocking others.
 
-E-commerce and business sites
+### E-commerce and business sites
 
 E-commerce and business sites can identify AI crawler activity on product pages and business information. Control access to sensitive data like pricing and inventory.
 
-Documentation sites
+### Documentation sites
 
 Documentation sites can track how AI crawlers are accessing their technical documentation. Gain insight into how AI crawlers are engaging with your site.
 
@@ -75,19 +77,26 @@ Documentation sites can track how AI crawlers are accessing their technical docu
 
 ## Related Products
 
-**[Bots](https://developers.cloudflare.com/bots/)**
+[Bots](https://developers.cloudflare.com/bots/)
 
 Identify and mitigate automated traffic to protect your domain from bad bots.
 
-**[Web Application Firewall](https://developers.cloudflare.com/waf/)**
+[Web Application Firewall](https://developers.cloudflare.com/waf/)
 
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
-**[Analytics](https://developers.cloudflare.com/analytics/)**
+[Analytics](https://developers.cloudflare.com/analytics/)
 
 View and analyze traffic on your domain.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-crawl-control/#page","headline":"Overview · Cloudflare AI Crawl Control docs","description":"Monitor and control how AI services access your website content.","url":"https://developers.cloudflare.com/ai-crawl-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-crawl-control/#page","headline":"Overview · Cloudflare AI Crawl Control docs","description":"Monitor and control how AI services access your website content.","url":"https://developers.cloudflare.com/ai-crawl-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

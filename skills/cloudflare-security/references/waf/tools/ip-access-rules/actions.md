@@ -1,16 +1,18 @@
 ---
-title: IP Access rules actions
 description: Available actions for IP Access rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: IP Access rules actions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  IP Access rules actions
 
-# IP Access rules actions
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 An IP Access rule can perform one of the following actions:
 
@@ -21,7 +23,14 @@ Allowing a given country code will not bypass WAF managed rules (previous and ne
 * **Non-Interactive Challenge**: Presents a non-interactive challenge page to visitors. Prevents bots from accessing the site.
 * **Interactive Challenge**: Requires the visitor to complete an interactive challenge before visiting your site. Prevents bots from accessing the site.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/#page","headline":"IP Access rules actions · Cloudflare Web Application Firewall (WAF) docs","description":"Available actions for IP Access rules.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/ip-access-rules/","name":"IP Access rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/ip-access-rules/actions/","name":"IP Access rules actions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/#page","headline":"IP Access rules actions · Cloudflare Web Application Firewall (WAF) docs","description":"Available actions for IP Access rules.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

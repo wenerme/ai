@@ -1,16 +1,18 @@
 ---
-title: Querying Containers metrics with GraphQL
 description: Query Cloudflare Containers metrics with the GraphQL Analytics API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Querying Containers metrics with GraphQL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Querying Containers metrics with GraphQL
 
-# Querying Containers metrics with GraphQL
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the GraphQL Analytics API to query metrics for your [Containers](https://developers.cloudflare.com/containers/). Two endpoints are available:
 
@@ -105,49 +107,49 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```json
 {
-  "data": {
-    "viewer": {
-      "accounts": [
-        {
-          "containersMetricsAdaptiveGroups": [
-            {
-              "dimensions": {
-                "datetimeHour": "2026-04-15T00:00:00Z",
-                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
-              },
-              "max": {
-                "memory": 312475648
-              },
-              "quantiles": {
-                "cpuUtilizationP95": 0.4821,
-                "memoryP95": 298123264
-              },
-              "sum": {
-                "cpuTimeSec": 128.47
-              }
-            },
-            {
-              "dimensions": {
-                "datetimeHour": "2026-04-15T01:00:00Z",
-                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
-              },
-              "max": {
-                "memory": 305135616
-              },
-              "quantiles": {
-                "cpuUtilizationP95": 0.3914,
-                "memoryP95": 291454976
-              },
-              "sum": {
-                "cpuTimeSec": 104.91
-              }
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "errors": null
+	"data": {
+		"viewer": {
+			"accounts": [
+				{
+					"containersMetricsAdaptiveGroups": [
+						{
+							"dimensions": {
+								"datetimeHour": "2026-04-15T00:00:00Z",
+								"instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
+							},
+							"max": {
+								"memory": 312475648
+							},
+							"quantiles": {
+								"cpuUtilizationP95": 0.4821,
+								"memoryP95": 298123264
+							},
+							"sum": {
+								"cpuTimeSec": 128.47
+							}
+						},
+						{
+							"dimensions": {
+								"datetimeHour": "2026-04-15T01:00:00Z",
+								"instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
+							},
+							"max": {
+								"memory": 305135616
+							},
+							"quantiles": {
+								"cpuUtilizationP95": 0.3914,
+								"memoryP95": 291454976
+							},
+							"sum": {
+								"cpuTimeSec": 104.91
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"errors": null
 }
 ```
 
@@ -227,39 +229,39 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```json
 {
-  "data": {
-    "viewer": {
-      "accounts": [
-        {
-          "containersUsageAdaptiveGroups": [
-            {
-              "dimensions": {
-                "date": "2026-04-20"
-              },
-              "sum": {
-                "allocatedDisk": 172800000000000,
-                "allocatedMemory": 22118400000000,
-                "cpuTimeSec": 3742.18,
-                "txBytes": 8471239
-              }
-            },
-            {
-              "dimensions": {
-                "date": "2026-04-21"
-              },
-              "sum": {
-                "allocatedDisk": 172800000000000,
-                "allocatedMemory": 22118400000000,
-                "cpuTimeSec": 3955.02,
-                "txBytes": 9023841
-              }
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "errors": null
+	"data": {
+		"viewer": {
+			"accounts": [
+				{
+					"containersUsageAdaptiveGroups": [
+						{
+							"dimensions": {
+								"date": "2026-04-20"
+							},
+							"sum": {
+								"allocatedDisk": 172800000000000,
+								"allocatedMemory": 22118400000000,
+								"cpuTimeSec": 3742.18,
+								"txBytes": 8471239
+							}
+						},
+						{
+							"dimensions": {
+								"date": "2026-04-21"
+							},
+							"sum": {
+								"allocatedDisk": 172800000000000,
+								"allocatedMemory": 22118400000000,
+								"cpuTimeSec": 3955.02,
+								"txBytes": 9023841
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"errors": null
 }
 ```
 
@@ -274,69 +276,67 @@ For example, the following query returns CPU time and memory usage for productio
 
 ```graphql
 query ContainersByLabel(
-  $accountTag: String
-  $datetimeStart: Time
-  $datetimeEnd: Time
+	$accountTag: String
+	$datetimeStart: Time
+	$datetimeEnd: Time
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      containersMetricsAdaptiveGroups(
-        limit: 100
-        filter: {
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-          labels_has: "env=production"
-        }
-      ) {
-        dimensions {
-          env: label(name: "env")
-          region: label(name: "region")
-        }
-        sum {
-          cpuTimeSec
-        }
-        max {
-          memory
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			containersMetricsAdaptiveGroups(
+				limit: 100
+				filter: {
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+					labels_has: "env=production"
+				}
+			) {
+				dimensions {
+					env: label(name: "env")
+					region: label(name: "region")
+				}
+				sum {
+					cpuTimeSec
+				}
+				max {
+					memory
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOxypyAIwBWTJMmY1MgFoNmrDjzYBReEzFTZC5avFrtu-UYC+QA)
 
 The aliased dimensions appear directly on each result:
 
 ```json
 {
-  "data": {
-    "viewer": {
-      "accounts": [
-        {
-          "containersMetricsAdaptiveGroups": [
-            {
-              "dimensions": {
-                "env": "production",
-                "region": "enam"
-              },
-              "max": { "memory": 412316672 },
-              "sum": { "cpuTimeSec": 9812.41 }
-            },
-            {
-              "dimensions": {
-                "env": "production",
-                "region": "weur"
-              },
-              "max": { "memory": 398458880 },
-              "sum": { "cpuTimeSec": 7421.08 }
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "errors": null
+	"data": {
+		"viewer": {
+			"accounts": [
+				{
+					"containersMetricsAdaptiveGroups": [
+						{
+							"dimensions": {
+								"env": "production",
+								"region": "enam"
+							},
+							"max": { "memory": 412316672 },
+							"sum": { "cpuTimeSec": 9812.41 }
+						},
+						{
+							"dimensions": {
+								"env": "production",
+								"region": "weur"
+							},
+							"max": { "memory": 398458880 },
+							"sum": { "cpuTimeSec": 7421.08 }
+						}
+					]
+				}
+			]
+		}
+	},
+	"errors": null
 }
 ```
 
@@ -344,7 +344,14 @@ The aliased dimensions appear directly on each result:
 
 1. Refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) for more information on configuration and permissions. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/#page","headline":"Querying Containers metrics with GraphQL · Cloudflare Analytics docs","description":"Query Cloudflare Containers metrics with the GraphQL Analytics API.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/tutorials/querying-container-metrics/","name":"Querying Containers metrics with GraphQL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/#page","headline":"Querying Containers metrics with GraphQL · Cloudflare Analytics docs","description":"Query Cloudflare Containers metrics with the GraphQL Analytics API.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up your partner account and make your first Cloudflare Tenant API calls.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Having access to Cloudflare’s provisioning capabilities allows you to more easily create and manage Cloudflare accounts. The following steps will get you started on making API calls to provision accounts, users, and services.
 
@@ -33,9 +35,6 @@ For more details on using the Cloudflare API, refer to our [API overview](https:
 Each customer or team that uses Cloudflare should have their own account. This ensures proper security and access of resources. Each account acts as a container of zones and other resources. Depending on your needs, you may even provision multiple accounts for a single customer or team.
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
-
-* [ Dashboard ](#tab-panel-11731)
-* [ API ](#tab-panel-11732)
 
 To create an account under your tenant using the dashboard:
 
@@ -81,8 +80,6 @@ All KYC parameters are text fields, have a 120 character limit, and are optional
 
   * (optional) External metadata for this account.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -95,8 +92,6 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A successful request will return an HTTP status of `200` and the following response body:
-
-**Response**
 
 ```json
 {
@@ -116,8 +111,6 @@ A successful request will return an HTTP status of `200` and the following respo
 
 A request with a unit ID:
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -133,8 +126,6 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A request with a unit ID and KYC:
-
-**Request**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
@@ -173,8 +164,6 @@ If you want to give customers access to their individual accounts, it is the sam
 
 You can also grant access to the Cloudflare dashboard by using the API.
 
-**Request**
-
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/<CUSTOMER_ACCOUNT_ID>/members' \
 --header "X-Auth-Email: <EMAIL>" \
@@ -202,8 +191,6 @@ This capability is not enabled by default. If you need this functionality, conta
 
 To grant access via an interface, you need to create a service user, as no one will log in to the dashboard with them. If you are planning to use this method, Cloudflare will enable you to see the API key in order to make API calls as this user.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/users" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -214,29 +201,27 @@ curl "https://api.cloudflare.com/client/v4/users" \
 }'
 ```
 
-**Response**
-
 ```json
 {
-  "result": {
-    "id": "60758bd48392a06215ae817bc35084b6",
-    "email": "<ID@example.com>",
-    "first_name": null,
-    "last_name": null,
-    "username": "17bd2796b374cec14976ac3bced85c05",
-    "telephone": null,
-    "country": null,
-    "created_on": "2019-02-21T23:20:28.645256Z",
-    "modified_on": "2019-02-21T23:20:28.645256Z",
-    "two_factor_authentication": {
-      "enabled": false,
-      "locked": false
-    },
-    "api_key": "xxx"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "60758bd48392a06215ae817bc35084b6",
+		"email": "<ID@example.com>",
+		"first_name": null,
+		"last_name": null,
+		"username": "17bd2796b374cec14976ac3bced85c05",
+		"telephone": null,
+		"country": null,
+		"created_on": "2019-02-21T23:20:28.645256Z",
+		"modified_on": "2019-02-21T23:20:28.645256Z",
+		"two_factor_authentication": {
+			"enabled": false,
+			"locked": false
+		},
+		"api_key": "xxx"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -245,8 +230,6 @@ curl "https://api.cloudflare.com/client/v4/users" \
 Now that you have a customer account and customer users (or service users), you need to create a zone.
 
 To do this, send a [POST](https://developers.cloudflare.com/api/resources/zones/methods/create/) request to the `/zones` endpoint (including the customer account ID you received in [Step 1](#step-1---create-an-account)).
-
-**Request**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones" \
@@ -277,8 +260,6 @@ To create a zone subscription, typically used to upgrade a zone's plan from `PAR
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-**Request (without \`component\_values\`)**
-
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -290,8 +271,6 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
   "frequency": "annual"
 }'
 ```
-
-**Request (with \`component\_values\`)**
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
@@ -326,8 +305,6 @@ To create an account subscription, send a [POST](https://developers.cloudflare.c
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-**Request**
-
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -345,7 +322,14 @@ Once you have added the necessary subscriptions, you or your customer can move o
 
 Configuration can be done by anyone with access to the account (as well as the correct user permissions). This process does not differ from configuring any other Cloudflare account. For additional guidance, refer to our [Product docs](https://developers.cloudflare.com/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/get-started/#page","headline":"Get started · Cloudflare Tenant docs","description":"Set up your partner account and make your first Cloudflare Tenant API calls.","url":"https://developers.cloudflare.com/tenant/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/get-started/#page","headline":"Get started · Cloudflare Tenant docs","description":"Set up your partner account and make your first Cloudflare Tenant API calls.","url":"https://developers.cloudflare.com/tenant/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Verify DDoS protection
 description: Confirm Magic Transit DDoS protection layers are active and configured.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Verify DDoS protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Verify DDoS protection
 
-# Verify DDoS protection
+Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After onboarding your IP prefixes to Magic Transit, verify that your DDoS protection layers are active and correctly configured. Magic Transit includes multiple mitigation systems that work together. For a description of each layer and the execution order, refer to [DDoS protection](https://developers.cloudflare.com/magic-transit/ddos/).
 
@@ -28,7 +30,7 @@ The [network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-
 To review your current configuration:
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Select the **Network-layer DDoS Protection** tab.
 
 If you have not deployed any overrides, the managed ruleset runs with default settings (High sensitivity, DDoS Dynamic action). This is the recommended configuration for most deployments.
@@ -44,7 +46,7 @@ Advanced TCP Protection and Advanced DNS Protection are automatically enabled in
 To check the status of Advanced DDoS systems:
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **General settings**.
 3. Verify that the system is turned on and that your prefixes are listed.
 
@@ -63,7 +65,7 @@ To switch from monitoring to mitigation:
 2. Go to the rule you want to update (SYN Flood, Out-of-state TCP, or DNS Protection).
 3. Change the rule mode from **Monitoring** to **Mitigation (Enabled)**.
 
-Warning
+Caution
 
 Customer visibility into the calculated thresholds is not available. If you are unsure whether your thresholds are correctly configured, contact your account team before switching to mitigation mode.
 
@@ -72,7 +74,7 @@ Customer visibility into the calculated thresholds is not available. If you are 
 Configure DDoS alerts so you are notified when attacks are detected and mitigated:
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select **Layer 3/4 DDoS Attack Alert**. Enterprise accounts can select **Advanced Layer 3/4 DDoS Attack Alert** for additional filtering support.
 4. Configure your delivery method (email, webhook, or PagerDuty).
@@ -90,7 +92,7 @@ Magic Transit and Spectrum BYOIP customers automatically receive a weekly DDoS s
 To review DDoS activity:
 
 1. In the Cloudflare dashboard, go to the **Network analytics** page.
-[ Go to **Network analytics** ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Filter by mitigations applied to isolate traffic blocked by DDoS managed rulesets or Network Firewall rules.
 
 You can also query DDoS analytics programmatically using the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/).
@@ -105,7 +107,14 @@ Note
 
 HTTP DDoS testing requires that your HTTP application is onboarded to the Cloudflare reverse proxy service. If you only use Magic Transit, HTTP DDoS tests do not work. Network-layer DDoS tests against your Magic Transit-protected prefixes do not have this limitation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/#page","headline":"Verify DDoS protection · Cloudflare Magic Transit docs","description":"Confirm Magic Transit DDoS protection layers are active and configured.","url":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/verify-ddos-protection/","name":"Verify DDoS protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/#page","headline":"Verify DDoS protection · Cloudflare Magic Transit docs","description":"Confirm Magic Transit DDoS protection layers are active and configured.","url":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

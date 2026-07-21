@@ -1,16 +1,18 @@
 ---
-title: System requirements
 description: System requirements for running cloudflared.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: System requirements
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  System requirements
 
-# System requirements
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/downloads/system-requirements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 `cloudflared` is lightweight enough to run on a Raspberry Pi or a data center server. Tunnel throughput is primarily limited by the number of ports configured in system software, not hardware.
 
@@ -19,9 +21,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) on two dedicated hosts per location with a minimum of 4 GB RAM and 4 CPU cores. Allocate 50,000 ports per host.
 
 ## Port configuration
-
-* [ Linux ](#tab-panel-11795)
-* [ Windows ](#tab-panel-11796)
 
 To increase the number of ports available to `cloudflared` on Linux:
 
@@ -79,7 +78,7 @@ To estimate tunnel capacity requirements for your deployment:
 3. Compute the average **Non-DNS UDP requests per second** by dividing `cloudflared_udp_total_sessions` by total time.
 4. Input **TCP requests per second** and **Non-DNS UDP requests per second** into the calculator below. (You can leave **Private DNS requests per second** as `0` unless you are using the tunnel for [private network access](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/).)
 
-System configuration
+### System configuration
 
 Available ports per host
 
@@ -89,7 +88,7 @@ DNS UDP session timeout (in seconds)
 
 Average non-DNS UDP session timeout (seconds)
 
-Metrics
+### Metrics
 
 TCP requests per second
 
@@ -97,7 +96,7 @@ Non-DNS UDP requests per second
 
 Private DNS requests per second
 
-Result
+### Result
 
 Percent capacity per replica
 
@@ -109,7 +108,14 @@ This calculator is for informational purposes only and all results are estimates
 
 To increase tunnel capacity, add identical hosts running `cloudflared` replicas.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/#page","headline":"System requirements · Cloudflare Docs","description":"System requirements for running cloudflared.","url":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/downloads/system-requirements/","name":"System requirements"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/#page","headline":"System requirements · Cloudflare Docs","description":"System requirements for running cloudflared.","url":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Monitoring API
 description: Query Zaraz monitoring data with the GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Monitoring API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitoring API
 
-# Monitoring API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The **Zaraz Monitoring API** allows users to retrieve detailed data on Zaraz events through the **GraphQL Analytics API**. Using this API, you can monitor events, pageviews, triggers, actions, and server-side request statuses, including any errors and successes. The data available through the API mirrors what is shown on the Zaraz Monitoring page in the dashboard, but with the API, you can query it programmatically to create alerts and notifications for unexpected deviations.
 
@@ -29,141 +31,128 @@ The Monitoring API includes the following core entities, which each provide dist
 
 You can construct any query you'd like using the above datasets, but here are some example queries you can use.
 
-* [ Events ](#tab-panel-14096)
-* [ Loads ](#tab-panel-14097)
-* [ Triggers ](#tab-panel-14098)
-* [ Erroneous responses ](#tab-panel-14099)
-
 Query for the count of Zaraz events, grouped by time.
 
 ```graphql
 query ZarazEvents(
-  $zoneTag: string
-  $limit: uint64!
-  $start: Time
-  $end: Time
-  $orderBy: ZoneZarazTrackAdaptiveGroupsOrderBy!
+	$zoneTag: string
+	$limit: uint64!
+	$start: Time
+	$end: Time
+	$orderBy: ZoneZarazTrackAdaptiveGroupsOrderBy!
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      data: zarazTrackAdaptiveGroups(
-        limit: $limit
-        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }
-        orderBy: [$orderBy]
-      ) {
-        count
-        dimensions {
-          ts: datetimeHour
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			data: zarazTrackAdaptiveGroups(
+				limit: $limit
+				filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }
+				orderBy: [$orderBy]
+			) {
+				count
+				dimensions {
+					ts: datetimeHour
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwDsEkXBYBWVKJXSMFEDCgATNCBHips+UJYqhajZQh8dMPgCEAnvp0JGMRvRgAJCACufAQAggDKAMIgAL5AA)
 
 Query for the count of Zaraz loads, grouped by time.
 
 ```graphql
 query ZarazLoads(
-  $zoneTag: string
-  $limit: uint64!
-  $start: Date
-  $end: Date
-  $orderBy: ZoneZarazTriggersAdaptiveGroupsOrderBy!
+	$zoneTag: string
+	$limit: uint64!
+	$start: Date
+	$end: Date
+	$orderBy: ZoneZarazTriggersAdaptiveGroupsOrderBy!
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      data: zarazTriggersAdaptiveGroups(
-        limit: $limit
-        filter: { date_geq: $start, date_leq: $end, triggerName: Pageview }
-        orderBy: [$orderBy]
-      ) {
-        count
-        dimensions {
-          ts: date
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			data: zarazTriggersAdaptiveGroups(
+				limit: $limit
+				filter: { date_geq: $start, date_leq: $end, triggerName: Pageview }
+				orderBy: [$orderBy]
+			) {
+				count
+				dimensions {
+					ts: date
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgGQPYICYGcAUAUDDACQoYB2YAKggOYBcMuALhAJaX3FkA2HALYdWzEF1YA2ACwBCXqTZJRMACIJWYBWErZm6zQowRskAEJRmcKmETIUNTvXqRcAQWwIADqw4A3MABxCAwQL1wAeRNzKHkAShgAb14-DjAAd0gk3hIKagIAMw4+TQhmRJg82gZmchs6ehgAXwTkknaYT1YEZhQkVEcOZ1cPb18A4NDwog6OgWEVUnmRHNmikshyzo0wAH0XYFqlCFYAGm3NXb4wQ7IdbHP2IZcIADkEQTBmAAUGMFSMs1Vh1jKYIBZmABtUigmIAXWBMFaiJIAGNQpRWCjOkIdLgOFRcNlZrNWLhmF0tCSSE1EbSOvSgU0gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwDsElgE4KIGFAAmaECPFTZIpRD6qYfAEIBPDaoSMYBAIIBlAMIgAvkA)
 
 Query for the total execution count of each trigger processed by Zaraz.
 
 ```graphql
 query ZarazTriggers(
-  $zoneTag: string
-  $limit: uint64!
-  $start: Date
-  $end: Date
+	$zoneTag: string
+	$limit: uint64!
+	$start: Date
+	$end: Date
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      data: zarazTriggersAdaptiveGroups(
-        limit: $limit
-        filter: { date_geq: $start, date_leq: $end }
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          name: triggerName
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			data: zarazTriggersAdaptiveGroups(
+				limit: $limit
+				filter: { date_geq: $start, date_leq: $end }
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					name: triggerName
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgFQgSwObcgZwAoAoGGAEhQHsA7MNBbALhnwBcsbtSKAbTALaY2LEJhpsAbABYAhD3LskImABEEbMArA0AJi3WbiAShgBvHgDdMYAO6RzPMtTpEAZpl6aILMzBf0jCyUtIHYMAC+phZksTC6GggsKEioGDh4EPgAggkADmyYlmAA4hBUIHlETnEw-EIq5PXCNXEeXpC+8RpgAPp4wMFKEGwANN2avbxggxQ6upGtsVQQupAAQlAsANoAxhUSvaoAogDKAMIAukvRS2T7IBJ38YI6+Ji0+I61tTQIAmAWBwMpAAHL-LQ-MgRJYwuJwxYRIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwDsElgE4KIGFAAmaECPFTZIkAF8gA)
 
 Query for the count of 400 server-side responses, grouped by time and URL.
 
 ```graphql
 query ErroneousResponses(
-  $zoneTag: string
-  $limit: uint64!
-  $start: Time
-  $end: Time
-  $orderBy: ZoneZarazFetchAdaptiveGroupsOrderBy!
+	$zoneTag: string
+	$limit: uint64!
+	$start: Time
+	$end: Time
+	$orderBy: ZoneZarazFetchAdaptiveGroupsOrderBy!
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      data: zarazFetchAdaptiveGroups(
-        limit: $limit
-        filter: {
-          datetimeHour_geq: $start
-          datetimeHour_leq: $end
-          url_neq: ""
-          status: 400
-        }
-        orderBy: [$orderBy]
-      ) {
-        count
-        dimensions {
-          ts: datetimeHour
-          name: url
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			data: zarazFetchAdaptiveGroups(
+				limit: $limit
+				filter: {
+					datetimeHour_geq: $start
+					datetimeHour_leq: $end
+					url_neq: ""
+					status: 400
+				}
+				orderBy: [$orderBy]
+			) {
+				count
+				dimensions {
+					ts: datetimeHour
+					name: url
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwDsEkXBYBWVKJXSMFEDCgATNCBHips+UJYqhajZQh8dMPgCEAnvp0JGMRvRgAJCACufAQAggDKAMIgAL5AA)
 
 ### Variables Example
 
 ```json
 {
-  "zoneTag": "d6dfdf32c704a77ac227243a5eb5ca61",
-  "start": "2025-01-01T00:00:00Z",
-  "end": "2025-01-30T00:00:00Z",
-  "limit": 10000,
-  "orderBy": "datetimeHour_ASC"
+	"zoneTag": "d6dfdf32c704a77ac227243a5eb5ca61",
+	"start": "2025-01-01T00:00:00Z",
+	"end": "2025-01-30T00:00:00Z",
+	"limit": 10000,
+	"orderBy": "datetimeHour_ASC"
 }
 ```
 
@@ -208,7 +197,14 @@ This `curl` example will return a JSON response containing event counts and time
 
 Refer to the [full GraphQL Analytics API documentation](https://developers.cloudflare.com/analytics/graphql-api/) for more details on available fields, filters, and further customization options for Zaraz Monitoring API queries.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/#page","headline":"Monitoring API · Cloudflare Zaraz docs","description":"Query Zaraz monitoring data with the GraphQL API.","url":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/monitoring/","name":"Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/monitoring/monitoring-api/","name":"Monitoring API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/#page","headline":"Monitoring API · Cloudflare Zaraz docs","description":"Query Zaraz monitoring data with the GraphQL API.","url":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

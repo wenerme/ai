@@ -1,16 +1,18 @@
 ---
-title: Analytics
 description: Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analytics
 
-# Analytics
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Using load balancing analytics, you can:
 
@@ -56,82 +58,82 @@ Example event (truncated):
 
 ```json
 {
-  "id": <id>,
-  "timestamp": "2025-09-22 19:22:00",
-  "pool": {
-    "id": "<id>",
-    "name": "example-monitor-group-test-pool-us",
-    "healthy": true,
-    "changed": false,
-    "minimum_origins": 1
-  },
-  "origins": [
-    {
-      "name": "origin-a",
-      "ip": "192.0.2.10",
-      "enabled": true,
-      "healthy": true,
-      "failure_reason": "No failures",
-      "response_code": 200,
-      "monitors": [
-        {
-          "id": "<id>",
-          "healthy": true,
-          "failure_reason": "No failures",
-          "response_code": 200,
-          "must_be_healthy": true,
-          "monitoring_only": false
-        },
-        {
-          "id": "<id>",
-          "healthy": true,
-          "failure_reason": "No failures",
-          "response_code": 200,
-          "must_be_healthy": true,
-          "monitoring_only": false
-        },
-        {
-          "id": "<id>",
-          "healthy": false,
-          "failure_reason": "HTTP timeout occurred",
-          "must_be_healthy": false,
-          "monitoring_only": true
-        }
-      ]
-    },
-    {
-      "name": "origin-b",
-      "ip": "198.51.100.25",
-      "enabled": true,
-      "healthy": false,
-      "failure_reason": "TCP connection failed",
-      "changed": true,
-      "monitors": [
-        {
-          "id": "<id>",
-          "healthy": false,
-          "failure_reason": "TCP connection failed",
-          "must_be_healthy": true,
-          "monitoring_only": false
-        },
-        {
-          "id": "<id>",
-          "healthy": true,
-          "failure_reason": "No failures",
-          "response_code": 200,
-          "must_be_healthy": true,
-          "monitoring_only": false
-        },
-        {
-          "id": "<id>",
-          "healthy": false,
-          "failure_reason": "HTTP timeout occurred",
-          "must_be_healthy": false,
-          "monitoring_only": true
-        }
-      ]
-    }
-  ]
+	"id": <id>,
+	"timestamp": "2025-09-22 19:22:00",
+	"pool": {
+		"id": "<id>",
+		"name": "example-monitor-group-test-pool-us",
+		"healthy": true,
+		"changed": false,
+		"minimum_origins": 1
+	},
+	"origins": [
+		{
+			"name": "origin-a",
+			"ip": "192.0.2.10",
+			"enabled": true,
+			"healthy": true,
+			"failure_reason": "No failures",
+			"response_code": 200,
+			"monitors": [
+				{
+					"id": "<id>",
+					"healthy": true,
+					"failure_reason": "No failures",
+					"response_code": 200,
+					"must_be_healthy": true,
+					"monitoring_only": false
+				},
+				{
+					"id": "<id>",
+					"healthy": true,
+					"failure_reason": "No failures",
+					"response_code": 200,
+					"must_be_healthy": true,
+					"monitoring_only": false
+				},
+				{
+					"id": "<id>",
+					"healthy": false,
+					"failure_reason": "HTTP timeout occurred",
+					"must_be_healthy": false,
+					"monitoring_only": true
+				}
+			]
+		},
+		{
+			"name": "origin-b",
+			"ip": "198.51.100.25",
+			"enabled": true,
+			"healthy": false,
+			"failure_reason": "TCP connection failed",
+			"changed": true,
+			"monitors": [
+				{
+					"id": "<id>",
+					"healthy": false,
+					"failure_reason": "TCP connection failed",
+					"must_be_healthy": true,
+					"monitoring_only": false
+				},
+				{
+					"id": "<id>",
+					"healthy": true,
+					"failure_reason": "No failures",
+					"response_code": 200,
+					"must_be_healthy": true,
+					"monitoring_only": false
+				},
+				{
+					"id": "<id>",
+					"healthy": false,
+					"failure_reason": "HTTP timeout occurred",
+					"must_be_healthy": false,
+					"monitoring_only": true
+				}
+			]
+		}
+	]
 }
 ```
 
@@ -153,36 +155,30 @@ Requests per pool
 
 This query shows the number of requests each pool receives from each location in Cloudflare's global network.
 
-**Query**
-
 ```graphql
 query RequestsPerPool($zoneTag: string, $start: Time, $end: Time) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      loadBalancingRequestsAdaptiveGroups(
-        limit: 100
-        filter: {
-          datetime_geq: $start
-          datetime_leq: $end
-          lbName: "lb.example.com"
-        }
-        orderBy: [datetimeFifteenMinutes_DESC]
-      ) {
-        count
-        dimensions {
-          datetimeFifteenMinutes
-          coloCode
-          selectedPoolName
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			loadBalancingRequestsAdaptiveGroups(
+				limit: 100
+				filter: {
+					datetime_geq: $start
+					datetime_leq: $end
+					lbName: "lb.example.com"
+				}
+				orderBy: [datetimeFifteenMinutes_DESC]
+			) {
+				count
+				dimensions {
+					datetimeFifteenMinutes
+					coloCode
+					selectedPoolName
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSGD2OA2AFACQBeOAdmACoCGA5gFwxoQCWF9ANDMWrRFTNqbALZgexMBQAmwsWACUMAN4AoGDABubMAHdIqjZpjkqyQgDM2+VJGYrTlGg2ZlndejAC+y9SZN8HFoZACFafFoKAGMOegQkNGQAQRlaAAdUNi0wAHEIHBB0i2MAzXwxNiEYAEYABjrSsutbeyMysrS7LPEAfXpEN35BJo6usB6wXvxB3mkZUbL8ACMAOVpxZgAiFYA6MAAPDfSZ3eicUS3FzW9rmBwIGUhQqGYAbXHJgDE2SztpACyHBAdmQvQAIgBRADKAGEALqLPx3c4gCioO4yBQUZBsSjIdodEyfBQ-P5gQHA0F3TTnIKwnBPGksMAzaJ2GS4AjrcR3W4dfkmQW3bxAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVKIDMGCiBhQAJs3ZdeAoS2ESps+QF8gA)
-
-**Response (truncated)**
 
 ```json
 {
@@ -212,42 +208,36 @@ Requests per data center
 
 This query shows the weighted, round-trip time (RTT) measurement (`avgRttMs`) for monitor requests from a specific data center (for example, Singapore or `SIN`) to each pool in a specific load balancer.
 
-Warning
+Caution
 
 Note that `avgRttMs` refers to the round-trip time that is measured by the monitors and used in steering decisions. `avgRttMs` is different from the raw RTT for individual requests that reach the Cloudflare network.
 
-**Query**
-
 ```graphql
 query RequestsPerDataCenter($zoneTag: string, $start: Time, $end: Time) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      loadBalancingRequestsAdaptive(
-        limit: 100
-        filter: {
-          datetime_geq: $start
-          datetime_leq: $end
-          lbName: "lb.example.com"
-          coloCode: "SIN"
-        }
-        orderBy: [datetime_DESC]
-      ) {
-        selectedPoolName
-        pools {
-          poolName
-          healthy
-          healthCheckEnabled
-          avgRttMs
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			loadBalancingRequestsAdaptive(
+				limit: 100
+				filter: {
+					datetime_geq: $start
+					datetime_leq: $end
+					lbName: "lb.example.com"
+					coloCode: "SIN"
+				}
+				orderBy: [datetime_DESC]
+			) {
+				selectedPoolName
+				pools {
+					poolName
+					healthy
+					healthCheckEnabled
+					avgRttMs
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSARAhq3AYTADtVIAKAEgC8B7EsAFVwHMAuGNCASxNYA0MKmlwRUnJjwC2YIVVIATSTLABKGAG8AUDBgA3HmADukLbr0x6jZBQBmPADbkInTVYbM2nWp5asYAF8NHUtLRzpcRQAhXEdcEgBjPlYEJDRkAEFFXAAHVB59MAoLML1HGR4JGABGAAY60rKHZ0g3JrKYHPIC2QB9VkQfUXEOsu6wXrA+xyHhJTGwxwAjADlcWU4AIhWAOjAADw3c2d3EumktxctziMI6RTBtgGUASVWrzr1A67oIR4g0SgnAA2hMpn1sABRZ6EAC6YxC12QYFmiXIigwdDojnWsmuuWxjmQ5i+lkJOLxYGuegAFmA4qhaVAaTB6YzaYR6YkANZQki4ZazRSs3D6VKoVAAWWQ1x+nXllkVP0CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVKIDMGCiBhQAJs3ZdeAoS2ESps+QF8gA)
-
-**Response (truncated)**
 
 ```json
 {
@@ -288,7 +278,14 @@ query RequestsPerDataCenter($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/#page","headline":"Load balancing analytics · Cloudflare Load Balancing docs","description":"Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.","url":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/reference/load-balancing-analytics/","name":"Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/#page","headline":"Load balancing analytics · Cloudflare Load Balancing docs","description":"Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.","url":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 ```

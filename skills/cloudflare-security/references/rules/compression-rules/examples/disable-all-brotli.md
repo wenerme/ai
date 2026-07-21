@@ -1,21 +1,20 @@
 ---
-title: Disable Brotli compression
 description: Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Disable Brotli compression
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Disable Brotli compression
+#  Disable Brotli compression
 
 Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 
-* [ Dashboard ](#tab-panel-10833)
-* [ API ](#tab-panel-10834)
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example rule will disable Brotli compression for all incoming requests of a given zone. The only available compression algorithm will be Gzip.
 
@@ -57,33 +56,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "always_use_gzip",
-            "expression": "true",
-            "action": "compress_response",
-            "action_parameters": {
-                "algorithms": [
-                    {
-                        "name": "gzip"
-                    }
-                ]
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "always_use_gzip",
+						"expression": "true",
+						"action": "compress_response",
+						"action_parameters": {
+								"algorithms": [
+										{
+												"name": "gzip"
+										}
+								]
+						}
+				}
+		]
+	}'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/#page","headline":"Disable Brotli compression · Cloudflare Rules docs","description":"Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/compression-rules/examples/","name":"Compression Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/compression-rules/examples/disable-all-brotli/","name":"Disable Brotli compression"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/#page","headline":"Disable Brotli compression · Cloudflare Rules docs","description":"Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

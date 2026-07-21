@@ -1,16 +1,18 @@
 ---
-title: Guardrails
 description: Evaluate AI Gateway prompts and responses for harmful content and enforce safety policies across providers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Guardrails
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Guardrails
 
-# Guardrails
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/guardrails/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Guardrails help you deploy AI applications safely by intercepting and evaluating both user prompts and model responses for harmful content. Acting as a proxy between your application and [model providers](https://developers.cloudflare.com/ai-gateway/usage/providers/) (such as OpenAI, Anthropic, DeepSeek, and others), AI Gateway's Guardrails ensure a consistent and secure experience across your entire AI ecosystem.
 
@@ -38,7 +40,14 @@ AI Gateway inspects all interactions in real time by evaluating content against 
 
 * [Cloudflare Blog: Keep AI interactions secure and risk-free with Guardrails in AI Gateway ↗](https://blog.cloudflare.com/guardrails-in-ai-gateway/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/guardrails/#page","headline":"Guardrails · Cloudflare AI Gateway docs","description":"Evaluate AI Gateway prompts and responses for harmful content and enforce safety policies across providers.","url":"https://developers.cloudflare.com/ai-gateway/features/guardrails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/guardrails/","name":"Guardrails"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/guardrails/#page","headline":"Guardrails · Cloudflare AI Gateway docs","description":"Evaluate AI Gateway prompts and responses for harmful content and enforce safety policies across providers.","url":"https://developers.cloudflare.com/ai-gateway/features/guardrails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

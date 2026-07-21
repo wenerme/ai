@@ -1,16 +1,18 @@
 ---
-title: Connection reuse
 description: How Smart Shield reduces origin connections by packaging multiple requests into one.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Connection reuse
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connection reuse
 
-# Connection reuse
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield reduces the number of connections between Cloudflare and your origin server by batching multiple requests through shared connections. When requests from an [upper-tier data center](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/) — the layer of Cloudflare's cache that sits closest to your origin — need to reach your server, Smart Shield sends them over a single connection instead of opening a new connection for each request. This reduces overall connections to your origin by 30% on average, which lowers resource consumption on your origin and reduces the risk of connection exhaustion under high traffic.
 
@@ -37,7 +39,14 @@ This means a connection originally opened for `shop.example.com` can also carry 
 
 Connection reuse and connection coalescing are also considered when allocating your [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/#page","headline":"Connection reuse · Cloudflare Smart Shield docs","description":"How Smart Shield reduces origin connections by packaging multiple requests into one.","url":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/concepts/connection-reuse/","name":"Connection reuse"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/#page","headline":"Connection reuse · Cloudflare Smart Shield docs","description":"How Smart Shield reduces origin connections by packaging multiple requests into one.","url":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","TLS"]}
 ```

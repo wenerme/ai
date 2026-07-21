@@ -1,16 +1,18 @@
 ---
-title: Evaluation reasons and error codes
 description: Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Evaluation reasons and error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Evaluation reasons and error codes
 
-# Evaluation reasons and error codes
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you evaluate a flag using the binding's `*Details` methods or the OpenFeature SDK, the response includes a `reason` field that explains why a particular value was returned. If an error occurs, the response includes an `errorCode` field.
 
@@ -41,68 +43,64 @@ When an evaluation error occurs, the method returns the default value you provid
 
 The following example inspects evaluation details returned by `getBooleanDetails`:
 
-* [  JavaScript ](#tab-panel-9292)
-* [  TypeScript ](#tab-panel-9293)
-
-**JavaScript**
-
 ```js
 const details = await env.FLAGS.getBooleanDetails("my-feature", false, {
-  userId: "user-42",
+	userId: "user-42",
 });
 
-
 switch (details.reason) {
-  case "TARGETING_MATCH":
-    console.log(`Matched targeting rule, variant: ${details.variant}`);
-    break;
-  case "SPLIT":
-    console.log(`Included in rollout, variant: ${details.variant}`);
-    break;
-  case "DEFAULT":
-    console.log("No rule matched, using default variant");
-    break;
-  case "DISABLED":
-    console.log("Flag is disabled");
-    break;
+	case "TARGETING_MATCH":
+		console.log(`Matched targeting rule, variant: ${details.variant}`);
+		break;
+	case "SPLIT":
+		console.log(`Included in rollout, variant: ${details.variant}`);
+		break;
+	case "DEFAULT":
+		console.log("No rule matched, using default variant");
+		break;
+	case "DISABLED":
+		console.log("Flag is disabled");
+		break;
 }
-
 
 if (details.errorCode) {
-  console.error(`Evaluation error: ${details.errorCode}`);
+	console.error(`Evaluation error: ${details.errorCode}`);
 }
 ```
-
-**TypeScript**
 
 ```ts
 const details = await env.FLAGS.getBooleanDetails("my-feature", false, {
-  userId: "user-42",
+	userId: "user-42",
 });
 
-
 switch (details.reason) {
-  case "TARGETING_MATCH":
-    console.log(`Matched targeting rule, variant: ${details.variant}`);
-    break;
-  case "SPLIT":
-    console.log(`Included in rollout, variant: ${details.variant}`);
-    break;
-  case "DEFAULT":
-    console.log("No rule matched, using default variant");
-    break;
-  case "DISABLED":
-    console.log("Flag is disabled");
-    break;
+	case "TARGETING_MATCH":
+		console.log(`Matched targeting rule, variant: ${details.variant}`);
+		break;
+	case "SPLIT":
+		console.log(`Included in rollout, variant: ${details.variant}`);
+		break;
+	case "DEFAULT":
+		console.log("No rule matched, using default variant");
+		break;
+	case "DISABLED":
+		console.log("Flag is disabled");
+		break;
 }
 
-
 if (details.errorCode) {
-  console.error(`Evaluation error: ${details.errorCode}`);
+	console.error(`Evaluation error: ${details.errorCode}`);
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes · Cloudflare Flagship docs","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/reference/evaluation-reasons/","name":"Evaluation reasons and error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes · Cloudflare Flagship docs","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

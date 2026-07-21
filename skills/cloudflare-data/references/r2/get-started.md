@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Create your first R2 bucket and store objects using the dashboard, S3-compatible tools, or Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
@@ -24,7 +26,7 @@ You need a Cloudflare account with an R2 subscription. If you do not have one:
 
 R2 is free to get started with included free monthly usage. You are billed for your usage on a monthly basis. Refer to [Pricing](https://developers.cloudflare.com/r2/pricing/) for details.
 
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 
 ## Choose how to access R2
 
@@ -39,13 +41,26 @@ R2 supports multiple access methods, so you can choose the one that fits your us
 
 ## Next steps
 
-[ Workers API ](https://developers.cloudflare.com/r2/get-started/workers-api/) Use R2 from Cloudflare Workers.
+### [ Workers API ](https://developers.cloudflare.com/r2/get-started/workers-api/)
 
-[ S3 ](https://developers.cloudflare.com/r2/get-started/s3/) Use R2 with S3-compatible SDKs.
+ Use R2 from Cloudflare Workers.
 
-[ CLI ](https://developers.cloudflare.com/r2/get-started/cli/) Use R2 from the command line.
+### [ S3 ](https://developers.cloudflare.com/r2/get-started/s3/)
+
+ Use R2 with S3-compatible SDKs.
+
+### [ CLI ](https://developers.cloudflare.com/r2/get-started/cli/)
+
+ Use R2 from the command line.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/#page","headline":"Get started · Cloudflare R2 docs","description":"Create your first R2 bucket and store objects using the dashboard, S3-compatible tools, or Workers.","url":"https://developers.cloudflare.com/r2/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/#page","headline":"Get started · Cloudflare R2 docs","description":"Create your first R2 bucket and store objects using the dashboard, S3-compatible tools, or Workers.","url":"https://developers.cloudflare.com/r2/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

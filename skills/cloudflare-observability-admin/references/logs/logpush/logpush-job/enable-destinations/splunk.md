@@ -1,24 +1,26 @@
 ---
-title: Enable Splunk
 description: Push Cloudflare logs to Splunk via HEC.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable Splunk
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable Splunk
 
-# Enable Splunk
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [HTTP Event Collector (HEC) ↗](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/) is a reliable method to receive data from Splunk Enterprise or Splunk Cloud Platform. Cloudflare Logpush supports pushing logs directly to Splunk HEC via the Cloudflare dashboard or API.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 1. In **Select a destination**, choose **Splunk**.
@@ -93,32 +95,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<DOMAIN_NAME>",
-    "destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "dataset": "http_requests",
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<DOMAIN_NAME>",
+		"destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"dataset": "http_requests",
+		"enabled": true
+	}'
 ```
 
 Response:
@@ -154,11 +154,8 @@ Refer to the [Logpush FAQ](https://developers.cloudflare.com/logs/faq/logpush/) 
 
 If your logpush destination hostname is proxied through Cloudflare, and you have the Cloudflare Web Application Firewall (WAF) turned on, you may be challenged or blocked when Cloudflare makes a request to Splunk HTTP Event Collector (HEC). To make sure this does not happen, you have to create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that allows Cloudflare to bypass the HEC endpoint.
 
-* [  New dashboard ](#tab-panel-10214)
-* [ Old dashboard ](#tab-panel-10215)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule (for example, `Splunk`).
 4. Under **When incoming requests match**, use the **Field**, **Operator**, and **Value** dropdowns to create a rule. After finishing each row, select **And** to create the next row of rules. Refer to the table below for the values you should input:
@@ -221,7 +218,7 @@ The `insecure-skip-verify` parameter, when set to `true`, makes an insecure conn
 
 **Why this parameter exists**: Certificates generated by Splunk or third-party certificates should have the **Common Name** field match the Splunk server's domain name. When they do not match (especially with default certificates generated by Splunk on startup), pushes will fail unless certificates are fixed. This parameter exists for rare scenarios where you cannot access or modify certificates, such as with Splunk Cloud instances that do not allow changing server configurations.
 
-Warning
+Caution
 
 Cloudflare highly recommends setting `insecure-skip-verify` to `false`. Only set this to `true` when HEC uses a self-signed certificate and fixing the certificates is not possible.
 
@@ -251,7 +248,14 @@ Logpush integrates with the [Cloudflare App for Splunk ↗](https://splunkbase.s
 
 For detailed setup instructions, refer to [Splunk Analytics integration](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/splunk/","name":"Enable Splunk"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

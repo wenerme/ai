@@ -146,17 +146,35 @@ vm = VM(display=":99", container_name="cua-image")
 ```
 
 ```javascript
-import { exec } from "node:child_process";
+import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
-async function dockerExec(cmd, containerName, decode = true) {
-  const safeCmd = cmd.replace(/"/g, '\\"');
-  const dockerCmd = `docker exec ${containerName} sh -c "${safeCmd}"`;
-  const output = await execAsync(dockerCmd, {
-    encoding: decode ? "utf8" : "buffer",
-  });
+async function dockerExec(
+  containerName,
+  executable,
+  args = [],
+  { decode = true, env = {} } = {}
+) {
+  const environmentArgs = Object.entries(env).flatMap(([name, value]) => [
+    "--env",
+    `${name}=${value}`,
+  ]);
+  const output = await execFileAsync(
+    "docker",
+    [
+      "exec",
+      ...environmentArgs,
+      containerName,
+      executable,
+      ...args.map(String),
+    ],
+    {
+      encoding: decode ? "utf8" : "buffer",
+      maxBuffer: 10 * 1024 * 1024,
+    }
+  );
   return output.stdout;
 }
 
@@ -325,6 +343,22 @@ const normalizeKey = (key) => {
   }
 };
 
+// Translate API button names to Playwright's supported button names.
+const normalizePlaywrightButton = (button = "left") => {
+  const buttons = {
+    left: "left",
+    right: "right",
+    wheel: "middle",
+  };
+  const normalized = buttons[button];
+  if (!normalized) {
+    throw new Error(
+      `Unsupported Playwright mouse button: ${button}. The back and forward buttons are not supported.`
+    );
+  }
+  return normalized;
+};
+
 // Accept drag paths as either [x, y] pairs or {x, y} objects.
 const normalizeDragPath = (path) => {
   if (!Array.isArray(path)) {
@@ -338,7 +372,9 @@ const normalizeDragPath = (path) => {
     if (point && typeof point === "object" && "x" in point && "y" in point) {
       return [point.x, point.y];
     }
-    throw new Error("drag path entries must be coordinate pairs or {x, y} objects");
+    throw new Error(
+      "drag path entries must be coordinate pairs or {x, y} objects"
+    );
   });
 };
 ```
@@ -378,6 +414,21 @@ def normalize_key(key):
         "COMMAND": "Meta",
     }
     return key_map.get(key, key)
+
+
+def normalize_playwright_button(button="left"):
+    """Translate API button names to Playwright's supported button names."""
+    button_map = {
+        "left": "left",
+        "right": "right",
+        "wheel": "middle",
+    }
+    if button not in button_map:
+        raise ValueError(
+            f"Unsupported Playwright mouse button: {button}. "
+            "The back and forward buttons are not supported."
+        )
+    return button_map[button]
 
 
 def normalize_drag_path(path):
@@ -459,6 +510,39 @@ const normalizeXdotoolKey = (key) => {
   }
 };
 
+// Translate API button names to X11 button numbers.
+const normalizeXdotoolButton = (button = "left") => {
+  const buttons = {
+    left: 1,
+    wheel: 2,
+    right: 3,
+    back: 8,
+    forward: 9,
+  };
+  const normalized = buttons[button];
+  if (!normalized) {
+    throw new Error(`Unsupported xdotool mouse button: ${button}`);
+  }
+  return normalized;
+};
+
+// Translate API scroll deltas to vertical and horizontal X11 wheel clicks.
+const getXdotoolScrollButtons = (scrollX, scrollY) => {
+  const scrollButtons = [];
+  const appendClicks = (delta, negativeButton, positiveButton) => {
+    if (!delta) {
+      return;
+    }
+    const button = delta < 0 ? negativeButton : positiveButton;
+    const clicks = Math.max(1, Math.abs(Math.round(delta / 100)));
+    scrollButtons.push(...Array(clicks).fill(button));
+  };
+
+  appendClicks(scrollY, 4, 5);
+  appendClicks(scrollX, 6, 7);
+  return scrollButtons;
+};
+
 // Accept drag paths as either [x, y] pairs or {x, y} objects.
 const normalizeDragPath = (path) => {
   if (!Array.isArray(path)) {
@@ -472,7 +556,9 @@ const normalizeDragPath = (path) => {
     if (point && typeof point === "object" && "x" in point && "y" in point) {
       return [point.x, point.y];
     }
-    throw new Error("drag path entries must be coordinate pairs or {x, y} objects");
+    throw new Error(
+      "drag path entries must be coordinate pairs or {x, y} objects"
+    );
   });
 };
 ```
@@ -512,6 +598,35 @@ def normalize_xdotool_key(key):
         "COMMAND": "super",
     }
     return key_map.get(key, key)
+
+
+def normalize_xdotool_button(button="left"):
+    """Translate API button names to X11 button numbers."""
+    button_map = {
+        "left": 1,
+        "wheel": 2,
+        "right": 3,
+        "back": 8,
+        "forward": 9,
+    }
+    if button not in button_map:
+        raise ValueError(f"Unsupported xdotool mouse button: {button}")
+    return button_map[button]
+
+
+def get_xdotool_scroll_buttons(scroll_x, scroll_y):
+    """Translate API scroll deltas to vertical and horizontal X11 wheel clicks."""
+    buttons = []
+    for delta, negative_button, positive_button in (
+        (scroll_y, 4, 5),
+        (scroll_x, 6, 7),
+    ):
+        if not delta:
+            continue
+        button = negative_button if delta < 0 else positive_button
+        clicks = max(1, abs(round(delta / 100)))
+        buttons.extend([button] * clicks)
+    return buttons
 
 
 def normalize_drag_path(path):
@@ -565,22 +680,33 @@ The following helpers show how to run a batch of actions in either environment:
 
 ```javascript
 // Reuse normalizeKey from the helper above.
+// Reuse normalizePlaywrightButton from the helper above.
 // Reuse normalizeDragPath from the helper above.
+
+function rejectModifiers(action) {
+  if (action.keys?.length) {
+    throw new Error(
+      "This handler does not support modifier keys. Use the modifier-aware handler below."
+    );
+  }
+}
 
 async function handleComputerActions(page, actions) {
   for (const action of actions) {
     switch (action.type) {
-      case "click":
+      case "click": {
+        rejectModifiers(action);
         await page.mouse.click(action.x, action.y, {
-          button: action.button ?? "left",
+          button: normalizePlaywrightButton(action.button),
         });
         break;
+      }
       case "double_click":
-        await page.mouse.dblclick(action.x, action.y, {
-          button: action.button ?? "left",
-        });
+        rejectModifiers(action);
+        await page.mouse.dblclick(action.x, action.y);
         break;
       case "drag": {
+        rejectModifiers(action);
         const path = normalizeDragPath(action.path);
         if (path.length < 2) {
           throw new Error("drag action requires at least two path points");
@@ -595,11 +721,13 @@ async function handleComputerActions(page, actions) {
         break;
       }
       case "move":
+        rejectModifiers(action);
         await page.mouse.move(action.x, action.y);
         break;
       case "scroll":
+        rejectModifiers(action);
         await page.mouse.move(action.x, action.y);
-        await page.mouse.wheel(action.scrollX ?? 0, action.scrollY ?? 0);
+        await page.mouse.wheel(action.scroll_x, action.scroll_y);
         break;
       case "keypress":
         for (const key of action.keys) {
@@ -610,6 +738,8 @@ async function handleComputerActions(page, actions) {
         await page.keyboard.type(action.text);
         break;
       case "wait":
+        await page.waitForTimeout(2000);
+        break;
       case "screenshot":
         break;
       default:
@@ -623,25 +753,35 @@ async function handleComputerActions(page, actions) {
 import time
 
 # Reuse normalize_key from the helper above.
+# Reuse normalize_playwright_button from the helper above.
 # Reuse normalize_drag_path from the helper above.
+
+
+def reject_modifiers(action):
+    if getattr(action, "keys", None):
+        raise ValueError(
+            "This handler does not support modifier keys. "
+            "Use the modifier-aware handler below."
+        )
 
 
 def handle_computer_actions(page, actions):
     for action in actions:
         match action.type:
             case "click":
+                reject_modifiers(action)
                 page.mouse.click(
                     action.x,
                     action.y,
-                    button=getattr(action, "button", "left"),
+                    button=normalize_playwright_button(
+                        getattr(action, "button", "left")
+                    ),
                 )
             case "double_click":
-                page.mouse.dblclick(
-                    action.x,
-                    action.y,
-                    button=getattr(action, "button", "left"),
-                )
+                reject_modifiers(action)
+                page.mouse.dblclick(action.x, action.y)
             case "drag":
+                reject_modifiers(action)
                 path = normalize_drag_path(action.path)
                 if len(path) < 2:
                     raise ValueError("drag action requires at least two path points")
@@ -652,12 +792,14 @@ def handle_computer_actions(page, actions):
                     page.mouse.move(x, y)
                 page.mouse.up()
             case "move":
+                reject_modifiers(action)
                 page.mouse.move(action.x, action.y)
             case "scroll":
+                reject_modifiers(action)
                 page.mouse.move(action.x, action.y)
                 page.mouse.wheel(
-                    getattr(action, "scrollX", 0),
-                    getattr(action, "scrollY", 0),
+                    action.scroll_x,
+                    action.scroll_y,
                 )
             case "keypress":
                 for key in action.keys:
@@ -679,87 +821,113 @@ def handle_computer_actions(page, actions):
 
 ```javascript
 // Reuse normalizeXdotoolKey from the helper above.
+// Reuse normalizeXdotoolButton and getXdotoolScrollButtons from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
-async function handleComputerActions(vm, actions) {
-  const buttonMap = { left: 1, middle: 2, right: 3 };
+function rejectModifiers(action) {
+  if (action.keys?.length) {
+    throw new Error(
+      "This handler does not support modifier keys. Use the modifier-aware handler below."
+    );
+  }
+}
 
+async function handleComputerActions(vm, actions) {
   for (const action of actions) {
     switch (action.type) {
       case "click": {
-        const button = buttonMap[action.button ?? "left"] ?? 1;
+        rejectModifiers(action);
+        const button = normalizeXdotoolButton(action.button);
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y} click ${button}`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["mousemove", action.x, action.y, "click", button],
+          { env: { DISPLAY: vm.display } }
         );
         break;
       }
       case "double_click": {
-        const button = buttonMap[action.button ?? "left"] ?? 1;
+        rejectModifiers(action);
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y} click --repeat 2 ${button}`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["mousemove", action.x, action.y, "click", "--repeat", 2, 1],
+          { env: { DISPLAY: vm.display } }
         );
         break;
       }
       case "drag": {
+        rejectModifiers(action);
         const path = normalizeDragPath(action.path);
         if (path.length < 2) {
           throw new Error("drag action requires at least two path points");
         }
         const [[startX, startY], ...rest] = path;
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool mousemove ${startX} ${startY} mousedown 1`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["mousemove", startX, startY, "mousedown", 1],
+          { env: { DISPLAY: vm.display } }
         );
         for (const [x, y] of rest) {
-          await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${x} ${y}`,
-            vm.containerName
-          );
+          await dockerExec(vm.containerName, "xdotool", ["mousemove", x, y], {
+            env: { DISPLAY: vm.display },
+          });
         }
-        await dockerExec(
-          `DISPLAY=${vm.display} xdotool mouseup 1`,
-          vm.containerName
-        );
+        await dockerExec(vm.containerName, "xdotool", ["mouseup", 1], {
+          env: { DISPLAY: vm.display },
+        });
         break;
       }
       case "move":
+        rejectModifiers(action);
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y}`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["mousemove", action.x, action.y],
+          { env: { DISPLAY: vm.display } }
         );
         break;
       case "scroll": {
-        const button = action.scrollY < 0 ? 4 : 5;
-        const clicks = Math.max(1, Math.abs(Math.round(action.scrollY / 100)));
-        await dockerExec(
-          `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y}`,
-          vm.containerName
+        rejectModifiers(action);
+        const buttons = getXdotoolScrollButtons(
+          action.scroll_x,
+          action.scroll_y
         );
-        for (let i = 0; i < clicks; i += 1) {
-          await dockerExec(
-            `DISPLAY=${vm.display} xdotool click ${button}`,
-            vm.containerName
-          );
+        await dockerExec(
+          vm.containerName,
+          "xdotool",
+          ["mousemove", action.x, action.y],
+          { env: { DISPLAY: vm.display } }
+        );
+        for (const button of buttons) {
+          await dockerExec(vm.containerName, "xdotool", ["click", button], {
+            env: { DISPLAY: vm.display },
+          });
         }
         break;
       }
       case "keypress":
         for (const key of action.keys) {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool key '${normalizeXdotoolKey(key)}'`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["key", normalizeXdotoolKey(key)],
+            { env: { DISPLAY: vm.display } }
           );
         }
         break;
       case "type":
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool type --delay 0 '${action.text}'`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["type", "--delay", 0, action.text],
+          { env: { DISPLAY: vm.display } }
         );
         break;
       case "wait":
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        break;
       case "screenshot":
         break;
       default:
@@ -773,27 +941,38 @@ async function handleComputerActions(vm, actions) {
 import time
 
 # Reuse normalize_xdotool_key from the helper above.
+# Reuse normalize_xdotool_button and get_xdotool_scroll_buttons from the helper above.
 # Reuse normalize_drag_path from the helper above.
 
 
-def handle_computer_actions(vm, actions):
-    button_map = {"left": 1, "middle": 2, "right": 3}
+def reject_modifiers(action):
+    if getattr(action, "keys", None):
+        raise ValueError(
+            "This handler does not support modifier keys. "
+            "Use the modifier-aware handler below."
+        )
 
+
+def handle_computer_actions(vm, actions):
     for action in actions:
         match action.type:
             case "click":
-                button = button_map.get(getattr(action, "button", "left"), 1)
+                reject_modifiers(action)
+                button = normalize_xdotool_button(
+                    getattr(action, "button", "left")
+                )
                 docker_exec(
                     f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click {button}",
                     vm.container_name,
                 )
             case "double_click":
-                button = button_map.get(getattr(action, "button", "left"), 1)
+                reject_modifiers(action)
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 {button}",
+                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 1",
                     vm.container_name,
                 )
             case "drag":
+                reject_modifiers(action)
                 path = normalize_drag_path(action.path)
                 if len(path) < 2:
                     raise ValueError("drag action requires at least two path points")
@@ -812,19 +991,23 @@ def handle_computer_actions(vm, actions):
                     vm.container_name,
                 )
             case "move":
+                reject_modifiers(action)
                 docker_exec(
                     f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                     vm.container_name,
                 )
             case "scroll":
-                button = 4 if getattr(action, "scrollY", 0) < 0 else 5
-                clicks = max(1, abs(round(getattr(action, "scrollY", 0) / 100)))
+                reject_modifiers(action)
+                buttons = get_xdotool_scroll_buttons(
+                    action.scroll_x,
+                    action.scroll_y,
+                )
 
                 docker_exec(
                     f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                     vm.container_name,
                 )
-                for _ in range(clicks):
+                for button in buttons:
                     docker_exec(
                         f"DISPLAY={vm.display} xdotool click {button}",
                         vm.container_name,
@@ -892,6 +1075,7 @@ Modifier-assisted action
 
 ```javascript
 // Reuse normalizeKey from the helper above.
+// Reuse normalizePlaywrightButton from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
 async function withModifiers(page, keys, callback) {
@@ -918,15 +1102,13 @@ async function handleComputerActions(page, actions) {
       case "click":
         await withModifiers(page, action.keys, async () => {
           await page.mouse.click(action.x, action.y, {
-            button: action.button ?? "left",
+            button: normalizePlaywrightButton(action.button),
           });
         });
         break;
       case "double_click":
         await withModifiers(page, action.keys, async () => {
-          await page.mouse.dblclick(action.x, action.y, {
-            button: action.button ?? "left",
-          });
+          await page.mouse.dblclick(action.x, action.y);
         });
         break;
       case "drag": {
@@ -953,7 +1135,7 @@ async function handleComputerActions(page, actions) {
       case "scroll":
         await withModifiers(page, action.keys, async () => {
           await page.mouse.move(action.x, action.y);
-          await page.mouse.wheel(action.scrollX ?? 0, action.scrollY ?? 0);
+          await page.mouse.wheel(action.scroll_x, action.scroll_y);
         });
         break;
       case "keypress":
@@ -965,6 +1147,8 @@ async function handleComputerActions(page, actions) {
         await page.keyboard.type(action.text);
         break;
       case "wait":
+        await page.waitForTimeout(2000);
+        break;
       case "screenshot":
         break;
       default:
@@ -978,6 +1162,7 @@ async function handleComputerActions(page, actions) {
 import time
 
 # Reuse normalize_key from the helper above.
+# Reuse normalize_playwright_button from the helper above.
 # Reuse normalize_drag_path from the helper above.
 
 
@@ -1006,18 +1191,16 @@ def handle_computer_actions(page, actions):
                     lambda: page.mouse.click(
                         action.x,
                         action.y,
-                        button=getattr(action, "button", "left"),
+                        button=normalize_playwright_button(
+                            getattr(action, "button", "left")
+                        ),
                     ),
                 )
             case "double_click":
                 with_modifiers(
                     page,
                     getattr(action, "keys", None),
-                    lambda: page.mouse.dblclick(
-                        action.x,
-                        action.y,
-                        button=getattr(action, "button", "left"),
-                    ),
+                    lambda: page.mouse.dblclick(action.x, action.y),
                 )
             case "drag":
                 path = normalize_drag_path(action.path)
@@ -1050,8 +1233,8 @@ def handle_computer_actions(page, actions):
                     lambda: (
                         page.mouse.move(action.x, action.y),
                         page.mouse.wheel(
-                            getattr(action, "scrollX", 0),
-                            getattr(action, "scrollY", 0),
+                            action.scroll_x,
+                            action.scroll_y,
                         ),
                     ),
                 )
@@ -1075,6 +1258,7 @@ def handle_computer_actions(page, actions):
 
 ```javascript
 // Reuse normalizeXdotoolKey from the helper above.
+// Reuse normalizeXdotoolButton and getXdotoolScrollButtons from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
 async function withModifiers(vm, keys, callback) {
@@ -1083,45 +1267,44 @@ async function withModifiers(vm, keys, callback) {
 
   try {
     for (const key of normalizedKeys) {
-      await dockerExec(
-        `DISPLAY=${vm.display} xdotool keydown '${key}'`,
-        vm.containerName
-      );
+      await dockerExec(vm.containerName, "xdotool", ["keydown", key], {
+        env: { DISPLAY: vm.display },
+      });
       pressedKeys.push(key);
     }
 
     await callback();
   } finally {
     for (const key of [...pressedKeys].reverse()) {
-      await dockerExec(
-        `DISPLAY=${vm.display} xdotool keyup '${key}'`,
-        vm.containerName
-      );
+      await dockerExec(vm.containerName, "xdotool", ["keyup", key], {
+        env: { DISPLAY: vm.display },
+      });
     }
   }
 }
 
 async function handleComputerActions(vm, actions) {
-  const buttonMap = { left: 1, middle: 2, right: 3 };
-
   for (const action of actions) {
     switch (action.type) {
       case "click": {
-        const button = buttonMap[action.button ?? "left"] ?? 1;
+        const button = normalizeXdotoolButton(action.button);
         await withModifiers(vm, action.keys, async () => {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y} click ${button}`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["mousemove", action.x, action.y, "click", button],
+            { env: { DISPLAY: vm.display } }
           );
         });
         break;
       }
       case "double_click": {
-        const button = buttonMap[action.button ?? "left"] ?? 1;
         await withModifiers(vm, action.keys, async () => {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y} click --repeat 2 ${button}`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["mousemove", action.x, action.y, "click", "--repeat", 2, 1],
+            { env: { DISPLAY: vm.display } }
           );
         });
         break;
@@ -1134,44 +1317,49 @@ async function handleComputerActions(vm, actions) {
         await withModifiers(vm, action.keys, async () => {
           const [[startX, startY], ...rest] = path;
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${startX} ${startY} mousedown 1`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["mousemove", startX, startY, "mousedown", 1],
+            { env: { DISPLAY: vm.display } }
           );
           for (const [x, y] of rest) {
-            await dockerExec(
-              `DISPLAY=${vm.display} xdotool mousemove ${x} ${y}`,
-              vm.containerName
-            );
+            await dockerExec(vm.containerName, "xdotool", ["mousemove", x, y], {
+              env: { DISPLAY: vm.display },
+            });
           }
-          await dockerExec(
-            `DISPLAY=${vm.display} xdotool mouseup 1`,
-            vm.containerName
-          );
+          await dockerExec(vm.containerName, "xdotool", ["mouseup", 1], {
+            env: { DISPLAY: vm.display },
+          });
         });
         break;
       }
       case "move": {
         await withModifiers(vm, action.keys, async () => {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y}`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["mousemove", action.x, action.y],
+            { env: { DISPLAY: vm.display } }
           );
         });
         break;
       }
       case "scroll": {
-        const button = action.scrollY < 0 ? 4 : 5;
-        const clicks = Math.max(1, Math.abs(Math.round(action.scrollY / 100)));
+        const buttons = getXdotoolScrollButtons(
+          action.scroll_x,
+          action.scroll_y
+        );
         await withModifiers(vm, action.keys, async () => {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool mousemove ${action.x} ${action.y}`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["mousemove", action.x, action.y],
+            { env: { DISPLAY: vm.display } }
           );
-          for (let i = 0; i < clicks; i += 1) {
-            await dockerExec(
-              `DISPLAY=${vm.display} xdotool click ${button}`,
-              vm.containerName
-            );
+          for (const button of buttons) {
+            await dockerExec(vm.containerName, "xdotool", ["click", button], {
+              env: { DISPLAY: vm.display },
+            });
           }
         });
         break;
@@ -1179,18 +1367,24 @@ async function handleComputerActions(vm, actions) {
       case "keypress":
         for (const key of action.keys) {
           await dockerExec(
-            `DISPLAY=${vm.display} xdotool key '${normalizeXdotoolKey(key)}'`,
-            vm.containerName
+            vm.containerName,
+            "xdotool",
+            ["key", normalizeXdotoolKey(key)],
+            { env: { DISPLAY: vm.display } }
           );
         }
         break;
       case "type":
         await dockerExec(
-          `DISPLAY=${vm.display} xdotool type --delay 0 '${action.text}'`,
-          vm.containerName
+          vm.containerName,
+          "xdotool",
+          ["type", "--delay", 0, action.text],
+          { env: { DISPLAY: vm.display } }
         );
         break;
       case "wait":
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        break;
       case "screenshot":
         break;
       default:
@@ -1204,6 +1398,7 @@ async function handleComputerActions(vm, actions) {
 import time
 
 # Reuse normalize_xdotool_key from the helper above.
+# Reuse normalize_xdotool_button and get_xdotool_scroll_buttons from the helper above.
 # Reuse normalize_drag_path from the helper above.
 
 
@@ -1229,12 +1424,12 @@ def with_modifiers(vm, keys, callback):
 
 
 def handle_computer_actions(vm, actions):
-    button_map = {"left": 1, "middle": 2, "right": 3}
-
     for action in actions:
         match action.type:
             case "click":
-                button = button_map.get(getattr(action, "button", "left"), 1)
+                button = normalize_xdotool_button(
+                    getattr(action, "button", "left")
+                )
                 with_modifiers(
                     vm,
                     getattr(action, "keys", None),
@@ -1244,12 +1439,11 @@ def handle_computer_actions(vm, actions):
                     ),
                 )
             case "double_click":
-                button = button_map.get(getattr(action, "button", "left"), 1)
                 with_modifiers(
                     vm,
                     getattr(action, "keys", None),
                     lambda: docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 {button}",
+                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 1",
                         vm.container_name,
                     ),
                 )
@@ -1285,15 +1479,17 @@ def handle_computer_actions(vm, actions):
                     ),
                 )
             case "scroll":
-                button = 4 if getattr(action, "scrollY", 0) < 0 else 5
-                clicks = max(1, abs(round(getattr(action, "scrollY", 0) / 100)))
+                buttons = get_xdotool_scroll_buttons(
+                    action.scroll_x,
+                    action.scroll_y,
+                )
 
                 def do_scroll():
                     docker_exec(
                         f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                         vm.container_name,
                     )
-                    for _ in range(clicks):
+                    for button in buttons:
                         docker_exec(
                             f"DISPLAY={vm.display} xdotool click {button}",
                             vm.container_name,
@@ -1352,9 +1548,10 @@ def capture_screenshot(page):
 ```javascript
 async function captureScreenshot(vm) {
   return await dockerExec(
-    `export DISPLAY=${vm.display} && import -window root png:-`,
     vm.containerName,
-    false
+    "import",
+    ["-window", "root", "png:-"],
+    { decode: false, env: { DISPLAY: vm.display } }
   );
 }
 ```
@@ -1384,6 +1581,12 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 async function sendComputerScreenshot(response, callId, screenshotBase64) {
+  const output = /** @type {const} */ ({
+    type: "computer_screenshot",
+    image_url: `data:image/png;base64,${screenshotBase64}`,
+    detail: "original",
+  });
+
   return await client.responses.create({
     model: "gpt-5.6",
     tools: [{ type: "computer" }],
@@ -1392,11 +1595,7 @@ async function sendComputerScreenshot(response, callId, screenshotBase64) {
       {
         type: "computer_call_output",
         call_id: callId,
-        output: {
-          type: "computer_screenshot",
-          image_url: `data:image/png;base64,${screenshotBase64}`,
-          detail: "original",
-        },
+        output,
       },
     ],
   });
@@ -1442,7 +1641,9 @@ const client = new OpenAI();
 
 async function computerUseLoop(target, response) {
   while (true) {
-    const computerCall = response.output.find((item) => item.type === "computer_call");
+    const computerCall = response.output.find(
+      (item) => item.type === "computer_call"
+    );
     if (!computerCall) {
       return response;
     }
@@ -1451,6 +1652,11 @@ async function computerUseLoop(target, response) {
 
     const screenshot = await captureScreenshot(target);
     const screenshotBase64 = Buffer.from(screenshot).toString("base64");
+    const output = /** @type {const} */ ({
+      type: "computer_screenshot",
+      image_url: `data:image/png;base64,${screenshotBase64}`,
+      detail: "original",
+    });
 
     response = await client.responses.create({
       model: "gpt-5.6",
@@ -1460,11 +1666,7 @@ async function computerUseLoop(target, response) {
         {
           type: "computer_call_output",
           call_id: computerCall.call_id,
-          output: {
-            type: "computer_screenshot",
-            image_url: `data:image/png;base64,${screenshotBase64}`,
-            detail: "original",
-          },
+          output,
         },
       ],
     });
@@ -1565,6 +1767,10 @@ If you want visual interaction in this setup, make sure your harness can capture
 
 These minimal JavaScript and Python implementations demonstrate a code-execution harness. They give the model a code-execution tool, keep Playwright objects available to the runtime, return text and screenshots back to the model, and let the model ask the user clarifying questions when it gets blocked.
 
+Run model-generated code only inside a disposable, least-privilege container or VM with resource and network limits. Language-level sandboxes such as Node.js `vm` and restricted Python global variables are not security boundaries. Keep the sandbox in a separate process and security boundary from the API client, with no shared credentials or host mounts. Enforce time and resource limits inside the sandbox, and terminate the runtime when it exceeds them.
+
+The examples below do not run generated code in the API client. They send each approved snippet to the separately isolated service configured by `OPENAI_EXAMPLE_CODE_EXECUTION_URL`, with an optional `OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN`. The service accepts `{ session_id, language, code }` and returns `{ output }`, where `output` contains Responses API `input_text` or `input_image` items. It owns the persistent Playwright objects and must validate requests, authenticate callers, enforce its own execution deadline, and return only validated output. The client-side timeout only limits how long the example waits for a response.
+
 
 
 <div data-content-switcher-pane data-value="javascript">
@@ -1573,22 +1779,102 @@ These minimal JavaScript and Python implementations demonstrate a code-execution
 
 ```javascript
 // Run with:
-//   bun run -i cua_code_mode.ts
+//   pnpm example -- tools/cua/015-code-execution-harness-example.ts
 // Override the user prompt with:
-//   bun run -i cua_code_mode.ts --prompt "Go to example.com and summarize the page."
-// Note: this script intentionally leaves the Playwright browser open after the
-// model reaches a final answer. Because the browser/context are not closed,
-// Bun stays alive until you close the browser or stop the process manually.
+//   pnpm example -- tools/cua/015-code-execution-harness-example.ts --prompt "Go to example.com and summarize the page."
+//
+// Requires OPENAI_EXAMPLE_CODE_EXECUTION_URL to point to a separately isolated
+// sandbox service. The service keeps a browser, context, and page alive for each
+// session and returns text or image outputs. Do not run model-generated code in
+// this API client process.
+
+import { randomUUID } from "node:crypto";
+import readline from "node:readline/promises";
 
 import OpenAI from "openai";
-import readline from "node:readline/promises";
-import vm from "node:vm";
-import { chromium } from "playwright";
-import util from "node:util";
+
+const EXECUTION_TIMEOUT_MS = 30_000;
+
+type ExecutionOutput =
+  | { type: "input_text"; text: string }
+  | {
+      type: "input_image";
+      image_url: string;
+      detail: "original";
+    };
+
+function isExecutionOutput(value: unknown): value is ExecutionOutput {
+  if (typeof value !== "object" || value === null || !("type" in value)) {
+    return false;
+  }
+  if (
+    value.type === "input_text" &&
+    "text" in value &&
+    typeof value.text === "string"
+  ) {
+    return true;
+  }
+  return (
+    value.type === "input_image" &&
+    "image_url" in value &&
+    typeof value.image_url === "string" &&
+    "detail" in value &&
+    value.detail === "original"
+  );
+}
+
+async function executeInSandbox(
+  code: string,
+  sessionId: string
+): Promise<ExecutionOutput[]> {
+  const endpoint = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_URL;
+  if (!endpoint) {
+    return [
+      {
+        type: "input_text",
+        text: "Execution blocked. Configure OPENAI_EXAMPLE_CODE_EXECUTION_URL with a separately isolated sandbox service.",
+      },
+    ];
+  }
+
+  const headers: Record<string, string> = {
+    "content-type": "application/json",
+  };
+  const token = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN;
+  if (token) headers.authorization = `Bearer ${token}`;
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      session_id: sessionId,
+      language: "javascript",
+      code,
+    }),
+    signal: AbortSignal.timeout(EXECUTION_TIMEOUT_MS),
+  });
+  if (!response.ok) {
+    throw new Error(
+      `Sandbox request failed with ${response.status} ${response.statusText}`
+    );
+  }
+
+  const payload: unknown = await response.json();
+  if (
+    typeof payload !== "object" ||
+    payload === null ||
+    !("output" in payload) ||
+    !Array.isArray(payload.output) ||
+    !payload.output.every(isExecutionOutput)
+  ) {
+    throw new Error("Sandbox returned an invalid output payload.");
+  }
+  return payload.output;
+}
 
 async function main(
   prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-  max_steps: number = 50,
+  maxSteps: number = 50,
   model: string = "gpt-5.6"
 ) {
   type Phase = null | "commentary" | "final_answer";
@@ -1597,439 +1883,163 @@ async function main(
     input: process.stdin,
     output: process.stdout,
   });
-  const browser = await chromium.launch({
-    headless: false,
-    args: ["--window-size=1440,900"],
-  });
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 },
-  });
-  const page = await context.newPage();
+  const sessionId = randomUUID();
+  const conversation: any[] = [{ role: "user", content: prompt }];
 
-  const conversation: any[] = [];
-  const js_output: any[] = [];
-  const sandbox: Record<string, any> = {
-    console: {
-      log: (...xs: any[]) => {
-        js_output.push({
-          type: "input_text",
-          text: util.formatWithOptions(
-            { showHidden: false, getters: false, maxStringLength: 2000 },
-            ...xs
-          ),
-        });
-      },
-    },
-    browser: browser,
-    context: context,
-    page: page,
-    display: (base64_image: string) => {
-      js_output.push({
-        type: "input_image",
-        image_url: `data:image/png;base64,${base64_image}`,
-        detail: "original",
-      });
-    },
-  };
-  const ctx = vm.createContext(sandbox);
-
-  conversation.push({
-    role: "user",
-    content: prompt,
-  });
-
-  for (let i = 0; i < max_steps; i++) {
-    const resp = await client.responses.create({
-      model,
-      tools: [
-        {
-          type: "function" as const,
-          name: "exec_js",
-          description:
-            "Execute provided interactive JavaScript in a persistent REPL context.",
-          parameters: {
-            type: "object",
-            properties: {
-              code: {
-                type: "string",
-                description: `
-JavaScript to execute. Write small snippets of interactive code. To persist variables or functions across tool calls, you must save them to globalThis. Code is executed in an async node:vm context, so you can use await. You have access to ONLY the following:
-- console.log(x): Use this to read contents back to you. But be minimal: otherwise the output may be too long. Avoid using console.log() for large base64 payloads like screenshots or buffer. If you create an image or screenshot, pass the base64 string to display().
-- display(base64_image_string): Use this to view a base64-encoded image.
-- Do not write screenshots or image data to temporary files or disk just to pass them back. Keep image data in memory and send it directly to display().
-- Do not assume package globals like Bun.file are available unless they are explicitly provided.
-- browser: A playwright chromium browser instance.
-- context: A playwright browser context with viewport 1440x900.
-- page: A playwright page already created in that context.
+  try {
+    for (let i = 0; i < maxSteps; i++) {
+      const response = await client.responses.create({
+        model,
+        tools: [
+          {
+            type: "function" as const,
+            name: "exec_js",
+            description:
+              "Execute provided interactive JavaScript in a persistent, isolated browser runtime.",
+            parameters: {
+              type: "object",
+              properties: {
+                code: {
+                  type: "string",
+                  description: `
+JavaScript to execute. Write small snippets of interactive code. To persist variables or functions across tool calls, save them to globalThis. The isolated runtime supports await and provides only these helpers and Playwright objects:
+- console.log(x): Return concise text. Do not log large base64 payloads, screenshots, buffers, page HTML, or other large blobs.
+- display(base64_image_string): Return a base64-encoded image.
+- browser: A Playwright Chromium browser instance.
+- context: A Playwright browser context with viewport 1440x900.
+- page: A Playwright page already created in that context.
+Keep screenshots and image data in memory and pass them directly to display(). Do not assume other globals or packages are available.
 `,
+                },
               },
+              required: ["code"],
+              additionalProperties: false,
             },
-            required: ["code"],
-            additionalProperties: false,
+            strict: true,
           },
-        },
-        {
-          type: "function" as const,
-          name: "ask_user",
-          description:
-            "Ask the user a clarification question and wait for their response.",
-          parameters: {
-            type: "object",
-            properties: {
-              question: {
-                type: "string",
-                description:
-                  "The exact question to show the human. Use this instead of answering with a freeform clarifying question in a final answer.",
+          {
+            type: "function" as const,
+            name: "ask_user",
+            description:
+              "Ask the user a clarification question and wait for their response.",
+            parameters: {
+              type: "object",
+              properties: {
+                question: {
+                  type: "string",
+                  description:
+                    "The exact question to show the human. Use this instead of answering with a freeform clarifying question in a final answer.",
+                },
               },
+              required: ["question"],
+              additionalProperties: false,
             },
-            required: ["question"],
-            additionalProperties: false,
+            strict: true,
           },
+        ],
+        input: conversation,
+        reasoning: {
+          effort: "low",
         },
-      ],
-      input: conversation,
-      reasoning: {
-        effort: "low",
-      },
-    });
+      });
 
-    // Save model outputs into the running conversation
-    conversation.push(...resp.output);
+      conversation.push(...response.output);
+      let hadToolCall = false;
+      let latestPhase: Phase = null;
 
-    let hadToolCall = false;
-    let latestPhase: Phase = null;
+      for (const item of response.output) {
+        if (item.type === "function_call" && item.name === "exec_js") {
+          hadToolCall = true;
+          const parsed = JSON.parse(item.arguments ?? "{}") as {
+            code?: string;
+          };
+          const code = parsed.code ?? "";
+          console.log(code);
+          console.log("----");
 
-    // Handle tool calls
-    for (const item of resp.output) {
-      if (item.type === "function_call" && item.name === "exec_js") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          code?: string;
-        };
-        const code = parsed.code ?? "";
-        console.log(code);
-        console.log("----");
-        const wrappedCode = `
-                (async () => {
-                    ${code}
-                })();
-            `;
+          let executionOutput: ExecutionOutput[];
+          const endpoint = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_URL;
+          if (!endpoint) {
+            executionOutput = await executeInSandbox(code, sessionId);
+          } else {
+            const approval = await rl.question(
+              "Send this generated JavaScript to the isolated runtime? Type yes to continue: "
+            );
+            if (approval.trim().toLowerCase() !== "yes") {
+              executionOutput = [
+                {
+                  type: "input_text",
+                  text: "The user declined this code execution.",
+                },
+              ];
+            } else {
+              try {
+                executionOutput = await executeInSandbox(code, sessionId);
+              } catch (error) {
+                executionOutput = [
+                  {
+                    type: "input_text",
+                    text:
+                      error instanceof Error ? error.message : String(error),
+                  },
+                ];
+              }
+            }
+          }
 
-        try {
-          await new vm.Script(wrappedCode, {
-            filename: "exec_js.js",
-          }).runInContext(ctx);
-        } catch (e: any) {
-          sandbox.console.log(e, e?.message, e?.stack);
-        }
+          conversation.push({
+            type: "function_call_output",
+            call_id: item.call_id,
+            output: executionOutput,
+          });
 
-        // Send tool output back to the model, keyed by call_id
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: js_output.slice(),
-        });
-
-        for (const out of js_output) {
-          if (out.type === "input_text") {
-            console.log("JS LOG:", out.text);
-          } else if (out.type === "input_image") {
-            console.log("JS IMAGE: [base64 string omitted]");
+          for (const output of executionOutput) {
+            if (output.type === "input_text") {
+              console.log("JS LOG:", output.text);
+            } else {
+              console.log("JS IMAGE: [base64 string omitted]");
+            }
+          }
+          console.log("=====");
+        } else if (item.type === "function_call" && item.name === "ask_user") {
+          hadToolCall = true;
+          const parsed = JSON.parse(item.arguments ?? "{}") as {
+            question?: string;
+          };
+          const question =
+            parsed.question ?? "Please provide more information.";
+          console.log(`MODEL QUESTION: ${question}`);
+          const answer = await rl.question("> ");
+          conversation.push({
+            type: "function_call_output",
+            call_id: item.call_id,
+            output: answer,
+          });
+        } else if (item.type === "message") {
+          const text = item.content.find((part) => part.type === "output_text");
+          console.log(text?.text ?? item.content);
+          if ("phase" in item) {
+            latestPhase = (item.phase as Phase) ?? null;
           }
         }
-        console.log("=====");
-
-        js_output.length = 0;
-      } else if (item.type === "function_call" && item.name === "ask_user") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          question?: string;
-        };
-        const question = parsed.question ?? "Please provide more information.";
-        console.log(`MODEL QUESTION: ${question}`);
-        const answer = await rl.question("> ");
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: answer,
-        });
-      } else if (item.type === "message") {
-        console.log(item.content[0]?.text ?? item.content);
-        if ("phase" in item) {
-          latestPhase = (item.phase as Phase) ?? null;
-        }
-      } else if (item.type === "output_item.done" && "phase" in item) {
-        latestPhase = (item.phase as Phase) ?? null;
       }
-    }
 
-    // Stop only when the model explicitly marks the turn as a final answer
-    // and there were no tool calls in the same turn.
-    if (!hadToolCall && latestPhase === "final_answer") return;
+      if (!hadToolCall && latestPhase === "final_answer") return;
+    }
+  } finally {
+    rl.close();
   }
 }
 
 function getCliPrompt(): string | undefined {
-  const args = Bun.argv.slice(2);
+  const args = process.argv.slice(2);
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--prompt") {
-      return args[i + 1];
-    }
+    if (args[i] === "--prompt") return args[i + 1];
   }
   return undefined;
 }
 
-main(getCliPrompt());
-```
-
-```python
-# /// script
-# requires-python = ">=3.10"
-# dependencies = [
-#   "openai",
-#   "playwright",
-# ]
-# ///
-# Run with: `uv run cua_code_mode_py_async.py`
-# Override the user prompt with:
-#   `uv run cua_code_mode_py_async.py --prompt "Go to example.com and summarize the page."`
-# Install Chromium once first: `uv run --with playwright python -m playwright install chromium`
-# Requires `OPENAI_API_KEY` in the environment.
-
-"""Async Python analogue of cua_code_mode.ts.
-
-Runs a Responses API loop with one persistent Playwright browser/context/page,
-and tools that let the model execute short async Python snippets and ask the
-user clarifying questions.
-
-The model can return visual observations by calling:
-    display(base64_png_string)
-"""
-
-from __future__ import annotations
-
-import argparse
-import asyncio
-import json
-import traceback
-from typing import Any
-
-from openai import OpenAI
-from playwright.async_api import async_playwright
-
-Phase = str | None
-
-
-def _message_text(item: Any) -> str:
-    try:
-        parts = getattr(item, "content", None)
-        if isinstance(parts, list) and parts:
-            out: list[str] = []
-            for p in parts:
-                t = getattr(p, "text", None)
-                if isinstance(t, str) and t:
-                    out.append(t)
-            if out:
-                return "\n".join(out)
-    except Exception:
-        pass
-    return str(item)
-
-
-async def _ainput(prompt: str) -> str:
-    return await asyncio.to_thread(input, prompt)
-
-
-async def main(
-    prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-    max_steps: int = 20,
-    model: str = "gpt-5.6",
-) -> None:
-    client = OpenAI()
-
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=False,
-            args=["--window-size=1440,900"],
-        )
-        context = await browser.new_context(viewport={"width": 1440, "height": 900})
-        page = await context.new_page()
-
-        conversation: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
-        py_output: list[dict[str, Any]] = []
-
-        def log(*xs: Any) -> None:
-            text = " ".join(str(x) for x in xs)
-            py_output.append({"type": "input_text", "text": text[:5000]})
-
-        def display(base64_image: str) -> None:
-            py_output.append(
-                {
-                    "type": "input_image",
-                    "image_url": f"data:image/png;base64,{base64_image}",
-                    "detail": "original",
-                }
-            )
-
-        runtime_globals: dict[str, Any] = {
-            "__builtins__": __builtins__,
-            "asyncio": asyncio,
-            "browser": browser,
-            "context": context,
-            "page": page,
-            "display": display,
-            "log": log,
-        }
-
-        for _ in range(max_steps):
-            resp = client.responses.create(
-                model=model,
-                tools=[
-                    {
-                        "type": "function",
-                        "name": "exec_py",
-                        "description": "Execute provided interactive async Python in a persistent runtime context.",
-                        "parameters": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "type": "string",
-                                    "description": (
-                                        "Python code to execute. Write small snippets. "
-                                        "State persists across tool calls via globals(). "
-                                        "This runtime uses Playwright's async Python API, so you may use await directly. "
-                                        "Do not call asyncio.run(...), loop.run_until_complete(...), or manage the event loop yourself. "
-                                        "You can use ONLY these prebound objects/helpers: "
-                                        "log(x) for text output, display(base64_png_string) for image output, "
-                                        "browser (async Playwright browser), context (viewport 1440x900), page (already created), "
-                                        "asyncio (module). "
-                                        "Be concise with log(x): do not send large base64 payloads, screenshots, buffers, page HTML, "
-                                        "or other large blobs through log(). If you create an image or screenshot, pass the base64 PNG "
-                                        "string to display(). Do not write screenshots or image data to temporary files or disk just "
-                                        "to pass them back; keep image data in memory and send it directly to display(). "
-                                        "Do not assume extra globals or helpers are available unless they are explicitly listed here. "
-                                        "Do not close browser/context/page unless explicitly asked."
-                                    ),
-                                }
-                            },
-                            "required": ["code"],
-                            "additionalProperties": False,
-                        },
-                    },
-                    {
-                        "type": "function",
-                        "name": "ask_user",
-                        "description": "Ask the user a clarification question and wait for their response.",
-                        "parameters": {
-                            "type": "object",
-                            "properties": {
-                                "question": {
-                                    "type": "string",
-                                    "description": "The exact question to show the user. Use this instead of asking a freeform clarifying question in a final answer.",
-                                }
-                            },
-                            "required": ["question"],
-                            "additionalProperties": False,
-                        },
-                    },
-                ],
-                input=conversation,
-            )
-
-            conversation.extend(resp.output)
-
-            had_tool_call = False
-            latest_phase: Phase = None
-
-            for item in resp.output:
-                item_type = getattr(item, "type", None)
-
-                if item_type == "function_call" and getattr(item, "name", None) == "exec_py":
-                    had_tool_call = True
-                    raw_args = getattr(item, "arguments", "{}") or "{}"
-                    try:
-                        args = json.loads(raw_args)
-                    except json.JSONDecodeError:
-                        args = {}
-                    code = args.get("code", "") if isinstance(args, dict) else ""
-
-                    print(code)
-                    print("----")
-
-                    wrapped = (
-                        "async def __codex_exec__():\n"
-                        + "".join(
-                            f"    {line}\n" if line else "    \n"
-                            for line in (code or "pass").splitlines()
-                        )
-                    )
-
-                    try:
-                        exec(wrapped, runtime_globals, runtime_globals)
-                        await runtime_globals["__codex_exec__"]()
-                    except Exception:
-                        log(traceback.format_exc())
-
-                    conversation.append(
-                        {
-                            "type": "function_call_output",
-                            "call_id": getattr(item, "call_id", None),
-                            "output": py_output[:],
-                        }
-                    )
-
-                    for out in py_output:
-                        if out.get("type") == "input_text":
-                            print("PY LOG:", out.get("text", ""))
-                        elif out.get("type") == "input_image":
-                            print("PY IMAGE: [base64 string omitted]")
-                    print("=====")
-
-                    py_output.clear()
-
-                elif item_type == "function_call" and getattr(item, "name", None) == "ask_user":
-                    had_tool_call = True
-                    raw_args = getattr(item, "arguments", "{}") or "{}"
-                    try:
-                        args = json.loads(raw_args)
-                    except json.JSONDecodeError:
-                        args = {}
-                    question = (
-                        args.get("question", "Please provide more information.")
-                        if isinstance(args, dict)
-                        else "Please provide more information."
-                    )
-
-                    print(f"MODEL QUESTION: {question}")
-                    answer = await _ainput("> ")
-
-                    conversation.append(
-                        {
-                            "type": "function_call_output",
-                            "call_id": getattr(item, "call_id", None),
-                            "output": answer,
-                        }
-                    )
-
-                elif item_type == "message":
-                    print(_message_text(item))
-                    phase = getattr(item, "phase", None)
-                    if isinstance(phase, str) or phase is None:
-                        latest_phase = phase
-                elif item_type == "output_item.done":
-                    phase = getattr(item, "phase", None)
-                    if isinstance(phase, str) or phase is None:
-                        latest_phase = phase
-
-            if not had_tool_call and latest_phase == "final_answer":
-                return
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--prompt", help="Override the default user prompt.")
-    args = parser.parse_args()
-    asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
+await main(getCliPrompt());
 ```
 
   </div>
@@ -2037,239 +2047,24 @@ if __name__ == "__main__":
     <div class="hidden">Python</div>
     Code-execution harness
 
-```javascript
-// Run with:
-//   bun run -i cua_code_mode.ts
-// Override the user prompt with:
-//   bun run -i cua_code_mode.ts --prompt "Go to example.com and summarize the page."
-// Note: this script intentionally leaves the Playwright browser open after the
-// model reaches a final answer. Because the browser/context are not closed,
-// Bun stays alive until you close the browser or stop the process manually.
-
-import OpenAI from "openai";
-import readline from "node:readline/promises";
-import vm from "node:vm";
-import { chromium } from "playwright";
-import util from "node:util";
-
-async function main(
-  prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-  max_steps: number = 50,
-  model: string = "gpt-5.6"
-) {
-  type Phase = null | "commentary" | "final_answer";
-  const client = new OpenAI();
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  const browser = await chromium.launch({
-    headless: false,
-    args: ["--window-size=1440,900"],
-  });
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 },
-  });
-  const page = await context.newPage();
-
-  const conversation: any[] = [];
-  const js_output: any[] = [];
-  const sandbox: Record<string, any> = {
-    console: {
-      log: (...xs: any[]) => {
-        js_output.push({
-          type: "input_text",
-          text: util.formatWithOptions(
-            { showHidden: false, getters: false, maxStringLength: 2000 },
-            ...xs
-          ),
-        });
-      },
-    },
-    browser: browser,
-    context: context,
-    page: page,
-    display: (base64_image: string) => {
-      js_output.push({
-        type: "input_image",
-        image_url: `data:image/png;base64,${base64_image}`,
-        detail: "original",
-      });
-    },
-  };
-  const ctx = vm.createContext(sandbox);
-
-  conversation.push({
-    role: "user",
-    content: prompt,
-  });
-
-  for (let i = 0; i < max_steps; i++) {
-    const resp = await client.responses.create({
-      model,
-      tools: [
-        {
-          type: "function" as const,
-          name: "exec_js",
-          description:
-            "Execute provided interactive JavaScript in a persistent REPL context.",
-          parameters: {
-            type: "object",
-            properties: {
-              code: {
-                type: "string",
-                description: `
-JavaScript to execute. Write small snippets of interactive code. To persist variables or functions across tool calls, you must save them to globalThis. Code is executed in an async node:vm context, so you can use await. You have access to ONLY the following:
-- console.log(x): Use this to read contents back to you. But be minimal: otherwise the output may be too long. Avoid using console.log() for large base64 payloads like screenshots or buffer. If you create an image or screenshot, pass the base64 string to display().
-- display(base64_image_string): Use this to view a base64-encoded image.
-- Do not write screenshots or image data to temporary files or disk just to pass them back. Keep image data in memory and send it directly to display().
-- Do not assume package globals like Bun.file are available unless they are explicitly provided.
-- browser: A playwright chromium browser instance.
-- context: A playwright browser context with viewport 1440x900.
-- page: A playwright page already created in that context.
-`,
-              },
-            },
-            required: ["code"],
-            additionalProperties: false,
-          },
-        },
-        {
-          type: "function" as const,
-          name: "ask_user",
-          description:
-            "Ask the user a clarification question and wait for their response.",
-          parameters: {
-            type: "object",
-            properties: {
-              question: {
-                type: "string",
-                description:
-                  "The exact question to show the human. Use this instead of answering with a freeform clarifying question in a final answer.",
-              },
-            },
-            required: ["question"],
-            additionalProperties: false,
-          },
-        },
-      ],
-      input: conversation,
-      reasoning: {
-        effort: "low",
-      },
-    });
-
-    // Save model outputs into the running conversation
-    conversation.push(...resp.output);
-
-    let hadToolCall = false;
-    let latestPhase: Phase = null;
-
-    // Handle tool calls
-    for (const item of resp.output) {
-      if (item.type === "function_call" && item.name === "exec_js") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          code?: string;
-        };
-        const code = parsed.code ?? "";
-        console.log(code);
-        console.log("----");
-        const wrappedCode = `
-                (async () => {
-                    ${code}
-                })();
-            `;
-
-        try {
-          await new vm.Script(wrappedCode, {
-            filename: "exec_js.js",
-          }).runInContext(ctx);
-        } catch (e: any) {
-          sandbox.console.log(e, e?.message, e?.stack);
-        }
-
-        // Send tool output back to the model, keyed by call_id
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: js_output.slice(),
-        });
-
-        for (const out of js_output) {
-          if (out.type === "input_text") {
-            console.log("JS LOG:", out.text);
-          } else if (out.type === "input_image") {
-            console.log("JS IMAGE: [base64 string omitted]");
-          }
-        }
-        console.log("=====");
-
-        js_output.length = 0;
-      } else if (item.type === "function_call" && item.name === "ask_user") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          question?: string;
-        };
-        const question = parsed.question ?? "Please provide more information.";
-        console.log(`MODEL QUESTION: ${question}`);
-        const answer = await rl.question("> ");
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: answer,
-        });
-      } else if (item.type === "message") {
-        console.log(item.content[0]?.text ?? item.content);
-        if ("phase" in item) {
-          latestPhase = (item.phase as Phase) ?? null;
-        }
-      } else if (item.type === "output_item.done" && "phase" in item) {
-        latestPhase = (item.phase as Phase) ?? null;
-      }
-    }
-
-    // Stop only when the model explicitly marks the turn as a final answer
-    // and there were no tool calls in the same turn.
-    if (!hadToolCall && latestPhase === "final_answer") return;
-  }
-}
-
-function getCliPrompt(): string | undefined {
-  const args = Bun.argv.slice(2);
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--prompt") {
-      return args[i + 1];
-    }
-  }
-  return undefined;
-}
-
-main(getCliPrompt());
-```
-
 ```python
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
 #   "openai",
-#   "playwright",
 # ]
 # ///
 # Run with: `uv run cua_code_mode_py_async.py`
 # Override the user prompt with:
 #   `uv run cua_code_mode_py_async.py --prompt "Go to example.com and summarize the page."`
-# Install Chromium once first: `uv run --with playwright python -m playwright install chromium`
-# Requires `OPENAI_API_KEY` in the environment.
+# Requires `OPENAI_API_KEY` and `OPENAI_EXAMPLE_CODE_EXECUTION_URL`.
 
 """Async Python analogue of cua_code_mode.ts.
 
-Runs a Responses API loop with one persistent Playwright browser/context/page,
-and tools that let the model execute short async Python snippets and ask the
-user clarifying questions.
-
-The model can return visual observations by calling:
-    display(base64_png_string)
+The API client sends approved snippets to a separately isolated sandbox service.
+The sandbox keeps a Playwright browser, context, and page alive for each session
+and returns text or image outputs. Never run model-generated code in this API
+client process.
 """
 
 from __future__ import annotations
@@ -2277,13 +2072,15 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import traceback
+import os
+import uuid
 from typing import Any
+from urllib import request
 
 from openai import OpenAI
-from playwright.async_api import async_playwright
 
 Phase = str | None
+EXECUTION_TIMEOUT_SECONDS = 30
 
 
 def _message_text(item: Any) -> str:
@@ -2306,46 +2103,73 @@ async def _ainput(prompt: str) -> str:
     return await asyncio.to_thread(input, prompt)
 
 
+def _is_execution_output(value: Any) -> bool:
+    if not isinstance(value, dict):
+        return False
+    if value.get("type") == "input_text":
+        return isinstance(value.get("text"), str)
+    return (
+        value.get("type") == "input_image"
+        and isinstance(value.get("image_url"), str)
+        and value.get("detail") == "original"
+    )
+
+
+def _execute_in_sandbox(code: str, session_id: str) -> list[dict[str, Any]]:
+    endpoint = os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_URL")
+    if not endpoint:
+        return [
+            {
+                "type": "input_text",
+                "text": (
+                    "Execution blocked. Configure OPENAI_EXAMPLE_CODE_EXECUTION_URL "
+                    "with a separately isolated sandbox service."
+                ),
+            }
+        ]
+
+    headers = {"Content-Type": "application/json"}
+    token = os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    body = json.dumps(
+        {
+            "session_id": session_id,
+            "language": "python",
+            "code": code,
+        }
+    ).encode()
+    sandbox_request = request.Request(
+        endpoint,
+        data=body,
+        headers=headers,
+        method="POST",
+    )
+    with request.urlopen(
+        sandbox_request,
+        timeout=EXECUTION_TIMEOUT_SECONDS,
+    ) as response:
+        payload = json.loads(response.read())
+
+    output = payload.get("output") if isinstance(payload, dict) else None
+    if not isinstance(output, list) or not all(
+        _is_execution_output(item) for item in output
+    ):
+        raise ValueError("Sandbox returned an invalid output payload.")
+    return output
+
+
 async def main(
     prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
     max_steps: int = 20,
     model: str = "gpt-5.6",
 ) -> None:
     client = OpenAI()
+    session_id = str(uuid.uuid4())
 
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=False,
-            args=["--window-size=1440,900"],
-        )
-        context = await browser.new_context(viewport={"width": 1440, "height": 900})
-        page = await context.new_page()
-
+    async def run_loop() -> None:
         conversation: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
-        py_output: list[dict[str, Any]] = []
-
-        def log(*xs: Any) -> None:
-            text = " ".join(str(x) for x in xs)
-            py_output.append({"type": "input_text", "text": text[:5000]})
-
-        def display(base64_image: str) -> None:
-            py_output.append(
-                {
-                    "type": "input_image",
-                    "image_url": f"data:image/png;base64,{base64_image}",
-                    "detail": "original",
-                }
-            )
-
-        runtime_globals: dict[str, Any] = {
-            "__builtins__": __builtins__,
-            "asyncio": asyncio,
-            "browser": browser,
-            "context": context,
-            "page": page,
-            "display": display,
-            "log": log,
-        }
 
         for _ in range(max_steps):
             resp = client.responses.create(
@@ -2354,7 +2178,7 @@ async def main(
                     {
                         "type": "function",
                         "name": "exec_py",
-                        "description": "Execute provided interactive async Python in a persistent runtime context.",
+                        "description": "Execute provided interactive async Python in a persistent, isolated browser runtime.",
                         "parameters": {
                             "type": "object",
                             "properties": {
@@ -2363,24 +2187,18 @@ async def main(
                                     "description": (
                                         "Python code to execute. Write small snippets. "
                                         "State persists across tool calls via globals(). "
-                                        "This runtime uses Playwright's async Python API, so you may use await directly. "
-                                        "Do not call asyncio.run(...), loop.run_until_complete(...), or manage the event loop yourself. "
-                                        "You can use ONLY these prebound objects/helpers: "
-                                        "log(x) for text output, display(base64_png_string) for image output, "
-                                        "browser (async Playwright browser), context (viewport 1440x900), page (already created), "
-                                        "asyncio (module). "
-                                        "Be concise with log(x): do not send large base64 payloads, screenshots, buffers, page HTML, "
-                                        "or other large blobs through log(). If you create an image or screenshot, pass the base64 PNG "
-                                        "string to display(). Do not write screenshots or image data to temporary files or disk just "
-                                        "to pass them back; keep image data in memory and send it directly to display(). "
-                                        "Do not assume extra globals or helpers are available unless they are explicitly listed here. "
-                                        "Do not close browser/context/page unless explicitly asked."
+                                        "The isolated runtime supports await and provides only these helpers and Playwright objects: "
+                                        "log(x) for concise text output, display(base64_png_string) for image output, "
+                                        "browser (async Playwright browser), context (viewport 1440x900), and page. "
+                                        "Keep screenshots and image data in memory and pass them directly to display(). "
+                                        "Do not assume other globals or packages are available."
                                     ),
                                 }
                             },
                             "required": ["code"],
                             "additionalProperties": False,
                         },
+                        "strict": True,
                     },
                     {
                         "type": "function",
@@ -2397,6 +2215,7 @@ async def main(
                             "required": ["question"],
                             "additionalProperties": False,
                         },
+                        "strict": True,
                     },
                 ],
                 input=conversation,
@@ -2422,25 +2241,43 @@ async def main(
                     print(code)
                     print("----")
 
-                    wrapped = (
-                        "async def __codex_exec__():\n"
-                        + "".join(
-                            f"    {line}\n" if line else "    \n"
-                            for line in (code or "pass").splitlines()
+                    if not os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_URL"):
+                        py_output = _execute_in_sandbox(code, session_id)
+                    else:
+                        approval = await _ainput(
+                            "Send this generated Python to the isolated runtime? "
+                            "Type yes to continue: "
                         )
-                    )
-
-                    try:
-                        exec(wrapped, runtime_globals, runtime_globals)
-                        await runtime_globals["__codex_exec__"]()
-                    except Exception:
-                        log(traceback.format_exc())
+                        if approval.strip().lower() != "yes":
+                            py_output = [
+                                {
+                                    "type": "input_text",
+                                    "text": "The user declined this code execution.",
+                                }
+                            ]
+                        else:
+                            try:
+                                py_output = await asyncio.wait_for(
+                                    asyncio.to_thread(
+                                        _execute_in_sandbox,
+                                        code,
+                                        session_id,
+                                    ),
+                                    timeout=EXECUTION_TIMEOUT_SECONDS,
+                                )
+                            except Exception as exc:
+                                py_output = [
+                                    {
+                                        "type": "input_text",
+                                        "text": str(exc),
+                                    }
+                                ]
 
                     conversation.append(
                         {
                             "type": "function_call_output",
                             "call_id": getattr(item, "call_id", None),
-                            "output": py_output[:],
+                            "output": py_output,
                         }
                     )
 
@@ -2450,8 +2287,6 @@ async def main(
                         elif out.get("type") == "input_image":
                             print("PY IMAGE: [base64 string omitted]")
                     print("=====")
-
-                    py_output.clear()
 
                 elif item_type == "function_call" and getattr(item, "name", None) == "ask_user":
                     had_tool_call = True
@@ -2489,6 +2324,8 @@ async def main(
 
             if not had_tool_call and latest_phase == "final_answer":
                 return
+
+    await run_loop()
 
 
 if __name__ == "__main__":

@@ -1,16 +1,18 @@
 ---
-title: Use Direct Upload with continuous integration
 description: Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use Direct Upload with continuous integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use Direct Upload with continuous integration
 
-# Use Direct Upload with continuous integration
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages supports directly uploading prebuilt assets, allowing you to use custom build steps for your applications and deploy to Pages with [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/). This guide will teach you how to deploy your application to Pages, using continuous integration.
 
@@ -30,7 +32,7 @@ $ CLOUDFLARE_ACCOUNT_ID=<ACCOUNT_ID> npx wrangler pages deploy <DIRECTORY> --pro
 To generate an API token:
 
 1. In the Cloudflare dashboard, go to the **API Tokens** page.
-[ Go to **Account API tokens** ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Under **Custom Token**, select **Get started**.
 4. Name your API Token in the **Token name** field.
@@ -44,7 +46,7 @@ Now that you have created your API token, you can use it to push your project fr
 
 To find your account ID, go to the **Zone Overview** page in the Cloudflare dashboard.
 
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Find your account ID in the **API** section on the right-hand side menu.
 
@@ -73,8 +75,6 @@ Add the value of your Cloudflare account ID and Cloudflare API token as `CLOUDFL
 Create a `.github/workflows/pages-deployment.yaml` file at the root of your project. The `.github/workflows/pages-deployment.yaml` file will contain the jobs you specify on the request, that is: `on: [push]` in this case. It can also be on a pull request. For a detailed explanation of GitHub Actions syntax, refer to the [official documentation ↗](https://docs.github.com/en/actions).
 
 In your `pages-deployment.yaml` file, copy the following content:
-
-**YAML**
 
 ```yaml
 on: [push]
@@ -131,8 +131,6 @@ To add environment variables, in the CircleCI web application:
 
 Create a `.circleci/config.yml` file at the root of your project. This file contains the jobs that will be executed based on the order of your workflow. In your `config.yml` file, copy the following content:
 
-**YAML**
-
 ```yaml
 version: 2.1
 jobs:
@@ -140,14 +138,12 @@ jobs:
     docker:
       - image: cimg/node:18.7.0
 
-
     steps:
       - checkout
       # Run your project's build step
       - run: npm install && npm run build
       # Publish with wrangler
       - run: npx wrangler pages deploy dist --project-name=<PROJECT NAME> # Replace dist with the name of your build folder and input your project name
-
 
 workflows:
   Publish-to-Pages-workflow:
@@ -179,8 +175,6 @@ Set the environment variable's name and value and the branch you want it to be a
 
 Go to [Travis-ci.com ↗](https://Travis-ci.com) and enable your repository by login in with your preferred provider. This guide uses GitHub. Next, create a `.travis.yml` file and copy the following into the file:
 
-**YAML**
-
 ```yaml
 language: node_js
 node_js:
@@ -191,11 +185,9 @@ branches:
 install:
   - npm install
 
-
 script:
   - npm run build # Switch this out with your build command or remove it if you don't have a build step
   - npx wrangler pages deploy dist --project-name=<PROJECT NAME>
-
 
 env:
   - CLOUDFLARE_ACCOUNT_ID: { $CLOUDFLARE_ACCOUNT_ID }
@@ -206,7 +198,14 @@ This will set the Node.js version to 18\. You have also set branches you want yo
 
 You can also modify the Wrangler command with any [wrangler pages deploy options](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/use-direct-upload-with-continuous-integration/","name":"Use Direct Upload with continuous integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

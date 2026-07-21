@@ -1,16 +1,18 @@
 ---
-title: Rollouts
 description: Configure rolling deployments for Containers, including step percentages and grace periods for active instances.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Rollouts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rollouts
 
-# Rollouts
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/platform-details/rollouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## How rollouts work
 
@@ -24,40 +26,33 @@ Because Worker code updates immediately while container instances roll out gradu
 
 Here is an example configuration that sets a 5 minute grace period and a two step rollout where the first step updates 10% of instances and the second step updates 100% of instances:
 
-* [  wrangler.jsonc ](#tab-panel-8555)
-* [  wrangler.toml ](#tab-panel-8556)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "max_instances": 10,
-      "class_name": "MyContainer",
-      "image": "./Dockerfile",
-      "rollout_active_grace_period": 300,
-      "rollout_step_percentage": [10, 100],
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_CONTAINER",
-        "class_name": "MyContainer",
-      },
-    ],
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MyContainer"],
-    },
-  ],
+	"containers": [
+		{
+			"max_instances": 10,
+			"class_name": "MyContainer",
+			"image": "./Dockerfile",
+			"rollout_active_grace_period": 300,
+			"rollout_step_percentage": [10, 100],
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MY_CONTAINER",
+				"class_name": "MyContainer",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["MyContainer"],
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -67,11 +62,9 @@ image = "./Dockerfile"
 rollout_active_grace_period = 300
 rollout_step_percentage = [ 10, 100 ]
 
-
 [[durable_objects.bindings]]
 name = "MY_CONTAINER"
 class_name = "MyContainer"
-
 
 [[migrations]]
 tag = "v1"
@@ -98,7 +91,14 @@ pnpm wrangler deploy --containers-rollout=immediate
 
 Note that `rollout_active_grace_period`, if configured, will still apply.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/rollouts/#page","headline":"Rollouts · Cloudflare Containers docs","description":"Configure rolling deployments for Containers, including step percentages and grace periods for active instances.","url":"https://developers.cloudflare.com/containers/platform-details/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/rollouts/","name":"Rollouts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/rollouts/#page","headline":"Rollouts · Cloudflare Containers docs","description":"Configure rolling deployments for Containers, including step percentages and grace periods for active instances.","url":"https://developers.cloudflare.com/containers/platform-details/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

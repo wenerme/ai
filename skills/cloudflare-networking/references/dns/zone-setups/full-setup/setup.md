@@ -1,16 +1,18 @@
 ---
-title: Set up a primary zone (Full setup)
 description: If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up a primary zone (Full setup)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up a primary zone (Full setup)
 
-# Set up a primary zone (Full setup)
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans. For details, refer to [About](https://developers.cloudflare.com/dns/zone-setups/full-setup/). For more introductory context, refer to [Concepts](https://developers.cloudflare.com/dns/concepts/).
 
@@ -23,11 +25,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-8834)
-* [ API ](#tab-panel-8835)
-
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-[ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
+[ Go to **Domains** ↗ ](https://dash.cloudflare.com/?to=/:account/domains/overview)
 2. Select **Onboard a domain**.
 3. Enter your apex domain (for example, `example.com`) and choose how you would like to add your DNS records.
 4. Select **Continue** and choose a [plan ↗](https://www.cloudflare.com/plans/#compare-features).
@@ -38,18 +37,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-**Create Zone**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<YOUR_DOMAIN>",
-    "account": {
-        "id": "<YOUR_ACCOUNT_ID>"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<YOUR_DOMAIN>",
+		"account": {
+				"id": "<YOUR_ACCOUNT_ID>"
+		}
+	}'
 ```
 
 Note
@@ -112,18 +109,15 @@ Each A, AAAA, and CNAME record has a [proxy status](https://developers.cloudflar
 
 Your domain will be assigned two authoritative Cloudflare nameservers. Nameservers are specialized servers that store your domain's DNS records and "answer" requests from browsers by providing the specific IP address needed to connect to your website.
 
-Warning
+Caution
 
 If your domain is particularly sensitive to downtime, review our suggestions to [minimize downtime](https://developers.cloudflare.com/fundamentals/performance/minimize-downtime/).
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-8832)
-* [ API ](#tab-panel-8833)
-
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Required API token permissions
 
@@ -168,12 +162,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Apps and Policies Write`
 * `Access: Apps and Policies Read`
 
-**Zone Details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Note
@@ -284,15 +276,12 @@ When your domain is **Active**:
 ```txt
 *macOS/Linux*
 
-
 whois <DOMAIN_NAME>
 dig ns <DOMAIN_NAME> @1.1.1.1
 dig ns <DOMAIN_NAME> @8.8.8.8
 dig <DOMAIN_NAME> +trace
 
-
 *Windows*
-
 
 nslookup -type=ns <DOMAIN_NAME> 1.1.1.1
 nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
@@ -310,7 +299,14 @@ If you turned off DNSSEC before updating your nameservers, you can now [re-enabl
 
 1. A security feature that protects DNS records from spoofing [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/full-setup/","name":"Primary setup (Full)"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/full-setup/setup/","name":"Set up a primary zone (Full setup)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

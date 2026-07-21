@@ -1,16 +1,18 @@
 ---
-title: Project Cybersafe Schools
 description: Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Project Cybersafe Schools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Project Cybersafe Schools
 
-# Project Cybersafe Schools
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Project Cybersafe Schools grants eligible schools with free access to Cloudflare's [Email security](https://developers.cloudflare.com/email-security/) and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) products.
 
@@ -77,7 +79,14 @@ Review the [domain categories](https://developers.cloudflare.com/cloudflare-one/
 
 For a comprehensive guide, refer to the [Project Cybersafe Schools Learning Path](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/), which takes you step by step through the technical concepts, creating an account, onboarding your traffic, and enabling the CIPA filters.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/#page","headline":"Project Cybersafe Schools · Cloudflare Fundamentals docs","description":"Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/policies-compliances/cybersafe/","name":"Project Cybersafe Schools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/#page","headline":"Project Cybersafe Schools · Cloudflare Fundamentals docs","description":"Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

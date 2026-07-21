@@ -1,39 +1,38 @@
 ---
-title: GPT-5.6 Terra
 description: GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.6 Terra
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.6 Terra
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.6-terra`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.6-terra `
+
+* Third-party
 
 GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
 
-| Model Info                                                                 |                                                                                                                        |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                       |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                          |
-| Request formats                                                            | Responses                                                                                                              |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
+| Model Info                                                                  |                                                                                                                         |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                        |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                  |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                           |
+| Request formats                                                             | Responses                                                                                                               |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1504)
-* [ cURL ](#tab-panel-1505)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -58,9 +57,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 512
 }'
 ```
-
-* [ Output ](#tab-panel-1508)
-* [ Raw response ](#tab-panel-1509)
 
 Blue-green deployments run two identical production environments: one active (“blue”) and one idle (“green”). A new version is deployed and tested on green, then traffic is switched over all at once. This makes rollback very fast—switch traffic back to blue—but requires maintaining duplicate infrastructure and handling database/schema compatibility carefully. For a small team, blue-green is often appealing when releases are infrequent, the system is simple enough to duplicate cheaply, and a clear cutover/rollback procedure matters more than gradual validation.
 
@@ -167,11 +163,6 @@ Canary deployments release the new version to a small percentage of users or req
 
 **Customer Incident Update**  — Using instructions to tune the model's response style
 
-* [ TypeScript ](#tab-panel-1506)
-* [ cURL ](#tab-panel-1507)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.6-terra',
@@ -195,9 +186,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 512
 }'
 ```
-
-* [ Output ](#tab-panel-1510)
-* [ Raw response ](#tab-panel-1511)
 
 **Incident Update:**
 Earlier today, some customers experienced elevated API latency. Our team identified the issue and applied mitigation steps, and API performance has returned to normal.
@@ -303,9 +291,6 @@ We’ll continue monitoring closely and will share a follow-up with additional d
 
 ## Parameters
 
-* [ Input ](#tab-panel-1512)
-* [ Output ](#tab-panel-1513)
-
 ▶input
 
 `one of`required
@@ -384,7 +369,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schem
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/#page","headline":"GPT-5.6 Terra (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/#page","headline":"GPT-5.6 Terra (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

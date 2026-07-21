@@ -1,16 +1,18 @@
 ---
-title: Contacting Cloudflare Support
 description: Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Contacting Cloudflare Support
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Contacting Cloudflare Support
 
-# Contacting Cloudflare Support
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/contacting-cloudflare-support/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Guidelines for contacting Cloudflare support
 
@@ -21,7 +23,7 @@ Cloudflare Support _cannot_ perform the following actions:
 * Troubleshoot or debug customer's code and its logic
 * Troubleshoot or answer questions about domains not associated with the Cloudflare account email address used to contact support
 
-Warning
+Caution
 
 **Do not share** any sensitive information, such as passwords, credit card numbers, private keys, or API keys with Cloudflare Support.
 
@@ -244,7 +246,14 @@ Cloudflare offers worldwide support, which covers:
 
 1. Customers on Free plans are encouraged to utilize our Cloudflare Community and will only receive standard case support for billing, account, and registrar issues. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/contacting-cloudflare-support/#page","headline":"Contacting Cloudflare Support · Cloudflare Support docs","description":"Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.","url":"https://developers.cloudflare.com/support/contacting-cloudflare-support/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/contacting-cloudflare-support/","name":"Contacting Cloudflare Support"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/contacting-cloudflare-support/#page","headline":"Contacting Cloudflare Support · Cloudflare Support docs","description":"Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.","url":"https://developers.cloudflare.com/support/contacting-cloudflare-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

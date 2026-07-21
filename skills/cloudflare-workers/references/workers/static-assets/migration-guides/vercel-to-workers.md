@@ -1,16 +1,18 @@
 ---
-title: Migrate from Vercel to Workers
 description: Migrate your Vercel application to Cloudflare Workers. You should already have an existing project deployed on Vercel that you would like to host on Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrate from Vercel to Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate from Vercel to Workers
 
-# Migrate from Vercel to Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate your Vercel application to Cloudflare Workers.
 
@@ -36,29 +38,21 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-13015)
-* [  wrangler.toml ](#tab-panel-13016)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "<your-project-name>",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "directory": "<your-build-directory>",
-  },
+	"name": "<your-project-name>",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"directory": "<your-build-directory>",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [assets]
 directory = "<your-build-directory>"
@@ -66,30 +60,22 @@ directory = "<your-build-directory>"
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-13017)
-* [  wrangler.toml ](#tab-panel-13018)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "<your-project-name>",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "directory": "<your-build-directory>",
-    "not_found_handling": "single-page-application",
-  },
+	"name": "<your-project-name>",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"directory": "<your-build-directory>",
+		"not_found_handling": "single-page-application",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [assets]
 directory = "<your-build-directory>"
@@ -118,7 +104,14 @@ Once your custom domain is set up and sending requests to Cloudflare Workers, yo
 
 For additional migration instructions, review the [Cloudflare Pages to Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/). While not Vercel specific, it does cover some additional steps that may be helpful.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/#page","headline":"Migrate from Vercel to Workers · Cloudflare Workers docs","description":"Migrate your Vercel application to Cloudflare Workers. You should already have an existing project deployed on Vercel that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/migration-guides/","name":"Migration Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/migration-guides/vercel-to-workers/","name":"Migrate from Vercel to Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/#page","headline":"Migrate from Vercel to Workers · Cloudflare Workers docs","description":"Migrate your Vercel application to Cloudflare Workers. You should already have an existing project deployed on Vercel that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

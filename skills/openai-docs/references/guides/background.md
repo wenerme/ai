@@ -66,15 +66,15 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 let resp = await client.responses.create({
-model: "gpt-5.6",
-input: "Write a very long novel about otters in space.",
-background: true,
+  model: "gpt-5.6",
+  input: "Write a very long novel about otters in space.",
+  background: true,
 });
 
 while (resp.status === "queued" || resp.status === "in_progress") {
-console.log("Current status: " + resp.status);
-await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
-resp = await client.responses.retrieve(resp.id);
+  console.log("Current status: " + resp.status);
+  await new Promise((resolve) => setTimeout(resolve, 2000)); // wait 2 seconds
+  resp = await client.responses.retrieve(resp.id);
 }
 
 console.log("Final status: " + resp.status + "\nOutput:\n" + resp.output_text);

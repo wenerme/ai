@@ -1,16 +1,18 @@
 ---
-title: Generic OIDC
 description: Generic OIDC in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Generic OIDC
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generic OIDC
 
-# Generic OIDC
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you integrate IdPs not already set in Access.
 
@@ -33,10 +35,6 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-7875)
-* [ API ](#tab-panel-7876)
-* [ Terraform (v5) ](#tab-panel-7877)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Choose **OpenID Connect**.
@@ -53,34 +51,32 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-**Add an Access identity provider**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Generic OIDC example",
-    "type": "oidc",
-    "config": {
-        "client_id": "<your client id>",
-        "client_secret": "<your client secret>",
-        "auth_url": "https://accounts.google.com/o/oauth2/auth",
-        "token_url": "https://accounts.google.com/o/oauth2/token",
-        "certs_url": "https://www.googleapis.com/oauth2/v3/certs",
-        "pkce_enabled": false,
-        "email_claim_name": "email",
-        "claims": [
-            "employeeID",
-            "groups"
-        ],
-        "scopes": [
-            "openid",
-            "email",
-            "profile"
-        ]
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Generic OIDC example",
+		"type": "oidc",
+		"config": {
+				"client_id": "<your client id>",
+				"client_secret": "<your client secret>",
+				"auth_url": "https://accounts.google.com/o/oauth2/auth",
+				"token_url": "https://accounts.google.com/o/oauth2/token",
+				"certs_url": "https://www.googleapis.com/oauth2/v3/certs",
+				"pkce_enabled": false,
+				"email_claim_name": "email",
+				"claims": [
+						"employeeID",
+						"groups"
+				],
+				"scopes": [
+						"openid",
+						"email",
+						"profile"
+				]
+		}
+	}'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
@@ -89,20 +85,20 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
 ```tf
 resource "cloudflare_zero_trust_access_identity_provider" "generic_oidc_example" {
-  account_id = var.cloudflare_account_id
-  name       = "Generic OIDC example"
-  type       = "oidc"
-  config      = {
-    client_id = "<your client id>"
-    client_secret = "<your client secret>"
-    auth_url = "https://accounts.google.com/o/oauth2/auth"
-    token_url = "https://accounts.google.com/o/oauth2/token"
-    certs_url = "https://www.googleapis.com/oauth2/v3/certs"
-    pkce_enabled = false
-    email_claim_name = "email"
-    claims = ["employeeID", "groups"]
-    scopes = ["openid", "email", "profile"]
-  }
+	account_id = var.cloudflare_account_id
+	name       = "Generic OIDC example"
+	type       = "oidc"
+	config 		 = {
+		client_id = "<your client id>"
+		client_secret = "<your client secret>"
+		auth_url = "https://accounts.google.com/o/oauth2/auth"
+		token_url = "https://accounts.google.com/o/oauth2/token"
+		certs_url = "https://www.googleapis.com/oauth2/v3/certs"
+		pkce_enabled = false
+		email_claim_name = "email"
+		claims = ["employeeID", "groups"]
+		scopes = ["openid", "email", "profile"]
+	}
 }
 ```
 
@@ -169,9 +165,9 @@ To add a custom OIDC claim to an IdP integration:
 5. Select **Save**.
 6. Select **Test** and verify that the custom claim appears in `oidc_fields`. For example,
 ```json
-  "oidc_fields": {
-    "oid": "54eb1ed2-7150-44e6-bbe4-ead24c132fd4"
-  },
+	"oidc_fields": {
+		"oid": "54eb1ed2-7150-44e6-bbe4-ead24c132fd4"
+	},
 ```
 
 You can now build an Access policy for the custom claim using the **OIDC Claim** or **IdP OIDC Claim** selector. You can also use custom OIDC claims as [identity-based selectors in Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#oidc-claims). The custom claim will be passed to origins behind Access in a [JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#custom-saml-attributes-and-oidc-claims).
@@ -197,7 +193,14 @@ Cloudflare supports the following algorithms for verifying generic OIDC tokens:
 * ES384
 * ES512
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC · Cloudflare One docs","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/generic-oidc/","name":"Generic OIDC"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC · Cloudflare One docs","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

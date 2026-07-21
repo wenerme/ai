@@ -1,18 +1,20 @@
 ---
-title: Voice
 description: Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Voice
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Voice
 
-# Voice
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/voice/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence. Audio streams over WebSocket — no SFU or meeting infrastructure required. Beta
+Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence. Audio streams over WebSocket — no SFU or meeting infrastructure required.  Beta
 
 ## Overview
 
@@ -45,53 +47,40 @@ npm install @cloudflare/voice agents
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5775)
-* [  TypeScript ](#tab-panel-5776)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
 
-
 const VoiceAgent = withVoice(Agent);
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  async onTurn(transcript, context) {
-    return "Hello! I heard you say: " + transcript;
-  }
+	async onTurn(transcript, context) {
+		return "Hello! I heard you say: " + transcript;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import {
-  withVoice,
-  WorkersAIFluxSTT,
-  WorkersAITTS,
-  type VoiceTurnContext,
+	withVoice,
+	WorkersAIFluxSTT,
+	WorkersAITTS,
+	type VoiceTurnContext,
 } from "@cloudflare/voice";
-
 
 const VoiceAgent = withVoice(Agent);
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  async onTurn(transcript: string, context: VoiceTurnContext) {
-    return "Hello! I heard you say: " + transcript;
-  }
+	async onTurn(transcript: string, context: VoiceTurnContext) {
+		return "Hello! I heard you say: " + transcript;
+	}
 }
 ```
 
@@ -100,90 +89,75 @@ export class MyAgent extends VoiceAgent<Env> {
 ```tsx
 import { useVoiceAgent } from "@cloudflare/voice/react";
 
-
 function VoiceUI() {
-  const {
-    status,
-    transcript,
-    interimTranscript,
-    audioLevel,
-    isMuted,
-    startCall,
-    endCall,
-    toggleMute,
-  } = useVoiceAgent({ agent: "MyAgent" });
+	const {
+		status,
+		transcript,
+		interimTranscript,
+		audioLevel,
+		isMuted,
+		startCall,
+		endCall,
+		toggleMute,
+	} = useVoiceAgent({ agent: "MyAgent" });
 
+	return (
+		<div>
+			<p>Status: {status}</p>
 
-  return (
-    <div>
-      <p>Status: {status}</p>
+			<button onClick={status === "idle" ? startCall : endCall}>
+				{status === "idle" ? "Start Call" : "End Call"}
+			</button>
 
+			<button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
 
-      <button onClick={status === "idle" ? startCall : endCall}>
-        {status === "idle" ? "Start Call" : "End Call"}
-      </button>
+			{interimTranscript && (
+				<p>
+					<em>{interimTranscript}</em>
+				</p>
+			)}
 
-
-      <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
-
-
-      {interimTranscript && (
-        <p>
-          <em>{interimTranscript}</em>
-        </p>
-      )}
-
-
-      {transcript.map((msg, i) => (
-        <p key={i}>
-          <strong>{msg.role}:</strong> {msg.text}
-        </p>
-      ))}
-    </div>
-  );
+			{transcript.map((msg, i) => (
+				<p key={i}>
+					<strong>{msg.role}:</strong> {msg.text}
+				</p>
+			))}
+		</div>
+	);
 }
 ```
 
 ### Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-5765)
-* [  wrangler.toml ](#tab-panel-5766)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI"
-  },
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MyAgent",
-        "class_name": "MyAgent"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MyAgent"]
-    }
-  ]
+	"ai": {
+		"binding": "AI"
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MyAgent",
+				"class_name": "MyAgent"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["MyAgent"]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
 binding = "AI"
 
-
 [[durable_objects.bindings]]
 name = "MyAgent"
 class_name = "MyAgent"
-
 
 [[migrations]]
 tag = "v1"
@@ -227,67 +201,47 @@ Set providers as class properties. Class field initializers run after `super()`,
 | transcriber | Transcriber | Yes      | Continuous per-call STT provider |
 | tts         | TTSProvider | Yes      | Text-to-speech                   |
 
-* [  JavaScript ](#tab-panel-5767)
-* [  TypeScript ](#tab-panel-5768)
-
-**JavaScript**
-
 ```js
 import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
 
-
 const VoiceAgent = withVoice(Agent);
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
 
-
 const VoiceAgent = withVoice(Agent);
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 }
 ```
 
 For runtime model switching (for example, a Flux vs Nova 3 dropdown), override `createTranscriber`:
 
-* [  JavaScript ](#tab-panel-5769)
-* [  TypeScript ](#tab-panel-5770)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends VoiceAgent {
-  tts = new WorkersAITTS(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  createTranscriber(connection) {
-    return new WorkersAIFluxSTT(this.env.AI);
-  }
+	createTranscriber(connection) {
+		return new WorkersAIFluxSTT(this.env.AI);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends VoiceAgent<Env> {
-  tts = new WorkersAITTS(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  createTranscriber(connection: Connection): Transcriber {
-    return new WorkersAIFluxSTT(this.env.AI);
-  }
+	createTranscriber(connection: Connection): Transcriber {
+		return new WorkersAIFluxSTT(this.env.AI);
+	}
 }
 ```
 
@@ -299,109 +253,85 @@ Return a `string`, `AsyncIterable<string>`, or `ReadableStream` for streaming re
 
 **Simple response:**
 
-* [  JavaScript ](#tab-panel-5771)
-* [  TypeScript ](#tab-panel-5772)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  async onTurn(transcript, context) {
-    return "You said: " + transcript;
-  }
+	async onTurn(transcript, context) {
+		return "You said: " + transcript;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
-
-  async onTurn(transcript: string, context: VoiceTurnContext) {
-    return "You said: " + transcript;
-  }
+	async onTurn(transcript: string, context: VoiceTurnContext) {
+		return "You said: " + transcript;
+	}
 }
 ```
 
 **Streaming response (recommended for LLM):**
 
-* [  JavaScript ](#tab-panel-5789)
-* [  TypeScript ](#tab-panel-5790)
-
-**JavaScript**
-
 ```js
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	async onTurn(transcript, context) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  async onTurn(transcript, context) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = streamText({
+			model: workersai("@cf/moonshotai/kimi-k2.6"),
+			system: "You are a helpful voice assistant. Keep responses concise.",
+			messages: [
+				...context.messages.map((m) => ({
+					role: m.role,
+					content: m.content,
+				})),
+				{ role: "user", content: transcript },
+			],
+			abortSignal: context.signal,
+		});
 
-
-    const result = streamText({
-      model: workersai("@cf/moonshotai/kimi-k2.6"),
-      system: "You are a helpful voice assistant. Keep responses concise.",
-      messages: [
-        ...context.messages.map((m) => ({
-          role: m.role,
-          content: m.content,
-        })),
-        { role: "user", content: transcript },
-      ],
-      abortSignal: context.signal,
-    });
-
-
-    return result.textStream;
-  }
+		return result.textStream;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	async onTurn(transcript: string, context: VoiceTurnContext) {
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-  async onTurn(transcript: string, context: VoiceTurnContext) {
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = streamText({
+			model: workersai("@cf/moonshotai/kimi-k2.6"),
+			system: "You are a helpful voice assistant. Keep responses concise.",
+			messages: [
+				...context.messages.map((m) => ({
+					role: m.role as "user" | "assistant",
+					content: m.content,
+				})),
+				{ role: "user", content: transcript },
+			],
+			abortSignal: context.signal,
+		});
 
-
-    const result = streamText({
-      model: workersai("@cf/moonshotai/kimi-k2.6"),
-      system: "You are a helpful voice assistant. Keep responses concise.",
-      messages: [
-        ...context.messages.map((m) => ({
-          role: m.role as "user" | "assistant",
-          content: m.content,
-        })),
-        { role: "user", content: transcript },
-      ],
-      abortSignal: context.signal,
-    });
-
-
-    return result.textStream;
-  }
+		return result.textStream;
+	}
 }
 ```
 
@@ -432,62 +362,47 @@ Intercept and transform data at each pipeline stage. Return `null` to skip the c
 | beforeSynthesize(text, connection)       | Text before TTS | Yes       |
 | afterSynthesize(audio, text, connection) | Audio after TTS | Yes       |
 
-* [  JavaScript ](#tab-panel-5781)
-* [  TypeScript ](#tab-panel-5782)
-
-**JavaScript**
-
 ```js
 import {} from "agents";
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	afterTranscribe(transcript, connection) {
+		if (transcript.length < 3) return null;
+		return transcript;
+	}
 
-  afterTranscribe(transcript, connection) {
-    if (transcript.length < 3) return null;
-    return transcript;
-  }
+	beforeSynthesize(text, connection) {
+		return text.replace(/\bAI\b/g, "A.I.");
+	}
 
-
-  beforeSynthesize(text, connection) {
-    return text.replace(/\bAI\b/g, "A.I.");
-  }
-
-
-  async onTurn(transcript, context) {
-    return transcript;
-  }
+	async onTurn(transcript, context) {
+		return transcript;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { type Connection } from "agents";
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 
+	afterTranscribe(transcript: string, connection: Connection) {
+		if (transcript.length < 3) return null;
+		return transcript;
+	}
 
-  afterTranscribe(transcript: string, connection: Connection) {
-    if (transcript.length < 3) return null;
-    return transcript;
-  }
+	beforeSynthesize(text: string, connection: Connection) {
+		return text.replace(/\bAI\b/g, "A.I.");
+	}
 
-
-  beforeSynthesize(text: string, connection: Connection) {
-    return text.replace(/\bAI\b/g, "A.I.");
-  }
-
-
-  async onTurn(transcript: string, context: VoiceTurnContext) {
-    return transcript;
-  }
+	async onTurn(transcript: string, context: VoiceTurnContext) {
+		return transcript;
+	}
 }
 ```
 
@@ -505,26 +420,19 @@ export class MyAgent extends VoiceAgent<Env> {
 
 Pass options to `withVoice()` as the second argument:
 
-* [  JavaScript ](#tab-panel-5773)
-* [  TypeScript ](#tab-panel-5774)
-
-**JavaScript**
-
 ```js
 const VoiceAgent = withVoice(Agent, {
-  historyLimit: 20,
-  audioFormat: "mp3",
-  maxMessageCount: 1000,
+	historyLimit: 20,
+	audioFormat: "mp3",
+	maxMessageCount: 1000,
 });
 ```
 
-**TypeScript**
-
 ```ts
 const VoiceAgent = withVoice(Agent, {
-  historyLimit: 20,
-  audioFormat: "mp3",
-  maxMessageCount: 1000,
+	historyLimit: 20,
+	audioFormat: "mp3",
+	maxMessageCount: 1000,
 });
 ```
 
@@ -538,46 +446,33 @@ const VoiceAgent = withVoice(Agent, {
 
 `withVoiceInput(Agent)` adds STT-only voice input — no TTS, no LLM, no response generation. Use this for dictation, search-by-voice, or any UI where you need speech-to-text without a conversational agent.
 
-* [  JavaScript ](#tab-panel-5779)
-* [  TypeScript ](#tab-panel-5780)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { withVoiceInput, WorkersAINova3STT } from "@cloudflare/voice";
 
-
 const InputAgent = withVoiceInput(Agent);
 
-
 export class DictationAgent extends InputAgent {
-  transcriber = new WorkersAINova3STT(this.env.AI);
+	transcriber = new WorkersAINova3STT(this.env.AI);
 
-
-  onTranscript(text, connection) {
-    console.log("User said:", text);
-  }
+	onTranscript(text, connection) {
+		console.log("User said:", text);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import { withVoiceInput, WorkersAINova3STT } from "@cloudflare/voice";
 
-
 const InputAgent = withVoiceInput(Agent);
 
-
 export class DictationAgent extends InputAgent<Env> {
-  transcriber = new WorkersAINova3STT(this.env.AI);
+	transcriber = new WorkersAINova3STT(this.env.AI);
 
-
-  onTranscript(text: string, connection: Connection) {
-    console.log("User said:", text);
-  }
+	onTranscript(text: string, connection: Connection) {
+		console.log("User said:", text);
+	}
 }
 ```
 
@@ -605,32 +500,30 @@ Wraps `VoiceClient` for `withVoice` agents. Manages connection, mic capture, pla
 ```tsx
 import { useVoiceAgent } from "@cloudflare/voice/react";
 
-
 const selectedSpeakerId = "default";
 
-
 const {
-  status, // "idle" | "listening" | "thinking" | "speaking"
-  transcript, // TranscriptMessage[] — conversation history
-  interimTranscript, // string | null — real-time partial transcript
-  metrics, // VoicePipelineMetrics | null
-  audioLevel, // number (0–1) — current mic RMS level
-  isMuted, // boolean
-  connected, // boolean — WebSocket connected
-  error, // string | null
-  outputDeviceError, // string | null — non-fatal speaker routing issue
-  startCall, // () => Promise<void>
-  endCall, // () => void
-  toggleMute, // () => void
-  sendText, // (text: string) => void — bypass STT
-  sendJSON, // (data: Record<string, unknown>) => void
-  lastCustomMessage, // unknown — last non-voice message from server
+	status, // "idle" | "listening" | "thinking" | "speaking"
+	transcript, // TranscriptMessage[] — conversation history
+	interimTranscript, // string | null — real-time partial transcript
+	metrics, // VoicePipelineMetrics | null
+	audioLevel, // number (0–1) — current mic RMS level
+	isMuted, // boolean
+	connected, // boolean — WebSocket connected
+	error, // string | null
+	outputDeviceError, // string | null — non-fatal speaker routing issue
+	startCall, // () => Promise<void>
+	endCall, // () => void
+	toggleMute, // () => void
+	sendText, // (text: string) => void — bypass STT
+	sendJSON, // (data: Record<string, unknown>) => void
+	lastCustomMessage, // unknown — last non-voice message from server
 } = useVoiceAgent({
-  agent: "MyAgent",
-  name: "default",
-  host: window.location.host,
-  outputDeviceId: selectedSpeakerId, // Optional audiooutput device ID
-  enabled: true,
+	agent: "MyAgent",
+	name: "default",
+	host: window.location.host,
+	outputDeviceId: selectedSpeakerId, // Optional audiooutput device ID
+	enabled: true,
 });
 ```
 
@@ -642,30 +535,21 @@ When `enabled` changes to `true`, the hook connects with the current options. Th
 
 Pass `outputDeviceId` to route assistant playback to a selected speaker when the browser supports `HTMLMediaElement.setSinkId()`:
 
-* [  JavaScript ](#tab-panel-5777)
-* [  TypeScript ](#tab-panel-5778)
-
-**JavaScript**
-
 ```js
 const [outputDeviceId, setOutputDeviceId] = useState("default");
 
-
 const voice = useVoiceAgent({
-  agent: "MyAgent",
-  outputDeviceId,
+	agent: "MyAgent",
+	outputDeviceId,
 });
 ```
 
-**TypeScript**
-
-```ts
+```tsx
 const [outputDeviceId, setOutputDeviceId] = useState("default");
 
-
 const voice = useVoiceAgent({
-  agent: "MyAgent",
-  outputDeviceId,
+	agent: "MyAgent",
+	outputDeviceId,
 });
 ```
 
@@ -690,33 +574,31 @@ Lightweight hook for dictation and voice-to-text. Accumulates user transcripts i
 ```tsx
 import { useVoiceInput } from "@cloudflare/voice/react";
 
-
 function Dictation() {
-  const {
-    transcript, // string — accumulated text from all utterances
-    interimTranscript, // string | null — current partial transcript
-    isListening, // boolean
-    audioLevel, // number (0–1)
-    isMuted, // boolean
-    error, // string | null
-    start, // () => Promise<void>
-    stop, // () => void
-    toggleMute, // () => void
-    clear, // () => void — clear accumulated transcript
-  } = useVoiceInput({ agent: "DictationAgent" });
+	const {
+		transcript, // string — accumulated text from all utterances
+		interimTranscript, // string | null — current partial transcript
+		isListening, // boolean
+		audioLevel, // number (0–1)
+		isMuted, // boolean
+		error, // string | null
+		start, // () => Promise<void>
+		stop, // () => void
+		toggleMute, // () => void
+		clear, // () => void — clear accumulated transcript
+	} = useVoiceInput({ agent: "DictationAgent" });
 
-
-  return (
-    <div>
-      <textarea
-        value={transcript + (interimTranscript ? " " + interimTranscript : "")}
-        readOnly
-      />
-      <button onClick={isListening ? stop : start}>
-        {isListening ? "Stop" : "Dictate"}
-      </button>
-    </div>
-  );
+	return (
+		<div>
+			<textarea
+				value={transcript + (interimTranscript ? " " + interimTranscript : "")}
+				readOnly
+			/>
+			<button onClick={isListening ? stop : start}>
+				{isListening ? "Stop" : "Dictate"}
+			</button>
+		</div>
+	);
 }
 ```
 
@@ -724,77 +606,56 @@ function Dictation() {
 
 Framework-agnostic client for environments without React.
 
-* [  JavaScript ](#tab-panel-5793)
-* [  TypeScript ](#tab-panel-5794)
-
-**JavaScript**
-
 ```js
 import { VoiceClient } from "@cloudflare/voice/client";
 
-
 const client = new VoiceClient({ agent: "MyAgent" });
 
-
 client.addEventListener("statuschange", (status) => {
-  console.log("Status:", status);
+	console.log("Status:", status);
 });
-
 
 client.addEventListener("transcriptchange", (messages) => {
-  console.log("Transcript:", messages);
+	console.log("Transcript:", messages);
 });
-
 
 client.addEventListener("error", (err) => {
-  console.error("Error:", err);
+	console.error("Error:", err);
 });
-
 
 client.connect();
 await client.startCall();
 
-
 // Switch assistant playback without reconnecting the call.
 await client.setOutputDevice(selectedSpeakerId);
-
 
 // Later:
 client.endCall();
 client.disconnect();
 ```
 
-**TypeScript**
-
 ```ts
 import { VoiceClient } from "@cloudflare/voice/client";
 
-
 const client = new VoiceClient({ agent: "MyAgent" });
 
-
 client.addEventListener("statuschange", (status) => {
-  console.log("Status:", status);
+	console.log("Status:", status);
 });
-
 
 client.addEventListener("transcriptchange", (messages) => {
-  console.log("Transcript:", messages);
+	console.log("Transcript:", messages);
 });
-
 
 client.addEventListener("error", (err) => {
-  console.error("Error:", err);
+	console.error("Error:", err);
 });
-
 
 client.connect();
 await client.startCall();
 
-
 // Switch assistant playback without reconnecting the call.
 await client.setOutputDevice(selectedSpeakerId);
-
 
 // Later:
 client.endCall();
@@ -837,76 +698,63 @@ No API keys required — use your Workers AI binding:
 | WorkersAINova3STT | Continuous STT | @cf/deepgram/nova-3 | withVoiceInput  |
 | WorkersAITTS      | TTS            | @cf/deepgram/aura-1 | Both            |
 
-* [  JavaScript ](#tab-panel-5795)
-* [  TypeScript ](#tab-panel-5796)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import {
-  withVoice,
-  WorkersAIFluxSTT,
-  WorkersAINova3STT,
-  WorkersAITTS,
+	withVoice,
+	WorkersAIFluxSTT,
+	WorkersAINova3STT,
+	WorkersAITTS,
 } from "@cloudflare/voice";
-
 
 const VoiceAgent = withVoice(Agent);
 
-
 // Default usage
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 }
-
 
 // Custom options
 export class CustomAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI, {
-    eotThreshold: 0.8,
-    keyterms: ["Cloudflare", "Workers"],
-  });
-  tts = new WorkersAITTS(this.env.AI, {
-    model: "@cf/deepgram/aura-1",
-    speaker: "asteria",
-  });
+	transcriber = new WorkersAIFluxSTT(this.env.AI, {
+		eotThreshold: 0.8,
+		keyterms: ["Cloudflare", "Workers"],
+	});
+	tts = new WorkersAITTS(this.env.AI, {
+		model: "@cf/deepgram/aura-1",
+		speaker: "asteria",
+	});
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import {
-  withVoice,
-  WorkersAIFluxSTT,
-  WorkersAINova3STT,
-  WorkersAITTS,
+	withVoice,
+	WorkersAIFluxSTT,
+	WorkersAINova3STT,
+	WorkersAITTS,
 } from "@cloudflare/voice";
-
 
 const VoiceAgent = withVoice(Agent);
 
-
 // Default usage
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new WorkersAITTS(this.env.AI);
 }
-
 
 // Custom options
 export class CustomAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI, {
-    eotThreshold: 0.8,
-    keyterms: ["Cloudflare", "Workers"],
-  });
-  tts = new WorkersAITTS(this.env.AI, {
-    model: "@cf/deepgram/aura-1",
-    speaker: "asteria",
-  });
+	transcriber = new WorkersAIFluxSTT(this.env.AI, {
+		eotThreshold: 0.8,
+		keyterms: ["Cloudflare", "Workers"],
+	});
+	tts = new WorkersAITTS(this.env.AI, {
+		model: "@cf/deepgram/aura-1",
+		speaker: "asteria",
+	});
 }
 ```
 
@@ -920,69 +768,51 @@ export class CustomAgent extends VoiceAgent<Env> {
 
 **ElevenLabs TTS:**
 
-* [  JavaScript ](#tab-panel-5783)
-* [  TypeScript ](#tab-panel-5784)
-
-**JavaScript**
-
 ```js
 import { ElevenLabsTTS } from "@cloudflare/voice-elevenlabs";
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new ElevenLabsTTS({
-    apiKey: this.env.ELEVENLABS_API_KEY,
-    voiceId: "21m00Tcm4TlvDq8ikWAM",
-  });
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new ElevenLabsTTS({
+		apiKey: this.env.ELEVENLABS_API_KEY,
+		voiceId: "21m00Tcm4TlvDq8ikWAM",
+	});
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { ElevenLabsTTS } from "@cloudflare/voice-elevenlabs";
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new WorkersAIFluxSTT(this.env.AI);
-  tts = new ElevenLabsTTS({
-    apiKey: this.env.ELEVENLABS_API_KEY,
-    voiceId: "21m00Tcm4TlvDq8ikWAM",
-  });
+	transcriber = new WorkersAIFluxSTT(this.env.AI);
+	tts = new ElevenLabsTTS({
+		apiKey: this.env.ELEVENLABS_API_KEY,
+		voiceId: "21m00Tcm4TlvDq8ikWAM",
+	});
 }
 ```
 
 **Deepgram STT:**
 
-* [  JavaScript ](#tab-panel-5785)
-* [  TypeScript ](#tab-panel-5786)
-
-**JavaScript**
-
 ```js
 import { DeepgramSTT } from "@cloudflare/voice-deepgram";
 
-
 export class MyAgent extends VoiceAgent {
-  transcriber = new DeepgramSTT({
-    apiKey: this.env.DEEPGRAM_API_KEY,
-  });
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new DeepgramSTT({
+		apiKey: this.env.DEEPGRAM_API_KEY,
+	});
+	tts = new WorkersAITTS(this.env.AI);
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { DeepgramSTT } from "@cloudflare/voice-deepgram";
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  transcriber = new DeepgramSTT({
-    apiKey: this.env.DEEPGRAM_API_KEY,
-  });
-  tts = new WorkersAITTS(this.env.AI);
+	transcriber = new DeepgramSTT({
+		apiKey: this.env.DEEPGRAM_API_KEY,
+	});
+	tts = new WorkersAITTS(this.env.AI);
 }
 ```
 
@@ -1009,7 +839,6 @@ Phone → Twilio → WebSocket → TwilioAdapter → WebSocket → VoiceAgent
 ```tsx
 const { sendText } = useVoiceAgent({ agent: "MyAgent" });
 
-
 // Send text — goes straight to onTurn() without STT
 sendText("What is the weather like today?");
 ```
@@ -1022,32 +851,25 @@ Send and receive application-level JSON messages alongside voice protocol messag
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-5791)
-* [  TypeScript ](#tab-panel-5792)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends VoiceAgent {
-  onMessage(connection, message) {
-    const data = JSON.parse(message);
-    if (data.type === "kick_speaker") {
-      this.forceEndCall(connection);
-    }
-  }
+	onMessage(connection, message) {
+		const data = JSON.parse(message);
+		if (data.type === "kick_speaker") {
+			this.forceEndCall(connection);
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends VoiceAgent<Env> {
-  onMessage(connection: Connection, message: WSMessage) {
-    const data = JSON.parse(message as string);
-    if (data.type === "kick_speaker") {
-      this.forceEndCall(connection);
-    }
-  }
+	onMessage(connection: Connection, message: WSMessage) {
+		const data = JSON.parse(message as string);
+		if (data.type === "kick_speaker") {
+			this.forceEndCall(connection);
+		}
+	}
 }
 ```
 
@@ -1056,14 +878,12 @@ export class MyAgent extends VoiceAgent<Env> {
 ```tsx
 const { sendJSON, lastCustomMessage } = useVoiceAgent({ agent: "MyAgent" });
 
-
 sendJSON({ type: "kick_speaker" });
 
-
 useEffect(() => {
-  if (lastCustomMessage) {
-    console.log("Custom message:", lastCustomMessage);
-  }
+	if (lastCustomMessage) {
+		console.log("Custom message:", lastCustomMessage);
+	}
 }, [lastCustomMessage]);
 ```
 
@@ -1071,60 +891,47 @@ useEffect(() => {
 
 Use `beforeCallStart` to restrict who can start a call. This example enforces single-speaker — only one connection can be the active speaker at a time:
 
-* [  JavaScript ](#tab-panel-5797)
-* [  TypeScript ](#tab-panel-5798)
-
-**JavaScript**
-
 ```js
 import {} from "agents";
 
-
 export class MyAgent extends VoiceAgent {
-  #speakerId = null;
+	#speakerId = null;
 
+	beforeCallStart(connection) {
+		if (this.#speakerId !== null) {
+			return false;
+		}
+		this.#speakerId = connection.id;
+		return true;
+	}
 
-  beforeCallStart(connection) {
-    if (this.#speakerId !== null) {
-      return false;
-    }
-    this.#speakerId = connection.id;
-    return true;
-  }
-
-
-  onCallEnd(connection) {
-    if (this.#speakerId === connection.id) {
-      this.#speakerId = null;
-    }
-  }
+	onCallEnd(connection) {
+		if (this.#speakerId === connection.id) {
+			this.#speakerId = null;
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { type Connection } from "agents";
 
-
 export class MyAgent extends VoiceAgent<Env> {
-  #speakerId: string | null = null;
+	#speakerId: string | null = null;
 
+	beforeCallStart(connection: Connection) {
+		if (this.#speakerId !== null) {
+			return false;
+		}
+		this.#speakerId = connection.id;
+		return true;
+	}
 
-  beforeCallStart(connection: Connection) {
-    if (this.#speakerId !== null) {
-      return false;
-    }
-    this.#speakerId = connection.id;
-    return true;
-  }
-
-
-  onCallEnd(connection: Connection) {
-    if (this.#speakerId === connection.id) {
-      this.#speakerId = null;
-    }
-  }
+	onCallEnd(connection: Connection) {
+		if (this.#speakerId === connection.id) {
+			this.#speakerId = null;
+		}
+	}
 }
 ```
 
@@ -1134,7 +941,6 @@ export class MyAgent extends VoiceAgent<Env> {
 
 ```tsx
 const { metrics } = useVoiceAgent({ agent: "MyAgent" });
-
 
 // metrics: {
 //   llm_ms: 850,
@@ -1148,30 +954,28 @@ const { metrics } = useVoiceAgent({ agent: "MyAgent" });
 
 `withVoice` automatically persists conversation messages to SQLite. Access history in your `onTurn` via `context.messages`, or directly:
 
-* [  JavaScript ](#tab-panel-5787)
-* [  TypeScript ](#tab-panel-5788)
-
-**JavaScript**
-
 ```js
 const history = this.getConversationHistory(20);
-
 
 this.saveMessage("assistant", "Welcome! How can I help?");
 ```
 
-**TypeScript**
-
 ```ts
 const history = this.getConversationHistory(20);
-
 
 this.saveMessage("assistant", "Welcome! How can I help?");
 ```
 
 History survives Durable Object restarts and client reconnections. Voice agents use `keepAlive` to prevent eviction during active calls.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice · Cloudflare Agents docs","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/voice/","name":"Voice"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice · Cloudflare Agents docs","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

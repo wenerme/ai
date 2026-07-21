@@ -1,16 +1,18 @@
 ---
-title: Known issues
 description: Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Known issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Known issues
 
-# Known issues
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/platform/known-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Here are some known bugs and issues with Cloudflare Pages:
 
@@ -54,7 +56,7 @@ Here are some known bugs and issues with Cloudflare Pages:
 If you would like to enable [Cloudflare Access ↗](https://www.cloudflare.com/teams-access/)\] for your preview deployments and your `*.pages.dev` domain, you must:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Enable access policy**.
 4. Select **Manage** on the Access policy created for your preview deployments.
@@ -74,7 +76,7 @@ If you have a custom domain and protected your `*.pages.dev` domain behind Acces
 3. Configure your access rules to define who can reach the Access authentication page.
 4. Select **Create**.
 
-Warning
+Caution
 
 If you do not configure an Access policy for your custom domain, an Access authentication will render but not work for your custom domain visitors. If your Pages project has a custom domain, make sure to add an Access policy as described above in steps 10 through 13 to avoid any authentication issues.
 
@@ -117,7 +119,14 @@ Note that this will not delete the active production deployment if one exists.
 
 Refer to [Use Cloudflare Pages as origin](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/) for a complete tutorial.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues · Cloudflare Pages docs","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/platform/known-issues/","name":"Known issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues · Cloudflare Pages docs","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

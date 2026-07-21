@@ -1,16 +1,18 @@
 ---
-title: Configure link aggregation groups
 description: Bundle physical LAN ports into a single logical interface for redundancy and bandwidth.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure link aggregation groups
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure link aggregation groups
 
-# Configure link aggregation groups
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can bundle multiple physical LAN ports on a Cloudflare One Appliance into a single logical port called a Link Aggregation Group (LAG). This increases LAN bandwidth and provides redundancy. If a member port fails, traffic automatically shifts to the remaining ports in under one second.
 
@@ -23,7 +25,7 @@ The following guide assumes you have already created a site and configured your 
 ## Create a LAG
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 2. Select the Cloudflare One Appliance you want to configure > **Edit**.
 3. Go to the **Appliances** tab.
@@ -34,7 +36,7 @@ The following guide assumes you have already created a site and configured your 
 ## Assign a LAN to a LAG
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 2. Select the Cloudflare One Appliance you want to edit > **Edit**.
 3. Go to **Network Configuration** \> **LAN configuration**.
@@ -45,7 +47,7 @@ The following guide assumes you have already created a site and configured your 
 ## Monitor LAG status
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 2. Select the Cloudflare One Appliance > **Edit**.
 3. Go to the **Appliances** tab.
@@ -55,14 +57,21 @@ The page displays each configured LAG and the status of its member ports.
 ## Delete a LAG
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 2. Select the Cloudflare One Appliance > **Edit**.
 3. Go to the **Appliances** tab.
 4. Next to the LAG you want to delete, select the three-dot menu > **Delete**.
 5. Select **Delete**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/#page","headline":"Configure link aggregation groups · Cloudflare WAN docs","description":"Bundle physical LAN ports into a single logical interface for redundancy and bandwidth.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/link-aggregation/","name":"Configure link aggregation groups"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/#page","headline":"Configure link aggregation groups · Cloudflare WAN docs","description":"Bundle physical LAN ports into a single logical interface for redundancy and bandwidth.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Vendor-specific DNS records
 description: DNS records for common third-party services.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Vendor-specific DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vendor-specific DNS records
 
-# Vendor-specific DNS records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This article requires prior knowledge of DNS record management via the Cloudflare dashboard. To learn more, refer to Cloudflare's article on [managing DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
@@ -29,7 +31,7 @@ Once you [add these records to Cloudflare](https://developers.cloudflare.com/dns
 
 If you want to customize the service addresses URLs associated with Google Workspace, refer to [Google's documentation ↗](https://support.google.com/a/answer/53340).
 
-Warning
+Caution
 
 Google enforces HTTPS on its services. If you find errors about redirect loops when browsing to your site through Cloudflare, use Cloudflare's [Full encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/).
 
@@ -55,7 +57,7 @@ Then, [create a CNAME record](https://developers.cloudflare.com/dns/manage-dns-r
 files  CNAME  files.example.com.s3.amazonaws.com
 ```
 
-Warning
+Caution
 
 AWS states in their [documentation ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html#VirtualHostingCustomURLs) that the CNAME and the bucket name must be the same. To avoid potential compromise if you set it up differently, use a [host header origin rule](https://developers.cloudflare.com/rules/origin-rules/features/#host-header) to explicitly route all requests to the correct bucket.
 
@@ -154,7 +156,7 @@ Configure Rackspace CloudFiles via _CNAME record_. Consult the [Rackspace docume
 
 Refer to Rackspace CloudFiles's documentation to [get a CNAME value ↗](https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
-Warning
+Caution
 
 The `CNAME` record needs to be [DNS-only (unproxied)](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) since rackcdn.com is not compatible with Cloudflare.
 
@@ -206,7 +208,7 @@ When you [add records to Cloudflare DNS](https://developers.cloudflare.com/dns/m
 
 Refer to Unbounce's documentation to [get a CNAME value ↗](https://documentation.unbounce.com/hc/en-us/articles/204011950), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
-Warning
+Caution
 
 If Cloudflare is activated via one of our hosting partners, your `CNAME` record should be [DNS-only (unproxied)](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records).
 
@@ -233,7 +235,14 @@ For help configuring WPEngine sites, refer to:
 
 To use Cloudflare with Zoho, refer to [Zoho configuration with Cloudflare ↗](https://www.zoho.com/mail/help/adminconsole/cloudflare.html).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/#page","headline":"Vendor-specific DNS records · Cloudflare DNS docs","description":"DNS records for common third-party services.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/vendor-specific-records/","name":"Vendor-specific DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/#page","headline":"Vendor-specific DNS records · Cloudflare DNS docs","description":"DNS records for common third-party services.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

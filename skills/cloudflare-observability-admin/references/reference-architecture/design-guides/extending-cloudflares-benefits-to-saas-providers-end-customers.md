@@ -1,16 +1,18 @@
 ---
-title: Extend Cloudflare's benefits to SaaS providers' end-customers
 description: Learn how to use Cloudflare to extend performance, security, and data localization to your end users.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Extend Cloudflare's benefits to SaaS providers' end-customers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Extend Cloudflare's benefits to SaaS providers' end-customers
 
-# Extend Cloudflare's benefits to SaaS providers' end-customers
+Last updated Mar 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -152,7 +154,14 @@ Several Cloudflare customers are currently using the Cloudflare for SaaS solutio
 
 Additionally, when migrating to Cloudflare for SaaS, it is crucial to have a runbook and clear public documentation to communicate relevant details to your end-customers. Excellent public examples of this are the [Salesforce CDN ↗](https://help.salesforce.com/s/articleView?id=sf.community%5Fbuilder%5Fcdn.htm&type=5) and [Shopify ↗](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/#page","headline":"Extend Cloudflare's benefits to SaaS providers' end-customers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare to extend performance, security, and data localization to your end users.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/","name":"Extend Cloudflare's benefits to SaaS providers' end-customers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/#page","headline":"Extend Cloudflare's benefits to SaaS providers' end-customers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare to extend performance, security, and data localization to your end users.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

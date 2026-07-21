@@ -1,16 +1,18 @@
 ---
-title: DEX MCP server
 description: Reference information for DEX MCP server in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: DEX MCP server
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DEX MCP server
 
-# DEX MCP server
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The MCP server [(Model Context Protocol) ↗](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
 
@@ -55,13 +57,13 @@ You need a Claude Pro account (or higher subscription) to configure an MCP serve
 6. Copy the JSON configuration for the DEX MCP server and paste it into `claude_desktop_config.json`. Save the file.
 ```json
 {
-  "globalShortcut": "",
-  "mcpServers": {
-    "cloudflare-dex-analysis": {
-      "command": "npx",
-      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-    }
-  }
+	"globalShortcut": "",
+	"mcpServers": {
+		"cloudflare-dex-analysis": {
+			"command": "npx",
+			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+		}
+	}
 }
 ```
 7. Fully close Claude by using the task manager to stop any background processes related to Claude.
@@ -83,13 +85,13 @@ File path for the `settings.json` file
 3. Copy the JSON configuration for the DEX MCP server and paste it into **settings.json**. Save the file.
 ```json
 {
-  "globalShortcut": "",
-  "mcpServers": {
-    "cloudflare-dex-analysis": {
-      "command": "npx",
-      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-    }
-  }
+	"globalShortcut": "",
+	"mcpServers": {
+		"cloudflare-dex-analysis": {
+			"command": "npx",
+			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+		}
+	}
 }
 ```
 4. Run Gemini in your CLI of choice.
@@ -112,7 +114,14 @@ You need a ChatGPT Pro or Business account to configure an MCP server. ChatGPT F
 8. Select **Use Connectors** \> **Add Sources**, then select the DEX MCP as a source.
 9. You can start asking ChatGPT questions about DEX. As a simple test, you can ask "Are you connected to the DEX MCP server".
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/#page","headline":"DEX MCP server · Cloudflare One docs","description":"Reference information for DEX MCP server in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/dex-mcp-server/","name":"DEX MCP server"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/#page","headline":"DEX MCP server · Cloudflare One docs","description":"Reference information for DEX MCP server in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

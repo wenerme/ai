@@ -1,16 +1,18 @@
 ---
-title: PhishGuard
 description: Use managed PhishGuard threat monitoring.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: PhishGuard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PhishGuard
 
-# PhishGuard
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) serves as an extension of your Security Operations team with dedicated Email security technical resources providing real-time monitoring of your email environment. The Active Defense Service provides:
 
@@ -28,7 +30,14 @@ As a PhishGuard customer, the following service offerings should be enabled:
 
 Refer to the [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) documentation to learn more about this add-on service.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/#page","headline":"PhishGuard · Cloudflare Learning Paths","description":"Use managed PhishGuard threat monitoring.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/","name":"Monitor your email activity"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/phishguard/","name":"PhishGuard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/#page","headline":"PhishGuard · Cloudflare Learning Paths","description":"Use managed PhishGuard threat monitoring.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

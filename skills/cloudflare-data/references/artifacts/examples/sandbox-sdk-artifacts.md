@@ -1,16 +1,18 @@
 ---
-title: Sandbox SDK + Artifacts
 description: Connect a sandbox to an Artifacts repo.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sandbox SDK + Artifacts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sandbox SDK + Artifacts
 
-# Sandbox SDK + Artifacts
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the `git-repo-per-sandbox` Sandbox SDK template and highlights the Artifacts-specific pieces.
 
@@ -44,36 +46,26 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
 
-* [  JavaScript ](#tab-panel-7455)
-* [  TypeScript ](#tab-panel-7456)
-
-**src/index.js**
-
 ```js
 let defaultBranch;
 let remote;
 let token;
 const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
 
-
 if (sandboxWasJustCreated) {
-  const created = await env.ARTIFACTS.create(sandboxId);
+	const created = await env.ARTIFACTS.create(sandboxId);
 
-
-  defaultBranch = created.defaultBranch;
-  remote = created.remote;
-  token = created.token;
+	defaultBranch = created.defaultBranch;
+	remote = created.remote;
+	token = created.token;
 } else {
-  const repo = await env.ARTIFACTS.get(sandboxId);
+	const repo = await env.ARTIFACTS.get(sandboxId);
 
-
-  defaultBranch = repo.defaultBranch;
-  remote = repo.remote;
-  token = (await repo.createToken("write", 3600)).plaintext;
+	defaultBranch = repo.defaultBranch;
+	remote = repo.remote;
+	token = (await repo.createToken("write", 3600)).plaintext;
 }
 ```
-
-**src/index.ts**
 
 ```ts
 let defaultBranch: string;
@@ -81,21 +73,18 @@ let remote: string;
 let token: string;
 const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
 
-
 if (sandboxWasJustCreated) {
-  const created = await env.ARTIFACTS.create(sandboxId);
+	const created = await env.ARTIFACTS.create(sandboxId);
 
-
-  defaultBranch = created.defaultBranch;
-  remote = created.remote;
-  token = created.token;
+	defaultBranch = created.defaultBranch;
+	remote = created.remote;
+	token = created.token;
 } else {
-  const repo = await env.ARTIFACTS.get(sandboxId);
+	const repo = await env.ARTIFACTS.get(sandboxId);
 
-
-  defaultBranch = repo.defaultBranch;
-  remote = repo.remote;
-  token = (await repo.createToken("write", 3600)).plaintext;
+	defaultBranch = repo.defaultBranch;
+	remote = repo.remote;
+	token = (await repo.createToken("write", 3600)).plaintext;
 }
 ```
 
@@ -107,23 +96,14 @@ If your flow can race with repo creation, handle that retry at the application l
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-7451)
-* [  TypeScript ](#tab-panel-7452)
-
-**src/index.js**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
-
 
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
 
-**src/index.ts**
-
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
-
 
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
@@ -134,40 +114,38 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-7453)
-* [  TypeScript ](#tab-panel-7454)
-
-**src/index.js**
-
 ```js
 function toAuthenticatedRemote(remote, token) {
-  const tokenSecret = token.split("?expires=")[0];
-  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
+	const tokenSecret = token.split("?expires=")[0];
+	return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
 }
 
-
 await sandbox.setEnvVars({
-  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
+	ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
 });
 ```
 
-**src/index.ts**
-
 ```ts
 function toAuthenticatedRemote(remote: string, token: string) {
-  const tokenSecret = token.split("?expires=")[0];
-  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
+	const tokenSecret = token.split("?expires=")[0];
+	return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
 }
 
-
 await sandbox.setEnvVars({
-  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
+	ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
 });
 ```
 
 Code running inside the sandbox can then use `ARTIFACTS_GIT_REMOTE` with `git clone`, `git fetch`, `git pull`, or `git push`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts · Cloudflare Artifacts docs","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/sandbox-sdk-artifacts/","name":"Sandbox SDK + Artifacts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts · Cloudflare Artifacts docs","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

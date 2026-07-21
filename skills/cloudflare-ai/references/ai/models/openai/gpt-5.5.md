@@ -1,40 +1,40 @@
 ---
-title: GPT-5.5
 description: GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.5
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.5
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.5`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.5 `
+
+* Third-party
+* Zero data retention
 
 GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.
 
-| Model Info                                                                 |                                                                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                 |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                        | Yes                                                                                                              |
-| Request formats                                                            | Responses, Chat Completions                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
+| Model Info                                                                  |                                                                                                                   |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                  |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                            |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                     |
+| Zero data retention                                                         | Yes                                                                                                               |
+| Request formats                                                             | Responses, Chat Completions                                                                                       |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1432)
-* [ cURL ](#tab-panel-1433)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -58,9 +58,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1444)
-* [ Raw response ](#tab-panel-1445)
 
 The **three laws of thermodynamics** are:
 
@@ -127,11 +124,6 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1434)
-* [ cURL ](#tab-panel-1435)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.5',
@@ -163,9 +155,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1446)
-* [ Raw response ](#tab-panel-1447)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -266,11 +255,6 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1438)
-* [ cURL ](#tab-panel-1439)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.5',
@@ -316,9 +300,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1448)
-* [ Raw response ](#tab-panel-1449)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -405,11 +386,6 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1436)
-* [ cURL ](#tab-panel-1437)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.5',
@@ -441,9 +417,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1450)
-* [ Raw response ](#tab-panel-1451)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -504,11 +477,6 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1440)
-* [ cURL ](#tab-panel-1441)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.5',
@@ -539,9 +507,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-1454)
-* [ Raw response ](#tab-panel-1455)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -4926,11 +4891,6 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 
 **Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-1442)
-* [ cURL ](#tab-panel-1443)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.5',
@@ -4958,9 +4918,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1452)
-* [ Raw response ](#tab-panel-1453)
 
 Treating “this week” as **June 15–22, 2026**:
 
@@ -5309,9 +5266,6 @@ Schema variant
 
 ResponsesChat Completions
 
-* [ Input ](#tab-panel-1456)
-* [ Output ](#tab-panel-1457)
-
 ▶input
 
 `one of`required
@@ -5470,7 +5424,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-inpu
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/#page","headline":"GPT-5.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/#page","headline":"GPT-5.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

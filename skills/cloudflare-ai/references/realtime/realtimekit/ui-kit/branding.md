@@ -1,16 +1,18 @@
 ---
-title: Customise Branding
 description: Customize meeting icons and branding in the RealtimeKit UI Kit.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Customise Branding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Customise Branding
 
-# Customise Branding
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit provides all the necessary UI components to allow complete customization of all its UI Kit components. You can customize your meeting icons such as chat, clock, leave meeting, mic on and off, and more.
 
@@ -30,90 +32,80 @@ To replace RealtimeKit's default icon set with your own, pass the link to your i
 
 ```html
 <body>
-  <rtk-meeting id="my-meeting"></rtk-meeting>
+	<rtk-meeting id="my-meeting"></rtk-meeting>
 
+	<script>
+		const init = async () => {
+			const meeting = await RealtimeKitClient.init({
+				authToken: "<participant_auth_token>",
+				defaults: {
+					audio: true,
+					video: true,
+				},
+			});
 
-  <script>
-    const init = async () => {
-      const meeting = await RealtimeKitClient.init({
-        authToken: "<participant_auth_token>",
-        defaults: {
-          audio: true,
-          video: true,
-        },
-      });
+			const meetingEl = document.getElementById("my-meeting");
+			meetingEl.meeting = meeting;
 
+			// Pass custom icon pack URL
+			meetingEl.iconPackUrl = "https://example.com/my-icon-pack.json";
+		};
 
-      const meetingEl = document.getElementById("my-meeting");
-      meetingEl.meeting = meeting;
-
-
-      // Pass custom icon pack URL
-      meetingEl.iconPackUrl = "https://example.com/my-icon-pack.json";
-    };
-
-
-    init();
-  </script>
+		init();
+	</script>
 </body>
 ```
 
 ```jsx
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
 } from "@cloudflare/realtimekit-react";
 import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
 import { useEffect } from "react";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
+	const [meeting, initMeeting] = useRealtimeKitClient();
 
+	useEffect(() => {
+		initMeeting({
+			authToken: "<participant_auth_token>",
+			defaults: {
+				audio: true,
+				video: true,
+			},
+		});
+	}, []);
 
-  useEffect(() => {
-    initMeeting({
-      authToken: "<participant_auth_token>",
-      defaults: {
-        audio: true,
-        video: true,
-      },
-    });
-  }, []);
-
-
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkMeeting
-        meeting={meeting}
-        iconPackUrl="https://example.com/my-icon-pack.json"
-      />
-    </RealtimeKitProvider>
-  );
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkMeeting
+				meeting={meeting}
+				iconPackUrl="https://example.com/my-icon-pack.json"
+			/>
+		</RealtimeKitProvider>
+	);
 }
 ```
 
-**TypeScript**
-
 ```typescript
 class AppComponent {
-  title = "MyProject";
-  @ViewChild("myid") meetingComponent: RtkMeeting;
-  rtkMeeting: RealtimeKitClient;
+	title = "MyProject";
+	@ViewChild("myid") meetingComponent: RtkMeeting;
+	rtkMeeting: RealtimeKitClient;
 
-
-  async ngAfterViewInit() {
-    const meeting = await RealtimeKitClient.init({
-      authToken: "<auth-token>",
-    });
-    meeting.join();
-    this.rtkMeeting = meeting;
-    if (this.meetingComponent) {
-      this.meetingComponent.meeting = meeting;
-      this.meetingComponent.iconPackUrl =
-        "https://example.com/my-icon-pack.json";
-    }
-  }
+	async ngAfterViewInit() {
+		const meeting = await RealtimeKitClient.init({
+			authToken: "<auth-token>",
+		});
+		meeting.join();
+		this.rtkMeeting = meeting;
+		if (this.meetingComponent) {
+			this.meetingComponent.meeting = meeting;
+			this.meetingComponent.iconPackUrl =
+				"https://example.com/my-icon-pack.json";
+		}
+	}
 }
 ```
 
@@ -187,7 +179,14 @@ Explore additional customization options:
 * [Render Default Meeting UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) \- Complete meeting experience out of the box
 * [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/) \- Create custom meeting interfaces
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/#page","headline":"Customise Branding · Cloudflare Realtime docs","description":"Customize meeting icons and branding in the RealtimeKit UI Kit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/branding/","name":"Customise Branding"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/#page","headline":"Customise Branding · Cloudflare Realtime docs","description":"Customize meeting icons and branding in the RealtimeKit UI Kit.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

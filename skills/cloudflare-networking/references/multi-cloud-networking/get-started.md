@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Multi-Cloud Networking to connect cloud environments.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/multi-cloud-networking/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/multi-cloud-networking/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To get started with Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) you need to give Cloudflare permission to interact with cloud providers on your behalf. You might have multiple provider accounts for the same cloud provider — for example, you might want Cloudflare to manage virtual private clouds (VPCs) belonging to two different AWS accounts.
 
@@ -21,7 +23,7 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 ### 1\. Create integration
 
 1. Go to the **Cloud integrations (beta)** page.
-[ Go to **Cloud integrations** ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+[ Go to **Cloud integrations** ↗ ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
 2. Select **Add** \> **AWS integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
@@ -84,7 +86,7 @@ The first discovery of resources may not succeed in all regions while the IAM po
 ### 1\. Create integration
 
 1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**.
-[ Go to **Cloud integrations** ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+[ Go to **Cloud integrations** ↗ ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
 2. Select **Add** \> **Azure integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
@@ -92,7 +94,7 @@ The first discovery of resources may not succeed in all regions while the IAM po
 
 ### 2\. Authorize access to your Azure account
 
-Warning
+Caution
 
 Multi-Cloud Networking does not support personal Microsoft accounts. Sign in using a work or school account that is part of an Azure Entra Tenant.
 
@@ -119,7 +121,7 @@ The first discovery of resources may not succeed in all regions while the IAM po
 ### 1\. Create integration
 
 1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**.
-[ Go to **Cloud integrations** ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+[ Go to **Cloud integrations** ↗ ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
 2. Select **Add** \> **Google integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
@@ -152,7 +154,14 @@ The first discovery of resources may not succeed in all regions while the IAM po
 * [Manage resources](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/) found by Multi-Cloud Networking.
 * [Edit](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#edit-cloud-integrations) cloud integrations.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/get-started/#page","headline":"Get started · Cloudflare Multi-Cloud Networking docs","description":"Set up Multi-Cloud Networking to connect cloud environments.","url":"https://developers.cloudflare.com/multi-cloud-networking/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP","Integration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/get-started/#page","headline":"Get started · Cloudflare Multi-Cloud Networking docs","description":"Set up Multi-Cloud Networking to connect cloud environments.","url":"https://developers.cloudflare.com/multi-cloud-networking/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP","Integration"]}
 ```

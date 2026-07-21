@@ -1,16 +1,18 @@
 ---
-title: Playwright MCP
 description: Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Playwright MCP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Playwright MCP
 
-# Playwright MCP
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [@cloudflare/playwright-mcp ↗](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
 
@@ -64,58 +66,48 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-7551)
-* [  wrangler.toml ](#tab-panel-7552)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "playwright-mcp-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "browser": {
-    "binding": "BROWSER",
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["PlaywrightMCP"],
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MCP_OBJECT",
-        "class_name": "PlaywrightMCP",
-      },
-    ],
-  },
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "playwright-mcp-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"browser": {
+		"binding": "BROWSER",
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["PlaywrightMCP"],
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MCP_OBJECT",
+				"class_name": "PlaywrightMCP",
+			},
+		],
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "playwright-mcp-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [browser]
 binding = "BROWSER"
 
-
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = [ "PlaywrightMCP" ]
-
 
 [[durable_objects.bindings]]
 name = "MCP_OBJECT"
@@ -124,31 +116,26 @@ class_name = "PlaywrightMCP"
 
 1. Edit the code.
 
-**src/index.ts**
-
 ```ts
 import { env } from "cloudflare:workers";
 import { createMcpAgent } from "@cloudflare/playwright-mcp";
 
-
 export const PlaywrightMCP = createMcpAgent(env.BROWSER);
 
-
 export default {
-  fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    const { pathname } = new URL(request.url);
+	fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		const { pathname } = new URL(request.url);
 
-
-    switch (pathname) {
-      case "/sse":
-      case "/sse/message":
-        return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);
-      case "/mcp":
-        return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);
-      default:
-        return new Response("Not Found", { status: 404 });
-    }
-  },
+		switch (pathname) {
+			case "/sse":
+			case "/sse/message":
+				return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);
+			case "/mcp":
+				return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);
+			default:
+				return new Response("Not Found", { status: 404 });
+		}
+	},
 };
 ```
 
@@ -190,7 +177,14 @@ You can also use other MCP clients like [Claude Desktop ↗](https://github.com/
 
 Check our [GitHub page ↗](https://github.com/cloudflare/playwright-mcp) for more examples and MCP client configuration options, and refer to the developer documentation on how to [build Agents on Cloudflare](https://developers.cloudflare.com/agents/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/#page","headline":"Playwright MCP · Cloudflare Browser Run docs","description":"Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/playwright/","name":"Playwright"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/playwright/playwright-mcp/","name":"Playwright MCP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/#page","headline":"Playwright MCP · Cloudflare Browser Run docs","description":"Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

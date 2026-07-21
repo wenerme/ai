@@ -1,16 +1,18 @@
 ---
-title: Visibility and Security Model
 description: Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Visibility and Security Model
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Visibility and Security Model
 
-# Visibility and Security Model
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Security Model
 
@@ -28,18 +30,14 @@ This security model is commonly known as Object Capabilities, or Capability-Base
 
 Arrow function expressions are not exposed over RPC because they are defined on class instances, not on the class prototype. They [should not be used as class methods ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow%5Ffunctions#cannot%5Fbe%5Fused%5Fas%5Fmethods) of `WorkerEntrypoint` classes.
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export default class extends WorkerEntrypoint {
   // add() is exposed over RPC.
   add(a, b) {
     return a + b;
   }
-
 
   // subtract() is NOT exposed over RPC.
   subtract = (a, b) => a - b;
@@ -50,28 +48,22 @@ export default class extends WorkerEntrypoint {
 
 When you send an instance of an application-defined class, the recipient can only access methods and properties declared on the class, not properties of the instance. For example:
 
-**JavaScript**
-
 ```js
 class Foo extends RpcTarget {
   constructor() {
     super();
 
-
     // i CANNOT be accessed over RPC
     this.i = 0;
-
 
     // funcProp CANNOT be called over RPC
     this.funcProp = () => {}
   }
 
-
   // value CAN be accessed over RPC
   get value() {
     return this.i;
   }
-
 
   // method CAN be called over RPC
   method() {}
@@ -88,8 +80,6 @@ These visibility rules apply only to objects that extend `RpcTarget`, `WorkerEnt
 
 When you pass a function over RPC, the caller can access the "own" properties of the function object itself.
 
-**JavaScript**
-
 ```js
 someRpcMethod() {
   let func = () => {};
@@ -100,7 +90,14 @@ someRpcMethod() {
 
 Such properties on a function are accessed asynchronously, like class properties of an RpcTarget. But, unlike the `RpcTarget` example above, the function's instance properties that are accessible to the caller. In practice, properties are rarely added to functions.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/#page","headline":"Workers RPC — Visibility and Security Model · Cloudflare Workers docs","description":"Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/rpc/","name":"Remote-procedure call (RPC)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/rpc/visibility/","name":"Visibility and Security Model"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/#page","headline":"Workers RPC — Visibility and Security Model · Cloudflare Workers docs","description":"Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

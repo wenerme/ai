@@ -1,16 +1,18 @@
 ---
-title: Entrust distrust by major browsers
 description: Chrome and Mozilla have announced they will no longer trust Entrust certificates. Read about this change and how you can use Cloudflare to reduce impact.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Entrust distrust by major browsers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Entrust distrust by major browsers
 
-# Entrust distrust by major browsers
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Google Chrome and Mozilla have announced they will no longer trust certificates issued from Entrust's root CAs.
 
@@ -43,7 +45,14 @@ Since Cloudflare also [partners with SSL.com](https://developers.cloudflare.com/
 * [Google Security Blog ↗](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html)
 * [Entrust TLS Certificate Information Center ↗](https://www.entrust.com/tls-certificate-information-center)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/#page","headline":"Entrust distrust by major browsers · Cloudflare SSL/TLS docs","description":"Chrome and Mozilla have announced they will no longer trust Entrust certificates. Read about this change and how you can use Cloudflare to reduce impact.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/reference/migration-guides/entrust-distrust/","name":"Entrust distrust by major browsers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/#page","headline":"Entrust distrust by major browsers · Cloudflare SSL/TLS docs","description":"Chrome and Mozilla have announced they will no longer trust Entrust certificates. Read about this change and how you can use Cloudflare to reduce impact.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

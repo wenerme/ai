@@ -1,16 +1,18 @@
 ---
-title: Cache Deception Armor
 description: Prevent cache deception attacks that expose private content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cache Deception Armor
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache Deception Armor
 
-# Cache Deception Armor
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Web Cache Deception attacks
 
@@ -35,14 +37,21 @@ In the newsfeed example above, if `http://www.example.com/newsfeed` is a script 
 To enable Cache Deception Armor, you need to start by creating a [cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/). Follow the steps below for guidance:
 
 1. In the Cloudflare dashboard, go to the **Cache Rules** page.
-[ Go to **Cache Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+[ Go to **Cache Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. Under **When incoming requests match**, define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder).
 4. Under **Then**, in the **Cache eligibility** section, select **Eligible for cache**.
 5. Add the **Cache Key** setting to the rule and turn on **Cache deception armor**.
 6. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/#page","headline":"Cache Deception Armor · Cloudflare Cache (CDN) docs","description":"Prevent cache deception attacks that expose private content.","url":"https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/cache-security/","name":"Cache security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/cache-security/cache-deception-armor/","name":"Cache Deception Armor"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/#page","headline":"Cache Deception Armor · Cloudflare Cache (CDN) docs","description":"Prevent cache deception attacks that expose private content.","url":"https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
 ```

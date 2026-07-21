@@ -1,16 +1,18 @@
 ---
-title: Get account details
 description: Retrieve account information for tenant-managed Cloudflare accounts using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get account details
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get account details
 
-# Get account details
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/how-to/get-account-details/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 An [**Account**](https://developers.cloudflare.com/tenant/glossary/#account) will contain various settings, resources, and subscriptions to products for users. Each Tenant can have multiple associated accounts.
 
@@ -29,8 +31,6 @@ To retrieve a list of accounts associated with a Tenant details, send a `GET` re
 
     * (optional) 0 for ascending or 1 for descending, is 0 by default
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&per_page=10" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -39,7 +39,14 @@ curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&p
 
 A successful request will return an HTTP status of `200` and a response body containing account information and feature flags for all accounts managed by the Tenant.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/get-account-details/#page","headline":"Get account details · Cloudflare Tenant docs","description":"Retrieve account information for tenant-managed Cloudflare accounts using the API.","url":"https://developers.cloudflare.com/tenant/how-to/get-account-details/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/get-account-details/","name":"Get account details"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/get-account-details/#page","headline":"Get account details · Cloudflare Tenant docs","description":"Retrieve account information for tenant-managed Cloudflare accounts using the API.","url":"https://developers.cloudflare.com/tenant/how-to/get-account-details/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

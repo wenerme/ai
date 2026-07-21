@@ -1,16 +1,18 @@
 ---
-title: Manage load balancers
 description: Learn how to set up and maintain load balancers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage load balancers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage load balancers
 
-# Manage load balancers
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A load balancer distributes traffic among pools according to [pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) and [traffic steering policies](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/). Each load balancer is identified by its DNS hostname (`lb.example.com`, `dev.example.com`, etc.) or IP address.
 
@@ -18,9 +20,6 @@ A load balancer distributes traffic among pools according to [pool health](https
 For more details about load balancers, refer to [Load balancers](https://developers.cloudflare.com/load-balancing/load-balancers/).
 
 ## Create a load balancer
-
-* [ Dashboard ](#tab-panel-10177)
-* [ API ](#tab-panel-10178)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -93,53 +92,49 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancers Write`
 
-**Create Load Balancer**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Load Balancer for lb.example.com",
-    "name": "lb.example.com",
-    "enabled": true,
-    "ttl": 30,
-    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
-    "default_pools": [
-        "17b5962d775c646f3f9725cbc7a53df4",
-        "9290f38c5d07c2e2f4df57b1f61d4196",
-        "00920f38ce07c2e2f4df50b1f61d4194"
-    ],
-    "proxied": true,
-    "steering_policy": "random_steering",
-    "session_affinity": "cookie",
-    "session_affinity_attributes": {
-        "samesite": "Auto",
-        "secure": "Auto",
-        "drain_duration": 100,
-        "zero_downtime_failover": "sticky"
-    },
-    "session_affinity_ttl": 5000,
-    "adaptive_routing": {
-        "failover_across_pools": true
-    },
-    "location_strategy": {
-        "prefer_ecs": "always",
-        "mode": "resolver_ip"
-    },
-    "random_steering": {
-        "pool_weights": {
-            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
-            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
-        },
-        "default_weight": 0.2
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Load Balancer for lb.example.com",
+		"name": "lb.example.com",
+		"enabled": true,
+		"ttl": 30,
+		"fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+		"default_pools": [
+				"17b5962d775c646f3f9725cbc7a53df4",
+				"9290f38c5d07c2e2f4df57b1f61d4196",
+				"00920f38ce07c2e2f4df50b1f61d4194"
+		],
+		"proxied": true,
+		"steering_policy": "random_steering",
+		"session_affinity": "cookie",
+		"session_affinity_attributes": {
+				"samesite": "Auto",
+				"secure": "Auto",
+				"drain_duration": 100,
+				"zero_downtime_failover": "sticky"
+		},
+		"session_affinity_ttl": 5000,
+		"adaptive_routing": {
+				"failover_across_pools": true
+		},
+		"location_strategy": {
+				"prefer_ecs": "always",
+				"mode": "resolver_ip"
+		},
+		"random_steering": {
+				"pool_weights": {
+						"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+						"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+				},
+				"default_weight": 0.2
+		}
+	}'
 ```
 
 The response contains the complete definition of the new load balancer.
-
-**Response**
 
 ```json
 {
@@ -195,9 +190,6 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-10173)
-* [ API ](#tab-panel-10174)
-
 To edit a load balancer in the dashboard:
 
 1. Go to **Load Balancing**.
@@ -214,9 +206,6 @@ To update specific settings without having to resubmit the entire configuration,
 ## Delete a load balancer
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
-
-* [ Dashboard ](#tab-panel-10175)
-* [ API ](#tab-panel-10176)
 
 To delete a load balancer in the dashboard:
 
@@ -254,7 +243,14 @@ Evaluate [load balancing analytics](https://developers.cloudflare.com/load-balan
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#page","headline":"Manage load balancers · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain load balancers.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/load-balancers/","name":"Load balancers"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/load-balancers/create-load-balancer/","name":"Manage load balancers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#page","headline":"Manage load balancers · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain load balancers.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

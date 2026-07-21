@@ -1,16 +1,18 @@
 ---
-title: Turso
 description: Connect Cloudflare Workers to Turso, an edge-hosted distributed database based on libSQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Turso
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Turso
 
-# Turso
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Turso ↗](https://turso.tech/) is an edge-hosted, distributed database based on [libSQL ↗](https://libsql.org/), an open-source fork of SQLite. Turso was designed to minimize query latency for applications where queries comes from anywhere in the world.
 
@@ -103,44 +105,42 @@ pnpm add @libsql/client
 bun add @libsql/client
 ```
 6. The following example shows how to make a query to your Turso database in a Worker. The credentials needed to connect to Turso have been added as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) to your Worker.
-
-**TypeScript**
 ```ts
 import { Client as LibsqlClient, createClient } from "@libsql/client/web";
 export interface Env {
-  TURSO_URL?: string;
-  TURSO_AUTH_TOKEN?: string;
+	TURSO_URL?: string;
+	TURSO_AUTH_TOKEN?: string;
 }
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const client = buildLibsqlClient(env);
-    try {
-      const res = await client.execute("SELECT * FROM elements");
-      return new Response(JSON.stringify(res), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
-    } catch (error) {
-      console.error("Error executing SQL query:", error);
-      return new Response(
-        JSON.stringify({ error: "Internal Server Error" }),
-        {
-          status: 500,
-        },
-      );
-    }
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		const client = buildLibsqlClient(env);
+		try {
+			const res = await client.execute("SELECT * FROM elements");
+			return new Response(JSON.stringify(res), {
+				status: 200,
+				headers: { "Content-Type": "application/json" },
+			});
+		} catch (error) {
+			console.error("Error executing SQL query:", error);
+			return new Response(
+				JSON.stringify({ error: "Internal Server Error" }),
+				{
+					status: 500,
+				},
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 function buildLibsqlClient(env: Env): LibsqlClient {
-  const url = env.TURSO_URL?.trim();
-  if (url === undefined) {
-    throw new Error("TURSO_URL env var is not defined");
-  }
-  const authToken = env.TURSO_AUTH_TOKEN?.trim();
-  if (authToken == undefined) {
-    throw new Error("TURSO_AUTH_TOKEN env var is not defined");
-  }
-  return createClient({ url, authToken });
+	const url = env.TURSO_URL?.trim();
+	if (url === undefined) {
+		throw new Error("TURSO_URL env var is not defined");
+	}
+	const authToken = env.TURSO_AUTH_TOKEN?.trim();
+	if (authToken == undefined) {
+		throw new Error("TURSO_AUTH_TOKEN env var is not defined");
+	}
+	return createClient({ url, authToken });
 }
 ```
 
@@ -153,7 +153,14 @@ With your environment configured and your code ready, you can now test your Work
 
 To learn more about Turso, refer to [Turso's official documentation ↗](https://docs.turso.tech).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/#page","headline":"Turso · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/turso/","name":"Turso"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/#page","headline":"Turso · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

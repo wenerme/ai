@@ -1,16 +1,18 @@
 ---
-title: Stablecoin payments
 description: Pay for Cloudflare services with USDC stablecoin at the checkout.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Stablecoin payments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stablecoin payments
 
-# Stablecoin payments
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can pay for Cloudflare services with USDC stablecoin at the checkout. Stablecoin payments support one-time charges and recurring billing, including usage-based products.
 
@@ -64,7 +66,7 @@ Refunds for stablecoin payments are returned as USDC to the wallet you paid from
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices**. Stablecoin payments are listed with payment method `crypto`.
 
 ## FAQ
@@ -85,7 +87,14 @@ Pending state during on-chain confirmation
 
 Stablecoin payments pass through a `processing` state while the on-chain transaction confirms. This typically takes a few seconds but can take longer if the network is congested. The payment resolves automatically.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/#page","headline":"Stablecoin payments · Cloudflare Billing docs","description":"Pay for Cloudflare services with USDC stablecoin at the checkout.","url":"https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/payment-methods/","name":"Payment methods"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/payment-methods/stablecoin-payments/","name":"Stablecoin payments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/#page","headline":"Stablecoin payments · Cloudflare Billing docs","description":"Pay for Cloudflare services with USDC stablecoin at the checkout.","url":"https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

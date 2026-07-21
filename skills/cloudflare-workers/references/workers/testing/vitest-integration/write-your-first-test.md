@@ -1,16 +1,18 @@
 ---
-title: Write your first test
 description: Write tests against Workers using Vitest
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Write your first test
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Write your first test
 
-# Write your first test
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through getting started with the `@cloudflare/vitest-pool-workers` package. For more complex examples of testing using `@cloudflare/vitest-pool-workers`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 
@@ -43,19 +45,16 @@ In your `vitest.config.ts` file, use the `cloudflareTest()` plugin to configure 
 
 You can use your Worker configuration from your [Wrangler config file](https://developers.cloudflare.com/workers/wrangler/configuration/) by specifying it with `wrangler.configPath`.
 
-**vitest.config.ts**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: { configPath: "./wrangler.jsonc" },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./wrangler.jsonc" },
+		}),
+	],
 });
 ```
 
@@ -63,18 +62,16 @@ You can also override or define additional configuration using the `miniflare` k
 
 For example, this configuration would add a KV namespace `TEST_NAMESPACE` that was only accessed and modified in tests.
 
-**JavaScript**
-
 ```js
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: { configPath: "./wrangler.jsonc" },
-      miniflare: {
-        kvNamespaces: ["TEST_NAMESPACE"],
-      },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./wrangler.jsonc" },
+			miniflare: {
+				kvNamespaces: ["TEST_NAMESPACE"],
+			},
+		}),
+	],
 });
 ```
 
@@ -92,21 +89,19 @@ Then add a `tsconfig.json` in your tests folder and add `"@cloudflare/vitest-poo
 
 Example test/tsconfig.json
 
-**test/tsconfig.json**
-
 ```jsonc
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "moduleResolution": "bundler",
-    "types": [
-      "@cloudflare/vitest-pool-workers/types", // provides `cloudflare:test` and `cloudflare:workers` types
-    ],
-  },
-  "include": [
-    "./**/*.ts",
-    "../src/worker-configuration.d.ts", // output of `wrangler types`
-  ],
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"moduleResolution": "bundler",
+		"types": [
+			"@cloudflare/vitest-pool-workers/types", // provides `cloudflare:test` and `cloudflare:workers` types
+		],
+	},
+	"include": [
+		"./**/*.ts",
+		"../src/worker-configuration.d.ts", // output of `wrangler types`
+	],
 }
 ```
 
@@ -114,32 +109,25 @@ Example test/tsconfig.json
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-13051)
-* [  TypeScript ](#tab-panel-13052)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (pathname === "/404") {
-      return new Response("Not found", { status: 404 });
-    }
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		if (pathname === "/404") {
+			return new Response("Not found", { status: 404 });
+		}
+		return new Response("Hello World!");
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    if (pathname === "/404") {
-      return new Response("Not found", { status: 404 });
-    }
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		if (pathname === "/404") {
+			return new Response("Not found", { status: 404 });
+		}
+		return new Response("Hello World!");
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -147,70 +135,59 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-13055)
-* [  TypeScript ](#tab-panel-13056)
-
-**test/unit.spec.js**
-
 ```js
 import { env } from "cloudflare:workers";
 import {
-  createExecutionContext,
-  waitOnExecutionContext,
+	createExecutionContext,
+	waitOnExecutionContext,
 } from "cloudflare:test";
 import { describe, it, expect } from "vitest";
 // Import your worker so you can unit test it
 import worker from "../src";
-
 
 // For now, you'll need to do something like this to get a correctly-typed
 // `Request` to pass to `worker.fetch()`.
 const IncomingRequest = Request;
 
-
 describe("Hello World worker", () => {
-  it("responds with Hello World!", async () => {
-    const request = new IncomingRequest("http://example.com/404");
-    // Create an empty context to pass to `worker.fetch()`
-    const ctx = createExecutionContext();
-    const response = await worker.fetch(request, env, ctx);
-    // Wait for all `Promise`s passed to `ctx.waitUntil()` to settle before running test assertions
-    await waitOnExecutionContext(ctx);
-    expect(response.status).toBe(404);
-    expect(await response.text()).toBe("Not found");
-  });
+	it("responds with Hello World!", async () => {
+		const request = new IncomingRequest("http://example.com/404");
+		// Create an empty context to pass to `worker.fetch()`
+		const ctx = createExecutionContext();
+		const response = await worker.fetch(request, env, ctx);
+		// Wait for all `Promise`s passed to `ctx.waitUntil()` to settle before running test assertions
+		await waitOnExecutionContext(ctx);
+		expect(response.status).toBe(404);
+		expect(await response.text()).toBe("Not found");
+	});
 });
 ```
-
-**test/unit.spec.ts**
 
 ```ts
 import { env } from "cloudflare:workers";
 import {
-  createExecutionContext,
-  waitOnExecutionContext,
+	createExecutionContext,
+	waitOnExecutionContext,
 } from "cloudflare:test";
 import { describe, it, expect } from "vitest";
 // Import your worker so you can unit test it
 import worker from "../src";
 
-
 // For now, you'll need to do something like this to get a correctly-typed
 // `Request` to pass to `worker.fetch()`.
 const IncomingRequest = Request<unknown, IncomingRequestCfProperties>;
 
-
 describe("Hello World worker", () => {
-  it("responds with Hello World!", async () => {
-    const request = new IncomingRequest("http://example.com/404");
-    // Create an empty context to pass to `worker.fetch()`
-    const ctx = createExecutionContext();
-    const response = await worker.fetch(request, env, ctx);
-    // Wait for all `Promise`s passed to `ctx.waitUntil()` to settle before running test assertions
-    await waitOnExecutionContext(ctx);
-    expect(response.status).toBe(404);
-    expect(await response.text()).toBe("Not found");
-  });
+	it("responds with Hello World!", async () => {
+		const request = new IncomingRequest("http://example.com/404");
+		// Create an empty context to pass to `worker.fetch()`
+		const ctx = createExecutionContext();
+		const response = await worker.fetch(request, env, ctx);
+		// Wait for all `Promise`s passed to `ctx.waitUntil()` to settle before running test assertions
+		await waitOnExecutionContext(ctx);
+		expect(response.status).toBe(404);
+		expect(await response.text()).toBe("Not found");
+	});
 });
 ```
 
@@ -218,38 +195,29 @@ describe("Hello World worker", () => {
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-13053)
-* [  TypeScript ](#tab-panel-13054)
-
-**test/integration.spec.js**
-
 ```js
 import { exports } from "cloudflare:workers";
 import { describe, it, expect } from "vitest";
 
-
 describe("Hello World worker", () => {
-  it("responds with not found and proper status for /404", async () => {
-    const response = await exports.default.fetch("http://example.com/404");
-    expect(response.status).toBe(404);
-    expect(await response.text()).toBe("Not found");
-  });
+	it("responds with not found and proper status for /404", async () => {
+		const response = await exports.default.fetch("http://example.com/404");
+		expect(response.status).toBe(404);
+		expect(await response.text()).toBe("Not found");
+	});
 });
 ```
-
-**test/integration.spec.ts**
 
 ```ts
 import { exports } from "cloudflare:workers";
 import { describe, it, expect } from "vitest";
 
-
 describe("Hello World worker", () => {
-  it("responds with not found and proper status for /404", async () => {
-    const response = await exports.default.fetch("http://example.com/404");
-    expect(response.status).toBe(404);
-    expect(await response.text()).toBe("Not found");
-  });
+	it("responds with not found and proper status for /404", async () => {
+		const response = await exports.default.fetch("http://example.com/404");
+		expect(response.status).toBe(404);
+		expect(await response.text()).toBe("Not found");
+	});
 });
 ```
 
@@ -261,7 +229,14 @@ When using `exports.default.fetch()` for integration tests, your Worker code run
 * [Configuration API reference](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/)
 * [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/write-your-first-test/","name":"Write your first test"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

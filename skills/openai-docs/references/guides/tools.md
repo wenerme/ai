@@ -13,11 +13,9 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    tools: [
-        { type: "web_search" },
-    ],
-    input: "What was a positive news story from today?",
+  model: "gpt-5.6",
+  tools: [{ type: "web_search" }],
+  input: "What was a positive news story from today?",
 });
 
 console.log(response.output_text);
@@ -115,14 +113,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [
-        {
-            type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
-        },
-    ],
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+    },
+  ],
 });
 console.log(response);
 ```
@@ -231,6 +229,7 @@ import OpenAI from "openai";
 
 const client = new OpenAI();
 
+/** @type {OpenAI.Responses.NamespaceTool} */
 const crmNamespace = {
   type: "namespace",
   name: "crm",
@@ -289,35 +288,36 @@ console.log(response.output);
 import OpenAI from "openai";
 const client = new OpenAI();
 
+/** @type {OpenAI.Responses.Tool[]} */
 const tools = [
-    {
-        type: "function",
-        name: "get_weather",
-        description: "Get current temperature for a given location.",
-        parameters: {
-            type: "object",
-            properties: {
-                location: {
-                    type: "string",
-                    description: "City and country e.g. Bogotá, Colombia",
-                },
-            },
-            required: ["location"],
-            additionalProperties: false,
+  {
+    type: "function",
+    name: "get_weather",
+    description: "Get current temperature for a given location.",
+    parameters: {
+      type: "object",
+      properties: {
+        location: {
+          type: "string",
+          description: "City and country e.g. Bogotá, Colombia",
         },
-        strict: true,
+      },
+      required: ["location"],
+      additionalProperties: false,
     },
+    strict: true,
+  },
 ];
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
-        { role: "user", content: "What is the weather like in Paris today?" },
-    ],
-    tools,
+  model: "gpt-5.6",
+  input: [
+    { role: "user", content: "What is the weather like in Paris today?" },
+  ],
+  tools,
 });
 
-console.log(response.output[0].to_json());
+console.log(response.output[0]);
 ```
 
 ```python
@@ -495,7 +495,8 @@ const resp = await client.responses.create({
     {
       type: "mcp",
       server_label: "dmcp",
-      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_description:
+        "A Dungeons and Dragons MCP server to assist with dice rolling.",
       server_url: "https://dmcp-server.deno.dev/mcp",
       require_approval: "never",
     },

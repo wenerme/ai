@@ -1,16 +1,18 @@
 ---
-title: Log Explorer API
 description: Query and configure Log Explorer via the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log Explorer API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log Explorer API
 
-# Log Explorer API
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configuration and Log searches are also available via a public API.
 
@@ -36,18 +38,18 @@ This command returns the following HTTP request details:
 
 ```json
 {
-  "result": [
-    {
-      "clientrequestscheme": "https",
-      "clientrequesthost": "example.com",
-      "clientrequestmethod": "GET",
-      "clientrequestuseragent": "curl/7.88.1",
-      "edgeresponsestatus": 200
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"clientrequestscheme": "https",
+			"clientrequesthost": "example.com",
+			"clientrequestmethod": "GET",
+			"clientrequestuseragent": "curl/7.88.1",
+			"edgeresponsestatus": 200
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -63,27 +65,34 @@ This command returns the following request details:
 
 ```json
 {
-  "result": [
-    {
-      "createdat": "2025-01-14T18:17:55Z",
-      "appdomain": "example.com",
-      "appuuid": "a66b4ab0-ccdf-4d60-a6d0-54a59a827d92",
-      "action": "login",
-      "allowed": true,
-      "country": "us",
-      "rayid": "90fbb07c0b316957",
-      "email": "user@example.com",
-      "ipaddress": "1.2.3.4",
-      "useruid": "52859e81-711e-4de0-8b31-283336060e79"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"createdat": "2025-01-14T18:17:55Z",
+			"appdomain": "example.com",
+			"appuuid": "a66b4ab0-ccdf-4d60-a6d0-54a59a827d92",
+			"action": "login",
+			"allowed": true,
+			"country": "us",
+			"rayid": "90fbb07c0b316957",
+			"email": "user@example.com",
+			"ipaddress": "1.2.3.4",
+			"useruid": "52859e81-711e-4de0-8b31-283336060e79"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/api/#page","headline":"Log Explorer API · Cloudflare Log Explorer docs","description":"Query and configure Log Explorer via the API.","url":"https://developers.cloudflare.com/log-explorer/api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/api/","name":"Log Explorer API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/api/#page","headline":"Log Explorer API · Cloudflare Log Explorer docs","description":"Query and configure Log Explorer via the API.","url":"https://developers.cloudflare.com/log-explorer/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

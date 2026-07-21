@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Review FAQs for Cloudflare's China Network.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites and onboarding
 
@@ -68,7 +70,14 @@ All sites hosted in Mainland China must have IPv6 enabled. China Network automat
 
 [Pages](https://developers.cloudflare.com/pages/) is not available in Mainland China due to pages.dev certificate not residing within Mainland China. However, Pages from a global zone may potentially be extended into Mainland China.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ · Cloudflare China Network docs","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ · Cloudflare China Network docs","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

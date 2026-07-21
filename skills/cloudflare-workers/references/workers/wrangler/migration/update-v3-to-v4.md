@@ -1,16 +1,18 @@
 ---
-title: Migrate from Wrangler v3 to v4
 description: Upgrade Wrangler from v3 to v4, including breaking changes, updated Node.js requirements, and new defaults.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrate from Wrangler v3 to v4
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate from Wrangler v3 to v4
 
-# Migrate from Wrangler v3 to v4
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear. Unlike previous major versions of Wrangler, which were [foundational rewrites ↗](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
 
@@ -141,7 +143,6 @@ Add `--remote` to commands that should interact with your Cloudflare account:
 # Before (Wrangler v3 - queried remote by default)
 wrangler kv key get --binding MY_KV "my-key"
 
-
 # After (Wrangler v4 - must specify --remote)
 wrangler kv key get --binding MY_KV "my-key" --remote
 ```
@@ -163,7 +164,6 @@ Am I affected?
 ```sh
 # For TOML files
 grep -E "(legacy_assets|node_compat|usage_model)\s*=" wrangler.toml
-
 
 # For JSON files
 grep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jsonc
@@ -194,7 +194,14 @@ grep -rE "getBindingsProxy" --include="*.js" --include="*.ts" --include="*.mjs" 
 | wrangler generate command                      | Use npm create cloudflare@latest                                                                                    |
 | wrangler pages publish command                 | Use wrangler pages deploy                                                                                           |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/#page","headline":"Migrate from Wrangler v3 to v4 · Cloudflare Workers docs","description":"Upgrade Wrangler from v3 to v4, including breaking changes, updated Node.js requirements, and new defaults.","url":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/update-v3-to-v4/","name":"Migrate from Wrangler v3 to v4"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/#page","headline":"Migrate from Wrangler v3 to v4 · Cloudflare Workers docs","description":"Upgrade Wrangler from v3 to v4, including breaking changes, updated Node.js requirements, and new defaults.","url":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cache keys
 description: How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cache keys
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache keys
 
-# Cache keys
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/cache-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every cached response is stored under a **cache key**. When a request arrives, Cloudflare computes a cache key for it and looks it up — on a hit, the stored response is returned; on a miss, your Worker runs and its response is stored under that key for next time.
 
@@ -96,67 +98,55 @@ When your Worker is invoked through a [service binding](https://developers.cloud
 
 This is the mechanism that makes caching safe for multi-tenant Workers invoked over a service binding. If you use `ctx.props` to carry per-caller authorization context — user ID, tenant ID, organization, role — caching is safe by default. Responses that logically belong to one caller cannot leak to another through the cache.
 
-* [  JavaScript ](#tab-panel-12241)
-* [  TypeScript ](#tab-panel-12242)
-
-**src/backend.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class Backend extends WorkerEntrypoint {
-  async fetch(request) {
-    // ctx.props.userId is set by the caller (for example, an auth gateway).
-    // Because it is part of the cache key, User A and User B requesting the
-    // same URL get separate cache entries — there is no way for one to
-    // see the other's response.
-    const { userId } = this.ctx.props;
-    const data = { userId, timestamp: Date.now() };
+	async fetch(request) {
+		// ctx.props.userId is set by the caller (for example, an auth gateway).
+		// Because it is part of the cache key, User A and User B requesting the
+		// same URL get separate cache entries — there is no way for one to
+		// see the other's response.
+		const { userId } = this.ctx.props;
+		const data = { userId, timestamp: Date.now() };
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=300",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=300",
+			},
+		});
+	}
 }
 ```
-
-**src/backend.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Props {
-  userId: string;
+	userId: string;
 }
 
-
 export default class Backend extends WorkerEntrypoint<Env, Props> {
-  async fetch(request: Request): Promise<Response> {
-    // ctx.props.userId is set by the caller (for example, an auth gateway).
-    // Because it is part of the cache key, User A and User B requesting the
-    // same URL get separate cache entries — there is no way for one to
-    // see the other's response.
-    const { userId } = this.ctx.props;
-    const data = { userId, timestamp: Date.now() };
+	async fetch(request: Request): Promise<Response> {
+		// ctx.props.userId is set by the caller (for example, an auth gateway).
+		// Because it is part of the cache key, User A and User B requesting the
+		// same URL get separate cache entries — there is no way for one to
+		// see the other's response.
+		const { userId } = this.ctx.props;
+		const data = { userId, timestamp: Date.now() };
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=300",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=300",
+			},
+		});
+	}
 }
 ```
 
-Warning
+Caution
 
 If you authenticate callers through some mechanism other than `ctx.props` — for example, by reading a custom header your gateway Worker attaches — that input is **not** automatically part of the cache key. Two callers authenticated by different header values but otherwise identical requests will share a single cached entry, which means one caller can receive another caller's response.
 
@@ -168,45 +158,37 @@ Service binding calls deserve a specific note because the URL you pass does not 
 
 When you call a service binding with [fetch()](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#use-the-fetch-method), the hostname in the URL is a placeholder. The request is routed via the binding, not by DNS — the hostname is never resolved. And because the host is not part of the cache key (as described in [The cache belongs to the Worker, not to a domain](#the-cache-belongs-to-the-worker-not-to-a-domain)), the placeholder has no effect on caching either. Only the **path** (and query string) contribute to the cache key, alongside the target entrypoint and `ctx.props`:
 
-* [  JavaScript ](#tab-panel-12239)
-* [  TypeScript ](#tab-panel-12240)
-
-**src/gateway.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // "internal" here is just a placeholder — it is not routed anywhere
-    // and is not part of the cache key.
-    //
-    // What identifies this cached response is:
-    //   - the BACKEND entrypoint
-    //   - the path "/api/users/42"
-    //   - whatever ctx.props the gateway passes along
-    return env.BACKEND.fetch("http://internal/api/users/42");
-  },
+	async fetch(request, env, ctx) {
+		// "internal" here is just a placeholder — it is not routed anywhere
+		// and is not part of the cache key.
+		//
+		// What identifies this cached response is:
+		//   - the BACKEND entrypoint
+		//   - the path "/api/users/42"
+		//   - whatever ctx.props the gateway passes along
+		return env.BACKEND.fetch("http://internal/api/users/42");
+	},
 };
 ```
 
-**src/gateway.ts**
-
 ```ts
 interface Env {
-  BACKEND: Fetcher;
+	BACKEND: Fetcher;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // "internal" here is just a placeholder — it is not routed anywhere
-    // and is not part of the cache key.
-    //
-    // What identifies this cached response is:
-    //   - the BACKEND entrypoint
-    //   - the path "/api/users/42"
-    //   - whatever ctx.props the gateway passes along
-    return env.BACKEND.fetch("http://internal/api/users/42");
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		// "internal" here is just a placeholder — it is not routed anywhere
+		// and is not part of the cache key.
+		//
+		// What identifies this cached response is:
+		//   - the BACKEND entrypoint
+		//   - the path "/api/users/42"
+		//   - whatever ctx.props the gateway passes along
+		return env.BACKEND.fetch("http://internal/api/users/42");
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -227,84 +209,69 @@ By default, the path and query string of the request URL form the URL component 
 
 In the example below, the `Backend` entrypoint is the cached one. The default entrypoint forwards requests to it through `ctx.exports`, choosing the cache key itself:
 
-* [  JavaScript ](#tab-panel-12243)
-* [  TypeScript ](#tab-panel-12244)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 // Cached entrypoint. Requests routed here through ctx.exports are served
 // from cache when possible.
 export class Backend extends WorkerEntrypoint {
-  async fetch(request) {
-    return new Response("Hello from the backend", {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-  }
+	async fetch(request) {
+		return new Response("Hello from the backend", {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+			},
+		});
+	}
 }
-
 
 // Gateway entrypoint. Calls the cached Backend entrypoint via ctx.exports,
 // which routes through the cache, and chooses the cache key for the call.
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 
+		// Strip a tracking parameter so that requests differing only by
+		// `utm_source` resolve to the same cached entry.
+		url.searchParams.delete("utm_source");
 
-    // Strip a tracking parameter so that requests differing only by
-    // `utm_source` resolve to the same cached entry.
-    url.searchParams.delete("utm_source");
-
-
-    return ctx.exports.Backend.fetch(request, {
-      cf: { cacheKey: url.pathname + url.search },
-    });
-  },
+		return ctx.exports.Backend.fetch(request, {
+			cf: { cacheKey: url.pathname + url.search },
+		});
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 // Cached entrypoint. Requests routed here through ctx.exports are served
 // from cache when possible.
 export class Backend extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
-    return new Response("Hello from the backend", {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-  }
+	async fetch(request: Request): Promise<Response> {
+		return new Response("Hello from the backend", {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+			},
+		});
+	}
 }
-
 
 // Gateway entrypoint. Calls the cached Backend entrypoint via ctx.exports,
 // which routes through the cache, and chooses the cache key for the call.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Strip a tracking parameter so that requests differing only by
+		// `utm_source` resolve to the same cached entry.
+		url.searchParams.delete("utm_source");
 
-    // Strip a tracking parameter so that requests differing only by
-    // `utm_source` resolve to the same cached entry.
-    url.searchParams.delete("utm_source");
-
-
-    return ctx.exports.Backend.fetch(request, {
-      cf: { cacheKey: url.pathname + url.search },
-    });
-  },
+		return ctx.exports.Backend.fetch(request, {
+			cf: { cacheKey: url.pathname + url.search },
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -318,49 +285,37 @@ Set `cf.cacheKey` to an empty string, or omit it, to fall back to the default UR
 
 In this pattern the default entrypoint is a gateway that should run on every request, so disable caching on it and leave it on for `Backend` (see [Per-entrypoint caching](https://developers.cloudflare.com/workers/cache/configuration/#per-entrypoint-caching)):
 
-* [  wrangler.jsonc ](#tab-panel-12237)
-* [  wrangler.toml ](#tab-panel-12238)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "Backend": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"Backend": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.Backend]
 type = "worker"
-
 
   [exports.Backend.cache]
   enabled = true
@@ -380,7 +335,14 @@ For per-caller isolation, continue to use [ctx.props](#multi-tenant-safety-with-
 
 This also means `cf.cacheKey` has no effect on eyeball requests. The `cf` object on an inbound request from a browser or API client is populated by Cloudflare, not by the client, so a client cannot set its own cache key.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/cache-keys/","name":"Cache keys"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

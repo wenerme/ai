@@ -1,16 +1,18 @@
 ---
-title: Remote Participants
 description: Access participant data, display videos, and handle events for remote participants in RealtimeKit.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Remote Participants
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Remote Participants
 
-# Remote Participants
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to access participant data, display videos, handle events, and manage participant permissions in your RealtimeKit meetings.
 
@@ -89,20 +91,15 @@ The participant object contains all information related to a particular particip
 
 ### Access participant properties
 
-**JavaScript**
-
 ```js
 // Number of participants joined in the meeting
 console.log(meeting.participants.count);
 
-
 // Number of pages available in paginated mode
 console.log(meeting.participants.pageCount);
 
-
 // Maximum number of participants in active state
 console.log(meeting.participants.maxActiveParticipantsCount);
-
 
 // ParticipantId of the last participant who spoke
 console.log(meeting.participants.lastActiveSpeaker);
@@ -114,29 +111,23 @@ Use the `useRealtimeKitSelector` hook to access properties:
 // Number of participants joined in the meeting
 const participantCount = useRealtimeKitSelector((m) => m.participants.count);
 
-
 // Number of pages available in paginated mode
 const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
 
-
 // Maximum number of participants in active state
 const maxActiveCount = useRealtimeKitSelector(
-  (m) => m.participants.maxActiveParticipantsCount,
+	(m) => m.participants.maxActiveParticipantsCount,
 );
-
 
 // ParticipantId of the last participant who spoke
 const lastActiveSpeaker = useRealtimeKitSelector(
-  (m) => m.participants.lastActiveSpeaker,
+	(m) => m.participants.lastActiveSpeaker,
 );
 ```
-
-**Kotlin**
 
 ```kotlin
 // Number of participants joined in the meeting
 val participantCount = meeting.participants.joined.size
-
 
 // Access pagination properties
 val maxNumberOnScreen = meeting.participants.maxNumberOnScreen
@@ -146,12 +137,9 @@ val canGoNextPage = meeting.participants.canGoNextPage
 val canGoPreviousPage = meeting.participants.canGoPreviousPage
 ```
 
-**Swift**
-
 ```swift
 // Number of participants joined in the meeting
 let participantCount = meeting.participants.joined.count
-
 
 // Access pagination properties
 let maxNumberOnScreen = meeting.participants.maxNumberOnScreen
@@ -161,12 +149,9 @@ let canGoNextPage = meeting.participants.canGoNextPage
 let canGoPreviousPage = meeting.participants.canGoPreviousPage
 ```
 
-**Dart**
-
 ```dart
 // Number of participants joined in the meeting
 final participantCount = meeting.participants.joined.length;
-
 
 // Access pagination properties
 final currentPageNumber = meeting.participants.currentPageNumber;
@@ -181,20 +166,17 @@ Use the `useRealtimeKitSelector` hook to access properties:
 // Number of participants joined in the meeting
 const participantCount = useRealtimeKitSelector((m) => m.participants.count);
 
-
 // Number of pages available in paginated mode
 const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
 
-
 // Maximum number of participants in active state
 const maxActiveCount = useRealtimeKitSelector(
-  (m) => m.participants.maxActiveParticipantsCount,
+	(m) => m.participants.maxActiveParticipantsCount,
 );
-
 
 // ParticipantId of the last participant who spoke
 const lastActiveSpeaker = useRealtimeKitSelector(
-  (m) => m.participants.lastActiveSpeaker,
+	(m) => m.participants.lastActiveSpeaker,
 );
 ```
 
@@ -202,11 +184,8 @@ const lastActiveSpeaker = useRealtimeKitSelector(
 
 You can fetch a participant from the [participant maps](#participant-maps).
 
-**JavaScript**
-
 ```js
 const participant = meeting.participants.joined.get(participantId);
-
 
 // Access participant properties
 console.log(participant.name);
@@ -217,9 +196,8 @@ console.log(participant.audioEnabled);
 ```jsx
 // Get a specific participant
 const participant = useRealtimeKitSelector((m) =>
-  m.participants.joined.get(participantId),
+	m.participants.joined.get(participantId),
 );
-
 
 // Access participant properties
 const participantName = participant?.name;
@@ -227,56 +205,47 @@ const isVideoEnabled = participant?.videoEnabled;
 const isAudioEnabled = participant?.audioEnabled;
 ```
 
-**Kotlin**
-
 ```kotlin
 // Find a participant by peer ID
 val participant = meeting.participants.joined.firstOrNull { it.id == participantId }
 
-
 // Access participant properties
 participant?.let {
-  println("Participant: ${it.name}")
-  println("Video: ${it.videoEnabled}")
-  println("Audio: ${it.audioEnabled}")
+	println("Participant: ${it.name}")
+	println("Video: ${it.videoEnabled}")
+	println("Audio: ${it.audioEnabled}")
 }
 ```
-
-**Swift**
 
 ```swift
 // Find a participant by peer ID
 if let participant = meeting.participants.joined.first(where: { $0.id == participantId }) {
-  // Access participant properties
-  print("Participant: \(participant.name)")
-  print("Video: \(participant.videoEnabled)")
-  print("Audio: \(participant.audioEnabled)")
+	// Access participant properties
+	print("Participant: \(participant.name)")
+	print("Video: \(participant.videoEnabled)")
+	print("Audio: \(participant.audioEnabled)")
 }
 ```
-
-**Dart**
 
 ```dart
 // Find a participant by peer ID
 final participant = meeting.participants.joined
-  .where((p) => p.id == "<peerId>")
-  .firstOrNull;
-
+	.where((p) => p.id == "<peerId>")
+	.firstOrNull;
 
 // Access participant properties
 if (participant != null) {
-  print('Participant: ${participant.name} (ID: ${participant.id})');
-  print('Audio: ${participant.audioEnabled ? "On" : "Off"}');
-  print('Video: ${participant.videoEnabled ? "On" : "Off"}');
+	print('Participant: ${participant.name} (ID: ${participant.id})');
+	print('Audio: ${participant.audioEnabled ? "On" : "Off"}');
+	print('Video: ${participant.videoEnabled ? "On" : "Off"}');
 }
 ```
 
 ```tsx
 // Get a specific participant
 const participant = useRealtimeKitSelector((m) =>
-  m.participants.joined.get(participantId),
+	m.participants.joined.get(participantId),
 );
-
 
 // Access participant properties
 const participantName = participant?.name;
@@ -324,20 +293,15 @@ If you are building a video/audio grid, use the `active` list. To display a list
 
 Each participant in these lists is of type `RtkRemoteParticipant`.
 
-**JavaScript**
-
 ```js
 // Get all joined participants
 const joinedParticipants = meeting.participants.joined;
 
-
 // Get active participants (those on screen)
 const activeParticipants = meeting.participants.active;
 
-
 // Get pinned participants
 const pinnedParticipants = meeting.participants.pinned;
-
 
 // Get waitlisted participants
 const waitlistedParticipants = meeting.participants.waitlisted;
@@ -348,85 +312,64 @@ Use the `useRealtimeKitSelector` hook to access participant maps:
 ```jsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
 
-
 // Get all joined participants
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
-
 
 // Get active participants (those on screen)
 const activeParticipants = useRealtimeKitSelector((m) => m.participants.active);
 
-
 // Get pinned participants
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 
-
 // Get waitlisted participants
 const waitlistedParticipants = useRealtimeKitSelector(
-  (m) => m.participants.waitlisted,
+	(m) => m.participants.waitlisted,
 );
 ```
-
-**Kotlin**
 
 ```kotlin
 // Get all joined participants
 val joinedParticipants: List<RtkRemoteParticipant> = meeting.participants.joined
 
-
 // Get active participants (those on screen)
 val activeParticipants: List<RtkRemoteParticipant> = meeting.participants.active
-
 
 // Get pinned participants
 val pinnedParticipants: List<RtkRemoteParticipant> = meeting.participants.pinned
 
-
 // Get waitlisted participants
 val waitlistedParticipants: List<RtkRemoteParticipant> = meeting.participants.waitlisted
-
 
 // Get screen sharing participants
 val screenShareParticipants: List<RtkRemoteParticipant> = meeting.participants.screenShares
 ```
 
-**Swift**
-
 ```swift
 // Get all joined participants
 let joinedParticipants: [RtkRemoteParticipant] = meeting.participants.joined
 
-
 // Get active participants (those on screen)
 let activeParticipants: [RtkRemoteParticipant] = meeting.participants.active
-
 
 // Get pinned participants
 let pinnedParticipants: [RtkRemoteParticipant] = meeting.participants.pinned
 
-
 // Get waitlisted participants
 let waitlistedParticipants: [RtkRemoteParticipant] = meeting.participants.waitlisted
-
 
 // Get screen sharing participants
 let screenShareParticipants: [RtkRemoteParticipant] = meeting.participants.screenShares
 ```
 
-**Dart**
-
 ```dart
 // Get all joined participants
 final joinedParticipants = meeting.participants.joined;
 
-
 // Get active participants (those on screen)
 final activeParticipants = meeting.participants.active;
 
-
 // Get pinned participants
 final pinnedParticipants = meeting.participants.pinned;
-
 
 // Get waitlisted participants
 final waitlistedParticipants = meeting.participants.waitlisted;
@@ -437,22 +380,18 @@ Use the `useRealtimeKitSelector` hook to access participant maps:
 ```tsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
 
-
 // Get all joined participants
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
-
 
 // Get active participants (those on screen)
 const activeParticipants = useRealtimeKitSelector((m) => m.participants.active);
 
-
 // Get pinned participants
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 
-
 // Get waitlisted participants
 const waitlistedParticipants = useRealtimeKitSelector(
-  (m) => m.participants.waitlisted,
+	(m) => m.participants.waitlisted,
 );
 ```
 
@@ -465,12 +404,9 @@ The view mode indicates whether participants are populated in `ACTIVE_GRID` mode
 
 ### Set view mode
 
-**JavaScript**
-
 ```js
 // Set the view mode to paginated
 await meeting.participants.setViewMode("PAGINATED");
-
 
 // Set the view mode to active grid
 await meeting.participants.setViewMode("ACTIVE_GRID");
@@ -481,13 +417,10 @@ Use the `useRealtimeKitClient` hook to access the meeting object:
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
-
 
 // Set the view mode to paginated
 await meeting.participants.setViewMode("PAGINATED");
-
 
 // Set the view mode to active grid
 await meeting.participants.setViewMode("ACTIVE_GRID");
@@ -503,14 +436,11 @@ Flutter SDK uses active grid mode by default on page 0\. If you switch to the ne
 // Set the view mode to paginated
 await meeting.participants.setViewMode("PAGINATED");
 
-
 // Set the view mode to active grid
 await meeting.participants.setViewMode("ACTIVE_GRID");
 ```
 
 ### Set page in paginated mode
-
-**JavaScript**
 
 ```js
 // Switch to second page
@@ -520,22 +450,16 @@ await meeting.participants.setPage(2);
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
-
 
 // Switch to second page
 await meeting.participants.setPage(2);
 ```
 
-**Kotlin**
-
 ```kotlin
 // Switch to first page
 meeting.participants.setPage(1)
 ```
-
-**Swift**
 
 ```swift
 // Switch to first page
@@ -550,8 +474,6 @@ await meeting.participants.setPage(2);
 ```
 
 ### Monitor view mode
-
-**JavaScript**
 
 ```js
 const viewMode = meeting.participants.viewMode;
@@ -578,19 +500,14 @@ The participant object allows the host several controls. These can be selected w
 
 With the correct permissions, the host can disable media for remote participants.
 
-**JavaScript**
-
 ```js
 const participant = meeting.participants.joined.get(participantId);
-
 
 // Disable a participant's video stream
 participant.disableVideo();
 
-
 // Disable a participant's audio stream
 participant.disableAudio();
-
 
 // Kick a participant from the meeting
 participant.kick();
@@ -599,74 +516,57 @@ participant.kick();
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
 const participant = meeting.participants.joined.get(participantId);
-
 
 // Disable a participant's video stream
 participant.disableVideo();
 
-
 // Disable a participant's audio stream
 participant.disableAudio();
-
 
 // Kick a participant from the meeting
 participant.kick();
 ```
 
-**Kotlin**
-
 ```kotlin
 val participant = meeting.participants.joined.firstOrNull { it.id == participantId }
 
-
 participant?.let { pcpt ->
-  // Disable a participant's video stream
-  val videoError = pcpt.disableVideo()
+	// Disable a participant's video stream
+	val videoError = pcpt.disableVideo()
 
+	// Disable a participant's audio stream
+	val audioError = pcpt.disableAudio()
 
-  // Disable a participant's audio stream
-  val audioError = pcpt.disableAudio()
-
-
-  // Kick a participant from the meeting
-  val kickError = pcpt.kick()
+	// Kick a participant from the meeting
+	val kickError = pcpt.kick()
 }
 ```
-
-**Swift**
 
 ```swift
 if let participant = meeting.participants.joined.first(where: { $0.id == participantId }) {
-  // Disable a participant's video stream
-  let videoError: HostError? = participant.disableVideo()
+	// Disable a participant's video stream
+	let videoError: HostError? = participant.disableVideo()
 
+	// Disable a participant's audio stream
+	let audioError: HostError? = participant.disableAudio()
 
-  // Disable a participant's audio stream
-  let audioError: HostError? = participant.disableAudio()
-
-
-  // Kick a participant from the meeting
-  let kickError: HostError? = participant.kick()
+	// Kick a participant from the meeting
+	let kickError: HostError? = participant.kick()
 }
 ```
-
-**Dart**
 
 ```dart
 // Disable a remote participant's video
 participant.disableVideo(onResult: (e) {
-  // handle error if any
+	// handle error if any
 });
-
 
 // Disable a remote participant's audio
 participant.disableAudio(onResult: (e) {
-  // handle error if any
+	// handle error if any
 });
-
 
 // Remove the participant from the meeting
 participant.kick();
@@ -677,14 +577,11 @@ participant.kick();
 ```tsx
 const participant = meeting.participants.joined.get(participantId);
 
-
 // Disable a participant's video stream
 participant.disableVideo();
 
-
 // Disable a participant's audio stream
 participant.disableAudio();
-
 
 // Kick a participant from the meeting
 participant.kick();
@@ -698,8 +595,6 @@ You can also automate this flow so that users join the meeting automatically whe
 
 #### Accept waiting room request
 
-**JavaScript**
-
 ```js
 await meeting.participants.acceptWaitingRoomRequest(participantId);
 ```
@@ -707,26 +602,18 @@ await meeting.participants.acceptWaitingRoomRequest(participantId);
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
-
 
 await meeting.participants.acceptWaitingRoomRequest(participantId);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.participants.acceptWaitingRoomRequest(participantId)
 ```
 
-**Swift**
-
 ```swift
 meeting.participants.acceptWaitingRoomRequest(id: participantId)
 ```
-
-**Dart**
 
 ```dart
 final participant = meeting.participants.waitlisted[0];
@@ -739,8 +626,6 @@ await meeting.participants.acceptWaitingRoomRequest(participantId);
 
 #### Reject waiting room request
 
-**JavaScript**
-
 ```js
 await meeting.participants.rejectWaitingRoomRequest(participantId);
 ```
@@ -748,26 +633,18 @@ await meeting.participants.rejectWaitingRoomRequest(participantId);
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
-
 
 await meeting.participants.rejectWaitingRoomRequest(participantId);
 ```
-
-**Kotlin**
 
 ```kotlin
 meeting.participants.rejectWaitingRoomRequest(participantId)
 ```
 
-**Swift**
-
 ```swift
 meeting.participants.rejectWaitingRoomRequest(participantId)
 ```
-
-**Dart**
 
 ```dart
 final participant = meeting.participants.waitlisted[0];
@@ -782,15 +659,11 @@ await meeting.participants.rejectWaitingRoomRequest(participantId);
 
 The host can choose to pin or unpin participants to the grid.
 
-**JavaScript**
-
 ```js
 const participant = meeting.participants.joined.get(participantId);
 
-
 // Pin a participant
 await participant.pin();
-
 
 // Unpin a participant
 await participant.unpin();
@@ -799,54 +672,41 @@ await participant.unpin();
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
 const participant = meeting.participants.joined.get(participantId);
 
-
 // Pin a participant
 await participant.pin();
-
 
 // Unpin a participant
 await participant.unpin();
 ```
 
-**Kotlin**
-
 ```kotlin
 val participant = meeting.participants.joined.firstOrNull { it.id == participantId }
 
-
 participant?.let { pcpt ->
-  // Pin a participant
-  val pinError = pcpt.pin()
+	// Pin a participant
+	val pinError = pcpt.pin()
 
-
-  // Unpin a participant
-  val unpinError = pcpt.unpin()
+	// Unpin a participant
+	val unpinError = pcpt.unpin()
 }
 ```
-
-**Swift**
 
 ```swift
 if let participant = meeting.participants.joined.first(where: { $0.id == participantId }) {
-  // Pin a participant
-  let pinError: HostError? = participant.pin()
+	// Pin a participant
+	let pinError: HostError? = participant.pin()
 
-
-  // Unpin a participant
-  let unpinError: HostError? = participant.unpin()
+	// Unpin a participant
+	let unpinError: HostError? = participant.unpin()
 }
 ```
-
-**Dart**
 
 ```dart
 // Pin a remote participant
 participant.pin();
-
 
 // Unpin a previously pinned participant
 participant.unpin();
@@ -857,10 +717,8 @@ participant.unpin();
 ```tsx
 const participant = meeting.participants.joined.get(participantId);
 
-
 // Pin a participant
 await participant.pin();
-
 
 // Unpin a participant
 await participant.unpin();
@@ -878,59 +736,52 @@ Updating participant permissions is not available on this platform.
 
 First, find the participant(s) you want to update.
 
-**JavaScript**
-
 ```js
 const participantIds = meeting.participants.joined
-  .toArray()
-  .filter((e) => e.name.startsWith("John"))
-  .map((p) => p.id);
+	.toArray()
+	.filter((e) => e.name.startsWith("John"))
+	.map((p) => p.id);
 ```
 
 Use the `updatePermissions` method to modify the permissions for the participant.
 
-**JavaScript**
-
 ```js
 // Allow file upload permissions in public chat
 const newPermissions = {
-  chat: {
-    public: {
-      files: true,
-    },
-  },
+	chat: {
+		public: {
+			files: true,
+		},
+	},
 };
-
 
 meeting.participants.updatePermissions(participantIds, newPermissions);
 ```
 
 The following permissions can be modified:
 
-**TypeScript**
-
 ```typescript
 interface UpdatedPermissions {
-  polls?: {
-    canCreate?: boolean;
-    canVote?: boolean;
-  };
-  plugins?: {
-    canClose?: boolean;
-    canStart?: boolean;
-  };
-  chat?: {
-    public?: {
-      canSend?: boolean;
-      text?: boolean;
-      files?: boolean;
-    };
-    private?: {
-      canSend?: boolean;
-      text?: boolean;
-      files?: boolean;
-    };
-  };
+	polls?: {
+		canCreate?: boolean;
+		canVote?: boolean;
+	};
+	plugins?: {
+		canClose?: boolean;
+		canStart?: boolean;
+	};
+	chat?: {
+		public?: {
+			canSend?: boolean;
+			text?: boolean;
+			files?: boolean;
+		};
+		private?: {
+			canSend?: boolean;
+			text?: boolean;
+			files?: boolean;
+		};
+	};
 }
 ```
 
@@ -942,16 +793,12 @@ To play a participant's video track on a `<video>` element:
 <video class="participant-video" id="participant-video"></video>
 ```
 
-**JavaScript**
-
 ```js
 // Get the video element
 const videoElement = document.getElementById("participant-video");
 
-
 // Get the participant
 const participant = meeting.participants.joined.get(participantId);
-
 
 // Register the video element
 participant.registerVideoElement(videoElement);
@@ -959,15 +806,11 @@ participant.registerVideoElement(videoElement);
 
 For local user preview (video not sent to other users):
 
-**JavaScript**
-
 ```js
 meeting.self.registerVideoElement(videoElement, true);
 ```
 
 Clean up when the video element is no longer needed:
-
-**JavaScript**
 
 ```js
 participant.deregisterVideoElement(videoElement);
@@ -978,21 +821,16 @@ To play a participant's video track on a `<video>` element:
 ```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 
-
 const [meeting] = useRealtimeKitClient();
-
 
 // Get the video element
 const videoElement = document.getElementById("participant-video");
 
-
 // Get the participant
 const participant = meeting.participants.joined.get(participantId);
 
-
 // Register the video element
 participant.registerVideoElement(videoElement);
-
 
 // Clean up when the video element is no longer needed
 participant.deregisterVideoElement(videoElement);
@@ -1006,12 +844,9 @@ meeting.self.registerVideoElement(videoElement, true);
 
 Call `participant.getVideoView()` which returns a `View` that renders the participant's video stream:
 
-**Kotlin**
-
 ```kotlin
 // Get video view of a given participant
 val videoView = participant.getVideoView()
-
 
 // Get screen share video view
 val screenShareView = participant.getScreenShareVideoView()
@@ -1019,12 +854,9 @@ val screenShareView = participant.getScreenShareVideoView()
 
 Call `participant.getVideoView()` which returns a `UIView` that renders the participant's video stream:
 
-**Swift**
-
 ```swift
 // Get video view of a given participant
 let videoView = participant.getVideoView()
-
 
 // Get screen share video view
 let screenShareView = participant.getScreenShareVideoView()
@@ -1032,12 +864,9 @@ let screenShareView = participant.getScreenShareVideoView()
 
 Use the video view methods which return a `Widget` that you can place directly in your UI hierarchy:
 
-**Dart**
-
 ```dart
 // Create a widget to display the participant's camera video
 final cameraView = VideoView(meetingParticipant: participant);
-
 
 // Create a widget to display the participant's screen share
 final screenShareView = ScreenshareView(meetingParticipant: participant);
@@ -1049,30 +878,34 @@ Use `useRealtimeKitSelector` to get the video track and render it with `RTCView`
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
 import { MediaStream, RTCView } from "@cloudflare/react-native-webrtc";
 
-
 function VideoView() {
-  const { videoTrack } = useRealtimeKitSelector((m) =>
-    m.participants.active.toArray(),
-  )[0];
+	const { videoTrack } = useRealtimeKitSelector((m) =>
+		m.participants.active.toArray(),
+	)[0];
 
+	const stream = new MediaStream(undefined);
+	stream.addTrack(videoTrack);
 
-  const stream = new MediaStream(undefined);
-  stream.addTrack(videoTrack);
-
-
-  return (
-    <RTCView
-      objectFit="cover"
-      style={{ flex: 1 }}
-      streamURL={stream.toURL()}
-      mirror={true}
-      zOrder={1}
-    />
-  );
+	return (
+		<RTCView
+			objectFit="cover"
+			style={{ flex: 1 }}
+			streamURL={stream.toURL()}
+			mirror={true}
+			zOrder={1}
+		/>
+	);
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#page","headline":"Remote Participants · Cloudflare Realtime docs","description":"Access participant data, display videos, and handle events for remote participants in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/remote-participants/","name":"Remote Participants"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#page","headline":"Remote Participants · Cloudflare Realtime docs","description":"Access participant data, display videos, and handle events for remote participants in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

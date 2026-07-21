@@ -1,16 +1,18 @@
 ---
-title: Secrets
 description: Store sensitive information, like API keys and auth tokens, in your Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Secrets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secrets
 
-# Secrets
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/secrets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -26,75 +28,57 @@ You can access secrets in your Worker code through:
 
 Secrets can be accessed from Workers as you would any other [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/). For instance, given a `DB_CONNECTION_STRING` secret, you can access it in your Worker code through the `env` parameter:
 
-**index.js**
-
 ```js
 import postgres from "postgres";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const sql = postgres(env.DB_CONNECTION_STRING);
+	async fetch(request, env, ctx) {
+		const sql = postgres(env.DB_CONNECTION_STRING);
 
+		const result = await sql`SELECT * FROM products;`;
 
-    const result = await sql`SELECT * FROM products;`;
-
-
-    return new Response(JSON.stringify(result), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		return new Response(JSON.stringify(result), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-12373)
-* [  TypeScript ](#tab-panel-12374)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
 import postgres from "postgres";
 
-
 // Initialize the database client at the top level using a secret
 const sql = postgres(env.DB_CONNECTION_STRING);
 
-
 export default {
-  async fetch(request) {
-    const result = await sql`SELECT * FROM products;`;
+	async fetch(request) {
+		const result = await sql`SELECT * FROM products;`;
 
-
-    return new Response(JSON.stringify(result), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		return new Response(JSON.stringify(result), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { env } from "cloudflare:workers";
 import postgres from "postgres";
 
-
 // Initialize the database client at the top level using a secret
 const sql = postgres(env.DB_CONNECTION_STRING);
 
-
 export default {
-  async fetch(request: Request): Promise<Response> {
-    const result = await sql`SELECT * FROM products;`;
+	async fetch(request: Request): Promise<Response> {
+		const result = await sql`SELECT * FROM products;`;
 
-
-    return new Response(JSON.stringify(result), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		return new Response(JSON.stringify(result), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
 
@@ -106,7 +90,7 @@ Secrets described on this page are defined and managed on a per-Worker level. If
 
 ## Local Development with Secrets
 
-Warning
+Caution
 
 Do not use `vars` to store sensitive information in your Worker's Wrangler configuration file. Use secrets instead.
 
@@ -116,11 +100,11 @@ Note
 
 You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
+Note
+
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
-
-**.dev.vars / .env**
 
 ```bash
 SECRET_KEY="value"
@@ -142,7 +126,7 @@ When you select a Cloudflare environment in your local development, the correspo
   * `.env.<environment-name>`
   * `.env` (least specific)
 
-Controlling `.env` handling
+Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
@@ -182,7 +166,7 @@ npx wrangler versions secret put <KEY>
 To add a secret via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings**.
 3. Under **Variables and Secrets**, select **Add**.
 4. Select the type **Secret**, input a **Variable name**, and input its **Value**. This secret will be made available to your Worker but the value will be hidden in Wrangler and the dashboard.
@@ -226,7 +210,7 @@ npx wrangler versions secret delete <KEY>
 To delete a secret from your Worker project via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings**.
 3. Under **Variables and Secrets**, select **Edit**.
 4. In the **Edit** drawer, select **X** next to the secret you want to delete.
@@ -247,7 +231,14 @@ Do not use plaintext environment variables to store sensitive information. Use [
 * [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) \- Declare required secret names in your Wrangler configuration. Used for validation during local development and deploy, and as the source of truth for type generation.
 * [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) \- Encrypt and store sensitive information as secrets that are securely reusable across your account.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets · Cloudflare Workers docs","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/secrets/","name":"Secrets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets · Cloudflare Workers docs","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

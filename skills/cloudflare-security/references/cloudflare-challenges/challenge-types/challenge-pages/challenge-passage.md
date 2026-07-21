@@ -1,16 +1,18 @@
 ---
-title: Challenge Passage
 description: Set a time period during which visitors do not have to solve repeat challenges.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Challenge Passage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Challenge Passage
 
-# Challenge Passage
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a visitor solves a [Cloudflare Challenge](https://developers.cloudflare.com/cloudflare-challenges/) \- as part of a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rule](https://developers.cloudflare.com/waf/tools/ip-access-rules/) \- you can set the **Challenge Passage** to prevent them from having to solve future Challenges for a specified period of time.
 
@@ -29,7 +31,7 @@ By default, the `cf_clearance` cookie has a lifetime of 30 minutes. Cloudflare r
 To update the Challenge Passage (and the value of the `cf_clearance` cookie):
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Go to **Challenge passage**.
 3. Select the edit icon to set a timeout duration.
 
@@ -37,7 +39,14 @@ To update the Challenge Passage (and the value of the `cf_clearance` cookie):
 
 The Challenge Passage does not apply to rate limiting rules.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/#page","headline":"Challenge Passage · Cloudflare challenges docs","description":"Set a time period during which visitors do not have to solve repeat challenges.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/challenge-pages/","name":"Interstitial Challenge Pages"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/","name":"Challenge Passage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/#page","headline":"Challenge Passage · Cloudflare challenges docs","description":"Set a time period during which visitors do not have to solve repeat challenges.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 ```

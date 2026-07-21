@@ -1,16 +1,18 @@
 ---
-title: Test speed
 description: Test your website speed and Internet connection using Cloudflare dashboard tools and third-party services.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Test speed
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Test speed
 
-# Test speed
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/performance/test-speed/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers several tools to test the speed of your website, as well as the speed of your Internet connection.
 
@@ -64,7 +66,14 @@ To test the speed of your home network connection (download, update, packet loss
 
 One of the key ways Cloudflare speeds up your site is through [caching](https://developers.cloudflare.com/cache/), which will appear in the results of the second test. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/test-speed/#page","headline":"Test speed · Cloudflare Fundamentals docs","description":"Test your website speed and Internet connection using Cloudflare dashboard tools and third-party services.","url":"https://developers.cloudflare.com/fundamentals/performance/test-speed/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/performance/test-speed/","name":"Test speed"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/test-speed/#page","headline":"Test speed · Cloudflare Fundamentals docs","description":"Test your website speed and Internet connection using Cloudflare dashboard tools and third-party services.","url":"https://developers.cloudflare.com/fundamentals/performance/test-speed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

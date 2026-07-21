@@ -1,16 +1,18 @@
 ---
-title: Custom Providers
 description: Create and manage custom AI providers for your account.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom Providers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom Providers
 
-# Custom Providers
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -46,15 +48,10 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-7112)
-* [ Dashboard ](#tab-panel-7113)
-
 To create a new custom provider using the API:
 
 1. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and Account Tag.
 2. Send a `POST` request to create a new custom provider:
-
-**Create Custom Provider**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -128,12 +125,7 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-7114)
-* [ Dashboard ](#tab-panel-7115)
-
 Retrieve all custom providers with optional filtering and pagination:
-
-**List all providers**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -204,11 +196,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-7111)
-
 Retrieve details for a specific custom provider by its ID:
-
-**Get provider by ID**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -244,12 +232,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-7116)
-* [ Dashboard ](#tab-panel-7117)
-
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
-
-**Update provider**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -314,12 +297,7 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-7118)
-* [ Dashboard ](#tab-panel-7119)
-
 Delete a custom provider:
-
-**Delete provider**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -396,8 +374,6 @@ Use the **provider-specific endpoint** when your custom provider uses a non-stan
 
 The Unified API sends requests to the provider's chat completions endpoint using the OpenAI-compatible format. Specify the model using the format `custom-{slug}/{model-name}`.
 
-**Request using custom provider via Unified API**
-
 ```bash
 # Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -413,8 +389,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/
 ### Via provider-specific endpoint
 
 The provider-specific endpoint gives you full control over the upstream path. Everything after `custom-{slug}/` in the URL is appended to the `base_url`.
-
-**Direct provider endpoint**
 
 ```bash
 # Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
@@ -550,11 +524,8 @@ When using the OpenAI SDK to connect to a custom provider through AI Gateway, se
 
 **Python (OpenAI SDK):**
 
-**Using OpenAI SDK with a custom provider**
-
 ```python
 from openai import OpenAI
-
 
 client = OpenAI(
     api_key="your-provider-api-key",
@@ -563,7 +534,6 @@ client = OpenAI(
         "cf-aig-authorization": "Bearer {cf_aig_token}",
     },
 )
-
 
 # The SDK appends /chat/completions to the base_url automatically.
 # Final upstream URL: https://api.alt-provider.com/v1/chat/completions
@@ -590,14 +560,14 @@ response = client.chat.completions.create(
 
 ```json
 {
-  "success": false,
-  "errors": [
-    {
-      "code": 1003,
-      "message": "A custom provider with this slug already exists",
-      "path": ["body", "slug"]
-    }
-  ]
+	"success": false,
+	"errors": [
+		{
+			"code": 1003,
+			"message": "A custom provider with this slug already exists",
+			"path": ["body", "slug"]
+		}
+	]
 }
 ```
 
@@ -607,13 +577,13 @@ Each custom provider slug must be unique within your account. Choose a different
 
 ```json
 {
-  "success": false,
-  "errors": [
-    {
-      "code": 1004,
-      "message": "Custom Provider not found"
-    }
-  ]
+	"success": false,
+	"errors": [
+		{
+			"code": 1004,
+			"message": "Custom Provider not found"
+		}
+	]
 }
 ```
 
@@ -623,14 +593,14 @@ The specified provider ID does not exist or you don't have access to it. Verify 
 
 ```json
 {
-  "success": false,
-  "errors": [
-    {
-      "code": 1002,
-      "message": "base_url must be a valid HTTPS URL starting with https://",
-      "path": ["body", "base_url"]
-    }
-  ]
+	"success": false,
+	"errors": [
+		{
+			"code": 1002,
+			"message": "base_url must be a valid HTTPS URL starting with https://",
+			"path": ["body", "base_url"]
+		}
+	]
 }
 ```
 
@@ -669,7 +639,14 @@ If you receive a 404 from the upstream provider, the most common cause is an inc
 * [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/)
 * [Rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/#page","headline":"Custom Providers · Cloudflare AI Gateway docs","description":"Create and manage custom AI providers for your account.","url":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/custom-providers/","name":"Custom Providers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/#page","headline":"Custom Providers · Cloudflare AI Gateway docs","description":"Create and manage custom AI providers for your account.","url":"https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

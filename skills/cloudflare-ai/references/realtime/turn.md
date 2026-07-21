@@ -1,16 +1,18 @@
 ---
-title: TURN Service
 description: Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TURN Service
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TURN Service
 
-# TURN Service
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Separately from the SFU, Realtime offers a managed TURN service. TURN acts as a relay point for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where direct communication is obstructed by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.
 
@@ -71,7 +73,14 @@ Each limit is for a single TURN allocation (single TURN user) and not account wi
 
 These limits are suitable for high-demand applications and also have burst rates higher than those documented above. Hitting these limits will result in packet drops.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/turn/#page","headline":"TURN Service · Cloudflare Realtime docs","description":"Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.","url":"https://developers.cloudflare.com/realtime/turn/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/turn/#page","headline":"TURN Service · Cloudflare Realtime docs","description":"Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.","url":"https://developers.cloudflare.com/realtime/turn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

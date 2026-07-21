@@ -1,16 +1,18 @@
 ---
-title: Player API
 description: Supported attributes and properties for the Cloudflare Stream player element.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Player API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Player API
 
-# Player API
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/uploading-videos/player-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Attributes are added in the `<stream>` tag without quotes, as you can see below:
 
@@ -31,9 +33,7 @@ Multiple attributes can be used together, added one after each other like this:
   * Tells the browser to immediately start downloading the video and play it as soon as it can. Note that mobile browsers generally do not support this attribute, the user must tap the screen to begin video playback. Please consider mobile users or users with Internet usage limits as some users do not have unlimited Internet access before using this attribute.
 Note
 To disable video autoplay, the `autoplay` attribute needs to be removed altogether as this attribute. Setting `autoplay="false"` will not work; the video will autoplay if the attribute is there in the `<stream>` tag.
-
-In addition, some browsers now prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, see [new video policies for iOS ↗](https://webkit.org/blog/6784/new-video-policies-for-ios/). :::
-
+In addition, some browsers now prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, see [new video policies for iOS ↗](https://webkit.org/blog/6784/new-video-policies-for-ios/).
 * `controls` boolean
 
   * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player. [See an example.](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)
@@ -187,7 +187,14 @@ Non-standard events are prefixed with `stream-` to distinguish them from standar
 
   * Fires when `ad-url` attribute is present and the ad took too long to load.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/player-api/#page","headline":"Player API · Cloudflare Stream docs","description":"Supported attributes and properties for the Cloudflare Stream player element.","url":"https://developers.cloudflare.com/stream/uploading-videos/player-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/player-api/","name":"Player API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/player-api/#page","headline":"Player API · Cloudflare Stream docs","description":"Supported attributes and properties for the Cloudflare Stream player element.","url":"https://developers.cloudflare.com/stream/uploading-videos/player-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

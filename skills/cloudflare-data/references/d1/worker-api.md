@@ -1,16 +1,18 @@
 ---
-title: Workers Binding API
 description: Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Binding API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Binding API
 
-# Workers Binding API
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/worker-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can execute SQL queries on your D1 database from a Worker using the Worker Binding API. To do this, you can perform the following steps:
 
@@ -29,21 +31,18 @@ When using the query statement methods [D1PreparedStatement::run](https://develo
 
 For example, providing an `OrderRow` type as a type parameter to [D1PreparedStatement::run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) will return a typed `Array<OrderRow>` object instead of the default `Record<string, unknown>` type:
 
-**TypeScript**
-
 ```ts
 // Row definition
 type OrderRow = {
-  Id: string;
-  CustomerName: string;
-  OrderDate: number;
+	Id: string;
+	CustomerName: string;
+	OrderDate: number;
 };
-
 
 // Elsewhere in your application
 // env.MY_DB is the D1 database binding from your Wrangler configuration file
 const result = await env.MY_DB.prepare(
-  "SELECT Id, CustomerName, OrderDate FROM [Order] ORDER BY ShippedDate DESC LIMIT 100",
+	"SELECT Id, CustomerName, OrderDate FROM [Order] ORDER BY ShippedDate DESC LIMIT 100",
 ).run<OrderRow>();
 ```
 
@@ -96,76 +95,64 @@ Replace the contents of your `index.js` file with the code below to view the eff
 
 index.js
 
-**JavaScript**
-
 ```js
 // D1 API Playground - Test each D1 Worker Binding API method
 // Change the URL pathname to test different methods (e.g., /RUN, /RAW, /FIRST)
 export default {
-  async fetch(request, env) {
-    const { pathname } = new URL(request.url);
+	async fetch(request, env) {
+	  const { pathname } = new URL(request.url);
 
+		// Sample data for testing
+		const companyName1 = `Bs Beverages`;
+		const companyName2 = `Around the Horn`;
 
-    // Sample data for testing
-    const companyName1 = `Bs Beverages`;
-    const companyName2 = `Around the Horn`;
-
-
-    // Prepare reusable statements
-    const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
-    const stmtMulti = env.DB.prepare(`SELECT * FROM Customers; SELECT * FROM Customers WHERE CompanyName = ?`);
-    const session = env.DB.withSession("first-primary")
-    const sessionStmt = session.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
-
+		// Prepare reusable statements
+		const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+		const stmtMulti = env.DB.prepare(`SELECT * FROM Customers; SELECT * FROM Customers WHERE CompanyName = ?`);
+		const session = env.DB.withSession("first-primary")
+		const sessionStmt = session.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
 
       // Test D1PreparedStatement::run - returns full D1Result object
       if (pathname === `/RUN`){
-      const returnValue = await stmt.bind(companyName1).run();
-      return Response.json(returnValue);
-
+    	const returnValue = await stmt.bind(companyName1).run();
+    	return Response.json(returnValue);
 
       // Test D1PreparedStatement::raw - returns array of arrays
     } else if (pathname === `/RAW`){
-      const returnValue = await stmt.bind(companyName1).raw();
-      return Response.json(returnValue);
-
+    	const returnValue = await stmt.bind(companyName1).raw();
+    	return Response.json(returnValue);
 
       // Test D1PreparedStatement::first - returns first row only
     } else if (pathname === `/FIRST`){
-      const returnValue = await stmt.bind(companyName1).first();
-      return Response.json(returnValue);
-
+    	const returnValue = await stmt.bind(companyName1).first();
+    	return Response.json(returnValue);
 
       // Test D1Database::batch - execute multiple statements
     } else if (pathname === `/BATCH`) {
-      const batchResult = await env.DB.batch([
-        stmt.bind(companyName1),
-        stmt.bind(companyName2)
-      ]);
-      return Response.json(batchResult);
-
+    	const batchResult = await env.DB.batch([
+    		stmt.bind(companyName1),
+    		stmt.bind(companyName2)
+    	]);
+    	return Response.json(batchResult);
 
       // Test D1Database::exec - execute raw SQL without parameters
     } else if (pathname === `/EXEC`){
-      const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
-      return Response.json(returnValue);
-
+    	const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
+    	return Response.json(returnValue);
 
       // Test D1 Sessions API with read replication
     } else if (pathname === `/WITHSESSION`){
-      const returnValue = await sessionStmt.bind(companyName1).run();
-      console.log("You're now using D1 Sessions!")
-      return Response.json(returnValue);
+    	const returnValue = await sessionStmt.bind(companyName1).run();
+    	console.log("You're now using D1 Sessions!")
+    	return Response.json(returnValue);
     }
-
 
       // Default response with instructions
       return new Response(
-      `Welcome to the D1 API Playground!
-      \nChange the URL to test the various methods inside your index.js file.`,
+    	`Welcome to the D1 API Playground!
+    	\nChange the URL to test the various methods inside your index.js file.`,
       );
     },
-
 
 };
 ```
@@ -183,10 +170,10 @@ npx wrangler deploy
 Total Upload: 1.90 KiB / gzip: 0.59 KiB
 Your worker has access to the following bindings:
 - D1 Databases:
-  - DB: DATABASE_NAME (<DATABASE_ID>)
+	- DB: DATABASE_NAME (<DATABASE_ID>)
 Uploaded WORKER_NAME (7.01 sec)
 Deployed WORKER_NAME triggers (1.25 sec)
-  https://jun-d1-rr.d1-sandbox.workers.dev
+	https://jun-d1-rr.d1-sandbox.workers.dev
 Current Version ID: VERSION_ID
 ```
 3. Open a browser at the specified address.
@@ -199,7 +186,14 @@ Change the URL to test the various D1 Worker Binding APIs.
 
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/d1/worker-api/#page","headline":"Workers Binding API · Cloudflare D1 docs","description":"Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.","url":"https://developers.cloudflare.com/d1/worker-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/d1/worker-api/#page","headline":"Workers Binding API · Cloudflare D1 docs","description":"Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.","url":"https://developers.cloudflare.com/d1/worker-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

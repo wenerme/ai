@@ -1,23 +1,21 @@
 ---
-title: Configure Managed Transforms
 description: Learn how to configure Managed Transforms.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Managed Transforms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Managed Transforms
 
-# Configure Managed Transforms
-
-* [ Dashboard ](#tab-panel-10928)
-* [ API ](#tab-panel-10929)
-* [ Terraform ](#tab-panel-10930)
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
 2. In the **Managed Transforms** tab, enable or disable the [desired Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/) by selecting the toggle next to each entry. Some Managed Transforms may not be available in your Cloudflare plan or product subscriptions.
 
 **1\. Get list of available Managed Transforms**
@@ -76,74 +74,70 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**List Managed Transforms**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": {
-    "managed_request_headers": [
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_bot_protection_headers"
-      },
-32 collapsed lines
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_client_certificate_headers"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_visitor_location_headers"
-      },
-      {
-        "conflicts_with": ["remove_visitor_ip_headers"],
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_true_client_ip_headers"
-      },
-      {
-        "conflicts_with": ["add_true_client_ip_headers"],
-        "enabled": false,
-        "has_conflict": false,
-        "id": "remove_visitor_ip_headers"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_waf_credential_check_status_header"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_waf_content_scan_status_header"
-      }
-    ],
-    "managed_response_headers": [
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "remove_x-powered-by_header"
-      },
-5 collapsed lines
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_security_headers"
-      }
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"managed_request_headers": [
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_bot_protection_headers"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_client_certificate_headers"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_visitor_location_headers"
+			},
+			{
+				"conflicts_with": ["remove_visitor_ip_headers"],
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_true_client_ip_headers"
+			},
+			{
+				"conflicts_with": ["add_true_client_ip_headers"],
+				"enabled": false,
+				"has_conflict": false,
+				"id": "remove_visitor_ip_headers"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_waf_credential_check_status_header"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_waf_content_scan_status_header"
+			}
+		],
+		"managed_response_headers": [
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "remove_x-powered-by_header"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_security_headers"
+			}
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -182,94 +176,86 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update Managed Transforms**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "managed_request_headers": [
-        {
-            "id": "add_visitor_location_headers",
-            "enabled": true
-        }
-    ],
-    "managed_response_headers": [
-        {
-            "id": "remove_x-powered-by_header",
-            "enabled": true
-        }
-    ]
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"managed_request_headers": [
+				{
+						"id": "add_visitor_location_headers",
+						"enabled": true
+				}
+		],
+		"managed_response_headers": [
+				{
+						"id": "remove_x-powered-by_header",
+						"enabled": true
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "managed_request_headers": [
-10 collapsed lines
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_bot_protection_headers"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_client_certificate_headers"
-      },
-      {
-        "enabled": true,
-        "has_conflict": false,
-        "id": "add_visitor_location_headers"
-      },
-22 collapsed lines
-      {
-        "conflicts_with": ["remove_visitor_ip_headers"],
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_true_client_ip_headers"
-      },
-      {
-        "conflicts_with": ["add_true_client_ip_headers"],
-        "enabled": false,
-        "has_conflict": false,
-        "id": "remove_visitor_ip_headers"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_waf_credential_check_status_header"
-      },
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_waf_content_scan_status_header"
-      }
-    ],
-    "managed_response_headers": [
-      {
-        "enabled": true,
-        "has_conflict": false,
-        "id": "remove_x-powered-by_header"
-      },
-5 collapsed lines
-      {
-        "enabled": false,
-        "has_conflict": false,
-        "id": "add_security_headers"
-      }
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"managed_request_headers": [
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_bot_protection_headers"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_client_certificate_headers"
+			},
+			{
+				"enabled": true,
+				"has_conflict": false,
+				"id": "add_visitor_location_headers"
+			},
+			{
+				"conflicts_with": ["remove_visitor_ip_headers"],
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_true_client_ip_headers"
+			},
+			{
+				"conflicts_with": ["add_true_client_ip_headers"],
+				"enabled": false,
+				"has_conflict": false,
+				"id": "remove_visitor_ip_headers"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_waf_credential_check_status_header"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_waf_content_scan_status_header"
+			}
+		],
+		"managed_response_headers": [
+			{
+				"enabled": true,
+				"has_conflict": false,
+				"id": "remove_x-powered-by_header"
+			},
+			{
+				"enabled": false,
+				"has_conflict": false,
+				"id": "add_security_headers"
+			}
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
-
-* [ Terraform (v5) ](#tab-panel-10926)
-* [ Terraform (v4) ](#tab-panel-10927)
 
 Required API token permissions
 
@@ -284,12 +270,10 @@ Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.i
 resource "cloudflare_managed_transforms" "tf_example" {
   zone_id = var.cloudflare_zone_id
 
-
   managed_request_headers = [{
     id      = "add_visitor_location_headers"
     enabled = true
   }]
-
 
   managed_response_headers = [{
     id      = "remove_x-powered-by_header"
@@ -302,12 +286,10 @@ resource "cloudflare_managed_transforms" "tf_example" {
 resource "cloudflare_managed_headers" "tf_example" {
   zone_id = "<ZONE_ID>"
 
-
   managed_request_headers {
     id      = "add_visitor_location_headers"
     enabled = true
   }
-
 
   managed_response_headers {
     id      = "remove_x-powered-by_header"
@@ -318,7 +300,14 @@ resource "cloudflare_managed_headers" "tf_example" {
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/#page","headline":"Configure Managed Transforms · Cloudflare Rules docs","description":"Learn how to configure Managed Transforms.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/managed-transforms/","name":"Managed Transforms"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/managed-transforms/configure/","name":"Configure Managed Transforms"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/#page","headline":"Configure Managed Transforms · Cloudflare Rules docs","description":"Learn how to configure Managed Transforms.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Show source citations in responses
 description: Display source citations alongside AI-generated answers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Show source citations in responses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Show source citations in responses
 
-# Show source citations in responses
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [AI Search](https://developers.cloudflare.com/ai-search/) returns the source chunks it uses to generate an answer. Use those chunks to show citations, references, or source links in your application.
 
@@ -67,18 +69,13 @@ cd ai-search-citations
 
 Add an AI Search namespace binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7229)
-* [  wrangler.toml ](#tab-panel-7230)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ai-search-citations",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -88,14 +85,11 @@ Add an AI Search namespace binding to your Wrangler configuration:
 }
 ```
 
-**TOML**
-
 ```toml
 name = "ai-search-citations"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -112,79 +106,63 @@ Start with the simplest citation pattern: return the generated answer and a list
 
 Replace the contents of `src/index.ts` with the following Worker code:
 
-* [  JavaScript ](#tab-panel-7231)
-* [  TypeScript ](#tab-panel-7232)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns an answer and the source chunks used as context.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns an answer and the source chunks used as context.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		// Convert source chunks into citations your UI can display.
+		const citations = response.chunks.map((chunk, index) => ({
+			index: index + 1,
+			source: chunk.item.key,
+			score: chunk.score,
+			snippet: chunk.text.slice(0, 200),
+			metadata: chunk.item.metadata,
+		}));
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
-
-
-    // Convert source chunks into citations your UI can display.
-    const citations = response.chunks.map((chunk, index) => ({
-      index: index + 1,
-      source: chunk.item.key,
-      score: chunk.score,
-      snippet: chunk.text.slice(0, 200),
-      metadata: chunk.item.metadata,
-    }));
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns an answer and the source chunks used as context.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns an answer and the source chunks used as context.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		// Convert source chunks into citations your UI can display.
+		const citations = response.chunks.map((chunk, index) => ({
+			index: index + 1,
+			source: chunk.item.key,
+			score: chunk.score,
+			snippet: chunk.text.slice(0, 200),
+			metadata: chunk.item.metadata,
+		}));
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
-
-
-    // Convert source chunks into citations your UI can display.
-    const citations = response.chunks.map((chunk, index) => ({
-      index: index + 1,
-      source: chunk.item.key,
-      score: chunk.score,
-      snippet: chunk.text.slice(0, 200),
-      metadata: chunk.item.metadata,
-    }));
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -192,27 +170,27 @@ The response looks like:
 
 ```json
 {
-  "answer": "Cloudflare is a global network that provides security, performance, and reliability services...",
-  "citations": [
-    {
-      "index": 1,
-      "source": "docs/what-is-cloudflare.md",
-      "score": 0.92,
-      "snippet": "Cloudflare is one of the world's largest networks. Today, businesses, non-profits, bloggers...",
-      "metadata": {
-        "folder": "docs"
-      }
-    },
-    {
-      "index": 2,
-      "source": "blog/intro-to-cloudflare.md",
-      "score": 0.85,
-      "snippet": "Cloudflare provides a broad range of services to businesses of all sizes...",
-      "metadata": {
-        "folder": "blog"
-      }
-    }
-  ]
+	"answer": "Cloudflare is a global network that provides security, performance, and reliability services...",
+	"citations": [
+		{
+			"index": 1,
+			"source": "docs/what-is-cloudflare.md",
+			"score": 0.92,
+			"snippet": "Cloudflare is one of the world's largest networks. Today, businesses, non-profits, bloggers...",
+			"metadata": {
+				"folder": "docs"
+			}
+		},
+		{
+			"index": 2,
+			"source": "blog/intro-to-cloudflare.md",
+			"score": 0.85,
+			"snippet": "Cloudflare provides a broad range of services to businesses of all sizes...",
+			"metadata": {
+				"folder": "blog"
+			}
+		}
+	]
 }
 ```
 
@@ -222,132 +200,110 @@ Multiple chunks can come from the same document. Group them by `item.key` to sho
 
 To show one citation per source, update `src/index.ts` to group chunks by source document:
 
-* [  JavaScript ](#tab-panel-7235)
-* [  TypeScript ](#tab-panel-7236)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns an answer and the source chunks used as context.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns an answer and the source chunks used as context.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		// Group chunks by source document so each source appears once.
+		const sourceMap = new Map();
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
+		for (const chunk of response.chunks) {
+			// item.key is the source file path or URL.
+			const key = chunk.item.key;
+			const existing = sourceMap.get(key);
 
+			if (existing) {
+				// Keep the highest relevance score for each source.
+				existing.score = Math.max(existing.score, chunk.score);
+				existing.snippets.push(chunk.text.slice(0, 200));
+			} else {
+				sourceMap.set(key, {
+					score: chunk.score,
+					snippets: [chunk.text.slice(0, 200)],
+					metadata: chunk.item.metadata,
+				});
+			}
+		}
 
-    // Group chunks by source document so each source appears once.
-    const sourceMap = new Map();
+		const citations = [...sourceMap.entries()].map(
+			([source, { score, snippets, metadata }], i) => ({
+				index: i + 1,
+				source,
+				score,
+				snippets,
+				metadata,
+			}),
+		);
 
-
-    for (const chunk of response.chunks) {
-      // item.key is the source file path or URL.
-      const key = chunk.item.key;
-      const existing = sourceMap.get(key);
-
-
-      if (existing) {
-        // Keep the highest relevance score for each source.
-        existing.score = Math.max(existing.score, chunk.score);
-        existing.snippets.push(chunk.text.slice(0, 200));
-      } else {
-        sourceMap.set(key, {
-          score: chunk.score,
-          snippets: [chunk.text.slice(0, 200)],
-          metadata: chunk.item.metadata,
-        });
-      }
-    }
-
-
-    const citations = [...sourceMap.entries()].map(
-      ([source, { score, snippets, metadata }], i) => ({
-        index: i + 1,
-        source,
-        score,
-        snippets,
-        metadata,
-      }),
-    );
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns an answer and the source chunks used as context.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns an answer and the source chunks used as context.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		// Group chunks by source document so each source appears once.
+		const sourceMap = new Map<
+			string,
+			{ score: number; snippets: string[]; metadata?: Record<string, unknown> }
+		>();
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
+		for (const chunk of response.chunks) {
+			// item.key is the source file path or URL.
+			const key = chunk.item.key;
+			const existing = sourceMap.get(key);
 
+			if (existing) {
+				// Keep the highest relevance score for each source.
+				existing.score = Math.max(existing.score, chunk.score);
+				existing.snippets.push(chunk.text.slice(0, 200));
+			} else {
+				sourceMap.set(key, {
+					score: chunk.score,
+					snippets: [chunk.text.slice(0, 200)],
+					metadata: chunk.item.metadata,
+				});
+			}
+		}
 
-    // Group chunks by source document so each source appears once.
-    const sourceMap = new Map<
-      string,
-      { score: number; snippets: string[]; metadata?: Record<string, unknown> }
-    >();
+		const citations = [...sourceMap.entries()].map(
+			([source, { score, snippets, metadata }], i) => ({
+				index: i + 1,
+				source,
+				score,
+				snippets,
+				metadata,
+			}),
+		);
 
-
-    for (const chunk of response.chunks) {
-      // item.key is the source file path or URL.
-      const key = chunk.item.key;
-      const existing = sourceMap.get(key);
-
-
-      if (existing) {
-        // Keep the highest relevance score for each source.
-        existing.score = Math.max(existing.score, chunk.score);
-        existing.snippets.push(chunk.text.slice(0, 200));
-      } else {
-        sourceMap.set(key, {
-          score: chunk.score,
-          snippets: [chunk.text.slice(0, 200)],
-          metadata: chunk.item.metadata,
-        });
-      }
-    }
-
-
-    const citations = [...sourceMap.entries()].map(
-      ([source, { score, snippets, metadata }], i) => ({
-        index: i + 1,
-        source,
-        score,
-        snippets,
-        metadata,
-      }),
-    );
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -357,199 +313,169 @@ When using `stream: true`, the chunks are sent as a separate Server-Sent Events 
 
 To show citations before the full answer finishes streaming, update `src/index.ts` to transform the stream:
 
-* [  JavaScript ](#tab-panel-7237)
-* [  TypeScript ](#tab-panel-7238)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// Stream answer tokens, but extract source chunks first.
+		const stream = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+			stream: true,
+		});
 
-    // Stream answer tokens, but extract source chunks first.
-    const stream = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-      stream: true,
-    });
+		// Transform the stream: extract the chunks event and forward the rest
+		const { readable, writable } = new TransformStream();
+		const writer = writable.getWriter();
+		const encoder = new TextEncoder();
+		const decoder = new TextDecoder();
+		const reader = stream.getReader();
 
+		// Track the current SSE event type to identify source chunks.
+		let currentEvent = "";
 
-    // Transform the stream: extract the chunks event and forward the rest
-    const { readable, writable } = new TransformStream();
-    const writer = writable.getWriter();
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-    const reader = stream.getReader();
+		const pump = async () => {
+			try {
+				let buffer = "";
 
+				while (true) {
+					const { done, value } = await reader.read();
+					if (done) break;
 
-    // Track the current SSE event type to identify source chunks.
-    let currentEvent = "";
+					buffer += decoder.decode(value, { stream: true });
+					const lines = buffer.split("\n");
+					buffer = lines.pop() ?? "";
 
+					for (const line of lines) {
+						// The chunks event arrives before the streamed answer.
+						if (line.startsWith("event: ")) {
+							currentEvent = line.slice(7).trim();
+							continue;
+						}
 
-    const pump = async () => {
-      try {
-        let buffer = "";
+						// Transform the chunks data line into a citations event for your UI.
+						if (currentEvent === "chunks" && line.startsWith("data: ")) {
+							const chunks = JSON.parse(line.slice(6));
+							const citations = chunks.map((chunk) => ({
+								source: chunk.item.key,
+								score: chunk.score,
+							}));
+							await writer.write(
+								encoder.encode(
+									`event: citations\ndata: ${JSON.stringify(citations)}\n\n`,
+								),
+							);
+							currentEvent = "";
+							continue;
+						}
 
+						// Forward answer tokens and other SSE data unchanged.
+						currentEvent = "";
+						await writer.write(encoder.encode(line + "\n"));
+					}
+				}
+			} finally {
+				reader.releaseLock();
+				await writer.close();
+			}
+		};
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+		pump().catch(() => writer.close());
 
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() ?? "";
-
-
-          for (const line of lines) {
-            // The chunks event arrives before the streamed answer.
-            if (line.startsWith("event: ")) {
-              currentEvent = line.slice(7).trim();
-              continue;
-            }
-
-
-            // Transform the chunks data line into a citations event for your UI.
-            if (currentEvent === "chunks" && line.startsWith("data: ")) {
-              const chunks = JSON.parse(line.slice(6));
-              const citations = chunks.map((chunk) => ({
-                source: chunk.item.key,
-                score: chunk.score,
-              }));
-              await writer.write(
-                encoder.encode(
-                  `event: citations\ndata: ${JSON.stringify(citations)}\n\n`,
-                ),
-              );
-              currentEvent = "";
-              continue;
-            }
-
-
-            // Forward answer tokens and other SSE data unchanged.
-            currentEvent = "";
-            await writer.write(encoder.encode(line + "\n"));
-          }
-        }
-      } finally {
-        reader.releaseLock();
-        await writer.close();
-      }
-    };
-
-
-    pump().catch(() => writer.close());
-
-
-    return new Response(readable, {
-      headers: {
-        "content-type": "text/event-stream",
-        "cache-control": "no-cache",
-      },
-    });
-  },
+		return new Response(readable, {
+			headers: {
+				"content-type": "text/event-stream",
+				"cache-control": "no-cache",
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// Stream answer tokens, but extract source chunks first.
+		const stream = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+			stream: true,
+		});
 
-    // Stream answer tokens, but extract source chunks first.
-    const stream = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-      stream: true,
-    });
+		// Transform the stream: extract the chunks event and forward the rest
+		const { readable, writable } = new TransformStream();
+		const writer = writable.getWriter();
+		const encoder = new TextEncoder();
+		const decoder = new TextDecoder();
+		const reader = stream.getReader();
 
+		// Track the current SSE event type to identify source chunks.
+		let currentEvent = "";
 
-    // Transform the stream: extract the chunks event and forward the rest
-    const { readable, writable } = new TransformStream();
-    const writer = writable.getWriter();
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-    const reader = stream.getReader();
+		const pump = async () => {
+			try {
+				let buffer = "";
 
+				while (true) {
+					const { done, value } = await reader.read();
+					if (done) break;
 
-    // Track the current SSE event type to identify source chunks.
-    let currentEvent = "";
+					buffer += decoder.decode(value, { stream: true });
+					const lines = buffer.split("\n");
+					buffer = lines.pop() ?? "";
 
+					for (const line of lines) {
+						// The chunks event arrives before the streamed answer.
+						if (line.startsWith("event: ")) {
+							currentEvent = line.slice(7).trim();
+							continue;
+						}
 
-    const pump = async () => {
-      try {
-        let buffer = "";
+						// Transform the chunks data line into a citations event for your UI.
+						if (currentEvent === "chunks" && line.startsWith("data: ")) {
+							const chunks = JSON.parse(line.slice(6));
+							const citations = chunks.map(
+								(chunk: { item: { key: string }; score: number }) => ({
+									source: chunk.item.key,
+									score: chunk.score,
+								}),
+							);
+							await writer.write(
+								encoder.encode(
+									`event: citations\ndata: ${JSON.stringify(citations)}\n\n`,
+								),
+							);
+							currentEvent = "";
+							continue;
+						}
 
+						// Forward answer tokens and other SSE data unchanged.
+						currentEvent = "";
+						await writer.write(encoder.encode(line + "\n"));
+					}
+				}
+			} finally {
+				reader.releaseLock();
+				await writer.close();
+			}
+		};
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+		pump().catch(() => writer.close());
 
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() ?? "";
-
-
-          for (const line of lines) {
-            // The chunks event arrives before the streamed answer.
-            if (line.startsWith("event: ")) {
-              currentEvent = line.slice(7).trim();
-              continue;
-            }
-
-
-            // Transform the chunks data line into a citations event for your UI.
-            if (currentEvent === "chunks" && line.startsWith("data: ")) {
-              const chunks = JSON.parse(line.slice(6));
-              const citations = chunks.map(
-                (chunk: { item: { key: string }; score: number }) => ({
-                  source: chunk.item.key,
-                  score: chunk.score,
-                }),
-              );
-              await writer.write(
-                encoder.encode(
-                  `event: citations\ndata: ${JSON.stringify(citations)}\n\n`,
-                ),
-              );
-              currentEvent = "";
-              continue;
-            }
-
-
-            // Forward answer tokens and other SSE data unchanged.
-            currentEvent = "";
-            await writer.write(encoder.encode(line + "\n"));
-          }
-        }
-      } finally {
-        reader.releaseLock();
-        await writer.close();
-      }
-    };
-
-
-    pump().catch(() => writer.close());
-
-
-    return new Response(readable, {
-      headers: {
-        "content-type": "text/event-stream",
-        "cache-control": "no-cache",
-      },
-    });
-  },
+		return new Response(readable, {
+			headers: {
+				"content-type": "text/event-stream",
+				"cache-control": "no-cache",
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -559,91 +485,75 @@ Each chunk includes a `scoring_details` object with a breakdown of how it was sc
 
 To filter citations by relevance, update `src/index.ts` to use score fields:
 
-* [  JavaScript ](#tab-panel-7233)
-* [  TypeScript ](#tab-panel-7234)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns scoring details with each source chunk.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns scoring details with each source chunk.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		const citations = response.chunks
+			// Filter out lower-scoring chunks for stronger citations.
+			.filter((chunk) => chunk.score > 0.5)
+			// Expose scoring details if your UI shows confidence indicators.
+			.map((chunk, index) => ({
+				index: index + 1,
+				source: chunk.item.key,
+				score: chunk.score,
+				vectorScore: chunk.scoring_details?.vector_score,
+				keywordScore: chunk.scoring_details?.keyword_score,
+				rerankingScore: chunk.scoring_details?.reranking_score,
+				confidence: chunk.score > 0.8 ? "high" : "medium",
+				snippet: chunk.text.slice(0, 200),
+			}));
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
-
-
-    const citations = response.chunks
-      // Filter out lower-scoring chunks for stronger citations.
-      .filter((chunk) => chunk.score > 0.5)
-      // Expose scoring details if your UI shows confidence indicators.
-      .map((chunk, index) => ({
-        index: index + 1,
-        source: chunk.item.key,
-        score: chunk.score,
-        vectorScore: chunk.scoring_details?.vector_score,
-        keywordScore: chunk.scoring_details?.keyword_score,
-        rerankingScore: chunk.scoring_details?.reranking_score,
-        confidence: chunk.score > 0.8 ? "high" : "medium",
-        snippet: chunk.text.slice(0, 200),
-      }));
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		const query = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// AI Search returns scoring details with each source chunk.
+		const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
+			messages: [{ role: "user", content: query }],
+		});
 
-    // AI Search returns scoring details with each source chunk.
-    const response = await env.AI_SEARCH.get("my-instance").chatCompletions({
-      messages: [{ role: "user", content: query }],
-    });
+		// Show this model response to the user.
+		const answer = response.choices[0]?.message?.content ?? "";
 
+		const citations = response.chunks
+			// Filter out lower-scoring chunks for stronger citations.
+			.filter((chunk) => chunk.score > 0.5)
+			// Expose scoring details if your UI shows confidence indicators.
+			.map((chunk, index) => ({
+				index: index + 1,
+				source: chunk.item.key,
+				score: chunk.score,
+				vectorScore: chunk.scoring_details?.vector_score,
+				keywordScore: chunk.scoring_details?.keyword_score,
+				rerankingScore: chunk.scoring_details?.reranking_score,
+				confidence: chunk.score > 0.8 ? "high" : "medium",
+				snippet: chunk.text.slice(0, 200),
+			}));
 
-    // Show this model response to the user.
-    const answer = response.choices[0]?.message?.content ?? "";
-
-
-    const citations = response.chunks
-      // Filter out lower-scoring chunks for stronger citations.
-      .filter((chunk) => chunk.score > 0.5)
-      // Expose scoring details if your UI shows confidence indicators.
-      .map((chunk, index) => ({
-        index: index + 1,
-        source: chunk.item.key,
-        score: chunk.score,
-        vectorScore: chunk.scoring_details?.vector_score,
-        keywordScore: chunk.scoring_details?.keyword_score,
-        rerankingScore: chunk.scoring_details?.reranking_score,
-        confidence: chunk.score > 0.8 ? "high" : "medium",
-        snippet: chunk.text.slice(0, 200),
-      }));
-
-
-    return Response.json({ answer, citations });
-  },
+		return Response.json({ answer, citations });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -669,7 +579,14 @@ Each chunk in the `chunks` array can include the following fields:
 
 For multi-instance searches, each chunk also includes an `instance_id` field identifying which instance it came from. To search or chat across multiple instances, refer to [namespace methods](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-methods).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/chunk-citations/","name":"Show source citations in responses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Caching
 description: Override caching settings on a per-request basis.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Caching
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Caching
 
-# Caching
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway can cache responses from your AI model providers, serving them directly from Cloudflare's cache for identical requests.
 
@@ -27,9 +29,6 @@ Currently caching is supported only for text and image responses, and it applies
 This configuration benefits use cases with limited prompt options. For example, a support bot that asks "How can I help you?" and lets the user select an answer from a limited set of options works well with the current caching configuration. We plan on adding semantic search for caching in the future to improve cache hit rates.
 
 ## Default configuration
-
-* [ Dashboard ](#tab-panel-7126)
-* [ API ](#tab-panel-7127)
 
 To set the default caching configuration in the dashboard:
 
@@ -87,8 +86,6 @@ You can use the header **cf-aig-skip-cache** to bypass the cached version of the
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
 
-**Request skipping the cache**
-
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
 # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
@@ -114,8 +111,6 @@ Cache TTL, or Time To Live, is the duration a cached request remains valid befor
 For example, if you set a TTL of one hour, it means that a request is kept in the cache for an hour. Within that hour, an identical request will be served from the cache instead of the original API. After an hour, the cache expires and the request will go to the original API for a fresh response, and that response will repopulate the cache for the next hour.
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
-
-**Request to be cached for an hour**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -143,8 +138,6 @@ When you use the **cf-aig-cache-key** header for the first time, you will receiv
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
 
-**Request with custom cache key**
-
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
 # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
@@ -167,7 +160,14 @@ AI Gateway caching behavior
 
 Cache in AI Gateway is volatile. If two identical requests are sent simultaneously, the first request may not cache in time for the second request to use it, which may result in the second request retrieving data from the original source.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/caching/#page","headline":"Caching · Cloudflare AI Gateway docs","description":"Override caching settings on a per-request basis.","url":"https://developers.cloudflare.com/ai-gateway/features/caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/caching/","name":"Caching"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/caching/#page","headline":"Caching · Cloudflare AI Gateway docs","description":"Override caching settings on a per-request basis.","url":"https://developers.cloudflare.com/ai-gateway/features/caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

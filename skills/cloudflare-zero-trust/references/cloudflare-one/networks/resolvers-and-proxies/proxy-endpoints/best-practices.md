@@ -1,16 +1,18 @@
 ---
-title: PAC file best practices
 description: PAC file best practices in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: PAC file best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PAC file best practices
 
-# PAC file best practices
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A PAC file is a text file that specifies which traffic should redirect to the proxy server. When a browser makes a web request, it consults the PAC file's `FindProxyForURL()` function, which evaluates the request and returns routing instructions, such as a direct connection, proxy server, or failover sequence.
 
@@ -18,28 +20,24 @@ A PAC file is a text file that specifies which traffic should redirect to the pr
 
 The default Cloudflare PAC file follows a standard format:
 
-**default-pac.js**
-
 ```js
 function FindProxyForURL(url, host) {
-  // No proxy for private (RFC 1918) IP addresses (intranet sites)
-  if (
-    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
-    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
-    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
-  ) {
-    return "DIRECT";
-  }
+	// No proxy for private (RFC 1918) IP addresses (intranet sites)
+	if (
+		isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
+		isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
+		isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
+	) {
+		return "DIRECT";
+	}
 
+	// No proxy for localhost
+	if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
+		return "DIRECT";
+	}
 
-  // No proxy for localhost
-  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
-    return "DIRECT";
-  }
-
-
-  // Proxy all
-  return "HTTPS 3ele0ss56t.proxy.cloudflare-gateway.com:443";
+	// Proxy all
+	return "HTTPS 3ele0ss56t.proxy.cloudflare-gateway.com:443";
 }
 ```
 
@@ -60,84 +58,72 @@ When using [authorization endpoints](https://developers.cloudflare.com/cloudflar
 
 The following example PAC file is a comprehensive template that includes common IdP bypass rules. Replace the placeholder values with your configuration:
 
-**pac-idp-template.js**
-
 ```js
 function FindProxyForURL(url, host) {
-  // *** Identity Provider Bypass ***
-  // CRITICAL: Bypass your IdP to prevent authentication loops
-  // Uncomment and configure the section for your IdP:
+	// *** Identity Provider Bypass ***
+	// CRITICAL: Bypass your IdP to prevent authentication loops
+	// Uncomment and configure the section for your IdP:
 
+	// Okta
+	// if (host === "your-domain.okta.com" || shExpMatch(host, "*.oktacdn.com")) {
+	// 	return "DIRECT";
+	// }
 
-  // Okta
-  // if (host === "your-domain.okta.com" || shExpMatch(host, "*.oktacdn.com")) {
-  //   return "DIRECT";
-  // }
+	// Microsoft Entra ID (Azure AD)
+	// if (
+	// 	host === "login.microsoftonline.com" ||
+	// 	host === "aadcdn.msauth.net" ||
+	// 	host === "aadcdn.msftauth.net"
+	// ) {
+	// 	return "DIRECT";
+	// }
 
+	// Google Workspace
+	// if (
+	// 	host === "accounts.google.com" ||
+	// 	shExpMatch(host, "*.gstatic.com")
+	// ) {
+	// 	return "DIRECT";
+	// }
 
-  // Microsoft Entra ID (Azure AD)
-  // if (
-  //   host === "login.microsoftonline.com" ||
-  //   host === "aadcdn.msauth.net" ||
-  //   host === "aadcdn.msftauth.net"
-  // ) {
-  //   return "DIRECT";
-  // }
+	// GitHub
+	// if (shExpMatch(host, "*.github.com")) {
+	// 	return "DIRECT";
+	// }
 
+	// *** Private Networks ***
+	// Bypass private RFC 1918 IP addresses
+	if (
+		isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
+		isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
+		isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
+	) {
+		return "DIRECT";
+	}
 
-  // Google Workspace
-  // if (
-  //   host === "accounts.google.com" ||
-  //   shExpMatch(host, "*.gstatic.com")
-  // ) {
-  //   return "DIRECT";
-  // }
+	// Bypass localhost
+	if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
+		return "DIRECT";
+	}
 
+	// Bypass plain hostnames (no dots)
+	if (isPlainHostName(host)) {
+		return "DIRECT";
+	}
 
-  // GitHub
-  // if (shExpMatch(host, "*.github.com")) {
-  //   return "DIRECT";
-  // }
+	// Bypass .local domains
+	if (shExpMatch(host, "*.local")) {
+		return "DIRECT";
+	}
 
+	// *** Cloudflare Access Logout ***
+	// Optional: Redirect logout requests to your Access logout page
+	// if (shExpMatch(url, "*logout*")) {
+	// 	return "HTTPS your-team-name.cloudflareaccess.com/cdn-cgi/access/logout";
+	// }
 
-  // *** Private Networks ***
-  // Bypass private RFC 1918 IP addresses
-  if (
-    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
-    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
-    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
-  ) {
-    return "DIRECT";
-  }
-
-
-  // Bypass localhost
-  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
-    return "DIRECT";
-  }
-
-
-  // Bypass plain hostnames (no dots)
-  if (isPlainHostName(host)) {
-    return "DIRECT";
-  }
-
-
-  // Bypass .local domains
-  if (shExpMatch(host, "*.local")) {
-    return "DIRECT";
-  }
-
-
-  // *** Cloudflare Access Logout ***
-  // Optional: Redirect logout requests to your Access logout page
-  // if (shExpMatch(url, "*logout*")) {
-  //   return "HTTPS your-team-name.cloudflareaccess.com/cdn-cgi/access/logout";
-  // }
-
-
-  // *** Proxy all other traffic ***
-  return "HTTPS your-subdomain.proxy.cloudflare-gateway.com:443";
+	// *** Proxy all other traffic ***
+	return "HTTPS your-subdomain.proxy.cloudflare-gateway.com:443";
 }
 ```
 
@@ -153,34 +139,27 @@ Browsers evaluate PAC files for every request. Optimizing PAC file performance i
 
 When performing DNS resolution with `dnsResolve()`, store the result in a variable to reuse it across multiple checks. This avoids redundant DNS lookups:
 
-**JavaScript**
-
 ```js
 function FindProxyForURL(url, host) {
-  // Resolve once and reuse
-  var hostIP = dnsResolve(host);
+	// Resolve once and reuse
+	var hostIP = dnsResolve(host);
 
+	if (isInNet(hostIP, "10.0.0.0", "255.0.0.0")) {
+		return "DIRECT";
+	}
 
-  if (isInNet(hostIP, "10.0.0.0", "255.0.0.0")) {
-    return "DIRECT";
-  }
+	// Reuse hostIP for additional checks
+	if (isInNet(hostIP, "172.16.0.0", "255.240.0.0")) {
+		return "DIRECT";
+	}
 
-
-  // Reuse hostIP for additional checks
-  if (isInNet(hostIP, "172.16.0.0", "255.240.0.0")) {
-    return "DIRECT";
-  }
-
-
-  return "HTTPS proxy.example.com:443";
+	return "HTTPS proxy.example.com:443";
 }
 ```
 
 ### Check for plain hostnames first
 
 NetBIOS names (hostnames without periods) are typically internal and should bypass the proxy. Check for these first:
-
-**JavaScript**
 
 ```js
 if (isPlainHostName(host)) return "DIRECT";
@@ -192,21 +171,17 @@ if (isPlainHostName(host)) return "DIRECT";
 
 JavaScript is case-sensitive. Convert hostnames to lowercase for consistent matching:
 
-**JavaScript**
-
 ```js
 function FindProxyForURL(url, host) {
-  // Normalize to lowercase
-  host = host.toLowerCase();
-  url = url.toLowerCase();
+	// Normalize to lowercase
+	host = host.toLowerCase();
+	url = url.toLowerCase();
 
+	if (shExpMatch(host, "*.example.com")) {
+		return "DIRECT";
+	}
 
-  if (shExpMatch(host, "*.example.com")) {
-    return "DIRECT";
-  }
-
-
-  return "HTTPS proxy.cloudflare-gateway.com:443";
+	return "HTTPS proxy.cloudflare-gateway.com:443";
 }
 ```
 
@@ -222,16 +197,14 @@ These bypass rules are optional and depend on your organization's security requi
 
 Font APIs and static asset providers should typically bypass the proxy to prevent rendering issues:
 
-**JavaScript**
-
 ```js
 // Bypass font providers
 if (
-  shExpMatch(host, "*.googleapis.com") ||
-  shExpMatch(host, "*.gstatic.com") ||
-  shExpMatch(host, "fonts.adobe.com")
+	shExpMatch(host, "*.googleapis.com") ||
+	shExpMatch(host, "*.gstatic.com") ||
+	shExpMatch(host, "fonts.adobe.com")
 ) {
-  return "DIRECT";
+	return "DIRECT";
 }
 ```
 
@@ -239,16 +212,14 @@ if (
 
 Video streaming and large media downloads may perform better with direct connections:
 
-**JavaScript**
-
 ```js
 // Bypass streaming services
 if (
-  shExpMatch(host, "*.netflix.com") ||
-  shExpMatch(host, "*.youtube.com") ||
-  shExpMatch(host, "*.googlevideo.com")
+	shExpMatch(host, "*.netflix.com") ||
+	shExpMatch(host, "*.youtube.com") ||
+	shExpMatch(host, "*.googlevideo.com")
 ) {
-  return "DIRECT";
+	return "DIRECT";
 }
 ```
 
@@ -256,15 +227,13 @@ if (
 
 When HTTPS inspection is enabled, applications and services that use certificate pinning reject the Cloudflare-injected certificate and fail to load when routed through the proxy. Bypass these domains in your PAC file:
 
-**JavaScript**
-
 ```js
 // Bypass certificate-pinned apps
 if (
-  shExpMatch(host, "*.example-bank.com") ||
-  shExpMatch(host, "*.example-pinned-app.com")
+	shExpMatch(host, "*.example-bank.com") ||
+	shExpMatch(host, "*.example-pinned-app.com")
 ) {
-  return "DIRECT";
+	return "DIRECT";
 }
 ```
 
@@ -329,7 +298,14 @@ Excessive DNS lookups in the PAC file can cause delays. Review your PAC file and
 
 When you update a PAC file, browsers may continue to use a cached version, causing unexpected behavior. Clear your browser cache and restart the browser after updating the PAC file to ensure the browser uses the latest version.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/#page","headline":"PAC file best practices · Cloudflare One docs","description":"PAC file best practices in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/","name":"Resolvers and proxies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","name":"Proxy endpoints"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/","name":"PAC file best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/#page","headline":"PAC file best practices · Cloudflare One docs","description":"PAC file best practices in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

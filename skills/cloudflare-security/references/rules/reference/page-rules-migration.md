@@ -1,16 +1,18 @@
 ---
-title: Page Rules migration guide
 description: Migrate from Page Rules to modern Cloudflare Rules alternatives.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Page Rules migration guide
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Page Rules migration guide
 
-# Page Rules migration guide
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/reference/page-rules-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is continuously improving its platform to deliver more powerful and scalable tools for managing your configurations. To help you take full advantage of these improvements, we recommend using [modern Rules features](https://developers.cloudflare.com/rules/) for new implementations. These products address the limitations of Page Rules while providing greater flexibility, scalability, and ease of use.
 
@@ -115,9 +117,6 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 
 ### Migrate Always Use HTTPS
 
-* [ Dashboard ](#tab-panel-10864)
-* [ Visual guide ](#tab-panel-10865)
-
 **Context:**
 
 You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS for all subdomains of `example.com` and the `example.com` domain itself:
@@ -143,9 +142,6 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 | ![Example Page Rule with 'Always Use HTTPS' setting](https://developers.cloudflare.com/_astro/pr-always-use-https.CUl_pNfb_ZwfSLG.webp) | ![Single redirect matching the 'Always Use HTTPS' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-always-use-https-new.BOryxIv0_jNt3t.webp) |
 
 ### Migrate Automatic HTTPS Rewrites
-
-* [ Dashboard ](#tab-panel-10866)
-* [ Visual guide ](#tab-panel-10867)
 
 **Context:**
 
@@ -176,9 +172,6 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 ### Migrate Browser Cache TTL
 
-* [ Dashboard ](#tab-panel-10896)
-* [ Visual guide ](#tab-panel-10897)
-
 **Context:**
 
 You configured a Page Rule adjusting browser cache TTL to one day for all subdomains of `example.com` and the `example.com` domain itself:
@@ -200,7 +193,7 @@ You configured a Page Rule adjusting browser cache TTL to one day for all subdom
     * **Cache eligibility**: Eligible for cache
     * **Browser TTL**: Override origin and use this TTL
     * **Input time-to-live (TTL)**: _1 day_
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -210,9 +203,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Browser Cache TTL' setting](https://developers.cloudflare.com/_astro/pr-browser-cache-ttl.BsUhcEXO_Z15nk2E.webp) | ![Cache rule matching the 'Browser Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-browser-cache-ttl-new.CFYgSIfM_28xvmr.webp) |
 
 ### Migrate Browser Integrity Check
-
-* [ Dashboard ](#tab-panel-10868)
-* [ Visual guide ](#tab-panel-10869)
 
 **Context:**
 
@@ -243,9 +233,6 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 ### Migrate Bypass Cache on Cookie
 
-* [ Dashboard ](#tab-panel-10898)
-* [ Visual guide ](#tab-panel-10899)
-
 **Context:**
 
 You configured a Page Rule turning on Bypass Cache on Cookie for all subdomains of `example.com` and the `example.com` domain itself:
@@ -265,7 +252,7 @@ You configured a Page Rule turning on Bypass Cache on Cookie for all subdomains 
       `(http.host contains "example.com" and http.cookie contains "test-cookie")`
   * **Then**:
     * **Cache eligibility**: Bypass cache
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -275,9 +262,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Bypass Cache on Cookie' setting](https://developers.cloudflare.com/_astro/pr-bypass-cache-on-cookie.h4Mq0pkO_ZS1hzt.webp) | ![Cache rule matching the 'Bypass Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-bypass-cache-on-cookie-new.BeJb7-Bu_Z1vl7rE.webp) |
 
 ### Migrate Cache By Device Type
-
-* [ Dashboard ](#tab-panel-10900)
-* [ Visual guide ](#tab-panel-10901)
 
 **Context:**
 
@@ -300,7 +284,7 @@ You configured a Page Rule turning on Cache By Device Type for all subdomains of
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Cache key
       * **Cache by device type**: On
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -310,9 +294,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Cache By Device Type' setting](https://developers.cloudflare.com/_astro/pr-cache-by-device-type.D_TlBAdc_1ORjXt.webp) | ![Cache rule matching the 'Cache By Device Type' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-by-device-type-new.j6a5kEn__kmLw1.webp) |
 
 ### Migrate Cache Deception Armor
-
-* [ Dashboard ](#tab-panel-10902)
-* [ Visual guide ](#tab-panel-10903)
 
 **Context:**
 
@@ -334,7 +315,7 @@ You configured a Page Rule turning on Cache Deception Armor for all subdomains o
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Cache key
       * **Cache deception armor**: On
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -344,9 +325,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Cache Deception Armor' setting](https://developers.cloudflare.com/_astro/pr-cache-deception-armor.CAh-wrs4_ZaMxP1.webp) | ![Cache rule matching the 'Cache Deception Armor' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-deception-armor-new.BT9l5EUw_Z1UI9gA.webp) |
 
 ### Migrate Cache Level (Cache Everything)
-
-* [ Dashboard ](#tab-panel-10904)
-* [ Visual guide ](#tab-panel-10905)
 
 **Context:**
 
@@ -367,7 +345,7 @@ You configured a Page Rule turning on caching of all assets for all subdomains o
       `(http.host contains "example.com")`
   * **Then**:
     * **Cache eligibility**: Eligible for cache
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -377,9 +355,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Cache Level' set to 'Cache Everything'](https://developers.cloudflare.com/_astro/pr-cache-level-everything.DdVHSP6R_Z1SVoGM.webp) | ![Cache rule matching the 'Cache Level: Cache Everything' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-level-everything-new.CWHQUlgp_Z1GCIwi.webp) |
 
 ### Migrate Cache on Cookie
-
-* [ Dashboard ](#tab-panel-10906)
-* [ Visual guide ](#tab-panel-10907)
 
 **Context:**
 
@@ -400,7 +375,7 @@ You configured a Page Rule turning on caching for responses that contained cooki
       `(http.host contains "example.com" and http.cookie contains "test-cookie")`
   * **Then**:
     * **Cache eligibility**: Eligible for cache
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -410,9 +385,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Cache on Cookie' setting](https://developers.cloudflare.com/_astro/pr-cache-on-cookie.ByvIqgIj_NLhPm.webp) | ![Cache rule matching the 'Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-on-cookie-new.PWLmyHmb_Z61apS.webp) |
 
 ### Migrate Cache TTL by status code
-
-* [ Dashboard ](#tab-panel-10908)
-* [ Visual guide ](#tab-panel-10909)
 
 **Context:**
 
@@ -441,7 +413,7 @@ You configured a Page Rule turning on caching of every response with status code
           * **From**: _200_
           * **To**: _599_
           * **Duration**: _1 day_
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -451,9 +423,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with the 'Cache TTL by status code' setting](https://developers.cloudflare.com/_astro/pr-cache-ttl-by-status-code.BEFPIQlk_gCwHH.webp) | ![Cache rule matching the 'Cache TTL by status code' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-ttl-by-status-code-new.D7fRKD4K_Zkzrqq.webp) |
 
 ### Migrate Custom Cache Key
-
-* [ Dashboard ](#tab-panel-10910)
-* [ Visual guide ](#tab-panel-10911)
 
 **Context:**
 
@@ -476,7 +445,7 @@ You configured a Page Rule setting a custom cache key for all query string param
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Cache key
       * **Query string**: All query string parameters
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -486,9 +455,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with the 'Custom Cache Key' setting](https://developers.cloudflare.com/_astro/pr-custom-cache-key.B4mIYhPL_ZxFokH.webp) | ![Cache rule matching the 'Custom Cache Key' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-custom-cache-key-new.Cgx92M0b_1hvSHD.webp) |
 
 ### Migrate Disable Apps
-
-* [ Dashboard ](#tab-panel-10870)
-* [ Visual guide ](#tab-panel-10871)
 
 **Context:**
 
@@ -517,14 +483,11 @@ You configured a Page Rule turning off Cloudflare Apps (deprecated) for all subd
 
 ### Replace Disable Performance
 
-Warning
+Caution
 
 The **Disable Performance** setting is deprecated. Any Page Rules with this setting will not be migrated.
 
 This Page Rules setting turned off Polish and Rocket Loader. You can still turn on or off relevant Cloudflare features one by one using Configuration Rules.
-
-* [ Dashboard ](#tab-panel-10872)
-* [ Visual guide ](#tab-panel-10873)
 
 **Context:**
 
@@ -554,13 +517,11 @@ You configured a Page Rule with **Disable Performance** (deprecated) for all sub
 
 ### Replace Disable Security
 
-Warning
+Caution
 
 The **Disable Security** setting is deprecated. Any Page Rules with this setting will not be migrated.
 
 This Page Rules setting turns off Email Obfuscation, Rate Limiting (previous version), Scrape Shield, URL (Zone) Lockdown, and WAF managed rules (previous version). You can still turn on or off relevant Cloudflare features one by one using Configuration Rules and WAF custom rules.
-
-* [ Dashboard ](#tab-panel-10863)
 
 **Context:**
 
@@ -581,14 +542,11 @@ This setting turned off a subset of Cloudflare security features: Email Obfuscat
 3. Turn off your existing Page Rule and validate the behavior of the rules you created.
 4. If your tests succeed, delete the existing Page Rule.
 
-Warning
+Caution
 
 If you are still using [WAF managed rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/) or [Rate Limiting (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/), consider upgrading to the new versions of these products. It is not possible to turn off these older products using modern Rules features.
 
 ### Migrate Disable Zaraz
-
-* [ Dashboard ](#tab-panel-10874)
-* [ Visual guide ](#tab-panel-10875)
 
 **Context:**
 
@@ -617,9 +575,6 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 ### Migrate Edge Cache TTL
 
-* [ Dashboard ](#tab-panel-10912)
-* [ Visual guide ](#tab-panel-10913)
-
 **Context:**
 
 You configured a Page Rule adjusting Edge Cache TTL for all subdomains of `example.com` and the `example.com` domain itself:
@@ -642,7 +597,7 @@ You configured a Page Rule adjusting Edge Cache TTL for all subdomains of `examp
     * **Setting**: Edge TTL
       * Ignore cache-control header and use this TTL
       * **Input time-to-live (TTL)**: _1 day_
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -652,9 +607,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with the 'Edge Cache TTL' setting](https://developers.cloudflare.com/_astro/pr-edge-cache-ttl.DdpuJjjM_1nFprQ.webp) | ![Cache rule matching the 'Edge Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-edge-cache-ttl-new.CASDurRT_DBFBY.webp) |
 
 ### Migrate Email Obfuscation
-
-* [ Dashboard ](#tab-panel-10876)
-* [ Visual guide ](#tab-panel-10877)
 
 **Context:**
 
@@ -686,9 +638,6 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 ### Migrate Forwarding URL
 
 **Example #1: Redirect `www` to root domain**
-
-* [ Dashboard ](#tab-panel-10922)
-* [ Visual guide ](#tab-panel-10923)
 
 **Context:**
 
@@ -730,9 +679,6 @@ This would require you to also change the **Target URL** to use the second wildc
 
 **Example #2: Redirect all pages under old path to new path**
 
-* [ Dashboard ](#tab-panel-10924)
-* [ Visual guide ](#tab-panel-10925)
-
 **Context:**
 
 You configured a Page Rule permanently redirecting `example.com/old-path` to `example.com/new-path`:
@@ -773,9 +719,6 @@ This would require you to also change the **Target URL** to use the second wildc
 
 ### Migrate Host Header Override
 
-* [ Dashboard ](#tab-panel-10878)
-* [ Visual guide ](#tab-panel-10879)
-
 **Context:**
 
 You configured a Page Rule changing the `Host` HTTP header to `example.saas-provider.com`, for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
@@ -805,9 +748,6 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 ### Migrate IP Geolocation Header
 
-* [ Dashboard ](#tab-panel-10880)
-* [ Visual guide ](#tab-panel-10881)
-
 **Context:**
 
 You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
@@ -827,9 +767,6 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 | ![Example Page Rule with 'IP Geolocation Header' setting](https://developers.cloudflare.com/_astro/pr-ip-geolocation-header._es904nB_Z1kVGHd.webp) | ![The 'Add visitor location headers' Managed Transform matching the 'IP Geolocation Header' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-ip-geolocation-header-new.D3CE9V7z_Z22BvhB.webp) |
 
 ### Migrate Opportunistic Encryption
-
-* [ Dashboard ](#tab-panel-10882)
-* [ Visual guide ](#tab-panel-10883)
 
 **Context:**
 
@@ -860,9 +797,6 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 ### Migrate Origin Cache Control
 
-* [ Dashboard ](#tab-panel-10914)
-* [ Visual guide ](#tab-panel-10915)
-
 **Context:**
 
 You configured a Page Rule turning off Origin Cache Control for all subdomains of `example.com` and the `example.com` domain itself:
@@ -884,7 +818,7 @@ You configured a Page Rule turning off Origin Cache Control for all subdomains o
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Origin Cache Control
       * **Enable Origin Cache Control**: Off
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -894,9 +828,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Origin Cache Control' setting](https://developers.cloudflare.com/_astro/pr-origin-cache-control.DCUWJE-U_Z2k59Gp.webp) | ![Cache rule matching the 'Origin Cache Control' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-origin-cache-control-new.DqpXz-FD_ZDbSey.webp) |
 
 ### Migrate Origin Error Page Pass-thru
-
-* [ Dashboard ](#tab-panel-10916)
-* [ Visual guide ](#tab-panel-10917)
 
 **Context:**
 
@@ -919,7 +850,7 @@ You configured a Page Rule turning on Origin Error Page Pass-thru for all subdom
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Origin error page pass-thru
       * **Use Origin error page pass-thru**: On
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -929,9 +860,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Origin Error Page Pass-thru' setting](https://developers.cloudflare.com/_astro/pr-origin-error-page-pass-thru.CaO5dguv_ZTxuQ5.webp) | ![Cache rule matching the 'Origin Error Page Pass-thru > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-origin-error-page-pass-thru-new.CEumhpfw_ARQAy.webp) |
 
 ### Migrate Polish
-
-* [ Dashboard ](#tab-panel-10884)
-* [ Visual guide ](#tab-panel-10885)
 
 **Context:**
 
@@ -962,9 +890,6 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 ### Migrate Query String Sort
 
-* [ Dashboard ](#tab-panel-10918)
-* [ Visual guide ](#tab-panel-10919)
-
 **Context:**
 
 You configured a Page Rule turning on Query String Sort for all subdomains of `example.com` and the `example.com` domain itself:
@@ -986,7 +911,7 @@ You configured a Page Rule turning on Query String Sort for all subdomains of `e
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Cache key
       * **Sort query string**: On
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -996,9 +921,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Query String Sort' setting](https://developers.cloudflare.com/_astro/pr-query-string-sort.C01G9KtA_Z1y5BVz.webp) | ![Cache rule matching the 'Query String Sort > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-query-string-sort-new.DhEB-zV8_Z1HxHes.webp) |
 
 ### Migrate Resolve Override
-
-* [ Dashboard ](#tab-panel-10886)
-* [ Visual guide ](#tab-panel-10887)
 
 **Context:**
 
@@ -1028,9 +950,6 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 ### Migrate Respect Strong ETags
 
-* [ Dashboard ](#tab-panel-10920)
-* [ Visual guide ](#tab-panel-10921)
-
 **Context:**
 
 You configured a Page Rule turning on byte-for-byte equivalency checks for all subdomains of `example.com` and the `example.com` domain itself:
@@ -1052,7 +971,7 @@ You configured a Page Rule turning on byte-for-byte equivalency checks for all s
     * **Cache eligibility**: Eligible for cache
     * **Setting**: Respect strong ETags
       * **Use strong ETag headers**: On
-Warning
+Caution
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
@@ -1062,9 +981,6 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 | ![Example Page Rule with 'Respect Strong ETags' setting](https://developers.cloudflare.com/_astro/pr-respect-strong-etags.CUOv_EvP_Z3LXqt.webp) | ![Cache rule matching the 'Respect Strong ETags > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-respect-strong-etags-new.BnNZFkL6_Z1oczSf.webp) |
 
 ### Migrate Rocket Loader
-
-* [ Dashboard ](#tab-panel-10888)
-* [ Visual guide ](#tab-panel-10889)
 
 **Context:**
 
@@ -1095,9 +1011,6 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 
 ### Migrate Security Level
 
-* [ Dashboard ](#tab-panel-10890)
-* [ Visual guide ](#tab-panel-10891)
-
 **Context:**
 
 You configured a Page Rule setting Security Level to _I'm Under Attack_ for all subdomains of `example.com` and the `example.com` domain itself:
@@ -1127,9 +1040,6 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 ### Migrate True Client IP Header
 
-* [ Dashboard ](#tab-panel-10892)
-* [ Visual guide ](#tab-panel-10893)
-
 **Context:**
 
 You configured a Page Rule adding a `True-Client-IP` HTTP header for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
@@ -1149,9 +1059,6 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 | ![Example Page Rule with 'True Client IP Header' setting](https://developers.cloudflare.com/_astro/pr-true-client-ip-header.h51QIhp7_7UCm4.webp) | ![The 'Add "True-Client-IP" header' Managed Transform matching the 'True Client IP Header' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-true-client-ip-header-new.DKFw6CYO_Z1SyD08.webp) |
 
 ### Migrate SSL
-
-* [ Dashboard ](#tab-panel-10894)
-* [ Visual guide ](#tab-panel-10895)
 
 **Context:**
 
@@ -1196,7 +1103,14 @@ All other Page Rules settings will be migrated during 2025.
 
 If you have feedback to share, refer to our [Community thread ↗](https://community.cloudflare.com/t/important-page-rules-deprecation/656021).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/reference/page-rules-migration/","name":"Page Rules migration guide"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

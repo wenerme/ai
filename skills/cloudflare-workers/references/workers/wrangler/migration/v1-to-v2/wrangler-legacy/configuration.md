@@ -1,18 +1,20 @@
 ---
-title: Configuration
 description: Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
@@ -28,31 +30,24 @@ The top-level configuration is the collection of values you specify at the top o
 
 The layout of a top-level configuration in a Wrangler file is displayed below:
 
-* [  wrangler.jsonc ](#tab-panel-13935)
-* [  wrangler.toml ](#tab-panel-13936)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "your-worker",
-  "type": "javascript",
-  "account_id": "your-account-id",
-  // This field specifies that the Worker
-  // will be deployed to a *.workers.dev domain
-  "workers_dev": true,
-  // -- OR --
-  // These fields specify that the Worker
-  // will deploy to a custom domain
-  "zone_id": "your-zone-id",
-  "routes": [
-    "example.com/*"
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "your-worker",
+	"type": "javascript",
+	"account_id": "your-account-id",
+	// This field specifies that the Worker
+	// will be deployed to a *.workers.dev domain
+	"workers_dev": true,
+	// -- OR --
+	// These fields specify that the Worker
+	// will deploy to a custom domain
+	"zone_id": "your-zone-id",
+	"routes": [
+		"example.com/*"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -78,53 +73,46 @@ Some environment properties can be [_inherited_](#keys) from the top-level confi
 
 An example of an `[env.name]` configuration looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-13955)
-* [  wrangler.toml ](#tab-panel-13956)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "type": "javascript",
-  "name": "your-worker",
-  "account_id": "your-account-id",
-  "vars": {
-    "FOO": "default FOO value",
-    "BAR": "default BAR value"
-  },
-  "kv_namespaces": [
-    {
-      "binding": "FOO",
-      "id": "1a...",
-      "preview_id": "1b..."
-    }
-  ],
-  "env": {
-    "helloworld": {
-      // Now adding configuration keys for the "helloworld" environment.
-      // These new values will override the top-level configuration.
-      "name": "your-worker-helloworld",
-      "account_id": "your-other-account-id",
-      "vars": {
-        "FOO": "env-helloworld FOO value",
-        "BAR": "env-helloworld BAR value"
-      },
-      "kv_namespaces": [
-        {
-          // Redeclare kv namespace bindings for each environment
-          // NOTE: In this case, passing new IDs because new `account_id` value.
-          "binding": "FOO",
-          "id": "888...",
-          "preview_id": "999..."
-        }
-      ]
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"type": "javascript",
+	"name": "your-worker",
+	"account_id": "your-account-id",
+	"vars": {
+		"FOO": "default FOO value",
+		"BAR": "default BAR value"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "FOO",
+			"id": "1a...",
+			"preview_id": "1b..."
+		}
+	],
+	"env": {
+		"helloworld": {
+			// Now adding configuration keys for the "helloworld" environment.
+			// These new values will override the top-level configuration.
+			"name": "your-worker-helloworld",
+			"account_id": "your-other-account-id",
+			"vars": {
+				"FOO": "env-helloworld FOO value",
+				"BAR": "env-helloworld BAR value"
+			},
+			"kv_namespaces": [
+				{
+					// Redeclare kv namespace bindings for each environment
+					// NOTE: In this case, passing new IDs because new `account_id` value.
+					"binding": "FOO",
+					"id": "888...",
+					"preview_id": "999..."
+				}
+			]
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -132,27 +120,22 @@ type = "javascript"
 name = "your-worker"
 account_id = "your-account-id"
 
-
 [vars]
 FOO = "default FOO value"
 BAR = "default BAR value"
-
 
 [[kv_namespaces]]
 binding = "FOO"
 id = "1a..."
 preview_id = "1b..."
 
-
 [env.helloworld]
 name = "your-worker-helloworld"
 account_id = "your-other-account-id"
 
-
   [env.helloworld.vars]
   FOO = "env-helloworld FOO value"
   BAR = "env-helloworld BAR value"
-
 
   [[env.helloworld.kv_namespaces]]
   binding = "FOO"
@@ -230,21 +213,14 @@ The `vars` key defines a table of [environment variables](https://developers.clo
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13931)
-* [  wrangler.toml ](#tab-panel-13932)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "FOO": "some value",
-    "BAR": "some other string"
-  }
+	"vars": {
+		"FOO": "some value",
+		"BAR": "some other string"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -254,13 +230,10 @@ BAR = "some other string"
 
 The table keys are available to your Worker as global variables, which will contain their associated values.
 
-**JavaScript**
-
 ```js
 // Worker code:
 console.log(FOO);
 //=> "some value"
-
 
 console.log(BAR);
 //=> "some other string"
@@ -268,21 +241,14 @@ console.log(BAR);
 
 Alternatively, you can define `vars` using an inline table format. This style should not include any new lines to be considered a valid TOML configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13933)
-* [  wrangler.toml ](#tab-panel-13934)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "FOO": "some value",
-    "BAR": "some other string"
-  }
+	"vars": {
+		"FOO": "some value",
+		"BAR": "some other string"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -300,36 +266,28 @@ Secrets should be handled using the [wrangler secret](https://developers.cloudfl
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13939)
-* [  wrangler.toml ](#tab-panel-13940)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "FOO",
-      "id": "0f2ac74b498b48028cb68387c421e279",
-      "preview_id": "6a1ddb03f3ec250963f0a1e46820076f"
-    },
-    {
-      "binding": "BAR",
-      "id": "068c101e168d03c65bddf4ba75150fb0",
-      "preview_id": "fb69528dbc7336525313f2e8c3b17db0"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "FOO",
+			"id": "0f2ac74b498b48028cb68387c421e279",
+			"preview_id": "6a1ddb03f3ec250963f0a1e46820076f"
+		},
+		{
+			"binding": "BAR",
+			"id": "068c101e168d03c65bddf4ba75150fb0",
+			"preview_id": "fb69528dbc7336525313f2e8c3b17db0"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
 binding = "FOO"
 id = "0f2ac74b498b48028cb68387c421e279"
 preview_id = "6a1ddb03f3ec250963f0a1e46820076f"
-
 
 [[kv_namespaces]]
 binding = "BAR"
@@ -339,36 +297,28 @@ preview_id = "fb69528dbc7336525313f2e8c3b17db0"
 
 Alternatively, you can define `kv namespaces` like so:
 
-* [  wrangler.jsonc ](#tab-panel-13943)
-* [  wrangler.toml ](#tab-panel-13944)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "FOO",
-      "preview_id": "abc456",
-      "id": "abc123"
-    },
-    {
-      "binding": "BAR",
-      "preview_id": "xyz456",
-      "id": "xyz123"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "FOO",
+			"preview_id": "abc456",
+			"id": "abc123"
+		},
+		{
+			"binding": "BAR",
+			"preview_id": "xyz456",
+			"id": "xyz123"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
 binding = "FOO"
 preview_id = "abc456"
 id = "abc123"
-
 
 [[kv_namespaces]]
 binding = "BAR"
@@ -378,11 +328,8 @@ id = "xyz123"
 
 Much like environment variables and secrets, the `binding` names are available to your Worker as global variables.
 
-**JavaScript**
-
 ```js
 // Worker script:
-
 
 let value = await FOO.get("keyname");
 //=> gets the value for "keyname" from
@@ -412,21 +359,14 @@ A [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/s
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13937)
-* [  wrangler.toml ](#tab-panel-13938)
-
-**JSONC**
-
 ```jsonc
 {
-  "site": {
-    "bucket": "./public",
-    "entry-point": "workers-site"
-  }
+	"site": {
+		"bucket": "./public",
+		"entry-point": "workers-site"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [site]
@@ -457,24 +397,17 @@ For exceptionally large pages, Workers Sites may not be ideal. There is a 25 MiB
 
 If you want to include only a certain set of files or directories in your `bucket`, add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13941)
-* [  wrangler.toml ](#tab-panel-13942)
-
-**JSONC**
-
 ```jsonc
 {
-  "site": {
-    "bucket": "./public",
-    "entry-point": "workers-site",
-    "include": [ // must be an array.
-      "included_dir"
-    ]
-  }
+	"site": {
+		"bucket": "./public",
+		"entry-point": "workers-site",
+		"include": [ // must be an array.
+			"included_dir"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [site]
@@ -489,24 +422,17 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13945)
-* [  wrangler.toml ](#tab-panel-13946)
-
-**JSONC**
-
 ```jsonc
 {
-  "site": {
-    "bucket": "./public",
-    "entry-point": "workers-site",
-    "exclude": [ // must be an array.
-      "excluded_dir"
-    ]
-  }
+	"site": {
+		"bucket": "./public",
+		"entry-point": "workers-site",
+		"exclude": [ // must be an array.
+			"excluded_dir"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [site]
@@ -545,23 +471,16 @@ A set of cron triggers used to call a Worker on a schedule.
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13947)
-* [  wrangler.toml ](#tab-panel-13948)
-
-**JSONC**
-
 ```jsonc
 {
-  "triggers": {
-    "crons": [
-      "0 0 * JAN-JUN FRI",
-      "0 0 LW JUL-DEC *"
-    ]
-  }
+	"triggers": {
+		"crons": [
+			"0 0 * JAN-JUN FRI",
+			"0 0 LW JUL-DEC *"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [triggers]
@@ -577,21 +496,14 @@ Arguments for `wrangler dev` can be configured here so you do not have to repeat
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13949)
-* [  wrangler.toml ](#tab-panel-13950)
-
-**JSONC**
-
 ```jsonc
 {
-  "dev": {
-    "port": 9000,
-    "local_protocol": "https"
-  }
+	"dev": {
+		"port": 9000,
+		"local_protocol": "https"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [dev]
@@ -624,38 +536,28 @@ Service Workers are deprecated, but still supported. We recommend using [Module 
 
 This section is for customizing Workers with the `service-worker` format. These Workers use `addEventListener` and look like the following:
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", (event) => {
-  event.respondWith(new Response("I'm a service Worker!"));
+	event.respondWith(new Response("I'm a service Worker!"));
 });
 ```
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13951)
-* [  wrangler.toml ](#tab-panel-13952)
-
-**JSONC**
-
 ```jsonc
 {
-  "build": {
-    "command": "npm install && npm run build",
-    "upload": {
-      "format": "service-worker"
-    }
-  }
+	"build": {
+		"command": "npm install && npm run build",
+		"upload": {
+			"format": "service-worker"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [build]
 command = "npm install && npm run build"
-
 
   [build.upload]
   format = "service-worker"
@@ -696,49 +598,38 @@ Refer to the [fetch() handler documentation](https://developers.cloudflare.com/w
 
 An uploaded module may `import` other uploaded ES Modules. If using the CommonJS format, you may `require` other uploaded CommonJS modules.
 
-**JavaScript**
-
 ```js
 import html from "./index.html";
 
-
 export default {
-  // * request is the same as `event.request` from the service worker format
-  // * waitUntil() and passThroughOnException() are accessible from `ctx` instead of `event` from the service worker format
-  // * env is where bindings like KV namespaces, Durable Object namespaces, Config variables, and Secrets
-  // are exposed, instead of them being placed in global scope.
-  async fetch(request, env, ctx) {
-    const headers = { "Content-Type": "text/html;charset=UTF-8" };
-    return new Response(html, { headers });
-  },
+	// * request is the same as `event.request` from the service worker format
+	// * waitUntil() and passThroughOnException() are accessible from `ctx` instead of `event` from the service worker format
+	// * env is where bindings like KV namespaces, Durable Object namespaces, Config variables, and Secrets
+	// are exposed, instead of them being placed in global scope.
+	async fetch(request, env, ctx) {
+		const headers = { "Content-Type": "text/html;charset=UTF-8" };
+		return new Response(html, { headers });
+	},
 };
 ```
 
 To create a Workers project using Wrangler and Modules, add a `[build]` section:
 
-* [  wrangler.jsonc ](#tab-panel-13953)
-* [  wrangler.toml ](#tab-panel-13954)
-
-**JSONC**
-
 ```jsonc
 {
-  "build": {
-    "command": "npm install && npm run build",
-    "upload": {
-      "format": "modules",
-      "main": "./worker.mjs"
-    }
-  }
+	"build": {
+		"command": "npm install && npm run build",
+		"upload": {
+			"format": "modules",
+			"main": "./worker.mjs"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [build]
 command = "npm install && npm run build"
-
 
   [build.upload]
   format = "modules"
@@ -778,51 +669,42 @@ If your project is written using CommonJS modules, you will need to re-export yo
 
 Defaults:
 
-* [  wrangler.jsonc ](#tab-panel-13957)
-* [  wrangler.toml ](#tab-panel-13958)
-
-**JSONC**
-
 ```jsonc
 {
-  // You do not need to include these default rules in your [Wrangler configuration file](/workers/wrangler/configuration/), they are implicit.
-  // The default rules are treated as the last two rules in the list.
-  "build": {
-    "upload": {
-      "format": "modules",
-      "main": "./worker.mjs",
-      "rules": [
-        {
-          "type": "ESModule",
-          "globs": [
-            "**/*.mjs"
-          ]
-        },
-        {
-          "type": "CommonJS",
-          "globs": [
-            "**/*.js",
-            "**/*.cjs"
-          ]
-        }
-      ]
-    }
-  }
+	// You do not need to include these default rules in your [Wrangler configuration file](/workers/wrangler/configuration/), they are implicit.
+	// The default rules are treated as the last two rules in the list.
+	"build": {
+		"upload": {
+			"format": "modules",
+			"main": "./worker.mjs",
+			"rules": [
+				{
+					"type": "ESModule",
+					"globs": [
+						"**/*.mjs"
+					]
+				},
+				{
+					"type": "CommonJS",
+					"globs": [
+						"**/*.js",
+						"**/*.cjs"
+					]
+				}
+			]
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [build.upload]
 format = "modules"
 main = "./worker.mjs"
 
-
   [[build.upload.rules]]
   type = "ESModule"
   globs = [ "**/*.mjs" ]
-
 
   [[build.upload.rules]]
   type = "CommonJS"
@@ -845,84 +727,77 @@ main = "./worker.mjs"
 
 To illustrate how these levels are applied, here is a Wrangler file using multiple environments:
 
-* [  wrangler.jsonc ](#tab-panel-13959)
-* [  wrangler.toml ](#tab-panel-13960)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  // top level configuration
-  "type": "javascript",
-  "name": "my-worker-dev",
-  "account_id": "12345678901234567890",
-  "zone_id": "09876543210987654321",
-  "route": "dev.example.com/*",
-  "usage_model": "unbound",
-  "kv_namespaces": [
-    {
-      "binding": "FOO",
-      "id": "b941aabb520e61dcaaeaa64b4d8f8358",
-      "preview_id": "03c8c8dd3b032b0528f6547d0e1a83f3"
-    },
-    {
-      "binding": "BAR",
-      "id": "90e6f6abd5b4f981c748c532844461ae",
-      "preview_id": "e5011a026c5032c09af62c55ecc3f438"
-    }
-  ],
-  "build": {
-    "command": "webpack",
-    "upload": {
-      "format": "service-worker"
-    }
-  },
-  "site": {
-    "bucket": "./public",
-    "entry-point": "workers-site"
-  },
-  "dev": {
-    "ip": "0.0.0.0",
-    "port": 9000,
-    "local_protocol": "http",
-    "upstream_protocol": "https"
-  },
-  "env": {
-    // environment configuration
-    "staging": {
-      "name": "my-worker-staging",
-      "route": "staging.example.com/*",
-      "kv_namespaces": [
-        {
-          "binding": "FOO",
-          "id": "0f2ac74b498b48028cb68387c421e279"
-        },
-        {
-          "binding": "BAR",
-          "id": "068c101e168d03c65bddf4ba75150fb0"
-        }
-      ]
-    },
-    // environment configuration
-    "production": {
-      "workers_dev": true,
-      "kv_namespaces": [
-        {
-          "binding": "FOO",
-          "id": "0d2ac74b498b48028cb68387c421e233"
-        },
-        {
-          "binding": "BAR",
-          "id": "0d8c101e168d03c65bddf4ba75150f33"
-        }
-      ]
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	// top level configuration
+	"type": "javascript",
+	"name": "my-worker-dev",
+	"account_id": "12345678901234567890",
+	"zone_id": "09876543210987654321",
+	"route": "dev.example.com/*",
+	"usage_model": "unbound",
+	"kv_namespaces": [
+		{
+			"binding": "FOO",
+			"id": "b941aabb520e61dcaaeaa64b4d8f8358",
+			"preview_id": "03c8c8dd3b032b0528f6547d0e1a83f3"
+		},
+		{
+			"binding": "BAR",
+			"id": "90e6f6abd5b4f981c748c532844461ae",
+			"preview_id": "e5011a026c5032c09af62c55ecc3f438"
+		}
+	],
+	"build": {
+		"command": "webpack",
+		"upload": {
+			"format": "service-worker"
+		}
+	},
+	"site": {
+		"bucket": "./public",
+		"entry-point": "workers-site"
+	},
+	"dev": {
+		"ip": "0.0.0.0",
+		"port": 9000,
+		"local_protocol": "http",
+		"upstream_protocol": "https"
+	},
+	"env": {
+		// environment configuration
+		"staging": {
+			"name": "my-worker-staging",
+			"route": "staging.example.com/*",
+			"kv_namespaces": [
+				{
+					"binding": "FOO",
+					"id": "0f2ac74b498b48028cb68387c421e279"
+				},
+				{
+					"binding": "BAR",
+					"id": "068c101e168d03c65bddf4ba75150fb0"
+				}
+			]
+		},
+		// environment configuration
+		"production": {
+			"workers_dev": true,
+			"kv_namespaces": [
+				{
+					"binding": "FOO",
+					"id": "0d2ac74b498b48028cb68387c421e233"
+				},
+				{
+					"binding": "BAR",
+					"id": "0d8c101e168d03c65bddf4ba75150f33"
+				}
+			]
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -933,31 +808,25 @@ zone_id = "09876543210987654321"
 route = "dev.example.com/*"
 usage_model = "unbound"
 
-
 [[kv_namespaces]]
 binding = "FOO"
 id = "b941aabb520e61dcaaeaa64b4d8f8358"
 preview_id = "03c8c8dd3b032b0528f6547d0e1a83f3"
-
 
 [[kv_namespaces]]
 binding = "BAR"
 id = "90e6f6abd5b4f981c748c532844461ae"
 preview_id = "e5011a026c5032c09af62c55ecc3f438"
 
-
 [build]
 command = "webpack"
-
 
   [build.upload]
   format = "service-worker"
 
-
 [site]
 bucket = "./public"
 entry-point = "workers-site"
-
 
 [dev]
 ip = "0.0.0.0"
@@ -965,37 +834,38 @@ port = 9_000
 local_protocol = "http"
 upstream_protocol = "https"
 
-
 [env.staging]
 name = "my-worker-staging"
 route = "staging.example.com/*"
-
 
   [[env.staging.kv_namespaces]]
   binding = "FOO"
   id = "0f2ac74b498b48028cb68387c421e279"
 
-
   [[env.staging.kv_namespaces]]
   binding = "BAR"
   id = "068c101e168d03c65bddf4ba75150fb0"
 
-
 [env.production]
 workers_dev = true
-
 
   [[env.production.kv_namespaces]]
   binding = "FOO"
   id = "0d2ac74b498b48028cb68387c421e233"
-
 
   [[env.production.kv_namespaces]]
   binding = "BAR"
   id = "0d8c101e168d03c65bddf4ba75150f33"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

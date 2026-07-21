@@ -1,16 +1,18 @@
 ---
-title: Worker Variables
 description: Create server-side variables using Workers for use in Zaraz actions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Worker Variables
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Worker Variables
 
-# Worker Variables
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/variables/worker-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Zaraz Worker Variables are a powerful type of variable that you can configure and then use in your actions and triggers. Unlike string and masked variables, Worker Variables are dynamic. This means you can use a Cloudflare Worker to determine the value of the variable, allowing you to use them for countless purposes. For example:
 
@@ -25,7 +27,7 @@ To use a Worker Variable, you first need to create a new Cloudflare Worker. You 
 To create a new Worker in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers and Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Give a name to your Worker and select **Deploy**.
 4. Select **Edit code**.
@@ -34,18 +36,14 @@ You have now created a basic Worker that responds with "Hello world." If you use
 
 Zaraz forwards the Zaraz Context object to your Worker as a JSON payload with a POST request. You can access any property like this:
 
-**JavaScript**
-
 ```js
 const { system, client } = await request.json()
-
 
 /* System parameters */
 system.page.url.href // URL of the current page
 system.page.query.gclid // Value of the gclid query parameter
 system.device.resolution // Device screen resolution
 system.device.language // Browser preferred language
-
 
 /* Zaraz Track values */
 client.value // value from `zaraz.track("foo", {value: "bar"})`
@@ -59,7 +57,7 @@ Keep reading for more complete examples of different use cases or refer to [Zara
 Once your Worker is published, configuring a Worker Variable is easy.
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. Select the domain for which you want to configure variables.
 3. Select the **Variables** tab.
 4. Select **Create variable**.
@@ -73,7 +71,7 @@ Now that your Worker Variable is configured, you can use it in your actions and 
 To use your Worker Variable:
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. Select the domain for which you want to configure variables.
 3. Select **Edit** next to a tool that you have already configured.
 4. Select an action or add a new one.
@@ -85,8 +83,6 @@ To use your Worker Variable:
 ### Calculates the sum of all products in the cart
 
 Assuming we are sending a list of products in a cart, like this:
-
-**JavaScript**
 
 ```js
 zaraz.ecommerce("Cart Viewed", {
@@ -100,22 +96,17 @@ zaraz.ecommerce("Cart Viewed", {
 
 Calculating the sum can be done like this:
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env) {
     // Parse the Zaraz Context object
     const { system, client } = await request.json();
 
-
     // Get an array of all prices
     const productsPrices = client.products.map((p) => p.price);
 
-
     // Calculate the sum
     const sum = productsPrices.reduce((partialSum, a) => partialSum + a, 0);
-
 
     return new Response(sum);
   },
@@ -126,24 +117,19 @@ export default {
 
 Zaraz exposes all cookies automatically under the `system.cookies` object, so they are always available. Accessing the cookie and using it to query your backend might look like this:
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env) {
     // Parse the Zaraz Context object
     const { system, client } = await request.json();
 
-
     // Get the value of the cookie "login-cookie"
     const cookieValue = system.cookies["login-cookie"];
-
 
     const userId = await fetch("https://example.com/api/getUserIdFromCookie", {
       method: POST,
       body: cookieValue,
     });
-
 
     return new Response(userId);
   },
@@ -154,15 +140,11 @@ export default {
 
 Assuming you're sending a value that you want to hash, for example, an email address:
 
-**JavaScript**
-
 ```js
 zaraz.track("user_logged_in", { email: "user@example.com" });
 ```
 
 You can access this property and hash it like this:
-
-**JavaScript**
 
 ```js
 async function digestMessage(message) {
@@ -175,22 +157,26 @@ async function digestMessage(message) {
   return hashHex;
 }
 
-
 export default {
   async fetch(request, env) {
     // Parse the Zaraz Context object
     const { system, client } = await request.json();
 
-
     const { email } = client;
-
 
     return new Response(await digestMessage(email));
   },
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/variables/worker-variables/#page","headline":"Worker Variables · Cloudflare Zaraz docs","description":"Create server-side variables using Workers for use in Zaraz actions.","url":"https://developers.cloudflare.com/zaraz/variables/worker-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/variables/","name":"Variables"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/variables/worker-variables/","name":"Worker Variables"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/variables/worker-variables/#page","headline":"Worker Variables · Cloudflare Zaraz docs","description":"Create server-side variables using Workers for use in Zaraz actions.","url":"https://developers.cloudflare.com/zaraz/variables/worker-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: FastAPI
 description: Build Python Workers APIs using FastAPI with the built-in ASGI server.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: FastAPI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FastAPI
 
-# FastAPI
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The FastAPI package is supported in Python Workers.
 
@@ -30,33 +32,26 @@ uv run pywrangler dev
 
 ### Example code
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 import asgi
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         return await asgi.fetch(app, request, self.env)
 
-
 app = FastAPI()
-
 
 @app.get("/")
 async def root():
     return {"message": "Hello, World!"}
 
-
 @app.get("/env")
 async def root(req: Request):
     env = req.scope["env"]
     return {"message": "Here is an example of getting an environment variable: " + env.MESSAGE}
-
 
 class Item(BaseModel):
     name: str
@@ -64,11 +59,9 @@ class Item(BaseModel):
     price: float
     tax: float | None = None
 
-
 @app.post("/items/")
 async def create_item(item: Item):
     return item
-
 
 @app.put("/items/{item_id}")
 async def create_item(item_id: int, item: Item, q: str | None = None):
@@ -77,13 +70,19 @@ async def create_item(item_id: int, item: Item, q: str | None = None):
         result.update({"q": q})
     return result
 
-
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
     return {"item_id": item_id}
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/#page","headline":"FastAPI · Cloudflare Workers docs","description":"Build Python Workers APIs using FastAPI with the built-in ASGI server.","url":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/packages/","name":"Packages"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/languages/python/packages/fastapi/","name":"FastAPI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/#page","headline":"FastAPI · Cloudflare Workers docs","description":"Build Python Workers APIs using FastAPI with the built-in ASGI server.","url":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

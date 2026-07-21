@@ -1,40 +1,40 @@
 ---
-title: GPT-5.4 pro
 description: GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.4 pro
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.4 pro
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.4-pro`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.4-pro `
+
+* Third-party
+* Zero data retention
 
 GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
 
-| Model Info                                                                 |                                                                                                                      |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                     |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                        |
-| Zero data retention                                                        | Yes                                                                                                                  |
-| Request formats                                                            | Responses                                                                                                            |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
+| Model Info                                                                  |                                                                                                                       |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                      |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                         |
+| Zero data retention                                                         | Yes                                                                                                                   |
+| Request formats                                                             | Responses                                                                                                             |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1410)
-* [ cURL ](#tab-panel-1411)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -53,9 +53,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "input": "What are the three laws of thermodynamics?"
 }'
 ```
-
-* [ Output ](#tab-panel-1420)
-* [ Raw response ](#tab-panel-1421)
 
 The **three laws of thermodynamics** usually mean:
 
@@ -166,11 +163,6 @@ If you want, I can also give a **one-line intuitive version** of each law.
 
 **With Instructions**  — Using instructions to set context
 
-* [ TypeScript ](#tab-panel-1412)
-* [ cURL ](#tab-panel-1413)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-pro',
@@ -192,9 +184,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "instructions": "You are a helpful coding assistant specializing in Python."
 }'
 ```
-
-* [ Output ](#tab-panel-1422)
-* [ Raw response ](#tab-panel-1423)
 
 Use Python’s built-in `json` module.
 
@@ -350,11 +339,6 @@ If you want, I can also show how to **write JSON back to a file**.
 
 **Multi-turn Conversation**  — Continuing a conversation with message array
 
-* [ TypeScript ](#tab-panel-1418)
-* [ cURL ](#tab-panel-1419)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-pro',
@@ -400,9 +384,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 16000
 }'
 ```
-
-* [ Output ](#tab-panel-1424)
-* [ Raw response ](#tab-panel-1425)
 
 - Monterey is great for the aquarium, Cannery Row, and ocean views.
 - San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.
@@ -494,11 +475,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses
 
-* [ TypeScript ](#tab-panel-1414)
-* [ cURL ](#tab-panel-1415)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-pro',
@@ -517,9 +493,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 1
 }'
 ```
-
-* [ Output ](#tab-panel-1426)
-* [ Raw response ](#tab-panel-1427)
 
 Silent circuits dream
 Learning patterns in the dark
@@ -611,11 +584,6 @@ Dawn wakes metal minds
 
 **With Reasoning**  — Using reasoning effort for complex problems
 
-* [ TypeScript ](#tab-panel-1416)
-* [ cURL ](#tab-panel-1417)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.4-pro',
@@ -640,9 +608,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-1428)
-* [ Raw response ](#tab-panel-1429)
 
 Step 1: Find their combined speed since they are moving toward each other.
 
@@ -765,9 +730,6 @@ Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
 
 ## Parameters
 
-* [ Input ](#tab-panel-1430)
-* [ Output ](#tab-panel-1431)
-
 ▶input
 
 `one of`required
@@ -846,7 +808,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/#page","headline":"GPT-5.4 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/#page","headline":"GPT-5.4 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

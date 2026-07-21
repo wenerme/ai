@@ -1,16 +1,18 @@
 ---
-title: Percentage rollouts
 description: Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Percentage rollouts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Percentage rollouts
 
-# Percentage rollouts
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Percentage rollouts let you gradually release a feature to a fraction of your users. Any [targeting rule](https://developers.cloudflare.com/flagship/targeting/) can include a rollout percentage between 0 and 100.
 
@@ -24,15 +26,15 @@ For example, a rule can target users on the `enterprise` plan, then serve the ne
 
 ```json
 {
-  "priority": 1,
-  "conditions": [
-    { "attribute": "plan", "operator": "equals", "value": "enterprise" }
-  ],
-  "serve_variation": "on",
-  "rollout": {
-    "percentage": 10,
-    "attribute": "userId"
-  }
+	"priority": 1,
+	"conditions": [
+		{ "attribute": "plan", "operator": "equals", "value": "enterprise" }
+	],
+	"serve_variation": "on",
+	"rollout": {
+		"percentage": 10,
+		"attribute": "userId"
+	}
 }
 ```
 
@@ -107,24 +109,24 @@ For a 30% / 40% / 30% split across variants A, B, and C:
 
 ```json
 [
-  {
-    "priority": 1,
-    "conditions": [],
-    "serve_variation": "variant-a",
-    "rollout": { "percentage": 30, "attribute": "targetingKey" }
-  },
-  {
-    "priority": 2,
-    "conditions": [],
-    "serve_variation": "variant-b",
-    "rollout": { "percentage": 70, "attribute": "targetingKey" }
-  },
-  {
-    "priority": 3,
-    "conditions": [],
-    "serve_variation": "variant-c",
-    "rollout": { "percentage": 100, "attribute": "targetingKey" }
-  }
+	{
+		"priority": 1,
+		"conditions": [],
+		"serve_variation": "variant-a",
+		"rollout": { "percentage": 30, "attribute": "targetingKey" }
+	},
+	{
+		"priority": 2,
+		"conditions": [],
+		"serve_variation": "variant-b",
+		"rollout": { "percentage": 70, "attribute": "targetingKey" }
+	},
+	{
+		"priority": 3,
+		"conditions": [],
+		"serve_variation": "variant-c",
+		"rollout": { "percentage": 100, "attribute": "targetingKey" }
+	}
 ]
 ```
 
@@ -142,30 +144,30 @@ For a premium-only split where 20% receive variant A, 40% receive variant B, and
 
 ```json
 [
-  {
-    "priority": 1,
-    "conditions": [
-      { "attribute": "plan", "operator": "equals", "value": "premium" }
-    ],
-    "serve_variation": "variant-a",
-    "rollout": { "percentage": 20, "attribute": "targetingKey" }
-  },
-  {
-    "priority": 2,
-    "conditions": [
-      { "attribute": "plan", "operator": "equals", "value": "premium" }
-    ],
-    "serve_variation": "variant-b",
-    "rollout": { "percentage": 60, "attribute": "targetingKey" }
-  },
-  {
-    "priority": 3,
-    "conditions": [
-      { "attribute": "plan", "operator": "equals", "value": "premium" }
-    ],
-    "serve_variation": "variant-c",
-    "rollout": { "percentage": 100, "attribute": "targetingKey" }
-  }
+	{
+		"priority": 1,
+		"conditions": [
+			{ "attribute": "plan", "operator": "equals", "value": "premium" }
+		],
+		"serve_variation": "variant-a",
+		"rollout": { "percentage": 20, "attribute": "targetingKey" }
+	},
+	{
+		"priority": 2,
+		"conditions": [
+			{ "attribute": "plan", "operator": "equals", "value": "premium" }
+		],
+		"serve_variation": "variant-b",
+		"rollout": { "percentage": 60, "attribute": "targetingKey" }
+	},
+	{
+		"priority": 3,
+		"conditions": [
+			{ "attribute": "plan", "operator": "equals", "value": "premium" }
+		],
+		"serve_variation": "variant-c",
+		"rollout": { "percentage": 100, "attribute": "targetingKey" }
+	}
 ]
 ```
 
@@ -185,11 +187,9 @@ If the same user receives different values across requests, the evaluation conte
 
 Pass the same stable identifier on every evaluation:
 
-**TypeScript**
-
 ```ts
 const enabled = await env.FLAGS.getBooleanValue("gradual-rollout", false, {
-  userId: session.user.id,
+	userId: session.user.id,
 });
 ```
 
@@ -209,7 +209,14 @@ For API-managed A/B/n tests, or for targeted A/B/n tests configured as multiple 
 
 This can happen when a context matches the rule conditions but falls outside the rollout percentage, and no later rule matches. Add a later rule or use a 100% final rule if every matching context should receive a non-default variant.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/#page","headline":"Percentage rollouts · Cloudflare Flagship docs","description":"Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.","url":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/targeting/","name":"Targeting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/targeting/percentage-rollouts/","name":"Percentage rollouts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/#page","headline":"Percentage rollouts · Cloudflare Flagship docs","description":"Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.","url":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

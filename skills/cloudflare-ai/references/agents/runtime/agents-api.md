@@ -1,16 +1,18 @@
 ---
-title: Agents API
 description: Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Agents API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Agents API
 
-# Agents API
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/agents-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
@@ -31,24 +33,20 @@ Agents require [Cloudflare Durable Objects](https://developers.cloudflare.com/du
 
 An Agent is a class that extends the base `Agent` class:
 
-**TypeScript**
-
 ```ts
 import { Agent, routeAgentRequest } from "agents";
 
-
 export class MyAgent extends Agent<Env, State> {
-  // Your agent logic
+	// Your agent logic
 }
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			(await routeAgentRequest(request, env)) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -120,16 +118,12 @@ flowchart TD
 
 Each Agent instance has an embedded SQLite database accessed via `this.sql`:
 
-**TypeScript**
-
 ```ts
 // Create tables
 this.sql`CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT)`;
 
-
 // Insert data
 this.sql`INSERT INTO users (id, name) VALUES (${id}, ${name})`;
-
 
 // Query data
 const users = this.sql<User>`SELECT * FROM users WHERE id = ${id}`;
@@ -151,26 +145,21 @@ Module-level helper exports include `agentTool()` from `agents/agent-tools`, whi
 
 ### Quick example
 
-**TypeScript**
-
 ```ts
 import { useAgent } from "agents/react";
 import type { MyAgent } from "./server";
 
-
 function App() {
-  const agent = useAgent<MyAgent, State>({
-    agent: "my-agent",
-    name: "user-123",
-  });
+	const agent = useAgent<MyAgent, State>({
+		agent: "my-agent",
+		name: "user-123",
+	});
 
+	// Call methods on the agent
+	agent.stub.someMethod();
 
-  // Call methods on the agent
-  agent.stub.someMethod();
-
-
-  // Update state (syncs to server and all clients)
-  agent.setState({ count: 1 });
+	// Update state (syncs to server and all clients)
+	agent.setState({ count: 1 });
 }
 ```
 
@@ -178,17 +167,14 @@ function App() {
 
 For AI chat applications, extend `AIChatAgent` instead of `Agent`:
 
-**TypeScript**
-
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
 
-
 class ChatAgent extends AIChatAgent {
-  async onChatMessage(onFinish) {
-    // this.messages contains the conversation history
-    // Return a streaming response
-  }
+	async onChatMessage(onFinish) {
+		// this.messages contains the conversation history
+		// Return a streaming response
+	}
 }
 ```
 
@@ -210,19 +196,16 @@ https://your-worker.workers.dev/agents/:agent-name/:instance-name
 
 Use `routeAgentRequest()` in your Worker to route requests:
 
-**TypeScript**
-
 ```ts
 import { routeAgentRequest } from "agents";
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      routeAgentRequest(request, env) ||
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			routeAgentRequest(request, env) ||
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -230,15 +213,30 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 ## Next steps
 
-[ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/) Build your first agent in about 10 minutes.
+### [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 
-[ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/) Learn about wrangler.jsonc setup and deployment.
+ Build your first agent in about 10 minutes.
 
-[ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/) Real-time bidirectional communication with clients.
+### [ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build AI applications with AIChatAgent.
+ Learn about wrangler.jsonc setup and deployment.
+
+### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+
+ Real-time bidirectional communication with clients.
+
+### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+
+ Build AI applications with AIChatAgent.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/agents-api/","name":"Agents API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

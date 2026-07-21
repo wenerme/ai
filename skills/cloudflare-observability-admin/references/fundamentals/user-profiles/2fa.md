@@ -1,22 +1,24 @@
 ---
-title: Two-factor authentication
 description: Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Two-factor authentication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Two-factor authentication
 
-# Two-factor authentication
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure.
 
 2FA can only be enabled successfully on an account with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/). If you do not verify your email address first, you may lock yourself out of your account.
 
-Warning
+Caution
 
 Super Administrators can turn on **2FA Enforcement** to require all members to enable 2FA. If you are not a Super Administrator, you will be forced to turn on 2FA prior to accepting the invitation to join a Cloudflare account as a member.
 
@@ -33,7 +35,7 @@ Cloudflare recommends that users enable at least two different 2FA factors, as w
 
 ## Configure security key authentication for two-factor Cloudflare login
 
-Warning
+Caution
 
 Security keys only work with browsers that support the WebAuthn protocol.
 
@@ -123,7 +125,7 @@ Note
 Regenerating your backup codes will invalidate your previous codes.
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **My Profile**.
 3. Select **Authentication**.
 4. For **Two-Factor Authentication**, select **Manage**.
@@ -138,7 +140,7 @@ Note
 If you are not the Super Administrator of an organization with **2FA Enforcement** enabled, you may not have permission to disable 2FA.
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **Profile**.
 3. Select the **Authentication**.
 
@@ -161,7 +163,7 @@ When setting up 2FA, you should have saved your backup codes in a secure locatio
 
 1. Retrieve the backup code from where you stored it.
 2. Go to the [Cloudflare login page ↗](https://dash.cloudflare.com/login), enter your username and password and select **Log in**.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 3. You should see a page titled **Two-Factor Authentication**
 
   * If it has a text box, enter one of your backup codes and select **Log in**.
@@ -178,7 +180,14 @@ Once you use a backup code, it becomes invalid.
 * [Set up multi-user accounts on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-members/)
 * [Account recovery](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#page","headline":"Two-factor authentication · Cloudflare Fundamentals docs","description":"Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/2fa/","name":"Two-factor authentication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#page","headline":"Two-factor authentication · Cloudflare Fundamentals docs","description":"Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

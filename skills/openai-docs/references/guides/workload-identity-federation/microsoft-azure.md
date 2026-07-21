@@ -120,7 +120,7 @@ Authenticate from an Azure managed identity token
 
 ```typescript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
 
@@ -134,7 +134,9 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function azureManagedIdentityTokenProvider(resource: string): SubjectTokenProvider {
+function azureManagedIdentityTokenProvider(
+  resource: string
+): SubjectTokenProvider {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -703,17 +705,21 @@ Authenticate from an AKS projected service account token
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
 
 if (!identityProviderId || !serviceAccountId) {
-  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID"
+  );
 }
 
-function mountedAksServiceAccountTokenProvider(path: string): SubjectTokenProvider {
+function mountedAksServiceAccountTokenProvider(
+  path: string
+): SubjectTokenProvider {
   return {
     tokenType: "jwt",
     getToken: async () => {

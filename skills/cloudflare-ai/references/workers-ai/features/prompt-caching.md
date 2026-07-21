@@ -1,16 +1,18 @@
 ---
-title: Prompt caching
 description: Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Prompt caching
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prompt caching
 
-# Prompt caching
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/prompt-caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Prompt caching (also called prefix caching) is a performance optimization that allows Workers AI to respond faster to requests with prompts that share common inputs. It reduces Time to First Token (TTFT) and increases Tokens Per Second (TPS) throughput by reusing previously computed input tensors instead of reprocessing them from scratch.
 
@@ -57,22 +59,20 @@ curl -X POST \
 
 ### Workers AI binding
 
-**JavaScript**
-
 ```js
 const response = await env.AI.run(
-  "@cf/moonshotai/kimi-k2.5",
-  {
-    messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: "Explain prefix caching." },
-    ],
-  },
-  {
-    extraHeaders: {
-      "x-session-affinity": "ses_12345678",
-    },
-  },
+	"@cf/moonshotai/kimi-k2.5",
+	{
+		messages: [
+			{ role: "system", content: "You are a helpful assistant." },
+			{ role: "user", content: "Explain prefix caching." },
+		],
+	},
+	{
+		extraHeaders: {
+			"x-session-affinity": "ses_12345678",
+		},
+	},
 );
 ```
 
@@ -90,7 +90,14 @@ To maximize cache hits:
 
 Workers AI surfaces cached token counts in the response `usage` object. Use this to verify that prefix caching is working and to track cost savings. The first request will usually be cold, so it is expected that cached tokens are not returned on the first hit. Inputs need to be sufficiently large enough in order to be cached due to block size. Cached tokens are billed at a lower rate than regular input tokens, which get totalled into your neuron count.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/#page","headline":"Prompt caching · Cloudflare Workers AI docs","description":"Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/prompt-caching/","name":"Prompt caching"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/#page","headline":"Prompt caching · Cloudflare Workers AI docs","description":"Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

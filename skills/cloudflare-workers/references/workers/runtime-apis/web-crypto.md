@@ -1,16 +1,18 @@
 ---
-title: Web Crypto
 description: A set of low-level functions for common cryptographic tasks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Web Crypto
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Web Crypto
 
-# Web Crypto
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -20,11 +22,8 @@ Performing cryptographic operations using the Web Crypto API is significantly fa
 
 The Web Crypto API is implemented through the `SubtleCrypto` interface, accessible via the global `crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
 
-**JavaScript**
-
 ```js
 const myText = new TextEncoder().encode('Hello world!');
-
 
 const myDigest = await crypto.subtle.digest(
   {
@@ -33,13 +32,12 @@ const myDigest = await crypto.subtle.digest(
   myText // The data you want to hash as an ArrayBuffer
 );
 
-
 console.log(new Uint8Array(myDigest));
 ```
 
 Some common uses include [signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/).
 
-Warning
+Caution
 
 The Web Crypto API differs significantly from the [Node.js Crypto API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/). If you are working with code that relies on the Node.js Crypto API, you can use it by enabling the [nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/).
 
@@ -59,17 +57,11 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 
 ### Usage
 
-* [  JavaScript ](#tab-panel-12959)
-* [  TypeScript ](#tab-panel-12960)
-
-**JavaScript**
-
 ```js
 export default {
   async fetch(req) {
     // Fetch from origin
     const res = await fetch(req);
-
 
     // We need to read the body twice so we `tee` it (get two instances)
     const [bodyOne, bodyTwo] = res.body.tee();
@@ -91,14 +83,11 @@ export default {
 }
 ```
 
-**TypeScript**
-
 ```ts
 export default {
   async fetch(req): Promise<Response> {
     // Fetch from origin
     const res = await fetch(req);
-
 
     // We need to read the body twice so we `tee` it (get two instances)
     const [bodyOne, bodyTwo] = res.body.tee();
@@ -214,8 +203,6 @@ These methods are all accessed via [crypto.subtle ↗](https://developer.mozilla
 * `generateKey(algorithm, extractable, keyUsages)` : Promise<CryptoKey> | Promise<CryptoKeyPair>
 
   * Returns a Promise that fulfills with a newly-generated `CryptoKey`, for symmetrical algorithms, or a `CryptoKeyPair`, containing two newly generated keys, for asymmetrical algorithms. For example, to generate a new AES-GCM key:
-
-**JavaScript**
 ```js
 let keyPair = await crypto.subtle.generateKey(
   {
@@ -406,7 +393,14 @@ If a feature only implements the operation partially, details are listed.
 * [SubtleCrypto documentation as part of the W3C Web Crypto API specification ↗](https://www.w3.org/TR/WebCryptoAPI//#subtlecrypto-interface)
 * [Example: signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#page","headline":"Web Crypto · Cloudflare Workers docs","description":"A set of low-level functions for common cryptographic tasks.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/web-crypto/","name":"Web Crypto"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#page","headline":"Web Crypto · Cloudflare Workers docs","description":"A set of low-level functions for common cryptographic tasks.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Manage resources
 description: Manage cloud on-ramp resources and connections.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Manage resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/multi-cloud-networking/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage resources
 
-# Manage resources
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloud resource catalog
 
@@ -19,7 +21,7 @@ Your cloud environment is built from individual cloud resources, like virtual pr
 To browse the resources in your catalog:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud resources**, select a resource to inspect its details.
 
@@ -28,7 +30,7 @@ To browse the resources in your catalog:
 You can change which cloud account the integration is linked to or delete the integration.
 
 1. Go to **Cloud integrations**.
-[ Go to **Cloud integrations** ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+[ Go to **Cloud integrations** ↗ ](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
 2. Select your integration > **Edit**.
 3. In **Linked account details**, select **Link integration to a different cloud account**.
 4. Select **Save** when you are finished.
@@ -39,13 +41,20 @@ You can change which cloud account the integration is linked to or delete the in
 You can download a JSON file containing metadata and configuration for all your cloud resources:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud resources**, select **Download catalog**.
 
 After your browser finishes downloading the ZIP file, expand it to access the JSON with the information about your cloud resources.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#page","headline":"Manage resources · Cloudflare Multi-Cloud Networking docs","description":"Manage cloud on-ramp resources and connections.","url":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/manage-resources/","name":"Manage resources"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#page","headline":"Manage resources · Cloudflare Multi-Cloud Networking docs","description":"Manage cloud on-ramp resources and connections.","url":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

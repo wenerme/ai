@@ -1,16 +1,18 @@
 ---
-title: Use the R2 multipart API from Workers
 description: Upload large objects to R2 using the multipart API through a Cloudflare Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use the R2 multipart API from Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use the R2 multipart API from Workers
 
-# Use the R2 multipart API from Workers
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker through which your applications can perform multipart uploads. This example worker could serve as a basis for your own use case where you can add authentication to the worker, or even add extra validation logic when uploading each part. This guide also contains an example Python application that uploads files to this worker.
 
@@ -26,16 +28,10 @@ The following example Worker includes any new information about the state of the
 
 Add the following code to your project's `index.js` file and replace `MY_BUCKET` with your bucket's name:
 
-* [  JavaScript ](#tab-panel-10603)
-* [  Python ](#tab-panel-10604)
-
-**JavaScript**
-
 ```js
 interface Env {
   MY_BUCKET: R2Bucket;
 }
-
 
 export default {
   async fetch(
@@ -45,16 +41,13 @@ export default {
   ): Promise<Response> {
     const bucket = env.MY_BUCKET;
 
-
     const url = new URL(request.url);
     const key = url.pathname.slice(1);
     const action = url.searchParams.get("action");
 
-
     if (action === null) {
       return new Response("Missing action type", { status: 400 });
     }
-
 
     // Route the request based on the HTTP method and action type
     switch (request.method) {
@@ -75,12 +68,10 @@ export default {
               return new Response("Missing uploadId", { status: 400 });
             }
 
-
             const multipartUpload = env.MY_BUCKET.resumeMultipartUpload(
               key,
               uploadId
             );
-
 
             interface completeBody {
               parts: R2UploadedPart[];
@@ -91,7 +82,6 @@ export default {
                 status: 400,
               });
             }
-
 
             // Error handling in case the multipart upload does not exist anymore
             try {
@@ -123,7 +113,6 @@ export default {
             if (request.body === null) {
               return new Response("Missing request body", { status: 400 });
             }
-
 
             const partNumber = parseInt(partNumberString);
             const multipartUpload = env.MY_BUCKET.resumeMultipartUpload(
@@ -169,7 +158,6 @@ export default {
               uploadId
             );
 
-
             try {
               multipartUpload.abort();
             } catch (error: any) {
@@ -196,8 +184,6 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse, parse_qs
@@ -208,16 +194,13 @@ class Default(WorkerEntrypoint):
     async def fetch(self, request):
         bucket = self.env.MY_BUCKET
 
-
         url = urlparse(request.url)
         key = url.path[1:]
         params = parse_qs(url.query)
         action = params.get("action", [None])[0]
 
-
         if action is None:
             return Response("Missing action type", status=400)
-
 
         if request.method == "POST":
             if action == "mpu-create":
@@ -231,12 +214,10 @@ class Default(WorkerEntrypoint):
                 if upload_id is None:
                     return Response("Missing uploadId", status=400)
 
-
                 multipart_upload = bucket.resumeMultipartUpload(key, upload_id)
                 complete_body = await request.json()
                 if complete_body is None:
                     return Response("Missing or incomplete body", status=400)
-
 
                 try:
                     obj = await multipart_upload.complete(complete_body.parts)
@@ -246,7 +227,6 @@ class Default(WorkerEntrypoint):
             else:
                 return Response(f"Unknown action {action} for POST", status=400)
 
-
         elif request.method == "PUT":
             if action == "mpu-uploadpart":
                 upload_id = params.get("uploadId", [None])[0]
@@ -255,7 +235,6 @@ class Default(WorkerEntrypoint):
                     return Response("Missing partNumber or uploadId", status=400)
                 if request.body is None:
                     return Response("Missing request body", status=400)
-
 
                 part_number = int(part_number_str)
                 multipart_upload = bucket.resumeMultipartUpload(key, upload_id)
@@ -267,7 +246,6 @@ class Default(WorkerEntrypoint):
             else:
                 return Response(f"Unknown action {action} for PUT", status=400)
 
-
         elif request.method == "GET":
             if action != "get":
                 return Response(f"Unknown action {action} for GET", status=400)
@@ -277,7 +255,6 @@ class Default(WorkerEntrypoint):
             body = await obj.text()
             headers = {"etag": obj.httpEtag}
             return Response(body, headers=headers)
-
 
         elif request.method == "DELETE":
             if action == "mpu-abort":
@@ -295,7 +272,6 @@ class Default(WorkerEntrypoint):
                 return Response(None, status=204)
             else:
                 return Response(f"Unknown action {action} for DELETE", status=400)
-
 
         else:
             return Response(
@@ -319,8 +295,6 @@ Utilizing the multipart API in this way also allows you to use your Worker to up
 
 Save the following code in a file named `mpuscript.py` on your local machine. Change the `worker_endpoint variable` to where your worker is deployed. Pass the file you want to upload as an argument when running this script: `python3 mpuscript.py myfile`. This will upload the file `myfile` from your machine to your bucket through the Worker.
 
-**Python**
-
 ```python
 import math
 import os
@@ -328,7 +302,6 @@ import requests
 from requests.adapters import HTTPAdapter, Retry
 import sys
 import concurrent.futures
-
 
 # Take the file to upload as an argument
 filename = sys.argv[1]
@@ -341,10 +314,8 @@ partsize = 10 * 1024 * 1024
 def upload_file(worker_endpoint, filename, partsize):
     url = f"{worker_endpoint}{filename}"
 
-
     # Create the multipart upload
     uploadId = requests.post(url, params={"action": "mpu-create"}).json()["uploadId"]
-
 
     part_count = math.ceil(os.stat(filename).st_size / partsize)
     # Create an executor for up to 25 concurrent uploads.
@@ -357,7 +328,6 @@ def upload_file(worker_endpoint, filename, partsize):
     concurrent.futures.wait(futures)
     # get the parts from the futures
     uploaded_parts = [future.result() for future in futures]
-
 
     # complete the multipart upload
     response = requests.post(
@@ -377,12 +347,10 @@ def upload_part(filename, partsize, url, uploadId, index):
         file.seek(partsize * index)
         part = file.read(partsize)
 
-
     # Retry policy for when uploading a part fails
     s = requests.Session()
     retries = Retry(total=3, status_forcelist=[400, 500, 502, 503, 504])
     s.mount("https://", HTTPAdapter(max_retries=retries))
-
 
     return s.put(
         url,
@@ -408,7 +376,14 @@ In the example Worker and Python application described in this guide, the state 
 
 When keeping track of this state in the client is impossible, alternative designs can be considered. For example, you could track the `uploadId` and which parts have been uploaded in a Durable Object or other database.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-multipart-usage/","name":"Use the R2 multipart API from Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,7 +16,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [{
       "type": "code_interpreter",
       "container": { "type": "auto", "memory_limit": "4g" }
@@ -36,7 +36,7 @@ write and run code using the python tool to answer the question.
 `;
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "code_interpreter",
@@ -61,7 +61,7 @@ write and run code using the python tool to answer the question.
 """
 
 resp = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "code_interpreter",
@@ -106,7 +106,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [{
       "type": "code_interpreter",
       "container": "cntr_abc123"
@@ -123,7 +123,7 @@ client = OpenAI()
 container = client.containers.create(name="test-container", memory_limit="4g")
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[{
         "type": "code_interpreter",
         "container": container.id
@@ -139,18 +139,22 @@ print(response.output_text)
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const container = await client.containers.create({ name: "test-container", memory_limit: "4g" });
+const container = await client.containers.create({
+  name: "test-container",
+  memory_limit: "4g",
+});
 
 const resp = await client.responses.create({
-    model: "gpt-5.5",
-    tools: [
-      {
-        type: "code_interpreter",
-        container: container.id
-      }
-    ],
-    tool_choice: "required",
-    input: "use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result"
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "code_interpreter",
+      container: container.id,
+    },
+  ],
+  tool_choice: "required",
+  input:
+    "use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result",
 });
 
 console.log(resp.output_text);

@@ -1,16 +1,18 @@
 ---
-title: Convert partial setup to secondary setup
 description: If you initially set up a partial zone on Cloudflare, you can later convert it to use a secondary setup.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Convert partial setup to secondary setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Convert partial setup to secondary setup
 
-# Convert partial setup to secondary setup
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you initially set up a [partial zone (CNAME setup)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) on Cloudflare, you can later convert it to use a [secondary setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/).
 
@@ -92,7 +94,7 @@ The zone file size limit is 256 KiB (262144 bytes).
  Existing and already proxied records will not be overwritten by the import.
 2. Use the [Update DNS Settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) with `secondary_overrides` set to `true`, to enable Secondary DNS Override.
 
-Warning
+Caution
 
 This step is essential so that Cloudflare can keep the proxy status of the records after the conversion.
 
@@ -112,19 +114,16 @@ Once the time to live (TTL) of previous `NS` records is expired and this informa
 
 1. Remove all references to `cdn.cloudflare.net` from your primary DNS provider. You can do this by importing the same zone file you prepared in [Step 1](#1-prepare-a-zone-file) onto your primary zone.
 
-Warning
+Caution
 
 If you keep any DNS records that still refer `cdn.cloudflare.net`, HTTP traffic for the respective hostnames will break.
 
 1. Enable outgoing zone transfers at your primary provider and create a peer DNS server on your Cloudflare account.
 
-* [ Dashboard ](#tab-panel-8830)
-* [ API ](#tab-panel-8831)
-
 To create a peer server using the dashboard:
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **Peer DNS servers**, select **Create**.
 4. Enter the following information, paying particular attention to:
@@ -139,14 +138,11 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 1. Link your Cloudflare zone to the peer DNS server you just created.
 
-* [ Dashboard ](#tab-panel-8828)
-* [ API ](#tab-panel-8829)
-
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Under **DNS Zone Transfers**, select **Manage linked peers**.
 3. Choose a value for **Zone refresh**, which controls the number of seconds between zone updates from your primary DNS server.
-Warning
+Caution
 Cloudflare will not use the REFRESH value inside the SOA record that is served by your primary provider. Instead the value of zone refresh configured for your secondary zone on Cloudflare will be used to determine the interval after which the SOA serial of the primary zone will be checked for changes.
 4. Select the peer server you previously created. If needed, you can link more than one peer server to a zone.
 5. Select **Save** to confirm.
@@ -155,7 +151,14 @@ Use the [Update Secondary Zone Configuration endpoint](https://developers.cloudf
 
 1. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, confirm the linked peer is listed under **DNS Zone Transfers**, and select **Initiate zone transfer**. Alternatively, you can use the [Force AXFR endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/force%5Faxfr/methods/create/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/#page","headline":"Convert partial setup to secondary setup · Cloudflare DNS docs","description":"If you initially set up a partial zone on Cloudflare, you can later convert it to use a secondary setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/conversions/","name":"DNS setup conversions"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/conversions/convert-partial-to-secondary/","name":"Convert partial setup to secondary setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/#page","headline":"Convert partial setup to secondary setup · Cloudflare DNS docs","description":"If you initially set up a partial zone on Cloudflare, you can later convert it to use a secondary setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

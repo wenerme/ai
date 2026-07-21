@@ -1,16 +1,18 @@
 ---
-title: Scans and penetration testing policy
 description: Understand Cloudflare's policy for conducting vulnerability scans and penetration tests on your own zones and assets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Scans and penetration testing policy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scans and penetration testing policy
 
-# Scans and penetration testing policy
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/scans-penetration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Customers may conduct scans and penetration tests (with certain restrictions) on application and network-layer aspects of their own assets, such as their [zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) within their Cloudflare accounts, provided they adhere to Cloudflare's policy.
 
@@ -65,7 +67,14 @@ For guidelines on required notification and necessary information, refer to [Sim
 * Customers can download the latest Penetration Test Report of Cloudflare via the [dashboard](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/).
 * For information about Cloudflare's Public Bug Bounty program, visit [HackerOne ↗](https://hackerone.com/cloudflare).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/scans-penetration/#page","headline":"Scans and penetration testing policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's policy for conducting vulnerability scans and penetration tests on your own zones and assets.","url":"https://developers.cloudflare.com/fundamentals/reference/scans-penetration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/scans-penetration/","name":"Scans and penetration testing policy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/scans-penetration/#page","headline":"Scans and penetration testing policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's policy for conducting vulnerability scans and penetration tests on your own zones and assets.","url":"https://developers.cloudflare.com/fundamentals/reference/scans-penetration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

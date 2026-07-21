@@ -1,16 +1,18 @@
 ---
-title: Intune
 description: Intune in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Intune
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Intune
 
-# Intune
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Microsoft Intune.
 
@@ -53,54 +55,52 @@ To push a new `mdm.xml` file using Intune:
 4. Select **Windows 10 and later**.
 5. Enter a name for the script (for example, `Deploy Cloudflare mdm.xml`).
 6. In **PowerShell script**, upload the following `.ps1` file. Be sure to modify the XML content with your desired [parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-
-**mdm-template.ps1**
 ```powershell
 # Define the path to the file
 $filePath = "C:\ProgramData\Cloudflare\mdm.xml"
 # Create the XML content as a string
 $xmlContent = @"
 <dict>
-  <key>multi_user</key>
-  <true/>
-  <key>pre_login</key>
-  <dict>
-    <key>organization</key>
-    <string>mycompany</string>
-    <key>auth_client_id</key>
-    <string>88bf3b6d86161464f6509f7219099e57.access</string>
-    <key>auth_client_secret</key>
-    <string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
-  </dict>
-  <key>configs</key>
-  <array>
-    <dict>
-      <key>organization</key>
-      <string>mycompany</string>
-      <key>display_name</key>
-      <string>Production environment</string>
-    </dict>
-    <dict>
-      <key>organization</key>
-      <string>test-org</string>
-      <key>display_name</key>
-      <string>Test environment</string>
-    </dict>
-  </array>
+	<key>multi_user</key>
+	<true/>
+	<key>pre_login</key>
+	<dict>
+		<key>organization</key>
+		<string>mycompany</string>
+		<key>auth_client_id</key>
+		<string>88bf3b6d86161464f6509f7219099e57.access</string>
+		<key>auth_client_secret</key>
+		<string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
+	</dict>
+	<key>configs</key>
+	<array>
+		<dict>
+			<key>organization</key>
+			<string>mycompany</string>
+			<key>display_name</key>
+			<string>Production environment</string>
+		</dict>
+		<dict>
+			<key>organization</key>
+			<string>test-org</string>
+			<key>display_name</key>
+			<string>Test environment</string>
+		</dict>
+	</array>
 </dict>
 "@
 # Ensure the directory exists
 $directory = Split-Path $filePath -parent
 if (-not (Test-Path $directory)) {
-  New-Item -ItemType Directory -Path $directory | Out-Null
+	New-Item -ItemType Directory -Path $directory | Out-Null
 }
 # Write the XML content to the file
 try {
-  $xmlContent | Out-File -Encoding UTF8 -FilePath $filePath
-  Write-Host "mdm.xml file created successfully at: $filePath"
+	$xmlContent | Out-File -Encoding UTF8 -FilePath $filePath
+	Write-Host "mdm.xml file created successfully at: $filePath"
 }
 catch {
-  Write-Error "Failed to create mdm.xml file: $_"
+	Write-Error "Failed to create mdm.xml file: $_"
 }
 ```
 7. In **Assignments**, select the Windows devices that should receive the new `mdm.xml` file.
@@ -116,7 +116,7 @@ If you prefer to use Intune's Win32 App tool to run the Powershell script, refer
 
 The following steps outline deploying the Cloudflare One Client on macOS using Intune.
 
-Warning
+Caution
 
 Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's .pkg deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
 
@@ -202,47 +202,47 @@ This step allows the Cloudflare One Client to install without user interaction. 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>PayloadDisplayName</key>
-        <string>Cloudflare WARP</string>
-        <key>PayloadIdentifier</key>
-        <string>cloudflare_warp</string>
-        <key>PayloadOrganization</key>
-        <string>Cloudflare, Ltd.</string>
-        <key>PayloadRemovalDisallowed</key>
-        <false/>
-        <key>PayloadType</key>
-        <string>Configuration</string>
-        <key>PayloadScope</key>
-        <string>System</string>
-        <key>PayloadUUID</key>
-        <string>YOUR_PAYLOAD_UUID_HERE</string>
-        <key>PayloadVersion</key>
-        <integer>1</integer>
-        <key>PayloadContent</key>
-        <array>
-            <dict>
-                <key>organization</key>
-                <string>YOUR_TEAM_NAME_HERE</string>
-                <key>auto_connect</key>
-                <integer>120</integer>
-                <key>onboarding</key>
-                <false/>
-                <key>PayloadDisplayName</key>
-                <string>Warp Configuration</string>
-                <key>PayloadIdentifier</key>
-                <string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>
-                <key>PayloadOrganization</key>
-                <string>Cloudflare Ltd.</string>
-                <key>PayloadType</key>
-                <string>com.cloudflare.warp</string>
-                <key>PayloadUUID</key>
-                <string>YOUR_PAYLOAD_UUID_HERE</string>
-                <key>PayloadVersion</key>
-                <integer>1</integer>
-            </dict>
-        </array>
-    </dict>
+		<dict>
+				<key>PayloadDisplayName</key>
+				<string>Cloudflare WARP</string>
+				<key>PayloadIdentifier</key>
+				<string>cloudflare_warp</string>
+				<key>PayloadOrganization</key>
+				<string>Cloudflare, Ltd.</string>
+				<key>PayloadRemovalDisallowed</key>
+				<false/>
+				<key>PayloadType</key>
+				<string>Configuration</string>
+				<key>PayloadScope</key>
+				<string>System</string>
+				<key>PayloadUUID</key>
+				<string>YOUR_PAYLOAD_UUID_HERE</string>
+				<key>PayloadVersion</key>
+				<integer>1</integer>
+				<key>PayloadContent</key>
+				<array>
+						<dict>
+								<key>organization</key>
+								<string>YOUR_TEAM_NAME_HERE</string>
+								<key>auto_connect</key>
+								<integer>120</integer>
+								<key>onboarding</key>
+								<false/>
+								<key>PayloadDisplayName</key>
+								<string>Warp Configuration</string>
+								<key>PayloadIdentifier</key>
+								<string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>
+								<key>PayloadOrganization</key>
+								<string>Cloudflare Ltd.</string>
+								<key>PayloadType</key>
+								<string>com.cloudflare.warp</string>
+								<key>PayloadUUID</key>
+								<string>YOUR_PAYLOAD_UUID_HERE</string>
+								<key>PayloadVersion</key>
+								<integer>1</integer>
+						</dict>
+				</array>
+		</dict>
 </plist>
 ```
 2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value (`YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
@@ -250,10 +250,10 @@ This step allows the Cloudflare One Client to install without user interaction. 
 4. Modify the file with your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
 ```xml
 <array>
-  <dict>
-      <key>organization</key>
-      <string>YOUR_TEAM_NAME_HERE</string>
-      // add desired deployment parameters here
+	<dict>
+			<key>organization</key>
+			<string>YOUR_TEAM_NAME_HERE</string>
+			// add desired deployment parameters here
 ```
 Best practice
 Start by deploying the template in its default, minimal form. This helps you verify a successful deployment before adding custom parameters.
@@ -290,7 +290,7 @@ Every time a new Cloudflare One Client version is released, you must repeat this
 
 By completing this step, you deliver the Cloudflare One Client to targeted macOS devices, either automatically (assignment scope set as **Required**) or on-demand (assignment scope as **Available**) through your company portal.
 
-Warning
+Caution
 
 On versions 2026.3.566.1 and later, Intune may repeatedly reinstall the Cloudflare One Client after you upload the `.pkg`, restarting the client and dropping the WARP connection. This happens because Intune adds the client's embedded framework bundles to the app's **Included apps** detection list, but Intune cannot detect those frameworks as installed applications on their own. To fix this, remove every entry except `com.cloudflare.1dot1dot1dot1.macos` from the **Included apps** list, set **Ignore app version** to **Yes**, and reapply the change each time you upload a new package. Refer to [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune).
 
@@ -352,10 +352,10 @@ By completing this step, you deliver the Cloudflare One Client to targeted iOS d
 4. In **Settings**, select _Enter XML data_ and copy and paste the following:
 ```xml
 <dict>
-  <key>organization</key>
-  <string>YOUR_TEAM_NAME_HERE</string>
-  <key>auto_connect</key>
-  <integer>1</integer>
+	<key>organization</key>
+	<string>YOUR_TEAM_NAME_HERE</string>
+	<key>auto_connect</key>
+	<integer>1</integer>
 </dict>
 ```
 Replace `YOUR_TEAM_NAME_HERE` with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name). Review the definitions of the above parameters in the [Parameters documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
@@ -444,51 +444,51 @@ To deploy the Cloudflare One Client on Android devices:
 11. For **Configuration settings format**, select _Enter JSON data_. Enter your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) in the `managedProperty` field. For example:
 ```json
 {
-  "kind": "androidenterprise#managedConfiguration",
-  "productId": "app:com.cloudflare.cloudflareoneagent",
-  "managedProperty": [
-    {
-      "key": "app_config_bundle_list",
-      "valueBundleArray": [
-        {
-          "managedProperty": [
-            {
-              "key": "organization",
-              "valueString": "your-team-name"
-            },
-            {
-              "key": "display_name",
-              "valueString": "Production environment"
-            },
-            {
-              "key": "service_mode",
-              "valueString": "warp"
-            },
-            {
-              "key": "onboarding",
-              "valueBool": false
-            },
-            {
-              "key": "support_url",
-              "valueString": "https://support.example.com/"
-            }
-          ]
-        },
-        {
-          "managedProperty": [
-            {
-              "key": "organization",
-              "valueString": "test-org"
-            },
-            {
-              "key": "display_name",
-              "valueString": "Test environment"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"kind": "androidenterprise#managedConfiguration",
+	"productId": "app:com.cloudflare.cloudflareoneagent",
+	"managedProperty": [
+		{
+			"key": "app_config_bundle_list",
+			"valueBundleArray": [
+				{
+					"managedProperty": [
+						{
+							"key": "organization",
+							"valueString": "your-team-name"
+						},
+						{
+							"key": "display_name",
+							"valueString": "Production environment"
+						},
+						{
+							"key": "service_mode",
+							"valueString": "warp"
+						},
+						{
+							"key": "onboarding",
+							"valueBool": false
+						},
+						{
+							"key": "support_url",
+							"valueString": "https://support.example.com/"
+						}
+					]
+				},
+				{
+					"managedProperty": [
+						{
+							"key": "organization",
+							"valueString": "test-org"
+						},
+						{
+							"key": "display_name",
+							"valueString": "Test environment"
+						}
+					]
+				}
+			]
+		}
+	]
 }
 ```
 Alternatively, if you do not want to copy and paste the JSON data, you can change **Configuration settings format** to _Use configuration designer_ and manually configure each deployment parameter.
@@ -503,7 +503,7 @@ Once you have configured the deployment parameters, select **Next**.
 
 Intune will now deploy the Cloudflare One Agent to user devices.
 
-Warning
+Caution
 
 If Cloudflare One Agent fails to register on Android with Always-On VPN enabled, review the limitation for [Always-On VPN with Lockdown Mode in Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#always-on-vpn-with-lockdown-mode-in-microsoft-intune).
 
@@ -540,89 +540,89 @@ To configure your Cloudflare One Agent app policy:
   1. Select **Configuration setting format** as **Enter JSON data**.
   2. Enter your desired deployment parameters in the `managedProperty` field. For example:
   ```sh
-    {
-    "kind": "androidenterprise#managedConfiguration",
-    "productId": "app:com.cloudflare.cloudflareoneagent",
-    "managedProperty": [
-      {
-        "key": "app_config_bundle_list",
-        "valueBundleArray": [
-          {
-            "managedProperty": [
-              {
-                "key": "organization",
-                "valueString": "${ORGANIZATION_NAME-1}"
-              },
-              {
-                "key": "service_mode",
-                "valueString": "warp"
-              },
-              {
-                "key": "onboarding",
-                "valueBool": true
-              },
-              {
-                "key": "display_name",
-                "valueString": "${UNIQUE_DISPLAY_NAME-1}"
-              },
-              {
-                "key": "warp_tunnel_protocol",
-                "valueString": "MASQUE"
-              },
-              {
-                "key": "tunneled_apps",
-                "valueBundleArray" :[
-                  {
-                    "managedProperty": [
-                      {
-                        "key": "app_identifier",
-                        "valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser
-                      },
-                      {
-                        "key": "is_browser",
-                        "valueBool": true
-                      }
-                    ]
-                  },
-                  {
-                    "managedProperty": [
-                      {
-                        "key": "app_identifier",
-                        "valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app
-                      },
-                      {
-                        "key": "is_browser",
-                        "valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "managedProperty": [
-              {
-                "key": "organization",
-                "valueString": "${ORGANIZATION_NAME-1}"
-              },
-              {
-                "key": "service_mode",
-                "valueString": "warp"
-              },
-              {
-                "key": "display_name",
-                "valueString": "${UNIQUE_DISPLAY_NAME-2}"
-              },
-              {
-                "key": "warp_tunnel_protocol",
-                "valueString": "wireguard"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+  	{
+  	"kind": "androidenterprise#managedConfiguration",
+  	"productId": "app:com.cloudflare.cloudflareoneagent",
+  	"managedProperty": [
+  		{
+  			"key": "app_config_bundle_list",
+  			"valueBundleArray": [
+  				{
+  					"managedProperty": [
+  						{
+  							"key": "organization",
+  							"valueString": "${ORGANIZATION_NAME-1}"
+  						},
+  						{
+  							"key": "service_mode",
+  							"valueString": "warp"
+  						},
+  						{
+  							"key": "onboarding",
+  							"valueBool": true
+  						},
+  						{
+  							"key": "display_name",
+  							"valueString": "${UNIQUE_DISPLAY_NAME-1}"
+  						},
+  						{
+  							"key": "warp_tunnel_protocol",
+  							"valueString": "MASQUE"
+  						},
+  						{
+  							"key": "tunneled_apps",
+  							"valueBundleArray" :[
+  								{
+  									"managedProperty": [
+  										{
+  											"key": "app_identifier",
+  											"valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser
+  										},
+  										{
+  											"key": "is_browser",
+  											"valueBool": true
+  										}
+  									]
+  								},
+  								{
+  									"managedProperty": [
+  										{
+  											"key": "app_identifier",
+  											"valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app
+  										},
+  										{
+  											"key": "is_browser",
+  											"valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.
+  										}
+  									]
+  								}
+  							]
+  						}
+  					]
+  				},
+  				{
+  					"managedProperty": [
+  						{
+  							"key": "organization",
+  							"valueString": "${ORGANIZATION_NAME-1}"
+  						},
+  						{
+  							"key": "service_mode",
+  							"valueString": "warp"
+  						},
+  						{
+  							"key": "display_name",
+  							"valueString": "${UNIQUE_DISPLAY_NAME-2}"
+  						},
+  						{
+  							"key": "warp_tunnel_protocol",
+  							"valueString": "wireguard"
+  						}
+  					]
+  				}
+  			]
+  		}
+  	]
   }
   ```
   Refer to [Per-app VPN parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#per-app-vpn-parameters-android) to learn more about the MDM parameters introduced to support the per-app VPN for Android devices.
@@ -640,7 +640,14 @@ Intune will now deploy the Cloudflare One Agent application on a user's device w
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/#page","headline":"Intune · Cloudflare One docs","description":"Intune in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","XML","PowerShell"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/","name":"Partners"}},{"@type":"ListItem","position":9,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","name":"Intune"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/#page","headline":"Intune · Cloudflare One docs","description":"Intune in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","XML","PowerShell"]}
 ```

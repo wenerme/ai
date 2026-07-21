@@ -1,16 +1,18 @@
 ---
-title: Concepts
 description: Core concepts and terminology for RealtimeKit including apps, meetings, participants, and presets.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Concepts
 
-# Concepts
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page outlines the core concepts and key terminology used throughout RealtimeKit.
 
@@ -60,7 +62,14 @@ It also lets you customize the UI’s look and feel, including colors and themes
 
 For more information about presets, refer to [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/#page","headline":"Concepts · Cloudflare Realtime docs","description":"Core concepts and terminology for RealtimeKit including apps, meetings, participants, and presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/concepts/","name":"Concepts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/#page","headline":"Concepts · Cloudflare Realtime docs","description":"Core concepts and terminology for RealtimeKit including apps, meetings, participants, and presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

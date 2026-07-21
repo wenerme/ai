@@ -1,16 +1,18 @@
 ---
-title: 3 – Configure HTTPS settings
 description: This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 3 – Configure HTTPS settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  3 – Configure HTTPS settings
 
-# 3 – Configure HTTPS settings
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After setting up basic DNS records, you can configure zone settings using Terraform. This tutorial shows how to enable [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/), [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/), and [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) using the updated v5 provider.
 
@@ -41,14 +43,12 @@ resource "cloudflare_zone_setting" "tls_1_3" {
   value      = "on"
 }
 
-
 # Enable automatic HTTPS rewrites
 resource "cloudflare_zone_setting" "automatic_https_rewrites" {
   zone_id    = var.zone_id
   setting_id = "automatic_https_rewrites"
   value      = "on"
 }
-
 
 # Set SSL mode to strict
 resource "cloudflare_zone_setting" "ssl" {
@@ -71,9 +71,7 @@ Expected output
 ```sh
 Plan: 3 to add, 0 to change, 0 to destroy.
 
-
 Terraform will perform the following actions:
-
 
   # cloudflare_zone_setting.automatic_https_rewrites will be created
   + resource "cloudflare_zone_setting" "automatic_https_rewrites" {
@@ -82,14 +80,12 @@ Terraform will perform the following actions:
       + zone_id    = "your-zone-id"
     }
 
-
   # cloudflare_zone_setting.ssl will be created
   + resource "cloudflare_zone_setting" "ssl" {
       + setting_id = "ssl"
       + value      = "strict"
       + zone_id    = "your-zone-id"
     }
-
 
   # cloudflare_zone_setting.tls_1_3 will be created
   + resource "cloudflare_zone_setting" "tls_1_3" {
@@ -133,7 +129,14 @@ Try the same command as before. The command will now succeed.
 curl -v --tlsv1.3 https://www.example.com 2>&1 | grep "SSL connection\|error"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/#page","headline":"Configure HTTPS settings · Cloudflare Terraform docs","description":"This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.","url":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/configure-https-settings/","name":"3 – Configure HTTPS settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/#page","headline":"Configure HTTPS settings · Cloudflare Terraform docs","description":"This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.","url":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

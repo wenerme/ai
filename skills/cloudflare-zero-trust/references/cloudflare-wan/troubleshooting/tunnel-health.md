@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot tunnel health
 description: Troubleshoot WAN tunnel health issues.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Troubleshoot tunnel health
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot tunnel health
 
-# Troubleshoot tunnel health
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.
 
@@ -160,7 +162,7 @@ Stateful firewalls inspect these packets and look for a matching ICMP _Request_ 
 Change the health check type from _Reply_ to _Request_:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. In **IPsec/GRE tunnels**, select **Edit** on the affected tunnel.
 3. Under **Health check type**, change from _Reply_ to _Request_.
 4. Select **Update tunnel**.
@@ -190,7 +192,7 @@ Cloudflare Network Firewall processes all traffic, including Cloudflare's health
 Add an allow rule for ICMP traffic from Cloudflare IP addresses _before_ any block rules:
 
 1. Go to the **Firewall policies** page.
-[ Go to **Firewall policies** ](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall)
+[ Go to **Firewall policies** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall)
 2. Create a new policy with the following parameters:
 
 | Field        | Value                                                 |
@@ -240,7 +242,7 @@ Set the replay window to `0` to effectively disable the check.
 Enable replay protection in the Cloudflare dashboard. This routes all tunnel traffic through a single server, maintaining proper sequence numbers at the cost of losing anycast benefits.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. In **IPsec/GRE tunnels**, select **Edit** on your IPsec tunnel.
 3. Enable **Replay protection**.
 4. Select **Update tunnel**.
@@ -255,7 +257,7 @@ crypto isakmp invalid-spi-recovery
 exit
 ```
 
-Warning
+Caution
 
 Enabling replay protection in Cloudflare reduces the performance and resilience benefits of the anycast architecture. Only use this option when your device does not support disabling anti-replay protection.
 
@@ -287,7 +289,7 @@ This behavior is expected and the tunnel will automatically recover. To minimize
 3. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:
 
   1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
   1. In **IPsec/GRE tunnels**, select **Edit** on the tunnel.
   2. Change **Health check rate** to _Low_.
 4. **Stagger rekey times**: If you have multiple tunnels, configure different SA lifetimes so they do not rekey simultaneously.
@@ -475,7 +477,14 @@ Collect output from these commands (syntax varies by vendor):
 * [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/): Dashboard navigation guide
 * [Network Analytics](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/): Traffic analysis tools
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/#page","headline":"Troubleshoot tunnel health · Cloudflare WAN docs","description":"Troubleshoot WAN tunnel health issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/troubleshooting/tunnel-health/","name":"Troubleshoot tunnel health"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/#page","headline":"Troubleshoot tunnel health · Cloudflare WAN docs","description":"Troubleshoot WAN tunnel health issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

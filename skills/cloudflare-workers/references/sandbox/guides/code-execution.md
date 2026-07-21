@@ -1,16 +1,18 @@
 ---
-title: Use code interpreter
 description: Execute Python and JavaScript code with rich outputs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use code interpreter
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use code interpreter
 
-# Use code interpreter
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/code-execution/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to execute Python and JavaScript code with rich outputs using the Code Interpreter API.
 
@@ -34,52 +36,37 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-11175)
-* [  TypeScript ](#tab-panel-11176)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
 
 // Create a Python context
 const pythonContext = await sandbox.createCodeContext({
-  language: "python",
+	language: "python",
 });
-
 
 console.log("Context ID:", pythonContext.id);
 console.log("Language:", pythonContext.language);
 
-
 // Create a JavaScript context
 const jsContext = await sandbox.createCodeContext({
-  language: "javascript",
+	language: "javascript",
 });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox } from '@cloudflare/sandbox';
 
-
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
 
 // Create a Python context
 const pythonContext = await sandbox.createCodeContext({
   language: 'python'
 });
 
-
 console.log('Context ID:', pythonContext.id);
 console.log('Language:', pythonContext.language);
-
 
 // Create a JavaScript context
 const jsContext = await sandbox.createCodeContext({
@@ -91,41 +78,31 @@ const jsContext = await sandbox.createCodeContext({
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-11177)
-* [  TypeScript ](#tab-panel-11178)
-
-**JavaScript**
-
 ```js
 // Create context
 const context = await sandbox.createCodeContext({
-  language: "python",
+	language: "python",
 });
-
 
 // Execute code
 const result = await sandbox.runCode(
-  `
+	`
 print("Hello from Code Interpreter!")
 result = 2 + 2
 print(f"2 + 2 = {result}")
 `,
-  { context: context.id },
+	{ context: context.id },
 );
-
 
 console.log("Output:", result.output);
 console.log("Success:", result.success);
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Create context
 const context = await sandbox.createCodeContext({
   language: 'python'
 });
-
 
 // Execute code
 const result = await sandbox.runCode(`
@@ -133,7 +110,6 @@ print("Hello from Code Interpreter!")
 result = 2 + 2
 print(f"2 + 2 = {result}")
 `, { context: context.id });
-
 
 console.log('Output:', result.output);
 console.log('Success:', result.success);
@@ -143,69 +119,54 @@ console.log('Success:', result.success);
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-11183)
-* [  TypeScript ](#tab-panel-11184)
-
-**JavaScript**
-
 ```js
 const context = await sandbox.createCodeContext({
-  language: "python",
+	language: "python",
 });
-
 
 // First execution - import and define variables
 await sandbox.runCode(
-  `
+	`
 import pandas as pd
 import numpy as np
-
 
 data = [1, 2, 3, 4, 5]
 print("Data initialized")
 `,
-  { context: context.id },
+	{ context: context.id },
 );
-
 
 // Second execution - use previously defined variables
 const result = await sandbox.runCode(
-  `
+	`
 mean = np.mean(data)
 print(f"Mean: {mean}")
 `,
-  { context: context.id },
+	{ context: context.id },
 );
-
 
 console.log(result.output); // "Mean: 3.0"
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const context = await sandbox.createCodeContext({
   language: 'python'
 });
-
 
 // First execution - import and define variables
 await sandbox.runCode(`
 import pandas as pd
 import numpy as np
 
-
 data = [1, 2, 3, 4, 5]
 print("Data initialized")
 `, { context: context.id });
-
 
 // Second execution - use previously defined variables
 const result = await sandbox.runCode(`
 mean = np.mean(data)
 print(f"Mean: {mean}")
 `, { context: context.id });
-
 
 console.log(result.output); // "Mean: 3.0"
 ```
@@ -218,68 +179,53 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-11187)
-* [  TypeScript ](#tab-panel-11188)
-
-**JavaScript**
-
 ```js
 const result = await sandbox.runCode(
-  `
+	`
 import matplotlib.pyplot as plt
-
 
 plt.plot([1, 2, 3], [1, 4, 9])
 plt.title('Simple Chart')
 plt.show()
 `,
-  { context: context.id },
+	{ context: context.id },
 );
-
 
 // Check available formats
 console.log("Formats:", result.formats); // ['text', 'png']
 
-
 // Access outputs
 if (result.outputs.png) {
-  // Return as image
-  return new Response(atob(result.outputs.png), {
-    headers: { "Content-Type": "image/png" },
-  });
+	// Return as image
+	return new Response(atob(result.outputs.png), {
+		headers: { "Content-Type": "image/png" },
+	});
 }
-
 
 if (result.outputs.html) {
-  // Return as HTML (pandas DataFrames)
-  return new Response(result.outputs.html, {
-    headers: { "Content-Type": "text/html" },
-  });
+	// Return as HTML (pandas DataFrames)
+	return new Response(result.outputs.html, {
+		headers: { "Content-Type": "text/html" },
+	});
 }
 
-
 if (result.outputs.json) {
-  // Return as JSON
-  return Response.json(result.outputs.json);
+	// Return as JSON
+	return Response.json(result.outputs.json);
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const result = await sandbox.runCode(`
 import matplotlib.pyplot as plt
-
 
 plt.plot([1, 2, 3], [1, 4, 9])
 plt.title('Simple Chart')
 plt.show()
 `, { context: context.id });
 
-
 // Check available formats
 console.log('Formats:', result.formats);  // ['text', 'png']
-
 
 // Access outputs
 if (result.outputs.png) {
@@ -289,14 +235,12 @@ if (result.outputs.png) {
   });
 }
 
-
 if (result.outputs.html) {
   // Return as HTML (pandas DataFrames)
   return new Response(result.outputs.html, {
     headers: { 'Content-Type': 'text/html' }
   });
 }
-
 
 if (result.outputs.json) {
   // Return as JSON
@@ -308,62 +252,49 @@ if (result.outputs.json) {
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-11185)
-* [  TypeScript ](#tab-panel-11186)
-
-**JavaScript**
-
 ```js
 const context = await sandbox.createCodeContext({
-  language: "python",
+	language: "python",
 });
 
-
 const result = await sandbox.runCode(
-  `
+	`
 import time
-
 
 for i in range(10):
     print(f"Processing item {i+1}/10...")
     time.sleep(0.5)
 
-
 print("Done!")
 `,
-  {
-    context: context.id,
-    stream: true,
-    onOutput: (data) => {
-      console.log("Output:", data);
-    },
-    onResult: (result) => {
-      console.log("Result:", result);
-    },
-    onError: (error) => {
-      console.error("Error:", error);
-    },
-  },
+	{
+		context: context.id,
+		stream: true,
+		onOutput: (data) => {
+			console.log("Output:", data);
+		},
+		onResult: (result) => {
+			console.log("Result:", result);
+		},
+		onError: (error) => {
+			console.error("Error:", error);
+		},
+	},
 );
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const context = await sandbox.createCodeContext({
   language: 'python'
 });
 
-
 const result = await sandbox.runCode(
   `
 import time
 
-
 for i in range(10):
     print(f"Processing item {i+1}/10...")
     time.sleep(0.5)
-
 
 print("Done!")
 `,
@@ -387,50 +318,40 @@ print("Done!")
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-11189)
-* [  TypeScript ](#tab-panel-11190)
-
-**JavaScript**
-
 ```js
 // 1. Generate code with Claude
 const response = await fetch("https://api.anthropic.com/v1/messages", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "x-api-key": env.ANTHROPIC_API_KEY,
-    "anthropic-version": "2023-06-01",
-  },
-  body: JSON.stringify({
-    model: "claude-3-5-sonnet-20241022",
-    max_tokens: 1024,
-    messages: [
-      {
-        role: "user",
-        content: "Write Python code to calculate fibonacci sequence up to 100",
-      },
-    ],
-  }),
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+		"x-api-key": env.ANTHROPIC_API_KEY,
+		"anthropic-version": "2023-06-01",
+	},
+	body: JSON.stringify({
+		model: "claude-3-5-sonnet-20241022",
+		max_tokens: 1024,
+		messages: [
+			{
+				role: "user",
+				content: "Write Python code to calculate fibonacci sequence up to 100",
+			},
+		],
+	}),
 });
-
 
 const { content } = await response.json();
 const code = content[0].text;
 
-
 // 2. Execute in sandbox
 const context = await sandbox.createCodeContext({ language: "python" });
 const result = await sandbox.runCode(code, { context: context.id });
-
 
 console.log("Generated code:", code);
 console.log("Output:", result.output);
 console.log("Success:", result.success);
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // 1. Generate code with Claude
 const response = await fetch('https://api.anthropic.com/v1/messages', {
   method: 'POST',
@@ -449,15 +370,12 @@ const response = await fetch('https://api.anthropic.com/v1/messages', {
   })
 });
 
-
 const { content } = await response.json();
 const code = content[0].text;
-
 
 // 2. Execute in sandbox
 const context = await sandbox.createCodeContext({ language: 'python' });
 const result = await sandbox.runCode(code, { context: context.id });
-
 
 console.log('Generated code:', code);
 console.log('Output:', result.output);
@@ -468,31 +386,20 @@ console.log('Success:', result.success);
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-11179)
-* [  TypeScript ](#tab-panel-11180)
-
-**JavaScript**
-
 ```js
 const contexts = await sandbox.listCodeContexts();
 
-
 console.log(`${contexts.length} active contexts:`);
 
-
 for (const ctx of contexts) {
-  console.log(`  ${ctx.id} (${ctx.language})`);
+	console.log(`  ${ctx.id} (${ctx.language})`);
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const contexts = await sandbox.listCodeContexts();
 
-
 console.log(`${contexts.length} active contexts:`);
-
 
 for (const ctx of contexts) {
   console.log(`  ${ctx.id} (${ctx.language})`);
@@ -501,32 +408,23 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-11181)
-* [  TypeScript ](#tab-panel-11182)
-
-**JavaScript**
-
 ```js
 // Delete specific context
 await sandbox.deleteCodeContext(context.id);
 console.log("Context deleted");
 
-
 // Clean up all contexts
 const contexts = await sandbox.listCodeContexts();
 for (const ctx of contexts) {
-  await sandbox.deleteCodeContext(ctx.id);
+	await sandbox.deleteCodeContext(ctx.id);
 }
 console.log("All contexts deleted");
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Delete specific context
 await sandbox.deleteCodeContext(context.id);
 console.log('Context deleted');
-
 
 // Clean up all contexts
 const contexts = await sandbox.listCodeContexts();
@@ -549,7 +447,14 @@ console.log('All contexts deleted');
 * [AI code executor tutorial](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/) \- Build complete AI executor
 * [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Lower-level command execution
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/code-execution/","name":"Use code interpreter"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

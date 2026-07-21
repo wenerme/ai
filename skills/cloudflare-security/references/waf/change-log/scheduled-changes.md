@@ -1,38 +1,40 @@
 ---
-title: Scheduled changes
 description: Upcoming scheduled changes to WAF managed rulesets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Scheduled changes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scheduled changes
 
-# Scheduled changes
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/scheduled-changes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-07-14
+## 2026-07-21
 
 
-**WAF Release - Scheduled changes for 2026-07-20**
+**WAF Release - Scheduled changes for 2026-07-27**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                        | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------------------ | ------------------------ |
-| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...215e7d31 | SSRF - Restricted Protocol                                         | This is a new detection. |
-| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...a935ee5d | SSRF - Obfuscated Host                                             | This is a new detection. |
-| 2026-07-12        | 2026-07-20   | Log              | N/A            | ...1b0230ac | LFI - Path Traversal                                               | This is a new detection. |
-| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...61349c8b | Adobe ColdFusion - File Upload Path Traversal - CVE:CVE-2026-48276 | This is a new detection. |
-| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...9cb61eac | Adobe ColdFusion - Path Traversal - CVE:CVE-2026-48282             | This is a new detection. |
-| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...4ac5e21f | XSS — JS Bracket Concat Obfuscation - Body                         | This is a new detection. |
-| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...f31f5559 | XSS — JS Bracket Concat Obfuscation - Headers                      | This is a new detection. |
-| 2026-07-14        | 2026-07-20   | Log              | N/A            | ...987984fd | XSS — JS Bracket Concat Obfuscation - URI                          | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                     | Comments                       |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------- | ------------------------------ |
+| 2026-07-21        | 2026-07-27   | Log              | N/A            | ...c2e84e2d | SSRF - Cloud - Beta             | This is an improved detection. |
+| 2026-07-21        | 2026-07-27   | Log              | N/A            | ...761e7a4c | Command Injection - Obfuscation | This is a new detection.       |
+| 2026-07-21        | 2026-07-27   | Log              | N/A            | ...90dcdb0a | Generic Rules - DoS             | This is a new detection.       |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/scheduled-changes/#page","headline":"Scheduled changes · Cloudflare Web Application Firewall (WAF) docs","description":"Upcoming scheduled changes to WAF managed rulesets.","url":"https://developers.cloudflare.com/waf/change-log/scheduled-changes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/scheduled-changes/","name":"Scheduled changes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/scheduled-changes/#page","headline":"Scheduled changes · Cloudflare Web Application Firewall (WAF) docs","description":"Upcoming scheduled changes to WAF managed rulesets.","url":"https://developers.cloudflare.com/waf/change-log/scheduled-changes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

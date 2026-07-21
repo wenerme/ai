@@ -1,16 +1,18 @@
 ---
-title: Designing a distributed web performance architecture
 description: A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Designing a distributed web performance architecture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Designing a distributed web performance architecture
 
-# Designing a distributed web performance architecture
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -165,7 +167,14 @@ While Cloudflare provides internal metrics, external (third-party) tools are vit
 * [Pingdom ↗](https://tools.pingdom.com/): Useful for simple, geographic-based availability and speed testing.
 * [Treo.sh ↗](https://treo.sh/sitespeed): Fast, historical visualization of Chrome User Experience Report (CrUX) data.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/#page","headline":"Designing a distributed web performance architecture · Cloudflare Reference Architecture docs","description":"A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/content-delivery/","name":"Content Delivery"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","name":"Designing a distributed web performance architecture"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/#page","headline":"Designing a distributed web performance architecture · Cloudflare Reference Architecture docs","description":"A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

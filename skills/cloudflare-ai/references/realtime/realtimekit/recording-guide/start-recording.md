@@ -1,16 +1,18 @@
 ---
-title: Start Recording
 description: Start composite recording of a RealtimeKit meeting using the API, SDK, or auto-record flag.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Start Recording
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Start Recording
 
-# Start Recording
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This topic explains how to use RealtimeKit to implement composite recording.
 
@@ -60,13 +62,13 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 
 ```json
 {
-  "success": true,
-  "data": {
-    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-    "record_on_start": true,
-    "created_at": "2025-08-24T14:15:22Z",
-    "updated_at": "2025-08-24T14:15:22Z"
-  }
+	"success": true,
+	"data": {
+		"id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+		"record_on_start": true,
+		"created_at": "2025-08-24T14:15:22Z",
+		"updated_at": "2025-08-24T14:15:22Z"
+	}
 }
 ```
 
@@ -79,8 +81,6 @@ Specify the `meeting ID` of the meeting that you want to record.
 Use the [List meetings API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/get/) for an app or [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/) to get the meeting ID. The API returns a parameter called `id`, which is your meeting ID.
 
 ### Request
-
-**Calling Start Recording API**
 
 ```bash
 curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \
@@ -95,30 +95,37 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 
 ```json
 {
-  "success": true,
-  "data": {
-    "id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-    "download_url": "http://example.com",
-    "download_url_expiry": "2025-08-24T14:15:22Z",
-    "download_audio_url": "http://example1.com",
-    "file_size": 0,
-    "session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",
-    "output_file_name": "string",
-    "status": "INVOKED",
-    "invoked_time": "2025-08-24T14:15:22Z",
-    "started_time": "2025-08-24T14:15:22Z",
-    "stopped_time": "2025-08-24T14:15:22Z",
-    "storage_config": {
-      "type": "cloudflare",
-      "secret_key": "string",
-      "bucket": "string",
-      "path": "string"
-    }
-  }
+	"success": true,
+	"data": {
+		"id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+		"download_url": "http://example.com",
+		"download_url_expiry": "2025-08-24T14:15:22Z",
+		"download_audio_url": "http://example1.com",
+		"file_size": 0,
+		"session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",
+		"output_file_name": "string",
+		"status": "INVOKED",
+		"invoked_time": "2025-08-24T14:15:22Z",
+		"started_time": "2025-08-24T14:15:22Z",
+		"stopped_time": "2025-08-24T14:15:22Z",
+		"storage_config": {
+			"type": "cloudflare",
+			"secret_key": "string",
+			"bucket": "string",
+			"path": "string"
+		}
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/#page","headline":"Start Recording · Cloudflare Realtime docs","description":"Start composite recording of a RealtimeKit meeting using the API, SDK, or auto-record flag.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/recording-guide/start-recording/","name":"Start Recording"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/#page","headline":"Start Recording · Cloudflare Realtime docs","description":"Start composite recording of a RealtimeKit meeting using the API, SDK, or auto-record flag.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

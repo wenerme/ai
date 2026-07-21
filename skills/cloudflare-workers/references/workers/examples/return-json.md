@@ -1,32 +1,26 @@
 ---
-title: Return JSON
 description: Return JSON directly from a Worker script, useful for building APIs and middleware.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Return JSON
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Return JSON
+#  Return JSON
 
 Return JSON directly from a Worker script, useful for building APIs and middleware.
+
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/return-json/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/return-json)
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
-
-* [  JavaScript ](#tab-panel-12603)
-* [  TypeScript ](#tab-panel-12604)
-* [  Python ](#tab-panel-12605)
-* [  Rust ](#tab-panel-12606)
-* [  Hono ](#tab-panel-12607)
-
-**JavaScript**
 
 ```js
 export default {
@@ -35,35 +29,26 @@ export default {
       hello: "world",
     };
 
-
     return Response.json(data);
   },
 };
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWAMwBGQQDZRw4QCYAnAHYAXCxZtgHOFxp8BIidNkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnHQPFFI+HIqwaZhaHR6Hj8IRiSQyORKZSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXKy6JkEFkEo2fkVaq1eo7JotXhtDppOzTSzraLAOBxAD6YwmOWiqgKiyK6UR9IZTJCLIM7OMXLMymYViAA)
-
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const data = {
-      hello: "world",
-    };
+	async fetch(request): Promise<Response> {
+		const data = {
+			hello: "world",
+		};
 
-
-    return Response.json(data);
-  },
+		return Response.json(data);
+	},
 } satisfies ExportedHandler;
 ```
-
-**Python**
 
 ```py
 from workers import WorkerEntrypoint, Response
 import json
-
 
 class Default(WorkerEntrypoint):
     def fetch(self, request):
@@ -76,12 +61,10 @@ class Default(WorkerEntrypoint):
 use serde::{Deserialize, Serialize};
 use worker::*;
 
-
 #[derive(Deserialize, Serialize, Debug)]
 struct Json {
     hello: String,
 }
-
 
 #[event(fetch)]
 async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
@@ -92,29 +75,30 @@ async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 }
 ```
 
-**TypeScript**
-
 ```ts
 import { Hono } from "hono";
 
-
 const app = new Hono();
 
-
 app.get("*", (c) => {
-  const data = {
-    hello: "world",
-  };
+	const data = {
+		hello: "world",
+	};
 
-
-  return c.json(data);
+	return c.json(data);
 });
-
 
 export default app;
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/return-json/#page","headline":"Return JSON · Cloudflare Workers docs","description":"Return JSON directly from a Worker script, useful for building APIs and middleware.","url":"https://developers.cloudflare.com/workers/examples/return-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python","Rust"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/return-json/","name":"Return JSON"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/return-json/#page","headline":"Return JSON · Cloudflare Workers docs","description":"Return JSON directly from a Worker script, useful for building APIs and middleware.","url":"https://developers.cloudflare.com/workers/examples/return-json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python","Rust"]}
 ```

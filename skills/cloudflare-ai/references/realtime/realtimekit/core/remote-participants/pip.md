@@ -1,16 +1,18 @@
 ---
-title: Picture in Picture
 description: Render RealtimeKit participant video as a floating Picture-in-Picture tile in the browser.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Picture in Picture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Picture in Picture
 
-# Picture in Picture
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/pip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Picture-in-Picture API allows you to render `meeting.participants.active` participant's video as a floating tile outside of the current webpage's context.
 
@@ -28,23 +30,17 @@ Picture-in-Picture is not available on this platform.
 
 Picture-in-Picture API might not be supported in your browser. Always check for support before using the API.
 
-**JavaScript**
-
 ```js
 const isSupported = meeting.participants.pip.isSupported();
 ```
 
 ## Enable Picture-in-Picture
 
-**JavaScript**
-
 ```js
 await meeting.participants.pip.enable();
 ```
 
 ## Disable Picture-in-Picture
-
-**JavaScript**
 
 ```js
 await meeting.participants.pip.disable();
@@ -70,7 +66,14 @@ await meeting.participants.pip.enable();
 await meeting.participants.pip.disable();
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/pip/#page","headline":"Picture in Picture · Cloudflare Realtime docs","description":"Render RealtimeKit participant video as a floating Picture-in-Picture tile in the browser.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/pip/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/remote-participants/","name":"Remote Participants"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/remote-participants/pip/","name":"Picture in Picture"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/pip/#page","headline":"Picture in Picture · Cloudflare Realtime docs","description":"Render RealtimeKit participant video as a floating Picture-in-Picture tile in the browser.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/pip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,17 +1,19 @@
 ---
-title: Scheduled Events
 description: scheduled events are automatically dispatched according to the specified cron
 triggers:
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Scheduled Events
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scheduled Events
 
-# Scheduled Events
+Last updated Jan 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 * [ScheduledEvent Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
 
@@ -19,11 +21,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 `scheduled` events are automatically dispatched according to the specified cron triggers:
 
-**JavaScript**
-
 ```js
 const mf = new Miniflare({
-  crons: ["15 * * * *", "45 * * * *"],
+	crons: ["15 * * * *", "45 * * * *"],
 });
 ```
 
@@ -46,15 +46,12 @@ $ curl "http://localhost:8787/cdn-cgi/mf/scheduled?cron=*+*+*+*+*"
 
 When using the API, the `getWorker` function can be used to dispatch `scheduled` events to your Worker. This can be used for testing responses. It takes optional `scheduledTime` and `cron` parameters, which default to the current time and the empty string respectively. It will return a promise which resolves to an array containing data returned by all waited promises:
 
-**JavaScript**
-
 ```js
 import { Miniflare } from "miniflare";
 
-
 const mf = new Miniflare({
-  modules: true,
-  script: `
+	modules: true,
+	script: `
   export default {
     async scheduled(controller, env, ctx) {
       const lastScheduledController = controller;
@@ -64,26 +61,29 @@ const mf = new Miniflare({
   `,
 });
 
-
 const worker = await mf.getWorker();
 
-
 let scheduledResult = await worker.scheduled({
-  cron: "* * * * *",
+	cron: "* * * * *",
 });
 console.log(scheduledResult); // { outcome: 'ok', noRetry: true }
 
-
 scheduledResult = await worker.scheduled({
-  scheduledTime: new Date(1000),
-  cron: "30 * * * *",
+	scheduledTime: new Date(1000),
+	cron: "30 * * * *",
 });
-
 
 console.log(scheduledResult); // { outcome: 'ok', noRetry: false }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/#page","headline":"Scheduled Events · Cloudflare Workers docs","description":"scheduled events are automatically dispatched according to the specified cron\ntriggers:","url":"https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/core/","name":"Core"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/core/scheduled/","name":"Scheduled Events"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/#page","headline":"Scheduled Events · Cloudflare Workers docs","description":"scheduled events are automatically dispatched according to the specified cron\ntriggers:","url":"https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

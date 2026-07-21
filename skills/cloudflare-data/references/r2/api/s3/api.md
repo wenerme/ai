@@ -1,16 +1,18 @@
 ---
-title: S3 API compatibility
 description: Review which S3 API operations and features R2 supports, including implementation status.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: S3 API compatibility
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  S3 API compatibility
 
-# S3 API compatibility
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/s3/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 implements the S3 API to allow users and their applications to migrate with ease. When comparing to AWS S3, Cloudflare has removed some API operations' features and added others. The S3 API operations are listed below with their current implementation status. Feature implementation is currently in progress. Refer back to this page for updates. The API is available via the `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` endpoint. Find your [account ID in the Cloudflare dashboard](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
@@ -147,7 +149,7 @@ Below is a list of implemented object-level operations. Refer to the Feature col
 | ✅ [UploadPartCopy ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FUploadPartCopy.html)                   | ❌ Conditional Operations:  ❌ x-amz-copy-source  ❌ x-amz-copy-source-if-match  ❌ x-amz-copy-source-if-modified-since  ❌ x-amz-copy-source-if-none-match  ❌ x-amz-copy-source-if-unmodified-since  ✅ Range:  ✅ x-amz-copy-source-range  ✅ SSE-C:  ✅ x-amz-server-side-encryption-customer-algorithm  ✅ x-amz-server-side-encryption-customer-key  ✅ x-amz-server-side-encryption-customer-key-MD5  ✅ x-amz-copy-source-server-side-encryption-customer-algorithm  ✅ x-amz-copy-source-server-side-encryption-customer-key  ✅ x-amz-copy-source-server-side-encryption-customer-key-MD5  ❌ Request Payer:  ❌ x-amz-request-payer  ❌ Bucket Owner:  ❌ x-amz-expected-bucket-owner  ❌ x-amz-source-expected-bucket-owner                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ✅ [ListParts ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FListParts.html)                             | Query Parameters:  ✅ max-parts  ✅ part-number-marker  ❌ Request Payer:  ❌ x-amz-request-payer  ❌ Bucket Owner:  ❌ x-amz-expected-bucket-owner                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-Warning
+Caution
 
 Even though `ListObjects` is a supported operation, it is recommended that you use `ListObjectsV2` instead when developing applications. For more information, refer to [ListObjects ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FListObjects.html).
 
@@ -161,7 +163,14 @@ Unimplemented object-level operations
 | ❌ [PutObjectTagging ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FPutObjectTagging.html)       | ❌ Bucket Owner:  ❌ x-amz-expected-bucket-owner  ❌ Request Payer:  ❌ x-amz-request-payer  ❌ Checksums:  ❌ x-amz-sdk-checksum-algorithm |
 | ❌ [DeleteObjectTagging ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FDeleteObjectTagging.html) | ❌ Bucket Owner:  ❌ x-amz-expected-bucket-owner                                                                                        |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/api/#page","headline":"S3 API compatibility · Cloudflare R2 docs","description":"Review which S3 API operations and features R2 supports, including implementation status.","url":"https://developers.cloudflare.com/r2/api/s3/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/api/","name":"S3 API compatibility"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/api/#page","headline":"S3 API compatibility · Cloudflare R2 docs","description":"Review which S3 API operations and features R2 supports, including implementation status.","url":"https://developers.cloudflare.com/r2/api/s3/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

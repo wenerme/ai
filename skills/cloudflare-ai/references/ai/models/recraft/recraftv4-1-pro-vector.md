@@ -1,38 +1,38 @@
 ---
-title: Recraft V4.1 Pro SVG
 description: Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Recraft V4.1 Pro SVG
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)
 
 #  Recraft V4.1 Pro SVG
 
-Text-to-Image • Recraft
+ Text-to-Image • Recraft
 
-`recraft/recraftv4-1-pro-vector`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` recraft/recraftv4-1-pro-vector `
+
+* Third-party
+* Zero data retention
 
 Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work.
 
-| Model Info          |                                                                                                                                  |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                           |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                                |
-| Zero data retention | Yes                                                                                                                              |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-pro-vector) |
+| Model Info          |                                                                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                            |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                                 |
+| Zero data retention | Yes                                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-pro-vector) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1854)
-* [ cURL ](#tab-panel-1855)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -54,9 +54,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1852)
-* [ Raw response ](#tab-panel-1853)
-
 ![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro-vector/logo-design.jpg)
 
 ```json
@@ -74,11 +71,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Icon Set**  — Generate a vector icon
-
-* [ TypeScript ](#tab-panel-1858)
-* [ cURL ](#tab-panel-1859)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -104,9 +96,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1856)
-* [ Raw response ](#tab-panel-1857)
-
 ![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro-vector/icon-set.jpg)
 
 ```json
@@ -122,11 +111,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Print-Ready Vector**  — High-resolution vector for large-format print
-
-* [ TypeScript ](#tab-panel-1862)
-* [ cURL ](#tab-panel-1863)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -153,9 +137,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1860)
-* [ Raw response ](#tab-panel-1861)
-
 ![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro-vector/print-ready-vector.jpg)
 
 ```json
@@ -171,11 +152,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Brand Illustration**  — Vector illustration with brand colors
-
-* [ TypeScript ](#tab-panel-1866)
-* [ cURL ](#tab-panel-1867)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -225,9 +201,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1864)
-* [ Raw response ](#tab-panel-1865)
-
 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro-vector/brand-illustration.jpg)
 
 ```json
@@ -243,9 +216,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-1868)
-* [ Output ](#tab-panel-1869)
 
 prompt
 
@@ -277,7 +247,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-ve
 
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/#page","headline":"Recraft V4.1 Pro SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/#page","headline":"Recraft V4.1 Pro SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

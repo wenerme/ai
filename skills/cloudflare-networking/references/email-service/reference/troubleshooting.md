@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Diagnose and fix delivery, authentication, and local development issues for Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common SPF, DKIM, and DMARC issues with Email Service.
 
@@ -21,7 +23,7 @@ Email authentication is critical for successful email delivery. This guide helps
 Having multiple SPF records on your domain is not allowed and will prevent Email Service from working properly. If your domain has multiple SPF records:
 
 1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** \> **Records**.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Look for multiple TXT records starting with `v=spf1`.
 3. Delete the incorrect SPF record.
 4. Ensure you have the correct SPF records:
@@ -39,7 +41,7 @@ If you are unsure which SPF record is the correct one to keep, you can remove al
 If emails are being rejected due to SPF failures:
 
 1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** \> **Records**.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Add TXT records for the appropriate service:
 
   * For **Email Routing**: **Name**: `@` (root domain), **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
@@ -105,7 +107,6 @@ Verify your DKIM records are configured correctly:
 # Check Email Sending DKIM
 dig TXT cf-bounce._domainkey.example.com +short
 
-
 # Check Email Routing DKIM
 dig TXT cf2024-1._domainkey.example.com +short
 ```
@@ -135,7 +136,7 @@ If DKIM validation is failing:
 While not required, DMARC significantly improves email deliverability:
 
 1. Go to **DNS** \> **Records** in the Cloudflare dashboard.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Add a TXT record:
 
   * **Name**: `_dmarc`
@@ -231,7 +232,14 @@ If you continue to experience authentication issues:
   * Specific error messages
   * SPF, DKIM, and DMARC record configurations
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

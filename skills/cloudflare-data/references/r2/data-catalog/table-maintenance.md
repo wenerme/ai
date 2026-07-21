@@ -1,16 +1,18 @@
 ---
-title: Table maintenance
 description: Learn how R2 Data Catalog automates table maintenance
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Table maintenance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Table maintenance
 
-# Table maintenance
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/table-maintenance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Table maintenance encompasses a set of operations that keep your Apache Iceberg tables performant and cost-efficient over time. As data is written, updated, and deleted, tables accumulate metadata and files that can degrade query performance over time.
 
@@ -49,15 +51,12 @@ npx wrangler r2 bucket catalog compaction enable my-bucket \
   --target-size 128 \
   --token $R2_CATALOG_TOKEN
 
-
 # Enable compaction for a specific table
 npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table \
   --target-size 256
 
-
 # Disable catalog-level compaction
 npx wrangler r2 bucket catalog compaction disable my-bucket
-
 
 # Disable compaction for a specific table
 npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
@@ -106,14 +105,12 @@ npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
   --older-than-days 7 \
   --retain-last 10
 
-
 # Enable for specific table
 # Keep minimum 5 snapshots, expire those older than 2 days
 npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket my-namespace my-table \
   --token $R2_CATALOG_TOKEN \
   --older-than-days 2 \
   --retain-last 5
-
 
 # Disable snapshot expiration for a catalog
 npx wrangler r2 bucket catalog snapshot-expiration disable my-bucket
@@ -140,7 +137,14 @@ These are generic recommendations, make sure to consider:
 * Files that were not previously referenced by a snapshot will not be cleaned up (orphaned files).
 * Minimum target file size for compaction is 64 MB and maximum is 512 MB.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/#page","headline":"Table maintenance · Cloudflare R2 docs","description":"Learn how R2 Data Catalog automates table maintenance","url":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/table-maintenance/","name":"Table maintenance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/#page","headline":"Table maintenance · Cloudflare R2 docs","description":"Learn how R2 Data Catalog automates table maintenance","url":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

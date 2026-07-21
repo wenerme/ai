@@ -1,16 +1,18 @@
 ---
-title: Custom rulesets (zone level)
 description: Create and manage zone-level custom rulesets for WAF rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Custom rulesets (zone level)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom rulesets (zone level)
 
-# Custom rulesets (zone level)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Custom rulesets are collections of custom rules that you can deploy at the zone or [account level](https://developers.cloudflare.com/waf/account/custom-rulesets/).
 
@@ -46,58 +48,56 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone WAF Write`
 
-**Create a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (zone)",
-    "kind": "custom",
-    "phase": "http_request_firewall_custom",
-    "rules": [
-        {
-            "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-            "action": "challenge",
-            "description": "challenge GB and FR based on bot score"
-        },
-        {
-            "expression": "not http.request.uri.path wildcard \"/api/*\"",
-            "action": "challenge",
-            "description": "challenge not /api"
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"phase": "http_request_firewall_custom",
+		"rules": [
+				{
+						"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+						"action": "challenge",
+						"description": "challenge GB and FR based on bot score"
+				},
+				{
+						"expression": "not http.request.uri.path wildcard \"/api/*\"",
+						"action": "challenge",
+						"description": "challenge not /api"
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (zone)",
-    "kind": "custom",
-    "version": "1",
-    "rules": [
-      {
-        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-        "action": "challenge",
-        "description": "challenge GB and FR based on bot score"
-      },
-      {
-        "expression": "not http.request.uri.path wildcard \"/api/*\"",
-        "action": "challenge",
-        "description": "challenge not /api"
-      }
-    ],
-    "last_updated": "2025-11-09T10:27:30.636197Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"version": "1",
+		"rules": [
+			{
+				"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+				"action": "challenge",
+				"description": "challenge GB and FR based on bot score"
+			},
+			{
+				"expression": "not http.request.uri.path wildcard \"/api/*\"",
+				"action": "challenge",
+				"description": "challenge not /api"
+			}
+		],
+		"last_updated": "2025-11-09T10:27:30.636197Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -114,30 +114,28 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Zone WAF Write`
   * `Zone WAF Read`
-
-**Get a zone entry point ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "result": {
-    "description": "Zone-level phase entry point",
-    "id": "<ENTRY_POINT_RULESET_ID>",
-    "kind": "zone",
-    "last_updated": "2025-11-16T15:40:08.202335Z",
-    "name": "zone",
-    "phase": "http_request_firewall_custom",
-    "rules": [
-      // ...
-    ],
-    "version": "10"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"description": "Zone-level phase entry point",
+		"id": "<ENTRY_POINT_RULESET_ID>",
+		"kind": "zone",
+		"last_updated": "2025-11-16T15:40:08.202335Z",
+		"name": "zone",
+		"phase": "http_request_firewall_custom",
+		"rules": [
+			// ...
+		],
+		"version": "10"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset you created in Step 1 (replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID).
@@ -145,79 +143,75 @@ Since the expression is `true`, the custom ruleset will run for all incoming req
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Zone WAF Write`
-
-**Create a zone ruleset rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "execute",
-    "expression": "true",
-    "action_parameters": {
-        "id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-    },
-    "description": "Execute custom ruleset"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "execute",
+		"expression": "true",
+		"action_parameters": {
+				"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+		},
+		"description": "Execute custom ruleset"
+	}'
 ```
 ```json
 {
-  "result": {
-    "id": "<ENTRY_POINT_RULESET_ID>",
-    "name": "zone",
-    "description": "Zone-level phase entry point",
-    "kind": "zone",
-    "version": "11",
-    "rules": [
-      // ... any existing rules
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-        },
-        "expression": "true",
-        "description": "Execute custom ruleset",
-        "last_updated": "2025-11-18T18:08:14.003361Z",
-        "ref": "<RULE_REF>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2025-11-18T18:08:14.003361Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ENTRY_POINT_RULESET_ID>",
+		"name": "zone",
+		"description": "Zone-level phase entry point",
+		"kind": "zone",
+		"version": "11",
+		"rules": [
+			// ... any existing rules
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+				},
+				"expression": "true",
+				"description": "Execute custom ruleset",
+				"last_updated": "2025-11-18T18:08:14.003361Z",
+				"ref": "<RULE_REF>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2025-11-18T18:08:14.003361Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests in the zone. Replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Zone WAF Write`
-
-**Create a zone ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "zone",
-    "description": "Zone-level phase entry point",
-    "kind": "zone",
-    "phase": "http_request_firewall_custom",
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-            },
-            "expression": "true",
-            "description": "Execute custom ruleset"
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "zone",
+		"description": "Zone-level phase entry point",
+		"kind": "zone",
+		"phase": "http_request_firewall_custom",
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+						},
+						"expression": "true",
+						"description": "Execute custom ruleset"
+				}
+		]
+	}'
 ```
 
 ## Next steps
@@ -235,7 +229,14 @@ Use the different operations in the [Rulesets API](https://developers.cloudflare
 
 For more information on working with custom rulesets via Cloudflare API, refer to [Work with custom rulesets](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) in the Ruleset Engine documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level) · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/custom-rulesets/","name":"Custom rulesets (zone level)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level) · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

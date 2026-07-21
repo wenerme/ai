@@ -1,16 +1,18 @@
 ---
-title: Draw overlays and watermarks
 description: Add watermarks, logos, and overlay images over other images using Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Draw overlays and watermarks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Draw overlays and watermarks
 
-# Draw overlays and watermarks
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/draw-overlays/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use [Workers](https://developers.cloudflare.com/workers/) to draw watermarks, logos, signatures over other images. Overlays support transparency, positioning, and compositing modes.
 
@@ -25,34 +27,31 @@ To draw overlays on a [fetch() subrequest](https://developers.cloudflare.com/ima
 
 Each entry in the array specifies an overlay and its options, including [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) like [width](https://developers.cloudflare.com/images/optimization/features/#width--w), [height](https://developers.cloudflare.com/images/optimization/features/#height--h), [fit](https://developers.cloudflare.com/images/optimization/features/#fit), [blur](https://developers.cloudflare.com/images/optimization/features/#blur), and [rotate](https://developers.cloudflare.com/images/optimization/features/#rotate). Overlays are drawn in the order they appear — the last entry is the topmost layer.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    const imageURL = "https://example.com/image.png";
+	async fetch(request) {
+		const imageURL = "https://example.com/image.png";
 
-
-    return fetch(imageURL, {
-      cf: {
-        image: {
-          width: 800,
-          height: 600,
-          draw: [
-            {
-              url: "https://example.com/branding/logo.png",
-              bottom: 5,
-              right: 5,
-              fit: "contain",
-              width: 100,
-              height: 50,
-              opacity: 0.8,
-            },
-          ],
-        },
-      },
-    });
-  },
+		return fetch(imageURL, {
+			cf: {
+				image: {
+					width: 800,
+					height: 600,
+					draw: [
+						{
+							url: "https://example.com/branding/logo.png",
+							bottom: 5,
+							right: 5,
+							fit: "contain",
+							width: 100,
+							height: 50,
+							opacity: 0.8,
+						},
+					],
+				},
+			},
+		});
+	},
 };
 ```
 
@@ -62,28 +61,24 @@ The [Images binding](https://developers.cloudflare.com/images/optimization/bindi
 
 Pass the overlay image as the first argument, then the draw options as the second. To apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) to the overlay image, pass an `.input()` chain with `.transform()` as the first argument.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const img = await fetch("https://zzzdna.com/blue.png");
-    const watermark = await fetch("https://zzzdna.com/purple.png");
+	async fetch(request, env) {
+		const img = await fetch("https://zzzdna.com/blue.png");
+		const watermark = await fetch("https://zzzdna.com/purple.png");
 
+		const response = (
+			await env.IMAGES
+				.input(img.body)
+				.draw(
+					env.IMAGES.input(watermark.body).transform({ width: 100 }),
+					{ bottom: 10, right: 10, opacity: 0.5 }
+				)
+				.output({ format: "image/avif" })
+		).response();
 
-    const response = (
-      await env.IMAGES
-        .input(img.body)
-        .draw(
-          env.IMAGES.input(watermark.body).transform({ width: 100 }),
-          { bottom: 10, right: 10, opacity: 0.5 }
-        )
-        .output({ format: "image/avif" })
-    ).response();
-
-
-    return response;
-  },
+		return response;
+	},
 };
 ```
 
@@ -183,21 +178,19 @@ Adds the color values of both images, which makes the overlapping areas brighter
 
 Tile a semitransparent watermark across the entire image using `cf.image`.
 
-**JavaScript**
-
 ```js
 fetch(imageURL, {
-  cf: {
-    image: {
-      draw: [
-        {
-          url: "https://example.com/watermark.png",
-          repeat: true,
-          opacity: 0.2,
-        },
-      ],
-    },
-  },
+	cf: {
+		image: {
+			draw: [
+				{
+					url: "https://example.com/watermark.png",
+					repeat: true,
+					opacity: 0.2,
+				},
+			],
+		},
+	},
 });
 ```
 
@@ -205,21 +198,19 @@ fetch(imageURL, {
 
 Position a logo at the bottom-right corner using `cf.image`.
 
-**JavaScript**
-
 ```js
 fetch(imageURL, {
-  cf: {
-    image: {
-      draw: [
-        {
-          url: "https://example.com/logo.png",
-          bottom: 5,
-          right: 5,
-        },
-      ],
-    },
-  },
+	cf: {
+		image: {
+			draw: [
+				{
+					url: "https://example.com/logo.png",
+					bottom: 5,
+					right: 5,
+				},
+			],
+		},
+	},
 });
 ```
 
@@ -227,19 +218,17 @@ fetch(imageURL, {
 
 Combine multiple overlays in one request using `cf.image`. They are drawn in order — the last entry is the topmost layer.
 
-**JavaScript**
-
 ```js
 fetch(imageURL, {
-  cf: {
-    image: {
-      draw: [
-        { url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },
-        { url: "https://example.com/play-button.png" },
-        { url: "https://example.com/logo.png", bottom: 5, right: 5 },
-      ],
-    },
-  },
+	cf: {
+		image: {
+			draw: [
+				{ url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },
+				{ url: "https://example.com/play-button.png" },
+				{ url: "https://example.com/logo.png", bottom: 5, right: 5 },
+			],
+		},
+	},
 });
 ```
 
@@ -249,48 +238,50 @@ Cut rounded corners from an image. A corner mask is drawn at each corner and rot
 
 The example below shows how this can be done using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/).
 
-**TypeScript**
-
 ```ts
 const image = await fetch("https://example.com/photo.png");
 const mask = await fetch("https://example.com/corner-mask.png");
-
 
 let [topLeft, topRight] = mask.body.tee();
 let bottomLeft, bottomRight;
 [topLeft, bottomLeft] = topLeft.tee();
 [topLeft, bottomRight] = topLeft.tee();
 
-
 const output = await env.IMAGES
-  .input(image.body)
-  .draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {
-    left: 0,
-    top: 0,
-    composite: "xor",
-  })
-  .draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {
-    right: 0,
-    top: 0,
-    composite: "xor",
-  })
-  .draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {
-    bottom: 0,
-    right: 0,
-    composite: "xor",
-  })
-  .draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {
-    bottom: 0,
-    left: 0,
-    composite: "xor",
-  })
-  .output({ format: "image/png" });
-
+	.input(image.body)
+	.draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {
+		left: 0,
+		top: 0,
+		composite: "xor",
+	})
+	.draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {
+		right: 0,
+		top: 0,
+		composite: "xor",
+	})
+	.draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {
+		bottom: 0,
+		right: 0,
+		composite: "xor",
+	})
+	.draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {
+		bottom: 0,
+		left: 0,
+		composite: "xor",
+	})
+	.output({ format: "image/png" });
 
 return output.response();
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/draw-overlays/#page","headline":"Draw overlays and watermarks · Cloudflare Images docs","description":"Add watermarks, logos, and overlay images over other images using Workers.","url":"https://developers.cloudflare.com/images/optimization/draw-overlays/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/draw-overlays/","name":"Draw overlays and watermarks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/draw-overlays/#page","headline":"Draw overlays and watermarks · Cloudflare Images docs","description":"Add watermarks, logos, and overlay images over other images using Workers.","url":"https://developers.cloudflare.com/images/optimization/draw-overlays/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

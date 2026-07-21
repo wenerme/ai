@@ -1,16 +1,18 @@
 ---
-title: Configure Snippets using Terraform
 description: Create Snippets using the Terraform Cloudflare provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Snippets using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Snippets using Terraform
 
-# Configure Snippets using Terraform
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/create-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can create Snippets using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
 
@@ -26,25 +28,24 @@ The following example Terraform configuration creates a snippet and an associate
 
 ```tf
 resource "cloudflare_snippet" "my_snippet" {
-  zone_id  = "<ZONE_ID>"
-  name = "my_test_snippet_1"
-  main_module = "file1.js"
-  files {
-    name = "file1.js"
-    content = file("file1.js")
-  }
+	zone_id  = "<ZONE_ID>"
+	name = "my_test_snippet_1"
+	main_module = "file1.js"
+	files {
+		name = "file1.js"
+		content = file("file1.js")
+	}
 }
 
-
 resource "cloudflare_snippet_rules" "cookie_snippet_rule" {
-  zone_id  = "<ZONE_ID>"
-  rules {
-    enabled = true
-    expression = "http.cookie eq \"a=b\""
-    description = "Trigger snippet on specific cookie"
-    snippet_name = "my_test_snippet_1"
-  }
-  depends_on = [cloudflare_snippet.my_snippet]
+	zone_id  = "<ZONE_ID>"
+	rules {
+		enabled = true
+		expression = "http.cookie eq \"a=b\""
+		description = "Trigger snippet on specific cookie"
+		snippet_name = "my_test_snippet_1"
+	}
+	depends_on = [cloudflare_snippet.my_snippet]
 }
 ```
 
@@ -56,7 +57,14 @@ All `snippet_name` values in the `cloudflare_snippet_rules` resource must match 
 
 Refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_snippet` and `cloudflare_snippet_rules` resources.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-terraform/#page","headline":"Configure Snippets using Terraform · Cloudflare Rules docs","description":"Create Snippets using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/snippets/create-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/create-terraform/","name":"Configure Snippets using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-terraform/#page","headline":"Configure Snippets using Terraform · Cloudflare Rules docs","description":"Create Snippets using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/snippets/create-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

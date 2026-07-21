@@ -1,16 +1,18 @@
 ---
-title: Custom Indicator Feeds
 description: Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Custom Indicator Feeds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom Indicator Feeds
 
-# Custom Indicator Feeds
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/indicator-feeds/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's threat intelligence team crowdsources attack trends and protects users automatically, such as from zero-day vulnerabilities like the [HTTP/2 Rapid Reset attack ↗](https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/). However, in some cases, Cloudflare will partner with external entities that have their own feeds which can be shared with eligible Cloudflare users.
 
@@ -42,94 +44,86 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
 
 1. Contact your account team to configure your account as an indicator feed provider.
 2. Create a feed with the [Create new indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/methods/create/). Make note of the `feed_id` generated for your feed. For example:
-
-**Create new indicator feed**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds" \
-  --header 'Content-Type: application/json' \
-  --header 'X-Auth-Email: <EMAIL>' \
-  --header 'X-Auth-Key: <API_KEY>' \
-  --data '{
-  "description": "Custom indicator feed to detect threats",
-  "name": "threat_indicator_feed"
+	--header 'Content-Type: application/json' \
+	--header 'X-Auth-Email: <EMAIL>' \
+	--header 'X-Auth-Key: <API_KEY>' \
+	--data '{
+	"description": "Custom indicator feed to detect threats",
+	"name": "threat_indicator_feed"
 }'
 ```
 ```json
 {
-  "result": {
-    "id": 10,
-    "name": "threat_indicator_feed",
-    "description": "Custom indicator feed to detect threats",
-    "created_on": "2024-09-17T21:16:09.412Z",
-    "modified_on": "2024-09-17T21:16:09.412Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": 10,
+		"name": "threat_indicator_feed",
+		"description": "Custom indicator feed to detect threats",
+		"created_on": "2024-09-17T21:16:09.412Z",
+		"modified_on": "2024-09-17T21:16:09.412Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [.stix2 ↗](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.
-
-**Update indicator feed data**
 ```bash
 curl --request PUT \
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \
-  --header 'Content-Type: multipart/form-data' \
-  --header 'X-Auth-Email: <EMAIL>' \
-  --header 'X-Auth-Key: <API_KEY>' \
-  --form 'source=@/path/to/file'
+	"https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \
+	--header 'Content-Type: multipart/form-data' \
+	--header 'X-Auth-Email: <EMAIL>' \
+	--header 'X-Auth-Key: <API_KEY>' \
+	--form 'source=@/path/to/file'
 ```
 ```json
 {
-  "result": {
-    "file_id": 1,
-    "filename": "snapshot_file.unified",
-    "status": "unified"
-  },
-  "errors": [],
-  "messages": [],
-  "success": true
+	"result": {
+		"file_id": 1,
+		"filename": "snapshot_file.unified",
+		"status": "unified"
+	},
+	"errors": [],
+	"messages": [],
+	"success": true
 }
 ```
 Note
 Indicator feeds use a snapshot system. To update feeds with new data, providers must upload a file containing all previous and new indicators.
 4. (Optional) Verify the status of your feed upload with the [Get indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/methods/data/). For example:
-
-**Get indicator feed data**
 ```bash
 curl --request GET \
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/data" \
-  --header 'Content-Type: application/json' \
-  --header 'X-Auth-Email: <EMAIL>' \
-  --header 'X-Auth-Key: <API_KEY>'
+	"https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/data" \
+	--header 'Content-Type: application/json' \
+	--header 'X-Auth-Email: <EMAIL>' \
+	--header 'X-Auth-Key: <API_KEY>'
 ```
 ```json
 {
-  "result": {
-    "id": 10,
-    "name": "threat_indicator_feed",
-    "description": "Custom indicator feed to detect threats",
-    "created_on": "2023-08-01T18:00:26.65715Z",
-    "modified_on": "2023-08-01T18:00:26.65715Z",
-    "latest_upload_status": "Complete"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": 10,
+		"name": "threat_indicator_feed",
+		"description": "Custom indicator feed to detect threats",
+		"created_on": "2023-08-01T18:00:26.65715Z",
+		"modified_on": "2023-08-01T18:00:26.65715Z",
+		"latest_upload_status": "Complete"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 5. Grant access to subscribers with the [Grant permission to indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/permissions/methods/create/). You can add subscribers to the feed's allowed subscribers list using their [account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/). For example:
-
-**Update indicator feed data**
 ```bash
 curl --request PUT \
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \
-  --header 'Content-Type: multipart/form-data' \
-  --header 'X-Auth-Email: <EMAIL>' \
-  --header 'X-Auth-Key: <API_KEY>' \
-  --data '{
-  "account_tag": "823f45f16fd2f7e21e1e054aga4d2859",
-  "feed_id": 10
+	"https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \
+	--header 'Content-Type: multipart/form-data' \
+	--header 'X-Auth-Email: <EMAIL>' \
+	--header 'X-Auth-Key: <API_KEY>' \
+	--data '{
+	"account_tag": "823f45f16fd2f7e21e1e054aga4d2859",
+	"feed_id": 10
 }'
 ```
 
@@ -149,7 +143,14 @@ Once an account is granted access to a feed, it will be available to match traff
 
 For more information on creating Gateway policies, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/indicator-feeds/#page","headline":"Custom Indicator Feeds · Cloudflare Security Center docs","description":"Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.","url":"https://developers.cloudflare.com/security-center/indicator-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/indicator-feeds/","name":"Custom Indicator Feeds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/indicator-feeds/#page","headline":"Custom Indicator Feeds · Cloudflare Security Center docs","description":"Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.","url":"https://developers.cloudflare.com/security-center/indicator-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

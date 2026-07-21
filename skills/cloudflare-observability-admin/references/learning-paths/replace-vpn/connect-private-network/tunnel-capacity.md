@@ -1,16 +1,18 @@
 ---
-title: Tunnel capacity for cloudflared
 description: Size and scale cloudflared tunnel capacity.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Tunnel capacity for cloudflared
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel capacity for cloudflared
 
-# Tunnel capacity for cloudflared
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Now that you have a Cloudflare Tunnel up and running, evaluate whether `cloudflared` has enough system resources to handle the expected volume of requests from end users.
 
@@ -84,7 +86,14 @@ Even if all routes in your network are served from the same physical location, i
 
 For instance, if you proxy the ranges `10.0.0.0/8`, `172.0.0.0/8`, and `192.0.0.0/8` from a single tunnel with multiple replicas, you may reach a point of port exhaustion with respect to the traffic flowing through the multitude of networks. It may make sense to break out `10.0.0.0/8`, `172.0.0.0/8`, and `192.0.0.0/8` into their own independent tunnels, each with their own replica. Alternatively, you could find specific applications or functions (like DNS servers or other functions that generate a high volume of independent traffic) and break them out into standalone tunnels with properly rated throughput and replica volume.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/#page","headline":"Tunnel capacity for cloudflared · Cloudflare Learning Paths","description":"Size and scale cloudflared tunnel capacity.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/","name":"Tunnel capacity for cloudflared"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/#page","headline":"Tunnel capacity for cloudflared · Cloudflare Learning Paths","description":"Size and scale cloudflared tunnel capacity.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

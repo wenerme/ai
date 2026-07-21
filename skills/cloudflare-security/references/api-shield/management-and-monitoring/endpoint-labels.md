@@ -1,16 +1,18 @@
 ---
-title: Endpoint labeling service
 description: Organize API endpoints and address vulnerabilities with managed and custom labels.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Endpoint labeling service
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Endpoint labeling service
 
-# Endpoint labeling service
+Last updated May 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 API Shield's labeling service will help you organize your endpoints and address vulnerabilities in your API. The labeling service comes with managed and user-defined labels.
 
@@ -97,13 +99,13 @@ How you address risks to your endpoints will depend on its label(s). The followi
 1. Review risks to endpoints.
 View the endpoints labeled as risks and identify if they have been labeled for other risks.
 For example, endpoints labeled `cf-risk-sensitive` and `cf-risk-missing-auth` or `cf-risk-mixed-auth` may contain sensitive data that is available to unauthenticated users.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 Go to the details pages for endpoints labeled as `cf-risk-missing-auth` or `cf-risk-mixed-auth`, and check for recent changes in the authenticated traffic profile in the last 24 hours and seven days.
 2. Review traffic to these labeled endpoints in Security Analytics.
 Check for unexpected traffic sources and note any irregular traffic patterns.
 Filtering
 Filtering by risk label includes all traffic to all endpoints labeled with that risk, not only the traffic that prompted Cloudflare to apply the label.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 3. Review your origin's authorization and authentication policies with your development team.
 Speak with your developers or application owners in your organization to understand whether or not all requests to these endpoints should be authenticated. Modify your application to consistently enforce the authentication requirement for all traffic accessing these endpoints.
 Refer to [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/) for more information.
@@ -124,26 +126,26 @@ The following query returns the count of requests per operation ID and managed l
 
 ```graphql
 query GetAdaptiveGroups($start: DateTime!, $end: DateTime!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      httpRequestsAdaptiveGroups(
-        filter: {
-          datetime_geq: $start
-          datetime_leq: $end
-          requestSource: "eyeball"
-          webAssetsLabelsManaged_hasany: ["cf-log-in"]
-        }
-        limit: 25
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          webAssetsOperationId
-          webAssetsLabelsManaged
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			httpRequestsAdaptiveGroups(
+				filter: {
+					datetime_geq: $start
+					datetime_leq: $end
+					requestSource: "eyeball"
+					webAssetsLabelsManaged_hasany: ["cf-log-in"]
+				}
+				limit: 25
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					webAssetsOperationId
+					webAssetsLabelsManaged
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -157,11 +159,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-7336)
-* [ Old dashboard ](#tab-panel-7337)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. Under **Endpoint labels**, select **Manage labels**.
 4. Name the label and add an optional label description.
@@ -171,7 +170,7 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 Alternatively, you can create a user-defined label via **Security** \> **Web Assets**.
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Endpoints** tab.
 3. Choose the endpoint that you want to label.
 4. Select **Edit endpoint labels**.
@@ -198,11 +197,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-7338)
-* [ Old dashboard ](#tab-panel-7339)
-
 1. In the Cloudflare dashboard, go to the **Web assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. In the **Endpoints** tab, choose the endpoint that you want to label.
 3. Select **Edit endpoint labels**.
 4. Add the label(s) that you want to use for the endpoint from the list of managed and user-defined labels.
@@ -217,11 +213,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-7334)
-* [ Old dashboard ](#tab-panel-7335)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. On **Endpoint labels**, select **Manage labels**.
 4. On the existing label that you want to apply to multiple endpoints, select **Bulk apply**.
@@ -238,7 +231,14 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 Endpoint labeling is available to all customers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-labels/","name":"Endpoint labeling service"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: timers
 description: Use the Node.js timers API in Cloudflare Workers to schedule functions with setTimeout, setInterval, and setImmediate.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: timers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  timers
 
-# timers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,45 +22,33 @@ Use [node:timers ↗](https://nodejs.org/api/timers.html) APIs to schedule funct
 
 This includes [setTimeout ↗](https://nodejs.org/api/timers.html#settimeoutcallback-delay-args) for calling a function after a delay, [setInterval ↗](https://nodejs.org/api/timers.html#clearintervaltimeout) for calling a function repeatedly, and [setImmediate ↗](https://nodejs.org/api/timers.html#setimmediatecallback-args) for calling a function in the next iteration of the event loop.
 
-* [  JavaScript ](#tab-panel-12905)
-* [  TypeScript ](#tab-panel-12906)
-
-**index.js**
-
 ```js
 import timers from "node:timers";
 
-
 export default {
-  async fetch() {
-    console.log("first");
-    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();
-    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();
-    timers.setTimeout(() => {
-      console.log("last");
-      resolve1();
-    }, 10);
+	async fetch() {
+		console.log("first");
+		const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();
+		const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();
+		timers.setTimeout(() => {
+			console.log("last");
+			resolve1();
+		}, 10);
 
+		timers.setTimeout(() => {
+			console.log("next");
+			resolve2();
+		});
 
-    timers.setTimeout(() => {
-      console.log("next");
-      resolve2();
-    });
+		await Promise.all([promise1, promise2]);
 
-
-    await Promise.all([promise1, promise2]);
-
-
-    return new Response("ok");
-  },
+		return new Response("ok");
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 import timers from "node:timers";
-
 
 export default {
   async fetch(): Promise<Response> {
@@ -70,15 +60,12 @@ export default {
       resolve1();
     }, 10);
 
-
     timers.setTimeout(() => {
       console.log("next");
       resolve2();
     });
 
-
     await Promise.all([promise1, promise2]);
-
 
     return new Response("ok");
   }
@@ -95,7 +82,14 @@ When called from a global level (on [globalThis ↗](https://developer.mozilla.o
 
 The full `node:timers` API is documented in the [Node.js documentation for node:timers ↗](https://nodejs.org/api/timers.html).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/#page","headline":"timers · Cloudflare Workers docs","description":"Use the Node.js timers API in Cloudflare Workers to schedule functions with setTimeout, setInterval, and setImmediate.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/timers/","name":"timers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/#page","headline":"timers · Cloudflare Workers docs","description":"Use the Node.js timers API in Cloudflare Workers to schedule functions with setTimeout, setInterval, and setImmediate.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/timers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

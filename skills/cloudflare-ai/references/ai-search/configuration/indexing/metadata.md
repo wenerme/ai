@@ -1,16 +1,18 @@
 ---
-title: Metadata attributes
 description: Define built-in and custom metadata attributes on indexed documents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metadata attributes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metadata attributes
 
-# Metadata attributes
+Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use metadata attributes to organize your indexed documents and provide context to guide AI responses. This page covers built-in metadata attributes and custom metadata schemas. To filter search results by these attributes at query time, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -41,13 +43,11 @@ Custom metadata allows you to define additional fields for filtering search resu
 
 Before custom metadata can be extracted, define a schema in your AI Search configuration using the `custom_metadata` field. The schema specifies which fields to extract and their data types.
 
-**TypeScript**
-
 ```ts
 custom_metadata: [
-  { field_name: "category", data_type: "text" },
-  { field_name: "version", data_type: "number" },
-  { field_name: "is_public", data_type: "boolean" },
+	{ field_name: "category", data_type: "text" },
+	{ field_name: "version", data_type: "number" },
+	{ field_name: "is_public", data_type: "boolean" },
 ];
 ```
 
@@ -89,13 +89,20 @@ If file metadata exceeds size limits, the metadata is replaced with an error ind
 
 ```json
 {
-  "file": { "error": "metadata is too large" }
+	"file": { "error": "metadata is too large" }
 }
 ```
 
 To avoid this, keep individual metadata values concise.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/metadata/","name":"Metadata attributes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

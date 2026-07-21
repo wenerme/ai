@@ -1,16 +1,18 @@
 ---
-title: Network-focused migration from VPN concentrators to Zero Trust Network Access
 description: The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network-focused migration from VPN concentrators to Zero Trust Network Access
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network-focused migration from VPN concentrators to Zero Trust Network Access
 
-# Network-focused migration from VPN concentrators to Zero Trust Network Access
+Last updated Apr 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -234,7 +236,14 @@ The flexibility of the Cloudflare connectivity cloud to connect any device, appl
 * Cloudflare WAN integration: [WARP on-ramp to Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/)
 * Policy configuration: [Gateway Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/#page","headline":"Network-focused migration from VPN concentrators to Zero Trust Network Access · Cloudflare Reference Architecture docs","description":"The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/network-vpn-migration/","name":"Network-focused migration from VPN concentrators to Zero Trust Network Access"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/#page","headline":"Network-focused migration from VPN concentrators to Zero Trust Network Access · Cloudflare Reference Architecture docs","description":"The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

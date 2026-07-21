@@ -1,79 +1,66 @@
 ---
-title: Email attachments
 description: Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email attachments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Email attachments
+#  Email attachments
 
 Send emails with various types of attachments including PDFs, images, and file uploads with proper validation.
+
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to send emails with various types of attachments including PDFs, inline images, and file uploads.
 
 Configure the email binding in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9229)
-* [  wrangler.toml ](#tab-panel-9230)
-
-**JSONC**
-
 ```jsonc
 {
-  "send_email": [{ "name": "EMAIL" }],
-  "vars": {
-    "DOMAIN": "yourdomain.com",
-  },
+	"send_email": [{ "name": "EMAIL" }],
+	"vars": {
+		"DOMAIN": "yourdomain.com",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [[send_email]]
 name = "EMAIL"
 
-
 [vars]
 DOMAIN = "yourdomain.com"
 ```
 
-**TypeScript**
-
 ```typescript
 interface Env {
-  EMAIL: SendEmail;
-  DOMAIN: string;
+	EMAIL: SendEmail;
+	DOMAIN: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
 
+		if (url.pathname === "/send-invoice" && request.method === "POST") {
+			return sendInvoiceWithPDF(request, env);
+		}
 
-    if (url.pathname === "/send-invoice" && request.method === "POST") {
-      return sendInvoiceWithPDF(request, env);
-    }
+		if (url.pathname === "/send-report" && request.method === "POST") {
+			return sendReportWithImages(request, env);
+		}
 
+		if (url.pathname === "/upload-attachment" && request.method === "POST") {
+			return sendEmailWithUpload(request, env);
+		}
 
-    if (url.pathname === "/send-report" && request.method === "POST") {
-      return sendReportWithImages(request, env);
-    }
-
-
-    if (url.pathname === "/upload-attachment" && request.method === "POST") {
-      return sendEmailWithUpload(request, env);
-    }
-
-
-    return new Response("Not Found", { status: 404 });
-  },
+		return new Response("Not Found", { status: 404 });
+	},
 };
 ```
 
@@ -81,29 +68,24 @@ export default {
 
 Generate and send PDF documents as email attachments:
 
-**TypeScript**
-
 ```typescript
 async function sendInvoiceWithPDF(
-  request: Request,
-  env: Env,
+	request: Request,
+	env: Env,
 ): Promise<Response> {
-  const { customerEmail, invoiceData } = await request.json();
+	const { customerEmail, invoiceData } = await request.json();
 
+	// Generate PDF content
+	const pdfContent = generateInvoicePDF(invoiceData);
 
-  // Generate PDF content
-  const pdfContent = generateInvoicePDF(invoiceData);
-
-
-  await env.EMAIL.send({
-    to: customerEmail,
-    from: `billing@${env.DOMAIN}`,
-    subject: `Invoice #${invoiceData.number}`,
-    html: `
+	await env.EMAIL.send({
+		to: customerEmail,
+		from: `billing@${env.DOMAIN}`,
+		subject: `Invoice #${invoiceData.number}`,
+		html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1>Invoice #${invoiceData.number}</h1>
         <p>Dear ${invoiceData.customerName},</p>
-
 
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Invoice Details</h3>
@@ -113,31 +95,28 @@ async function sendInvoiceWithPDF(
           <p><strong>Due Date:</strong> ${new Date(invoiceData.dueDate).toLocaleDateString()}</p>
         </div>
 
-
         <p>Please find your invoice attached. Payment is due within 30 days.</p>
         <p>Thank you for your business!</p>
       </div>
     `,
-    attachments: [
-      {
-        filename: `invoice-${invoiceData.number}.pdf`,
-        content: new TextEncoder().encode(pdfContent).buffer,
-        type: "application/pdf",
-        disposition: "attachment",
-      },
-    ],
-  });
+		attachments: [
+			{
+				filename: `invoice-${invoiceData.number}.pdf`,
+				content: new TextEncoder().encode(pdfContent).buffer,
+				type: "application/pdf",
+				disposition: "attachment",
+			},
+		],
+	});
 
-
-  return new Response(
-    JSON.stringify({ success: true, message: "Invoice sent" }),
-  );
+	return new Response(
+		JSON.stringify({ success: true, message: "Invoice sent" }),
+	);
 }
 
-
 function generateInvoicePDF(invoiceData: any): string {
-  // Simple PDF generation (in practice, use a proper PDF library)
-  const pdfContent = `%PDF-1.4
+	// Simple PDF generation (in practice, use a proper PDF library)
+	const pdfContent = `%PDF-1.4
 1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj
 2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj
 3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>endobj
@@ -170,8 +149,7 @@ startxref
 400
 %%EOF`;
 
-
-  return pdfContent;
+	return pdfContent;
 }
 ```
 
@@ -179,36 +157,30 @@ startxref
 
 Embed images directly in email content using Content-ID references:
 
-**TypeScript**
-
 ```typescript
 async function sendReportWithImages(
-  request: Request,
-  env: Env,
+	request: Request,
+	env: Env,
 ): Promise<Response> {
-  const { recipientEmail, reportData } = await request.json();
+	const { recipientEmail, reportData } = await request.json();
 
+	// Generate chart and logo images as SVG
+	const chartImage = generateChartImage(reportData);
+	const logoImage = getCompanyLogo();
 
-  // Generate chart and logo images as SVG
-  const chartImage = generateChartImage(reportData);
-  const logoImage = getCompanyLogo();
-
-
-  await env.EMAIL.send({
-    to: recipientEmail,
-    from: `reports@${env.DOMAIN}`,
-    subject: `${reportData.title} - ${reportData.period}`,
-    html: `
+	await env.EMAIL.send({
+		to: recipientEmail,
+		from: `reports@${env.DOMAIN}`,
+		subject: `${reportData.title} - ${reportData.period}`,
+		html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <!-- Company Logo (inline) -->
         <div style="text-align: center; margin-bottom: 30px;">
           <img src="cid:company-logo" alt="Company Logo" style="width: 200px; height: auto;">
         </div>
 
-
         <h1 style="color: #2563eb;">${reportData.title}</h1>
         <p style="color: #666;">Period: ${reportData.period}</p>
-
 
         <h2>Key Metrics</h2>
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -217,7 +189,6 @@ async function sendReportWithImages(
           <p><strong>Growth Rate:</strong> ${reportData.metrics.growth}%</p>
         </div>
 
-
         <h2>Performance Chart</h2>
         <!-- Inline chart image -->
         <div style="text-align: center; margin: 20px 0;">
@@ -225,38 +196,35 @@ async function sendReportWithImages(
                style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
         </div>
 
-
         <p>For detailed analysis, please contact our team.</p>
       </div>
     `,
-    attachments: [
-      {
-        filename: "company-logo.svg",
-        content: logoImage,
-        type: "image/svg+xml",
-        disposition: "inline",
-        contentId: "company-logo",
-      },
-      {
-        filename: "performance-chart.svg",
-        content: chartImage,
-        type: "image/svg+xml",
-        disposition: "inline",
-        contentId: "performance-chart",
-      },
-    ],
-  });
+		attachments: [
+			{
+				filename: "company-logo.svg",
+				content: logoImage,
+				type: "image/svg+xml",
+				disposition: "inline",
+				contentId: "company-logo",
+			},
+			{
+				filename: "performance-chart.svg",
+				content: chartImage,
+				type: "image/svg+xml",
+				disposition: "inline",
+				contentId: "performance-chart",
+			},
+		],
+	});
 
-
-  return new Response(
-    JSON.stringify({ success: true, message: "Report sent" }),
-  );
+	return new Response(
+		JSON.stringify({ success: true, message: "Report sent" }),
+	);
 }
 
-
 function generateChartImage(reportData: any): ArrayBuffer {
-  // Generate simple SVG chart (in practice, use a chart library)
-  const chartSVG = `
+	// Generate simple SVG chart (in practice, use a chart library)
+	const chartSVG = `
     <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
       <rect width="400" height="200" fill="#f8f9fa" stroke="#dee2e6"/>
       <rect x="50" y="150" width="30" height="${Math.max(10, reportData.metrics.growth * 2)}" fill="#2563eb"/>
@@ -267,14 +235,12 @@ function generateChartImage(reportData: any): ArrayBuffer {
     </svg>
   `;
 
-
-  return new TextEncoder().encode(chartSVG).buffer;
+	return new TextEncoder().encode(chartSVG).buffer;
 }
 
-
 function getCompanyLogo(): ArrayBuffer {
-  // Simple SVG logo
-  const logoSVG = `
+	// Simple SVG logo
+	const logoSVG = `
     <svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="60" fill="#2563eb" rx="8"/>
       <text x="100" y="35" text-anchor="middle" font-family="Arial"
@@ -282,8 +248,7 @@ function getCompanyLogo(): ArrayBuffer {
     </svg>
   `;
 
-
-  return new TextEncoder().encode(logoSVG).buffer;
+	return new TextEncoder().encode(logoSVG).buffer;
 }
 ```
 
@@ -291,56 +256,49 @@ function getCompanyLogo(): ArrayBuffer {
 
 Handle file uploads and send them as email attachments with validation:
 
-**TypeScript**
-
 ```typescript
 async function sendEmailWithUpload(
-  request: Request,
-  env: Env,
+	request: Request,
+	env: Env,
 ): Promise<Response> {
-  const formData = await request.formData();
-  const file = formData.get("file") as File;
-  const recipientEmail = formData.get("email") as string;
-  const message = formData.get("message") as string;
-  const senderName = (formData.get("senderName") as string) || "Someone";
+	const formData = await request.formData();
+	const file = formData.get("file") as File;
+	const recipientEmail = formData.get("email") as string;
+	const message = formData.get("message") as string;
+	const senderName = (formData.get("senderName") as string) || "Someone";
 
+	if (!file || !recipientEmail) {
+		return new Response(
+			JSON.stringify({
+				error: "Missing required fields: file and email",
+			}),
+			{ status: 400 },
+		);
+	}
 
-  if (!file || !recipientEmail) {
-    return new Response(
-      JSON.stringify({
-        error: "Missing required fields: file and email",
-      }),
-      { status: 400 },
-    );
-  }
+	// Validate file
+	const validation = validateFile(file);
+	if (!validation.valid) {
+		return new Response(
+			JSON.stringify({
+				error: validation.error,
+			}),
+			{ status: 400 },
+		);
+	}
 
-
-  // Validate file
-  const validation = validateFile(file);
-  if (!validation.valid) {
-    return new Response(
-      JSON.stringify({
-        error: validation.error,
-      }),
-      { status: 400 },
-    );
-  }
-
-
-  await env.EMAIL.send({
-    to: recipientEmail,
-    from: `uploads@${env.DOMAIN}`,
-    subject: `File shared: ${file.name}`,
-    html: `
+	await env.EMAIL.send({
+		to: recipientEmail,
+		from: `uploads@${env.DOMAIN}`,
+		subject: `File shared: ${file.name}`,
+		html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #2563eb;">File Shared</h1>
-
 
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <p><strong>${senderName}</strong> has shared a file with you.</p>
           ${message ? `<p><em>"${message}"</em></p>` : ""}
         </div>
-
 
         <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 20px 0;">
           <h3 style="margin: 0 0 15px 0;">File Details</h3>
@@ -349,9 +307,7 @@ async function sendEmailWithUpload(
           <p><strong>Type:</strong> ${getFileTypeDescription(file.type)}</p>
         </div>
 
-
         <p>The file is attached to this email for download.</p>
-
 
         <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 4px;">
           <p style="margin: 0; color: #856404;">
@@ -360,102 +316,92 @@ async function sendEmailWithUpload(
         </div>
       </div>
     `,
-    attachments: [
-      {
-        filename: file.name,
-        content: await file.arrayBuffer(),
-        type: file.type,
-        disposition: "attachment",
-      },
-    ],
-  });
+		attachments: [
+			{
+				filename: file.name,
+				content: await file.arrayBuffer(),
+				type: file.type,
+				disposition: "attachment",
+			},
+		],
+	});
 
-
-  return new Response(
-    JSON.stringify({
-      success: true,
-      message: `File ${file.name} sent to ${recipientEmail}`,
-    }),
-  );
+	return new Response(
+		JSON.stringify({
+			success: true,
+			message: `File ${file.name} sent to ${recipientEmail}`,
+		}),
+	);
 }
-
 
 function validateFile(file: File): { valid: boolean; error?: string } {
-  // 5 MiB matches the general outbound message size limit. Messages up to
-  // 25 MiB are accepted only when sent to verified destination addresses.
-  // Refer to /email-service/platform/limits/ for details.
-  const maxSize = 5 * 1024 * 1024;
-  const allowedTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/gif",
-    "application/pdf",
-    "text/plain",
-    "text/csv",
-    "application/msword",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "application/vnd.ms-excel",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "application/zip",
-  ];
+	// 5 MiB matches the general outbound message size limit. Messages up to
+	// 25 MiB are accepted only when sent to verified destination addresses.
+	// Refer to /email-service/platform/limits/ for details.
+	const maxSize = 5 * 1024 * 1024;
+	const allowedTypes = [
+		"image/jpeg",
+		"image/png",
+		"image/gif",
+		"application/pdf",
+		"text/plain",
+		"text/csv",
+		"application/msword",
+		"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+		"application/vnd.ms-excel",
+		"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+		"application/zip",
+	];
 
+	if (file.size === 0) {
+		return { valid: false, error: "File is empty" };
+	}
 
-  if (file.size === 0) {
-    return { valid: false, error: "File is empty" };
-  }
+	if (file.size > maxSize) {
+		return {
+			valid: false,
+			error: `File too large (max ${formatFileSize(maxSize)})`,
+		};
+	}
 
+	if (!allowedTypes.includes(file.type)) {
+		return { valid: false, error: "File type not allowed" };
+	}
 
-  if (file.size > maxSize) {
-    return {
-      valid: false,
-      error: `File too large (max ${formatFileSize(maxSize)})`,
-    };
-  }
+	// Check for dangerous extensions
+	const dangerousExtensions = [".exe", ".bat", ".cmd", ".scr", ".vbs", ".js"];
+	const fileName = file.name.toLowerCase();
+	if (dangerousExtensions.some((ext) => fileName.endsWith(ext))) {
+		return {
+			valid: false,
+			error: "File extension not allowed for security reasons",
+		};
+	}
 
-
-  if (!allowedTypes.includes(file.type)) {
-    return { valid: false, error: "File type not allowed" };
-  }
-
-
-  // Check for dangerous extensions
-  const dangerousExtensions = [".exe", ".bat", ".cmd", ".scr", ".vbs", ".js"];
-  const fileName = file.name.toLowerCase();
-  if (dangerousExtensions.some((ext) => fileName.endsWith(ext))) {
-    return {
-      valid: false,
-      error: "File extension not allowed for security reasons",
-    };
-  }
-
-
-  return { valid: true };
+	return { valid: true };
 }
-
 
 function formatFileSize(bytes: number): string {
-  if (bytes === 0) return "0 Bytes";
-  const k = 1024;
-  const sizes = ["Bytes", "KB", "MB", "GB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+	if (bytes === 0) return "0 Bytes";
+	const k = 1024;
+	const sizes = ["Bytes", "KB", "MB", "GB"];
+	const i = Math.floor(Math.log(bytes) / Math.log(k));
+	return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
 }
 
-
 function getFileTypeDescription(mimeType: string): string {
-  const typeMap: Record<string, string> = {
-    "image/jpeg": "JPEG Image",
-    "image/png": "PNG Image",
-    "image/gif": "GIF Image",
-    "application/pdf": "PDF Document",
-    "text/plain": "Text Document",
-    "application/msword": "Word Document",
-    "application/vnd.ms-excel": "Excel Spreadsheet",
-    "application/zip": "ZIP Archive",
-  };
+	const typeMap: Record<string, string> = {
+		"image/jpeg": "JPEG Image",
+		"image/png": "PNG Image",
+		"image/gif": "GIF Image",
+		"application/pdf": "PDF Document",
+		"text/plain": "Text Document",
+		"application/msword": "Word Document",
+		"application/vnd.ms-excel": "Excel Spreadsheet",
+		"application/zip": "ZIP Archive",
+	};
 
-
-  return typeMap[mimeType] || "Unknown";
+	return typeMap[mimeType] || "Unknown";
 }
 ```
 
@@ -465,7 +411,14 @@ function getFileTypeDescription(mimeType: string): string {
 * [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — message size and attachment limits.
 * [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — set custom headers alongside attachments.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/#page","headline":"Email attachments · Cloudflare Email Service docs","description":"Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/email-attachments/","name":"Email attachments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/#page","headline":"Email attachments · Cloudflare Email Service docs","description":"Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

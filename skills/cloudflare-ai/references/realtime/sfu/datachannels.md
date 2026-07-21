@@ -1,16 +1,18 @@
 ---
-title: DataChannels
 description: Send arbitrary real-time data between clients using Realtime SFU DataChannels.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: DataChannels
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DataChannels
 
-# DataChannels
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/sfu/datachannels/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 DataChannels are a way to send arbitrary data, not just audio or video data, between client in low latency. DataChannels are useful for scenarios like chat, game state, or any other data that doesn't need to be encoded as audio or video but still needs to be sent between clients in real time.
 
@@ -56,8 +58,6 @@ Create a remote DataChannel with the gate enabled by calling `POST /apps/{appId}
 
 Then, on the subscriber, send the acknowledgment once the DataChannel is open:
 
-**TypeScript**
-
 ```ts
 const resp = await fetch(`${API_BASE}/sessions/${subscriberId}/datachannels/new`, {
   method: "POST",
@@ -74,12 +74,10 @@ const resp = await fetch(`${API_BASE}/sessions/${subscriberId}/datachannels/new`
   }),
 }).then((r) => r.json());
 
-
 const dc = pc.createDataChannel("my-channel-subscribed", {
   negotiated: true,
   id: resp.dataChannels[0].id,
 });
-
 
 await waitForOpen(dc);
 dc.send("ack"); // The first frame opens the gate; later frames are your application data.
@@ -95,7 +93,14 @@ To send data in a bidirectional way, you can use two DataChannels, one for sendi
 
 An example of DataChannels in action can be found in the [Realtime Examples github repo ↗](https://github.com/cloudflare/calls-examples/tree/main/echo-datachannels).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/datachannels/#page","headline":"DataChannels · Cloudflare Realtime docs","description":"Send arbitrary real-time data between clients using Realtime SFU DataChannels.","url":"https://developers.cloudflare.com/realtime/sfu/datachannels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/datachannels/","name":"DataChannels"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/datachannels/#page","headline":"DataChannels · Cloudflare Realtime docs","description":"Send arbitrary real-time data between clients using Realtime SFU DataChannels.","url":"https://developers.cloudflare.com/realtime/sfu/datachannels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Testing your Agents
 description: Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Testing your Agents
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Testing your Agents
 
-# Testing your Agents
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Because Agents run on Cloudflare Workers and Durable Objects, they can be tested using the same tools and techniques as Workers and Durable Objects.
 
@@ -30,19 +32,16 @@ npm install vitest@^4.1.0 @cloudflare/vitest-pool-workers --save-dev
 
 Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
 
-**JavaScript**
-
 ```js
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: { configPath: "./wrangler.jsonc" },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./wrangler.jsonc" },
+		}),
+	],
 });
 ```
 
@@ -54,42 +53,37 @@ Review the [Vitest documentation ↗](https://vitest.dev/) for more information 
 
 Tests use the `vitest` framework. A basic test suite for your Agent can validate how your Agent responds to requests, but can also unit test your Agent's methods and state.
 
-**TypeScript**
-
 ```ts
 import { env, exports } from "cloudflare:workers";
 import {
-  createExecutionContext,
-  waitOnExecutionContext,
+	createExecutionContext,
+	waitOnExecutionContext,
 } from "cloudflare:test";
 import { describe, it, expect } from "vitest";
 import worker from "../src";
 import { Env } from "../src";
 
-
 interface ProvidedEnv extends Env {}
 
-
 describe("make a request to my Agent", () => {
-  // Unit testing approach
-  it("responds with state", async () => {
-    // Provide a valid URL that your Worker can use to route to your Agent
-    // If you are using routeAgentRequest, this will be /agents/:agent/:name
-    const request = new Request<unknown, IncomingRequestCfProperties>(
-      "http://example.com/agents/my-agent/agent-123",
-    );
-    const ctx = createExecutionContext();
-    const response = await worker.fetch(request, env, ctx);
-    await waitOnExecutionContext(ctx);
-    expect(await response.json()).toEqual({ hello: "from your agent" });
-  });
+	// Unit testing approach
+	it("responds with state", async () => {
+		// Provide a valid URL that your Worker can use to route to your Agent
+		// If you are using routeAgentRequest, this will be /agents/:agent/:name
+		const request = new Request<unknown, IncomingRequestCfProperties>(
+			"http://example.com/agents/my-agent/agent-123",
+		);
+		const ctx = createExecutionContext();
+		const response = await worker.fetch(request, env, ctx);
+		await waitOnExecutionContext(ctx);
+		expect(await response.json()).toEqual({ hello: "from your agent" });
+	});
 
-
-  it("also responds with state", async () => {
-    const request = new Request("http://example.com/agents/my-agent/agent-123");
-    const response = await exports.default.fetch(request);
-    expect(await response.json()).toEqual({ hello: "from your agent" });
-  });
+	it("also responds with state", async () => {
+		const request = new Request("http://example.com/agents/my-agent/agent-123");
+		const response = await exports.default.fetch(request);
+		expect(await response.json()).toEqual({ hello: "from your agent" });
+	});
 });
 ```
 
@@ -107,7 +101,6 @@ npx vitest
   MyAgent
     ✓ should return a greeting (1 ms)
 
-
 Test Files  1 passed (1)
 ```
 
@@ -124,7 +117,6 @@ npx wrangler dev
 ```txt
 Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
 
-
 Your worker has access to the following bindings:
 - Durable Objects:
   - MyAgent: MyAgent
@@ -136,7 +128,14 @@ This spins up a local development server that runs the same runtime as Cloudflar
 
 Visit the [wrangler dev ↗](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/getting-started/testing-your-agent/","name":"Testing your Agents"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

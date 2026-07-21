@@ -1,16 +1,18 @@
 ---
-title: Build image
 description: Understand the build image used in Workers Builds.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build image
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build image
 
-# Build image
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
@@ -74,9 +76,8 @@ You can add the following build variable to disable automatic dependency install
 
 In the following table, review the pre-installed packages in the build image. The packages are installed with `apt`, a package manager for Linux distributions.
 
-|                 |                 |                 |
-| --------------- | --------------- | --------------- |
 | curl            | libbz2-dev      | libreadline-dev |
+| --------------- | --------------- | --------------- |
 | git             | libc++1         | libssl-dev      |
 | git-lfs         | libdb-dev       | libvips-dev     |
 | unzip           | libgdbm-dev     | libyaml-dev     |
@@ -90,9 +91,8 @@ In the following table, review the pre-installed packages in the build image. Th
 
 Workers Builds are run in the following environment:
 
-|                       |              |
-| --------------------- | ------------ |
 | **Build Environment** | Ubuntu 24.04 |
+| --------------------- | ------------ |
 | **Architecture**      | x86\_64      |
 
 ## Build Image Policy
@@ -119,7 +119,14 @@ To avoid unexpected build failures:
 * **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
 * **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image · Cloudflare Workers docs","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/build-image/","name":"Build image"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image · Cloudflare Workers docs","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

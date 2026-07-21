@@ -1,16 +1,18 @@
 ---
-title: Call Workflows from Pages
 description: Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Call Workflows from Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Call Workflows from Pages
 
-# Call Workflows from Pages
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Static Assets
 
@@ -38,23 +40,16 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-13967)
-* [  wrangler.toml ](#tab-panel-13968)
-
-**JSONC**
-
 ```jsonc
 {
-  "services": [
-    {
-      "binding": "WORKFLOW_SERVICE",
-      "service": "workflows-starter"
-    }
-  ]
+	"services": [
+		{
+			"binding": "WORKFLOW_SERVICE",
+			"service": "workflows-starter"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[services]]
@@ -66,100 +61,77 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-13975)
-* [  TypeScript ](#tab-panel-13976)
-
-**index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class WorkflowsService extends WorkerEntrypoint {
-  // Currently, entrypoints without a named handler are not supported
-  async fetch() {
-    return new Response(null, { status: 404 });
-  }
+	// Currently, entrypoints without a named handler are not supported
+	async fetch() {
+		return new Response(null, { status: 404 });
+	}
 
+	async createInstance(payload) {
+		let instance = await this.env.MY_WORKFLOW.create({
+			params: payload,
+		});
 
-  async createInstance(payload) {
-    let instance = await this.env.MY_WORKFLOW.create({
-      params: payload,
-    });
-
-
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  }
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	}
 }
 ```
-
-**index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Env {
-  MY_WORKFLOW: Workflow;
+	MY_WORKFLOW: Workflow;
 }
 
-
 type Payload = {
-  hello: string;
+	hello: string;
 };
 
-
 export default class WorkflowsService extends WorkerEntrypoint<Env> {
-  // Currently, entrypoints without a named handler are not supported
-  async fetch() {
-    return new Response(null, { status: 404 });
-  }
+	// Currently, entrypoints without a named handler are not supported
+	async fetch() {
+		return new Response(null, { status: 404 });
+	}
 
+	async createInstance(payload: Payload) {
+		let instance = await this.env.MY_WORKFLOW.create({
+			params: payload,
+		});
 
-  async createInstance(payload: Payload) {
-    let instance = await this.env.MY_WORKFLOW.create({
-      params: payload,
-    });
-
-
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  }
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	}
 }
 ```
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-13969)
-* [  TypeScript ](#tab-panel-13970)
-
-**functions/request.js**
-
 ```js
 export const onRequest = async (context) => {
-  // This payload could be anything from within your app or from your frontend
-  let payload = { hello: "world" };
-  return context.env.WORKFLOWS_SERVICE.createInstance(payload);
+	// This payload could be anything from within your app or from your frontend
+	let payload = { hello: "world" };
+	return context.env.WORKFLOWS_SERVICE.createInstance(payload);
 };
 ```
 
-**functions/request.ts**
-
 ```ts
 interface Env {
-  WORKFLOW_SERVICE: Service;
+	WORKFLOW_SERVICE: Service;
 }
 
-
 export const onRequest: PagesFunction<Env> = async (context) => {
-  // This payload could be anything from within your app or from your frontend
-  let payload = { hello: "world" };
-  return context.env.WORKFLOWS_SERVICE.createInstance(payload);
+	// This payload could be anything from within your app or from your frontend
+	let payload = { hello: "world" };
+	return context.env.WORKFLOWS_SERVICE.createInstance(payload);
 };
 ```
 
@@ -175,77 +147,61 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-13971)
-* [  TypeScript ](#tab-panel-13972)
-
-**index.js**
-
 ```js
 // This is in the same file as your Workflow definition
 export default {
-  async fetch(req, env) {
-    let instance = await env.MY_WORKFLOW.create({
-      params: payload,
-    });
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  },
+	async fetch(req, env) {
+		let instance = await env.MY_WORKFLOW.create({
+			params: payload,
+		});
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 // This is in the same file as your Workflow definition
 export default {
-  async fetch(req: Request, env: Env): Promise<Response> {
-    let instance = await env.MY_WORKFLOW.create({
-      params: payload,
-    });
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  },
+	async fetch(req: Request, env: Env): Promise<Response> {
+		let instance = await env.MY_WORKFLOW.create({
+			params: payload,
+		});
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	},
 };
 ```
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-13973)
-* [  TypeScript ](#tab-panel-13974)
-
-**functions/request.js**
-
 ```js
 export const onRequest = async (context) => {
-  // Other code
-  let payload = { hello: "world" };
-  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
-    method: "POST",
-    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
-  });
+	// Other code
+	let payload = { hello: "world" };
+	const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
+		method: "POST",
+		body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
+	});
 
-
-  return Response.json(instanceStatus);
+	return Response.json(instanceStatus);
 };
 ```
 
-**functions/request.ts**
-
 ```ts
 export const onRequest: PagesFunction<Env> = async (context) => {
-  // Other code
-  let payload = { hello: "world" };
-  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
-    method: "POST",
-    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
-  });
+	// Other code
+	let payload = { hello: "world" };
+	const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
+		method: "POST",
+		body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
+	});
 
-
-  return Response.json(instanceStatus);
+	return Response.json(instanceStatus);
 };
 ```
 
@@ -257,7 +213,14 @@ You can also choose to authenticate these requests by passing a shared secret in
 * Understand how to send [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) when triggering a Workflow
 * Review the [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) and best practices for writing Workflows
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/call-workflows-from-pages/","name":"Call Workflows from Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

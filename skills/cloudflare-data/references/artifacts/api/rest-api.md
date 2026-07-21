@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Manage Artifacts repos and tokens over HTTP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/api/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the Artifacts REST API to manage repos, remotes, forks, imports, and tokens from external systems.
 
@@ -51,10 +53,10 @@ All JSON responses use the standard Cloudflare v4 envelope:
 
 ```json
 {
-  "result": {},
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -62,23 +64,21 @@ Successful blob, file, and raw responses return file bytes directly instead of J
 
 ```json
 {
-  "result": null,
-  "success": false,
-  "errors": [
-    {
-      "code": 10200,
-      "message": "File not found"
-    }
-  ],
-  "messages": []
+	"result": null,
+	"success": false,
+	"errors": [
+		{
+			"code": 10200,
+			"message": "File not found"
+		}
+	],
+	"messages": []
 }
 ```
 
 Returned repo tokens are secrets. Do not log them or store them in long-lived remotes unless your workflow requires it.
 
 ## Shared types
-
-**TypeScript**
 
 ```ts
 export type NamespaceName = string;
@@ -89,75 +89,67 @@ export type TokenState = "active" | "expired" | "revoked";
 export type ArtifactToken = string;
 export type Cursor = string;
 export type RepoSortField =
-  | "created_at"
-  | "updated_at"
-  | "last_push_at"
-  | "name";
+	| "created_at"
+	| "updated_at"
+	| "last_push_at"
+	| "name";
 export type SortDirection = "asc" | "desc";
 
-
 export interface ApiError {
-  code: number;
-  message: string;
-  documentation_url?: string;
-  source?: {
-    pointer?: string;
-  };
+	code: number;
+	message: string;
+	documentation_url?: string;
+	source?: {
+		pointer?: string;
+	};
 }
-
 
 export interface CursorResultInfo {
-  cursor: string;
-  per_page: number;
-  count: number;
+	cursor: string;
+	per_page: number;
+	count: number;
 }
-
 
 export interface OffsetResultInfo {
-  page: number;
-  per_page: number;
-  total_pages: number;
-  count: number;
-  total_count: number;
+	page: number;
+	per_page: number;
+	total_pages: number;
+	count: number;
+	total_count: number;
 }
-
 
 export type ResultInfo = CursorResultInfo | OffsetResultInfo;
 
-
 export interface ApiEnvelope<T> {
-  result: T | null;
-  success: boolean;
-  errors: ApiError[];
-  messages: ApiError[];
-  result_info?: ResultInfo;
+	result: T | null;
+	success: boolean;
+	errors: ApiError[];
+	messages: ApiError[];
+	result_info?: ResultInfo;
 }
-
 
 export interface RepoInfo {
-  id: string;
-  name: RepoName;
-  description: string | null;
-  default_branch: string;
-  created_at: string;
-  updated_at: string;
-  last_push_at: string | null;
-  source: string | null;
-  read_only: boolean;
+	id: string;
+	name: RepoName;
+	description: string | null;
+	default_branch: string;
+	created_at: string;
+	updated_at: string;
+	last_push_at: string | null;
+	source: string | null;
+	read_only: boolean;
 }
-
 
 export interface RepoWithRemote extends RepoInfo {
-  remote: string;
+	remote: string;
 }
 
-
 export interface TokenInfo {
-  id: string;
-  scope: Scope;
-  state: TokenState;
-  created_at: string;
-  expires_at: string;
+	id: string;
+	scope: Scope;
+	state: TokenState;
+	created_at: string;
+	expires_at: string;
 }
 ```
 
@@ -191,33 +183,29 @@ Route: `POST /artifacts/namespaces/:namespace/repos`
 
 Request body:
 
-* `name` ` RepoName ` required
-* `description` ` string ` optional
-* `default_branch` ` BranchName ` optional
-* `read_only` ` boolean ` optional
+* `name` ` RepoName `required
+* `description` ` string `optional
+* `default_branch` ` BranchName `optional
+* `read_only` ` boolean `optional
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface CreateRepoRequest {
-  name: RepoName;
-  description?: string;
-  default_branch?: BranchName;
-  read_only?: boolean;
+	name: RepoName;
+	description?: string;
+	default_branch?: BranchName;
+	read_only?: boolean;
 }
-
 
 export interface CreateRepoResult {
-  id: string;
-  name: RepoName;
-  description: string | null;
-  default_branch: string;
-  remote: string;
-  token: ArtifactToken;
+	id: string;
+	name: RepoName;
+	description: string | null;
+	default_branch: string;
+	remote: string;
+	token: ArtifactToken;
 }
-
 
 export type CreateRepoResponse = ApiEnvelope<CreateRepoResult>;
 ```
@@ -236,17 +224,17 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos" \
 
 ```json
 {
-  "result": {
-    "id": "repo_123",
-    "name": "starter-repo",
-    "description": "Repository for automation experiments",
-    "default_branch": "main",
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
-    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_123",
+		"name": "starter-repo",
+		"description": "Repository for automation experiments",
+		"default_branch": "main",
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
+		"token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -258,25 +246,22 @@ Route: `GET /artifacts/namespaces/:namespace/repos?limit=&cursor=&search=&sort=&
 
 Query parameters:
 
-* `limit` ` number ` optional (default: 50, max: 200)
-* `cursor` ` Cursor ` optional
-* `search` ` string ` optional
-* `sort` ` "created_at" | "updated_at" | "last_push_at" | "name" ` optional (default: "created\_at")
-* `direction` ` "asc" | "desc" ` optional (default: "desc")
+* `limit` ` number `optional (default: 50, max: 200)
+* `cursor` ` Cursor `optional
+* `search` ` string `optional
+* `sort` ` "created_at" | "updated_at" | "last_push_at" | "name" `optional (default: "created\_at")
+* `direction` ` "asc" | "desc" `optional (default: "desc")
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface ListReposQuery {
-  limit?: number;
-  cursor?: Cursor;
-  search?: string;
-  sort?: RepoSortField;
-  direction?: SortDirection;
+	limit?: number;
+	cursor?: Cursor;
+	search?: string;
+	sort?: RepoSortField;
+	direction?: SortDirection;
 }
-
 
 export type ListReposResponse = ApiEnvelope<RepoWithRemote[]>;
 ```
@@ -288,28 +273,28 @@ curl "$ARTIFACTS_BASE_URL/repos?limit=20&sort=updated_at&direction=desc" \
 
 ```json
 {
-  "result": [
-    {
-      "id": "repo_123",
-      "name": "starter-repo",
-      "description": "Repository for automation experiments",
-      "default_branch": "main",
-      "created_at": "<ISO_TIMESTAMP>",
-      "updated_at": "<ISO_TIMESTAMP>",
-      "last_push_at": "<ISO_TIMESTAMP>",
-      "source": null,
-      "read_only": false,
-      "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result_info": {
-    "cursor": "next-cursor",
-    "per_page": 20,
-    "count": 1
-  }
+	"result": [
+		{
+			"id": "repo_123",
+			"name": "starter-repo",
+			"description": "Repository for automation experiments",
+			"default_branch": "main",
+			"created_at": "<ISO_TIMESTAMP>",
+			"updated_at": "<ISO_TIMESTAMP>",
+			"last_push_at": "<ISO_TIMESTAMP>",
+			"source": null,
+			"read_only": false,
+			"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result_info": {
+		"cursor": "next-cursor",
+		"per_page": 20,
+		"count": 1
+	}
 }
 ```
 
@@ -318,8 +303,6 @@ curl "$ARTIFACTS_BASE_URL/repos?limit=20&sort=updated_at&direction=desc" \
 Route: `GET /artifacts/namespaces/:namespace/repos/:name`
 
 Response type:
-
-**TypeScript**
 
 ```ts
 export type GetRepoResponse = ApiEnvelope<RepoWithRemote>;
@@ -332,21 +315,21 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 ```json
 {
-  "result": {
-    "id": "repo_123",
-    "name": "starter-repo",
-    "description": "Repository for automation experiments",
-    "default_branch": "main",
-    "created_at": "<ISO_TIMESTAMP>",
-    "updated_at": "<ISO_TIMESTAMP>",
-    "last_push_at": "<ISO_TIMESTAMP>",
-    "source": null,
-    "read_only": false,
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_123",
+		"name": "starter-repo",
+		"description": "Repository for automation experiments",
+		"default_branch": "main",
+		"created_at": "<ISO_TIMESTAMP>",
+		"updated_at": "<ISO_TIMESTAMP>",
+		"last_push_at": "<ISO_TIMESTAMP>",
+		"source": null,
+		"read_only": false,
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -358,13 +341,10 @@ This route returns `202 Accepted`.
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface DeleteRepoResult {
-  id: string;
+	id: string;
 }
-
 
 export type DeleteRepoResponse = ApiEnvelope<DeleteRepoResult>;
 ```
@@ -376,12 +356,12 @@ curl --request DELETE "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 ```json
 {
-  "result": {
-    "id": "repo_123"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_123"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -391,58 +371,54 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/fork`
 
 Request body:
 
-* `name` ` RepoName ` required
-* `description` ` string ` optional
-* `read_only` ` boolean ` optional
-* `default_branch_only` ` boolean ` optional
+* `name` ` RepoName `required
+* `description` ` string `optional
+* `read_only` ` boolean `optional
+* `default_branch_only` ` boolean `optional
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface ForkRepoRequest {
-  name: RepoName;
-  description?: string;
-  read_only?: boolean;
-  default_branch_only?: boolean;
+	name: RepoName;
+	description?: string;
+	read_only?: boolean;
+	default_branch_only?: boolean;
 }
-
 
 export interface ForkRepoResult extends CreateRepoResult {
-  objects: number;
+	objects: number;
 }
-
 
 export type ForkRepoResponse = ApiEnvelope<ForkRepoResult>;
 ```
 
 ```bash
 curl --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/fork" \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "name": "starter-repo-copy",
-    "description": "Fork for testing",
-    "read_only": false,
-    "default_branch_only": true
-  }'
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--header "Content-Type: application/json" \
+	--data '{
+	  "name": "starter-repo-copy",
+	  "description": "Fork for testing",
+	  "read_only": false,
+	  "default_branch_only": true
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "repo_456",
-    "name": "starter-repo-copy",
-    "description": "Repository for automation experiments",
-    "default_branch": "main",
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo-copy.git",
-    "token": "art_v1_89abcdef0123456789abcdef0123456789abcdef?expires=1760003600",
-    "objects": 128
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_456",
+		"name": "starter-repo-copy",
+		"description": "Repository for automation experiments",
+		"default_branch": "main",
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo-copy.git",
+		"token": "art_v1_89abcdef0123456789abcdef0123456789abcdef?expires=1760003600",
+		"objects": 128
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -452,23 +428,20 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/import`
 
 Request body:
 
-* `url` ` string ` required
-* `branch` ` string ` optional
-* `depth` ` number ` optional
-* `read_only` ` boolean ` optional
+* `url` ` string `required
+* `branch` ` string `optional
+* `depth` ` number `optional
+* `read_only` ` boolean `optional
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface ImportRepoRequest {
-  url: string;
-  branch?: string;
-  depth?: number;
-  read_only?: boolean;
+	url: string;
+	branch?: string;
+	depth?: number;
+	read_only?: boolean;
 }
-
 
 export type ImportRepoResponse = ApiEnvelope<CreateRepoResult>;
 ```
@@ -477,28 +450,28 @@ Pass a full HTTPS Git remote URL, for example `https://github.com/facebook/react
 
 ```bash
 curl --request POST "$ARTIFACTS_BASE_URL/repos/react-mirror/import" \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "url": "https://github.com/facebook/react",
-    "branch": "main",
-    "depth": 100
-  }'
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--header "Content-Type: application/json" \
+	--data '{
+	  "url": "https://github.com/facebook/react",
+	  "branch": "main",
+	  "depth": 100
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "repo_789",
-    "name": "react-mirror",
-    "description": null,
-    "default_branch": "main",
-    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/react-mirror.git",
-    "token": "art_v1_fedcba9876543210fedcba9876543210fedcba98?expires=1760007200"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "repo_789",
+		"name": "react-mirror",
+		"description": null,
+		"default_branch": "main",
+		"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/react-mirror.git",
+		"token": "art_v1_fedcba9876543210fedcba9876543210fedcba98?expires=1760007200"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -578,21 +551,18 @@ Route: `GET /artifacts/namespaces/:namespace/repos/:name/tokens?state=&per_page=
 
 Query parameters:
 
-* `state` ` "active" | "expired" | "revoked" | "all" ` optional (default: "active")
-* `per_page` ` number ` optional (default: 30, max: 100)
-* `page` ` number ` optional (default: 1)
+* `state` ` "active" | "expired" | "revoked" | "all" `optional (default: "active")
+* `per_page` ` number `optional (default: 30, max: 100)
+* `page` ` number `optional (default: 1)
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface ListTokensQuery {
-  state?: TokenState | "all";
-  per_page?: number;
-  page?: number;
+	state?: TokenState | "all";
+	per_page?: number;
+	page?: number;
 }
-
 
 export type ListTokensResponse = ApiEnvelope<TokenInfo[]>;
 ```
@@ -604,25 +574,25 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/tokens?state=all&per_page=30&pag
 
 ```json
 {
-  "result": [
-    {
-      "id": "0123456789abcdef",
-      "scope": "read",
-      "state": "active",
-      "created_at": "<ISO_TIMESTAMP>",
-      "expires_at": "<ISO_TIMESTAMP>"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result_info": {
-    "page": 1,
-    "per_page": 30,
-    "total_pages": 1,
-    "count": 1,
-    "total_count": 1
-  }
+	"result": [
+		{
+			"id": "0123456789abcdef",
+			"scope": "read",
+			"state": "active",
+			"created_at": "<ISO_TIMESTAMP>",
+			"expires_at": "<ISO_TIMESTAMP>"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result_info": {
+		"page": 1,
+		"per_page": 30,
+		"total_pages": 1,
+		"count": 1,
+		"total_count": 1
+	}
 }
 ```
 
@@ -632,29 +602,25 @@ Route: `POST /artifacts/namespaces/:namespace/tokens`
 
 Request body:
 
-* `repo` ` RepoName ` required
-* `scope` ` "read" | "write" ` optional (default: "write")
-* `ttl` ` number ` optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
+* `repo` ` RepoName `required
+* `scope` ` "read" | "write" `optional (default: "write")
+* `ttl` ` number `optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface CreateTokenRequest {
-  repo: RepoName;
-  scope?: Scope;
-  ttl?: number;
+	repo: RepoName;
+	scope?: Scope;
+	ttl?: number;
 }
-
 
 export interface CreateTokenResult {
-  id: string;
-  plaintext: ArtifactToken;
-  scope: Scope;
-  expires_at: string;
+	id: string;
+	plaintext: ArtifactToken;
+	scope: Scope;
+	expires_at: string;
 }
-
 
 export type CreateTokenResponse = ApiEnvelope<CreateTokenResult>;
 ```
@@ -672,15 +638,15 @@ curl --request POST "$ARTIFACTS_BASE_URL/tokens" \
 
 ```json
 {
-  "result": {
-    "id": "0123456789abcdef",
-    "plaintext": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
-    "scope": "read",
-    "expires_at": "<ISO_TIMESTAMP>"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "0123456789abcdef",
+		"plaintext": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
+		"scope": "read",
+		"expires_at": "<ISO_TIMESTAMP>"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -690,13 +656,10 @@ Route: `DELETE /artifacts/namespaces/:namespace/tokens/:id`
 
 Response type:
 
-**TypeScript**
-
 ```ts
 export interface DeleteTokenResult {
-  id: string;
+	id: string;
 }
-
 
 export type DeleteTokenResponse = ApiEnvelope<DeleteTokenResult>;
 ```
@@ -708,12 +671,12 @@ curl --request DELETE "$ARTIFACTS_BASE_URL/tokens/0123456789abcdef" \
 
 ```json
 {
-  "result": {
-    "id": "0123456789abcdef"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "0123456789abcdef"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -721,26 +684,35 @@ curl --request DELETE "$ARTIFACTS_BASE_URL/tokens/0123456789abcdef" \
 
 Application errors also use the v4 envelope:
 
-**TypeScript**
-
 ```ts
 export interface ApiError {
-  code: number;
-  message: string;
-  documentation_url?: string;
-  source?: {
-    pointer?: string;
-  };
+	code: number;
+	message: string;
+	documentation_url?: string;
+	source?: {
+		pointer?: string;
+	};
 }
 ```
 
 ## Next steps
 
-[ Workers binding ](https://developers.cloudflare.com/artifacts/api/workers-binding/) Call the same Artifacts operations from a Worker through the Artifacts binding.
+### [ Workers binding ](https://developers.cloudflare.com/artifacts/api/workers-binding/)
 
-[ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use repo remotes and tokens with standard git-over-HTTPS tooling.
+ Call the same Artifacts operations from a Worker through the Artifacts binding.
+
+### [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
+
+ Use repo remotes and tokens with standard git-over-HTTPS tooling.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/api/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

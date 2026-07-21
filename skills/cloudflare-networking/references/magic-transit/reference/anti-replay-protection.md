@@ -1,18 +1,20 @@
 ---
-title: Anti-replay protection
 description: If you use Magic Transit and anycast IPsec tunnels, disable anti-replay protection. Review the information to learn more.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Anti-replay protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Anti-replay protection
 
-# Anti-replay protection
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-If you use Magic Transit and anycast IPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
+If you use Magic Transit and anycastIPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
 
 Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to set up replay protection. This page explains replay attacks, why Cloudflare recommends disabling IPsec anti-replay, and related considerations.
 
@@ -56,7 +58,14 @@ There are several reasons that make replay attacks difficult with tunnel mode:
 
 If you're experiencing tunnel instability or packet drops related to anti-replay protection, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/#ipsec-tunnel-instability-or-packet-drops).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/#page","headline":"Anti-replay protection · Cloudflare Magic Transit docs","description":"If you use Magic Transit and anycast IPsec tunnels, disable anti-replay protection. Review the information to learn more.","url":"https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/anti-replay-protection/","name":"Anti-replay protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/#page","headline":"Anti-replay protection · Cloudflare Magic Transit docs","description":"If you use Magic Transit and anycast IPsec tunnels, disable anti-replay protection. Review the information to learn more.","url":"https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

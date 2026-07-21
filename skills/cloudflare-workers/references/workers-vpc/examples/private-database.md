@@ -1,16 +1,18 @@
 ---
-title: Connect to a private database
 description: This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to a private database
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to a private database
 
-# Connect to a private database
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/examples/private-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to query a private PostgreSQL database from a Worker using [Workers VPC](https://developers.cloudflare.com/workers-vpc/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.
 
@@ -76,23 +78,16 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12148)
-* [  wrangler.toml ](#tab-panel-12149)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -108,24 +103,17 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-12150)
-* [  wrangler.toml ](#tab-panel-12151)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
-      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
+			"localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -186,35 +174,27 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-12152)
-* [  wrangler.toml ](#tab-panel-12153)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -223,46 +203,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-**TypeScript**
-
 ```ts
 // filepath: src/index.ts
 import { Client } from "pg";
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    // Create a new client instance for each request. Hyperdrive maintains the
-    // underlying database connection pool, so creating a new client is fast.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		// Create a new client instance for each request. Hyperdrive maintains the
+		// underlying database connection pool, so creating a new client is fast.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
 
+		try {
+			// Connect to the database
+			await client.connect();
 
-    try {
-      // Connect to the database
-      await client.connect();
+			// Perform a simple query
+			const result = await client.query("SELECT * FROM pg_tables");
 
+			return Response.json({
+				success: true,
+				result: result.rows,
+			});
+		} catch (error: any) {
+			console.error("Database error:", error.message);
 
-      // Perform a simple query
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-        success: true,
-        result: result.rows,
-      });
-    } catch (error: any) {
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-    }
-  },
+			return new Response("Internal error occurred", { status: 500 });
+		}
+	},
 };
 ```
 
@@ -289,7 +262,14 @@ A successful response returns a JSON array of rows from your database.
 * Review [VPC Service configuration options](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) including TLS certificate verification
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-database/#page","headline":"Connect to a private database · Cloudflare Workers VPC","description":"This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/private-database/","name":"Connect to a private database"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-database/#page","headline":"Connect to a private database · Cloudflare Workers VPC","description":"This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

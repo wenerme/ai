@@ -1,16 +1,18 @@
 ---
-title: Filtering
 description: Filter AI Search results by metadata attributes at query time.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Filtering
 
-# Filtering
+Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Metadata filtering narrows down search results based on metadata, so only relevant content is retrieved. The filter is applied before retrieval, so you only query the documents that matter.
 
@@ -22,22 +24,19 @@ If you are using the legacy AutoRAG API, refer to [Metadata filter format (legac
 
 Here is an example of metadata filtering using the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/):
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 
-
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      filters: {
-        folder: "docs/getting-started/",
-        timestamp: { $gte: 1735689600 },
-      },
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			filters: {
+				folder: "docs/getting-started/",
+				timestamp: { $gte: 1735689600 },
+			},
+		},
+	},
 });
 ```
 
@@ -64,11 +63,11 @@ When you provide a direct value without an operator, it is treated as an equalit
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": { "folder": "docs/getting-started/" }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": { "folder": "docs/getting-started/" }
+		}
+	}
 }
 ```
 
@@ -76,11 +75,11 @@ This is equivalent to:
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": { "folder": { "$eq": "docs/getting-started/" } }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": { "folder": { "$eq": "docs/getting-started/" } }
+		}
+	}
 }
 ```
 
@@ -90,11 +89,11 @@ Combine upper and lower bound operators to filter by ranges:
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }
+		}
+	}
 }
 ```
 
@@ -104,14 +103,14 @@ When you specify multiple keys, all conditions must match:
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": {
-        "folder": "docs/getting-started/",
-        "timestamp": { "$gte": 1735689600 }
-      }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": {
+				"folder": "docs/getting-started/",
+				"timestamp": { "$gte": 1735689600 }
+			}
+		}
+	}
 }
 ```
 
@@ -121,11 +120,11 @@ Match any value in an array:
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }
+		}
+	}
 }
 ```
 
@@ -135,10 +134,10 @@ Use range queries to filter for all files within a folder and its subfolders.
 
 For example, consider this file structure:
 
-* Directorydocs
+* docs
   * guide.pdf
-  * Directorytutorials
-    * Directorygetting-started
+  * tutorials
+    * getting-started
       * intro.pdf
 
 Using `{ "folder": "docs/" }` only matches files directly in that folder (like `guide.pdf`), not files in subfolders.
@@ -147,11 +146,11 @@ To match all files starting with `docs/`, use a range query:
 
 ```json
 {
-  "ai_search_options": {
-    "retrieval": {
-      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }
-    }
-  }
+	"ai_search_options": {
+		"retrieval": {
+			"filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }
+		}
+	}
 }
 ```
 
@@ -160,7 +159,14 @@ This works because:
 * `$gte` includes all paths starting with `docs/`
 * `$lt` with `docs0` excludes paths that do not start with `docs/` (since `0` comes after `/` in ASCII)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/#page","headline":"Filtering · Cloudflare AI Search docs","description":"Filter AI Search results by metadata attributes at query time.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/retrieval/filtering/","name":"Filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/#page","headline":"Filtering · Cloudflare AI Search docs","description":"Filter AI Search results by metadata attributes at query time.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

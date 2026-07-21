@@ -1,16 +1,18 @@
 ---
-title: Call sequence
 description: Recommended API call sequence for firewall rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Call sequence
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Call sequence
 
-# Call sequence
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/api/call-sequence/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The API call examples in this site illustrate the **recommended sequence** of calling the two APIs (the [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/) and the [Firewall Rules API](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/)).
 
@@ -34,8 +36,6 @@ In this sequence, a single `POST` request to the `/firewall/rules` endpoint take
 
 Below is an example call and response using this method:
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -51,26 +51,24 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 ]'
 ```
 
-**Response**
-
 ```json
 {
-  "result": [
-    {
-      "id": "<RULE_ID>",
-      "paused": false,
-      "action": "block",
-      "priority": null,
-      "filter": {
-        "id": "<FILTER_ID>",
-        "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",
-        "paused": false
-      }
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "<RULE_ID>",
+			"paused": false,
+			"action": "block",
+			"priority": null,
+			"filter": {
+				"id": "<FILTER_ID>",
+				"expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",
+				"paused": false
+			}
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -87,7 +85,14 @@ After you resolve the issue of exceeding your quota or requesting a feature that
 
 In summary, Cloudflare strongly recommends the sequence with the two API calls. Limit your rule and filter creation using the simplified sequence for emergency situations, and only via `curl` requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/call-sequence/#page","headline":"Call sequence · Cloudflare Firewall Rules (deprecated) docs","description":"Recommended API call sequence for firewall rules.","url":"https://developers.cloudflare.com/firewall/api/call-sequence/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/api/","name":"Manage rules via the APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/api/call-sequence/","name":"Call sequence"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/call-sequence/#page","headline":"Call sequence · Cloudflare Firewall Rules (deprecated) docs","description":"Recommended API call sequence for firewall rules.","url":"https://developers.cloudflare.com/firewall/api/call-sequence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

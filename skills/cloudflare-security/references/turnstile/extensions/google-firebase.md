@@ -1,16 +1,18 @@
 ---
-title: Implement Turnstile with Google Firebase
 description: Integrate Turnstile with Google Firebase for server-side validation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Implement Turnstile with Google Firebase
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Implement Turnstile with Google Firebase
 
-# Implement Turnstile with Google Firebase
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/extensions/google-firebase/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile is [available as an extension ↗](https://extensions.dev/extensions/cloudflare/cloudflare-turnstile-app-check-provider) with [Google's Firebase ↗](https://firebase.google.com/) platform as an [App Check ↗](https://firebase.google.com/docs/app-check) provider. You can leverage Cloudflare Turnstile's bot detection and challenge capabilities to ensure that requests to your Firebase backend services are verified and only authentic human visitors can interact with your application.
 
@@ -57,8 +59,6 @@ It is important to register your web app first to connect it with Turnstile late
 
 1. Create an `index.ts` file.
 2. Add your Firebase configuration.
-
-**JavaScript**
 ```js
 import { initializeApp } from "firebase/app";
 import { getAppCheck, initializeAppCheck } from "firebase/app-check";
@@ -90,31 +90,24 @@ cpo.getToken().then(({ token }) => {
 
 To verify the App Check token in your web application, refer to Firebase's [Token Verification guide ↗](https://firebase.google.com/docs/app-check/custom-resource-backend?hl=en#verification).
 
-**JavaScript**
-
 ```js
 import express from "express";
 import { initializeApp } from "firebase-admin/app";
 import { getAppCheck } from "firebase-admin/app-check";
 
-
 const expressApp = express();
 const firebaseApp = initializeApp();
 
-
 const appCheckVerification = async (req, res, next) => {
     const appCheckToken = req.header("X-Firebase-AppCheck");
-
 
     if (!appCheckToken) {
         res.status(401);
         return next("Unauthorized");
     }
 
-
     try {
         const appCheckClaims = await getAppCheck().verifyToken(appCheckToken);
-
 
         // If verifyToken() succeeds, continue with the next middleware function in the stack.
         return next();
@@ -124,13 +117,19 @@ const appCheckVerification = async (req, res, next) => {
     }
 }
 
-
 expressApp.get("/yourApiEndpoint", [appCheckVerification], (req, res) => {
     // Handle request.
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/#page","headline":"Implement Turnstile with Google Firebase · Cloudflare Turnstile docs","description":"Integrate Turnstile with Google Firebase for server-side validation.","url":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google","Integration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/extensions/","name":"Extensions"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/extensions/google-firebase/","name":"Implement Turnstile with Google Firebase"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/#page","headline":"Implement Turnstile with Google Firebase · Cloudflare Turnstile docs","description":"Integrate Turnstile with Google Firebase for server-side validation.","url":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google","Integration"]}
 ```

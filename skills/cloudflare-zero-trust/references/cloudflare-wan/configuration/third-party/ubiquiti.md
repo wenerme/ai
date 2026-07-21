@@ -1,16 +1,18 @@
 ---
-title: Ubiquiti
 description: Connect Ubiquiti to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Ubiquiti
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Ubiquiti
 
-# Ubiquiti
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (formerly Magic WAN). These steps use the Cloud Gateway Max (UCG-Max) but work with other UniFi gateways supporting route-based IPsec (Internet Protocol Security) VPNs (Virtual Private Networks), like the Dream Machine series.
 
@@ -22,7 +24,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 * Static public IP from your ISP
 * Admin access to both Cloudflare and UniFi
 * Gather a **Magic Anycast IPv4** address from the **Leased IPs** section in the dashboard
-  * [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
+  * [ Go to **Address space** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
   * Contact your account team if you do not see any IP addresses listed.
 
 ## 1\. Configure Cloudflare WAN
@@ -73,7 +75,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 ## 3\. Add pre-shared key to Cloudflare
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. In the **IPsec/GRE tunnels** tab, find the IPsec tunnel you have just created.
 1. Select your tunnel and then **Edit**.
 2. Paste the preshared key from [Step 2](#2-configure-site-to-site-vpn-on-unifi).
@@ -82,7 +84,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 ## 4\. Configure Routes
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Select **Create static route**.
 1. Enter the following settings:
   * **Prefix**: Your local network (for example, `192.168.1.0/24`).
@@ -97,7 +99,7 @@ Wait a few minutes, then access both Cloudflare and UniFi to verify the tunnel's
 Cloudflare
 
 1. Go to Cloudflare WAN's **Network Health** page.
-[ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 1. Go to the **Connector health** tab.
 2. Find the tunnel you have just created and make sure its status shows **Up**. Refer to [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) for more information.
 
@@ -148,7 +150,14 @@ To route only specific devices through Cloudflare (UniFi Network Application):
 
 You are now routing traffic through Cloudflare's network using Cloudflare WAN.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/#page","headline":"Ubiquiti · Cloudflare WAN docs","description":"Connect Ubiquiti to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/ubiquiti/","name":"Ubiquiti"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/#page","headline":"Ubiquiti · Cloudflare WAN docs","description":"Connect Ubiquiti to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

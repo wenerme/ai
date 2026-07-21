@@ -73,13 +73,13 @@ import fs from "fs";
 const openai = new OpenAI();
 
 const prompt = `
-A children's book drawing of a veterinarian using a stethoscope to 
+A children's book drawing of a veterinarian using a stethoscope to
 listen to the heartbeat of a baby otter.
 `;
 
 const result = await openai.images.generate({
-    model: "gpt-image-2",
-    prompt,
+  model: "gpt-image-2",
+  prompt,
 });
 
 // Save the image to a file
@@ -139,9 +139,10 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
-    input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
-    tools: [{type: "image_generation"}],
+  model: "gpt-5.6",
+  input:
+    "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+  tools: [{ type: "image_generation" }],
 });
 
 // Save the image to a file
@@ -163,7 +164,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -199,9 +200,10 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.5",
-    input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
-    tools: [{type: "image_generation", action: "generate"}],
+  model: "gpt-5.6",
+  input:
+    "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+  tools: [{ type: "image_generation", action: "generate" }],
 });
 
 // Save the image to a file
@@ -223,7 +225,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation", "action": "generate"}],
 )
@@ -255,7 +257,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -274,7 +276,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   previous_response_id: response.id,
   input: "Now make it look realistic",
   tools: [{ type: "image_generation" }],
@@ -301,7 +303,7 @@ import base64
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -322,7 +324,7 @@ if image_data:
 # Follow up
 
 response_fwup = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     previous_response_id=response.id,
     input="Now make it look realistic",
     tools=[{"type": "image_generation"}],
@@ -350,7 +352,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -371,7 +373,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "user",
@@ -404,7 +406,7 @@ import openai
 import base64
 
 response = openai.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -427,7 +429,7 @@ if image_data:
 # Follow up
 
 response_fwup = openai.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -521,7 +523,7 @@ function saveBase64Image(filename, imageBase64) {
 }
 
 const stream = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input:
     "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
   stream: true,
@@ -556,7 +558,7 @@ def save_base64_image(filename, image_base64):
         f.write(image_bytes)
 
 stream = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
     stream=True,
     tools=[{"type": "image_generation", "partial_images": 2}],
@@ -725,30 +727,31 @@ import OpenAI, { toFile } from "openai";
 const client = new OpenAI();
 
 const prompt = `
-Generate a photorealistic image of a gift basket on a white background 
-labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
 containing all the items in the reference pictures.
 `;
 
 const imageFiles = [
-    "bath-bomb.png",
-    "body-lotion.png",
-    "incense-kit.png",
-    "soap.png",
+  "fixtures/bath-bomb.png",
+  "fixtures/body-lotion.png",
+  "fixtures/incense-kit.png",
+  "fixtures/soap.png",
 ];
 
 const images = await Promise.all(
-    imageFiles.map(async (file) =>
-        await toFile(fs.createReadStream(file), null, {
-            type: "image/png",
-        })
-    ),
+  imageFiles.map(
+    async (file) =>
+      await toFile(fs.createReadStream(file), null, {
+        type: "image/png",
+      })
+  )
 );
 
 const response = await client.images.edit({
-    model: "gpt-image-2",
-    image: images,
-    prompt,
+  model: "gpt-image-2",
+  image: images,
+  prompt,
 });
 
 // Save the image to a file
@@ -818,7 +821,7 @@ fileId = create_file("sunlit_lounge.png")
 maskId = create_file("mask.png")
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -871,11 +874,11 @@ async function createFile(filePath) {
   return result.id;
 }
 
-const fileId = await createFile("sunlit_lounge.png");
-const maskId = await createFile("mask.png");
+const fileId = await createFile("fixtures/sunlit_lounge.png");
+const maskId = await createFile("fixtures/mask.png");
 
 const response = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "user",
@@ -887,7 +890,8 @@ const response = await openai.responses.create({
         {
           type: "input_image",
           file_id: fileId,
-        }
+          detail: "auto",
+        },
       ],
     },
   ],
@@ -897,7 +901,7 @@ const response = await openai.responses.create({
       quality: "high",
       input_image_mask: {
         file_id: maskId,
-      }
+      },
     },
   ],
 });
@@ -945,14 +949,14 @@ import OpenAI, { toFile } from "openai";
 const client = new OpenAI();
 
 const rsp = await client.images.edit({
-    model: "gpt-image-2",
-    image: await toFile(fs.createReadStream("sunlit_lounge.png"), null, {
-        type: "image/png",
-    }),
-    mask: await toFile(fs.createReadStream("mask.png"), null, {
-        type: "image/png",
-    }),
-    prompt: "A sunlit indoor lounge area with a pool containing a flamingo",
+  model: "gpt-image-2",
+  image: await toFile(fs.createReadStream("fixtures/sunlit_lounge.png"), null, {
+    type: "image/png",
+  }),
+  mask: await toFile(fs.createReadStream("fixtures/mask.png"), null, {
+    type: "image/png",
+  }),
+  prompt: "A sunlit indoor lounge area with a pool containing a flamingo",
 });
 
 // Save the image to a file
@@ -1238,9 +1242,11 @@ try {
     hint =
       "Try removing abusive or targeting language and focus on neutral visual details instead.";
   } else if (stage === "input") {
-    hint = "Try revising the prompt or input images and submit the request again.";
+    hint =
+      "Try revising the prompt or input images and submit the request again.";
   } else if (stage === "output") {
-    hint = "The generated result was blocked by a safety check. Try changing the prompt and generating again.";
+    hint =
+      "The generated result was blocked by a safety check. Try changing the prompt and generating again.";
   }
 
   console.error("Image generation blocked", {

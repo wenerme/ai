@@ -1,16 +1,18 @@
 ---
-title: URL normalization examples
 description: Examples of the impact of different URL normalization settings in the URLs of incoming requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: URL normalization examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  URL normalization examples
 
-# URL normalization examples
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/normalization/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following table shows how different [URL normalization settings](https://developers.cloudflare.com/rules/normalization/settings/) affect request URLs before they pass to other Cloudflare features and to the origin server:
 
@@ -33,7 +35,12 @@ The following table shows how different [URL normalization settings](https://dev
 | example.com/hello/\\../path | _RFC-3986_         | _On_                    | _On_                     | example.com/hello/%5C../path | example.com/hello/%5C../path |
 | example.com/hello/\\../path | _Cloudflare_       | _On_                    | _On_                     | example.com/path             | example.com/path             |
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/examples/#page","headline":"URL normalization examples · Cloudflare Rules docs","description":"Examples of the impact of different URL normalization settings in the URLs of incoming requests.","url":"https://developers.cloudflare.com/rules/normalization/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/normalization/","name":"URL normalization"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/normalization/examples/","name":"URL normalization examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/examples/#page","headline":"URL normalization examples · Cloudflare Rules docs","description":"Examples of the impact of different URL normalization settings in the URLs of incoming requests.","url":"https://developers.cloudflare.com/rules/normalization/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

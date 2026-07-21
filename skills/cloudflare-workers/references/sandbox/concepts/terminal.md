@@ -1,16 +1,18 @@
 ---
-title: Terminal connections
 description: Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Terminal connections
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terminal connections
 
-# Terminal connections
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/terminal/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Terminal connections let browser-based UIs interact directly with sandbox shells. Instead of executing discrete commands with `exec()`, a terminal connection opens a persistent, bidirectional channel to a bash shell — the same model as SSH or a local terminal emulator.
 
@@ -52,22 +54,18 @@ The `SandboxAddon` for xterm.js implements this automatically. If you are buildi
 
 Each [session](https://developers.cloudflare.com/sandbox/concepts/sessions/) can have its own terminal with independent shell state:
 
-**TypeScript**
-
 ```typescript
 const devSession = await sandbox.createSession({
-  id: "dev",
-  cwd: "/workspace/frontend",
-  env: { NODE_ENV: "development" },
+	id: "dev",
+	cwd: "/workspace/frontend",
+	env: { NODE_ENV: "development" },
 });
-
 
 const testSession = await sandbox.createSession({
-  id: "test",
-  cwd: "/workspace",
-  env: { NODE_ENV: "test" },
+	id: "test",
+	cwd: "/workspace",
+	env: { NODE_ENV: "test" },
 });
-
 
 // Each session's terminal has its own working directory,
 // environment variables, and command history
@@ -97,7 +95,14 @@ For the full protocol specification, including the connection lifecycle and mess
 * [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) — How sessions work
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) — Overall SDK design
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/terminal/#page","headline":"Terminal connections · Cloudflare Sandbox SDK docs","description":"Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.","url":"https://developers.cloudflare.com/sandbox/concepts/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/terminal/","name":"Terminal connections"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/terminal/#page","headline":"Terminal connections · Cloudflare Sandbox SDK docs","description":"Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.","url":"https://developers.cloudflare.com/sandbox/concepts/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

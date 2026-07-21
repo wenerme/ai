@@ -1,16 +1,18 @@
 ---
-title: Alarms
 description: Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Alarms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Alarms
 
-# Alarms
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/alarms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -34,11 +36,8 @@ Alarms can be used to build distributed primitives, like queues or batching of w
 
 Although each Durable Object can only have one alarm set at a time, you can manage many scheduled and recurring events by storing your event schedule in storage and having the `alarm()` handler process due events, then reschedule itself for the next one.
 
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
-
 
 export class AgentServer extends DurableObject {
   // Schedule a one-time or recurring event
@@ -50,12 +49,10 @@ export class AgentServer extends DurableObject {
     }
   }
 
-
   async alarm() {
     const now = Date.now();
     const events = await this.ctx.storage.list({ prefix: "event:" });
     let nextAlarm = null;
-
 
     for (const [key, event] of events) {
       if (event.runAt <= now) {
@@ -73,10 +70,8 @@ export class AgentServer extends DurableObject {
       }
     }
 
-
     if (nextAlarm) await this.ctx.storage.setAlarm(nextAlarm);
   }
-
 
   async processEvent(event) {
     // Your event handling logic here
@@ -100,7 +95,7 @@ export class AgentServer extends DurableObject {
   * Set the time for the alarm to run. Specify the time as the number of milliseconds elapsed since the UNIX epoch.
   * If you call `setAlarm` when there is already one scheduled, it will override the existing alarm.
 
-Calling `setAlarm` inside the constructor
+Calling \`setAlarm\` inside the constructor
 
 If you wish to call `setAlarm` inside the constructor of a Durable Object, ensure that you are first checking whether an alarm has already been set.
 
@@ -140,74 +135,58 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-8866)
-* [  Python ](#tab-panel-8867)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
 
-
 export default {
-  async fetch(request, env) {
-    return await env.ALARM_EXAMPLE.getByName("foo").fetch(request);
-  },
+	async fetch(request, env) {
+		return await env.ALARM_EXAMPLE.getByName("foo").fetch(request);
+	},
 };
-
 
 const SECONDS = 1000;
 
-
 export class AlarmExample extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-    this.storage = ctx.storage;
-  }
-  async fetch(request) {
-    // If there is no alarm currently set, set one for 10 seconds from now
-    let currentAlarm = await this.storage.getAlarm();
-    if (currentAlarm == null) {
-      this.storage.setAlarm(Date.now() + 10 * SECONDS);
-    }
-  }
-  async alarm() {
-    // The alarm handler will be invoked whenever an alarm fires.
-    // You can use this to do work, read from the Storage API, make HTTP calls
-    // and set future alarms to run using this.storage.setAlarm() from within this handler.
-  }
+	constructor(ctx, env) {
+		super(ctx, env);
+		this.storage = ctx.storage;
+	}
+	async fetch(request) {
+		// If there is no alarm currently set, set one for 10 seconds from now
+		let currentAlarm = await this.storage.getAlarm();
+		if (currentAlarm == null) {
+			this.storage.setAlarm(Date.now() + 10 * SECONDS);
+		}
+	}
+	async alarm() {
+		// The alarm handler will be invoked whenever an alarm fires.
+		// You can use this to do work, read from the Storage API, make HTTP calls
+		// and set future alarms to run using this.storage.setAlarm() from within this handler.
+	}
 }
 ```
-
-**Python**
 
 ```python
 import time
 
-
 from workers import DurableObject, WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         return await self.env.ALARM_EXAMPLE.getByName("foo").fetch(request)
 
-
 SECONDS = 1000
-
 
 class AlarmExample(DurableObject):
     def __init__(self, ctx, env):
         super().__init__(ctx, env)
         self.storage = ctx.storage
 
-
     async def fetch(self, request):
         # If there is no alarm currently set, set one for 10 seconds from now
         current_alarm = await self.storage.getAlarm()
         if current_alarm is None:
             self.storage.setAlarm(int(time.time() * 1000) + 10 * SECONDS)
-
 
     async def alarm(self):
         # The alarm handler will be invoked whenever an alarm fires.
@@ -218,24 +197,17 @@ class AlarmExample(DurableObject):
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-8868)
-* [  Python ](#tab-panel-8869)
-
-**JavaScript**
-
 ```js
 class MyDurableObject extends DurableObject {
-  async alarm(alarmInfo) {
-    if (alarmInfo?.retryCount != 0) {
-      console.log(
-        "This alarm event has been attempted ${alarmInfo?.retryCount} times before.",
-      );
-    }
-  }
+	async alarm(alarmInfo) {
+		if (alarmInfo?.retryCount != 0) {
+			console.log(
+				"This alarm event has been attempted ${alarmInfo?.retryCount} times before.",
+			);
+		}
+	}
 }
 ```
-
-**Python**
 
 ```python
 class MyDurableObject(DurableObject):
@@ -250,7 +222,14 @@ class MyDurableObject(DurableObject):
 * Read the [Durable Objects alarms announcement blog post ↗](https://blog.cloudflare.com/durable-objects-alarms/).
 * Review the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) documentation for Durable Objects.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/alarms/#page","headline":"Alarms · Cloudflare Durable Objects docs","description":"Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.","url":"https://developers.cloudflare.com/durable-objects/api/alarms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/alarms/","name":"Alarms"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/alarms/#page","headline":"Alarms · Cloudflare Durable Objects docs","description":"Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.","url":"https://developers.cloudflare.com/durable-objects/api/alarms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

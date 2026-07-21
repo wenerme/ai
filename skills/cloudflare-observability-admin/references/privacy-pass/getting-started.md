@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are two self-serve ways to see Privacy Pass in action:
 
@@ -71,23 +73,14 @@ npm ci
 
 The publicly-verifiable example ([pub\_verif.example.ts ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub%5Fverif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
 
-* [  JavaScript ](#tab-panel-10357)
-* [  TypeScript ](#tab-panel-10358)
-
-**JavaScript**
-
 ```js
 import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
-
 
 await publicVerifiableTokensPSS();
 ```
 
-**TypeScript**
-
 ```ts
 import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
-
 
 await publicVerifiableTokensPSS();
 ```
@@ -148,7 +141,14 @@ This demonstrates the protocol and the cryptography. It does **not** reflect a r
 * [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/) — the four roles, the issuance and redemption flow, and the blinded signatures that produce tokens.
 * [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/) — who operates each role and the deployment models.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/getting-started/#page","headline":"Getting started · Cloudflare Privacy Pass docs","description":"Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.","url":"https://developers.cloudflare.com/privacy-pass/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/getting-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/getting-started/#page","headline":"Getting started · Cloudflare Privacy Pass docs","description":"Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.","url":"https://developers.cloudflare.com/privacy-pass/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Short-lived certificates (legacy)
 description: Short-lived certificates (legacy) in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Short-lived certificates (legacy)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Short-lived certificates (legacy)
 
-# Short-lived certificates (legacy)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -130,8 +132,6 @@ cd /etc/ssh
 vim ca.pub
 ```
 3. In the `ca.pub` file, paste the public key without any modifications.
-
-**ca.pub**
 ```txt
 ecdsa-sha2-nistp256 <redacted> open-ssh-ca@cloudflareaccess.org
 ```
@@ -162,9 +162,6 @@ If there are any include statements below these lines, the configurations in tho
 ## 6\. Restart your SSH server
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
-
-* [ Debian/Ubuntu ](#tab-panel-7777)
-* [ CentOS/RHEL ](#tab-panel-7778)
 
 For Debian/Ubuntu:
 
@@ -210,7 +207,14 @@ By default, the browser-based terminal prompts the user for a username/password 
 
 Your SSH server is now protected behind Cloudflare Access — users will be prompted to authenticate with your identity provider before they can connect. You can also enable SSH command logging by configuring a [Gateway Audit SSH policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/#page","headline":"Short-lived certificates (legacy) · Cloudflare One docs","description":"Short-lived certificates (legacy) in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/","name":"Non-HTTP applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/","name":"Short-lived certificates (legacy)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/#page","headline":"Short-lived certificates (legacy) · Cloudflare One docs","description":"Short-lived certificates (legacy) in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

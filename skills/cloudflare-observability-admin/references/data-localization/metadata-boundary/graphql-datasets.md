@@ -1,16 +1,18 @@
 ---
-title: GraphQL datasets
 description: GraphQL Analytics API fields that respect Customer Metadata Boundary configuration.
-image: https://developers.cloudflare.com/zt-preview.png
+title: GraphQL datasets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GraphQL datasets
 
-# GraphQL datasets
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) allows you to programmatically query your Cloudflare analytics data (such as request counts, security events, and performance metrics). When Customer Metadata Boundary (CMB) is enabled, not all analytics data fields are available in every region.
 
@@ -61,7 +63,14 @@ The table below shows a non-exhaustive list of GraphQL Analytics API fields that
 | Gateway                                     |                                                                      | US and EU gatewayL7RequestsAdaptiveGroups gatewayL4SessionsAdaptiveGroups gatewayResolverQueriesAdaptiveGroups gatewayResolverByCategoryAdaptiveGroups gatewayResolverByRuleExecutionPerformanceAdaptiveGroups  US only gatewayL4DownstreamSessionsAdaptiveGroups gatewayL4UpstreamSessionsAdaptiveGroups                                                                                                                                                                                                                                                                                                                                                                  |
 | WARP                                        |                                                                      | US and EU warpDeviceAdaptiveGroups                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/#page","headline":"GraphQL datasets · Cloudflare Data Localization Suite docs","description":"GraphQL Analytics API fields that respect Customer Metadata Boundary configuration.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Analytics"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/metadata-boundary/","name":"Customer Metadata Boundary"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/metadata-boundary/graphql-datasets/","name":"GraphQL datasets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/#page","headline":"GraphQL datasets · Cloudflare Data Localization Suite docs","description":"GraphQL Analytics API fields that respect Customer Metadata Boundary configuration.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Analytics"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Build an API to access D1 using a proxy Worker
 description: This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build an API to access D1 using a proxy Worker
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build an API to access D1 using a proxy Worker
 
-# Build an API to access D1 using a proxy Worker
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to create an API that allows you to securely run queries against a D1 database.
 
@@ -86,8 +88,6 @@ You need an API key to make authenticated calls to the API. To ensure that the A
 
 1. For local development, create a `.dev.vars` file in the root directory of `d1-http`.
 2. Add your API key in the file as follows.
-
-**.dev.vars**
 ```bash
 API_KEY="YOUR_API_KEY"
 ```
@@ -107,39 +107,36 @@ To initialize the application, you need to import the required packages, initial
 * [Bearer Auth ↗](https://hono.dev/docs/middleware/builtin/bearer-auth): Adds authentication to the API.
 * [Logger ↗](https://hono.dev/docs/middleware/builtin/logger): Allows monitoring the flow of requests and responses.
 * [Pretty JSON ↗](https://hono.dev/docs/middleware/builtin/pretty-json): Enables "JSON pretty print" for JSON response bodies.
-1. Replace the contents of the `src/index.ts` file with the code below.
 
-**src/index.ts**
+1. Replace the contents of the `src/index.ts` file with the code below.
 ```ts
 import { Hono } from "hono";
 import { bearerAuth } from "hono/bearer-auth";
 import { logger } from "hono/logger";
 import { prettyJSON } from "hono/pretty-json";
 type Bindings = {
-  API_KEY: string;
+	API_KEY: string;
 };
 const app = new Hono<{ Bindings: Bindings }>();
 app.use("*", prettyJSON(), logger(), async (c, next) => {
-  const auth = bearerAuth({ token: c.env.API_KEY });
-  return auth(c, next);
+	const auth = bearerAuth({ token: c.env.API_KEY });
+	return auth(c, next);
 });
 ```
 
 ## 5\. Add API endpoints
 
 1. Add the following snippet into your `src/index.ts`.
-
-**src/index.ts**
 ```ts
 // Paste this code at the end of the src/index.ts file
 app.post("/api/all", async (c) => {
-  return c.text("/api/all endpoint");
+	return c.text("/api/all endpoint");
 });
 app.post("/api/exec", async (c) => {
-  return c.text("/api/exec endpoint");
+	return c.text("/api/exec endpoint");
 });
 app.post("/api/batch", async (c) => {
-  return c.text("/api/batch endpoint");
+	return c.text("/api/batch endpoint");
 });
 export default app;
 ```
@@ -196,11 +193,6 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.
-
-  * [  wrangler.jsonc ](#tab-panel-8632)
-  * [  wrangler.toml ](#tab-panel-8633)
-
-**JSONC**
 ```jsonc
 {
   "d1_databases": [
@@ -212,8 +204,6 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
   ]
 }
 ```
-
-**TOML**
 ```toml
 [[d1_databases]]
 binding = "DB"
@@ -221,12 +211,10 @@ database_name = "d1-http-example"
 database_id = "1234567890"
 ```
 3. In your `src/index.ts` file, update the `Bindings` type by adding `DB: D1Database`.
-
-**TypeScript**
 ```ts
 type Bindings = {
-  DB: D1Database;
-  API_KEY: string;
+	DB: D1Database;
+	API_KEY: string;
 };
 ```
 
@@ -238,16 +226,14 @@ To create a table in your newly created database:
 
 1. Create a new folder called `schemas` inside your `d1-http` folder.
 2. Create a new file called `schema.sql`, and paste the following SQL statement into the file.
-
-**schema.sql**
 ```sql
 DROP TABLE IF EXISTS posts;
 CREATE TABLE IF NOT EXISTS posts (
-  id integer PRIMARY KEY AUTOINCREMENT,
-  author text NOT NULL,
-  title text NOT NULL,
-  body text NOT NULL,
-  post_slug text NOT NULL
+	id integer PRIMARY KEY AUTOINCREMENT,
+	author text NOT NULL,
+	title text NOT NULL,
+	body text NOT NULL,
+	post_slug text NOT NULL
 );
 INSERT INTO posts (author, title, body, post_slug) VALUES ('Harshil', 'D1 HTTP API', 'Learn to create an API to query your D1 database.','d1-http-api');
 ```
@@ -268,8 +254,6 @@ The table will be created in the local instance of the database. If you want to 
 Your application can now access the D1 database. In this step, you will update the API endpoints to query the database and return the result.
 
 1. In your `src/index.ts` file, update the code as follow.
-
-**src/index.ts**
 ```ts
 // Update the API routes
 /**
@@ -277,55 +261,55 @@ Your application can now access the D1 database. In this step, you will update t
 * https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run
 */
 app.post('/api/all', async (c) => {
-    return c.text("/api/all endpoint");
-  try {
-    let { query, params } = await c.req.json();
-    let stmt = c.env.DB.prepare(query);
-    if (params) {
-      stmt = stmt.bind(params);
-    }
-    const result = await stmt.run();
-    return c.json(result);
-  } catch (err) {
-    return c.json({ error: `Failed to run query: ${err}` }, 500);
-  }
+		return c.text("/api/all endpoint");
+	try {
+		let { query, params } = await c.req.json();
+		let stmt = c.env.DB.prepare(query);
+		if (params) {
+			stmt = stmt.bind(params);
+		}
+		const result = await stmt.run();
+		return c.json(result);
+	} catch (err) {
+		return c.json({ error: `Failed to run query: ${err}` }, 500);
+	}
 });
 /**
 * Executes the `db.exec()` method.
 * https://developers.cloudflare.com/d1/worker-api/d1-database/#exec
 */
 app.post('/api/exec', async (c) => {
-    return c.text("/api/exec endpoint");
-  try {
-    let { query } = await c.req.json();
-    let result = await c.env.DB.exec(query);
-    return c.json(result);
-  } catch (err) {
-    return c.json({ error: `Failed to run query: ${err}` }, 500);
-  }
+		return c.text("/api/exec endpoint");
+	try {
+		let { query } = await c.req.json();
+		let result = await c.env.DB.exec(query);
+		return c.json(result);
+	} catch (err) {
+		return c.json({ error: `Failed to run query: ${err}` }, 500);
+	}
 });
 /**
 * Executes the `db.batch()` method.
 * https://developers.cloudflare.com/d1/worker-api/d1-database/#batch
 */
 app.post('/api/batch', async (c) => {
-    return c.text("/api/batch endpoint");
-  try {
-    let { batch } = await c.req.json();
-    let stmts = [];
-    for (let query of batch) {
-      let stmt = c.env.DB.prepare(query.query);
-      if (query.params) {
-        stmts.push(stmt.bind(query.params));
-      } else {
-        stmts.push(stmt);
-      }
-    }
-    const results = await c.env.DB.batch(stmts);
-    return c.json(results);
-  } catch (err) {
-    return c.json({ error: `Failed to run query: ${err}` }, 500);
-  }
+		return c.text("/api/batch endpoint");
+	try {
+		let { batch } = await c.req.json();
+		let stmts = [];
+		for (let query of batch) {
+			let stmt = c.env.DB.prepare(query.query);
+			if (query.params) {
+				stmts.push(stmt.bind(query.params));
+			} else {
+				stmts.push(stmt);
+			}
+		}
+		const results = await c.env.DB.batch(stmts);
+		return c.json(results);
+	} catch (err) {
+		return c.json({ error: `Failed to run query: ${err}` }, 500);
+	}
 });
 ...
 ```
@@ -351,18 +335,12 @@ yarn run dev
 pnpm run dev
 ```
 2. In a new terminal window, execute the following cURL commands. Make sure to replace `YOUR_API_KEY` with the correct value.
-
-**/api/all**
 ```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "http://localhost:8787/api/all" --data '{"query": "SELECT title FROM posts WHERE id=?", "params":1}'
 ```
-
-**/api/batch**
 ```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "http://localhost:8787/api/batch" --data '{"batch": [ {"query": "SELECT title FROM posts WHERE id=?", "params":1},{"query": "SELECT id FROM posts"}]}'
 ```
-
-**/api/exec**
 ```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "localhost:8787/api/exec" --data '{"query": "INSERT INTO posts (author, title, body, post_slug) VALUES ('\''Harshil'\'', '\''D1 HTTP API'\'', '\''Learn to create an API to query your D1 database.'\'','\''d1-http-api'\'')" }'
 ```
@@ -437,7 +415,14 @@ In this tutorial, you have:
 
 You can check out a similar implementation that uses Zod for validation in [this GitHub repository ↗](https://github.com/elithrar/http-api-d1-example). If you want to build an OpenAPI compliant API for your D1 database, you should use the [Cloudflare Workers OpenAPI 3.1 template ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-openapi).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/#page","headline":"Build an API to access D1 using a proxy Worker · Cloudflare D1 docs","description":"This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.","url":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/build-an-api-to-access-d1/","name":"Build an API to access D1 using a proxy Worker"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/#page","headline":"Build an API to access D1 using a proxy Worker · Cloudflare D1 docs","description":"This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.","url":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
 ```

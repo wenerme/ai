@@ -109,7 +109,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const file = await openai.files.create({
-  file: fs.createReadStream("batchinput.jsonl"),
+  file: fs.createReadStream("fixtures/batchinput.jsonl"),
   purpose: "batch",
 });
 
@@ -155,7 +155,7 @@ const openai = new OpenAI();
 const batch = await openai.batches.create({
   input_file_id: "file-abc123",
   endpoint: "/v1/chat/completions",
-  completion_window: "24h"
+  completion_window: "24h",
 });
 
 console.log(batch);

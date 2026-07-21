@@ -1,16 +1,18 @@
 ---
-title: Python SDK
 description: Create, populate, and query an AI Search instance from Python.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Python SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Python SDK
 
-# Python SDK
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/get-started/python/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗](https://github.com/cloudflare/cloudflare-python).
 
@@ -26,7 +28,7 @@ This guide uses the `default` [namespace](https://developers.cloudflare.com/ai-s
 You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ](https://dash.cloudflare.com/profile/api-tokens)
+[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Python`.
@@ -70,25 +72,19 @@ export CLOUDFLARE_API_TOKEN="<API_TOKEN>"
 
 Create a file named `quickstart.py`. The following code sets up a client and creates an instance named `my-instance` in the `default` namespace. Because no data source is specified, the instance uses [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/), so you can upload files to it directly.
 
-**quickstart.py**
-
 ```python
 import os
 
-
 from cloudflare import Cloudflare
-
 
 client = Cloudflare(api_token=os.environ["CLOUDFLARE_API_TOKEN"])
 account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]
-
 
 instance = client.aisearch.namespaces.instances.create(
     name="default",
     account_id=account_id,
     id="my-instance",
 )
-
 
 print(f"Created instance: {instance.id}")
 ```
@@ -100,8 +96,6 @@ Creating an instance is a one-time action. If you run the script again, remove t
 ## 6\. Upload content
 
 Add the following to `quickstart.py` to upload a document. Setting `wait_for_completion` to `True` waits for indexing before returning so the file is ready to search. If indexing is still finishing, `item.status` may be `running`; the file continues indexing in the background and becomes searchable shortly after.
-
-**quickstart.py**
 
 ```python
 item = client.aisearch.namespaces.instances.items.upload(
@@ -118,15 +112,12 @@ item = client.aisearch.namespaces.instances.items.upload(
     },
 )
 
-
 print(f"Uploaded item status: {item.status}")
 ```
 
 ## 7\. Search your instance
 
 Add the following to `quickstart.py` to run a query against your indexed content.
-
-**quickstart.py**
 
 ```python
 results = client.aisearch.namespaces.instances.search(
@@ -135,7 +126,6 @@ results = client.aisearch.namespaces.instances.search(
     name="default",
     query="How does AI Search handle uploaded content?",
 )
-
 
 if results.chunks:
     print(results.chunks[0].text)
@@ -153,11 +143,22 @@ If the search returns no results, the content may still be indexing. Wait a mome
 
 ## Next steps
 
-[ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) Query AI Search using HTTP requests.
+### [ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
 
-[ Workers API ](https://developers.cloudflare.com/ai-search/get-started/workers/) Query AI Search from within a Cloudflare Worker.
+ Query AI Search using HTTP requests.
+
+### [ Workers API ](https://developers.cloudflare.com/ai-search/get-started/workers/)
+
+ Query AI Search from within a Cloudflare Worker.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/python/#page","headline":"Python SDK · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from Python.","url":"https://developers.cloudflare.com/ai-search/get-started/python/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/get-started/python/","name":"Python SDK"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/python/#page","headline":"Python SDK · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from Python.","url":"https://developers.cloudflare.com/ai-search/get-started/python/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

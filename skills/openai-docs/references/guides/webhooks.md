@@ -96,7 +96,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.5",
+  "model": "gpt-5.6",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
@@ -107,7 +107,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -121,7 +121,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.5",
+  model="gpt-5.6",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -209,9 +209,14 @@ event = client.webhooks.unwrap(request.data, request.headers, secret=webhook_sec
 ```javascript
 const client = new OpenAI();
 const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
+if (!webhook_secret) throw new Error("Set OPENAI_WEBHOOK_SECRET.");
 
 // will throw if the signature is invalid
-const event = client.webhooks.unwrap(req.body, req.headers, { secret: webhook_secret });
+const event = await client.webhooks.unwrap(
+  req.body,
+  req.headers,
+  webhook_secret
+);
 ```
 
 

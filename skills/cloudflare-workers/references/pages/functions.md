@@ -1,16 +1,18 @@
 ---
-title: Functions
 description: Build full-stack applications on Cloudflare Pages using Pages Functions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Functions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Functions
 
-# Functions
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Pages Functions allows you to build full-stack applications by executing code on the Cloudflare network with [Cloudflare Workers](https://developers.cloudflare.com/workers/). With Functions, you can introduce application aspects such as authenticating, handling form submissions, or working with middleware. [Workers runtime features](https://developers.cloudflare.com/workers/runtime-apis/) are configurable on Pages Functions, including [compatibility with a subset of Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs) and the ability to set a [compatibility date or compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-dates/). Use Functions to deploy server-side code to enable dynamic functionality without running a dedicated server.
 
@@ -34,7 +36,14 @@ To provide feedback or ask questions on Functions, join the [Cloudflare Develope
 * [ Smart Placement ](https://developers.cloudflare.com/pages/functions/smart-placement/)
 * [ Source maps and stack traces ](https://developers.cloudflare.com/pages/functions/source-maps/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/functions/#page","headline":"Functions · Cloudflare Pages docs","description":"Build full-stack applications on Cloudflare Pages using Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/functions/#page","headline":"Functions · Cloudflare Pages docs","description":"Build full-stack applications on Cloudflare Pages using Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

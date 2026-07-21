@@ -1,38 +1,38 @@
 ---
-title: MiniMax Speech 2.8 Turbo
 description: MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: MiniMax Speech 2.8 Turbo
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg)
 
 #  MiniMax Speech 2.8 Turbo
 
-Text-to-Speech • MiniMax
+ Text-to-Speech • MiniMax
 
-`minimax/speech-2.8-turbo`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` minimax/speech-2.8-turbo `
+
+* Third-party
+* Zero data retention
 
 MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.
 
-| Model Info          |                                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                   |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                        |
-| Zero data retention | Yes                                                                                                                        |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
+| Model Info          |                                                                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                    |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                         |
+| Zero data retention | Yes                                                                                                                         |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1020)
-* [ cURL ](#tab-panel-1021)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -66,9 +66,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1016)
-* [ Raw response ](#tab-panel-1017)
-
 ```json
 {
   "gatewayMetadata": {
@@ -84,11 +81,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Fast Narration**  — Speed up narration for quick playback
-
-* [ TypeScript ](#tab-panel-1024)
-* [ cURL ](#tab-panel-1025)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -122,9 +114,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1018)
-* [ Raw response ](#tab-panel-1019)
-
 ```json
 {
   "gatewayMetadata": {
@@ -138,11 +127,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation
-
-* [ TypeScript ](#tab-panel-1028)
-* [ cURL ](#tab-panel-1029)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -178,9 +162,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1022)
-* [ Raw response ](#tab-panel-1023)
-
 ```json
 {
   "gatewayMetadata": {
@@ -194,11 +175,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice
-
-* [ TypeScript ](#tab-panel-1030)
-* [ cURL ](#tab-panel-1031)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -232,9 +208,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1026)
-* [ Raw response ](#tab-panel-1027)
-
 ```json
 {
   "gatewayMetadata": {
@@ -248,9 +221,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-1032)
-* [ Output ](#tab-panel-1033)
 
 text
 
@@ -294,7 +264,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/s
 
 Output [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/#page","headline":"MiniMax Speech 2.8 Turbo (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.","url":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/#page","headline":"MiniMax Speech 2.8 Turbo (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.","url":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

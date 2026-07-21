@@ -1,16 +1,18 @@
 ---
-title: Adding local data
 description: Populating local resources with data
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Adding local data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Adding local data
 
-# Adding local data
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/local-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Whether you are using Wrangler or the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
 
@@ -184,19 +186,16 @@ If `--persist-to` is not specified, Wrangler defaults to using `.wrangler/state`
 
 To customize where the Vite plugin stores local data, configure the [persistState option](https://developers.cloudflare.com/workers/vite-plugin/reference/api/#interface-pluginconfig) in your Vite config file:
 
-**vite.config.js**
-
 ```js
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflare({
-      persistState: { path: "./my-custom-directory" },
-    }),
-  ],
+	plugins: [
+		cloudflare({
+			persistState: { path: "./my-custom-directory" },
+		}),
+	],
 });
 ```
 
@@ -204,7 +203,14 @@ export default defineConfig({
 
 If you want Wrangler and the Vite plugin to share the same state, configure them to use the same persistence path.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data · Cloudflare Workers docs","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/local-data/","name":"Adding local data"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data · Cloudflare Workers docs","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Remove key file password
 description: Remove the password from a private key file before uploading.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remove key file password
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Remove key file password
 
-# Remove key file password
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You cannot upload a custom certificate with a password-protected key file.
 
@@ -43,7 +45,14 @@ rsa -in C:\Path\To\example.com.key -out key.pem
 5. Enter the original key password when prompted by the **openssl.exe** command window.
 6. [Upload](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate) the contents of the `key.pem` file to Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/#page","headline":"Remove key file password · Cloudflare SSL/TLS docs","description":"Remove the password from a private key file before uploading.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/custom-certificates/remove-file-key-password/","name":"Remove key file password"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/#page","headline":"Remove key file password · Cloudflare SSL/TLS docs","description":"Remove the password from a private key file before uploading.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

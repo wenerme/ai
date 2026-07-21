@@ -1,16 +1,18 @@
 ---
-title: Deploy to Cloudflare buttons
 description: Set up a Deploy to Cloudflare button
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy to Cloudflare buttons
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy to Cloudflare buttons
 
-# Deploy to Cloudflare buttons
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you're building a Workers application and would like to share it with other developers, you can embed a Deploy to Cloudflare button in your README, blog post, or documentation to enable others to quickly deploy your application on their own Cloudflare account. Deploy to Cloudflare buttons eliminate the need for complex setup, allowing developers to get started with your public GitHub or GitLab repository in just a few clicks.
 
@@ -28,10 +30,6 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 ## How to Set Up Deploy to Cloudflare buttons
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
-
-* [ Markdown ](#tab-panel-12773)
-* [ HTML ](#tab-panel-12774)
-* [ URL ](#tab-panel-12775)
 
 ```md
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<your git repo URL>)
@@ -64,31 +62,23 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-12776)
-* [  wrangler.toml ](#tab-panel-12777)
-
-**JSONC**
-
 ```jsonc
 {
   "name": "my-worker",
   "main": "./src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
   "vars": {
     "API_HOST": "https://example.com",
   },
 }
 ```
 
-**TOML**
-
 ```toml
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [vars]
 API_HOST = "https://example.com"
@@ -96,43 +86,33 @@ API_HOST = "https://example.com"
 
 [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/) can be defined in a `.dev.vars.example` or `.env.example` file with a [dotenv ↗](https://www.npmjs.com/package/dotenv) format:
 
-**.dev.vars.example**
-
 ```ini
 COOKIE_SIGNING_KEY=my-secret # comment
 ```
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-12778)
-* [  wrangler.toml ](#tab-panel-12779)
-
-**JSONC**
-
 ```jsonc
 {
   "name": "my-worker",
   "main": "./src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "secrets_store_secrets": [
-    {
-      "binding": "API_KEY",
-      "store_id": "demo",
-      "secret_name": "api-key"
-    }
-  ]
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"secrets_store_secrets": [
+		{
+			"binding": "API_KEY",
+			"store_id": "demo",
+			"secret_name": "api-key"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"
@@ -150,11 +130,11 @@ If no `deploy` script is specified, Cloudflare will preconfigure `npx wrangler d
 
 ```json
 {
-  "scripts": {
-    "build": "astro build",
-    "deploy": "npm run db:migrations:apply && wrangler deploy",
-    "db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"
-  }
+	"scripts": {
+		"build": "astro build",
+		"deploy": "npm run db:migrations:apply && wrangler deploy",
+		"db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"
+	}
 }
 ```
 
@@ -162,22 +142,20 @@ If no `deploy` script is specified, Cloudflare will preconfigure `npx wrangler d
 
 Inline markdown `` `code` ``, `**bold**`, `__italics__` and `[links](https://example.com)` are supported.
 
-**package.json**
-
 ```json
 {
-  "name": "my-worker",
-  "private": true,
-  "cloudflare": {
-    "bindings": {
-      "API_KEY": {
-        "description": "Select your company's [API key](https://example.com/) for connecting to the example service."
-      },
-      "COOKIE_SIGNING_KEY": {
-        "description": "Generate a random string using `openssl rand -hex 32`."
-      }
-    }
-  }
+	"name": "my-worker",
+	"private": true,
+	"cloudflare": {
+		"bindings": {
+			"API_KEY": {
+				"description": "Select your company's [API key](https://example.com/) for connecting to the example service."
+			},
+			"COOKIE_SIGNING_KEY": {
+				"description": "Generate a random string using `openssl rand -hex 32`."
+			}
+		}
+	}
 }
 ```
 
@@ -190,7 +168,14 @@ Inline markdown `` `code` ``, `**bold**`, `__italics__` and `[links](https://exa
 * **Non-GitHub/GitLab repositories**: Source repositories from anything other than github.com and gitlab.com are not supported. Self-hosted versions of GitHub and GitLab are also not supported.
 * **Private repositories**: Repositories must be public in order for others to successfully use your Deploy to Cloudflare button.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/deploy-buttons/","name":"Deploy to Cloudflare buttons"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

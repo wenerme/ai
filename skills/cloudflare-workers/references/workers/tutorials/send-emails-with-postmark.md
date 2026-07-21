@@ -1,16 +1,18 @@
 ---
-title: Send Emails With Postmark
 description: This tutorial explains how to send transactional emails from Workers using Postmark.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Send Emails With Postmark
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Send Emails With Postmark
 
-# Send Emails With Postmark
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to send transactional emails from Workers using [Postmark ↗](https://postmarkapp.com/). At the end of this tutorial, you’ll be able to:
 
@@ -44,13 +46,11 @@ npm create cloudflare@latest email-with-postmark -- --type=hello-world --ts=fals
 
 This creates a simple hello-world Worker having the following content:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -84,21 +84,21 @@ Note
 
 ```jsx
 export default {
-  async fetch(request, env, ctx) {
-    return await fetch("https://api.postmarkapp.com/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Postmark-Server-Token": "your_postmark_api_token_here",
-      },
-      body: JSON.stringify({
-        From: "hello@example.com",
-        To: "someone@example.com",
-        Subject: "Hello World",
-        HtmlBody: "<p>Hello from Workers</p>",
-      }),
-    });
-  },
+	async fetch(request, env, ctx) {
+		return await fetch("https://api.postmarkapp.com/email", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-Postmark-Server-Token": "your_postmark_api_token_here",
+			},
+			body: JSON.stringify({
+				From: "hello@example.com",
+				To: "someone@example.com",
+				Subject: "Hello World",
+				HtmlBody: "<p>Hello from Workers</p>",
+			}),
+		});
+	},
 };
 ```
 
@@ -122,8 +122,6 @@ POSTMARK_API_TOKEN=your_postmark_api_token_here
 
 Also ensure the secret is added to your deployed worker by running:
 
-**Add secret to deployed Worker**
-
 ```sh
 npx wrangler secret put POSTMARK_API_TOKEN
 ```
@@ -132,21 +130,21 @@ The added secret can be accessed on via the `env` parameter passed to your Worke
 
 ```jsx
 export default {
-  async fetch(request, env, ctx) {
-    return await fetch("https://api.postmarkapp.com/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,
-      },
-      body: JSON.stringify({
-        From: "hello@example.com",
-        To: "someone@example.com",
-        Subject: "Hello World",
-        HtmlBody: "<p>Hello from Workers</p>",
-      }),
-    });
-  },
+	async fetch(request, env, ctx) {
+		return await fetch("https://api.postmarkapp.com/email", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,
+			},
+			body: JSON.stringify({
+				From: "hello@example.com",
+				To: "someone@example.com",
+				Subject: "Hello World",
+				HtmlBody: "<p>Hello from Workers</p>",
+			}),
+		});
+	},
 };
 ```
 
@@ -158,7 +156,14 @@ And finally, deploy this update with `npm run deploy`.
 * [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
 * [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/#page","headline":"Send Emails With Postmark · Cloudflare Workers docs","description":"This tutorial explains how to send transactional emails from Workers using Postmark.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/send-emails-with-postmark/","name":"Send Emails With Postmark"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/#page","headline":"Send Emails With Postmark · Cloudflare Workers docs","description":"This tutorial explains how to send transactional emails from Workers using Postmark.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

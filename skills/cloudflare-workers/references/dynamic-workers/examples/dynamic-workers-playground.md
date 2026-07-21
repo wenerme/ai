@@ -1,16 +1,18 @@
 ---
-title: Dynamic Workers Playground
 description: Bundle, execute, and observe Dynamic Workers with real-time logs and timing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Dynamic Workers Playground
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dynamic Workers Playground
 
-# Dynamic Workers Playground
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Try the Dynamic Workers [playground ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code from GitHub, bundle it at runtime, execute it in a Dynamic Worker, and view real-time logs.
 
@@ -31,42 +33,33 @@ The playground uses [@cloudflare/worker-bundler ↗](https://www.npmjs.com/packa
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-9158)
-* [  TypeScript ](#tab-panel-9159)
-
-**JavaScript**
-
 ```js
 import { createWorker } from "@cloudflare/worker-bundler";
 
-
 const { mainModule, modules, warnings } = await createWorker({
-  files: {
-    "src/index.ts": userCode,
-    "package.json": JSON.stringify({
-      dependencies: { hono: "^4.0.0" },
-    }),
-  },
-  bundle: true,
-  minify: false,
+	files: {
+		"src/index.ts": userCode,
+		"package.json": JSON.stringify({
+			dependencies: { hono: "^4.0.0" },
+		}),
+	},
+	bundle: true,
+	minify: false,
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { createWorker } from "@cloudflare/worker-bundler";
 
-
 const { mainModule, modules, warnings } = await createWorker({
-  files: {
-    "src/index.ts": userCode,
-    "package.json": JSON.stringify({
-      dependencies: { hono: "^4.0.0" },
-    }),
-  },
-  bundle: true,
-  minify: false,
+	files: {
+		"src/index.ts": userCode,
+		"package.json": JSON.stringify({
+			dependencies: { hono: "^4.0.0" },
+		}),
+	},
+	bundle: true,
+	minify: false,
 });
 ```
 
@@ -74,47 +67,36 @@ const { mainModule, modules, warnings } = await createWorker({
 
 `env.LOADER.load()` creates a new Dynamic Worker on every call. To avoid re-bundling unchanged code, use `env.LOADER.get(id, callback)` instead. The runtime returns an existing Worker on a cache hit, or calls your callback to build one on a miss:
 
-* [  JavaScript ](#tab-panel-9160)
-* [  TypeScript ](#tab-panel-9161)
-
-**JavaScript**
-
 ```js
 const worker = env.LOADER.get(workerId, async () => {
-  // This callback only runs on cache miss
-  const { mainModule, modules } = await createWorker({ files });
+	// This callback only runs on cache miss
+	const { mainModule, modules } = await createWorker({ files });
 
-
-  return {
-    mainModule,
-    modules,
-    compatibilityDate: "2026-05-01",
-    tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
-  };
+	return {
+		mainModule,
+		modules,
+		compatibilityDate: "2026-05-01",
+		tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+	};
 });
-
 
 const response = await worker.getEntrypoint().fetch(request);
 ```
 
-**TypeScript**
-
 ```ts
 const worker = env.LOADER.get(workerId, async () => {
-  // This callback only runs on cache miss
-  const { mainModule, modules } = await createWorker({ files });
+	// This callback only runs on cache miss
+	const { mainModule, modules } = await createWorker({ files });
 
-
-  return {
-    mainModule,
-    modules,
-    compatibilityDate: "2026-05-01",
-    tails: [
-      contextExports.DynamicWorkerTail({ props: { workerId } }),
-    ],
-  };
+	return {
+		mainModule,
+		modules,
+		compatibilityDate: "2026-05-01",
+		tails: [
+			contextExports.DynamicWorkerTail({ props: { workerId } }),
+		],
+	};
 });
-
 
 const response = await worker.getEntrypoint().fetch(request);
 ```
@@ -131,28 +113,21 @@ When you run code in the playground, console output from the Dynamic Worker stre
 
 To wire this up, include the Tail Worker in the `tails` array when creating the Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-9156)
-* [  TypeScript ](#tab-panel-9157)
-
-**JavaScript**
-
 ```js
 const worker = env.LOADER.get(workerId, async () => ({
-  mainModule,
-  modules,
-  compatibilityDate: "2026-05-01",
-  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+	mainModule,
+	modules,
+	compatibilityDate: "2026-05-01",
+	tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
 }));
 ```
 
-**TypeScript**
-
 ```ts
 const worker = env.LOADER.get(workerId, async () => ({
-  mainModule,
-  modules,
-  compatibilityDate: "2026-05-01",
-  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+	mainModule,
+	modules,
+	compatibilityDate: "2026-05-01",
+	tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
 }));
 ```
 
@@ -167,7 +142,14 @@ npm install
 npm run dev
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/#page","headline":"Dynamic Workers Playground · Cloudflare Dynamic Workers docs","description":"Bundle, execute, and observe Dynamic Workers with real-time logs and timing.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/examples/dynamic-workers-playground/","name":"Dynamic Workers Playground"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/#page","headline":"Dynamic Workers Playground · Cloudflare Dynamic Workers docs","description":"Bundle, execute, and observe Dynamic Workers with real-time logs and timing.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Logging"]}
 ```

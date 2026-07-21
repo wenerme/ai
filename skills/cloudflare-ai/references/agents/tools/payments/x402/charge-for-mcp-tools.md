@@ -1,16 +1,18 @@
 ---
-title: Charge for MCP tools
 description: Charge per tool call in an MCP server using paidTool.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Charge for MCP tools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Charge for MCP tools
 
-# Charge for MCP tools
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Agents SDK provides `paidTool`, a drop-in replacement for `tool` that adds x402 payment requirements. Clients pay per tool call, and you can mix free and paid tools in the same server.
 
@@ -18,54 +20,48 @@ The Agents SDK provides `paidTool`, a drop-in replacement for `tool` that adds x
 
 Wrap your `McpServer` with `withX402` and use `paidTool` for tools you want to charge for:
 
-**TypeScript**
-
 ```ts
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { McpAgent } from "agents/mcp";
 import { withX402, type X402Config } from "agents/x402";
 import { z } from "zod";
 
-
 const X402_CONFIG: X402Config = {
-  network: "base",
-  recipient: "0xYourWalletAddress",
-  facilitator: { url: "https://x402.org/facilitator" }, // Payment facilitator URL
-  // To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator
+	network: "base",
+	recipient: "0xYourWalletAddress",
+	facilitator: { url: "https://x402.org/facilitator" }, // Payment facilitator URL
+	// To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator
 };
 
-
 export class PaidMCP extends McpAgent<Env> {
-  server = withX402(
-    new McpServer({ name: "PaidMCP", version: "1.0.0" }),
-    X402_CONFIG,
-  );
+	server = withX402(
+		new McpServer({ name: "PaidMCP", version: "1.0.0" }),
+		X402_CONFIG,
+	);
 
+	async init() {
+		// Paid tool — $0.01 per call
+		this.server.paidTool(
+			"square",
+			"Squares a number",
+			0.01, // USD
+			{ number: z.number() },
+			{},
+			async ({ number }) => {
+				return { content: [{ type: "text", text: String(number ** 2) }] };
+			},
+		);
 
-  async init() {
-    // Paid tool — $0.01 per call
-    this.server.paidTool(
-      "square",
-      "Squares a number",
-      0.01, // USD
-      { number: z.number() },
-      {},
-      async ({ number }) => {
-        return { content: [{ type: "text", text: String(number ** 2) }] };
-      },
-    );
-
-
-    // Free tool
-    this.server.tool(
-      "echo",
-      "Echo a message",
-      { message: z.string() },
-      async ({ message }) => {
-        return { content: [{ type: "text", text: message }] };
-      },
-    );
-  }
+		// Free tool
+		this.server.tool(
+			"echo",
+			"Echo a message",
+			{ message: z.string() },
+			async ({ message }) => {
+				return { content: [{ type: "text", text: message }] };
+			},
+		);
+	}
 }
 ```
 
@@ -79,16 +75,14 @@ export class PaidMCP extends McpAgent<Env> {
 
 ## paidTool signature
 
-**TypeScript**
-
 ```ts
 this.server.paidTool(
-  name, // Tool name
-  description, // Tool description
-  price, // Price in USD (e.g., 0.01)
-  inputSchema, // Zod schema for inputs
-  annotations, // MCP annotations
-  handler, // Async function that executes the tool
+	name, // Tool name
+	description, // Tool description
+	price, // Price in USD (e.g., 0.01)
+	inputSchema, // Zod schema for inputs
+	annotations, // MCP annotations
+	handler, // Async function that executes the tool
 );
 ```
 
@@ -106,7 +100,14 @@ For a complete working example, refer to [x402-mcp on GitHub ↗](https://github
 * [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/) — Gate HTTP endpoints
 * [MCP server guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) — Build your first MCP server
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/#page","headline":"Charge for MCP tools · Cloudflare Agents docs","description":"Charge per tool call in an MCP server using paidTool.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/payments/","name":"Agentic Payments"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/payments/x402/","name":"x402"}},{"@type":"ListItem","position":6,"item":{"@id":"/agents/tools/payments/x402/charge-for-mcp-tools/","name":"Charge for MCP tools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/#page","headline":"Charge for MCP tools · Cloudflare Agents docs","description":"Charge per tool call in an MCP server using paidTool.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

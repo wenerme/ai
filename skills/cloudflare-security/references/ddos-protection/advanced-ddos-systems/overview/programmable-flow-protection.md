@@ -1,16 +1,18 @@
 ---
-title: Programmable Flow Protection (Beta)
 description: Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Programmable Flow Protection (Beta)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Programmable Flow Protection (Beta)
 
-# Programmable Flow Protection (Beta)
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
 
@@ -158,10 +160,8 @@ For reference, the example below is the basic program in its entirety:
 ```c
 #define CF_EBPF_HELPER_V0
 
-
 #include <cf_ebpf_defs.h>
 #include <cf_ebpf_helper.h>
-
 
 struct apphdr {
     uint8_t       version;
@@ -169,14 +169,12 @@ struct apphdr {
     unsigned char token[0]; // Variable-length token
 } __attribute__((packed));
 
-
 uint64_t
 cf_ebpf_main(void *state)
 {
     struct cf_ebpf_generic_ctx *ctx = state;
     struct cf_ebpf_parsed_headers headers;
     struct cf_ebpf_packet_data *p;
-
 
     if (parse_packet_data(ctx, &p, &headers) != 0) {
         return CF_EBPF_DROP;
@@ -188,18 +186,15 @@ cf_ebpf_main(void *state)
         return CF_EBPF_DROP;
     }
 
-
     udp_hdr = (struct udphdr *)headers.udp;
     if (ntohs(udp_hdr->dest) == 66) {
         return CF_EBPF_DROP;
     }
 
-
     struct apphdr *app = (struct apphdr *)(udp_hdr + 1);
     if ((uint8_t *)(app + 1) > headers.data_end) {
         return CF_EBPF_DROP;
     }
-
 
     // The verifier has a special limit that it will not allow offsets
     // beyond 65535. We need this check (token_len > 64000) in order
@@ -209,11 +204,9 @@ cf_ebpf_main(void *state)
         return CF_EBPF_DROP;
     }
 
-
     if ((uint8_t *)(app->token + token_len) > headers.data_end) {
         return CF_EBPF_DROP;
     }
-
 
     uint8_t *last_byte = app->token + token_len - 1;
     if (*last_byte != 0xCF) {
@@ -340,16 +333,13 @@ For reference, the example below is the complex program in its entirety:
 ```c
 #define CF_EBPF_HELPER_V0
 
-
 #include <cf_ebpf_defs.h>
 #include <cf_ebpf_helper.h>
-
 
 // Challenge-response protocol constants
 #define CHALLENGE_SECRET 0xDEADBEEFCAFEBABEULL
 #define CHALLENGE_EXPIRY_SECS 60
 #define VERIFIED_EXPIRY_SECS 3600
-
 
 // Challenge packet structure
 struct challenge_packet {
@@ -357,27 +347,22 @@ struct challenge_packet {
     uint64_t response;
 };
 
-
 uint64_t cf_ebpf_main(void *state)
 {
     struct cf_ebpf_generic_ctx *ctx = state;
     struct cf_ebpf_parsed_headers headers;
     struct cf_ebpf_packet_data *p;
 
-
     if (parse_packet_data(ctx, &p, &headers) != 0) {
         return CF_EBPF_DROP;
     }
 
-
     struct udphdr *udp_hdr = headers.udp;
-
 
     // Check source IP status
     uint8_t status;
     uint64_t expiry;
     int ret = get_src_ip_status(&status, &expiry);
-
 
     // Check if status has expired
     int64_t now = timestamp();
@@ -385,12 +370,10 @@ uint64_t cf_ebpf_main(void *state)
         ret = -1;  // Treat as new connection
     }
 
-
     // Handle verified source IPs - allow through
     if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_VERIFIED) {
         return CF_EBPF_PASS;
     }
-
 
     // Handle challenged source IPs - check for valid response
     if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_CHALLENGED) {
@@ -399,13 +382,11 @@ uint64_t cf_ebpf_main(void *state)
             return CF_EBPF_DROP;
         }
 
-
         // Parse challenge response from packet payload
         struct challenge_packet *resp = (struct challenge_packet *)(udp_hdr + 1);
         if ((uint8_t *)(resp + 1) > headers.data_end) {
             return CF_EBPF_DROP;
         }
-
 
         // Check response using XOR
         uint64_t expected_response = stored_nonce ^ CHALLENGE_SECRET;
@@ -416,24 +397,20 @@ uint64_t cf_ebpf_main(void *state)
             return CF_EBPF_PASS;
         }
 
-
         // Wrong response - blocklist immediately
         set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);
         return CF_EBPF_DROP;
     }
-
 
     // New source IP - issue initial challenge
     uint64_t nonce = rand();
     set_src_ip_status(CF_EBPF_SRC_IP_STATUS_CHALLENGED, CHALLENGE_EXPIRY_SECS);
     set_src_ip_data(nonce);
 
-
     struct challenge_packet challenge;
     challenge.nonce = nonce;
     challenge.response = 0;
     set_challenge((uint8_t *)&challenge, sizeof(challenge));
-
 
     return CF_EBPF_DROP;
 }
@@ -547,12 +524,10 @@ For reference, the example below is the rate limiting program in its entirety:
 #define CF_EBPF_HELPER_V0
 #include <cf_ebpf_helper.h>
 
-
 // Rate limit configuration
 // This program implements a fixed (not sliding) window ratelimit.
 #define RATE_LIMIT 100         // Maximum packets allowed per window
 #define WINDOW_SECONDS 60      // Time window in seconds
-
 
 // The source IP table holds a mapping from source IP -> custom u64. We will make the custom u64 value in the
 // table hold a timestamp and a counter to accomplish a ratelimit.
@@ -566,7 +541,6 @@ For reference, the example below is the rate limiting program in its entirety:
 #define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))
 #define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
 
-
 uint64_t cf_ebpf_main(void *state)
 {
     // Get current timestamp
@@ -576,13 +550,11 @@ uint64_t cf_ebpf_main(void *state)
     }
     uint32_t now_secs = (uint32_t)now;
 
-
     // Try to get existing state for this source IP
     uint64_t data;
     int ret = get_src_ip_data(&data);
     uint32_t window_start;
     uint32_t counter;
-
 
     if (ret == -1) {
         // No existing entry - first packet from this IP
@@ -636,7 +608,7 @@ State is tied to a specific program. If you modify a rule's mode (disabled, moni
 
 There are two state tables available to your program.
 
-Warning
+Caution
 
 If an incoming packet's source IP is blocklisted in the source IP state table, the packet is immediately dropped and your program does not run.
 
@@ -1346,8 +1318,6 @@ This API endpoint debugs a program by intaking:
 
 This endpoint runs the referenced BPF program against the input PCAP and outputs a new annotated PCAP file. The output PCAP file will contain the exact same packets as the input PCAP file, and will also include the program verdict annotated in the **Packet Comment** section of each packet.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/programmable_flow_protection/configs/programs/$PROGRAM_ID/pcap" \
 --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -1386,7 +1356,14 @@ Traffic flowing through Programmable Flow Protection can be found in the [Networ
 
 In the Network Analytics dashboard, select the **Programmable Flow Protection** tab to filter traffic based on this feature. You can filter traffic by program ID, custom network analytics tags, actions, IPs, and ports. By default, packets are sampled at a rate of 1/10,000.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Cloudflare Programmable Flow Protection (Beta) · Cloudflare DDoS Protection docs","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/","name":"General settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","name":"Programmable Flow Protection (Beta)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Cloudflare Programmable Flow Protection (Beta) · Cloudflare DDoS Protection docs","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 ```

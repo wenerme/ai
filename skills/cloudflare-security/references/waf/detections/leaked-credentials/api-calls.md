@@ -1,16 +1,18 @@
 ---
-title: Common API calls
 description: Manage leaked credentials detection rules and custom detections using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Common API calls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common API calls
 
-# Common API calls
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following examples address common scenarios of using the Cloudflare API to manage and configure leaked credentials detection.
 
@@ -30,15 +32,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Set Leaked Credential Checks Status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"enabled": true
+	}'
 ```
 
 ### Turn off leaked credentials detection
@@ -51,15 +51,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Set Leaked Credential Checks Status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "enabled": false
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"enabled": false
+	}'
 ```
 
 ### Get status of leaked credentials detection
@@ -74,22 +72,20 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account WAF Read`
 
-**Get Leaked Credential Checks Status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": {
-    "enabled": true
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"enabled": true
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -107,16 +103,14 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Create Leaked Credential Checks Custom Detection**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "username": "lookup_json_string(http.request.body.raw, \"user\")",
-    "password": "lookup_json_string(http.request.body.raw, \"secret\")"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"username": "lookup_json_string(http.request.body.raw, \"user\")",
+		"password": "lookup_json_string(http.request.body.raw, \"secret\")"
+	}'
 ```
 
 ### Get existing custom detection locations
@@ -131,27 +125,25 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account WAF Read`
 
-**List Leaked Credential Checks Custom Detections**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "<DETECTION_ID>",
-      "username": "lookup_json_string(http.request.body.raw, \"user\")",
-      "password": "lookup_json_string(http.request.body.raw, \"secret\")"
-    }
-    // (...)
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "<DETECTION_ID>",
+			"username": "lookup_json_string(http.request.body.raw, \"user\")",
+			"password": "lookup_json_string(http.request.body.raw, \"secret\")"
+		}
+		// (...)
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -165,15 +157,20 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Delete Leaked Credential Checks Custom Detection**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/#page","headline":"Common API calls · Cloudflare Web Application Firewall (WAF) docs","description":"Manage leaked credentials detection rules and custom detections using the API.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/leaked-credentials/","name":"Leaked credentials detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/leaked-credentials/api-calls/","name":"Common API calls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/#page","headline":"Common API calls · Cloudflare Web Application Firewall (WAF) docs","description":"Manage leaked credentials detection rules and custom detections using the API.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

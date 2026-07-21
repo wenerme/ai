@@ -1,16 +1,18 @@
 ---
-title: Query JSON
 description: Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query JSON
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query JSON
 
-# Query JSON
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/sql-api/query-json/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 has built-in support for querying and parsing JSON data stored within a database. This enables you to:
 
@@ -216,8 +218,6 @@ key|value|type|id|fullkey|path
 
 You can use `json_each` with [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) in a Worker by creating a statement and using `JSON.stringify` to pass an array as a [bound parameter](https://developers.cloudflare.com/d1/worker-api/d1-database/#guidance):
 
-**TypeScript**
-
 ```ts
 const stmt = context.env.DB
     .prepare("UPDATE users SET last_audited = ? WHERE id IN (SELECT value FROM json_each(?1))")
@@ -229,7 +229,14 @@ const resp = await stmt.bind(
 
 This would only update rows in your `users` table where the `id` matches one of the three provided.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/query-json/#page","headline":"Query JSON · Cloudflare D1 docs","description":"Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.","url":"https://developers.cloudflare.com/d1/sql-api/query-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/query-json/","name":"Query JSON"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/query-json/#page","headline":"Query JSON · Cloudflare D1 docs","description":"Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.","url":"https://developers.cloudflare.com/d1/sql-api/query-json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

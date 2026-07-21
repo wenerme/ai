@@ -1,16 +1,18 @@
 ---
-title: Configure DDoS protection
 description: Learn about configure ddos protection in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Configure DDoS protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure DDoS protection
 
-# Configure DDoS protection
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare DDoS protection automatically detects and mitigates Distributed Denial of Service (DDoS) attacks using its Autonomous Edge. Magic Transit customers have access to additional features, such as:
 
@@ -20,7 +22,7 @@ Cloudflare DDoS protection automatically detects and mitigates Distributed Denia
 ## Create a DDoS override
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Network-layer DDoS Protection**.
 3. Select **Deploy a DDoS override**.
 4. In **Set scope**, specify if you wish to apply the override to all incoming packets or to a subset of the packets.
@@ -74,7 +76,14 @@ Magic Transit customers can also enable the Advanced DDoS systems when the prefi
 
 [Create a rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/#create-an-advanced-dns-protection-rule) to enable Advanced DNS Protection.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/#page","headline":"Configure DDoS protection · Cloudflare Learning Paths","description":"Learn about configure ddos protection in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/configure-ddos/","name":"Configure DDoS protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/#page","headline":"Configure DDoS protection · Cloudflare Learning Paths","description":"Learn about configure ddos protection in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

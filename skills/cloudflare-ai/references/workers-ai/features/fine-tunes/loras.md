@@ -1,16 +1,18 @@
 ---
-title: Using LoRA adapters
 description: Upload and use LoRA adapters to get fine-tuned inference on Workers AI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using LoRA adapters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using LoRA adapters
 
-# Using LoRA adapters
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Adaptation ↗](https://blog.cloudflare.com/fine-tuned-inference-with-loras). This feature is in open beta and free during this period.
 
@@ -62,15 +64,12 @@ Before you upload your LoRA adapter, you'll need to edit your `adapter_config.js
 
 You can create a finetune and upload your LoRA adapter via wrangler with the following commands:
 
-**wrangler CLI**
-
 ```bash
 npx wrangler ai finetune create <model_name> <finetune_name> <folder_path>
 #🌀 Creating new finetune "test-lora" for model "@cf/mistral/mistral-7b-instruct-v0.2-lora"...
 #🌀 Uploading file "/Users/abcd/Downloads/adapter_config.json" to "test-lora"...
 #🌀 Uploading file "/Users/abcd/Downloads/adapter_model.safetensors" to "test-lora"...
 #✅ Assets uploaded, finetune "test-lora" is ready to use.
-
 
 npx wrangler ai finetune list
 ┌──────────────────────────────────────┬─────────────────┬─────────────┐
@@ -91,17 +90,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Workers AI Write`
 
-**Create a new Finetune**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "model": "SUPPORTED_MODEL_NAME",
-    "name": "FINETUNE_NAME",
-    "description": "OPTIONAL_DESCRIPTION"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"model": "SUPPORTED_MODEL_NAME",
+		"name": "FINETUNE_NAME",
+		"description": "OPTIONAL_DESCRIPTION"
+	}'
 ```
 
 #### Uploading your adapter weights and config
@@ -110,12 +107,9 @@ You have to call the upload endpoint each time you want to upload a new file, so
 
 You can either use the finetune `name` or `id` that you used when you created the fine tune.
 
-**cURL**
-
 ```bash
 ## Input: finetune_id, adapter_model.safetensors, then adapter_config.json
 ## Output: success true/false
-
 
 curl -X POST https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/finetunes/{FINETUNE_ID}/finetune-assets/ \
     -H 'Authorization: Bearer {API_TOKEN}' \
@@ -134,33 +128,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Workers AI Write`
 * `Workers AI Read`
 
-**List Finetunes**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "success": true,
-  "result": [
-    [
-      {
-        "id": "00000000-0000-0000-0000-000000000",
-        "model": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
-        "name": "llama2-finetune",
-        "description": "test"
-      },
-      {
-        "id": "00000000-0000-0000-0000-000000000",
-        "model": "@cf/mistralai/mistral-7b-instruct-v0.2-lora",
-        "name": "mistral-finetune",
-        "description": "test"
-      }
-    ]
-  ]
+	"success": true,
+	"result": [
+		[
+			{
+				"id": "00000000-0000-0000-0000-000000000",
+				"model": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
+				"name": "llama2-finetune",
+				"description": "test"
+			},
+			{
+				"id": "00000000-0000-0000-0000-000000000",
+				"model": "@cf/mistralai/mistral-7b-instruct-v0.2-lora",
+				"name": "mistral-finetune",
+				"description": "test"
+			}
+		]
+	]
 }
 ```
 
@@ -170,19 +162,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-12096)
-* [ rest api ](#tab-panel-12097)
-
-**JavaScript**
-
 ```javascript
 const response = await env.AI.run(
-  "@cf/mistralai/mistral-7b-instruct-v0.2-lora", //the model supporting LoRAs
-  {
-    messages: [{ role: "user", content: "Hello world" }],
-    raw: true, //skip applying the default chat template
-    lora: "00000000-0000-0000-0000-000000000", //the finetune id OR name
-  },
+	"@cf/mistralai/mistral-7b-instruct-v0.2-lora", //the model supporting LoRAs
+	{
+		messages: [{ role: "user", content: "Hello world" }],
+		raw: true, //skip applying the default chat template
+		lora: "00000000-0000-0000-0000-000000000", //the finetune id OR name
+	},
 );
 ```
 
@@ -196,7 +183,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/mistr
   }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/#page","headline":"Fine-tuned inference with LoRA adapters · Cloudflare Workers AI docs","description":"Upload and use LoRA adapters to get fine-tuned inference on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/fine-tunes/","name":"Fine-tunes"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/fine-tunes/loras/","name":"Using LoRA adapters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/#page","headline":"Fine-tuned inference with LoRA adapters · Cloudflare Workers AI docs","description":"Upload and use LoRA adapters to get fine-tuned inference on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

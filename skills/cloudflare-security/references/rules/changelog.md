@@ -1,16 +1,18 @@
 ---
-title: Rules changelog
 description: Track the latest updates and changes to Cloudflare Rules features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rules changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rules changelog
 
-# Rules changelog
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
@@ -151,7 +153,7 @@ Controls how Cloudflare buffers HTTP response bodies before forwarding them to t
 | **Standard** (default) | Cloudflare can inspect a prefix of the response body for enabled functionality.     |
 | **None**               | No buffering — the response body streams directly to the client without inspection. |
 
-Warning
+Caution
 
 Setting body buffering to **None** may break security functionality that requires body inspection, including the Web Application Firewall (WAF) and Bot Management. Ensure that any paths where you disable buffering do not require security inspection.
 
@@ -517,17 +519,17 @@ curl --request PUT \
 --header 'Content-Type: application/json' \
 --data '{
   "rules": [
-    {
-      "action": "serve_error",
-      "action_parameters": {
-        "asset_name": "maintenance",
-        "content_type": "text/html",
-        "status_code": 503
-      },
-      "enabled": true,
-      "expression": "http.request.uri.path contains \"error\""
-    }
-  ]
+		{
+			"action": "serve_error",
+			"action_parameters": {
+				"asset_name": "maintenance",
+				"content_type": "text/html",
+				"status_code": 503
+			},
+			"enabled": true,
+			"expression": "http.request.uri.path contains \"error\""
+		}
+	]
 }'
 ```
 
@@ -575,25 +577,24 @@ Example Terraform configuration:
 
 ```tf
 resource "cloudflare_snippet" "my_snippet" {
-  zone_id  = "<ZONE_ID>"
-  name = "my_test_snippet_1"
-  main_module = "file1.js"
-  files {
-    name = "file1.js"
-    content = file("file1.js")
-  }
+	zone_id  = "<ZONE_ID>"
+	name = "my_test_snippet_1"
+	main_module = "file1.js"
+	files {
+		name = "file1.js"
+		content = file("file1.js")
+	}
 }
 
-
 resource "cloudflare_snippet_rules" "cookie_snippet_rule" {
-  zone_id  = "<ZONE_ID>"
-  rules {
-    enabled = true
-    expression = "http.cookie eq \"a=b\""
-    description = "Trigger snippet on specific cookie"
-    snippet_name = "my_test_snippet_1"
-  }
-  depends_on = [cloudflare_snippet.my_snippet]
+	zone_id  = "<ZONE_ID>"
+	rules {
+		enabled = true
+		expression = "http.cookie eq \"a=b\""
+		description = "Trigger snippet on specific cookie"
+		snippet_name = "my_test_snippet_1"
+	}
+	depends_on = [cloudflare_snippet.my_snippet]
 }
 ```
 
@@ -748,7 +749,14 @@ Customers can now use new fields `cf.tls_client_hello_length` (the length of the
 
 Customers can now use arbitrary port numbers in Host Header Override in Origin Rules. Previously, only hostname was allowed as a value (for example, `example.com`). Now, you can set the value to `hostname:port` (for example, `example.com:1234`) as well.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/rules/changelog/#page","headline":"Rules changelog · Cloudflare Rules docs","description":"Track the latest updates and changes to Cloudflare Rules features.","url":"https://developers.cloudflare.com/rules/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/changelog/","name":"Rules changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/rules/changelog/#page","headline":"Rules changelog · Cloudflare Rules docs","description":"Track the latest updates and changes to Cloudflare Rules features.","url":"https://developers.cloudflare.com/rules/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

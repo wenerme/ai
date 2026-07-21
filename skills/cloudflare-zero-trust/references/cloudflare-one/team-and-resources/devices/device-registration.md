@@ -1,16 +1,18 @@
 ---
-title: Device registration
 description: Reference information for Device registration in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device registration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device registration
 
-# Device registration
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A device registration represents an individual session of the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on a physical device, linking a user (or service token) and the device to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization). It is created the first time the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) authenticates on that device.
 
@@ -30,9 +32,6 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-8180)
-* [ API ](#tab-panel-8181)
-
 To review how many device registrations are associated with a device:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
@@ -48,35 +47,33 @@ To review a device registration's status:
 
 To get a list of all device registrations, including active and revoked registrations:
 
-**List registrations**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations?status=all&per_page=50" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-    "created_at": "2026-01-26T19:27:49.770372Z",
-    "device": {
-      "client_version": "2025.10.186",
-      "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
-      "name": "My Device"
-    },
-    "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
-    "key": "<U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
-    "key_type": "secp256r1",
-    "last_seen_at": "2026-01-29T00:57:57.925979Z",
-    "revoked_at": "2026-01-29T00:58:16.704026Z",
-    "tunnel_type": "masque",
-    "updated_at": "2026-01-29T00:58:16.704026Z",
-    "user": {
-      "email": "user@example.com",
-      "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-      "name": ""
-    }
-  },
+		"created_at": "2026-01-26T19:27:49.770372Z",
+		"device": {
+			"client_version": "2025.10.186",
+			"id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+			"name": "My Device"
+		},
+		"id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+		"key": "<U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
+		"key_type": "secp256r1",
+		"last_seen_at": "2026-01-29T00:57:57.925979Z",
+		"revoked_at": "2026-01-29T00:58:16.704026Z",
+		"tunnel_type": "masque",
+		"updated_at": "2026-01-29T00:58:16.704026Z",
+		"user": {
+			"email": "user@example.com",
+			"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"name": ""
+		}
+	},
 ```
 
 A `revoked_at` timestamp indicates that the device registration has a [revoked status](#registration-status). If `revoked_at` is null or not present, it means the registration status is active.
@@ -112,9 +109,6 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-8182)
-* [ API ](#tab-panel-8183)
-
 To delete a device registration:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
@@ -129,20 +123,18 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zero Trust Write`
 
-**Delete registration**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations/$REGISTRATION_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 To bulk delete multiple device registrations:
 
 ```curl
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/device/registrations/registrations?id=reg_id_1&id=reg_id_2&id=reg_id_3" \
-  --request DELETE\
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE\
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The device registration is now permanently deleted, and its virtual IP address is released back into the available pool for reassignment.
@@ -233,7 +225,14 @@ User record persistence
 
 You cannot delete or archive a user record. You can [remove a user](#remove-a-user) from a seat, but their user record will remain in your Zero Trust Organization. Inactive users do not count towards billing.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#page","headline":"Device registration · Cloudflare One docs","description":"Reference information for Device registration in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/device-registration/","name":"Device registration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#page","headline":"Device registration · Cloudflare One docs","description":"Reference information for Device registration in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

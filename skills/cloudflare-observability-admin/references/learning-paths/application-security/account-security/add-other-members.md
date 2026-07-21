@@ -1,16 +1,18 @@
 ---
-title: Add and manage other members
 description: Add, edit, and manage Cloudflare account members.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Add and manage other members
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add and manage other members
 
-# Add and manage other members
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to add new account members, edit or revoke their permissions and access, and resend verifications emails.
 
@@ -22,14 +24,11 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9877)
-* [ API ](#tab-panel-9878)
-
 To view members using the dashboard:
 
 In the \[Cloudflare dashboard, go to the **Members** page.
 
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 
 To view members using the API, send a [GET request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/list/).
 
@@ -37,13 +36,10 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9879)
-* [ API ](#tab-panel-9880)
-
 To add a member to your account:
 
 1. In the Cloudflare dashboard, go to the **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 2. Select **Invite**.
 3. Fill out the following information:
 
@@ -63,13 +59,10 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9881)
-* [ API ](#tab-panel-9882)
-
 To edit member permissions using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 2. Select a member record, then select **Edit**.
 3. Update the scope and roles of their permissions.
 4. Select **Continue to summary**.
@@ -79,23 +72,22 @@ To edit member permissions using the API, get a [list of roles](https://develope
 
 Then, send a [PUT request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/update/) to edit their permissions.
 
-**Request**
-
 ```bash
+
 curl --request PUT \
   --url https://api.cloudflare.com/client/v4/accounts/{account_id}/members/{member_id} \
   --header 'Authorization: Bearer <API_TOKEN>' \
   --header 'Content-Type: application/json' \
   --data '{
-    "roles": [
-          {
-              "id": "<ROLE_ID1>"
-          },
-          {
-              "id": "<ROLE_ID2>"
-          }
-      ]
-    }'
+	  "roles": [
+	        {
+	            "id": "<ROLE_ID1>"
+	        },
+	        {
+	            "id": "<ROLE_ID2>"
+	        }
+	  	]
+		}'
 ```
 
 ## Resend an invitation
@@ -115,20 +107,24 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9883)
-* [ API ](#tab-panel-9884)
-
 To revoke a member's access to your account:
 
 1. In the Cloudflare dashboard, go to the **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 2. Locate an account member and expand their record.
 3. Click **Revoke**.
 4. Click **Yes, revoke access**.
 
 To revoke a member's access to your account using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/delete/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/#page","headline":"Add and manage other members · Cloudflare Learning Paths","description":"Add, edit, and manage Cloudflare account members.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/account-security/","name":"Account security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/account-security/add-other-members/","name":"Add and manage other members"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/#page","headline":"Add and manage other members · Cloudflare Learning Paths","description":"Add, edit, and manage Cloudflare account members.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

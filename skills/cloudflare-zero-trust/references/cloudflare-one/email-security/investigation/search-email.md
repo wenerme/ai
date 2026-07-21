@@ -1,16 +1,18 @@
 ---
-title: Search email
 description: Search email in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Search email
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Search email
 
-# Search email
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Email security, you can use different screen criteria to search through your email, reclassify and move a certain volume of messages, find similar emails, and export messages.
 
@@ -250,7 +252,14 @@ Mail trace allows you to track the path your selected message took from the send
 * **Type**: An email can be inbound (email sent to you from another email), or outbound (emails sent from your email address).
 * **Activity**: The activity taken on an email. For example, moving the email to the trash folder, releasing a quarantined email, and more.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#page","headline":"Search email · Cloudflare One docs","description":"Search email in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/investigation/","name":"Investigation"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/investigation/search-email/","name":"Search email"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#page","headline":"Search email · Cloudflare One docs","description":"Search email in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

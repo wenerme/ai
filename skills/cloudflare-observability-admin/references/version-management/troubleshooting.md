@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to resolve common issues with Version Management. If the steps below do not solve your problem, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include the details listed in [Information for Support](#information-for-support).
 
@@ -126,7 +128,14 @@ When contacting Cloudflare Support about a Version Management issue, include the
 * The **approximate timestamp** (including timezone) of when the issue occurred.
 * **Screenshots** of the error, if available.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Version Management docs","description":"Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.","url":"https://developers.cloudflare.com/version-management/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/version-management/","name":"Version Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/version-management/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Version Management docs","description":"Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.","url":"https://developers.cloudflare.com/version-management/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

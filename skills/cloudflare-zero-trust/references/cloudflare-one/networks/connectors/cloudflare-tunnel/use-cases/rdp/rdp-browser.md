@@ -1,16 +1,18 @@
 ---
-title: Connect to RDP in a browser
 description: Connect to RDP in a browser in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Connect to RDP in a browser
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to RDP in a browser
 
-# Connect to RDP in a browser
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Users can connect to an RDP server without installing an RDP client or the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on their device. Browser-based RDP leverages [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), which creates a secure, outbound-only connection from your RDP server to Cloudflare's global network. Setup involves running the `cloudflared` daemon on the RDP server (or any other host machine within the private network) and routing RDP traffic over a public hostname.
 
@@ -31,10 +33,10 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 ## 1\. Connect the server to Cloudflare
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
 
 ## 2\. Add a target
@@ -42,10 +44,6 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 A target represents a single resource in your infrastructure (such as a server, Kubernetes cluster, database, or container) that users will connect to through Cloudflare.
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
-
-* [ Dashboard ](#tab-panel-7973)
-* [ API ](#tab-panel-7974)
-* [ Terraform ](#tab-panel-7975)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -67,25 +65,23 @@ If the target IP does not appear in the dropdown, go to **Networking** \> **Rout
 
 Make a `POST` request to the [Infrastructure Access Targets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/infrastructure/subresources/targets/methods/create/) endpoint:
 
-**Create new target**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "hostname": "infra-access-target",
-    "ip": {
-        "ipv4": {
-            "ip_addr": "187.26.29.249",
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-        },
-        "ipv6": {
-            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"hostname": "infra-access-target",
+		"ip": {
+				"ipv4": {
+						"ip_addr": "187.26.29.249",
+						"virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+				},
+				"ipv6": {
+						"ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+						"virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+				}
+		}
+	}'
 ```
 
 Provider versions
@@ -98,18 +94,18 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 2. Configure the [cloudflare\_zero\_trust\_infrastructure\_access\_target ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Finfrastructure%5Faccess%5Ftarget) resource:
 ```tf
 resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
-  account_id = var.cloudflare_account_id
-    hostname   = "infra-access-target"
-    ip = {
-      ipv4 = {
-        ip_addr = "187.26.29.249"
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
-      }
-      ipv6 = {
-        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
-      }
-    }
+	account_id = var.cloudflare_account_id
+		hostname   = "infra-access-target"
+		ip = {
+			ipv4 = {
+				ip_addr = "187.26.29.249"
+				virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+			}
+			ipv6 = {
+				ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"
+				virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+			}
+		}
 }
 ```
 
@@ -238,7 +234,7 @@ You now have access to the remote Windows desktop.
 
 ## Connection settings
 
-Connection settings restrict data transfer between the user's local machine and the browser-based RDP session. You can control text (copy and paste) and file transfers. Text controls manage clipboard content. File controls Beta manage file uploads and downloads. These controls are configured per policy, so you can grant different permissions to different groups of users.
+Connection settings restrict data transfer between the user's local machine and the browser-based RDP session. You can control text (copy and paste) and file transfers. Text controls manage clipboard content. File controls  Beta  manage file uploads and downloads. These controls are configured per policy, so you can grant different permissions to different groups of users.
 
 ### Default behavior
 
@@ -261,10 +257,6 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure connection settings
 
-* [ Dashboard ](#tab-panel-7970)
-* [ API ](#tab-panel-7971)
-* [ Terraform ](#tab-panel-7972)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
 3. Select the **Policies** tab.
@@ -282,64 +274,60 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Apps and Policies Write`
 
-**Create an Access reusable policy**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Allow engineers with clipboard and upload",
-    "decision": "allow",
-    "include": [
-        {
-            "email_domain": {
-                "domain": "example.com"
-            }
-        }
-    ],
-    "connection_rules": {
-        "rdp": {
-            "allowed_clipboard_local_to_remote_formats": [
-                "text",
-                "file"
-            ],
-            "allowed_clipboard_remote_to_local_formats": [
-                "text"
-            ]
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Allow engineers with clipboard and upload",
+		"decision": "allow",
+		"include": [
+				{
+						"email_domain": {
+								"domain": "example.com"
+						}
+				}
+		],
+		"connection_rules": {
+				"rdp": {
+						"allowed_clipboard_local_to_remote_formats": [
+								"text",
+								"file"
+						],
+						"allowed_clipboard_remote_to_local_formats": [
+								"text"
+						]
+				}
+		}
+	}'
 ```
 
 Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed formats in each direction. Use `text` for text clipboard and `file` for file transfer. For example, the following policy allows text clipboard in both directions but only allows file uploads (local to remote).
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
-  account_id = var.cloudflare_account_id
-  name       = "Allow engineers with clipboard and upload"
-  decision   = "allow"
+	account_id = var.cloudflare_account_id
+	name       = "Allow engineers with clipboard and upload"
+	decision   = "allow"
 
+	include = [
+		{
+			email_domain = {
+				domain = "example.com"
+			}
+		}
+	]
 
-  include = [
-    {
-      email_domain = {
-        domain = "example.com"
-      }
-    }
-  ]
-
-
-  connection_rules = {
-    rdp = {
-      allowed_clipboard_local_to_remote_formats = ["text", "file"]
-      allowed_clipboard_remote_to_local_formats = ["text"]
-    }
-  }
+	connection_rules = {
+		rdp = {
+			allowed_clipboard_local_to_remote_formats = ["text", "file"]
+			allowed_clipboard_remote_to_local_formats = ["text"]
+		}
+	}
 }
 ```
 
-### Transfer files Beta
+### Transfer files  Beta
 
 To manage transfers, select the settings gear icon on the left side of the RDP session. You can drag this icon along the left edge to reposition it.
 
@@ -484,7 +472,14 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
   4. Search for `dom.events.asyncClipboard.clipboardItem` and set it to `true`.
   5. Search for `dom.events.asyncClipboard.readText` and set it to `true`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/","name":"RDP"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","name":"Connect to RDP in a browser"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Use Workers KV directly from Rust
 description: This tutorial will teach you how to read and write to KV directly from Rust using workers-rs. You will use Workers KV from Rust to build an app to store and retrieve cities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use Workers KV directly from Rust
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use Workers KV directly from Rust
 
-# Use Workers KV directly from Rust
+Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗](https://github.com/cloudflare/workers-rs).
 
@@ -53,23 +55,16 @@ npx wrangler kv namespace create cities
 
 To add this configuration to your project, open the Wrangler file and create an entry for `kv_namespaces` above the build command:
 
-* [  wrangler.jsonc ](#tab-panel-13095)
-* [  wrangler.toml ](#tab-panel-13096)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "cities",
-      "id": "e29b263ab50e42ce9b637fa8370175e8"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "cities",
+			"id": "e29b263ab50e42ce9b637fa8370175e8"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
@@ -89,17 +84,14 @@ Install [Serde ↗](https://serde.rs/) as a project dependency to handle JSON `c
 use serde::{Deserialize, Serialize};
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     let router = Router::new();
-
 
     #[derive(Serialize, Deserialize, Debug)]
     struct Country {
         city: String,
     }
-
 
     router
         // TODO:
@@ -166,17 +158,14 @@ The source code for the completed app should include the following:
 use serde::{Deserialize, Serialize};
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     let router = Router::new();
-
 
     #[derive(Serialize, Deserialize, Debug)]
     struct Country {
         city: String,
     }
-
 
     router
         .post_async("/:country", |mut req, ctx| async move {
@@ -218,7 +207,14 @@ npx wrangler deploy
 * [Rust support in Workers](https://developers.cloudflare.com/workers/languages/rust/).
 * [Using KV in Workers](https://developers.cloudflare.com/kv/get-started/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/#page","headline":"Use Workers KV directly from Rust · Cloudflare Workers docs","description":"This tutorial will teach you how to read and write to KV directly from Rust using workers-rs. You will use Workers KV from Rust to build an app to store and retrieve cities.","url":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Rust"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/workers-kv-from-rust/","name":"Use Workers KV directly from Rust"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/#page","headline":"Use Workers KV directly from Rust · Cloudflare Workers docs","description":"This tutorial will teach you how to read and write to KV directly from Rust using workers-rs. You will use Workers KV from Rust to build an app to store and retrieve cities.","url":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Rust"]}
 ```

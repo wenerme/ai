@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Query Workflows execution metrics, error rates, and step durations via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/observability/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workflows expose metrics that allow you to inspect and measure Workflow execution, error rates, steps, and total duration across each (and all) of your Workflows.
 
@@ -82,7 +84,7 @@ Rollback events let you distinguish forward execution failures from compensation
 Per-Workflow and instance analytics for Workflows are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
 1. In the Cloudflare dashboard, go to the **Workflows** page.
-[ Go to **Workflows** ](https://dash.cloudflare.com/?to=/:account/workers/workflows)
+[ Go to **Workflows** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/workflows)
 2. Select a Workflow to view its metrics.
 
 You can optionally select a time window to query. This defaults to the last 24 hours.
@@ -99,135 +101,129 @@ To query the count (number of workflow invocations) and sum of `wallTime` for a 
 
 ```graphql
 query WorkflowInvocationsExample(
-  $accountTag: string!
-  $datetimeStart: Time
-  $datetimeEnd: Time
-  $workflowName: string
+	$accountTag: string!
+	$datetimeStart: Time
+	$datetimeEnd: Time
+	$workflowName: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      wallTime: workflowsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetimeHour_geq: $datetimeStart
-          datetimeHour_leq: $datetimeEnd
-          workflowName: $workflowName
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        sum {
-          wallTime
-        }
-        dimensions {
-          date: datetimeHour
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			wallTime: workflowsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetimeHour_geq: $datetimeStart
+					datetimeHour_leq: $datetimeEnd
+					workflowName: $workflowName
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				sum {
+					wallTime
+				}
+				dimensions {
+					date: datetimeHour
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TAAoAoGGACSlixBCDzkAKqQDmALhi1yESnhkBCPoIAmFMFRZgAyuVIRyCyZUNaBu8vuth6ebZae2sSNJiwA5VjAFJRU1HgBKGABvLQJKMCxIaK1+YVFxclouVEp0BwgFKJg0sQlpeUESjPKYAF9ImP4mmCxSdHQrQwUvFAxsWgBBXTYqAjAAcQgxNiyU5ph0a0oLGABGAAZN9bnmnLzIQp35+0dDAAkxCAB9GTBgBTs9A2NTcyPmk+eLkGvOe50nk4XNp3k0ej5sAEuoJwX1-IFQbVQUhtJAAEJQBQAbXSEiuABF6EYAMIAXSODVBuPIoNoIBYyXm81a7U6YERoO0Tjo1DojKZTROCk+Tm+EA5TKRzSldR4tSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOxypyAIwBWTNO2KAWg2asOPNgFF4TMVNkLlq8Wu3jdBxgHdoQgNYAzADbQ7qRgvGIASmYACgAy+GYUAOpUyAASFHzI4VSkAOIgAL5AA)
 
 Here we are doing the same for `wallTime`, `instanceRuns` and `stepCount` in the same query:
 
 ```graphql
 query WorkflowInvocationsExample2(
-  $accountTag: string!
-  $datetimeStart: Time
-  $datetimeEnd: Time
-  $workflowName: string
+	$accountTag: string!
+	$datetimeStart: Time
+	$datetimeEnd: Time
+	$workflowName: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      instanceRuns: workflowsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetimeHour_geq: $datetimeStart
-          datetimeHour_leq: $datetimeEnd
-          workflowName: $workflowName
-          eventType: "WORKFLOW_START"
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          date: datetimeHour
-        }
-      }
-      stepCount: workflowsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetimeHour_geq: $datetimeStart
-          datetimeHour_leq: $datetimeEnd
-          workflowName: $workflowName
-          eventType: "WORKFLOW_START"
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          date: datetimeHour
-        }
-      }
-      wallTime: workflowsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetimeHour_geq: $datetimeStart
-          datetimeHour_leq: $datetimeEnd
-          workflowName: $workflowName
-        }
-        orderBy: [count_DESC]
-      ) {
-        count
-        sum {
-          wallTime
-        }
-        dimensions {
-          date: datetimeHour
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			instanceRuns: workflowsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetimeHour_geq: $datetimeStart
+					datetimeHour_leq: $datetimeEnd
+					workflowName: $workflowName
+					eventType: "WORKFLOW_START"
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					date: datetimeHour
+				}
+			}
+			stepCount: workflowsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetimeHour_geq: $datetimeStart
+					datetimeHour_leq: $datetimeEnd
+					workflowName: $workflowName
+					eventType: "WORKFLOW_START"
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					date: datetimeHour
+				}
+			}
+			wallTime: workflowsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetimeHour_geq: $datetimeStart
+					datetimeHour_leq: $datetimeEnd
+					workflowName: $workflowName
+				}
+				orderBy: [count_DESC]
+			) {
+				count
+				sum {
+					wallTime
+				}
+				dimensions {
+					date: datetimeHour
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TACYAKAKBgwAJKWLEEIPOQAqpAOYAuGLXIRKeOQEIBwgCYUwVFmADK5UhHJLplYzqH7yh22Hp5d1l-axI0mLAByrGBKKmoafACUMADeOgSUYFiQsTqCouKS5LQ8qJToThBKMTAZElKyisJlWZUwAL7RcYItMOoqpHjEYABKkrRKPigY2LQAgvpsVARgAOIQEmw5aa0w6LaUVjAAjAAM+7srrXkFkMVHq47OxgASEhAA+nJgwEoOBkam5pYXrVefdxAj04rz0Hxcbl0vxaQz82CCxjesJGgWC0MEYBmFSgbBCMAARHAAPI9ADSADEADJEuAPEzSMY9aT46H1aFIXSQABCUCUAG1MlIHgARegmADCAF0Lk1oYLyNDdC46NQ6KlVpcDEp-i5ARBWRc2RqVGA2OLyltkf5xpNpnMFiAlvwNYJ1ixNko9gdoSdCucXS0dbd7k8Xm8g18LAqA4II3qHiDw+DjJD0TArfDgkjfCiEWA05iwNjcUpCSSKdTafTGcyDQGOdzeTABRaRWKpTL1S75YrlbRVbQuwGrtrk2A9XXVkbVlhSOh0DZEemc9aJqQppQZvNFssA26PTsDocA76zkOXXGQ89Qe8nJ8zFG05egQmw2C7xD3GmM6il0If3mk4ag2EA8vy8pthK0oarKAY9gGtAgCw54arO86LvmAbThqSrGCqNCDs0MYjjAz76lhhorNObL1EAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOxypyAIwBWTNO2KAWg2asOPNgFF4TMVNkLlq8Wu3jdBxgHdoQgNYAzADbQ7qRgvGIASmYACgAy+GYUAOpUyAASFHzI4VSkAOIgAL5AA)
 
 Here lets query `workflowsAdaptive` for raw data about `$instanceId` between `$datetimeStart` and `$datetimeEnd`:
 
 ```graphql
 query WorkflowsAdaptiveExample(
-  $accountTag: string!
-  $datetimeStart: Time
-  $datetimeEnd: Time
-  $instanceId: string
+	$accountTag: string!
+	$datetimeStart: Time
+	$datetimeEnd: Time
+	$instanceId: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      workflowsAdaptive(
-        limit: 100
-        filter: {
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-          instanceId: $instanceId
-        }
-        orderBy: [datetime_ASC]
-      ) {
-        datetime
-        eventType
-        workflowName
-        instanceId
-        stepCount
-        wallTime
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			workflowsAdaptive(
+				limit: 100
+				filter: {
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+					instanceId: $instanceId
+				}
+				orderBy: [datetime_ASC]
+			) {
+				datetime
+				eventType
+				workflowName
+				instanceId
+				stepCount
+				wallTime
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcDOBBAEwEMAHAFwEsA3MAUQA8iBbE9MACgCgYYASIgMYCEIAHZkAKkQDmALhg4yECqOkBCbn2JkwlJmADKZIhDLyJFfZt7bdluqILn71lYqKiBYAJJOFSlWlOAEoYAG9NKgowLEhwzR5BYTEyHHZUCnQdCHkwmCSRcSk5PgKU4pgAX1CInjqYLCQ0TFxCUkoaLnr69EsKMxgARgAGYYTujKzIXPHumFs9MAB9aTBgeRsiHUWjEzJZ7oX7JbZ1rS27fVpHA-q3Y08fP157jy9fW6rPpAJIACEoPIANpHfRLPAGADCAF0DjVPqCwJ8wDQilASEi5jxGigMNgAHLMTFY16PD5Y-xgEiQwr7ClYIjodAWKxzSrjdk8dmVIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOxypyAIwBWTNO2KAWg2asOPNgFF4TMVNkLlq8Wu3jdBxp3gBnQfAhsqVtgASmYACgAy+GYUAOpUyAAS1HQAvkA)
 
 #### GraphQL query variables
 
@@ -235,15 +231,22 @@ Example values for the query variables:
 
 ```json
 {
-  "accountTag": "fedfa729a5b0ecfd623bca1f9000f0a22",
-  "datetimeStart": "2024-10-20T00:00:00Z",
-  "datetimeEnd": "2024-10-29T00:00:00Z",
-  "workflowName": "shoppingCart",
-  "instanceId": "ecc48200-11c4-22a3-b05f-88a3c1c1db81"
+	"accountTag": "fedfa729a5b0ecfd623bca1f9000f0a22",
+	"datetimeStart": "2024-10-20T00:00:00Z",
+	"datetimeEnd": "2024-10-29T00:00:00Z",
+	"workflowName": "shoppingCart",
+	"instanceId": "ecc48200-11c4-22a3-b05f-88a3c1c1db81"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workflows docs","description":"Query Workflows execution metrics, error rates, and step durations via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workflows docs","description":"Query Workflows execution metrics, error rates, and step durations via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

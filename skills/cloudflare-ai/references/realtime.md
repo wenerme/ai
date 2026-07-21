@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Realtime
 description: Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cloudflare Realtime
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Realtime
 
-# Cloudflare Realtime
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime is a comprehensive suite of products designed to help you build powerful, scalable real-time applications.
 
@@ -48,29 +50,36 @@ Use this comparison table to quickly find the right Realtime product for your ne
 
 ## Related products
 
-**[Workers AI](https://developers.cloudflare.com/workers-ai/)**
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network.
 
-**[Stream](https://developers.cloudflare.com/stream/)**
+[Stream](https://developers.cloudflare.com/stream/)
 
 Cloudflare Stream lets you or your end users upload, store, encode, and deliver live and on-demand video with one API, without configuring or maintaining infrastructure.
 
 ## More resources
 
-[Developer Discord](https://discord.cloudflare.com)
+### [ Developer Discord ](https://discord.cloudflare.com)
 
 Connect with the Realtime community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-[Use cases](https://developers.cloudflare.com/realtime/realtimekit/introduction#use-cases)
+### [ Use cases ](https://developers.cloudflare.com/realtime/realtimekit/introduction#use-cases)
 
 Learn how you can build and deploy ambitious Realtime applications to Cloudflare's global network.
 
-[@CloudflareDev](https://x.com/cloudflaredev)
+### [ @CloudflareDev ](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Realtime.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

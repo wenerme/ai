@@ -1,16 +1,18 @@
 ---
-title: Encoding
 description: Takes a stream of code points as input and emits a stream of bytes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Encoding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Encoding
 
-# Encoding
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/encoding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## TextEncoder
 
@@ -21,8 +23,6 @@ The `TextEncoder` takes a stream of code points as input and emits a stream of b
 [TextEncoder() ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/TextEncoder) returns a newly constructed `TextEncoder` that generates a byte stream with UTF-8 encoding. `TextEncoder` takes no parameters and throws no exceptions.
 
 ### Constructor
-
-**JavaScript**
 
 ```js
 let encoder = new TextEncoder();
@@ -51,8 +51,6 @@ The `TextDecoder` interface represents a UTF-8 decoder. Decoders take a stream o
 
 ### Constructor
 
-**JavaScript**
-
 ```js
 let decoder = new TextDecoder();
 ```
@@ -74,7 +72,14 @@ let decoder = new TextDecoder();
 * `decode()` : DOMString
   * Decodes using the method specified in the `TextDecoder` object. Learn more at [MDN’s TextDecoder documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/encoding/#page","headline":"Encoding · Cloudflare Workers docs","description":"Takes a stream of code points as input and emits a stream of bytes.","url":"https://developers.cloudflare.com/workers/runtime-apis/encoding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/encoding/","name":"Encoding"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/encoding/#page","headline":"Encoding · Cloudflare Workers docs","description":"Takes a stream of code points as input and emits a stream of bytes.","url":"https://developers.cloudflare.com/workers/runtime-apis/encoding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Attack coverage
 description: DDoS attack types covered by Cloudflare managed rulesets at layers 3, 4, and 7.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Attack coverage
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Attack coverage
 
-# Attack coverage
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) provide protection against a variety of DDoS attacks across L3/4 (layers 3/4) and L7 of the OSI model. Cloudflare constantly updates these managed rulesets to improve the attack coverage, increase the mitigation consistency, cover new and emerging threats, and ensure cost-efficient mitigations.
 
@@ -39,7 +41,7 @@ The following table includes a sample of covered attack vectors:
 
 The Network-layer DDoS Attack Protection managed ruleset provides protection against some types of DNS attacks.
 
-Magic Transit customers have access to [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/) Beta. Other customers might consider the following options:
+Magic Transit customers have access to [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/)  Beta . Other customers might consider the following options:
 
 * Use Cloudflare as your authoritative DNS provider ([primary DNS](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [secondary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/)).
 * If you are running your own nameservers, use [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/) to get additional protection against DNS attacks like random prefix attacks.
@@ -50,7 +52,14 @@ DDoS Protection covers web and network protocols, including TCP, UDP, DNS, and H
 
 For protection against email-borne threats such as phishing and malware, refer to [Email Security](https://developers.cloudflare.com/email-security/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/#page","headline":"DDoS attack coverage · Cloudflare DDoS Protection docs","description":"DDoS attack types covered by Cloudflare managed rulesets at layers 3, 4, and 7.","url":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/about/attack-coverage/","name":"Attack coverage"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/#page","headline":"DDoS attack coverage · Cloudflare DDoS Protection docs","description":"DDoS attack types covered by Cloudflare managed rulesets at layers 3, 4, and 7.","url":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

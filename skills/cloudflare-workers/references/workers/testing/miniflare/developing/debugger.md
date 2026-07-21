@@ -1,18 +1,20 @@
 ---
-title: Attaching a Debugger
 description: Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Attaching a Debugger
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Attaching a Debugger
 
-# Attaching a Debugger
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 This documentation describes breakpoint debugging when using Miniflare directly, which is only relevant for advanced use cases. Instead, most users should refer to the [Workers Observability documentation for how to set this up when using Wrangler](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/).
 
@@ -66,7 +68,14 @@ With the new configuration selected, click the green debug button to start debug
 
 Breakpoints can also be added via the Workers DevTools. For more information, [read the guide](https://developers.cloudflare.com/workers/observability/dev-tools)in the Cloudflare Workers docs.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/#page","headline":"Attaching a Debugger · Cloudflare Workers docs","description":"Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.","url":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/developing/","name":"Developing"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/developing/debugger/","name":"Attaching a Debugger"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/#page","headline":"Attaching a Debugger · Cloudflare Workers docs","description":"Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.","url":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

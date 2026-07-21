@@ -1,16 +1,18 @@
 ---
-title: Post prefix advertisement monitoring and fine tuning
 description: Learn about post prefix advertisement monitoring and fine tuning in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Post prefix advertisement monitoring and fine tuning
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Post prefix advertisement monitoring and fine tuning
 
-# Post prefix advertisement monitoring and fine tuning
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 On this page, you can find suggestions to monitor your prefix advertisements and fine-tune them.
 
@@ -50,7 +52,14 @@ Refer to Cloudflare Network Firewall's [best practices](https://developers.cloud
 * Enable Cloudflare Network Firewall's [Intrusion Detection System (IDS)](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/). Requires Logpush and is only available for accounts with [Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/plans/#advanced-features).
 * Use [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring) for visibility into traffic on your non-Magic Transit prefixes, using NetFlow or sFlow from your CPEs.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/#page","headline":"Post prefix advertisement monitoring and fine tuning · Cloudflare Learning Paths","description":"Learn about post prefix advertisement monitoring and fine tuning in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/post-prefix-fine-tuning/","name":"Post prefix advertisement monitoring and fine tuning"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/#page","headline":"Post prefix advertisement monitoring and fine tuning · Cloudflare Learning Paths","description":"Learn about post prefix advertisement monitoring and fine tuning in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

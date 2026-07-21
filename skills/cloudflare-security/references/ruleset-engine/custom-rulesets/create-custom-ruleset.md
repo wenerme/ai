@@ -1,16 +1,18 @@
 ---
-title: Create a custom ruleset
 description: Create a custom ruleset with the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a custom ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a custom ruleset
 
-# Create a custom ruleset
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Create an account or zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation to create a custom ruleset, making sure that you:
 
@@ -43,34 +45,32 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Create an account ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (account)",
-    "kind": "custom",
-    "phase": "http_request_firewall_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (account)",
+		"kind": "custom",
+		"phase": "http_request_firewall_custom"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (account)",
-    "kind": "custom",
-    "version": "1",
-    "last_updated": "2025-08-09T10:27:30.636197Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (account)",
+		"kind": "custom",
+		"version": "1",
+		"last_updated": "2025-08-09T10:27:30.636197Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -105,34 +105,32 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Create a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (zone)",
-    "kind": "custom",
-    "phase": "http_request_firewall_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"phase": "http_request_firewall_custom"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
-    "name": "Custom Ruleset 1",
-    "description": "My First Custom Ruleset (zone)",
-    "kind": "custom",
-    "version": "1",
-    "last_updated": "2025-08-09T10:27:30.636197Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+		"name": "Custom Ruleset 1",
+		"description": "My First Custom Ruleset (zone)",
+		"kind": "custom",
+		"version": "1",
+		"last_updated": "2025-08-09T10:27:30.636197Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -142,7 +140,14 @@ Note
 
 Currently, zone-level custom rulesets are only available in the [http\_request\_firewall\_custom](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#deploy-a-custom-ruleset-via-api) phase.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/#page","headline":"Create a custom ruleset · Cloudflare Ruleset Engine docs","description":"Create a custom ruleset with the Rulesets API.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/custom-rulesets/","name":"Work with custom rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/custom-rulesets/create-custom-ruleset/","name":"Create a custom ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/#page","headline":"Create a custom ruleset · Cloudflare Ruleset Engine docs","description":"Create a custom ruleset with the Rulesets API.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/create-custom-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -6357,9 +6357,9 @@ paths:
       operationId: postApiV4GroupsIdHooksHookIdTestTrigger
       summary: Trigger a test webhook
       description: Triggers a test webhook. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_test_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -6421,9 +6421,9 @@ paths:
       operationId: postApiV4GroupsIdHooksHookIdEventsHookLogIdResend
       summary: Resend a webhook event
       description: Resends a webhook event. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_event_resend_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -17336,7 +17336,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_0974bb273dbe"
+              "$ref": "#/components/schemas/RequestBody_1f3a51c7b434"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -35511,9 +35511,9 @@ paths:
       operationId: postApiV4ProjectsIdHooksHookIdTestTrigger
       summary: Trigger a test webhook
       description: Triggers a test webhook. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_test_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -35576,9 +35576,9 @@ paths:
       operationId: postApiV4ProjectsIdHooksHookIdEventsHookLogIdResend
       summary: Resend a webhook event
       description: Resends a webhook event. This endpoint has a rate limit of five
-        requests per minute for each webhook and authenticated user. To disable this
-        limit on GitLab Self-Managed and GitLab Dedicated, an administrator can disable
-        the feature flag named web_hook_event_resend_api_endpoint_rate_limit.
+        requests per minute for each authenticated user for a given project or group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -84216,6 +84216,10 @@ components:
           type: string
         users_api_limit_gpg_key:
           type: string
+        web_hook_event_resend_limit:
+          type: string
+        web_hook_test_limit:
+          type: string
         gitlab_dedicated_instance:
           type: string
         gitlab_environment_toolkit_instance:
@@ -97419,7 +97423,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_0974bb273dbe:
+    RequestBody_1f3a51c7b434:
       type: object
       properties:
         admin_mode:
@@ -99386,6 +99390,12 @@ components:
           type: string
           nullable: true
         users_api_limit_gpg_key:
+          type: string
+          nullable: true
+        web_hook_event_resend_limit:
+          type: string
+          nullable: true
+        web_hook_test_limit:
           type: string
           nullable: true
         gitlab_dedicated_instance:

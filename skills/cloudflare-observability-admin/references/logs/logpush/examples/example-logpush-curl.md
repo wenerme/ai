@@ -1,16 +1,18 @@
 ---
-title: Manage Logpush with cURL
 description: Create and manage Logpush jobs using cURL.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage Logpush with cURL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage Logpush with cURL
 
-# Manage Logpush with cURL
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can manage your Cloudflare Logpush service from the command line using cURL.
 
@@ -29,15 +31,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get ownership challenge**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+	}'
 ```
 
 ### Parameters
@@ -74,32 +74,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<DOMAIN_NAME>",
-    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
-    "dataset": "http_requests",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "ownership_challenge": "<OWNERSHIP_CHALLENGE_TOKEN>"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<DOMAIN_NAME>",
+		"destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+		"dataset": "http_requests",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"ownership_challenge": "<OWNERSHIP_CHALLENGE_TOKEN>"
+	}'
 ```
 
 ### Parameters
@@ -152,12 +150,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get Logpush job details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
@@ -194,12 +190,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**List Logpush jobs**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Next, to enable the job, send an update request:
@@ -209,15 +203,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Update Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "enabled": true
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"enabled": true
+	}'
 ```
 
 ### Response
@@ -258,12 +250,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get Logpush job details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
@@ -298,12 +288,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Delete Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Be careful when deleting a job because this action cannot be reversed.
@@ -328,12 +316,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get Logpush job details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
@@ -370,12 +356,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**List Logpush jobs**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
@@ -427,12 +411,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Get Logpush job details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
@@ -467,28 +449,26 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Update Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		}
+	}'
 ```
 
 Note that at this time, the **CVE-2021-44228** option is not available through the UI, and updating your Logpush job through the UI will remove this option.
@@ -518,7 +498,14 @@ Note that at this time, the **CVE-2021-44228** option is not available through t
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#page","headline":"Manage Logpush with cURL · Cloudflare Logs docs","description":"Create and manage Logpush jobs using cURL.","url":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/examples/","name":"Logpush examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/examples/example-logpush-curl/","name":"Manage Logpush with cURL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#page","headline":"Manage Logpush with cURL · Cloudflare Logs docs","description":"Create and manage Logpush jobs using cURL.","url":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

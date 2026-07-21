@@ -1,16 +1,18 @@
 ---
-title: Bulk Redirects concepts
 description: Bulk Redirects work through a combination of URL redirects, a Bulk Redirect list, and a Bulk Redirect rule.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bulk Redirects concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bulk Redirects concepts
 
-# Bulk Redirects concepts
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Bulk Redirects involve the following elements:
 
@@ -107,7 +109,14 @@ The key should be either `http.request.full_uri` or `raw.http.request.full_uri`.
 
 The URI field used in the key must be the same as the URI field used in the expression. Otherwise, you may have a match for the rule expression, but no match for any of the source URLs in the list. For example, if you set the key to `http.request.full_uri`, the field used in the rule expression must also be `http.request.full_uri`. Conversely, if you set the key to `raw.http.request.full_uri`, the field used in the expression must be `raw.http.request.full_uri`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#page","headline":"Bulk Redirects concepts · Cloudflare Rules docs","description":"Bulk Redirects work through a combination of URL redirects, a Bulk Redirect list, and a Bulk Redirect rule.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/concepts/","name":"Bulk Redirects concepts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#page","headline":"Bulk Redirects concepts · Cloudflare Rules docs","description":"Bulk Redirects work through a combination of URL redirects, a Bulk Redirect list, and a Bulk Redirect rule.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

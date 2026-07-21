@@ -1,16 +1,18 @@
 ---
-title: Best practices for Artifacts
 description: Use repo, token, metadata, and namespace patterns.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Best practices for Artifacts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Best practices for Artifacts
 
-# Best practices for Artifacts
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/concepts/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts works best when you isolate work, scope access narrowly, keep metadata separate, and partition storage deliberately.
 
@@ -40,38 +42,28 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-7439)
-* [  TypeScript ](#tab-panel-7440)
-
-**src/index.js**
-
 ```js
 async function createRepoCopy(env, agentName, sessionId, repoName) {
-  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
+	const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
 
-
-  return env.ARTIFACTS.create(uniqueRepoName);
+	return env.ARTIFACTS.create(uniqueRepoName);
 }
 ```
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  ARTIFACTS: Artifacts;
+	ARTIFACTS: Artifacts;
 }
 
-
 async function createRepoCopy(
-  env: Env,
-  agentName: string,
-  sessionId: string,
-  repoName: string,
+	env: Env,
+	agentName: string,
+	sessionId: string,
+	repoName: string,
 ) {
-  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
+	const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
 
-
-  return env.ARTIFACTS.create(uniqueRepoName);
+	return env.ARTIFACTS.create(uniqueRepoName);
 }
 ```
 
@@ -83,49 +75,39 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-7441)
-* [  TypeScript ](#tab-panel-7442)
-
-**src/index.js**
-
 ```js
 async function forkFromBaseline(env, sessionId) {
-  const baseline = await env.ARTIFACTS.get("starter-repo");
-  const forked = await baseline.fork(`starter-repo-${sessionId}`, {
-    description: `Fork for session ${sessionId}`,
-    defaultBranchOnly: true,
-    readOnly: false,
-  });
+	const baseline = await env.ARTIFACTS.get("starter-repo");
+	const forked = await baseline.fork(`starter-repo-${sessionId}`, {
+		description: `Fork for session ${sessionId}`,
+		defaultBranchOnly: true,
+		readOnly: false,
+	});
 
-
-  return {
-    name: forked.name,
-    remote: forked.remote,
-  };
+	return {
+		name: forked.name,
+		remote: forked.remote,
+	};
 }
 ```
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  ARTIFACTS: Artifacts;
+	ARTIFACTS: Artifacts;
 }
 
-
 async function forkFromBaseline(env: Env, sessionId: string) {
-  const baseline = await env.ARTIFACTS.get("starter-repo");
-  const forked = await baseline.fork(`starter-repo-${sessionId}`, {
-    description: `Fork for session ${sessionId}`,
-    defaultBranchOnly: true,
-    readOnly: false,
-  });
+	const baseline = await env.ARTIFACTS.get("starter-repo");
+	const forked = await baseline.fork(`starter-repo-${sessionId}`, {
+		description: `Fork for session ${sessionId}`,
+		defaultBranchOnly: true,
+		readOnly: false,
+	});
 
-
-  return {
-    name: forked.name,
-    remote: forked.remote,
-  };
+	return {
+		name: forked.name,
+		remote: forked.remote,
+	};
 }
 ```
 
@@ -141,57 +123,45 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-7443)
-* [  TypeScript ](#tab-panel-7444)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const repoName = url.searchParams.get("repo") ?? "starter-repo";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const repoName = url.searchParams.get("repo") ?? "starter-repo";
 
+		const repo = await env.ARTIFACTS.get(repoName);
+		const token = await repo.createToken("read", 900);
 
-    const repo = await env.ARTIFACTS.get(repoName);
-    const token = await repo.createToken("read", 900);
-
-
-    return Response.json({
-      repo: repoName,
-      scope: token.scope,
-      expiresAt: token.expiresAt,
-      token: token.plaintext,
-    });
-  },
+		return Response.json({
+			repo: repoName,
+			scope: token.scope,
+			expiresAt: token.expiresAt,
+			token: token.plaintext,
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  ARTIFACTS: Artifacts;
+	ARTIFACTS: Artifacts;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
-    const repoName = url.searchParams.get("repo") ?? "starter-repo";
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
+		const repoName = url.searchParams.get("repo") ?? "starter-repo";
 
+		const repo = await env.ARTIFACTS.get(repoName);
+		const token = await repo.createToken("read", 900);
 
-    const repo = await env.ARTIFACTS.get(repoName);
-    const token = await repo.createToken("read", 900);
-
-
-    return Response.json({
-      repo: repoName,
-      scope: token.scope,
-      expiresAt: token.expiresAt,
-      token: token.plaintext,
-    });
-  },
+		return Response.json({
+			repo: repoName,
+			scope: token.scope,
+			expiresAt: token.expiresAt,
+			token: token.plaintext,
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -233,7 +203,14 @@ Do not keep every repo in one default namespace once usage grows. Split namespac
 
 When one namespace becomes hot, shard new repos into additional namespaces instead of continuing to grow a single shared namespace.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/best-practices/#page","headline":"Best practices for Artifacts · Cloudflare Artifacts docs","description":"Use repo, token, metadata, and namespace patterns.","url":"https://developers.cloudflare.com/artifacts/concepts/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/best-practices/","name":"Best practices for Artifacts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/best-practices/#page","headline":"Best practices for Artifacts · Cloudflare Artifacts docs","description":"Use repo, token, metadata, and namespace patterns.","url":"https://developers.cloudflare.com/artifacts/concepts/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

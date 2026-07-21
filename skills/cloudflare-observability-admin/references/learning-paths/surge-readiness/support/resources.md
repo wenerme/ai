@@ -1,16 +1,18 @@
 ---
-title: Support resources
 description: Access Cloudflare support and resources.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Support resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Support resources
 
-# Support resources
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Support type                                      | Resource                                                                                                                                                              |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,7 +37,14 @@ For security reasons, Cloudflare Support only assists individuals whose email ad
 * Refer to the [Cloudflare Community ↗](https://community.cloudflare.com/) to seek advice and share insights about using Cloudflare with other Cloudflare users.
 * [Maximize Revenue and Minimize Risk in Peak Season webinar ↗](https://www.google.com/url?q=https://cloudflare.ondemand.goldcast.io/on-demand/28262595-9ddf-4e26-91bf-241117f4b5fe&sa=D&source=docs&ust=1758134183832896&usg=AOvVaw3-v4hp23nSzNj0s6j-xxyc)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/#page","headline":"Support resources · Cloudflare Learning Paths","description":"Access Cloudflare support and resources.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/support/","name":"Support"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/support/resources/","name":"Support resources"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/#page","headline":"Support resources · Cloudflare Learning Paths","description":"Access Cloudflare support and resources.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/support/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

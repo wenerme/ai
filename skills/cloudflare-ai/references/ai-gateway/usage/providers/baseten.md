@@ -1,16 +1,18 @@
 ---
-title: Baseten
 description: Route Baseten model inference requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Baseten
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Baseten
 
-# Baseten
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Baseten ↗](https://www.baseten.co/) provides infrastructure for building and deploying machine learning models at scale. Baseten offers access to various language models through a unified chat completions API.
 
@@ -35,8 +37,6 @@ Baseten provides an OpenAI-compatible chat completions API for supported models.
 
 ### cURL
 
-**Example fetch request**
-
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/v1/chat/completions \
   --header 'Authorization: Bearer {baseten_api_token}' \
@@ -54,33 +54,26 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/v1/c
 
 ### Use OpenAI SDK with JavaScript
 
-**JavaScript**
-
 ```js
 import OpenAI from "openai";
-
 
 const apiKey = "{baseten_api_token}";
 const accountId = "{account_id}";
 const gatewayId = "{gateway_id}";
 const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
 
-
 const openai = new OpenAI({
   apiKey,
   baseURL,
 });
 
-
 const model = "openai/gpt-oss-120b";
 const messages = [{ role: "user", content: "What is Cloudflare?" }];
-
 
 const chatCompletion = await openai.chat.completions.create({
   model,
   messages,
 });
-
 
 console.log(chatCompletion);
 ```
@@ -96,6 +89,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
+
 {
 "model": "baseten/{model}"
 }
@@ -106,8 +100,6 @@ Specify:
 For models that don't use the OpenAI-compatible API, you can access them through their specific model endpoints.
 
 ### cURL
-
-**Example fetch request**
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/model/{model_id} \
@@ -121,15 +113,12 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/mode
 
 ### Use with JavaScript
 
-**JavaScript**
-
 ```js
 const accountId = "{account_id}";
 const gatewayId = "{gateway_id}";
 const basetenApiToken = "{baseten_api_token}";
 const modelId = "{model_id}";
 const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
-
 
 const response = await fetch(`${baseURL}/model/${modelId}`, {
   method: "POST",
@@ -143,12 +132,18 @@ const response = await fetch(`${baseURL}/model/${modelId}`, {
   }),
 });
 
-
 const result = await response.json();
 console.log(result);
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/#page","headline":"Baseten · Cloudflare AI Gateway docs","description":"Route Baseten model inference requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/baseten/","name":"Baseten"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/#page","headline":"Baseten · Cloudflare AI Gateway docs","description":"Route Baseten model inference requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

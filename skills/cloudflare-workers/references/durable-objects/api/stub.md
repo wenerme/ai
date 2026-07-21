@@ -1,16 +1,18 @@
 ---
-title: Durable Object Stub
 description: API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object Stub
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object Stub
 
-# Durable Object Stub
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/stub/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -20,81 +22,63 @@ Durable Objects implement E-order semantics, a concept deriving from the [E dist
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
 
-* [  JavaScript ](#tab-panel-8930)
-* [  TypeScript ](#tab-panel-8931)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
 
-
 // Durable Object
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-  }
+	constructor(ctx, env) {
+		super(ctx, env);
+	}
 
-
-  async sayHello() {
-    return "Hello, World!";
-  }
+	async sayHello() {
+		return "Hello, World!";
+	}
 }
-
 
 // Worker
 export default {
-  async fetch(request, env) {
-    // A stub is a client used to invoke methods on the Durable Object
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+	async fetch(request, env) {
+		// A stub is a client used to invoke methods on the Durable Object
+		const stub = env.MY_DURABLE_OBJECT.getByName("foo");
 
+		// Methods on the Durable Object are invoked via the stub
+		const rpcResponse = await stub.sayHello();
 
-    // Methods on the Durable Object are invoked via the stub
-    const rpcResponse = await stub.sayHello();
-
-
-    return new Response(rpcResponse);
-  },
+		return new Response(rpcResponse);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
 
-
 export interface Env {
-  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+	MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
 }
-
 
 // Durable Object
 export class MyDurableObject extends DurableObject {
-  constructor(ctx: DurableObjectState, env: Env) {
-    super(ctx, env);
-  }
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+	}
 
-
-  async sayHello(): Promise<string> {
-    return "Hello, World!";
-  }
+	async sayHello(): Promise<string> {
+		return "Hello, World!";
+	}
 }
-
 
 // Worker
 export default {
-  async fetch(request, env) {
-    // A stub is a client used to invoke methods on the Durable Object
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+	async fetch(request, env) {
+		// A stub is a client used to invoke methods on the Durable Object
+		const stub = env.MY_DURABLE_OBJECT.getByName("foo");
 
+		// Methods on the Durable Object are invoked via the stub
+		const rpcResponse = await stub.sayHello();
 
-    // Methods on the Durable Object are invoked via the stub
-    const rpcResponse = await stub.sayHello();
-
-
-    return new Response(rpcResponse);
-  },
+		return new Response(rpcResponse);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -104,18 +88,11 @@ export default {
 
 `id` is a property of the `DurableObjectStub` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the stub.
 
-* [  JavaScript ](#tab-panel-8926)
-* [  Python ](#tab-panel-8927)
-
-**JavaScript**
-
 ```js
 const id = env.MY_DURABLE_OBJECT.newUniqueId();
 const stub = env.MY_DURABLE_OBJECT.get(id);
 console.assert(id.equals(stub.id), "This should always be true");
 ```
-
-**Python**
 
 ```python
 id = env.MY_DURABLE_OBJECT.newUniqueId()
@@ -127,17 +104,10 @@ assert id.equals(stub.id), "This should always be true"
 
 `name` is an optional property of a `DurableObjectStub`, which returns a name if it was provided upon stub creation either directly via [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname) or indirectly via a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) created by [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the `DurableObjectStub` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-* [  JavaScript ](#tab-panel-8928)
-* [  Python ](#tab-panel-8929)
-
-**JavaScript**
-
 ```js
 const stub = env.MY_DURABLE_OBJECT.getByName("foo");
 console.assert(stub.name === "foo", "This should always be true");
 ```
-
-**Python**
 
 ```python
 stub = env.MY_DURABLE_OBJECT.getByName("foo")
@@ -148,7 +118,14 @@ assert stub.name == "foo", "This should always be true"
 
 * [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub · Cloudflare Durable Objects docs","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/stub/","name":"Durable Object Stub"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub · Cloudflare Durable Objects docs","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

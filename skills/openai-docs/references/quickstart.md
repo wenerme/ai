@@ -151,22 +151,24 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_text",
-                    text: "What is in this image?",
-                },
-                {
-                    type: "input_image",
-                    image_url: "https://openai-documentation.vercel.app/images/cat_and_otter.png",
-                },
-            ],
+          type: "input_text",
+          text: "What is in this image?",
         },
-    ],
+        {
+          type: "input_image",
+          image_url:
+            "https://openai-documentation.vercel.app/images/cat_and_otter.png",
+          detail: "auto",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -314,22 +316,22 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_text",
-                    text: "Analyze the letter and provide a summary of the key points.",
-                },
-                {
-                    type: "input_file",
-                    file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
-                },
-            ],
+          type: "input_text",
+          text: "Analyze the letter and provide a summary of the key points.",
         },
-    ],
+        {
+          type: "input_file",
+          file_url: "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -450,27 +452,27 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const file = await client.files.create({
-    file: fs.createReadStream("draconomicon.pdf"),
-    purpose: "user_data",
+  file: fs.createReadStream("fixtures/draconomicon.pdf"),
+  purpose: "user_data",
 });
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
         {
-            role: "user",
-            content: [
-                {
-                    type: "input_file",
-                    file_id: file.id,
-                },
-                {
-                    type: "input_text",
-                    text: "What is the first dragon in the book?",
-                },
-            ],
+          type: "input_file",
+          file_id: file.id,
         },
-    ],
+        {
+          type: "input_text",
+          text: "What is the first dragon in the book?",
+        },
+      ],
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -588,11 +590,9 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    tools: [
-        { type: "web_search" },
-    ],
-    input: "What was a positive news story from today?",
+  model: "gpt-5.6",
+  tools: [{ type: "web_search" }],
+  input: "What was a positive news story from today?",
 });
 
 console.log(response.output_text);
@@ -690,14 +690,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [
-        {
-            type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
-        },
-    ],
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+    },
+  ],
 });
 console.log(response);
 ```
@@ -749,15 +749,16 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    tools: [
-        {
-            type: "code_interpreter",
-            container: { type: "auto" },
-        },
-    ],
-    input: "I need to solve the equation 3x + 11 = 14. Can you help me?",
+  model: "gpt-5.6",
+  instructions:
+    "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  tools: [
+    {
+      type: "code_interpreter",
+      container: { type: "auto" },
+    },
+  ],
+  input: "I need to solve the equation 3x + 11 = 14. Can you help me?",
 });
 
 console.log(response.output_text);
@@ -826,35 +827,36 @@ puts(response.output_text)
 import OpenAI from "openai";
 const client = new OpenAI();
 
+/** @type {OpenAI.Responses.Tool[]} */
 const tools = [
-    {
-        type: "function",
-        name: "get_weather",
-        description: "Get current temperature for a given location.",
-        parameters: {
-            type: "object",
-            properties: {
-                location: {
-                    type: "string",
-                    description: "City and country e.g. Bogotá, Colombia",
-                },
-            },
-            required: ["location"],
-            additionalProperties: false,
+  {
+    type: "function",
+    name: "get_weather",
+    description: "Get current temperature for a given location.",
+    parameters: {
+      type: "object",
+      properties: {
+        location: {
+          type: "string",
+          description: "City and country e.g. Bogotá, Colombia",
         },
-        strict: true,
+      },
+      required: ["location"],
+      additionalProperties: false,
     },
+    strict: true,
+  },
 ];
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
-        { role: "user", content: "What is the weather like in Paris today?" },
-    ],
-    tools,
+  model: "gpt-5.6",
+  input: [
+    { role: "user", content: "What is the weather like in Paris today?" },
+  ],
+  tools,
 });
 
-console.log(response.output[0].to_json());
+console.log(response.output[0]);
 ```
 
 ```python
@@ -1032,7 +1034,8 @@ const resp = await client.responses.create({
     {
       type: "mcp",
       server_label: "dmcp",
-      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_description:
+        "A Dungeons and Dragons MCP server to assist with dice rolling.",
       server_url: "https://dmcp-server.deno.dev/mcp",
       require_approval: "never",
     },
@@ -1140,18 +1143,18 @@ import { OpenAI } from "openai";
 const client = new OpenAI();
 
 const stream = await client.responses.create({
-    model: "gpt-5.6",
-    input: [
-        {
-            role: "user",
-            content: "Say 'double bubble bath' ten times fast.",
-        },
-    ],
-    stream: true,
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: "Say 'double bubble bath' ten times fast.",
+    },
+  ],
+  stream: true,
 });
 
 for await (const event of stream) {
-    console.log(event);
+  console.log(event);
 }
 ```
 
@@ -1239,26 +1242,26 @@ Use the OpenAI platform to build [agents](https://developers.openai.com/api/docs
 Build a language triage agent
 
 ```javascript
-import { Agent, run } from '@openai/agents';
+import { Agent, run } from "@openai/agents";
 
 const spanishAgent = new Agent({
-    name: 'Spanish agent',
-    instructions: 'You only speak Spanish.',
+  name: "Spanish agent",
+  instructions: "You only speak Spanish.",
 });
 
 const englishAgent = new Agent({
-    name: 'English agent',
-    instructions: 'You only speak English',
+  name: "English agent",
+  instructions: "You only speak English",
 });
 
 const triageAgent = new Agent({
-    name: 'Triage agent',
-    instructions:
-        'Handoff to the appropriate agent based on the language of the request.',
-    handoffs: [spanishAgent, englishAgent],
+  name: "Triage agent",
+  instructions:
+    "Handoff to the appropriate agent based on the language of the request.",
+  handoffs: [spanishAgent, englishAgent],
 });
 
-const result = await run(triageAgent, 'Hola, ¿cómo estás?');
+const result = await run(triageAgent, "Hola, ¿cómo estás?");
 console.log(result.finalOutput);
 ```
 

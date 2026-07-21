@@ -1,16 +1,18 @@
 ---
-title: New Relic
 description: This tutorial explains how to analyze Cloudflare metrics using the New Relic One Cloudflare Quickstart.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: New Relic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  New Relic
 
-# New Relic
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to analyze Cloudflare metrics using the [New Relic One Cloudflare Quickstart ↗](https://newrelic.com/instant-observability/cloudflare/fc2bb0ac-6622-43c6-8c1f-6a4c26ab5434).
 
@@ -59,7 +61,14 @@ Get insights on the availability of your websites and Applications. Metrics incl
 
 ![Cloudflare Network Logs reliability metrics screen](https://developers.cloudflare.com/_astro/dash-4.BIqk6bUl_wxIpq.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/#page","headline":"New Relic · Cloudflare Analytics docs","description":"This tutorial explains how to analyze Cloudflare metrics using the New Relic One Cloudflare Quickstart.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-integrations/","name":"Analytics integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-integrations/new-relic/","name":"New Relic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/#page","headline":"New Relic · Cloudflare Analytics docs","description":"This tutorial explains how to analyze Cloudflare metrics using the New Relic One Cloudflare Quickstart.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

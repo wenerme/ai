@@ -1,16 +1,18 @@
 ---
-title: Best practices
 description: Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Best practices
 
-# Best practices
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/advanced-topics/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Though all Terraform deployments are unique, follow these best practices to set yourself up for success.
 
@@ -116,7 +118,6 @@ resource "cloudflare_record" "example_1" {
   ttl     = 3600
 }
 
-
 resource "cloudflare_record" "example_2" {
   zone_id = var.cloudflare_zone_id
   name    = "terraform"
@@ -125,7 +126,6 @@ resource "cloudflare_record" "example_2" {
   ttl     = 3600
 }
 
-
 resource "cloudflare_record" "example_3" {
   zone_id = var.cloudflare_zone_id
   name    = "terraform"
@@ -133,7 +133,6 @@ resource "cloudflare_record" "example_3" {
   type    = "A"
   ttl     = 3600
 }
-
 
 resource "cloudflare_load_balancer" "bar" {
   zone_id          = var.cloudflare_zone_id
@@ -144,24 +143,20 @@ resource "cloudflare_load_balancer" "bar" {
   proxied          = true
   steering_policy  = "geo"
 
-
   pop_pools {
     pop      = "LAX"
     pool_ids = [cloudflare_load_balancer_pool.foo.id]
   }
-
 
   country_pools {
     country  = "US"
     pool_ids = [cloudflare_load_balancer_pool.foo.id]
   }
 
-
   region_pools {
     region   = "WNAM"
     pool_ids = [cloudflare_load_balancer_pool.foo.id]
   }
-
 
   rules {
     name      = "example rule"
@@ -175,7 +170,6 @@ resource "cloudflare_load_balancer" "bar" {
   }
 }
 
-
 resource "cloudflare_load_balancer_pool" "example_lb_pool" {
   name = "example-lb-pool"
   origins {
@@ -185,12 +179,10 @@ resource "cloudflare_load_balancer_pool" "example_lb_pool" {
   }
 }
 
-
 resource "cloudflare_page_rule" "example_page_rule" {
   zone_id = var.cloudflare_zone_id
   target = "sub.${var.cloudflare_zone}/page"
   priority = 1
-
 
   actions {
     ssl = "flexible"
@@ -203,7 +195,7 @@ While convenient, this setup can cause unanticipated issues. If this module is s
 
 Using modules also increases the difficulty of debugging or reproducing issues as you must then factor in potential logic bugs outside of Terraform core and the Cloudflare provider.
 
-Warning
+Caution
 
 This advice also applies to [Terraform dynamic blocks ↗](https://www.terraform.io/language/expressions/dynamic-blocks) that allow you to do logic in your HCL. Since these dynamic blocks are always evaluated, you can get yourself into situations where you have logic bugs in your configuration (and making the end result unreproducible).
 
@@ -231,7 +223,14 @@ Locally, you can use a third-party tool like [cf-vault ↗](https://github.com/j
 
 For CI pipelines, use an internal or secret storage tool (such as [Vault ↗](https://www.hashicorp.com/products/vault/secrets-management)).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices · Cloudflare Terraform docs","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/best-practices/","name":"Best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices · Cloudflare Terraform docs","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

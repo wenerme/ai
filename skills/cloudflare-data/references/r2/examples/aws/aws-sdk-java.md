@@ -1,16 +1,18 @@
 ---
-title: aws-sdk-java
 description: Configure the AWS SDK for Java v2 to work with Cloudflare R2 object storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws-sdk-java
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws-sdk-java
 
-# aws-sdk-java
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -32,13 +34,11 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import java.net.URI;
 import java.util.List;
 
-
 /**
  * Client for interacting with Cloudflare R2 Storage using AWS SDK S3 compatibility
  */
 public class CloudflareR2Client {
     private final S3Client s3Client;
-
 
     /**
      * Creates a new CloudflareR2Client with the provided configuration
@@ -46,7 +46,6 @@ public class CloudflareR2Client {
     public CloudflareR2Client(S3Config config) {
         this.s3Client = buildS3Client(config);
     }
-
 
     /**
      * Configuration class for R2 credentials and endpoint
@@ -60,7 +59,6 @@ public class CloudflareR2Client {
         private final String secretKey;
         private final String endpoint;
 
-
         public S3Config(String accountId, String accessKey, String secretKey) {
             this.accountId = accountId;
             this.accessKey = accessKey;
@@ -68,12 +66,10 @@ public class CloudflareR2Client {
             this.endpoint = String.format("https://%s.r2.cloudflarestorage.com", accountId);
         }
 
-
         public String getAccessKey() { return accessKey; }
         public String getSecretKey() { return secretKey; }
         public String getEndpoint() { return endpoint; }
     }
-
 
     /**
      * Builds and configures the S3 client with R2-specific settings
@@ -84,12 +80,10 @@ public class CloudflareR2Client {
             config.getSecretKey()
         );
 
-
         S3Configuration serviceConfiguration = S3Configuration.builder()
             .pathStyleAccessEnabled(true)
             .chunkedEncodingEnabled(false)
             .build();
-
 
         return S3Client.builder()
             .endpointOverride(URI.create(config.getEndpoint()))
@@ -98,7 +92,6 @@ public class CloudflareR2Client {
             .serviceConfiguration(serviceConfiguration)
             .build();
     }
-
 
     /**
      * Lists all buckets in the R2 storage
@@ -111,7 +104,6 @@ public class CloudflareR2Client {
         }
     }
 
-
     /**
      * Lists all objects in the specified bucket
      */
@@ -121,13 +113,11 @@ public class CloudflareR2Client {
                 .bucket(bucketName)
                 .build();
 
-
             return s3Client.listObjectsV2(request).contents();
         } catch (S3Exception e) {
             throw new RuntimeException("Failed to list objects in bucket " + bucketName + ": " + e.getMessage(), e);
         }
     }
-
 
     /**
      * Uploads an object to the specified bucket
@@ -139,13 +129,11 @@ public class CloudflareR2Client {
                 .key(key)
                 .build();
 
-
             s3Client.putObject(request, RequestBody.fromString(content));
         } catch (S3Exception e) {
             throw new RuntimeException("Failed to put object " + key + " in bucket " + bucketName + ": " + e.getMessage(), e);
         }
     }
-
 
     public static void main(String[] args) {
         S3Config config = new S3Config(
@@ -154,9 +142,7 @@ public class CloudflareR2Client {
             "<SECRET_ACCESS_KEY>"
         );
 
-
         CloudflareR2Client r2Client = new CloudflareR2Client(config);
-
 
         // List buckets
         System.out.println("Available buckets:");
@@ -164,12 +150,10 @@ public class CloudflareR2Client {
             System.out.println("* " + bucket.name())
         );
 
-
         // Upload an object to a bucket
         String bucketName = "demos";
         r2Client.putObject(bucketName, "example.txt", "Hello, R2!");
         System.out.println("Uploaded example.txt to bucket '" + bucketName + "'");
-
 
         // List objects in a specific bucket
         System.out.println("\nObjects in bucket '" + bucketName + "':");
@@ -195,11 +179,9 @@ import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignReques
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 import java.time.Duration;
 
-
 public class CloudflareR2Client {
   private final S3Client s3Client;
   private final S3Presigner presigner;
-
 
     /**
      * Creates a new CloudflareR2Client with the provided configuration
@@ -209,7 +191,6 @@ public class CloudflareR2Client {
         this.presigner = buildS3Presigner(config);
     }
 
-
     /**
      * Builds and configures the S3 presigner with R2-specific settings
      */
@@ -218,7 +199,6 @@ public class CloudflareR2Client {
             config.getAccessKey(),
             config.getSecretKey()
         );
-
 
         return S3Presigner.builder()
             .endpointOverride(URI.create(config.getEndpoint()))
@@ -230,7 +210,6 @@ public class CloudflareR2Client {
             .build();
     }
 
-
     public String generatePresignedUploadUrl(String bucketName, String objectKey, Duration expiration) {
         PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
             .signatureDuration(expiration)
@@ -240,18 +219,14 @@ public class CloudflareR2Client {
                 .build())
             .build();
 
-
         PresignedPutObjectRequest presignedRequest = presigner.presignPutObject(presignRequest);
         return presignedRequest.url().toString();
     }
 
-
     // Rest of the methods remains the same
-
 
     public static void main(String[] args) {
       // config the client as before
-
 
       // Generate a pre-signed upload URL valid for 15 minutes
         String uploadUrl = r2Client.generatePresignedUploadUrl(
@@ -263,11 +238,17 @@ public class CloudflareR2Client {
         System.out.println(uploadUrl);
     }
 
-
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/#page","headline":"aws-sdk-java · Cloudflare R2 docs","description":"Configure the AWS SDK for Java v2 to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-java/","name":"aws-sdk-java"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/#page","headline":"aws-sdk-java · Cloudflare R2 docs","description":"Configure the AWS SDK for Java v2 to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

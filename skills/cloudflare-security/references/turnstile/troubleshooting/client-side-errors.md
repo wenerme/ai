@@ -1,16 +1,18 @@
 ---
-title: Client-side errors
 description: Resolve client-side errors in Turnstile widget rendering.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Client-side errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client-side errors
 
-# Client-side errors
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are instances where Turnstile may encounter problems, invoking the `error-callback`.
 
@@ -26,11 +28,6 @@ The `error-callback` option for explicitly rendering widgets and the `data-error
 
 This callback mechanism gives you complete control over how errors are presented to visitors and allows you to implement custom recovery strategies tailored to your application's needs.
 
-* [ Explicit rendering with error callback ](#tab-panel-11838)
-* [ Implicit rendering with error callback ](#tab-panel-11839)
-
-**JavaScript**
-
 ```js
 turnstile.render('#my-widget', {
   sitekey: 'your-sitekey',
@@ -41,8 +38,6 @@ turnstile.render('#my-widget', {
   }
 });
 ```
-
-**HTML**
 
 ```html
 <div class="cf-turnstile"
@@ -56,12 +51,9 @@ If an error callback returns with a non-falsy result, Turnstile will assume that
 
 An error callback will retrieve an error code as its first parameter. This error code follows a structured format where the first three digits indicate the error family (such as configuration issues, network problems, or challenge failures), and the remaining digits specify the exact error within that family.
 
-**JavaScript**
-
 ```js
 function handleTurnstileError(errorCode) {
   const errorFamily = Math.floor(errorCode / 1000);
-
 
   switch(errorFamily) {
     case 100:
@@ -88,17 +80,13 @@ This automatic retry mechanism is useful for [mobile visitors](https://developer
 
 When subsequent failures due to retries are observed, the error callback can be invoked multiple times for the same underlying issue. Your error handling code should account for this possibility to avoid showing duplicate error messages or performing the same recovery action repeatedly.
 
-**JavaScript**
-
 ```js
 let retryCount = 0;
-
 
 turnstile.render('#my-widget', {
   sitekey: 'your-sitekey',
   'error-callback': function(errorCode) {
     retryCount++;
-
 
     if (retryCount <= 2) {
       console.log(`Turnstile retry attempt ${retryCount}`);
@@ -112,8 +100,6 @@ turnstile.render('#my-widget', {
 ```
 
 You can adjust the retry behavior by setting the retry value to `never` instead of the default `auto`. This will result in Turnstile not automatically retrying, giving you control over when and how recovery attempts are made. If there is any issue or error verifying the visitor, the widget will not retry and will remain in the respective failure state until you take manual action.
-
-**JavaScript**
 
 ```js
 turnstile.render('#my-widget', {
@@ -132,8 +118,6 @@ You may call `turnstile.reset()` in the corresponding `error-callback` to manual
 
 The interval between retries for Turnstile can be configured by the `retry-interval` option, allowing you to optimize retry timing for your visitors’ typical network conditions. A longer interval may be more appropriate for visitors on slower or less reliable connections, while shorter intervals work well in environments with typically stable connectivity.
 
-**JavaScript**
-
 ```js
 turnstile.render('#my-widget', {
   sitekey: 'your-sitekey',
@@ -151,8 +135,6 @@ For instance, in a scenario where the Turnstile widget is implemented within a f
 
 In such instances, the `timeout-callback` of the widget is activated, enabling the widget to reset itself as needed and provide appropriate guidance. This callback allows you to implement user-friendly timeout handling, such as highlighting the Turnstile widget, displaying a notification, or automatically refreshing the challenge.
 
-**JavaScript**
-
 ```js
 turnstile.render('#my-widget', {
   sitekey: 'your-sitekey',
@@ -163,7 +145,6 @@ turnstile.render('#my-widget', {
     console.log('Challenge timed out - user action required');
     document.getElementById('challenge-notice').textContent =
       'Please complete the security check above to continue.';
-
 
     // Optionally highlight the widget
     document.getElementById('my-widget').style.border = '2px solid orange';
@@ -176,7 +157,14 @@ turnstile.render('#my-widget', {
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/#page","headline":"Client-side errors · Cloudflare Turnstile docs","description":"Resolve client-side errors in Turnstile widget rendering.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/client-side-errors/","name":"Client-side errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/#page","headline":"Client-side errors · Cloudflare Turnstile docs","description":"Resolve client-side errors in Turnstile widget rendering.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","JavaScript"]}
 ```

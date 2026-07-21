@@ -1,16 +1,18 @@
 ---
-title: Global read replication
 description: Reduce read latency and scale throughput by replicating D1 databases across regions globally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Global read replication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Global read replication
 
-# Global read replication
+Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
 
@@ -26,71 +28,58 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-8573)
-* [  TypeScript ](#tab-panel-8574)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 
+		// A. Create the Session.
+		// When we create a D1 Session, we can continue where we left off from a previous
+		// Session if we have that Session's last bookmark or use a constraint.
+		const bookmark =
+			request.headers.get("x-d1-bookmark") ?? "first-unconstrained";
+		const session = env.DB01.withSession(bookmark);
 
-    // A. Create the Session.
-    // When we create a D1 Session, we can continue where we left off from a previous
-    // Session if we have that Session's last bookmark or use a constraint.
-    const bookmark =
-      request.headers.get("x-d1-bookmark") ?? "first-unconstrained";
-    const session = env.DB01.withSession(bookmark);
+		try {
+			// Use this Session for all our Workers' routes.
+			const response = await withTablesInitialized(
+				request,
+				session,
+				handleRequest,
+			);
 
+			// B. Return the bookmark so we can continue the Session in another request.
+			response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
 
-    try {
-      // Use this Session for all our Workers' routes.
-      const response = await withTablesInitialized(
-        request,
-        session,
-        handleRequest,
-      );
-
-
-      // B. Return the bookmark so we can continue the Session in another request.
-      response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
-
-
-      return response;
-    } catch (e) {
-      console.error({
-        message: "Failed to handle request",
-        error: String(e),
-        errorProps: e,
-        url,
-        bookmark,
-      });
-      return Response.json(
-        { error: String(e), errorDetails: e },
-        { status: 500 },
-      );
-    }
-  },
+			return response;
+		} catch (e) {
+			console.error({
+				message: "Failed to handle request",
+				error: String(e),
+				errorProps: e,
+				url,
+				bookmark,
+			});
+			return Response.json(
+				{ error: String(e), errorDetails: e },
+				{ status: 500 },
+			);
+		}
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export default {
   async fetch(request, env, ctx): Promise<Response> {
     const url = new URL(request.url);
 
-
     // A. Create the Session.
     // When we create a D1 Session, we can continue where we left off from a previous
     // Session if we have that Session's last bookmark or use a constraint.
     const bookmark =
       request.headers.get("x-d1-bookmark") ?? "first-unconstrained";
     const session = env.DB01.withSession(bookmark);
-
 
     try {
       // Use this Session for all our Workers' routes.
@@ -100,10 +89,8 @@ export default {
         handleRequest,
       );
 
-
       // B. Return the bookmark so we can continue the Session in another request.
       response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
-
 
       return response;
     } catch (e) {
@@ -162,21 +149,19 @@ D1 read replication achieves this by attaching a bookmark to each query within a
 Read replication can be enabled at the database level in the Cloudflare dashboard. Check **Settings** for your D1 database to view if read replication is enabled.
 
 1. In the Cloudflare dashboard, go to the **D1** page.
-[ Go to **D1 SQL database** ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select an existing database > **Settings** \> **Enable Read Replication**.
 
 ### Start a session without constraints
 
 To create a session from any available database version, use `withSession()` without any parameters, which will route the first query to any database instance, either the primary database instance or a read replica.
 
-**TypeScript**
-
 ```ts
 const session = env.DB.withSession() // synchronous
 // query executes on either primary database or a read replica
 const result = await session
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-  .run()
+	.prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+	.run()
 ```
 
 * `withSession()` is the same as `withSession("first-unconstrained")`
@@ -187,14 +172,12 @@ const result = await session
 
 To create a session from the latest database version, use `withSession("first-primary")`, which will route the first query to the primary database instance.
 
-**TypeScript**
-
 ```ts
 const session = env.DB.withSession(`first-primary`) // synchronous
 // query executes on primary database
 const result = await session
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-  .run()
+	.prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+	.run()
 ```
 
 * This approach is best when your application requires the latest database version. All queries in a session ensure sequential consistency.
@@ -204,17 +187,14 @@ const result = await session
 
 To create a new session from the context of a previous session, pass a `bookmark` parameter to guarantee that the session starts with a database version that is at least as up-to-date as the provided `bookmark`.
 
-**TypeScript**
-
 ```ts
 // retrieve bookmark from previous session stored in HTTP header
 const bookmark = request.headers.get('x-d1-bookmark') ?? 'first-unconstrained';
 
-
 const session = env.DB.withSession(bookmark)
 const result = await session
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-  .run()
+	.prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+	.run()
 // store bookmark for a future session
 response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 ```
@@ -226,12 +206,10 @@ response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 
 To see how D1 requests are processed by the addition of read replicas, `served_by_region` and `served_by_primary` fields are returned in the `meta` object of [D1 Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result).
 
-**TypeScript**
-
 ```ts
 const result = await env.DB.withSession()
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-  .run();
+	.prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+	.run();
 console.log({
   servedByRegion: result.meta.served_by_region ?? "",
   servedByPrimary: result.meta.served_by_primary ?? "",
@@ -246,9 +224,6 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-8567)
-* [ TypeScript ](#tab-panel-8568)
-
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
   -H "Authorization: Bearer $TOKEN" \
@@ -256,20 +231,17 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/datab
   -d '{"read_replication": {"mode": "auto"}}'
 ```
 
-**TypeScript**
-
 ```ts
 const headers = new Headers({
   "Authorization": `Bearer ${TOKEN}`
 });
 
-
 await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
-  method: "PUT",
-  headers: headers,
-  body: JSON.stringify(
-    { "read_replication": { "mode": "auto" } }
-  )
+	method: "PUT",
+	headers: headers,
+	body: JSON.stringify(
+		{ "read_replication": { "mode": "auto" } }
+	)
  }
 )
 ```
@@ -284,9 +256,6 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-8569)
-* [ TypeScript ](#tab-panel-8570)
-
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
   -H "Authorization: Bearer $TOKEN" \
@@ -294,20 +263,17 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/datab
   -d '{"read_replication": {"mode": "disabled"}}'
 ```
 
-**TypeScript**
-
 ```ts
 const headers = new Headers({
   "Authorization": `Bearer ${TOKEN}`
 });
 
-
 await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
-  method: "PUT",
-  headers: headers,
-  body: JSON.stringify(
-    { "read_replication": { "mode": "disabled" } }
-  )
+	method: "PUT",
+	headers: headers,
+	body: JSON.stringify(
+		{ "read_replication": { "mode": "disabled" } }
+	)
  }
 )
 ```
@@ -320,27 +286,20 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-8571)
-* [ TypeScript ](#tab-panel-8572)
-
 ```sh
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
   -H "Authorization: Bearer $TOKEN"
 ```
-
-**TypeScript**
 
 ```ts
 const headers = new Headers({
   "Authorization": `Bearer ${TOKEN}`
 });
 
-
 const response = await fetch("/v4/accounts/{account_id}/d1/database/{database_id}", {
   method: "GET",
   headers: headers
 });
-
 
 const data = await response.json();
 console.log(data.read_replication.mode);
@@ -434,7 +393,14 @@ You may wish to refer to the following resources:
 * [Starter code for D1 Sessions API demo ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
 * [E-commerce store read replication tutorial](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/read-replication/#page","headline":"Global read replication · Cloudflare D1 docs","description":"Reduce read latency and scale throughput by replicating D1 databases across regions globally.","url":"https://developers.cloudflare.com/d1/best-practices/read-replication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/read-replication/","name":"Global read replication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/read-replication/#page","headline":"Global read replication · Cloudflare D1 docs","description":"Reduce read latency and scale throughput by replicating D1 databases across regions globally.","url":"https://developers.cloudflare.com/d1/best-practices/read-replication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

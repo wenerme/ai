@@ -1,16 +1,18 @@
 ---
-title: Scan SaaS applications with Cloudflare CASB
 description: Detect SaaS misconfigurations with CASB scans.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Scan SaaS applications with Cloudflare CASB
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scan SaaS applications with Cloudflare CASB
 
-# Scan SaaS applications with Cloudflare CASB
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -53,7 +55,7 @@ You can resume CASB scanning at any time by turning on **Scan for findings**.
 
 ### Delete an integration
 
-Warning
+Caution
 
 When you delete an integration, all keys and OAuth data will be deleted. This means you cannot restore a deleted integration or its scanned data.
 
@@ -80,7 +82,14 @@ If you use both Cloudflare CASB and Cloudflare Data Loss Prevention (DLP), you c
 
 For more information, refer to [Scan SaaS applications with DLP](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/#page","headline":"Scan SaaS applications with Cloudflare CASB · Cloudflare Learning Paths","description":"Detect SaaS misconfigurations with CASB scans.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/","name":"Secure SaaS applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/","name":"Scan SaaS applications with Cloudflare CASB"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/#page","headline":"Scan SaaS applications with Cloudflare CASB · Cloudflare Learning Paths","description":"Detect SaaS misconfigurations with CASB scans.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

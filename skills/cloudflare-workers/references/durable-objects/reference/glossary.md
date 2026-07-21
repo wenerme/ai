@@ -1,16 +1,18 @@
 ---
-title: Glossary
 description: Definitions of key terms used in Cloudflare Durable Objects documentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Glossary
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Glossary
 
-# Glossary
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the definitions for terms used across Cloudflare's Durable Objects documentation.
 
@@ -32,7 +34,14 @@ Review the definitions for terms used across Cloudflare's Durable Objects docume
 | Storage Backend      | By default, a Durable Object class can use Storage API that leverages a key-value storage backend. New Durable Object classes can opt-in to using a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#sqlite-storage-backend).                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | stub                 | An object that refers to a unique Durable Object within a namespace and allows you to call into that Durable Object via RPC methods or the fetch API. For example, let stub = env.MY\_DURABLE\_OBJECT.get(id)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/glossary/#page","headline":"Glossary · Cloudflare Durable Objects docs","description":"Definitions of key terms used in Cloudflare Durable Objects documentation.","url":"https://developers.cloudflare.com/durable-objects/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/glossary/","name":"Glossary"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/glossary/#page","headline":"Glossary · Cloudflare Durable Objects docs","description":"Definitions of key terms used in Cloudflare Durable Objects documentation.","url":"https://developers.cloudflare.com/durable-objects/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

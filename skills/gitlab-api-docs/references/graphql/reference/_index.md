@@ -4603,8 +4603,7 @@ Fields:
 ### `Mutation.auditEventsStreamingHeadersCreate`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `groupAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `groupAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingHeadersCreateInput`
 
@@ -4629,8 +4628,7 @@ Fields:
 ### `Mutation.auditEventsStreamingHeadersDestroy`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `groupAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `groupAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingHeadersDestroyInput`
 
@@ -4651,8 +4649,7 @@ Fields:
 ### `Mutation.auditEventsStreamingHeadersUpdate`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `groupAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `groupAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingHeadersUpdateInput`
 
@@ -4722,8 +4719,7 @@ Fields:
 ### `Mutation.auditEventsStreamingInstanceHeadersCreate`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `instanceAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `instanceAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingInstanceHeadersCreateInput`
 
@@ -4748,8 +4744,7 @@ Fields:
 ### `Mutation.auditEventsStreamingInstanceHeadersDestroy`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `instanceAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `instanceAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingInstanceHeadersDestroyInput`
 
@@ -4770,8 +4765,7 @@ Fields:
 ### `Mutation.auditEventsStreamingInstanceHeadersUpdate`
 
 - Deprecated in GitLab 18.10.
-- Configure headers by using the streaming destination configuration.
-           Use `instanceAuditEventStreamingDestinationsUpdate`.
+- Configure headers by using the streaming destination configuration. Use `instanceAuditEventStreamingDestinationsUpdate`.
 
 Input type: `AuditEventsStreamingInstanceHeadersUpdateInput`
 
@@ -11435,7 +11429,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-mergerequestcreateworkitemrelations-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestcreateworkitemrelations-iid"></a>`iid` | [`String!`](#string) | IID of the merge request to mutate. |
-| <a id="mutation-mergerequestcreateworkitemrelations-linktype"></a>`linkType` | [`MergeRequestWorkItemLinkType`](#mergerequestworkitemlinktype) | Type of relationship to create. Defaults to MENTIONED. |
+| <a id="mutation-mergerequestcreateworkitemrelations-linktype"></a>`linkType` | [`MergeRequestWorkItemLinkType`](#mergerequestworkitemlinktype) | Type of relationship to create. Defaults to RELATED. MENTIONED relations are managed automatically and cannot be created. |
 | <a id="mutation-mergerequestcreateworkitemrelations-projectpath"></a>`projectPath` | [`ID!`](#id) | Project the merge request to mutate is in. |
 | <a id="mutation-mergerequestcreateworkitemrelations-workitemids"></a>`workItemIds` | [`[WorkItemID!]!`](#workitemid) | Global IDs of the work items to link. |
 
@@ -33434,6 +33428,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="cdapplication-rollouts-search"></a>`search` | [`String`](#string) | Search rollouts by ID (IID). |
+| <a id="cdapplication-rollouts-statuses"></a>`statuses` | [`[CdRolloutStatus!]`](#cdrolloutstatus) | Filter rollouts by status. |
 
 ##### `CdApplication.services`
 
@@ -33755,6 +33750,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="cdversionset-rollouts-search"></a>`search` | [`String`](#string) | Search rollouts by ID (IID). |
+| <a id="cdversionset-rollouts-statuses"></a>`statuses` | [`[CdRolloutStatus!]`](#cdrolloutstatus) | Filter rollouts by status. |
 
 ### `CdVersionSetEntry`
 
@@ -37572,6 +37568,22 @@ Arguments:
 | <a id="dependencyaggregation-dependencypaths-before"></a>`before` | [`String`](#string) | Fetch paths before the cursor. |
 | <a id="dependencyaggregation-dependencypaths-limit"></a>`limit` | [`Int`](#int) | Number of paths to fetch. |
 
+### `DependencyFirewallActivitySummary`
+
+Aggregate dependency firewall enforcement activity totals for a group or project.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencyfirewallactivitysummary-activerules"></a>`activeRules` | [`Int!`](#int) | Number of active (enabled) dependency firewall rules. |
+| <a id="dependencyfirewallactivitysummary-allowed"></a>`allowed` | [`Int!`](#int) | Total allowed (pass-through) enforcement events in the window. |
+| <a id="dependencyfirewallactivitysummary-blocked"></a>`blocked` | [`Int!`](#int) | Total blocked enforcement events in the window. |
+| <a id="dependencyfirewallactivitysummary-blockingrules"></a>`blockingRules` | [`Int!`](#int) | Number of active rules in enforce (blocking) mode. |
+| <a id="dependencyfirewallactivitysummary-totaltriggers"></a>`totalTriggers` | [`Int!`](#int) | Total enforcement events (blocked + warned + allowed) in the window. |
+| <a id="dependencyfirewallactivitysummary-warned"></a>`warned` | [`Int!`](#int) | Total warned enforcement events in the window. |
+| <a id="dependencyfirewallactivitysummary-warningrules"></a>`warningRules` | [`Int!`](#int) | Number of active rules in warn mode. |
+
 ### `DependencyFirewallPolicyAttributesType`
 
 Represents policy fields related to the dependency firewall policy.
@@ -37581,6 +37593,38 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="dependencyfirewallpolicyattributestype-source"></a>`source` | [`SecurityPolicySource!`](#securitypolicysource) | Source of the policy. Its fields depend on the source type. |
+
+### `DependencyFirewallRuleActivity`
+
+Block and warn enforcement activity for a single dependency firewall policy rule.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencyfirewallruleactivity-activitycount"></a>`activityCount` | [`Int!`](#int) | Activity count matching the rule mode: blocks for enforce, warns for warn. |
+| <a id="dependencyfirewallruleactivity-blockedcount"></a>`blockedCount` | [`Int!`](#int) | Number of blocked enforcement events for the rule in the window. |
+| <a id="dependencyfirewallruleactivity-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Whether the policy the rule belongs to is enabled. |
+| <a id="dependencyfirewallruleactivity-id"></a>`id` | [`SecurityDependencyFirewallPolicyRuleID!`](#securitydependencyfirewallpolicyruleid) | Global ID of the dependency firewall policy rule. |
+| <a id="dependencyfirewallruleactivity-lastmodified"></a>`lastModified` | [`DependencyFirewallRuleLastModified`](#dependencyfirewallrulelastmodified) | When and by whom the policy the rule belongs to was last modified. |
+| <a id="dependencyfirewallruleactivity-mode"></a>`mode` | [`PolicyEnforcementType`](#policyenforcementtype) | Enforcement mode of the rule. |
+| <a id="dependencyfirewallruleactivity-policyname"></a>`policyName` | [`String`](#string) | Name of the policy the rule belongs to. |
+| <a id="dependencyfirewallruleactivity-ruletype"></a>`ruleType` | [`DependencyFirewallRuleType`](#dependencyfirewallruletype) | Type of the rule. |
+| <a id="dependencyfirewallruleactivity-scope"></a>`scope` | [`PolicyScope`](#policyscope) | Scope of the policy the rule belongs to. |
+| <a id="dependencyfirewallruleactivity-source"></a>`source` | [`SecurityPolicySource`](#securitypolicysource) | Source of the policy, indicating whether it is inherited from an ancestor group. |
+| <a id="dependencyfirewallruleactivity-sourcerelationship"></a>`sourceRelationship` | [`SecurityPolicyRelationType`](#securitypolicyrelationtype) | Where the policy is defined relative to the viewed container. |
+| <a id="dependencyfirewallruleactivity-warnedcount"></a>`warnedCount` | [`Int!`](#int) | Number of warned enforcement events for the rule in the window. |
+
+### `DependencyFirewallRuleLastModified`
+
+When and by whom a dependency firewall policy was last modified.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencyfirewallrulelastmodified-at"></a>`at` | [`Time`](#time) | Timestamp of when the policy was last modified. |
+| <a id="dependencyfirewallrulelastmodified-by"></a>`by` | [`UserCore`](#usercore) | User who last modified the policy. |
 
 ### `DependencyListExportPartUploadRegistry`
 
@@ -41999,6 +42043,38 @@ Arguments:
 | <a id="group-dependencyaggregations-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="group-dependencyaggregations-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
 | <a id="group-dependencyaggregations-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+
+##### `Group.dependencyFirewallActivitySummary`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Aggregate dependency firewall activity totals for the group. Available behind the `dependency_firewall_phase1` feature flag.
+
+Returns [`DependencyFirewallActivitySummary`](#dependencyfirewallactivitysummary).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-dependencyfirewallactivitysummary-from"></a>`from` | [`Date`](#date) | Start date (inclusive) of the activity window. Defaults to 7 days ago. |
+| <a id="group-dependencyfirewallactivitysummary-to"></a>`to` | [`Date`](#date) | End date (inclusive) of the activity window. Defaults to the current date. |
+
+##### `Group.dependencyFirewallRuleActivity`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Dependency firewall per-rule block and warn activity for the group. Available behind the `dependency_firewall_phase1` feature flag.
+
+Returns [`[DependencyFirewallRuleActivity!]`](#dependencyfirewallruleactivity).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-dependencyfirewallruleactivity-from"></a>`from` | [`Date`](#date) | Start date (inclusive) of the activity window. Defaults to 7 days ago. |
+| <a id="group-dependencyfirewallruleactivity-to"></a>`to` | [`Date`](#date) | End date (inclusive) of the activity window. Defaults to the current date. |
 
 ##### `Group.dependencyLocations`
 
@@ -50573,7 +50649,6 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="pipelinesaggregationresponse-dimensions"></a>`dimensions` | [`PipelinesAggregationResponseDimensions`](#pipelinesaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
-| <a id="pipelinesaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of pipelines. |
 
 #### Fields with arguments
 
@@ -50600,6 +50675,19 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="pipelinesaggregationresponse-outcomerate-status"></a>`status` | [`[String!]`](#string) |  |
+
+##### `PipelinesAggregationResponse.totalCount`
+
+Total number of pipelines, optionally filtered by source or status.
+
+Returns [`Int`](#int).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="pipelinesaggregationresponse-totalcount-source"></a>`source` | [`[String!]`](#string) | Only count pipelines with the given sources. |
+| <a id="pipelinesaggregationresponse-totalcount-status"></a>`status` | [`[String!]`](#string) | Only count pipelines with the given statuses. |
 
 ### `PipelinesAggregationResponseDimensions`
 
@@ -51836,6 +51924,38 @@ Arguments:
 | <a id="project-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="project-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
 | <a id="project-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+
+##### `Project.dependencyFirewallActivitySummary`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Aggregate dependency firewall activity totals for the project. Available behind the `dependency_firewall_phase1` feature flag.
+
+Returns [`DependencyFirewallActivitySummary`](#dependencyfirewallactivitysummary).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-dependencyfirewallactivitysummary-from"></a>`from` | [`Date`](#date) | Start date (inclusive) of the activity window. Defaults to 7 days ago. |
+| <a id="project-dependencyfirewallactivitysummary-to"></a>`to` | [`Date`](#date) | End date (inclusive) of the activity window. Defaults to the current date. |
+
+##### `Project.dependencyFirewallRuleActivity`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Dependency firewall per-rule block and warn activity for the project. Available behind the `dependency_firewall_phase1` feature flag.
+
+Returns [`[DependencyFirewallRuleActivity!]`](#dependencyfirewallruleactivity).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-dependencyfirewallruleactivity-from"></a>`from` | [`Date`](#date) | Start date (inclusive) of the activity window. Defaults to 7 days ago. |
+| <a id="project-dependencyfirewallruleactivity-to"></a>`to` | [`Date`](#date) | End date (inclusive) of the activity window. Defaults to the current date. |
 
 ##### `Project.dependencyPaths`
 
@@ -61675,6 +61795,16 @@ State of a continuous deployment rollout.
 | <a id="cdrolloutstate-paused"></a>`PAUSED` | Rollout is paused. |
 | <a id="cdrolloutstate-pending"></a>`PENDING` | Rollout is pending. |
 
+### `CdRolloutStatus`
+
+High-level status of a continuous deployment rollout.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="cdrolloutstatus-active"></a>`ACTIVE` | Rollout is pending, in progress, or paused. |
+| <a id="cdrolloutstatus-failed"></a>`FAILED` | Rollout finished unsuccessfully (failed or cancelled). |
+| <a id="cdrolloutstatus-succeeded"></a>`SUCCEEDED` | Rollout finished successfully. |
+
 ### `CdRolloutTransitionState`
 
 State recorded in a continuous deployment rollout transition.
@@ -62694,6 +62824,16 @@ Weight of the data visualization palette.
 | <a id="datavisualizationweightenum-weight_800"></a>`WEIGHT_800` | 800 weight. |
 | <a id="datavisualizationweightenum-weight_900"></a>`WEIGHT_900` | 900 weight. |
 | <a id="datavisualizationweightenum-weight_950"></a>`WEIGHT_950` | 950 weight. |
+
+### `DependencyFirewallRuleType`
+
+Type of a dependency firewall policy rule.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="dependencyfirewallruletype-license"></a>`LICENSE` | Rule matching on package licenses. |
+| <a id="dependencyfirewallruletype-malicious"></a>`MALICIOUS` | Rule matching on packages flagged as malicious. |
+| <a id="dependencyfirewallruletype-vulnerability"></a>`VULNERABILITY` | Rule matching on package vulnerabilities. |
 
 ### `DependencyProxyManifestStatus`
 
@@ -66099,6 +66239,7 @@ Status of a step in the vulnerability resolution funnel.
 | <a id="vulnerabilityfunnelstepstatus-available"></a>`AVAILABLE` | Data is available and count is populated. |
 | <a id="vulnerabilityfunnelstepstatus-unavailable_disabled"></a>`UNAVAILABLE_DISABLED` | Licensed but the underlying feature is disabled in settings. |
 | <a id="vulnerabilityfunnelstepstatus-unavailable_no_license"></a>`UNAVAILABLE_NO_LICENSE` | User's plan does not include the required capability. |
+| <a id="vulnerabilityfunnelstepstatus-unavailable_upstream_disabled"></a>`UNAVAILABLE_UPSTREAM_DISABLED` | An earlier step in the funnel is unavailable, so no data can be shown for the step. |
 
 ### `VulnerabilityGrade`
 
@@ -67990,6 +68131,12 @@ An example `SecurityAttributeID` is: `"gid://gitlab/Security::Attribute/1"`.
 A `SecurityCategoryID` is a global ID. It is encoded as a string.
 
 An example `SecurityCategoryID` is: `"gid://gitlab/Security::Category/1"`.
+
+### `SecurityDependencyFirewallPolicyRuleID`
+
+A `SecurityDependencyFirewallPolicyRuleID` is a global ID. It is encoded as a string.
+
+An example `SecurityDependencyFirewallPolicyRuleID` is: `"gid://gitlab/Security::DependencyFirewallPolicyRule/1"`.
 
 ### `SecurityOrchestrationPolicyConfigurationID`
 

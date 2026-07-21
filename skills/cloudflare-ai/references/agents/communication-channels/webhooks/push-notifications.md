@@ -1,16 +1,18 @@
 ---
-title: Push notifications
 description: Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Push notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Push notifications
 
-# Push notifications
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Send browser push notifications from your agent — even when the user has closed the tab. By combining the agent's persistent state (for storing push subscriptions), scheduling (for timed delivery), and the [Web Push API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Push%5FAPI), you can reach users who are completely offline.
 
@@ -24,9 +26,7 @@ Browser                              Agent (Durable Object)
 3. Send subscription to agent ──────► Store in this.state
 4. Create reminder ─────────────────► this.schedule(delay, "sendReminder", payload)
 
-
    ... user closes tab ...
-
 
 5.                                    Alarm fires → sendReminder()
                                       web-push sends encrypted payload
@@ -67,307 +67,269 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-5839)
-* [  TypeScript ](#tab-panel-5840)
-
-**JavaScript**
-
 ```js
 import { Agent, callable, routeAgentRequest } from "agents";
 import webpush from "web-push";
 
-
 export class ReminderAgent extends Agent {
-  initialState = {
-    subscriptions: [],
-    reminders: [],
-  };
+	initialState = {
+		subscriptions: [],
+		reminders: [],
+	};
 
+	@callable()
+	getVapidPublicKey() {
+		return this.env.VAPID_PUBLIC_KEY;
+	}
 
-  @callable()
-  getVapidPublicKey() {
-    return this.env.VAPID_PUBLIC_KEY;
-  }
+	@callable()
+	async subscribe(subscription) {
+		const exists = this.state.subscriptions.some(
+			(s) => s.endpoint === subscription.endpoint,
+		);
+		if (!exists) {
+			this.setState({
+				...this.state,
+				subscriptions: [...this.state.subscriptions, subscription],
+			});
+		}
+		return { ok: true };
+	}
 
+	@callable()
+	async unsubscribe(endpoint) {
+		this.setState({
+			...this.state,
+			subscriptions: this.state.subscriptions.filter(
+				(s) => s.endpoint !== endpoint,
+			),
+		});
+		return { ok: true };
+	}
 
-  @callable()
-  async subscribe(subscription) {
-    const exists = this.state.subscriptions.some(
-      (s) => s.endpoint === subscription.endpoint,
-    );
-    if (!exists) {
-      this.setState({
-        ...this.state,
-        subscriptions: [...this.state.subscriptions, subscription],
-      });
-    }
-    return { ok: true };
-  }
+	@callable()
+	async createReminder(message, delaySeconds) {
+		const id = crypto.randomUUID();
+		const scheduledAt = Date.now() + delaySeconds * 1000;
+		const reminder = { id, message, scheduledAt, sent: false };
 
+		this.setState({
+			...this.state,
+			reminders: [...this.state.reminders, reminder],
+		});
 
-  @callable()
-  async unsubscribe(endpoint) {
-    this.setState({
-      ...this.state,
-      subscriptions: this.state.subscriptions.filter(
-        (s) => s.endpoint !== endpoint,
-      ),
-    });
-    return { ok: true };
-  }
+		await this.schedule(delaySeconds, "sendReminder", { id, message });
+		return reminder;
+	}
 
+	async sendReminder(payload) {
+		webpush.setVapidDetails(
+			this.env.VAPID_SUBJECT,
+			this.env.VAPID_PUBLIC_KEY,
+			this.env.VAPID_PRIVATE_KEY,
+		);
 
-  @callable()
-  async createReminder(message, delaySeconds) {
-    const id = crypto.randomUUID();
-    const scheduledAt = Date.now() + delaySeconds * 1000;
-    const reminder = { id, message, scheduledAt, sent: false };
+		const deadEndpoints = [];
 
+		await Promise.all(
+			this.state.subscriptions.map(async (sub) => {
+				try {
+					await webpush.sendNotification(
+						sub,
+						JSON.stringify({
+							title: "Reminder",
+							body: payload.message,
+							tag: `reminder-${payload.id}`,
+						}),
+					);
+				} catch (err) {
+					const statusCode =
+						err instanceof webpush.WebPushError ? err.statusCode : 0;
+					if (statusCode === 404 || statusCode === 410) {
+						deadEndpoints.push(sub.endpoint);
+					}
+				}
+			}),
+		);
 
-    this.setState({
-      ...this.state,
-      reminders: [...this.state.reminders, reminder],
-    });
+		if (deadEndpoints.length > 0) {
+			this.setState({
+				...this.state,
+				subscriptions: this.state.subscriptions.filter(
+					(s) => !deadEndpoints.includes(s.endpoint),
+				),
+			});
+		}
 
+		this.setState({
+			...this.state,
+			reminders: this.state.reminders.map((r) =>
+				r.id === payload.id ? { ...r, sent: true } : r,
+			),
+		});
 
-    await this.schedule(delaySeconds, "sendReminder", { id, message });
-    return reminder;
-  }
-
-
-  async sendReminder(payload) {
-    webpush.setVapidDetails(
-      this.env.VAPID_SUBJECT,
-      this.env.VAPID_PUBLIC_KEY,
-      this.env.VAPID_PRIVATE_KEY,
-    );
-
-
-    const deadEndpoints = [];
-
-
-    await Promise.all(
-      this.state.subscriptions.map(async (sub) => {
-        try {
-          await webpush.sendNotification(
-            sub,
-            JSON.stringify({
-              title: "Reminder",
-              body: payload.message,
-              tag: `reminder-${payload.id}`,
-            }),
-          );
-        } catch (err) {
-          const statusCode =
-            err instanceof webpush.WebPushError ? err.statusCode : 0;
-          if (statusCode === 404 || statusCode === 410) {
-            deadEndpoints.push(sub.endpoint);
-          }
-        }
-      }),
-    );
-
-
-    if (deadEndpoints.length > 0) {
-      this.setState({
-        ...this.state,
-        subscriptions: this.state.subscriptions.filter(
-          (s) => !deadEndpoints.includes(s.endpoint),
-        ),
-      });
-    }
-
-
-    this.setState({
-      ...this.state,
-      reminders: this.state.reminders.map((r) =>
-        r.id === payload.id ? { ...r, sent: true } : r,
-      ),
-    });
-
-
-    this.broadcast(
-      JSON.stringify({
-        type: "reminder_sent",
-        id: payload.id,
-        timestamp: Date.now(),
-      }),
-    );
-  }
+		this.broadcast(
+			JSON.stringify({
+				type: "reminder_sent",
+				id: payload.id,
+				timestamp: Date.now(),
+			}),
+		);
+	}
 }
 
-
 export default {
-  async fetch(request, env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request, env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable, routeAgentRequest } from "agents";
 import webpush from "web-push";
 
-
 type Subscription = {
-  endpoint: string;
-  expirationTime: number | null;
-  keys: {
-    p256dh: string;
-    auth: string;
-  };
+	endpoint: string;
+	expirationTime: number | null;
+	keys: {
+		p256dh: string;
+		auth: string;
+	};
 };
-
 
 type Reminder = {
-  id: string;
-  message: string;
-  scheduledAt: number;
-  sent: boolean;
+	id: string;
+	message: string;
+	scheduledAt: number;
+	sent: boolean;
 };
-
 
 type ReminderAgentState = {
-  subscriptions: Subscription[];
-  reminders: Reminder[];
+	subscriptions: Subscription[];
+	reminders: Reminder[];
 };
 
-
 export class ReminderAgent extends Agent<Env, ReminderAgentState> {
-  initialState: ReminderAgentState = {
-    subscriptions: [],
-    reminders: [],
-  };
+	initialState: ReminderAgentState = {
+		subscriptions: [],
+		reminders: [],
+	};
 
+	@callable()
+	getVapidPublicKey(): string {
+		return this.env.VAPID_PUBLIC_KEY;
+	}
 
-  @callable()
-  getVapidPublicKey(): string {
-    return this.env.VAPID_PUBLIC_KEY;
-  }
+	@callable()
+	async subscribe(subscription: Subscription): Promise<{ ok: boolean }> {
+		const exists = this.state.subscriptions.some(
+			(s) => s.endpoint === subscription.endpoint,
+		);
+		if (!exists) {
+			this.setState({
+				...this.state,
+				subscriptions: [...this.state.subscriptions, subscription],
+			});
+		}
+		return { ok: true };
+	}
 
+	@callable()
+	async unsubscribe(endpoint: string): Promise<{ ok: boolean }> {
+		this.setState({
+			...this.state,
+			subscriptions: this.state.subscriptions.filter(
+				(s) => s.endpoint !== endpoint,
+			),
+		});
+		return { ok: true };
+	}
 
-  @callable()
-  async subscribe(subscription: Subscription): Promise<{ ok: boolean }> {
-    const exists = this.state.subscriptions.some(
-      (s) => s.endpoint === subscription.endpoint,
-    );
-    if (!exists) {
-      this.setState({
-        ...this.state,
-        subscriptions: [...this.state.subscriptions, subscription],
-      });
-    }
-    return { ok: true };
-  }
+	@callable()
+	async createReminder(
+		message: string,
+		delaySeconds: number,
+	): Promise<Reminder> {
+		const id = crypto.randomUUID();
+		const scheduledAt = Date.now() + delaySeconds * 1000;
+		const reminder: Reminder = { id, message, scheduledAt, sent: false };
 
+		this.setState({
+			...this.state,
+			reminders: [...this.state.reminders, reminder],
+		});
 
-  @callable()
-  async unsubscribe(endpoint: string): Promise<{ ok: boolean }> {
-    this.setState({
-      ...this.state,
-      subscriptions: this.state.subscriptions.filter(
-        (s) => s.endpoint !== endpoint,
-      ),
-    });
-    return { ok: true };
-  }
+		await this.schedule(delaySeconds, "sendReminder", { id, message });
+		return reminder;
+	}
 
+	async sendReminder(payload: { id: string; message: string }) {
+		webpush.setVapidDetails(
+			this.env.VAPID_SUBJECT,
+			this.env.VAPID_PUBLIC_KEY,
+			this.env.VAPID_PRIVATE_KEY,
+		);
 
-  @callable()
-  async createReminder(
-    message: string,
-    delaySeconds: number,
-  ): Promise<Reminder> {
-    const id = crypto.randomUUID();
-    const scheduledAt = Date.now() + delaySeconds * 1000;
-    const reminder: Reminder = { id, message, scheduledAt, sent: false };
+		const deadEndpoints: string[] = [];
 
+		await Promise.all(
+			this.state.subscriptions.map(async (sub) => {
+				try {
+					await webpush.sendNotification(
+						sub,
+						JSON.stringify({
+							title: "Reminder",
+							body: payload.message,
+							tag: `reminder-${payload.id}`,
+						}),
+					);
+				} catch (err: unknown) {
+					const statusCode =
+						err instanceof webpush.WebPushError ? err.statusCode : 0;
+					if (statusCode === 404 || statusCode === 410) {
+						deadEndpoints.push(sub.endpoint);
+					}
+				}
+			}),
+		);
 
-    this.setState({
-      ...this.state,
-      reminders: [...this.state.reminders, reminder],
-    });
+		if (deadEndpoints.length > 0) {
+			this.setState({
+				...this.state,
+				subscriptions: this.state.subscriptions.filter(
+					(s) => !deadEndpoints.includes(s.endpoint),
+				),
+			});
+		}
 
+		this.setState({
+			...this.state,
+			reminders: this.state.reminders.map((r) =>
+				r.id === payload.id ? { ...r, sent: true } : r,
+			),
+		});
 
-    await this.schedule(delaySeconds, "sendReminder", { id, message });
-    return reminder;
-  }
-
-
-  async sendReminder(payload: { id: string; message: string }) {
-    webpush.setVapidDetails(
-      this.env.VAPID_SUBJECT,
-      this.env.VAPID_PUBLIC_KEY,
-      this.env.VAPID_PRIVATE_KEY,
-    );
-
-
-    const deadEndpoints: string[] = [];
-
-
-    await Promise.all(
-      this.state.subscriptions.map(async (sub) => {
-        try {
-          await webpush.sendNotification(
-            sub,
-            JSON.stringify({
-              title: "Reminder",
-              body: payload.message,
-              tag: `reminder-${payload.id}`,
-            }),
-          );
-        } catch (err: unknown) {
-          const statusCode =
-            err instanceof webpush.WebPushError ? err.statusCode : 0;
-          if (statusCode === 404 || statusCode === 410) {
-            deadEndpoints.push(sub.endpoint);
-          }
-        }
-      }),
-    );
-
-
-    if (deadEndpoints.length > 0) {
-      this.setState({
-        ...this.state,
-        subscriptions: this.state.subscriptions.filter(
-          (s) => !deadEndpoints.includes(s.endpoint),
-        ),
-      });
-    }
-
-
-    this.setState({
-      ...this.state,
-      reminders: this.state.reminders.map((r) =>
-        r.id === payload.id ? { ...r, sent: true } : r,
-      ),
-    });
-
-
-    this.broadcast(
-      JSON.stringify({
-        type: "reminder_sent",
-        id: payload.id,
-        timestamp: Date.now(),
-      }),
-    );
-  }
+		this.broadcast(
+			JSON.stringify({
+				type: "reminder_sent",
+				id: payload.id,
+				timestamp: Date.now(),
+			}),
+		);
+	}
 }
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -377,44 +339,38 @@ The `sendReminder` callback handles three things: delivering the push notificati
 
 The service worker runs in the browser and receives push events even when no tabs are open. Place this file at `public/sw.js` so it is served from the root of your domain:
 
-**JavaScript**
-
 ```js
 self.addEventListener("push", (event) => {
-  if (!event.data) return;
+	if (!event.data) return;
 
+	const data = event.data.json();
 
-  const data = event.data.json();
-
-
-  event.waitUntil(
-    self.registration.showNotification(data.title || "Notification", {
-      body: data.body || "",
-      icon: data.icon || "/favicon.ico",
-      tag: data.tag,
-      data: data.data,
-    }),
-  );
+	event.waitUntil(
+		self.registration.showNotification(data.title || "Notification", {
+			body: data.body || "",
+			icon: data.icon || "/favicon.ico",
+			tag: data.tag,
+			data: data.data,
+		}),
+	);
 });
 
-
 self.addEventListener("notificationclick", (event) => {
-  event.notification.close();
+	event.notification.close();
 
-
-  event.waitUntil(
-    self.clients.matchAll({ type: "window" }).then((windowClients) => {
-      for (const client of windowClients) {
-        if (
-          client.url.includes(self.location.origin) &&
-          "focus" in client
-        ) {
-          return client.focus();
-        }
-      }
-      return self.clients.openWindow("/");
-    }),
-  );
+	event.waitUntil(
+		self.clients.matchAll({ type: "window" }).then((windowClients) => {
+			for (const client of windowClients) {
+				if (
+					client.url.includes(self.location.origin) &&
+					"focus" in client
+				) {
+					return client.focus();
+				}
+			}
+			return self.clients.openWindow("/");
+		}),
+	);
 });
 ```
 
@@ -426,28 +382,21 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-5833)
-* [  TypeScript ](#tab-panel-5834)
-
-**JavaScript**
-
 ```js
 useEffect(() => {
-  if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-    return;
-  }
-  navigator.serviceWorker.register("/sw.js");
+	if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+		return;
+	}
+	navigator.serviceWorker.register("/sw.js");
 }, []);
 ```
 
-**TypeScript**
-
 ```ts
 useEffect(() => {
-  if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-    return;
-  }
-  navigator.serviceWorker.register("/sw.js");
+	if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+		return;
+	}
+	navigator.serviceWorker.register("/sw.js");
 }, []);
 ```
 
@@ -455,80 +404,67 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-5837)
-* [  TypeScript ](#tab-panel-5838)
-
-**JavaScript**
-
 ```js
 function base64urlToUint8Array(base64url) {
-  const padded = base64url + "=".repeat((4 - (base64url.length % 4)) % 4);
-  const binary = atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-  return bytes;
+	const padded = base64url + "=".repeat((4 - (base64url.length % 4)) % 4);
+	const binary = atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
+	const bytes = new Uint8Array(binary.length);
+	for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+	return bytes;
 }
 
-
 async function subscribeToPush(agent) {
-  const permission = await Notification.requestPermission();
-  if (permission !== "granted") return;
+	const permission = await Notification.requestPermission();
+	if (permission !== "granted") return;
 
+	const vapidPublicKey = await agent.call("getVapidPublicKey");
+	const reg = await navigator.serviceWorker.ready;
+	const subscription = await reg.pushManager.subscribe({
+		userVisibleOnly: true,
+		applicationServerKey: base64urlToUint8Array(vapidPublicKey).buffer,
+	});
 
-  const vapidPublicKey = await agent.call("getVapidPublicKey");
-  const reg = await navigator.serviceWorker.ready;
-  const subscription = await reg.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: base64urlToUint8Array(vapidPublicKey).buffer,
-  });
-
-
-  const subJson = subscription.toJSON();
-  await agent.call("subscribe", [
-    {
-      endpoint: subJson.endpoint,
-      expirationTime: subJson.expirationTime ?? null,
-      keys: subJson.keys,
-    },
-  ]);
+	const subJson = subscription.toJSON();
+	await agent.call("subscribe", [
+		{
+			endpoint: subJson.endpoint,
+			expirationTime: subJson.expirationTime ?? null,
+			keys: subJson.keys,
+		},
+	]);
 }
 ```
 
-**TypeScript**
-
 ```ts
 function base64urlToUint8Array(base64url: string): Uint8Array {
-  const padded = base64url + "=".repeat((4 - (base64url.length % 4)) % 4);
-  const binary = atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-  return bytes;
+	const padded = base64url + "=".repeat((4 - (base64url.length % 4)) % 4);
+	const binary = atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
+	const bytes = new Uint8Array(binary.length);
+	for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+	return bytes;
 }
 
-
 async function subscribeToPush(
-  agent: ReturnType<typeof useAgent>,
+	agent: ReturnType<typeof useAgent>,
 ) {
-  const permission = await Notification.requestPermission();
-  if (permission !== "granted") return;
+	const permission = await Notification.requestPermission();
+	if (permission !== "granted") return;
 
+	const vapidPublicKey = await agent.call("getVapidPublicKey");
+	const reg = await navigator.serviceWorker.ready;
+	const subscription = await reg.pushManager.subscribe({
+		userVisibleOnly: true,
+		applicationServerKey: base64urlToUint8Array(vapidPublicKey).buffer,
+	});
 
-  const vapidPublicKey = await agent.call("getVapidPublicKey");
-  const reg = await navigator.serviceWorker.ready;
-  const subscription = await reg.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: base64urlToUint8Array(vapidPublicKey).buffer,
-  });
-
-
-  const subJson = subscription.toJSON();
-  await agent.call("subscribe", [
-    {
-      endpoint: subJson.endpoint,
-      expirationTime: subJson.expirationTime ?? null,
-      keys: subJson.keys,
-    },
-  ]);
+	const subJson = subscription.toJSON();
+	await agent.call("subscribe", [
+		{
+			endpoint: subJson.endpoint,
+			expirationTime: subJson.expirationTime ?? null,
+			keys: subJson.keys,
+		},
+	]);
 }
 ```
 
@@ -536,16 +472,9 @@ async function subscribeToPush(
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-5831)
-* [  TypeScript ](#tab-panel-5832)
-
-**JavaScript**
-
 ```js
 await agent.call("createReminder", ["Check the oven", 300]);
 ```
-
-**TypeScript**
 
 ```ts
 await agent.call("createReminder", ["Check the oven", 300]);
@@ -557,23 +486,21 @@ The agent schedules an alarm for 300 seconds (5 minutes). When it fires, the pus
 
 ### wrangler.jsonc
 
-**JSONC**
-
 ```jsonc
 {
-  "name": "push-notifications",
-  "compatibility_date": "2026-01-28",
-  "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
-  "durable_objects": {
-    "bindings": [
-      { "name": "ReminderAgent", "class_name": "ReminderAgent" },
-    ],
-  },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ReminderAgent"] }],
-  "assets": {
-    "not_found_handling": "single-page-application",
-  },
+	"name": "push-notifications",
+	"compatibility_date": "2026-01-28",
+	"compatibility_flags": ["nodejs_compat"],
+	"main": "src/server.ts",
+	"durable_objects": {
+		"bindings": [
+			{ "name": "ReminderAgent", "class_name": "ReminderAgent" },
+		],
+	},
+	"migrations": [{ "tag": "v1", "new_sqlite_classes": ["ReminderAgent"] }],
+	"assets": {
+		"not_found_handling": "single-page-application",
+	},
 }
 ```
 
@@ -607,51 +534,57 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-5835)
-* [  TypeScript ](#tab-panel-5836)
-
-**JavaScript**
-
 ```js
 try {
-  await webpush.sendNotification(sub, payload);
+	await webpush.sendNotification(sub, payload);
 } catch (err) {
-  const statusCode = err instanceof webpush.WebPushError ? err.statusCode : 0;
-  if (statusCode >= 500) {
-    await this.schedule(60, "retrySendNotification", {
-      endpoint: sub.endpoint,
-      payload,
-    });
-  }
+	const statusCode = err instanceof webpush.WebPushError ? err.statusCode : 0;
+	if (statusCode >= 500) {
+		await this.schedule(60, "retrySendNotification", {
+			endpoint: sub.endpoint,
+			payload,
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 try {
-  await webpush.sendNotification(sub, payload);
+	await webpush.sendNotification(sub, payload);
 } catch (err: unknown) {
-  const statusCode =
-    err instanceof webpush.WebPushError ? err.statusCode : 0;
-  if (statusCode >= 500) {
-    await this.schedule(60, "retrySendNotification", {
-      endpoint: sub.endpoint,
-      payload,
-    });
-  }
+	const statusCode =
+		err instanceof webpush.WebPushError ? err.statusCode : 0;
+	if (statusCode >= 500) {
+		await this.schedule(60, "retrySendNotification", {
+			endpoint: sub.endpoint,
+			payload,
+		});
+	}
 }
 ```
 
 ## Next steps
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Learn about scheduling and keepAlive for long-running operations.
+### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
-[ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage agent state for storing subscriptions.
+ Learn about scheduling and keepAlive for long-running operations.
 
-[ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose agent methods as RPC endpoints.
+### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+
+ Manage agent state for storing subscriptions.
+
+### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+
+ Expose agent methods as RPC endpoints.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/webhooks/","name":"Webhooks"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/webhooks/push-notifications/","name":"Push notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Configure via API
 description: Create and manage Network-layer DDoS Attack Protection overrides using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure via API
 
-# Configure via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure the Cloudflare Network-layer DDoS Attack Protection managed ruleset by defining overrides at the account level using the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
@@ -39,8 +41,6 @@ The following `PUT` example creates a new phase ruleset (or updates the existing
 * The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
 
 The overrides apply to all packets matching the rule expression: `ip.dst in { 1.1.1.0/24 }`.
-
-**Request**
 
 ```bash
 curl --request PUT \
@@ -82,51 +82,58 @@ Response
 
 ```json
 {
-  "result": {
-    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",
-    "name": "default",
-    "description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",
-    "kind": "root",
-    "version": "1",
-    "rules": [
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID>",
-          "version": "latest",
-          "overrides": {
-            "categories": [
-              {
-                "category": "<TAG_NAME>",
-                "sensitivity_level": "low"
-              }
-            ],
-            "rules": [
-              {
-                "id": "<MANAGED_RULESET_RULE_ID>",
-                "action": "block"
-              }
-            ],
-            "sensitivity_level": "medium"
-          }
-        },
-        "expression": "ip.dst in { 1.1.1.0/24 }",
-        "last_updated": "2021-08-16T04:14:47.977741Z",
-        "ref": "<RULE_REF>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2021-08-16T04:14:47.977741Z",
-    "phase": "ddos_l4"
-  }
+	"result": {
+		"id": "<PHASE_ENTRY_POINT_RULESET_ID>",
+		"name": "default",
+		"description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",
+		"kind": "root",
+		"version": "1",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID>",
+					"version": "latest",
+					"overrides": {
+						"categories": [
+							{
+								"category": "<TAG_NAME>",
+								"sensitivity_level": "low"
+							}
+						],
+						"rules": [
+							{
+								"id": "<MANAGED_RULESET_RULE_ID>",
+								"action": "block"
+							}
+						],
+						"sensitivity_level": "medium"
+					}
+				},
+				"expression": "ip.dst in { 1.1.1.0/24 }",
+				"last_updated": "2021-08-16T04:14:47.977741Z",
+				"ref": "<RULE_REF>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2021-08-16T04:14:47.977741Z",
+		"phase": "ddos_l4"
+	}
 }
 ```
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/#page","headline":"Configure Network-layer DDoS Attack Protection via API · Cloudflare DDoS Protection docs","description":"Create and manage Network-layer DDoS Attack Protection overrides using the API.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/network/","name":"Network-layer DDoS Attack Protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/managed-rulesets/network/network-overrides/","name":"Overrides"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/managed-rulesets/network/network-overrides/configure-api/","name":"Configure via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/#page","headline":"Configure Network-layer DDoS Attack Protection via API · Cloudflare DDoS Protection docs","description":"Create and manage Network-layer DDoS Attack Protection overrides using the API.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

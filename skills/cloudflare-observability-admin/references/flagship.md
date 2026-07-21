@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Flagship
 description: Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cloudflare Flagship
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Flagship
 
-# Cloudflare Flagship
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Ship features safely with feature flags.
 
@@ -22,65 +24,72 @@ Check out the [Get started guide](https://developers.cloudflare.com/flagship/get
 
 ## Features
 
-###  Worker binding
+[Worker binding](https://developers.cloudflare.com/flagship/binding/)
 
 Evaluate flags with a native Workers binding. Type-safe methods with automatic fallback to defaults.
 
-[ Binding reference ](https://developers.cloudflare.com/flagship/binding/)
+ Binding reference
 
-###  OpenFeature SDK
+[OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/)
 
 Use the official OpenFeature SDKs to evaluate flags from Workers, Node.js, browsers, Python, and Go server applications. Switch from another flag provider by changing one line of configuration.
 
-[ View SDK docs ](https://developers.cloudflare.com/flagship/sdk/)
+ View SDK docs
 
-###  Targeting rules
+[Targeting rules](https://developers.cloudflare.com/flagship/targeting/)
 
 Serve different flag values based on user attributes. Rules support 11 comparison operators, logical AND/OR grouping, and sequential evaluation.
 
-[ Learn about targeting ](https://developers.cloudflare.com/flagship/targeting/)
+ Learn about targeting
 
-###  Percentage rollouts
+[Percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/)
 
 Gradually release features to a percentage of users. Consistent hashing ensures the same user always receives the same flag value.
 
-[ Learn about rollouts ](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/)
+ Learn about rollouts
 
-###  Multi-type variants
+[Multi-type variants](https://developers.cloudflare.com/flagship/concepts/)
 
 Flag variants can be booleans, strings, numbers, or structured JSON values. Use JSON variants to deliver entire configuration blocks as a single flag.
 
-[ Use Multi-type variants ](https://developers.cloudflare.com/flagship/concepts/)
+ Use Multi-type variants
 
-###  Flag management
+[Flag management](https://developers.cloudflare.com/flagship/get-started/)
 
 Create, update, and delete flags through the Cloudflare dashboard. Organize flags into apps that map to your projects or services.
 
-[ Use Flag management ](https://developers.cloudflare.com/flagship/get-started/)
+ Use Flag management
 
 ---
 
 ## Related products
 
-**[Workers](https://developers.cloudflare.com/workers/)**
+[Workers](https://developers.cloudflare.com/workers/)
 
 Build serverless applications on Cloudflare's global network. Flagship integrates natively with Workers through a binding.
 
-**[KV](https://developers.cloudflare.com/kv/)**
+[KV](https://developers.cloudflare.com/kv/)
 
 Store key-value data across Cloudflare's global network. Flagship uses this infrastructure to deliver flag configurations.
 
 ## More resources
 
-[Developer Discord](https://discord.cloudflare.com)
+### [ Developer Discord ](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-[@CloudflareDev](https://x.com/cloudflaredev)
+### [ @CloudflareDev ](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements and what is new in Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Overview · Cloudflare Flagship docs","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Overview · Cloudflare Flagship docs","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

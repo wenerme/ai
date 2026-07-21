@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot prefix validation
 description: Resolve prefix validation errors during BYOIP onboarding.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot prefix validation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot prefix validation
 
-# Troubleshoot prefix validation
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. Use the [Prefix Details endpoint](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/get/) to check if any issues were found during validation.
 Required API token permissions
@@ -21,16 +23,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `IP Prefixes: Read`
   * `IP Prefixes: BGP On Demand Write`
   * `IP Prefixes: BGP On Demand Read`
-
-**Prefix Details**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID" \
-  --request GET \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request GET \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
-
-**Response**
 ```json
  "result": {
     "id": "72823e95d6c64d48a8111fec81179816",
@@ -62,16 +60,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic Transit Write`
   * `IP Prefixes: Write`
-
-**Validate Prefix**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#page","headline":"Troubleshoot prefix validation · Cloudflare BYOIP docs","description":"Resolve prefix validation errors during BYOIP onboarding.","url":"https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/troubleshooting/prefix-validation/","name":"Troubleshoot prefix validation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#page","headline":"Troubleshoot prefix validation · Cloudflare BYOIP docs","description":"Resolve prefix validation errors during BYOIP onboarding.","url":"https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

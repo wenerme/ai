@@ -1,24 +1,24 @@
 ---
-title: Debug D1
 description: Capture exceptions and log error messages returned from D1 database queries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Debug D1
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Debug D1
 
-# Debug D1
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/observability/debug-d1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
 D1's [stmt.](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) and [db.](https://developers.cloudflare.com/d1/worker-api/d1-database/) methods throw an [Error object ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error) whenever an error occurs. To capture exceptions, log the `e.message` value.
 
 For example, the code below has a query with an invalid keyword - `INSERTZ` instead of `INSERT`:
-
-**JavaScript**
 
 ```js
 try {
@@ -35,7 +35,7 @@ The code above throws the following error message:
 
 ```json
 {
-  "message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"
+	"message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"
 }
 ```
 
@@ -58,7 +58,7 @@ D1 returns the following error constants, in addition to the extended (detailed)
 
 The following table lists specific instances of `D1_ERROR`.
 
-List of D1\_ERRORs
+###  List of D1\_ERRORs
 
 Retry operations
 
@@ -119,7 +119,14 @@ You should include as much of the following in any bug report:
 * Understand how to [access logs](https://developers.cloudflare.com/workers/observability/logs/) generated from your Worker and D1.
 * Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and [debug issues before deploying](https://developers.cloudflare.com/workers/local-development/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1 · Cloudflare D1 docs","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/observability/debug-d1/","name":"Debug D1"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1 · Cloudflare D1 docs","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

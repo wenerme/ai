@@ -1,16 +1,18 @@
 ---
-title: Manage internal DNS records
 description: Manage internal DNS records in Cloudflare. Learn about supported DNS record types and CNAME flattening.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage internal DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage internal DNS records
 
-# Manage internal DNS records
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Internal zones can contain the same [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/) that Cloudflare supports for public zones.
 
@@ -59,7 +61,14 @@ If it is not possible to flatten the CNAME record, the following will happen:
   * On: Gateway will try to resolve the query by sending it to Cloudflare's public DNS resolver ([1.1.1.1](https://developers.cloudflare.com/1.1.1.1/)).
   * Off: Gateway will return the response as-is to the client.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/#page","headline":"Manage internal DNS records · Cloudflare DNS docs","description":"Manage internal DNS records in Cloudflare. Learn about supported DNS record types and CNAME flattening.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/internal-zones/","name":"Internal zones"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/internal-dns/internal-zones/internal-dns-records/","name":"Manage internal DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/#page","headline":"Manage internal DNS records · Cloudflare DNS docs","description":"Manage internal DNS records in Cloudflare. Learn about supported DNS record types and CNAME flattening.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

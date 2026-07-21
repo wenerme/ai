@@ -1,16 +1,18 @@
 ---
-title: Content security rule violations
 description: Cloudflare reports any violations to your content security rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Content security rule violations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Content security rule violations
 
-# Content security rule violations
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/rules/violations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,11 +28,8 @@ Information about rule violations is also available via [GraphQL API](#get-rule-
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-7661)
-* [ Old dashboard ](#tab-panel-7662)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
 
 * In the Cloudflare dashboard, go to **Security** \> **Client-side security** \> **Rules**.
@@ -54,47 +53,43 @@ For an introduction to GraphQL querying, refer to [Querying basics](https://deve
 
 ### Example
 
-**Example GraphQL query**
-
 ```graphql
 query PageShieldReports(
-  $zoneTag: string
-  $datetimeStart: Time
-  $datetimeEnd: Time
+	$zoneTag: string
+	$datetimeStart: Time
+	$datetimeEnd: Time
 ) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      pageShieldReportsAdaptiveGroups(
-        limit: 100
-        orderBy: [datetime_ASC]
-        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
-      ) {
-        avg {
-          sampleInterval
-        }
-        count
-        dimensions {
-          policyID
-          datetime
-          datetimeMinute
-          datetimeFiveMinutes
-          datetimeFifteenMinutes
-          datetimeHalfOfHour
-          datetimeHour
-          url
-          urlHost
-          host
-          resourceType
-          pageURL
-          action
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			pageShieldReportsAdaptiveGroups(
+				limit: 100
+				orderBy: [datetime_ASC]
+				filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
+			) {
+				avg {
+					sampleInterval
+				}
+				count
+				dimensions {
+					policyID
+					datetime
+					datetimeMinute
+					datetimeFiveMinutes
+					datetimeFifteenMinutes
+					datetimeHalfOfHour
+					datetimeHour
+					url
+					urlHost
+					host
+					resourceType
+					pageURL
+					action
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkEB2MULgBGAKypBg1PwDMGCtToMWMPFCp8hoidNn85y1Rq0BfIA)
 
 Example curl request
 
@@ -147,7 +142,14 @@ Information about rule violations is available in the [page\_shield\_events data
 
 For more information on configuring Logpush jobs, refer to [Logpush](https://developers.cloudflare.com/logs/logpush/) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/violations/#page","headline":"Content security rule violations · Client-side security docs","description":"Cloudflare reports any violations to your content security rules.","url":"https://developers.cloudflare.com/client-side-security/rules/violations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","CSP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/rules/","name":"Content security rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/rules/violations/","name":"Content security rule violations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/violations/#page","headline":"Content security rule violations · Client-side security docs","description":"Cloudflare reports any violations to your content security rules.","url":"https://developers.cloudflare.com/client-side-security/rules/violations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","CSP"]}
 ```

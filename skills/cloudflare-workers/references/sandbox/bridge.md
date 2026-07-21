@@ -1,16 +1,18 @@
 ---
-title: Sandbox bridge
 description: Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sandbox bridge
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sandbox bridge
 
-# Sandbox bridge
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/bridge/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The sandbox bridge is a reference-implementation Cloudflare Worker that exposes the [Sandbox SDK](https://developers.cloudflare.com/sandbox/api/) as an HTTP API. Any HTTP client — Python script, Node.js service, CI pipeline — can create and control sandboxes without writing a Worker.
 
@@ -86,18 +88,12 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-11067)
-* [ Node.js ](#tab-panel-11068)
-* [ Python ](#tab-panel-11069)
-
 ```sh
 # Create a sandbox
 SANDBOX_ID=$(curl -s -X POST "$SANDBOX_API_URL/v1/sandbox" \
   -H "Authorization: Bearer $SANDBOX_API_KEY" | jq -r '.id')
 
-
 echo "Sandbox ID: $SANDBOX_ID"
-
 
 # Run a command
 curl -s -X POST "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/exec" \
@@ -105,24 +101,19 @@ curl -s -X POST "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/exec" \
   -H "Content-Type: application/json" \
   -d '{"argv": ["sh", "-lc", "echo hello from the sandbox"], "timeout_ms": 10000}'
 
-
 # Destroy the sandbox when done
 curl -s -X DELETE "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID" \
   -H "Authorization: Bearer $SANDBOX_API_KEY"
 ```
 
-**JavaScript**
-
 ```js
 const API_URL = process.env.SANDBOX_API_URL;
 const API_KEY = process.env.SANDBOX_API_KEY;
-
 
 const headers = {
   Authorization: `Bearer ${API_KEY}`,
   "Content-Type": "application/json",
 };
-
 
 // Create a sandbox
 const { id } = await fetch(`${API_URL}/v1/sandbox`, {
@@ -130,9 +121,7 @@ const { id } = await fetch(`${API_URL}/v1/sandbox`, {
   headers,
 }).then((r) => r.json());
 
-
 console.log(`Sandbox ID: ${id}`);
-
 
 // Run a command
 // Response is a text/event-stream with the following SSE events:
@@ -149,9 +138,7 @@ const execRes = await fetch(`${API_URL}/v1/sandbox/${id}/exec`, {
   }),
 });
 
-
 console.log(await execRes.text());
-
 
 // Destroy the sandbox when done
 await fetch(`${API_URL}/v1/sandbox/${id}`, {
@@ -160,8 +147,6 @@ await fetch(`${API_URL}/v1/sandbox/${id}`, {
 });
 ```
 
-**Python**
-
 ```python
 # /// script
 # dependencies = ["httpx"]
@@ -169,19 +154,15 @@ await fetch(`${API_URL}/v1/sandbox/${id}`, {
 import os
 import httpx
 
-
 API_URL = os.environ["SANDBOX_API_URL"]
 API_KEY = os.environ["SANDBOX_API_KEY"]
 
-
 headers = {"Authorization": f"Bearer {API_KEY}"}
-
 
 # Create a sandbox
 resp = httpx.post(f"{API_URL}/v1/sandbox", headers=headers)
 sandbox_id = resp.json()["id"]
 print(f"Sandbox ID: {sandbox_id}")
-
 
 # Run a command
 # Response is a text/event-stream with the following SSE events:
@@ -199,16 +180,11 @@ exec_resp = httpx.post(
 )
 print(exec_resp.text)
 
-
 # Destroy the sandbox when done
 httpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
 ```
 
 ### Write and read files
-
-* [ curl ](#tab-panel-11070)
-* [ Node.js ](#tab-panel-11071)
-* [ Python ](#tab-panel-11072)
 
 ```sh
 # Write a file
@@ -216,13 +192,10 @@ curl -s -X PUT "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py"
   -H "Authorization: Bearer $SANDBOX_API_KEY" \
   --data-binary 'print("hello world")'
 
-
 # Read a file
 curl -s "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py" \
   -H "Authorization: Bearer $SANDBOX_API_KEY"
 ```
-
-**JavaScript**
 
 ```js
 // Write a file
@@ -232,18 +205,14 @@ await fetch(`${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`, {
   body: 'print("hello world")',
 });
 
-
 // Read a file
 const content = await fetch(
   `${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`,
   { headers },
 ).then((r) => r.text());
 
-
 console.log(content);
 ```
-
-**Python**
 
 ```python
 # /// script
@@ -252,12 +221,10 @@ console.log(content);
 import os
 import httpx
 
-
 API_URL = os.environ["SANDBOX_API_URL"]
 API_KEY = os.environ["SANDBOX_API_KEY"]
 SANDBOX_ID = os.environ["SANDBOX_ID"]  # from the "Create a sandbox" step
 headers = {"Authorization": f"Bearer {API_KEY}"}
-
 
 # Write a file
 httpx.put(
@@ -265,7 +232,6 @@ httpx.put(
     headers=headers,
     content=b'print("hello world")',
 )
-
 
 # Read a file
 content = httpx.get(
@@ -306,7 +272,14 @@ The bridge source code and examples are available on GitHub:
 * [API reference](https://developers.cloudflare.com/sandbox/api/) — Complete Sandbox SDK method reference.
 * [OpenAI Agents SDK tutorial](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/) — Build a Python coding agent with the bridge.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/#page","headline":"Sandbox bridge · Cloudflare Sandbox SDK docs","description":"Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.","url":"https://developers.cloudflare.com/sandbox/bridge/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","Node.js","Docker"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/bridge/","name":"Sandbox bridge"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/#page","headline":"Sandbox bridge · Cloudflare Sandbox SDK docs","description":"Deploy the sandbox bridge Worker to control Cloudflare Sandboxes over HTTP from any language or platform.","url":"https://developers.cloudflare.com/sandbox/bridge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","Node.js","Docker"]}
 ```

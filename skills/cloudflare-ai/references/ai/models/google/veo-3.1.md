@@ -1,38 +1,38 @@
 ---
-title: Veo 3.1
 description: Google's latest video generation model with improved quality, motion, and audio generation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Veo 3.1
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
 #  Veo 3.1
 
-Text-to-Video • Google
+ Text-to-Video • Google
 
-`google/veo-3.1`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/veo-3.1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` google/veo-3.1 `
+
+* Third-party
+* Zero data retention
 
 Google's latest video generation model with improved quality, motion, and audio generation.
 
-| Model Info          |                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                 |
-| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                              |
-| Zero data retention | Yes                                                                                                              |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                               |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-804)
-* [ cURL ](#tab-panel-805)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -65,9 +65,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-800)
-* [ Raw response ](#tab-panel-801)
-
 ```json
 {
   "gatewayMetadata": {
@@ -83,11 +80,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Urban Time-lapse**  — City life time-lapse video
-
-* [ TypeScript ](#tab-panel-808)
-* [ cURL ](#tab-panel-809)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -120,9 +112,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-802)
-* [ Raw response ](#tab-panel-803)
-
 ```json
 {
   "gatewayMetadata": {
@@ -136,11 +125,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Abstract Art**  — Abstract motion graphics
-
-* [ TypeScript ](#tab-panel-812)
-* [ cURL ](#tab-panel-813)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -173,9 +157,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-806)
-* [ Raw response ](#tab-panel-807)
-
 ```json
 {
   "gatewayMetadata": {
@@ -189,11 +170,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Food Video**  — Appetizing food footage
-
-* [ TypeScript ](#tab-panel-814)
-* [ cURL ](#tab-panel-815)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -225,9 +201,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-810)
-* [ Raw response ](#tab-panel-811)
-
 ```json
 {
   "gatewayMetadata": {
@@ -241,9 +214,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-816)
-* [ Output ](#tab-panel-817)
 
 prompt
 
@@ -279,7 +249,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-inpu
 
 Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1/#page","headline":"Veo 3.1 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's latest video generation model with improved quality, motion, and audio generation.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1/#page","headline":"Veo 3.1 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's latest video generation model with improved quality, motion, and audio generation.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Receive Live Webhooks
 description: Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Receive Live Webhooks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Receive Live Webhooks
 
-# Receive Live Webhooks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/webhooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live offers webhooks to notify your service when an Input connects, disconnects, or encounters an error with Stream Live.
 
@@ -43,7 +45,7 @@ Stream notifications are entirely customizable by the customer. Action will depe
 ## Subscribe to Stream Live Webhooks
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select the **Destinations** tab.
 3. On the **Destinations** page under **Webhooks**, select **Create**.
 4. Enter the information for your webhook and select **Save and Test**.
@@ -55,8 +57,6 @@ Stream notifications are entirely customizable by the customer. Action will depe
 10. Select **Next**.
 11. By default, you will receive webhook notifications for all Live Inputs. If you only wish to receive webhooks for certain inputs, enter a comma-delimited list of Input IDs in the text field.
 12. When you are done, select **Create**.
-
-**Example webhook payload**
 
 ```json
 {
@@ -84,8 +84,6 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 * `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
 * `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
 
-**Example live\_input.errored webhook payload**
-
 ```json
 {
   "name": "Live Webhook Test",
@@ -108,7 +106,14 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/webhooks/#page","headline":"Receive Live Webhooks · Cloudflare Stream docs","description":"Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.","url":"https://developers.cloudflare.com/stream/stream-live/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/webhooks/","name":"Receive Live Webhooks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/webhooks/#page","headline":"Receive Live Webhooks · Cloudflare Stream docs","description":"Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.","url":"https://developers.cloudflare.com/stream/stream-live/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

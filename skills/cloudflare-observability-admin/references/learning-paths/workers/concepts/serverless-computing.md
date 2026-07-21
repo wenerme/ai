@@ -1,16 +1,18 @@
 ---
-title: Serverless computing
 description: Understand serverless versus cloud computing.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Serverless computing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Serverless computing
 
-# Serverless computing
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers allows you to build serverless applications or augment existing ones by writing code that is deployed instantly across the globe. To understand the significance of Workers technology, we begin by understanding the environment in which it was developed.
 
@@ -50,7 +52,14 @@ By reading this page, you have:
 
 In the next section, you will learn about what makes Workers, a serverless computing platform that is part of the larger Cloudflare Developer Platform, unique in its architecture from other serverless computing providers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/#page","headline":"Serverless computing · Cloudflare Learning Paths","description":"Understand serverless versus cloud computing.","url":"https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/workers/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/workers/concepts/serverless-computing/","name":"Serverless computing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/#page","headline":"Serverless computing · Cloudflare Learning Paths","description":"Understand serverless versus cloud computing.","url":"https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

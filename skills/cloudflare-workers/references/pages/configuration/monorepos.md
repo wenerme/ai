@@ -1,16 +1,18 @@
 ---
-title: Monorepos
 description: Deploy multiple Cloudflare Pages projects from a single monorepo repository.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Monorepos
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monorepos
 
-# Monorepos
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/monorepos/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 While some apps are built from a single repository, Pages also supports apps with more complex setups. A monorepo is a repository that has multiple subdirectories each containing its own application.
 
@@ -49,7 +51,14 @@ While Pages does not provide specialized tooling for dependency management in mo
 * You must be using [Build System V2](https://developers.cloudflare.com/pages/configuration/build-image/#v2-build-system) or later in order for monorepo support to be enabled.
 * You can configure a maximum of 5 Pages projects per repository. If you need this limit raised, contact your Cloudflare account team or use the [Limit Increase Request Form ↗](https://docs.google.com/forms/d/e/1FAIpQLSd%5FfwAVOboH9SlutMonzbhCxuuuOmiU1L%5FI5O2CFbXf%5FXXMRg/viewform).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/monorepos/#page","headline":"Monorepos · Cloudflare Pages docs","description":"Deploy multiple Cloudflare Pages projects from a single monorepo repository.","url":"https://developers.cloudflare.com/pages/configuration/monorepos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/monorepos/","name":"Monorepos"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/monorepos/#page","headline":"Monorepos · Cloudflare Pages docs","description":"Deploy multiple Cloudflare Pages projects from a single monorepo repository.","url":"https://developers.cloudflare.com/pages/configuration/monorepos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

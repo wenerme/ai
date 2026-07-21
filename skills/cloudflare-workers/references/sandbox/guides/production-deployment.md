@@ -1,16 +1,18 @@
 ---
-title: Deploy to production
 description: Set up custom domains for preview URLs in production.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy to production
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy to production
 
-# Deploy to production
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/production-deployment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Only required for preview URLs
 
@@ -55,36 +57,28 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11351)
-* [  wrangler.toml ](#tab-panel-11352)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-sandbox-app",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "routes": [
-    {
-      "pattern": "*.yourdomain.com/*",
-      "zone_name": "yourdomain.com"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-sandbox-app",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"routes": [
+		{
+			"pattern": "*.yourdomain.com/*",
+			"zone_name": "yourdomain.com"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-sandbox-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[routes]]
 pattern = "*.yourdomain.com/*"
@@ -105,17 +99,13 @@ npx wrangler deploy
 
 Test that preview URLs work:
 
-**TypeScript**
-
 ```typescript
 // Extract hostname from request
 const { hostname } = new URL(request.url);
 
-
 const sandbox = getSandbox(env.Sandbox, 'test-sandbox');
 await sandbox.startProcess('python -m http.server 8080');
 const exposed = await sandbox.exposePort(8080, { hostname });
-
 
 console.log(exposed.url);
 // https://8080-test-sandbox.yourdomain.com
@@ -140,7 +130,14 @@ For detailed troubleshooting, see the [Workers routing documentation](https://de
 * [Workers Routing](https://developers.cloudflare.com/workers/configuration/routing/) \- Advanced routing configuration
 * [Cloudflare DNS](https://developers.cloudflare.com/dns/) \- DNS management
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/production-deployment/#page","headline":"Deploy to production · Cloudflare Sandbox SDK docs","description":"Set up custom domains for preview URLs in production.","url":"https://developers.cloudflare.com/sandbox/guides/production-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/production-deployment/","name":"Deploy to production"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/production-deployment/#page","headline":"Deploy to production · Cloudflare Sandbox SDK docs","description":"Set up custom domains for preview URLs in production.","url":"https://developers.cloudflare.com/sandbox/guides/production-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

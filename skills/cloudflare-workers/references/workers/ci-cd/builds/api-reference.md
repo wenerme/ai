@@ -1,16 +1,18 @@
 ---
-title: Builds API reference
 description: Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Builds API reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Builds API reference
 
-# Builds API reference
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to use the [Workers Builds REST API](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/) to programmatically trigger builds, manage triggers, and monitor build status. The examples use `curl` commands that you can run directly in your terminal or adapt to your preferred programming language. Some examples pipe output through [jq ↗](https://jqlang.org/) to filter JSON responses — install it if you do not have it already.
 
@@ -320,7 +322,6 @@ From GitHub's API:
 # Get your GitHub user/org ID
 curl -s "https://api.github.com/users/<GITHUB_USERNAME>" | jq '.id'
 
-
 # Get a repository ID
 curl -s "https://api.github.com/repos/<GITHUB_USERNAME>/<REPO_NAME>" | jq '.id'
 ```
@@ -509,7 +510,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
     "commit_hash": "{commit_hash}"
   }'
 
-
 Passing both `branch` and `commit_hash` pins the build to that exact commit on that branch.
 ```
 
@@ -529,7 +529,14 @@ For other build errors, refer to [Troubleshooting builds](https://developers.clo
 * [Build configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/) \- Build settings and options
 * [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) \- How to create tokens with the correct permissions
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference · Cloudflare Workers docs","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/api-reference/","name":"Builds API reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference · Cloudflare Workers docs","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

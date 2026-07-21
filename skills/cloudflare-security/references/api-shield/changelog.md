@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: Track the latest updates and changes to API Shield features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/api-shield.xml)
 
@@ -67,7 +69,7 @@ Now, API Shield automatically searches for and highlights **Broken Object Level 
 
 You can find these attacks three different ways: Security Overview, Endpoint details, or Security Analytics. If these attacks are not found on your managed API endpoints, there will not be an overview card or security analytics suspicious activity card.
 
-![BOLA attack Overview card](https://developers.cloudflare.com/_astro/bola-overview-card.hwcSeAkb_1MwSDq.webp)![BOLA attack Overview drawer](https://developers.cloudflare.com/_astro/bola-overview-drawer.DD2c0bxS_zw6Ec.webp)
+On the Security Overview card, select the suggestion > **View details** to review the top attacked API endpoints, endpoint details, and the attack summary: ![BOLA attack Overview card](https://developers.cloudflare.com/_astro/bola-overview-card.hwcSeAkb_1MwSDq.webp)![BOLA attack Overview drawer](https://developers.cloudflare.com/_astro/bola-overview-drawer.DD2c0bxS_zw6Ec.webp)
 
 From the endpoint details, you can select **View attack** to find details about the BOLA attacker’s sessions.
 
@@ -193,7 +195,14 @@ Customers can now build [Sequence mitigation](https://developers.cloudflare.com/
 
 Customers can now save endpoints in [Endpoint management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that contain variables in the hostname. Hostname variables are supported across all product features.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/api-shield/changelog/#page","headline":"Changelog · Cloudflare API Shield docs","description":"Track the latest updates and changes to API Shield features.","url":"https://developers.cloudflare.com/api-shield/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/api-shield/changelog/#page","headline":"Changelog · Cloudflare API Shield docs","description":"Track the latest updates and changes to API Shield features.","url":"https://developers.cloudflare.com/api-shield/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

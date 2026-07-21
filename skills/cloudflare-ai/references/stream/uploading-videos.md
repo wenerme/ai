@@ -1,16 +1,18 @@
 ---
-title: Upload videos
 description: Review upload methods, supported formats, and recommendations for Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Upload videos
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Upload videos
 
-# Upload videos
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/uploading-videos/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before you upload your video, review the options for uploading a video, supported formats, and recommendations.
 
@@ -60,7 +62,14 @@ Stream accepts video uploads at any frame rate. During encoding, Stream re-encod
 
 For variable frame rate content, Stream drops extra frames. For example, if there is more than one frame within a 1/30 second window, Stream drops the extra frames within that period.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/uploading-videos/#page","headline":"Upload videos · Cloudflare Stream docs","description":"Review upload methods, supported formats, and recommendations for Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/uploading-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/uploading-videos/#page","headline":"Upload videos · Cloudflare Stream docs","description":"Review upload methods, supported formats, and recommendations for Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/uploading-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

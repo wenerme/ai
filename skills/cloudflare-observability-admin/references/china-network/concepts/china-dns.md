@@ -1,16 +1,18 @@
 ---
-title: China Authoritative DNS
 description: Resolve DNS queries in Mainland China to improve Time to First Byte performance.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: China Authoritative DNS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  China Authoritative DNS
 
-# China Authoritative DNS
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/concepts/china-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare China Network resolves each DNS request at the data center closest to the client. For clients outside of Mainland China, the closest global Cloudflare data center handles the request. For clients in Mainland China, a JD Cloud data center handles the request.
 
@@ -22,7 +24,7 @@ Cloudflare can deploy DNS service in Mainland China to improve Time to First Byt
 
 Before you enable China Authoritative DNS, confirm that the majority (over 90%) of your traffic comes from Mainland China.
 
-Warning
+Caution
 
 After you enable China Authoritative DNS, all DNS requests — including those from users outside of China — route to JD Cloud data centers in Mainland China instead of to the nearest global data center. This can increase latency for users outside of China.
 
@@ -59,7 +61,14 @@ If you have two DNS records, `www` and `media`, pointing to two different origin
 
 For further assistance, contact your account team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/china-dns/#page","headline":"China Authoritative DNS · Cloudflare China Network docs","description":"Resolve DNS queries in Mainland China to improve Time to First Byte performance.","url":"https://developers.cloudflare.com/china-network/concepts/china-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/concepts/china-dns/","name":"China Authoritative DNS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/china-dns/#page","headline":"China Authoritative DNS · Cloudflare China Network docs","description":"Resolve DNS queries in Mainland China to improve Time to First Byte performance.","url":"https://developers.cloudflare.com/china-network/concepts/china-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

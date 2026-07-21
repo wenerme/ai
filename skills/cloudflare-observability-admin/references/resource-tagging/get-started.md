@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up authentication for Resource Tagging and make your first API calls.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/resource-tagging/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through verifying that tagging works on your account and making your first API calls.
 
@@ -75,7 +77,6 @@ Query all tagged resources in the account, optionally filtering by tag:
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources" \
   -H "Authorization: Bearer $API_TOKEN"
 
-
 # Filter: only resources with environment=production
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \
   -H "Authorization: Bearer $API_TOKEN"
@@ -88,7 +89,14 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/reso
 * Review [supported resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/) and their required fields.
 * Review [API limits and validation rules](https://developers.cloudflare.com/resource-tagging/reference/limits/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/get-started/#page","headline":"Get started · Cloudflare Resource Tagging docs","description":"Set up authentication for Resource Tagging and make your first API calls.","url":"https://developers.cloudflare.com/resource-tagging/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}},{"@type":"ListItem","position":3,"item":{"@id":"/resource-tagging/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/get-started/#page","headline":"Get started · Cloudflare Resource Tagging docs","description":"Set up authentication for Resource Tagging and make your first API calls.","url":"https://developers.cloudflare.com/resource-tagging/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

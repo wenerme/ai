@@ -1,16 +1,18 @@
 ---
-title: API token template URLs
 description: Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: API token template URLs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API token template URLs
 
-# API token template URLs
+Last updated Jan 14, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use template URLs to generate Cloudflare API tokens with pre-configured permissions. Template URLs allow you to share token requirements with users without manually selecting permissions in the dashboard.
 
@@ -94,8 +96,8 @@ Format your permissions as a JSON array:
 
 ```json
 [
-  { "key": "dns", "type": "edit" },
-  { "key": "analytics", "type": "read" }
+	{ "key": "dns", "type": "edit" },
+	{ "key": "analytics", "type": "read" }
 ]
 ```
 
@@ -279,7 +281,14 @@ Additionally, review the checklist before sharing a template URL.
 * [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/)
 * [API authentication](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/#page","headline":"API token template URLs · Cloudflare Fundamentals docs","description":"Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-01-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/account-owned-token-template/","name":"API token template URLs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/#page","headline":"API token template URLs · Cloudflare Fundamentals docs","description":"Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-01-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

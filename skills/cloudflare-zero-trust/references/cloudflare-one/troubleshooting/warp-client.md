@@ -1,16 +1,18 @@
 ---
-title: Cloudflare One Client
 description: Cloudflare One Client for Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare One Client
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare One Client
 
-# Cloudflare One Client
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
 
@@ -44,9 +46,6 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-8369)
-* [ Version 2026.1 and earlier ](#tab-panel-8370)
-
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
 3. Compare your device's version with the [latest version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
@@ -71,22 +70,22 @@ Chapters
 
 * ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction and WARP GUI Basics** 0s
+ **Introduction and WARP GUI Basics**  0s
 * ![Consumer vs. Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)
 
- **Consumer vs. Corporate WARP** 57s
+ **Consumer vs. Corporate WARP**  57s
 * ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)
 
- **Device Profiles Explained** 1m35s
+ **Device Profiles Explained**  1m35s
 * ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)
 
- **WARP Operating Modes** 2m12s
+ **WARP Operating Modes**  2m12s
 * ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=224s)
 
- **Split Tunneling** 3m44s
+ **Split Tunneling**  3m44s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)
 
- **Conclusion** 4m56s
+ **Conclusion**  4m56s
 
 #### Client architecture
 
@@ -215,10 +214,6 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-8373)
-* [ Windows ](#tab-panel-8374)
-* [ Linux ](#tab-panel-8375)
-
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
 ```sh
@@ -257,28 +252,28 @@ Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction** 0s
+ **Introduction**  0s
 * ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
 
- **What are warp-diag files?** 44s
+ **What are warp-diag files?**  44s
 * ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
 
- **How to download and navigate warp-diag files** 1m16s
+ **How to download and navigate warp-diag files**  1m16s
 * ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
 
- **warp-status.txt** 2m06s
+ **warp-status.txt**  2m06s
 * ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
 
- **warp-settings.txt** 2m29s
+ **warp-settings.txt**  2m29s
 * ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
 
- **daemon.log** 3m37s
+ **daemon.log**  3m37s
 * ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
 
- **Addition tips** 8m07s
+ **Addition tips**  8m07s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
 
- **Conclusion** 8m43s
+ **Conclusion**  8m43s
 
 ### Check client status
 
@@ -313,7 +308,6 @@ Merged configuration:
   1xx.1xx.1xx.1xx/25 (zoom)
 ...
   cname.user.net
-
 
 (network policy)    Fallback domains: # Local domain fallback configuration
   intranet
@@ -467,7 +461,7 @@ The **Default** profile is always at the bottom of the list. It will only be app
 
 Administrators can create multiple profiles to apply different settings based on specific criteria such as user identity, location, or operating system. Understanding this top-to-bottom evaluation order is crucial for ensuring that the correct policies are applied to devices.
 
-Warning
+Caution
 
 Avoid [reordering profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#order-of-precedence) unless you are confident it will not affect other users.
 
@@ -542,7 +536,7 @@ Identity-based selectors are only available if the user [enrolled the device](ht
 
 Split Tunnels can be configured to exclude or include IP addresses or domains from going through the Cloudflare One Client (formerly WARP). This feature is commonly used to run the Cloudflare One Client alongside a VPN (in Exclude mode) or to provide access to a specific private network (in Include mode).
 
-Warning
+Caution
 
 Split Tunnels only impacts the flow of IP traffic. DNS requests are still resolved by Gateway and subject to DNS policies unless you add the domains to your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration.
 
@@ -578,9 +572,6 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-8371)
-* [ Version 2026.1 and earlier ](#tab-panel-8372)
-
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
 What if the end user cannot disconnect?
@@ -606,9 +597,6 @@ The client will fetch new settings when it reconnects.
 **Option B: Reset the encryption keys**
 
 To reset the encryption keys on an end user's desktop:
-
-* [ Version 2026.2+ ](#tab-panel-8376)
-* [ Version 2026.1 and earlier ](#tab-panel-8377)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**
@@ -646,7 +634,14 @@ For more information, refer to the full Cloudflare One Client documentation.
 
 [ Cloudflare One Client troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/#page","headline":"Cloudflare One Client · Cloudflare One docs","description":"Cloudflare One Client for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/warp-client/","name":"Cloudflare One Client"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/#page","headline":"Cloudflare One Client · Cloudflare One docs","description":"Cloudflare One Client for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

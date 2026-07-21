@@ -1,16 +1,18 @@
 ---
-title: Page Rules
 description: Trigger actions based on URL patterns with Page Rules (deprecated).
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Page Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Page Rules
 
-# Page Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Page Rules trigger one or more actions whenever a certain URL pattern is matched. Page Rules are available in **Rules** \> **Page Rules**.
 
@@ -77,7 +79,14 @@ When a page rule is disabled, actions will not trigger, but the rule will:
 * Be editable.
 * Count against the number of rules allowed for your domain.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/#page","headline":"Page Rules · Cloudflare Rules docs","description":"Trigger actions based on URL patterns with Page Rules (deprecated).","url":"https://developers.cloudflare.com/rules/page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/#page","headline":"Page Rules · Cloudflare Rules docs","description":"Trigger actions based on URL patterns with Page Rules (deprecated).","url":"https://developers.cloudflare.com/rules/page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

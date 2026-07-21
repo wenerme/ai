@@ -1,16 +1,18 @@
 ---
-title: About
 description: How Cloudflare Web Analytics collects and processes visitor data.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Web Analytics provides free, privacy-first analytics for your website without changing your DNS or using Cloudflare’s proxy. Cloudflare Web Analytics helps you understand the performance of your web pages as experienced by your site visitors.
 
@@ -22,9 +24,16 @@ The data displayed in Web Analytics is real user monitoring (RUM). For more info
 
 Cloudflare Web Analytics does not collect or use your visitors’ personal data.
 
-[ Get started ](http://dash.cloudflare.com/sign-up/web-analytics) [ Learn more ](https://developers.cloudflare.com/web-analytics/data-metrics/)
+[ Get started ](http://dash.cloudflare.com/sign-up/web-analytics)[ Learn more ](https://developers.cloudflare.com/web-analytics/data-metrics/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web-analytics/about/#page","headline":"Cloudflare Web Analytics · Cloudflare Web Analytics docs","description":"How Cloudflare Web Analytics collects and processes visitor data.","url":"https://developers.cloudflare.com/web-analytics/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Privacy"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/about/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web-analytics/about/#page","headline":"Cloudflare Web Analytics · Cloudflare Web Analytics docs","description":"How Cloudflare Web Analytics collects and processes visitor data.","url":"https://developers.cloudflare.com/web-analytics/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Privacy"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Content Security Policies (CSPs)
 description: Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Content Security Policies (CSPs)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Content Security Policies (CSPs)
 
-# Content Security Policies (CSPs)
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A **Content Security Policy (CSP)** is an added layer of security that helps detect and mitigate certain types of attacks, including:
 
@@ -51,7 +53,14 @@ To use certain Cloudflare features, however, you may need to update the headers 
 | [Zaraz](https://developers.cloudflare.com/zaraz/)                                                      | No updates required ([details ↗](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/)).                                                                                       |
 | [Turnstile](https://developers.cloudflare.com/turnstile/)                                              | Refer to [Turnstile CSP](https://developers.cloudflare.com/turnstile/reference/content-security-policy/).                                                                            |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#page","headline":"Content Security Policies (CSPs) and Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/policies-compliances/content-security-policies/","name":"Content Security Policies (CSPs)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#page","headline":"Content Security Policies (CSPs) and Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

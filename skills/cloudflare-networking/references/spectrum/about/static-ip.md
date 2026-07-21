@@ -1,16 +1,18 @@
 ---
-title: Static IP
 description: Assign persistent IP addresses to your Spectrum applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Static IP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Static IP
 
-# Static IP
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/about/static-ip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you create a Spectrum application, you are assigned an IP. These IPs are normally dynamic, meaning that they will change over time. But, for instance, if you want to set up WAF custom rules for specific IPs, you may want to use static IPs.
 
@@ -35,38 +37,43 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "protocol": "tcp/80",
-    "dns": {
-        "type": "ADDRESS",
-        "name": "www.example.com"
-    },
-    "origin_direct": [
-        "tcp://192.0.2.1:80"
-    ],
-    "tls": "off",
-    "traffic_type": "http",
-    "edge_ips": {
-        "type": "static",
-        "ips": [
-            "198.51.100.10",
-            "2001:DB8::1"
-        ]
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"protocol": "tcp/80",
+		"dns": {
+				"type": "ADDRESS",
+				"name": "www.example.com"
+		},
+		"origin_direct": [
+				"tcp://192.0.2.1:80"
+		],
+		"tls": "off",
+		"traffic_type": "http",
+		"edge_ips": {
+				"type": "static",
+				"ips": [
+						"198.51.100.10",
+						"2001:DB8::1"
+				]
+		}
+	}'
 ```
 
 ## Check your static IPs
 
 You can find your leased static IPs for Spectrum on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/static-ip/#page","headline":"Static IP · Cloudflare Spectrum docs","description":"Assign persistent IP addresses to your Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/static-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/static-ip/","name":"Static IP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/static-ip/#page","headline":"Static IP · Cloudflare Spectrum docs","description":"Assign persistent IP addresses to your Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/static-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

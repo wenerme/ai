@@ -1,16 +1,18 @@
 ---
-title: Validate the Access token with FastAPI
 description: This tutorial covers how to validate that the Access JWT is on requests made to FastAPI apps. The code is written in Python.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Validate the Access token with FastAPI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Validate the Access token with FastAPI
 
-# Validate the Access token with FastAPI
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial covers how to validate that the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) is on requests made to FastAPI apps.
 
@@ -25,20 +27,15 @@ This tutorial covers how to validate that the [Access JWT](https://developers.cl
 
 1. In your FastAPI project, create a new file called `cloudflare.py` that contains the following code:
 
-**Python**
-
 ```python
 from fastapi import Request, HTTPException
-
 
 # The Application Audience (AUD) tag for your application
 POLICY_AUD = "XXXXX"
 
-
 # Your CF Access team domain
 TEAM_DOMAIN = "https://<your-team-name>.cloudflareaccess.com"
 CERTS_URL = "{}/cdn-cgi/access/certs".format(TEAM_DOMAIN)
-
 
 async def validate_cloudflare(request: Request):
     """
@@ -68,15 +65,12 @@ def verify_token(request):
     """
     token = ""
 
-
     if "CF_Authorization" in request.cookies:
         token = request.cookies["CF_Authorization"]
     else:
         raise HTTPException(status_code=400, detail="missing required cf authorization token")
 
-
     keys = _get_public_keys()
-
 
     # Loop through the keys since we can't pass the key set to the decoder
     valid_token = False
@@ -91,7 +85,6 @@ def verify_token(request):
     if not valid_token:
         raise HTTPException(status_code=400, detail="Invalid token")
 
-
     return True
 ```
 
@@ -99,12 +92,9 @@ def verify_token(request):
 
 You can now add the validation function as a dependency in your FastAPI app. One way to do this is by creating an [APIRouter instance ↗](https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter). The following example executes the validation function on each request made to paths that start with `/admin`:
 
-**Python**
-
 ```python
 from fastapi import APIRouter, Depends, HTTPException
 from cloudflare import validate_cloudflare
-
 
 router = APIRouter(
     prefix="/admin",
@@ -113,13 +103,19 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
 @router.get("/")
 async def root():
     return {"message": "Hello World"}
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/#page","headline":"Validate the Access token with FastAPI · Cloudflare One docs","description":"This tutorial covers how to validate that the Access JWT is on requests made to FastAPI apps. The code is written in Python.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/fastapi/","name":"Validate the Access token with FastAPI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/#page","headline":"Validate the Access token with FastAPI · Cloudflare One docs","description":"This tutorial covers how to validate that the Access JWT is on requests made to FastAPI apps. The code is written in Python.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
 ```

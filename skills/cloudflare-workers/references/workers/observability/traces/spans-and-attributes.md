@@ -1,16 +1,18 @@
 ---
-title: Spans and attributes
 description: Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Spans and attributes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Spans and attributes
 
-# Spans and attributes
+Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers provides automatic tracing instrumentation **out of the box** \- no code changes or SDK are required.
 
@@ -566,7 +568,14 @@ The legacy KV-backed API allows you to modify embedded storage within a Durable 
 
 ---
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/traces/spans-and-attributes/","name":"Spans and attributes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

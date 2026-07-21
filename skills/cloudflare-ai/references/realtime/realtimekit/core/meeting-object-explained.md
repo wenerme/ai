@@ -1,16 +1,18 @@
 ---
-title: Meeting Object Explained
 description: Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Meeting Object Explained
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Meeting Object Explained
 
-# Meeting Object Explained
+Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The meeting object is the core interface for interacting with a RealtimeKit session. It provides access to participants, local user controls, chat, polls, plugins, and more. This object is returned when you initialize the SDK.
 
@@ -34,26 +36,21 @@ The [meeting.self ↗](https://docs.realtime.cloudflare.com/web-core/reference/R
 
 **Key Properties:**
 
-**JavaScript**
-
 ```javascript
 // Participant identifiers
 meeting.self.id; // Peer ID (unique per session)
 meeting.self.userId; // Participant ID (persistent across sessions)
 meeting.self.name; // Participant display name
 
-
 // Media state
 meeting.self.audioEnabled; // Boolean: Is audio enabled?
 meeting.self.videoEnabled; // Boolean: Is video enabled?
 meeting.self.screenShareEnabled; // Boolean: Is screen share active?
 
-
 // Media tracks
 meeting.self.audioTrack; // Audio MediaStreamTrack, if audio is enabled
 meeting.self.videoTrack; // Video MediaStreamTrack, if video is enabled
 meeting.self.screenShareTracks; // Structure: { audio: MediaStreamTrack, video: MediaStreamTrack }, if screen share is enabled
-
 
 // Room state
 meeting.self.roomJoined; // Boolean: Has joined the meeting?
@@ -61,8 +58,6 @@ meeting.self.roomState; // Current room state
 ```
 
 **Common Methods:**
-
-**JavaScript**
 
 ```javascript
 // Media controls
@@ -73,10 +68,8 @@ await meeting.self.disableVideo(); // Emits a `videoUpdate` event on `meeting.se
 await meeting.self.enableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 await meeting.self.disableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 
-
 // Update Name
 await meeting.self.setName("New Name"); // setName works only works before joining the meeting
-
 
 // List Devices
 await meeting.self.getAllDevices(); // Returns all available devices
@@ -84,7 +77,6 @@ await meeting.self.getAudioDevices(); // Returns all available audio devices
 await meeting.self.getVideoDevices(); // Returns all available video devices
 await meeting.self.getSpeakerDevices(); // Returns all available speaker devices
 await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevice, speaker: MediaDevice} Returns the current device configuration
-
 
 // Change a device
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
@@ -94,26 +86,21 @@ The [meeting.self ↗](https://docs.realtime.cloudflare.com/web-core/reference/R
 
 **Key Properties:**
 
-**JavaScript**
-
 ```javascript
 // Participant identifiers
 meeting.self.id; // Peer ID (unique per session)
 meeting.self.userId; // Participant ID (persistent across sessions)
 meeting.self.name; // Participant display name
 
-
 // Media state
 meeting.self.audioEnabled; // Boolean: Is audio enabled?
 meeting.self.videoEnabled; // Boolean: Is video enabled?
 meeting.self.screenShareEnabled; // Boolean: Is screen share active?
 
-
 // Media tracks
 meeting.self.audioTrack; // Audio MediaStreamTrack, if audio is enabled
 meeting.self.videoTrack; // Video MediaStreamTrack, if video is enabled
 meeting.self.screenShareTracks; // Structure: { audio: MediaStreamTrack, video: MediaStreamTrack }, if screen share is enabled
-
 
 // Room state
 meeting.self.roomJoined; // Boolean: Has joined the meeting?
@@ -121,8 +108,6 @@ meeting.self.roomState; // Current room state
 ```
 
 **Common Methods:**
-
-**JavaScript**
 
 ```javascript
 // Media controls
@@ -133,10 +118,8 @@ await meeting.self.disableVideo(); // Emits a `videoUpdate` event on `meeting.se
 await meeting.self.enableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 await meeting.self.disableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 
-
 // Update Name
 await meeting.self.setName("New Name"); // setName works only works before joining the meeting
-
 
 // List Devices
 await meeting.self.getAllDevices(); // Returns all available devices
@@ -144,7 +127,6 @@ await meeting.self.getAudioDevices(); // Returns all available audio devices
 await meeting.self.getVideoDevices(); // Returns all available video devices
 await meeting.self.getSpeakerDevices(); // Returns all available speaker devices
 await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevice, speaker: MediaDevice} Returns the current device configuration
-
 
 // Change a device
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
@@ -154,26 +136,21 @@ The [meeting.self ↗](https://docs.realtime.cloudflare.com/web-core/reference/R
 
 **Key Properties:**
 
-**JavaScript**
-
 ```javascript
 // Participant identifiers
 meeting.self.id; // Peer ID (unique per session)
 meeting.self.userId; // Participant ID (persistent across sessions)
 meeting.self.name; // Participant display name
 
-
 // Media state
 meeting.self.audioEnabled; // Boolean: Is audio enabled?
 meeting.self.videoEnabled; // Boolean: Is video enabled?
 meeting.self.screenShareEnabled; // Boolean: Is screen share active?
 
-
 // Media tracks
 meeting.self.audioTrack; // Audio MediaStreamTrack, if audio is enabled
 meeting.self.videoTrack; // Video MediaStreamTrack, if video is enabled
 meeting.self.screenShareTracks; // Structure: { audio: MediaStreamTrack, video: MediaStreamTrack }, if screen share is enabled
-
 
 // Room state
 meeting.self.roomJoined; // Boolean: Has joined the meeting?
@@ -181,8 +158,6 @@ meeting.self.roomState; // Current room state
 ```
 
 **Common Methods:**
-
-**JavaScript**
 
 ```javascript
 // Media controls
@@ -193,10 +168,8 @@ await meeting.self.disableVideo(); // Emits a `videoUpdate` event on `meeting.se
 await meeting.self.enableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 await meeting.self.disableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 
-
 // Update Name
 await meeting.self.setName("New Name"); // setName works only works before joining the meeting
-
 
 // List Devices
 await meeting.self.getAllDevices(); // Returns all available devices
@@ -204,7 +177,6 @@ await meeting.self.getAudioDevices(); // Returns all available audio devices
 await meeting.self.getVideoDevices(); // Returns all available video devices
 await meeting.self.getSpeakerDevices(); // Returns all available speaker devices
 await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevice, speaker: MediaDevice} Returns the current device configuration
-
 
 // Change a device
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
@@ -213,8 +185,6 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
-
-**Kotlin**
 
 ```kotlin
 // Participant identifiers
@@ -225,7 +195,6 @@ meeting.localUser.picture // URL to the picture of the local user (optional)
 meeting.localUser.customParticipantId // User provided participant ID (optional)
 meeting.localUser.permissions // Permissions related to various capabilities within a meeting context for the local user
 
-
 // Media state
 meeting.localUser.audioEnabled // Boolean: Is audio currently enabled for the local user
 meeting.localUser.videoEnabled // Boolean: Is video currently enabled for the local user
@@ -233,18 +202,15 @@ meeting.localUser.screenShareEnabled // Boolean: Is screenshare currently enable
 meeting.localUser.isCameraPermissionGranted // Boolean: Does local user have access to device Camera permission
 meeting.localUser.isMicrophonePermissionGranted // Boolean: Does local user have access to device Microphone permission
 
-
 // Participant metadata
 meeting.localUser.isHost // Boolean: Is the local user the host
 meeting.localUser.isPinned // Boolean: Is the local user pinned
 meeting.localUser.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Preset Info
 meeting.localUser.presetName // String value representing name of preset for local user
 meeting.localUser.presetInfo // Typed object representing the preset information for local user
 meeting.localUser.designToken // Design token for UI customization
-
 
 // Stage and room state
 meeting.localUser.stageStatus // Stage status of the local user
@@ -254,57 +220,44 @@ meeting.localUser.waitListStatus // Waitlist status of the local user (NONE, WAI
 
 **Common Methods:**
 
-**Kotlin**
-
 ```kotlin
 // Get local user video view
 meeting.localUser.getSelfPreview() // Returns a VideoView that can be added to any ViewGroup in Android
 
-
 // Update Name
 meeting.localUser.setDisplayName("New Name") // Name change is visible only if it occurs before joinRoom() and after init()
-
 
 // Mute/Unmute Audio
 meeting.localUser.disableAudio { error: AudioError? -> }
 meeting.localUser.enableAudio { error: AudioError? -> }
 
-
 // Enable/Disable Video
 meeting.localUser.disableVideo { error: VideoError? -> }
 meeting.localUser.enableVideo { error: VideoError? -> }
-
 
 // Enable/Disable Screenshare
 meeting.localUser.canEnableScreenShare() // Check if screenshare can be enabled
 val error: ScreenShareError? = meeting.localUser.enableScreenShare() // Returns error if fails, null if successful
 meeting.localUser.disableScreenShare()
 
-
 // Device management
 val audioDevices = meeting.localUser.getAudioDevices() // Get all available audio devices
 val videoDevices = meeting.localUser.getVideoDevices() // Get all available video devices
 
-
 meeting.localUser.setAudioDevice(audioDevices[0]) // Switch audio device
 meeting.localUser.setVideoDevice(videoDevices[0]) // Switch video device
-
 
 val selectedAudio = meeting.localUser.getSelectedAudioDevice() // Get currently selected audio device
 val selectedVideo = meeting.localUser.getSelectedVideoDevice() // Get currently selected video device
 
-
 meeting.localUser.switchCamera() // Switch between front and back camera
-
 
 // Stage permissions
 meeting.localUser.canJoinStage() // Check if local user can join stage
 meeting.localUser.canRequestToJoinStage() // Check if local user can request to join stage
 
-
 // Host controls
 meeting.localUser.canDoParticipantHostControls() // Check if local user can perform host controls
-
 
 // Setup screen
 meeting.localUser.shouldShowSetupScreen() // Check if setup screen should be shown
@@ -314,8 +267,6 @@ meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
-
-**Swift**
 
 ```swift
 // Participant identifiers
@@ -326,7 +277,6 @@ meeting.localUser.picture // URL to the picture of the local user (optional)
 meeting.localUser.customParticipantId // User provided participant ID (optional)
 meeting.localUser.permissions // Permissions related to various capabilities within a meeting context for the local user
 
-
 // Media state
 meeting.localUser.audioEnabled // Boolean: Is audio currently enabled for the local user
 meeting.localUser.videoEnabled // Boolean: Is video currently enabled for the local user
@@ -334,18 +284,15 @@ meeting.localUser.screenShareEnabled // Boolean: Is screenshare currently enable
 meeting.localUser.isCameraPermissionGranted // Boolean: Does local user have access to device Camera permission
 meeting.localUser.isMicrophonePermissionGranted // Boolean: Does local user have access to device Microphone permission
 
-
 // Participant metadata
 meeting.localUser.isHost // Boolean: Is the local user the host
 meeting.localUser.isPinned // Boolean: Is the local user pinned
 meeting.localUser.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Preset Info
 meeting.localUser.presetName // String value representing name of preset for local user
 meeting.localUser.presetInfo // Typed object representing the preset information for local user
 meeting.localUser.designToken // Design token for UI customization
-
 
 // Stage and room state
 meeting.localUser.stageStatus // Stage status of the local user
@@ -355,57 +302,44 @@ meeting.localUser.waitListStatus // Waitlist status of the local user (.none, .w
 
 **Common Methods:**
 
-**Swift**
-
 ```swift
 // Get local user video view
 meeting.localUser.getSelfPreview() // Returns a VideoView (UIView) for iOS
 
-
 // Update Name
 meeting.localUser.setDisplayName("New Name") // Name change is visible only if it occurs before joinRoom() and after init()
-
 
 // Mute/Unmute Audio
 meeting.localUser.disableAudio { error in }
 meeting.localUser.enableAudio { error in }
 
-
 // Enable/Disable Video
 meeting.localUser.disableVideo { error in }
 meeting.localUser.enableVideo { error in }
-
 
 // Enable/Disable Screenshare
 meeting.localUser.canEnableScreenShare() // Check if screenshare can be enabled
 let error: ScreenShareError? = meeting.localUser.enableScreenShare() // Returns error if fails, nil if successful
 meeting.localUser.disableScreenShare()
 
-
 // Device management
 let audioDevices = meeting.localUser.getAudioDevices() // Get all available audio devices
 let videoDevices = meeting.localUser.getVideoDevices() // Get all available video devices
 
-
 meeting.localUser.setAudioDevice(audioDevices[0]) // Switch audio device
 meeting.localUser.setVideoDevice(videoDevices[0]) // Switch video device
-
 
 let selectedAudio = meeting.localUser.getSelectedAudioDevice() // Get currently selected audio device
 let selectedVideo = meeting.localUser.getSelectedVideoDevice() // Get currently selected video device
 
-
 meeting.localUser.switchCamera() // Switch between front and back camera
-
 
 // Stage permissions
 meeting.localUser.canJoinStage() // Check if local user can join stage
 meeting.localUser.canRequestToJoinStage() // Check if local user can request to join stage
 
-
 // Host controls
 meeting.localUser.canDoParticipantHostControls() // Check if local user can perform host controls
-
 
 // Setup screen
 meeting.localUser.shouldShowSetupScreen() // Check if setup screen should be shown
@@ -415,8 +349,6 @@ meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
-
-**Dart**
 
 ```dart
 // Participant identifiers
@@ -427,7 +359,6 @@ meeting.localUser.picture; // URL to the picture of the local user (optional)
 meeting.localUser.customParticipantId; // User provided participant ID (optional)
 meeting.localUser.permissions; // Permissions related to various capabilities within a meeting context for the local user
 
-
 // Media state
 meeting.localUser.audioEnabled; // Boolean: Is audio currently enabled for the local user
 meeting.localUser.videoEnabled; // Boolean: Is video currently enabled for the local user
@@ -435,17 +366,14 @@ meeting.localUser.screenShareEnabled; // Boolean: Is screenshare currently enabl
 meeting.localUser.isCameraPermissionGranted; // Boolean: Does local user have access to device Camera permission
 meeting.localUser.isMicrophonePermissionGranted; // Boolean: Does local user have access to device Microphone permission
 
-
 // Participant metadata
 meeting.localUser.isHost; // Boolean: Is the local user the host
 meeting.localUser.isPinned; // Boolean: Is the local user pinned
 meeting.localUser.flags; // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Preset Info
 meeting.localUser.presetName; // String value representing name of preset for local user
 meeting.localUser.presetInfo; // Typed object representing the preset information for local user
-
 
 // Stage and room state
 meeting.localUser.stageStatus; // Stage status of the local user
@@ -455,40 +383,31 @@ meeting.localUser.waitListStatus; // Waitlist status of the local user (None, Wa
 
 **Common Methods:**
 
-**Dart**
-
 ```dart
 // Update Name
 await meeting.localUser.setDisplayName("New Name"); // Name change is visible only if it occurs before joinRoom() and after init()
-
 
 // Mute/Unmute Audio
 meeting.localUser.disableAudio(onResult: (error) {});
 meeting.localUser.enableAudio(onResult: (error) {});
 
-
 // Enable/Disable Video
 meeting.localUser.disableVideo(onResult: (error) {});
 meeting.localUser.enableVideo(onResult: (error) {});
-
 
 // Enable/Disable Screenshare
 meeting.localUser.enableScreenShare();
 meeting.localUser.disableScreenShare();
 
-
 // Device management
 final audioDevices = await meeting.localUser.getAudioDevices(); // Get all available audio devices
 final videoDevices = await meeting.localUser.getVideoDevices(); // Get all available video devices
 
-
 await meeting.localUser.setAudioDevice(audioDevices[0]); // Switch audio device
 await meeting.localUser.setVideoDevice(videoDevices[0]); // Switch video device
 
-
 final selectedAudio = await meeting.localUser.getSelectedAudioDevice(); // Get currently selected audio device
 final selectedVideo = await meeting.localUser.getSelectedVideoDevice(); // Get currently selected video device
-
 
 meeting.localUser.switchCamera(); // Switch between front and back camera
 ```
@@ -497,26 +416,21 @@ The [meeting.self ↗](https://docs.realtime.cloudflare.com/mobile-core/referenc
 
 **Key Properties:**
 
-**JavaScript**
-
 ```javascript
 // Participant identifiers
 meeting.self.id; // Peer ID (unique per session)
 meeting.self.userId; // Participant ID (persistent across sessions)
 meeting.self.name; // Participant display name
 
-
 // Media state
 meeting.self.audioEnabled; // Boolean: Is audio enabled?
 meeting.self.videoEnabled; // Boolean: Is video enabled?
 meeting.self.screenShareEnabled; // Boolean: Is screen share active?
 
-
 // Media tracks
 meeting.self.audioTrack; // Audio MediaStreamTrack, if audio is enabled
 meeting.self.videoTrack; // Video MediaStreamTrack, if video is enabled
 meeting.self.screenShareTracks; // Structure: { audio: MediaStreamTrack, video: MediaStreamTrack }, if screen share is enabled
-
 
 // Room state
 meeting.self.roomJoined; // Boolean: Has joined the meeting?
@@ -524,8 +438,6 @@ meeting.self.roomState; // Current room state
 ```
 
 **Common Methods:**
-
-**JavaScript**
 
 ```javascript
 // Media controls
@@ -536,10 +448,8 @@ await meeting.self.disableVideo(); // Emits a `videoUpdate` event on `meeting.se
 await meeting.self.enableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 await meeting.self.disableScreenShare(); // Emits a `screenShareUpdate` event on `meeting.self` when successful.
 
-
 // Update Name
 await meeting.self.setName("New Name"); // setName works only works before joining the meeting
-
 
 // List Devices
 await meeting.self.getAllDevices(); // Returns all available devices
@@ -547,7 +457,6 @@ await meeting.self.getAudioDevices(); // Returns all available audio devices
 await meeting.self.getVideoDevices(); // Returns all available video devices
 await meeting.self.getSpeakerDevices(); // Returns all available speaker devices
 await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevice, speaker: MediaDevice} Returns the current device configuration
-
 
 // Change a device
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
@@ -565,23 +474,18 @@ Note
 
 **Participant Maps:**
 
-**JavaScript**
-
 ```javascript
 // All participants who have joined
 meeting.participants.joined; // Map of joined participants
 meeting.participants.joined.toArray(); // Array of joined participants
 
-
 // Participants with active media
 meeting.participants.active; // Map of participants with active audio/video
 meeting.participants.active.toArray(); // Array of participants with active audio/video
 
-
 // Participants in waiting room
 meeting.participants.waitlisted; // Map of waitlisted participants
 meeting.participants.waitlisted.toArray(); // Array of waitlisted participants
-
 
 // Pinned participants
 meeting.participants.pinned; // Map of pinned participants
@@ -590,12 +494,9 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 **Accessing Participant Data:**
 
-**JavaScript**
-
 ```javascript
 // Get all joined participants as an array
 const joinedParticipants = meeting.participants.joined.toArray();
-
 
 // Access first participant's IDs
 const firstParticipant = joinedParticipants[0];
@@ -605,20 +506,18 @@ console.log("First Participant Name:", firstParticipant?.name); // Display name
 console.log("First Participant Audio Enabled:", firstParticipant?.audioEnabled); // Audio state
 console.log("First Participant Video Enabled:", firstParticipant?.videoEnabled); // Video state
 console.log(
-  "First Participant Screen Share Enabled:",
-  firstParticipant?.screenShareEnabled,
+	"First Participant Screen Share Enabled:",
+	firstParticipant?.screenShareEnabled,
 ); // Screen share state
 console.log("First Participant Audio Track:", firstParticipant?.audioTrack); // Audio MediaStreamTrack
 console.log("First Participant Video Track:", firstParticipant?.videoTrack); // Video MediaStreamTrack
 console.log(
-  "First Participant Screen Share Track:",
-  firstParticipant?.screenShareTracks,
+	"First Participant Screen Share Track:",
+	firstParticipant?.screenShareTracks,
 ); // Screen share MediaStreamTrack
-
 
 // Access participant by peer ID
 const participant = meeting.participants.joined.get("peer-id");
-
 
 // Get count of joined participants
 const count = meeting.participants.joined.size();
@@ -627,8 +526,6 @@ const count = meeting.participants.joined.size();
 **Participant Properties:**
 
 Each participant object has similar properties to `meeting.self`:
-
-**JavaScript**
 
 ```javascript
 participant.id; // Peer ID
@@ -650,23 +547,18 @@ Note
 
 **Participant Maps:**
 
-**JavaScript**
-
 ```javascript
 // All participants who have joined
 meeting.participants.joined; // Map of joined participants
 meeting.participants.joined.toArray(); // Array of joined participants
 
-
 // Participants with active media
 meeting.participants.active; // Map of participants with active audio/video
 meeting.participants.active.toArray(); // Array of participants with active audio/video
 
-
 // Participants in waiting room
 meeting.participants.waitlisted; // Map of waitlisted participants
 meeting.participants.waitlisted.toArray(); // Array of waitlisted participants
-
 
 // Pinned participants
 meeting.participants.pinned; // Map of pinned participants
@@ -675,12 +567,9 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 **Accessing Participant Data:**
 
-**JavaScript**
-
 ```javascript
 // Get all joined participants as an array
 const joinedParticipants = meeting.participants.joined.toArray();
-
 
 // Access first participant's IDs
 const firstParticipant = joinedParticipants[0];
@@ -690,20 +579,18 @@ console.log("First Participant Name:", firstParticipant?.name); // Display name
 console.log("First Participant Audio Enabled:", firstParticipant?.audioEnabled); // Audio state
 console.log("First Participant Video Enabled:", firstParticipant?.videoEnabled); // Video state
 console.log(
-  "First Participant Screen Share Enabled:",
-  firstParticipant?.screenShareEnabled,
+	"First Participant Screen Share Enabled:",
+	firstParticipant?.screenShareEnabled,
 ); // Screen share state
 console.log("First Participant Audio Track:", firstParticipant?.audioTrack); // Audio MediaStreamTrack
 console.log("First Participant Video Track:", firstParticipant?.videoTrack); // Video MediaStreamTrack
 console.log(
-  "First Participant Screen Share Track:",
-  firstParticipant?.screenShareTracks,
+	"First Participant Screen Share Track:",
+	firstParticipant?.screenShareTracks,
 ); // Screen share MediaStreamTrack
-
 
 // Access participant by peer ID
 const participant = meeting.participants.joined.get("peer-id");
-
 
 // Get count of joined participants
 const count = meeting.participants.joined.size();
@@ -712,8 +599,6 @@ const count = meeting.participants.joined.size();
 **Participant Properties:**
 
 Each participant object has similar properties to `meeting.self`:
-
-**JavaScript**
 
 ```javascript
 participant.id; // Peer ID
@@ -735,23 +620,18 @@ Note
 
 **Participant Maps:**
 
-**JavaScript**
-
 ```javascript
 // All participants who have joined
 meeting.participants.joined; // Map of joined participants
 meeting.participants.joined.toArray(); // Array of joined participants
 
-
 // Participants with active media
 meeting.participants.active; // Map of participants with active audio/video
 meeting.participants.active.toArray(); // Array of participants with active audio/video
 
-
 // Participants in waiting room
 meeting.participants.waitlisted; // Map of waitlisted participants
 meeting.participants.waitlisted.toArray(); // Array of waitlisted participants
-
 
 // Pinned participants
 meeting.participants.pinned; // Map of pinned participants
@@ -760,12 +640,9 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 **Accessing Participant Data:**
 
-**JavaScript**
-
 ```javascript
 // Get all joined participants as an array
 const joinedParticipants = meeting.participants.joined.toArray();
-
 
 // Access first participant's IDs
 const firstParticipant = joinedParticipants[0];
@@ -775,20 +652,18 @@ console.log("First Participant Name:", firstParticipant?.name); // Display name
 console.log("First Participant Audio Enabled:", firstParticipant?.audioEnabled); // Audio state
 console.log("First Participant Video Enabled:", firstParticipant?.videoEnabled); // Video state
 console.log(
-  "First Participant Screen Share Enabled:",
-  firstParticipant?.screenShareEnabled,
+	"First Participant Screen Share Enabled:",
+	firstParticipant?.screenShareEnabled,
 ); // Screen share state
 console.log("First Participant Audio Track:", firstParticipant?.audioTrack); // Audio MediaStreamTrack
 console.log("First Participant Video Track:", firstParticipant?.videoTrack); // Video MediaStreamTrack
 console.log(
-  "First Participant Screen Share Track:",
-  firstParticipant?.screenShareTracks,
+	"First Participant Screen Share Track:",
+	firstParticipant?.screenShareTracks,
 ); // Screen share MediaStreamTrack
-
 
 // Access participant by peer ID
 const participant = meeting.participants.joined.get("peer-id");
-
 
 // Get count of joined participants
 const count = meeting.participants.joined.size();
@@ -797,8 +672,6 @@ const count = meeting.participants.joined.size();
 **Participant Properties:**
 
 Each participant object has similar properties to `meeting.self`:
-
-**JavaScript**
 
 ```javascript
 participant.id; // Peer ID
@@ -816,32 +689,24 @@ The `meeting.participants` contains lists of all remote participants in the meet
 
 **Participant Lists:**
 
-**Kotlin**
-
 ```kotlin
 // All participants who have joined
 val joined: List<RtkRemoteParticipant> = meeting.participants.joined
 
-
 // Participants with active media
 val active: List<RtkRemoteParticipant> = meeting.participants.active
-
 
 // Participants in waiting room
 val waitlisted: List<RtkRemoteParticipant> = meeting.participants.waitlisted
 
-
 // Pinned participant
 val pinned: RtkRemoteParticipant? = meeting.participants.pinned
-
 
 // Participants sharing screen
 val screenShares: List<RtkRemoteParticipant> = meeting.participants.screenShares
 
-
 // Active speaker
 val activeSpeaker: RtkRemoteParticipant? = meeting.participants.activeSpeaker
-
 
 // Total count of participants (including local user if joined)
 val totalCount: Int = meeting.participants.totalCount
@@ -849,12 +714,9 @@ val totalCount: Int = meeting.participants.totalCount
 
 **Accessing Participant Data:**
 
-**Kotlin**
-
 ```kotlin
 // Get all joined participants
 val joinedParticipants = meeting.participants.joined
-
 
 // Access first participant
 val firstParticipant = joinedParticipants.firstOrNull()
@@ -872,11 +734,9 @@ firstParticipant?.presetName // Preset name
 firstParticipant?.stageStatus // Stage status
 firstParticipant?.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Get participant video view
 firstParticipant?.getVideoView() // Returns a View that renders video stream
 firstParticipant?.getScreenShareVideoView() // Returns a View that renders screenshare stream
-
 
 // Access pagination
 val maxNumberOnScreen = meeting.participants.maxNumberOnScreen // Max participants per page
@@ -889,35 +749,28 @@ meeting.participants.setPage(1) // Switch to specific page
 
 **Participant Control Methods:**
 
-**Kotlin**
-
 ```kotlin
 // Individual participant controls (host only)
 firstParticipant?.disableAudio { error -> } // Disable participant's audio
 firstParticipant?.disableVideo { error -> } // Disable participant's video
 firstParticipant?.kick { error -> } // Remove participant from meeting
 
-
 // Pin/Unpin participants
 val error: HostError? = firstParticipant?.pin() // Pin participant
 val error: HostError? = firstParticipant?.unpin() // Unpin participant
-
 
 // Waiting room management
 meeting.participants.acceptWaitingRoomRequest(participantId) // Accept from waiting room
 meeting.participants.rejectWaitingRoomRequest(participantId) // Reject from waiting room
 meeting.participants.acceptAllWaitingRoomRequests() // Accept all waiting participants
 
-
 // Bulk operations (host only)
 val error: HostError? = meeting.participants.disableAllAudio() // Disable all participants' audio
 val error: HostError? = meeting.participants.disableAllVideo() // Disable all participants' video
 val error: HostError? = meeting.participants.kickAll() // Remove all participants
 
-
 // Broadcast custom message
 meeting.participants.broadcastMessage("custom-event", mapOf("key" to "value"))
-
 
 // Cache management
 meeting.participants.enableCache() // Enable participant caching
@@ -925,8 +778,6 @@ meeting.participants.disableCache() // Disable participant caching
 ```
 
 **Participant Properties:**
-
-**Kotlin**
 
 ```kotlin
 participant.id // Participant ID (aka peerId, unique per session)
@@ -948,32 +799,24 @@ The `meeting.participants` contains lists of all remote participants in the meet
 
 **Participant Lists:**
 
-**Swift**
-
 ```swift
 // All participants who have joined
 let joined: [RtkRemoteParticipant] = meeting.participants.joined
 
-
 // Participants with active media
 let active: [RtkRemoteParticipant] = meeting.participants.active
-
 
 // Participants in waiting room
 let waitlisted: [RtkRemoteParticipant] = meeting.participants.waitlisted
 
-
 // Pinned participant
 let pinned: RtkRemoteParticipant? = meeting.participants.pinned
-
 
 // Participants sharing screen
 let screenShares: [RtkRemoteParticipant] = meeting.participants.screenShares
 
-
 // Active speaker
 let activeSpeaker: RtkRemoteParticipant? = meeting.participants.activeSpeaker
-
 
 // Total count of participants (including local user if joined)
 let totalCount: Int = meeting.participants.totalCount
@@ -981,12 +824,9 @@ let totalCount: Int = meeting.participants.totalCount
 
 **Accessing Participant Data:**
 
-**Swift**
-
 ```swift
 // Get all joined participants
 let joinedParticipants = meeting.participants.joined
-
 
 // Access first participant
 let firstParticipant = joinedParticipants.first
@@ -1004,11 +844,9 @@ firstParticipant?.presetName // Preset name
 firstParticipant?.stageStatus // Stage status
 firstParticipant?.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Get participant video view
 firstParticipant?.getVideoView() // Returns a UIView that renders video stream
 firstParticipant?.getScreenShareVideoView() // Returns a UIView that renders screenshare stream
-
 
 // Access pagination
 let maxNumberOnScreen = meeting.participants.maxNumberOnScreen // Max participants per page
@@ -1021,35 +859,28 @@ meeting.participants.setPage(1) // Switch to specific page
 
 **Participant Control Methods:**
 
-**Swift**
-
 ```swift
 // Individual participant controls (host only)
 firstParticipant?.disableAudio { error in } // Disable participant's audio
 firstParticipant?.disableVideo { error in } // Disable participant's video
 firstParticipant?.kick { error in } // Remove participant from meeting
 
-
 // Pin/Unpin participants
 let error: HostError? = firstParticipant?.pin() // Pin participant
 let error: HostError? = firstParticipant?.unpin() // Unpin participant
-
 
 // Waiting room management
 meeting.participants.acceptWaitingRoomRequest(participantId) // Accept from waiting room
 meeting.participants.rejectWaitingRoomRequest(participantId) // Reject from waiting room
 meeting.participants.acceptAllWaitingRoomRequests() // Accept all waiting participants
 
-
 // Bulk operations (host only)
 let error: HostError? = meeting.participants.disableAllAudio() // Disable all participants' audio
 let error: HostError? = meeting.participants.disableAllVideo() // Disable all participants' video
 let error: HostError? = meeting.participants.kickAll() // Remove all participants
 
-
 // Broadcast custom message
 meeting.participants.broadcastMessage("custom-event", ["key": "value"])
-
 
 // Cache management
 meeting.participants.enableCache() // Enable participant caching
@@ -1057,8 +888,6 @@ meeting.participants.disableCache() // Disable participant caching
 ```
 
 **Participant Properties:**
-
-**Swift**
 
 ```swift
 participant.id // Participant ID (aka peerId, unique per session)
@@ -1080,24 +909,18 @@ The `meeting.participants` contains lists of all remote participants in the meet
 
 **Participant Lists:**
 
-**Dart**
-
 ```dart
 // All participants who have joined
 final joined = meeting.participants.joined; // List<RtkRemoteParticipant>
 
-
 // Participants with active media
 final active = meeting.participants.active; // List<RtkRemoteParticipant>
-
 
 // Participants in waiting room
 final waitlisted = meeting.participants.waitlisted; // List<RtkRemoteParticipant>
 
-
 // Pinned participant
 final pinned = meeting.participants.pinned; // RtkRemoteParticipant?
-
 
 // Participants sharing screen
 final screenshares = meeting.participants.screenshares; // List<RtkRemoteParticipant>
@@ -1105,12 +928,9 @@ final screenshares = meeting.participants.screenshares; // List<RtkRemotePartici
 
 **Accessing Participant Data:**
 
-**Dart**
-
 ```dart
 // Get all joined participants
 final joinedParticipants = meeting.participants.joined;
-
 
 // Access first participant
 final firstParticipant = joinedParticipants.firstOrNull;
@@ -1128,10 +948,8 @@ firstParticipant?.presetName; // Preset name
 firstParticipant?.stageStatus; // Stage status
 firstParticipant?.flags; // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 
-
 // Get participant video view
 firstParticipant?.videoView; // Returns a Widget that renders video stream
-
 
 // Access pagination info
 final grid = meeting.participants.grid;
@@ -1145,44 +963,35 @@ meeting.participants.setPage(1); // Switch to specific page
 
 **Participant Control Methods:**
 
-**Dart**
-
 ```dart
 // Individual participant controls (host only)
 firstParticipant?.disableAudio(onResult: (error) {}); // Disable participant's audio
 firstParticipant?.disableVideo(onResult: (error) {}); // Disable participant's video
 firstParticipant?.kick(onResult: (error) {}); // Remove participant from meeting
 
-
 // Pin/Unpin participants
 final error: HostError? = firstParticipant?.pin(); // Pin participant
 final error: HostError? = firstParticipant?.unpin(); // Unpin participant
 
-
 // Waiting room management
 firstParticipant?.acceptWaitListedRequest(participantId); // Accept from waiting room
 firstParticipant?.rejectWaitListedRequest(participantId); // Reject from waiting room
-
 
 // Bulk operations (host only)
 meeting.participants.disableAllAudio(onResult: (error) {}); // Disable all participants' audio
 meeting.participants.disableAllVideo(onResult: (error) {}); // Disable all participants' video
 meeting.participants.kickAll(onResult: (error) {}); // Remove all participants
 
-
 // Waiting room bulk operations
 meeting.participants.acceptWaitlistedParticipant(participant); // Accept specific participant
 meeting.participants.rejectWaitlistedParticipant(participant); // Reject specific participant
 meeting.participants.acceptAllWaitingRoomRequests(); // Accept all waiting participants
-
 
 // Broadcast custom message
 meeting.participants.broadcastMessage("custom-event", {"key": "value"});
 ```
 
 **Participant Properties:**
-
-**Dart**
 
 ```dart
 participant.id; // Participant ID (aka peerId, unique per session)
@@ -1208,23 +1017,18 @@ Note
 
 **Participant Maps:**
 
-**JavaScript**
-
 ```javascript
 // All participants who have joined
 meeting.participants.joined; // Map of joined participants
 meeting.participants.joined.toArray(); // Array of joined participants
 
-
 // Participants with active media
 meeting.participants.active; // Map of participants with active audio/video
 meeting.participants.active.toArray(); // Array of participants with active audio/video
 
-
 // Participants in waiting room
 meeting.participants.waitlisted; // Map of waitlisted participants
 meeting.participants.waitlisted.toArray(); // Array of waitlisted participants
-
 
 // Pinned participants
 meeting.participants.pinned; // Map of pinned participants
@@ -1233,12 +1037,9 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 **Accessing Participant Data:**
 
-**JavaScript**
-
 ```javascript
 // Get all joined participants as an array
 const joinedParticipants = meeting.participants.joined.toArray();
-
 
 // Access first participant's IDs
 const firstParticipant = joinedParticipants[0];
@@ -1248,20 +1049,18 @@ console.log("First Participant Name:", firstParticipant?.name); // Display name
 console.log("First Participant Audio Enabled:", firstParticipant?.audioEnabled); // Audio state
 console.log("First Participant Video Enabled:", firstParticipant?.videoEnabled); // Video state
 console.log(
-  "First Participant Screen Share Enabled:",
-  firstParticipant?.screenShareEnabled,
+	"First Participant Screen Share Enabled:",
+	firstParticipant?.screenShareEnabled,
 ); // Screen share state
 console.log("First Participant Audio Track:", firstParticipant?.audioTrack); // Audio MediaStreamTrack
 console.log("First Participant Video Track:", firstParticipant?.videoTrack); // Video MediaStreamTrack
 console.log(
-  "First Participant Screen Share Track:",
-  firstParticipant?.screenShareTracks,
+	"First Participant Screen Share Track:",
+	firstParticipant?.screenShareTracks,
 ); // Screen share MediaStreamTrack
-
 
 // Access participant by peer ID
 const participant = meeting.participants.joined.get("peer-id");
-
 
 // Get count of joined participants
 const count = meeting.participants.joined.size();
@@ -1270,8 +1069,6 @@ const count = meeting.participants.joined.size();
 **Participant Properties:**
 
 Each participant object has similar properties to `meeting.self`:
-
-**JavaScript**
 
 ```javascript
 participant.id; // Peer ID
@@ -1291,8 +1088,6 @@ participant.screenShareTrack; // Screen share MediaStreamTrack
 
 The [meeting.meta ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
 
-**JavaScript**
-
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
 meeting.meta.meetingTitle; // Meeting Title
@@ -1301,8 +1096,6 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 
 The [meeting.meta ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
 
-**JavaScript**
-
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
 meeting.meta.meetingTitle; // Meeting Title
@@ -1310,8 +1103,6 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 ```
 
 The [meeting.meta ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
-
-**JavaScript**
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -1322,8 +1113,6 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 The `meeting.meta` contains information about the meeting room itself.
 
 **Properties:**
-
-**Kotlin**
 
 ```kotlin
 meeting.meta.meetingId // Meeting identifier
@@ -1340,8 +1129,6 @@ meeting.meta.socketConnectionState // Current state of the socket connection (So
 
 **Methods:**
 
-**Kotlin**
-
 ```kotlin
 // Sync active tab (for plugins or screen share)
 meeting.meta.syncTab(
@@ -1353,8 +1140,6 @@ meeting.meta.syncTab(
 The `meeting.meta` contains information about the meeting room itself.
 
 **Properties:**
-
-**Swift**
 
 ```swift
 meeting.meta.meetingId // Meeting identifier
@@ -1371,8 +1156,6 @@ meeting.meta.socketConnectionState // Current state of the socket connection (So
 
 **Methods:**
 
-**Swift**
-
 ```swift
 // Sync active tab (for plugins or screen share)
 meeting.meta.syncTab(
@@ -1385,8 +1168,6 @@ The `meeting.meta` contains information about the meeting room itself.
 
 **Properties:**
 
-**Dart**
-
 ```dart
 meeting.meta.meetingId; // Meeting identifier
 meeting.meta.meetingTitle; // Meeting title
@@ -1398,8 +1179,6 @@ meeting.meta.designToken; // Design tokens for UI customization (RtkDesignTokens
 
 **Methods:**
 
-**Dart**
-
 ```dart
 // Sync active tab (for plugins or screen share)
 meeting.meta.syncTab(
@@ -1409,8 +1188,6 @@ meeting.meta.syncTab(
 ```
 
 The [meeting.meta ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKMeta) contains information about the meeting room itself.
-
-**JavaScript**
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -1424,110 +1201,86 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all chat messages
 const messages = meeting.chat.messages;
 
-
 // Send a text message
 await meeting.chat.sendTextMessage("Hello everyone!");
-
 
 // Send an image
 await meeting.chat.sendImageMessage(imageFile);
 
-
 // Listen to chat messages
 console.log("First message:", meeting.chat.messages[0]);
 
-
 meeting.chat.on("chatUpdate", ({ message, messages }) => {
-  console.log(`Received message ${message}`);
-  console.log(`All messages in chat: ${messages.join(", ")}`);
+	console.log(`Received message ${message}`);
+	console.log(`All messages in chat: ${messages.join(", ")}`);
 });
 ```
 
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all chat messages
 const messages = meeting.chat.messages;
 
-
 // Send a text message
 await meeting.chat.sendTextMessage("Hello everyone!");
-
 
 // Send an image
 await meeting.chat.sendImageMessage(imageFile);
 
-
 // Listen to chat messages
 console.log("First message:", meeting.chat.messages[0]);
 
-
 meeting.chat.on("chatUpdate", ({ message, messages }) => {
-  console.log(`Received message ${message}`);
-  console.log(`All messages in chat: ${messages.join(", ")}`);
+	console.log(`Received message ${message}`);
+	console.log(`All messages in chat: ${messages.join(", ")}`);
 });
 ```
 
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all chat messages
 const messages = meeting.chat.messages;
 
-
 // Send a text message
 await meeting.chat.sendTextMessage("Hello everyone!");
-
 
 // Send an image
 await meeting.chat.sendImageMessage(imageFile);
 
-
 // Listen to chat messages
 console.log("First message:", meeting.chat.messages[0]);
 
-
 meeting.chat.on("chatUpdate", ({ message, messages }) => {
-  console.log(`Received message ${message}`);
-  console.log(`All messages in chat: ${messages.join(", ")}`);
+	console.log(`Received message ${message}`);
+	console.log(`All messages in chat: ${messages.join(", ")}`);
 });
 ```
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
-**Kotlin**
-
 ```kotlin
 // Get all chat messages
 val messages = meeting.chat.messages
 
-
 // Send a text message
 val message = "Hello everyone!"
 meeting.chat.sendTextMessage(message) // Returns ChatTextError if fails, null if successful
-
 
 // Send an image
 meeting.chat.sendImageMessage(imageUri) { err ->
   // Handle ChatFileError if any
 }
 
-
 // Send a file
 meeting.chat.sendFileMessage(fileUri) { err ->
   // Handle ChatFileError if any
 }
-
 
 // Listen to chat messages
 meeting.addChatEventListener(object : RtkChatEventListener {
@@ -1535,17 +1288,14 @@ meeting.addChatEventListener(object : RtkChatEventListener {
       // Called whenever there is a change in chat messages
     }
 
-
     override fun onNewChatMessage(message: ChatMessage) {
       // Called when a new chat message is shared
     }
-
 
     override fun onMessageRateLimitReset() {
       // Called when rate limit for sending messages is reset
     }
 })
-
 
 // Handle errors
 when (err) {
@@ -1560,29 +1310,23 @@ when (err) {
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
-**Swift**
-
 ```swift
 // Get all chat messages
 let messages = meeting.chat.messages
 
-
 // Send a text message
 let message = "Hello everyone!"
 meeting.chat.sendTextMessage(message) // Returns ChatTextError if fails, nil if successful
-
 
 // Send an image
 meeting.chat.sendImageMessage(imageUri) { err in
   // Handle ChatFileError if any
 }
 
-
 // Send a file
 meeting.chat.sendFileMessage(fileUri) { err in
   // Handle ChatFileError if any
 }
-
 
 // Listen to chat messages
 extension MeetingViewModel: RtkChatEventListener {
@@ -1590,21 +1334,17 @@ extension MeetingViewModel: RtkChatEventListener {
         // Called whenever there is a change in chat messages
     }
 
-
     func onNewChatMessage(message: ChatMessage) {
         // Called when a new chat message is shared
     }
-
 
     func onMessageRateLimitReset() {
         // Called when rate limit for sending messages is reset
     }
 }
 
-
 // Add listener
 meeting.addChatEventListener(self)
-
 
 // Handle errors
 switch err {
@@ -1625,29 +1365,23 @@ default:
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
-**Dart**
-
 ```dart
 // Get all chat messages
 final messages = meeting.chat.messages;
 
-
 // Send a text message
 final message = "Hello everyone!";
 meeting.chat.sendTextMessage(message); // Returns ChatTextError if fails, null if successful
-
 
 // Send an image
 meeting.chat.sendImageMessage(imageUri, (err) {
   // Handle ChatFileError if any
 });
 
-
 // Send a file
 meeting.chat.sendFileMessage(fileUri, (err) {
   // Handle ChatFileError if any
 });
-
 
 // Listen to chat messages
 class ChatListener extends RtkChatEventListener {
@@ -1656,12 +1390,10 @@ class ChatListener extends RtkChatEventListener {
     // Called whenever there is a change in chat messages
   }
 
-
   @override
   void onNewChatMessage(ChatMessage message) {
     // Called when a new chat message is shared
   }
-
 
   @override
   void onMessageRateLimitReset() {
@@ -1669,11 +1401,9 @@ class ChatListener extends RtkChatEventListener {
   }
 }
 
-
 // Add listener
 final chatListener = ChatListener();
 meeting.addChatEventListener(chatListener);
-
 
 // Handle errors
 switch (err.runtimeType) {
@@ -1699,28 +1429,22 @@ switch (err.runtimeType) {
 
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all chat messages
 const messages = meeting.chat.messages;
 
-
 // Send a text message
 await meeting.chat.sendTextMessage("Hello everyone!");
-
 
 // Send an image
 await meeting.chat.sendImageMessage(imageFile);
 
-
 // Listen to chat messages
 console.log("First message:", meeting.chat.messages[0]);
 
-
 meeting.chat.on("chatUpdate", ({ message, messages }) => {
-  console.log(`Received message ${message}`);
-  console.log(`All messages in chat: ${messages.join(", ")}`);
+	console.log(`Received message ${message}`);
+	console.log(`All messages in chat: ${messages.join(", ")}`);
 });
 ```
 
@@ -1730,21 +1454,17 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all polls
 const polls = meeting.polls.items;
 
-
 // Create a poll
 await meeting.polls.create(
-  "What time works best?", //question
-  ["9 AM", "2 PM", "5 PM"], // options
-  false, // anonymous
-  false, // hideVotes
+	"What time works best?", //question
+	["9 AM", "2 PM", "5 PM"], // options
+	false, // anonymous
+	false, // hideVotes
 );
-
 
 // Vote on a poll
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
@@ -1752,21 +1472,17 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all polls
 const polls = meeting.polls.items;
 
-
 // Create a poll
 await meeting.polls.create(
-  "What time works best?", //question
-  ["9 AM", "2 PM", "5 PM"], // options
-  false, // anonymous
-  false, // hideVotes
+	"What time works best?", //question
+	["9 AM", "2 PM", "5 PM"], // options
+	false, // anonymous
+	false, // hideVotes
 );
-
 
 // Vote on a poll
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
@@ -1774,21 +1490,17 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all polls
 const polls = meeting.polls.items;
 
-
 // Create a poll
 await meeting.polls.create(
-  "What time works best?", //question
-  ["9 AM", "2 PM", "5 PM"], // options
-  false, // anonymous
-  false, // hideVotes
+	"What time works best?", //question
+	["9 AM", "2 PM", "5 PM"], // options
+	false, // anonymous
+	false, // hideVotes
 );
-
 
 // Vote on a poll
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
@@ -1796,12 +1508,9 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 The `meeting.polls` manages polls in the meeting.
 
-**Kotlin**
-
 ```kotlin
 // Get all polls
 val polls = meeting.polls.items
-
 
 // Create a poll
 val pollsCreateError: PollsError? = meeting.polls.create(
@@ -1811,12 +1520,10 @@ val pollsCreateError: PollsError? = meeting.polls.create(
   hideVotes = false
 )
 
-
 // Vote on a poll
 val poll: Poll = meeting.polls.items.first()
 val selectedPollOption: PollOption = poll.options.first()
 val pollsError: PollsError? = meeting.polls.vote(poll.id, selectedPollOption)
-
 
 // Listen to poll updates
 meeting.addPollsEventListener(object : RtkPollsEventListener {
@@ -1824,11 +1531,9 @@ meeting.addPollsEventListener(object : RtkPollsEventListener {
       // Called when a new poll is created
     }
 
-
     override fun onPollUpdate(poll: Poll) {
       // Called when a poll is updated (votes, details changed)
     }
-
 
     override fun onPollUpdates(pollItems: List<Poll>) {
       // Called when there are updates to the list of polls
@@ -1838,12 +1543,9 @@ meeting.addPollsEventListener(object : RtkPollsEventListener {
 
 The `meeting.polls` manages polls in the meeting.
 
-**Swift**
-
 ```swift
 // Get all polls
 let polls = meeting.polls.items
-
 
 // Create a poll
 let pollsCreateError: PollsError? = meeting.polls.create(
@@ -1853,12 +1555,10 @@ let pollsCreateError: PollsError? = meeting.polls.create(
   hideVotes: false
 )
 
-
 // Vote on a poll
 let poll: Poll = meeting.polls.items.first
 let selectedPollOption: PollOption = poll.options.first
 let pollsError: PollsError? = meeting.polls.vote(poll.id, selectedPollOption)
-
 
 // Listen to poll updates
 extension MeetingViewModel: RtkPollsEventListener {
@@ -1866,17 +1566,14 @@ extension MeetingViewModel: RtkPollsEventListener {
         // Called when a new poll is created
     }
 
-
     func onPollUpdate(poll: Poll) {
         // Called when a poll is updated (votes, details changed)
     }
-
 
     func onPollUpdates(pollItems: [Poll]) {
         // Called when there are updates to the list of polls
     }
 }
-
 
 // Add listener
 meeting.addPollsEventListener(self)
@@ -1884,12 +1581,9 @@ meeting.addPollsEventListener(self)
 
 The `meeting.polls` manages polls in the meeting.
 
-**Dart**
-
 ```dart
 // Get all polls
 final polls = meeting.polls.items;
-
 
 // Create a poll
 final pollsCreateError = meeting.polls.create(
@@ -1899,12 +1593,10 @@ final pollsCreateError = meeting.polls.create(
   hideVotes: false
 );
 
-
 // Vote on a poll
 final poll = meeting.polls.items.first;
 final selectedPollOption = poll.options.first;
 final pollsError = meeting.polls.vote(poll.id, selectedPollOption);
-
 
 // Listen to poll updates
 class PollsListener extends RtkPollsEventListener {
@@ -1913,19 +1605,16 @@ class PollsListener extends RtkPollsEventListener {
     // Called when a new poll is created
   }
 
-
   @override
   void onPollUpdate(Poll poll) {
     // Called when a poll is updated (votes, details changed)
   }
-
 
   @override
   void onPollUpdates(List<Poll> pollItems) {
     // Called when there are updates to the list of polls
   }
 }
-
 
 // Add listener
 final pollsListener = PollsListener();
@@ -1934,21 +1623,17 @@ meeting.addPollsEventListener(pollsListener);
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
 
-**JavaScript**
-
 ```javascript
 // Get all polls
 const polls = meeting.polls.items;
 
-
 // Create a poll
 await meeting.polls.create(
-  "What time works best?", //question
-  ["9 AM", "2 PM", "5 PM"], // options
-  false, // anonymous
-  false, // hideVotes
+	"What time works best?", //question
+	["9 AM", "2 PM", "5 PM"], // options
+	false, // anonymous
+	false, // hideVotes
 );
-
 
 // Vote on a poll
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
@@ -1960,20 +1645,15 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 The [meeting.plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
-**JavaScript**
-
 ```javascript
 // Get all available plugins
 const allPlugins = meeting.plugins.all.toArray();
 
-
 // Get active plugins
 const activePlugins = meeting.plugins.active.toArray();
 
-
 // Activate a plugin for all participants
 await meeting.plugins.all.get(pluginId).activate();
-
 
 // Deactivate a plugin for all participants
 await meeting.plugins.all.get(pluginId).deactivate();
@@ -1981,20 +1661,15 @@ await meeting.plugins.all.get(pluginId).deactivate();
 
 The [meeting.plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
-**JavaScript**
-
 ```javascript
 // Get all available plugins
 const allPlugins = meeting.plugins.all.toArray();
 
-
 // Get active plugins
 const activePlugins = meeting.plugins.active.toArray();
 
-
 // Activate a plugin for all participants
 await meeting.plugins.all.get(pluginId).activate();
-
 
 // Deactivate a plugin for all participants
 await meeting.plugins.all.get(pluginId).deactivate();
@@ -2002,20 +1677,15 @@ await meeting.plugins.all.get(pluginId).deactivate();
 
 The [meeting.plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
-**JavaScript**
-
 ```javascript
 // Get all available plugins
 const allPlugins = meeting.plugins.all.toArray();
 
-
 // Get active plugins
 const activePlugins = meeting.plugins.active.toArray();
 
-
 // Activate a plugin for all participants
 await meeting.plugins.all.get(pluginId).activate();
-
 
 // Deactivate a plugin for all participants
 await meeting.plugins.all.get(pluginId).deactivate();
@@ -2023,28 +1693,21 @@ await meeting.plugins.all.get(pluginId).deactivate();
 
 The `meeting.plugins` manages meeting plugins (collaborative apps).
 
-**Kotlin**
-
 ```kotlin
 // Get all available plugins
 val plugins = meeting.plugins.all
 
-
 // Get active plugins
 val activePlugins = meeting.plugins.active
-
 
 // Activate a plugin
 meeting.plugins.all.first().activate()
 
-
 // Deactivate a plugin
 meeting.plugins.active.first().deactivate()
 
-
 // Get plugin view
 val pluginView = meeting.plugins.active.first().getPluginView() // Returns a WebView
-
 
 // Send data to a plugin
 val pluginId = ""
@@ -2054,7 +1717,6 @@ plugin?.sendData(
   data = "Hello world"
 )
 
-
 // Upload file to a plugin
 plugin?.uploadFile(
   RtkPluginFile(
@@ -2063,57 +1725,45 @@ plugin?.uploadFile(
   )
 )
 
-
 // Listen to plugin events
 val pluginsEventListener = object : RtkPluginsEventListener {
   override fun onPluginActivated(plugin: RtkPlugin) {
     // Called when a plugin is activated
   }
 
-
   override fun onPluginDeactivated(plugin: RtkPlugin) {
     // Called when a plugin is deactivated
   }
 
-
   override fun onPluginMessage(plugin: RtkPlugin, eventName: String, data: Any?) {
     // Called when a plugin sends a message
   }
-
 
   override fun onPluginFileRequest(plugin: RtkPlugin) {
     // Called when a plugin requests a file
   }
 }
 
-
 meeting.addPluginsEventListener(pluginsEventListener)
 ```
 
 The `meeting.plugins` manages meeting plugins (collaborative apps).
 
-**Swift**
-
 ```swift
 // Get all available plugins
 let plugins = meeting.plugins.all
 
-
 // Get active plugins
 let activePlugins = meeting.plugins.active
-
 
 // Activate a plugin
 meeting.plugins.all.first?.activate()
 
-
 // Deactivate a plugin
 meeting.plugins.active.first?.deactivate()
 
-
 // Get plugin view
 let pluginView = meeting.plugins.active.first?.getPluginView() // Returns a WKWebView
-
 
 // Send data to a plugin
 let pluginId = ""
@@ -2123,29 +1773,24 @@ plugin?.sendData(
   data: "Hello world"
 )
 
-
 // Listen to plugin events
 extension MeetingViewModel: RtkPluginsEventListener {
     func onPluginActivated(plugin: RtkPlugin) {
         // Called when a plugin is activated
     }
 
-
     func onPluginDeactivated(plugin: RtkPlugin) {
         // Called when a plugin is deactivated
     }
-
 
     func onPluginMessage(plugin: RtkPlugin, eventName: String, data: Any?) {
         // Called when a plugin sends a message
     }
 
-
     func onPluginFileRequest(plugin: RtkPlugin) {
         // Called when a plugin requests a file
     }
 }
-
 
 // Add listener
 meeting.addPluginsEventListener(self)
@@ -2153,28 +1798,21 @@ meeting.addPluginsEventListener(self)
 
 The `meeting.plugins` manages meeting plugins (collaborative apps).
 
-**Dart**
-
 ```dart
 // Get all available plugins
 final plugins = meeting.plugins.all;
 
-
 // Get active plugins
 final activePlugins = meeting.plugins.active;
-
 
 // Activate a plugin
 meeting.plugins.all.first.activate();
 
-
 // Deactivate a plugin
 meeting.plugins.active.first.deactivate();
 
-
 // Get plugin view
 final pluginView = meeting.plugins.active.first.getPluginView(); // Returns a Widget
-
 
 // Send data to a plugin
 final pluginId = "";
@@ -2184,7 +1822,6 @@ plugin?.sendData(
   data: "Hello world"
 );
 
-
 // Listen to plugin events
 class PluginsListener extends RtkPluginsEventListener {
   @override
@@ -2192,25 +1829,21 @@ class PluginsListener extends RtkPluginsEventListener {
     // Called when a plugin is activated
   }
 
-
   @override
   void onPluginDeactivated(RtkPlugin plugin) {
     // Called when a plugin is deactivated
   }
-
 
   @override
   void onPluginMessage(RtkPlugin plugin, String eventName, dynamic data) {
     // Called when a plugin sends a message
   }
 
-
   @override
   void onPluginFileRequest(RtkPlugin plugin) {
     // Called when a plugin requests a file
   }
 }
-
 
 // Add listener
 final pluginsListener = PluginsListener();
@@ -2219,16 +1852,12 @@ meeting.addPluginsEventListener(pluginsListener);
 
 The [meeting.plugins ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
 
-**JavaScript**
-
 ```javascript
 // Get all available plugins
 const plugins = meeting.plugins.all;
 
-
 // Activate a plugin
 await meeting.plugins.activate(pluginId);
-
 
 // Deactivate a plugin
 await meeting.plugins.deactivate();
@@ -2240,7 +1869,12 @@ await meeting.plugins.deactivate();
 
 The `meeting.ai` provides access to AI-powered features like live transcription.
 
-**JavaScript**
+```javascript
+// Access live transcriptions
+meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
+```
+
+The `meeting.ai` provides access to AI-powered features like live transcription.
 
 ```javascript
 // Access live transcriptions
@@ -2249,25 +1883,12 @@ meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
 
 The `meeting.ai` provides access to AI-powered features like live transcription.
 
-**JavaScript**
-
 ```javascript
 // Access live transcriptions
 meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
 ```
 
 The `meeting.ai` provides access to AI-powered features like live transcription.
-
-**JavaScript**
-
-```javascript
-// Access live transcriptions
-meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
-```
-
-The `meeting.ai` provides access to AI-powered features like live transcription.
-
-**JavaScript**
 
 ```javascript
 // Access live transcriptions
@@ -2284,40 +1905,29 @@ meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
 
 Join or leave a meeting room:
 
-**JavaScript**
-
 ```javascript
 // Join the meeting room
 await meeting.join(); // Emits a `roomJoined` event on `meeting.self` when successful
-
 
 // Leave the meeting room
 await meeting.leave();
 ```
 
-**JavaScript**
-
 ```javascript
 // Join the meeting room
 await meeting.join(); // Emits a `roomJoined` event on `meeting.self` when successful
-
 
 // Leave the meeting room
 await meeting.leave();
 ```
 
-**JavaScript**
-
 ```javascript
 // Join the meeting room
 await meeting.join(); // Emits a `roomJoined` event on `meeting.self` when successful
 
-
 // Leave the meeting room
 await meeting.leave();
 ```
-
-**Kotlin**
 
 ```kotlin
 // Join the meeting room
@@ -2330,7 +1940,6 @@ meeting.joinRoom(
   }
 )
 
-
 // Leave the meeting room
 meeting.leave(
   onSuccess = {
@@ -2341,8 +1950,6 @@ meeting.leave(
   }
 )
 ```
-
-**Swift**
 
 ```swift
 // Join the meeting room
@@ -2355,7 +1962,6 @@ meeting.joinRoom(
   }
 )
 
-
 // Leave the meeting room
 meeting.leave(
   onSuccess: {
@@ -2366,8 +1972,6 @@ meeting.leave(
   }
 )
 ```
-
-**Dart**
 
 ```dart
 // Join the meeting room
@@ -2380,7 +1984,6 @@ meeting.joinRoom(
   }
 );
 
-
 // Leave the meeting room
 meeting.leave(
   onSuccess: () {
@@ -2392,12 +1995,9 @@ meeting.leave(
 );
 ```
 
-**JavaScript**
-
 ```javascript
 // Join the meeting room
 await meeting.join(); // Emits a `roomJoined` event on `meeting.self` when successful
-
 
 // Leave the meeting room
 await meeting.leave();
@@ -2426,7 +2026,14 @@ RealtimeKit uses two types of identifiers for participants:
 
 Now that you understand the meeting object structure, you can use it to build custom meeting experiences. The UI Kit components internally use this same meeting object to provide ready-to-use interfaces. In the next guide, we'll show you how to combine UI Kit components with direct meeting object access to create your own custom UI.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained · Cloudflare Realtime docs","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/meeting-object-explained/","name":"Meeting Object Explained"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained · Cloudflare Realtime docs","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

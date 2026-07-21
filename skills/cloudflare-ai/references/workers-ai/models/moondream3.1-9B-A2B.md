@@ -1,22 +1,27 @@
 ---
-title: moondream3.1-9B-A2B
 description: Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: moondream3.1-9B-A2B
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
+[Skip to content ](#main-content)
+
 > Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-![Moondream logo](https://developers.cloudflare.com/_astro/moondream.D8EsrOAZ.svg)
+ m
 
 #  moondream3.1-9B-A2B
 
-Image-to-Text • Moondream
+ Image-to-Text • moondream
 
-`@cf/moondream/moondream3.1-9B-A2B`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/moondream/moondream3.1-9B-A2B `
+
+* Cloudflare-hosted
+* Vision
 
 Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.
 
@@ -25,38 +30,7 @@ Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B
 | Vision       | Yes                                                 |
 | Unit Pricing | $0.30 per M input tokens, $1.00 per M output tokens |
 
-## Usage
-
-**TypeScript**
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const res = await fetch("https://cataas.com/cat");
-    const blob = await res.arrayBuffer();
-    const input = {
-      image: [...new Uint8Array(blob)],
-      prompt: "Generate a caption for this image",
-      max_tokens: 512,
-    };
-    const response = await env.AI.run(
-      "@cf/moondream/moondream3.1-9B-A2B",
-      input
-      );
-    return new Response(JSON.stringify(response));
-  },
-} satisfies ExportedHandler<Env>;
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5508)
-* [ Output ](#tab-panel-5509)
 
 task
 
@@ -136,7 +110,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/#page","headline":"moondream3.1-9B-A2B (Moondream) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.","url":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/#page","headline":"moondream3.1-9B-A2B (moondream) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.","url":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

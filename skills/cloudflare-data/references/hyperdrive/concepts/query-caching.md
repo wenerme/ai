@@ -1,16 +1,18 @@
 ---
-title: Query caching
 description: Hyperdrive automatically caches read queries to reduce database load and improve performance.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query caching
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query caching
 
-# Query caching
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive automatically caches cacheable read queries that your Worker sends to your database when query caching is turned on. This reduces database load and avoids a network round trip to your database for popular queries. Query caching is enabled by default.
 
@@ -21,9 +23,6 @@ Hyperdrive uses database protocols to differentiate between a mutating query (a 
 Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdrive also parses the database wire-protocol and uses it to differentiate between a mutating or non-mutating query.
 
 For example, a read query that populates the front page of a news site would be cached:
-
-* [ PostgreSQL ](#tab-panel-9430)
-* [ MySQL ](#tab-panel-9431)
 
 ```sql
 -- Cacheable: uses a parameterized date value instead of CURRENT_DATE
@@ -39,17 +38,12 @@ ORDER BY published_time DESC LIMIT 50
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-9432)
-* [ MySQL ](#tab-panel-9433)
-
 ```sql
 -- Not cached: mutating queries
 INSERT INTO users(id, name, email) VALUES(555, 'Matt', 'hello@example.com');
 
-
 -- Not cached: LASTVAL() is a volatile function
 SELECT LASTVAL(), * FROM articles LIMIT 50;
-
 
 -- Not cached: NOW() is a stable function
 SELECT * FROM events WHERE created_at > NOW() - INTERVAL '1 hour';
@@ -59,10 +53,8 @@ SELECT * FROM events WHERE created_at > NOW() - INTERVAL '1 hour';
 -- Not cached: mutating queries
 INSERT INTO users(id, name, email) VALUES(555, 'Thomas', 'hello@example.com');
 
-
 -- Not cached: LAST_INSERT_ID() is a volatile function
 SELECT LAST_INSERT_ID(), * FROM articles LIMIT 50;
-
 
 -- Not cached: NOW() returns a non-deterministic value
 SELECT * FROM events WHERE created_at > NOW() - INTERVAL 1 HOUR;
@@ -151,78 +143,63 @@ When you use multiple Hyperdrive configurations for the same database, account f
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-9434)
-* [ MySQL ](#tab-panel-9435)
-
-**index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create clients inside your handler — not in global scope
-    const client = postgres(env.HYPERDRIVE.connectionString);
-    // Use the cache-disabled binding for auth, permissions, and reads after writes.
-    const clientNoCache = postgres(env.HYPERDRIVE_CACHE_DISABLED.connectionString);
-    // ...
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create clients inside your handler — not in global scope
+		const client = postgres(env.HYPERDRIVE.connectionString);
+		// Use the cache-disabled binding for auth, permissions, and reads after writes.
+		const clientNoCache = postgres(env.HYPERDRIVE_CACHE_DISABLED.connectionString);
+		// ...
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create connections inside your handler — not in global scope
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
-    });
-    // Use the cache-disabled binding for auth, permissions, and reads after writes.
-    const connectionNoCache = await createConnection({
-      host: env.HYPERDRIVE_CACHE_DISABLED.host,
-      user: env.HYPERDRIVE_CACHE_DISABLED.user,
-      password: env.HYPERDRIVE_CACHE_DISABLED.password,
-      database: env.HYPERDRIVE_CACHE_DISABLED.database,
-      port: env.HYPERDRIVE_CACHE_DISABLED.port,
-    });
-    // ...
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create connections inside your handler — not in global scope
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
+		});
+		// Use the cache-disabled binding for auth, permissions, and reads after writes.
+		const connectionNoCache = await createConnection({
+			host: env.HYPERDRIVE_CACHE_DISABLED.host,
+			user: env.HYPERDRIVE_CACHE_DISABLED.user,
+			password: env.HYPERDRIVE_CACHE_DISABLED.password,
+			database: env.HYPERDRIVE_CACHE_DISABLED.database,
+			port: env.HYPERDRIVE_CACHE_DISABLED.port,
+		});
+		// ...
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-9436)
-* [  wrangler.toml ](#tab-panel-9437)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>",
-    },
-    {
-      "binding": "HYPERDRIVE_CACHE_DISABLED",
-      "id": "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>",
-    },
-  ],
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>",
+		},
+		{
+			"binding": "HYPERDRIVE_CACHE_DISABLED",
+			"id": "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
 binding = "HYPERDRIVE"
 id = "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>"
-
 
 [[hyperdrive]]
 binding = "HYPERDRIVE_CACHE_DISABLED"
@@ -235,7 +212,14 @@ id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
 * To connect to PostgreSQL, refer to [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/).
 * For troubleshooting guidance, refer to [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/concepts/query-caching/","name":"Query caching"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

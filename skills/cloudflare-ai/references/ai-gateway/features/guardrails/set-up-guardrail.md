@@ -1,16 +1,18 @@
 ---
-title: Set up Guardrails
 description: Enable and configure AI Gateway Guardrails to flag or block harmful content in prompts and responses.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up Guardrails
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Guardrails
 
-# Set up Guardrails
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add Guardrails to any gateway to start evaluating and potentially modifying responses.
 
@@ -50,8 +52,6 @@ You should catch these errors in your application logic and implement error hand
 
 For example, when using [Workers AI with a binding](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/):
 
-**JavaScript**
-
 ```js
 try {
   const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
@@ -71,7 +71,14 @@ try {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/#page","headline":"Set up Guardrails · Cloudflare AI Gateway docs","description":"Enable and configure AI Gateway Guardrails to flag or block harmful content in prompts and responses.","url":"https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/guardrails/","name":"Guardrails"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/features/guardrails/set-up-guardrail/","name":"Set up Guardrails"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/#page","headline":"Set up Guardrails · Cloudflare AI Gateway docs","description":"Enable and configure AI Gateway Guardrails to flag or block harmful content in prompts and responses.","url":"https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

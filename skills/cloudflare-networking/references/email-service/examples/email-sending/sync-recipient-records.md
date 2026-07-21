@@ -1,18 +1,20 @@
 ---
-title: Sync recipient records
 description: Remove recipients after hard bounces and spam complaints.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sync recipient records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Sync recipient records
+#  Sync recipient records
 
 Synchronize application recipient records with Email Sending lifecycle events.
+
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) to update application records after delivery problems. This example uses [Cloudflare Queues](https://developers.cloudflare.com/queues/) and [Workers KV](https://developers.cloudflare.com/kv/) to remove recipients from transactional notifications.
 
@@ -51,7 +53,7 @@ For payload details, refer to [Available Email Sending events](https://developer
 Create a queue and subscribe it to your sending domain:
 
 1. In the Cloudflare dashboard, go to the **Queues** page. Create a queue named `email-events`.
-[ Go to **Queues** ](https://dash.cloudflare.com/?to=/:account/workers/queues)
+[ Go to **Queues** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select `email-events`, then select **Subscriptions** \> **Subscribe to events**.
 3. Enter a subscription name and select **Email Sending** as the source.
 4. Select your sending domain and the `message.bounced` and `message.complained` events.
@@ -61,18 +63,13 @@ Create a queue and subscribe it to your sending domain:
 
 Bind the KV namespace and register the Worker as the queue consumer:
 
-* [  wrangler.jsonc ](#tab-panel-9251)
-* [  wrangler.toml ](#tab-panel-9252)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "recipient-record-sync",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "kv_namespaces": [
     {
       "binding": "RECIPIENTS",
@@ -92,19 +89,15 @@ Bind the KV namespace and register the Worker as the queue consumer:
 }
 ```
 
-**TOML**
-
 ```toml
 name = "recipient-record-sync"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[kv_namespaces]]
 binding = "RECIPIENTS"
 id = "<RECIPIENTS_KV_NAMESPACE_ID>"
-
 
 [[queues.consumers]]
 queue = "email-events"
@@ -119,128 +112,109 @@ The configuration creates `email-events-dlq` during deployment. Queues moves eve
 
 The [queue() handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) processes each event independently. It deletes applicable recipient records and retries failed KV operations.
 
-* [  JavaScript ](#tab-panel-9253)
-* [  TypeScript ](#tab-panel-9254)
-
-**src/index.js**
-
 ```js
 export default {
-  async queue(batch, env) {
-    for (const message of batch.messages) {
-      try {
-        const event = message.body;
+	async queue(batch, env) {
+		for (const message of batch.messages) {
+			try {
+				const event = message.body;
 
+				if (shouldRemove(event)) {
+					await removeRecipient(env, event);
+				}
 
-        if (shouldRemove(event)) {
-          await removeRecipient(env, event);
-        }
-
-
-        message.ack();
-      } catch (error) {
-        console.error("Failed to process Email Sending event", {
-          eventId: message.body.payload.eventId,
-          error,
-        });
-        message.retry();
-      }
-    }
-  },
+				message.ack();
+			} catch (error) {
+				console.error("Failed to process Email Sending event", {
+					eventId: message.body.payload.eventId,
+					error,
+				});
+				message.retry();
+			}
+		}
+	},
 };
 
-
 function shouldRemove(event) {
-  if (event.type === "cf.email.sending.message.complained") {
-    return true;
-  }
+	if (event.type === "cf.email.sending.message.complained") {
+		return true;
+	}
 
-
-  return (
-    event.type === "cf.email.sending.message.bounced" &&
-    event.payload.bounce?.type === "hard"
-  );
+	return (
+		event.type === "cf.email.sending.message.bounced" &&
+		event.payload.bounce?.type === "hard"
+	);
 }
 
-
 async function removeRecipient(env, event) {
-  await env.RECIPIENTS.delete(event.payload.recipient);
-  console.log("Removed recipient record", {
-    eventId: event.payload.eventId,
-    reason: event.type,
-  });
+	await env.RECIPIENTS.delete(event.payload.recipient);
+	console.log("Removed recipient record", {
+		eventId: event.payload.eventId,
+		reason: event.type,
+	});
 }
 ```
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  RECIPIENTS: KVNamespace;
+	RECIPIENTS: KVNamespace;
 }
-
 
 interface EmailSendingEvent {
-  type:
-    | "cf.email.sending.message.bounced"
-    | "cf.email.sending.message.complained";
-  payload: {
-    eventId: string;
-    recipient: string;
-    bounce?: {
-      type: "hard" | "soft";
-    };
-  };
+	type:
+		| "cf.email.sending.message.bounced"
+		| "cf.email.sending.message.complained";
+	payload: {
+		eventId: string;
+		recipient: string;
+		bounce?: {
+			type: "hard" | "soft";
+		};
+	};
 }
-
 
 export default {
-  async queue(batch, env): Promise<void> {
-    for (const message of batch.messages) {
-      try {
-        const event = message.body;
+	async queue(batch, env): Promise<void> {
+		for (const message of batch.messages) {
+			try {
+				const event = message.body;
 
+				if (shouldRemove(event)) {
+					await removeRecipient(env, event);
+				}
 
-        if (shouldRemove(event)) {
-          await removeRecipient(env, event);
-        }
-
-
-        message.ack();
-      } catch (error) {
-        console.error("Failed to process Email Sending event", {
-          eventId: message.body.payload.eventId,
-          error,
-        });
-        message.retry();
-      }
-    }
-  },
+				message.ack();
+			} catch (error) {
+				console.error("Failed to process Email Sending event", {
+					eventId: message.body.payload.eventId,
+					error,
+				});
+				message.retry();
+			}
+		}
+	},
 } satisfies ExportedHandler<Env, EmailSendingEvent>;
 
-
 function shouldRemove(event: EmailSendingEvent): boolean {
-  if (event.type === "cf.email.sending.message.complained") {
-    return true;
-  }
+	if (event.type === "cf.email.sending.message.complained") {
+		return true;
+	}
 
-
-  return (
-    event.type === "cf.email.sending.message.bounced" &&
-    event.payload.bounce?.type === "hard"
-  );
+	return (
+		event.type === "cf.email.sending.message.bounced" &&
+		event.payload.bounce?.type === "hard"
+	);
 }
 
-
 async function removeRecipient(
-  env: Env,
-  event: EmailSendingEvent,
+	env: Env,
+	event: EmailSendingEvent,
 ): Promise<void> {
-  await env.RECIPIENTS.delete(event.payload.recipient);
-  console.log("Removed recipient record", {
-    eventId: event.payload.eventId,
-    reason: event.type,
-  });
+	await env.RECIPIENTS.delete(event.payload.recipient);
+	console.log("Removed recipient record", {
+		eventId: event.payload.eventId,
+		reason: event.type,
+	});
 }
 ```
 
@@ -275,7 +249,14 @@ Monitor the dead letter queue for failed events. Reprocess them after fixing the
 * [Queues retries](https://developers.cloudflare.com/queues/configuration/batching-retries/) — control message retries.
 * [Workers KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) — account for propagation delays.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/sync-recipient-records/","name":"Sync recipient records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

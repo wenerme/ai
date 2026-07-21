@@ -1,16 +1,18 @@
 ---
-title: Browser Isolation
 description: Review recent changes to Cloudflare Browser Isolation.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Browser Isolation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Browser Isolation
 
-# Browser Isolation
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/browser-isolation.xml)
 
@@ -99,12 +101,12 @@ With these enhanced logs, administrators can gain visibility into end user behav
 
 ```json
 {
-  "AccountID": "$ACCOUNT_ID",
-  "Decision": "block",
-  "DomainName": "www.example.com",
-  "Timestamp": "2025-02-27T23:15:06Z",
-  "Type": "copy",
-  "UserID": "$USER_ID"
+	"AccountID": "$ACCOUNT_ID",
+	"Decision": "block",
+	"DomainName": "www.example.com",
+	"Timestamp": "2025-02-27T23:15:06Z",
+	"Type": "copy",
+	"UserID": "$USER_ID"
 }
 ```
 
@@ -129,7 +131,14 @@ You can now type in languages that use diacritics (like á or ç) and character-
 
 Removed dependency on third-party cookies in the isolated browser, fixing an issue that previously caused intermittent disruptions for users maintaining multi-site, cross-tab sessions in the isolated browser.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/#page","headline":"Browser Isolation Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/browser-isolation/","name":"Browser Isolation"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/#page","headline":"Browser Isolation Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

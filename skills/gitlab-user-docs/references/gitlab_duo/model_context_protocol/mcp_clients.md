@@ -52,8 +52,8 @@ For a click-through demo, see [GitLab Duo Agent Platform - MCP client](https://g
 - For JetBrains IDEs:
   - Install and set up the [GitLab Duo plugin for JetBrains IDEs](../../../editor_extensions/jetbrains_ide/setup.md) 3.14.0 or later.
 - For your command line:
-  - Meet the [prerequisites for the GitLab Duo CLI](../../gitlab_duo_cli/_index.md#prerequisites).
-  - Install and configure the [GitLab Duo CLI](../../gitlab_duo_cli/_index.md#set-up-the-gitlab-duo-cli)
+  - Meet the [prerequisites for the GitLab Duo CLI](../../gitlab_duo_cli/set_up.md#prerequisites).
+  - Install and configure the [GitLab Duo CLI](../../gitlab_duo_cli/set_up.md)
     8.81.0 or later.
 
 For more information about extension support, see [version compatibility](#version-compatibility).

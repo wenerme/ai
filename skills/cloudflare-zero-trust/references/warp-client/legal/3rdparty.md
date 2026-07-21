@@ -1,16 +1,18 @@
 ---
-title: Third party licenses
 description: Third-party licenses used in the WARP client.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Third party licenses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Third party licenses
 
-# Third party licenses
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/warp-client/legal/3rdparty/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Following is the third party license information for our desktop applications. License information for our iOS and Android clients can be found in-app.
 
@@ -601,7 +603,6 @@ THE SOFTWARE.
                      http://www.apache.org/licenses/
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
-
 1. Definitions.
    "License" shall mean the terms and conditions for use, reproduction,
    and distribution as defined by Sections 1 through 9 of this document.
@@ -651,14 +652,12 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    on behalf of whom a Contribution has been received by Licensor and
    subsequently incorporated within the Work.
 
-
 2. Grant of Copyright License. Subject to the terms and conditions of
    this License, each Contributor hereby grants to You a perpetual,
    worldwide, non-exclusive, no-charge, royalty-free, irrevocable
    copyright license to reproduce, prepare Derivative Works of,
    publicly display, publicly perform, sublicense, and distribute the
    Work and such Derivative Works in Source or Object form.
-
 
 3. Grant of Patent License. Subject to the terms and conditions of
    this License, each Contributor hereby grants to You a perpetual,
@@ -675,7 +674,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    or contributory patent infringement, then any patent licenses
    granted to You under this License for that Work shall terminate
    as of the date such litigation is filed.
-
 
 4. Redistribution. You may reproduce and distribute copies of the
    Work or Derivative Works thereof in any medium, with or without
@@ -713,7 +711,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    reproduction, and distribution of the Work otherwise complies with
    the conditions stated in this License.
 
-
 5. Submission of Contributions. Unless You explicitly state otherwise,
    any Contribution intentionally submitted for inclusion in the Work
    by You to the Licensor shall be under the terms and conditions of
@@ -722,12 +719,10 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    the terms of any separate license agreement you may have executed
    with Licensor regarding such Contributions.
 
-
 6. Trademarks. This License does not grant permission to use the trade
    names, trademarks, service marks, or product names of the Licensor,
    except as required for reasonable and customary use in describing the
    origin of the Work and reproducing the content of the NOTICE file.
-
 
 7. Disclaimer of Warranty. Unless required by applicable law or
    agreed to in writing, Licensor provides the Work (and each
@@ -738,7 +733,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    PARTICULAR PURPOSE. You are solely responsible for determining the
    appropriateness of using or redistributing the Work and assume any
    risks associated with Your exercise of permissions under this License.
-
 
 8. Limitation of Liability. In no event and under no legal theory,
    whether in tort (including negligence), contract, or otherwise,
@@ -751,7 +745,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    work stoppage, computer failure or malfunction, or any and all
    other commercial damages or losses), even if such Contributor
    has been advised of the possibility of such damages.
-
 
 9. Accepting Warranty or Additional Liability. While redistributing
    the Work or Derivative Works thereof, You may choose to offer,
@@ -777,7 +770,7 @@ Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-  http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -1972,7 +1965,6 @@ THE SOFTWARE.
                      http://www.apache.org/licenses/
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
-
 1. Definitions.
    "License" shall mean the terms and conditions for use, reproduction,
    and distribution as defined by Sections 1 through 9 of this document.
@@ -2022,14 +2014,12 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    on behalf of whom a Contribution has been received by Licensor and
    subsequently incorporated within the Work.
 
-
 2. Grant of Copyright License. Subject to the terms and conditions of
    this License, each Contributor hereby grants to You a perpetual,
    worldwide, non-exclusive, no-charge, royalty-free, irrevocable
    copyright license to reproduce, prepare Derivative Works of,
    publicly display, publicly perform, sublicense, and distribute the
    Work and such Derivative Works in Source or Object form.
-
 
 3. Grant of Patent License. Subject to the terms and conditions of
    this License, each Contributor hereby grants to You a perpetual,
@@ -2046,7 +2036,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    or contributory patent infringement, then any patent licenses
    granted to You under this License for that Work shall terminate
    as of the date such litigation is filed.
-
 
 4. Redistribution. You may reproduce and distribute copies of the
    Work or Derivative Works thereof in any medium, with or without
@@ -2084,7 +2073,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    reproduction, and distribution of the Work otherwise complies with
    the conditions stated in this License.
 
-
 5. Submission of Contributions. Unless You explicitly state otherwise,
    any Contribution intentionally submitted for inclusion in the Work
    by You to the Licensor shall be under the terms and conditions of
@@ -2093,12 +2081,10 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    the terms of any separate license agreement you may have executed
    with Licensor regarding such Contributions.
 
-
 6. Trademarks. This License does not grant permission to use the trade
    names, trademarks, service marks, or product names of the Licensor,
    except as required for reasonable and customary use in describing the
    origin of the Work and reproducing the content of the NOTICE file.
-
 
 7. Disclaimer of Warranty. Unless required by applicable law or
    agreed to in writing, Licensor provides the Work (and each
@@ -2109,7 +2095,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    PARTICULAR PURPOSE. You are solely responsible for determining the
    appropriateness of using or redistributing the Work and assume any
    risks associated with Your exercise of permissions under this License.
-
 
 8. Limitation of Liability. In no event and under no legal theory,
    whether in tort (including negligence), contract, or otherwise,
@@ -2122,7 +2107,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    work stoppage, computer failure or malfunction, or any and all
    other commercial damages or losses), even if such Contributor
    has been advised of the possibility of such damages.
-
 
 9. Accepting Warranty or Additional Liability. While redistributing
    the Work or Derivative Works thereof, You may choose to offer,
@@ -2148,7 +2132,7 @@ Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-  http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -3464,7 +3448,14 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   * [ring ↗](https://github.com/briansmith/ring)
 /\* Copyright (C) 1995-1998 Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)) \* All rights reserved. \* \* This package is an SSL implementation written \* by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). \* The implementation was written so as to conform with Netscapes SSL. \* \* This library is free for commercial and non-commercial use as long as \* the following conditions are aheared to. The following conditions \* apply to all code found in this distribution, be it the RC4, RSA, \* lhash, DES, etc., code; not just the SSL code. The SSL documentation \* included with this distribution is covered by the same copyright terms \* except that the holder is Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \* \* Copyright remains Eric Young's, and as such any Copyright notices in \* the code are not to be removed. \* If this package is used in a product, Eric Young should be given attribution \* as the author of the parts of the library used. \* This can be in the form of a textual message at program startup or \* in documentation (online or textual) provided with the package. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* 1\. Redistributions of source code must retain the copyright \* notice, this list of conditions and the following disclaimer. \* 2\. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in the \* documentation and/or other materials provided with the distribution. \* 3\. All advertising materials mentioning features or use of this software \* must display the following acknowledgement: \* "This product includes cryptographic software written by \* Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com))" \* The word 'cryptographic' can be left out if the rouines from the library \* being used are not cryptographic related :-). \* 4\. If you include any Windows specific code (or a derivative thereof) from \* the apps directory (application code) you must include an acknowledgement: \* "This product includes software written by Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com))" \* \* THIS SOFTWARE IS PROVIDED BY ERIC YOUNG \`\`AS IS'' AND \* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE \* ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE \* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL \* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS \* OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT \* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY \* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF \* SUCH DAMAGE. \* \* The licence and distribution terms for any publically available version or \* derivative of this code cannot be changed. i.e. this code cannot simply be \* copied and put under another distribution licence \* \[including the GNU Public Licence.\] \*/ /\* ==================================================================== \* Copyright (c) 1998-2006 The OpenSSL Project. All rights reserved. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* \* 1\. Redistributions of source code must retain the above copyright \* notice, this list of conditions and the following disclaimer. \* \* 2\. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in \* the documentation and/or other materials provided with the \* distribution. \* \* 3\. All advertising materials mentioning features or use of this \* software must display the following acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit. ([http://www.openssl.org/ ↗](http://www.openssl.org/))" \* \* 4\. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to \* endorse or promote products derived from this software without \* prior written permission. For written permission, please contact \* [openssl-core@openssl.org](mailto:openssl-core@openssl.org). \* \* 5\. Products derived from this software may not be called "OpenSSL" \* nor may "OpenSSL" appear in their names without prior written \* permission of the OpenSSL Project. \* \* 6\. Redistributions of any form whatsoever must retain the following \* acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit ([http://www.openssl.org/ ↗](http://www.openssl.org/))" \* \* THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT \`\`AS IS'' AND ANY \* EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR \* PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OpenSSL PROJECT OR \* ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, \* SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \* NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; \* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, \* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED \* OF THE POSSIBILITY OF SUCH DAMAGE. \* ==================================================================== \* \* This product includes cryptographic software written by Eric Young \* ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). This product includes software written by Tim \* Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \*/
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/legal/3rdparty/#page","headline":"Third party licenses · Cloudflare WARP client docs","description":"Third-party licenses used in the WARP client.","url":"https://developers.cloudflare.com/warp-client/legal/3rdparty/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/legal/","name":"Legal"}},{"@type":"ListItem","position":4,"item":{"@id":"/warp-client/legal/3rdparty/","name":"Third party licenses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/legal/3rdparty/#page","headline":"Third party licenses · Cloudflare WARP client docs","description":"Third-party licenses used in the WARP client.","url":"https://developers.cloudflare.com/warp-client/legal/3rdparty/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

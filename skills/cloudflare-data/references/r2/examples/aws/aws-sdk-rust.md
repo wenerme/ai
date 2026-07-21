@@ -1,16 +1,18 @@
 ---
-title: aws-sdk-rust
 description: Configure the AWS SDK for Rust to work with Cloudflare R2 object storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws-sdk-rust
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws-sdk-rust
 
-# aws-sdk-rust
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -23,7 +25,6 @@ This example uses the [aws-sdk-s3 ↗](https://crates.io/crates/aws-sdk-s3) crat
 use aws_sdk_s3 as s3;
 use aws_smithy_types::date_time::Format::DateTime;
 
-
 #[tokio::main]
 async fn main() -> Result<(), s3::Error> {
     let bucket_name = "sdk-example";
@@ -33,7 +34,6 @@ async fn main() -> Result<(), s3::Error> {
     // (see: https://developers.cloudflare.com/r2/api/tokens)
     let access_key_id = "<ACCESS_KEY_ID>";
     let access_key_secret = "<SECRET_ACCESS_KEY>";
-
 
     // Configure the client
     let config = aws_config::from_env()
@@ -49,13 +49,10 @@ async fn main() -> Result<(), s3::Error> {
         .load()
         .await;
 
-
     let client = s3::Client::new(&config);
-
 
     // List buckets
     let list_buckets_output = client.list_buckets().send().await?;
-
 
     println!("Buckets:");
     for bucket in list_buckets_output.buckets() {
@@ -68,14 +65,12 @@ async fn main() -> Result<(), s3::Error> {
         );
     }
 
-
     // List objects in a specific bucket
     let list_objects_output = client
         .list_objects_v2()
         .bucket(bucket_name)
         .send()
         .await?;
-
 
     println!("\nObjects in {}:", bucket_name);
     for object in list_objects_output.contents() {
@@ -89,7 +84,6 @@ async fn main() -> Result<(), s3::Error> {
         );
     }
 
-
     Ok(())
 }
 ```
@@ -102,7 +96,6 @@ To upload an object to R2:
 use aws_sdk_s3::primitives::ByteStream;
 use std::path::Path;
 
-
 async fn upload_object(
     client: &s3::Client,
     bucket: &str,
@@ -111,7 +104,6 @@ async fn upload_object(
 ) -> Result<(), s3::Error> {
     let body = ByteStream::from_path(Path::new(file_path)).await.unwrap();
 
-
     client
         .put_object()
         .bucket(bucket)
@@ -119,7 +111,6 @@ async fn upload_object(
         .body(body)
         .send()
         .await?;
-
 
     println!("Uploaded {} to {}/{}", file_path, bucket, key);
     Ok(())
@@ -134,7 +125,6 @@ To download an object from R2:
 use std::fs;
 use std::io::Write;
 
-
 async fn download_object(
     client: &s3::Client,
     bucket: &str,
@@ -148,14 +138,11 @@ async fn download_object(
         .send()
         .await?;
 
-
     let data = resp.body.collect().await?;
     let bytes = data.into_bytes();
 
-
     let mut file = fs::File::create(output_path)?;
     file.write_all(&bytes)?;
-
 
     println!("Downloaded {}/{} to {}", bucket, key, output_path);
     Ok(())
@@ -170,7 +157,6 @@ You can also generate presigned links that can be used to temporarily share publ
 use aws_sdk_s3::presigning::PresigningConfig;
 use std::time::Duration;
 
-
 async fn generate_get_presigned_url(
     client: &s3::Client,
     bucket: &str,
@@ -178,7 +164,6 @@ async fn generate_get_presigned_url(
     expires_in: Duration,
 ) -> Result<String, s3::Error> {
     let presigning_config = PresigningConfig::expires_in(expires_in)?;
-
 
     // Generate a presigned URL for GET (download)
     let presigned_get_request = client
@@ -188,10 +173,8 @@ async fn generate_get_presigned_url(
         .presigned(presigning_config)
         .await?;
 
-
     Ok(presigned_get_request.uri().to_string())
 }
-
 
 async fn generate_upload_presigned_url(
     client: &s3::Client,
@@ -201,7 +184,6 @@ async fn generate_upload_presigned_url(
 ) -> Result<String, s3::Error> {
     let presigning_config = PresigningConfig::expires_in(expires_in)?;
 
-
     // Generate a presigned URL for PUT (upload)
     let presigned_put_request = client
         .put_object()
@@ -209,7 +191,6 @@ async fn generate_upload_presigned_url(
         .key(key)
         .presigned(presigning_config)
         .await?;
-
 
     Ok(presigned_put_request.uri().to_string())
 }
@@ -227,7 +208,14 @@ To download a file using the GET URL:
 curl -X GET "https://<your-presigned-get-url>" -o downloaded-file.txt
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/#page","headline":"aws-sdk-rust · Cloudflare R2 docs","description":"Configure the AWS SDK for Rust to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-rust/","name":"aws-sdk-rust"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/#page","headline":"aws-sdk-rust · Cloudflare R2 docs","description":"Configure the AWS SDK for Rust to work with Cloudflare R2 object storage.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

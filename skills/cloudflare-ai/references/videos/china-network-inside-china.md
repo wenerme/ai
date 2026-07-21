@@ -1,16 +1,10 @@
 ---
-title: China network - How to speed up your web traffic inside mainland China
 description: In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: China network - How to speed up your web traffic inside mainland China
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
-
-# China network - How to speed up your web traffic inside mainland China
+[Skip to content ](#main-content)
 
 In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.
 
@@ -18,17 +12,16 @@ Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction** 0s
+ **Introduction**  0s
 * ![How does it work?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=50s)
 
- **How does it work?** 50s
+ **How does it work?**  50s
 * ![ICP Regulations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=95s)
 
- **ICP Regulations** 1m35s
+ **ICP Regulations**  1m35s
 * ![China Express](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=120s)
 
- **China Express** 2m
-
+ **China Express**  2m
 
 Transcript
 
@@ -95,5 +88,5 @@ Thus, the China network solutions sound like something that will help you reach 
 sales team to learn more.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-inside-china/#page","headline":"China network - How to speed up your web traffic inside mainland China | Cloudflare Docs","description":"In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.","url":"https://developers.cloudflare.com/videos/china-network-inside-china/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-inside-china/#page","headline":"China network - How to speed up your web traffic inside mainland China | Cloudflare Docs","description":"In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.","url":"https://developers.cloudflare.com/videos/china-network-inside-china/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

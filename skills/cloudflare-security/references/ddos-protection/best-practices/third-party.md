@@ -1,16 +1,18 @@
 ---
-title: Third-party services and DDoS protection
 description: DDoS rule interactions with third-party services like Google and payment providers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Third-party services and DDoS protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Third-party services and DDoS protection
 
-# Third-party services and DDoS protection
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/best-practices/third-party/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Using a third-party CDN in front of Cloudflare
 
@@ -63,7 +65,14 @@ If your organization uses VPNs, NATs, or third-party services at high rates of o
 
 If you are on an Enterprise plan, you can change a rule's action to _Log_ to view the flagged traffic in the [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/). After gathering this information, you can later define rule adjustments as previously described.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/best-practices/third-party/#page","headline":"Third-party services and Cloudflare DDoS protection · Cloudflare DDoS Protection docs","description":"DDoS rule interactions with third-party services like Google and payment providers.","url":"https://developers.cloudflare.com/ddos-protection/best-practices/third-party/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/best-practices/third-party/","name":"Third-party services and DDoS protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/best-practices/third-party/#page","headline":"Third-party services and Cloudflare DDoS protection · Cloudflare DDoS Protection docs","description":"DDoS rule interactions with third-party services like Google and payment providers.","url":"https://developers.cloudflare.com/ddos-protection/best-practices/third-party/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Handle form submissions with Airtable
 description: Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Handle form submissions with Airtable
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Handle form submissions with Airtable
 
-# Handle form submissions with Airtable
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
@@ -30,8 +32,6 @@ If this is your first time building a form and you would like to follow a tutori
 
 Review a simplified example of the form used in this tuttorial. Note that the `action` parameter of the `<form>` tag should point to the deployed Workers application that you will build in this tutorial.
 
-**Your front-end code**
-
 ```html
 <form action="https://workers-airtable-form.signalnerve.workers.dev/submit" method="POST">
   <div>
@@ -39,19 +39,16 @@ Review a simplified example of the form used in this tuttorial. Note that the `a
     <input type="text" name="first_name" id="first_name" autocomplete="given-name" placeholder="Ellen" required />
   </div>
 
-
   <div>
     <label for="last_name">Last name</label>
     <input type="text" name="last_name" id="last_name" autocomplete="family-name" placeholder="Ripley" required />
   </div>
-
 
   <div>
     <label for="email">Email</label>
       <input id="email" name="email" type="email" autocomplete="email" placeholder="eripley@nostromo.com" required />
     </div>
   </div>
-
 
   <div>
     <label for="phone">
@@ -61,12 +58,10 @@ Review a simplified example of the form used in this tuttorial. Note that the `a
     <input type="text" name="phone" id="phone" autocomplete="tel" placeholder="+1 (123) 456-7890" />
   </div>
 
-
   <div>
     <label for="subject">Subject</label>
     <input type="text" name="subject" id="subject" placeholder="Your example subject" required />
   </div>
-
 
   <div>
     <label for="message">
@@ -75,7 +70,6 @@ Review a simplified example of the form used in this tuttorial. Note that the `a
     </label>
     <textarea id="message" name="message" rows="4" placeholder="Tenetur quaerat expedita vero et illo. Tenetur explicabo dolor voluptatem eveniet. Commodi est beatae id voluptatum porro laudantium. Quam placeat accusamus vel officiis vel. Et perferendis dicta ut perspiciatis quos iste. Tempore autem molestias voluptates in sapiente enim doloremque." required></textarea>
   </div>
-
 
   <div>
     <button type="submit">
@@ -172,54 +166,47 @@ With your Airtable base set up, and the keys and IDs you need to communicate wit
 
 In your Worker project's `index.js` file, replace the default code with a Workers fetch handler that can respond to requests. When the URL requested has a pathname of `/submit`, you will handle a new form submission, otherwise, you will return a `404 Not Found` response.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === "/submit") {
-      await submitHandler(request, env);
-    }
-    return new Response("Not found", { status: 404 });
-  },
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		if (url.pathname === "/submit") {
+			await submitHandler(request, env);
+		}
+		return new Response("Not found", { status: 404 });
+	},
 };
 ```
 
 The `submitHandler` has two functions. First, it will parse the form data coming from your HTML5 form. Once the data is parsed, use the Airtable API to persist a new row (a new form submission) to your table:
 
-**JavaScript**
-
 ```js
 async function submitHandler(request, env) {
-  if (request.method !== "POST") {
-    return new Response("Method Not Allowed", {
-      status: 405,
-    });
-  }
-  const body = await request.formData();
+	if (request.method !== "POST") {
+		return new Response("Method Not Allowed", {
+			status: 405,
+		});
+	}
+	const body = await request.formData();
 
+	const { first_name, last_name, email, phone, subject, message } =
+		Object.fromEntries(body);
 
-  const { first_name, last_name, email, phone, subject, message } =
-    Object.fromEntries(body);
-
-
-  // The keys in "fields" are case-sensitive, and
-  // should exactly match the field names you set up
-  // in your Airtable table, such as "First Name".
-  const reqBody = {
-    fields: {
-      "First Name": first_name,
-      "Last Name": last_name,
-      Email: email,
-      "Phone Number": phone,
-      Subject: subject,
-      Message: message,
-    },
-  };
-  await createAirtableRecord(env, reqBody);
+	// The keys in "fields" are case-sensitive, and
+	// should exactly match the field names you set up
+	// in your Airtable table, such as "First Name".
+	const reqBody = {
+		fields: {
+			"First Name": first_name,
+			"Last Name": last_name,
+			Email: email,
+			"Phone Number": phone,
+			Subject: subject,
+			Message: message,
+		},
+	};
+	await createAirtableRecord(env, reqBody);
 }
-
 
 // Existing code
 // export default ...
@@ -237,28 +224,25 @@ The variable `reqBody` represents a collection of fields, which are key-value pa
 
 Then you call `createAirtableRecord` (the function you will define next). The `createAirtableRecord` function accepts a `body` parameter, which conforms to the Airtable API's required format — namely, a JavaScript object containing key-value pairs under `fields`, representing a single record to be created on your table:
 
-**JavaScript**
-
 ```js
 async function createAirtableRecord(env, body) {
-  try {
-    const result = fetch(
-      `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`,
-      {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          Authorization: `Bearer ${env.AIRTABLE_ACCESS_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      },
-    );
-    return result;
-  } catch (error) {
-    console.error(error);
-  }
+	try {
+		const result = fetch(
+			`https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`,
+			{
+				method: "POST",
+				body: JSON.stringify(body),
+				headers: {
+					Authorization: `Bearer ${env.AIRTABLE_ACCESS_TOKEN}`,
+					"Content-Type": "application/json",
+				},
+			},
+		);
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
 }
-
 
 // Existing code
 // async function submitHandler
@@ -269,34 +253,26 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13079)
-* [  wrangler.toml ](#tab-panel-13080)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "workers-airtable-form",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "vars": {
-    "AIRTABLE_BASE_ID": "exampleBaseId",
-    "AIRTABLE_TABLE_NAME": "Form Submissions"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "workers-airtable-form",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"vars": {
+		"AIRTABLE_BASE_ID": "exampleBaseId",
+		"AIRTABLE_TABLE_NAME": "Form Submissions"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workers-airtable-form"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"
@@ -304,8 +280,6 @@ AIRTABLE_TABLE_NAME = "Form Submissions"
 ```
 
 With all these fields submitted, it is time to deploy your Workers serverless function and get your form communicating with it. First, publish your Worker:
-
-**Deploy your Worker**
 
 ```sh
 npx wrangler deploy
@@ -315,11 +289,11 @@ Your Worker project will deploy to a unique URL — for example, `https://worker
 
 ```html
 <form
-  action="https://workers-airtable-form.cloudflare.workers.dev/submit"
-  method="POST"
-  class="..."
+	action="https://workers-airtable-form.cloudflare.workers.dev/submit"
+	method="POST"
+	class="..."
 >
-  <!-- The rest of your HTML form -->
+	<!-- The rest of your HTML form -->
 </form>
 ```
 
@@ -338,7 +312,14 @@ With this tutorial completed, you have created a Worker that can accept form sub
 * [Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity)
 * [James Quick's video on building a Cloudflare Workers + Airtable integration ↗](https://www.youtube.com/watch?v=tFQ2kbiu1K4)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/handle-form-submissions-with-airtable/","name":"Handle form submissions with Airtable"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 ```

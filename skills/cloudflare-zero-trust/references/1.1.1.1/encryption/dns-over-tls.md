@@ -1,16 +1,18 @@
 ---
-title: DNS over TLS
 description: Encrypt DNS queries using TLS with 1.1.1.1.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: DNS over TLS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS over TLS
 
-# DNS over TLS
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is one way to send DNS queries over an encrypted connection. Cloudflare supports DNS over TLS on standard port `853` and is compliant with [RFC 7858 ↗](https://tools.ietf.org/html/rfc7858).
 
@@ -36,6 +38,7 @@ kdig -d @1.1.1.1 +tls-ca +tls-host=one.one.one.one example.com
 ```
 
 ```sh
+
 ;; DEBUG: Querying for owner(example.com.), class(1), type(1), server(1.1.1.1), port(853), protocol(TCP)
 ;; DEBUG: TLS, imported 138 system certificates
 ;; DEBUG: TLS, received certificate hierarchy:
@@ -49,19 +52,15 @@ kdig -d @1.1.1.1 +tls-ca +tls-host=one.one.one.one example.com
 ;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 3395
 ;; Flags: qr rd ra; QUERY: 1; ANSWER: 1; AUTHORITY: 0; ADDITIONAL: 1
 
-
 ;; EDNS PSEUDOSECTION:
 ;; Version: 0; flags: ; UDP size: 1232 B; ext-rcode: NOERROR
 ;; PADDING: 408 B
 
-
 ;; QUESTION SECTION:
-;; example.com.            IN  A
-
+;; example.com.        		IN	A
 
 ;; ANSWER SECTION:
-example.com.          75897  IN  A  93.184.216.34
-
+example.com.        	75897	IN	A	93.184.216.34
 
 ;; Received 468 B
 ;; Time 2023-06-23 18:05:42 PDT
@@ -72,7 +71,14 @@ example.com.          75897  IN  A  93.184.216.34
 
 Cloudflare's DNS over TLS supports TLS 1.3 and TLS 1.2.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/#page","headline":"DNS over TLS | Cloudflare Docs","description":"Encrypt DNS queries using TLS with 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-tls/","name":"DNS over TLS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/#page","headline":"DNS over TLS | Cloudflare Docs","description":"Encrypt DNS queries using TLS with 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Health Checks Analytics
 description: View Health Checks status history and response time analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Health Checks Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Health Checks Analytics
 
-# Health Checks Analytics
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/health-checks/health-checks-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -21,7 +23,7 @@ Once you have set up a standalone Health Check including notification emails, us
 To access health check analytics:
 
 1. In the Cloudflare dashboard, go to the **Health Check Analytics** page.
-[ Go to **Health Check Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
+[ Go to **Health Check Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
 
 You can evaluate origin uptime, latency, failure reason, and specific event logs:
 
@@ -242,7 +244,14 @@ Review your [health check analytics](https://developers.cloudflare.com/health-ch
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/health-checks-analytics/#page","headline":"Health Checks Analytics · Cloudflare Health Checks docs","description":"View Health Checks status history and response time analytics.","url":"https://developers.cloudflare.com/health-checks/health-checks-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/health-checks/","name":"Health Checks"}},{"@type":"ListItem","position":3,"item":{"@id":"/health-checks/health-checks-analytics/","name":"Health Checks Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/health-checks-analytics/#page","headline":"Health Checks Analytics · Cloudflare Health Checks docs","description":"View Health Checks status history and response time analytics.","url":"https://developers.cloudflare.com/health-checks/health-checks-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Git client
 description: Example Artifacts integration with a Git client.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Git client
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Git client
 
-# Git client
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/examples/git-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use a standard Git client to interact with Artifacts repos. This example walks through clone, but the same approach works for fetch, pull, push, and any other Git operation.
 
@@ -37,14 +39,11 @@ export ARTIFACTS_REPO="starter-repo"
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
-
 # Fetch the repo's remote URL
 REPO_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
 
-
 ARTIFACTS_REMOTE=$(printf '%s' "$REPO_JSON" | jq -r '.result.remote')
-
 
 # Mint a short-lived read token
 TOKEN_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/tokens" \
@@ -52,9 +51,7 @@ TOKEN_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/tokens" \
   --header "Content-Type: application/json" \
   --data "{\"repo\":\"$ARTIFACTS_REPO\",\"scope\":\"read\",\"ttl\":3600}")
 
-
 ARTIFACTS_TOKEN=$(printf '%s' "$TOKEN_JSON" | jq -r '.result.plaintext')
-
 
 # Clone the repo
 git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
@@ -74,11 +71,17 @@ If you need a self-contained remote URL for a short-lived workflow, extract the 
 ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
 ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
 
-
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/git-client/#page","headline":"Git client · Cloudflare Artifacts docs","description":"Example Artifacts integration with a Git client.","url":"https://developers.cloudflare.com/artifacts/examples/git-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/git-client/","name":"Git client"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/git-client/#page","headline":"Git client · Cloudflare Artifacts docs","description":"Example Artifacts integration with a Git client.","url":"https://developers.cloudflare.com/artifacts/examples/git-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

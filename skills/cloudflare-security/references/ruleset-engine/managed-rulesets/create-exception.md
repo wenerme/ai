@@ -1,16 +1,18 @@
 ---
-title: Create an exception
 description: Create an exception to skip specific rules or rulesets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create an exception
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create an exception
 
-# Create an exception
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of a managed ruleset of some of its rules.
 
@@ -50,11 +52,11 @@ Example of rule definition:
 
 ```json
 {
-  "expression": "<RULE_EXPRESSION>",
-  "action": "skip",
-  "action_parameters": {
-    "ruleset": "current"
-  }
+	"expression": "<RULE_EXPRESSION>",
+	"action": "skip",
+	"action_parameters": {
+		"ruleset": "current"
+	}
 }
 ```
 
@@ -70,11 +72,11 @@ Example of rule definition:
 
 ```json
 {
-  "expression": "<RULE_EXPRESSION>",
-  "action": "skip",
-  "action_parameters": {
-    "rulesets": ["<MANAGED_RULESET_1_ID>", "<MANAGED_RULESET_2_ID>"]
-  }
+	"expression": "<RULE_EXPRESSION>",
+	"action": "skip",
+	"action_parameters": {
+		"rulesets": ["<MANAGED_RULESET_1_ID>", "<MANAGED_RULESET_2_ID>"]
+	}
 }
 ```
 
@@ -88,14 +90,14 @@ Example of a rule definition that skips rules `A` and `B` of managed ruleset `1`
 
 ```json
 {
-  "expression": "<RULE_EXPRESSION>",
-  "action": "skip",
-  "action_parameters": {
-    "rules": {
-      "<MANAGED_RULESET_1_ID>": ["<RULE_A_ID>", "<RULE_B_ID>"],
-      "<MANAGED_RULESET_2_ID>": ["<RULE_X_ID>"]
-    }
-  }
+	"expression": "<RULE_EXPRESSION>",
+	"action": "skip",
+	"action_parameters": {
+		"rules": {
+			"<MANAGED_RULESET_1_ID>": ["<RULE_A_ID>", "<RULE_B_ID>"],
+			"<MANAGED_RULESET_2_ID>": ["<RULE_X_ID>"]
+		}
+	}
 }
 ```
 
@@ -111,7 +113,14 @@ For a full example, refer to the [WAF documentation](https://developers.cloudfla
 * If you define an exception that skips all remaining rules, the expressions of those rules are not evaluated.
 * If you define an exception that skips a rule of a managed ruleset, the expression of the rule that executes the managed ruleset is evaluated and the managed ruleset rules are executed except for that specific rule, which is bypassed.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#page","headline":"Create an exception · Cloudflare Ruleset Engine docs","description":"Create an exception to skip specific rules or rulesets.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/managed-rulesets/","name":"Work with managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/managed-rulesets/create-exception/","name":"Create an exception"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#page","headline":"Create an exception · Cloudflare Ruleset Engine docs","description":"Create an exception to skip specific rules or rulesets.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

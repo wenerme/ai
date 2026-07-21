@@ -1,16 +1,18 @@
 ---
-title: TLS decryption
 description: How TLS decryption works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: TLS decryption
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TLS decryption
 
-# TLS decryption
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Gateway can perform [SSL/TLS decryption ↗](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect).
 
@@ -28,9 +30,6 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-8322)
-* [ Terraform (v5) ](#tab-panel-8323)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
@@ -40,12 +39,12 @@ To turn on TLS decryption:
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
@@ -82,10 +81,6 @@ Alternatively, to allow HTTP filtering while accessing a site with an insecure c
 Google Chrome can automatically upgrade HTTP requests to HTTPS requests, even when you select a link that explicitly declares `http://`. When you use Gateway to proxy and filter your traffic, this upgrade can interrupt the connection between your Zero Trust users and Gateway.
 
 You can turn off automatic HTTPS upgrades via a Gateway pass through policy, a Chrome browser flag, or a Chrome Enterprise policy.
-
-* [ Pass through policy ](#tab-panel-8319)
-* [ Chrome browser flag ](#tab-panel-8320)
-* [ Chrome enterprise policy ](#tab-panel-8321)
 
 To disable automatic HTTPS upgrades for a URL across your Zero Trust organization, create a Gateway pass through policy.
 
@@ -126,9 +121,6 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
 ### Enable FIPS compliance
 
-* [ Dashboard ](#tab-panel-8324)
-* [ Terraform (v5) ](#tab-panel-8325)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
@@ -138,12 +130,12 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
@@ -203,7 +195,14 @@ The following table lists the default cipher suites Gateway uses for TLS decrypt
 
 For more information on cipher suites, refer to [Cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#page","headline":"TLS decryption · Cloudflare One docs","description":"How TLS decryption works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/tls-decryption/","name":"TLS decryption"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#page","headline":"TLS decryption · Cloudflare One docs","description":"How TLS decryption works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

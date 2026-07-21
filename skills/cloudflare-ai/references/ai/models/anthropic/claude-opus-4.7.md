@@ -1,40 +1,40 @@
 ---
-title: Claude Opus 4.7
 description: Claude Opus 4.7 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.6. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Opus 4.7
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Opus 4.7
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-opus-4.7`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-opus-4.7 `
+
+* Third-party
+* Zero data retention
 
 Claude Opus 4.7 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.6\. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                         |
-| Request formats                                                            | Anthropic Messages                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.7) |
+| Model Info                                                                  |                                                                                                                              |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                             |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/opus)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                          |
+| Request formats                                                             | Anthropic Messages                                                                                                           |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.7) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-238)
-* [ cURL ](#tab-panel-239)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-242)
-* [ Raw response ](#tab-panel-243)
 
 # The Three Laws of Thermodynamics
 
@@ -112,11 +109,6 @@ Often mentioned alongside these: if two systems are each in thermal equilibrium 
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-240)
-* [ cURL ](#tab-panel-241)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.7',
@@ -145,9 +137,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "system": "You are a helpful coding assistant specializing in Python."
 }'
 ```
-
-* [ Output ](#tab-panel-244)
-* [ Raw response ](#tab-panel-245)
 
 # Reading a JSON File in Python
 
@@ -252,11 +241,6 @@ The `indent=4` argument makes the output nicely formatted. Let me know if you'd 
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-248)
-* [ cURL ](#tab-panel-249)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.7',
@@ -302,9 +286,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-250)
-* [ Raw response ](#tab-panel-251)
 
 Great choice to explore along the way! Here are some popular stops, organized by route:
 
@@ -368,11 +349,6 @@ Let me know and I can build a more detailed itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter.
 
-* [ TypeScript ](#tab-panel-252)
-* [ cURL ](#tab-panel-253)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.7',
@@ -412,9 +388,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-254)
-* [ Raw response ](#tab-panel-255)
 
 # The Wrong Kind of Silence
 
@@ -467,11 +440,6 @@ Seven grains. Facing north. On the desk of a man who drew maps for a living.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-246)
-* [ cURL ](#tab-panel-247)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.7',
@@ -500,9 +468,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-260)
-* [ Raw response ](#tab-panel-261)
 
 # Recursion Explained
 
@@ -811,11 +776,6 @@ Recursion is elegant for problems that can be broken into **smaller versions of 
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-256)
-* [ cURL ](#tab-panel-257)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.7',
@@ -856,9 +816,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-258)
-* [ Raw response ](#tab-panel-259)
 
 I'll search for recent Cloudflare news from this week.
 
@@ -1041,9 +998,6 @@ I'll search for recent Cloudflare news from this week.
 
 ## Parameters
 
-* [ Input ](#tab-panel-262)
-* [ Output ](#tab-panel-263)
-
 ▶messages\[\]
 
 `array`required
@@ -1098,7 +1052,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/#page","headline":"Claude Opus 4.7 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.7 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.6. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/#page","headline":"Claude Opus 4.7 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.7 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.6. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

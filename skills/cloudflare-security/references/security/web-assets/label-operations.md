@@ -1,16 +1,18 @@
 ---
-title: Label operations
 description: Use labels to describe the application use case for Web Assets operations.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Label operations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Label operations
 
-# Label operations
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/web-assets/label-operations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Labels add use-case context to operations. Security detections can use labels to extend relevant focus on traffic with a specific application use case.
 
@@ -68,7 +70,7 @@ Custom labels help you organize operations by owner, application, environment, a
 Apply labels to operations from Web Assets.
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select the operation that you want to label.
 3. Select **Edit labels**.
 4. Select the managed or custom labels to apply.
@@ -88,26 +90,26 @@ The following query returns request counts by operation ID and managed label set
 
 ```graphql
 query GetAdaptiveGroups($zoneTag: string, $start: DateTime!, $end: DateTime!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      httpRequestsAdaptiveGroups(
-        filter: {
-          datetime_geq: $start
-          datetime_leq: $end
-          requestSource: "eyeball"
-          webAssetsLabelsManaged_hasany: ["cf-llm"]
-        }
-        limit: 25
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          webAssetsOperationId
-          webAssetsLabelsManaged
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			httpRequestsAdaptiveGroups(
+				filter: {
+					datetime_geq: $start
+					datetime_leq: $end
+					requestSource: "eyeball"
+					webAssetsLabelsManaged_hasany: ["cf-llm"]
+				}
+				limit: 25
+				orderBy: [count_DESC]
+			) {
+				count
+				dimensions {
+					webAssetsOperationId
+					webAssetsLabelsManaged
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -117,7 +119,14 @@ Replace `cf-llm` with another [managed label](#managed-labels). You can also use
 
 You can export per-request Web Assets data to your storage or SIEM system using [Logpush](https://developers.cloudflare.com/logs/logpush/). The `WebAssetsOperationID` and `WebAssetsLabelsManaged` fields are available in the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/#webassetslabelsmanaged/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/label-operations/#page","headline":"Label operations · Security dashboard docs","description":"Use labels to describe the application use case for Web Assets operations.","url":"https://developers.cloudflare.com/security/web-assets/label-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/web-assets/label-operations/","name":"Label operations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/label-operations/#page","headline":"Label operations · Security dashboard docs","description":"Use labels to describe the application use case for Web Assets operations.","url":"https://developers.cloudflare.com/security/web-assets/label-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

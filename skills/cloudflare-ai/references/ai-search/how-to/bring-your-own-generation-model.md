@@ -1,16 +1,18 @@
 ---
-title: Bring your own generation model
 description: Use AI Search for retrieval while generating responses with an external model like OpenAI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bring your own generation model
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bring your own generation model
 
-# Bring your own generation model
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, AI Search uses a Workers AI model to generate responses. To use a model outside of Workers AI, use AI Search for `search` and pass the retrieved content to a different model for generation. This guide uses an OpenAI model.
 
@@ -92,11 +94,6 @@ bun add ai @ai-sdk/openai
 
 Add the AI Search binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7225)
-* [  wrangler.toml ](#tab-panel-7226)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -109,8 +106,6 @@ Add the AI Search binding to your [Wrangler configuration file](https://develope
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[ai_search_namespaces]]
@@ -127,8 +122,6 @@ npx wrangler secret put OPENAI_API_KEY
 
 For local development, add the key to a `.dev.vars` file in your project root instead:
 
-**.dev.vars**
-
 ```txt
 OPENAI_API_KEY="<YOUR_OPENAI_API_KEY>"
 ```
@@ -137,114 +130,94 @@ OPENAI_API_KEY="<YOUR_OPENAI_API_KEY>"
 
 Update `src/index.ts`. This Worker searches your instance, formats the retrieved chunks, and passes them to OpenAI to generate an answer. Replace `my-instance` with the name of your instance.
 
-* [  JavaScript ](#tab-panel-7227)
-* [  TypeScript ](#tab-panel-7228)
-
-**src/index.js**
-
 ```js
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
-
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// Search for documents in AI Search.
+		const searchResult = await env.AI_SEARCH.get("my-instance").search({
+			messages: [{ role: "user", content: userQuery }],
+		});
 
-    // Search for documents in AI Search.
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-      messages: [{ role: "user", content: userQuery }],
-    });
+		if (searchResult.chunks.length === 0) {
+			return Response.json({ text: `No data found for query "${userQuery}"` });
+		}
 
+		// Join the retrieved chunks into a single string.
+		const chunks = searchResult.chunks
+			.map((chunk) => `<file name="${chunk.item.key}">${chunk.text}</file>`)
+			.join("\n\n");
 
-    if (searchResult.chunks.length === 0) {
-      return Response.json({ text: `No data found for query "${userQuery}"` });
-    }
+		// Send the query and retrieved content to OpenAI for the answer.
+		const openai = createOpenAI({ apiKey: env.OPENAI_API_KEY });
+		const generateResult = await generateText({
+			model: openai("gpt-4o-mini"),
+			messages: [
+				{
+					role: "system",
+					content:
+						"You are a helpful assistant. Answer the user question using the provided files.",
+				},
+				{ role: "user", content: chunks },
+				{ role: "user", content: userQuery },
+			],
+		});
 
-
-    // Join the retrieved chunks into a single string.
-    const chunks = searchResult.chunks
-      .map((chunk) => `<file name="${chunk.item.key}">${chunk.text}</file>`)
-      .join("\n\n");
-
-
-    // Send the query and retrieved content to OpenAI for the answer.
-    const openai = createOpenAI({ apiKey: env.OPENAI_API_KEY });
-    const generateResult = await generateText({
-      model: openai("gpt-4o-mini"),
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a helpful assistant. Answer the user question using the provided files.",
-        },
-        { role: "user", content: chunks },
-        { role: "user", content: userQuery },
-      ],
-    });
-
-
-    return Response.json({ text: generateResult.text });
-  },
+		return Response.json({ text: generateResult.text });
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
-
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
-  OPENAI_API_KEY: string;
+	AI_SEARCH: AiSearchNamespace;
+	OPENAI_API_KEY: string;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
-    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
+		const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
+		// Search for documents in AI Search.
+		const searchResult = await env.AI_SEARCH.get("my-instance").search({
+			messages: [{ role: "user", content: userQuery }],
+		});
 
-    // Search for documents in AI Search.
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-      messages: [{ role: "user", content: userQuery }],
-    });
+		if (searchResult.chunks.length === 0) {
+			return Response.json({ text: `No data found for query "${userQuery}"` });
+		}
 
+		// Join the retrieved chunks into a single string.
+		const chunks = searchResult.chunks
+			.map((chunk) => `<file name="${chunk.item.key}">${chunk.text}</file>`)
+			.join("\n\n");
 
-    if (searchResult.chunks.length === 0) {
-      return Response.json({ text: `No data found for query "${userQuery}"` });
-    }
+		// Send the query and retrieved content to OpenAI for the answer.
+		const openai = createOpenAI({ apiKey: env.OPENAI_API_KEY });
+		const generateResult = await generateText({
+			model: openai("gpt-4o-mini"),
+			messages: [
+				{
+					role: "system",
+					content:
+						"You are a helpful assistant. Answer the user question using the provided files.",
+				},
+				{ role: "user", content: chunks },
+				{ role: "user", content: userQuery },
+			],
+		});
 
-
-    // Join the retrieved chunks into a single string.
-    const chunks = searchResult.chunks
-      .map((chunk) => `<file name="${chunk.item.key}">${chunk.text}</file>`)
-      .join("\n\n");
-
-
-    // Send the query and retrieved content to OpenAI for the answer.
-    const openai = createOpenAI({ apiKey: env.OPENAI_API_KEY });
-    const generateResult = await generateText({
-      model: openai("gpt-4o-mini"),
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a helpful assistant. Answer the user question using the provided files.",
-        },
-        { role: "user", content: chunks },
-        { role: "user", content: userQuery },
-      ],
-    });
-
-
-    return Response.json({ text: generateResult.text });
-  },
+		return Response.json({ text: generateResult.text });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -265,11 +238,22 @@ npx wrangler deploy
 
 ## Next steps
 
-[ Models ](https://developers.cloudflare.com/ai-search/configuration/models/) Use third-party models natively through AI Gateway.
+### [ Models ](https://developers.cloudflare.com/ai-search/configuration/models/)
 
-[ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for searching and chatting from a Worker.
+ Use third-party models natively through AI Gateway.
+
+### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+
+ Full reference for searching and chatting from a Worker.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/bring-your-own-generation-model/","name":"Bring your own generation model"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

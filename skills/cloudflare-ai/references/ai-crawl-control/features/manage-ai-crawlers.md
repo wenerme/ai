@@ -1,16 +1,18 @@
 ---
-title: Manage AI crawlers
 description: Allow, block, or configure actions for AI crawlers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage AI crawlers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage AI crawlers
 
-# Manage AI crawlers
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Crawl Control enables you to take specific action for each AI crawler.
 
@@ -18,7 +20,7 @@ To manage AI crawlers:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Crawlers** tab.
 
 ## Review AI crawler activity
@@ -51,12 +53,9 @@ The values of the table will update according to your filter.
 
 ## Take action for each AI crawler
 
-* [ Without pay per crawl ](#tab-panel-7103)
-* [ With pay per crawl ](#tab-panel-7104)
-
 For each AI crawler, you can choose to allow or block access.
 
-Allow access
+###  Allow access
 
 * **Summary:** You can allow an AI crawler to scrape your content.
 * **When to use:** Allow AI crawlers that offer services which provide value through citations, referrals, or existing agreements.
@@ -64,7 +63,7 @@ Allow access
 
 Note that you can still choose to [Enforce robots.txt](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#take-action-for-each-ai-crawler).
 
-Block access
+###  Block access
 
 * **Summary:** You can block an AI crawler to completely stop the AI crawler from scraping your webpage.
 * **When to use:** Block AI crawlers when their behavior do not align with your content strategy, or violate your policies.
@@ -82,7 +81,7 @@ To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay pe
 
 For each AI crawler, you can take one of three actions: allow, charge, or block.
 
-Allow access
+###  Allow access
 
 * **Summary:** You can allow an AI crawler to scrape your content.
 * **When to use:** Allow AI crawlers that offer services which provide value through citations, referrals, or existing agreements.
@@ -90,7 +89,7 @@ Allow access
 
 For more details on how Cloudflare classifies AI bot traffic, refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
 
-Block access
+###  Block access
 
 * **Summary:** You can block an AI crawler to completely stop the AI crawler from scraping your webpage.
 * **When to use:** Block AI crawlers when their behavior do not align with your content strategy, or violate your policies.
@@ -98,7 +97,7 @@ Block access
 
 Note that you can configure the response that gets returned when blocking an AI crawler. Refer to [Configure block response](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#configure-block-response).
 
-Charge for crawl (private beta)
+###  Charge for crawl (private beta)
 
 * **Summary:** You can charge the owner of the AI crawler for each successful crawl request.
 * **When to use:** Charge AI crawlers when your content has training value, and you want to explore monetization options.
@@ -131,7 +130,7 @@ To edit these values:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Settings** tab.
 4. Under **Block response**, select **Edit**.
 5. Once you have edited the values, select **Save**.
@@ -166,7 +165,14 @@ In the **Response body** text field, enter the response you wish to display for 
 * Use [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) to charge AI crawlers every time they access your content.
 * Learn how AI Crawl Control interacts with WAF, including advanced rule customization, in [AI Crawl Control with Cloudflare WAF](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#page","headline":"Manage AI crawlers · Cloudflare AI Crawl Control docs","description":"Allow, block, or configure actions for AI crawlers.","url":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/manage-ai-crawlers/","name":"Manage AI crawlers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#page","headline":"Manage AI crawlers · Cloudflare AI Crawl Control docs","description":"Allow, block, or configure actions for AI crawlers.","url":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

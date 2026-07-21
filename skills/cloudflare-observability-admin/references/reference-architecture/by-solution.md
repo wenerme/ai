@@ -1,16 +1,18 @@
 ---
-title: Find by solution
 description: Find reference architecture documentation by solution area.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Find by solution
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Find by solution
 
-# Find by solution
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/by-solution/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the list below for reference architecture documentation that relates to a solution area you are interested in.
 
@@ -138,7 +140,14 @@ Architecture content for our developer platform.
 * [Storing User Generated Content](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)
 * [Control and data plane architectural pattern for Durable Objects](https://developers.cloudflare.com/reference-architecture/diagrams/storage/durable-object-control-data-plane-pattern/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/by-solution/#page","headline":"Find by solution · Cloudflare Reference Architecture docs","description":"Find reference architecture documentation by solution area.","url":"https://developers.cloudflare.com/reference-architecture/by-solution/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/by-solution/","name":"Find by solution"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/by-solution/#page","headline":"Find by solution · Cloudflare Reference Architecture docs","description":"Find reference architecture documentation by solution area.","url":"https://developers.cloudflare.com/reference-architecture/by-solution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: OpenAI GPT function calling with JavaScript and Cloudflare Workers
 description: Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: OpenAI GPT function calling with JavaScript and Cloudflare Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  OpenAI GPT function calling with JavaScript and Cloudflare Workers
 
-# OpenAI GPT function calling with JavaScript and Cloudflare Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a project that leverages [OpenAI's function calling ↗](https://platform.openai.com/docs/guides/function-calling) feature, available in OpenAI's latest Chat Completions API models.
 
@@ -90,21 +92,17 @@ bun add openai cheerio
 
 Now, define the structure of your Worker in `index.js`:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Initialize OpenAI API
-    // Handle incoming requests
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		// Initialize OpenAI API
+		// Handle incoming requests
+		return new Response("Hello World!");
+	},
 };
 ```
 
 Above `export default`, add the imports for `openai` and `cheerio`:
-
-**JavaScript**
 
 ```js
 import OpenAI from "openai";
@@ -113,14 +111,11 @@ import * as cheerio from "cheerio";
 
 Within your `fetch` function, instantiate your `OpenAI` client:
 
-**JavaScript**
-
 ```js
 async fetch(request, env, ctx) {
   const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY,
   });
-
 
   // Handle incoming requests
   return new Response('Hello World!');
@@ -141,64 +136,56 @@ OPENAI_API_KEY = "<YOUR_OPENAI_API_KEY>"
 
 Now, make a request to the OpenAI [Chat Completions API ↗](https://platform.openai.com/docs/guides/gpt/chat-completions-api):
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const openai = new OpenAI({
-      apiKey: env.OPENAI_API_KEY,
-    });
+	async fetch(request, env, ctx) {
+		const openai = new OpenAI({
+			apiKey: env.OPENAI_API_KEY,
+		});
 
+		const url = new URL(request.url);
+		const message = url.searchParams.get("message");
 
-    const url = new URL(request.url);
-    const message = url.searchParams.get("message");
+		const messages = [
+			{
+				role: "user",
+				content: message ? message : "What's in the news today?",
+			},
+		];
 
+		const tools = [
+			{
+				type: "function",
+				function: {
+					name: "read_website_content",
+					description: "Read the content on a given website",
+					parameters: {
+						type: "object",
+						properties: {
+							url: {
+								type: "string",
+								description: "The URL to the website to read",
+							},
+						},
+						required: ["url"],
+					},
+				},
+			},
+		];
 
-    const messages = [
-      {
-        role: "user",
-        content: message ? message : "What's in the news today?",
-      },
-    ];
+		const chatCompletion = await openai.chat.completions.create({
+			model: "gpt-4o-mini",
+			messages: messages,
+			tools: tools,
+			tool_choice: "auto",
+		});
 
+		const assistantMessage = chatCompletion.choices[0].message;
+		console.log(assistantMessage);
 
-    const tools = [
-      {
-        type: "function",
-        function: {
-          name: "read_website_content",
-          description: "Read the content on a given website",
-          parameters: {
-            type: "object",
-            properties: {
-              url: {
-                type: "string",
-                description: "The URL to the website to read",
-              },
-            },
-            required: ["url"],
-          },
-        },
-      },
-    ];
-
-
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: messages,
-      tools: tools,
-      tool_choice: "auto",
-    });
-
-
-    const assistantMessage = chatCompletion.choices[0].message;
-    console.log(assistantMessage);
-
-
-    //Later you will continue handling the assistant's response here
-    return new Response(assistantMessage.content);
-  },
+		//Later you will continue handling the assistant's response here
+		return new Response(assistantMessage.content);
+	},
 };
 ```
 
@@ -218,21 +205,18 @@ You will now need to define the `read_website_content` function, which is refere
 
 Add this code above the `export default` block in your `index.js` file:
 
-**JavaScript**
-
 ```js
 async function read_website_content(url) {
-  console.log("reading website content");
+	console.log("reading website content");
 
-
-  const response = await fetch(url);
-  const body = await response.text();
-  let cheerioBody = cheerio.load(body);
-  const resp = {
-    website_body: cheerioBody("p").text(),
-    url: url,
-  };
-  return JSON.stringify(resp);
+	const response = await fetch(url);
+	const body = await response.text();
+	let cheerioBody = cheerio.load(body);
+	const resp = {
+		website_body: cheerioBody("p").text(),
+		url: url,
+	};
+	return JSON.stringify(resp);
 }
 ```
 
@@ -244,37 +228,32 @@ Next, we need to process the response from the OpenAI API to check if it include
 
 Modify the fetch method within the `export default` block as follows:
 
-**JavaScript**
-
 ```js
 // ... your previous code ...
 
-
 if (assistantMessage.tool_calls) {
-  for (const toolCall of assistantMessage.tool_calls) {
-    if (toolCall.function.name === "read_website_content") {
-      const url = JSON.parse(toolCall.function.arguments).url;
-      const websiteContent = await read_website_content(url);
-      messages.push({
-        role: "tool",
-        tool_call_id: toolCall.id,
-        name: toolCall.function.name,
-        content: websiteContent,
-      });
-    }
-  }
+	for (const toolCall of assistantMessage.tool_calls) {
+		if (toolCall.function.name === "read_website_content") {
+			const url = JSON.parse(toolCall.function.arguments).url;
+			const websiteContent = await read_website_content(url);
+			messages.push({
+				role: "tool",
+				tool_call_id: toolCall.id,
+				name: toolCall.function.name,
+				content: websiteContent,
+			});
+		}
+	}
 
+	const secondChatCompletion = await openai.chat.completions.create({
+		model: "gpt-4o-mini",
+		messages: messages,
+	});
 
-  const secondChatCompletion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: messages,
-  });
-
-
-  return new Response(secondChatCompletion.choices[0].message.content);
+	return new Response(secondChatCompletion.choices[0].message.content);
 } else {
-  // this is your existing return statement
-  return new Response(assistantMessage.content);
+	// this is your existing return statement
+	return new Response(assistantMessage.content);
 }
 ```
 
@@ -302,7 +281,14 @@ To continue working with Workers and AI, refer to [the guide on using LangChain 
 
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/openai-function-calls-workers/","name":"OpenAI GPT function calling with JavaScript and Cloudflare Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
 ```

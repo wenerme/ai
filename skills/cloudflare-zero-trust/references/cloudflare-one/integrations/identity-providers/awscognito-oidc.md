@@ -1,16 +1,18 @@
 ---
-title: Amazon Cognito
 description: Amazon Cognito in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Amazon Cognito
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Amazon Cognito
 
-# Amazon Cognito
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Amazon Cognito provides SSO identity management for end users of web and mobile apps. You can integrate Amazon Cognito as an OIDC identity provider for Cloudflare One.
 
@@ -75,21 +77,28 @@ To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity
 
 ```json
 {
-  "config": {
-    "client_id": "<your client id>",
-    "client_secret": "<your client secret>",
-    "auth_url": "https://<your user pool domain>/oauth2/authorize",
-    "token_url": "https://<your user pool domain>/oauth2/token",
-    "certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",
-    "scopes": ["openid", "email", "profile"],
-    "claims": ["sub", "cognito:username", "name", "cognito:groups"]
-  },
-  "type": "oidc",
-  "name": "Amazon Cognito example"
+	"config": {
+		"client_id": "<your client id>",
+		"client_secret": "<your client secret>",
+		"auth_url": "https://<your user pool domain>/oauth2/authorize",
+		"token_url": "https://<your user pool domain>/oauth2/token",
+		"certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",
+		"scopes": ["openid", "email", "profile"],
+		"claims": ["sub", "cognito:username", "name", "cognito:groups"]
+	},
+	"type": "oidc",
+	"name": "Amazon Cognito example"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/#page","headline":"Amazon Cognito · Cloudflare One docs","description":"Amazon Cognito in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/awscognito-oidc/","name":"Amazon Cognito"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/#page","headline":"Amazon Cognito · Cloudflare One docs","description":"Amazon Cognito in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS"]}
 ```

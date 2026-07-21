@@ -1,18 +1,20 @@
 ---
-title: First Live Stream with OBS
 description: Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: First Live Stream with OBS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# First Live Stream with OBS
+#  First Live Stream with OBS
 
 Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/examples/obs-from-scratch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -102,7 +104,14 @@ With these steps, you have created a Live Input on Stream, broadcast a test from
 * Embedding your live stream into a website
 * Find and replay the recording of your live stream
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/#page","headline":"First Live Stream with OBS · Cloudflare Stream docs","description":"Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio","url":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/examples/obs-from-scratch/","name":"First Live Stream with OBS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/#page","headline":"First Live Stream with OBS · Cloudflare Stream docs","description":"Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio","url":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

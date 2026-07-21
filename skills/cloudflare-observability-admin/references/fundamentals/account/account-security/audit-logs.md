@@ -1,16 +1,18 @@
 ---
-title: Audit Logs - version 2
 description: Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Audit Logs - version 2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Audit Logs - version 2
 
-# Audit Logs - version 2
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -66,33 +68,31 @@ Below is an example request to retrieve audit logs for a certain period of time 
 GET https://api.cloudflare.com/client/v4/accounts/1234567890abcdef/logs/audit?since=2025-03-01T00:00:00Z&before=2025-03-26T23:59:59Z
 ```
 
-**Example response**
-
 ```json
 {
-  "result": [
-    {
-      "action": "zone.settings.change",
-      "actor": {
-        "email": "user@example.com",
-        "id": "0987654321abcdef"
-      },
-      "ip": "192.0.2.1",
-      "method": "PUT",
-      "interface": "dashboard",
-      "resources": [
-        {
-          "resource_id": "zone123",
-          "resource_type": "zone"
-        }
-      ],
-      "timestamp": "2025-03-15T14:25:37Z"
-    }
-    // Additional log entries
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"action": "zone.settings.change",
+			"actor": {
+				"email": "user@example.com",
+				"id": "0987654321abcdef"
+			},
+			"ip": "192.0.2.1",
+			"method": "PUT",
+			"interface": "dashboard",
+			"resources": [
+				{
+					"resource_id": "zone123",
+					"resource_type": "zone"
+				}
+			],
+			"timestamp": "2025-03-15T14:25:37Z"
+		}
+		// Additional log entries
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -102,7 +102,7 @@ For more information refer to the [API documentation ↗](https://developers.clo
 
 To access audit logs in the Cloudflare dashboard, go to **Manage Account** \> **Audit Logs**.
 
-[ Go to **Audit logs** ](https://dash.cloudflare.com/?to=/:account/audit-log)
+[ Go to **Audit logs** ↗ ](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 Note
 
@@ -117,7 +117,7 @@ For customers who already have a Logpush job set up for Audit Logs v1, note that
 To create a Logpush job:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
+[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. In **Select a destination**, select the destination of your choice and add the destination details.
 4. In the datasets section, select the [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/). Audit Logs v2 is an account-based dataset.
@@ -195,70 +195,66 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Settings Write`
 * `Account Settings Read`
 
-**Get account audit logs (Version 2)**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Example response**
 
 ```json
 {
-  "errors": [
-    {
-      "message": "message"
-    }
-  ],
-  "result": [
-    {
-      "account": {
-        "id": "4bb334f7c94c4a29a045f03944f072e5",
-        "name": "Example Account"
-      },
-      "action": {
-        "description": "Add Member",
-        "result": "success",
-        "time": "2024-04-26T17:31:07Z",
-        "type": "create"
-      },
-      "actor": {
-        "id": "f6b5de0326bb5182b8a4840ee01ec774",
-        "context": "dash",
-        "email": "alice@example.com",
-        "ip_address": "198.41.129.166",
-        "token_id": "token_id",
-        "token_name": "token_name",
-        "type": "user"
-      },
-      "raw": {
-        "cf_ray_id": "8e9b1c60ef9e1c9a",
-        "method": "POST",
-        "status_code": 200,
-        "uri": "/accounts/4bb334f7c94c4a29a045f03944f072e5/members",
-        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15"
-      },
-      "resource": {
-        "id": "id",
-        "product": "members",
-        "request": {},
-        "response": {},
-        "scope": {},
-        "type": "type"
-      },
-      "zone": {
-        "id": "id",
-        "name": "example.com"
-      }
-    }
-  ],
-  "result_info": {
-    "count": "1",
-    "cursor": "ASqdKd7dKgxh-aZ8bm0mZos1BtW4BdEqifCzNkEeGRzi_5SN_-362Y8sF-C1TRn60_6rd3z2dIajf9EAPyQ_NmIeAMkacmaJPXipqvP7PLU4t72wyqBeJfjmjdE="
-  },
-  "success": true
+	"errors": [
+		{
+			"message": "message"
+		}
+	],
+	"result": [
+		{
+			"account": {
+				"id": "4bb334f7c94c4a29a045f03944f072e5",
+				"name": "Example Account"
+			},
+			"action": {
+				"description": "Add Member",
+				"result": "success",
+				"time": "2024-04-26T17:31:07Z",
+				"type": "create"
+			},
+			"actor": {
+				"id": "f6b5de0326bb5182b8a4840ee01ec774",
+				"context": "dash",
+				"email": "alice@example.com",
+				"ip_address": "198.41.129.166",
+				"token_id": "token_id",
+				"token_name": "token_name",
+				"type": "user"
+			},
+			"raw": {
+				"cf_ray_id": "8e9b1c60ef9e1c9a",
+				"method": "POST",
+				"status_code": 200,
+				"uri": "/accounts/4bb334f7c94c4a29a045f03944f072e5/members",
+				"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15"
+			},
+			"resource": {
+				"id": "id",
+				"product": "members",
+				"request": {},
+				"response": {},
+				"scope": {},
+				"type": "type"
+			},
+			"zone": {
+				"id": "id",
+				"name": "example.com"
+			}
+		}
+	],
+	"result_info": {
+		"count": "1",
+		"cursor": "ASqdKd7dKgxh-aZ8bm0mZos1BtW4BdEqifCzNkEeGRzi_5SN_-362Y8sF-C1TRn60_6rd3z2dIajf9EAPyQ_NmIeAMkacmaJPXipqvP7PLU4t72wyqBeJfjmjdE="
+	},
+	"success": true
 }
 ```
 
@@ -286,7 +282,14 @@ The resource identifies the object impacted by the action. It includes the resou
 
 This is a unique identifier for the log record itself. It can be used for deduplication, correlation, or referencing specific actions during investigations.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/audit-logs/","name":"Audit Logs - version 2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

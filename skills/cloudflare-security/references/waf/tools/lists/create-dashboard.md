@@ -1,21 +1,23 @@
 ---
-title: Create a list in the dashboard
 description: Create and manage lists in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a list in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a list in the dashboard
 
-# Create a list in the dashboard
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To create a list, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **Lists**.
 3. Select **Create new list**.
 4. Enter a name for your list, observing the [list name guidelines](https://developers.cloudflare.com/waf/tools/lists/#list-names).
@@ -29,7 +31,7 @@ To create a list, follow these steps:
 1. (Optional) If you wish to add items to an existing list:
 
   1. Go to the **Settings** page.
-  [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+  [ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
   2. Go to **Lists**.
   3. Select **Edit** next to the list you want to edit.
 2. Select **Add items**.
@@ -63,7 +65,14 @@ The exact CSV file format depends on the list type. Refer to [Custom list types]
   * To add extra items manually, enter the information in the text inputs.
 4. Select **Add to list**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/#page","headline":"Create a list in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage lists in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/lists/","name":"Lists"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/lists/create-dashboard/","name":"Create a list in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/#page","headline":"Create a list in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage lists in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

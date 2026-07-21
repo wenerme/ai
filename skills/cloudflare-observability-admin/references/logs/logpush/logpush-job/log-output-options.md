@@ -1,16 +1,18 @@
 ---
-title: Log Output Options
 description: Customize Logpush log output format and fields.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log Output Options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log Output Options
 
-# Log Output Options
+Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Jobs in Logpush now have a new key, **output\_options**, which replaces **logpull\_options** and allows for more flexible formatting. You can modify **output\_options** via the API.
 
@@ -46,7 +48,7 @@ We have replaced this with **output\_options** as it is used for both Logpull an
 }
 ```
 
-Updates replace output\_options in full
+:::caution\[Updates replace output\_options in full\]
 
 When you update a Logpush job via `PUT /accounts/{account_id}/logpush/jobs/{job_id}` or `PUT /zones/{zone_id}/logpush/jobs/{job_id}`, the **output\_options** object is replaced entirely. Any field that was previously set but omitted from the update payload is reset to its default value. For example, if the existing job sets `timestamp_format: "rfc3339"` and your update only includes `field_names`, the job will revert to the default `timestamp_format` (`unixnano` for API-created jobs). Always include the complete **output\_options** object you want applied when updating a job.
 
@@ -92,9 +94,9 @@ Default output\_options for `ndjson`
 
 ```json
 {
-  "record_prefix": "{",
-  "record_suffix": "}\n",
-  "field_delimiter": ","
+	"record_prefix": "{",
+	"record_suffix": "}\n",
+	"field_delimiter": ","
 }
 ```
 
@@ -143,8 +145,8 @@ Default output\_options for CSV
 
 ```json
 {
-  "record_suffix": "\n",
-  "field_delimiter": ","
+	"record_suffix": "\n",
+	"field_delimiter": ","
 }
 ```
 
@@ -232,29 +234,29 @@ Example output
 
 ```json
 {
-  "events": [
-    {
-      "info": {
-        "ClientIP": "89.163.242.206",
-        "EdgeStartTimestamp": 1506702504433000200,
-        "RayID": "3a6050bcbe121a87"
-      }
-    },
-    {
-      "info": {
-        "ClientIP": "89.163.242.207",
-        "EdgeStartTimestamp": 1506702504433000300,
-        "RayID": "3a6050bcbe121a88"
-      }
-    },
-    {
-      "info": {
-        "ClientIP": "89.163.242.208",
-        "EdgeStartTimestamp": 1506702504433000400,
-        "RayID": "3a6050bcbe121a89"
-      }
-    }
-  ]
+	"events": [
+		{
+			"info": {
+				"ClientIP": "89.163.242.206",
+				"EdgeStartTimestamp": 1506702504433000200,
+				"RayID": "3a6050bcbe121a87"
+			}
+		},
+		{
+			"info": {
+				"ClientIP": "89.163.242.207",
+				"EdgeStartTimestamp": 1506702504433000300,
+				"RayID": "3a6050bcbe121a88"
+			}
+		},
+		{
+			"info": {
+				"ClientIP": "89.163.242.208",
+				"EdgeStartTimestamp": 1506702504433000400,
+				"RayID": "3a6050bcbe121a89"
+			}
+		}
+	]
 }
 ```
 
@@ -278,7 +280,14 @@ For example, if logpull\_options are `fields=ClientIP,EdgeStartTimestamp,RayID&s
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/#page","headline":"Log Output Options · Cloudflare Logs docs","description":"Customize Logpush log output format and fields.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/log-output-options/","name":"Log Output Options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/#page","headline":"Log Output Options · Cloudflare Logs docs","description":"Customize Logpush log output format and fields.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Pages
 description: Wrangler commands for configuring Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pages
 
-# Pages
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wrangler.
 
@@ -18,20 +20,18 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-13363)
-* [  pnpm ](#tab-panel-13364)
-* [  yarn ](#tab-panel-13365)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages dev [DIRECTORY] [COMMAND]
 ```
 
-```sh
-pnpm wrangler pages dev [DIRECTORY] [COMMAND]
+```
+yarn wrangler pages dev [DIRECTORY] [COMMAND]
 ```
 
-```sh
-yarn wrangler pages dev [DIRECTORY] [COMMAND]
+```
+pnpm wrangler pages dev [DIRECTORY] [COMMAND]
 ```
 
 * `[DIRECTORY]` ` string `
@@ -110,20 +110,18 @@ Use a specific auth profile
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-13366)
-* [  pnpm ](#tab-panel-13367)
-* [  yarn ](#tab-panel-13368)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages functions build [DIRECTORY]
 ```
 
-```sh
-pnpm wrangler pages functions build [DIRECTORY]
+```
+yarn wrangler pages functions build [DIRECTORY]
 ```
 
-```sh
-yarn wrangler pages functions build [DIRECTORY]
+```
+pnpm wrangler pages functions build [DIRECTORY]
 ```
 
 * `[DIRECTORY]` ` string ` default: functions
@@ -186,20 +184,18 @@ Use a specific auth profile
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-13369)
-* [  pnpm ](#tab-panel-13370)
-* [  yarn ](#tab-panel-13371)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages project list
 ```
 
-```sh
-pnpm wrangler pages project list
+```
+yarn wrangler pages project list
 ```
 
-```sh
-yarn wrangler pages project list
+```
+pnpm wrangler pages project list
 ```
 
 * `--json` ` boolean ` default: false
@@ -230,20 +226,18 @@ Use a specific auth profile
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-13372)
-* [  pnpm ](#tab-panel-13373)
-* [  yarn ](#tab-panel-13374)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages project create [PROJECT-NAME]
 ```
 
-```sh
-pnpm wrangler pages project create [PROJECT-NAME]
+```
+yarn wrangler pages project create [PROJECT-NAME]
 ```
 
-```sh
-yarn wrangler pages project create [PROJECT-NAME]
+```
+pnpm wrangler pages project create [PROJECT-NAME]
 ```
 
 * `[PROJECT-NAME]` ` string ` required
@@ -280,20 +274,18 @@ Use a specific auth profile
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-13375)
-* [  pnpm ](#tab-panel-13376)
-* [  yarn ](#tab-panel-13377)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages project delete [PROJECT-NAME]
 ```
 
-```sh
-pnpm wrangler pages project delete [PROJECT-NAME]
+```
+yarn wrangler pages project delete [PROJECT-NAME]
 ```
 
-```sh
-yarn wrangler pages project delete [PROJECT-NAME]
+```
+pnpm wrangler pages project delete [PROJECT-NAME]
 ```
 
 * `[PROJECT-NAME]` ` string ` required
@@ -326,20 +318,18 @@ Use a specific auth profile
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-13378)
-* [  pnpm ](#tab-panel-13379)
-* [  yarn ](#tab-panel-13380)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages deployment list
 ```
 
-```sh
-pnpm wrangler pages deployment list
+```
+yarn wrangler pages deployment list
 ```
 
-```sh
-yarn wrangler pages deployment list
+```
+pnpm wrangler pages deployment list
 ```
 
 * `--project-name` ` string `
@@ -374,20 +364,18 @@ Use a specific auth profile
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-13381)
-* [  pnpm ](#tab-panel-13382)
-* [  yarn ](#tab-panel-13383)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages deployment tail [DEPLOYMENT]
 ```
 
-```sh
-pnpm wrangler pages deployment tail [DEPLOYMENT]
+```
+yarn wrangler pages deployment tail [DEPLOYMENT]
 ```
 
-```sh
-yarn wrangler pages deployment tail [DEPLOYMENT]
+```
+pnpm wrangler pages deployment tail [DEPLOYMENT]
 ```
 
 * `[DEPLOYMENT]` ` string `
@@ -436,20 +424,18 @@ Use a specific auth profile
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-13384)
-* [  pnpm ](#tab-panel-13385)
-* [  yarn ](#tab-panel-13386)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages deployment delete [DEPLOYMENT-ID]
 ```
 
-```sh
-pnpm wrangler pages deployment delete [DEPLOYMENT-ID]
+```
+yarn wrangler pages deployment delete [DEPLOYMENT-ID]
 ```
 
-```sh
-yarn wrangler pages deployment delete [DEPLOYMENT-ID]
+```
+pnpm wrangler pages deployment delete [DEPLOYMENT-ID]
 ```
 
 * `[DEPLOYMENT-ID]` ` string ` required
@@ -484,20 +470,18 @@ Use a specific auth profile
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-13387)
-* [  pnpm ](#tab-panel-13388)
-* [  yarn ](#tab-panel-13389)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages deploy [DIRECTORY]
 ```
 
-```sh
-pnpm wrangler pages deploy [DIRECTORY]
+```
+yarn wrangler pages deploy [DIRECTORY]
 ```
 
-```sh
-yarn wrangler pages deploy [DIRECTORY]
+```
+pnpm wrangler pages deploy [DIRECTORY]
 ```
 
 * `[DIRECTORY]` ` string `
@@ -544,20 +528,18 @@ Use a specific auth profile
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-13390)
-* [  pnpm ](#tab-panel-13391)
-* [  yarn ](#tab-panel-13392)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages secret put [KEY]
 ```
 
-```sh
-pnpm wrangler pages secret put [KEY]
+```
+yarn wrangler pages secret put [KEY]
 ```
 
-```sh
-yarn wrangler pages secret put [KEY]
+```
+pnpm wrangler pages secret put [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -590,20 +572,18 @@ Use a specific auth profile
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-13393)
-* [  pnpm ](#tab-panel-13394)
-* [  yarn ](#tab-panel-13395)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages secret bulk [FILE]
 ```
 
-```sh
-pnpm wrangler pages secret bulk [FILE]
+```
+yarn wrangler pages secret bulk [FILE]
 ```
 
-```sh
-yarn wrangler pages secret bulk [FILE]
+```
+pnpm wrangler pages secret bulk [FILE]
 ```
 
 * `[FILE]` ` string `
@@ -636,20 +616,18 @@ Use a specific auth profile
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-13396)
-* [  pnpm ](#tab-panel-13397)
-* [  yarn ](#tab-panel-13398)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages secret delete [KEY]
 ```
 
-```sh
-pnpm wrangler pages secret delete [KEY]
+```
+yarn wrangler pages secret delete [KEY]
 ```
 
-```sh
-yarn wrangler pages secret delete [KEY]
+```
+pnpm wrangler pages secret delete [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -682,20 +660,18 @@ Use a specific auth profile
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-13399)
-* [  pnpm ](#tab-panel-13400)
-* [  yarn ](#tab-panel-13401)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages secret list
 ```
 
-```sh
-pnpm wrangler pages secret list
+```
+yarn wrangler pages secret list
 ```
 
-```sh
-yarn wrangler pages secret list
+```
+pnpm wrangler pages secret list
 ```
 
 * `--project-name` ` string ` aliases: --project
@@ -725,24 +701,22 @@ Use a specific auth profile
 ## `pages download config`
 
 
-Experimental
+ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-13402)
-* [  pnpm ](#tab-panel-13403)
-* [  yarn ](#tab-panel-13404)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pages download config [PROJECTNAME]
 ```
 
-```sh
-pnpm wrangler pages download config [PROJECTNAME]
+```
+yarn wrangler pages download config [PROJECTNAME]
 ```
 
-```sh
-yarn wrangler pages download config [PROJECTNAME]
+```
+pnpm wrangler pages download config [PROJECTNAME]
 ```
 
 * `[PROJECTNAME]` ` string `
@@ -771,7 +745,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pages/#page","headline":"Pages · Cloudflare Workers docs","description":"Wrangler commands for configuring Cloudflare Pages.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/pages/","name":"Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pages/#page","headline":"Pages · Cloudflare Workers docs","description":"Wrangler commands for configuring Cloudflare Pages.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

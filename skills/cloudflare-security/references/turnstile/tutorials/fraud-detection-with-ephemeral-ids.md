@@ -1,16 +1,18 @@
 ---
-title: Fraud detection with Ephemeral IDs
 description: Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Fraud detection with Ephemeral IDs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Fraud detection with Ephemeral IDs
 
-# Fraud detection with Ephemeral IDs
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 
@@ -45,7 +47,6 @@ CREATE TABLE turnstile_events (
     created_at      TIMESTAMPTZ DEFAULT NOW()
 );
 
-
 CREATE TABLE blocked_ephemeral_ids (
     ephemeral_id    VARCHAR(64) PRIMARY KEY,
     reason          VARCHAR(255),
@@ -57,121 +58,104 @@ CREATE TABLE blocked_ephemeral_ids (
 
 When you call Siteverify, the Ephemeral ID is returned in the `metadata` field. Log it with every protected action.
 
-**TypeScript**
-
 ```typescript
 async function verifyAndLogTurnstile(
-  token: string,
-  ip: string,
-  secretKey: string,
-  eventType: string,
-  db: Database,
+	token: string,
+	ip: string,
+	secretKey: string,
+	eventType: string,
+	db: Database,
 ): Promise<{ success: boolean; ephemeralId?: string; isBlocked: boolean }> {
-  // Call Siteverify API
-  const response = await fetch(
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        secret: secretKey,
-        response: token,
-        remoteip: ip,
-      }),
-    },
-  );
+	// Call Siteverify API
+	const response = await fetch(
+		"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+		{
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams({
+				secret: secretKey,
+				response: token,
+				remoteip: ip,
+			}),
+		},
+	);
 
+	const result = await response.json();
 
-  const result = await response.json();
+	if (!result.success) {
+		return { success: false, isBlocked: false };
+	}
 
+	const ephemeralId = result.metadata?.ephemeral_id;
 
-  if (!result.success) {
-    return { success: false, isBlocked: false };
-  }
-
-
-  const ephemeralId = result.metadata?.ephemeral_id;
-
-
-  if (ephemeralId) {
-    // Log the event
-    await db.query(
-      `INSERT INTO turnstile_events (ephemeral_id, event_type, ip_address)
+	if (ephemeralId) {
+		// Log the event
+		await db.query(
+			`INSERT INTO turnstile_events (ephemeral_id, event_type, ip_address)
        VALUES ($1, $2, $3)`,
-      [ephemeralId, eventType, ip],
-    );
+			[ephemeralId, eventType, ip],
+		);
 
+		// Check if already blocked
+		const blocked = await db.query(
+			`SELECT 1 FROM blocked_ephemeral_ids WHERE ephemeral_id = $1`,
+			[ephemeralId],
+		);
 
-    // Check if already blocked
-    const blocked = await db.query(
-      `SELECT 1 FROM blocked_ephemeral_ids WHERE ephemeral_id = $1`,
-      [ephemeralId],
-    );
+		if (blocked.rows.length > 0) {
+			return { success: true, ephemeralId, isBlocked: true };
+		}
+	}
 
-
-    if (blocked.rows.length > 0) {
-      return { success: true, ephemeralId, isBlocked: true };
-    }
-  }
-
-
-  return { success: true, ephemeralId, isBlocked: false };
+	return { success: true, ephemeralId, isBlocked: false };
 }
 ```
 
 ### Use the Ephemeral ID in your sign up flow
 
-**TypeScript**
-
 ```typescript
 export async function handleSignup(request: Request, env: Env) {
-  const formData = await request.formData();
-  const email = formData.get("email") as string;
-  const turnstileToken = formData.get("cf-turnstile-response") as string;
-  const ip = request.headers.get("CF-Connecting-IP") || "";
+	const formData = await request.formData();
+	const email = formData.get("email") as string;
+	const turnstileToken = formData.get("cf-turnstile-response") as string;
+	const ip = request.headers.get("CF-Connecting-IP") || "";
 
+	// Verify Turnstile and log the Ephemeral ID
+	const verification = await verifyAndLogTurnstile(
+		turnstileToken,
+		ip,
+		env.TURNSTILE_SECRET_KEY,
+		"signup",
+		env.DB,
+	);
 
-  // Verify Turnstile and log the Ephemeral ID
-  const verification = await verifyAndLogTurnstile(
-    turnstileToken,
-    ip,
-    env.TURNSTILE_SECRET_KEY,
-    "signup",
-    env.DB,
-  );
+	if (!verification.success) {
+		return new Response("Verification failed", { status: 400 });
+	}
 
+	// Block if this device is flagged
+	if (verification.isBlocked) {
+		// Return a generic message - don't reveal detection
+		return new Response("Please verify your email to continue", {
+			status: 202,
+		});
+	}
 
-  if (!verification.success) {
-    return new Response("Verification failed", { status: 400 });
-  }
+	// Proceed with normal signup
+	const userId = await createUser(email, formData.get("password"));
 
-
-  // Block if this device is flagged
-  if (verification.isBlocked) {
-    // Return a generic message - don't reveal detection
-    return new Response("Please verify your email to continue", {
-      status: 202,
-    });
-  }
-
-
-  // Proceed with normal signup
-  const userId = await createUser(email, formData.get("password"));
-
-
-  // Update the log with the new user ID
-  if (verification.ephemeralId) {
-    await env.DB.query(
-      `UPDATE turnstile_events
+	// Update the log with the new user ID
+	if (verification.ephemeralId) {
+		await env.DB.query(
+			`UPDATE turnstile_events
        SET user_id = $1
        WHERE ephemeral_id = $2 AND event_type = 'signup' AND user_id IS NULL
        ORDER BY created_at DESC LIMIT 1`,
-      [userId, verification.ephemeralId],
-    );
-  }
+			[userId, verification.ephemeralId],
+		);
+	}
 
-
-  return new Response("Account created", { status: 201 });
+	return new Response("Account created", { status: 201 });
 }
 ```
 
@@ -258,7 +242,14 @@ Ephemeral IDs are privacy-preserving. They are scoped to your account, short-liv
 * [Server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
 * [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/#page","headline":"Fraud detection with Ephemeral IDs · Cloudflare Turnstile docs","description":"Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.","url":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Node.js","SQL","Account takeover"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","name":"Fraud detection with Ephemeral IDs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/#page","headline":"Fraud detection with Ephemeral IDs · Cloudflare Turnstile docs","description":"Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.","url":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Node.js","SQL","Account takeover"]}
 ```

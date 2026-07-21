@@ -1,16 +1,18 @@
 ---
-title: Shadowed records
 description: DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Shadowed records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Shadowed records
 
-# Shadowed records
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you add an `NS` record to your zone, you create a **subdomain delegation**: you delegate authority for that subdomain (and everything below it) to another set of nameservers. Any record you keep at or below that delegation point is **shadowed**. It stays stored in your zone, but the delegation places authority for that name with the delegated nameservers, so the record is not part of the authoritative data your zone is meant to serve.
 
@@ -69,7 +71,7 @@ The `A` record for `ns1.a.sub.example.com` looks like glue for the `a.sub` deleg
 
 Unreachable glue does not cause resolution failures. It is either a leftover you can safely remove, or a signal that the shallower delegation was created in error.
 
-Warning
+Caution
 
 Before removing a record flagged as unreachable glue, verify that the external nameserver for the shallower delegation (`sub.example.com` in the example above) already holds the correct records for the deeper subdomain.
 
@@ -205,7 +207,14 @@ www.sub.example.com   A     192.0.2.2
 
 The `NS` record carries `shadowed_records_count: 2` (two records are shadowed by it). The glue `A` record carries both `shadowed_by` and `is_glue: true`. The non-glue `A` record carries only `shadowed_by`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/#page","headline":"Shadowed records · Cloudflare DNS docs","description":"DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/shadowed-records/","name":"Shadowed records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/#page","headline":"Shadowed records · Cloudflare DNS docs","description":"DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

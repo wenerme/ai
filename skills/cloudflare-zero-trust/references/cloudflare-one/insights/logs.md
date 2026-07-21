@@ -1,16 +1,18 @@
 ---
-title: Logs
 description: Logs resources and guides for Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Logs
 
-# Logs
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review detailed logs for your Zero Trust organization.
 
@@ -31,7 +33,7 @@ Cloudflare stores Zero Trust logs for different periods of time based on the ser
 | **DEX logs**            | 7 days    | 7 days    | 7 days    | 7 days    | 7 days                          |
 | **Device posture logs** | 30 days   | 30 days   | 30 days   | 30 days   | 30 days                         |
 
-## Log Explorer Beta
+## Log Explorer  Beta
 
 Log Explorer users can store Zero Trust logs directly within Cloudflare in an [R2 bucket](https://developers.cloudflare.com/r2/) and access them with the dashboard or API. Log Explorer supports the following Zero Trust datasets:
 
@@ -57,7 +59,14 @@ For more information on how we use this data, refer to our [Privacy Policy ↗](
 
 1. Enterprise users on per query plans cannot store DNS logs via Cloudflare. You can still export logs via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). For more information, contact your account team. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/#page","headline":"Zero Trust logs · Cloudflare One docs","description":"Logs resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/#page","headline":"Zero Trust logs · Cloudflare One docs","description":"Logs resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

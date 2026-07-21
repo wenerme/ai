@@ -1,16 +1,18 @@
 ---
-title: External Evaluation rules
 description: External Evaluation rules in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: External Evaluation rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  External Evaluation rules
 
-# External Evaluation rules
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Access, you can create Allow or Block policies which evaluate the user based on custom criteria. This is done by adding an **External Evaluation** rule to your policy. The **External Evaluation** selector requires two values:
 
@@ -55,18 +57,13 @@ The command will output the binding name and KV namespace ID, for example
   * `[[kv_namespaces]]`: Add the output generated in the previous step.
   * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-7821)
-* [  wrangler.toml ](#tab-panel-7822)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "main": "index.js",
   "kv_namespaces": [
     {
@@ -81,21 +78,17 @@ The command will output the binding name and KV namespace ID, for example
 }
 ```
 
-**TOML**
-
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 workers_dev = true
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "index.js"
-
 
 [[kv_namespaces]]
 binding = "KV"
 id = "YOUR_KV_NAMESPACE_ID"
-
 
 [vars]
 TEAM_DOMAIN = "<TEAM_NAME>.cloudflareaccess.com"
@@ -125,7 +118,7 @@ To generate an RSA private/public key pair:
 1. Open a browser and go to `https://my-worker.<YOUR_SUBDOMAIN>.workers.dev/keys`.
 2. (Optional) Verify that the key has been stored in the `KV` namespace:
 
-  1. In the Cloudflare dashboard, go to the **Workers KV** page. [ Go to **Workers KV** ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+  1. In the Cloudflare dashboard, go to the **Workers KV** page. [ Go to **Workers KV** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
   2. Select **View** next to `my-worker-KV`.
 
 Other key formats (such as DSA) are not supported at this time.
@@ -168,8 +161,6 @@ wrangler tail -f pretty
 The session logs should show an incoming and outgoing JWT. The incoming JWT was sent by Access to the Worker API, while the outgoing JWT was sent by the Worker back to Access.
 6. To decode the contents of a JWT, you can copy the token into [jwt.io ↗](https://jwt.io/).
 The incoming JWT should contain the user's identity data. The outgoing JWT should look similar to:
-
-**JavaScript**
 ```js
 {
 "success": true,
@@ -186,7 +177,14 @@ Access checks the outgoing JWT for all of the following criteria:
   * `nonce` is unchanged from the incoming JWT. The `nonce` value is unique per request.
 If any condition fails, the External Evaluation rule evaluates to false.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/#page","headline":"External Evaluation rules · Cloudflare One docs","description":"External Evaluation rules in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","JSON web token (JWT)"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/policies/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/policies/external-evaluation/","name":"External Evaluation rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/#page","headline":"External Evaluation rules · Cloudflare One docs","description":"External Evaluation rules in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","JSON web token (JWT)"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Application check
 description: Application check in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Application check
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application check
 
-# Application check
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Application Check device posture attribute checks that a specific application process is running on a device. You can create multiple application checks for each operating system you need to run it on, or if you need to check for multiple applications.
 
@@ -73,8 +75,6 @@ SHA1 Fingerprint=FE2C359D79D4CEAE6BDF7EFB507326C6B4E2436E
 
 1. Open a PowerShell window.
 2. Use the `Get-AuthenticodeSignature` command to find the thumbprint. For example:
-
-**PowerShell**
 ```powershell
 Get-AuthenticodeSignature -FilePath c:\myfile.exe
 ```
@@ -95,8 +95,6 @@ shasum -a 256 myfile
 
 1. Open a PowerShell window.
 2. Use the `get-filehash` command to find the SHA256 value of the file. For example:
-
-**PowerShell**
 ```powershell
 get-filehash -path "C:\myfile.exe" -Algorithm SHA256 | format-list
 ```
@@ -129,15 +127,20 @@ The application path must appear in the `/proc/<pid>/exe` output for the check t
 
 To get the list of active processes, run the following command:
 
-**PowerShell**
-
 ```powershell
 Get-Process | Select-Object ProcessName, Path | Format-Table -AutoSize
 ```
 
 The application path must appear in the output for the check to pass.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/#page","headline":"Application check · Cloudflare One docs","description":"Application check in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/","name":"Posture checks"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/client-checks/","name":"Cloudflare One Client checks"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/","name":"Application check"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/#page","headline":"Application check · Cloudflare One docs","description":"Application check in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Set up dashboard SSO
 description: Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up dashboard SSO
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up dashboard SSO
 
-# Set up dashboard SSO
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers single sign-on (SSO) for all customers who log in with a custom email domain. By creating a Cloudflare SSO connector, you can enforce SSO to the Cloudflare dashboard with the identity provider (IdP) of your choice. SSO will be enforced for every user in your email domain.
 
@@ -39,19 +41,14 @@ Once you configure your IdP, make sure you also [test your IdP](https://develope
 
 ## 2\. Register your domain with Cloudflare for SSO
 
-Warning
+Caution
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-9391)
-* [ API ](#tab-panel-9392)
-
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 1. If step 1 was successful, a button to add a new SSO domain will be present. Select the button to begin the process of adding a new SSO domain.
-
 ![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/_astro/create_modal.UuyGmCgI_ZLWxQJ.webp)
-
 1. Enter your email domain and select **Create** to move to the verification step.
 
 Note
@@ -59,8 +56,6 @@ Note
 Some top level domains, such as `.edu`, are prohibited from being used as SSO domains.
 
 Using a command line terminal where you have already set the environment variable `CLOUDFLARE_API_TOKEN` to a user or account API token which has the `SSO Connector Edit` permission, run the following command to create an SSO connector. Replace `{account_id}` with your account ID, and `{domain}` with your email domain.
-
-**cURL command**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \
@@ -71,26 +66,23 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "id": "c3ebcba5c20b42f73e111110d0be67d",
-    "enabled": false,
-    "email_domain": "cool.cats",
-    "verification": {
-      "code": "cloudflare_dashboard_sso=111111111",
-      "status": "pending"
-    },
-    "created_on": "2025-09-05T20:35:34Z"
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"id": "c3ebcba5c20b42f73e111110d0be67d",
+		"enabled": false,
+		"email_domain": "cool.cats",
+		"verification": {
+			"code": "cloudflare_dashboard_sso=111111111",
+			"status": "pending"
+		},
+		"created_on": "2025-09-05T20:35:34Z"
+	}
 }
 ```
 
 ## 3\. Verify domain ownership
-
-* [ Dashboard ](#tab-panel-9393)
-* [ API ](#tab-panel-9394)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -116,8 +108,6 @@ The `TXT` record must include the `cloudflare_dashboard_sso=` prefix along with 
 
 Cloudflare will automatically poll this DNS record until it is found or a timeout is reached within two days. If verification fails due to timeout, you may manually reinitiate the polling by running the following command:
 
-**cURL command**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification" \
   --request POST \
@@ -128,7 +118,7 @@ Once the verification process has completed or timed out, you will receive an em
 
 ## 4\. Enable dashboard SSO
 
-Warning
+Caution
 
 Enabling Cloudflare Dashboard SSO for an email domain (for example, `@mycompany.com`) will apply globally to all users with that domain, regardless of which accounts those users have access to. All users will be required to authenticate via the specified identity provider, including users registered on Cloudflare prior to the domain being configured for SSO.
 
@@ -136,16 +126,11 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-9395)
-* [ API ](#tab-panel-9396)
-
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
 ![Screenshot of the SSO connector enable button](https://developers.cloudflare.com/_astro/verified_domain.B1SGjH_l_1biz1k.webp)
 
 Enable the connector by running the following — again, replacing the `{account_id}` value with your account ID, and additionally replacing the `{sso_connector_id}` with the value you obtained from the `id` field in the response to the previous call.
-
-**cURL command**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}" \
@@ -230,20 +215,16 @@ If there is an issue with your SSO IdP provider, you can add an alternate IdP us
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Organizations, Identity Providers, and Groups Write`
-
-**Add an Access identity provider**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "onetimepin",
-    "config": {}
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "onetimepin",
+		"config": {}
+	}'
 ```
 2. [Get](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/list/) the `id` of the `dash_sso` Access application. You can use [jq ↗](https://jqlang.github.io/jq/download/) to quickly find the correct application:
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -252,11 +233,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 
 ```txt
    {
-     "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-     "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-     "type": "dash_sso",
-     "name": "SSO App"
-     // ...
+   	"id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+   	"uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+   	"type": "dash_sso",
+   	"name": "SSO App"
+   	// ...
    }
 ```
 
@@ -264,34 +245,29 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Update an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/3537a672-e4d8-4d89-aab9-26cb622918a1" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-    "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-    "type": "dash_sso",
-    "name": "SSO App",
-    "allowed_idps": []
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+		"uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+		"type": "dash_sso",
+		"name": "SSO App",
+		"allowed_idps": []
+	}'
 ```
 
 Users will now have the option to log in using a one-time PIN.
 
 ### Option 2: Disable dashboard SSO
 
-Warning
+Caution
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-9387)
-* [ API ](#tab-panel-9388)
-
 1. Navigate to the **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 1. Go to **Settings**.
 2. Select the actions menu for the SSO connector in the list and select **Disable**.
 3. Type the domain of the connector and click confirm to complete the disable action.
@@ -299,8 +275,6 @@ Before disabling SSO, make sure you have access to your Cloudflare user email. T
 The following API calls will disable SSO enforcement for an account. This action can only be performed by API tokens with the `SSO connectors edit` role or Super Administrators.
 
 1. Get your SSO connector `id`:
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \
   --request GET \
@@ -309,23 +283,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ```txt
    {
-     "result": [
-       {
-         "id": "d616ac82cc7f87153112d75a711c5c3c",
-         "email_domain": "cool.cats",
-         "enabled": true
-         // ...
-       }
-     ],
-     "success": true,
-     "errors": [],
-     "messages": []
+   	"result": [
+   		{
+   			"id": "d616ac82cc7f87153112d75a711c5c3c",
+   			"email_domain": "cool.cats",
+   			"enabled": true
+   			// ...
+   		}
+   	],
+   	"success": true,
+   	"errors": [],
+   	"messages": []
    }
 ```
 
 1. Disable the SSO connector:
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \
   --request PATCH \
@@ -337,17 +309,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 
 ```txt
    {
-     "result": [
-       {
-         "id": "d616ac82cc7f87153112d75a711c5c3c",
-         "email_domain": "cool.cats",
-         "enabled": false
-         // ...
-       }
-     ],
-     "success": true,
-     "errors": [],
-     "messages": []
+   	"result": [
+   		{
+   			"id": "d616ac82cc7f87153112d75a711c5c3c",
+   			"email_domain": "cool.cats",
+   			"enabled": false
+   			// ...
+   		}
+   	],
+   	"success": true,
+   	"errors": [],
+   	"messages": []
    }
 ```
 
@@ -357,26 +329,19 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-9389)
-* [ API ](#tab-panel-9390)
-
 1. Navigate to the **Members** page.
-[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
 1. Go to **Settings**.
 2. Disable all SSO connectors.
 3. Delete all SSO connectors.
 
 1. Get all SSO connectors for your account.
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \
   --request GET \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Disable any active SSO connectors using the `id` of each connector from the previous step.
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \
   --request PATCH \
@@ -386,8 +351,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
   }'
 ```
 3. Delete all SSO connectors using the `id` of each connector from the previous step.
-
-**cURL command**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \
   --request DELETE \
@@ -400,7 +363,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 4. Recreate any deleted SSO connectors using the steps in [Register your domain with Cloudflare for SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#2-register-your-domain-with-cloudflare-for-sso).
 5. Follow the verification and enable steps after recreating the SSO connectors.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/dashboard-sso/","name":"Set up dashboard SSO"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

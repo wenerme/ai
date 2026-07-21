@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Network Firewall
 description: Filter and inspect network traffic with Cloudflare Network Firewall.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare Network Firewall
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Network Firewall
 
-# Cloudflare Network Firewall
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Filter and block unwanted traffic at Cloudflare's global network, before it reaches your infrastructure.
 
@@ -26,25 +28,32 @@ Cloudflare Network Firewall is available with the purchase of [Magic Transit](ht
 
 ## Features
 
-###  Intrusion Detection System (IDS)
+[Intrusion Detection System (IDS)](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/)
 
 Actively monitor for a wide range of known threat signatures in your traffic, expanding your security coverage beyond packet-filtering rules to detect sophisticated attacks such as ransomware, data exfiltration, and network scanning.
 
-[ Use Intrusion Detection System (IDS) ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/)
+ Use Intrusion Detection System (IDS)
 
 ---
 
 ## Related products
 
-**[Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/)**
+[Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 Secure your network from incoming Internet traffic, and improve performance at Cloudflare scale.
 
-**[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)**
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 Improve security and performance for your entire corporate networking, reducing cost and operation complexity.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/#page","headline":"Overview · Cloudflare Network Firewall docs","description":"Filter and inspect network traffic with Cloudflare Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/#page","headline":"Overview · Cloudflare Network Firewall docs","description":"Filter and inspect network traffic with Cloudflare Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

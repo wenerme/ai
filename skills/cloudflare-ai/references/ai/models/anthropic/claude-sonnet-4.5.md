@@ -1,40 +1,40 @@
 ---
-title: Claude Sonnet 4.5
 description: Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Sonnet 4.5
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Sonnet 4.5
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-sonnet-4.5`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-sonnet-4.5 `
+
+* Third-party
+* Zero data retention
 
 Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
 
-| Model Info                                                                 |                                                                                                                               |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                           |
-| Request formats                                                            | Anthropic Messages                                                                                                            |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
+| Model Info                                                                  |                                                                                                                                |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                 |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                     |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                            |
+| Request formats                                                             | Anthropic Messages                                                                                                             |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-290)
-* [ cURL ](#tab-panel-291)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-294)
-* [ Raw response ](#tab-panel-295)
 
 # The Three Laws of Thermodynamics
 
@@ -111,11 +108,6 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-292)
-* [ cURL ](#tab-panel-293)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.5',
@@ -146,9 +138,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.3
 }'
 ```
-
-* [ Output ](#tab-panel-298)
-* [ Raw response ](#tab-panel-299)
 
 # Reading a JSON File in Python
 
@@ -242,11 +231,6 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-302)
-* [ cURL ](#tab-panel-303)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.5',
@@ -292,9 +276,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-304)
-* [ Raw response ](#tab-panel-305)
 
 Here are some great stops between San Francisco and Los Angeles:
 
@@ -347,11 +328,6 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-296)
-* [ cURL ](#tab-panel-297)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.5',
@@ -385,9 +361,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.8
 }'
 ```
-
-* [ Output ](#tab-panel-306)
-* [ Raw response ](#tab-panel-307)
 
 # The Blue Feather
 
@@ -432,11 +405,6 @@ Then it started to hum.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-300)
-* [ cURL ](#tab-panel-301)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.5',
@@ -465,9 +433,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-310)
-* [ Raw response ](#tab-panel-311)
 
 # Recursion Explained
 
@@ -680,11 +645,6 @@ Think of Russian nesting dolls:
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-308)
-* [ cURL ](#tab-panel-309)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-sonnet-4.5',
@@ -725,9 +685,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-312)
-* [ Raw response ](#tab-panel-313)
 
 Based on the search results, here are the top news stories about Cloudflare this week:
 
@@ -905,9 +862,6 @@ Based on the search results, here are the top news stories about Cloudflare this
 
 ## Parameters
 
-* [ Input ](#tab-panel-314)
-* [ Output ](#tab-panel-315)
-
 ▶messages\[\]
 
 `array`required
@@ -974,7 +928,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/#page","headline":"Claude Sonnet 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/#page","headline":"Claude Sonnet 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

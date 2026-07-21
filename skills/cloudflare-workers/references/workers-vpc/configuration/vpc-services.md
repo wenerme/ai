@@ -1,16 +1,18 @@
 ---
-title: VPC Services
 description: Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: VPC Services
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  VPC Services
 
-# VPC Services
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 VPC Services are the core building block of Workers VPC. They represent specific resources in your private network that Workers can access through Cloudflare Tunnel.
 
@@ -91,27 +93,23 @@ These configurations represent the expected contract of the [REST API for creati
 
 The following is an example of an HTTP VPC Service using custom HTTP and HTTPS ports, and both IPv4 and IPv6 addresses.
 
-**JSONC**
-
 ```jsonc
 {
-  "type": "http",
-  "name": "human-readable-name",
+	"type": "http",
+	"name": "human-readable-name",
 
+	// Port configuration (optional - defaults to 80/443)
+	"http_port": 80,
+	"https_port": 443,
 
-  // Port configuration (optional - defaults to 80/443)
-  "http_port": 80,
-  "https_port": 443,
-
-
-  // Host configuration
-  "host": {
-    "ipv4": "10.0.0.1",
-    "ipv6": "fe80::",
-    "network": {
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-    },
-  },
+	// Host configuration
+	"host": {
+		"ipv4": "10.0.0.1",
+		"ipv6": "fe80::",
+		"network": {
+			"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+		},
+	},
 }
 ```
 
@@ -119,27 +117,23 @@ The following is an example of an HTTP VPC Service using custom HTTP and HTTPS p
 
 The following is an example of an HTTP VPC Service using a hostname. When using a hostname, provide a `resolver_network` that optionally includes `resolver_ips`.
 
-**JSONC**
-
 ```jsonc
 {
-  "type": "http",
-  "name": "human-readable-name",
+	"type": "http",
+	"name": "human-readable-name",
 
+	// Port configuration (optional - defaults to 80/443)
+	"http_port": 80,
+	"https_port": 443,
 
-  // Port configuration (optional - defaults to 80/443)
-  "http_port": 80,
-  "https_port": 443,
-
-
-  // Hostname Host (with DNS resolver)
-  "host": {
-    "hostname": "example.com",
-    "resolver_network": {
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-      "resolver_ips": ["10.0.0.1"], // Optional
-    },
-  },
+	// Hostname Host (with DNS resolver)
+	"host": {
+		"hostname": "example.com",
+		"resolver_network": {
+			"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+			"resolver_ips": ["10.0.0.1"], // Optional
+		},
+	},
 }
 ```
 
@@ -147,22 +141,19 @@ The following is an example of an HTTP VPC Service using a hostname. When using 
 
 The following is an example of a TCP VPC Service for a PostgreSQL database.
 
-**JSONC**
-
 ```jsonc
 {
-  "type": "tcp",
-  "name": "my-postgres-db",
-  "tcp_port": 5432,
-  "app_protocol": "postgresql", // Optional: "postgresql" or "mysql"
+	"type": "tcp",
+	"name": "my-postgres-db",
+	"tcp_port": 5432,
+	"app_protocol": "postgresql", // Optional: "postgresql" or "mysql"
 
-
-  "host": {
-    "ipv4": "10.0.0.5",
-    "network": {
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-    },
-  },
+	"host": {
+		"ipv4": "10.0.0.5",
+		"network": {
+			"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+		},
+	},
 }
 ```
 
@@ -170,27 +161,23 @@ The following is an example of a TCP VPC Service for a PostgreSQL database.
 
 The following example creates a TCP service with `verify_ca` certificate verification mode.
 
-**JSONC**
-
 ```jsonc
 {
-  "type": "tcp",
-  "name": "my-postgres-db",
-  "tcp_port": 5432,
-  "app_protocol": "postgresql",
+	"type": "tcp",
+	"name": "my-postgres-db",
+	"tcp_port": 5432,
+	"app_protocol": "postgresql",
 
+	"host": {
+		"ipv4": "10.0.0.5",
+		"network": {
+			"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+		},
+	},
 
-  "host": {
-    "ipv4": "10.0.0.5",
-    "network": {
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-    },
-  },
-
-
-  "tls_settings": {
-    "cert_verification_mode": "verify_ca",
-  },
+	"tls_settings": {
+		"cert_verification_mode": "verify_ca",
+	},
 }
 ```
 
@@ -198,33 +185,25 @@ The following example creates a TCP service with `verify_ca` certificate verific
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-12140)
-* [  wrangler.toml ](#tab-panel-12141)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker",
-  "main": "src/index.js",
-  "vpc_services": [
-    {
-      "binding": "PRIVATE_API",
-      "service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",
-      "remote": true // When true, utilizes [remote bindings](/workers/local-development/#remote-bindings) to allow access to the VPC Service during local development.
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker",
+	"main": "src/index.js",
+	"vpc_services": [
+		{
+			"binding": "PRIVATE_API",
+			"service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",
+			"remote": true // When true, utilizes [remote bindings](/workers/local-development/#remote-bindings) to allow access to the VPC Service during local development.
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 main = "src/index.js"
-
 
 [[vpc_services]]
 binding = "PRIVATE_API"
@@ -234,34 +213,27 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-12142)
-* [  wrangler.toml ](#tab-panel-12143)
-
-**JSONC**
-
 ```jsonc
 {
-  "vpc_services": [
-    {
-      "binding": "PRIVATE_API",
-      "service_id": "daf43e8c-a81a-4242-9912-4a2ebe4fdd79",
-      "remote": true
-    },
-    {
-      "binding": "PRIVATE_DATABASE",
-      "service_id": "453b6067-1327-420d-89b3-2b6ad16e6551",
-      "remote": true
-    },
-    {
-      "binding": "INTERNAL_CACHE",
-      "service_id": "6c39b574-237e-49f4-852a-cea5a93ed8f9",
-      "remote": true
-    }
-  ]
+	"vpc_services": [
+		{
+			"binding": "PRIVATE_API",
+			"service_id": "daf43e8c-a81a-4242-9912-4a2ebe4fdd79",
+			"remote": true
+		},
+		{
+			"binding": "PRIVATE_DATABASE",
+			"service_id": "453b6067-1327-420d-89b3-2b6ad16e6551",
+			"remote": true
+		},
+		{
+			"binding": "INTERNAL_CACHE",
+			"service_id": "6c39b574-237e-49f4-852a-cea5a93ed8f9",
+			"remote": true
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[vpc_services]]
@@ -269,12 +241,10 @@ binding = "PRIVATE_API"
 service_id = "daf43e8c-a81a-4242-9912-4a2ebe4fdd79"
 remote = true
 
-
 [[vpc_services]]
 binding = "PRIVATE_DATABASE"
 service_id = "453b6067-1327-420d-89b3-2b6ad16e6551"
 remote = true
-
 
 [[vpc_services]]
 binding = "INTERNAL_CACHE"
@@ -308,7 +278,14 @@ If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token
 * Learn about the [Service Binding API](https://developers.cloudflare.com/workers-vpc/api/)
 * Refer to [examples](https://developers.cloudflare.com/workers-vpc/examples/) of common use cases
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services · Cloudflare Workers VPC","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-services/","name":"VPC Services"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services · Cloudflare Workers VPC","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

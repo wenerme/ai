@@ -1,16 +1,18 @@
 ---
-title: How Privacy Proxy works
 description: Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How Privacy Proxy works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Privacy Proxy works
 
-# How Privacy Proxy works
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between clients and destination servers. This page explains the protocol mechanics and how privacy is preserved.
 
@@ -27,7 +29,6 @@ Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between
 │          │                             │          │                        │             │
 │          │  ◀───── 6. Encrypted data tunnel ─────▶  ◀─────────────────────▶│             │
 └──────────┘                             └──────────┘                        └─────────────┘
-
 
            │◀──── Client IP hidden ────▶│◀──── Cloudflare Egress IP visible ──────────▶│
 ```
@@ -73,7 +74,14 @@ The proxy authenticates users to verify they have permission to use the service,
 * [MASQUE Working Group ↗](https://datatracker.ietf.org/wg/masque/about/) \- IETF working group developing proxy protocol standards.
 * [RFC 9298 ↗](https://datatracker.ietf.org/doc/html/rfc9298) \- CONNECT-UDP specification for proxying UDP over HTTP.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/#page","headline":"How Privacy Proxy works · Cloudflare Privacy Proxy docs","description":"Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/how-it-works/","name":"How Privacy Proxy works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/#page","headline":"How Privacy Proxy works · Cloudflare Privacy Proxy docs","description":"Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

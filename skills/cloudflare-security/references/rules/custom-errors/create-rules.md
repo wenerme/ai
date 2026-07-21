@@ -1,23 +1,25 @@
 ---
-title: Create custom error rules
 description: Create custom error rules in the dashboard or via the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create custom error rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create custom error rules
 
-# Create custom error rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## In the dashboard
 
 ### Create a custom error rule
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Custom Error Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **If incoming requests match**, select one of the following options:
@@ -63,14 +65,14 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 ```json
 {
-  "result": {
-    "name": "500_error_template",
-    "description": "Standard 5xx error template page",
-    "url": "https://example.com/errors/500_template.html",
-    "last_updated": "2025-02-10T11:36:07.810215Z",
-    "size_bytes": 2048
-  },
-  "success": true
+	"result": {
+		"name": "500_error_template",
+		"description": "Standard 5xx error template page",
+		"url": "https://example.com/errors/500_template.html",
+		"last_updated": "2025-02-10T11:36:07.810215Z",
+		"size_bytes": 2048
+	},
+	"success": true
 }
 ```
 
@@ -123,26 +125,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "serve_500_template",
-            "action": "serve_error",
-            "action_parameters": {
-                "asset_name": "500_error_template",
-                "content_type": "text/html"
-            },
-            "expression": "http.response.code eq 500",
-            "enabled": true
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "serve_500_template",
+						"action": "serve_error",
+						"action_parameters": {
+								"asset_name": "500_error_template",
+								"content_type": "text/html"
+						},
+						"expression": "http.response.code eq 500",
+						"enabled": true
+				}
+		]
+	}'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -155,7 +155,14 @@ The API token used in API requests to manage Custom Error Rules and Custom Error
 
 * _Custom Error Rules_ \> _Edit_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/create-rules/#page","headline":"Create custom error rules · Cloudflare Rules docs","description":"Create custom error rules in the dashboard or via the API.","url":"https://developers.cloudflare.com/rules/custom-errors/create-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/custom-errors/create-rules/","name":"Create custom error rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/create-rules/#page","headline":"Create custom error rules · Cloudflare Rules docs","description":"Create custom error rules in the dashboard or via the API.","url":"https://developers.cloudflare.com/rules/custom-errors/create-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

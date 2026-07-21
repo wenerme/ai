@@ -1,16 +1,18 @@
 ---
-title: DNS resolution
 description: How DNS resolution works for partial CNAME setups.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DNS resolution
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS resolution
 
-# DNS resolution
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)), Cloudflare handles DNS records a bit differently from primary zones (full setup) in order to internally resolve the origin server where proxied HTTP requests are sent to.
 
@@ -106,7 +108,14 @@ If such setup is in place, the subdomain (`www.partialzone.com` in this example)
       C
       end
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/#page","headline":"DNS resolution in partial zones · Cloudflare DNS docs","description":"How DNS resolution works for partial CNAME setups.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/partial-setup/","name":"CNAME setup (Partial)"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/partial-setup/dns-resolution/","name":"DNS resolution"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/#page","headline":"DNS resolution in partial zones · Cloudflare DNS docs","description":"How DNS resolution works for partial CNAME setups.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

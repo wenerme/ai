@@ -1,16 +1,18 @@
 ---
-title: Download Cloudflare One Client stable releases
 description: Reference information for Download Cloudflare One Client stable releases in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Download Cloudflare One Client stable releases
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Download Cloudflare One Client stable releases
 
-# Download Cloudflare One Client stable releases
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page contains the stable Cloudflare One Client (formerly WARP) releases from the past year. We recommend using stable releases for production environments. You can download stable releases from the links below after checking requirements.
 
@@ -22,9 +24,8 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 [ Download latest stable release ](https://downloads.cloudflareclient.com/v1/download/windows/ga)
 
-|                            |                                                                      |
-| -------------------------- | -------------------------------------------------------------------- |
 | **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
+| -------------------------- | -------------------------------------------------------------------- |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                    |
 | **.NET Framework version** | 4.7.2 or later                                                       |
 | **HD space**               | 184 MB                                                               |
@@ -40,7 +41,7 @@ Latest release
 
 **Version:**  Windows 2026.6.850.0 **Date:**  2026-07-07 **Size:** 59 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.850.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.850.0)
 
 #### Release notes
 
@@ -52,7 +53,7 @@ Windows 2026.6.822.0
 
 **Version:**  Windows 2026.6.822.0 **Date:**  2026-06-29 **Size:** 59 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.822.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.822.0)
 
 #### Release notes
 
@@ -99,7 +100,7 @@ Windows 2026.4.1390.0
 
 **Version:**  Windows 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 52.3 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1390.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1390.0)
 
 #### Release notes
 
@@ -130,7 +131,7 @@ Windows 2026.4.1350.0
 
 **Version:**  Windows 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 52.3 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1350.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1350.0)
 
 #### Release notes
 
@@ -160,7 +161,7 @@ Windows 2026.3.851.0
 
 **Version:**  Windows 2026.3.851.0 **Date:**  2026-04-07 **Size:** 136 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.3.851.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.3.851.0)
 
 #### Release notes
 
@@ -200,7 +201,7 @@ Windows 2026.1.150.0
 
 **Version:**  Windows 2026.1.150.0 **Date:**  2026-02-24 **Size:** 137 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.1.150.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.1.150.0)
 
 #### Release notes
 
@@ -232,7 +233,7 @@ Windows 2025.10.186.0
 
 **Version:**  Windows 2025.10.186.0 **Date:**  2026-01-13 **Size:** 135 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.10.186.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.10.186.0)
 
 #### Release notes
 
@@ -262,7 +263,7 @@ Windows 2025.9.558.0
 
 **Version:**  Windows 2025.9.558.0 **Date:**  2025-11-11 **Size:** 136 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.9.558.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.9.558.0)
 
 #### Release notes
 
@@ -293,7 +294,7 @@ Windows 2025.8.779.0
 
 **Version:**  Windows 2025.8.779.0 **Date:**  2025-10-07 **Size:** 135 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.8.779.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.8.779.0)
 
 #### Release notes
 
@@ -320,7 +321,7 @@ Windows 2025.7.176.0
 
 **Version:**  Windows 2025.7.176.0 **Date:**  2025-09-30 **Size:** 134 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.176.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.176.0)
 
 #### Release notes
 
@@ -350,7 +351,7 @@ Windows 2025.6.1400.0
 
 **Version:**  Windows 2025.6.1400.0 **Date:**  2025-08-21 **Size:** 134 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1400.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1400.0)
 
 #### Release notes
 
@@ -376,7 +377,7 @@ Windows 2025.6.1335.0
 
 **Version:**  Windows 2025.6.1335.0 **Date:**  2025-08-19 **Size:** 134 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1335.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1335.0)
 
 #### Release notes
 
@@ -406,7 +407,7 @@ Windows 2025.5.943.0
 
 **Version:**  Windows 2025.5.943.0 **Date:**  2025-07-23 **Size:** 130 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.5.943.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.5.943.0)
 
 #### Release notes
 
@@ -434,9 +435,8 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 [ Download latest stable release ](https://downloads.cloudflareclient.com/v1/download/macos/ga)
 
-|                            |                                                                    |
-| -------------------------- | ------------------------------------------------------------------ |
 | **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+| -------------------------- | ------------------------------------------------------------------ |
 | **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
@@ -451,7 +451,7 @@ Latest release
 
 **Version:**  macOS 2026.6.822.0 **Date:**  2026-06-29 **Size:** 152 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.822.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.822.0)
 
 #### Release notes
 
@@ -495,7 +495,7 @@ macOS 2026.4.1390.0
 
 **Version:**  macOS 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 133 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1390.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1390.0)
 
 #### Release notes
 
@@ -518,7 +518,7 @@ macOS 2026.4.1350.0
 
 **Version:**  macOS 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 133 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1350.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1350.0)
 
 #### Release notes
 
@@ -540,7 +540,7 @@ macOS 2026.3.846.0
 
 **Version:**  macOS 2026.3.846.0 **Date:**  2026-04-02 **Size:** 113 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.3.846.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.3.846.0)
 
 #### Release notes
 
@@ -563,7 +563,7 @@ macOS 2026.1.150.0
 
 **Version:**  macOS 2026.1.150.0 **Date:**  2026-02-24 **Size:** 115 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.1.150.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.1.150.0)
 
 #### Release notes
 
@@ -581,7 +581,7 @@ macOS 2025.10.186.0
 
 **Version:**  macOS 2025.10.186.0 **Date:**  2026-01-13 **Size:** 111 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.10.186.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.10.186.0)
 
 #### Release notes
 
@@ -597,7 +597,7 @@ macOS 2025.9.558.0
 
 **Version:**  macOS 2025.9.558.0 **Date:**  2025-11-11 **Size:** 111 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.9.558.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.9.558.0)
 
 #### Release notes
 
@@ -617,7 +617,7 @@ macOS 2025.8.779.0
 
 **Version:**  macOS 2025.8.779.0 **Date:**  2025-10-07 **Size:** 108 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.8.779.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.8.779.0)
 
 #### Release notes
 
@@ -637,7 +637,7 @@ macOS 2025.7.176.0
 
 **Version:**  macOS 2025.7.176.0 **Date:**  2025-09-30 **Size:** 109 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.176.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.176.0)
 
 #### Release notes
 
@@ -661,7 +661,7 @@ macOS 2025.6.1335.0
 
 **Version:**  macOS 2025.6.1335.0 **Date:**  2025-08-19 **Size:** 108 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.6.1335.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.6.1335.0)
 
 #### Release notes
 
@@ -683,7 +683,7 @@ macOS 2025.5.943.0
 
 **Version:**  macOS 2025.5.943.0 **Date:**  2025-07-23 **Size:** 96.7 MB
 
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.5.943.0)
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.5.943.0)
 
 #### Release notes
 
@@ -704,9 +704,8 @@ This release contains minor fixes and improvements.
 
 [ Package repository ](https://pkg.cloudflareclient.com/)
 
-|                            |                                                                                                                                           |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | **OS version**             | RHEL 9 [1](#user-content-fn-1), RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                         |
 | **HD space**               | 75 MB                                                                                                                                     |
 | **Memory**                 | 35 MB                                                                                                                                     |
@@ -722,7 +721,9 @@ Latest release
 
 **Version:**  Linux 2026.6.836.0 **Date:**  2026-07-01 **Size:** 74.4 MB
 
- Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (arm64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.836.0)
+ Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (arm64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.836.0)
 
 #### Release notes
 
@@ -743,7 +744,9 @@ Linux 2026.6.822.0
 
 **Version:**  Linux 2026.6.822.0 **Date:**  2026-06-29 **Size:** 76 MB
 
- Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.822.0)
+ Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.822.0)
 
 #### Release notes
 
@@ -788,7 +791,9 @@ Linux 2026.4.1390.0
 
 **Version:**  Linux 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 79.9 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1390.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1390.0)
 
 #### Release notes
 
@@ -812,7 +817,9 @@ Linux 2026.4.1350.0
 
 **Version:**  Linux 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 79.9 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1350.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1350.0)
 
 #### Release notes
 
@@ -835,7 +842,9 @@ Linux 2026.3.846.0
 
 **Version:**  Linux 2026.3.846.0 **Date:**  2026-04-02 **Size:** 57.2 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.3.846.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.3.846.0)
 
 #### Release notes
 
@@ -858,7 +867,9 @@ Linux 2026.1.150.0
 
 **Version:**  Linux 2026.1.150.0 **Date:**  2026-02-24 **Size:** 55.1 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.1.150.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.1.150.0)
 
 #### Release notes
 
@@ -877,7 +888,9 @@ Linux 2025.10.186.0
 
 **Version:**  Linux 2025.10.186.0 **Date:**  2026-01-13 **Size:** 52 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.10.186.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.10.186.0)
 
 #### Release notes
 
@@ -897,7 +910,9 @@ Linux 2025.9.558.0
 
 **Version:**  Linux 2025.9.558.0 **Date:**  2025-11-11 **Size:** 54.7 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.9.558.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.9.558.0)
 
 #### Release notes
 
@@ -915,7 +930,9 @@ Linux 2025.8.779.0
 
 **Version:**  Linux 2025.8.779.0 **Date:**  2025-10-07 **Size:** 51.4 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.8.779.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.8.779.0)
 
 #### Release notes
 
@@ -934,7 +951,9 @@ Linux 2025.7.176.0
 
 **Version:**  Linux 2025.7.176.0 **Date:**  2025-09-30 **Size:** 52.7 MB
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.7.176.0)
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.7.176.0)
 
 #### Release notes
 
@@ -955,7 +974,9 @@ Linux 2025.6.1335.0
 
 **Version:**  Linux 2025.6.1335.0 **Date:**  2025-08-19 **Size:** 50.6 MB
 
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.6.1335.0)
+ buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.6.1335.0)
 
 #### Release notes
 
@@ -976,7 +997,9 @@ Linux 2025.5.943.0
 
 **Version:**  Linux 2025.5.943.0 **Date:**  2025-07-23 **Size:** 44.3 MB
 
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.943.0)
+ buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.943.0)
 
 #### Release notes
 
@@ -993,9 +1016,8 @@ This release contains minor fixes and improvements.
 
 ## iOS
 
-|                |         |
-| -------------- | ------- |
 | **OS version** | iOS 11+ |
+| -------------- | ------- |
 
 [Download from the iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) or search for "Cloudflare One Agent".
 
@@ -1005,9 +1027,8 @@ The legacy iOS client, [1.1.1.1: Faster Internet ↗](https://apps.apple.com/us/
 
 ## Android
 
-|                |      |
-| -------------- | ---- |
 | **OS version** | 5.0+ |
+| -------------- | ---- |
 
 [Download from the Google Play store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent) or search for "Cloudflare One Agent".
 
@@ -1017,13 +1038,19 @@ The legacy Android client, [1.1.1.1 + WARP: Safer Internet ↗](https://play.goo
 
 ## ChromeOS
 
-|                |                                     |
-| -------------- | ----------------------------------- |
 | **OS version** | Chromebooks manufactured after 2019 |
+| -------------- | ----------------------------------- |
 
 Chromebooks are supported by our [Android app](#android). All Chromebooks made after 2019 should fully support our Android app. If you have a Chromebook made before 2019, [refer to this list ↗](https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps/) to verify that your device is supported.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#page","headline":"Download Cloudflare One Client stable releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client stable releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","name":"Download Cloudflare One Client stable releases"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#page","headline":"Download Cloudflare One Client stable releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client stable releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

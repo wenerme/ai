@@ -1,16 +1,18 @@
 ---
-title: SSL/TLS FAQ
 description: Get answers to commonly asked questions about the certificates you can obtain through Cloudflare and the CAs that Cloudflare partners with.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SSL/TLS FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SSL/TLS FAQ
 
-# SSL/TLS FAQ
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Refer to this page for frequently asked questions about Cloudflare SSL/TLS certificate offerings and the CAs that Cloudflare partners with.
 
@@ -95,7 +97,14 @@ If you are on a Business or Enterprise plan, you can [upload a certificate](http
 
 Universal certificates on free zones only receive an ECDSA certificate. Paid zones receive an RSA and ECDSA certificate.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/faq/#page","headline":"SSL/TLS FAQ · Cloudflare SSL/TLS docs","description":"Get answers to commonly asked questions about the certificates you can obtain through Cloudflare and the CAs that Cloudflare partners with.","url":"https://developers.cloudflare.com/ssl/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/faq/","name":"SSL/TLS FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/faq/#page","headline":"SSL/TLS FAQ · Cloudflare SSL/TLS docs","description":"Get answers to commonly asked questions about the certificates you can obtain through Cloudflare and the CAs that Cloudflare partners with.","url":"https://developers.cloudflare.com/ssl/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

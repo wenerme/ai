@@ -1,16 +1,18 @@
 ---
-title: How Challenges work
 description: How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How Challenges work
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Challenges work
 
-# How Challenges work
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Challenges can be issued in three primary ways depending on which Cloudflare products or features are in use. Each method is designed to balance security with seamless visitor experience.
 
@@ -51,7 +53,14 @@ Cloudflare Challenges cannot support the following:
 * Challenge Pages cannot be embedded in cross-origin iframes.
 * Client software where the solve request of a Managed Challenge comes from a different IP than the original IP a Challenge request was issued to. For example, if you receive the Challenge from one IP and solve it using another IP, the solve is not valid and you may encounter a Challenge loop.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/#page","headline":"How Challenges work · Cloudflare challenges docs","description":"How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/concepts/how-challenges-work/","name":"How Challenges work"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/#page","headline":"How Challenges work · Cloudflare challenges docs","description":"How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

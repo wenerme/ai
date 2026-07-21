@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot connectivity
 description: Troubleshoot Magic Transit connectivity issues.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot connectivity
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot connectivity
 
-# Troubleshoot connectivity
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you determine whether a tunnel health alert is actually affecting your traffic. A degraded or down tunnel only matters if your traffic is currently routing through the Cloudflare data center where that tunnel is unhealthy.
 
@@ -73,7 +75,7 @@ In this example, `lhr` indicates that traffic enters Cloudflare at the London (H
 You can identify which data centers handle your traffic by using **Network Analytics**.
 
 1. Go to the **Network Analytics** page.
-[ Go to **Network analytics** ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Select **Add filter** and filter traffic by your source IP addresses to isolate your traffic.
 3. Under **Packets summary**, select the **Source data center** tab. If the tab is not visible, select the three-dot menu (`...`) to reveal additional view options and select **Source data center**.
 4. Review the per-data-center traffic breakdown to identify which Cloudflare data centers are handling your traffic.
@@ -116,7 +118,14 @@ If you have worked through this guide and cannot resolve the issue, gather the f
 * [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/): Technical details on how health checks work.
 * [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Analyze traffic patterns over time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/#page","headline":"Troubleshoot connectivity · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit connectivity issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/connectivity/","name":"Troubleshoot connectivity"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/#page","headline":"Troubleshoot connectivity · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit connectivity issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

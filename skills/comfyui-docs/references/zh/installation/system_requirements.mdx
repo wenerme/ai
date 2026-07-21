@@ -1,7 +1,7 @@
 ---
 title: "系统要求"
 description: "安装和运行 ComfyUI 的硬件和软件要求"
-translationSourceHash: db65e98b
+translationSourceHash: 9a71d8f9
 translationFrom: installation/system_requirements.mdx
 ---
 
@@ -54,5 +54,14 @@ Windows 便携版目前附带 Python 3.13 和 PyTorch CUDA 13.0。如果无法�
 请参考手动安装章节了解详细的安装步骤。
 
 ## 常见问题
+
+ComfyUI 不直接使用 MLX。在 Apple Silicon（M1/M2/M3/M4）Mac 上，ComfyUI 使用 PyTorch 的 **MPS（Metal Performance Shaders）** 后端，利用 Apple 的 Metal 图形框架进行 GPU 加速。
+
+MLX 是 Apple 为 Apple Silicon 设计的一个独立的机器学习数组框架。ComfyUI 基于 PyTorch 架构，所以使用 MPS 而非 MLX。
+
+要验证 MPS 是否在你的 Mac 上正常工作：
+```bash
+python -c "import torch; print(torch.backends.mps.is_available())"
+```
 
 <DockerNotice />

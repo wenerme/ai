@@ -1,16 +1,18 @@
 ---
-title: Create a fine-tuned OpenAI model with R2
 description: In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create a fine-tuned OpenAI model with R2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a fine-tuned OpenAI model with R2
 
-# Create a fine-tuned OpenAI model with R2
+Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use the [OpenAI ↗](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗](https://platform.openai.com/docs/guides/fine-tuning).
 
@@ -93,23 +95,16 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-13061)
-* [  wrangler.toml ](#tab-panel-13062)
-
-**JSONC**
-
 ```jsonc
 {
-  "r2_buckets": [
-    {
-      "binding": "MY_BUCKET", // <~ valid JavaScript variable name
-      "bucket_name": "<YOUR_BUCKET_NAME>"
-    }
-  ]
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET", // <~ valid JavaScript variable name
+			"bucket_name": "<YOUR_BUCKET_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -161,40 +156,32 @@ bun add openai
 
 Next, open the `src/index.ts` file and replace the default code with the below code. Replace `<MY_BUCKET>` with the binding name you set in Wrangler file.
 
-**TypeScript**
-
 ```typescript
 import { Context, Hono } from "hono";
 import OpenAI from "openai";
 
-
 type Bindings = {
-  <MY_BUCKET>: R2Bucket
-  OPENAI_API_KEY: string
+	<MY_BUCKET>: R2Bucket
+	OPENAI_API_KEY: string
 }
-
 
 type Variables = {
-  openai: OpenAI
+	openai: OpenAI
 }
-
 
 const app = new Hono<{ Bindings: Bindings, Variables: Variables }>()
 
-
 app.use('*', async (c, next) => {
-  const openai = new OpenAI({
-    apiKey: c.env.OPENAI_API_KEY,
-  })
-  c.set("openai", openai)
-  await next()
+	const openai = new OpenAI({
+		apiKey: c.env.OPENAI_API_KEY,
+	})
+	c.set("openai", openai)
+	await next()
 })
-
 
 app.onError((err, c) => {
-  return c.text(err.message, 500)
+	return c.text(err.message, 500)
 })
-
 
 export default app;
 ```
@@ -211,42 +198,33 @@ The `GET /files` route listens for `GET` requests with a query parameter `file`,
 
 Replace `<MY_BUCKET>` with the binding name you set in Wrangler file.
 
-**TypeScript**
-
 ```typescript
 // New import added at beginning of file
 import { toFile } from 'openai/uploads'
 
-
 const createFile = async (c: Context, r2Object: R2ObjectBody) => {
-  const openai: OpenAI = c.get("openai")
+	const openai: OpenAI = c.get("openai")
 
+	const blob = await r2Object.blob()
+	const file = await toFile(blob, r2Object.key)
 
-  const blob = await r2Object.blob()
-  const file = await toFile(blob, r2Object.key)
+	const uploadedFile = await openai.files.create({
+		file,
+		purpose: "fine-tune",
+	})
 
-
-  const uploadedFile = await openai.files.create({
-    file,
-    purpose: "fine-tune",
-  })
-
-
-  return uploadedFile
+	return uploadedFile
 }
 
-
 app.get('/files', async c => {
-  const fileQueryParam = c.req.query("file")
-  if (!fileQueryParam) return c.text("Missing file query param", 400)
+	const fileQueryParam = c.req.query("file")
+	if (!fileQueryParam) return c.text("Missing file query param", 400)
 
+	const file = await c.env.<MY_BUCKET>.get(fileQueryParam)
+	if (!file) return c.text("Couldn't find file", 400)
 
-  const file = await c.env.<MY_BUCKET>.get(fileQueryParam)
-  if (!file) return c.text("Couldn't find file", 400)
-
-
-  const uploadedFile = await createFile(c, file)
-  return c.json(uploadedFile)
+	const uploadedFile = await createFile(c, file)
+	return c.json(uploadedFile)
 })
 ```
 
@@ -254,30 +232,24 @@ app.get('/files', async c => {
 
 This section includes the `GET /models` route and the `createModel` function. The function `createModel` takes care of specifying the details and initiating the fine-tuning process with OpenAI. The route handles incoming requests for creating a new fine-tuned model.
 
-**TypeScript**
-
 ```typescript
 const createModel = async (c: Context, fileId: string) => {
-  const openai: OpenAI = c.get("openai");
+	const openai: OpenAI = c.get("openai");
 
+	const body = {
+		training_file: fileId,
+		model: "gpt-4o-mini",
+	};
 
-  const body = {
-    training_file: fileId,
-    model: "gpt-4o-mini",
-  };
-
-
-  return openai.fineTuning.jobs.create(body);
+	return openai.fineTuning.jobs.create(body);
 };
 
-
 app.get("/models", async (c) => {
-  const fileId = c.req.query("file_id");
-  if (!fileId) return c.text("Missing file ID query param", 400);
+	const fileId = c.req.query("file_id");
+	if (!fileId) return c.text("Missing file ID query param", 400);
 
-
-  const model = await createModel(c, fileId);
-  return c.json(model);
+	const model = await createModel(c, fileId);
+	return c.json(model);
 });
 ```
 
@@ -285,19 +257,16 @@ app.get("/models", async (c) => {
 
 This section describes the `GET /jobs` route and the corresponding `getJobs` function. The function interacts with OpenAI's API to fetch a list of all fine-tuning jobs. The route provides an interface for retrieving this information.
 
-**TypeScript**
-
 ```typescript
 const getJobs = async (c: Context) => {
-  const openai: OpenAI = c.get("openai");
-  const resp = await openai.fineTuning.jobs.list();
-  return resp.data;
+	const openai: OpenAI = c.get("openai");
+	const resp = await openai.fineTuning.jobs.list();
+	return resp.data;
 };
 
-
 app.get("/jobs", async (c) => {
-  const jobs = await getJobs(c);
-  return c.json(jobs);
+	const jobs = await getJobs(c);
+	return c.json(jobs);
 });
 ```
 
@@ -346,12 +315,10 @@ Visit the [OpenAI Playground ↗](https://platform.openai.com/playground) in ord
 
 Use it in any API requests you make to OpenAI's chat completions endpoints. For instance, in the below code example:
 
-**JavaScript**
-
 ```javascript
 openai.chat.completions.create({
-  messages: [{ role: "system", content: "You are a helpful assistant." }],
-  model: "ft:gpt-4o-mini:my-org:custom_suffix:id",
+	messages: [{ role: "system", content: "You are a helpful assistant." }],
+	model: "ft:gpt-4o-mini:my-org:custom_suffix:id",
 });
 ```
 
@@ -361,7 +328,14 @@ To build more with Workers, refer to [Tutorials](https://developers.cloudflare.c
 
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","name":"Create a fine-tuned OpenAI model with R2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}
 ```

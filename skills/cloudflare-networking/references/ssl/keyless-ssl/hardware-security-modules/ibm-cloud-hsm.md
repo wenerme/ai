@@ -1,16 +1,18 @@
 ---
-title: IBM Cloud HSM
 description: Learn how to use Keyless SSL with IBM Cloud HSM.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: IBM Cloud HSM
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  IBM Cloud HSM
 
-# IBM Cloud HSM
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The example below was tested using [IBM Cloud HSM 7.0 ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/about.html#about-ibm-cloud-hsm), a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a750.
 
@@ -31,7 +33,6 @@ The first step is creating an HSM partition, which can be thought of as an indep
 
 ```txt
 vm$ ssh admin@hsm
-
 
 [cloudflare-hsm.softlayer.com] lunash:>partition create -partition KeylessSSL
 
@@ -63,9 +64,7 @@ After the partition has been assigned, run `lunacm` from your virtual server and
 vm$ lunacm
 LunaCM v7.1.0-379. Copyright (c) 2006-2017 SafeNet.
 
-
     Available HSMs:
-
 
     Slot Id ->              0
     Label ->
@@ -78,25 +77,18 @@ LunaCM v7.1.0-379. Copyright (c) 2006-2017 SafeNet.
 
     Current Slot Id: 0
 
-
 lunacm:>partition init -label KeylessSSL -domain cloudflare
-
 
   Enter password for Partition SO: ********
 
-
   Re-enter password for Partition SO: ********
-
 
   You are about to initialize the partition.
   All contents of the partition will be destroyed.
 
-
   Are you sure you wish to continue?
 
-
   Type 'proceed' to continue, or 'quit' to quit now ->proceed
-
 
 Command Result : No Error
 ```
@@ -113,10 +105,8 @@ When you perform this operation, you need define the ID field for the newly gene
 vm$ cmu generatekeypair -keyType=RSA -modulusBits=2048 -publicExponent=65537 -sign=1 -verify=1 -labelpublic=myrsakey -labelprivate=myrsakey -keygenmech=1  -id=a000
 Please enter password for token in slot 0 : ********
 
-
 # cmu generatekeypair -keyType=ECDSA -curvetype=3 -sign=1 -verify=1 -labelpublic=myecdsakey -labelprivate=myecdsakey -id=a001
 Please enter password for token in slot 0 : ********
-
 
 # cmu list
 Please enter password for token in slot 0 : ********
@@ -132,7 +122,6 @@ Using the keys created in the previous step, generate CSRs that can be sent to a
 # cmu requestCertificate -c="US" -o="Example, Inc." -cn="ibm-cloudhsm.example.com" -s="California" -l="San Francisco" -publichandle=45 -privatehandle=48 -outputfile="rsa.csr" -sha256withrsa
 Please enter password for token in slot 0 : ********
 Using "CKM_SHA256_RSA_PKCS" Mechanism
-
 
 # cmu requestCertificate -c="US" -o="Example, Inc." -cn="ibm-cloudhsm.example.com" -s="California" -l="San Francisco" -publichandle=60 -privatehandle=61 -outputfile="ecdsa.csr" -sha256withecdsa
 Please enter password for token in slot 0 : ********
@@ -153,16 +142,12 @@ Lastly, we need to modify the configuration file that the key server will read o
 
 Open `/etc/keyless/gokeyless.yaml` and immediately after:
 
-**YAML**
-
 ```yaml
 private_key_stores:
   - dir: /etc/keyless/keys
 ```
 
 add:
-
-**YAML**
 
 ```yaml
 - uri: pkcs11:token=KeylessSSL;object=myrsakeyid=a000??module-path=/usr/safenet/lunaclient/lib/libCryptoki2_64.so&pin-value=password&max-sessions=1
@@ -176,7 +161,14 @@ sudo systemctl restart gokeyless.service
 sudo systemctl status gokeyless.service -l
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/#page","headline":"IBM Cloud HSM · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with IBM Cloud HSM.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/","name":"Hardware security modules"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/","name":"IBM Cloud HSM"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/#page","headline":"IBM Cloud HSM · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with IBM Cloud HSM.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Find answers to common questions about Log Explorer.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Which fields (or columns) are available for querying?
 
@@ -86,13 +88,13 @@ After performing the following steps, you will immediately stop incurring additi
 #### Review and disable account-level datasets
 
 1. In the Cloudflare dashboard, go to the account-level **Manage datasets** page.
-[ Go to **Manage datasets** ](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+[ Go to **Manage datasets** ↗ ](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
 2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
 
 #### Review and disable zone-level datasets
 
 1. In the Cloudflare dashboard, go to the zone-level **Manage datasets** page.
-[ Go to **Manage datasets** ](https://dash.cloudflare.com/?to=/:account/:zone/log-explorer/manage-sources)
+[ Go to **Manage datasets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/log-explorer/manage-sources)
 2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
 3. Repeat for all relevant zones.
 
@@ -101,10 +103,17 @@ After performing the following steps, you will immediately stop incurring additi
 This operation will stop Log Explorer's renewal.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 2. In the **Subscriptions** tab, find the Log Explorer subscription and select **Cancel**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

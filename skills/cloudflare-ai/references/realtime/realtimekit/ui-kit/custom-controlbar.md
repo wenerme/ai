@@ -1,16 +1,18 @@
 ---
-title: Add Custom Controlbar
 description: Add a custom controlbar to your RealtimeKit meeting UI with individual components.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add Custom Controlbar
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add Custom Controlbar
 
-# Add Custom Controlbar
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisite
 
@@ -33,22 +35,22 @@ Import the required components and React hook:
 ```jsx
 import { useRef } from "react";
 import {
-  RtkFullscreenToggle,
-  RtkSettingsToggle,
-  RtkScreenShareToggle,
-  RtkMicToggle,
-  RtkCameraToggle,
-  RtkStageToggle,
-  RtkLeaveButton,
-  RtkMoreToggle,
-  RtkPipToggle,
-  RtkMuteAllButton,
-  RtkBreakoutRoomsToggle,
-  RtkRecordingToggle,
-  RtkChatToggle,
-  RtkPollsToggle,
-  RtkParticipantsToggle,
-  RtkPluginsToggle,
+	RtkFullscreenToggle,
+	RtkSettingsToggle,
+	RtkScreenShareToggle,
+	RtkMicToggle,
+	RtkCameraToggle,
+	RtkStageToggle,
+	RtkLeaveButton,
+	RtkMoreToggle,
+	RtkPipToggle,
+	RtkMuteAllButton,
+	RtkBreakoutRoomsToggle,
+	RtkRecordingToggle,
+	RtkChatToggle,
+	RtkPollsToggle,
+	RtkParticipantsToggle,
+	RtkPluginsToggle,
 } from "@cloudflare/realtimekit-ui";
 ```
 
@@ -62,48 +64,48 @@ with:
 
 ```jsx
 <div
-  style={{
-    display: "flex",
-    width: "100%",
-    padding: "8px 12px",
-    color: "white",
-    justifyContent: "space-between",
-  }}
+	style={{
+		display: "flex",
+		width: "100%",
+		padding: "8px 12px",
+		color: "white",
+		justifyContent: "space-between",
+	}}
 >
-  <div
-    id="controlbar-left"
-    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-  >
-    <RtkFullscreenToggle targetElement={fullScreenRef.current} />
-    <RtkSettingsToggle />
-    <RtkScreenShareToggle />
-  </div>
-  <div
-    id="controlbar-center"
-    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-  >
-    <RtkMicToggle />
-    <RtkCameraToggle />
-    <RtkStageToggle />
-    <RtkLeaveButton />
-    <RtkMoreToggle>
-      <div slot="more-elements">
-        <RtkPipToggle variant="horizontal" />
-        <RtkMuteAllButton variant="horizontal" />
-        <RtkBreakoutRoomsToggle variant="horizontal" />
-        <RtkRecordingToggle variant="horizontal" />
-      </div>
-    </RtkMoreToggle>
-  </div>
-  <div
-    id="controlbar-right"
-    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-  >
-    <RtkChatToggle />
-    <RtkPollsToggle />
-    <RtkParticipantsToggle />
-    <RtkPluginsToggle />
-  </div>
+	<div
+		id="controlbar-left"
+		style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+	>
+		<RtkFullscreenToggle targetElement={fullScreenRef.current} />
+		<RtkSettingsToggle />
+		<RtkScreenShareToggle />
+	</div>
+	<div
+		id="controlbar-center"
+		style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+	>
+		<RtkMicToggle />
+		<RtkCameraToggle />
+		<RtkStageToggle />
+		<RtkLeaveButton />
+		<RtkMoreToggle>
+			<div slot="more-elements">
+				<RtkPipToggle variant="horizontal" />
+				<RtkMuteAllButton variant="horizontal" />
+				<RtkBreakoutRoomsToggle variant="horizontal" />
+				<RtkRecordingToggle variant="horizontal" />
+			</div>
+		</RtkMoreToggle>
+	</div>
+	<div
+		id="controlbar-right"
+		style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+	>
+		<RtkChatToggle />
+		<RtkPollsToggle />
+		<RtkParticipantsToggle />
+		<RtkPluginsToggle />
+	</div>
 </div>
 ```
 
@@ -112,22 +114,20 @@ Define a ref for the fullscreen target and attach it to your container element:
 ```jsx
 const fullScreenRef = useRef<HTMLDivElement>(null);
 
-
 // In your RtkUIProvider, add the ref to the container
 <RtkUIProvider
-  ref={fullScreenRef}
-  meeting={meeting}
-  showSetupScreen={false}
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    height: "100vh",
-    margin: 0,
-  }}
+	ref={fullScreenRef}
+	meeting={meeting}
+	showSetupScreen={false}
+	style={{
+		display: "flex",
+		flexDirection: "column",
+		height: "100vh",
+		margin: 0,
+	}}
 >
-  {/* Your controlbar and other components */}
+	{/* Your controlbar and other components */}
 </RtkUIProvider>
-
 
 // Pass the ref's current element to RtkFullscreenToggle
 <RtkFullscreenToggle targetElement={fullScreenRef.current} />
@@ -141,7 +141,7 @@ If you need additional controls, replace `rtk-controlbar` with individual UI Kit
 
 ```html
 <rtk-controlbar
-  style="display: flex; justify-content: space-between;"
+	style="display: flex; justify-content: space-between;"
 ></rtk-controlbar>
 ```
 
@@ -149,58 +149,56 @@ with:
 
 ```html
 <div
-  style="display: flex; width: 100%; padding: 8px 12px; color: white; justify-content: space-between;"
+	style="display: flex; width: 100%; padding: 8px 12px; color: white; justify-content: space-between;"
 >
-  <div
-    id="controlbar-left"
-    style="display: flex; align-items: center; justify-content: center;"
-  >
-    <rtk-fullscreen-toggle id="fullscreen-toggle"></rtk-fullscreen-toggle>
-    <rtk-settings-toggle></rtk-settings-toggle>
-    <rtk-screen-share-toggle></rtk-screen-share-toggle>
-  </div>
-  <div
-    id="controlbar-center"
-    style="display: flex; align-items: center; justify-content: center;"
-  >
-    <rtk-mic-toggle></rtk-mic-toggle>
-    <rtk-camera-toggle></rtk-camera-toggle>
-    <rtk-stage-toggle></rtk-stage-toggle>
-    <rtk-leave-button></rtk-leave-button>
-    <rtk-more-toggle>
-      <div slot="more-elements">
-        <rtk-pip-toggle variant="horizontal"></rtk-pip-toggle>
-        <rtk-mute-all-button variant="horizontal"></rtk-mute-all-button>
-        <rtk-breakout-rooms-toggle
-          variant="horizontal"
-        ></rtk-breakout-rooms-toggle>
-        <rtk-recording-toggle variant="horizontal"></rtk-recording-toggle>
-      </div>
-    </rtk-more-toggle>
-  </div>
-  <div
-    id="controlbar-right"
-    style="display: flex; align-items: center; justify-content: center;"
-  >
-    <rtk-chat-toggle></rtk-chat-toggle>
-    <rtk-polls-toggle></rtk-polls-toggle>
-    <rtk-participants-toggle></rtk-participants-toggle>
-    <rtk-plugins-toggle></rtk-plugins-toggle>
-  </div>
+	<div
+		id="controlbar-left"
+		style="display: flex; align-items: center; justify-content: center;"
+	>
+		<rtk-fullscreen-toggle id="fullscreen-toggle"></rtk-fullscreen-toggle>
+		<rtk-settings-toggle></rtk-settings-toggle>
+		<rtk-screen-share-toggle></rtk-screen-share-toggle>
+	</div>
+	<div
+		id="controlbar-center"
+		style="display: flex; align-items: center; justify-content: center;"
+	>
+		<rtk-mic-toggle></rtk-mic-toggle>
+		<rtk-camera-toggle></rtk-camera-toggle>
+		<rtk-stage-toggle></rtk-stage-toggle>
+		<rtk-leave-button></rtk-leave-button>
+		<rtk-more-toggle>
+			<div slot="more-elements">
+				<rtk-pip-toggle variant="horizontal"></rtk-pip-toggle>
+				<rtk-mute-all-button variant="horizontal"></rtk-mute-all-button>
+				<rtk-breakout-rooms-toggle
+					variant="horizontal"
+				></rtk-breakout-rooms-toggle>
+				<rtk-recording-toggle variant="horizontal"></rtk-recording-toggle>
+			</div>
+		</rtk-more-toggle>
+	</div>
+	<div
+		id="controlbar-right"
+		style="display: flex; align-items: center; justify-content: center;"
+	>
+		<rtk-chat-toggle></rtk-chat-toggle>
+		<rtk-polls-toggle></rtk-polls-toggle>
+		<rtk-participants-toggle></rtk-participants-toggle>
+		<rtk-plugins-toggle></rtk-plugins-toggle>
+	</div>
 </div>
 ```
 
 Register the fullscreen target after rendering:
 
-**JavaScript**
-
 ```javascript
 const fullscreenToggle = document.querySelector("#fullscreen-toggle");
 if (fullscreenToggle) {
-  const targetElement = document.querySelector("rtk-ui-provider");
-  if (targetElement) {
-    fullscreenToggle.targetElement = targetElement;
-  }
+	const targetElement = document.querySelector("rtk-ui-provider");
+	if (targetElement) {
+		fullscreenToggle.targetElement = targetElement;
+	}
 }
 ```
 
@@ -212,99 +210,90 @@ If you need additional controls, replace `rtk-controlbar` with individual UI Kit
 
 #### Create Custom Controlbar Component
 
-**custom-controlbar.component.ts**
-
 ```typescript
 import { Component, AfterViewInit, ElementRef, ViewChild } from "@angular/core";
 
-
 @Component({
-  selector: "app-custom-controlbar",
-  template: `
-    <div class="custom-controlbar">
-      <div class="controlbar-left">
-        <rtk-fullscreen-toggle #fullscreenToggle></rtk-fullscreen-toggle>
-        <rtk-settings-toggle></rtk-settings-toggle>
-        <rtk-screen-share-toggle></rtk-screen-share-toggle>
-      </div>
+	selector: "app-custom-controlbar",
+	template: `
+		<div class="custom-controlbar">
+			<div class="controlbar-left">
+				<rtk-fullscreen-toggle #fullscreenToggle></rtk-fullscreen-toggle>
+				<rtk-settings-toggle></rtk-settings-toggle>
+				<rtk-screen-share-toggle></rtk-screen-share-toggle>
+			</div>
 
+			<div class="controlbar-center">
+				<rtk-mic-toggle></rtk-mic-toggle>
+				<rtk-camera-toggle></rtk-camera-toggle>
+				<rtk-stage-toggle></rtk-stage-toggle>
+				<rtk-leave-button></rtk-leave-button>
+				<rtk-more-toggle>
+					<div slot="more-elements">
+						<rtk-pip-toggle variant="horizontal"></rtk-pip-toggle>
+						<rtk-mute-all-button variant="horizontal"></rtk-mute-all-button>
+						<rtk-breakout-rooms-toggle
+							variant="horizontal"
+						></rtk-breakout-rooms-toggle>
+						<rtk-recording-toggle variant="horizontal"></rtk-recording-toggle>
+					</div>
+				</rtk-more-toggle>
+			</div>
 
-      <div class="controlbar-center">
-        <rtk-mic-toggle></rtk-mic-toggle>
-        <rtk-camera-toggle></rtk-camera-toggle>
-        <rtk-stage-toggle></rtk-stage-toggle>
-        <rtk-leave-button></rtk-leave-button>
-        <rtk-more-toggle>
-          <div slot="more-elements">
-            <rtk-pip-toggle variant="horizontal"></rtk-pip-toggle>
-            <rtk-mute-all-button variant="horizontal"></rtk-mute-all-button>
-            <rtk-breakout-rooms-toggle
-              variant="horizontal"
-            ></rtk-breakout-rooms-toggle>
-            <rtk-recording-toggle variant="horizontal"></rtk-recording-toggle>
-          </div>
-        </rtk-more-toggle>
-      </div>
+			<div class="controlbar-right">
+				<rtk-chat-toggle></rtk-chat-toggle>
+				<rtk-polls-toggle></rtk-polls-toggle>
+				<rtk-participants-toggle></rtk-participants-toggle>
+				<rtk-plugins-toggle></rtk-plugins-toggle>
+			</div>
+		</div>
+	`,
+	styles: [
+		`
+			.custom-controlbar {
+				display: flex;
+				width: 100%;
+				padding: 8px 12px;
+				color: white;
+				justify-content: space-between;
+				background-color: rgba(0, 0, 0, 0.8);
+				border-radius: 8px;
+			}
 
+			.controlbar-left,
+			.controlbar-center,
+			.controlbar-right {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+			}
 
-      <div class="controlbar-right">
-        <rtk-chat-toggle></rtk-chat-toggle>
-        <rtk-polls-toggle></rtk-polls-toggle>
-        <rtk-participants-toggle></rtk-participants-toggle>
-        <rtk-plugins-toggle></rtk-plugins-toggle>
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      .custom-controlbar {
-        display: flex;
-        width: 100%;
-        padding: 8px 12px;
-        color: white;
-        justify-content: space-between;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 8px;
-      }
-
-
-      .controlbar-left,
-      .controlbar-center,
-      .controlbar-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-      }
-
-
-      .controlbar-center {
-        flex: 1;
-        justify-content: center;
-      }
-    `,
-  ],
+			.controlbar-center {
+				flex: 1;
+				justify-content: center;
+			}
+		`,
+	],
 })
 export class CustomControlbarComponent implements AfterViewInit {
-  @ViewChild("fullscreenToggle", { static: true })
-  fullscreenToggle!: ElementRef;
+	@ViewChild("fullscreenToggle", { static: true })
+	fullscreenToggle!: ElementRef;
 
+	ngAfterViewInit() {
+		// Register the fullscreen target after rendering
+		this.setupFullscreenToggle();
+	}
 
-  ngAfterViewInit() {
-    // Register the fullscreen target after rendering
-    this.setupFullscreenToggle();
-  }
-
-
-  private setupFullscreenToggle() {
-    const fullscreenElement = this.fullscreenToggle?.nativeElement;
-    if (fullscreenElement) {
-      const targetElement = document.querySelector("rtk-ui-provider");
-      if (targetElement) {
-        fullscreenElement.targetElement = targetElement;
-      }
-    }
-  }
+	private setupFullscreenToggle() {
+		const fullscreenElement = this.fullscreenToggle?.nativeElement;
+		if (fullscreenElement) {
+			const targetElement = document.querySelector("rtk-ui-provider");
+			if (targetElement) {
+				fullscreenElement.targetElement = targetElement;
+			}
+		}
+	}
 }
 ```
 
@@ -314,7 +303,7 @@ In your main meeting component template, replace:
 
 ```html
 <rtk-controlbar
-  style="display: flex; justify-content: space-between;"
+	style="display: flex; justify-content: space-between;"
 ></rtk-controlbar>
 ```
 
@@ -326,60 +315,51 @@ with:
 
 #### Complete Meeting Component Example
 
-**meeting.component.ts**
-
 ```typescript
 import {
-  Component,
-  ElementRef,
-  OnInit,
-  OnDestroy,
-  ViewChild,
+	Component,
+	ElementRef,
+	OnInit,
+	OnDestroy,
+	ViewChild,
 } from "@angular/core";
 
-
 @Component({
-  selector: "app-meeting",
-  template: `
-    <rtk-meeting #meetingComponent id="meeting-component">
-      <!-- Other meeting UI components -->
-      <rtk-grid></rtk-grid>
-      <rtk-sidebar></rtk-sidebar>
+	selector: "app-meeting",
+	template: `
+		<rtk-meeting #meetingComponent id="meeting-component">
+			<!-- Other meeting UI components -->
+			<rtk-grid></rtk-grid>
+			<rtk-sidebar></rtk-sidebar>
 
-
-      <!-- Custom controlbar replaces rtk-controlbar -->
-      <app-custom-controlbar></app-custom-controlbar>
-    </rtk-meeting>
-  `,
+			<!-- Custom controlbar replaces rtk-controlbar -->
+			<app-custom-controlbar></app-custom-controlbar>
+		</rtk-meeting>
+	`,
 })
 export class MeetingComponent implements OnInit, OnDestroy {
-  @ViewChild("meetingComponent", { static: true }) meetingElement!: ElementRef;
+	@ViewChild("meetingComponent", { static: true }) meetingElement!: ElementRef;
 
+	meeting: any;
+	private authToken = "<participant_auth_token>";
 
-  meeting: any;
-  private authToken = "<participant_auth_token>";
+	async ngOnInit() {
+		const RealtimeKitClient = await import(
+			"https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js"
+		);
 
+		this.meeting = await RealtimeKitClient.default.init({
+			authToken: this.authToken,
+		});
 
-  async ngOnInit() {
-    const RealtimeKitClient = await import(
-      "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js"
-    );
+		const meetingComponent = this.meetingElement.nativeElement;
+		meetingComponent.showSetupScreen = true;
+		meetingComponent.meeting = this.meeting;
+	}
 
-
-    this.meeting = await RealtimeKitClient.default.init({
-      authToken: this.authToken,
-    });
-
-
-    const meetingComponent = this.meetingElement.nativeElement;
-    meetingComponent.showSetupScreen = true;
-    meetingComponent.meeting = this.meeting;
-  }
-
-
-  ngOnDestroy() {
-    // Cleanup logic
-  }
+	ngOnDestroy() {
+		// Cleanup logic
+	}
 }
 ```
 
@@ -387,24 +367,20 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 Don't forget to declare your custom controlbar component in your Angular module:
 
-**app.module.ts**
-
 ```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
 
 import { AppComponent } from "./app.component";
 import { MeetingComponent } from "./meeting.component";
 import { CustomControlbarComponent } from "./custom-controlbar.component";
 
-
 @NgModule({
-  declarations: [AppComponent, MeetingComponent, CustomControlbarComponent],
-  imports: [BrowserModule],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Required for RTK web components
+	declarations: [AppComponent, MeetingComponent, CustomControlbarComponent],
+	imports: [BrowserModule],
+	providers: [],
+	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA], // Required for RTK web components
 })
 export class AppModule {}
 ```
@@ -413,104 +389,93 @@ export class AppModule {}
 
 You can further customize the controlbar by adding your own buttons or modifying the layout:
 
-**enhanced-controlbar.component.ts**
-
 ```typescript
 import { Component, AfterViewInit, ElementRef, ViewChild } from "@angular/core";
 
-
 @Component({
-  selector: "app-enhanced-controlbar",
-  template: `
-    <div class="custom-controlbar">
-      <div class="controlbar-left">
-        <rtk-fullscreen-toggle #fullscreenToggle></rtk-fullscreen-toggle>
-        <rtk-settings-toggle></rtk-settings-toggle>
-        <button class="custom-button" (click)="onCustomAction()">
-          Custom Action
-        </button>
-      </div>
+	selector: "app-enhanced-controlbar",
+	template: `
+		<div class="custom-controlbar">
+			<div class="controlbar-left">
+				<rtk-fullscreen-toggle #fullscreenToggle></rtk-fullscreen-toggle>
+				<rtk-settings-toggle></rtk-settings-toggle>
+				<button class="custom-button" (click)="onCustomAction()">
+					Custom Action
+				</button>
+			</div>
 
+			<div class="controlbar-center">
+				<rtk-mic-toggle></rtk-mic-toggle>
+				<rtk-camera-toggle></rtk-camera-toggle>
+				<rtk-stage-toggle></rtk-stage-toggle>
+				<rtk-leave-button></rtk-leave-button>
+			</div>
 
-      <div class="controlbar-center">
-        <rtk-mic-toggle></rtk-mic-toggle>
-        <rtk-camera-toggle></rtk-camera-toggle>
-        <rtk-stage-toggle></rtk-stage-toggle>
-        <rtk-leave-button></rtk-leave-button>
-      </div>
+			<div class="controlbar-right">
+				<rtk-chat-toggle></rtk-chat-toggle>
+				<rtk-participants-toggle></rtk-participants-toggle>
+			</div>
+		</div>
+	`,
+	styles: [
+		`
+			.custom-controlbar {
+				display: flex;
+				width: 100%;
+				padding: 8px 12px;
+				color: white;
+				justify-content: space-between;
+				background-color: rgba(0, 0, 0, 0.8);
+				border-radius: 8px;
+			}
 
+			.controlbar-left,
+			.controlbar-center,
+			.controlbar-right {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+			}
 
-      <div class="controlbar-right">
-        <rtk-chat-toggle></rtk-chat-toggle>
-        <rtk-participants-toggle></rtk-participants-toggle>
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      .custom-controlbar {
-        display: flex;
-        width: 100%;
-        padding: 8px 12px;
-        color: white;
-        justify-content: space-between;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 8px;
-      }
+			.custom-button {
+				background: #0051c3;
+				border: none;
+				color: white;
+				padding: 8px 12px;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 12px;
+			}
 
-
-      .controlbar-left,
-      .controlbar-center,
-      .controlbar-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-      }
-
-
-      .custom-button {
-        background: #0051c3;
-        border: none;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 12px;
-      }
-
-
-      .custom-button:hover {
-        background: #003d99;
-      }
-    `,
-  ],
+			.custom-button:hover {
+				background: #003d99;
+			}
+		`,
+	],
 })
 export class EnhancedControlbarComponent implements AfterViewInit {
-  @ViewChild("fullscreenToggle", { static: true })
-  fullscreenToggle!: ElementRef;
+	@ViewChild("fullscreenToggle", { static: true })
+	fullscreenToggle!: ElementRef;
 
+	ngAfterViewInit() {
+		this.setupFullscreenToggle();
+	}
 
-  ngAfterViewInit() {
-    this.setupFullscreenToggle();
-  }
+	private setupFullscreenToggle() {
+		const fullscreenElement = this.fullscreenToggle?.nativeElement;
+		if (fullscreenElement) {
+			const targetElement = document.querySelector("rtk-ui-provider");
+			if (targetElement) {
+				fullscreenElement.targetElement = targetElement;
+			}
+		}
+	}
 
-
-  private setupFullscreenToggle() {
-    const fullscreenElement = this.fullscreenToggle?.nativeElement;
-    if (fullscreenElement) {
-      const targetElement = document.querySelector("rtk-ui-provider");
-      if (targetElement) {
-        fullscreenElement.targetElement = targetElement;
-      }
-    }
-  }
-
-
-  onCustomAction() {
-    console.log("Custom action triggered");
-    // Add your custom logic here
-  }
+	onCustomAction() {
+		console.log("Custom action triggered");
+		// Add your custom logic here
+	}
 }
 ```
 
@@ -535,19 +500,15 @@ The iOS UI Kit provides `RtkMeetingControlBar` as the default controlbar for gro
 
 Create a `RtkTabBar` and add individual button components:
 
-**Swift**
-
 ```swift
 import RealtimeKitUI
 import RealtimeKit
-
 
 func buildCustomControlBar(
     meeting: RealtimeKitClient,
     viewController: UIViewController
 ) -> RtkTabBar {
     let tabBar = RtkTabBar(delegate: nil)
-
 
     let micButton = RtkAudioButtonControlBar(meeting: meeting)
     let videoButton = RtkVideoButtonControlBar(rtkClient: meeting)
@@ -557,7 +518,6 @@ func buildCustomControlBar(
         alertViewController: viewController
     )
 
-
     tabBar.setButtons([micButton, videoButton, switchCameraButton, endCallButton])
     return tabBar
 }
@@ -565,12 +525,9 @@ func buildCustomControlBar(
 
 ### Add the custom controlbar to your view controller
 
-**Swift**
-
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
-
 
     let controlBar = buildCustomControlBar(
         meeting: meeting,
@@ -578,7 +535,6 @@ override func viewDidLoad() {
     )
     controlBar.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(controlBar)
-
 
     NSLayoutConstraint.activate([
         controlBar.bottomAnchor.constraint(
@@ -595,8 +551,6 @@ override func viewDidLoad() {
 
 Implement `RtkMeetingControlBarDataSource` to replace specific buttons while keeping the default controlbar layout:
 
-**Swift**
-
 ```swift
 class CustomControlBarDataSource: RtkMeetingControlBarDataSource {
     func getMicControlBarButton(
@@ -607,7 +561,6 @@ class CustomControlBarDataSource: RtkMeetingControlBarDataSource {
         return button
     }
 
-
     func getVideoControlBarButton(
         for meeting: RealtimeKitClient
     ) -> RtkControlBarButton? {
@@ -616,7 +569,6 @@ class CustomControlBarDataSource: RtkMeetingControlBarDataSource {
         return button
     }
 }
-
 
 // Assign the data source
 let controlBar = RtkMeetingControlBar(
@@ -631,15 +583,12 @@ controlBar.dataSource = CustomControlBarDataSource()
 
 Create a custom button using `RtkControlBarButton`:
 
-**Swift**
-
 ```swift
 let customButton = RtkControlBarButton(
     image: RtkImage(image: UIImage(systemName: "hand.raised.fill")),
     title: "Raise Hand"
 )
 customButton.addTarget(self, action: #selector(onRaiseHand), for: .touchUpInside)
-
 
 // Add it alongside other buttons
 tabBar.setButtons([micButton, videoButton, customButton, endCallButton])
@@ -659,8 +608,6 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
 
 ### Define a custom controlbar layout in XML
 
-**layout\_custom\_controlbar.xml**
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView
@@ -672,13 +619,11 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
     android:gravity="center"
     android:padding="8dp">
 
-
     <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMicToggleButton
         android:id="@+id/micToggle"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="4dp" />
-
 
     <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButton
         android:id="@+id/cameraToggle"
@@ -686,13 +631,11 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
         android:layout_height="48dp"
         android:layout_margin="4dp" />
 
-
     <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
         android:id="@+id/moreToggle"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="4dp" />
-
 
     <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
         android:id="@+id/leaveButton"
@@ -700,13 +643,10 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
         android:layout_height="48dp"
         android:layout_margin="4dp" />
 
-
 </com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView>
 ```
 
 ### Activate the controlbar buttons in your Activity
-
-**CustomMeetingActivity.kt**
 
 ```kotlin
 import android.os.Bundle
@@ -717,18 +657,14 @@ import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButto
 import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
 import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
 
-
 class CustomMeetingActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_meeting)
 
-
         // Your meeting initialization code...
     }
-
 
     fun activateControlBar(meeting: RealtimeKitClient) {
         findViewById<RtkMicToggleButton>(R.id.micToggle).activate(meeting)
@@ -757,8 +693,6 @@ Create a custom button in XML:
 
 Handle the click in Kotlin:
 
-**Kotlin**
-
 ```kotlin
 val raiseHandButton = findViewById<RtkControlBarButton>(R.id.raiseHandButton)
 raiseHandButton.setOnClickListener {
@@ -784,19 +718,14 @@ The Flutter UI Kit provides individual toggle button widgets that you can compos
 
 Wrap the button widgets in a `Row` or any custom layout:
 
-**Dart**
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:realtimekit_ui/realtimekit_ui.dart';
 
-
 class CustomControlBar extends StatelessWidget {
   final RealtimekitClient meeting;
 
-
   const CustomControlBar({required this.meeting, super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -820,19 +749,14 @@ class CustomControlBar extends StatelessWidget {
 
 Replace the default controlbar in your `Scaffold`:
 
-**Dart**
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:realtimekit_ui/realtimekit_ui.dart';
 
-
 class CustomMeetingScreen extends StatelessWidget {
   final RealtimekitClient meeting;
 
-
   const CustomMeetingScreen({required this.meeting, super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -859,8 +783,6 @@ class CustomMeetingScreen extends StatelessWidget {
 
 Add your own `IconButton` or any Flutter widget next to the RealtimeKit buttons:
 
-**Dart**
-
 ```dart
 Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -882,8 +804,6 @@ Row(
 ### Customize button appearance with design tokens
 
 Pass `individualDesignToken` to style buttons individually:
-
-**Dart**
 
 ```dart
 RtkSelfAudioToggleButton(
@@ -919,36 +839,34 @@ Replace `RtkControlbar` with individual components in a `View`:
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import {
-  RtkMicToggle,
-  RtkCameraToggle,
-  RtkLeaveButton,
-  RtkMoreToggle,
-  RtkScreenShareToggle,
+	RtkMicToggle,
+	RtkCameraToggle,
+	RtkLeaveButton,
+	RtkMoreToggle,
+	RtkScreenShareToggle,
 } from "@cloudflare/realtimekit-react-native-ui";
 
-
 function CustomControlbar({ meeting }) {
-  return (
-    <View style={styles.controlbar}>
-      <RtkMicToggle meeting={meeting} variant="horizontal" />
-      <RtkCameraToggle meeting={meeting} variant="horizontal" />
-      <RtkScreenShareToggle meeting={meeting} variant="horizontal" />
-      <RtkMoreToggle meeting={meeting} variant="horizontal" />
-      <RtkLeaveButton />
-    </View>
-  );
+	return (
+		<View style={styles.controlbar}>
+			<RtkMicToggle meeting={meeting} variant="horizontal" />
+			<RtkCameraToggle meeting={meeting} variant="horizontal" />
+			<RtkScreenShareToggle meeting={meeting} variant="horizontal" />
+			<RtkMoreToggle meeting={meeting} variant="horizontal" />
+			<RtkLeaveButton />
+		</View>
+	);
 }
 
-
 const styles = StyleSheet.create({
-  controlbar: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    backgroundColor: "#1A1A1A",
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-  },
+	controlbar: {
+		flexDirection: "row",
+		justifyContent: "space-evenly",
+		alignItems: "center",
+		backgroundColor: "#1A1A1A",
+		paddingVertical: 8,
+		paddingHorizontal: 16,
+	},
 });
 ```
 
@@ -973,23 +891,22 @@ Use `RtkControlbarButton` to create buttons that match the RealtimeKit design:
 ```tsx
 import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
 
-
 function CustomControlbar({ meeting }) {
-  return (
-    <View style={styles.controlbar}>
-      <RtkMicToggle meeting={meeting} variant="horizontal" />
-      <RtkCameraToggle meeting={meeting} variant="horizontal" />
-      <RtkControlbarButton
-        label="Raise Hand"
-        icon={raiseHandSvg}
-        onClick={() => {
-          // Custom raise hand logic
-        }}
-        variant="horizontal"
-      />
-      <RtkLeaveButton />
-    </View>
-  );
+	return (
+		<View style={styles.controlbar}>
+			<RtkMicToggle meeting={meeting} variant="horizontal" />
+			<RtkCameraToggle meeting={meeting} variant="horizontal" />
+			<RtkControlbarButton
+				label="Raise Hand"
+				icon={raiseHandSvg}
+				onClick={() => {
+					// Custom raise hand logic
+				}}
+				variant="horizontal"
+			/>
+			<RtkLeaveButton />
+		</View>
+	);
 }
 ```
 
@@ -997,7 +914,14 @@ Note
 
 Wrap your component tree in `RtkUIProvider`. All UI Kit components read design tokens and state from `RtkUIContext`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/#page","headline":"Add Custom Controlbar · Cloudflare Realtime docs","description":"Add a custom controlbar to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/custom-controlbar/","name":"Add Custom Controlbar"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/#page","headline":"Add Custom Controlbar · Cloudflare Realtime docs","description":"Add a custom controlbar to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

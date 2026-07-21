@@ -1,16 +1,18 @@
 ---
-title: Evolving to a SASE architecture with Cloudflare
 description: This reference architecture explains how organizations can work towards a SASE architecture using Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Evolving to a SASE architecture with Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Evolving to a SASE architecture with Cloudflare
 
-# Evolving to a SASE architecture with Cloudflare
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/sase/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Download a [PDF version](https://developers.cloudflare.com/reference-architecture/static/cloudflare-evolving-to-a-sase-architecture.pdf) of this reference architecture.
 
@@ -675,7 +677,14 @@ It's worth noting that many of the capabilities described in this document can b
 
 If you would like to discuss your SASE requirements in greater detail and connect with one of our architects, please visit [https://www.cloudflare.com/cloudflare-one/ ↗](https://www.cloudflare.com/cloudflare-one/) and request a consultation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/sase/#page","headline":"Evolving to a SASE architecture with Cloudflare · Cloudflare Reference Architecture docs","description":"This reference architecture explains how organizations can work towards a SASE architecture using Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/architectures/sase/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/sase/","name":"Evolving to a SASE architecture with Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/sase/#page","headline":"Evolving to a SASE architecture with Cloudflare · Cloudflare Reference Architecture docs","description":"This reference architecture explains how organizations can work towards a SASE architecture using Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/architectures/sase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

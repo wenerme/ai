@@ -1,16 +1,18 @@
 ---
-title: /crawl - Crawl web content
 description: Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: /crawl - Crawl web content
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  /crawl - Crawl web content
 
-# /crawl - Crawl web content
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
@@ -63,8 +65,8 @@ Example response:
 
 ```json
 {
-  "success": true,
-  "result": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e"
+	"success": true,
+	"result": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e"
 }
 ```
 
@@ -90,39 +92,32 @@ The response includes a `status` field indicating the current state of the crawl
 
 Since crawl jobs run asynchronously, you can poll the endpoint periodically to check when the job finishes. Add `?limit=1` to the request URL so the response stays lightweight — you only need the job `status`, not the full set of crawled records.
 
-**JavaScript**
-
 ```javascript
 async function waitForCrawl(accountId, jobId, apiToken) {
-  const maxAttempts = 60;
-  const delayMs = 5000;
+	const maxAttempts = 60;
+	const delayMs = 5000;
 
+	for (let i = 0; i < maxAttempts; i++) {
+		const response = await fetch(
+			`https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/crawl/${jobId}?limit=1`,
+			{
+				headers: {
+					Authorization: `Bearer ${apiToken}`,
+				},
+			},
+		);
 
-  for (let i = 0; i < maxAttempts; i++) {
-    const response = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/crawl/${jobId}?limit=1`,
-      {
-        headers: {
-          Authorization: `Bearer ${apiToken}`,
-        },
-      },
-    );
+		const data = await response.json();
+		const status = data.result.status;
 
+		if (status !== "running") {
+			return data.result;
+		}
 
-    const data = await response.json();
-    const status = data.result.status;
+		await new Promise((resolve) => setTimeout(resolve, delayMs));
+	}
 
-
-    if (status !== "running") {
-      return data.result;
-    }
-
-
-    await new Promise((resolve) => setTimeout(resolve, delayMs));
-  }
-
-
-  throw new Error("Crawl job did not complete within timeout");
+	throw new Error("Crawl job did not complete within timeout");
 }
 ```
 
@@ -143,38 +138,38 @@ Example response:
 
 ```json
 {
-  "result": {
-    "id": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e",
-    "status": "completed",
-    "browserSecondsUsed": 134.7,
-    "total": 50,
-    "finished": 50,
-    "records": [
-      {
-        "url": "https://developers.cloudflare.com/workers/",
-        "status": "completed",
-        "markdown": "# Cloudflare Workers\nBuild and deploy serverless applications...",
-        "metadata": {
-          "status": 200,
-          "title": "Cloudflare Workers · Cloudflare Workers docs",
-          "url": "https://developers.cloudflare.com/workers/"
-        }
-      },
-      {
-        "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/",
-        "status": "completed",
-        "markdown": "## Quickstarts\nGet up and running with a simple Hello World...",
-        "metadata": {
-          "status": 200,
-          "title": "Quickstarts · Cloudflare Workers docs",
-          "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/"
-        }
-      }
-      // ... 48 more entries omitted for brevity
-    ],
-    "cursor": 10
-  },
-  "success": true
+	"result": {
+		"id": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e",
+		"status": "completed",
+		"browserSecondsUsed": 134.7,
+		"total": 50,
+		"finished": 50,
+		"records": [
+			{
+				"url": "https://developers.cloudflare.com/workers/",
+				"status": "completed",
+				"markdown": "# Cloudflare Workers\nBuild and deploy serverless applications...",
+				"metadata": {
+					"status": 200,
+					"title": "Cloudflare Workers · Cloudflare Workers docs",
+					"url": "https://developers.cloudflare.com/workers/"
+				}
+			},
+			{
+				"url": "https://developers.cloudflare.com/workers/get-started/quickstarts/",
+				"status": "completed",
+				"markdown": "## Quickstarts\nGet up and running with a simple Hello World...",
+				"metadata": {
+					"status": 200,
+					"title": "Quickstarts · Cloudflare Workers docs",
+					"url": "https://developers.cloudflare.com/workers/get-started/quickstarts/"
+				}
+			}
+			// ... 48 more entries omitted for brevity
+		],
+		"cursor": 10
+	},
+	"success": true
 }
 ```
 
@@ -483,8 +478,6 @@ A site owner can include a `Content-Signal` directive in their `robots.txt` to a
 
 For example, a `robots.txt` that allows search indexing but disallows AI training:
 
-**robots.txt**
-
 ```txt
 User-Agent: *
 Content-Signal: search=yes, ai-train=no
@@ -565,7 +558,14 @@ If you have questions or encounter other errors, refer to the [Browser Run FAQ a
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/crawl-endpoint/","name":"/crawl - Crawl web content"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

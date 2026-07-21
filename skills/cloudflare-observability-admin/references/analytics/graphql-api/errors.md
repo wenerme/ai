@@ -1,16 +1,18 @@
 ---
-title: Error responses
 description: Understand GraphQL Analytics API error formats.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error responses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error responses
 
-# Error responses
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The GraphQL Analytics API is a RESTful API based on HTTPS requests and JSON responses, and will return familiar HTTP status codes (for example, `404`, `500`, `504`). However, in contrast to the common REST approach, a `200` response can contain an error, conforming to the [GraphQL specification ↗](https://graphql.github.io/graphql-spec/June2018/#sec-Errors).
 
@@ -104,7 +106,14 @@ Sample error message:
 
 This is a generic error indicating an unexpected failure. If it persists, contact [Cloudflare Support ↗](https://support.cloudflare.com/) with the full request and response, including the `Ray-ID` header from the HTTP response.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/errors/#page","headline":"Error responses · Cloudflare Analytics docs","description":"Understand GraphQL Analytics API error formats.","url":"https://developers.cloudflare.com/analytics/graphql-api/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/errors/","name":"Error responses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/errors/#page","headline":"Error responses · Cloudflare Analytics docs","description":"Understand GraphQL Analytics API error formats.","url":"https://developers.cloudflare.com/analytics/graphql-api/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

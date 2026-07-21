@@ -1,16 +1,18 @@
 ---
-title: Configure Snippets via API
 description: Create Snippets using the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Snippets via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Snippets via API
 
-# Configure Snippets via API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can create Snippets using the [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -58,14 +60,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Snippets Write`
 
-**Update a zone snippet**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/$SNIPPET_NAME" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --form "files=@example.js" \
-  --form "metadata={\"main_module\": \"example.js\"}"
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--form "files=@example.js" \
+	--form "metadata={\"main_module\": \"example.js\"}"
 ```
 
 The name of a snippet can only contain the characters `a-z`, `0-9`, and `_` (underscore). The name must be unique in the context of the zone. You cannot change the snippet name after creating the snippet.
@@ -77,18 +77,16 @@ The required body parameters are:
 
 To make this example work, save your JavaScript code in a file named `example.js`, and then execute `curl` command with a `PUT` request from the folder where `example.js` is located.
 
-**Example response**
-
 ```json
 {
-  "errors": [],
-  "messages": [],
-  "success": true,
-  "result": {
-    "created_on": "2023-07-24-00:00:00",
-    "modified_on": "2023-07-24-00:00:00",
-    "snippet_name": "snippet_name_01"
-  }
+	"errors": [],
+	"messages": [],
+	"success": true,
+	"result": {
+		"created_on": "2023-07-24-00:00:00",
+		"modified_on": "2023-07-24-00:00:00",
+		"snippet_name": "snippet_name_01"
+	}
 }
 ```
 
@@ -96,7 +94,7 @@ To deploy a new snippet you must [create a snippet rule](#createupdatedelete-sni
 
 ### Create/update/delete snippet rules
 
-Warning
+Caution
 
 When using this endpoint to create a new rule and keep existing rules, you must include all rules in the request body. Omitting an existing rule will delete the corresponding rule.
 
@@ -107,25 +105,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Snippets Write`
 
-**Update zone snippet rules**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/snippet_rules" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "description": "Trigger snippet on specific cookie",
-            "enabled": true,
-            "expression": "http.cookie eq \"a=b\"",
-            "snippet_name": "snippet_name_01"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"description": "Trigger snippet on specific cookie",
+						"enabled": true,
+						"expression": "http.cookie eq \"a=b\"",
+						"snippet_name": "snippet_name_01"
+				}
+		]
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-api/#page","headline":"Configure Snippets via API · Cloudflare Rules docs","description":"Create Snippets using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/snippets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/create-api/","name":"Configure Snippets via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-api/#page","headline":"Configure Snippets via API · Cloudflare Rules docs","description":"Create Snippets using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/snippets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

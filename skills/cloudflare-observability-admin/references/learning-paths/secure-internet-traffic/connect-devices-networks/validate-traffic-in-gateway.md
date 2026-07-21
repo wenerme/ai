@@ -1,16 +1,18 @@
 ---
-title: Verify device connectivity
 description: Verify devices connect through Cloudflare.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Verify device connectivity
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Verify device connectivity
 
-# Verify device connectivity
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To validate that Cloudflare is receiving traffic from a user device:
 
@@ -18,7 +20,7 @@ To validate that Cloudflare is receiving traffic from a user device:
 2. Under **Log traffic activity**, enable activity logging for all DNS logs.
 3. On your device, open a browser and go to any website.
 4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **DNS**.
-5. Make sure DNS queries from your device appear.
+5. Make sure DNSqueries from your device appear.
 
 ## Best practices
 
@@ -33,7 +35,14 @@ For step-by-step guidance on diagnosing and resolving Cloudflare One Client issu
 * Common misconfigurations and their fixes
 * Best practices for filing support tickets
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/#page","headline":"Verify device connectivity · Cloudflare Learning Paths","description":"Verify devices connect through Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/","name":"Connect devices and networks to Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/","name":"Verify device connectivity"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/#page","headline":"Verify device connectivity · Cloudflare Learning Paths","description":"Verify devices connect through Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/validate-traffic-in-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

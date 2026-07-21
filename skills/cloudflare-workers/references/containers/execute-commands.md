@@ -1,16 +1,18 @@
 ---
-title: Execute commands
 description: Run additional processes inside an active Container.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Execute commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Execute commands
 
-# Execute commands
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/execute-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use `exec()` to start another process inside a running [Container](https://developers.cloudflare.com/containers/container-class/). The examples call `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`.
 
@@ -20,119 +22,92 @@ Use `exec()` to start another process inside a running [Container](https://devel
 
 The following hook runs a preparation command whenever the Container starts. You can execute any series of startup commands from this hook. `output()` buffers standard output and standard error as separate `ArrayBuffer` values.
 
-* [  JavaScript ](#tab-panel-8511)
-* [  TypeScript ](#tab-panel-8512)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async onStart() {
-    const process = await this.ctx.container.exec([
-      "node",
-      "scripts/prepare.js",
-    ]);
-    const output = await process.output();
-    const decoder = new TextDecoder();
+	async onStart() {
+		const process = await this.ctx.container.exec([
+			"node",
+			"scripts/prepare.js",
+		]);
+		const output = await process.output();
+		const decoder = new TextDecoder();
 
+		if (output.exitCode !== 0) {
+			throw new Error(
+				`Container preparation failed: ${decoder.decode(output.stderr)}`,
+			);
+		}
 
-    if (output.exitCode !== 0) {
-      throw new Error(
-        `Container preparation failed: ${decoder.decode(output.stderr)}`,
-      );
-    }
-
-
-    console.log(decoder.decode(output.stdout));
-  }
+		console.log(decoder.decode(output.stdout));
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  override async onStart() {
-    const process = await this.ctx.container.exec([
-      "node",
-      "scripts/prepare.js",
-    ]);
-    const output = await process.output();
-    const decoder = new TextDecoder();
+	override async onStart() {
+		const process = await this.ctx.container.exec([
+			"node",
+			"scripts/prepare.js",
+		]);
+		const output = await process.output();
+		const decoder = new TextDecoder();
 
+	if (output.exitCode !== 0) {
+		throw new Error(
+			`Container preparation failed: ${decoder.decode(output.stderr)}`,
+		);
+	}
 
-  if (output.exitCode !== 0) {
-    throw new Error(
-      `Container preparation failed: ${decoder.decode(output.stderr)}`,
-    );
-  }
-
-
-  console.log(decoder.decode(output.stdout));
+	console.log(decoder.decode(output.stdout));
     }
-
 
 }
 ```
 
 In an RPC method, ensure the Container is running before calling `exec()`. Standard output uses a readable stream by default.
 
-* [  JavaScript ](#tab-panel-8509)
-* [  TypeScript ](#tab-panel-8510)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async readVersion() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async readVersion() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const stdout = process.stdout
+			? await new Response(process.stdout).text()
+			: "";
+		const exitCode = await process.exitCode;
 
-    const process = await this.ctx.container.exec(["node", "--version"]);
-    const stdout = process.stdout
-      ? await new Response(process.stdout).text()
-      : "";
-    const exitCode = await process.exitCode;
-
-
-    return { pid: process.pid, stdout, exitCode };
-  }
+		return { pid: process.pid, stdout, exitCode };
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async readVersion() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async readVersion() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const stdout = process.stdout
+			? await new Response(process.stdout).text()
+			: "";
+		const exitCode = await process.exitCode;
 
-    const process = await this.ctx.container.exec(["node", "--version"]);
-    const stdout = process.stdout
-      ? await new Response(process.stdout).text()
-      : "";
-    const exitCode = await process.exitCode;
-
-
-    return { pid: process.pid, stdout, exitCode };
-  }
+		return { pid: process.pid, stdout, exitCode };
+	}
 }
 ```
 
@@ -150,151 +125,121 @@ Invoke a shell when your command needs those features. Use `["bash", "-lc", "<CO
 
 Pass a `ReadableStream` to send existing data. Setting `stdout` to `"ignore"` discards standard output.
 
-* [  JavaScript ](#tab-panel-8515)
-* [  TypeScript ](#tab-panel-8516)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async importData(data) {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async importData(data) {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const stdin = new ReadableStream({
+			start(controller) {
+				controller.enqueue(new TextEncoder().encode(data));
+				controller.close();
+			},
+		});
+		const process = await this.ctx.container.exec(["cat"], {
+			stdin,
+			stdout: "ignore",
+		});
+		const output = await process.output();
 
-    const stdin = new ReadableStream({
-      start(controller) {
-        controller.enqueue(new TextEncoder().encode(data));
-        controller.close();
-      },
-    });
-    const process = await this.ctx.container.exec(["cat"], {
-      stdin,
-      stdout: "ignore",
-    });
-    const output = await process.output();
-
-
-    return {
-      stdoutBytes: output.stdout.byteLength,
-      exitCode: output.exitCode,
-    };
-  }
+		return {
+			stdoutBytes: output.stdout.byteLength,
+			exitCode: output.exitCode,
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async importData(data: string) {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async importData(data: string) {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const stdin = new ReadableStream<Uint8Array>({
+			start(controller) {
+				controller.enqueue(new TextEncoder().encode(data));
+				controller.close();
+			},
+		});
+		const process = await this.ctx.container.exec(["cat"], {
+			stdin,
+			stdout: "ignore",
+		});
+		const output = await process.output();
 
-    const stdin = new ReadableStream<Uint8Array>({
-      start(controller) {
-        controller.enqueue(new TextEncoder().encode(data));
-        controller.close();
-      },
-    });
-    const process = await this.ctx.container.exec(["cat"], {
-      stdin,
-      stdout: "ignore",
-    });
-    const output = await process.output();
-
-
-    return {
-      stdoutBytes: output.stdout.byteLength,
-      exitCode: output.exitCode,
-    };
-  }
+		return {
+			stdoutBytes: output.stdout.byteLength,
+			exitCode: output.exitCode,
+		};
+	}
 }
 ```
 
 Ignored standard output produces an empty buffer from `output()`. Set `stdin` to `"pipe"` to write data over time.
 
-* [  JavaScript ](#tab-panel-8517)
-* [  TypeScript ](#tab-panel-8518)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async concatenateInput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async concatenateInput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["cat"], {
+			stdin: "pipe",
+		});
+		const writer = process.stdin?.getWriter();
 
-    const process = await this.ctx.container.exec(["cat"], {
-      stdin: "pipe",
-    });
-    const writer = process.stdin?.getWriter();
+		if (!writer) {
+			throw new Error("Standard input is unavailable");
+		}
 
+		const encoder = new TextEncoder();
+		await writer.write(encoder.encode("first\n"));
+		await writer.write(encoder.encode("second\n"));
+		await writer.close();
 
-    if (!writer) {
-      throw new Error("Standard input is unavailable");
-    }
-
-
-    const encoder = new TextEncoder();
-    await writer.write(encoder.encode("first\n"));
-    await writer.write(encoder.encode("second\n"));
-    await writer.close();
-
-
-    const output = await process.output();
-    return new TextDecoder().decode(output.stdout);
-  }
+		const output = await process.output();
+		return new TextDecoder().decode(output.stdout);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async concatenateInput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async concatenateInput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["cat"], {
+			stdin: "pipe",
+		});
+		const writer = process.stdin?.getWriter();
 
-    const process = await this.ctx.container.exec(["cat"], {
-      stdin: "pipe",
-    });
-    const writer = process.stdin?.getWriter();
+		if (!writer) {
+			throw new Error("Standard input is unavailable");
+		}
 
+		const encoder = new TextEncoder();
+		await writer.write(encoder.encode("first\n"));
+		await writer.write(encoder.encode("second\n"));
+		await writer.close();
 
-    if (!writer) {
-      throw new Error("Standard input is unavailable");
-    }
-
-
-    const encoder = new TextEncoder();
-    await writer.write(encoder.encode("first\n"));
-    await writer.write(encoder.encode("second\n"));
-    await writer.close();
-
-
-    const output = await process.output();
-    return new TextDecoder().decode(output.stdout);
-  }
+		const output = await process.output();
+		return new TextDecoder().decode(output.stdout);
+	}
 }
 ```
 
@@ -304,92 +249,71 @@ Close the writer to send end-of-file (EOF). If you omit `stdin`, `exec()` closes
 
 RPC methods can accept byte-oriented `ReadableStream` values whose underlying source uses `type: "bytes"`. A `Request` body meets this requirement. You can pass the received stream directly to `exec()` without buffering the entire stream in the Durable Object. For more information, refer to [Streams over RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/#readablestream-writeablestream-request-and-response).
 
-* [  JavaScript ](#tab-panel-8525)
-* [  TypeScript ](#tab-panel-8526)
-
-**JavaScript**
-
 ```js
 import { Container, getContainer } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async writeFile(input) {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async writeFile(input) {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["tee", "/tmp/upload.bin"], {
+			stdin: input,
+			stdout: "ignore",
+		});
 
-    const process = await this.ctx.container.exec(["tee", "/tmp/upload.bin"], {
-      stdin: input,
-      stdout: "ignore",
-    });
-
-
-    return process.exitCode;
-  }
+		return process.exitCode;
+	}
 }
 
-
 export default {
-  async fetch(request, env) {
-    if (!request.body) {
-      return new Response("Request body required", { status: 400 });
-    }
+	async fetch(request, env) {
+		if (!request.body) {
+			return new Response("Request body required", { status: 400 });
+		}
 
+		const container = getContainer(env.MY_CONTAINER, "upload-worker");
+		const exitCode = await container.writeFile(request.body);
 
-    const container = getContainer(env.MY_CONTAINER, "upload-worker");
-    const exitCode = await container.writeFile(request.body);
-
-
-    return Response.json({ exitCode });
-  },
+		return Response.json({ exitCode });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { Container, getContainer } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async writeFile(input: ReadableStream<Uint8Array>) {
-    if (!this.ctx.container.running) {
-      await this.start();
+	async writeFile(input: ReadableStream<Uint8Array>) {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
+
+	const process = await this.ctx.container.exec(
+		["tee", "/tmp/upload.bin"],
+		{
+			stdin: input,
+			stdout: "ignore",
+		},
+	);
+
+	return process.exitCode;
     }
-
-
-  const process = await this.ctx.container.exec(
-    ["tee", "/tmp/upload.bin"],
-    {
-      stdin: input,
-      stdout: "ignore",
-    },
-  );
-
-
-  return process.exitCode;
-    }
-
 
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    if (!request.body) {
-      return new Response("Request body required", { status: 400 });
-    }
+	async fetch(request: Request, env: Env): Promise<Response> {
+		if (!request.body) {
+			return new Response("Request body required", { status: 400 });
+		}
 
+	const container = getContainer(env.MY_CONTAINER, "upload-worker");
+	const exitCode = await container.writeFile(request.body);
 
-  const container = getContainer(env.MY_CONTAINER, "upload-worker");
-  const exitCode = await container.writeFile(request.body);
-
-
-  return Response.json({ exitCode });
+	return Response.json({ exitCode });
     },
-
 
 };
 ```
@@ -398,56 +322,43 @@ RPC transfers ownership of the stream to the Durable Object. The calling Worker 
 
 The following `cat` process exits because standard input is omitted:
 
-* [  JavaScript ](#tab-panel-8513)
-* [  TypeScript ](#tab-panel-8514)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async verifyEndOfFile() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async verifyEndOfFile() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["cat"]);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(["cat"]);
-    const output = await process.output();
-
-
-    return {
-      stdoutBytes: output.stdout.byteLength,
-      exitCode: output.exitCode,
-    };
-  }
+		return {
+			stdoutBytes: output.stdout.byteLength,
+			exitCode: output.exitCode,
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async verifyEndOfFile() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async verifyEndOfFile() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["cat"]);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(["cat"]);
-    const output = await process.output();
-
-
-    return {
-      stdoutBytes: output.stdout.byteLength,
-      exitCode: output.exitCode,
-    };
-  }
+		return {
+			stdoutBytes: output.stdout.byteLength,
+			exitCode: output.exitCode,
+		};
+	}
 }
 ```
 
@@ -457,96 +368,81 @@ Use `cwd`, `env`, and `user` to set the process context. The process inherits th
 
 This example uses `sh` because it needs expansion and redirection. It also captures standard output and standard error separately.
 
-* [  JavaScript ](#tab-panel-8529)
-* [  TypeScript ](#tab-panel-8530)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  envVars = {
-    BASE_VALUE: "inherited",
-    MODE: "default",
-  };
+	envVars = {
+		BASE_VALUE: "inherited",
+		MODE: "default",
+	};
 
+	async inspectWorkspace() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
-  async inspectWorkspace() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+		const process = await this.ctx.container.exec(
+			[
+				"sh",
+				"-c",
+				'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
+			],
+			{
+				cwd: "/workspace",
+				env: {
+					MODE: "inspection",
+					EXTRA_VALUE: "added",
+				},
+			},
+		);
+		const output = await process.output();
+		const decoder = new TextDecoder();
 
-
-    const process = await this.ctx.container.exec(
-      [
-        "sh",
-        "-c",
-        'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
-      ],
-      {
-        cwd: "/workspace",
-        env: {
-          MODE: "inspection",
-          EXTRA_VALUE: "added",
-        },
-      },
-    );
-    const output = await process.output();
-    const decoder = new TextDecoder();
-
-
-    return {
-      stdout: decoder.decode(output.stdout),
-      stderr: decoder.decode(output.stderr),
-    };
-  }
+		return {
+			stdout: decoder.decode(output.stdout),
+			stderr: decoder.decode(output.stderr),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  envVars = {
-    BASE_VALUE: "inherited",
-    MODE: "default",
-  };
+	envVars = {
+		BASE_VALUE: "inherited",
+		MODE: "default",
+	};
 
+	async inspectWorkspace() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
-  async inspectWorkspace() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+		const process = await this.ctx.container.exec(
+			[
+				"sh",
+				"-c",
+				'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
+			],
+			{
+				cwd: "/workspace",
+				env: {
+					MODE: "inspection",
+					EXTRA_VALUE: "added",
+				},
+			},
+		);
+		const output = await process.output();
+		const decoder = new TextDecoder();
 
-
-    const process = await this.ctx.container.exec(
-      [
-        "sh",
-        "-c",
-        'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
-      ],
-      {
-        cwd: "/workspace",
-        env: {
-          MODE: "inspection",
-          EXTRA_VALUE: "added",
-        },
-      },
-    );
-    const output = await process.output();
-    const decoder = new TextDecoder();
-
-
-    return {
-      stdout: decoder.decode(output.stdout),
-      stderr: decoder.decode(output.stderr),
-    };
-  }
+		return {
+			stdout: decoder.decode(output.stdout),
+			stderr: decoder.decode(output.stderr),
+		};
+	}
 }
 ```
 
@@ -556,70 +452,57 @@ The `user` option sets the user name or numeric user ID (UID) for the process. T
 
 Set `stderr` to `"combined"` to merge standard error into standard output. Combined output requires `stdout: "pipe"`.
 
-* [  JavaScript ](#tab-panel-8521)
-* [  TypeScript ](#tab-panel-8522)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async readCombinedOutput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async readCombinedOutput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(
+			[
+				"bash",
+				"-lc",
+				'printf "standard output\n"; printf "standard error\n" >&2',
+			],
+			{
+				stdout: "pipe",
+				stderr: "combined",
+			},
+		);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(
-      [
-        "bash",
-        "-lc",
-        'printf "standard output\n"; printf "standard error\n" >&2',
-      ],
-      {
-        stdout: "pipe",
-        stderr: "combined",
-      },
-    );
-    const output = await process.output();
-
-
-    return new TextDecoder().decode(output.stdout);
-  }
+		return new TextDecoder().decode(output.stdout);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async readCombinedOutput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async readCombinedOutput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(
+			[
+				"bash",
+				"-lc",
+				'printf "standard output\n"; printf "standard error\n" >&2',
+			],
+			{
+				stdout: "pipe",
+				stderr: "combined",
+			},
+		);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(
-      [
-        "bash",
-        "-lc",
-        'printf "standard output\n"; printf "standard error\n" >&2',
-      ],
-      {
-        stdout: "pipe",
-        stderr: "combined",
-      },
-    );
-    const output = await process.output();
-
-
-    return new TextDecoder().decode(output.stdout);
-  }
+		return new TextDecoder().decode(output.stdout);
+	}
 }
 ```
 
@@ -631,73 +514,59 @@ A nonzero exit code resolves `exitCode` normally. It does not reject the promise
 
 This example preserves standard error while ignoring standard output:
 
-* [  JavaScript ](#tab-panel-8527)
-* [  TypeScript ](#tab-panel-8528)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runCheck() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runCheck() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(
+			[
+				"sh",
+				"-c",
+				'printf "not captured"; printf "check failed\n" >&2; exit 7',
+			],
+			{ stdout: "ignore" },
+		);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(
-      [
-        "sh",
-        "-c",
-        'printf "not captured"; printf "check failed\n" >&2; exit 7',
-      ],
-      { stdout: "ignore" },
-    );
-    const output = await process.output();
-
-
-    return {
-      exitCode: output.exitCode,
-      stdoutBytes: output.stdout.byteLength,
-      stderr: new TextDecoder().decode(output.stderr),
-    };
-  }
+		return {
+			exitCode: output.exitCode,
+			stdoutBytes: output.stdout.byteLength,
+			stderr: new TextDecoder().decode(output.stderr),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runCheck() {
-    if (!this.ctx.container.running) {
-      await this.start();
+	async runCheck() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
+
+	const process = await this.ctx.container.exec(
+		[
+			"sh",
+			"-c",
+			'printf "not captured"; printf "check failed\n" >&2; exit 7',
+		],
+		{ stdout: "ignore" },
+	);
+	const output = await process.output();
+
+	return {
+		exitCode: output.exitCode,
+		stdoutBytes: output.stdout.byteLength,
+		stderr: new TextDecoder().decode(output.stderr),
+	};
     }
-
-
-  const process = await this.ctx.container.exec(
-    [
-      "sh",
-      "-c",
-      'printf "not captured"; printf "check failed\n" >&2; exit 7',
-    ],
-    { stdout: "ignore" },
-  );
-  const output = await process.output();
-
-
-  return {
-    exitCode: output.exitCode,
-    stdoutBytes: output.stdout.byteLength,
-    stderr: new TextDecoder().decode(output.stderr),
-  };
-    }
-
 
 }
 ```
@@ -708,98 +577,79 @@ The result contains exit code `7` and the standard error text. Its ignored stand
 
 `output()` buffers both streams in memory. For large output, drain `stdout` and `stderr` concurrently instead.
 
-* [  JavaScript ](#tab-panel-8531)
-* [  TypeScript ](#tab-panel-8532)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 async function countBytes(stream) {
-  if (!stream) {
-    return 0;
-  }
+	if (!stream) {
+		return 0;
+	}
 
-
-  let bytes = 0;
-  for await (const chunk of stream) {
-    bytes += chunk.byteLength;
-  }
-  return bytes;
+	let bytes = 0;
+	for await (const chunk of stream) {
+		bytes += chunk.byteLength;
+	}
+	return bytes;
 }
-
 
 export class MyContainer extends Container {
-  async generateLargeOutput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async generateLargeOutput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec([
+			"sh",
+			"-c",
+			'i=0; while [ "$i" -lt 100000 ]; do printf "output %s\n" "$i"; printf "error %s\n" "$i" >&2; i=$((i + 1)); done',
+		]);
 
-    const process = await this.ctx.container.exec([
-      "sh",
-      "-c",
-      'i=0; while [ "$i" -lt 100000 ]; do printf "output %s\n" "$i"; printf "error %s\n" "$i" >&2; i=$((i + 1)); done',
-    ]);
+		const [stdoutBytes, stderrBytes, exitCode] = await Promise.all([
+			countBytes(process.stdout),
+			countBytes(process.stderr),
+			process.exitCode,
+		]);
 
-
-    const [stdoutBytes, stderrBytes, exitCode] = await Promise.all([
-      countBytes(process.stdout),
-      countBytes(process.stderr),
-      process.exitCode,
-    ]);
-
-
-    return { stdoutBytes, stderrBytes, exitCode };
-  }
+		return { stdoutBytes, stderrBytes, exitCode };
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 async function countBytes(stream: ReadableStream<Uint8Array> | null) {
-  if (!stream) {
-    return 0;
-  }
+	if (!stream) {
+		return 0;
+	}
 
-
-  let bytes = 0;
-  for await (const chunk of stream) {
-    bytes += chunk.byteLength;
-  }
-  return bytes;
+	let bytes = 0;
+	for await (const chunk of stream) {
+		bytes += chunk.byteLength;
+	}
+	return bytes;
 }
 
-
 export class MyContainer extends Container {
-  async generateLargeOutput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async generateLargeOutput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec([
+			"sh",
+			"-c",
+			'i=0; while [ "$i" -lt 100000 ]; do printf "output %s\n" "$i"; printf "error %s\n" "$i" >&2; i=$((i + 1)); done',
+		]);
 
-    const process = await this.ctx.container.exec([
-      "sh",
-      "-c",
-      'i=0; while [ "$i" -lt 100000 ]; do printf "output %s\n" "$i"; printf "error %s\n" "$i" >&2; i=$((i + 1)); done',
-    ]);
+		const [stdoutBytes, stderrBytes, exitCode] = await Promise.all([
+			countBytes(process.stdout),
+			countBytes(process.stderr),
+			process.exitCode,
+		]);
 
-
-    const [stdoutBytes, stderrBytes, exitCode] = await Promise.all([
-      countBytes(process.stdout),
-      countBytes(process.stderr),
-      process.exitCode,
-    ]);
-
-
-    return { stdoutBytes, stderrBytes, exitCode };
-  }
+		return { stdoutBytes, stderrBytes, exitCode };
+	}
 }
 ```
 
@@ -809,55 +659,41 @@ Streaming and `output()` are alternative consumption methods. `output()` throws 
 
 Return a `ReadableStream` from an RPC method to stream output to the calling Worker. Combining standard error provides one stream for both output channels.
 
-* [  JavaScript ](#tab-panel-8519)
-* [  TypeScript ](#tab-panel-8520)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async streamCommandOutput() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async streamCommandOutput() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(
+			["sh", "-c", 'printf "starting\n"; run-report'],
+			{ stderr: "combined" },
+		);
 
-    const process = await this.ctx.container.exec(
-      ["sh", "-c", 'printf "starting\n"; run-report'],
-      { stderr: "combined" },
-    );
-
-
-    return process.stdout;
-  }
+		return process.stdout;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async streamCommandOutput(): Promise<ReadableStream<Uint8Array>> {
-    if (!this.ctx.container.running) {
-      await this.start();
+	async streamCommandOutput(): Promise<ReadableStream<Uint8Array>> {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
+
+	const process = await this.ctx.container.exec(
+		["sh", "-c", 'printf "starting\n"; run-report'],
+		{ stderr: "combined" },
+	);
+
+	return process.stdout!;
     }
-
-
-  const process = await this.ctx.container.exec(
-    ["sh", "-c", 'printf "starting\n"; run-report'],
-    { stderr: "combined" },
-  );
-
-
-  return process.stdout!;
-    }
-
 
 }
 ```
@@ -870,58 +706,45 @@ This method transfers output, not the `ExecProcess` handle. Define a separate ap
 
 `exec()` has no built-in timeout. You can request termination after a delay with `kill()` and then await `exitCode`.
 
-* [  JavaScript ](#tab-panel-8523)
-* [  TypeScript ](#tab-panel-8524)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runWithTimeout() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runWithTimeout() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["sleep", "120"]);
+		const timer = setTimeout(() => process.kill(), 30_000);
 
-    const process = await this.ctx.container.exec(["sleep", "120"]);
-    const timer = setTimeout(() => process.kill(), 30_000);
-
-
-    try {
-      return await process.exitCode;
-    } finally {
-      clearTimeout(timer);
-    }
-  }
+		try {
+			return await process.exitCode;
+		} finally {
+			clearTimeout(timer);
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runWithTimeout() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runWithTimeout() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["sleep", "120"]);
+		const timer = setTimeout(() => process.kill(), 30_000);
 
-    const process = await this.ctx.container.exec(["sleep", "120"]);
-    const timer = setTimeout(() => process.kill(), 30_000);
-
-
-    try {
-      return await process.exitCode;
-    } finally {
-      clearTimeout(timer);
-    }
-  }
+		try {
+			return await process.exitCode;
+		} finally {
+			clearTimeout(timer);
+		}
+	}
 }
 ```
 
@@ -933,88 +756,80 @@ Place `exec()` calls in the Durable Object that controls the Container. The Dura
 
 One application RPC method can perform multiple `exec()` operations. Each command remains a separate exec operation, but the caller makes one Durable Object RPC call. This reduces caller-to-Durable Object round trips while keeping lifecycle decisions together.
 
-* [  JavaScript ](#tab-panel-8533)
-* [  TypeScript ](#tab-panel-8534)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runDiagnostics() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runDiagnostics() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const commands = [
+			["uname", "-a"],
+			["node", "--version"],
+		];
+		const decoder = new TextDecoder();
+		const results = [];
 
-    const commands = [
-      ["uname", "-a"],
-      ["node", "--version"],
-    ];
-    const decoder = new TextDecoder();
-    const results = [];
+		for (const command of commands) {
+			const process = await this.ctx.container.exec(command);
+			const output = await process.output();
+			results.push({
+				command,
+				exitCode: output.exitCode,
+				stdout: decoder.decode(output.stdout),
+				stderr: decoder.decode(output.stderr),
+			});
+		}
 
-
-    for (const command of commands) {
-      const process = await this.ctx.container.exec(command);
-      const output = await process.output();
-      results.push({
-        command,
-        exitCode: output.exitCode,
-        stdout: decoder.decode(output.stdout),
-        stderr: decoder.decode(output.stderr),
-      });
-    }
-
-
-    return results;
-  }
+		return results;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runDiagnostics() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runDiagnostics() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const commands = [
+			["uname", "-a"],
+			["node", "--version"],
+		];
+		const decoder = new TextDecoder();
+		const results = [];
 
-    const commands = [
-      ["uname", "-a"],
-      ["node", "--version"],
-    ];
-    const decoder = new TextDecoder();
-    const results = [];
+		for (const command of commands) {
+			const process = await this.ctx.container.exec(command);
+			const output = await process.output();
+			results.push({
+				command,
+				exitCode: output.exitCode,
+				stdout: decoder.decode(output.stdout),
+				stderr: decoder.decode(output.stderr),
+			});
+		}
 
-
-    for (const command of commands) {
-      const process = await this.ctx.container.exec(command);
-      const output = await process.output();
-      results.push({
-        command,
-        exitCode: output.exitCode,
-        stdout: decoder.decode(output.stdout),
-        stderr: decoder.decode(output.stderr),
-      });
-    }
-
-
-    return results;
-  }
+		return results;
+	}
 }
 ```
 
 For all fields and return types, refer to the [exec() API contract](https://developers.cloudflare.com/durable-objects/api/container/#exec).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/execute-commands/#page","headline":"Execute commands · Cloudflare Containers docs","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/execute-commands/","name":"Execute commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/execute-commands/#page","headline":"Execute commands · Cloudflare Containers docs","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

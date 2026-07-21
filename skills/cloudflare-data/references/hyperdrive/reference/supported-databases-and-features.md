@@ -1,16 +1,18 @@
 ---
-title: Supported databases and features
 description: Database engines, providers, and driver libraries compatible with Hyperdrive.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Supported databases and features
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported databases and features
 
-# Supported databases and features
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Database support
 
@@ -99,7 +101,14 @@ Hyperdrive does not support the following MySQL features:
 
 In cases where you need to issue these unsupported statements from your application, the Hyperdrive team recommends setting up a second, direct client without Hyperdrive.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/#page","headline":"Supported databases and features · Cloudflare Hyperdrive docs","description":"Database engines, providers, and driver libraries compatible with Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/reference/supported-databases-and-features/","name":"Supported databases and features"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/#page","headline":"Supported databases and features · Cloudflare Hyperdrive docs","description":"Database engines, providers, and driver libraries compatible with Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

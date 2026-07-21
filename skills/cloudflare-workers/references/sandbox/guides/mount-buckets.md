@@ -1,20 +1,22 @@
 ---
-title: Mount buckets
 description: Mount S3-compatible object storage as local filesystems for persistent data storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Mount buckets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Mount buckets
 
-# Mount buckets
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/mount-buckets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Mount S3-compatible object storage buckets as local filesystem paths. Access object storage using standard file operations. For Cloudflare R2 in production, you can also mount by Worker R2 binding name so credentials stay in the Worker runtime.
 
-Mounting `/workspace`
+Mounting \`/workspace\`
 
 Mounting a bucket at `/workspace` or a subpath under it can be confusing in app or project setups. In production, the mount overlays that path instead of merging with files already in the image or template. If you want `/workspace` itself to persist over time, [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) is often a better fit.
 
@@ -25,11 +27,6 @@ The SDK works with any S3-compatible object storage provider. Examples include C
 ## Production prerequisites for R2 binding mounts
 
 To mount an R2 bucket in production without passing credentials into the container, add an R2 binding and export `ContainerProxy` from your Worker entrypoint.
-
-* [  wrangler.jsonc ](#tab-panel-11297)
-* [  wrangler.toml ](#tab-panel-11298)
-
-**JSONC**
 
 ```jsonc
 {
@@ -43,31 +40,20 @@ To mount an R2 bucket in production without passing credentials into the contain
 }
 ```
 
-**TOML**
-
 ```toml
 [[r2_buckets]]
 binding = "MY_BUCKET"
 bucket_name = "my-r2-bucket"
 ```
 
-* [  JavaScript ](#tab-panel-11301)
-* [  TypeScript ](#tab-panel-11302)
-
-**JavaScript**
-
 ```js
 import { ContainerProxy } from "@cloudflare/sandbox";
-
 
 export { ContainerProxy };
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 import { ContainerProxy } from "@cloudflare/sandbox";
-
 
 export { ContainerProxy };
 ```
@@ -85,57 +71,42 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-11313)
-* [  TypeScript ](#tab-panel-11314)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "data-processor");
-
 
 // Mount R2 bucket by Worker binding name
 await sandbox.mountBucket("MY_BUCKET", "/data");
-
 
 // Access bucket with standard filesystem operations
 await sandbox.exec("ls", { args: ["/data"] });
 await sandbox.writeFile("/data/results.json", JSON.stringify(results));
 
-
 // Use from Python
 await sandbox.exec("python", {
-  args: [
-    "-c",
-    `
+	args: [
+		"-c",
+		`
 import pandas as pd
 df = pd.read_csv('/data/input.csv')
 df.describe().to_csv('/data/summary.csv')
 `,
-  ],
+	],
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
 
-
 const sandbox = getSandbox(env.Sandbox, 'data-processor');
-
 
 // Mount R2 bucket by Worker binding name
 await sandbox.mountBucket('MY_BUCKET', '/data');
 
-
 // Access bucket with standard filesystem operations
 await sandbox.exec('ls', { args: ['/data'] });
 await sandbox.writeFile('/data/results.json', JSON.stringify(results));
-
 
 // Use from Python
 await sandbox.exec('python', { args: ['-c', `
@@ -168,24 +139,17 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-11303)
-* [  TypeScript ](#tab-panel-11304)
-
-**JavaScript**
-
 ```js
 // Credentials automatically detected from environment for remote endpoint mounts
 await sandbox.mountBucket("my-r2-bucket", "/data", {
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+	endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Credentials automatically detected from environment for remote endpoint mounts
 await sandbox.mountBucket('my-r2-bucket', '/data', {
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'
+	endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'
 });
 ```
 
@@ -193,30 +157,23 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-11305)
-* [  TypeScript ](#tab-panel-11306)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("my-r2-bucket", "/data", {
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: env.R2_ACCESS_KEY_ID,
+		secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+	},
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('my-r2-bucket', '/data', {
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
-  credentials: {
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY
-  }
+	endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
+	credentials: {
+		accessKeyId: env.R2_ACCESS_KEY_ID,
+		secretAccessKey: env.R2_SECRET_ACCESS_KEY
+	}
 });
 ```
 
@@ -228,34 +185,27 @@ Set `credentialProxy: true` to keep credentials out of the container entirely. I
 
 This works with [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage. It is recommended to set `credentialProxy: true` for all endpoint mounts. The option defaults to `false` for backwards compatibility and will become the default in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-11307)
-* [  TypeScript ](#tab-panel-11308)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("my-bucket", "/data", {
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-  provider: "r2",
-  credentials: {
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-  },
-  credentialProxy: true,
+	endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+	provider: "r2",
+	credentials: {
+		accessKeyId: env.R2_ACCESS_KEY_ID,
+		secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+	},
+	credentialProxy: true,
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('my-bucket', '/data', {
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
-  provider: 'r2',
-  credentials: {
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY
-  },
-  credentialProxy: true
+	endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
+	provider: 'r2',
+	credentials: {
+		accessKeyId: env.R2_ACCESS_KEY_ID,
+		secretAccessKey: env.R2_SECRET_ACCESS_KEY
+	},
+	credentialProxy: true
 });
 ```
 
@@ -263,11 +213,8 @@ ContainerProxy export required
 
 Credential proxy mounts use egress interception and require `ContainerProxy` to be exported from your Worker entrypoint. Without this export, the proxy cannot intercept requests and the mount will fail.
 
-**TypeScript**
-
 ```typescript
 import { ContainerProxy } from "@cloudflare/sandbox";
-
 
 export { ContainerProxy };
 ```
@@ -276,68 +223,53 @@ export { ContainerProxy };
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-11325)
-* [  TypeScript ](#tab-panel-11326)
-
-**JavaScript**
-
 ```js
 // Mount only the /uploads/images/ subdirectory
 await sandbox.mountBucket("MY_BUCKET", "/images", {
-  prefix: "/uploads/images/",
+	prefix: "/uploads/images/",
 });
-
 
 // Files appear at mount point without the prefix
 // Bound bucket: my-r2-bucket/uploads/images/photo.jpg
 // Mounted path: /images/photo.jpg
 await sandbox.exec("ls", { args: ["/images"] });
 
-
 // Write to subdirectory
 await sandbox.writeFile("/images/photo.jpg", imageData);
 // Creates my-r2-bucket/uploads/images/photo.jpg
 
-
 // Mount different prefixes to different paths
 await sandbox.mountBucket("MY_BUCKET", "/training-data", {
-  prefix: "/ml/training/",
+	prefix: "/ml/training/",
 });
 
-
 await sandbox.mountBucket("MY_BUCKET", "/test-data", {
-  prefix: "/ml/testing/",
+	prefix: "/ml/testing/",
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Mount only the /uploads/images/ subdirectory
 await sandbox.mountBucket('MY_BUCKET', '/images', {
-  prefix: '/uploads/images/'
+	prefix: '/uploads/images/'
 });
-
 
 // Files appear at mount point without the prefix
 // Bound bucket: my-r2-bucket/uploads/images/photo.jpg
 // Mounted path: /images/photo.jpg
 await sandbox.exec('ls', { args: ['/images'] });
 
-
 // Write to subdirectory
 await sandbox.writeFile('/images/photo.jpg', imageData);
 // Creates my-r2-bucket/uploads/images/photo.jpg
 
-
 // Mount different prefixes to different paths
 await sandbox.mountBucket('MY_BUCKET', '/training-data', {
-  prefix: '/ml/training/'
+	prefix: '/ml/training/'
 });
 
-
 await sandbox.mountBucket('MY_BUCKET', '/test-data', {
-  prefix: '/ml/testing/'
+	prefix: '/ml/testing/'
 });
 ```
 
@@ -349,36 +281,25 @@ The `prefix` must start with `/` (for example, `/data` or `/logs/2024/`).
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-11309)
-* [  TypeScript ](#tab-panel-11310)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("MY_BUCKET", "/data", {
-  readOnly: true,
+	readOnly: true,
 });
-
 
 // Reads work
 await sandbox.exec("cat", { args: ["/data/dataset.csv"] });
-
 
 // Writes fail
 await sandbox.writeFile("/data/new-file.txt", "data"); // Error: Read-only filesystem
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('MY_BUCKET', '/data', {
-  readOnly: true
+	readOnly: true
 });
-
 
 // Reads work
 await sandbox.exec('cat', { args: ['/data/dataset.csv'] });
-
 
 // Writes fail
 await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only filesystem
@@ -388,29 +309,20 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 You can also mount R2 buckets during local development with `wrangler dev` by passing the `localBucket` option. Production R2 binding mounts and local `localBucket` mounts both avoid explicit credentials, but they are different execution paths. Production uses credential-less egress interception and overlays the target path. Local development uses periodic synchronization with the R2 binding.
 
-* [  JavaScript ](#tab-panel-11311)
-* [  TypeScript ](#tab-panel-11312)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("MY_BUCKET", "/data", {
-  localBucket: true,
+	localBucket: true,
 });
-
 
 // Access files using standard operations
 await sandbox.exec("ls", { args: ["/data"] });
 await sandbox.writeFile("/data/results.json", JSON.stringify(results));
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('MY_BUCKET', '/data', {
-  localBucket: true
+	localBucket: true
 });
-
 
 // Access files using standard operations
 await sandbox.exec('ls', { args: ['/data'] });
@@ -421,11 +333,8 @@ Note
 
 You can use an environment variable to toggle `localBucket` between local development and production. Set an environment variable such as `LOCAL_DEV` in your Wrangler configuration using `vars` for local development, then reference it in your code:
 
-**TypeScript**
-
 ```typescript
 const mountOptions = env.LOCAL_DEV ? { localBucket: true } : {};
-
 
 await sandbox.mountBucket('MY_BUCKET', '/data', mountOptions);
 ```
@@ -434,40 +343,31 @@ When `localBucket` is `true`, the SDK uses local R2 binding synchronization. Whe
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-11317)
-* [  TypeScript ](#tab-panel-11318)
-
-**JavaScript**
-
 ```js
 // Read-only local mount
 await sandbox.mountBucket("MY_BUCKET", "/data", {
-  localBucket: true,
-  readOnly: true,
+	localBucket: true,
+	readOnly: true,
 });
-
 
 // Mount a subdirectory
 await sandbox.mountBucket("MY_BUCKET", "/images", {
-  localBucket: true,
-  prefix: "/uploads/images/",
+	localBucket: true,
+	prefix: "/uploads/images/",
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Read-only local mount
 await sandbox.mountBucket('MY_BUCKET', '/data', {
-  localBucket: true,
-  readOnly: true
+	localBucket: true,
+	readOnly: true
 });
-
 
 // Mount a subdirectory
 await sandbox.mountBucket('MY_BUCKET', '/images', {
-  localBucket: true,
-  prefix: '/uploads/images/'
+	localBucket: true,
+	prefix: '/uploads/images/'
 });
 ```
 
@@ -485,34 +385,23 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-11315)
-* [  TypeScript ](#tab-panel-11316)
-
-**JavaScript**
-
 ```js
 // Mount for processing
 await sandbox.mountBucket("MY_BUCKET", "/data");
 
-
 // Do work
 await sandbox.exec("python process_data.py");
-
 
 // Clean up
 await sandbox.unmountBucket("/data");
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Mount for processing
 await sandbox.mountBucket('MY_BUCKET', '/data');
 
-
 // Do work
 await sandbox.exec('python process_data.py');
-
 
 // Clean up
 await sandbox.unmountBucket('/data');
@@ -528,59 +417,45 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-11319)
-* [  TypeScript ](#tab-panel-11320)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("my-s3-bucket", "/data", {
-  endpoint: "https://s3.us-west-2.amazonaws.com",
-  credentials: {
-    accessKeyId: env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://s3.us-west-2.amazonaws.com",
+	credentials: {
+		accessKeyId: env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+	},
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('my-s3-bucket', '/data', {
-  endpoint: 'https://s3.us-west-2.amazonaws.com',
-  credentials: {
-    accessKeyId: env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY
-  }
+	endpoint: 'https://s3.us-west-2.amazonaws.com',
+	credentials: {
+		accessKeyId: env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+	}
 });
 ```
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-11321)
-* [  TypeScript ](#tab-panel-11322)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("my-gcs-bucket", "/data", {
-  endpoint: "https://storage.googleapis.com",
-  credentials: {
-    accessKeyId: env.GCS_ACCESS_KEY_ID,
-    secretAccessKey: env.GCS_SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://storage.googleapis.com",
+	credentials: {
+		accessKeyId: env.GCS_ACCESS_KEY_ID,
+		secretAccessKey: env.GCS_SECRET_ACCESS_KEY,
+	},
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('my-gcs-bucket', '/data', {
-  endpoint: 'https://storage.googleapis.com',
-  credentials: {
-    accessKeyId: env.GCS_ACCESS_KEY_ID,
-    secretAccessKey: env.GCS_SECRET_ACCESS_KEY
-  }
+	endpoint: 'https://storage.googleapis.com',
+	credentials: {
+		accessKeyId: env.GCS_ACCESS_KEY_ID,
+		secretAccessKey: env.GCS_SECRET_ACCESS_KEY
+	}
 });
 ```
 
@@ -592,30 +467,23 @@ Generate HMAC keys in GCS console under **Settings** \> **Interoperability**.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-11323)
-* [  TypeScript ](#tab-panel-11324)
-
-**JavaScript**
-
 ```js
 await sandbox.mountBucket("my-bucket", "/data", {
-  endpoint: "https://s3.us-west-000.backblazeb2.com",
-  credentials: {
-    accessKeyId: env.ACCESS_KEY_ID,
-    secretAccessKey: env.SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://s3.us-west-000.backblazeb2.com",
+	credentials: {
+		accessKeyId: env.ACCESS_KEY_ID,
+		secretAccessKey: env.SECRET_ACCESS_KEY,
+	},
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 await sandbox.mountBucket('my-bucket', '/data', {
-  endpoint: 'https://s3.us-west-000.backblazeb2.com',
-  credentials: {
-    accessKeyId: env.ACCESS_KEY_ID,
-    secretAccessKey: env.SECRET_ACCESS_KEY
-  }
+	endpoint: 'https://s3.us-west-000.backblazeb2.com',
+	credentials: {
+		accessKeyId: env.ACCESS_KEY_ID,
+		secretAccessKey: env.SECRET_ACCESS_KEY
+	}
 });
 ```
 
@@ -629,11 +497,6 @@ For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github
 
 **Solution**: Ensure your Worker has an `r2_buckets` binding and that `mountBucket()` uses the binding name, not the bucket's dashboard name:
 
-* [  wrangler.jsonc ](#tab-panel-11299)
-* [  wrangler.toml ](#tab-panel-11300)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -645,8 +508,6 @@ For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -690,28 +551,21 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your binding or endpoint configuration:
 
-* [  JavaScript ](#tab-panel-11327)
-* [  TypeScript ](#tab-panel-11328)
-
-**JavaScript**
-
 ```js
 try {
-  await sandbox.mountBucket("MY_BUCKET", "/data");
+	await sandbox.mountBucket("MY_BUCKET", "/data");
 } catch (error) {
-  console.error("Mount failed:", error.message);
-  // Check binding name, ContainerProxy export, or remote endpoint configuration
+	console.error("Mount failed:", error.message);
+	// Check binding name, ContainerProxy export, or remote endpoint configuration
 }
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 try {
-  await sandbox.mountBucket('MY_BUCKET', '/data');
+	await sandbox.mountBucket('MY_BUCKET', '/data');
 } catch (error) {
-  console.error('Mount failed:', error.message);
-  // Check binding name, ContainerProxy export, or remote endpoint configuration
+	console.error('Mount failed:', error.message);
+	// Check binding name, ContainerProxy export, or remote endpoint configuration
 }
 ```
 
@@ -721,26 +575,17 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-11329)
-* [  TypeScript ](#tab-panel-11330)
-
-**JavaScript**
-
 ```js
 // Unmount existing
 await sandbox.unmountBucket("/data");
-
 
 // Or use different path
 await sandbox.mountBucket("bucket2", "/storage", { endpoint: "..." });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Unmount existing
 await sandbox.unmountBucket('/data');
-
 
 // Or use different path
 await sandbox.mountBucket('bucket2', '/storage', { endpoint: '...' });
@@ -752,40 +597,29 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-11331)
-* [  TypeScript ](#tab-panel-11332)
-
-**JavaScript**
-
 ```js
 // Copy to local filesystem
 await sandbox.exec("cp", {
-  args: ["/data/large-dataset.csv", "/workspace/dataset.csv"],
+	args: ["/data/large-dataset.csv", "/workspace/dataset.csv"],
 });
-
 
 // Work with local copy (faster)
 await sandbox.exec("python", {
-  args: ["process.py", "/workspace/dataset.csv"],
+	args: ["process.py", "/workspace/dataset.csv"],
 });
-
 
 // Save results back to bucket
 await sandbox.exec("cp", {
-  args: ["/workspace/results.json", "/data/results/output.json"],
+	args: ["/workspace/results.json", "/data/results/output.json"],
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 // Copy to local filesystem
 await sandbox.exec('cp', { args: ['/data/large-dataset.csv', '/workspace/dataset.csv'] });
 
-
 // Work with local copy (faster)
 await sandbox.exec('python', { args: ['process.py', '/workspace/dataset.csv'] });
-
 
 // Save results back to bucket
 await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/output.json'] });
@@ -811,7 +645,14 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 * [R2 documentation](https://developers.cloudflare.com/r2/) \- Learn about Cloudflare R2
 * [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Learn how `ContainerProxy` and outbound interception work
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/mount-buckets/","name":"Mount buckets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

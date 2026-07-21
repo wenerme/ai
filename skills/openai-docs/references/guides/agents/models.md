@@ -33,7 +33,7 @@ const runner = new Runner({
 await runner.run(fastAgent, "Summarize ticket 123.");
 const result = await runner.run(
   generalAgent,
-  "Investigate the billing issue on account 456.",
+  "Investigate the billing issue on account 456."
 );
 
 console.log(result.finalOutput);

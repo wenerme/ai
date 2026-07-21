@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Zaraz
 description: Load third-party tools in the cloud for speed, privacy, and security.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cloudflare Zaraz
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Zaraz
 
-# Cloudflare Zaraz
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Offload third-party tools and services to the cloud and improve the speed and security of your website.
 
@@ -24,43 +26,50 @@ Cloudflare Zaraz is built for speed, privacy, and security, and you can use it t
 
 ## Features
 
-###  Third-party tools
+[Third-party tools](https://developers.cloudflare.com/zaraz/get-started/)
 
 You can add many third-party tools to Zaraz, and offload them from your website.
 
-[ Use Third-party tools ](https://developers.cloudflare.com/zaraz/get-started/)
+ Use Third-party tools
 
-###  Custom Managed Components
+[Custom Managed Components](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/)
 
 You can add Custom Managed Components to Zaraz and run them as a tool.
 
-[ Use Custom Managed Components ](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/)
+ Use Custom Managed Components
 
-###  Web API
+[Web API](https://developers.cloudflare.com/zaraz/web-api/)
 
 Zaraz provides a client-side web API that you can use anywhere inside the `<body>` tag of a page.
 
-[ Use Web API ](https://developers.cloudflare.com/zaraz/web-api/)
+ Use Web API
 
-###  Consent management
+[Consent management](https://developers.cloudflare.com/zaraz/consent-management/)
 
 Zaraz provides a Consent Management platform to help you address and manage required consents.
 
-[ Use Consent management ](https://developers.cloudflare.com/zaraz/consent-management/)
+ Use Consent management
 
 ---
 
 ## More resources
 
-[Discord Channel](https://discord.cloudflare.com)
+### [ Discord Channel ](https://discord.cloudflare.com)
 
 If you have any comments, questions, or bugs to report, contact the Zaraz team on their Discord channel.
 
-[Community Forum](https://community.cloudflare.com/c/developers/zaraz/67)
+### [ Community Forum ](https://community.cloudflare.com/c/developers/zaraz/67)
 
 Engage with other users and the Zaraz team on Cloudflare support forum.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/#page","headline":"Overview · Cloudflare Zaraz docs","description":"Load third-party tools in the cloud for speed, privacy, and security.","url":"https://developers.cloudflare.com/zaraz/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/#page","headline":"Overview · Cloudflare Zaraz docs","description":"Load third-party tools in the cloud for speed, privacy, and security.","url":"https://developers.cloudflare.com/zaraz/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

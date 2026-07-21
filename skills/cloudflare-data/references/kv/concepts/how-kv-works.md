@@ -1,16 +1,18 @@
 ---
-title: How KV works
 description: Workers KV stores data centrally and caches it globally, optimizing for high-read, low-latency workloads.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How KV works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How KV works
 
-# How KV works
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/concepts/how-kv-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 KV is a global, low-latency, key-value data store. It stores data in a small number of centralized data centers, then caches that data in Cloudflare's data centers after access.
 
@@ -78,7 +80,14 @@ If you have a **write-heavy** [Redis ↗](https://redis.io)\-type workload where
 
 Refer to [Data security documentation](https://developers.cloudflare.com/kv/reference/data-security/) to understand how Workers KV secures data.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/how-kv-works/#page","headline":"How KV works · Cloudflare Workers KV docs","description":"Workers KV stores data centrally and caches it globally, optimizing for high-read, low-latency workloads.","url":"https://developers.cloudflare.com/kv/concepts/how-kv-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/concepts/","name":"Key concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/concepts/how-kv-works/","name":"How KV works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/how-kv-works/#page","headline":"How KV works · Cloudflare Workers KV docs","description":"Workers KV stores data centrally and caches it globally, optimizing for high-read, low-latency workloads.","url":"https://developers.cloudflare.com/kv/concepts/how-kv-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

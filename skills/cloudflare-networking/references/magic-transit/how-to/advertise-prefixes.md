@@ -1,16 +1,18 @@
 ---
-title: Advertise prefixes
 description: Advertise and withdraw IP prefixes with Magic Transit.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Advertise prefixes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Advertise prefixes
 
-# Advertise prefixes
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Onboard prefixes
 
@@ -68,22 +70,17 @@ You should only use one control method per prefix at any given time. Mixing mult
 
 Create a [POST request](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp%5Fprefixes/methods/create/) to add a BGP prefix. For example:
 
-**Create BGP Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "cidr": "192.0.2.0/24"
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"cidr": "192.0.2.0/24"
+	}'
 ```
 
 ### Advertise or withdraw a BGP prefix
-
-* [ Dashboard ](#tab-panel-10216)
-* [ API ](#tab-panel-10217)
 
 Note
 
@@ -92,7 +89,7 @@ You can only advertise your prefix after running pre-flight checks with Cloudfla
 Currently, only the default BGP prefix (that matches the IP prefix) can be controlled through the Cloudflare dashboard.
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **IP prefixes** tab, select the prefix you want to modify > **Edit**.
 2. From the **Status** drop-down menu, select _Advertised_ or _Withdrawn_.
 3. (Optional) Edit the description for your prefix.
@@ -107,18 +104,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
 
-**Update BGP Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-  --request PATCH \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "on_demand": {
-        "advertised": true
-    }
-  }'
+	--request PATCH \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"on_demand": {
+				"advertised": true
+		}
+	}'
 ```
 
 Warning: ISP route refresh delays may impact traffic
@@ -132,7 +127,7 @@ Refer to [Safely withdraw a BYOIP prefix](#safely-withdraw-a-byoip-prefix) for m
 You can only delete a prefix with an _Unapproved_ status. To delete prefixes with a different status, contact your administrator or account manager.
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **IP Prefixes** tab, locate the prefix you want to modify and select **Delete**.
 2. Confirm your choice from the modal by selecting **Delete**.
 
@@ -140,7 +135,7 @@ You can only delete a prefix with an _Unapproved_ status. To delete prefixes wit
 
 Use the [Addressing API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp%5Fprefixes/methods/edit/) to control the number of times Cloudflare prepends its Autonomous System Number (ASN) to a prefix. You can prepend AS13335 up to three times in the `AS_PATH` of BGP updates for your prefixes.
 
-Warning
+Caution
 
 BGP has different mechanisms to control route priorities which are set by the peered network, not by Cloudflare. As such, this is a best-effort feature. Cloudflare cannot guarantee that peers will honor AS prepends on Cloudflare's transit and peering connections.
 
@@ -153,16 +148,14 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
 
-**Update BGP Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-  --request PATCH \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "asn_prepend_count": 3
-  }'
+	--request PATCH \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"asn_prepend_count": 3
+	}'
 ```
 
 AS prepending helps you gracefully transition traffic between network providers. By adding prepends to Cloudflare's advertisement, you make the route through Cloudflare less preferred for some Internet network providers. This allows you to simultaneously advertise the same prefix from an alternate provider with a shorter, more desirable `AS_PATH`. Advertising from both providers at once provides a smoother traffic migration and minimizes packet loss during a change of provider.
@@ -176,7 +169,7 @@ When you use AS prepending to migrate traffic away from Magic Transit, the typic
 * **Introduce new provider**: You begin advertising the same prefix from your alternate provider with a standard (shorter) `AS_PATH`.
 * **Final state**: External networks now receive two advertisements: the prepended route through Cloudflare and the non-prepended route through your new provider. The external network will select a path based on its BGP policy rules.
 
-Warning
+Caution
 
 Cloudflare's internal network enforces local preference for traffic delivery to Magic Transit, even if a more specific or shorter path route is available on the public Internet. Withdraw the prefix from Cloudflare to avoid delivery of Cloudflare-sourced traffic over Magic Transit. This preference is local to our internal network and does not impact the route decision process of other networks.
 
@@ -221,16 +214,14 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
 
-**Update BGP Prefix**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-  --request PATCH \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "auto_advertise_withdraw": true
-  }'
+	--request PATCH \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"auto_advertise_withdraw": true
+	}'
 ```
 
 Once you configure this for a BGP prefix, Cloudflare applies the following logic:
@@ -286,15 +277,12 @@ The following examples show peering configurations for [Cisco IOS ↗](https://w
 ip route {{ <YOUR-MAGIC-TRANSIT-PREFIX> }} Null0
 ip prefix-list magic-transit-prefix seq 5 permit {{ <YOUR-MAGIC-TRANSIT-PREFIX> }}
 
-
 route-map cloudflare-magic-transit-out permit 1
 match ip address prefix-list magic-transit-prefix
 !
 route-map cloudflare-magic-transit-out deny 99
 
-
 route-map reject-all deny 99
-
 
 router bgp {{ <YOUR-ASN> }}
 neighbor 141.101.67.22 remote-as 13335
@@ -327,7 +315,6 @@ set protocols bgp group CF_ROUTE_REFLECTORS neighbor 141.101.67.22 description "
 set protocols bgp group CF_ROUTE_REFLECTORS peer-as 13335
 set protocols bgp group CF_ROUTE_REFLECTORS import REJECT-ALL
 set protocols bgp group CF_ROUTE_REFLECTORS export BGP-CONTROL-OUT
-
 
 set policy-options policy-statement REJECT-ALL then reject
 set policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from route-filter 104.245.62.0/24 exact
@@ -387,7 +374,14 @@ The default setting for static route regions is **All Regions**. Configure scopi
 
 Refer to [Scoping routes to specific regions](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#scoping-routes-to-specific-regions) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Magic Transit docs","description":"Advertise and withdraw IP prefixes with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/advertise-prefixes/","name":"Advertise prefixes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Magic Transit docs","description":"Advertise and withdraw IP prefixes with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

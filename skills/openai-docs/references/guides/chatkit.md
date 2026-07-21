@@ -78,24 +78,40 @@ def create_chatkit_session():
 
 ```typescript
 export default async function getChatKitSessionToken(
-deviceId: string
+  deviceId: string
 ): Promise<string> {
-const response = await fetch("https://api.openai.com/v1/chatkit/sessions", {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is required");
+  }
+
+  const response = await fetch("https://api.openai.com/v1/chatkit/sessions", {
     method: "POST",
     headers: {
-    "Content-Type": "application/json",
-    "OpenAI-Beta": "chatkit_beta=v1",
-    Authorization: "Bearer " + process.env.VITE_OPENAI_API_SECRET_KEY,
+      "Content-Type": "application/json",
+      "OpenAI-Beta": "chatkit_beta=v1",
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-    workflow: { id: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1" },
-    user: deviceId,
+      workflow: { id: "wf_68df4b13b3588190a09d19288d4610ec0df388c3983f58d1" },
+      user: deviceId,
     }),
-});
+  });
 
-const { client_secret } = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `Failed to create a ChatKit session: ${response.status} ${await response.text()}`
+    );
+  }
 
-return client_secret;
+  const { client_secret } = (await response.json()) as {
+    client_secret?: string;
+  };
+  if (!client_secret) {
+    throw new Error("ChatKit session response did not include client_secret");
+  }
+
+  return client_secret;
 }
 ```
 
@@ -150,28 +166,35 @@ import { ChatKit, useChatKit } from '@openai/chatkit-react';
 ```
 
 ```javascript
-const chatkit = document.getElementById('my-chat');
+const chatkit = document.getElementById("my-chat");
+if (
+  !chatkit ||
+  !("setOptions" in chatkit) ||
+  typeof chatkit.setOptions !== "function"
+) {
+  throw new Error("ChatKit element not found.");
+}
 
-  chatkit.setOptions({
-    api: {
-      getClientSecret(currentClientSecret) {
-        if (!currentClientSecret) {
-          const res = await fetch('/api/chatkit/start', { method: 'POST' })
-          const {client_secret} = await res.json();
-          return client_secret
-        }
-        const res = await fetch('/api/chatkit/refresh', {
-          method: 'POST',
-          body: JSON.stringify({ currentClientSecret })
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const {client_secret} = await res.json();
-        return client_secret
+chatkit.setOptions({
+  api: {
+    async getClientSecret(currentClientSecret) {
+      if (!currentClientSecret) {
+        const res = await fetch("/api/chatkit/start", { method: "POST" });
+        const { client_secret } = await res.json();
+        return client_secret;
       }
+      const res = await fetch("/api/chatkit/refresh", {
+        method: "POST",
+        body: JSON.stringify({ currentClientSecret }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const { client_secret } = await res.json();
+      return client_secret;
     },
-  });
+  },
+});
 ```
 
 

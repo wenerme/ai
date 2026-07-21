@@ -1,16 +1,18 @@
 ---
-title: Get Started
 description: Run front-end websites — static or dynamic — directly on Cloudflare's global network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get Started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get Started
 
-# Get Started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For most front-end applications, you'll want to use a framework. Workers supports number of popular [frameworks](https://developers.cloudflare.com/workers/framework-guides/) that come with ready-to-use components, a pre-defined and structured architecture, and community support. View [framework specific guides](https://developers.cloudflare.com/workers/framework-guides/) to get started using a framework.
 
@@ -153,7 +155,14 @@ Note
 
 Learn about how assets are configured and how routing works from [Routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/get-started/#page","headline":"Get Started · Cloudflare Workers docs","description":"Run front-end websites — static or dynamic — directly on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers/static-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/get-started/","name":"Get Started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/get-started/#page","headline":"Get Started · Cloudflare Workers docs","description":"Run front-end websites — static or dynamic — directly on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers/static-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

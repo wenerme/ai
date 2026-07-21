@@ -1,16 +1,18 @@
 ---
-title: Use your own player
 description: Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use your own player
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use your own player
 
-# Use your own player
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Stream is compatible with all video players that support HLS and DASH, which are standard formats for streaming media with broad support across all web browsers, mobile operating systems and media streaming devices.
 
@@ -22,7 +24,7 @@ Platform-specific guides:
 
 ## Use HLS and Dash manifests
 
-Warning
+Caution
 
 Manifests are dynamic assets that may be updated at any time. Do not cache, proxy, or store manifests; always read them directly from Stream. Outdated manifests may be missing features or refer to assets which have been moved.
 
@@ -30,23 +32,17 @@ Manifests are dynamic assets that may be updated at any time. Do not cache, prox
 
 Each video and live stream has its own unique HLS and DASH manifest. You can access the manifest by replacing `<UID>` with the UID of your video or live input, and replacing `<CODE>` with your unique customer code, in the URLs below:
 
-**HLS**
-
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8
 ```
-
-**DASH**
 
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.mpd
 ```
 
-#### LL-HLS playback Beta
+#### LL-HLS playback  Beta
 
 If a Live Input is enabled for the Low-Latency HLS beta, add the query string `?protocol=llhls` to the HLS manifest URL to test the low latency manifest in a custom player. Refer to [Start a Live Stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api) to enable this option.
-
-**HLS**
 
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8?protocol=llhls
@@ -55,7 +51,7 @@ https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8?protocol=
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **Stream** page.
-[ Go to **Videos** ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
 2. From the list of videos, locate your video and select it.
 3. From the **Settings** tab, locate the **HLS Manifest URL** and **Dash Manifest URL**.
 4. Select **Click to copy** under the option you want to use.
@@ -74,8 +70,6 @@ If your player lacks such configuration options or you need to override them, yo
   * Return only the video representation closest to the provided bandwidth value (in Mbps). This can be used to enforce a specific quality level. If you specify a value that would cause an invalid or empty manifest to be served, the hint is ignored.
 
 Refer to the example below to display only the video representation with a bitrate closest to 1.8 Mbps.
-
-**Example**
 
 ```txt
 https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8?clientBandwidthHint=1.8
@@ -100,7 +94,14 @@ We recommend using [ffmpeg-kit ↗](https://github.com/arthenica/ffmpeg-kit) as 
 * [RTMPS Playback with ffplay](https://developers.cloudflare.com/stream/examples/rtmps%5Fplayback/)
 * [SRT playback with ffplay](https://developers.cloudflare.com/stream/examples/srt%5Fplayback/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/#page","headline":"Use your own player · Cloudflare Stream docs","description":"Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/using-own-player/","name":"Use your own player"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/#page","headline":"Use your own player · Cloudflare Stream docs","description":"Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

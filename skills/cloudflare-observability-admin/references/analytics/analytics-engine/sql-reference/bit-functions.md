@@ -1,18 +1,20 @@
 ---
-title: Bit functions
 description: Bitwise SQL functions for Analytics Engine.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bit functions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bit functions
 
-# Bit functions
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-## bitAnd New
+## bitAnd  New
 
 Usage:
 
@@ -31,7 +33,7 @@ bitAnd(1, 3)
 bitAnd(toUInt8(double1), 1)
 ```
 
-## bitCount New
+## bitCount  New
 
 Usage:
 
@@ -52,7 +54,7 @@ bitCount(toUInt32(double1))
 SELECT * WHERE bitCount(double1) > 5
 ```
 
-## bitHammingDistance New
+## bitHammingDistance  New
 
 Usage:
 
@@ -71,7 +73,7 @@ bitHammingDistance(1, 1)
 bitHammingDistance(3, 0)
 ```
 
-## bitNot New
+## bitNot  New
 
 Usage:
 
@@ -87,7 +89,7 @@ Examples:
 bitNot(1)
 ```
 
-## bitOr New
+## bitOr  New
 
 Usage:
 
@@ -104,7 +106,7 @@ Examples:
 bitOr(1, 2)
 ```
 
-## bitRotateLeft New
+## bitRotateLeft  New
 
 Usage:
 
@@ -123,7 +125,7 @@ bitRotateLeft(1, 1)
 bitRotateLeft(128, 1)
 ```
 
-## bitRotateRight New
+## bitRotateRight  New
 
 Usage:
 
@@ -142,7 +144,7 @@ bitRotateRight(1, 1)
 bitRotateRight(12, 2)
 ```
 
-## bitShiftLeft New
+## bitShiftLeft  New
 
 Usage:
 
@@ -161,7 +163,7 @@ bitShiftLeft(1, 1)
 bitShiftLeft(128, 1)
 ```
 
-## bitShiftRight New
+## bitShiftRight  New
 
 Usage:
 
@@ -180,7 +182,7 @@ bitShiftRight(1, 1)
 bitShiftRight(12, 2)
 ```
 
-## bitTest New
+## bitTest  New
 
 Usage:
 
@@ -201,7 +203,7 @@ bitTest(2, 1)
 SELECT * WHERE bitTest(double1, 2)
 ```
 
-## bitXor New
+## bitXor  New
 
 Usage:
 
@@ -220,7 +222,14 @@ bitXor(1, 2)
 bitXor(3, 3)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"Bitwise SQL functions for Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-engine/","name":"Workers Analytics Engine"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-engine/sql-reference/","name":"SQL Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/analytics-engine/sql-reference/bit-functions/","name":"Bit functions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"Bitwise SQL functions for Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

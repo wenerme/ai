@@ -95,8 +95,8 @@ const response = await openai.chat.completions.create({
   messages: [
     {
       role: "user",
-      content: "Is a golden retriever a good family dog?"
-    }
+      content: "Is a golden retriever a good family dog?",
+    },
   ],
   store: true,
 });
@@ -107,7 +107,7 @@ console.log(response.choices[0]);
 // Write audio data to a file
 writeFileSync(
   "dog.wav",
-  Buffer.from(response.choices[0].message.audio.data, 'base64'),
+  Buffer.from(response.choices[0].message.audio.data, "base64"),
   { encoding: "utf-8" }
 );
 ```
@@ -178,9 +178,12 @@ const response = await openai.chat.completions.create({
       role: "user",
       content: [
         { type: "text", text: "What is in this recording?" },
-        { type: "input_audio", input_audio: { data: base64str, format: "wav" }}
-      ]
-    }
+        {
+          type: "input_audio",
+          input_audio: { data: base64str, format: "wav" },
+        },
+      ],
+    },
   ],
   store: true,
 });

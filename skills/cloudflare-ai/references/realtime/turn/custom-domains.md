@@ -1,16 +1,18 @@
 ---
-title: Custom TURN domains
 description: Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom TURN domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom TURN domains
 
-# Custom TURN domains
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/custom-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime TURN service supports using custom domains for UDP, and TCP - but not TLS protocols. Custom domains do not affect any of the performance of Cloudflare Realtime TURN and is set up via a simple CNAME DNS record on your domain.
 
@@ -25,7 +27,7 @@ Cloudflare Realtime TURN service supports using custom domains for UDP, and TCP 
 
 To use custom domains for TURN, you must create a CNAME DNS record pointing to `turn.cloudflare.com`.
 
-Warning
+Caution
 
 Do not resolve the address of `turn.cloudflare.com` or `stun.cloudflare.com` or use an IP address as the value you input to your DNS record. Only CNAME records are supported.
 
@@ -37,7 +39,14 @@ If Cloudflare's authoritative DNS service is used, the record must be set to [DN
 
 There is no additional charge to using a custom hostname with Cloudflare Realtime TURN.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/custom-domains/#page","headline":"Custom TURN domains · Cloudflare Realtime docs","description":"Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.","url":"https://developers.cloudflare.com/realtime/turn/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/custom-domains/","name":"Custom TURN domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/custom-domains/#page","headline":"Custom TURN domains · Cloudflare Realtime docs","description":"Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.","url":"https://developers.cloudflare.com/realtime/turn/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

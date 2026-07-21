@@ -1,16 +1,18 @@
 ---
-title: Fullstack applications
 description: A practical example of how these services come together in a real fullstack application architecture.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Fullstack applications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Fullstack applications
 
-# Fullstack applications
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Fullstack web applications combine frontend and backend technologies to deliver complete, dynamic user experiences. These applications rely on a broad technology stack covering user interfaces, backend services, databases, integrations, and increasingly, AI-driven features to function seamlessly and scale reliably.
 
@@ -88,7 +90,14 @@ Define and manage resources and configuration using third-party tools and framew
 
 Cloudflare’s Developer Platform is built for seamless [integration with external services](https://developers.cloudflare.com/workers/configuration/integrations/). Whether connecting to third-party APIs, databases, SaaS platforms, or cloud providers, developers can easily make outbound requests from Workers, trigger workflows based on external events, and securely exchange data across systems.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/#page","headline":"Fullstack applications · Cloudflare Reference Architecture docs","description":"A practical example of how these services come together in a real fullstack application architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/serverless/","name":"Serverless"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/serverless/fullstack-application/","name":"Fullstack applications"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/#page","headline":"Fullstack applications · Cloudflare Reference Architecture docs","description":"A practical example of how these services come together in a real fullstack application architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

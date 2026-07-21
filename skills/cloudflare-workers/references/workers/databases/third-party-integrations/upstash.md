@@ -1,16 +1,18 @@
 ---
-title: Upstash
 description: Connect Cloudflare Workers to Upstash for serverless Redis and Kafka integrations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Upstash
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Upstash
 
-# Upstash
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Upstash ↗](https://upstash.com/) is a serverless database with Redis\* and Kafka API. Upstash also offers QStash, a task queue/scheduler designed for the serverless.
 
@@ -66,22 +68,20 @@ pnpm add @upstash/redis
 bun add @upstash/redis
 ```
 5. The following example shows how to make a query to your Upstash database in a Worker. The credentials needed to connect to Upstash have been added as secrets to your Worker.
-
-**JavaScript**
 ```js
 import { Redis } from "@upstash/redis/cloudflare";
 export default {
-  async fetch(request, env) {
-    const redis = Redis.fromEnv(env);
-    const country = request.headers.get("cf-ipcountry");
-    if (country) {
-      const greeting = await redis.get(country);
-      if (greeting) {
-        return new Response(greeting);
-      }
-    }
-    return new Response("Hello What's up!");
-  },
+	async fetch(request, env) {
+		const redis = Redis.fromEnv(env);
+		const country = request.headers.get("cf-ipcountry");
+		if (country) {
+			const greeting = await redis.get(country);
+			if (greeting) {
+				return new Response(greeting);
+			}
+		}
+		return new Response("Hello What's up!");
+	},
 };
 ```
 Note
@@ -120,7 +120,14 @@ bun add @upstash/qstash
 
 \* Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by Upstash is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Upstash.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/#page","headline":"Upstash · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Upstash for serverless Redis and Kafka integrations.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/upstash/","name":"Upstash"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/#page","headline":"Upstash · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Upstash for serverless Redis and Kafka integrations.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

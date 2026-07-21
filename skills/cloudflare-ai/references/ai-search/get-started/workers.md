@@ -1,16 +1,18 @@
 ---
-title: Workers binding
 description: Create, populate, and query an AI Search instance from a Cloudflare Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers binding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers binding
 
-# Workers binding
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/get-started/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating and querying an AI Search instance from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the Workers Binding. The Workers Binding uses a runtime [API](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) that runs inside a Worker and calls AI Search without managing API tokens.
 
@@ -61,11 +63,6 @@ Create a binding between your Worker and your AI Search instance. [Bindings](htt
 
 Add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7221)
-* [  wrangler.toml ](#tab-panel-7222)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -78,8 +75,6 @@ Add the following to your [Wrangler configuration file](https://developers.cloud
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[ai_search_namespaces]]
@@ -94,83 +89,67 @@ This binds the `default` namespace to `env.AI_SEARCH`. Instances that you create
 
 Update the `src/index.ts` file in your `ai-search-tutorial` directory with the following code. It exposes two routes: `/setup` creates an instance named `my-instance` and indexes a sample document, and the default route queries it.
 
-* [  JavaScript ](#tab-panel-7223)
-* [  TypeScript ](#tab-panel-7224)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Visit /setup once to create an instance and index a sample document.
+		if (url.pathname === "/setup") {
+			const instance = await env.AI_SEARCH.create({ id: "my-instance" });
+			const item = await instance.items.uploadAndPoll(
+				"getting-started.md",
+				"AI Search indexes uploaded content for retrieval.",
+			);
+			return Response.json({ created: "my-instance", status: item.status });
+		}
 
-    // Visit /setup once to create an instance and index a sample document.
-    if (url.pathname === "/setup") {
-      const instance = await env.AI_SEARCH.create({ id: "my-instance" });
-      const item = await instance.items.uploadAndPoll(
-        "getting-started.md",
-        "AI Search indexes uploaded content for retrieval.",
-      );
-      return Response.json({ created: "my-instance", status: item.status });
-    }
+		// Query the instance.
+		const query = url.searchParams.get("q") ?? "What does AI Search do?";
 
+		const results = await env.AI_SEARCH.get("my-instance").search({
+			messages: [{ role: "user", content: query }],
+			ai_search_options: {
+				retrieval: { max_num_results: 3 },
+			},
+		});
 
-    // Query the instance.
-    const query = url.searchParams.get("q") ?? "What does AI Search do?";
-
-
-    const results = await env.AI_SEARCH.get("my-instance").search({
-      messages: [{ role: "user", content: query }],
-      ai_search_options: {
-        retrieval: { max_num_results: 3 },
-      },
-    });
-
-
-    return Response.json(results.chunks);
-  },
+		return Response.json(results.chunks);
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Visit /setup once to create an instance and index a sample document.
+		if (url.pathname === "/setup") {
+			const instance = await env.AI_SEARCH.create({ id: "my-instance" });
+			const item = await instance.items.uploadAndPoll(
+				"getting-started.md",
+				"AI Search indexes uploaded content for retrieval.",
+			);
+			return Response.json({ created: "my-instance", status: item.status });
+		}
 
-    // Visit /setup once to create an instance and index a sample document.
-    if (url.pathname === "/setup") {
-      const instance = await env.AI_SEARCH.create({ id: "my-instance" });
-      const item = await instance.items.uploadAndPoll(
-        "getting-started.md",
-        "AI Search indexes uploaded content for retrieval.",
-      );
-      return Response.json({ created: "my-instance", status: item.status });
-    }
+		// Query the instance.
+		const query = url.searchParams.get("q") ?? "What does AI Search do?";
 
+		const results = await env.AI_SEARCH.get("my-instance").search({
+			messages: [{ role: "user", content: query }],
+			ai_search_options: {
+				retrieval: { max_num_results: 3 },
+			},
+		});
 
-    // Query the instance.
-    const query = url.searchParams.get("q") ?? "What does AI Search do?";
-
-
-    const results = await env.AI_SEARCH.get("my-instance").search({
-      messages: [{ role: "user", content: query }],
-      ai_search_options: {
-        retrieval: { max_num_results: 3 },
-      },
-    });
-
-
-    return Response.json(results.chunks);
-  },
+		return Response.json(results.chunks);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -204,11 +183,22 @@ https://ai-search-tutorial.<YOUR_SUBDOMAIN>.workers.dev
 
 ## Next steps
 
-[ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for searching and chatting from a Worker.
+### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
-[ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) Upload, list, and manage documents from a Worker.
+ Full reference for searching and chatting from a Worker.
+
+### [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
+
+ Upload, list, and manage documents from a Worker.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/workers/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from a Cloudflare Worker.","url":"https://developers.cloudflare.com/ai-search/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/get-started/workers/","name":"Workers binding"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/workers/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from a Cloudflare Worker.","url":"https://developers.cloudflare.com/ai-search/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

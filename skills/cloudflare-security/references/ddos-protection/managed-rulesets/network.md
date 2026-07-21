@@ -1,16 +1,18 @@
 ---
-title: Network-layer DDoS Attack Protection
 description: Pre-configured rules that detect and mitigate DDoS attacks at layers 3 and 4.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network-layer DDoS Attack Protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network-layer DDoS Attack Protection
 
-# Network-layer DDoS Attack Protection
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Network-layer [DDoS Attack ↗](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/) Protection managed ruleset is a set of pre-configured rules used to match [known DDoS attack vectors](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) at levels 3 and 4 of the OSI model.
 
@@ -73,7 +75,14 @@ Magic Transit customers can configure the following additional products:
 
 Spectrum customers can use [IP Access](https://developers.cloudflare.com/waf/tools/ip-access-rules/) rules to block additional network-layer attacks.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/#page","headline":"Network-layer DDoS Attack Protection managed ruleset · Cloudflare DDoS Protection docs","description":"Pre-configured rules that detect and mitigate DDoS attacks at layers 3 and 4.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/network/","name":"Network-layer DDoS Attack Protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/#page","headline":"Network-layer DDoS Attack Protection managed ruleset · Cloudflare DDoS Protection docs","description":"Pre-configured rules that detect and mitigate DDoS attacks at layers 3 and 4.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

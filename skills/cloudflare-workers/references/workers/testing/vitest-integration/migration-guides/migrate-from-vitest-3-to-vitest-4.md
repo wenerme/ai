@@ -1,16 +1,18 @@
 ---
-title: Migrate from Vitest 3 to Vitest 4
 description: Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrate from Vitest 3 to Vitest 4
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate from Vitest 3 to Vitest 4
 
-# Migrate from Vitest 3 to Vitest 4
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/vitest-pool-workers` v0.13.0 adds support for [Vitest 4 ↗](https://vitest.dev/blog/vitest-4). v0.12.x is the last version to support Vitest 3.x. It continues to work if you are not ready to migrate.
 
@@ -95,38 +97,32 @@ The codemod migrates configurations that use `defineWorkersProject`. If your con
 
 Before:
 
-**vitest.config.ts**
-
 ```ts
 import { defineWorkersProject } from "@cloudflare/vitest-pool-workers/config";
 
-
 export default defineWorkersProject({
-  test: {
-    poolOptions: {
-      workers: {
-        wrangler: { configPath: "./wrangler.jsonc" },
-      },
-    },
-  },
+	test: {
+		poolOptions: {
+			workers: {
+				wrangler: { configPath: "./wrangler.jsonc" },
+			},
+		},
+	},
 });
 ```
 
 After:
 
-**vitest.config.ts**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: { configPath: "./wrangler.jsonc" },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./wrangler.jsonc" },
+		}),
+	],
 });
 ```
 
@@ -143,14 +139,13 @@ The following changes must be made manually to your test files.
 The `env` and `SELF` exports from `cloudflare:test` are deprecated in favor of `cloudflare:workers`. Replace `import { env, SELF } from "cloudflare:test"` with `import { env, exports } from "cloudflare:workers"`. `exports.default.fetch()` behaves the same as `SELF.fetch()`, except that it does not expose Assets. To test Assets, use the `env.ASSETS` binding or write an integration test using [startDevWorker()](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/). The deprecated exports still work, so this change is recommended rather than required.
 
 ```diff
-import { env, SELF } from "cloudflare:test";
-import { env, exports } from "cloudflare:workers";
+- import { env, SELF } from "cloudflare:test";
++ import { env, exports } from "cloudflare:workers";
 
-
-it("dispatches fetch event", async () => {
-  const response = await SELF.fetch("https://example.com");
-  const response = await exports.default.fetch("https://example.com");
-});
+  it("dispatches fetch event", async () => {
+-   const response = await SELF.fetch("https://example.com");
++   const response = await exports.default.fetch("https://example.com");
+  });
 ```
 
 ### Replace fetchMock
@@ -161,11 +156,8 @@ The `import { fetchMock } from "cloudflare:test"` import has been removed. Mock 
 
 To handle the test file changes automatically, give the following prompt to a coding agent:
 
-**Prompt for your coding agent**
-
 ```txt
 Migrate my @cloudflare/vitest-pool-workers tests from v0.12.x to v0.13.x (Vitest 4).
-
 
 1. Run the codemod to update vitest.config.ts: `npx jscodeshift -t https://unpkg.com/@cloudflare/vitest-pool-workers/dist/codemods/vitest-v3-to-v4.mjs --parser=ts vitest.config.ts`
 2. Replace all `import { env, SELF } from "cloudflare:test"` with `import { env, exports } from "cloudflare:workers"`. Replace uses of `SELF.fetch()` with `exports.default.fetch()`.
@@ -183,7 +175,14 @@ For breaking changes in Vitest 4 itself that may affect your tests, refer to the
 * [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/) \- Write unit and integration tests for Workers.
 * [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/) \- Reference for the `cloudflareTest()` plugin options.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/#page","headline":"Migrate from Vitest 3 to Vitest 4 · Cloudflare Workers docs","description":"Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","name":"Migrate from Vitest 3 to Vitest 4"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/#page","headline":"Migrate from Vitest 3 to Vitest 4 · Cloudflare Workers docs","description":"Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: AI Gateway
 description: Observe and control the AI models your AI Search instance uses through the connected AI Gateway.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: AI Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI Gateway
 
-# AI Gateway
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance is connected to a Cloudflare [AI Gateway](https://developers.cloudflare.com/ai-gateway/). The model calls that AI Search makes for embedding, query rewriting, reranking, and response generation run through this gateway. By configuring the connected gateway, you can observe and control those model calls.
 
@@ -46,7 +48,14 @@ Do not turn on [AI Gateway caching](https://developers.cloudflare.com/ai-gateway
 
 Similarly, avoid setting [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) on this gateway. Rate limits apply to AI Search's own model calls, including the many embedding requests made while indexing, and can interrupt indexing and querying.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/#page","headline":"AI Gateway · Cloudflare AI Search docs","description":"Observe and control the AI models your AI Search instance uses through the connected AI Gateway.","url":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/models/","name":"Models"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/models/ai-gateway/","name":"AI Gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/#page","headline":"AI Gateway · Cloudflare AI Search docs","description":"Observe and control the AI models your AI Search instance uses through the connected AI Gateway.","url":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Streams
 description: A web standard API that allows JavaScript to programmatically access and process streams of data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Streams
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Streams
 
-# Streams
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/streams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [Streams API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI) is a web standard API that allows JavaScript to programmatically access and process streams of data.
 
@@ -33,22 +35,15 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the `ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-12953)
-* [  Service Worker ](#tab-panel-12954)
-* [  Python ](#tab-panel-12955)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Fetch from origin server.
-    const response = await fetch(request);
+	async fetch(request, env, ctx) {
+		// Fetch from origin server.
+		const response = await fetch(request);
 
-
-    // ... and deliver our Response while that’s running.
-    return new Response(response.body, response);
-  },
+		// ... and deliver our Response while that’s running.
+		return new Response(response.body, response);
+	},
 };
 ```
 
@@ -56,35 +51,27 @@ Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", (event) => {
-  event.respondWith(fetchAndStream(event.request));
+	event.respondWith(fetchAndStream(event.request));
 });
 
-
 async function fetchAndStream(request) {
-  // Fetch from origin server.
-  const response = await fetch(request);
+	// Fetch from origin server.
+	const response = await fetch(request);
 
-
-  // ... and deliver our Response while that’s running.
-  return new Response(readable.body, response);
+	// ... and deliver our Response while that’s running.
+	return new Response(readable.body, response);
 }
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response, fetch
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         # Fetch from origin server.
         response = await fetch(request)
-
 
         # Stream the response body to the client.
         return Response(response.body, headers=response.headers)
@@ -92,33 +79,24 @@ class Default(WorkerEntrypoint):
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-12956)
-* [  Service Worker ](#tab-panel-12957)
-* [  Python ](#tab-panel-12958)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Fetch from origin server.
-    const response = await fetch(request);
+	async fetch(request, env, ctx) {
+		// Fetch from origin server.
+		const response = await fetch(request);
 
+		const { readable, writable } = new TransformStream({
+			transform(chunk, controller) {
+				controller.enqueue(modifyChunkSomehow(chunk));
+			},
+		});
 
-    const { readable, writable } = new TransformStream({
-      transform(chunk, controller) {
-        controller.enqueue(modifyChunkSomehow(chunk));
-      },
-    });
+		// Start pumping the body. NOTE: No await!
+		response.body.pipeTo(writable);
 
-
-    // Start pumping the body. NOTE: No await!
-    response.body.pipeTo(writable);
-
-
-    // ... and deliver our Response while that’s running.
-    return new Response(readable, response);
-  },
+		// ... and deliver our Response while that’s running.
+		return new Response(readable, response);
+	},
 };
 ```
 
@@ -126,36 +104,28 @@ Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", (event) => {
-  event.respondWith(fetchAndStream(event.request));
+	event.respondWith(fetchAndStream(event.request));
 });
 
-
 async function fetchAndStream(request) {
-  // Fetch from origin server.
-  const response = await fetch(request);
+	// Fetch from origin server.
+	const response = await fetch(request);
 
+	const { readable, writable } = new TransformStream({
+		transform(chunk, controller) {
+			controller.enqueue(modifyChunkSomehow(chunk));
+		},
+	});
 
-  const { readable, writable } = new TransformStream({
-    transform(chunk, controller) {
-      controller.enqueue(modifyChunkSomehow(chunk));
-    },
-  });
+	// Start pumping the body. NOTE: No await!
+	response.body.pipeTo(writable);
 
-
-  // Start pumping the body. NOTE: No await!
-  response.body.pipeTo(writable);
-
-
-  // ... and deliver our Response while that’s running.
-  return new Response(readable, response);
+	// ... and deliver our Response while that’s running.
+	return new Response(readable, response);
 }
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, Response
@@ -163,18 +133,15 @@ from js import ReadableStream, TextEncoder
 from pyodide.ffi import create_proxy, to_js
 import asyncio
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         enc = TextEncoder.new()
-
 
         async def start(controller):
             for i in range(5):
                 controller.enqueue(enc.encode(f"chunk {i}\n"))
                 await asyncio.sleep(0.1)
             controller.close()
-
 
         stream = ReadableStream.new(
             to_js({"start": create_proxy(start)})
@@ -203,7 +170,14 @@ The Streams API is only available inside of the [Request context](https://develo
 * [Streams API spec ↗](https://streams.spec.whatwg.org/)
 * Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/streams/#page","headline":"Streams - Runtime APIs · Cloudflare Workers docs","description":"A web standard API that allows JavaScript to programmatically access and process streams of data.","url":"https://developers.cloudflare.com/workers/runtime-apis/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/streams/","name":"Streams"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/streams/#page","headline":"Streams - Runtime APIs · Cloudflare Workers docs","description":"A web standard API that allows JavaScript to programmatically access and process streams of data.","url":"https://developers.cloudflare.com/workers/runtime-apis/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

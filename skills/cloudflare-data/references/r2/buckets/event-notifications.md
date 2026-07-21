@@ -1,16 +1,18 @@
 ---
-title: Event notifications
 description: Send messages to Cloudflare Queues when objects in your R2 bucket change.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Event notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Event notifications
 
-# Event notifications
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Event notifications send messages to your [queue](https://developers.cloudflare.com/queues/) when data in your R2 bucket changes. You can consume these messages with a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [pull over HTTP](https://developers.cloudflare.com/queues/configuration/pull-consumers/) from outside of Cloudflare Workers.
 
@@ -27,7 +29,7 @@ Before getting started, you will need:
 ### Enable event notifications via Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you'd like to add an event notification rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Event notifications** card.
 4. Select **Add notification** and choose the queue you'd like to receive notifications and the [type of events](https://developers.cloudflare.com/r2/buckets/event-notifications/#event-types) that will trigger them.
@@ -53,10 +55,8 @@ To add filtering based on `prefix` or `suffix` use the `--prefix` or `--suffix` 
 # Filter using prefix
 $ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>"
 
-
 # Filter using suffix
 $ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --suffix "<SUFFIX_VALUE>"
-
 
 # Filter using prefix and suffix. Both the conditions will be used for filtering
 $ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>" --suffix "<SUFFIX_VALUE>"
@@ -81,19 +81,19 @@ Queue consumers receive notifications as [Messages](https://developers.cloudflar
 
 ```json
 {
-  "account": "3f4b7e3dcab231cbfdaa90a6a28bd548",
-  "action": "CopyObject",
-  "bucket": "my-bucket",
-  "object": {
-    "key": "my-new-object",
-    "size": 65536,
-    "eTag": "c846ff7a18f28c2e262116d6e8719ef0"
-  },
-  "eventTime": "2024-05-24T19:36:44.379Z",
-  "copySource": {
-    "bucket": "my-bucket",
-    "object": "my-original-object"
-  }
+	"account": "3f4b7e3dcab231cbfdaa90a6a28bd548",
+	"action": "CopyObject",
+	"bucket": "my-bucket",
+	"object": {
+		"key": "my-new-object",
+		"size": 65536,
+		"eTag": "c846ff7a18f28c2e262116d6e8719ef0"
+	},
+	"eventTime": "2024-05-24T19:36:44.379Z",
+	"copySource": {
+		"bucket": "my-bucket",
+		"object": "my-original-object"
+	}
 }
 ```
 
@@ -119,7 +119,14 @@ Queue consumers receive notifications as [Messages](https://developers.cloudflar
 * Rules without prefix/suffix apply to all objects in the bucket.
 * Overlapping or conflicting rules that could trigger multiple notifications for the same event are not allowed. For example, if you have an `object-create` (or `PutObject` action) rule without a prefix and suffix, then adding another `object-create` (or `PutObject` action) rule with a prefix like `images/` could trigger more than one notification for a single upload, which is invalid.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/event-notifications/#page","headline":"Event notifications · Cloudflare R2 docs","description":"Send messages to Cloudflare Queues when objects in your R2 bucket change.","url":"https://developers.cloudflare.com/r2/buckets/event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/event-notifications/","name":"Event notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/event-notifications/#page","headline":"Event notifications · Cloudflare R2 docs","description":"Send messages to Cloudflare Queues when objects in your R2 bucket change.","url":"https://developers.cloudflare.com/r2/buckets/event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

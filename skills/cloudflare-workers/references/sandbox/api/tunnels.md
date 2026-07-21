@@ -1,16 +1,18 @@
 ---
-title: Tunnels
 description: Expose sandbox services on the public internet with quick tunnels (*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Tunnels
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnels
 
-# Tunnels
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/api/tunnels/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `sandbox.tunnels` namespace exposes a service running inside a sandbox on the public internet through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). The SDK runs `cloudflared` inside the container and opens a persistent QUIC connection to Cloudflare's edge.
 
@@ -37,8 +39,6 @@ Named tunnels additionally require a Cloudflare API token, account, and zone —
 
 Return a tunnel record for `port`. The SDK spawns a fresh `cloudflared` process inside the container if not already running. The method is idempotent: repeated calls with the same `(port, options)` return the same record.
 
-**TypeScript**
-
 ```ts
 const tunnel = await sandbox.tunnels.get(
   port: number,
@@ -55,70 +55,50 @@ const tunnel = await sandbox.tunnels.get(
 
 Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [destroy(port)](#tunnelsdestroy) first.
 
-* [  JavaScript ](#tab-panel-11063)
-* [  TypeScript ](#tab-panel-11064)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+	async fetch(request, env) {
+		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
+		await sandbox.startProcess("python -m http.server 8080");
 
-    await sandbox.startProcess("python -m http.server 8080");
+		const tunnel = await sandbox.tunnels.get(8080);
+		console.log(tunnel.url);
+		// → https://random-words-here.trycloudflare.com
 
+		// Repeated calls for the same port return the same record.
+		const same = await sandbox.tunnels.get(8080);
+		console.log(same.url === tunnel.url); // true
 
-    const tunnel = await sandbox.tunnels.get(8080);
-    console.log(tunnel.url);
-    // → https://random-words-here.trycloudflare.com
-
-
-    // Repeated calls for the same port return the same record.
-    const same = await sandbox.tunnels.get(8080);
-    console.log(same.url === tunnel.url); // true
-
-
-    return Response.json({ url: tunnel.url });
-  },
+		return Response.json({ url: tunnel.url });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
-
     await sandbox.startProcess("python -m http.server 8080");
-
 
     const tunnel = await sandbox.tunnels.get(8080);
     console.log(tunnel.url);
     // → https://random-words-here.trycloudflare.com
 
-
     // Repeated calls for the same port return the same record.
     const same = await sandbox.tunnels.get(8080);
     console.log(same.url === tunnel.url); // true
 
-
     return Response.json({ url: tunnel.url });
-
 
 },
 };
@@ -128,33 +108,22 @@ export default {
 
 Return every tunnel currently tracked for this sandbox.
 
-**TypeScript**
-
 ```ts
 const tunnels = await sandbox.tunnels.list(): Promise<TunnelInfo[]>
 ```
 
 **Returns**: `Promise<TunnelInfo[]>` — an array of [TunnelInfo](#tunnelinfo) records. Empty when no tunnels are active.
 
-* [  JavaScript ](#tab-panel-11059)
-* [  TypeScript ](#tab-panel-11060)
-
-**JavaScript**
-
 ```js
 const tunnels = await sandbox.tunnels.list();
 
-
 for (const tunnel of tunnels) {
-  console.log(`port ${tunnel.port} → ${tunnel.url}`);
+	console.log(`port ${tunnel.port} → ${tunnel.url}`);
 }
 ```
 
-**TypeScript**
-
 ```ts
 const tunnels = await sandbox.tunnels.list();
-
 
 for (const tunnel of tunnels) {
 console.log(`port ${tunnel.port} → ${tunnel.url}`);
@@ -165,8 +134,6 @@ console.log(`port ${tunnel.port} → ${tunnel.url}`);
 
 Tear down a tunnel. Accepts either the port number or the `TunnelInfo` record returned by `get()`. Idempotent — destroying an unknown port resolves successfully.
 
-**TypeScript**
-
 ```ts
 await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
 ```
@@ -175,32 +142,21 @@ await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
 
 * `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [get()](#tunnelsget).
 
-* [  JavaScript ](#tab-panel-11061)
-* [  TypeScript ](#tab-panel-11062)
-
-**JavaScript**
-
 ```js
 const tunnel = await sandbox.tunnels.get(8080);
 
-
 // Tear down by port number...
 await sandbox.tunnels.destroy(8080);
-
 
 // ...or by the record.
 await sandbox.tunnels.destroy(tunnel);
 ```
 
-**TypeScript**
-
 ```ts
 const tunnel = await sandbox.tunnels.get(8080);
 
-
 // Tear down by port number...
 await sandbox.tunnels.destroy(8080);
-
 
 // ...or by the record.
 await sandbox.tunnels.destroy(tunnel);
@@ -221,11 +177,8 @@ Quick tunnels omit `name`; named tunnels carry the label passed via `options.nam
 | createdAt | string | ISO-8601 timestamp of when the tunnel was created.                                                 |
 | name      | string | **Named tunnels only.** The label passed via options.name. Absent on quick tunnels.                |
 
-**TypeScript**
-
 ```ts
 type TunnelInfo = QuickTunnelInfo | NamedTunnelInfo;
-
 
 interface QuickTunnelInfo {
   id: string;
@@ -235,7 +188,6 @@ interface QuickTunnelInfo {
   createdAt: string;
   name?: never;
 }
-
 
 interface NamedTunnelInfo {
   id: string;
@@ -330,8 +282,6 @@ npx wrangler secret put CLOUDFLARE_API_TOKEN
 
 For local development, place the variables in `.dev.vars` (gitignored). For production, set the non-secret IDs (when needed) under `vars` in your Wrangler config:
 
-**JSONC**
-
 ```jsonc
 {
   "vars": {
@@ -345,60 +295,45 @@ When inference fails, the SDK throws a clear error naming the variable to set.
 
 ### Example
 
-* [  JavaScript ](#tab-panel-11065)
-* [  TypeScript ](#tab-panel-11066)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+	async fetch(request, env) {
+		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
+		// Reuse an existing app process across container restarts, or start it.
+		let proc = await sandbox.getProcess("app");
+		if (!proc) {
+			try {
+				proc = await sandbox.startProcess("python -m http.server 8080", {
+					processId: "app",
+				});
+			} catch (err) {
+				if (err?.code !== "PROCESS_ALREADY_EXISTS") throw err;
+				proc = await sandbox.getProcess("app");
+			}
+		}
 
-    // Reuse an existing app process across container restarts, or start it.
-    let proc = await sandbox.getProcess("app");
-    if (!proc) {
-      try {
-        proc = await sandbox.startProcess("python -m http.server 8080", {
-          processId: "app",
-        });
-      } catch (err) {
-        if (err?.code !== "PROCESS_ALREADY_EXISTS") throw err;
-        proc = await sandbox.getProcess("app");
-      }
-    }
+		// Provision (or reuse) https://app.example.com pointing at port 8080.
+		const tunnel = await sandbox.tunnels.get(8080, { name: "app" });
+		console.log(tunnel.url); // → https://app.example.com
 
-
-    // Provision (or reuse) https://app.example.com pointing at port 8080.
-    const tunnel = await sandbox.tunnels.get(8080, { name: "app" });
-    console.log(tunnel.url); // → https://app.example.com
-
-
-    return Response.json({ url: tunnel.url });
-  },
+		return Response.json({ url: tunnel.url });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
 
     // Reuse an existing app process across container restarts, or start it.
     let proc = await sandbox.getProcess('app');
@@ -411,18 +346,16 @@ export default {
       }
     }
 
-
     // Provision (or reuse) https://app.example.com pointing at port 8080.
     const tunnel = await sandbox.tunnels.get(8080, { name: "app" });
     console.log(tunnel.url); // → https://app.example.com
-
 
     return Response.json({ url: tunnel.url });
   },
 };
 ```
 
-`name` must be a single DNS label
+\`name\` must be a single DNS label
 
 `name` must match `^[a-z0-9]([a-z0-9-]*[a-z0-9])?$` and be 1–63 characters — no dots, no uppercase, no leading/trailing hyphens. This restriction exists because Cloudflare Universal SSL only issues certificates for `<label>.<zone>`. Multi-label hostnames need [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) or a delegated subdomain zone, which are out of scope for `sandbox.tunnels`.
 
@@ -499,7 +432,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_t
 * [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) — End-to-end walkthrough for exposing services in production.
 * [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/) — RPC vs. route-based transport.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/tunnels/","name":"Tunnels"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

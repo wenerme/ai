@@ -1,16 +1,18 @@
 ---
-title: Register the Cloudflare One Client with minimal user interaction
 description: Register the Cloudflare One Client with minimal user interaction in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Register the Cloudflare One Client with minimal user interaction
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Register the Cloudflare One Client with minimal user interaction
 
-# Register the Cloudflare One Client with minimal user interaction
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Administrators can automate Cloudflare One Client (formerly WARP) registration on managed devices and minimize the number of clicks required from an end user.
 
@@ -37,8 +39,8 @@ To skip the Terms and Conditions screens that are usually presented to users, se
 <dict>
   <key>organization</key>
   <string>your-team-name</string>
-  <key>onboarding</key>
-  <false/>
+	<key>onboarding</key>
+	<false/>
 </dict>
 ```
 
@@ -57,9 +59,6 @@ _Note: Labels in this image may reflect a previous product name._
 ### Chromium-based browsers
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
-
-* [ Windows ](#tab-panel-8153)
-* [ macOS ](#tab-panel-8154)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 
@@ -90,14 +89,14 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
 ```xml
 <key>AutoLaunchProtocolsFromOrigins</key>
 <array>
-  <dict>
-    <key>allowed_origins</key>
-    <array>
-      <string>https://<your-team-name>.cloudflareaccess.com</string>
-    </array>
-    <key>protocol</key>
-    <string>com.cloudflare.warp</string>
-  </dict>
+	<dict>
+		<key>allowed_origins</key>
+		<array>
+			<string>https://<your-team-name>.cloudflareaccess.com</string>
+		</array>
+		<key>protocol</key>
+		<string>com.cloudflare.warp</string>
+	</dict>
 </array>
 ```
 Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
@@ -107,64 +106,64 @@ Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>PayloadIdentifier</key>
-    <string>com.google.chrome</string>
-    <key>PayloadRemovalDisallowed</key>
-    <true/>
-    <key>PayloadScope</key>
-    <string>System</string>
-    <key>PayloadType</key>
-    <string>Configuration</string>
-    <key>PayloadUUID</key>
-    <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
-    <key>PayloadOrganization</key>
-    <string></string>
-    <key>PayloadVersion</key>
-    <integer>1</integer>
-    <key>PayloadDisplayName</key>
-    <string>Google Chrome Policy</string>
-    <key>PayloadContent</key>
-    <array>
-        <dict>
-            <key>PayloadType</key>
-            <string>com.apple.ManagedClient.preferences</string>
-            <key>PayloadVersion</key>
-            <integer>1</integer>
-            <key>PayloadIdentifier</key>
-            <string>com.normandale</string>
-            <key>PayloadUUID</key>
-            <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
-            <key>PayloadEnabled</key>
-            <true/>
-            <key>PayloadDisplayName</key>
-            <string>Custom: (com.google.Chrome)</string>
-            <key>PayloadContent</key>
-            <dict>
-                <key>com.google.Chrome</key>
-                <dict>
-                    <key>Forced</key>
-                    <array>
-                        <dict>
-                            <key>mcx_preference_settings</key>
-                            <dict>
-                                <key>AutoLaunchProtocolsFromOrigins</key>
-                                <array>
-                                <dict>
-                                <key>allowed_origins</key>
-                                <array>
-                                <string>https://<your-team-name>.cloudflareaccess.com</string>
-                                </array>
-                                <key>protocol</key>
-                                <string>com.cloudflare.warp</string>
-                                </dict>
-                                </array>
-                            </dict>
-                        </dict>
-                    </array>
-                </dict>
-            </dict>
-        </dict>
-    </array>
+		<key>PayloadIdentifier</key>
+		<string>com.google.chrome</string>
+		<key>PayloadRemovalDisallowed</key>
+		<true/>
+		<key>PayloadScope</key>
+		<string>System</string>
+		<key>PayloadType</key>
+		<string>Configuration</string>
+		<key>PayloadUUID</key>
+		<string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
+		<key>PayloadOrganization</key>
+		<string></string>
+		<key>PayloadVersion</key>
+		<integer>1</integer>
+		<key>PayloadDisplayName</key>
+		<string>Google Chrome Policy</string>
+		<key>PayloadContent</key>
+		<array>
+				<dict>
+						<key>PayloadType</key>
+						<string>com.apple.ManagedClient.preferences</string>
+						<key>PayloadVersion</key>
+						<integer>1</integer>
+						<key>PayloadIdentifier</key>
+						<string>com.normandale</string>
+						<key>PayloadUUID</key>
+						<string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
+						<key>PayloadEnabled</key>
+						<true/>
+						<key>PayloadDisplayName</key>
+						<string>Custom: (com.google.Chrome)</string>
+						<key>PayloadContent</key>
+						<dict>
+								<key>com.google.Chrome</key>
+								<dict>
+										<key>Forced</key>
+										<array>
+												<dict>
+														<key>mcx_preference_settings</key>
+														<dict>
+																<key>AutoLaunchProtocolsFromOrigins</key>
+																<array>
+																<dict>
+																<key>allowed_origins</key>
+																<array>
+																<string>https://<your-team-name>.cloudflareaccess.com</string>
+																</array>
+																<key>protocol</key>
+																<string>com.cloudflare.warp</string>
+																</dict>
+																</array>
+														</dict>
+												</dict>
+										</array>
+								</dict>
+						</dict>
+				</dict>
+		</array>
 </dict>
 </plist>
 ```
@@ -173,7 +172,14 @@ Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
 
 For more information on configuring browser policies on macOS, refer to the [Google Chrome ↗](https://support.google.com/chrome/a/answer/9020077?hl=en&ref%5Ftopic=7650028&sjid=15337530832025656704-NA) or [Microsoft Edge ↗](https://learn.microsoft.com/en-us/deployedge/configure-microsoft-edge-on-mac) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/#page","headline":"Register the Cloudflare One Client with minimal user interaction · Cloudflare One docs","description":"Register the Cloudflare One Client with minimal user interaction in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PowerShell"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","name":"Register the Cloudflare One Client with minimal user interaction"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/#page","headline":"Register the Cloudflare One Client with minimal user interaction · Cloudflare One docs","description":"Register the Cloudflare One Client with minimal user interaction in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PowerShell"]}
 ```

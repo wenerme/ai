@@ -1,16 +1,18 @@
 ---
-title: TypeScript
 description: Use TypeScript with fully typed APIs to build Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TypeScript
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TypeScript
 
-# TypeScript
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/typescript/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗](https://github.com/cloudflare/workerd), the open-source Workers runtime.
 
@@ -125,9 +127,9 @@ If you are running a version of Wrangler that is greater than `3.66.0` but below
 
 ```json
 {
-  "compilerOptions": {
-    "types": ["./worker-configuration.d.ts"]
-  }
+	"compilerOptions": {
+		"types": ["./worker-configuration.d.ts"]
+	}
 }
 ```
 
@@ -159,9 +161,9 @@ Then add this to your `tsconfig.json`.
 
 ```json
 {
-  "compilerOptions": {
-    "types": ["./worker-configuration.d.ts", "node"]
-  }
+	"compilerOptions": {
+		"types": ["./worker-configuration.d.ts", "node"]
+	}
 }
 ```
 
@@ -173,22 +175,16 @@ Most projects will have existing build and development scripts, as well as some 
 
 ```json
 {
-  "scripts": {
-    "dev": "existing-dev-command",
-    "build": "existing-build-command",
-    "generate-types": "wrangler types",
-    "type-check": "generate-types && tsc"
-  }
+	"scripts": {
+		"dev": "existing-dev-command",
+		"build": "existing-build-command",
+		"generate-types": "wrangler types",
+		"type-check": "generate-types && tsc"
+	}
 }
 ```
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
-
-* [ npm ](#tab-panel-12694)
-* [ yarn ](#tab-panel-12695)
-* [ pnpm ](#tab-panel-12696)
-
-**YAML**
 
 ```yaml
 - run: npm run generate-types
@@ -196,15 +192,11 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 - run: npm test
 ```
 
-**YAML**
-
 ```yaml
 - run: yarn generate-types
 - run: yarn build
 - run: yarn test
 ```
-
-**YAML**
 
 ```yaml
 - run: pnpm run generate-types
@@ -214,27 +206,17 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-12697)
-* [ yarn ](#tab-panel-12698)
-* [ pnpm ](#tab-panel-12699)
-
-**YAML**
-
 ```yaml
 - run: npx wrangler types --check
 - run: npm run build
 - run: npm test
 ```
 
-**YAML**
-
 ```yaml
 - run: yarn wrangler types --check
 - run: yarn build
 - run: yarn test
 ```
-
-**YAML**
 
 ```yaml
 - run: pnpm wrangler types --check
@@ -251,7 +233,14 @@ This fails the CI job if the committed types file is out-of-date, prompting deve
 * [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 * [TypeScript Examples](https://developers.cloudflare.com/workers/examples/?languages=TypeScript)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/typescript/","name":"TypeScript"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

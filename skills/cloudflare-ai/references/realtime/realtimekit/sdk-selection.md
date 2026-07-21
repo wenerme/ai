@@ -1,16 +1,18 @@
 ---
-title: Select SDK(s)
 description: Choose between RealtimeKit UI Kit and Core SDK for your platform and framework.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Select SDK(s)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Select SDK(s)
 
-# Select SDK(s)
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -63,7 +65,14 @@ Note
 
 If you are building with our Core SDK only, you can reference our [open source repos ↗](https://github.com/orgs/cloudflare/repositories?q=realtimekit) for implementation examples to speed up your development.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/#page","headline":"Select SDK(s) · Cloudflare Realtime docs","description":"Choose between RealtimeKit UI Kit and Core SDK for your platform and framework.","url":"https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/sdk-selection/","name":"Select SDK(s)"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/#page","headline":"Select SDK(s) · Cloudflare Realtime docs","description":"Choose between RealtimeKit UI Kit and Core SDK for your platform and framework.","url":"https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

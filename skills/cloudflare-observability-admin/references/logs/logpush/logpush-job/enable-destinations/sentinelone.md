@@ -1,24 +1,26 @@
 ---
-title: Enable SentinelOne
 description: Push Cloudflare logs to SentinelOne Data Lake.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable SentinelOne
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable SentinelOne
 
-# Enable SentinelOne
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The HTTP Event Collector (HEC) is a reliable method to send log data to SentinelOne Singularity Data Lake. Cloudflare Logpush supports pushing logs directly to SentinelOne HEC via the Cloudflare dashboard or API.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 1. In **Select a destination**, choose **SentinelOne**.
@@ -80,32 +82,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<DOMAIN_NAME>",
-    "destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "dataset": "http_requests",
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<DOMAIN_NAME>",
+		"destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"dataset": "http_requests",
+		"enabled": true
+	}'
 ```
 
 Response:
@@ -137,7 +137,14 @@ Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpu
 
 Refer to the [Logpush FAQ](https://developers.cloudflare.com/logs/faq/logpush/) for troubleshooting information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/#page","headline":"Enable Logpush to SentinelOne · Cloudflare Logs docs","description":"Push Cloudflare logs to SentinelOne Data Lake.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/sentinelone/","name":"Enable SentinelOne"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/#page","headline":"Enable Logpush to SentinelOne · Cloudflare Logs docs","description":"Push Cloudflare logs to SentinelOne Data Lake.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

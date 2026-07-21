@@ -1,16 +1,18 @@
 ---
-title: Hugging Face Chat UI
 description: Connect Workers AI models to Hugging Face's open-source Chat UI interface.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Hugging Face Chat UI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Hugging Face Chat UI
 
-# Hugging Face Chat UI
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers AI with [Chat UI ↗](https://github.com/huggingface/chat-ui?tab=readme-ov-file#text-embedding-models), an open-source chat interface offered by Hugging Face.
 
@@ -53,7 +55,14 @@ When setting up your models, specify the `cloudflare` endpoint.
 
 This template works with any [text generation models](https://developers.cloudflare.com/workers-ai/models/) that begin with the `@hf` parameter.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/#page","headline":"Hugging Face Chat UI · Cloudflare Workers AI docs","description":"Connect Workers AI models to Hugging Face's open-source Chat UI interface.","url":"https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/configuration/hugging-face-chat-ui/","name":"Hugging Face Chat UI"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/#page","headline":"Hugging Face Chat UI · Cloudflare Workers AI docs","description":"Connect Workers AI models to Hugging Face's open-source Chat UI interface.","url":"https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

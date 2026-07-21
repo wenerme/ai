@@ -1,16 +1,18 @@
 ---
-title: Data security
 description: Workers KV encryption at rest, encryption in transit, and Cloudflare compliance certifications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Data security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data security
 
-# Data security
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/reference/data-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page details the data security properties of KV, including:
 
@@ -38,7 +40,14 @@ API access via the HTTP API or using the [wrangler](https://developers.cloudflar
 
 To learn more about Cloudflare's adherence to industry-standard security compliance certifications, refer to Cloudflare's [Trust Hub ↗](https://www.cloudflare.com/trust-hub/compliance-resources/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/reference/data-security/#page","headline":"Data security · Cloudflare Workers KV docs","description":"Workers KV encryption at rest, encryption in transit, and Cloudflare compliance certifications.","url":"https://developers.cloudflare.com/kv/reference/data-security/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/reference/data-security/","name":"Data security"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/reference/data-security/#page","headline":"Data security · Cloudflare Workers KV docs","description":"Workers KV encryption at rest, encryption in transit, and Cloudflare compliance certifications.","url":"https://developers.cloudflare.com/kv/reference/data-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

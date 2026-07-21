@@ -1,16 +1,18 @@
 ---
-title: Go SDK
 description: Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Go SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Go SDK
 
-# Go SDK
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/sdk/go/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -29,50 +31,42 @@ Configure the provider with your Flagship app ID, Cloudflare account ID, and an 
 ```go
 package main
 
-
 import (
-  "context"
-  "log"
+	"context"
+	"log"
 
-
-  flagship "github.com/cloudflare/flagship/sdks/go"
-  "github.com/open-feature/go-sdk/openfeature"
+	flagship "github.com/cloudflare/flagship/sdks/go"
+	"github.com/open-feature/go-sdk/openfeature"
 )
 
-
 func main() {
-  ctx := context.Background()
+	ctx := context.Background()
 
+	provider, err := flagship.NewProvider(flagship.Options{
+		AppID:     "<APP_ID>",
+		AccountID: "<ACCOUNT_ID>",
+		AuthToken: "<API_TOKEN>",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  provider, err := flagship.NewProvider(flagship.Options{
-    AppID:     "<APP_ID>",
-    AccountID: "<ACCOUNT_ID>",
-    AuthToken: "<API_TOKEN>",
-  })
-  if err != nil {
-    log.Fatal(err)
-  }
+	if err := openfeature.SetProviderAndWait(provider); err != nil {
+		log.Fatal(err)
+	}
+	defer openfeature.Shutdown()
 
+	client := openfeature.NewDefaultClient()
+	evalCtx := openfeature.NewEvaluationContext("user-42", map[string]any{
+		"plan": "enterprise",
+	})
 
-  if err := openfeature.SetProviderAndWait(provider); err != nil {
-    log.Fatal(err)
-  }
-  defer openfeature.Shutdown()
+	enabled, err := client.BooleanValue(ctx, "new-checkout", false, evalCtx)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-
-  client := openfeature.NewDefaultClient()
-  evalCtx := openfeature.NewEvaluationContext("user-42", map[string]any{
-    "plan": "enterprise",
-  })
-
-
-  enabled, err := client.BooleanValue(ctx, "new-checkout", false, evalCtx)
-  if err != nil {
-    log.Fatal(err)
-  }
-
-
-  log.Println("new-checkout:", enabled)
+	log.Println("new-checkout:", enabled)
 }
 ```
 
@@ -96,11 +90,11 @@ The provider can cache evaluations to avoid a network round-trip for repeated fl
 
 ```go
 provider, err := flagship.NewProvider(flagship.Options{
-  AppID:        "<APP_ID>",
-  AccountID:    "<ACCOUNT_ID>",
-  AuthToken:    "<API_TOKEN>",
-  CacheTTL:     30 * time.Second, // values may be up to this stale
-  CacheMaxSize: 1000,             // LRU-evicted beyond this many entries
+	AppID:        "<APP_ID>",
+	AccountID:    "<ACCOUNT_ID>",
+	AuthToken:    "<API_TOKEN>",
+	CacheTTL:     30 * time.Second, // values may be up to this stale
+	CacheMaxSize: 1000,             // LRU-evicted beyond this many entries
 })
 ```
 
@@ -135,7 +129,14 @@ The cache is per-provider instance, guarded by a mutex for concurrent use, and c
 
 Context attributes are sent as URL query parameters. Supported values are strings, numeric types, booleans, and `time.Time`. `nil` values are skipped. Maps, slices, structs, and other complex values return `INVALID_CONTEXT` through OpenFeature and do not trigger an HTTP request.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK · Cloudflare Flagship docs","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/go/","name":"Go SDK"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK · Cloudflare Flagship docs","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

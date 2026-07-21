@@ -1,16 +1,18 @@
 ---
-title: Authentication
 description: Choose auth for bindings, API calls, and Git.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Authentication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authentication
 
-# Authentication
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/guides/authentication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts uses a different authentication path for each interface. Choose auth based on how your code reaches the repo.
 
@@ -32,18 +34,13 @@ The Workers binding uses the `artifacts` binding you configure in Wrangler. Your
 
 Add the binding in your Wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-7465)
-* [  wrangler.toml ](#tab-panel-7466)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -53,14 +50,11 @@ Add the binding in your Wrangler config:
 }
 ```
 
-**TOML**
-
 ```toml
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[artifacts]]
 binding = "ARTIFACTS"
@@ -127,7 +121,14 @@ git -c http.extraHeader="Authorization: Bearer <YOUR_WRITE_TOKEN>" push "$ARTIFA
 
 For more information on token handling and authenticated remotes, refer to [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/authentication/#page","headline":"Authentication · Cloudflare Artifacts docs","description":"Choose auth for bindings, API calls, and Git.","url":"https://developers.cloudflare.com/artifacts/guides/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/authentication/","name":"Authentication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/authentication/#page","headline":"Authentication · Cloudflare Artifacts docs","description":"Choose auth for bindings, API calls, and Git.","url":"https://developers.cloudflare.com/artifacts/guides/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

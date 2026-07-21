@@ -1,16 +1,18 @@
 ---
-title: Playwright
 description: Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Playwright
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Playwright
 
-# Playwright
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/playwright/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
@@ -54,28 +56,21 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-7547)
-* [  wrangler.toml ](#tab-panel-7548)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cloudflare-playwright-example",
-  "main": "src/index.ts",
-  "workers_dev": true,
-  "compatibility_flags": ["nodejs_compat"],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "upload_source_maps": true,
-  "browser": {
-    "binding": "MYBROWSER",
-  },
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-playwright-example",
+	"main": "src/index.ts",
+	"workers_dev": true,
+	"compatibility_flags": ["nodejs_compat"],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"upload_source_maps": true,
+	"browser": {
+		"binding": "MYBROWSER",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -84,9 +79,8 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 upload_source_maps = true
-
 
 [browser]
 binding = "MYBROWSER"
@@ -118,45 +112,37 @@ Let's look at some examples of how to use Playwright:
 
 Using browser automation to take screenshots of web pages is a common use case. This script tells the browser to navigate to [https://demo.playwright.dev/todomvc ↗](https://demo.playwright.dev/todomvc), create some items, take a screenshot of the page, and return the image in the response.
 
-**TypeScript**
-
 ```ts
 import { launch } from "@cloudflare/playwright";
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    const browser = await launch(env.MYBROWSER);
-    const page = await browser.newPage();
+	async fetch(request: Request, env: Env) {
+		const browser = await launch(env.MYBROWSER);
+		const page = await browser.newPage();
 
+		await page.goto("https://demo.playwright.dev/todomvc");
 
-    await page.goto("https://demo.playwright.dev/todomvc");
+		const TODO_ITEMS = [
+			"buy some cheese",
+			"feed the cat",
+			"book a doctors appointment",
+		];
 
+		const newTodo = page.getByPlaceholder("What needs to be done?");
+		for (const item of TODO_ITEMS) {
+			await newTodo.fill(item);
+			await newTodo.press("Enter");
+		}
 
-    const TODO_ITEMS = [
-      "buy some cheese",
-      "feed the cat",
-      "book a doctors appointment",
-    ];
+		const img = await page.screenshot();
+		await browser.close();
 
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-    for (const item of TODO_ITEMS) {
-      await newTodo.fill(item);
-      await newTodo.press("Enter");
-    }
-
-
-    const img = await page.screenshot();
-    await browser.close();
-
-
-    return new Response(img, {
-      headers: {
-        "Content-Type": "image/png",
-      },
-    });
-  },
+		return new Response(img, {
+			headers: {
+				"Content-Type": "image/png",
+			},
+		});
+	},
 };
 ```
 
@@ -166,53 +152,44 @@ A Playwright trace is a detailed log of your workflow execution that captures in
 
 Here's an example of a worker generating a trace file:
 
-**TypeScript**
-
 ```ts
 import fs from "fs";
 import { launch } from "@cloudflare/playwright";
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    const browser = await launch(env.MYBROWSER);
-    const page = await browser.newPage();
+	async fetch(request: Request, env: Env) {
+		const browser = await launch(env.MYBROWSER);
+		const page = await browser.newPage();
 
+		// Start tracing before navigating to the page
+		await page.context().tracing.start({ screenshots: true, snapshots: true });
 
-    // Start tracing before navigating to the page
-    await page.context().tracing.start({ screenshots: true, snapshots: true });
+		await page.goto("https://demo.playwright.dev/todomvc");
 
+		const TODO_ITEMS = [
+			"buy some cheese",
+			"feed the cat",
+			"book a doctors appointment",
+		];
 
-    await page.goto("https://demo.playwright.dev/todomvc");
+		const newTodo = page.getByPlaceholder("What needs to be done?");
+		for (const item of TODO_ITEMS) {
+			await newTodo.fill(item);
+			await newTodo.press("Enter");
+		}
 
+		// Stop tracing and save the trace to a zip file
+		await page.context().tracing.stop({ path: "trace.zip" });
+		await browser.close();
+		const file = await fs.promises.readFile("trace.zip");
 
-    const TODO_ITEMS = [
-      "buy some cheese",
-      "feed the cat",
-      "book a doctors appointment",
-    ];
-
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-    for (const item of TODO_ITEMS) {
-      await newTodo.fill(item);
-      await newTodo.press("Enter");
-    }
-
-
-    // Stop tracing and save the trace to a zip file
-    await page.context().tracing.stop({ path: "trace.zip" });
-    await browser.close();
-    const file = await fs.promises.readFile("trace.zip");
-
-
-    return new Response(file, {
-      status: 200,
-      headers: {
-        "Content-Type": "application/zip",
-      },
-    });
-  },
+		return new Response(file, {
+			status: 200,
+			headers: {
+				"Content-Type": "application/zip",
+			},
+		});
+	},
 };
 ```
 
@@ -220,45 +197,37 @@ export default {
 
 One of the most common use cases for using Playwright is software testing. Playwright includes test assertion features in its APIs; refer to [Assertions ↗](https://playwright.dev/docs/test-assertions) in the Playwright documentation for details. Here's an example of a Worker doing `expect()` test assertions of the [todomvc ↗](https://demo.playwright.dev/todomvc) demo page:
 
-**TypeScript**
-
 ```ts
 import { launch } from "@cloudflare/playwright";
 import { expect } from "@cloudflare/playwright/test";
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    const browser = await launch(env.MYBROWSER);
-    const page = await browser.newPage();
+	async fetch(request: Request, env: Env) {
+		const browser = await launch(env.MYBROWSER);
+		const page = await browser.newPage();
 
+		await page.goto("https://demo.playwright.dev/todomvc");
 
-    await page.goto("https://demo.playwright.dev/todomvc");
+		const TODO_ITEMS = [
+			"buy some cheese",
+			"feed the cat",
+			"book a doctors appointment",
+		];
 
+		const newTodo = page.getByPlaceholder("What needs to be done?");
+		for (const item of TODO_ITEMS) {
+			await newTodo.fill(item);
+			await newTodo.press("Enter");
+		}
 
-    const TODO_ITEMS = [
-      "buy some cheese",
-      "feed the cat",
-      "book a doctors appointment",
-    ];
+		await expect(page.getByTestId("todo-title")).toHaveCount(TODO_ITEMS.length);
 
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-    for (const item of TODO_ITEMS) {
-      await newTodo.fill(item);
-      await newTodo.press("Enter");
-    }
-
-
-    await expect(page.getByTestId("todo-title")).toHaveCount(TODO_ITEMS.length);
-
-
-    await Promise.all(
-      TODO_ITEMS.map((value, index) =>
-        expect(page.getByTestId("todo-title").nth(index)).toHaveText(value),
-      ),
-    );
-  },
+		await Promise.all(
+			TODO_ITEMS.map((value, index) =>
+				expect(page.getByTestId("todo-title").nth(index)).toHaveText(value),
+			),
+		);
+	},
 };
 ```
 
@@ -274,43 +243,34 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7549)
-* [  wrangler.toml ](#tab-panel-7550)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "storage-state-examples",
-  "main": "src/index.ts",
-  "compatibility_flags": ["nodejs_compat"],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "browser": {
-    "binding": "MYBROWSER",
-  },
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<YOUR-KV-NAMESPACE-ID>",
-    },
-  ],
+	"name": "storage-state-examples",
+	"main": "src/index.ts",
+	"compatibility_flags": ["nodejs_compat"],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"browser": {
+		"binding": "MYBROWSER",
+	},
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<YOUR-KV-NAMESPACE-ID>",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 name = "storage-state-examples"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [browser]
 binding = "MYBROWSER"
-
 
 [[kv_namespaces]]
 binding = "KV"
@@ -319,32 +279,25 @@ id = "<YOUR-KV-NAMESPACE-ID>"
 
 Now, you can use the storage state to persist cookies and other storage data in KV:
 
-**src/index.ts**
-
 ```ts
 // gets persisted storage state from KV or undefined if it does not exist
 const storageStateJson = await env.KV.get("storageState");
 const storageState = storageStateJson
-  ? ((await JSON.parse(
-      storageStateJson,
-    )) as BrowserContextOptions["storageState"])
-  : undefined;
-
+	? ((await JSON.parse(
+			storageStateJson,
+		)) as BrowserContextOptions["storageState"])
+	: undefined;
 
 await using browser = await launch(env.MYBROWSER);
 // creates a new context with storage state persisted in KV
 await using context = await browser.newContext({ storageState });
 
-
 await using page = await context.newPage();
-
 
 // do some actions on the page that may update client-side storage
 
-
 // gets updated storage state: cookies, localStorage, and IndexedDB
 const updatedStorageState = await context.storageState({ indexedDB: true });
-
 
 // persists updated storage state in KV
 await env.KV.put("storageState", JSON.stringify(updatedStorageState));
@@ -353,8 +306,6 @@ await env.KV.put("storageState", JSON.stringify(updatedStorageState));
 ### Keep Alive
 
 If users omit the `browser.close()` statement, the browser instance will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
-
-**JavaScript**
 
 ```js
 const browser = await playwright.launch(env.MYBROWSER, { keep_alive: 600000 });
@@ -370,29 +321,23 @@ This is an inactivity timeout, not a maximum session duration. Sessions can rema
 
 The best way to improve the performance of your Browser Run Worker is to reuse sessions by keeping the browser open after you have finished with it, and connecting to that session each time you have a new request. Playwright handles [browser.close ↗](https://playwright.dev/docs/api/class-browser#browser-close) differently from Puppeteer. In Playwright, if the browser was obtained using a `connect` session, the session will disconnect. If the browser was obtained using a `launch` session, the session will close.
 
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
 import { acquire, connect } from "@cloudflare/playwright";
 
-
 async function reuseSameSession() {
-  // acquires a new session
-  const { sessionId } = await acquire(env.BROWSER);
+	// acquires a new session
+	const { sessionId } = await acquire(env.BROWSER);
 
+	for (let i = 0; i < 5; i++) {
+		// connects to the session that was previously acquired
+		const browser = await connect(env.BROWSER, sessionId);
 
-  for (let i = 0; i < 5; i++) {
-    // connects to the session that was previously acquired
-    const browser = await connect(env.BROWSER, sessionId);
+		// ...
 
-
-    // ...
-
-
-    // this will disconnect the browser from the session, but the session will be kept alive
-    await browser.close();
-  }
+		// this will disconnect the browser from the session, but the session will be kept alive
+		await browser.close();
+	}
 }
 ```
 
@@ -400,12 +345,10 @@ async function reuseSameSession() {
 
 To specify a custom user agent in Playwright, set it in the options when creating a new browser context with `browser.newContext()`. All pages subsequently created from this context will use the new user agent. This is useful if the target website serves different content based on the user agent.
 
-**JavaScript**
-
 ```js
 const context = await browser.newContext({
-  userAgent:
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+	userAgent:
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
 });
 ```
 
@@ -443,16 +386,16 @@ In order to facilitate browser session management, we have extended the Playwrig
 
 ```json
 [
-  {
-    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
-    "connectionStartTime": 1711621704607,
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-    "startTime": 1711621703708
-  },
-  {
-    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
-    "startTime": 1711621703808
-  }
+	{
+		"connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
+		"connectionStartTime": 1711621704607,
+		"sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+		"startTime": 1711621703708
+	},
+	{
+		"sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
+		"startTime": 1711621703808
+	}
 ]
 ```
 
@@ -464,20 +407,20 @@ Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active wor
 
 ```json
 [
-  {
-    "closeReason": 2,
-    "closeReasonText": "BrowserIdle",
-    "endTime": 1711621769485,
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-    "startTime": 1711621703708
-  },
-  {
-    "closeReason": 1,
-    "closeReasonText": "NormalClosure",
-    "endTime": 1711123501771,
-    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
-    "startTime": 1711123430918
-  }
+	{
+		"closeReason": 2,
+		"closeReasonText": "BrowserIdle",
+		"endTime": 1711621769485,
+		"sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+		"startTime": 1711621703708
+	},
+	{
+		"closeReason": 1,
+		"closeReasonText": "NormalClosure",
+		"endTime": 1711123501771,
+		"sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
+		"startTime": 1711123430918
+	}
 ]
 ```
 
@@ -491,13 +434,13 @@ You should also be able to access this information in the dashboard, albeit with
 
 ```json
 {
-  "activeSessions": [
-    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
-    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
-  ],
-  "allowedBrowserAcquisitions": 1,
-  "maxConcurrentSessions": 2,
-  "timeUntilNextAllowedBrowserAcquisition": 0
+	"activeSessions": [
+		{ "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
+		{ "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
+	],
+	"allowedBrowserAcquisitions": 1,
+	"maxConcurrentSessions": 2,
+	"timeUntilNextAllowedBrowserAcquisition": 0
 }
 ```
 
@@ -519,7 +462,14 @@ The following capabilities are not yet fully supported, but we’re actively wor
 
 This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results ↗](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright · Cloudflare Browser Run docs","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/playwright/","name":"Playwright"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright · Cloudflare Browser Run docs","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

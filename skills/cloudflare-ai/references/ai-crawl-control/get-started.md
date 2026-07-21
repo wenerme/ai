@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Learn how to set up AI Crawl Control.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide instructs you on how to:
 
@@ -26,19 +28,16 @@ This guide instructs you on how to:
 ## 1\. Monitor AI crawler activity at a glance
 
 1. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Review the snapshot of your AI crawler activity in the **Overview** tab.
 3. Use the filters to view activity by specific date ranges, crawlers, operators, hostnames, or paths.
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-7106)
-* [ Paid plans ](#tab-panel-7107)
-
 To block specific AI crawlers:
 
 1. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Review which AI crawlers are accessing your domain in the **Crawlers** tab.
 3. In the **Action** column, select **Block**.
 
@@ -51,7 +50,7 @@ Upgrade your plan to enable a more thorough detection using Cloudflare's [Bot Ma
 To block specific AI crawlers:
 
 1. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Review which AI crawlers are accessing your domain in the **Crawlers** tab.
 3. In the **Action** column, select **Block**.
 
@@ -61,12 +60,10 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-7105)
-
 For more detailed analytics, use the **Metrics** tab.
 
 1. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Review detailed breakdowns by date range, crawler, operator, status code, hostname, or path in the **Metrics** tab.
 
 Note that on free plans, the **Metrics** tab only displays metrics for the past 24 hours.
@@ -93,7 +90,14 @@ Refer to the following related resources:
 * Block AI crawlers that do not adhere to recommended guidelines using [Cloudflare AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/).
 * [Direct AI crawlers with managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/get-started/#page","headline":"Get started with Cloudflare AI Crawl Control · Cloudflare AI Crawl Control docs","description":"Learn how to set up AI Crawl Control.","url":"https://developers.cloudflare.com/ai-crawl-control/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/get-started/#page","headline":"Get started with Cloudflare AI Crawl Control · Cloudflare AI Crawl Control docs","description":"Learn how to set up AI Crawl Control.","url":"https://developers.cloudflare.com/ai-crawl-control/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

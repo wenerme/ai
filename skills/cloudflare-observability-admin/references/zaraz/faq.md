@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Answers to common questions about Cloudflare Zaraz.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) or [Discord channel ↗](https://discord.cloudflare.com) to explore additional resources.
 
@@ -77,7 +79,7 @@ To prevent Zaraz from loading on specific pages, refer to [Load Zaraz selectivel
 Resetting your Zaraz configuration will erase all of your configuration settings, including any tools, triggers, and variables you've set up. This action will disable Zaraz immediately. If you want to start over with a clean slate, you can always reset your configuration.
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Advanced**.
 3. Click "Reset" and follow the instructions.
 
@@ -137,13 +139,11 @@ It can take between 15 minutes to several hours for data to appear on Facebook's
 
 Conversion ID and Conversion Label are usually provided by Google Ads as a "gtag script". Here's an example for a $1 USD conversion:
 
-**JavaScript**
-
 ```js
 gtag("event", "conversion", {
-  send_to: "AW-123456789/AbC-D_efG-h12_34-567",
-  value: 1.0,
-  currency: "USD",
+	send_to: "AW-123456789/AbC-D_efG-h12_34-567",
+	value: 1.0,
+	currency: "USD",
 });
 ```
 
@@ -185,7 +185,14 @@ The Zaraz team is working with third-party vendors to build their own Zaraz inte
 
 In such a case, you can change the cookie name in the _Consent cookie name_ field in the Zaraz Consent configuration. This will cause the consent modal to reappear for all users. Make sure to use a cookie name that has not been used for Zaraz on your site.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/faq/#page","headline":"FAQ · Cloudflare Zaraz docs","description":"Answers to common questions about Cloudflare Zaraz.","url":"https://developers.cloudflare.com/zaraz/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/faq/#page","headline":"FAQ · Cloudflare Zaraz docs","description":"Answers to common questions about Cloudflare Zaraz.","url":"https://developers.cloudflare.com/zaraz/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

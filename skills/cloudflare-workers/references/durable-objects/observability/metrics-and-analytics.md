@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
 
@@ -25,7 +27,7 @@ A Durable Object namespace is a set of Durable Objects that can be addressed by 
 Per-namespace analytics for Durable Objects are available in the Cloudflare dashboard. To view current and historical metrics for a namespace:
 
 1. In the Cloudflare dashboard, go to the **Durable Objects** page.
-[ Go to **Durable Objects** ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[ Go to **Durable Objects** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 2. View account-level Durable Objects usage.
 3. Select an existing Durable Object namespace.
 4. Select the **Metrics** tab.
@@ -60,11 +62,6 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:
-
-  * [  wrangler.jsonc ](#tab-panel-9092)
-  * [  wrangler.toml ](#tab-panel-9093)
-
-**JSONC**
 ```jsonc
 {
     "observability": {
@@ -72,15 +69,13 @@ To start using Durable Object logging:
     }
 }
 ```
-
-**TOML**
 ```toml
 [observability]
 enabled = true
 ```
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page.
-[ Go to **Durable Objects** ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[ Go to **Durable Objects** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 4. Select an existing Durable Object namespace.
 5. Select the **Logs** tab.
 
@@ -109,8 +104,6 @@ Durable Objects using [WebSockets](https://developers.cloudflare.com/durable-obj
 * Metrics for incoming and outgoing WebSocket messages on a WebSocket connection are available in `durableObjectsPeriodicGroups`. If a WebSocket connection uses [WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), incoming WebSocket messages are instead represented in `durableObjectsInvocationsAdaptiveGroups`.
 
 ## Example GraphQL query for Durable Objects
-
-**JavaScript**
 
 ```js
   viewer {
@@ -153,7 +146,14 @@ Refer to the [Querying Workers Metrics with GraphQL](https://developers.cloudfla
 
 You can use `$workers.durableObjectId` to identify the specific Durable Object instance that generated the log entry.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Durable Objects docs","description":"View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.","url":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/observability/metrics-and-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Durable Objects docs","description":"View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.","url":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

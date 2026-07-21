@@ -1,22 +1,24 @@
 ---
-title: IP Access rules
 description: Control access based on IP address, range, country, or ASN.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: IP Access rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  IP Access rules
 
-# IP Access rules
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/ip-access-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use IP Access rules to allowlist, block, and challenge traffic based on the visitor's IP address, Autonomous System Number (ASN), or country.
 
 IP Access rules are commonly used to block or challenge suspected malicious traffic. Another common use of IP Access rules is to allow services that regularly access your site, such as APIs, crawlers, and payment providers.
 
-Warning
+Caution
 
 Allowing an IP or ASN will bypass any configured [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), and firewall rules (deprecated).
 
@@ -68,7 +70,14 @@ Block by country is only available on Enterprise plans. Other customers may perf
 
 To learn more about protection options provided by Cloudflare to protect your website against malicious traffic and bad actors, refer to [Account security](https://developers.cloudflare.com/learning-paths/application-security/account-security/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/#page","headline":"IP Access rules · Cloudflare Web Application Firewall (WAF) docs","description":"Control access based on IP address, range, country, or ASN.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/ip-access-rules/","name":"IP Access rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/#page","headline":"IP Access rules · Cloudflare Web Application Firewall (WAF) docs","description":"Control access based on IP address, range, country, or ASN.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

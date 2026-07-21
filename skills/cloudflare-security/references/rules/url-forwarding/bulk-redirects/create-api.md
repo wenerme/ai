@@ -1,16 +1,18 @@
 ---
-title: Create Bulk Redirects via API
 description: Learn how to create Bulk Redirects using the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create Bulk Redirects via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create Bulk Redirects via API
 
-# Create Bulk Redirects via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To create Bulk Redirects via API, you must:
 
@@ -31,34 +33,32 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Account Filter Lists Edit`
 
-**Create a list**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "my_redirect_list",
-    "description": "My redirect list.",
-    "kind": "redirect"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "my_redirect_list",
+		"description": "My redirect list.",
+		"kind": "redirect"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "f848b6ccb07647749411f504d6f88794",
-    "name": "my_redirect_list",
-    "description": "My redirect list.",
-    "kind": "redirect",
-    "num_items": 0,
-    "num_referencing_filters": 0,
-    "created_on": "2021-10-28T09:11:42Z",
-    "modified_on": "2021-10-28T09:11:42Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "f848b6ccb07647749411f504d6f88794",
+		"name": "my_redirect_list",
+		"description": "My redirect list.",
+		"kind": "redirect",
+		"num_items": 0,
+		"num_referencing_filters": 0,
+		"created_on": "2021-10-28T09:11:42Z",
+		"modified_on": "2021-10-28T09:11:42Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -75,37 +75,35 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Account Filter Lists Edit`
 
-**Create list items**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/f848b6ccb07647749411f504d6f88794/items" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '[
-    {
-        "redirect": {
-            "source_url": "example.com/blog/",
-            "target_url": "https://example.com/blog/latest"
-        }
-    },
-    {
-        "redirect": {
-            "source_url": "example.net/",
-            "target_url": "https://example.net/under-construction.html",
-            "status_code": 307
-        }
-    }
-  ]'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '[
+		{
+				"redirect": {
+						"source_url": "example.com/blog/",
+						"target_url": "https://example.com/blog/latest"
+				}
+		},
+		{
+				"redirect": {
+						"source_url": "example.net/",
+						"target_url": "https://example.net/under-construction.html",
+						"status_code": 307
+				}
+		}
+	]'
 ```
 
 ```json
 {
-  "result": {
-    "operation_id": "92558f8b296d4dbe9d0419e0e53f6622"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"operation_id": "92558f8b296d4dbe9d0419e0e53f6622"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -117,28 +115,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Filter Lists Edit`
 * `Account Filter Lists Read`
 
-**Get bulk operation status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/bulk_operations/92558f8b296d4dbe9d0419e0e53f6622" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Once the operation has completed successfully, the response will be similar to the following:
 
-**Response**
-
 ```json
 {
-  "result": {
-    "id": "92558f8b296d4dbe9d0419e0e53f6622",
-    "status": "completed",
-    "completed": "2021-10-28T09:15:42Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "92558f8b296d4dbe9d0419e0e53f6622",
+		"status": "completed",
+		"completed": "2021-10-28T09:15:42Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -167,63 +161,61 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Create an account ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "My redirect ruleset",
-    "kind": "root",
-    "phase": "http_request_redirect",
-    "rules": [
-        {
-            "ref": "enable_my_redirect_list",
-            "expression": "http.request.full_uri in $my_redirect_list",
-            "description": "Bulk Redirect rule.",
-            "action": "redirect",
-            "action_parameters": {
-                "from_list": {
-                    "name": "my_redirect_list",
-                    "key": "http.request.full_uri"
-                }
-            }
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "My redirect ruleset",
+		"kind": "root",
+		"phase": "http_request_redirect",
+		"rules": [
+				{
+						"ref": "enable_my_redirect_list",
+						"expression": "http.request.full_uri in $my_redirect_list",
+						"description": "Bulk Redirect rule.",
+						"action": "redirect",
+						"action_parameters": {
+								"from_list": {
+										"name": "my_redirect_list",
+										"key": "http.request.full_uri"
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "528f4f03bf0da53a29907199625867be",
-    "name": "My redirect ruleset",
-    "kind": "root",
-    "version": "1",
-    "rules": [
-      {
-        "ref": "enable_my_redirect_list",
-        "id": "8da312df846b4258a05bcd454ea943be",
-        "version": "1",
-        "expression": "http.request.full_uri in $my_redirect_list",
-        "description": "Bulk Redirect rule.",
-        "action": "redirect",
-        "action_parameters": {
-          "from_list": {
-            "name": "my_redirect_list",
-            "key": "http.request.full_uri"
-          }
-        },
-        "last_updated": "2021-10-28T09:20:42Z"
-      }
-    ],
-    "last_updated": "2021-10-28T09:20:42Z",
-    "phase": "http_request_redirect"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "528f4f03bf0da53a29907199625867be",
+		"name": "My redirect ruleset",
+		"kind": "root",
+		"version": "1",
+		"rules": [
+			{
+				"ref": "enable_my_redirect_list",
+				"id": "8da312df846b4258a05bcd454ea943be",
+				"version": "1",
+				"expression": "http.request.full_uri in $my_redirect_list",
+				"description": "Bulk Redirect rule.",
+				"action": "redirect",
+				"action_parameters": {
+					"from_list": {
+						"name": "my_redirect_list",
+						"key": "http.request.full_uri"
+					}
+				},
+				"last_updated": "2021-10-28T09:20:42Z"
+			}
+		],
+		"last_updated": "2021-10-28T09:20:42Z",
+		"phase": "http_request_redirect"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -243,95 +235,93 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "My redirect ruleset",
-    "kind": "root",
-    "phase": "http_request_redirect",
-    "rules": [
-        {
-            "ref": "eval_redirects_list_1",
-            "expression": "http.request.full_uri in $my_redirect_list_1",
-            "description": "Bulk Redirect rule 1",
-            "action": "redirect",
-            "action_parameters": {
-                "from_list": {
-                    "name": "my_redirect_list_1",
-                    "key": "http.request.full_uri"
-                }
-            }
-        },
-        {
-            "ref": "eval_redirects_list_2",
-            "expression": "http.request.full_uri in $my_redirect_list_2",
-            "description": "Bulk Redirect rule 2",
-            "action": "redirect",
-            "action_parameters": {
-                "from_list": {
-                    "name": "my_redirect_list_2",
-                    "key": "http.request.full_uri"
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "My redirect ruleset",
+		"kind": "root",
+		"phase": "http_request_redirect",
+		"rules": [
+				{
+						"ref": "eval_redirects_list_1",
+						"expression": "http.request.full_uri in $my_redirect_list_1",
+						"description": "Bulk Redirect rule 1",
+						"action": "redirect",
+						"action_parameters": {
+								"from_list": {
+										"name": "my_redirect_list_1",
+										"key": "http.request.full_uri"
+								}
+						}
+				},
+				{
+						"ref": "eval_redirects_list_2",
+						"expression": "http.request.full_uri in $my_redirect_list_2",
+						"description": "Bulk Redirect rule 2",
+						"action": "redirect",
+						"action_parameters": {
+								"from_list": {
+										"name": "my_redirect_list_2",
+										"key": "http.request.full_uri"
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "67013aa153df4e5fbda92f92bc979331",
-    "name": "default",
-    "description": "",
-    "kind": "root",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "eval_redirects_list_1",
-        "id": "8be62ab2ef9a4a41af30c24ff8e73e41",
-        "version": "1",
-        "action": "redirect",
-        "action_parameters": {
-          "from_list": {
-            "name": "my_redirect_list_1",
-            "key": "http.request.full_uri"
-          }
-        },
-        "expression": "http.request.full_uri in $my_redirect_list_1",
-        "description": "Bulk Redirect rule 1",
-        "last_updated": "2021-12-03T15:38:51.658387Z",
-        "ref": "8be62ab2ef9a4a41af30c24ff8e73e41",
-        "enabled": true
-      },
-      {
-        "ref": "eval_redirects_list_2",
-        "id": "97e38797fb2b4b22a4919800f1318a5c",
-        "version": "1",
-        "action": "redirect",
-        "action_parameters": {
-          "from_list": {
-            "name": "my_redirect_list_2",
-            "key": "http.request.full_uri"
-          }
-        },
-        "expression": "http.request.full_uri in $my_redirect_list_2",
-        "description": "Bulk Redirect rule 2",
-        "last_updated": "2021-12-03T15:38:51.658387Z",
-        "ref": "97e38797fb2b4b22a4919800f1318a5c",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2021-12-03T15:38:51.658387Z",
-    "phase": "http_request_redirect"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "67013aa153df4e5fbda92f92bc979331",
+		"name": "default",
+		"description": "",
+		"kind": "root",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "eval_redirects_list_1",
+				"id": "8be62ab2ef9a4a41af30c24ff8e73e41",
+				"version": "1",
+				"action": "redirect",
+				"action_parameters": {
+					"from_list": {
+						"name": "my_redirect_list_1",
+						"key": "http.request.full_uri"
+					}
+				},
+				"expression": "http.request.full_uri in $my_redirect_list_1",
+				"description": "Bulk Redirect rule 1",
+				"last_updated": "2021-12-03T15:38:51.658387Z",
+				"ref": "8be62ab2ef9a4a41af30c24ff8e73e41",
+				"enabled": true
+			},
+			{
+				"ref": "eval_redirects_list_2",
+				"id": "97e38797fb2b4b22a4919800f1318a5c",
+				"version": "1",
+				"action": "redirect",
+				"action_parameters": {
+					"from_list": {
+						"name": "my_redirect_list_2",
+						"key": "http.request.full_uri"
+					}
+				},
+				"expression": "http.request.full_uri in $my_redirect_list_2",
+				"description": "Bulk Redirect rule 2",
+				"last_updated": "2021-12-03T15:38:51.658387Z",
+				"ref": "97e38797fb2b4b22a4919800f1318a5c",
+				"enabled": true
+			}
+		],
+		"last_updated": "2021-12-03T15:38:51.658387Z",
+		"phase": "http_request_redirect"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -341,16 +331,20 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-10931)
-* [ API ](#tab-panel-10932)
-
 * _Account_ \> _Bulk URL Redirects_ \> _Edit_
 * _Account_ \> _Account Filter Lists_ \> _Edit_
 
 * Mass URL Redirects Write
 * Account Rule Lists Write
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/#page","headline":"Create Bulk Redirects via API · Cloudflare Rules docs","description":"Learn how to create Bulk Redirects using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/create-api/","name":"Create Bulk Redirects via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/#page","headline":"Create Bulk Redirects via API · Cloudflare Rules docs","description":"Learn how to create Bulk Redirects using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

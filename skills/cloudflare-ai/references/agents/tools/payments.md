@@ -1,16 +1,18 @@
 ---
-title: Agentic Payments
 description: Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Agentic Payments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Agentic Payments
 
-# Agentic Payments
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/payments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI agents need to discover, pay for, and consume resources and services programmatically. Traditional onboarding requires account creation, a payment method, and an API key before an agent can pay for a service. Agentic payments let AI agents purchase resources and services directly through the HTTP `402 Payment Required` response code.
 
@@ -42,9 +44,13 @@ MPP supports multiple payment methods beyond blockchain — including cards (via
 
 ## Charge for resources
 
-[ HTTP content (x402) ](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/) Gate APIs, web pages, and files with a Worker proxy
+### [ HTTP content (x402) ](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/)
 
-[ HTTP content (MPP) ](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/) Gate APIs, web pages, and files with a Worker proxy
+ Gate APIs, web pages, and files with a Worker proxy
+
+### [ HTTP content (MPP) ](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/)
+
+ Gate APIs, web pages, and files with a Worker proxy
 
 ## Related
 
@@ -53,7 +59,14 @@ MPP supports multiple payment methods beyond blockchain — including cards (via
 * [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native monetization for web content
 * [x402 examples ↗](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/#page","headline":"Agentic Payments · Cloudflare Agents docs","description":"Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.","url":"https://developers.cloudflare.com/agents/tools/payments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/payments/","name":"Agentic Payments"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/#page","headline":"Agentic Payments · Cloudflare Agents docs","description":"Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.","url":"https://developers.cloudflare.com/agents/tools/payments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

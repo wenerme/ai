@@ -1,16 +1,18 @@
 ---
-title: Extended ruleset
 description: Configure Extended ruleset in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Extended ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Extended ruleset
 
-# Extended ruleset
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The extended ruleset builds on the [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/minimal-ruleset/) by creating targeted rules for different types of systems on your network. Before creating these rules, you must [create IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) for each category.
 
@@ -41,7 +43,7 @@ For example, you can create a list for the combination of generic client TCP and
 
 Create a list named **Endpoints** and specify the list of endpoints or user IP addresses to reference within the rules.
 
-Warning
+Caution
 
 Rule 10 in the example ruleset below is a catch-all (a final rule that matches any remaining traffic) that blocks all traffic not permitted in rules 1-3 towards your list of Endpoint IP addresses. If you want to permit other traffic to these destination IP addresses, the new rule must be added before rule 10.
 
@@ -105,7 +107,7 @@ The following is an example of suggested rules, but you should only make changes
 
 Alternatively, if you have Cloudflare Layer 7 protection, the Cloudflare public IP addresses can be permitted as the source IP addresses to the destination IP addresses for the HTTP/HTTPS inbound traffic. This recommendation effectively replaces Rule 1 in the example above.
 
-Warning
+Caution
 
 Cloudflare's IP ranges may change. Refer to [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/) for the current list, or use an [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) that you update periodically rather than hardcoding ranges in your rules.
 
@@ -127,7 +129,14 @@ Restrict the source based on whether the server is expecting traffic from the ge
 * `IP Destination Address { non-web server } and UDP dst port in \<valid ports> — Permit`
 * `IP Destination Address { web server } — Block`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/#page","headline":"Extended suggested ruleset · Cloudflare One docs","description":"Configure Extended ruleset in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP","IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/packet-filtering/","name":"Packet filtering"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/packet-filtering/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/","name":"Extended ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/#page","headline":"Extended suggested ruleset · Cloudflare One docs","description":"Configure Extended ruleset in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP","IPsec"]}
 ```

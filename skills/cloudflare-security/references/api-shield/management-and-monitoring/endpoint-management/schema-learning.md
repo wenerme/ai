@@ -1,16 +1,18 @@
 ---
-title: Schema learning
 description: Automatically learn API schema parameters from traffic and export in OpenAPI format.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Schema learning
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Schema learning
 
-# Schema learning
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Schema learning observes live API traffic to automatically discover the parameters, headers, and body formats your endpoints accept. For all endpoints saved to Endpoint Management, you can export the learned schema in OpenAPI `v3.0.0` format by hostname.
 
@@ -18,11 +20,8 @@ To protect your API with a learned schema, refer to [Schema validation](https://
 
 ## Export a schema
 
-* [  New dashboard ](#tab-panel-7352)
-* [ Old dashboard ](#tab-panel-7353)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Endpoints** tab.
 3. Select **Export schema** and choose a hostname to export.
 4. Select whether to include learned parameters and rate limit recommendations
@@ -61,7 +60,14 @@ Schema learning only learns from requests with `2xx` response codes.
 
 Schema learning works best with high volumes of traffic. You may see less confident learned schemas for endpoints with less than 10,000 requests in the last 72 hours.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Schema learning · Cloudflare API Shield docs","description":"Automatically learn API schema parameters from traffic and export in OpenAPI format.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-management/","name":"Endpoint Management"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-management/schema-learning/","name":"Schema learning"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Schema learning · Cloudflare API Shield docs","description":"Automatically learn API schema parameters from traffic and export in OpenAPI format.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

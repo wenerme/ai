@@ -1,16 +1,18 @@
 ---
-title: Use TLS inspection
 description: Enable and configure TLS decryption.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Use TLS inspection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use TLS inspection
 
-# Use TLS inspection
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 TLS inspection (also known as TLS decryption or HTTPS inspection) allows Cloudflare Gateway to perform deeper traffic analysis and take actions like scanning request bodies for sensitive data, upgrading to a remote browser isolation session, and redirecting based on the complete URL and path of requests.
 
@@ -39,9 +41,6 @@ If the answer to a majority of these questions is no and your organization relie
 
 To turn on TLS inspection for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-10090)
-* [ Terraform (v5) ](#tab-panel-10091)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
@@ -51,16 +50,16 @@ To turn on TLS inspection for your Zero Trust organization:
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
-#### Inspect on all ports Beta
+#### Inspect on all ports  Beta
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
 
@@ -95,79 +94,74 @@ You can build pass-through rules to accommodate any type of device or user group
 
 For example, if users are issued a corporate-managed iPhone with limited permissions, set an additional Do Not Inspect policy for all traffic matching the device posture value. That could include the OS type, OS version, or a list of serial numbers (updated via the API with hooks from your MDM tool) for those iPhones:
 
-* [ Dashboard ](#tab-panel-10094)
-* [ API ](#tab-panel-10095)
-
 | Selector              | Operator | Value                                   | Logic | Action         |
 | --------------------- | -------- | --------------------------------------- | ----- | -------------- |
 | Passed Device Posture | in       | _iOS 17 or higher (OS version)_         | And   | Do Not Inspect |
 | Passed Device Posture | in       | _iPhone Serial Numbers (Serial number)_ |       |                |
 
 1. Create a list of device serial numbers that you do not want to inspect.
-
-**Create Zero Trust list**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "The serial numbers for administrators",
-    "items": [
-        {
-            "value": "8GE8721RE"
-        }
-    ],
-    "name": "Admin Serial Numbers",
-    "type": "SERIAL"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "The serial numbers for administrators",
+		"items": [
+				{
+						"value": "8GE8721RE"
+				}
+		],
+		"name": "Admin Serial Numbers",
+		"type": "SERIAL"
+	}'
 ```
 2. Create a Do Not Inspect policy that checks the device against the list of serial numbers.
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Do not inspect corporate devices",
-    "traffic": "",
-    "identity": "",
-    "device_posture": "any(device_posture.checks.passed[*] in {\"<SERIAL_NUMBER_LIST_UUID>\"})",
-    "action": "off",
-    "precedence": 14002,
-    "enabled": true,
-    "filters": [
-        "http"
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Do not inspect corporate devices",
+		"traffic": "",
+		"identity": "",
+		"device_posture": "any(device_posture.checks.passed[*] in {\"<SERIAL_NUMBER_LIST_UUID>\"})",
+		"action": "off",
+		"precedence": 14002,
+		"enabled": true,
+		"filters": [
+				"http"
+		]
+	}'
 ```
 
 If you filter your network-connected devices with IPsec/GRE tunnels, Cloudflare Mesh, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
-
-* [ Dashboard ](#tab-panel-10092)
-* [ API ](#tab-panel-10093)
 
 | Selector           | Operator | Value          | Action         |
 | ------------------ | -------- | -------------- | -------------- |
 | Source Internal IP | in       | 203.0.113.0/24 | Do Not Inspect |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Do not inspect corporate devices",
-    "traffic": "http.conn.internal_src_ip in {203.0.113.0/24}",
-    "identity": "",
-    "device_posture": "",
-    "action": "off"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Do not inspect corporate devices",
+		"traffic": "http.conn.internal_src_ip in {203.0.113.0/24}",
+		"identity": "",
+		"device_posture": "",
+		"action": "off"
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/#page","headline":"Use TLS inspection · Cloudflare Learning Paths","description":"Enable and configure TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/","name":"Use TLS inspection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/#page","headline":"Use TLS inspection · Cloudflare Learning Paths","description":"Enable and configure TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

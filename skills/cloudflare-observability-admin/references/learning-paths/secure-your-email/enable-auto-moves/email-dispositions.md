@@ -1,16 +1,18 @@
 ---
-title: Email dispositions
 description: Understand email threat disposition categories.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Email dispositions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email dispositions
 
-# Email dispositions
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email security returns five potential verdicts for every email it scans. Review the detections and consider how you would treat them once an auto-move is enabled. Below is an overview of the disposition and recommendation actions by Cloudflare:
 
@@ -22,7 +24,14 @@ Email security returns five potential verdicts for every email it scans. Review 
 | SPAM        | Traffic associated with non-malicious, commercial campaigns.                                                                                                                                                                                                                                                                                                                                                                                  | Route to existing Spam quarantine folder.                                  |  |
 | BULK        | Traffic associated with [Graymail ↗](https://en.wikipedia.org/wiki/Graymail), that falls in between the definitions of SPAM and SUSPICIOUS. For example, a marketing email that intentionally obscures its unsubscribe link.                                                                                                                                                                                                                  | Monitor or tag                                                             |  |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/#page","headline":"Email dispositions · Cloudflare Learning Paths","description":"Understand email threat disposition categories.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/enable-auto-moves/","name":"Enable auto-moves"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/","name":"Email dispositions"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/#page","headline":"Email dispositions · Cloudflare Learning Paths","description":"Understand email threat disposition categories.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

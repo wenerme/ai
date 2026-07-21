@@ -1,16 +1,18 @@
 ---
-title: NetFlows
 description: Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: NetFlows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  NetFlows
 
-# NetFlows
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/netflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [NetFlows ↗](https://en.wikipedia.org/wiki/NetFlow) shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the [Internet traffic change ↗](https://radar.cloudflare.com/) chart.
 
@@ -42,15 +44,15 @@ This is the abbreviated response:
   "success": true,
   "errors": [],
   "result": {
-    "AS3243_all": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.565885", "0.586434", "..."]
-    },
-    "AS3243_http": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.548564", "0.568329", "..."]
-    }
-  }
+		"AS3243_all": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.565885", "0.586434", "..."]
+		},
+		"AS3243_http": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.548564", "0.568329", "..."]
+		}
+	}
 }
 ```
 
@@ -70,15 +72,15 @@ The abbreviated response is:
   "success": true,
   "errors": [],
   "result": {
-    "AS174_all": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.917348", "1.0", "..."]
-    },
-    "AS174_http": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.381777", "0.408091", "..."]
-    }
-  }
+		"AS174_all": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.917348", "1.0", "..."]
+		},
+		"AS174_http": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.381777", "0.408091", "..."]
+		}
+	}
 }
 ```
 
@@ -98,23 +100,23 @@ which would lead to a response like this:
   "success": true,
   "errors": [],
   "result": {
-    "AS174_all": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.917348", "1.0", "..."]
-    },
-    "AS174_http": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.381777", "0.408091", "..."]
-    },
-    "AS3243_all": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.317136", "0.328652", "..."]
-    },
-    "AS3243_http": {
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-      "values": ["0.307429", "0.318505", "..."]
-    }
-  }
+		"AS174_all": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.917348", "1.0", "..."]
+		},
+		"AS174_http": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.381777", "0.408091", "..."]
+		},
+		"AS3243_all": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.317136", "0.328652", "..."]
+		},
+		"AS3243_http": {
+			"timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
+			"values": ["0.307429", "0.318505", "..."]
+		}
+	}
 }
 ```
 
@@ -124,7 +126,14 @@ This response shows how Cloudflare receives more traffic from AS174 than from AS
 
 Refer to [HTTP requests](https://developers.cloudflare.com/radar/investigate/http-requests/) for more information about requests from end users.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/netflows/#page","headline":"NetFlows · Cloudflare Radar docs","description":"Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/netflows/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/netflows/","name":"NetFlows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/netflows/#page","headline":"NetFlows · Cloudflare Radar docs","description":"Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/netflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

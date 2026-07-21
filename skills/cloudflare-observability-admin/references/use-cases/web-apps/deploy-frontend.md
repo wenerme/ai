@@ -1,16 +1,18 @@
 ---
-title: Deploy frontend applications
 description: Deploy React, Vue, Astro, and other frontend frameworks globally with Git-triggered builds and preview URLs.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Deploy frontend applications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy frontend applications
 
-# Deploy frontend applications
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deploying a frontend application with React, Vue, Astro, or any other framework requires a platform that handles builds, previews, and global distribution. Cloudflare Workers deploys your frontend to 300+ edge locations with automatic builds triggered on push to GitHub or GitLab.
 
@@ -30,7 +32,14 @@ Build and deploy serverless applications on Cloudflare's global network. [Learn 
 1. [Workers get started](https://developers.cloudflare.com/workers/get-started/)
 2. [Configure custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/#page","headline":"Deploy frontend applications · Cloudflare use cases","description":"Deploy React, Vue, Astro, and other frontend frameworks globally with Git-triggered builds and preview URLs.","url":"https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/web-apps/","name":"Web sites and web apps"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/web-apps/deploy-frontend/","name":"Deploy frontend applications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/#page","headline":"Deploy frontend applications · Cloudflare use cases","description":"Deploy React, Vue, Astro, and other frontend frameworks globally with Git-triggered builds and preview URLs.","url":"https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

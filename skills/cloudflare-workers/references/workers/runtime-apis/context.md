@@ -1,16 +1,18 @@
 ---
-title: Context (ctx)
 description: The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Context (ctx)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Context (ctx)
 
-# Context (ctx)
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/context/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Context API provides methods to manage the lifecycle of your Worker or Durable Object.
 
@@ -27,38 +29,30 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-12874)
-* [  wrangler.toml ](#tab-panel-12875)
-
-**JSONC**
-
 ```jsonc
 {
-  "services": [
-    {
-      "binding": "DOC_SERVICE",
-      "service": "doc-worker",
-      "entrypoint": "DocServiceApi",
-      "props": {
-        "clientId": "frontend-worker",
-        "permissions": [
-          "read",
-          "write"
-        ]
-      }
-    }
-  ]
+	"services": [
+		{
+			"binding": "DOC_SERVICE",
+			"service": "doc-worker",
+			"entrypoint": "DocServiceApi",
+			"props": {
+				"clientId": "frontend-worker",
+				"permissions": [
+					"read",
+					"write"
+				]
+			}
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[services]]
 binding = "DOC_SERVICE"
 service = "doc-worker"
 entrypoint = "DocServiceApi"
-
 
   [services.props]
   clientId = "frontend-worker"
@@ -73,38 +67,30 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-12876)
-* [  wrangler.toml ](#tab-panel-12877)
-
-**JSONC**
-
 ```jsonc
 {
-  "services": [
-    {
-      "binding": "FOO_DOCUMENT",
-      "service": "doc-worker",
-      "entrypoint": "DocumentApi",
-      "props": {
-        "docId": "e366592caec1d88dff724f74136b58b5",
-        "permissions": [
-          "read",
-          "write"
-        ]
-      }
-    }
-  ]
+	"services": [
+		{
+			"binding": "FOO_DOCUMENT",
+			"service": "doc-worker",
+			"entrypoint": "DocumentApi",
+			"props": {
+				"docId": "e366592caec1d88dff724f74136b58b5",
+				"permissions": [
+					"read",
+					"write"
+				]
+			}
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[services]]
 binding = "FOO_DOCUMENT"
 service = "doc-worker"
 entrypoint = "DocumentApi"
-
 
   [services.props]
   docId = "e366592caec1d88dff724f74136b58b5"
@@ -126,24 +112,20 @@ To use `ctx.exports`, you must use [the enable\_ctx\_exports compatibility flag]
 
 For example:
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class Greeter extends WorkerEntrypoint {
-  greet(name) {
-    return `Hello, ${name}!`;
-  }
+	greet(name) {
+		return `Hello, ${name}!`;
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    let greeting = await ctx.exports.Greeter.greet("World");
-    return new Response(greeting);
-  },
+	async fetch(request, env, ctx) {
+		let greeting = await ctx.exports.Greeter.greet("World");
+		return new Response(greeting);
+	},
 };
 ```
 
@@ -153,67 +135,51 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-12872)
-* [  TypeScript ](#tab-panel-12873)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class Greeter extends WorkerEntrypoint {
-  greet(name) {
-    return `${this.ctx.props.greeting}, ${name}!`;
-  }
+	greet(name) {
+		return `${this.ctx.props.greeting}, ${name}!`;
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Make a custom greeter that uses the greeting "Welcome".
-    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
+	async fetch(request, env, ctx) {
+		// Make a custom greeter that uses the greeting "Welcome".
+		let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
 
+		// Greet the world. Returns "Welcome, World!"
+		let greeting = await greeter.greet("World");
 
-    // Greet the world. Returns "Welcome, World!"
-    let greeting = await greeter.greet("World");
-
-
-    return new Response(greeting);
-  },
+		return new Response(greeting);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 type Props = {
-  greeting: string;
+	greeting: string;
 };
 
-
 export class Greeter extends WorkerEntrypoint<Env, Props> {
-  greet(name) {
-    return `${this.ctx.props.greeting}, ${name}!`;
-  }
+	greet(name) {
+		return `${this.ctx.props.greeting}, ${name}!`;
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Make a custom greeter that uses the greeting "Welcome".
-    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
+	async fetch(request, env, ctx) {
+		// Make a custom greeter that uses the greeting "Welcome".
+		let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
 
+		// Greet the world. Returns "Welcome, World!"
+		let greeting = await greeter.greet("World");
 
-    // Greet the world. Returns "Welcome, World!"
-    let greeting = await greeter.greet("World");
-
-
-    return new Response(greeting);
-  },
+		return new Response(greeting);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -233,17 +199,15 @@ When declaring an entrypoint class that accepts `props`, make sure to declare it
 
 [Tracing must be enabled](https://developers.cloudflare.com/workers/observability/traces/#how-to-enable-tracing) on your Worker for spans to be recorded.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return ctx.tracing.enterSpan("handleRequest", async (span) => {
-      span.setAttribute("url.path", new URL(request.url).pathname);
-      const data = await env.MY_KV.get("key");
-      return new Response(data);
-    });
-  },
+	async fetch(request, env, ctx) {
+		return ctx.tracing.enterSpan("handleRequest", async (span) => {
+			span.setAttribute("url.path", new URL(request.url).pathname);
+			const data = await env.MY_KV.get("key");
+			return new Response(data);
+		});
+	},
 };
 ```
 
@@ -260,7 +224,7 @@ Use `ctx.waitUntil()` for work that can run after the response is sent, such as 
 * Fire off events to external analytics providers. (note that when you use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/), you do not need to use `waitUntil`)
 * Put items into cache using the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/)
 
-`waitUntil` has a 30-second time limit after invocation end
+\`waitUntil\` has a 30-second time limit after invocation end
 
 For HTTP-triggered Workers, `ctx.waitUntil()` can extend execution for up to 30 seconds after the response is sent or the client disconnects. This is not a limit on the total wall time of an HTTP request. This time limit is shared across all `waitUntil()` calls within the same request. If any Promises have not settled after 30 seconds, they are canceled. When `waitUntil` tasks are canceled, the following warning will be logged to [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and any attached [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/): `waitUntil() tasks did not complete within the allowed time after invocation end and have been cancelled.`
 
@@ -272,7 +236,7 @@ If you are using `waitUntil()` to emit logs or exceptions, we recommend using [T
 
 [Cloudflare Queues](https://developers.cloudflare.com/queues/) is purpose-built for performing work out-of-band, without blocking returning a response back to the client Worker.
 
-`waitUntil` in Durable Objects
+\`waitUntil\` in Durable Objects
 
 Do not use `waitUntil()` to keep a Durable Object alive during normal request or RPC handling. Durable Objects remain active while they are handling requests, RPC calls, response streams, WebSockets, or pending I/O. [DurableObjectState.waitUntil()](https://developers.cloudflare.com/durable-objects/api/state/#waituntil) exists for API compatibility and is not needed for this behavior.
 
@@ -280,28 +244,23 @@ You can call `waitUntil()` multiple times. Similar to `Promise.allSettled`, even
 
 For example:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Forward / proxy original request
-    let res = await fetch(request);
+	async fetch(request, env, ctx) {
+		// Forward / proxy original request
+		let res = await fetch(request);
 
+		// Add custom header(s)
+		res = new Response(res.body, res);
+		res.headers.set("x-foo", "bar");
 
-    // Add custom header(s)
-    res = new Response(res.body, res);
-    res.headers.set("x-foo", "bar");
+		// Cache the response
+		// NOTE: Does NOT block / wait
+		ctx.waitUntil(caches.default.put(request, res.clone()));
 
-
-    // Cache the response
-    // NOTE: Does NOT block / wait
-    ctx.waitUntil(caches.default.put(request, res.clone()));
-
-
-    // Done
-    return res;
-  },
+		// Done
+		return res;
+	},
 };
 ```
 
@@ -317,25 +276,29 @@ This protects against uncaught code exceptions. It does not mitigate failures su
 
 The `passThroughOnException` method allows a Worker to [fail open ↗](https://community.microfocus.com/cyberres/b/sws-22/posts/security-fundamentals-part-1-fail-open-vs-fail-closed), and pass a request through to an origin server when a Worker throws an unhandled exception. This can be useful when using Workers as a layer in front of an existing service, allowing the service behind the Worker to handle any unexpected error cases that arise in your Worker.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    ctx.passThroughOnException();
+	async fetch(request, env, ctx) {
+		ctx.passThroughOnException();
 
-
-    try {
-      return await fetch(request);
-    } catch (error) {
-      console.error("Origin fetch failed", error);
-      return new Response("Bad Gateway", { status: 502 });
-    }
-  },
+		try {
+			return await fetch(request);
+		} catch (error) {
+			console.error("Origin fetch failed", error);
+			return new Response("Bad Gateway", { status: 502 });
+		}
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/context/","name":"Context (ctx)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

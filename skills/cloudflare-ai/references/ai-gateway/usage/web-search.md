@@ -1,16 +1,18 @@
 ---
-title: Web Search
 description: Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Web Search
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Web Search
 
-# Web Search
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/web-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway proxies native web search tools from supported providers so models can answer questions about events after their training cutoff. Search runs on the upstream provider; AI Gateway applies its standard features — logging, caching, rate limiting, and guardrails — to the request.
 
@@ -60,54 +62,47 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-7184)
-* [  TypeScript ](#tab-panel-7185)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "anthropic/claude-haiku-4.5",
-  {
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content:
-          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-      },
-    ],
-    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"anthropic/claude-haiku-4.5",
+	{
+		max_tokens: 4096,
+		messages: [
+			{
+				role: "user",
+				content:
+					"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+			},
+		],
+		tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "anthropic/claude-haiku-4.5",
-  {
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content:
-          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-      },
-    ],
-    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"anthropic/claude-haiku-4.5",
+	{
+		max_tokens: 4096,
+		messages: [
+			{
+				role: "user",
+				content:
+					"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+			},
+		],
+		tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
@@ -137,44 +132,37 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-7180)
-* [  TypeScript ](#tab-panel-7181)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "openai/gpt-4o-mini",
-  {
-    input:
-      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-    max_output_tokens: 4096,
-    tools: [{ type: "web_search_preview" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"openai/gpt-4o-mini",
+	{
+		input:
+			"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+		max_output_tokens: 4096,
+		tools: [{ type: "web_search_preview" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "openai/gpt-4o-mini",
-  {
-    input:
-      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-    max_output_tokens: 4096,
-    tools: [{ type: "web_search_preview" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"openai/gpt-4o-mini",
+	{
+		input:
+			"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+		max_output_tokens: 4096,
+		tools: [{ type: "web_search_preview" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
@@ -206,44 +194,37 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-7182)
-* [  TypeScript ](#tab-panel-7183)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "xai/grok-4.20-multi-agent-0309",
-  {
-    input:
-      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-    max_turns: 4,
-    tools: [{ type: "web_search" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"xai/grok-4.20-multi-agent-0309",
+	{
+		input:
+			"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+		max_turns: 4,
+		tools: [{ type: "web_search" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "xai/grok-4.20-multi-agent-0309",
-  {
-    input:
-      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-    max_turns: 4,
-    tools: [{ type: "web_search" }],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"xai/grok-4.20-multi-agent-0309",
+	{
+		input:
+			"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+		max_turns: 4,
+		tools: [{ type: "web_search" }],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
@@ -276,54 +257,47 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-7186)
-* [  TypeScript ](#tab-panel-7187)
-
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "alibaba/qwen3-max",
-  {
-    enable_search: true,
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content:
-          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-      },
-    ],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"alibaba/qwen3-max",
+	{
+		enable_search: true,
+		max_tokens: 4096,
+		messages: [
+			{
+				role: "user",
+				content:
+					"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+			},
+		],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const resp = await env.AI.run(
-  "alibaba/qwen3-max",
-  {
-    enable_search: true,
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content:
-          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
-      },
-    ],
-  },
-  {
-    gateway: {
-      id: "default", // or use a specific gateway name
-    },
-  },
+	"alibaba/qwen3-max",
+	{
+		enable_search: true,
+		max_tokens: 4096,
+		messages: [
+			{
+				role: "user",
+				content:
+					"What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+			},
+		],
+	},
+	{
+		gateway: {
+			id: "default", // or use a specific gateway name
+		},
+	},
 );
 ```
 
@@ -394,7 +368,14 @@ Web search tool calls and their results are visible in AI Gateway [logs](https:/
 * [Parallel provider](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/)
 * [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/web-search/#page","headline":"Web Search · Cloudflare AI Gateway docs","description":"Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.","url":"https://developers.cloudflare.com/ai-gateway/usage/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/web-search/","name":"Web Search"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/web-search/#page","headline":"Web Search · Cloudflare AI Gateway docs","description":"Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.","url":"https://developers.cloudflare.com/ai-gateway/usage/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

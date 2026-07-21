@@ -1,16 +1,18 @@
 ---
-title: Protect public networks with Cloudflare
 description: This document explains how Cloudflare Magic Transit, Cloudflare Network Firewall, and Gateway work. The products offer in-line, automatic, scalable network protection for all Internet-facing networks. The architecture is designed to protect public networks across multiple clouds and on-premises.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Protect public networks with Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protect public networks with Cloudflare
 
-# Protect public networks with Cloudflare
+Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -83,7 +85,14 @@ _Note: Labels in this image may reflect a previous product name._
 * [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 * [Integration of Cloudflare Magic services and Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/#page","headline":"Protect public networks with Cloudflare · Cloudflare Reference Architecture docs","description":"This document explains how Cloudflare Magic Transit, Cloudflare Network Firewall, and Gateway work. The products offer in-line, automatic, scalable network protection for all Internet-facing networks. The architecture is designed to protect public networks across multiple clouds and on-premises.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/","name":"Protect public networks with Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/#page","headline":"Protect public networks with Cloudflare · Cloudflare Reference Architecture docs","description":"This document explains how Cloudflare Magic Transit, Cloudflare Network Firewall, and Gateway work. The products offer in-line, automatic, scalable network protection for all Internet-facing networks. The architecture is designed to protect public networks across multiple clouds and on-premises.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

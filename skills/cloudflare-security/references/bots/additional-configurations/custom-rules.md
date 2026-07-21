@@ -1,16 +1,18 @@
 ---
-title: Custom rules
 description: Understand when to use the built-in bot protection settings in Security Settings versus creating WAF custom rules for bot management.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Custom rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom rules
 
-# Custom rules
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/custom-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Bot protection on Cloudflare works through two complementary mechanisms: built-in settings configured through toggles in **Security Settings**, and [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) that you write using [bot management fields](https://developers.cloudflare.com/bots/reference/bot-management-variables/). Understanding when to use each approach helps you avoid creating duplicate rules and simplifies your security configuration.
 
@@ -82,7 +84,14 @@ Custom rules execute before Super Bot Fight Mode managed rules. If a custom rule
 
 Refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/custom-rules/#page","headline":"Custom rules · Cloudflare bot solutions docs","description":"Understand when to use the built-in bot protection settings in Security Settings versus creating WAF custom rules for bot management.","url":"https://developers.cloudflare.com/bots/additional-configurations/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/custom-rules/","name":"Custom rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/custom-rules/#page","headline":"Custom rules · Cloudflare bot solutions docs","description":"Understand when to use the built-in bot protection settings in Security Settings versus creating WAF custom rules for bot management.","url":"https://developers.cloudflare.com/bots/additional-configurations/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

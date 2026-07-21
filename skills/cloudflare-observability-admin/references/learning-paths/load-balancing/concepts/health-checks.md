@@ -1,16 +1,18 @@
 ---
-title: Monitors and health checks
 description: Monitor server health with periodic health checks.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Monitors and health checks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitors and health checks
 
-# Monitors and health checks
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There's more to a load balancer than just distributing traffic, however.
 
@@ -43,7 +45,14 @@ If the answer to either of these questions is "No", then the endpoint fails the 
 
 This system of request and response ensures that a load balancer knows which servers can handle incoming requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/#page","headline":"Monitors and health checks · Cloudflare Learning Paths","description":"Monitor server health with periodic health checks.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/concepts/health-checks/","name":"Monitors and health checks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/#page","headline":"Monitors and health checks · Cloudflare Learning Paths","description":"Monitor server health with periodic health checks.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

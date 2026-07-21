@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Privacy Gateway by configuring your server, client, and relay connection using the OHTTP standard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-gateway/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Gateway implementation consists of three main parts:
 
@@ -82,7 +84,14 @@ Then, make sure you are forwarding requests to a mutually agreed URL with the fo
 https://privacy-relay.cloudflare.com/<GATEWAY_SERVER_NAME>
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-gateway/get-started/#page","headline":"Get started · Cloudflare Privacy Gateway docs","description":"Set up Privacy Gateway by configuring your server, client, and relay connection using the OHTTP standard.","url":"https://developers.cloudflare.com/privacy-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-gateway/","name":"Privacy Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-gateway/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-gateway/get-started/#page","headline":"Get started · Cloudflare Privacy Gateway docs","description":"Set up Privacy Gateway by configuring your server, client, and relay connection using the OHTTP standard.","url":"https://developers.cloudflare.com/privacy-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

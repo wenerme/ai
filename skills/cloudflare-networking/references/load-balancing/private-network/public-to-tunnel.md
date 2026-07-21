@@ -1,16 +1,18 @@
 ---
-title: Set up Private Network Load Balancing for Public traffic to Tunnel
 description: Load balance public traffic to private origins via Tunnel.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up Private Network Load Balancing for Public traffic to Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Private Network Load Balancing for Public traffic to Tunnel
 
-# Set up Private Network Load Balancing for Public traffic to Tunnel
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following steps to learn how to configure Private Network Load Balancing solution, using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) as the off-ramp to securely connect to your private or internal services.
 
@@ -20,9 +22,6 @@ The specific configuration steps can vary depending on your infrastructure and s
 
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
-
-* [ Dashboard ](#tab-panel-10191)
-* [ cli ](#tab-panel-10192)
 
 To create a virtual network:
 
@@ -70,7 +69,14 @@ Spectrum limitations
 
 If you will use the load balancer with [Spectrum](https://developers.cloudflare.com/spectrum/), consider the applicable [limitations](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/#limitations) on load balancing and monitoring options.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/#page","headline":"Set up Private Network Load Balancing for Public traffic to Tunnel · Cloudflare Load Balancing docs","description":"Load balance public traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/private-network/","name":"Private Network Load Balancing"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/private-network/public-to-tunnel/","name":"Set up Private Network Load Balancing for Public traffic to Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/#page","headline":"Set up Private Network Load Balancing for Public traffic to Tunnel · Cloudflare Load Balancing docs","description":"Load balance public traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

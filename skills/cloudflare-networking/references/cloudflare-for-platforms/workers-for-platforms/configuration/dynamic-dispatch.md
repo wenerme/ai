@@ -1,16 +1,18 @@
 ---
-title: Dynamic dispatch Worker
 description: Create a dynamic dispatch Worker to route incoming requests to user Workers in your dispatch namespace.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Dynamic dispatch Worker
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dynamic dispatch Worker
 
-# Dynamic dispatch Worker
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) is a specialized routing Worker that directs incoming requests to the appropriate user Workers in your dispatch namespace. Instead of using [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/), dispatch Workers let you programmatically control request routing through code.
 
@@ -37,23 +39,16 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-7691)
-* [  wrangler.toml ](#tab-panel-7692)
-
-**JSONC**
-
 ```jsonc
 {
-  "dispatch_namespaces": [
-    {
-      "binding": "DISPATCHER",
-      "namespace": "my-dispatch-namespace"
-    }
-  ]
+	"dispatch_namespaces": [
+		{
+			"binding": "DISPATCHER",
+			"namespace": "my-dispatch-namespace"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[dispatch_namespaces]]
@@ -71,38 +66,32 @@ Once the binding is configured, your dynamic dispatch Worker can route requests 
 
 Store the routing mappings in [Workers KV](https://developers.cloudflare.com/kv/). This allows you to modify your routing logic without requiring you to change or redeploy the dynamic dispatch Worker.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      const url = new URL(request.url);
+	async fetch(request, env) {
+		try {
+			const url = new URL(request.url);
 
+			// Use hostname, path, or any combination as the routing key
+			const routingKey = url.hostname;
 
-      // Use hostname, path, or any combination as the routing key
-      const routingKey = url.hostname;
+			// Lookup user Worker name from KV store
+			const userWorkerName = await env.USER_ROUTING.get(routingKey);
 
+			if (!userWorkerName) {
+				return new Response("Route not configured", { status: 404 });
+			}
 
-      // Lookup user Worker name from KV store
-      const userWorkerName = await env.USER_ROUTING.get(routingKey);
-
-
-      if (!userWorkerName) {
-        return new Response("Route not configured", { status: 404 });
-      }
-
-
-      // Optional: Cache the KV lookup result
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-      return await userWorker.fetch(request);
-    } catch (e) {
-      if (e.message.startsWith("Worker not found")) {
-        return new Response("", { status: 404 });
-      }
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			// Optional: Cache the KV lookup result
+			const userWorker = env.DISPATCHER.get(userWorkerName);
+			return await userWorker.fetch(request);
+		} catch (e) {
+			if (e.message.startsWith("Worker not found")) {
+				return new Response("", { status: 404 });
+			}
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
@@ -110,30 +99,27 @@ export default {
 
 Route subdomains to the corresponding Worker. For example, `my-customer.example.com` will route to the Worker named `my-customer` in the dispatch namespace.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      // Extract user Worker name from subdomain
-      // Example: customer1.example.com -> customer1
-      const url = new URL(request.url);
-      const userWorkerName = url.hostname.split(".")[0];
+	async fetch(request, env) {
+		try {
+			// Extract user Worker name from subdomain
+			// Example: customer1.example.com -> customer1
+			const url = new URL(request.url);
+			const userWorkerName = url.hostname.split(".")[0];
 
-
-      // Get user Worker from dispatch namespace
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-      return await userWorker.fetch(request);
-    } catch (e) {
-      if (e.message.startsWith("Worker not found")) {
-        // User Worker doesn't exist in dispatch namespace
-        return new Response("", { status: 404 });
-      }
-      // Could be any other exception from fetch() or from the dispatched Worker
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			// Get user Worker from dispatch namespace
+			const userWorker = env.DISPATCHER.get(userWorkerName);
+			return await userWorker.fetch(request);
+		} catch (e) {
+			if (e.message.startsWith("Worker not found")) {
+				// User Worker doesn't exist in dispatch namespace
+				return new Response("", { status: 404 });
+			}
+			// Could be any other exception from fetch() or from the dispatched Worker
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
@@ -141,34 +127,29 @@ export default {
 
 Route URL paths to the corresponding Worker. For example, `example.com/customer-1` will route to the Worker named `customer-1` in the dispatch namespace.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      const url = new URL(request.url);
-      const pathParts = url.pathname.split("/").filter(Boolean);
+	async fetch(request, env) {
+		try {
+			const url = new URL(request.url);
+			const pathParts = url.pathname.split("/").filter(Boolean);
 
+			if (pathParts.length === 0) {
+				return new Response("Invalid path", { status: 400 });
+			}
 
-      if (pathParts.length === 0) {
-        return new Response("Invalid path", { status: 400 });
-      }
+			// example.com/customer-1 -> routes to 'customer-1' worker
+			const userWorkerName = pathParts[0];
 
-
-      // example.com/customer-1 -> routes to 'customer-1' worker
-      const userWorkerName = pathParts[0];
-
-
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-      return await userWorker.fetch(request);
-    } catch (e) {
-      if (e.message.startsWith("Worker not found")) {
-        return new Response("", { status: 404 });
-      }
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			const userWorker = env.DISPATCHER.get(userWorkerName);
+			return await userWorker.fetch(request);
+		} catch (e) {
+			if (e.message.startsWith("Worker not found")) {
+				return new Response("", { status: 404 });
+			}
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
@@ -176,46 +157,41 @@ export default {
 
 Use [custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) to control how much CPU time a given user Worker can use, or how many subrequests it can make. You can set different limits based on customer plan type or other criteria.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      const url = new URL(request.url);
-      const userWorkerName = url.hostname.split(".")[0];
+	async fetch(request, env) {
+		try {
+			const url = new URL(request.url);
+			const userWorkerName = url.hostname.split(".")[0];
 
+			// Look up customer plan from your database or KV
+			const customerPlan = await env.CUSTOMERS.get(userWorkerName);
 
-      // Look up customer plan from your database or KV
-      const customerPlan = await env.CUSTOMERS.get(userWorkerName);
+			// Set limits based on plan type
+			const plans = {
+				enterprise: { cpuMs: 50, subRequests: 50 },
+				pro: { cpuMs: 20, subRequests: 20 },
+				free: { cpuMs: 10, subRequests: 5 },
+			};
+			const limits = plans[customerPlan] || plans.free;
 
-
-      // Set limits based on plan type
-      const plans = {
-        enterprise: { cpuMs: 50, subRequests: 50 },
-        pro: { cpuMs: 20, subRequests: 20 },
-        free: { cpuMs: 10, subRequests: 5 },
-      };
-      const limits = plans[customerPlan] || plans.free;
-
-
-      const userWorker = env.DISPATCHER.get(userWorkerName, {}, { limits });
-      return await userWorker.fetch(request);
-    } catch (e) {
-      if (e.message.startsWith("Worker not found")) {
-        return new Response("", { status: 404 });
-      }
-      if (e.message.includes("CPU time limit")) {
-        // Track limit violations with Analytics Engine
-        env.ANALYTICS.writeDataPoint({
-          indexes: [userWorkerName],
-          blobs: ["cpu_limit_exceeded"],
-        });
-        return new Response("CPU limit exceeded", { status: 429 });
-      }
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			const userWorker = env.DISPATCHER.get(userWorkerName, {}, { limits });
+			return await userWorker.fetch(request);
+		} catch (e) {
+			if (e.message.startsWith("Worker not found")) {
+				return new Response("", { status: 404 });
+			}
+			if (e.message.includes("CPU time limit")) {
+				// Track limit violations with Analytics Engine
+				env.ANALYTICS.writeDataPoint({
+					indexes: [userWorkerName],
+					blobs: ["cpu_limit_exceeded"],
+				});
+				return new Response("CPU limit exceeded", { status: 429 });
+			}
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
@@ -223,7 +199,14 @@ For more details on available limits, refer to [Custom limits](https://developer
 
 To track limit violations and other metrics across user Workers, use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/). For detailed logging and debugging, configure a [Tail Worker](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) to capture events from your dispatch Worker.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/#page","headline":"Dynamic dispatch Worker · Cloudflare for Platforms docs","description":"Create a dynamic dispatch Worker to route incoming requests to user Workers in your dispatch namespace.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/","name":"Dynamic dispatch Worker"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/#page","headline":"Dynamic dispatch Worker · Cloudflare for Platforms docs","description":"Create a dynamic dispatch Worker to route incoming requests to user Workers in your dispatch namespace.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

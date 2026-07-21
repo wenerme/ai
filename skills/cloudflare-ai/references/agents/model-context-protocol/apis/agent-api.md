@@ -1,67 +1,58 @@
 ---
-title: McpAgent
 description: Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: McpAgent
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  McpAgent
 
-# McpAgent
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp/index.ts#L32-L620), from the Agents SDK:
-
-* [  JavaScript ](#tab-panel-6215)
-* [  TypeScript ](#tab-panel-6216)
-
-**JavaScript**
 
 ```js
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 export class MyMCP extends McpAgent {
-  server = new McpServer({ name: "Demo", version: "1.0.0" });
+	server = new McpServer({ name: "Demo", version: "1.0.0" });
 
-
-  async init() {
-    this.server.tool(
-      "add",
-      { a: z.number(), b: z.number() },
-      async ({ a, b }) => ({
-        content: [{ type: "text", text: String(a + b) }],
-      }),
-    );
-  }
+	async init() {
+		this.server.tool(
+			"add",
+			{ a: z.number(), b: z.number() },
+			async ({ a, b }) => ({
+				content: [{ type: "text", text: String(a + b) }],
+			}),
+		);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 export class MyMCP extends McpAgent {
-  server = new McpServer({ name: "Demo", version: "1.0.0" });
+	server = new McpServer({ name: "Demo", version: "1.0.0" });
 
-
-  async init() {
-    this.server.tool(
-      "add",
-      { a: z.number(), b: z.number() },
-      async ({ a, b }) => ({
-        content: [{ type: "text", text: String(a + b) }],
-      }),
-    );
-  }
+	async init() {
+		this.server.tool(
+			"add",
+			{ a: z.number(), b: z.number() },
+			async ({ a, b }) => ({
+				content: [{ type: "text", text: String(a + b) }],
+			}),
+		);
+	}
 }
 ```
 
@@ -96,52 +87,39 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
-
-**JavaScript**
-
 ```js
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 export class MyMCP extends McpAgent {
-  server = new McpServer({ name: "my-server", version: "1.0.0" });
+	server = new McpServer({ name: "my-server", version: "1.0.0" });
 
-
-  async init() {
-    this.server.tool("square", { n: z.number() }, async ({ n }) => ({
-      content: [{ type: "text", text: String(n * n) }],
-    }));
-  }
+	async init() {
+		this.server.tool("square", { n: z.number() }, async ({ n }) => ({
+			content: [{ type: "text", text: String(n * n) }],
+		}));
+	}
 }
-
 
 // Export the Worker handler
 export default MyMCP.serve("/mcp");
 ```
-
-**TypeScript**
 
 ```ts
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 export class MyMCP extends McpAgent {
-  server = new McpServer({ name: "my-server", version: "1.0.0" });
+	server = new McpServer({ name: "my-server", version: "1.0.0" });
 
-
-  async init() {
-    this.server.tool("square", { n: z.number() }, async ({ n }) => ({
-      content: [{ type: "text", text: String(n * n) }],
-    }));
-  }
+	async init() {
+		this.server.tool("square", { n: z.number() }, async ({ n }) => ({
+			content: [{ type: "text", text: String(n * n) }],
+		}));
+	}
 }
-
 
 // Export the Worker handler
 export default MyMCP.serve("/mcp");
@@ -153,36 +131,27 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-6209)
-* [  TypeScript ](#tab-panel-6210)
-
-**JavaScript**
-
 ```js
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
 
-
 export default new OAuthProvider({
-  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
-  authorizeEndpoint: "/authorize",
-  tokenEndpoint: "/token",
-  clientRegistrationEndpoint: "/register",
-  defaultHandler: AuthHandler,
+	apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
+	authorizeEndpoint: "/authorize",
+	tokenEndpoint: "/token",
+	clientRegistrationEndpoint: "/register",
+	defaultHandler: AuthHandler,
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
 
-
 export default new OAuthProvider({
-  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
-  authorizeEndpoint: "/authorize",
-  tokenEndpoint: "/token",
-  clientRegistrationEndpoint: "/register",
-  defaultHandler: AuthHandler,
+	apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
+	authorizeEndpoint: "/authorize",
+	tokenEndpoint: "/token",
+	clientRegistrationEndpoint: "/register",
+	defaultHandler: AuthHandler,
 });
 ```
 
@@ -190,17 +159,10 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
-
-**JavaScript**
-
 ```js
 // EU jurisdiction for GDPR compliance
 export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 ```
-
-**TypeScript**
 
 ```ts
 // EU jurisdiction for GDPR compliance
@@ -209,28 +171,21 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-6213)
-* [  TypeScript ](#tab-panel-6214)
-
-**JavaScript**
-
 ```js
 export default new OAuthProvider({
-  apiHandlers: {
-    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
-  },
-  // ... other OAuth config
+	apiHandlers: {
+		"/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
+	},
+	// ... other OAuth config
 });
 ```
 
-**TypeScript**
-
 ```ts
 export default new OAuthProvider({
-  apiHandlers: {
-    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
-  },
-  // ... other OAuth config
+	apiHandlers: {
+		"/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
+	},
+	// ... other OAuth config
 });
 ```
 
@@ -257,23 +212,14 @@ Hibernation is enabled by default and requires no additional configuration.
 
 `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers that embed the transport inside an Agent or Durable Object:
 
-* [  JavaScript ](#tab-panel-6211)
-* [  TypeScript ](#tab-panel-6212)
-
-**JavaScript**
-
 ```js
 import { DurableObjectEventStore } from "agents/mcp";
-
 
 const eventStore = new DurableObjectEventStore(this.ctx.storage);
 ```
 
-**TypeScript**
-
 ```ts
 import { DurableObjectEventStore } from "agents/mcp";
-
 
 const eventStore = new DurableObjectEventStore(this.ctx.storage);
 ```
@@ -307,119 +253,99 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
-
-**JavaScript**
-
 ```js
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 export class MyMCP extends McpAgent {
-  server = new McpServer({
-    name: "Demo",
-    version: "1.0.0",
-  });
+	server = new McpServer({
+		name: "Demo",
+		version: "1.0.0",
+	});
 
+	initialState = {
+		counter: 1,
+	};
 
-  initialState = {
-    counter: 1,
-  };
+	async init() {
+		this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
+			return {
+				contents: [{ uri: uri.href, text: String(this.state.counter) }],
+			};
+		});
 
+		this.server.tool(
+			"add",
+			"Add to the counter, stored in the MCP",
+			{ a: z.number() },
+			async ({ a }) => {
+				this.setState({ ...this.state, counter: this.state.counter + a });
 
-  async init() {
-    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
-      return {
-        contents: [{ uri: uri.href, text: String(this.state.counter) }],
-      };
-    });
+				return {
+					content: [
+						{
+							type: "text",
+							text: String(`Added ${a}, total is now ${this.state.counter}`),
+						},
+					],
+				};
+			},
+		);
+	}
 
-
-    this.server.tool(
-      "add",
-      "Add to the counter, stored in the MCP",
-      { a: z.number() },
-      async ({ a }) => {
-        this.setState({ ...this.state, counter: this.state.counter + a });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: String(`Added ${a}, total is now ${this.state.counter}`),
-            },
-          ],
-        };
-      },
-    );
-  }
-
-
-  onStateChanged(state) {
-    console.log({ stateUpdate: state });
-  }
+	onStateChanged(state) {
+		console.log({ stateUpdate: state });
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-
 type State = { counter: number };
 
-
 export class MyMCP extends McpAgent<Env, State, {}> {
-  server = new McpServer({
-    name: "Demo",
-    version: "1.0.0",
-  });
+	server = new McpServer({
+		name: "Demo",
+		version: "1.0.0",
+	});
 
+	initialState: State = {
+		counter: 1,
+	};
 
-  initialState: State = {
-    counter: 1,
-  };
+	async init() {
+		this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
+			return {
+				contents: [{ uri: uri.href, text: String(this.state.counter) }],
+			};
+		});
 
+		this.server.tool(
+			"add",
+			"Add to the counter, stored in the MCP",
+			{ a: z.number() },
+			async ({ a }) => {
+				this.setState({ ...this.state, counter: this.state.counter + a });
 
-  async init() {
-    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
-      return {
-        contents: [{ uri: uri.href, text: String(this.state.counter) }],
-      };
-    });
+				return {
+					content: [
+						{
+							type: "text",
+							text: String(`Added ${a}, total is now ${this.state.counter}`),
+						},
+					],
+				};
+			},
+		);
+	}
 
-
-    this.server.tool(
-      "add",
-      "Add to the counter, stored in the MCP",
-      { a: z.number() },
-      async ({ a }) => {
-        this.setState({ ...this.state, counter: this.state.counter + a });
-
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: String(`Added ${a}, total is now ${this.state.counter}`),
-            },
-          ],
-        };
-      },
-    );
-  }
-
-
-  onStateChanged(state: State) {
-    console.log({ stateUpdate: state });
-  }
+	onStateChanged(state: State) {
+		console.log({ stateUpdate: state });
+	}
 }
 ```
 
@@ -436,69 +362,58 @@ The client must advertise support for a mode before the server sends it.
 
 Call `this.server.server.elicitInput()` in a tool handler. Pass `extra.requestId` as `relatedRequestId` so the response returns on the stream for the originating tool call:
 
-* [  JavaScript ](#tab-panel-6221)
-* [  TypeScript ](#tab-panel-6222)
-
-**JavaScript**
-
 ```js
 const result = await this.server.server.elicitInput(
-  {
-    mode: "form",
-    message: "By how much do you want to increase the counter?",
-    requestedSchema: {
-      type: "object",
-      properties: {
-        amount: {
-          type: "number",
-          title: "Amount",
-          minimum: 1,
-          maximum: 100,
-        },
-      },
-      required: ["amount"],
-    },
-  },
-  { relatedRequestId: extra.requestId },
+	{
+		mode: "form",
+		message: "By how much do you want to increase the counter?",
+		requestedSchema: {
+			type: "object",
+			properties: {
+				amount: {
+					type: "number",
+					title: "Amount",
+					minimum: 1,
+					maximum: 100,
+				},
+			},
+			required: ["amount"],
+		},
+	},
+	{ relatedRequestId: extra.requestId },
 );
 
-
 if (result.action !== "accept" || !result.content) {
-  return { content: [{ type: "text", text: "Counter unchanged." }] };
+	return { content: [{ type: "text", text: "Counter unchanged." }] };
 }
-
 
 const amount = Number(result.content.amount);
 ```
 
-**TypeScript**
-
 ```ts
 const result = await this.server.server.elicitInput(
-  {
-    mode: "form",
-    message: "By how much do you want to increase the counter?",
-    requestedSchema: {
-      type: "object",
-      properties: {
-        amount: {
-          type: "number",
-          title: "Amount",
-          minimum: 1,
-          maximum: 100,
-        },
-      },
-      required: ["amount"],
-    },
-  },
-  { relatedRequestId: extra.requestId },
+	{
+		mode: "form",
+		message: "By how much do you want to increase the counter?",
+		requestedSchema: {
+			type: "object",
+			properties: {
+				amount: {
+					type: "number",
+					title: "Amount",
+					minimum: 1,
+					maximum: 100,
+				},
+			},
+			required: ["amount"],
+		},
+	},
+	{ relatedRequestId: extra.requestId },
 );
 
-
 if (result.action !== "accept" || !result.content) {
-  return { content: [{ type: "text", text: "Counter unchanged." }] };
+	return { content: [{ type: "text", text: "Counter unchanged." }] };
 }
-
 
 const amount = Number(result.content.amount);
 ```
@@ -509,66 +424,55 @@ For backwards compatibility, form requests may omit `mode: "form"`. The schema s
 
 Use URL mode for interactions that must happen outside the MCP client. The request includes a message, the URL, and a unique `elicitationId`:
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
-
-**JavaScript**
-
 ```js
 const elicitationId = crypto.randomUUID();
 const result = await this.server.server.elicitInput(
-  {
-    mode: "url",
-    message: "Connect your account to continue.",
-    url: `https://example.com/connect?elicitationId=${elicitationId}`,
-    elicitationId,
-  },
-  { relatedRequestId: extra.requestId },
+	{
+		mode: "url",
+		message: "Connect your account to continue.",
+		url: `https://example.com/connect?elicitationId=${elicitationId}`,
+		elicitationId,
+	},
+	{ relatedRequestId: extra.requestId },
 );
 
-
 if (result.action !== "accept") {
-  return { content: [{ type: "text", text: "Connection cancelled." }] };
+	return { content: [{ type: "text", text: "Connection cancelled." }] };
 }
 
-
 return {
-  content: [
-    {
-      type: "text",
-      text: "Connection page opened. Complete it in your browser.",
-    },
-  ],
+	content: [
+		{
+			type: "text",
+			text: "Connection page opened. Complete it in your browser.",
+		},
+	],
 };
 ```
-
-**TypeScript**
 
 ```ts
 const elicitationId = crypto.randomUUID();
 const result = await this.server.server.elicitInput(
-  {
-    mode: "url",
-    message: "Connect your account to continue.",
-    url: `https://example.com/connect?elicitationId=${elicitationId}`,
-    elicitationId,
-  },
-  { relatedRequestId: extra.requestId },
+	{
+		mode: "url",
+		message: "Connect your account to continue.",
+		url: `https://example.com/connect?elicitationId=${elicitationId}`,
+		elicitationId,
+	},
+	{ relatedRequestId: extra.requestId },
 );
 
-
 if (result.action !== "accept") {
-  return { content: [{ type: "text", text: "Connection cancelled." }] };
+	return { content: [{ type: "text", text: "Connection cancelled." }] };
 }
 
-
 return {
-  content: [
-    {
-      type: "text",
-      text: "Connection page opened. Complete it in your browser.",
-    },
-  ],
+	content: [
+		{
+			type: "text",
+			text: "Connection page opened. Complete it in your browser.",
+		},
+	],
 };
 ```
 
@@ -588,34 +492,27 @@ Both modes return one of three actions:
 
 Accepted form responses include `content` that matches `requestedSchema`. URL responses omit `content`. Decline and cancel responses typically omit it.
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
-
-**JavaScript**
-
 ```js
 switch (result.action) {
-  case "accept":
-    // For form mode, validate and process result.content.
-    break;
-  case "decline":
-    return { content: [{ type: "text", text: "Request declined." }] };
-  case "cancel":
-    return { content: [{ type: "text", text: "Request dismissed." }] };
+	case "accept":
+		// For form mode, validate and process result.content.
+		break;
+	case "decline":
+		return { content: [{ type: "text", text: "Request declined." }] };
+	case "cancel":
+		return { content: [{ type: "text", text: "Request dismissed." }] };
 }
 ```
 
-**TypeScript**
-
 ```ts
 switch (result.action) {
-  case "accept":
-    // For form mode, validate and process result.content.
-    break;
-  case "decline":
-    return { content: [{ type: "text", text: "Request declined." }] };
-  case "cancel":
-    return { content: [{ type: "text", text: "Request dismissed." }] };
+	case "accept":
+		// For form mode, validate and process result.content.
+		break;
+	case "decline":
+		return { content: [{ type: "text", text: "Request declined." }] };
+	case "cancel":
+		return { content: [{ type: "text", text: "Request dismissed." }] };
 }
 ```
 
@@ -627,17 +524,34 @@ For more human-in-the-loop patterns, refer to [Human-in-the-loop patterns](https
 
 ## Next steps
 
-[ Build a Remote MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) Get started with MCP servers on Cloudflare.
+### [ Build a Remote MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
 
-[ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) Design and add tools to your MCP server.
+ Get started with MCP servers on Cloudflare.
 
-[ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) Set up OAuth authentication.
+### [ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
 
-[ Securing MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/) Security best practices for production.
+ Design and add tools to your MCP server.
 
-[ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) Build stateless MCP servers.
+### [ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+
+ Set up OAuth authentication.
+
+### [ Securing MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/)
+
+ Security best practices for production.
+
+### [ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
+
+ Build stateless MCP servers.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/agent-api/","name":"McpAgent"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

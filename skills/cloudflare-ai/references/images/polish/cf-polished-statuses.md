@@ -1,16 +1,18 @@
 ---
-title: Cf-Polished statuses
 description: Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cf-Polished statuses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cf-Polished statuses
 
-# Cf-Polished statuses
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/polish/cf-polished-statuses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If a `Cf-Polished` header is not returned, try [using single-file cache purge](https://developers.cloudflare.com/cache/how-to/purge-cache) to purge the image. The `Cf-Polished` header may also be missing if the origin is sending non-image `Content-Type`, or non-cacheable `Cache-Control`.
 
@@ -21,7 +23,14 @@ If a `Cf-Polished` header is not returned, try [using single-file cache purge](h
 * `format_not_supported`: The input image format is not supported (for example, BMP or TIFF) or the origin server is using additional optimization software that is not compatible with Polish. Try converting the input image to a web-compatible format (like PNG or JPEG) and/or disabling additional optimization software at the origin server.
 * `vary_header_present`: The origin web server has sent a `Vary` header with a value other than `accept-encoding`. If the origin web server is attempting to support WebP, disable WebP at the origin web server and let Polish perform the WebP conversion. Polish will still work if `accept-encoding` is the only header listed within the `Vary` header. Polish skips image URLs processed by [Cloudflare Images](https://developers.cloudflare.com/images/optimization/transformations/overview).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/#page","headline":"Cf-Polished statuses · Cloudflare Images docs","description":"Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.","url":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/polish/","name":"Cloudflare Polish"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/polish/cf-polished-statuses/","name":"Cf-Polished statuses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/#page","headline":"Cf-Polished statuses · Cloudflare Images docs","description":"Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.","url":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

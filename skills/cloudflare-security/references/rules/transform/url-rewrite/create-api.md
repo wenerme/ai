@@ -1,16 +1,18 @@
 ---
-title: Create a URL rewrite rule via API
 description: Create URL rewrite rules using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a URL rewrite rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a URL rewrite rule via API
 
-# Create a URL rewrite rule via API
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create URL Rewrite Rules via API. Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Rewrite+URL) for common use cases.
 
@@ -68,64 +70,62 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "rewrite_eu_to_emea",
-            "expression": "(http.request.uri.query contains \"eu\")",
-            "description": "My first static URL rewrite rule",
-            "action": "rewrite",
-            "action_parameters": {
-                "uri": {
-                    "path": {
-                        "value": "/emea.html"
-                    }
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "rewrite_eu_to_emea",
+						"expression": "(http.request.uri.query contains \"eu\")",
+						"description": "My first static URL rewrite rule",
+						"action": "rewrite",
+						"action_parameters": {
+								"uri": {
+										"path": {
+												"value": "/emea.html"
+										}
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "ref": "rewrite_eu_to_emea",
-    "id": "<RULESET_ID>",
-    "name": "Zone-level Transform Ruleset",
-    "description": "Zone-level ruleset that will execute Transform Rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "rewrite",
-        "action_parameters": {
-          "uri": {
-            "path": {
-              "value": "/emea.html"
-            }
-          }
-        },
-        "expression": "(http.request.uri.query contains \"eu\")",
-        "description": "My first static URL rewrite rule",
-        "last_updated": "2021-04-14T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2021-04-14T14:42:04.219025Z",
-    "phase": "http_request_transform"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"ref": "rewrite_eu_to_emea",
+		"id": "<RULESET_ID>",
+		"name": "Zone-level Transform Ruleset",
+		"description": "Zone-level ruleset that will execute Transform Rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "rewrite",
+				"action_parameters": {
+					"uri": {
+						"path": {
+							"value": "/emea.html"
+						}
+					}
+				},
+				"expression": "(http.request.uri.query contains \"eu\")",
+				"description": "My first static URL rewrite rule",
+				"last_updated": "2021-04-14T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2021-04-14T14:42:04.219025Z",
+		"phase": "http_request_transform"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -160,64 +160,62 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "rewrite_2012_to_archive",
-            "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
-            "description": "My first dynamic URL rewrite rule",
-            "action": "rewrite",
-            "action_parameters": {
-                "uri": {
-                    "path": {
-                        "expression": "concat(\"/archive\", http.request.uri.path)"
-                    }
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "rewrite_2012_to_archive",
+						"expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
+						"description": "My first dynamic URL rewrite rule",
+						"action": "rewrite",
+						"action_parameters": {
+								"uri": {
+										"path": {
+												"expression": "concat(\"/archive\", http.request.uri.path)"
+										}
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level Transform Ruleset",
-    "description": "Zone-level ruleset that will execute Transform Rules.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "ref": "rewrite_2012_to_archive",
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "rewrite",
-        "action_parameters": {
-          "uri": {
-            "path": {
-              "expression": "concat(\"/archive\", http.request.uri.path)"
-            }
-          }
-        },
-        "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
-        "description": "My first dynamic URL rewrite rule",
-        "last_updated": "2021-04-14T14:42:04.219025Z",
-        "ref": "<RULE_REF>"
-      }
-    ],
-    "last_updated": "2021-04-14T14:42:04.219025Z",
-    "phase": "http_request_transform"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level Transform Ruleset",
+		"description": "Zone-level ruleset that will execute Transform Rules.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"ref": "rewrite_2012_to_archive",
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "rewrite",
+				"action_parameters": {
+					"uri": {
+						"path": {
+							"expression": "concat(\"/archive\", http.request.uri.path)"
+						}
+					}
+				},
+				"expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
+				"description": "My first dynamic URL rewrite rule",
+				"last_updated": "2021-04-14T14:42:04.219025Z",
+				"ref": "<RULE_REF>"
+			}
+		],
+		"last_updated": "2021-04-14T14:42:04.219025Z",
+		"phase": "http_request_transform"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -232,7 +230,14 @@ The API token used in API requests to manage URL Rewrite Rules must have at leas
 * _Account_ \> _Transform Rules_ \> _Edit_
 * _Account_ \> _Account Rulesets_ \> _Read_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/#page","headline":"Create a URL rewrite rule via API · Cloudflare Rules docs","description":"Create URL rewrite rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/create-api/","name":"Create a URL rewrite rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/#page","headline":"Create a URL rewrite rule via API · Cloudflare Rules docs","description":"Create URL rewrite rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 ```

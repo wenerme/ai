@@ -1,16 +1,18 @@
 ---
-title: WebSockets
 description: Communicate in real time with your Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebSockets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebSockets
 
-# WebSockets
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -22,8 +24,6 @@ If your application needs to coordinate among multiple WebSocket connections, su
 
 ## Constructor
 
-**JavaScript**
-
 ```js
 // { 0: <WebSocket>, 1: <WebSocket> }
 let websocketPair = new WebSocketPair();
@@ -32,8 +32,6 @@ let websocketPair = new WebSocketPair();
 The WebSocketPair returned from this constructor is an Object, with two WebSockets at keys `0` and `1`.
 
 These WebSockets are commonly referred to as `client` and `server`. The below example combines `Object.values` and ES6 destructuring to retrieve the WebSockets as `client` and `server`:
-
-**JavaScript**
 
 ```js
 let [client, server] = Object.values(new WebSocketPair());
@@ -145,8 +143,6 @@ With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com
 
 If you still call `close()` inside the `close` event handler, the call is silently ignored. Existing code that manually replies to Close frames will continue to work without changes.
 
-**JavaScript**
-
 ```js
 server.addEventListener("close", (event) => {
   // readyState is already CLOSED — no need to call server.close().
@@ -160,17 +156,13 @@ server.addEventListener("close", (event) => {
 
 The automatic close behavior can interfere with WebSocket proxying, where a Worker sits between a client and a backend and needs to coordinate the close on both sides independently. To support this, pass `{ allowHalfOpen: true }` to `accept()`:
 
-**JavaScript**
-
 ```js
 server.accept({ allowHalfOpen: true });
-
 
 server.addEventListener("close", (event) => {
   // readyState is still CLOSING here, giving you time
   // to coordinate the close on the other side.
   console.log(server.readyState); // WebSocket.CLOSING
-
 
   // Manually close when ready.
   server.close(event.code, "done");
@@ -195,19 +187,15 @@ With the [websocket\_standard\_binary\_type](https://developers.cloudflare.com/w
 
 The `binaryType` property itself is always available. To opt back into `ArrayBuffer` delivery for a single WebSocket, assign `binaryType` before calling `accept()`:
 
-**JavaScript**
-
 ```js
 const resp = await fetch("https://example.com", {
   headers: { Upgrade: "websocket" },
 });
 const ws = resp.webSocket;
 
-
 // Opt back into ArrayBuffer delivery for this WebSocket.
 ws.binaryType = "arraybuffer";
 ws.accept();
-
 
 ws.addEventListener("message", (event) => {
   if (typeof event.data === "string") {
@@ -246,7 +234,14 @@ This flag has no effect on the Durable Object hibernatable WebSocket [webSocketM
 * [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 * [Our WebSocket template for building applications on Workers using WebSockets ↗](https://github.com/cloudflare/websocket-template)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/websockets/#page","headline":"WebSockets · Cloudflare Workers docs","description":"Communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/websockets/","name":"WebSockets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/websockets/#page","headline":"WebSockets · Cloudflare Workers docs","description":"Communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

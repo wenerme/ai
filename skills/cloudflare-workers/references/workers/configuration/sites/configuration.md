@@ -1,16 +1,18 @@
 ---
-title: Workers Sites configuration
 description: Configure Workers Sites settings for static asset hosting in your Wrangler configuration file.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Sites configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Sites configuration
 
-# Workers Sites configuration
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/sites/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -40,46 +42,36 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12379)
-* [  wrangler.toml ](#tab-panel-12380)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "docs-site-blah",
-  "site": {
-    "bucket": "./public"
-  },
-  "env": {
-    "production": {
-      "name": "docs-site",
-      "route": "https://example.com/docs*"
-    },
-    "staging": {
-      "name": "docs-site-staging",
-      "route": "https://staging.example.com/docs*"
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "docs-site-blah",
+	"site": {
+		"bucket": "./public"
+	},
+	"env": {
+		"production": {
+			"name": "docs-site",
+			"route": "https://example.com/docs*"
+		},
+		"staging": {
+			"name": "docs-site-staging",
+			"route": "https://staging.example.com/docs*"
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "docs-site-blah"
 
-
 [site]
 bucket = "./public"
-
 
 [env.production]
 name = "docs-site"
 route = "https://example.com/docs*"
-
 
 [env.staging]
 name = "docs-site-staging"
@@ -102,23 +94,16 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12375)
-* [  wrangler.toml ](#tab-panel-12376)
-
-**JSONC**
-
 ```jsonc
 {
-  "site": {
-    "bucket": "./public",
-    "include": [ // must be an array.
-      "included_dir"
-    ]
-  }
+	"site": {
+		"bucket": "./public",
+		"include": [ // must be an array.
+			"included_dir"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [site]
@@ -132,23 +117,16 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12377)
-* [  wrangler.toml ](#tab-panel-12378)
-
-**JSONC**
-
 ```jsonc
 {
-  "site": {
-    "bucket": "./public",
-    "exclude": [ // must be an array.
-      "excluded_dir"
-    ]
-  }
+	"site": {
+		"bucket": "./public",
+		"exclude": [ // must be an array.
+			"excluded_dir"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [site]
@@ -174,7 +152,14 @@ Wrangler will always ignore:
 
 Learn more about the standard patterns used for include and exclude in the [gitignore documentation ↗](https://git-scm.com/docs/gitignore).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Workers Sites configuration · Cloudflare Workers docs","description":"Configure Workers Sites settings for static asset hosting in your Wrangler configuration file.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/configuration/","name":"Workers Sites configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Workers Sites configuration · Cloudflare Workers docs","description":"Configure Workers Sites settings for static asset hosting in your Wrangler configuration file.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

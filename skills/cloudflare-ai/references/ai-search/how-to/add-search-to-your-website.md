@@ -1,16 +1,18 @@
 ---
-title: Add search to your website
 description: Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add search to your website
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add search to your website
 
-# Add search to your website
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial creates an AI Search instance that indexes your website, then adds a working search bar, chat bubble, and search modal to your site's frontend. It uses the [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/), pre-built web components that connect to your instance's public endpoint, so you add search with only a few lines of frontend code.
 
@@ -86,7 +88,7 @@ pnpm wrangler ai-search search my-search --query 'What is this site about?'
 The UI snippets connect to your instance through its public endpoint.
 
 1. Go to **AI Search** in the Cloudflare dashboard.
-[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your `my-search` instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
@@ -118,40 +120,37 @@ bun add @cloudflare/ai-search-snippet
 
 Import the snippet library in one of your components and add the tags where you want search to appear. Importing the package once registers the components with the browser. The following example adds a search bar, a floating chat bubble, and a search modal that opens with `Cmd/Ctrl+K` to the app's root component. Replace `<INSTANCE_ID>` with your public endpoint ID from step two.
 
-**src/App.tsx**
-
 ```tsx
 import "@cloudflare/ai-search-snippet";
 
-
 export default function App() {
-  return (
-    <div>
-      <search-bar-snippet
-        api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
-        placeholder="Search..."
-        max-results={50}
-        max-render-results={10}
-        show-url="true"
-        show-date="true"
-      />
-      <chat-bubble-snippet
-        api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
-        style={
-          {
-            "--search-snippet-primary-color": "#F6821F",
-          } as React.CSSProperties
-        }
-      />
-      <search-modal-snippet
-        api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
-        placeholder="Search documentation..."
-        shortcut="k"
-        show-url="true"
-        show-date="true"
-      />
-    </div>
-  );
+	return (
+		<div>
+			<search-bar-snippet
+				api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
+				placeholder="Search..."
+				max-results={50}
+				max-render-results={10}
+				show-url="true"
+				show-date="true"
+			/>
+			<chat-bubble-snippet
+				api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
+				style={
+					{
+						"--search-snippet-primary-color": "#F6821F",
+					} as React.CSSProperties
+				}
+			/>
+			<search-modal-snippet
+				api-url="https://<INSTANCE_ID>.search.ai.cloudflare.com/"
+				placeholder="Search documentation..."
+				shortcut="k"
+				show-url="true"
+				show-date="true"
+			/>
+		</div>
+	);
 }
 ```
 
@@ -161,27 +160,23 @@ The snippet package ships type definitions for its classes, but it does not tell
 
 Create a declaration file such as `src/ai-search-snippet.d.ts`:
 
-**src/ai-search-snippet.d.ts**
-
 ```ts
 import type { HTMLAttributes } from "react";
-
 
 // Register the snippet web components as valid JSX elements. The index
 // signature allows their custom attributes (such as api-url and placeholder).
 type SnippetElement = HTMLAttributes<HTMLElement> & {
-  [attribute: string]: unknown;
+	[attribute: string]: unknown;
 };
 
-
 declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "search-bar-snippet": SnippetElement;
-      "chat-bubble-snippet": SnippetElement;
-      "search-modal-snippet": SnippetElement;
-    }
-  }
+	namespace JSX {
+		interface IntrinsicElements {
+			"search-bar-snippet": SnippetElement;
+			"chat-bubble-snippet": SnippetElement;
+			"search-modal-snippet": SnippetElement;
+		}
+	}
 }
 ```
 
@@ -221,13 +216,26 @@ The snippets work anywhere your site is served. When you deploy your site to its
 
 ## Next steps
 
-[ UI snippets ](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/) All snippet components, attributes, and CSS theming options.
+### [ UI snippets ](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
 
-[ Wrangler commands ](https://developers.cloudflare.com/ai-search/wrangler-commands/) Manage AI Search instances from the command line.
+ All snippet components, attributes, and CSS theming options.
 
-[ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) Rate limiting, CORS, and tool description for the public endpoint.
+### [ Wrangler commands ](https://developers.cloudflare.com/ai-search/wrangler-commands/)
+
+ Manage AI Search instances from the command line.
+
+### [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
+
+ Rate limiting, CORS, and tool description for the public endpoint.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/#page","headline":"Add search to your website · Cloudflare AI Search docs","description":"Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.","url":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/add-search-to-your-website/","name":"Add search to your website"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/#page","headline":"Add search to your website · Cloudflare AI Search docs","description":"Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.","url":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: iCloud Custom Email Domains
 description: Set up iCloud custom email domains via Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: iCloud Custom Email Domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  iCloud Custom Email Domains
 
-# iCloud Custom Email Domains
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/icloud-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With [iCloud Custom Email Domain ↗](https://support.apple.com/kb/HT212514), you can now purchase a custom domain right from iCloud Settings through Cloudflare and have it automatically set up with your iCloud Mail account. It's great if you want to create a custom email domain for you or your family, such as @examplefamily.com.
 
@@ -93,7 +95,7 @@ After you buy a domain through iCloud, Cloudflare Registrar automatically enable
 If you do not want to have Landing Page enabled:
 
 1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to disable Landing Page for, and select **Manage** \> **Configuration**.
 3. Scroll to Landing Page and select **Disable**.
 
@@ -103,7 +105,14 @@ Note
 
 Customers must disable the landing page before they can add DNS records to point to a new website.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/#page","headline":"iCloud Custom Email Domains · Cloudflare Registrar docs","description":"Set up iCloud custom email domains via Cloudflare.","url":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/icloud-domains/","name":"iCloud Custom Email Domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/#page","headline":"iCloud Custom Email Domains · Cloudflare Registrar docs","description":"Set up iCloud custom email domains via Cloudflare.","url":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

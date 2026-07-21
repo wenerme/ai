@@ -1,16 +1,18 @@
 ---
-title: SoftHSMv2
 description: Learn how to use Keyless SSL with SoftHSMv2.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SoftHSMv2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SoftHSMv2
 
-# SoftHSMv2
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/softhsmv2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Important
 
@@ -25,9 +27,7 @@ First, we install SoftHSMv2 and configure it to store tokens in the default loca
 ```bash
 sudo apt-get install -y softhsm2 opensc
 
-
 #...
-
 
 cat <<EOF | sudo tee /etc/softhsm/softhsm2.conf
 directories.tokendir = /var/lib/softhsm/tokens
@@ -36,13 +36,11 @@ log.level = DEBUG
 slots.removable = false
 EOF
 
-
 sudo mkdir /var/lib/softhsm/tokens
 sudo chown root:softhsm $_
 sudo chmod 0770 /var/lib/softhsm/tokens
 sudo usermod -G softhsm keyless
 sudo usermod -G softhsm $(whoami)
-
 
 echo 'export SOFTHSM2_CONF=/etc/softhsm/softhsm2.conf' | tee -a ~/.profile
 source ~/.profile
@@ -85,7 +83,6 @@ cat <<EOF | tee csr.json
 }
 EOF
 
-
 cfssl genkey csr.json | cfssljson -bare certificate
 ```
 
@@ -105,7 +102,6 @@ Now that the key has been generated, it’s time to load it into the slot we cre
 ```sh
 openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in certificate-key.pem -out certificate-key.p8
 sudo chown keyless certificate-key.p8
-
 
 sudo -u keyless softhsm2-util --pin 1234 --import ./certificate-key.p8 --token test-token --id a000 --label rsa-privkey
 ```
@@ -140,16 +136,12 @@ With the keys in place, it’s time to build the configuration file that the key
 
 Open up `/etc/keyless/gokeyless.yaml` and immediately after
 
-**YAML**
-
 ```yaml
 private_key_stores:
   - dir: /etc/keyless/keys
 ```
 
 add
-
-**YAML**
 
 ```yaml
 - uri: pkcs11:token=test-token;id=%a0%00?module-path=/usr/lib/softhsm/libsofthsm2.so&pin-value=1234&max-sessions=1
@@ -162,7 +154,14 @@ sudo systemctl restart gokeyless.service
 sudo systemctl status gokeyless.service -l
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/softhsmv2/#page","headline":"SoftHSMv2 · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with SoftHSMv2.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/softhsmv2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/","name":"Hardware security modules"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/softhsmv2/","name":"SoftHSMv2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/softhsmv2/#page","headline":"SoftHSMv2 · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with SoftHSMv2.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/softhsmv2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

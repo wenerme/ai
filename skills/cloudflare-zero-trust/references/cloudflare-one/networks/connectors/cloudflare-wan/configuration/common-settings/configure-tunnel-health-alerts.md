@@ -1,16 +1,18 @@
 ---
-title: Configure tunnel health alerts
 description: Use the API to set up and configure tunnel health alerts
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure tunnel health alerts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure tunnel health alerts
 
-# Configure tunnel health alerts
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can configure Tunnel Health Alerts (formerly Magic Tunnel health alerts) to receive email, webhook, and PagerDuty notifications when the percentage of successful health checks for an IPsec/GRE tunnel drops below the selected [service-level objective (SLO)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/).
 
@@ -53,11 +55,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-8030)
-* [ API ](#tab-panel-8031)
-
 1. Go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. From the **Product** drop-down menu, select **Cloudflare WAN**.
 4. Select **Tunnel Health Check Alert** \> **Select** to add a notification. You can add alerts by tunnel or by data center (beta).
@@ -97,75 +96,74 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Notifications Write`
 * `Account Settings Write`
 
-**Create a Notification policy**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/policies" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "alert_type": "magic_wan_tunnel_health",
-    "description": "<DESCRIBE_POLICY>",
-    "enabled": true,
-    "filters": {
-        "slo": [
-            "99.9"
-        ]
-    },
-    "mechanisms": {
-        "email": [
-            {
-                "id": "EMAIL_ADDRESS"
-            }
-        ]
-    },
-    "name": "<DESCRIBE_ALERT>"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"alert_type": "magic_wan_tunnel_health",
+		"description": "<DESCRIBE_POLICY>",
+		"enabled": true,
+		"filters": {
+				"slo": [
+						"99.9"
+				]
+		},
+		"mechanisms": {
+				"email": [
+						{
+								"id": "EMAIL_ADDRESS"
+						}
+				]
+		},
+		"name": "<DESCRIBE_ALERT>"
+	}'
 ```
 
 ```json
-  {
-    "result": [
-      {
-        "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-        "name": "<POLICY_NAME>",
-        "description": "<POLICY_DESCRIPTION>",
-        "enabled": true,
-        "alert_type": "magic_wan_tunnel_health",
-        "mechanisms": {
-          "email": [
-            {
-              "id": "<YOUR_EMAIL>"
-            }
-          ]
-        },
-        "created": "2024-09-11T14:13:29.585658Z",
-        "modified": "2024-09-11T14:13:29.585658Z",
-        "conditions": {
-          "and": [
-            {
-              "or": [
-                {
-                  "<=": [
-                    {
-                      "var": "slo"
-                    },
-                    "99.9"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        "filters": {
-          "slo": ["99.9"]
-        }
-      }
-    ],
-    "success": true,
-    "errors": [],
-    "messages": []
-  }
+
+	{
+		"result": [
+			{
+				"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"name": "<POLICY_NAME>",
+				"description": "<POLICY_DESCRIPTION>",
+				"enabled": true,
+				"alert_type": "magic_wan_tunnel_health",
+				"mechanisms": {
+					"email": [
+						{
+							"id": "<YOUR_EMAIL>"
+						}
+					]
+				},
+				"created": "2024-09-11T14:13:29.585658Z",
+				"modified": "2024-09-11T14:13:29.585658Z",
+				"conditions": {
+					"and": [
+						{
+							"or": [
+								{
+									"<=": [
+										{
+											"var": "slo"
+										},
+										"99.9"
+									]
+								}
+							]
+						}
+					]
+				},
+				"filters": {
+					"slo": ["99.9"]
+				}
+			}
+		],
+		"success": true,
+		"errors": [],
+		"messages": []
+	}
 ```
 
 ## Test SLOs
@@ -176,7 +174,14 @@ To test whether a specific alert sensitivity level works for your use case:
 2. Disable the tunnel you are testing, so there is 100% [health check failure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/).
 3. The time it takes for Cloudflare to send you an alert depends on the sensitivity you chose for your alerts.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/#page","headline":"Configure tunnel health alerts · Cloudflare One docs","description":"Use the API to set up and configure tunnel health alerts","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/","name":"Common settings"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/","name":"Configure tunnel health alerts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/#page","headline":"Configure tunnel health alerts · Cloudflare One docs","description":"Use the API to set up and configure tunnel health alerts","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

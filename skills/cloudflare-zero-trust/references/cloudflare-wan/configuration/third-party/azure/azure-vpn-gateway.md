@@ -1,16 +1,18 @@
 ---
-title: Microsoft Azure VPN Gateway
 description: Connect Azure VPN Gateway to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Microsoft Azure VPN Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Microsoft Azure VPN Gateway
 
-# Microsoft Azure VPN Gateway
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to your Azure Virtual Network, using the Azure Virtual Network Gateway.
 
@@ -188,15 +190,15 @@ curl https://ipinfo.io
 
 ```json
 {
-  "ip": "104.xxx.xxx.225",
-  "city": "Reston",
-  "region": "Virginia",
-  "country": "US",
-  "loc": "xx.xxxx,-xx.xxxx",
-  "org": "AS13335 Cloudflare, Inc.",
-  "postal": "20190",
-  "timezone": "America/New_York",
-  "readme": "https://ipinfo.io/missingauth"
+	"ip": "104.xxx.xxx.225",
+	"city": "Reston",
+	"region": "Virginia",
+	"country": "US",
+	"loc": "xx.xxxx,-xx.xxxx",
+	"org": "AS13335 Cloudflare, Inc.",
+	"postal": "20190",
+	"timezone": "America/New_York",
+	"readme": "https://ipinfo.io/missingauth"
 }
 ```
 
@@ -209,8 +211,6 @@ Internet Control Message Protocol (ICMP) (ping/traceroute) will work to remote C
 Once you have determined that connectivity has been established, Cloudflare recommends you disable anti-replay protection for the Azure Virtual Network Gateway site-to-site VPN connection. This can be accomplished through Microsoft Azure API.
 
 1. Determine the API token via PowerShell:
-
-**PowerShell**
 
 ```powershell
 Get-AzAccessToken
@@ -391,7 +391,14 @@ curl --location --request PUT \
 
 1. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/#page","headline":"Microsoft Azure VPN Gateway · Cloudflare WAN docs","description":"Connect Azure VPN Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/azure/","name":"Microsoft Azure"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/","name":"Microsoft Azure VPN Gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/#page","headline":"Microsoft Azure VPN Gateway · Cloudflare WAN docs","description":"Connect Azure VPN Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

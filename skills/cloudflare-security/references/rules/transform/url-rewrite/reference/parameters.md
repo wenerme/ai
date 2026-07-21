@@ -1,16 +1,18 @@
 ---
-title: URL rewrite parameters
 description: Configurable parameters for URL rewrite rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: URL rewrite parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  URL rewrite parameters
 
-# URL rewrite parameters
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Static and dynamic URL rewrites have different parameters:
 
@@ -67,19 +69,19 @@ The syntax of a dynamic URL rewrite rule that rewrites both the URI path and the
 
 ```json
 {
-  "expression": "(http.request.full_uri wildcard r\"<REQUEST_URL>\")",
-  "action_parameters": {
-    "uri": {
-      "path": {
-        "expression": "wildcard_replace(http.request.uri.path, r\"<PATH_TARGET_PATH>\", r\"<PATH_REWRITE_TO>\")"
-      },
-      "query": {
-        "expression": "wildcard_replace(http.request.uri.query, r\"<QUERY_TARGET_QUERY>\", r\"<QUERY_REWRITE_TO>\")"
-      }
-    }
-  },
-  "action": "rewrite"
-  // ...
+	"expression": "(http.request.full_uri wildcard r\"<REQUEST_URL>\")",
+	"action_parameters": {
+		"uri": {
+			"path": {
+				"expression": "wildcard_replace(http.request.uri.path, r\"<PATH_TARGET_PATH>\", r\"<PATH_REWRITE_TO>\")"
+			},
+			"query": {
+				"expression": "wildcard_replace(http.request.uri.query, r\"<QUERY_TARGET_QUERY>\", r\"<QUERY_REWRITE_TO>\")"
+			}
+		}
+	},
+	"action": "rewrite"
+	// ...
 }
 ```
 
@@ -106,7 +108,14 @@ The same rule can have different types of URL rewrites for the URI path and the 
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/#page","headline":"URL rewrite parameters · Cloudflare Rules docs","description":"Configurable parameters for URL rewrite rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/transform/url-rewrite/reference/parameters/","name":"URL rewrite parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/#page","headline":"URL rewrite parameters · Cloudflare Rules docs","description":"Configurable parameters for URL rewrite rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 ```

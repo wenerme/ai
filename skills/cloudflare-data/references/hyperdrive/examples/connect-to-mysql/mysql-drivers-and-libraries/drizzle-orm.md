@@ -1,16 +1,18 @@
 ---
-title: Drizzle ORM
 description: Use Drizzle ORM with Hyperdrive to query MySQL databases from Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Drizzle ORM
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Drizzle ORM
 
-# Drizzle ORM
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with MySQL via Cloudflare Hyperdrive in a Workers application.
 
@@ -32,35 +34,27 @@ npm i -D drizzle-kit tsx @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9501)
-* [  wrangler.toml ](#tab-panel-9502)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -76,16 +70,14 @@ With Drizzle ORM, we define the schema in TypeScript rather than writing raw SQL
 1. Create a folder `/db/` in `/src/`.
 2. Create a `schema.ts` file.
 3. In `schema.ts`, define a `users` table as shown below.
-
-**src/db/schema.ts**
 ```ts
 // src/schema.ts
 import { mysqlTable, int, varchar, timestamp } from "drizzle-orm/mysql-core";
 export const users = mysqlTable("users", {
-  id: int("id").primaryKey().autoincrement(),
-  name: varchar("name", { length: 255 }).notNull(),
-  email: varchar("email", { length: 255 }).notNull().unique(),
-  createdAt: timestamp("created_at").defaultNow(),
+	id: int("id").primaryKey().autoincrement(),
+	name: varchar("name", { length: 255 }).notNull(),
+	email: varchar("email", { length: 255 }).notNull().unique(),
+	createdAt: timestamp("created_at").defaultNow(),
 });
 ```
 
@@ -95,48 +87,39 @@ Use your the credentials of your Hyperdrive configuration for your database when
 
 Populate your `index.ts` file as shown below.
 
-**src/index.ts**
-
 ```ts
 // src/index.ts
-
 
 import { drizzle } from "drizzle-orm/mysql2";
 import { createConnection } from "mysql2/promise";
 import { users } from "./db/schema";
 
-
 export interface Env {
-  HYPERDRIVE: Hyperdrive;
+	HYPERDRIVE: Hyperdrive;
   }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a connection using the mysql2 driver with the Hyperdrive credentials (only accessible from your Worker).
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a connection using the mysql2 driver with the Hyperdrive credentials (only accessible from your Worker).
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// Required to enable mysql2 compatibility for Workers
+			disableEval: true,
+		});
 
-      // Required to enable mysql2 compatibility for Workers
-      disableEval: true,
-    });
+		// Create the Drizzle client with the mysql2 driver connection
+		const db = drizzle(connection);
 
+		// Sample query to get all users
+		const allUsers = await db.select().from(users);
 
-    // Create the Drizzle client with the mysql2 driver connection
-    const db = drizzle(connection);
-
-
-    // Sample query to get all users
-    const allUsers = await db.select().from(users);
-
-
-    return Response.json(allUsers);
-  },
+		return Response.json(allUsers);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -151,16 +134,12 @@ If you have already set it up (for example, if another user has applied the sche
 You can generate and run SQL migrations on your database based on your schema using Drizzle Kit CLI. Refer to [Drizzle ORM docs ↗](https://orm.drizzle.team/docs/get-started/mysql-new) for additional guidance.
 
 1. Create a `.env` file in the root folder of your project, and add your database connection string. The Drizzle Kit CLI will use this connection string to create and apply the migrations.
-
-**.env**
 ```toml
 # .env
 # Replace with your direct database connection string
 DATABASE_URL='mysql://user:password@db-host.cloud/database-name'
 ```
 2. Create a `drizzle.config.ts` file in the root folder of your project to configure Drizzle Kit and add the following content:
-
-**drizzle.config.ts**
 ```ts
 import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
@@ -208,7 +187,14 @@ npx wrangler deploy
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/#page","headline":"Drizzle ORM · Cloudflare Hyperdrive docs","description":"Use Drizzle ORM with Hyperdrive to query MySQL databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/","name":"Connect to MySQL"}},{"@type":"ListItem","position":5,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/","name":"Libraries and Drivers"}},{"@type":"ListItem","position":6,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/","name":"Drizzle ORM"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/#page","headline":"Drizzle ORM · Cloudflare Hyperdrive docs","description":"Use Drizzle ORM with Hyperdrive to query MySQL databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-drivers-and-libraries/drizzle-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

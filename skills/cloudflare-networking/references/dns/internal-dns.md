@@ -1,16 +1,18 @@
 ---
-title: Internal DNS
 description: Resolve private hostnames within your network with Internal DNS.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Internal DNS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Internal DNS
 
-# Internal DNS
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Simplify private network management with Cloudflare DNS for your internal resources.
 
@@ -96,15 +98,22 @@ In this example, a query for `ghi.example.local` routed to view ID 111 would go 
 
 ## Related products
 
-**[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)**
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 Set up policies to inspect DNS, Network, HTTP, and Egress traffic.
 
-**[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)**
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 Improve security and performance for your entire corporate networking, reducing cost and operation complexity.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/internal-dns/#page","headline":"Internal DNS · Cloudflare DNS docs","description":"Resolve private hostnames within your network with Internal DNS.","url":"https://developers.cloudflare.com/dns/internal-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/internal-dns/#page","headline":"Internal DNS · Cloudflare DNS docs","description":"Resolve private hostnames within your network with Internal DNS.","url":"https://developers.cloudflare.com/dns/internal-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

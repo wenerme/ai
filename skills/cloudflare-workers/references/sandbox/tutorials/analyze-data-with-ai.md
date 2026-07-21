@@ -1,16 +1,18 @@
 ---
-title: Analyze data with AI
 description: Upload CSV files, generate analysis code with Claude, and return visualizations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Analyze data with AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analyze data with AI
 
-# Analyze data with AI
+Last updated May 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build an AI-powered data analysis system that accepts CSV uploads, uses Claude to generate Python analysis code, executes it in sandboxes, and returns visualizations.
 
@@ -76,156 +78,133 @@ bun add @anthropic-ai/sdk
 
 Replace `src/index.ts`:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
 import Anthropic from "@anthropic-ai/sdk";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  ANTHROPIC_API_KEY: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	ANTHROPIC_API_KEY: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
+		if (request.method !== "POST") {
+			return Response.json(
+				{ error: "POST CSV file and question" },
+				{ status: 405 },
+			);
+		}
 
-    if (request.method !== "POST") {
-      return Response.json(
-        { error: "POST CSV file and question" },
-        { status: 405 },
-      );
-    }
+		try {
+			const formData = await request.formData();
+			const csvFile = formData.get("file") as File;
+			const question = formData.get("question") as string;
 
+			if (!csvFile || !question) {
+				return Response.json(
+					{ error: "Missing file or question" },
+					{ status: 400 },
+				);
+			}
 
-    try {
-      const formData = await request.formData();
-      const csvFile = formData.get("file") as File;
-      const question = formData.get("question") as string;
+			// Upload CSV to sandbox
+			const sandbox = getSandbox(env.Sandbox, `analysis-${Date.now()}`);
+			const csvPath = "/workspace/data.csv";
+			await sandbox.writeFile(csvPath, await csvFile.text());
 
+			// Analyze CSV structure
+			const structure = await sandbox.exec(
+				`python3 -c "import pandas as pd; df = pd.read_csv('${csvPath}'); print(f'Rows: {len(df)}'); print(f'Columns: {list(df.columns)[:5]}')"`,
+			);
 
-      if (!csvFile || !question) {
-        return Response.json(
-          { error: "Missing file or question" },
-          { status: 400 },
-        );
-      }
+			if (!structure.success) {
+				return Response.json(
+					{ error: "Failed to read CSV", details: structure.stderr },
+					{ status: 400 },
+				);
+			}
 
+			// Generate analysis code with Claude
+			const code = await generateAnalysisCode(
+				env.ANTHROPIC_API_KEY,
+				csvPath,
+				question,
+				structure.stdout,
+			);
 
-      // Upload CSV to sandbox
-      const sandbox = getSandbox(env.Sandbox, `analysis-${Date.now()}`);
-      const csvPath = "/workspace/data.csv";
-      await sandbox.writeFile(csvPath, await csvFile.text());
+			// Write and execute the analysis code
+			await sandbox.writeFile("/workspace/analyze.py", code);
+			const result = await sandbox.exec("python /workspace/analyze.py");
 
+			if (!result.success) {
+				return Response.json(
+					{ error: "Analysis failed", details: result.stderr },
+					{ status: 500 },
+				);
+			}
 
-      // Analyze CSV structure
-      const structure = await sandbox.exec(
-        `python3 -c "import pandas as pd; df = pd.read_csv('${csvPath}'); print(f'Rows: {len(df)}'); print(f'Columns: {list(df.columns)[:5]}')"`,
-      );
+			async function streamToBase64(stream) {
+			  const blob = await new Response(stream).blob();
+			  const buffer = await blob.arrayBuffer();
+			  const bytes = new Uint8Array(buffer);
 
+			  // Convert to base64
+			  let binary = '';
+			  for (let i = 0; i < bytes.length; i++) {
+			    binary += String.fromCharCode(bytes[i]);
+			  }
+			  return btoa(binary);
+			}
 
-      if (!structure.success) {
-        return Response.json(
-          { error: "Failed to read CSV", details: structure.stderr },
-          { status: 400 },
-        );
-      }
+			// Check for generated chart
+			let chart = null;
+			try {
+				const { content, mimeType } = await sandbox.readFile("/workspace/chart.png", {
+					encoding: "none"
+				});
+				chart = `data:${mimeType};base64,${await streamToBase64(content)}`;
+			} catch {
+				// No chart generated
+			}
 
+			await sandbox.destroy();
 
-      // Generate analysis code with Claude
-      const code = await generateAnalysisCode(
-        env.ANTHROPIC_API_KEY,
-        csvPath,
-        question,
-        structure.stdout,
-      );
-
-
-      // Write and execute the analysis code
-      await sandbox.writeFile("/workspace/analyze.py", code);
-      const result = await sandbox.exec("python /workspace/analyze.py");
-
-
-      if (!result.success) {
-        return Response.json(
-          { error: "Analysis failed", details: result.stderr },
-          { status: 500 },
-        );
-      }
-
-
-      async function streamToBase64(stream) {
-        const blob = await new Response(stream).blob();
-        const buffer = await blob.arrayBuffer();
-        const bytes = new Uint8Array(buffer);
-
-
-        // Convert to base64
-        let binary = '';
-        for (let i = 0; i < bytes.length; i++) {
-          binary += String.fromCharCode(bytes[i]);
-        }
-        return btoa(binary);
-      }
-
-
-      // Check for generated chart
-      let chart = null;
-      try {
-        const { content, mimeType } = await sandbox.readFile("/workspace/chart.png", {
-          encoding: "none"
-        });
-        chart = `data:${mimeType};base64,${await streamToBase64(content)}`;
-      } catch {
-        // No chart generated
-      }
-
-
-      await sandbox.destroy();
-
-
-      return Response.json({
-        success: true,
-        output: result.stdout,
-        chart,
-        code,
-      });
-    } catch (error: any) {
-      return Response.json({ error: error.message }, { status: 500 });
-    }
-  },
+			return Response.json({
+				success: true,
+				output: result.stdout,
+				chart,
+				code,
+			});
+		} catch (error: any) {
+			return Response.json({ error: error.message }, { status: 500 });
+		}
+	},
 };
 
-
 async function generateAnalysisCode(
-  apiKey: string,
-  csvPath: string,
-  question: string,
-  csvStructure: string,
+	apiKey: string,
+	csvPath: string,
+	question: string,
+	csvStructure: string,
 ): Promise<string> {
-  const anthropic = new Anthropic({ apiKey });
+	const anthropic = new Anthropic({ apiKey });
 
-
-  const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-5",
-    max_tokens: 2048,
-    messages: [
-      {
-        role: "user",
-        content: `CSV at ${csvPath}:
+	const response = await anthropic.messages.create({
+		model: "claude-sonnet-4-5",
+		max_tokens: 2048,
+		messages: [
+			{
+				role: "user",
+				content: `CSV at ${csvPath}:
 ${csvStructure}
 
-
 Question: "${question}"
-
 
 Generate Python code that:
 - Reads CSV with pandas
@@ -233,34 +212,31 @@ Generate Python code that:
 - Saves charts to /workspace/chart.png if helpful
 - Prints findings to stdout
 
-
 Use pandas, numpy, matplotlib.`,
-      },
-    ],
-    tools: [
-      {
-        name: "generate_python_code",
-        description: "Generate Python code for data analysis",
-        input_schema: {
-          type: "object",
-          properties: {
-            code: { type: "string", description: "Complete Python code" },
-          },
-          required: ["code"],
-        },
-      },
-    ],
-  });
+			},
+		],
+		tools: [
+			{
+				name: "generate_python_code",
+				description: "Generate Python code for data analysis",
+				input_schema: {
+					type: "object",
+					properties: {
+						code: { type: "string", description: "Complete Python code" },
+					},
+					required: ["code"],
+				},
+			},
+		],
+	});
 
+	for (const block of response.content) {
+		if (block.type === "tool_use" && block.name === "generate_python_code") {
+			return (block.input as { code: string }).code;
+		}
+	}
 
-  for (const block of response.content) {
-    if (block.type === "tool_use" && block.name === "generate_python_code") {
-      return (block.input as { code: string }).code;
-    }
-  }
-
-
-  throw new Error("Failed to generate code");
+	throw new Error("Failed to generate code");
 }
 ```
 
@@ -310,10 +286,10 @@ Response:
 
 ```json
 {
-  "success": true,
-  "output": "Average ratings by year:\n2020: 8.5\n2021: 7.2\n2022: 9.1",
-  "chart": "data:image/png;base64,...",
-  "code": "import pandas as pd\nimport matplotlib.pyplot as plt\n..."
+	"success": true,
+	"output": "Average ratings by year:\n2020: 8.5\n2021: 7.2\n2022: 9.1",
+	"chart": "data:image/png;base64,...",
+	"code": "import pandas as pd\nimport matplotlib.pyplot as plt\n..."
 }
 ```
 
@@ -333,7 +309,7 @@ npx wrangler secret put ANTHROPIC_API_KEY
 
 Paste your API key from the [Anthropic Console ↗](https://console.anthropic.com/) when prompted.
 
-Warning
+Caution
 
 Wait 2-3 minutes after first deployment for container provisioning.
 
@@ -352,7 +328,14 @@ An AI data analysis system that:
 * [File operations](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Advanced file handling
 * [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Real-time progress updates
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/#page","headline":"Analyze data with AI · Cloudflare Sandbox SDK docs","description":"Upload CSV files, generate analysis code with Claude, and return visualizations.","url":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/analyze-data-with-ai/","name":"Analyze data with AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/#page","headline":"Analyze data with AI · Cloudflare Sandbox SDK docs","description":"Upload CSV files, generate analysis code with Claude, and return visualizations.","url":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

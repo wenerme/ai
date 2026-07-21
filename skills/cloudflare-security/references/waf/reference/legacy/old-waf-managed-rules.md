@@ -1,20 +1,22 @@
 ---
-title: WAF managed rules (previous version)
 description: Documentation for the previous version of WAF managed rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WAF managed rules (previous version)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WAF managed rules (previous version)
 
-# WAF managed rules (previous version)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Managed rules, a feature of Cloudflare WAF (Web Application Firewall), identifies and removes suspicious activity for HTTP `GET` and `POST` requests.
 
-Warning
+Caution
 
 * This page contains documentation about the previous implementation of WAF Managed Rules. For more information on the new version, refer to [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 * All customers with access to the previous version of WAF managed rules can [upgrade to the new version](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/).
@@ -132,7 +134,14 @@ Sampled logs displays rule ID `981176` when a request is blocked by OWASP. Also,
 * [Cloudflare's WAF changelog](https://developers.cloudflare.com/waf/change-log/)
 * [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/#page","headline":"WAF managed rules (previous version) · Cloudflare Web Application Firewall (WAF) docs","description":"Documentation for the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/managed-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/old-waf-managed-rules/","name":"WAF managed rules (previous version)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/#page","headline":"WAF managed rules (previous version) · Cloudflare Web Application Firewall (WAF) docs","description":"Documentation for the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/managed-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

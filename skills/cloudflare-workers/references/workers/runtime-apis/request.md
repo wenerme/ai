@@ -1,16 +1,18 @@
 ---
-title: Request
 description: Interface that represents an HTTP request.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Request
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Request
 
-# Request
+Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/request/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
@@ -18,27 +20,23 @@ The [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Reque
 
 The most common way you will encounter a `Request` object is as a property of an incoming request:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response('Hello World!');
-  },
+	async fetch(request, env, ctx) {
+		return new Response('Hello World!');
+	},
 };
 ```
 
 You may also want to construct a `Request` yourself when you need to modify a request object, because the incoming `request` parameter that you receive from the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is immutable.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
+	async fetch(request, env, ctx) {
         const url = "https://example.com";
         const modifiedRequest = new Request(url, request);
-    // ...
-  },
+		// ...
+	},
 };
 ```
 
@@ -47,8 +45,6 @@ The [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/han
 ---
 
 ## Constructor
-
-**JavaScript**
 
 ```js
 let request = new Request(input, options)
@@ -73,7 +69,7 @@ An object containing properties that you want to apply to the request.
 * `cf` RequestInitCfProperties optional
 
   * Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s global network handles the request.
-* `method` ` string ` optional
+* `method` ` string `optional
 
   * The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [CONNECT ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
 * `headers` Headers optional
@@ -83,7 +79,7 @@ An object containing properties that you want to apply to the request.
 
   * The request body, if any.
   * Note that a request using the GET or HEAD method cannot have a body.
-* `redirect` ` string ` optional
+* `redirect` ` string `optional
 
   * The redirect mode to use: `follow`, `error`, or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 * `signal` AbortSignal optional
@@ -94,8 +90,6 @@ An object containing properties that you want to apply to the request.
 
 An object containing Cloudflare-specific properties that can be set on the `Request` object. For example:
 
-**JavaScript**
-
 ```js
 // Disable ScrapeShield for this request.
 fetch(event.request, { cf: { scrapeShield: false } })
@@ -103,40 +97,40 @@ fetch(event.request, { cf: { scrapeShield: false } })
 
 Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
 
-* `apps` ` boolean ` optional
+* `apps` ` boolean `optional
 
   * Whether [Cloudflare Apps ↗](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
-* `cacheEverything` ` boolean ` optional
+* `cacheEverything` ` boolean `optional
 
   * Treats all content as static and caches all [file types](https://developers.cloudflare.com/cache/concepts/default-cache-behavior#default-cached-file-extensions) beyond the Cloudflare default cached content. Respects cache headers from the origin web server. This is equivalent to setting the Page Rule [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). Defaults to `false`. This option applies to `GET` and `HEAD` request methods only.
-* `cacheKey` ` string ` optional
+* `cacheKey` ` string `optional
 
   * A request’s cache key is what determines if two requests are the same for caching purposes. If a request has the same cache key as some previous request, then Cloudflare can serve the same cached response for both.
 * `cacheTags` Array<string> optional
 
   * This option appends additional [**Cache-Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) headers to the response from the origin server. This allows for purges of cached content based on tags provided by the Worker, without modifications to the origin server. This is performed using the [**Purge by Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#purge-using-cache-tags) feature.
-* `cacheTtl` ` number ` optional
+* `cacheTtl` ` number `optional
 
   * This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two Page Rules: [**Edge Cache TTL**](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/) and [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). The value must be zero or a positive number. A value of `0` indicates that the cache asset expires immediately. This option applies to `GET` and `HEAD` request methods only.
 * `cacheTtlByStatus` `{ [key: string]: number }` optional
 
   * This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
-* `vary` ` RequestInitCfPropertiesVary ` optional
+* `vary` ` RequestInitCfPropertiesVary `optional
 
   * Controls how Cloudflare caches origin responses with a `Vary` header for a single `fetch()` request. If both `cf.vary` and [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) apply, `cf.vary` takes precedence for this subrequest.
 * `image` Object | null optional
 
   * Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
-* `polish` ` string ` optional
+* `polish` ` string `optional
 
   * Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
-* `resolveOverride` ` string ` optional
+* `resolveOverride` ` string `optional
 
   * Directs the request to an alternate origin server by overriding the DNS lookup. The value of `resolveOverride` specifies an alternate hostname which will be used when determining the origin IP address, instead of using the hostname specified in the URL. The `Host` header of the request will still match what is in the URL. Thus, `resolveOverride` allows a request to be sent to a different server than the URL / `Host` header specifies. However, `resolveOverride` will only take effect if both the URL host and the host specified by `resolveOverride` are within your zone. If either specifies a host from a different zone / domain, then the option will be ignored for security reasons. If you need to direct a request to a host outside your zone (while keeping the `Host` header pointing within your zone), first create a CNAME record within your zone pointing to the outside host, and then set `resolveOverride` to point at the CNAME record. Note that, for security reasons, it is not possible to set the `Host` header to specify a host outside of your zone unless the request is actually being sent to that host.
-* `scrapeShield` ` boolean ` optional
+* `scrapeShield` ` boolean `optional
 
   * Whether [ScrapeShield ↗](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
-* `webp` ` boolean ` optional
+* `webp` ` boolean `optional
 
   * Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
 
@@ -184,27 +178,25 @@ The following limits and validation rules apply:
 
 The following request init fragment normalizes `Accept` and `Accept-Language`, and bypasses cache for any other header in the origin `Vary` response:
 
-**Request init fragment**
-
 ```json
 {
-  "cf": {
-    "vary": {
-      "default": {
-        "action": "bypass"
-      },
-      "headers": {
-        "accept": {
-          "action": "normalize",
-          "media_types": ["text/html", "application/json"]
-        },
-        "accept-language": {
-          "action": "normalize",
-          "languages": ["en", "fr", "de"]
-        }
-      }
-    }
-  }
+	"cf": {
+		"vary": {
+			"default": {
+				"action": "bypass"
+			},
+			"headers": {
+				"accept": {
+					"action": "normalize",
+					"media_types": ["text/html", "application/json"]
+				},
+				"accept-language": {
+					"action": "normalize",
+					"languages": ["en", "fr", "de"]
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -228,7 +220,7 @@ All properties of an incoming `Request` object (the request you receive from the
 
   * A [Headers object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
   * Compared to browsers, Cloudflare Workers imposes very few restrictions on what headers you are allowed to send. For example, a browser will not allow you to set the `Cookie` header, since the browser is responsible for handling cookies itself. Workers, however, has no special understanding of cookies, and treats the `Cookie` header like any other header.
-Warning
+Caution
 If the response is a redirect and the redirect mode is set to `follow` (see below), then all headers will be forwarded to the redirect destination, even if the destination is a different hostname or domain. This includes sensitive headers like `Cookie`, `Authorization`, or any application-specific headers. If this is not the behavior you want, you should set redirect mode to `manual` and implement your own redirect policy. Note that redirect mode defaults to `manual` for requests that originated from the Worker's client, so this warning only applies to `fetch()`es made by a Worker that are not proxying the original request.
 * `method` string read-only
 
@@ -239,38 +231,31 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
 * `signal` AbortSignal read-only
 
   * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
-
-    * [  JavaScript ](#tab-panel-12907)
-    * [  TypeScript ](#tab-panel-12908)
-
-**index.js**
   ```js
   export default {
-    async fetch(request, env, ctx) {
-      // This sets up an event listener that will be called if the client disconnects from your
-      // worker.
-      request.signal.addEventListener("abort", () => {
-        console.log("The request was aborted!");
-      });
-      const { readable, writable } = new IdentityTransformStream();
-      sendPing(writable);
-      return new Response(readable, {
-        headers: { "Content-Type": "text/plain" },
-      });
-    },
+  	async fetch(request, env, ctx) {
+  		// This sets up an event listener that will be called if the client disconnects from your
+  		// worker.
+  		request.signal.addEventListener("abort", () => {
+  			console.log("The request was aborted!");
+  		});
+  		const { readable, writable } = new IdentityTransformStream();
+  		sendPing(writable);
+  		return new Response(readable, {
+  			headers: { "Content-Type": "text/plain" },
+  		});
+  	},
   };
   async function sendPing(writable) {
-    const writer = writable.getWriter();
-    const enc = new TextEncoder();
-    for (;;) {
-      // Send 'ping' every second to keep the connection alive
-      await writer.write(enc.encode("ping\r\n"));
-      await scheduler.wait(1000);
-    }
+  	const writer = writable.getWriter();
+  	const enc = new TextEncoder();
+  	for (;;) {
+  		// Send 'ping' every second to keep the connection alive
+  		await writer.write(enc.encode("ping\r\n"));
+  		await scheduler.wait(1000);
+  	}
   }
   ```
-
-**index.ts**
   ```ts
   export default {
     async fetch(request, env, ctx): Promise<Response> {
@@ -285,13 +270,13 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
     },
   } satisfies ExportedHandler<Env>;
   async function sendPing(writable: WritableStream): Promise<void> {
-    const writer = writable.getWriter();
-    const enc = new TextEncoder();
-    for (;;) {
-      // Send 'ping' every second to keep the connection alive
-      await writer.write(enc.encode('ping\r\n'));
-      await scheduler.wait(1000);
-    }
+  	const writer = writable.getWriter();
+  	const enc = new TextEncoder();
+  	for (;;) {
+  		// Send 'ping' every second to keep the connection alive
+  		await writer.write(enc.encode('ping\r\n'));
+  		await scheduler.wait(1000);
+  	}
   }
   ```
 * `url` string read-only
@@ -396,7 +381,7 @@ All plans have access to:
 
   * Timezone of the incoming request, for example, `"America/Chicago"`.
 
-Warning
+Caution
 
 The `request.cf` object is not available in the Cloudflare Workers dashboard or Playground preview editor.
 
@@ -430,14 +415,12 @@ These methods are only available on an instance of a `Request` object or through
 
 Each time a Worker is invoked by an incoming HTTP request, the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) is called on your Worker. The `Request` context starts when the `fetch()` handler is called, and asynchronous tasks (such as making a subrequest using the [fetch() API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)) can only be run inside the `Request` context:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
+	async fetch(request, env, ctx) {
         // Request context starts here
-    return new Response('Hello World!');
-  },
+		return new Response('Hello World!');
+	},
 };
 ```
 
@@ -445,16 +428,12 @@ export default {
 
 If you pass a Response promise to the fetch event `.respondWith()` method, the request context is active during any asynchronous tasks which run before the Response promise has settled. You can pass the event to an async handler, for example:
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", event => {
   event.respondWith(eventHandler(event))
 })
 
-
 // No request context available here
-
 
 async function eventHandler(event){
   // Request context available here
@@ -465,8 +444,6 @@ async function eventHandler(event){
 ### Errors when attempting to access an inactive `Request` context
 
 Any attempt to use APIs such as `fetch()` or access the `Request` context during script startup will throw an exception:
-
-**JavaScript**
 
 ```js
 const promise = fetch("https://example.com/") // Error
@@ -483,17 +460,13 @@ The `Content-Length` header will be automatically set by the runtime based on wh
 
 A `FixedLengthStream` is an identity `TransformStream` that permits only a fixed number of bytes to be written to it.
 
-**JavaScript**
-
 ```js
   const { writable, readable } = new FixedLengthStream(11);
-
 
   const enc = new TextEncoder();
   const writer = writable.getWriter();
   writer.write(enc.encode("hello world"));
   writer.end();
-
 
   const req = new Request('https://example.org', { method: 'POST', body: readable });
 ```
@@ -531,7 +504,14 @@ Incoming `Request` objects passed to the [fetch() handler](https://developers.cl
 * [Reference: Response](https://developers.cloudflare.com/workers/runtime-apis/response/)
 * Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/request/","name":"Request"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

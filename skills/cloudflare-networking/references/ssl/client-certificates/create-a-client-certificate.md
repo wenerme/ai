@@ -1,16 +1,18 @@
 ---
-title: Create a client certificate
 description: Generate a client certificate using the dashboard or API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a client certificate
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a client certificate
 
-# Create a client certificate
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in [How mTLS works](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works).
 
@@ -21,7 +23,7 @@ The following process only refers to certificates issued from the Cloudflare-man
 To create a client certificate on the Cloudflare dashboard:
 
 1. Go to the **Client Certificates** page.
-[ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+[ Go to **Client Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. Select **Add Certificate**. The Cloudflare-managed CA is the default **Certificate Authority**.
 3. Fill in the required fields. You can choose one of the following options:
 * Generate a private key and Certificate Signing Request (CSR) with Cloudflare.
@@ -43,7 +45,14 @@ After creating the client certificate, make sure it is installed on the client d
 
 Refer to our [mTLS at Cloudflare learning path](https://developers.cloudflare.com/learning-paths/mtls/concepts/) for further context.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/#page","headline":"Create a client certificate · Cloudflare SSL/TLS docs","description":"Generate a client certificate using the dashboard or API.","url":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/create-a-client-certificate/","name":"Create a client certificate"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/#page","headline":"Create a client certificate · Cloudflare SSL/TLS docs","description":"Generate a client certificate using the dashboard or API.","url":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

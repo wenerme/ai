@@ -1,16 +1,18 @@
 ---
-title: URL Scanner
 description: Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: URL Scanner
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  URL Scanner
 
-# URL Scanner
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/url-scanner/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar ↗](https://radar.cloudflare.com/scan), and the Cloudflare [API](https://developers.cloudflare.com/api/resources/url%5Fscanner/).
 
@@ -57,16 +59,16 @@ Here's an example request body with some custom configuration options:
 
 ```json
 {
-  "url": "https://example.com",
-  "screenshotsResolutions": [
-    "desktop", "mobile", "tablet"
-  ],
+	"url": "https://example.com",
+	"screenshotsResolutions": [
+		"desktop", "mobile", "tablet"
+	],
   "customagent": "XXX-my-user-agent",
   "referer": "example",
-  "customHeaders": {
-    "Authorization": "xxx-token"
-  },
-  "visibility": "Unlisted"
+	"customHeaders": {
+		"Authorization": "xxx-token"
+	},
+	"visibility": "Unlisted"
 }
 ```
 
@@ -159,7 +161,7 @@ Go to [Search URL scans](https://developers.cloudflare.com/api/resources/url%5Fs
 Alternatively, you can search in the Security Center:
 
 1. In the Cloudflare dashboard, go to the **Investigate** page.
-[ Go to **Investigate** ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
+[ Go to **Investigate** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Enter your query and select **Search**.
 
 You can scan a URL by location. Scanning a URL by location allows you to analyze how a website may present different content depending on your location. This helps to expose and examine region-specific malicious activities.
@@ -187,7 +189,14 @@ In Security Center, you can retrieve pre-filtered information by:
 * Identical domain
 * Identical final URL (after all redirections)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/url-scanner/#page","headline":"URL Scanner · Cloudflare Radar docs","description":"Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.","url":"https://developers.cloudflare.com/radar/investigate/url-scanner/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/url-scanner/","name":"URL Scanner"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/url-scanner/#page","headline":"URL Scanner · Cloudflare Radar docs","description":"Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.","url":"https://developers.cloudflare.com/radar/investigate/url-scanner/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

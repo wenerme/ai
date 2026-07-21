@@ -1,16 +1,18 @@
 ---
-title: Design System
 description: Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Design System
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Design System
 
-# Design System
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit provides all the necessary UI components to allow complete customization of all its UI Kit components. You can customize your brand colours, fonts, logo and more.
 
@@ -32,29 +34,21 @@ Each mobile platform exposes a design token system that controls colors, borders
 
 ```html
 <script type="module">
-  import { provideRtkDesignSystem } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/dist/index.js";
+	import { provideRtkDesignSystem } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/dist/index.js";
 </script>
 ```
-
-**JavaScript**
 
 ```javascript
 import { provideRtkDesignSystem } from "@cloudflare/realtimekit-react-ui";
 ```
 
-**JavaScript**
-
 ```javascript
 import { provideRtkDesignSystem } from "@cloudflare/realtimekit-angular-ui";
 ```
 
-**Swift**
-
 ```swift
 import RealtimeKitUI
 ```
-
-**Kotlin**
 
 ```kotlin
 import com.cloudflare.realtimekit.ui.RealtimeKitUIBuilder
@@ -63,21 +57,17 @@ import com.cloudflare.realtimekit.ui.token.*
 import com.cloudflare.realtimekit.models.RtkMeetingInfo
 ```
 
-**Dart**
-
 ```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
 import 'package:flutter/material.dart';
 ```
 
-**TypeScript**
-
 ```typescript
 import {
-  RtkUIProvider,
-  provideRtkDesignSystem,
-  generateBrandColors,
-  generateBackgroundColors,
+	RtkUIProvider,
+	provideRtkDesignSystem,
+	generateBrandColors,
+	generateBackgroundColors,
 } from "@cloudflare/realtimekit-react-native-ui";
 ```
 
@@ -86,103 +76,94 @@ import {
 ```html
 <div id="app"></div>
 
-
 <script>
-  provideRtkDesignSystem(document.getElementById("app"), {
-    googleFont: "Lobster",
-    // sets light background colors
-    theme: "light",
-    colors: {
-      danger: "#ffac00",
-      brand: {
-        300: "#00FFE1",
-        400: "#00FFFF",
-        500: "#00E1D4",
-        600: "#007B74",
-        700: "#00655F",
-      },
-      text: "#071428",
-      "text-on-brand": "#ffffff",
-      "video-bg": "#E5E7EB",
-    },
-    borderRadius: "extra-rounded",
-  });
+	provideRtkDesignSystem(document.getElementById("app"), {
+		googleFont: "Lobster",
+		// sets light background colors
+		theme: "light",
+		colors: {
+			danger: "#ffac00",
+			brand: {
+				300: "#00FFE1",
+				400: "#00FFFF",
+				500: "#00E1D4",
+				600: "#007B74",
+				700: "#00655F",
+			},
+			text: "#071428",
+			"text-on-brand": "#ffffff",
+			"video-bg": "#E5E7EB",
+		},
+		borderRadius: "extra-rounded",
+	});
 </script>
 ```
 
 ```html
 <div id="app"></div>
 
-
 <script>
-  provideRtkDesignSystem(document.getElementById("app"), {
-    googleFont: "Lobster",
-    // sets light background colors
-    theme: "light",
-    colors: {
-      danger: "#ffac00",
-      brand: {
-        300: "#00FFE1",
-        400: "#00FFFF",
-        500: "#00E1D4",
-        600: "#007B74",
-        700: "#00655F",
-      },
-      text: "#071428",
-      "text-on-brand": "#ffffff",
-      "video-bg": "#E5E7EB",
-    },
-    borderRadius: "extra-rounded",
-  });
+	provideRtkDesignSystem(document.getElementById("app"), {
+		googleFont: "Lobster",
+		// sets light background colors
+		theme: "light",
+		colors: {
+			danger: "#ffac00",
+			brand: {
+				300: "#00FFE1",
+				400: "#00FFFF",
+				500: "#00E1D4",
+				600: "#007B74",
+				700: "#00655F",
+			},
+			text: "#071428",
+			"text-on-brand": "#ffffff",
+			"video-bg": "#E5E7EB",
+		},
+		borderRadius: "extra-rounded",
+	});
 </script>
 ```
 
-**JavaScript**
-
 ```javascript
 function Example() {
-  const meetingEl = useRef();
-  const { meeting } = useRealtimeKitMeeting();
+	const meetingEl = useRef();
+	const { meeting } = useRealtimeKitMeeting();
 
+	useEffect(() => {
+		provideRtkDesignSystem(meetingEl.current, {
+			googleFont: "Lobster",
+			// sets light background colors
+			theme: "light",
+			colors: {
+				danger: "#ffac00",
+				brand: {
+					300: "#00FFE1",
+					400: "#00FFFF",
+					500: "#00E1D4",
+					600: "#007B74",
+					700: "#00655F",
+				},
+				text: "#071428",
+				"text-on-brand": "#ffffff",
+				"video-bg": "#E5E7EB",
+			},
+			borderRadius: "extra-rounded",
+		});
+	}, []);
 
-  useEffect(() => {
-    provideRtkDesignSystem(meetingEl.current, {
-      googleFont: "Lobster",
-      // sets light background colors
-      theme: "light",
-      colors: {
-        danger: "#ffac00",
-        brand: {
-          300: "#00FFE1",
-          400: "#00FFFF",
-          500: "#00E1D4",
-          600: "#007B74",
-          700: "#00655F",
-        },
-        text: "#071428",
-        "text-on-brand": "#ffffff",
-        "video-bg": "#E5E7EB",
-      },
-      borderRadius: "extra-rounded",
-    });
-  }, []);
-
-
-  return (
-    <div style={{ height: "400px" }}>
-      <RtkMeeting meeting={meeting} ref={meetingEl} mode="fill" />
-    </div>
-  );
+	return (
+		<div style={{ height: "400px" }}>
+			<RtkMeeting meeting={meeting} ref={meetingEl} mode="fill" />
+		</div>
+	);
 }
 ```
 
 Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo`. Then call `RealtimeKitUIBuilder.build()` to launch the meeting.
 
-**Kotlin**
-
 ```kotlin
 import android.graphics.Color
-
 
 val customColors = RtkColorTokens(
     brand = BrandColor(
@@ -217,13 +198,11 @@ val customColors = RtkColorTokens(
     ),
 )
 
-
 val designTokens = RtkDesignTokens(
     colors = customColors,
     borderRadius = RtkBorderRadiusToken.Rounded,
     borderWidth = RtkBorderWidthToken.Thin,
 )
-
 
 val uiKitInfo = RealtimeKitUIInfo(
     activity = this,
@@ -242,8 +221,6 @@ Flutter supports two approaches for color configuration:
 
 **Simple color configuration:**
 
-**Dart**
-
 ```dart
 final designTokens = RtkDesignTokens(
   colorToken: RtkColorToken(
@@ -256,15 +233,12 @@ final designTokens = RtkDesignTokens(
   borderWidth: RtkBorderWidth.none,
 );
 
-
 final uiKitInfo = RealtimeKitUIInfo(meetingInfo, designToken: designTokens);
 final rtkUI = RealtimeKitUIBuilder.build(uiKitInfo: uiKitInfo);
 Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
 ```
 
 **Advanced color configuration** — use `RtkColorSwatch` for precise control over each shade:
-
-**Dart**
 
 ```dart
 final designTokens = RtkDesignTokens(
@@ -297,11 +271,8 @@ You cannot mix `brandColor` and `brandColorSwatch` for the same color type. Use 
 
 Call `provideRtkDesignSystem()` with a `DesignTokens` object before or during rendering. Wrap your meeting components in `RtkUIProvider`.
 
-**TypeScript**
-
 ```typescript
 import { useEffect } from 'react';
-
 
 function App() {
   useEffect(() => {
@@ -317,7 +288,6 @@ function App() {
     });
   }, []);
 
-
   return (
     <RtkUIProvider>
       {/* Your meeting components */}
@@ -330,35 +300,27 @@ The `generateBrandColors()` helper derives five brand shades from a single hex v
 
 The iOS UI Kit uses `DesignLibrary.shared` as its central design token registry. Create a custom configurator that conforms to `DesignLibraryConfiguratorProtocol` and pass it to the design library before starting a meeting.
 
-**Swift**
-
 ```swift
 import RealtimeKitUI
-
 
 class CustomConfigurator: DesignLibraryConfiguratorProtocol {
     let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!
     let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#080808")!
 
-
     let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!
     let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
-
 
     let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!
     let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!
     let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
 
-
     let cornerRadiusRoundFactor: CGFloat = 4.0
     let cornerRadiusExtraRoundFactor: CGFloat = 8.0
     let cornerRadiusCircularFactor: CGFloat = 8.0
 
-
     let borderSizeThinFactor: CGFloat = 1.0
     let borderSizeFatFactor: CGFloat = 2.0
 }
-
 
 // Apply the custom configurator
 DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
@@ -401,13 +363,11 @@ Set either of these values in your design tokens.
 * With fontFamily - Use a custom font family, you'll have to load the font manually.
 * With googleFont - Use a google font, the font is loaded automatically.
 
-**JavaScript**
-
 ```javascript
 const designTokens = {
-  fontFamily: "Custom Font",
-  // or
-  googleFont: "A Google Font",
+	fontFamily: "Custom Font",
+	// or
+	googleFont: "A Google Font",
 };
 ```
 
@@ -417,17 +377,13 @@ The Flutter UI Kit bundles the Inter font and uses it by default. Custom font co
 
 Pass a `fontFamily` string to `provideRtkDesignSystem()` to use a custom font. You must load the font in your app before calling this function.
 
-**TypeScript**
-
 ```typescript
 provideRtkDesignSystem({
-  fontFamily: "Helvetica",
+	fontFamily: "Helvetica",
 });
 ```
 
 The iOS UI Kit uses the system font (`UIFont.systemFont`) by default. Font customization is not exposed through the `DesignLibraryConfiguratorProtocol`. To change fonts, create a custom `AppThemeProtocol` implementation and override the appearance properties for individual components.
-
-**Swift**
 
 ```swift
 class CustomTheme: AppThemeProtocol {
@@ -469,18 +425,16 @@ Theme values are: `light`, `dark`, `darkest`.
 
 Edit color tokens like this. Only the colors you specify will be set.
 
-**JavaScript**
-
 ```javascript
 const designTokens = {
-  theme: "darkest",
-  colors: {
-    brand: { 500: "#0D51FD" },
-    background: { 1000: "#080808" },
-    text: "#ffffff",
-    "text-on-brand": "#ffffff",
-    "video-bg": "#181818",
-  },
+	theme: "darkest",
+	colors: {
+		brand: { 500: "#0D51FD" },
+		background: { 1000: "#080808" },
+		text: "#ffffff",
+		"text-on-brand": "#ffffff",
+		"video-bg": "#181818",
+	},
 };
 ```
 
@@ -490,22 +444,17 @@ Set `colorBrandBase` and `colorBackgroundBase` in your `DesignLibraryConfigurato
 
 iOS also exposes a `video` property on `BackgroundColorToken` that controls the color behind video tiles when no stream is active. It defaults to `shade800`.
 
-**Swift**
-
 ```swift
 class CustomConfigurator: DesignLibraryConfiguratorProtocol {
     let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!
     let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#1A1A1A")!
 
-
     let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!
     let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
-
 
     let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!
     let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!
     let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
-
 
     // Border properties (required by protocol)
     let cornerRadiusRoundFactor: CGFloat = 4.0
@@ -517,8 +466,6 @@ class CustomConfigurator: DesignLibraryConfiguratorProtocol {
 ```
 
 Android provides a `videoBackground` field on `RtkColorTokens` to set the color shown behind video tiles when no video stream is active. The default value is `#333333`.
-
-**Kotlin**
 
 ```kotlin
 val customColors = RtkColorTokens(
@@ -539,14 +486,12 @@ React Native provides three preset themes that set a coordinated background colo
 
 Pass the `theme` property to `provideRtkDesignSystem()`. You can combine a preset theme with custom color overrides.
 
-**TypeScript**
-
 ```typescript
 provideRtkDesignSystem({
-  theme: "dark",
-  colors: {
-    brand: generateBrandColors("#0246FD"),
-  },
+	theme: "dark",
+	colors: {
+		brand: generateBrandColors("#0246FD"),
+	},
 });
 ```
 
@@ -567,21 +512,17 @@ The spacing scale is used for setting width, height, margins, paddings, position
 
 Set the base of the spacing scale with `spacingBase` property.
 
-**JavaScript**
-
 ```javascript
 const designTokens = {
-  spacingBase: 4, // value in px
+	spacingBase: 4, // value in px
 };
 ```
 
 The `spacingBase` property sets the base unit for the spacing scale in pixels. All spacing values in the UI Kit derive from this base.
 
-**TypeScript**
-
 ```typescript
 provideRtkDesignSystem({
-  spacingBase: 4, // default: 4px
+	spacingBase: 4, // default: 4px
 });
 ```
 
@@ -600,12 +541,10 @@ Border Width and Border Radius properties can also be customized with design tok
 
 #### Usage
 
-**JavaScript**
-
 ```javascript
 const designTokens = {
-  borderWidth: "thin",
-  borderRadius: "rounded",
+	borderWidth: "thin",
+	borderRadius: "rounded",
 };
 ```
 
@@ -622,8 +561,6 @@ Flutter and iOS use the enum value `extrarounded` (no hyphen). React Native uses
 
 Pass `borderRadius` and `borderWidth` directly to the `RtkDesignTokens` constructor.
 
-**Kotlin**
-
 ```kotlin
 val designTokens = RtkDesignTokens(
     colors = customColors,
@@ -633,8 +570,6 @@ val designTokens = RtkDesignTokens(
 ```
 
 Pass `borderRadius` and `borderWidth` to the `RtkDesignTokens` constructor.
-
-**Dart**
 
 ```dart
 final designTokens = RtkDesignTokens(
@@ -646,40 +581,40 @@ final designTokens = RtkDesignTokens(
 
 Pass `borderRadius` and `borderWidth` to `provideRtkDesignSystem()`.
 
-**TypeScript**
-
 ```typescript
 provideRtkDesignSystem({
-  borderRadius: "extra-rounded",
-  borderWidth: "fat",
+	borderRadius: "extra-rounded",
+	borderWidth: "fat",
 });
 ```
 
 Set `cornerRadiusRoundFactor`, `cornerRadiusExtraRoundFactor`, `cornerRadiusCircularFactor`, `borderSizeThinFactor`, and `borderSizeFatFactor` in your `DesignLibraryConfiguratorProtocol` implementation. These factors control the multiplier used for each border style.
 
-**Swift**
-
 ```swift
 class CustomConfigurator: DesignLibraryConfiguratorProtocol {
     // ... color properties ...
-
 
     let cornerRadiusRoundFactor: CGFloat = 4.0
     let cornerRadiusExtraRoundFactor: CGFloat = 8.0
     let cornerRadiusCircularFactor: CGFloat = 8.0
 
-
     let borderSizeThinFactor: CGFloat = 1.0
     let borderSizeFatFactor: CGFloat = 2.0
 }
-
 
 DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
 ```
 
 iOS uses `BorderRadiusToken.RadiusType` with values `.sharp`, `.rounded`, `.extrarounded`, and `.circular`. Border width uses `BorderWidthToken.Width` with values `.none`, `.thin`, and `.fat`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/#page","headline":"Design System · Cloudflare Realtime docs","description":"Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/branding/","name":"Customise Branding"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/ui-kit/branding/design-system/","name":"Design System"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/#page","headline":"Design System · Cloudflare Realtime docs","description":"Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

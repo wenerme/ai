@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive accelerates access to your existing databases from Cloudflare Workers, making even single-region databases feel globally distributed.
 
@@ -89,27 +91,20 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9621)
-* [  wrangler.toml ](#tab-panel-9622)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 ## 3\. Connect Hyperdrive to a database
@@ -133,10 +128,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-9615)
-* [ MySQL ](#tab-panel-9616)
-
 ```txt
+
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
@@ -149,6 +142,7 @@ npx wrangler hyperdrive create <YOUR_CONFIG_NAME> --connection-string="postgres:
 ```
 
 ```txt
+
 mysql://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
@@ -172,12 +166,12 @@ If successful, the command will output your new Hyperdrive configuration:
 
 ```json
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<example id: 57b7076f58be42419276f058a8968187>"
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<example id: 57b7076f58be42419276f058a8968187>"
+		}
+	]
 }
 ```
 
@@ -193,23 +187,16 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9623)
-* [  wrangler.toml ](#tab-panel-9624)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -225,24 +212,17 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-9625)
-* [  wrangler.toml ](#tab-panel-9626)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
-      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
+			"localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -260,9 +240,6 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 Once you have created a Hyperdrive configuration and bound it to your Worker, you can run a query against your database.
 
 ### Install a database driver
-
-* [ PostgreSQL ](#tab-panel-9619)
-* [ MySQL ](#tab-panel-9620)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -346,9 +323,6 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-9617)
-* [ MySQL ](#tab-panel-9618)
-
 After you have set up your database, you will run a SQL query from within your Worker.
 
 Go to your `hyperdrive-tutorial` Worker and open the `index.ts` file.
@@ -357,48 +331,41 @@ The `index.ts` file is where you configure your Worker's interactions with Hyper
 
 Populate your `index.ts` file with the following code:
 
-**TypeScript**
-
 ```typescript
 // pg 8.13.0 or later is recommended
 import { Client } from "pg";
 
-
 export interface Env {
-  // If you set another name in the Wrangler config file as the value for 'binding',
-  // replace "HYPERDRIVE" with the variable name you defined.
-  HYPERDRIVE: Hyperdrive;
+	// If you set another name in the Wrangler config file as the value for 'binding',
+	// replace "HYPERDRIVE" with the variable name you defined.
+	HYPERDRIVE: Hyperdrive;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new client on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new client is fast.
-    const sql = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new client on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new client is fast.
+		const sql = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
 
+		try {
+			// Connect to the database
+			await sql.connect();
 
-    try {
-      // Connect to the database
-      await sql.connect();
+			// Sample query
+			const results = await sql.query(`SELECT * FROM pg_tables`);
 
-
-      // Sample query
-      const results = await sql.query(`SELECT * FROM pg_tables`);
-
-
-      // Return result rows as JSON
-      return Response.json(results.rows);
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return Response.json(results.rows);
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -416,59 +383,52 @@ The `index.ts` file is where you configure your Worker's interactions with Hyper
 
 Populate your `index.ts` file with the following code:
 
-**TypeScript**
-
 ```typescript
 // mysql2 v3.13.0 or later is required
 import { createConnection } from "mysql2/promise";
 
-
 export interface Env {
-  // If you set another name in the Wrangler config file as the value for 'binding',
-  // replace "HYPERDRIVE" with the variable name you defined.
-  HYPERDRIVE: Hyperdrive;
+	// If you set another name in the Wrangler config file as the value for 'binding',
+	// replace "HYPERDRIVE" with the variable name you defined.
+	HYPERDRIVE: Hyperdrive;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new connection is fast.
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new connection on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new connection is fast.
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// The following line is needed for mysql2 compatibility with Workers
+			// mysql2 uses eval() to optimize result parsing for rows with > 100 columns
+			// Configure mysql2 to use static parsing instead of eval() parsing with disableEval
+			disableEval: true,
+		});
 
-      // The following line is needed for mysql2 compatibility with Workers
-      // mysql2 uses eval() to optimize result parsing for rows with > 100 columns
-      // Configure mysql2 to use static parsing instead of eval() parsing with disableEval
-      disableEval: true,
-    });
+		try {
+			// Sample query
+			const [results, fields] = await connection.query("SHOW tables;");
 
-
-    try {
-      // Sample query
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-      return new Response(JSON.stringify({ results, fields }), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return new Response(JSON.stringify({ results, fields }), {
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+			});
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -486,17 +446,15 @@ The `localConnectionString` field works with both local and remote databases and
 
 To connect to a database during local development, configure `localConnectionString` in your `wrangler.jsonc`:
 
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "your-hyperdrive-id",
-      "localConnectionString": "postgres://user:password@your-database-host:5432/database",
-    },
-  ],
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "your-hyperdrive-id",
+			"localConnectionString": "postgres://user:password@your-database-host:5432/database",
+		},
+	],
 }
 ```
 
@@ -541,13 +499,11 @@ If your Worker makes **multiple sequential queries** per request, use [Placement
 
 If your Worker makes only one query per request, placement does not improve end-to-end latency. The total round-trip time is the same whether it happens near the user or near the database.
 
-**wrangler.jsonc**
-
 ```jsonc
 {
-  "placement": {
-    "region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"
-  },
+	"placement": {
+		"region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"
+	},
 }
 ```
 
@@ -559,7 +515,14 @@ If your Worker makes only one query per request, placement does not improve end-
 
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

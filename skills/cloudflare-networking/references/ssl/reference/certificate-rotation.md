@@ -1,16 +1,18 @@
 ---
-title: Rotate ACM certificate packs
 description: Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rotate ACM certificate packs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rotate ACM certificate packs
 
-# Rotate ACM certificate packs
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/reference/certificate-rotation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Advanced Certificate Manager (ACM) certificate packs cannot be updated in place. To replace an existing pack - for example, to change the certificate authority, add hostnames, or change validation method - you create a new pack, wait for it to reach **Active** status, and then delete the old one.
 
@@ -22,12 +24,8 @@ The key principle is to ensure the new certificate pack reaches **Active** befor
 
 ### 1\. Create the new certificate pack
 
-* [ Dashboard ](#tab-panel-11532)
-* [ API ](#tab-panel-11533)
-* [ Terraform ](#tab-panel-11534)
-
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Order Advanced Certificate**.
 3. Configure the new certificate pack with the desired hostnames, certificate authority, and validation method.
 4. Select **Save**.
@@ -56,12 +54,8 @@ For zones using Cloudflare as authoritative DNS (full setup), most validations c
 
 Once the new pack is **Active**, it is safe to delete the old one.
 
-* [ Dashboard ](#tab-panel-11535)
-* [ API ](#tab-panel-11536)
-* [ Terraform ](#tab-panel-11537)
-
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select the old certificate pack.
 3. Select **Delete Certificate**.
 
@@ -81,7 +75,7 @@ If the certificate remains in **Pending Deployment** for longer than expected, r
 
 Certificate packs cannot be updated in place - every attribute of the `cloudflare_certificate_pack` resource forces a new resource on change. Plan your rotation around this constraint.
 
-Warning
+Caution
 
 Importing existing certificate packs into Terraform state is supported but not recommended. If Cloudflare reissues the certificate (for example, on renewal), the resource ID changes and your Terraform state goes out of sync. The recommended pattern is to manage the full lifecycle through Terraform - create, wait for active, then delete - rather than importing existing packs.
 
@@ -120,7 +114,14 @@ This page covers **ACM certificate packs** (Cloudflare-managed Domain Validated 
 
 If you are using a **custom certificate** (a certificate you supplied), Cloudflare provides an in-place **Replace SSL certificate and key** flow that handles the rotation without requiring you to manage two packs. Refer to [Manage custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/#page","headline":"Rotate ACM certificate packs · Cloudflare SSL/TLS docs","description":"Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.","url":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/certificate-rotation/","name":"Rotate ACM certificate packs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/#page","headline":"Rotate ACM certificate packs · Cloudflare SSL/TLS docs","description":"Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.","url":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

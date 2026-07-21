@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are two graphical sources of information about your Workers traffic at a given time: Workers metrics and zone-based Workers analytics.
 
@@ -23,7 +25,7 @@ Zone analytics show how much traffic all Workers assigned to a zone are handling
 Workers metrics aggregate request data for an individual Worker (if your Worker is running across multiple domains, and on `*.workers.dev`, metrics will aggregate requests across them). To view your Worker's metrics:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker to view its metrics.
 
 There are two metrics that can help you understand the health of your Worker in a given moment: requests success and error metrics, and invocation statuses.
@@ -75,7 +77,7 @@ If you see memory usage trending upward over time, this may indicate a memory le
 To review invocation statuses:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Find the **Summary** graph in **Metrics**.
 4. Select **Errors**.
@@ -116,7 +118,7 @@ To review zone metrics:
 
 In the Cloudflare dashboard, go to the **Workers Analytics** page for your zone.
 
-[ Go to **Workers** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/workers)
+[ Go to **Workers** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/workers)
 
 Zone data can be scoped by time range within the last 30 days. The dashboard includes charts and information described below.
 
@@ -158,7 +160,14 @@ Writes to Analytics Engine are non-blocking and do not add latency to your Worke
 
 Refer to the [Analytics Engine example](https://developers.cloudflare.com/workers/examples/analytics-engine/) to get started.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/metrics-and-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

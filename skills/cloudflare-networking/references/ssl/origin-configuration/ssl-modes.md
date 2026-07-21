@@ -1,16 +1,18 @@
 ---
-title: Encryption modes
 description: Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Encryption modes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Encryption modes
 
-# Encryption modes
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Your zone's **SSL/TLS Encryption Mode** controls how Cloudflare manages two connections: one between your visitors and Cloudflare, and the other between Cloudflare and your origin server.
 
@@ -65,15 +67,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Edit zone setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "custom"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "custom"
+	}'
 ```
 
 #### Opt out multiple zones
@@ -93,16 +93,14 @@ curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \
 ```
 3. Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as `zones.txt`.
 4. Create a bash script for `opt-out-multiple-zones.sh` and add the following. Add `zones.txt` to the same directory or update the path accordingly.
-
-**opt-out-multiple-zones.sh**
 ```bash
 for zoneID in $(cat zone.txt); do
   printf "Opting out ${zoneID}:\n"
   curl --request PATCH \
-    --url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \
-    --header 'Authorization: Bearer <CF_API_TOKEN>' \
-    --header 'Content-Type: application/json' \
-    --data '{"value":"custom"}'
+		--url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \
+		--header 'Authorization: Bearer <CF_API_TOKEN>' \
+		--header 'Content-Type: application/json' \
+		--data '{"value":"custom"}'
   printf "\n\n"
 done
 ```
@@ -123,13 +121,10 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-11518)
-* [ API ](#tab-panel-11519)
-
 To change your encryption mode in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
 To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
@@ -138,7 +133,14 @@ Note
 
 To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/ssl-modes/","name":"Encryption modes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

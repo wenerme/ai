@@ -1,16 +1,18 @@
 ---
-title: System prompt
 description: Guide AI Search query rewriting and response generation behavior with custom system prompts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: System prompt
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  System prompt
 
-# System prompt
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 System prompts allow you to guide the behavior of the text-generation models used by AI Search at query time. AI Search supports system prompt configuration in two steps:
 
@@ -40,18 +42,15 @@ You can view the effective system prompt used for any AI Search's model call thr
 
 When you make a `/chat/completions` request using the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) or [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/), you can set the system prompt programmatically.
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 
-
 const response = await instance.chatCompletions({
-  messages: [
-    { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: "What is Cloudflare?" },
-  ],
-  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	messages: [
+		{ role: "system", content: "You are a helpful assistant." },
+		{ role: "user", content: "What is Cloudflare?" },
+	],
+	model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
 });
 ```
 
@@ -76,19 +75,15 @@ A set of matched documents, each containing:
   - File name
   - File content
 
-
 You should:
 1. Analyze the relevance of matched documents
 2. Synthesize information from multiple sources when applicable
 3. Acknowledge if the available documents don't fully answer the query
 4. Format the response in a way that maximizes readability, in Markdown format
 
-
 Answer only with direct reply to the user question, be concise, omit everything which is not directly relevant, focus on answering the question directly and do not redirect the user to read the content.
 
-
 If the available documents don't contain enough information to fully answer the query, explicitly state this and provide an answer based on what is available.
-
 
 Important:
 - Cite which document(s) you're drawing information from
@@ -111,7 +106,6 @@ The model outputs a rewritten query optimized for semantic retrieval.
 ```text
 You are a search query optimizer for vector database searches. Your task is to reformulate user queries into more effective search terms.
 
-
 Given a user's search query, you must:
 1. Identify the core concepts and intent
 2. Add relevant synonyms and related terms
@@ -119,13 +113,10 @@ Given a user's search query, you must:
 4. Structure the query to emphasize key terms
 5. Include technical or domain-specific terminology if applicable
 
-
 Provide only the optimized search query without any explanations, greetings, or additional commentary.
-
 
 Example input: "how to fix a bike tire that's gone flat"
 Example output: "bicycle tire repair puncture fix patch inflate maintenance flat tire inner tube replacement"
-
 
 Constraints:
 - Output only the enhanced search terms
@@ -134,7 +125,14 @@ Constraints:
 - Maintain all important meaning from original query
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/#page","headline":"System prompt · Cloudflare AI Search docs","description":"Guide AI Search query rewriting and response generation behavior with custom system prompts.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/retrieval/system-prompt/","name":"System prompt"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/#page","headline":"System prompt · Cloudflare AI Search docs","description":"Guide AI Search query rewriting and response generation behavior with custom system prompts.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

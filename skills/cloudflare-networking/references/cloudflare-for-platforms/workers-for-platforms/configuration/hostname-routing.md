@@ -1,16 +1,18 @@
 ---
-title: Hostname routing
 description: Learn how to route requests to the dispatch worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Hostname routing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Hostname routing
 
-# Hostname routing
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use [dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) Workers to route millions of vanity domains or subdomains to Workers without hitting traditional [route limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains). These hostnames can be subdomains under your managed domain (e.g. `customer1.saas.com`) or vanity domains controlled by your end customers (e.g. `mystore.com`), which can be managed through [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/).
 
@@ -47,29 +49,24 @@ If you plan to route requests based on custom metadata, you'll need to create su
 
 #### Example dispatch Worker
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const hostname = new URL(request.url).hostname;
+	async fetch(request, env) {
+		const hostname = new URL(request.url).hostname;
 
+		// Get custom hostname metadata for routing decisions
+		const hostnameData = await env.KV.get(`hostname:${hostname}`, {
+			type: "json",
+		});
 
-    // Get custom hostname metadata for routing decisions
-    const hostnameData = await env.KV.get(`hostname:${hostname}`, {
-      type: "json",
-    });
+		if (!hostnameData?.workerName) {
+			return new Response("Hostname not configured", { status: 404 });
+		}
 
-
-    if (!hostnameData?.workerName) {
-      return new Response("Hostname not configured", { status: 404 });
-    }
-
-
-    // Route to the appropriate user Worker
-    const userWorker = env.DISPATCHER.get(hostnameData.workerName);
-    return await userWorker.fetch(request);
-  },
+		// Route to the appropriate user Worker
+		const userWorker = env.DISPATCHER.get(hostnameData.workerName);
+		return await userWorker.fetch(request);
+	},
 };
 ```
 
@@ -87,24 +84,20 @@ To set up subdomain routing:
 
 #### Example subdomain dispatch Worker
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const subdomain = url.hostname.split(".")[0];
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const subdomain = url.hostname.split(".")[0];
 
+		// Route based on subdomain
+		if (subdomain && subdomain !== "saas") {
+			const userWorker = env.DISPATCHER.get(subdomain);
+			return await userWorker.fetch(request);
+		}
 
-    // Route based on subdomain
-    if (subdomain && subdomain !== "saas") {
-      const userWorker = env.DISPATCHER.get(subdomain);
-      return await userWorker.fetch(request);
-    }
-
-
-    return new Response("Invalid subdomain", { status: 400 });
-  },
+		return new Response("Invalid subdomain", { status: 400 });
+	},
 };
 ```
 
@@ -129,7 +122,14 @@ The table below shows when Workers are invoked based on your route pattern and t
 | Target hostname route | ✅                              | ❌                            |
 | Custom hostname route | ❌                              | ✅                            |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/#page","headline":"Hostname routing · Cloudflare for Platforms docs","description":"Learn how to route requests to the dispatch worker.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/","name":"Hostname routing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/#page","headline":"Hostname routing · Cloudflare for Platforms docs","description":"Learn how to route requests to the dispatch worker.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

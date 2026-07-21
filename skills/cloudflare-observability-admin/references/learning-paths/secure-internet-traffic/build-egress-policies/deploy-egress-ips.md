@@ -1,16 +1,18 @@
 ---
-title: Egress IP best practices
 description: Deploy dedicated egress IPs effectively.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Egress IP best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Egress IP best practices
 
-# Egress IP best practices
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you turn on dedicated egress IPs for your account, Cloudflare will automatically balance all of your user traffic between your IPs depending on a few factors, including your user's physical location and the location of the resource that they are currently requesting. For example, if you have egress IP locations in Amsterdam, London, and Washington, D.C. and have not configured any policies, Cloudflare will assign the following egress IPs to your users:
 
@@ -32,9 +34,6 @@ One of the most common use cases for egress policies is to ensure a consistent e
 
 We recommend building baseline egress policies that can cover a majority of your use cases without making policy management overly complex. If all of your users need to access a series of applications that all require a specific egress IP, you should build a policy explicit to those users (or to all of your users) to ensure that all of their traffic egresses using those egress IPs. For example, you can define specific egress IPs for users with access to financial data:
 
-* [ Dashboard ](#tab-panel-10046)
-* [ API ](#tab-panel-10047)
-
 | Selector         | Operator | Value           | Egress method                       |
 | ---------------- | -------- | --------------- | ----------------------------------- |
 | User Group Email | in       | _Finance Users_ | Use dedicated Cloudflare egress IPs |
@@ -43,30 +42,28 @@ We recommend building baseline egress policies that can cover a majority of your
 | -------------------- | ------------- |
 | 203.0.113.0          | 2001:db8::/32 |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "egress",
-    "description": "Define static egress for finance team",
-    "enabled": true,
-    "filters": [
-        "egress"
-    ],
-    "name": "Finance team static egress",
-    "precedence": 0,
-    "identity": "any(identity.groups.name[*] in {\"finance\"})",
-    "rule_settings": {
-        "egress": {
-            "ipv4": "<DEDICATED_IPV4_ADDRESS>",
-            "ipv4_fallback": "<SECONDARY_DEDICATED_IPV6_ADDRESS>",
-            "ipv6": "<DEDICATED_IPV6_ADDRESS>"
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "egress",
+		"description": "Define static egress for finance team",
+		"enabled": true,
+		"filters": [
+				"egress"
+		],
+		"name": "Finance team static egress",
+		"precedence": 0,
+		"identity": "any(identity.groups.name[*] in {\"finance\"})",
+		"rule_settings": {
+				"egress": {
+						"ipv4": "<DEDICATED_IPV4_ADDRESS>",
+						"ipv4_fallback": "<SECONDARY_DEDICATED_IPV6_ADDRESS>",
+						"ipv6": "<DEDICATED_IPV6_ADDRESS>"
+				}
+		}
+	}'
 ```
 
 ## User-selectable egress locations
@@ -77,7 +74,14 @@ You may have use cases in which specific groups of your users may need to change
 
 For more information, refer to our [tutorial for user selectable egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/#page","headline":"Egress IP best practices · Cloudflare Learning Paths","description":"Deploy dedicated egress IPs effectively.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/","name":"Control traffic egress with source IP anchoring and allowlisting"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","name":"Egress IP best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/#page","headline":"Egress IP best practices · Cloudflare Learning Paths","description":"Deploy dedicated egress IPs effectively.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

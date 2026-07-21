@@ -1,16 +1,18 @@
 ---
-title: Company security
 description: Secure employees, devices, and data with Cloudflare Zero Trust access, secure web gateway, email security, and data loss prevention.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Company security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Company security
 
-# Company security
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/company-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Protect employees, devices, and data with Zero Trust access, secure web gateway, and email security. Cloudflare Access and Tunnel replace VPNs with identity-verified, per-request access to internal applications. Gateway filters DNS and HTTP traffic to block threats. DLP prevents sensitive data from leaving your network. Email Security stops phishing, BEC, and malware. DMARC management prevents domain spoofing.
 
@@ -56,19 +58,26 @@ Stop phishing, malware, and spoofing before they reach the inbox:
 
 ## Related resources
 
-[Cloudflare One documentation](https://developers.cloudflare.com/cloudflare-one/)
+### [ Cloudflare One documentation ](https://developers.cloudflare.com/cloudflare-one/)
 
 Complete documentation for Zero Trust and Secure Access Service Edge (SASE).
 
-[Email Security documentation](https://developers.cloudflare.com/email-security/)
+### [ Email Security documentation ](https://developers.cloudflare.com/email-security/)
 
 Complete documentation for email threat protection.
 
-[Zero Trust case studies](https://www.cloudflare.com/case-studies/?product=Zero+Trust)
+### [ Zero Trust case studies ](https://www.cloudflare.com/case-studies/?product=Zero+Trust)
 
 Explore how enterprises implement Zero Trust with Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/company-security/#page","headline":"Company security · Use cases · Cloudflare use cases","description":"Secure employees, devices, and data with Cloudflare Zero Trust access, secure web gateway, email security, and data loss prevention.","url":"https://developers.cloudflare.com/use-cases/company-security/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/company-security/","name":"Company security"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/company-security/#page","headline":"Company security · Use cases · Cloudflare use cases","description":"Secure employees, devices, and data with Cloudflare Zero Trust access, secure web gateway, email security, and data loss prevention.","url":"https://developers.cloudflare.com/use-cases/company-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

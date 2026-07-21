@@ -1,16 +1,18 @@
 ---
-title: Connect to databases
 description: Learn about the different kinds of database integrations Cloudflare supports.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to databases
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to databases
 
-# Connect to databases
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/connecting-to-databases/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers can connect to and query your data in both SQL and NoSQL databases, including:
 
@@ -73,8 +75,6 @@ wrangler secret put <SECRET_NAME>
 
 Then, retrieve the secret value in your code using the following code snippet:
 
-**JavaScript**
-
 ```js
 const secretValue = env.<SECRET_NAME>;
 ```
@@ -89,7 +89,14 @@ For services that require mTLS authentication, use [mTLS certificates](https://d
 * Discover [other storage options available](https://developers.cloudflare.com/workers/platform/storage-options/) for use with Workers.
 * [Create your first database](https://developers.cloudflare.com/d1/get-started/) with Cloudflare D1.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/#page","headline":"Connect to databases · Cloudflare Workers docs","description":"Learn about the different kinds of database integrations Cloudflare supports.","url":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/connecting-to-databases/","name":"Connect to databases"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/#page","headline":"Connect to databases · Cloudflare Workers docs","description":"Learn about the different kinds of database integrations Cloudflare supports.","url":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Device IPs
 description: Device IPs in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device IPs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device IPs
 
-# Device IPs
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -198,13 +200,7 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-8086)
-* [ macOS ](#tab-panel-8087)
-* [ Linux ](#tab-panel-8088)
-
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
-
-**PowerShell**
 
 ```powershell
 ipconfig
@@ -213,9 +209,7 @@ ipconfig
 ```txt
 Windows IP Configuration
 
-
 Unknown adapter CloudflareWARP:
-
 
    Connection-specific DNS Suffix  . :
    Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel
@@ -241,10 +235,10 @@ ifconfig
 ```sh
 <redacted>
 utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1280
-  inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff
-  inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17
-  inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128
-  nd6 options=201<PERFORMNUD,DAD>
+	inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff
+	inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17
+	inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128
+	nd6 options=201<PERFORMNUD,DAD>
 ```
 
 On Linux, run `ifconfig` or `ip addr`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
@@ -288,8 +282,6 @@ To get a list of all device registrations in a subnet (including revoked registr
 Example script to filter registrations by IP
 
 1. Create a new file called `filter-device-ips.py` that contains the following code:
-
-**Python**
 ```python
 import requests
 import ipaddress
@@ -301,73 +293,73 @@ ACCOUNT_ID = "<CLOUDLFARE_ACCOUNT_ID"  # Refer to https://developers.cloudflare.
 TARGET_CIDR = "100.64.0.0/10"
 # --- API request headers ---
 headers = {
-    "X-Auth-Email": AUTH_EMAIL,
-    "X-Auth-Key": AUTH_KEY,
-    "Content-Type": "application/json"
+		"X-Auth-Email": AUTH_EMAIL,
+		"X-Auth-Key": AUTH_KEY,
+		"Content-Type": "application/json"
 }
 def get_all_registrations():
-    """Fetches all device registrations including revoked registrations. """
-    devices = {}
-    url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/devices/registrations"
-    params = {"per_page": 50, "status": "all"}
-    while True:
-        response = requests.get(url, headers=headers, params=params).json()
-        if not response.get('success'):
-            print(f"Error fetching registrations: {response.get('errors')}")
-            break
-        for d in response.get('result', []):
-            # We use the ID as the key to link with IP data later
-            devices[d['id']] = d
-        cursor = response.get('result_info', {}).get('cursor')
-        if not cursor:
-            break
-        params['cursor'] = cursor
-    return devices
+		"""Fetches all device registrations including revoked registrations. """
+		devices = {}
+		url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/devices/registrations"
+		params = {"per_page": 50, "status": "all"}
+		while True:
+				response = requests.get(url, headers=headers, params=params).json()
+				if not response.get('success'):
+						print(f"Error fetching registrations: {response.get('errors')}")
+						break
+				for d in response.get('result', []):
+						# We use the ID as the key to link with IP data later
+						devices[d['id']] = d
+				cursor = response.get('result_info', {}).get('cursor')
+				if not cursor:
+						break
+				params['cursor'] = cursor
+		return devices
 def filter_by_cidr(device_map, network):
-    """Fetch device IPs and return devices that fall within the target CIDR block."""
-    matches = []
-    device_ids = list(device_map.keys())
-    # API limits IP correlation to batches of 20
-    for i in range(0, len(device_ids), 20):
-        batch = device_ids[i:i+20]
-        # Construct parameters for the IP endpoint
-        params = {f"device_ids[{idx}]": d_id for idx, d_id in enumerate(batch)}
-        url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/teamnet/devices/ips"
-        res = requests.get(url, headers=headers, params=params).json()
-        if not res.get('success'):
-            print(f"Error fetching IPs: {res.get('errors')}")
-            continue
-        for item in res.get('result', []):
-            d_id = item.get('device_id')
-            ip_data = item.get('device_ips', {})
-            ipv4_str = ip_data.get('ipv4')
-            if ipv4_str:
-                try:
-                    if ipaddress.IPv4Address(ipv4_str) in network:
-                        if d_id in device_map:
-                            full_data = device_map[d_id]
-                            full_data['device_ips'] = ip_data
-                            matches.append(full_data)
-                except ValueError:
-                    continue
-    return matches
+		"""Fetch device IPs and return devices that fall within the target CIDR block."""
+		matches = []
+		device_ids = list(device_map.keys())
+		# API limits IP correlation to batches of 20
+		for i in range(0, len(device_ids), 20):
+				batch = device_ids[i:i+20]
+				# Construct parameters for the IP endpoint
+				params = {f"device_ids[{idx}]": d_id for idx, d_id in enumerate(batch)}
+				url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/teamnet/devices/ips"
+				res = requests.get(url, headers=headers, params=params).json()
+				if not res.get('success'):
+						print(f"Error fetching IPs: {res.get('errors')}")
+						continue
+				for item in res.get('result', []):
+						d_id = item.get('device_id')
+						ip_data = item.get('device_ips', {})
+						ipv4_str = ip_data.get('ipv4')
+						if ipv4_str:
+								try:
+										if ipaddress.IPv4Address(ipv4_str) in network:
+												if d_id in device_map:
+														full_data = device_map[d_id]
+														full_data['device_ips'] = ip_data
+														matches.append(full_data)
+								except ValueError:
+										continue
+		return matches
 if __name__ == "__main__":
-    try:
-        net = ipaddress.IPv4Network(TARGET_CIDR, strict=False)
-        print(f"[*] Fetching registrations (status=all)...")
-        all_devices = get_all_registrations()
-        print(f"[*] Found {len(all_devices)} total registrations.")
-        print(f"[*] Checking IP ranges for match...")
-        filtered_list = filter_by_cidr(all_devices, net)
-        if filtered_list:
-            print(f"\n--- Found {len(filtered_list)} Device(s) in {TARGET_CIDR} ---\n")
-            for dev in filtered_list:
-                print(json.dumps(dev, indent=2))
-                print("-" * 50)
-        else:
-            print(f"\nNo devices found within the {TARGET_CIDR} range.")
-    except Exception as e:
-        print(f"Script Error: {e}")
+		try:
+				net = ipaddress.IPv4Network(TARGET_CIDR, strict=False)
+				print(f"[*] Fetching registrations (status=all)...")
+				all_devices = get_all_registrations()
+				print(f"[*] Found {len(all_devices)} total registrations.")
+				print(f"[*] Checking IP ranges for match...")
+				filtered_list = filter_by_cidr(all_devices, net)
+				if filtered_list:
+						print(f"\n--- Found {len(filtered_list)} Device(s) in {TARGET_CIDR} ---\n")
+						for dev in filtered_list:
+								print(json.dumps(dev, indent=2))
+								print("-" * 50)
+				else:
+						print(f"\nNo devices found within the {TARGET_CIDR} range.")
+		except Exception as e:
+				print(f"Script Error: {e}")
 ```
 2. In the script configuration section, input your Cloudflare API credentials and your IP subnet range.
 3. Open a terminal and navigate to the script directory. To run the script, type:
@@ -386,7 +378,14 @@ Cloudflare does not support editing an existing IPv4 subnet definition. To assig
 
 The new subnet will appear in the **Device IP subnets** table. You can now delete the old subnet. Devices will only get an IP from the new subnet when they [re-register](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#delete-a-device-registration); existing registrations will retain their [current IP](#verify-device-ips).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/#page","headline":"Device IPs · Cloudflare One docs","description":"Device IPs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/","name":"Device IPs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/#page","headline":"Device IPs · Cloudflare One docs","description":"Device IPs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","REST API"]}
 ```

@@ -1,38 +1,37 @@
 ---
-title: Kimi K3
 description: Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Kimi K3
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.D9EBG7kx.svg)
 
 #  Kimi K3
 
-Text Generation • Moonshot AI
+ Text Generation • Moonshot AI
 
-`moonshotai/kimi-k3`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` moonshotai/kimi-k3 `
+
+* Third-party
 
 Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.
 
-| Model Info                                                                 |                                                                                                                      |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                     |
-| More information                                                           | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                     |
-| Request formats                                                            | Chat Completions                                                                                                     |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/moonshotai/kimi-k3) |
+| Model Info                                                                  |                                                                                                                       |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                      |
+| More information                                                            | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                      |
+| Request formats                                                             | Chat Completions                                                                                                      |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/moonshotai/kimi-k3) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1034)
-* [ cURL ](#tab-panel-1035)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -56,9 +55,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1040)
-* [ Raw response ](#tab-panel-1041)
 
 Quantum entanglement is when two particles become linked in such a way that they behave as a single system — even when separated by vast distances.
 
@@ -118,11 +114,6 @@ In short: entangled particles share one fate, and measuring one instantly shapes
 
 **Reasoning Effort**  — Configure reasoning effort for a harder problem (K3's reasoning\_effort replaces the K2.x thinking parameter)
 
-* [ TypeScript ](#tab-panel-1036)
-* [ cURL ](#tab-panel-1037)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'moonshotai/kimi-k3',
@@ -149,9 +140,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "reasoning_effort": "max"
 }'
 ```
-
-* [ Output ](#tab-panel-1042)
-* [ Raw response ](#tab-panel-1043)
 
 # Proof that √2 is irrational
 
@@ -224,11 +212,6 @@ We have shown that both $a$ and $b$ are even, so they share a common factor of 2
 
 **Tool Choice Required**  — Force a tool call on the first turn with tool\_choice
 
-* [ TypeScript ](#tab-panel-1044)
-* [ cURL ](#tab-panel-1045)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'moonshotai/kimi-k3',
@@ -290,9 +273,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1046)
-* [ Raw response ](#tab-panel-1047)
-
 I'll check the weather in San Francisco for you.
 
 ```json
@@ -343,11 +323,6 @@ I'll check the weather in San Francisco for you.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1038)
-* [ cURL ](#tab-panel-1039)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'moonshotai/kimi-k3',
@@ -371,9 +346,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-1048)
-* [ Raw response ](#tab-panel-1049)
 
 The sky is blue because of a phenomenon called **Rayleigh scattering**, which describes how light interacts with tiny particles—in this case, the gas molecules in Earth's atmosphere.
 
@@ -479,9 +451,6 @@ As a bonus: on the Moon, which has no atmosphere, the daytime sky is black—the
 
 ## Parameters
 
-* [ Input ](#tab-panel-1050)
-* [ Output ](#tab-panel-1051)
-
 ▶messages\[\]
 
 `array`required
@@ -568,7 +537,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/schema-
 
 Output [ ](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/#page","headline":"Kimi K3 (Moonshot AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.","url":"https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/#page","headline":"Kimi K3 (Moonshot AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.","url":"https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

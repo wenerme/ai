@@ -1,16 +1,18 @@
 ---
-title: Building zero trust architecture into your startup
 description: Cloudflare Zero Trust is a simple, (sometimes free!) way for startups to develop a comprehensive Zero Trust strategy. This guide explains how to use Cloudflare to establish the foundation for a Zero Trust architecture.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Building zero trust architecture into your startup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Building zero trust architecture into your startup
 
-# Building zero trust architecture into your startup
+Last updated Apr 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -411,7 +413,14 @@ In conclusion, making a few deliberate choices today about how your company appr
 
 If you would like to discuss your Zero Trust requirements in greater detail and connect with one of our architects, visit [https://www.cloudflare.com/cloudflare-one/ ↗](https://www.cloudflare.com/cloudflare-one/) and request a consultation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/#page","headline":"Building zero trust architecture into your startup · Cloudflare Reference Architecture docs","description":"Cloudflare Zero Trust is a simple, (sometimes free!) way for startups to develop a comprehensive Zero Trust strategy. This guide explains how to use Cloudflare to establish the foundation for a Zero Trust architecture.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/zero-trust-for-startups/","name":"Building zero trust architecture into your startup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/#page","headline":"Building zero trust architecture into your startup · Cloudflare Reference Architecture docs","description":"Cloudflare Zero Trust is a simple, (sometimes free!) way for startups to develop a comprehensive Zero Trust strategy. This guide explains how to use Cloudflare to establish the foundation for a Zero Trust architecture.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: General settings
 description: Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: General settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  General settings
 
-# General settings
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Advanced DDoS Protection system includes [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/), [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/), and [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/). These systems are configured using the general settings, but also comprise of their own dedicated settings. Advanced DDoS Protection systems is available to [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers.
 
@@ -116,11 +118,18 @@ A filter modifies Advanced TCP Protection's [execution mode](https://developers.
 Enable the Advanced DDoS system and begin routing traffic through it.
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **General settings**.
 3. Under **General settings**, toggle the feature status **On**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/#page","headline":"Advanced DDoS Protection systems · Cloudflare DDoS Protection docs","description":"Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/","name":"General settings"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/#page","headline":"Advanced DDoS Protection systems · Cloudflare DDoS Protection docs","description":"Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP"]}
 ```

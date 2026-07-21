@@ -1,16 +1,18 @@
 ---
-title: Rate limiting parameters
 description: Configurable parameters for rate limiting rules, including expressions and characteristics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rate limiting parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rate limiting parameters
 
-# Rate limiting parameters
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The available rate limiting rule parameters are described in the following sections.
 
@@ -69,7 +71,7 @@ Use one or more of the following characteristics:
 
 The available characteristics depend on your Cloudflare plan. Refer to [Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for more information.
 
-Warning
+Caution
 
 For important details about these characteristics, refer to [Notes about rate limiting characteristics](#notes-about-rate-limiting-characteristics).
 
@@ -266,7 +268,14 @@ To use claims inside a JSON Web Token (JWT), you must first set up a [token vali
 * The rule counting expression, defined in the **Increment counter when** parameter, cannot include both [HTTP response fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=Response) and [custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/). If you use custom lists, you must enable the **Also apply rate limiting to cached assets** parameter.
 * When creating a rate limiting ruleset [at the account level](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/), the ruleset deployment expression (defining the scope) cannot contain [HTTP response fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=Response) or [custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters · Cloudflare Web Application Firewall (WAF) docs","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/parameters/","name":"Rate limiting parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters · Cloudflare Web Application Firewall (WAF) docs","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

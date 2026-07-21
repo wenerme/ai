@@ -1,16 +1,18 @@
 ---
-title: Known issues
 description: Known issues and bugs to be aware of when using Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Known issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Known issues
 
-# Known issues
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/known-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below are some known bugs and issues to be aware of when using Cloudflare Workers.
 
@@ -23,7 +25,6 @@ Consider two different Workers, each deployed to the same zone. Worker A is assi
 ```plaintext
 // (A) example.com/images/*
 // (B) example.com/images*
-
 
 "example.com/images"
 // -> B
@@ -41,7 +42,6 @@ When adding a wildcard on a subdomain, here are how the following URLs will be r
 // (A) *.example.com/a
 // (B) a.example.com/*
 
-
 "a.example.com/a"
 // -> B
 ```
@@ -49,8 +49,6 @@ When adding a wildcard on a subdomain, here are how the following URLs will be r
 ## wrangler dev
 
 * When running `wrangler dev --remote`, all outgoing requests are given the `cf-workers-preview-token` header, which Cloudflare recognizes as a preview request. This applies to the entire Cloudflare network, so making HTTP requests to other Cloudflare zones is currently discarded for security reasons. To enable a workaround, insert the following code into your Worker script:
-
-**JavaScript**
 
 ```js
 const request = new Request(url, incomingRequest);
@@ -69,7 +67,6 @@ Setup with missing DNS records in Cloudflare DNS
 // DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
 // DNS records at Cloudflare DNS: sub1.example.com
 
-
 "sub1.example.com/"
 // -> Can be resolved by Fetch API
 "sub2.example.com/"
@@ -83,7 +80,6 @@ After adding `sub2.example.com` to Cloudflare DNS
 // DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
 // DNS records at Cloudflare DNS: sub1.example.com, sub2.example.com
 
-
 "sub1.example.com/"
 // -> Can be resolved by Fetch API
 "sub2.example.com/"
@@ -96,21 +92,24 @@ For Workers subrequests, requests can only be made to URLs, not to IP addresses 
 
 For example, in the zone `example.com` create a record of type `A` with the name `server` and value `192.0.2.1`, and then use:
 
-**JavaScript**
-
 ```js
 await fetch('http://server.example.com')
 ```
 
 Do not use:
 
-**JavaScript**
-
 ```js
 await fetch('http://192.0.2.1')
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/known-issues/","name":"Known issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

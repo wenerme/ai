@@ -1,16 +1,18 @@
 ---
-title: Create a tunnel (API)
 description: Create a tunnel (API) in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Create a tunnel (API)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a tunnel (API)
 
-# Create a tunnel (API)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this guide to set up a Cloudflare Tunnel using the API.
 
@@ -38,16 +40,14 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
 
-**Create a Cloudflare Tunnel**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "api-tunnel",
-    "config_src": "cloudflare"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "api-tunnel",
+		"config_src": "cloudflare"
+	}'
 ```
 
 ```sh
@@ -98,26 +98,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Cloudflare One Connectors Write`
   * `Cloudflare One Connector: cloudflared Write`
   * `Cloudflare Tunnel Write`
-
-**Put configuration**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/configurations" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "config": {
-        "ingress": [
-            {
-                "hostname": "app.example.com",
-                "service": "http://localhost:8001",
-                "originRequest": {}
-            },
-            {
-                "service": "http_status:404"
-            }
-        ]
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"config": {
+				"ingress": [
+						{
+								"hostname": "app.example.com",
+								"service": "http://localhost:8001",
+								"originRequest": {}
+						},
+						{
+								"service": "http_status:404"
+						}
+				]
+		}
+	}'
 ```
 Note
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).
@@ -126,18 +124,16 @@ Your ingress rules must include a catch-all rule at the end. In this example, `c
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Write`
-
-**Create DNS Record**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "CNAME",
-    "proxied": true,
-    "name": "app.example.com",
-    "content": "c1744f8b-faa1-48a4-9e5c-02ac921467fa.cfargotunnel.com"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "CNAME",
+		"proxied": true,
+		"name": "app.example.com",
+		"content": "c1744f8b-faa1-48a4-9e5c-02ac921467fa.cfargotunnel.com"
+	}'
 ```
 This DNS record allows Cloudflare to proxy `app.example.com` traffic to your Cloudflare Tunnel (`<tunnel-id>.cfargotunnel.com`).
 
@@ -153,17 +149,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-**Create a tunnel route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "network": "172.16.0.0/16",
-    "tunnel_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-    "comment": "Example private network route"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"network": "172.16.0.0/16",
+		"tunnel_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+		"comment": "Example private network route"
+	}'
 ```
 
 `cloudflared` can now route traffic to these destination IPs. To configure Zero Trust policies and connect as a user, refer to [Connect private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/).
@@ -171,11 +165,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 ## 4\. Install and run the tunnel
 
 Install `cloudflared` on your server and run the tunnel using the `token` value obtained in [2\. Create a tunnel](#2-create-a-tunnel). You can also get the tunnel token using the [Cloudflare Tunnel token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/token/methods/get/) endpoint.
-
-* [ Linux ](#tab-panel-7944)
-* [ Windows ](#tab-panel-7945)
-* [ macOS ](#tab-panel-7946)
-* [ Docker ](#tab-panel-7947)
 
 1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
 2. Run the following command:
@@ -216,12 +205,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare Tunnel Write`
 * `Cloudflare Tunnel Read`
 
-**Get a Cloudflare Tunnel**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/c1744f8b-faa1-48a4-9e5c-02ac921467fa" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```sh
@@ -289,7 +276,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/c1744
 
 A healthy tunnel will have four connections to Cloudflare's network.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#page","headline":"Create a tunnel (API) · Cloudflare One docs","description":"Create a tunnel (API) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/","name":"Get started"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/","name":"Create a tunnel (API)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#page","headline":"Create a tunnel (API) · Cloudflare One docs","description":"Create a tunnel (API) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

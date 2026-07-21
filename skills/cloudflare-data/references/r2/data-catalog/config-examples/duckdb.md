@@ -1,16 +1,18 @@
 ---
-title: DuckDB
 description: Connect DuckDB to R2 Data Catalog to query and manage Iceberg tables.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: DuckDB
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DuckDB
 
-# DuckDB
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [DuckDB ↗](https://duckdb.org/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with DuckDB, refer to [DuckDB documentation ↗](https://duckdb.org/docs/stable/core%5Fextensions/iceberg/iceberg%5Frest%5Fcatalogs#r2-catalog).
 
@@ -32,11 +34,9 @@ In the [DuckDB CLI ↗](https://duckdb.org/docs/stable/clients/cli/overview.html
 INSTALL iceberg;
 LOAD iceberg;
 
-
 -- Install and load httpfs extension for reading/writing files over HTTP(S).
 INSTALL httpfs;
 LOAD httpfs;
-
 
 -- Create a DuckDB secret to store R2 Data Catalog credentials.
 CREATE SECRET r2_secret (
@@ -44,32 +44,34 @@ CREATE SECRET r2_secret (
     TOKEN '<token>'
 );
 
-
 -- Attach R2 Data Catalog with the following ATTACH statement.
 ATTACH '<warehouse_name>' AS my_r2_catalog (
     TYPE ICEBERG,
     ENDPOINT '<catalog_uri>'
 );
 
-
 -- Create the default schema in the catalog and set it as the active schema.
 CREATE SCHEMA my_r2_catalog.default;
 USE my_r2_catalog.default;
 
-
 -- Create and populate a sample Iceberg table with data.
 CREATE TABLE my_iceberg_table AS SELECT a FROM range(4) t(a);
 
-
 -- Show all available tables.
 SHOW ALL TABLES;
-
 
 -- Query the Iceberg table you just created.
 SELECT * FROM my_r2_catalog.default.my_iceberg_table;
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/#page","headline":"DuckDB · Cloudflare R2 docs","description":"Connect DuckDB to R2 Data Catalog to query and manage Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/duckdb/","name":"DuckDB"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/#page","headline":"DuckDB · Cloudflare R2 docs","description":"Connect DuckDB to R2 Data Catalog to query and manage Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

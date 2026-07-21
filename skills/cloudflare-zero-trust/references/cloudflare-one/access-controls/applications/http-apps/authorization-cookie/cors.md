@@ -1,16 +1,18 @@
 ---
-title: CORS
 description: CORS in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: CORS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  CORS
 
-# CORS
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cross-Origin Resource Sharing ([CORS ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
@@ -164,54 +166,44 @@ cd authentication-worker
 
 Open `/src/index.js` and delete the existing code and paste in the following example:
 
-**JavaScript**
-
 ```js
 // The hostname where your API lives
 const originalAPIHostname = "api.mysite.com";
 
-
 export default {
-  async fetch(request, env) {
-    // Change just the host. If the request comes in on example.com/api/name, the new URL is api.mysite.com/api/name
-    const url = new URL(request.url);
-    url.hostname = originalAPIHostname;
+	async fetch(request, env) {
+		// Change just the host. If the request comes in on example.com/api/name, the new URL is api.mysite.com/api/name
+		const url = new URL(request.url);
+		url.hostname = originalAPIHostname;
 
+		// If your API is located on api.mysite.com/anyname (without "api/" in the path),
+		// remove the "api/" part of example.com/api/name
 
-    // If your API is located on api.mysite.com/anyname (without "api/" in the path),
-    // remove the "api/" part of example.com/api/name
+		// url.pathname = url.pathname.substring(4)
 
+		// Best practice is to always use the original request to construct the new request
+		// to clone all the attributes. Applying the URL also requires a constructor
+		// since once a Request has been constructed, its URL is immutable.
+		const newRequest = new Request(url.toString(), request);
 
-    // url.pathname = url.pathname.substring(4)
+		newRequest.headers.set("cf-access-client-id", env.CF_ACCESS_CLIENT_ID);
+		newRequest.headers.set("cf-access-client-secret", env.CF_ACCESS_CLIENT_SECRET);
+		try {
+			const response = await fetch(newRequest);
 
+			// Copy over the response
+			const modifiedResponse = new Response(response.body, response);
 
-    // Best practice is to always use the original request to construct the new request
-    // to clone all the attributes. Applying the URL also requires a constructor
-    // since once a Request has been constructed, its URL is immutable.
-    const newRequest = new Request(url.toString(), request);
+			// Delete the set-cookie from the response so it doesn't override existing cookies
+			modifiedResponse.headers.delete("set-cookie");
 
-
-    newRequest.headers.set("cf-access-client-id", env.CF_ACCESS_CLIENT_ID);
-    newRequest.headers.set("cf-access-client-secret", env.CF_ACCESS_CLIENT_SECRET);
-    try {
-      const response = await fetch(newRequest);
-
-
-      // Copy over the response
-      const modifiedResponse = new Response(response.body, response);
-
-
-      // Delete the set-cookie from the response so it doesn't override existing cookies
-      modifiedResponse.headers.delete("set-cookie");
-
-
-      return modifiedResponse;
-    } catch (e) {
-      return new Response(JSON.stringify({ error: e.message }), {
-        status: 500,
-      });
-    }
-  },
+			return modifiedResponse;
+		} catch (e) {
+			return new Response(JSON.stringify({ error: e.message }), {
+				status: 500,
+			});
+		}
+	},
 };
 ```
 
@@ -224,7 +216,7 @@ npx wrangler deploy
 ### 4\. Configure the Worker
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your newly created Worker.
 3. In the **Triggers** tab, go to **Routes** and add `example.com/api/*`. The Worker is placed on a subpath of `example.com` to avoid making a cross-origin request.
 4. In the **Settings** tab, select **Variables**.
@@ -255,7 +247,14 @@ CORS is failing on the same domain
 
 CORS checks do not occur on the same domain. If this error occurs, it is likely the request is being sent without the `CF-Authorization` cookie.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS · Cloudflare One docs","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","name":"Authorization cookie"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","name":"CORS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS · Cloudflare One docs","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}
 ```

@@ -1,21 +1,23 @@
 ---
-title: Run test
 description: Learn how to use Cloudflare's Observatory to assess the performance of your website.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Run test
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Run test
 
-# Run test
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/observatory/run-speed-test/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Run Synthetic test
 
 1. In the Cloudflare dashboard, go to the **Synthetic Monitoring** page.
-[ Go to **Synthetic monitoring** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/test)
+[ Go to **Synthetic monitoring** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/test)
 2. Enter the URL you want to test. The URL must belong to the zone you are testing from.
 3. Select the test type you want to use: **Browser** or **Network tests**.
 4. Select the **Region** the automated browser will use.
@@ -77,7 +79,14 @@ Quota limits for the number of tests you can run per month are currently the fol
 | London, England     | Paris, France          | Mumbai, India           |
 | Frankfurt, Germany  | Tel Aviv, Israel       | São Paulo, Brazil       |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/run-speed-test/#page","headline":"Run test · Cloudflare Speed docs","description":"Learn how to use Cloudflare's Observatory to assess the performance of your website.","url":"https://developers.cloudflare.com/speed/observatory/run-speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/observatory/","name":"Observatory (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/observatory/run-speed-test/","name":"Run test"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/run-speed-test/#page","headline":"Run test · Cloudflare Speed docs","description":"Learn how to use Cloudflare's Observatory to assess the performance of your website.","url":"https://developers.cloudflare.com/speed/observatory/run-speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

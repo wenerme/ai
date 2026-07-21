@@ -1,16 +1,18 @@
 ---
-title: Detection settings best practices
 description: Detection settings best practices in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Detection settings best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Detection settings best practices
 
-# Detection settings best practices
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide describes how to configure detection settings to mitigate impersonation risks while ensuring legitimate delivery.
 
@@ -42,7 +44,14 @@ Example use cases:
 * Enforce Sender Verification: Always have **Sender Verification (Recommended)** enabled in the Cloudflare dashboard. It validates the originating system's email authentication records (namely [SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), and [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) against the domain to ensure authenticity.
 * Handle unsanctioned traffic: Unsanctioned traffic is traffic which has not been approved within an organization. This is also known as [Shadow IT ↗](https://www.cloudflare.com/en-gb/learning/access-management/what-is-shadow-it/). If an unsanctioned system generates spam or spoofed content, [configure a text add-on](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/) to append a tag to the subject line and automatically [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) the message to the junk folder.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/#page","headline":"Detection settings best practices · Cloudflare One docs","description":"Detection settings best practices in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/settings/","name":"Settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/settings/detection-settings/","name":"Detection settings"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/email-security/settings/detection-settings/best-practices/","name":"Detection settings best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/#page","headline":"Detection settings best practices · Cloudflare One docs","description":"Detection settings best practices in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

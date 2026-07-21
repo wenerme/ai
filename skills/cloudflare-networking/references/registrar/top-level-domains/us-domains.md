@@ -1,16 +1,18 @@
 ---
-title: .US domains
 description: Register and manage .US domains with Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: .US domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  .US domains
 
-# .US domains
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/top-level-domains/us-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Registration requirements for .US domains
 
@@ -54,7 +56,14 @@ Transferring a `.us` domain works in a similar way to other domains, but always 
 
 Refer to [Transfer your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/us-domains/#page","headline":"Learn how to manage a .US domain with Cloudflare. · Cloudflare Registrar docs","description":"Register and manage .US domains with Cloudflare.","url":"https://developers.cloudflare.com/registrar/top-level-domains/us-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/top-level-domains/","name":"Top Level Domains supported"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/top-level-domains/us-domains/","name":".US domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/us-domains/#page","headline":"Learn how to manage a .US domain with Cloudflare. · Cloudflare Registrar docs","description":"Register and manage .US domains with Cloudflare.","url":"https://developers.cloudflare.com/registrar/top-level-domains/us-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

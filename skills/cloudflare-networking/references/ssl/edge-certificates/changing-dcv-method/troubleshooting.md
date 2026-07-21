@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Resolve domain control validation failures.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your certificate is stuck in **Pending Validation** or failing to issue, the certificate authority (CA) may be unable to complete [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). This page helps you identify and resolve common DCV issues.
 
@@ -37,7 +39,7 @@ If you have issues while HTTP DCV is in place, review the following settings:
 * **Anything affecting `/.well-known/*`**: Review [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), [IP Access Rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/), and other [configuration rules](https://developers.cloudflare.com/rules/configuration-rules/) to make sure that your rules _do not_ enable interactive challenge on the validation URL.
 * **Workers routes**: If you have [Workers routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) matching `*/*` or paths that include `/.well-known/pki-validation/*` or `/.well-known/acme-challenge/*`, your Worker may intercept DCV requests from the certificate authority. Make sure your Worker either passes through requests to these paths or does not match them. This is especially relevant for [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) zones that use a [Worker as the fallback origin](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/).
 * **Cloudflare Account Settings** and **Page Rules**: Review your [account settings](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/), [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), and [Page Rules](https://developers.cloudflare.com/rules/page-rules/) to ensure you have not enabled Under Attack mode on the validation URL.
-Warning
+Caution
 When your certificate is in `pending_validation` and valid tokens are in place, some security features targeting your zone's path for `/.well-known/*` can be automatically bypassed.
 
 ## Redirection
@@ -79,14 +81,9 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-11474)
-* [ Windows ](#tab-panel-11475)
-
 ```bash
 dig example.com CAA +short
 ```
-
-**PowerShell**
 
 ```powershell
 Resolve-DnsName -Name example.com -Type CAA
@@ -154,7 +151,14 @@ When you see `Internal error with Certificate Authority. Please check later`, th
 
 **Resolution**: Wait a few minutes and retry. If the issue persists, try selecting a different CA. Cloudflare will automatically retry validation according to the [validation backoff schedule](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/#page","headline":"Troubleshooting Domain Control Validation · Cloudflare SSL/TLS docs","description":"Resolve domain control validation failures.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/","name":"Domain control validation (DCV)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/#page","headline":"Troubleshooting Domain Control Validation · Cloudflare SSL/TLS docs","description":"Resolve domain control validation failures.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

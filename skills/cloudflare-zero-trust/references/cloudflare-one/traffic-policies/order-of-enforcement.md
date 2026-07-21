@@ -1,16 +1,18 @@
 ---
-title: Order of enforcement
 description: How Order of enforcement works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Order of enforcement
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Order of enforcement
 
-# Order of enforcement
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Gateway, you can [enable and configure](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/) any combination of DNS, network, and HTTP policies.
 
@@ -298,13 +300,11 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_1" {
   precedence = 1000
 }
 
-
 resource "cloudflare_zero_trust_gateway_policy" "policy_2" {
   account_id = var.cloudflare_account_id
   # other attributes...
   precedence = 2000
 }
-
 
 resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
   account_id = var.cloudflare_account_id
@@ -315,7 +315,14 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
 
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and the Cloudflare dashboard or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare One docs","description":"How Order of enforcement works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/order-of-enforcement/","name":"Order of enforcement"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare One docs","description":"How Order of enforcement works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

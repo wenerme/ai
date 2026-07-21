@@ -1,16 +1,18 @@
 ---
-title: DNS over HTTPS (DoH)
 description: DNS over HTTPS (DoH) in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: DNS over HTTPS (DoH)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS over HTTPS (DoH)
 
-# DNS over HTTPS (DoH)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Gateway, you can filter DNS over HTTPS (DoH) requests by [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) or by user without needing to install the Cloudflare One Client on your devices.
 
@@ -83,15 +85,11 @@ Windows 11
 1. Obtain the `A` and `AAAA` record values associated with your location's DoH endpoint.
 
   1. Run the following command to obtain your `A` record values:
-
-**PowerShell**
 ```powershell
 nslookup -type=A <your-subdomain>.cloudflare-gateway.com
 ```
 
   1. Obtain your `AAAA` record values.
-
-**PowerShell**
 ```powershell
 nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 ```
@@ -100,15 +98,11 @@ nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 2. Add the addresses to your list of known DoH servers.
 
   1. Run the following command for each address:
-
-**PowerShell**
 ```powershell
 Add-DnsClientDohServerAddress -ServerAddress <IP-address> -DohTemplate https://<your-subdomain>.cloudflare-gateway.com/dns-query -AllowFallbackToUdp $False -AutoUpgrade $False
 ```
 
   1. Confirm the addresses were added.
-
-**PowerShell**
 ```powershell
 Get-DnsClientDohServerAddress
 ```
@@ -126,15 +120,11 @@ Obtain the `A` and `AAAA` record values associated with your location's DoH endp
 
 1. Run the following command to obtain your `A` record values:
 
-**PowerShell**
-
 ```powershell
 nslookup -type=A <your-subdomain>.cloudflare-gateway.com
 ```
 
 1. Obtain your `AAAA` record values.
-
-**PowerShell**
 
 ```powershell
 nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
@@ -180,18 +170,18 @@ Example response
 
 ```json
 {
-  "result": {
-    "client_id": "88bf3b6d86161464f6509f7219099e57.access",
-    "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-    "created_at": "2022-06-09T01:59:17Z",
-    "expires_at": "2023-06-09T01:59:17Z",
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "name": "ACME Corporation service token",
-    "updated_at": "2022-06-09T01:59:17Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"client_id": "88bf3b6d86161464f6509f7219099e57.access",
+		"client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+		"created_at": "2022-06-09T01:59:17Z",
+		"expires_at": "2023-06-09T01:59:17Z",
+		"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"name": "ACME Corporation service token",
+		"updated_at": "2022-06-09T01:59:17Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -213,18 +203,18 @@ Example response
 
 ```json
 {
-  "result": {
-    "client_id": "88bf3b6d86161464f6509f7219099e57.access",
-    "created_at": "2022-06-09T01:59:17Z",
-    "expires_at": "2023-06-09T01:59:17Z",
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "name": "ACME Corporation service token",
-    "updated_at": "2022-06-09T01:59:17Z",
-    "duration": "8760h"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"client_id": "88bf3b6d86161464f6509f7219099e57.access",
+		"created_at": "2022-06-09T01:59:17Z",
+		"expires_at": "2023-06-09T01:59:17Z",
+		"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"name": "ACME Corporation service token",
+		"updated_at": "2022-06-09T01:59:17Z",
+		"duration": "8760h"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -249,26 +239,26 @@ Example response
 
 ```json
 {
-  "result": {
-    "id": "54d425de-7a78-4186-9975-d43c88ee7899",
-    "created_at": "2022-03-16T21:18:39.93598Z",
-    "updated_at": "2022-05-17T23:50:39.598345Z",
-    "uid": "54d425de-7a78-4186-9975-d43c88ee7899",
-    "name": "John Doe",
-    "email": "jdoe@acme.com",
-    "custom": {
-      "groups": [
-        {
-          "email": "finance@acme.com",
-          "id": "02fk6b3p3majl10",
-          "name": "Finance"
-        }
-      ]
-    }
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "54d425de-7a78-4186-9975-d43c88ee7899",
+		"created_at": "2022-03-16T21:18:39.93598Z",
+		"updated_at": "2022-05-17T23:50:39.598345Z",
+		"uid": "54d425de-7a78-4186-9975-d43c88ee7899",
+		"name": "John Doe",
+		"email": "jdoe@acme.com",
+		"custom": {
+			"groups": [
+				{
+					"email": "finance@acme.com",
+					"id": "02fk6b3p3majl10",
+					"name": "Finance"
+				}
+			]
+		}
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -292,7 +282,7 @@ Example response
 
 ```json
 {
-  "token": "y2khbGciOiJSUzI1NiIsImtpZCI6ImJlZjVkYjg4ZTEwMjk3ZDEwNzhkMmEyYjE0MjMxZTljYTQwMjQ2NjAwOTQzNmJhOTQwOGJkODY3ZmI4OWFiOGQifQ.eyJ0eXBlIjoiZG9oIiwiYXVkIjoiY2xvdWRmbGFyZS1nYXRld2F5LmNvbSIsImlhdCI6MTY1NDc1MTg3NSwiZXhwIjoxNjU0ODM4Mjc1LCJhY2NvdW50LWlkIjoiMTA4MDM0OGIyZGYzYmQwN2QxZmI1MjM3Y2Q1ZDU5M2EiLCJ1c2VyLWlkIjoiNTRkNDI1ZGUtN2E3OC00MTg2LTk5NzUtZDQzYzg4ZWU3ODk5In0.I5p4WsH2dPhQ8vwy84zF05PsoBHCsUSXAaMpNhEH36oFZ3tXcs9ksLz7OzpZ_x3HxUfO3n57LlpAF1VehaBt2i94XCkvSgtHpYcwd_qZydLp-BGtcyfU1LbdXQC3m6zxKcIWu5VySi8I-J25UYlpyJhYgZ4DQUZIpqbSSt6WcVRKvA7OBa7xjkTux4OcqWAViO_ZS-GLwl-fqhvolmiwk37seBD3YuV1zG06VeWXfrMkZ5MbhooHD1DZDBHOZpTtmN8MbeKeI4tlY1mb_O3-jE-um6F9Hrl4NQm89MKFzsum-_Rywi5m4PTSlDza7fjdJs7RzFgJd3VWgzG-jgyQKw"
+	"token": "y2khbGciOiJSUzI1NiIsImtpZCI6ImJlZjVkYjg4ZTEwMjk3ZDEwNzhkMmEyYjE0MjMxZTljYTQwMjQ2NjAwOTQzNmJhOTQwOGJkODY3ZmI4OWFiOGQifQ.eyJ0eXBlIjoiZG9oIiwiYXVkIjoiY2xvdWRmbGFyZS1nYXRld2F5LmNvbSIsImlhdCI6MTY1NDc1MTg3NSwiZXhwIjoxNjU0ODM4Mjc1LCJhY2NvdW50LWlkIjoiMTA4MDM0OGIyZGYzYmQwN2QxZmI1MjM3Y2Q1ZDU5M2EiLCJ1c2VyLWlkIjoiNTRkNDI1ZGUtN2E3OC00MTg2LTk5NzUtZDQzYzg4ZWU3ODk5In0.I5p4WsH2dPhQ8vwy84zF05PsoBHCsUSXAaMpNhEH36oFZ3tXcs9ksLz7OzpZ_x3HxUfO3n57LlpAF1VehaBt2i94XCkvSgtHpYcwd_qZydLp-BGtcyfU1LbdXQC3m6zxKcIWu5VySi8I-J25UYlpyJhYgZ4DQUZIpqbSSt6WcVRKvA7OBa7xjkTux4OcqWAViO_ZS-GLwl-fqhvolmiwk37seBD3YuV1zG06VeWXfrMkZ5MbhooHD1DZDBHOZpTtmN8MbeKeI4tlY1mb_O3-jE-um6F9Hrl4NQm89MKFzsum-_Rywi5m4PTSlDza7fjdJs7RzFgJd3VWgzG-jgyQKw"
 }
 ```
 
@@ -312,32 +302,39 @@ Example response
 
 ```json
 {
-  "Status": 0,
-  "TC": false,
-  "RD": true,
-  "RA": true,
-  "AD": false,
-  "CD": false,
-  "Question": [
-    {
-      "name": "example.com",
-      "type": 1
-    }
-  ],
-  "Answer": [
-    {
-      "name": "example.com",
-      "type": 1,
-      "TTL": 60,
-      "data": "162.159.36.12"
-    }
-  ]
+	"Status": 0,
+	"TC": false,
+	"RD": true,
+	"RA": true,
+	"AD": false,
+	"CD": false,
+	"Question": [
+		{
+			"name": "example.com",
+			"type": 1
+		}
+	],
+	"Answer": [
+		{
+			"name": "example.com",
+			"type": 1,
+			"TTL": 60,
+			"data": "162.159.36.12"
+		}
+	]
 }
 ```
 
 You can verify that the request was associated with the correct user email by checking your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). To filter these requests, build a DNS policy using any of the Gateway [identity-based selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/#page","headline":"DNS over HTTPS (DoH) · Cloudflare One docs","description":"DNS over HTTPS (DoH) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/","name":"Resolvers and proxies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/dns/","name":"DNS"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/","name":"DNS over HTTPS (DoH)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/#page","headline":"DNS over HTTPS (DoH) · Cloudflare One docs","description":"DNS over HTTPS (DoH) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

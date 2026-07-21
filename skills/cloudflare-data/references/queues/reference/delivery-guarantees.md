@@ -1,16 +1,18 @@
 ---
-title: Delivery guarantees
 description: Cloudflare Queues provides at-least-once message delivery by default.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Delivery guarantees
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Delivery guarantees
 
-# Delivery guarantees
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/reference/delivery-guarantees/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Delivery guarantees define how strongly a messaging system enforces the delivery of messages it processes.
 
@@ -22,7 +24,14 @@ As you make stronger guarantees about message delivery, the system needs to perf
 
 In cases where processing the same message more than once would introduce unintended behaviour, generating a unique ID when writing the message to the queue and using that as the primary key on database inserts and/or as an idempotency key to de-duplicate the message after processing. For example, using this idempotency key as the ID in an upstream email API or payment API will allow those services to reject the duplicate on your behalf, without you having to carry additional state in your application.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/delivery-guarantees/#page","headline":"Delivery guarantees · Cloudflare Queues docs","description":"Cloudflare Queues provides at-least-once message delivery by default.","url":"https://developers.cloudflare.com/queues/reference/delivery-guarantees/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/reference/delivery-guarantees/","name":"Delivery guarantees"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/delivery-guarantees/#page","headline":"Delivery guarantees · Cloudflare Queues docs","description":"Cloudflare Queues provides at-least-once message delivery by default.","url":"https://developers.cloudflare.com/queues/reference/delivery-guarantees/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

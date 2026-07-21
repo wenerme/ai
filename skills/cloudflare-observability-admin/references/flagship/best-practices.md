@@ -1,16 +1,18 @@
 ---
-title: Best practices
 description: Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Best practices
 
-# Best practices
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use these patterns to keep Flagship evaluations predictable, fast, and easy to maintain.
 
@@ -24,18 +26,15 @@ Use the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/) when 
 
 Avoid evaluating the same flag repeatedly in a loop. Evaluate the flag once, store the result in a local variable, and reuse it for the rest of the request.
 
-**TypeScript**
-
 ```ts
 const enabled = await env.FLAGS.getBooleanValue("show-related-items", false, {
-  userId,
+	userId,
 });
 
-
 for (const item of items) {
-  if (enabled) {
-    item.related = await loadRelatedItems(item.id);
-  }
+	if (enabled) {
+		item.related = await loadRelatedItems(item.id);
+	}
 }
 ```
 
@@ -43,15 +42,12 @@ for (const item of items) {
 
 Targeting and percentage rollouts depend on the evaluation context you pass from your application. Use stable identifiers and the same attribute names everywhere.
 
-**TypeScript**
-
 ```ts
 const context = {
-  userId: session.user.id,
-  plan: session.user.plan,
-  country: request.cf?.country ?? "unknown",
+	userId: session.user.id,
+	plan: session.user.plan,
+	country: request.cf?.country ?? "unknown",
 };
-
 
 const enabled = await env.FLAGS.getBooleanValue("new-checkout", false, context);
 ```
@@ -68,13 +64,10 @@ For release flags, this is usually the existing experience. For configuration fl
 
 Use `*Details` methods when you need to understand why a value was returned. Details include the resolved value, variant, reason, and error metadata.
 
-**TypeScript**
-
 ```ts
 const details = await env.FLAGS.getBooleanDetails("new-checkout", false, {
-  userId: "user-42",
+	userId: "user-42",
 });
-
 
 console.log(details.value);
 console.log(details.variant);
@@ -96,7 +89,14 @@ Start with a small percentage rollout, monitor application metrics, then increas
 
 Flags that are disabled or fully rolled out still add maintenance cost. Before deleting a flag, disable it first, monitor for unexpected behavior, remove the evaluation code, deploy the code change, then delete the flag from Flagship.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/best-practices/#page","headline":"Best practices · Cloudflare Flagship docs","description":"Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.","url":"https://developers.cloudflare.com/flagship/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/best-practices/","name":"Best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/best-practices/#page","headline":"Best practices · Cloudflare Flagship docs","description":"Best practices for using Flagship in applications, including evaluation paths, rollout workflows, and safe flag cleanup.","url":"https://developers.cloudflare.com/flagship/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

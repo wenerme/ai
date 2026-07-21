@@ -1,16 +1,18 @@
 ---
-title: Set up Workers AI with AI Gateway
 description: This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up Workers AI with AI Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Workers AI with AI Gateway
 
-# Set up Workers AI with AI Gateway
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through setting up and deploying a Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), an AI Gateway binding, and a large language model (LLM), to deploy your first AI-powered application on the Cloudflare global network.
 
@@ -70,20 +72,13 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7134)
-* [  wrangler.toml ](#tab-panel-7135)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI",
-  },
+	"ai": {
+		"binding": "AI",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -100,38 +95,34 @@ You are now ready to run an inference task in your Worker. In this case, you wil
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
-**src/index.ts**
-
 ```typescript
 export interface Env {
-  // If you set another name in the [Wrangler configuration file](/workers/wrangler/configuration/) as the value for 'binding',
-  // replace "AI" with the variable name you defined.
-  AI: Ai;
+	// If you set another name in the [Wrangler configuration file](/workers/wrangler/configuration/) as the value for 'binding',
+	// replace "AI" with the variable name you defined.
+	AI: Ai;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    // Specify the gateway label and other options here
-    const response = await env.AI.run(
-      "@cf/meta/llama-3.1-8b-instruct-fast",
-      {
-        prompt: "What is the origin of the phrase Hello, World",
-      },
-      {
-        gateway: {
-          id: "default", // Uses the default gateway, or replace with your gateway ID
-          skipCache: true, // Optional: Skip cache if needed
-        },
-      },
-    );
+	async fetch(request, env): Promise<Response> {
+		// Specify the gateway label and other options here
+		const response = await env.AI.run(
+			"@cf/meta/llama-3.1-8b-instruct-fast",
+			{
+				prompt: "What is the origin of the phrase Hello, World",
+			},
+			{
+				gateway: {
+					id: "default", // Uses the default gateway, or replace with your gateway ID
+					skipCache: true, // Optional: Skip cache if needed
+				},
+			},
+		);
 
-
-    // Return the AI response as a JSON object
-    return new Response(JSON.stringify(response), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		// Return the AI response as a JSON object
+		return new Response(JSON.stringify(response), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -187,7 +178,14 @@ By completing this tutorial, you have created a Worker, connected it to Workers 
 
 * [Workers bindings](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — Call third-party models, access gateway methods, and integrate with AI SDKs.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/#page","headline":"Set up Workers AI with AI Gateway · Cloudflare AI Gateway docs","description":"This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.","url":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/aig-workers-ai-binding/","name":"Set up Workers AI with AI Gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/#page","headline":"Set up Workers AI with AI Gateway · Cloudflare AI Gateway docs","description":"This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.","url":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

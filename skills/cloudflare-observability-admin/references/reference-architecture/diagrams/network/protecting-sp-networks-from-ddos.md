@@ -1,16 +1,18 @@
 ---
-title: Protect ISP and telecommunications networks from DDoS attacks
 description: Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Protect ISP and telecommunications networks from DDoS attacks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protect ISP and telecommunications networks from DDoS attacks
 
-# Protect ISP and telecommunications networks from DDoS attacks
+Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -52,7 +54,14 @@ The above diagram shows how Cloudflare monitors service provider traffic and, up
 * [Cloudflare Network Interconnect](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
 * [Flow-based monitoring for Magic Transit ↗](https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/#page","headline":"Protect ISP and telecommunications networks from DDoS attacks · Cloudflare Reference Architecture docs","description":"Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","name":"Protect ISP and telecommunications networks from DDoS attacks"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/#page","headline":"Protect ISP and telecommunications networks from DDoS attacks · Cloudflare Reference Architecture docs","description":"Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

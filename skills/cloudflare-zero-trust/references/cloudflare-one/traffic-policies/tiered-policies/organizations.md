@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Organizations
 description: Cloudflare Organizations in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare Organizations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Organizations
 
-# Cloudflare Organizations
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -100,7 +102,7 @@ Tiered policies with Organizations have the following limitations:
 * Source accounts cannot share policies that use [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) selectors, the [Detected protocol](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol) selector, or the [Quarantine](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#quarantine) action. Source and recipient accounts can still create and apply policies with these selectors and actions separately from the Organization share.
 * Policies can only be shared within an Organization. Sharing to sub-organizations is not supported.
 
-Warning
+Caution
 
 If a shared policy contains identity-based selectors, ensure that both the source account and recipient accounts have matching identity provider (IdP) configurations. If there is a mismatch in IdPs between the source account and a recipient account, the shared policy will never apply to traffic in that recipient account.
 
@@ -188,7 +190,14 @@ A sharing icon will appear next to the setting. When sharing is complete, the se
 
 To modify share recipients or unshare the setting, select the three-dot menu and choose **Edit shared configuration recipients** or **Unshare**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/#page","headline":"Cloudflare Organizations · Cloudflare One docs","description":"Cloudflare Organizations in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/tiered-policies/","name":"Tiered policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/tiered-policies/organizations/","name":"Cloudflare Organizations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/#page","headline":"Cloudflare Organizations · Cloudflare One docs","description":"Cloudflare Organizations in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

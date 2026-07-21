@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Tenant
 description: Provision and manage Cloudflare accounts and services for customers using the Tenant API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Tenant
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Tenant
 
-# Cloudflare Tenant
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Tenant API is a provisioning mechanism to help Channel and Alliance partners set up and manage Cloudflare accounts and services for their customers.
 
@@ -25,7 +27,14 @@ As you dive into the Tenant API, take advantage of the following resources:
 * [How to](https://developers.cloudflare.com/tenant/how-to/) offers step-by-step instructions for specific tasks.
 * [Reference topics](https://developers.cloudflare.com/tenant/reference/) contains detailed information about the Tenant API, including a list of available zone and account-level subscriptions.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tenant/#page","headline":"Overview · Cloudflare Tenant docs","description":"Provision and manage Cloudflare accounts and services for customers using the Tenant API.","url":"https://developers.cloudflare.com/tenant/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tenant/#page","headline":"Overview · Cloudflare Tenant docs","description":"Provision and manage Cloudflare accounts and services for customers using the Tenant API.","url":"https://developers.cloudflare.com/tenant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

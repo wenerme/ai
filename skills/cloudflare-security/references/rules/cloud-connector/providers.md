@@ -1,16 +1,18 @@
 ---
-title: Supported cloud providers in Cloud Connector
 description: Cloud providers and storage services supported by Cloud Connector.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported cloud providers in Cloud Connector
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported cloud providers in Cloud Connector
 
-# Supported cloud providers in Cloud Connector
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/providers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloud Connector currently supports the following cloud providers and services:
 
@@ -101,7 +103,14 @@ If the blob container is not configured for public access, you must change the c
 
 Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/providers/","name":"Supported cloud providers in Cloud Connector"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
 ```

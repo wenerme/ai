@@ -1,16 +1,18 @@
 ---
-title: Best practices
 description: Best practices for configuring and testing waiting rooms.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Best practices
 
-# Best practices
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/reference/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow these best practices to avoid potential issues and improve the visitor experience.
 
@@ -51,7 +53,14 @@ SEO crawlers may end up in a queue during active queueing. When this happens, yo
 
 By enabling this service, you understand that these verified crawlers are completely bypassing your waiting rooms. No waiting room settings or features will apply to this traffic.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/best-practices/#page","headline":"Best practices · Cloudflare Waiting Room docs","description":"Best practices for configuring and testing waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/reference/best-practices/","name":"Best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/best-practices/#page","headline":"Best practices · Cloudflare Waiting Room docs","description":"Best practices for configuring and testing waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

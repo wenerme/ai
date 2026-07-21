@@ -1,16 +1,18 @@
 ---
-title: Order of enforcement
 description: Understand Gateway policy enforcement order.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Order of enforcement
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Order of enforcement
 
-# Order of enforcement
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Gateway follows a specific order of enforcement as traffic travels through the Cloudflare global network to the Internet:
 
@@ -298,13 +300,11 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_1" {
   precedence = 1000
 }
 
-
 resource "cloudflare_zero_trust_gateway_policy" "policy_2" {
   account_id = var.cloudflare_account_id
   # other attributes...
   precedence = 2000
 }
-
 
 resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
   account_id = var.cloudflare_account_id
@@ -315,7 +315,14 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
 
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and the Cloudflare dashboard or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare Learning Paths","description":"Understand Gateway policy enforcement order.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/","name":"Understand and streamline policy creation"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","name":"Order of enforcement"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare Learning Paths","description":"Understand Gateway policy enforcement order.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,20 +1,22 @@
 ---
-title: Configuration settings
 description: Available configuration settings for waiting rooms.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configuration settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration settings
 
-# Configuration settings
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can customize a variety of options for your waiting rooms.
 
-[ Dashboard settings ](#dashboard-settings) [ Additional details ](#additional-details)
+[ Dashboard settings ](#dashboard-settings)[ Additional details ](#additional-details)
 
 ## Dashboard settings
 
@@ -55,7 +57,14 @@ However, they forgot to add a note to the order or request a receipt. As long as
 
 Second, session duration lets your waiting room create a dynamic outflow from your application (in addition to dynamic inflow). A user's session cookie expires after a period of inactivity, meaning that new spots can open up as soon as space becomes available and estimated wait times are lower and more accurate.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#page","headline":"Configuration settings · Cloudflare Waiting Room docs","description":"Available configuration settings for waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/configuration-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/reference/configuration-settings/","name":"Configuration settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#page","headline":"Configuration settings · Cloudflare Waiting Room docs","description":"Available configuration settings for waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/reference/configuration-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

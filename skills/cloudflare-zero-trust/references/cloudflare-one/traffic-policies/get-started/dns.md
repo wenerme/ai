@@ -1,16 +1,18 @@
 ---
-title: DNS filtering
 description: DNS filtering in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: DNS filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS filtering
 
-# DNS filtering
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Secure Web Gateway allows you to inspect DNS traffic — the queries your devices make to translate domain names like `example.com` into IP addresses — and control which websites users can visit. Because every connection starts with a DNS lookup, DNS filtering blocks threats at the earliest stage of a connection, before the device ever reaches the destination. Use DNS policies to block malware domains, phishing sites, or entire content categories across your organization.
 
@@ -52,14 +54,11 @@ To confirm that your device's DNS queries are flowing through Gateway:
 2. Under **Log traffic activity**, enable activity logging for all DNS logs.
 3. On your device, open a browser and go to any website.
 4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **DNS**.
-5. Make sure DNS queries from your device appear.
+5. Make sure DNSqueries from your device appear.
 
 ## 3\. Create your first DNS policy
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
-
-* [ Dashboard ](#tab-panel-8273)
-* [ API ](#tab-panel-8274)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -79,30 +78,28 @@ A DNS policy has two parts: a **traffic condition** that defines which queries t
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, the following request creates a policy that blocks all default [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). The numeric IDs in the `traffic` field (such as `68`, `178`, `80`) correspond to Cloudflare's predefined security threat categories — refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) for the full mapping. The `precedence` field controls evaluation order when multiple policies match (`0` means this policy is evaluated first).
-
-**Create a Zero Trust Gateway rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Block security threats",
-    "description": "Block all default Cloudflare DNS security categories",
-    "precedence": 0,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "dns"
-    ],
-    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-    "identity": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Block security threats",
+		"description": "Block all default Cloudflare DNS security categories",
+		"precedence": 0,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"dns"
+		],
+		"traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+		"identity": ""
+	}'
 ```
 ```sh
 {
-   "success": true,
-   "errors": [],
-   "messages": []
+	 "success": true,
+	 "errors": [],
+	 "messages": []
 }
 ```
 The API will respond with a summary of the policy and the result of your request.
@@ -113,7 +110,14 @@ For more information, refer to [DNS policies](https://developers.cloudflare.com/
 
 Once your first policy is active, refer to [common DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies) for other policies you may want to add. Common additions include blocking specific content categories (such as social media or streaming), enabling SafeSearch on search engines, and restricting DNS queries so devices can only use resolvers that you have approved.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/#page","headline":"Set up DNS filtering · Cloudflare One docs","description":"DNS filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/dns/","name":"DNS filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/#page","headline":"Set up DNS filtering · Cloudflare One docs","description":"DNS filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

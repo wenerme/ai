@@ -1,56 +1,54 @@
 ---
-title: glm-5.2
 description: Z.ai's flagship agentic coding model
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: glm-5.2
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
+[Skip to content ](#main-content)
+
 > Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
 
 #  glm-5.2
 
-Text Generation • Zhipu AI
+ Text Generation • Zhipu AI
 
-`@cf/zai-org/glm-5.2`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/zai-org/glm-5.2 `
+
+* Cloudflare-hosted
+* Function calling
+* Reasoning
 
 Z.ai's flagship agentic coding model
 
 | Model Info                                                                           |                                                                                      |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 262,144 tokens                                                                       |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 262,144 tokens                                                                       |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
 | Reasoning                                                                            | Yes                                                                                  |
 | Unit Pricing                                                                         | $1.40 per M input tokens, $4.40 per M output tokens, $0.26 per M cached input tokens |
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
 [ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/zai-org/glm-5.2)
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5325)
-* [  TypeScript ](#tab-panel-5326)
-* [  Python ](#tab-panel-5327)
-* [  curl ](#tab-panel-5328)
-
-**TypeScript**
-
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -60,12 +58,10 @@ export default {
       },
     ];
 
-
     const stream = await env.AI.run("@cf/zai-org/glm-5.2", {
       messages,
       stream: true,
     });
-
 
     return new Response(stream, {
       headers: { "content-type": "text/event-stream" },
@@ -75,14 +71,13 @@ export default {
 ```
 
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -93,20 +88,18 @@ export default {
     ];
     const response = await env.AI.run("@cf/zai-org/glm-5.2", { messages });
 
-
     return Response.json(response);
   },
 } satisfies ExportedHandler<Env>;
 ```
 
 ```py
+
 import os
 import requests
 
-
 ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
 
 prompt = "Tell me all about PEP-8"
 response = requests.post(
@@ -124,6 +117,7 @@ print(result)
 ```
 
 ```sh
+
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/zai-org/glm-5.2 \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -132,14 +126,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
-
-* [ Input ](#tab-panel-5329)
-* [ Output ](#tab-panel-5330)
+Synchronous  — Send a request and receive a complete response
 
 Input format
 
@@ -311,10 +302,7 @@ service\_tier
 
 `string | null`
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
-
-* [ Input ](#tab-panel-5331)
-* [ Output ](#tab-panel-5332)
+Streaming  — Send a request with \`stream: true\` and receive server-sent events
 
 Input format
 
@@ -466,10 +454,7 @@ format
 
 `binary`
 
-Batch — Send multiple requests in a single API call
-
-* [ Input ](#tab-panel-5333)
-* [ Output ](#tab-panel-5334)
+Batch  — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -509,19 +494,26 @@ service\_tier
 
 ## API Schemas (Raw)
 
- Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-input.json "Download")
+Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-input.json "Download")
 
- Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-output.json "Download")
+Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/sync-output.json "Download")
 
- Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-input.json "Download")
+Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-input.json "Download")
 
- Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-output.json "Download")
+Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/streaming-output.json "Download")
 
- Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Download")
+Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Download")
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Download")
+Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/#page","headline":"glm-5.2 (Zhipu AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Z.ai's flagship agentic coding model","url":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/#page","headline":"glm-5.2 (Zhipu AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Z.ai's flagship agentic coding model","url":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

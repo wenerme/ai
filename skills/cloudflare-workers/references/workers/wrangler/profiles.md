@@ -1,16 +1,18 @@
 ---
-title: Authentication profiles
 description: Maintain separate logins and switch accounts per directory.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Authentication profiles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authentication profiles
 
-# Authentication profiles
+Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/profiles/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler authenticates as one user at a time. A profile is a named OAuth login that you scope to a chosen set of accounts can bind to a directory.
 
@@ -104,11 +106,6 @@ wrangler auth create production
 wrangler auth activate production ~/projects/production
 ```
 2. Set the matching `account_id` in each project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
-
-  * [  wrangler.jsonc ](#tab-panel-13965)
-  * [  wrangler.toml ](#tab-panel-13966)
-
-**JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -116,8 +113,6 @@ wrangler auth activate production ~/projects/production
   "account_id": "<PRODUCTION_ACCOUNT_ID>"
 }
 ```
-
-**TOML**
 ```toml
 name = "my-worker"
 account_id = "<PRODUCTION_ACCOUNT_ID>"
@@ -164,7 +159,14 @@ Two rules apply when environment variables are present:
 * When `CLOUDFLARE_API_TOKEN` is set, Wrangler uses it instead of any profile. You cannot create, activate, deactivate, or delete profiles while it is set.
 * `CLOUDFLARE_ACCOUNT_ID` and an `account_id` in your Wrangler configuration file are always respected, including within an active profile.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/profiles/","name":"Authentication profiles"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

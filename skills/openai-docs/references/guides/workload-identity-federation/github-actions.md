@@ -163,7 +163,7 @@ Authenticate from a GitHub Actions OIDC token
 
 ```typescript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
@@ -218,7 +218,11 @@ const client = new OpenAI({
   workloadIdentity: {
     identityProviderId,
     serviceAccountId,
-    provider: githubActionsOIDCTokenProvider(requestURL, requestToken, audience),
+    provider: githubActionsOIDCTokenProvider(
+      requestURL,
+      requestToken,
+      audience
+    ),
   },
 });
 

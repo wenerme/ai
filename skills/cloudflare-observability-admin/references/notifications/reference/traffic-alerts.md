@@ -1,16 +1,18 @@
 ---
-title: HTTP Traffic Alerts
 description: Monitor origin and edge HTTP error rates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: HTTP Traffic Alerts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP Traffic Alerts
 
-# HTTP Traffic Alerts
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/reference/traffic-alerts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Error Rate
 
@@ -58,7 +60,14 @@ Notifications are configured per zone. At the moment, it is not possible to conf
 
 The conditions in which the alerts are triggered cannot be configured. However, it is possible to choose whether to include traffic mitigated by DoS and WAF.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/#page","headline":"HTTP Traffic Alerts · Cloudflare Notifications docs","description":"Monitor origin and edge HTTP error rates.","url":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/notifications/reference/traffic-alerts/","name":"HTTP Traffic Alerts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/#page","headline":"HTTP Traffic Alerts · Cloudflare Notifications docs","description":"Monitor origin and edge HTTP error rates.","url":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

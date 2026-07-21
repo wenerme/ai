@@ -1,16 +1,18 @@
 ---
-title: HTTP/3 inspection
 description: How HTTP/3 inspection works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: HTTP/3 inspection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP/3 inspection
 
-# HTTP/3 inspection
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 HTTP/3 uses the QUIC protocol over UDP instead of TCP. Because Gateway's default proxy only handles TCP traffic, HTTP/3 inspection requires turning on the UDP proxy. Without it, HTTP/3 traffic bypasses HTTP inspection. [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) still apply to the underlying UDP traffic.
 
@@ -33,7 +35,7 @@ Gateway can inspect HTTP/3 traffic from Mozilla Firefox and Microsoft Edge by es
 
 If both the UDP proxy and TLS decryption are turned on, Google Chrome will automatically cancel HTTP/3 connections and retry them over HTTP/2, which Gateway can inspect. If either the UDP proxy or TLS decryption is turned off, HTTP/3 traffic from Chrome bypasses inspection entirely.
 
-Warning
+Caution
 
 If you do not turn on the UDP proxy, HTTP/3 traffic from browsers other than Chrome will bypass HTTP policy enforcement. Network policies still apply.
 
@@ -68,7 +70,14 @@ Microsoft Edge
 2. Set **Experimental QUIC protocol** to _Disabled_.
 3. Relaunch Edge.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/#page","headline":"HTTP/3 inspection · Cloudflare One docs","description":"How HTTP/3 inspection works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","UDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/http3/","name":"HTTP/3 inspection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/#page","headline":"HTTP/3 inspection · Cloudflare One docs","description":"How HTTP/3 inspection works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","UDP"]}
 ```

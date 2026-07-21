@@ -1,20 +1,22 @@
 ---
-title: Community resources
 description: Community-built libraries and integrations for Cloudflare Turnstile.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Community resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Community resources
 
-# Community resources
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/community-resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Community resources for our customers to help them integrate Turnstile.
 
-Warning
+Caution
 
 These resources are made by the **community** and not maintained directly by Cloudflare.
 
@@ -87,7 +89,14 @@ Other resources related to integrating Turnstile:
 * [Cloudflare Community ↗](https://community.cloudflare.com/c/website-application-performance/turnstile/83)
 * [Cloudflare Developers Discord server ↗](https://discord.com/channels/595317990191398933/1025131875397812224)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/community-resources/#page","headline":"Community resources · Cloudflare Turnstile docs","description":"Community-built libraries and integrations for Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/community-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/community-resources/","name":"Community resources"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/community-resources/#page","headline":"Community resources · Cloudflare Turnstile docs","description":"Community-built libraries and integrations for Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/community-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

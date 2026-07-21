@@ -1,16 +1,18 @@
 ---
-title: Configure Browser Isolation
 description: Set up Remote Browser Isolation.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Configure Browser Isolation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Browser Isolation
 
-# Configure Browser Isolation
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Isolation seamlessly executes active webpage content in a secure isolated browser to protect users from zero-day attacks, malware, and phishing.
 
@@ -28,9 +30,6 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-* [ Dashboard ](#tab-panel-10050)
-* [ API ](#tab-panel-10051)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
@@ -46,38 +45,36 @@ You can control potential risk and shape user behavior without applying heavy-ha
   * _Disable file uploads_
 6. Select **Create policy**.
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "isolate",
-    "description": "Block copy, paste, and upload/download for shadow IT",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Block shadow IT interaction",
-    "precedence": 0,
-    "traffic": "http.request.host in <SHADOW_IT_LIST_UUID>",
-    "rule_settings": {
-        "block_page_enabled": false,
-        "block_reason": "",
-        "override_ips": null,
-        "override_host": "",
-        "l4override": null,
-        "biso_admin_controls": {
-            "dp": false,
-            "dcp": true,
-            "dd": true,
-            "du": true,
-            "dk": false,
-            "dcr": false
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "isolate",
+		"description": "Block copy, paste, and upload/download for shadow IT",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Block shadow IT interaction",
+		"precedence": 0,
+		"traffic": "http.request.host in <SHADOW_IT_LIST_UUID>",
+		"rule_settings": {
+				"block_page_enabled": false,
+				"block_reason": "",
+				"override_ips": null,
+				"override_host": "",
+				"l4override": null,
+				"biso_admin_controls": {
+						"dp": false,
+						"dcp": true,
+						"dd": true,
+						"du": true,
+						"dk": false,
+						"dcr": false
+				}
+		}
+	}'
 ```
 
 ### Isolate all "gray-listed" traffic
@@ -91,9 +88,6 @@ You can accomplish this by creating the following policies:
 * A policy to isolate all other traffic in this middle
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
-
-* [ Dashboard ](#tab-panel-10048)
-* [ API ](#tab-panel-10049)
 
 * Allow known applications and websites:
 
@@ -111,82 +105,76 @@ In this context, if some traffic is unknown to your organization, Cloudflare wil
 | -------- | ------------- | ----- | ------- |
 | Host     | matches regex | .\*   | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "isolate",
-    "description": "Allow known applications and websites",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Allow known apps and sites",
-    "precedence": 0,
-    "traffic": "http.request.domains in <TRUSTED_DOMAINS_LIST_UUID>",
-    "rule_settings": {
-        "block_page_enabled": false,
-        "block_reason": "",
-        "override_ips": null,
-        "override_host": "",
-        "l4override": null
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "isolate",
+		"description": "Allow known applications and websites",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Allow known apps and sites",
+		"precedence": 0,
+		"traffic": "http.request.domains in <TRUSTED_DOMAINS_LIST_UUID>",
+		"rule_settings": {
+				"block_page_enabled": false,
+				"block_reason": "",
+				"override_ips": null,
+				"override_host": "",
+				"l4override": null
+		}
+	}'
 ```
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "isolate",
-    "description": "Block all security risks",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Block security risks",
-    "precedence": 0,
-    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-    "rule_settings": {
-        "block_page_enabled": false,
-        "block_reason": "",
-        "override_ips": null,
-        "override_host": "",
-        "l4override": null
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "isolate",
+		"description": "Block all security risks",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Block security risks",
+		"precedence": 0,
+		"traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+		"rule_settings": {
+				"block_page_enabled": false,
+				"block_reason": "",
+				"override_ips": null,
+				"override_host": "",
+				"l4override": null
+		}
+	}'
 ```
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "isolate",
-    "description": "Isolate all other traffic",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Isolate traffic",
-    "precedence": 0,
-    "traffic": "http.request.host matches \".*\"",
-    "rule_settings": {
-        "block_page_enabled": false,
-        "block_reason": "",
-        "override_ips": null,
-        "override_host": "",
-        "l4override": null
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "isolate",
+		"description": "Isolate all other traffic",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Isolate traffic",
+		"precedence": 0,
+		"traffic": "http.request.host matches \".*\"",
+		"rule_settings": {
+				"block_page_enabled": false,
+				"block_reason": "",
+				"override_ips": null,
+				"override_host": "",
+				"l4override": null
+		}
+	}'
 ```
 
 ### Vendor-chain using link-based isolation
@@ -214,7 +202,14 @@ flowchart TB
     biso--"User's browser goes to </br>customer.cloudflareaccess.com/browser/risky.example.com"-->inline
     end
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/#page","headline":"Configure Browser Isolation · Cloudflare Learning Paths","description":"Set up Remote Browser Isolation.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/","name":"Configure Browser Isolation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/#page","headline":"Configure Browser Isolation · Cloudflare Learning Paths","description":"Set up Remote Browser Isolation.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

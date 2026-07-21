@@ -166,14 +166,16 @@ Authenticate from a SPIFFE JWT-SVID
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth";
+import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/spiffe/openai.jwt";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
 
 if (!identityProviderId || !serviceAccountId) {
-  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID"
+  );
 }
 
 function spiffeJwtSvidProvider(path: string): SubjectTokenProvider {

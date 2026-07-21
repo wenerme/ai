@@ -1,16 +1,18 @@
 ---
-title: Deprecations
 description: The differences between Wrangler versions, specifically deprecations and breaking changes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deprecations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deprecations
 
-# Deprecations
+Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/deprecations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the difference between Wrangler versions, specifically deprecations and breaking changes.
 
@@ -206,8 +208,6 @@ project
 └── some-dependency.js
 ```
 where the content of `index.js` is:
-
-**JavaScript**
 ```js
 import SomeDependency from "some-dependency.js";
 addEventListener("fetch", (event) => {
@@ -216,8 +216,8 @@ addEventListener("fetch", (event) => {
 ```
 Wrangler v1 would resolve `import SomeDependency from "some-dependency.js";` to the file `some-dependency.js`. This will also work in Wrangler v2, but will also log a deprecation warning. In the future, this will break with an error. Instead, you should rewrite the import to specify that it is a relative path, like so:
 ```diff
-import SomeDependency from "some-dependency.js";
-import SomeDependency from "./some-dependency.js";
+- import SomeDependency from "some-dependency.js";
++ import SomeDependency from "./some-dependency.js";
 ```
 
 ### Wrangler v1 and v2 comparison tables
@@ -260,7 +260,14 @@ import SomeDependency from "./some-dependency.js";
 | TypeScript | ❌  | ✅  | You can give wrangler a TypeScript file, and it will automatically transpile it to JavaScript using [esbuild ↗](https://github.com/evanw/esbuild) under-the-hood.                                     |
 | Local mode | ❌  | ✅  | wrangler dev --local will run your Worker on your local machine instead of on our network. This is powered by [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/). |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/deprecations/#page","headline":"Deprecations · Cloudflare Workers docs","description":"The differences between Wrangler versions, specifically deprecations and breaking changes.","url":"https://developers.cloudflare.com/workers/wrangler/deprecations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/deprecations/","name":"Deprecations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/deprecations/#page","headline":"Deprecations · Cloudflare Workers docs","description":"The differences between Wrangler versions, specifically deprecations and breaking changes.","url":"https://developers.cloudflare.com/workers/wrangler/deprecations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

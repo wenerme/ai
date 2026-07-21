@@ -1,16 +1,18 @@
 ---
-title: WARP
 description: Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).
-image: https://developers.cloudflare.com/zt-preview.png
+title: WARP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WARP
 
-# WARP
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,7 +22,7 @@ When a device is behind Cloudflare WAN, avoid enabling the Cloudflare One Client
 
 If you do want to use the Cloudflare One Client on a device behind Cloudflare WAN and connect to its virtual IP (within the `100.96.0.0/12` range), you will need to adjust your Cloudflare One Client profiles. Specifically, exclude the `100.96.0.0/12` subnet from the on-premises Cloudflare One Client profiles, and include it in the off-premises profile.
 
-Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast [GRE, IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
+Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast[GRE, IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
 
 ## Prerequisites
 
@@ -64,7 +66,7 @@ You can now access private IP addresses specified in the Split Tunnel configurat
 
 You must log out and log back in with at least one device to ensure the configuration updates on your device.
 
-Run `traceroute`
+Run <code>traceroute</code>
 
 If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
@@ -107,7 +109,14 @@ This DNS lookup should return a valid IP address associated with the server or s
 
 Next, test with a browser that you can connect to a service on the WAN by opening a webpage that is only accessible on the WAN. Use the same server from the DNS lookup or another server in the WAN. Connecting using an IP address instead of a domain name should work.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/#page","headline":"Use the Cloudflare One Client as an on-ramp · Cloudflare WAN docs","description":"Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/cloudflare-one-client/","name":"WARP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/#page","headline":"Use the Cloudflare One Client as an on-ramp · Cloudflare WAN docs","description":"Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Challenge solve issues
 description: Fix challenge loops, unsupported browser errors, and other solve failures.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Challenge solve issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Challenge solve issues
 
-# Challenge solve issues
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Challenge loops
 
@@ -66,7 +68,14 @@ Follow the steps below to ensure that your environment is properly configured.
 
 If none of the above resolves your issue, contact the website administrator with the [error code](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/) and Ray ID or submit a [feedback report](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/) through the Turnstile widget by selecting **Submit Feedback**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/troubleshooting/challenge-solve-issues/","name":"Challenge solve issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

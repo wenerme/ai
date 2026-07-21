@@ -1,16 +1,18 @@
 ---
-title: Billing permissions
 description: Who can view and manage billing on your Cloudflare account.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Billing permissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Billing permissions
 
-# Billing permissions
+Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/understand/billing-permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Access to billing features in the Cloudflare dashboard depends on the role assigned to each account member. This page maps each billing action to the required role.
 
@@ -61,7 +63,14 @@ For full API documentation, refer to the [Cloudflare API reference ↗](https://
 * [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) — Create tokens with specific permissions
 * [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/billing-permissions/#page","headline":"Billing permissions · Cloudflare Billing docs","description":"Who can view and manage billing on your Cloudflare account.","url":"https://developers.cloudflare.com/billing/understand/billing-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/billing-permissions/","name":"Billing permissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/billing-permissions/#page","headline":"Billing permissions · Cloudflare Billing docs","description":"Who can view and manage billing on your Cloudflare account.","url":"https://developers.cloudflare.com/billing/understand/billing-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

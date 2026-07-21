@@ -1,16 +1,18 @@
 ---
-title: Update custom rules for customers or partners
 description: Manage custom rules for customer and partner traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Update custom rules for customers or partners
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Update custom rules for customers or partners
 
-# Update custom rules for customers or partners
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You may want to adjust your [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to increase access by customers or partners.
 
@@ -19,7 +21,7 @@ Potential examples include:
 * Removing rate limiting for an API
 * Sharing brand assets and marketing materials
 
-Warning
+Caution
 
 The example custom rules in this page can bypass Cloudflare's security features and are generally not recommended. Use with caution.
 
@@ -117,7 +119,14 @@ If you are using the expression editor:
 
   * _All remaining custom rules_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/#page","headline":"Update custom rules for customers or partners · Cloudflare Web Application Firewall (WAF) docs","description":"Manage custom rules for customer and partner traffic.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/update-rules-customers-partners/","name":"Update custom rules for customers or partners"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/#page","headline":"Update custom rules for customers or partners · Cloudflare Web Application Firewall (WAF) docs","description":"Manage custom rules for customer and partner traffic.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

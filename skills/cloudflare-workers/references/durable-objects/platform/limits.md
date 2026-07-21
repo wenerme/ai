@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects are a special kind of Worker, so [Workers Limits](https://developers.cloudflare.com/workers/platform/limits/) apply according to your Workers plan. In addition, Durable Objects have specific limits as listed in this page.
 
@@ -98,22 +100,15 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9094)
-* [  wrangler.toml ](#tab-panel-9095)
-
-**JSONC**
-
 ```jsonc
 {
-  // ...rest of your configuration...
-  "limits": {
-    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
-  },
-  // ...rest of your configuration...
+	// ...rest of your configuration...
+	"limits": {
+		"cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
+	},
+	// ...rest of your configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 [limits]
@@ -132,21 +127,19 @@ Read operations (such as `SELECT` queries, `get()`, and `list()` calls) will con
 
 To handle this error in your Durable Object, catch the exception thrown by the storage API:
 
-**TypeScript**
-
 ```ts
 try {
-  this.ctx.storage.sql.exec(
-    "INSERT INTO my_table (key, value) VALUES (?, ?)",
-    key,
-    value,
-  );
+	this.ctx.storage.sql.exec(
+		"INSERT INTO my_table (key, value) VALUES (?, ?)",
+		key,
+		value,
+	);
 } catch (e) {
-  if (e.message.includes("SQLITE_FULL")) {
-    // Storage limit reached — reads and deletes still work
-    // Consider deleting old data or returning a meaningful error to the caller
-  }
-  throw e;
+	if (e.message.includes("SQLITE_FULL")) {
+		// Storage limit reached — reads and deletes still work
+		// Consider deleting old data or returning a meaningful error to the caller
+	}
+	throw e;
 }
 ```
 
@@ -179,7 +172,14 @@ The following table summarizes the wall time limits for different types of Worke
 [↩](#user-content-fnref-6)
 7. Each incoming HTTP request or WebSocket _message_ resets the remaining available CPU time to 30 seconds. This allows the Durable Object to consume up to 30 seconds of compute after each incoming network request, with each new network request resetting the timer. If you consume more than 30 seconds of compute between incoming network requests, there is a heightened chance that the individual Durable Object is evicted and reset. CPU time per request invocation [can be increased](https://developers.cloudflare.com/durable-objects/platform/limits/#can-i-increase-durable-objects-cpu-limit). [↩](#user-content-fnref-7)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits · Cloudflare Durable Objects docs","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/platform/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits · Cloudflare Durable Objects docs","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

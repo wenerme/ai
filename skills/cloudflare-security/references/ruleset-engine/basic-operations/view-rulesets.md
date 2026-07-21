@@ -1,16 +1,18 @@
 ---
-title: View rulesets
 description: View existing rulesets and their rules using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: View rulesets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  View rulesets
 
-# View rulesets
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page includes examples of the following API operations:
 
@@ -78,49 +80,46 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**List zone rulesets**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "<ZONE_PHASE_RULESET_ID>",
-      "name": "Zone-level Ruleset 1",
-      "description": "Ruleset for http_request_firewall_managed phase at the zone level",
-      "kind": "zone",
-      "version": "2",
-      "last_updated": "2021-03-12T14:11:59.754817Z",
-      "phase": "http_request_firewall_managed"
-    },
-18 collapsed lines
-    {
-      "id": "<CLOUDFLARE_MANAGED_RULESET_ID>",
-      "name": "Cloudflare Managed Ruleset",
-      "description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
-      "kind": "managed",
-      "version": "2",
-      "last_updated": "2021-03-18T14:42:40.972022Z",
-      "phase": "http_request_firewall_managed"
-    },
-    {
-      "id": "<CLOUDFLARE_OWASP_CORE_RULESET_ID>",
-      "name": "Cloudflare OWASP Core Ruleset",
-      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
-      "kind": "managed",
-      "version": "3",
-      "last_updated": "2021-03-18T14:42:42.993211Z",
-      "phase": "http_request_firewall_managed"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "<ZONE_PHASE_RULESET_ID>",
+			"name": "Zone-level Ruleset 1",
+			"description": "Ruleset for http_request_firewall_managed phase at the zone level",
+			"kind": "zone",
+			"version": "2",
+			"last_updated": "2021-03-12T14:11:59.754817Z",
+			"phase": "http_request_firewall_managed"
+		},
+		{
+			"id": "<CLOUDFLARE_MANAGED_RULESET_ID>",
+			"name": "Cloudflare Managed Ruleset",
+			"description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
+			"kind": "managed",
+			"version": "2",
+			"last_updated": "2021-03-18T14:42:40.972022Z",
+			"phase": "http_request_firewall_managed"
+		},
+		{
+			"id": "<CLOUDFLARE_OWASP_CORE_RULESET_ID>",
+			"name": "Cloudflare OWASP Core Ruleset",
+			"description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
+			"kind": "managed",
+			"version": "3",
+			"last_updated": "2021-03-18T14:42:42.993211Z",
+			"phase": "http_request_firewall_managed"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -152,58 +151,55 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**List account rulesets**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "<CUSTOM_RULESET_ID>",
-      "name": "Custom Ruleset 1",
-      "description": "My custom ruleset",
-      "kind": "custom",
-      "version": "10",
-      "last_updated": "2020-11-23T11:36:24.192361Z",
-      "phase": "http_request_firewall_custom"
-    },
-27 collapsed lines
-    {
-      "id": "<ACCOUNT_PHASE_RULESET_ID>",
-      "name": "Account-level ruleset for http_request_firewall_managed phase",
-      "description": "Account-level ruleset for executing one or more Managed Rulesets",
-      "kind": "root",
-      "version": "2",
-      "last_updated": "2021-03-12T14:06:41.323932Z",
-      "phase": "http_request_firewall_managed"
-    },
-    {
-      "id": "<CLOUDFLARE_MANAGED_RULESET_ID>",
-      "name": "Cloudflare Managed Ruleset",
-      "description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
-      "kind": "managed",
-      "version": "5",
-      "last_updated": "2021-03-18T14:42:40.972022Z",
-      "phase": "http_request_firewall_managed"
-    },
-    {
-      "id": "<CLOUDFLARE_OWASP_CORE_RULESET_ID>",
-      "name": "Cloudflare OWASP Core Ruleset",
-      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
-      "kind": "managed",
-      "version": "3",
-      "last_updated": "2021-03-18T14:42:42.993211Z",
-      "phase": "http_request_firewall_managed"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "<CUSTOM_RULESET_ID>",
+			"name": "Custom Ruleset 1",
+			"description": "My custom ruleset",
+			"kind": "custom",
+			"version": "10",
+			"last_updated": "2020-11-23T11:36:24.192361Z",
+			"phase": "http_request_firewall_custom"
+		},
+		{
+			"id": "<ACCOUNT_PHASE_RULESET_ID>",
+			"name": "Account-level ruleset for http_request_firewall_managed phase",
+			"description": "Account-level ruleset for executing one or more Managed Rulesets",
+			"kind": "root",
+			"version": "2",
+			"last_updated": "2021-03-12T14:06:41.323932Z",
+			"phase": "http_request_firewall_managed"
+		},
+		{
+			"id": "<CLOUDFLARE_MANAGED_RULESET_ID>",
+			"name": "Cloudflare Managed Ruleset",
+			"description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
+			"kind": "managed",
+			"version": "5",
+			"last_updated": "2021-03-18T14:42:40.972022Z",
+			"phase": "http_request_firewall_managed"
+		},
+		{
+			"id": "<CLOUDFLARE_OWASP_CORE_RULESET_ID>",
+			"name": "Cloudflare OWASP Core Ruleset",
+			"description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
+			"kind": "managed",
+			"version": "3",
+			"last_updated": "2021-03-18T14:42:42.993211Z",
+			"phase": "http_request_firewall_managed"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -265,41 +261,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**Get a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level phase entry point ruleset",
-    "description": "This ruleset executes a managed ruleset.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "id": "<RULE_ID>",
-7 collapsed lines
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID>"
-        },
-        "last_updated": "2021-03-17T15:42:37.917815Z"
-      }
-    ],
-    "last_updated": "2021-03-17T15:42:37.917815Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level phase entry point ruleset",
+		"description": "This ruleset executes a managed ruleset.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID>"
+				},
+				"last_updated": "2021-03-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2021-03-17T15:42:37.917815Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -327,12 +320,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**Get an account entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## View the rules included in a ruleset
@@ -389,40 +380,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**Get a zone entry point ruleset version**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint/versions/2" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level phase entry point ruleset",
-    "description": "This ruleset executes a managed ruleset.",
-    "kind": "zone",
-    "version": "2",
-    "rules": [
-      {
-        "id": "<RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID>"
-        },
-        "last_updated": "2021-03-17T15:42:37.917815Z"
-      }
-    ],
-    "last_updated": "2021-03-17T15:42:37.917815Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level phase entry point ruleset",
+		"description": "This ruleset executes a managed ruleset.",
+		"kind": "zone",
+		"version": "2",
+		"rules": [
+			{
+				"id": "<RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID>"
+				},
+				"last_updated": "2021-03-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2021-03-17T15:42:37.917815Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -452,59 +441,56 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-**Get an account ruleset version**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$MANAGED_RULESET_ID/versions/2" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": {
-    "id": "<MANAGED_RULESET_ID>",
-    "name": "Cloudflare Managed Ruleset",
-    "description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
-    "kind": "managed",
-    "version": "2",
-    "rules": [
-      {
-        "id": "<RULE_1_ID>",
-        "version": "1",
-        "action": "log",
-        "categories": [
-          "cve-2014-5265",
-          "cve-2014-5266",
-          "cve-2014-5267",
-          "dos",
-          "drupal",
-          "wordpress"
-        ],
-        "description": "Drupal, Wordpress - DoS - XMLRPC - CVE:CVE-2014-5265, CVE:CVE-2014-5266, CVE:CVE-2014-5267",
-        "last_updated": "2021-03-18T14:42:40.972022Z",
-        "ref": "<RULE_1_REF>",
-        "enabled": true
-      },
-11 collapsed lines
-      {
-        "id": "<RULE_2_ID>",
-        "version": "1",
-        "action": "block",
-        "categories": ["broken-access-control", "cve-2018-12895", "wordpress"],
-        "description": "Wordpress - Broken Access Control - CVE:CVE-2018-12895",
-        "last_updated": "2021-03-18T14:42:40.972022Z",
-        "ref": "<RULE_2_REF>",
-        "enabled": true
-      }
-      // (...)
-    ],
-    "last_updated": "2021-03-18T14:42:40.972022Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<MANAGED_RULESET_ID>",
+		"name": "Cloudflare Managed Ruleset",
+		"description": "Created by the Cloudflare security team, this ruleset is designed to provide fast and effective protection for all your applications. It is frequently updated to cover new vulnerabilities and reduce false positives",
+		"kind": "managed",
+		"version": "2",
+		"rules": [
+			{
+				"id": "<RULE_1_ID>",
+				"version": "1",
+				"action": "log",
+				"categories": [
+					"cve-2014-5265",
+					"cve-2014-5266",
+					"cve-2014-5267",
+					"dos",
+					"drupal",
+					"wordpress"
+				],
+				"description": "Drupal, Wordpress - DoS - XMLRPC - CVE:CVE-2014-5265, CVE:CVE-2014-5266, CVE:CVE-2014-5267",
+				"last_updated": "2021-03-18T14:42:40.972022Z",
+				"ref": "<RULE_1_REF>",
+				"enabled": true
+			},
+			{
+				"id": "<RULE_2_ID>",
+				"version": "1",
+				"action": "block",
+				"categories": ["broken-access-control", "cve-2018-12895", "wordpress"],
+				"description": "Wordpress - Broken Access Control - CVE:CVE-2018-12895",
+				"last_updated": "2021-03-18T14:42:40.972022Z",
+				"ref": "<RULE_2_REF>",
+				"enabled": true
+			}
+			// (...)
+		],
+		"last_updated": "2021-03-18T14:42:40.972022Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -512,7 +498,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$MANAGE
 
 For more information on the available API methods for viewing rulesets, refer to [List and view rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/#page","headline":"View rulesets · Cloudflare Ruleset Engine docs","description":"View existing rulesets and their rules using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/basic-operations/","name":"Basic API operations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/basic-operations/view-rulesets/","name":"View rulesets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/#page","headline":"View rulesets · Cloudflare Ruleset Engine docs","description":"View existing rulesets and their rules using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

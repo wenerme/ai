@@ -1,16 +1,18 @@
 ---
-title: Configure Queues
 description: Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configure Queues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Queues
 
-# Configure Queues
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/configure-queues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues can be configured using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Cloudflare's Developer Platform, which includes [Workers](https://developers.cloudflare.com/workers/), [R2](https://developers.cloudflare.com/r2/), and other developer products.
 
@@ -47,25 +49,18 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-10452)
-* [  wrangler.toml ](#tab-panel-10453)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "producers": [
-      {
-        "queue": "my-queue",
-        "binding": "MY_QUEUE"
-      }
-    ]
-  }
+	"queues": {
+		"producers": [
+			{
+				"queue": "my-queue",
+				"binding": "MY_QUEUE"
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.producers]]
@@ -82,28 +77,21 @@ binding = "MY_QUEUE"
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-10454)
-* [  wrangler.toml ](#tab-panel-10455)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "consumers": [
-      {
-        "queue": "my-queue",
-        "max_batch_size": 10,
-        "max_batch_timeout": 30,
-        "max_retries": 10,
-        "dead_letter_queue": "my-queue-dlq"
-      }
-    ]
-  }
+	"queues": {
+		"consumers": [
+			{
+				"queue": "my-queue",
+				"max_batch_size": 10,
+				"max_batch_timeout": 30,
+				"max_retries": 10,
+				"dead_letter_queue": "my-queue-dlq"
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.consumers]]
@@ -139,7 +127,14 @@ Refer to [Limits](https://developers.cloudflare.com/queues/platform/limits) to r
 
 A queue can have a HTTP-based consumer that pulls from the queue. This consumer can be any HTTP-speaking service that can communicate over the Internet. Review [Pull consumers](https://developers.cloudflare.com/queues/configuration/pull-consumers/) to learn how to configure a pull-based consumer.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/configure-queues/#page","headline":"Cloudflare Queues - Configuration · Cloudflare Queues docs","description":"Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/configure-queues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/configure-queues/","name":"Configure Queues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/configure-queues/#page","headline":"Cloudflare Queues - Configuration · Cloudflare Queues docs","description":"Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/configure-queues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: ERR_SSL_VERSION_OR_CIPHER_MISMATCH
 description: Learn how to troubleshoot ERR_SSL_VERSION_OR_CIPHER_MISMATCH when using Cloudflare SSL/TLS.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: ERR_SSL_VERSION_OR_CIPHER_MISMATCH
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ERR\_SSL\_VERSION\_OR\_CIPHER\_MISMATCH
 
-# ERR\_SSL\_VERSION\_OR\_CIPHER\_MISMATCH
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After you [add a new domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, your visitors' browsers might display one of the following errors:
 
@@ -112,7 +114,14 @@ To prevent insecure connections on a multi-level subdomain, do one of the follow
 
 If none of these solutions work, you could also remove the multi-level subdomain.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/#page","headline":"Fix VERSION_OR_CIPHER_MISMATCH · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_VERSION\\_OR\\_CIPHER\\_MISMATCH when using Cloudflare SSL/TLS.","url":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/version-cipher-mismatch/","name":"ERR_SSL_VERSION_OR_CIPHER_MISMATCH"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/#page","headline":"Fix VERSION_OR_CIPHER_MISMATCH · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_VERSION\\_OR\\_CIPHER\\_MISMATCH when using Cloudflare SSL/TLS.","url":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

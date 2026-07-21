@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
@@ -150,21 +152,17 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Point the OpenAI SDK `baseURL` at the Cloudflare API:
 
-**JavaScript**
-
 ```javascript
 import OpenAI from "openai";
 
-
 const openai = new OpenAI({
-  apiKey: CLOUDFLARE_API_TOKEN,
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+	apiKey: CLOUDFLARE_API_TOKEN,
+	baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
 });
 
-
 const response = await openai.chat.completions.create({
-  model: "openai/gpt-4.1",
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
+	model: "openai/gpt-4.1",
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
 });
 ```
 
@@ -172,21 +170,17 @@ const response = await openai.chat.completions.create({
 
 Uses the OpenAI Responses API format for agentic workflows. Compatible with the OpenAI SDK.
 
-**JavaScript**
-
 ```javascript
 import OpenAI from "openai";
 
-
 const openai = new OpenAI({
-  apiKey: CLOUDFLARE_API_TOKEN,
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+	apiKey: CLOUDFLARE_API_TOKEN,
+	baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
 });
 
-
 const response = await openai.responses.create({
-  model: "openai/gpt-4.1",
-  input: "What is Cloudflare?",
+	model: "openai/gpt-4.1",
+	input: "What is Cloudflare?",
 });
 ```
 
@@ -214,22 +208,18 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Point the Anthropic SDK `baseURL` at the Cloudflare API:
 
-**JavaScript**
-
 ```javascript
 import Anthropic from "@anthropic-ai/sdk";
 
-
 const anthropic = new Anthropic({
-  apiKey: CLOUDFLARE_API_TOKEN,
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+	apiKey: CLOUDFLARE_API_TOKEN,
+	baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
 });
 
-
 const message = await anthropic.messages.create({
-  model: "anthropic/claude-sonnet-4-5",
-  max_tokens: 512,
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
+	model: "anthropic/claude-sonnet-4-5",
+	max_tokens: 512,
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
 });
 ```
 
@@ -261,15 +251,13 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 With the OpenAI SDK, set the header via `defaultHeaders`:
 
-**JavaScript**
-
 ```javascript
 const openai = new OpenAI({
-  apiKey: CLOUDFLARE_API_TOKEN,
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
-  defaultHeaders: {
-    "cf-aig-gateway-id": "default",
-  },
+	apiKey: CLOUDFLARE_API_TOKEN,
+	baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+	defaultHeaders: {
+		"cf-aig-gateway-id": "default",
+	},
 });
 ```
 
@@ -299,7 +287,14 @@ For more details on these options, refer to [Request handling](https://developer
 * [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — call models from within a Cloudflare Worker using `env.AI.run()`.
 * [Model catalog](https://developers.cloudflare.com/ai/models/) — browse models supported by the REST API.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

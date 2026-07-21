@@ -1,16 +1,18 @@
 ---
-title: Terraform configuration examples
 description: Terraform examples for managing and configuring leaked credentials detection.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Terraform configuration examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform configuration examples
 
-# Terraform configuration examples
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using leaked credentials detection.
 
@@ -24,8 +26,8 @@ Use the `cloudflare_leaked_credential_check` resource to enable leaked credentia
 
 ```terraform
 resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
-  zone_id = var.cloudflare_zone_id
-  enabled = true
+	zone_id = var.cloudflare_zone_id
+	enabled = true
 }
 ```
 
@@ -35,9 +37,9 @@ Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detec
 
 ```terraform
 resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
-  zone_id = var.cloudflare_zone_id
-  username = "lookup_json_string(http.request.body.raw, \"user\")"
-  password = "lookup_json_string(http.request.body.raw, \"secret\")"
+	zone_id = var.cloudflare_zone_id
+	username = "lookup_json_string(http.request.body.raw, \"user\")"
+	password = "lookup_json_string(http.request.body.raw, \"secret\")"
 }
 ```
 
@@ -48,9 +50,6 @@ You only need to provide an expression for the username in custom detection loca
 This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that challenges requests with leaked credentials by using one of the [leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields) in the rule expression.
 
 To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
-
-* [ Terraform (v5) ](#tab-panel-11985)
-* [ Terraform (v4) ](#tab-panel-11986)
 
 Required API token permissions
 
@@ -67,7 +66,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
   description = ""
   kind        = "zone"
   phase       = "http_request_firewall_custom"
-
 
   rules = [{
     ref         = "challenge_leaked_username_password"
@@ -86,7 +84,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
   kind        = "zone"
   phase       = "http_request_firewall_custom"
 
-
   rules {
     ref         = "challenge_leaked_username_password"
     description = "Challenge requests with a leaked username and password"
@@ -100,7 +97,14 @@ resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
 
 For additional Terraform configuration examples, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/#page","headline":"Terraform configuration examples · Cloudflare Web Application Firewall (WAF) docs","description":"Terraform examples for managing and configuring leaked credentials detection.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/leaked-credentials/","name":"Leaked credentials detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/leaked-credentials/terraform-examples/","name":"Terraform configuration examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/#page","headline":"Terraform configuration examples · Cloudflare Web Application Firewall (WAF) docs","description":"Terraform examples for managing and configuring leaked credentials detection.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

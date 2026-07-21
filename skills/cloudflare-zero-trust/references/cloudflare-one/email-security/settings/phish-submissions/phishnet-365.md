@@ -1,16 +1,18 @@
 ---
-title: PhishNet Microsoft 365
 description: PhishNet Microsoft 365 in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: PhishNet Microsoft 365
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PhishNet Microsoft 365
 
-# PhishNet Microsoft 365
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 PhishNet is an add-in button that helps users to submit directly to Email security phish samples missed by Email security's detection.
 
@@ -23,7 +25,14 @@ To set up PhishNet Microsoft 365:
 5. Choose **Provide link to manifest file** and paste the URL you copied from the Cloudflare One dashboard.
 6. Verify and complete the wizard.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/#page","headline":"PhishNet Microsoft 365 · Cloudflare One docs","description":"PhishNet Microsoft 365 in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/settings/","name":"Settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/settings/phish-submissions/","name":"Phish submissions"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/","name":"PhishNet Microsoft 365"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/#page","headline":"PhishNet Microsoft 365 · Cloudflare One docs","description":"PhishNet Microsoft 365 in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Application layer attacks
 description: Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Application layer attacks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application layer attacks
 
-# Application layer attacks
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/application-layer-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 While in [HTTP requests](https://developers.cloudflare.com/radar/investigate/http-requests) you can examine all kinds of web requests, in application layer attacks you have access only to mitigated HTTP requests. These requests can be mitigated by one of several Cloudflare products, like [WAF](https://developers.cloudflare.com/waf/), [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-protection/), [Cloudflare bot solutions](https://developers.cloudflare.com/bots/) and others.
 
@@ -61,7 +63,7 @@ From the abbreviated response below, we can conclude that distributed denial-of-
         "startTime": "2022-11-05T11:00:00Z",
         "endTime": "2022-11-06T11:00:00Z"
       },
-      // ...
+			// ...
     }
   }
 }
@@ -85,19 +87,19 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?location
   "success": true,
   "errors": [],
   "result": {
-    "attacks_gb": {
-      "waf": "75.012138",
-      "ddos": "18.539149",
-      "ip_reputation": "5.721021",
-      "access_rules": "0.592515",
-      "bot_management": "0.131998",
-      "api_shield": "0.003178",
-      "data_loss_prevention": "0.0"
-    },
-    "meta": {
-      // ...
+		"attacks_gb": {
+			"waf": "75.012138",
+			"ddos": "18.539149",
+			"ip_reputation": "5.721021",
+			"access_rules": "0.592515",
+			"bot_management": "0.131998",
+			"api_shield": "0.003178",
+			"data_loss_prevention": "0.0"
+  	},
+		"meta": {
+			// ...
     }
-  }
+	}
 }
 ```
 
@@ -122,43 +124,43 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/ta
   "errors": [],
   "result": {
     "attacks_target": [
-      {
-        "targetCountryName": "Belgium",
-        "targetCountryAlpha2": "BE",
-        "value": "18.536740",
-        "rank": 1
-      },
-      {
-        "targetCountryName": "United States",
-        "targetCountryAlpha2": "US",
-        "value": "16.116210",
-        "rank": 2
-      },
-      {
-        "targetCountryName": "China",
-        "targetCountryAlpha2": "CN",
-        "value": "13.864696",
-        "rank": 3
-      },
-      {
-        "targetCountryName": "India",
-        "targetCountryAlpha2": "IN",
-        "value": "4.344139",
-        "rank": 4
-      },
-      {
-        "targetCountryName": "Germany",
-        "targetCountryAlpha2": "DE",
-        "value": "4.182777",
-        "rank": 5
-      }
-    ],
+			{
+				"targetCountryName": "Belgium",
+				"targetCountryAlpha2": "BE",
+				"value": "18.536740",
+				"rank": 1
+			},
+			{
+				"targetCountryName": "United States",
+				"targetCountryAlpha2": "US",
+				"value": "16.116210",
+				"rank": 2
+			},
+			{
+				"targetCountryName": "China",
+				"targetCountryAlpha2": "CN",
+				"value": "13.864696",
+				"rank": 3
+			},
+			{
+				"targetCountryName": "India",
+				"targetCountryAlpha2": "IN",
+				"value": "4.344139",
+				"rank": 4
+			},
+			{
+				"targetCountryName": "Germany",
+				"targetCountryAlpha2": "DE",
+				"value": "4.182777",
+				"rank": 5
+			}
+		],
     "meta": {
       "dateRange": {
         "startTime": "2022-11-05T12:00:00Z",
         "endTime": "2022-11-06T12:00:00Z"
       },
-      // ...
+			// ...
     }
   }
 }
@@ -184,50 +186,50 @@ A typical response will be similar to the following:
   "success": true,
   "errors": [],
   "result": {
-    "top_0": [
-      {
-        "originCountryName": "United States",
-        "originCountryAlpha2": "US",
-        "targetCountryName": "United States",
-        "targetCountryAlpha2": "US",
-        "value": "3.790724",
-        "rank": 1
-      },
-      {
-        "originCountryName": "United States",
-        "originCountryAlpha2": "US",
-        "targetCountryName": "Belgium",
-        "targetCountryAlpha2": "BE",
-        "value": "3.602177",
-        "rank": 2
-      },
-      {
-        "originCountryName": "China",
-        "originCountryAlpha2": "CN",
-        "targetCountryName": "Netherlands",
-        "targetCountryAlpha2": "NL",
-        "value": "3.017341",
-        "rank": 3
-      },
-      {
-        "originCountryName": "China",
-        "originCountryAlpha2": "CN",
-        "targetCountryName": "China",
-        "targetCountryAlpha2": "CN",
-        "value": "2.472068",
-        "rank": 4
-      },
-      {
-        "originCountryName": "Indonesia",
-        "originCountryAlpha2": "ID",
-        "targetCountryName": "China",
-        "targetCountryAlpha2": "CN",
-        "value": "2.056729",
-        "rank": 5
-      }
-    ],
+		"top_0": [
+			{
+				"originCountryName": "United States",
+				"originCountryAlpha2": "US",
+				"targetCountryName": "United States",
+				"targetCountryAlpha2": "US",
+				"value": "3.790724",
+				"rank": 1
+			},
+			{
+				"originCountryName": "United States",
+				"originCountryAlpha2": "US",
+				"targetCountryName": "Belgium",
+				"targetCountryAlpha2": "BE",
+				"value": "3.602177",
+				"rank": 2
+			},
+			{
+				"originCountryName": "China",
+				"originCountryAlpha2": "CN",
+				"targetCountryName": "Netherlands",
+				"targetCountryAlpha2": "NL",
+				"value": "3.017341",
+				"rank": 3
+			},
+			{
+				"originCountryName": "China",
+				"originCountryAlpha2": "CN",
+				"targetCountryName": "China",
+				"targetCountryAlpha2": "CN",
+				"value": "2.472068",
+				"rank": 4
+			},
+			{
+				"originCountryName": "Indonesia",
+				"originCountryAlpha2": "ID",
+				"targetCountryName": "China",
+				"targetCountryAlpha2": "CN",
+				"value": "2.056729",
+				"rank": 5
+			}
+		],
     "meta": {
-      // ...
+			// ...
     }
   }
 }
@@ -241,7 +243,14 @@ For more information refer to [Get layer 7 top attack pairs](https://developers.
 
 Refer to [Network layer attacks](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/) for more information on data on layer 3 of the Open Systems Interconnection (OSI) model.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/#page","headline":"Application layer attacks · Cloudflare Radar docs","description":"Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.","url":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/application-layer-attacks/","name":"Application layer attacks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/#page","headline":"Application layer attacks · Cloudflare Radar docs","description":"Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.","url":"https://developers.cloudflare.com/radar/investigate/application-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,75 +1,67 @@
 ---
-title: Wrangler configuration
 description: Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wrangler configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wrangler configuration
 
-# Wrangler configuration
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/configuration/wrangler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Minimal configuration
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-11107)
-* [  wrangler.toml ](#tab-panel-11108)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-sandbox-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "containers": [
-    {
-      "class_name": "Sandbox",
-      "image": "./Dockerfile",
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "Sandbox",
-        "name": "Sandbox",
-      },
-    ],
-  },
-  "migrations": [
-    {
-      "new_sqlite_classes": ["Sandbox"],
-      "tag": "v1",
-    },
-  ],
+	"name": "my-sandbox-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"containers": [
+		{
+			"class_name": "Sandbox",
+			"image": "./Dockerfile",
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "Sandbox",
+				"name": "Sandbox",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"new_sqlite_classes": ["Sandbox"],
+			"tag": "v1",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[containers]]
 class_name = "Sandbox"
 image = "./Dockerfile"
 
-
 [[durable_objects.bindings]]
 class_name = "Sandbox"
 name = "Sandbox"
-
 
 [[migrations]]
 new_sqlite_classes = [ "Sandbox" ]
@@ -98,33 +90,25 @@ npx wrangler r2 bucket create my-backup-bucket
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-11101)
-* [  wrangler.toml ](#tab-panel-11102)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "BACKUP_BUCKET_NAME": "my-backup-bucket",
-    "CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",
-  },
-  "r2_buckets": [
-    {
-      "binding": "BACKUP_BUCKET",
-      "bucket_name": "my-backup-bucket",
-    },
-  ],
+	"vars": {
+		"BACKUP_BUCKET_NAME": "my-backup-bucket",
+		"CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",
+	},
+	"r2_buckets": [
+		{
+			"binding": "BACKUP_BUCKET",
+			"bucket_name": "my-backup-bucket",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
 BACKUP_BUCKET_NAME = "my-backup-bucket"
 CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
-
 
 [[r2_buckets]]
 binding = "BACKUP_BUCKET"
@@ -150,25 +134,18 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-11103)
-* [  wrangler.toml ](#tab-panel-11104)
-
-**JSONC**
-
 ```jsonc
 {
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "Sandbox",
-        "name": "Sandbox",
-      },
-    ],
-  },
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "Sandbox",
+				"name": "Sandbox",
+			},
+		],
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [[durable_objects.bindings]]
@@ -182,23 +159,16 @@ name = "Sandbox"
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-11105)
-* [  wrangler.toml ](#tab-panel-11106)
-
-**JSONC**
-
 ```jsonc
 {
-  "migrations": [
-    {
-      "new_sqlite_classes": ["Sandbox"],
-      "tag": "v1",
-    },
-  ],
+	"migrations": [
+		{
+			"new_sqlite_classes": ["Sandbox"],
+			"tag": "v1",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[migrations]]
@@ -215,7 +185,14 @@ tag = "v1"
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) \- Passing configuration to sandboxes
 * [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) \- Initial setup walkthrough
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/wrangler/","name":"Wrangler configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
