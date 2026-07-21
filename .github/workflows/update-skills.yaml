@@ -43,6 +43,20 @@ jobs:
       - name: Commit source updates
         working-directory: source
         run: |
+          set -euo pipefail
+          push_with_rebase() {
+            local branch="$1"
+            for attempt in 1 2 3; do
+              git fetch origin "$branch"
+              git rebase FETCH_HEAD
+              if git push origin "HEAD:${branch}"; then
+                return 0
+              fi
+              echo "Push rejected; retrying source rebase (${attempt}/3)" >&2
+            done
+            echo "Unable to push after three rebase attempts" >&2
+            return 1
+          }
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
@@ -50,7 +64,7 @@ jobs:
             echo "No source changes"
           else
             git commit -m "chore: update skills source [skip ci]"
-            git push origin "HEAD:${SOURCE_BRANCH}"
+            push_with_rebase "$SOURCE_BRANCH"
           fi
 
       - name: Checkout publish branch
@@ -63,6 +77,19 @@ jobs:
       - name: Publish clean skills branch
         run: |
           set -euo pipefail
+          push_with_rebase() {
+            local branch="$1"
+            for attempt in 1 2 3; do
+              git fetch origin "$branch"
+              git rebase FETCH_HEAD
+              if git push origin "HEAD:${branch}"; then
+                return 0
+              fi
+              echo "Push rejected; retrying publish rebase (${attempt}/3)" >&2
+            done
+            echo "Unable to push after three rebase attempts" >&2
+            return 1
+          }
           shopt -s dotglob nullglob
           cd publish
           for path in *; do
@@ -84,5 +111,5 @@ jobs:
             echo "No publish changes"
           else
             git commit -m "chore: publish skills dist [skip ci]"
-            git push origin "HEAD:${PUBLISH_BRANCH}"
+            push_with_rebase "$PUBLISH_BRANCH"
           fi
