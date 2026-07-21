@@ -1,0 +1,88 @@
+---
+title: Mocking network requests
+sidebar:
+  order: 2
+  title: Network requests
+---
+
+For components that make network requests (e.g. fetching data from a REST or GraphQL API), you can mock those requests using a tool like [Mock Service Worker (MSW)](https://mswjs.io/). MSW is an API mocking library, which relies on service workers to capture network requests and provides mocked data in response.
+
+The [MSW addon](https://storybook.js.org/addons/msw-storybook-addon/) brings this functionality into Storybook, allowing you to mock API requests in your stories. Below is an overview of how to set up and use the addon.
+
+## Set up the MSW addon
+
+First, if necessary, run this command to install MSW and the MSW addon:
+
+> Code snippet: `_snippets/msw-addon-install.md`
+
+If you're not already using MSW, generate the service worker file necessary for MSW to work:
+
+> Code snippet: `_snippets/msw-generate-service-worker.md`
+
+> **Renderer: `angular`**
+
+
+
+Angular projects will likely need to adjust the command to save the mock service worker file in a different directory (e.g., `src`).
+
+
+
+
+
+Then ensure the [`staticDirs`](../../api/main-config/main-config-static-dirs.mdx) property in your Storybook configuration will include the generated service worker file (in `/public`, by default):
+
+> Code snippet: `_snippets/main-config-static-dirs.md`
+
+Finally, initialize the addon and apply it to all stories with a [project-level loader](../loaders.mdx#global-loaders):
+
+> Code snippet: `_snippets/msw-addon-initialize.md`
+
+## Mocking REST requests
+
+If your component fetches data from a REST API, you can use MSW to mock those requests in Storybook. As an example, consider this document screen component:
+
+> Code snippet: `_snippets/document-screen-fetch.md`
+
+
+
+This example uses the [`fetch` API](https://developer.mozilla.org/en-US/docs/Web/API/fetch) to make network requests. If you're using a different library (e.g. [`axios`](https://axios-http.com/)), you can apply the same principles to mock network requests in Storybook.
+
+
+
+With the MSW addon, we can write stories that use MSW to mock the REST requests. Here's an example of two stories for the document screen component: one that fetches data successfully and another that fails.
+
+> Code snippet: `_snippets/msw-addon-configure-handlers-http.md`
+
+## Mocking GraphQL requests
+
+GraphQL is another common way to fetch data in components. You can use MSW to mock GraphQL requests in Storybook. Here's an example of a document screen component that fetches data from a GraphQL API:
+
+> Code snippet: `_snippets/document-screen-with-graphql.md`
+
+> **Renderer: `svelte`**
+
+
+
+This example uses [URQL](https://formidable.com/open-source/urql/) to make network requests. If you're using a different library (e.g., [Houdini](https://houdinigraphql.com/) or [Graffle](https://graffle.js.org/)), you can apply the same principles to mock network requests in Storybook.
+
+
+
+
+
+> **Except renderer: `svelte`**
+
+
+
+This example uses GraphQL with [Apollo Client](https://www.apollographql.com/docs/) to make network requests. If you're using a different library (e.g. [URQL](https://formidable.com/open-source/urql/) or [React Query](https://react-query.tanstack.com/)), you can apply the same principles to mock network requests in Storybook.
+
+
+
+
+
+The MSW addon allows you to write stories that use MSW to mock the GraphQL requests. Here's an example demonstrating two stories for the document screen component. The first story fetches data successfully, while the second story fails.
+
+> Code snippet: `_snippets/msw-addon-configure-handlers-graphql.md`
+
+## Configuring MSW for stories
+
+In the examples above, note how each story is configured with `parameters.msw` to define the request handlers for the mock server. Because it uses parameters in this way, it can also be configured at the [component](../parameters.mdx#component-parameters) or even [project](../parameters.mdx#global-parameters) level, allowing you to share the same mock server configuration across multiple stories.

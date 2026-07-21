@@ -1,0 +1,59 @@
+---
+title: Storybook for Preact with Vite
+hideRendererSelector: true
+sidebar:
+  order: 5
+  title: Preact (Vite)
+---
+
+Storybook for Preact & Vite is a [framework](../../contribute/framework.mdx) that makes it easy to develop and test UI components in isolation for [Preact](https://preactjs.com/) applications built with [Vite](https://vitejs.dev/).
+
+## Install
+
+To install Storybook in an existing Preact project, run this command in your project's root directory:
+
+> Code snippet: `_snippets/create-command.md` (variant: `new-users`)
+
+You can then get started [writing stories](../whats-a-story.mdx), [running tests](../../writing-tests/index.mdx) and [documenting your components](../../writing-docs/index.mdx). For more control over the installation process, refer to the [installation guide](../install.mdx).
+
+### Requirements
+
+
+
+## Run Storybook
+
+To run Storybook for a particular project, run the following:
+
+> Code snippet: `_snippets/storybook-run-dev.md`
+
+To build Storybook, run:
+
+> Code snippet: `_snippets/build-storybook-production-mode.md`
+
+You will find the output in the configured `outputDir` (default is `storybook-static`).
+
+## FAQ
+
+### How do I manually install the Preact framework?
+
+First, install the framework:
+
+> Code snippet: `_snippets/preact-vite-install.md`
+
+Then, update your `.storybook/main.js|ts` to change the framework property:
+
+> Code snippet: `_snippets/preact-vite-add-framework.md`
+
+## API
+
+### Options
+
+You can pass an options object for additional configuration if needed:
+
+> Code snippet: `_snippets/preact-vite-framework-options.md`
+
+#### `builder`
+
+Type: `Record<string, any>`
+
+Configure options for the [framework's builder](../../api/main-config/main-config-framework.mdx#optionsbuilder). For this framework, available options can be found in the [Vite builder docs](../../builders/vite.mdx).

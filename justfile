@@ -153,6 +153,15 @@ update-comfyui-docs:
 update-waku-docs:
     bun scripts/sync-waku-docs.ts
 
+# Test Storybook MDX cleanup and snippet-reference validation
+test-storybook-docs:
+    bun test scripts/sync-storybook-docs.test.ts
+
+# Sync Storybook docs and reusable snippets from local storybookjs/storybook clone
+update-storybook-docs: test-storybook-docs
+    bun scripts/sync-storybook-docs.ts
+    gitleaks dir skills/storybook-docs --redact
+
 # Sync Wails docs from local wailsapp/wails clone
 update-wails-docs:
     bun scripts/sync-wails-docs.ts
@@ -272,6 +281,7 @@ update:
     -just update-comfyui-docs
     -just update-wails-docs
     -just update-waku-docs
+    -just update-storybook-docs
     -just update-biome-docs
     -just update-vite-docs
     -just update-vitest-docs

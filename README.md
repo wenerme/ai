@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 114 skills available
+> 115 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -101,12 +101,13 @@ npx skills add wenerme/ai --skill <skill-name>
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to... | [obra/superpowers](https://github.com/obra/superpowers) |
 | [shadcn](./skills/shadcn/SKILL.md) | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
 | [stash-docs](./skills/stash-docs/SKILL.md) | Use when configuring or troubleshooting Stash on iOS, macOS, tvOS, or visionOS, including Clash-compatible YAML, proxy... | [stash.wiki](https://stash.wiki/) |
+| [storybook-docs](./skills/storybook-docs/SKILL.md) | Use when building, configuring, upgrading, testing, documenting, or publishing Storybook component workbenches,... | [storybookjs/storybook/docs](https://github.com/storybookjs/storybook/tree/next/docs) |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | [tea-cli](./skills/tea-cli/SKILL.md) | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
 | [tencent-cls](./skills/tencent-cls/SKILL.md) | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
@@ -1006,7 +1007,7 @@ Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime 
 npx skills add wenerme/ai --skill requesting-code-review
 ```
 
-Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to verify both requirement fidelity and engineering quality.
 
 </details>
 <details>
@@ -1057,6 +1058,16 @@ npx skills add wenerme/ai --skill stash-docs
 ```
 
 Use when configuring or troubleshooting Stash on iOS, macOS, tvOS, or visionOS, including Clash-compatible YAML, proxy protocols and groups, rules and rule sets, DNS, HTTP Engine, MitM, URL rewrites, JavaScript scripts, tiles, scheduled tasks, on-demand connections, LAN proxying, subscriptions, URL schemes, licensing, or Stash release behavior.
+
+</details>
+<details>
+<summary><code>storybook-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill storybook-docs
+```
+
+Use when building, configuring, upgrading, testing, documenting, or publishing Storybook component workbenches, including CSF stories, main/preview configuration, framework integrations, addons, Doc Blocks, MDX, interaction/accessibility/visual tests, or Storybook MCP.
 
 </details>
 <details>
@@ -1272,7 +1283,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 114 skills, 31625 files, 375 MiB total
+> 115 skills, 32459 files, 378 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1306,12 +1317,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 830 | 5.0 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.3 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.6 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 783 | 7.4 MiB |
-| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 929 | 9.7 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 779 | 7.3 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 916 | 9.6 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4845 | 15 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4841 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1589 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1588 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 302 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
@@ -1324,15 +1335,15 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 1.9 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 899 | 8.1 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 462 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 700 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.0 MiB |
-| [grafana-docs](./skills/grafana-docs/SKILL.md) | 627 | 6.1 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 626 | 6.1 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 616 | 4.1 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 86 | 354 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 358 | 2.0 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
-| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 324 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 486 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 164 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
@@ -1354,7 +1365,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 521 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 521 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 459 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 451 | 2.4 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 438 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2352 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 79 | 330 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
@@ -1363,12 +1374,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 157 | 1.4 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 314 | 2.0 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 7.9 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.5 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 94 KiB |
-| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
+| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
 | [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 364 KiB |
+| [storybook-docs](./skills/storybook-docs/SKILL.md) | 871 | 3.7 MiB |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | 67 | 1.2 MiB |
 | [tea-cli](./skills/tea-cli/SKILL.md) | 26 | 82 KiB |
 | [tencent-cls](./skills/tencent-cls/SKILL.md) | 4 | 12 KiB |

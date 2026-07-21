@@ -78,6 +78,7 @@
     "sling-cli": { "url": "https://docs.slingdata.io" },
     "slopus-happy-docs": { "repo": "slopus/happy" },
     "stash-docs": { "url": "https://stash.wiki/" },
+    "storybook-docs": { "repo": "storybookjs/storybook", "path": "docs", "ref": "next" },
     "swift-ms-docs": { "repo": "modelscope/swift" },
     "tea-cli": { "url": "https://gitea.com/gitea/tea" },
     "terraform-docs": { "repo": "terraform-docs/terraform-docs", "path": "docs", "ref": "master" },
