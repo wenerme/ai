@@ -1,7 +1,7 @@
 ---
 title: Threshold billing
 description: Understand threshold-based billing for Cloudflare services.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -98,6 +98,6 @@ Threshold invoices are triggered by usage. If you prefer not to receive mid-cycl
 If you believe there is an error with your threshold invoice, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with your invoice details.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/threshold-billing/#page","headline":"Threshold billing · Cloudflare Billing docs","description":"Understand threshold-based billing for Cloudflare services.","url":"https://developers.cloudflare.com/billing/threshold-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/threshold-billing/#page","headline":"Threshold billing · Cloudflare Billing docs","description":"Understand threshold-based billing for Cloudflare services.","url":"https://developers.cloudflare.com/billing/threshold-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/threshold-billing/","name":"Threshold billing"}}]}
 ```

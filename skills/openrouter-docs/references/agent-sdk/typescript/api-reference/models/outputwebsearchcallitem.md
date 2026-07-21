@@ -34,5 +34,5 @@ let value: OutputWebSearchCallItem = {
 | -------- | ---------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
 | `action` | *models.Action*                                                                          | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                 | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.WebSearchStatus](/agent-sdk/typescript/api-reference/models/websearchstatus)     | :heavy\_check\_mark: | N/A         | completed |
-| `type`   | [models.TypeWebSearchCall](/agent-sdk/typescript/api-reference/models/typewebsearchcall) | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.WebSearchStatus](/docs/agent-sdk/typescript/api-reference/models/websearchstatus)     | :heavy\_check\_mark: | N/A         | completed |
+| `type`   | [models.TypeWebSearchCall](/docs/agent-sdk/typescript/api-reference/models/typewebsearchcall) | :heavy\_check\_mark: | N/A         |           |

@@ -27,8 +27,8 @@ let value: OpenAIResponsesInputFunctionCallOutput = {
 
 | Field    | Type                                                                                                                         | Required             | Description | Example   |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `type`   | [models.OpenAIResponsesInputTypeFunctionCallOutput](/agent-sdk/typescript/models/openairesponsesinputtypefunctioncalloutput) | :heavy\_check\_mark: | N/A         |           |
+| `type`   | [models.OpenAIResponsesInputTypeFunctionCallOutput](/docs/agent-sdk/typescript/models/openairesponsesinputtypefunctioncalloutput) | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                                     | :heavy\_minus\_sign: | N/A         |           |
 | `callId` | *string*                                                                                                                     | :heavy\_check\_mark: | N/A         |           |
 | `output` | *string*                                                                                                                     | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.ToolCallStatus](/agent-sdk/typescript/models/toolcallstatus)                                                         | :heavy\_minus\_sign: | N/A         | completed |
+| `status` | [models.ToolCallStatus](/docs/agent-sdk/typescript/models/toolcallstatus)                                                         | :heavy\_minus\_sign: | N/A         | completed |

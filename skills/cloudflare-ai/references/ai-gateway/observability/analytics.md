@@ -1,7 +1,7 @@
 ---
 title: Analytics
 description: View AI Gateway metrics for requests, tokens, caching, errors, and costs in the dashboard or via GraphQL.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -51,6 +51,6 @@ curl https://api.cloudflare.com/client/v4/graphql \
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/analytics/#page","headline":"Analytics · Cloudflare AI Gateway docs","description":"View AI Gateway metrics for requests, tokens, caching, errors, and costs in the dashboard or via GraphQL.","url":"https://developers.cloudflare.com/ai-gateway/observability/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/analytics/#page","headline":"Analytics · Cloudflare AI Gateway docs","description":"View AI Gateway metrics for requests, tokens, caching, errors, and costs in the dashboard or via GraphQL.","url":"https://developers.cloudflare.com/ai-gateway/observability/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/observability/analytics/","name":"Analytics"}}]}
 ```

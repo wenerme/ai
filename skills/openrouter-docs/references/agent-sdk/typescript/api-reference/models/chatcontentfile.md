@@ -28,5 +28,5 @@ let value: ChatContentFile = {
 
 | Field  | Type                                                             | Required             | Description |
 | ------ | ---------------------------------------------------------------- | -------------------- | ----------- |
-| `file` | [models.FileT](/agent-sdk/typescript/api-reference/models/filet) | :heavy\_check\_mark: | N/A         |
+| `file` | [models.FileT](/docs/agent-sdk/typescript/api-reference/models/filet) | :heavy\_check\_mark: | N/A         |
 | `type` | *"file"*                                                         | :heavy\_check\_mark: | N/A         |

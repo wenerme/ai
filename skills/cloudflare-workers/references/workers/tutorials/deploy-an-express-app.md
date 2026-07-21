@@ -1,7 +1,7 @@
 ---
 title: Deploy an Express.js application on Cloudflare Workers
 description: Learn how to deploy an Express.js application on Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -622,6 +622,6 @@ In this tutorial, you built a Members Registry API using Express.js and D1 datab
 * Implement pagination for large datasets using [D1 query optimization](https://developers.cloudflare.com/d1/worker-api/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/deploy-an-express-app/","name":"Deploy an Express.js application on Cloudflare Workers"}}]}
 ```

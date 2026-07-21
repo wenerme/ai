@@ -1,7 +1,7 @@
 ---
 title: Connection reuse
 description: How Smart Shield reduces origin connections by packaging multiple requests into one.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ This means a connection originally opened for `shop.example.com` can also carry 
 Connection reuse and connection coalescing are also considered when allocating your [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/#page","headline":"Connection reuse · Cloudflare Smart Shield docs","description":"How Smart Shield reduces origin connections by packaging multiple requests into one.","url":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/#page","headline":"Connection reuse · Cloudflare Smart Shield docs","description":"How Smart Shield reduces origin connections by packaging multiple requests into one.","url":"https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/concepts/connection-reuse/","name":"Connection reuse"}}]}
 ```

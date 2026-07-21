@@ -1,7 +1,7 @@
 ---
 title: Locally-managed tunnels
 description: Manage tunnels from the command line without the Cloudflare dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ As an alternative workflow, you can create a locally-managed tunnel by running `
 * [ Useful terms ](https://developers.cloudflare.com/tunnel/advanced/local-management/local-tunnel-terms/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/#page","headline":"Locally-managed tunnels · Cloudflare Docs","description":"Manage tunnels from the command line without the Cloudflare dashboard.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/#page","headline":"Locally-managed tunnels · Cloudflare Docs","description":"Manage tunnels from the command line without the Cloudflare dashboard.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}}]}
 ```

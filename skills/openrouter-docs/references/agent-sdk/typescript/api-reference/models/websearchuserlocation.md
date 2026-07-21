@@ -29,4 +29,4 @@ let value: WebSearchUserLocation = {};
 | `country`  | *string*                                                                                                 | :heavy\_minus\_sign: | N/A         |
 | `region`   | *string*                                                                                                 | :heavy\_minus\_sign: | N/A         |
 | `timezone` | *string*                                                                                                 | :heavy\_minus\_sign: | N/A         |
-| `type`     | [models.WebSearchUserLocationType](/agent-sdk/typescript/api-reference/models/websearchuserlocationtype) | :heavy\_minus\_sign: | N/A         |
+| `type`     | [models.WebSearchUserLocationType](/docs/agent-sdk/typescript/api-reference/models/websearchuserlocationtype) | :heavy\_minus\_sign: | N/A         |

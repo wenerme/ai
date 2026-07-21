@@ -87,6 +87,7 @@ run();
 
 | Error Type                         | Status Code | Content Type     |
 | ---------------------------------- | ----------- | ---------------- |
+| errors.ForbiddenResponseError      | 403         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
@@ -168,6 +169,7 @@ run();
 
 | Error Type                         | Status Code | Content Type     |
 | ---------------------------------- | ----------- | ---------------- |
+| errors.ForbiddenResponseError      | 403         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

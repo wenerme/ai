@@ -1,7 +1,7 @@
 ---
 title: Sinks
 description: Configure data destinations in Cloudflare Pipelines to write to R2 or R2 Data Catalog.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Sinks provide exactly-once delivery guarantees, ensuring events are never duplic
 [ Available sinks ](https://developers.cloudflare.com/pipelines/sinks/available-sinks/) Learn about supported sink destinations and their configuration options.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/sinks/#page","headline":"Sinks · Cloudflare Pipelines Docs","description":"Configure data destinations in Cloudflare Pipelines to write to R2 or R2 Data Catalog.","url":"https://developers.cloudflare.com/pipelines/sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/sinks/#page","headline":"Sinks · Cloudflare Pipelines Docs","description":"Configure data destinations in Cloudflare Pipelines to write to R2 or R2 Data Catalog.","url":"https://developers.cloudflare.com/pipelines/sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sinks/","name":"Sinks"}}]}
 ```

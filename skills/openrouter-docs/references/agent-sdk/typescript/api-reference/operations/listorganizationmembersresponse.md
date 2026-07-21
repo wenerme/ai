@@ -28,4 +28,4 @@ let value: ListOrganizationMembersResponse = {
 
 | Field    | Type                                                                                                                                 | Required             | Description |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `result` | [operations.ListOrganizationMembersResponseBody](/agent-sdk/typescript/api-reference/operations/listorganizationmembersresponsebody) | :heavy\_check\_mark: | N/A         |
+| `result` | [operations.ListOrganizationMembersResponseBody](/docs/agent-sdk/typescript/api-reference/operations/listorganizationmembersresponsebody) | :heavy\_check\_mark: | N/A         |

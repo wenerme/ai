@@ -33,4 +33,4 @@ let value: McpApprovalResponseItem = {
 | `approve`           | *boolean*                                                                                                    | :heavy\_check\_mark: | N/A         |
 | `id`                | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |
 | `reason`            | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |
-| `type`              | [models.McpApprovalResponseItemType](/agent-sdk/typescript/api-reference/models/mcpapprovalresponseitemtype) | :heavy\_check\_mark: | N/A         |
+| `type`              | [models.McpApprovalResponseItemType](/docs/agent-sdk/typescript/api-reference/models/mcpapprovalresponseitemtype) | :heavy\_check\_mark: | N/A         |

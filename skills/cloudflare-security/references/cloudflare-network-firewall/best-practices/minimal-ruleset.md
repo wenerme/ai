@@ -1,7 +1,7 @@
 ---
 title: Minimal ruleset
 description: Minimal ruleset configuration for basic protection.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ If relevant to your environment, consider blocking based on geolocation data, wh
 If you are interested in participating in the beta for [Session Initiation Protocol (SIP) Validation ↗](https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall/), contact your Implementation Manager.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/#page","headline":"Minimal suggested ruleset · Cloudflare Network Firewall docs","description":"Minimal ruleset configuration for basic protection.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/#page","headline":"Minimal suggested ruleset · Cloudflare Network Firewall docs","description":"Minimal ruleset configuration for basic protection.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/best-practices/minimal-ruleset/","name":"Minimal ruleset"}}]}
 ```

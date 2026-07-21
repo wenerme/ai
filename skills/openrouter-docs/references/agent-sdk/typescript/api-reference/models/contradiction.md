@@ -31,5 +31,5 @@ let value: Contradiction = {
 
 | Field     | Type                                                                  | Required             | Description |
 | --------- | --------------------------------------------------------------------- | -------------------- | ----------- |
-| `stances` | [models.Stance](/agent-sdk/typescript/api-reference/models/stance)\[] | :heavy\_check\_mark: | N/A         |
+| `stances` | [models.Stance](/docs/agent-sdk/typescript/api-reference/models/stance)\[] | :heavy\_check\_mark: | N/A         |
 | `topic`   | *string*                                                              | :heavy\_check\_mark: | N/A         |

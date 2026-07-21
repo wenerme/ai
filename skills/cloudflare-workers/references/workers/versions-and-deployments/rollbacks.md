@@ -1,7 +1,7 @@
 ---
 title: Rollbacks
 description: Revert to an older version of your Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -71,6 +71,6 @@ You cannot roll back to a previous version of your Worker if the [Cloudflare Dev
 * If the target deployment has a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to an R2 bucket, KV namespace, or queue that no longer exists.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks · Cloudflare Workers docs","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks · Cloudflare Workers docs","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/rollbacks/","name":"Rollbacks"}}]}
 ```

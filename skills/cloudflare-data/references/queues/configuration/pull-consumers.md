@@ -1,7 +1,7 @@
 ---
 title: Pull consumers
 description: Pull messages from a Cloudflare Queue over HTTP from any environment or language.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -359,6 +359,6 @@ Your consumer will need to decode the `json` and `bytes` types before operating 
 * Understand [what limit apply](https://developers.cloudflare.com/queues/platform/limits/) when consuming and writing to a queue.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/pull-consumers/","name":"Pull consumers"}}]}
 ```

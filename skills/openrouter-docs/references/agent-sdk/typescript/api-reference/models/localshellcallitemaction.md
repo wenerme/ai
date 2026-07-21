@@ -32,6 +32,6 @@ let value: LocalShellCallItemAction = {
 | `command`          | *string*\[]                                                            | :heavy\_check\_mark: | N/A         |
 | `env`              | `Record<string, *string*>`                                             | :heavy\_check\_mark: | N/A         |
 | `timeoutMs`        | *number*                                                               | :heavy\_minus\_sign: | N/A         |
-| `type`             | [models.TypeExec](/agent-sdk/typescript/api-reference/models/typeexec) | :heavy\_check\_mark: | N/A         |
+| `type`             | [models.TypeExec](/docs/agent-sdk/typescript/api-reference/models/typeexec) | :heavy\_check\_mark: | N/A         |
 | `user`             | *string*                                                               | :heavy\_minus\_sign: | N/A         |
 | `workingDirectory` | *string*                                                               | :heavy\_minus\_sign: | N/A         |

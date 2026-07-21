@@ -1,7 +1,7 @@
 ---
 title: WARP - Understand Cloudflare WARP through diagnostic logs
 description: In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files - warp-status, warp-settings, and daemonlog. The video also provides troubleshooting tips, including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -301,5 +301,5 @@ We're always here to help.
 Thanks for watching and see you soon.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/warp-2-diagnostic-logs/#page","headline":"WARP - Understand Cloudflare WARP through diagnostic logs | Cloudflare Docs","description":"In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files - warp-status, warp-settings, and daemonlog. The video also provides troubleshooting tips, including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.","url":"https://developers.cloudflare.com/videos/warp-2-diagnostic-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/warp-2-diagnostic-logs/#page","headline":"WARP - Understand Cloudflare WARP through diagnostic logs | Cloudflare Docs","description":"In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files - warp-status, warp-settings, and daemonlog. The video also provides troubleshooting tips, including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.","url":"https://developers.cloudflare.com/videos/warp-2-diagnostic-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

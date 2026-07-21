@@ -1,7 +1,7 @@
 ---
 title: SELECT statements
 description: Query syntax for data transformation in Cloudflare Pipelines SQL
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -170,6 +170,6 @@ npx wrangler pipelines create my-pipeline --sql-file pipeline.sql
 For a worked example, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sql-reference/select-statements/","name":"SELECT statements"}}]}
 ```

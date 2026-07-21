@@ -32,5 +32,5 @@ let value: ProviderResponse = {
 | `isByok`         | *boolean*                                                                                                      | :heavy\_minus\_sign: | Whether the request used a bring-your-own-key | false           |
 | `latency`        | *number*                                                                                                       | :heavy\_minus\_sign: | Response latency in milliseconds              | 1200            |
 | `modelPermaslug` | *string*                                                                                                       | :heavy\_minus\_sign: | Canonical model slug                          | openai/gpt-4    |
-| `providerName`   | [models.ProviderResponseProviderName](/agent-sdk/typescript/api-reference/models/providerresponseprovidername) | :heavy\_minus\_sign: | Name of the provider                          | OpenAI          |
+| `providerName`   | [models.ProviderResponseProviderName](/docs/agent-sdk/typescript/api-reference/models/providerresponseprovidername) | :heavy\_minus\_sign: | Name of the provider                          | OpenAI          |
 | `status`         | *number*                                                                                                       | :heavy\_check\_mark: | HTTP status code from the provider            | 200             |

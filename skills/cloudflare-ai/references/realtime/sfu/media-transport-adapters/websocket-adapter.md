@@ -1,7 +1,7 @@
 ---
 title: WebSocket adapter
 description: Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -382,6 +382,6 @@ When ingesting from WebSocket to WebRTC, your WebSocket client should reconnect 
 **Q: Can I change the audio format after creating an adapter?**A: No, audio format is fixed at creation time. Create a new adapter for different formats.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter · Cloudflare Realtime docs","description":"Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter · Cloudflare Realtime docs","description":"Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/media-transport-adapters/","name":"Media Transport Adapters"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/sfu/media-transport-adapters/websocket-adapter/","name":"WebSocket adapter"}}]}
 ```

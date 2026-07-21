@@ -1,7 +1,7 @@
 ---
 title: Run test
 description: Learn how to use Cloudflare's Observatory to assess the performance of your website.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ Quota limits for the number of tests you can run per month are currently the fol
 | Frankfurt, Germany  | Tel Aviv, Israel       | São Paulo, Brazil       |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/run-speed-test/#page","headline":"Run test · Cloudflare Speed docs","description":"Learn how to use Cloudflare's Observatory to assess the performance of your website.","url":"https://developers.cloudflare.com/speed/observatory/run-speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/run-speed-test/#page","headline":"Run test · Cloudflare Speed docs","description":"Learn how to use Cloudflare's Observatory to assess the performance of your website.","url":"https://developers.cloudflare.com/speed/observatory/run-speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/observatory/","name":"Observatory (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/observatory/run-speed-test/","name":"Run test"}}]}
 ```

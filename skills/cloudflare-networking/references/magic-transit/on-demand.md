@@ -1,7 +1,7 @@
 ---
 title: Magic Transit on-demand
 description: Activate Magic Transit protection on demand during attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Note
 You cannot use Magic Transit on-demand with Cloudflare leased IPs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/on-demand/#page","headline":"Magic Transit on-demand · Cloudflare Magic Transit docs","description":"Activate Magic Transit protection on demand during attacks.","url":"https://developers.cloudflare.com/magic-transit/on-demand/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/on-demand/#page","headline":"Magic Transit on-demand · Cloudflare Magic Transit docs","description":"Activate Magic Transit protection on demand during attacks.","url":"https://developers.cloudflare.com/magic-transit/on-demand/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/on-demand/","name":"Magic Transit on-demand"}}]}
 ```

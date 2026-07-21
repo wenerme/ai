@@ -1,7 +1,7 @@
 ---
 title: Features
 description: Explore AI Crawl Control features.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Pay Per Crawl ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-crawl-control/features/#page","headline":"Features · Cloudflare AI Crawl Control docs","description":"Explore AI Crawl Control features.","url":"https://developers.cloudflare.com/ai-crawl-control/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-crawl-control/features/#page","headline":"Features · Cloudflare AI Crawl Control docs","description":"Explore AI Crawl Control features.","url":"https://developers.cloudflare.com/ai-crawl-control/features/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}}]}
 ```

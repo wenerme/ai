@@ -28,6 +28,6 @@ let value: InputMessageItemContentInputImage = {
 
 | Field      | Type                                                                                               | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `detail`   | [models.InputMessageItemDetail](/agent-sdk/typescript/api-reference/models/inputmessageitemdetail) | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.InputMessageItemDetail](/docs/agent-sdk/typescript/api-reference/models/inputmessageitemdetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `type`     | *"input\_image"*                                                                                   | :heavy\_check\_mark: | N/A         |

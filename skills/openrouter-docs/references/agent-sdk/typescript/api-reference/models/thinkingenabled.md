@@ -27,5 +27,5 @@ let value: ThinkingEnabled = {
 | Field          | Type                                                                                                   | Required             | Description | Example    |
 | -------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ---------- |
 | `budgetTokens` | *number*                                                                                               | :heavy\_check\_mark: | N/A         |            |
-| `display`      | [models.AnthropicThinkingDisplay](/agent-sdk/typescript/api-reference/models/anthropicthinkingdisplay) | :heavy\_minus\_sign: | N/A         | summarized |
+| `display`      | [models.AnthropicThinkingDisplay](/docs/agent-sdk/typescript/api-reference/models/anthropicthinkingdisplay) | :heavy\_minus\_sign: | N/A         | summarized |
 | `type`         | *"enabled"*                                                                                            | :heavy\_check\_mark: | N/A         |            |

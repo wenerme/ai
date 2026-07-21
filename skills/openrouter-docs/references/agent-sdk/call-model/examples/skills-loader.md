@@ -499,6 +499,6 @@ const skillMarker = `[Skill: ${params.type}]`;
 
 ## See Also
 
-* **[nextTurnParams Guide](/agent-sdk/call-model/next-turn-params)** - Context injection patterns
-* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Adaptive behavior
-* **[Tools](/agent-sdk/call-model/tools)** - Multi-turn orchestration
+* **[nextTurnParams Guide](/docs/agent-sdk/call-model/next-turn-params)** - Context injection patterns
+* **[Dynamic Parameters](/docs/agent-sdk/call-model/dynamic-parameters)** - Adaptive behavior
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Multi-turn orchestration

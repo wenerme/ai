@@ -79,7 +79,7 @@ Valid features are: `tools`, `json_mode`, `structured_outputs`, `logprobs`, `web
 
 #### Conditional Pricing with `pricing.overrides`
 
-For models whose pricing varies by condition — long-context pricing or time-based (peak/off-peak) pricing — add an `overrides` array to the `pricing` object. This is the same shape OpenRouter exposes publicly in [`/v1/models`](/guides/overview/models#pricing-object).
+For models whose pricing varies by condition — long-context pricing or time-based (peak/off-peak) pricing — add an `overrides` array to the `pricing` object. This is the same shape OpenRouter exposes publicly in [`/v1/models`](/docs/guides/overview/models#pricing-object).
 
 Each override entry carries condition fields plus the prices that apply when the condition matches. Price fields omitted from an override inherit from the base `pricing` values.
 
@@ -210,6 +210,8 @@ Behavior:
 * Any upstream `pricing` sent alongside `is_free: true` is ignored — free endpoints always have zero cost.
 * `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
 
+You can list both a free and a paid version of the same model — just always set `is_free: true` on the free one.
+
 #### Capacity with `capacity_tpm`
 
 Report your per-model throughput capacity so OpenRouter can make better routing and capacity-planning decisions. The value is in **input tokens per minute**:
@@ -272,13 +274,13 @@ To keep your metrics competitive:
 
 ### 5. Auto Exacto: Tool-Calling Traffic Routing
 
-[Auto Exacto](/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
+[Auto Exacto](/docs/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
 
 #### How traffic is affected
 
 Auto Exacto shifts tool-calling traffic toward providers that perform well on tool-use quality signals. Providers with strong metrics are moved to the front of the routing order and will receive more tool-calling requests, while providers with weaker signals are deprioritized and will see less.
 
-Non-tool-calling traffic is **not affected** by Auto Exacto -- it continues to follow the standard [price-weighted routing](/guides/routing/provider-selection#price-based-load-balancing-default-strategy).
+Non-tool-calling traffic is **not affected** by Auto Exacto -- it continues to follow the standard [price-weighted routing](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy).
 
 #### How ranking factors are determined
 
@@ -318,4 +320,4 @@ To maximize the tool-calling traffic routed to your endpoints:
 * **Optimize throughput** -- minimize queueing and stream tokens as soon as they are available (see [Performance Metrics](#4-performance-metrics) above).
 * **Return early 429s under load** -- rather than queueing and degrading throughput, return rate limit errors so we can retry with another provider and your metrics stay healthy.
 
-For the full user-facing documentation on Auto Exacto, see [Auto Exacto](/guides/routing/auto-exacto).
+For the full user-facing documentation on Auto Exacto, see [Auto Exacto](/docs/guides/routing/auto-exacto).

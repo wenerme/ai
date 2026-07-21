@@ -33,4 +33,4 @@ let value: ListProvidersResponse = {
 
 | Field  | Type                                                                                                | Required             | Description |
 | ------ | --------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `data` | [operations.ListProvidersData](/agent-sdk/typescript/api-reference/operations/listprovidersdata)\[] | :heavy\_check\_mark: | N/A         |
+| `data` | [operations.ListProvidersData](/docs/agent-sdk/typescript/api-reference/operations/listprovidersdata)\[] | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Error codes
 description: Error codes returned by the Cloudflare Spectrum API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -186,6 +186,6 @@ A hostname with the same DNS name already exists but belongs to a different zone
 * Contact Cloudflare support if none of these apply — the hostname may need to be cleaned up internally.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/error-codes/#page","headline":"Error codes · Cloudflare Spectrum docs","description":"Error codes returned by the Cloudflare Spectrum API.","url":"https://developers.cloudflare.com/spectrum/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/error-codes/#page","headline":"Error codes · Cloudflare Spectrum docs","description":"Error codes returned by the Cloudflare Spectrum API.","url":"https://developers.cloudflare.com/spectrum/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/error-codes/","name":"Error codes"}}]}
 ```

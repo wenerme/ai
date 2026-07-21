@@ -1,7 +1,7 @@
 ---
 title: URL Scanner
 description: Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -188,6 +188,6 @@ In Security Center, you can retrieve pre-filtered information by:
 * Identical final URL (after all redirections)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/url-scanner/#page","headline":"URL Scanner · Cloudflare Radar docs","description":"Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.","url":"https://developers.cloudflare.com/radar/investigate/url-scanner/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/url-scanner/#page","headline":"URL Scanner · Cloudflare Radar docs","description":"Scan and investigate domains, IPs, and URLs using the Cloudflare Radar URL Scanner API and Security Center dashboard.","url":"https://developers.cloudflare.com/radar/investigate/url-scanner/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/url-scanner/","name":"URL Scanner"}}]}
 ```

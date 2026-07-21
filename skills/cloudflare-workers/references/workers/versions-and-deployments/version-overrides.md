@@ -1,7 +1,7 @@
 ---
 title: Version overrides
 description: Send requests to a specific version of your Worker in a gradual deployment using version overrides.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -144,6 +144,6 @@ Version overrides only apply to `fetch()`\-based service binding calls. There is
 * [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) \- Access version ID and tag from within your Worker.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/#page","headline":"Version overrides · Cloudflare Workers docs","description":"Send requests to a specific version of your Worker in a gradual deployment using version overrides.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/#page","headline":"Version overrides · Cloudflare Workers docs","description":"Send requests to a specific version of your Worker in a gradual deployment using version overrides.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/version-overrides/","name":"Version overrides"}}]}
 ```

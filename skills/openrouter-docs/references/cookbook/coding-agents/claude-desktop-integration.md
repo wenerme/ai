@@ -7,7 +7,7 @@
 > Use Claude Desktop with OpenRouter
 
 <Warning>
-  Claude Desktop with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/guides/routing/provider-selection) when using Claude Desktop.
+  Claude Desktop with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Desktop.
 </Warning>
 
 ## Why Use OpenRouter with Claude Desktop?
@@ -83,7 +83,7 @@ The model picker will now display the models available through your OpenRouter c
 
 ## Claude Code
 
-Claude Code is Anthropic's separate CLI-based coding agent that also works with OpenRouter. If you prefer a terminal workflow, see our dedicated [Claude Code integration guide](/cookbook/coding-agents/claude-code-integration) for environment variable setup, model configuration, fast mode, and GitHub Action integration.
+Claude Code is Anthropic's separate CLI-based coding agent that also works with OpenRouter. If you prefer a terminal workflow, see our dedicated [Claude Code integration guide](/docs/cookbook/coding-agents/claude-code-integration) for environment variable setup, model configuration, fast mode, and GitHub Action integration.
 
 ## Troubleshooting
 

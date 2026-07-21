@@ -1,7 +1,7 @@
 ---
 title: Enhancing security posture with SentinelOne and Cloudflare One
 description: The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -181,6 +181,6 @@ The integration between Cloudflare One and SentinelOne provides organizations wi
 * [Overview of SentinelOne and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/#page","headline":"Enhancing security posture with SentinelOne and Cloudflare One · Cloudflare Reference Architecture docs","description":"The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/#page","headline":"Enhancing security posture with SentinelOne and Cloudflare One · Cloudflare Reference Architecture docs","description":"The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","name":"Enhancing security posture with SentinelOne and Cloudflare One"}}]}
 ```

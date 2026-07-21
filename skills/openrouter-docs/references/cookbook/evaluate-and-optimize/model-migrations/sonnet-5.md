@@ -37,7 +37,7 @@ Claude 5 Sonnet no longer accepts `temperature`, `top_p`, or `top_k`. If you pas
 
 Claude 5 Sonnet supports only adaptive thinking. On Sonnet 4.6, reasoning could be controlled via a token budget (`reasoning.max_tokens` / `thinking.budget_tokens`) or left adaptive; on Sonnet 5, budget-based thinking is removed and adaptive is the only remaining mode when reasoning is on. The new API default is adaptive thinking on at effort `high`.
 
-Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/guides/best-practices/reasoning-tokens) — Sonnet 5 does not change that.
+Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/docs/guides/best-practices/reasoning-tokens) — Sonnet 5 does not change that.
 
 Concretely on Sonnet 5:
 

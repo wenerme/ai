@@ -32,4 +32,4 @@ let value: CustomToolCallOutputItem = {
 | `callId` | *string*                                                                                                                                               | :heavy\_check\_mark: | N/A         |
 | `id`     | *string*                                                                                                                                               | :heavy\_minus\_sign: | N/A         |
 | `output` | *models.CustomToolCallOutputItemOutputUnion2*                                                                                                          | :heavy\_check\_mark: | N/A         |
-| `type`   | [models.CustomToolCallOutputItemTypeCustomToolCallOutput](/agent-sdk/typescript/api-reference/models/customtoolcalloutputitemtypecustomtoolcalloutput) | :heavy\_check\_mark: | N/A         |
+| `type`   | [models.CustomToolCallOutputItemTypeCustomToolCallOutput](/docs/agent-sdk/typescript/api-reference/models/customtoolcalloutputitemtypecustomtoolcalloutput) | :heavy\_check\_mark: | N/A         |

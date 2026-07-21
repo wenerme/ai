@@ -20,7 +20,7 @@ Navigate to [OpenRouter Settings](https://openrouter.ai/settings/management-keys
   <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/community/infisical/infisical-provisioning-keys.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=b5fb9fae737c301bbda15dff3f6817e6" alt="OpenRouter Management Keys page showing the Create Management Key button" width="1550" height="1035" data-path="assets/guides/community/infisical/infisical-provisioning-keys.png" />
 </Frame>
 
-For more details on Management API keys and key management, see [OpenRouter's Management Keys documentation](/guides/overview/auth/management-api-keys).
+For more details on Management API keys and key management, see [OpenRouter's Management Keys documentation](/docs/guides/overview/auth/management-api-keys).
 
 ## Setting Up the OpenRouter Connection
 
@@ -86,11 +86,11 @@ BYOK (Bring Your Own Key) on OpenRouter lets you use your own provider API keys 
 
 The Include BYOK in limit option controls whether BYOK usage counts toward your key's spending limit. When disabled, only OpenRouter credit usage counts toward the limit and BYOK usage is tracked separately. When enabled, usage from your own provider keys is included in the limit, and once the limit is reached, the key is subject to OpenRouter's rate limits until the next reset.
 
-For more details, see [OpenRouter BYOK documentation](/guides/overview/auth/byok) and [OpenRouter limits documentation](/api/reference/limits).
+For more details, see [OpenRouter BYOK documentation](/docs/guides/overview/auth/byok) and [OpenRouter limits documentation](/docs/api_reference/limits).
 
 ## Learn More
 
 * **Infisical OpenRouter Connection**: [https://infisical.com/docs/integrations/app-connections/openrouter](https://infisical.com/docs/integrations/app-connections/openrouter)
 * **Infisical OpenRouter API Key Rotation**: [https://infisical.com/docs/documentation/platform/secret-rotation/openrouter-api-key](https://infisical.com/docs/documentation/platform/secret-rotation/openrouter-api-key)
-* **OpenRouter Management Keys**: [https://openrouter.ai/docs/guides/overview/auth/management-api-keys](/guides/overview/auth/management-api-keys)
-* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](/quickstart)
+* **OpenRouter Management Keys**: [https://openrouter.ai/docs/guides/overview/auth/management-api-keys](/docs/guides/overview/auth/management-api-keys)
+* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](/docs/quickstart)

@@ -25,5 +25,5 @@ import { NotFoundResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                       | Required             | Description                     | Example                                         |
 | -------- | ------------------------------------------------------------------------------------------ | -------------------- | ------------------------------- | ----------------------------------------------- |
-| `error`  | [models.NotFoundResponseErrorData](/agent-sdk/typescript/models/notfoundresponseerrordata) | :heavy\_check\_mark: | Error data for NotFoundResponse | `{"code": 404,"message": "Resource not found"}` |
+| `error`  | [models.NotFoundResponseErrorData](/docs/agent-sdk/typescript/models/notfoundresponseerrordata) | :heavy\_check\_mark: | Error data for NotFoundResponse | `{"code": 404,"message": "Resource not found"}` |
 | `userId` | *string*                                                                                   | :heavy\_minus\_sign: | N/A                             |                                                 |

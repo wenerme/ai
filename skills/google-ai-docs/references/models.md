@@ -248,8 +248,9 @@ For example: `gemini-2.5-flash-preview-09-2025`.
 
 Points to the latest release for a specific model variation. This can be a
 stable, preview or experimental release. This alias will get hot-swapped with
-every new release of a specific model variation. A **2-week notice** will
-be provided through email before the version behind latest is changed.
+every new release of a specific model variation. For breaking changes, a
+**2-week notice** will be provided through email before the version behind
+latest is changed.
 
 For example: `gemini-flash-latest`.
 

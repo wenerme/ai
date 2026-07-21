@@ -1,7 +1,7 @@
 ---
 title: Transform Rules configuration using Terraform
 description: Create URL rewrites, request header, and response header Transform Rules using Terraform.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -358,6 +358,6 @@ Make sure you include the Managed Transforms you are updating in the correct obj
 For more information on Managed Transforms, refer to [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#page","headline":"Transform Rules configuration using Terraform · Cloudflare Terraform docs","description":"Create URL rewrites, request header, and response header Transform Rules using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#page","headline":"Transform Rules configuration using Terraform · Cloudflare Terraform docs","description":"Create URL rewrites, request header, and response header Transform Rules using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/transform-rules/","name":"Transform Rules configuration using Terraform"}}]}
 ```

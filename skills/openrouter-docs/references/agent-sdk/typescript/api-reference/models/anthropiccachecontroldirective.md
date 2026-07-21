@@ -27,5 +27,5 @@ let value: AnthropicCacheControlDirective = {
 
 | Field  | Type                                                                                                                       | Required             | Description | Example |
 | ------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | ------- |
-| `ttl`  | [models.AnthropicCacheControlTtl](/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl)                     | :heavy\_minus\_sign: | N/A         | 5m      |
-| `type` | [models.AnthropicCacheControlDirectiveType](/agent-sdk/typescript/api-reference/models/anthropiccachecontroldirectivetype) | :heavy\_check\_mark: | N/A         |         |
+| `ttl`  | [models.AnthropicCacheControlTtl](/docs/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl)                     | :heavy\_minus\_sign: | N/A         | 5m      |
+| `type` | [models.AnthropicCacheControlDirectiveType](/docs/agent-sdk/typescript/api-reference/models/anthropiccachecontroldirectivetype) | :heavy\_check\_mark: | N/A         |         |

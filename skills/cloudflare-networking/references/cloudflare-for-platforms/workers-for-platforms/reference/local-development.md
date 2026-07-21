@@ -1,7 +1,7 @@
 ---
 title: Local development
 description: Test your dynamic dispatch Worker locally while connecting to deployed user Workers in a Workers for Platforms namespace.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ This tells your dispatch Worker that's running locally to connect to the remote 
 For more information about remote bindings during local development, refer to [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/#page","headline":"Local development · Cloudflare for Platforms docs","description":"Test your dynamic dispatch Worker locally while connecting to deployed user Workers in a Workers for Platforms namespace.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/#page","headline":"Local development · Cloudflare for Platforms docs","description":"Test your dynamic dispatch Worker locally while connecting to deployed user Workers in a Workers for Platforms namespace.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/reference/local-development/","name":"Local development"}}]}
 ```

@@ -41,7 +41,7 @@ Claude 4.7 Opus no longer accepts `temperature`, `top_p`, or `top_k`. If you pas
 
 Claude 4.7 Opus supports only adaptive thinking. On 4.6, reasoning could be controlled via a token budget (`reasoning.max_tokens` / `thinking.budget_tokens`) or left adaptive; on 4.7, budget-based thinking is removed and adaptive is the only remaining mode when reasoning is on.
 
-Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/guides/best-practices/reasoning-tokens) — 4.7 does not change that.
+Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/docs/guides/best-practices/reasoning-tokens) — 4.7 does not change that.
 
 Concretely on 4.7:
 

@@ -1,7 +1,7 @@
 ---
 title: Subscribe to gateways
 description: Subscribe to Ethereum or IPFS gateways on your Cloudflare account.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ To update an existing subscription or subscribe to an additional gateway:
 3. To update existing gateway subscriptions, click **Change**. To purchase access to a new gateway, click **Subscribe**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/enable-gateways/#page","headline":"Subscribe to gateways · Cloudflare Web3 docs","description":"Subscribe to Ethereum or IPFS gateways on your Cloudflare account.","url":"https://developers.cloudflare.com/web3/how-to/enable-gateways/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/enable-gateways/#page","headline":"Subscribe to gateways · Cloudflare Web3 docs","description":"Subscribe to Ethereum or IPFS gateways on your Cloudflare account.","url":"https://developers.cloudflare.com/web3/how-to/enable-gateways/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/enable-gateways/","name":"Subscribe to gateways"}}]}
 ```

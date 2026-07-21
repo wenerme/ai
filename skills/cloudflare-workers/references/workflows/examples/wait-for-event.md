@@ -1,7 +1,7 @@
 ---
 title: Human-in-the-Loop Image Tagging with waitForEvent
 description: Human-in-the-loop Workflow with waitForEvent API
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -242,6 +242,6 @@ database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent · Cloudflare Workflows docs","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent · Cloudflare Workflows docs","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/wait-for-event/","name":"Human-in-the-Loop Image Tagging with waitForEvent"}}]}
 ```

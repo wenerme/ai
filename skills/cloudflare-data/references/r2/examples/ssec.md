@@ -1,7 +1,7 @@
 ---
 title: Use SSE-C
 description: The following tutorial shows some snippets for how to use Server-Side Encryption with Customer-Provided Keys (SSE-C) on Cloudflare R2.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -298,6 +298,6 @@ const GetObjectOutput = await s3.send(
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/ssec/#page","headline":"Use SSE-C · Cloudflare R2 docs","description":"The following tutorial shows some snippets for how to use Server-Side Encryption with Customer-Provided Keys (SSE-C) on Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/ssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/ssec/#page","headline":"Use SSE-C · Cloudflare R2 docs","description":"The following tutorial shows some snippets for how to use Server-Side Encryption with Customer-Provided Keys (SSE-C) on Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/ssec/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/ssec/","name":"Use SSE-C"}}]}
 ```

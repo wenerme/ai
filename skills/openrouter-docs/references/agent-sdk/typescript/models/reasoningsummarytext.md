@@ -26,5 +26,5 @@ let value: ReasoningSummaryText = {
 
 | Field  | Type                                                                                     | Required             | Description |
 | ------ | ---------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type` | [models.ReasoningSummaryTextType](/agent-sdk/typescript/models/reasoningsummarytexttype) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.ReasoningSummaryTextType](/docs/agent-sdk/typescript/models/reasoningsummarytexttype) | :heavy\_check\_mark: | N/A         |
 | `text` | *string*                                                                                 | :heavy\_check\_mark: | N/A         |

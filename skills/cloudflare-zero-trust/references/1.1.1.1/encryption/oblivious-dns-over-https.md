@@ -1,7 +1,7 @@
 ---
 title: Oblivious DNS over HTTPS
 description: Learn how Cloudflare 1.1.1.1 supports Oblivious DNS over HTTPS (ODoH) to enhance privacy by separating HTTP request contents from requester IP addresses.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ To make ODoH queries you can use open source clients such as [dnscrypt-proxy ↗
 * [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/#page","headline":"Oblivious DNS over HTTPS | Cloudflare Docs","description":"Learn how Cloudflare 1.1.1.1 supports Oblivious DNS over HTTPS (ODoH) to enhance privacy by separating HTTP request contents from requester IP addresses.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Proxying"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/#page","headline":"Oblivious DNS over HTTPS | Cloudflare Docs","description":"Learn how Cloudflare 1.1.1.1 supports Oblivious DNS over HTTPS (ODoH) to enhance privacy by separating HTTP request contents from requester IP addresses.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Proxying"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/oblivious-dns-over-https/","name":"Oblivious DNS over HTTPS"}}]}
 ```

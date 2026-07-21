@@ -196,6 +196,6 @@ There is currently no separate charge for the files tool; you pay only for stand
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
-* [Apply Patch](/guides/features/server-tools/apply-patch) — Let models propose file edits as V4A diffs
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
+* [Apply Patch](/docs/guides/features/server-tools/apply-patch) — Let models propose file edits as V4A diffs
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

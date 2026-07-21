@@ -1,7 +1,7 @@
 ---
 title: AI applications
 description: Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -75,6 +75,6 @@ Browse available models for text generation, embeddings, image generation, and m
 Connect to OpenAI, Anthropic, Google AI, and other providers through AI Gateway.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/ai/#page","headline":"AI applications · Use cases · Cloudflare use cases","description":"Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.","url":"https://developers.cloudflare.com/use-cases/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/ai/#page","headline":"AI applications · Use cases · Cloudflare use cases","description":"Build AI applications on Cloudflare with Workers AI inference, AI Gateway, Vectorize, and serverless storage.","url":"https://developers.cloudflare.com/use-cases/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/ai/","name":"AI applications"}}]}
 ```

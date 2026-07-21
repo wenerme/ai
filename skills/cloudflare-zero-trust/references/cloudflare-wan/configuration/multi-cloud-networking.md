@@ -1,7 +1,7 @@
 ---
 title: Configure cloud on-ramps
 description: Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -249,6 +249,6 @@ You can view estimated costs associated with your cloud resources in the Cloudfl
 4. In the **Associated Resources** page, you can view the estimated monthly costs for all the resources associated with the on-ramp you chose. You can also search for a specific resource using the search box.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/#page","headline":"Configure cloud on-ramps · Cloudflare WAN docs","description":"Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/#page","headline":"Configure cloud on-ramps · Cloudflare WAN docs","description":"Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/multi-cloud-networking/","name":"Configure cloud on-ramps"}}]}
 ```

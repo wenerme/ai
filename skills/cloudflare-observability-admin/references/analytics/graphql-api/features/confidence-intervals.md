@@ -1,7 +1,7 @@
 ---
 title: Confidence Intervals
 description: Request confidence intervals for sampled data.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -57,7 +57,7 @@ query SingleDatasetWithConfidence($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIyiWATgwUQMKABNm7LrwFCxLcZJkgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVGIwUQMKABNm7LrwFCWwiVJkgAvkA)
 
 ### Response
 
@@ -101,6 +101,6 @@ In this example, the interpretation of the response is that, based on a sample o
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/#page","headline":"Confidence Intervals · Cloudflare Analytics docs","description":"Request confidence intervals for sampled data.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/#page","headline":"Confidence Intervals · Cloudflare Analytics docs","description":"Request confidence intervals for sampled data.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/confidence-intervals/","name":"Confidence Intervals"}}]}
 ```

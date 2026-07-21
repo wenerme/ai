@@ -1,7 +1,7 @@
 ---
 title: Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL
 description: Query tunnel bandwidth analytics with the GraphQL API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -119,6 +119,6 @@ curl https://api.cloudflare.com/client/v4/graphql \
 2. For details, refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/). [↩](#user-content-fnref-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/query-bandwidth/#page","headline":"Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL · Cloudflare WAN docs","description":"Query tunnel bandwidth analytics with the GraphQL API.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/query-bandwidth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/query-bandwidth/#page","headline":"Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL · Cloudflare WAN docs","description":"Query tunnel bandwidth analytics with the GraphQL API.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/query-bandwidth/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/analytics/query-bandwidth/","name":"Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL"}}]}
 ```

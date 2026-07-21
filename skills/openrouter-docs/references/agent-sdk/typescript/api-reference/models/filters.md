@@ -28,5 +28,5 @@ let value: Filters = {
 | Field   | Type                                                                         | Required             | Description |
 | ------- | ---------------------------------------------------------------------------- | -------------------- | ----------- |
 | `key`   | *string*                                                                     | :heavy\_check\_mark: | N/A         |
-| `type`  | [models.FiltersType](/agent-sdk/typescript/api-reference/models/filterstype) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.FiltersType](/docs/agent-sdk/typescript/api-reference/models/filterstype) | :heavy\_check\_mark: | N/A         |
 | `value` | *models.FileSearchServerToolValue2*                                          | :heavy\_check\_mark: | N/A         |

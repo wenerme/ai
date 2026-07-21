@@ -61,7 +61,7 @@ Choose the Client SDKs when you need **direct, efficient access to model inferen
 The Client SDKs are intentionally lean. It mirrors the OpenRouter API surface 1:1 with full type safety, so there is no abstraction to fight when you need fine-grained control.
 
 <Tip>
-  If you want higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions, and conversation state management — see the [Agent SDK](/agent-sdk/overview) instead.
+  If you want higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions, and conversation state management — see the [Agent SDK](/docs/agent-sdk/overview) instead.
 </Tip>
 
 ## Quick example
@@ -112,7 +112,7 @@ The Client SDKs are intentionally lean. It mirrors the OpenRouter API surface 1:
 
 ## Next steps
 
-* [TypeScript SDK reference](/client-sdks/typescript)
-* [Python SDK reference](/client-sdks/python)
-* [Go SDK reference](/client-sdks/go)
-* [Agent SDK overview](/agent-sdk/overview) — for building agents with multi-turn loops and tools
+* [TypeScript SDK reference](/docs/client-sdks/typescript)
+* [Python SDK reference](/docs/client-sdks/python)
+* [Go SDK reference](/docs/client-sdks/go)
+* [Agent SDK overview](/docs/agent-sdk/overview) — for building agents with multi-turn loops and tools

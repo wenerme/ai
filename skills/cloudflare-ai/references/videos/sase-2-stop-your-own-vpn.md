@@ -1,7 +1,7 @@
 ---
 title: SASE - Stop hosting your VPN service
 description: Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -287,5 +287,5 @@ corporate networking,and all the developer content the Internet
 can hold. Follow us online and thanks forwatching!
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/#page","headline":"SASE - Stop hosting your VPN service | Cloudflare Docs","description":"Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.","url":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/#page","headline":"SASE - Stop hosting your VPN service | Cloudflare Docs","description":"Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.","url":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

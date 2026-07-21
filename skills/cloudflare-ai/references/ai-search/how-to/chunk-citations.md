@@ -1,7 +1,7 @@
 ---
 title: Show source citations in responses
 description: Display source citations alongside AI-generated answers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -670,6 +670,6 @@ Each chunk in the `chunks` array can include the following fields:
 For multi-instance searches, each chunk also includes an `instance_id` field identifying which instance it came from. To search or chat across multiple instances, refer to [namespace methods](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-methods).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/chunk-citations/","name":"Show source citations in responses"}}]}
 ```

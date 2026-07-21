@@ -1,7 +1,7 @@
 ---
 title: Wrangler configuration
 description: Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -216,6 +216,6 @@ tag = "v1"
 * [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) \- Initial setup walkthrough
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/wrangler/","name":"Wrangler configuration"}}]}
 ```

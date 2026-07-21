@@ -106,7 +106,10 @@ services:
       - GF_DATAPROXY_LOGGING=true
       - GF_LOG_LEVEL=debug
       - GF_LOG_FILTERS=oracle-datasource:debug
-      - GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE=15
+      # Sets [plugin.grafana-oracle-datasource] poolsize and max_response_size,
+      # which Grafana forwards to the plugin process
+      - GF_PLUGIN_GRAFANA_ORACLE_DATASOURCE_POOLSIZE=50
+      - GF_PLUGIN_GRAFANA_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE=16
 ```
 
 ## Kerberos configuration example

@@ -28,8 +28,8 @@ let value: OutputTextEditorServerToolItem = {
 
 | Field      | Type                                                                                                                       | Required             | Description | Example   |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `command`  | [models.Command](/agent-sdk/typescript/api-reference/models/command)                                                       | :heavy\_minus\_sign: | N/A         |           |
+| `command`  | [models.Command](/docs/agent-sdk/typescript/api-reference/models/command)                                                       | :heavy\_minus\_sign: | N/A         |           |
 | `filePath` | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
 | `id`       | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
-| `status`   | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
-| `type`     | [models.OutputTextEditorServerToolItemType](/agent-sdk/typescript/api-reference/models/outputtexteditorservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `status`   | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
+| `type`     | [models.OutputTextEditorServerToolItemType](/docs/agent-sdk/typescript/api-reference/models/outputtexteditorservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |

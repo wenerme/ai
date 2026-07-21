@@ -171,6 +171,6 @@ The datetime tool has no additional cost beyond standard token usage.
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
-* [Web Search](/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

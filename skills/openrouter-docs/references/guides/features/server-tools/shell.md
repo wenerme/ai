@@ -57,12 +57,12 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 <Warning>
   **Responses API only**
 
-  The shell server tool is only available through the [Responses API](/api_reference/responses/overview). Requesting it on the Chat Completions or Messages API returns a `400` error. On the Messages API, use [Bash](/guides/features/server-tools/bash) instead.
+  The shell server tool is only available through the [Responses API](/docs/api_reference/responses/overview). Requesting it on the Chat Completions or Messages API returns a `400` error. On the Messages API, use [Bash](/docs/guides/features/server-tools/bash) instead.
 </Warning>
 
 The `openrouter:shell` server tool gives a model a hosted shell — a sandbox-backed clone of OpenAI's hosted `shell` tool that works with any model. When the model needs to run commands, it emits a shell call; OpenRouter executes the commands server-side in an isolated Linux container and returns each command's `stdout`, `stderr`, and exit or timeout outcome.
 
-Unlike the [Bash](/guides/features/server-tools/bash) tool, the shell tool has no client-side execution mode: commands always run in a hosted environment, either OpenAI's native shell or OpenRouter's sandbox.
+Unlike the [Bash](/docs/guides/features/server-tools/bash) tool, the shell tool has no client-side execution mode: commands always run in a hosted environment, either OpenAI's native shell or OpenRouter's sandbox.
 
 ## How It Works
 
@@ -203,6 +203,6 @@ Shell execution is sandboxed by design:
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
-* [Bash](/guides/features/server-tools/bash) — Sandboxed shell for the Anthropic Messages API
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
+* [Bash](/docs/guides/features/server-tools/bash) — Sandboxed shell for the Anthropic Messages API
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

@@ -8,15 +8,19 @@ Connect to our MCP server natively in Claude, Cursor, and other clients or use t
 
 Linear's MCP server follows the authenticated remote [MCP spec](https://modelcontextprotocol.io/specification/2025-03-26), so the server is centrally hosted and managed. The Linear MCP server has tools available for finding, creating, and updating objects in Linear like issues, projects, and comments — with more functionality on the way, and [feedback](https://linear.app/contact/support) on its functionality is welcomed.
 
-## Setup Instructions
+For help getting started after setup, see some of our [example prompts](https://linear.app/docs/mcp#common-use-cases).
+
+## Setup
 
 ### General
 
-Our MCP server supports Streamable HTTP transports. This transport uses OAuth 2.1 with dynamic client registration for authentication at the following address:
+Our MCP server uses Streamable HTTP as the primary transport, accessible at the following address. The interactive setup flow uses OAuth 2.1 with dynamic client registration. You can also authenticate directly with a bearer token or Linear API key — see the FAQ for details.
 
  `https://mcp.linear.app/mcp`
 
-For instructions for specific clients, read on…
+If you only want read-only access, use `https://mcp.linear.app/mcp/readonly` instead.
+
+For instructions for specific clients, read on. Dedicated setup pages are also available for [Claude](https://linear.app/integrations/claude), [Cursor](https://linear.app/integrations/cursor-mcp), [VS Code](https://linear.app/integrations/vs-code-mcp), [Windsurf](https://linear.app/integrations/windsurf), and [Zed](https://linear.app/integrations/zed/).
 
 ### Claude
 
@@ -165,6 +169,126 @@ Hundreds of other tools now support MCP servers, you can configure them to use L
 * **Arguments**: `-y mcp-remote https://mcp.linear.app/mcp`
 * **Environment**: None
 
+## Common use cases
+
+The MCP server lets you work with your Linear data from any compatible AI client. To help get started with the Linear MCP tooling, feel free to copy some example prompts into your own client to explore what’s possible.
+
+<details>
+<summary>Roadmap planning</summary>
+**Use case**
+
+Use this workflow to turn a planning document into a structured Linear project, with issues, milestones, and relationships that make the work easier to organize and track.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping turn a planning document into a well-structured Linear project.
+>
+> Read the document, create a project that reflects its objective, scope, and timeline, then create the issues needed to represent the work with clear titles and populated descriptions. Each issue should make the work actionable by capturing the problem, the goal, the proposed approach when one is provided, and any open questions that remain. Organize issues into milestones when the document clearly implies phases, deliverables, or checkpoints, and add related relationships where issues are meaningfully connected, but do not invent dependencies or structure that the source material does not support.
+>
+> If the document is too vague or ambiguous to produce high-quality work, flag the uncertainty and return a proposed outline for review instead of guessing.
+>
+> Before creating anything, show the proposed project, milestones, issues, relationships, and any decisions that need review.
+</details>
+
+<details>
+<summary>Standup note automation</summary>
+**Use case**
+
+Use this workflow to turn standup notes into clear updates on the relevant Linear issues, so progress and blockers stay documented without extra manual work.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping turn live standup notes into updates on existing Linear issues.
+>
+> Read the notes, identify any issues mentioned by ID, title, owner, or clear surrounding context, and match each note only when the connection is strong.
+>
+> For every confident match, add a concise comment that captures what changed, the current status or blocker, and the next step if one is mentioned. Keep each comment factual and specific to that issue. If a note is ambiguous or you cannot confidently match it, do not guess or create work from it; return it as unmatched with a short explanation.
+>
+> Before applying any changes, show which issues you plan to update and the exact comment you would post to each one, then apply the comments and separately list any notes you skipped.
+>
+> Standup notes: `[Paste the notes’ raw text here or attach the transcript as a document]`
+</details>
+
+<details>
+<summary>Incoming bug investigation</summary>
+**Use case**
+
+Use this workflow to investigate a reported bug from an existing Linear issue, identify a likely root cause, and capture the findings back on the issue for the team.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping investigate a bug that is already tracked in Linear.
+>
+> Start from the referenced issue, use its description and any linked context as the starting point, and search for the most likely root cause by following relevant technical, product, or workflow clues.
+>
+> Focus on producing a clear, evidence-based explanation of what is happening, what changed if that is relevant, and what the likely cause appears to be. Do not guess when the evidence is weak; instead, call out uncertainty and explain what additional context would help.
+>
+> Once you have enough information, write a concise summary of the findings and post that summary as a comment on the issue so the investigation is documented for the team.
+>
+> Linear issue to investigate: `[LIN-123]`
+</details>
+
+<details>
+<summary>Team cycle summarization</summary>
+**Use case**
+
+Use this workflow to summarize what a team completed during a specific cycle or timeframe, making it easier to review progress and communicate outcomes.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping summarize work completed during a specific Linear cycle or timeframe.
+>
+> Identify the most recently completed cycle to analyze for the selected team or teams, gather the relevant issues, and produce a concise summary of what was accomplished. Focus on the work that was actually completed, the main themes across that work, and any notable patterns such as bugs resolved, projects advanced, or areas of concentrated effort.
+>
+> Keep the summary clear and useful for sharing with others, and avoid overstating progress where the underlying work is still in flight.
+>
+> Team identifiers: `[LIN, FEA]`
+</details>
+
+<details>
+<summary>Timeline generation</summary>
+**Use case**
+
+Use this workflow to build a historical timeline of work in Linear around a topic, so teams can understand how a project, incident, or theme evolved over time.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping document the history of work in Linear around a specific topic.
+>
+> Gather the relevant issues and projects connected to that topic, review their historical activity, and produce a timeline that shows the key developments in chronological order.
+>
+> Focus on meaningful milestones such as when work was created, when direction changed, when major decisions or updates were recorded, and when important work was completed.
+>
+> Keep the timeline factual and grounded in the underlying activity, and call out any gaps or ambiguity rather than inferring events that are not clearly supported.
+>
+> Topic: `[Insert a specific topic from your workspace]`
+</details>
+
+<details>
+<summary>Implementation plan</summary>
+**Use case**
+
+Use this workflow to turn an initial idea into a reviewed implementation plan, then create the corresponding Linear work and delegate execution to the right people or agents.
+
+**Example prompt**
+
+> [!NOTE]
+> You are helping plan and structure a development effort in Linear.
+>
+> Start by designing an approach based on the provided context, with enough detail to explain the proposed solution, major workstreams, and any important tradeoffs or open questions. Treat that initial plan as a draft that can be reviewed and edited before any work is created.
+>
+> Once the plan is approved, create a parent issue that captures the overall goal and create sub-issues for the concrete pieces of work needed to execute it.
+>
+> Keep the breakdown clear and actionable, and assign or delegate work only when the requested owners or agents are explicitly specified.
+>
+> Context: `[Insert enough context to help orient the agent]`
+</details>
+
 ## FAQ
 
 <details>
@@ -175,14 +299,17 @@ Additionally you may need to update to a newer version of node if required.
 </details>
 
 <details>
-<summary>I'm using WSL on Windows, and seeing an error</summary>
-Try instead to connect using:
-{"mcpServers": {"linear": {"command": "wsl","args": ["npx","-y","mcp-remote","[https://mcp.linear.app/sse](https://mcp.linear.app/sse)","--transport sse-only"]}}}
-</details>
+<summary>Can I authenticate with multiple Linear workspaces?</summary>
+The Linear MCP server authenticates each session via OAuth. Because reconnecting alone does not switch the workspace within an existing auth session, each workspace needs its own separate authentication context.
 
-<details>
-<summary>Does the MCP support Streamable HTTP?</summary>
-Yes, at the [`https://mcp.linear.app/mcp`](https://mcp.linear.app/mcp) endpoint
+If your client or the `mcp-remote` module supports a configuration directory (for example via `MCP_REMOTE_CONFIG_DIR`), point each workspace to a different path:
+
+```sh
+MCP_REMOTE_CONFIG_DIR=~/.mcp-auth/workspace-a npx mcp-remote https://mcp.linear.app/mcp
+MCP_REMOTE_CONFIG_DIR=~/.mcp-auth/workspace-b npx mcp-remote https://mcp.linear.app/mcp
+```
+
+Authenticate each configuration separately. For clients that manage their own auth storage, check the client's documentation for workspace-switching options.
 </details>
 
 <details>
@@ -190,4 +317,25 @@ Yes, at the [`https://mcp.linear.app/mcp`](https://mcp.linear.app/mcp) endpoint
 The MCP server now supports passing OAuth token and API keys directly in the `Authorization: Bearer <yourtoken>` header instead of using the interactive authentication flow.
 
 You can use this to interact with the MCP server as an `app` user, provide read-only access through a restricted API key, or integrate with an existing Linear OAuth application without an extra authentication hop.
+
+For a read-only approach with your own API key, create a Linear API key with only the `Read` permission enabled.
+</details>
+
+<details>
+<summary>What about the SSE endpoint?</summary>
+The SSE endpoint at `https://mcp.linear.app/sse` is a deprecated fallback for clients that do not support Streamable HTTP.
+
+For all new setups, use the primary Streamable HTTP endpoint at `https://mcp.linear.app/mcp`.
+</details>
+
+<details>
+<summary>My remote MCP connection dropped or isn't responding</summary>
+Remote MCP connections can occasionally need a reconnect in some client setups. Try disconnecting and reconnecting the server from your client's MCP settings. This is a routine client-side reset and does not affect your Linear data or authentication session.
+</details>
+
+<details>
+<summary>I'm using WSL on Windows, and seeing an error</summary>
+The default connection uses Streamable HTTP at `https://mcp.linear.app/mcp`. If that does not work in WSL, use this SSE fallback instead (`/sse` is a legacy path for clients that do not support Streamable HTTP):
+
+`{"mcpServers": {"linear": {"command": "wsl","args": ["npx","-y","mcp-remote","[https://mcp.linear.app/sse](https://mcp.linear.app/sse)","--transport sse-only"]}}}`
 </details>

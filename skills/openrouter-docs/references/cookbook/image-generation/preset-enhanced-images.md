@@ -19,8 +19,8 @@ You need:
 
 Use these references for exact schemas:
 
-* [Presets feature](/guides/features/presets)
-* [Image generation server tool](/guides/features/server-tools/image-generation)
+* [Presets feature](/docs/guides/features/presets)
+* [Image generation server tool](/docs/guides/features/server-tools/image-generation)
 * [Available image models](https://openrouter.ai/models?output_modalities=image)
 
 <Warning>
@@ -111,7 +111,7 @@ The response confirms your preset was created:
 ```
 
 <Info>
-  The response shown above is abbreviated. The full response includes additional fields like `workspace_id`, `description`, and timestamps. See the [Presets API reference](/sdks/typescript/api-reference/presets) for the complete schema.
+  The response shown above is abbreviated. The full response includes additional fields like `workspace_id`, `description`, and timestamps. See the [Presets API reference](/docs/sdks/typescript/api-reference/presets) for the complete schema.
 </Info>
 
 You can also create or edit presets from the [Presets dashboard](https://openrouter.ai/settings/presets), which has a visual server tools editor.
@@ -186,7 +186,7 @@ The system prompt controls how aggressively the orchestrator rewrites. Some patt
 
 ### Image tool parameters
 
-The tool's `parameters` object accepts `model` plus all `image_config` fields (quality, aspect\_ratio, size, background, output\_format, output\_compression, moderation). See the [image generation server tool reference](/guides/features/server-tools/image-generation) for the full list and model-specific defaults.
+The tool's `parameters` object accepts `model` plus all `image_config` fields (quality, aspect\_ratio, size, background, output\_format, output\_compression, moderation). See the [image generation server tool reference](/docs/guides/features/server-tools/image-generation) for the full list and model-specific defaults.
 
 ### Using different image models for different scenarios
 
@@ -201,8 +201,8 @@ To create a new version via API, POST to the same endpoint again with your updat
 ## Next steps
 
 * Explore [available image models](https://openrouter.ai/models?output_modalities=image) and compare pricing, quality, and speed
-* Read about [presets](/guides/features/presets) for version management, team sharing, and the preset field merge behavior
-* Use the [OpenRouter TypeScript SDK](/sdks/typescript) or [Python SDK](/sdks/python) for typed preset interactions in your app
-* Add [web search](/guides/features/server-tools/web-search) to the preset's tools so the orchestrator can reference current visual trends or specific art styles
-* Track image generation costs with the [Analytics guide](/cookbook/administration/analytics-cost-control) to monitor per-preset spend
+* Read about [presets](/docs/guides/features/presets) for version management, team sharing, and the preset field merge behavior
+* Use the [OpenRouter TypeScript SDK](/docs/sdks/typescript) or [Python SDK](/docs/sdks/python) for typed preset interactions in your app
+* Add [web search](/docs/guides/features/server-tools/web-search) to the preset's tools so the orchestrator can reference current visual trends or specific art styles
+* Track image generation costs with the [Analytics guide](/docs/cookbook/administration/analytics-cost-control) to monitor per-preset spend
 * Handle multi-turn conversations where the user refines images iteratively (pass previous messages to the preset to maintain context)

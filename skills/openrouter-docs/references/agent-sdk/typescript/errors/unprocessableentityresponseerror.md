@@ -25,5 +25,5 @@ import { UnprocessableEntityResponseError } from "@openrouter/sdk/models/errors"
 
 | Field    | Type                                                                                                             | Required             | Description                                | Example                                       |
 | -------- | ---------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ | --------------------------------------------- |
-| `error`  | [models.UnprocessableEntityResponseErrorData](/agent-sdk/typescript/models/unprocessableentityresponseerrordata) | :heavy\_check\_mark: | Error data for UnprocessableEntityResponse | `{"code": 422,"message": "Invalid argument"}` |
+| `error`  | [models.UnprocessableEntityResponseErrorData](/docs/agent-sdk/typescript/models/unprocessableentityresponseerrordata) | :heavy\_check\_mark: | Error data for UnprocessableEntityResponse | `{"code": 422,"message": "Invalid argument"}` |
 | `userId` | *string*                                                                                                         | :heavy\_minus\_sign: | N/A                                        |                                               |

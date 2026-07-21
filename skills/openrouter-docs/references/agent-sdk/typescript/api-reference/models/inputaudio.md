@@ -31,5 +31,5 @@ let value: InputAudio = {
 
 | Field        | Type                                                                                           | Required             | Description |
 | ------------ | ---------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `inputAudio` | [models.InputAudioInputAudio](/agent-sdk/typescript/api-reference/models/inputaudioinputaudio) | :heavy\_check\_mark: | N/A         |
+| `inputAudio` | [models.InputAudioInputAudio](/docs/agent-sdk/typescript/api-reference/models/inputaudioinputaudio) | :heavy\_check\_mark: | N/A         |
 | `type`       | *"input\_audio"*                                                                               | :heavy\_check\_mark: | N/A         |

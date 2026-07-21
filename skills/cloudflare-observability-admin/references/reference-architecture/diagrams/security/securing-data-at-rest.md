@@ -1,7 +1,7 @@
 ---
 title: Securing data at rest
 description: Learn how Cloudflare's API-driven Cloud Access Security Broker (CASB) works and secures data at rest.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -51,6 +51,6 @@ Figure 1: Overall solution of user access controls to, and the discovery of, sen
 * [Securing data in use](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/#page","headline":"Securing data at rest · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's API-driven Cloud Access Security Broker (CASB) works and secures data at rest.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/#page","headline":"Securing data at rest · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's API-driven Cloud Access Security Broker (CASB) works and secures data at rest.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/security/securing-data-at-rest/","name":"Securing data at rest"}}]}
 ```

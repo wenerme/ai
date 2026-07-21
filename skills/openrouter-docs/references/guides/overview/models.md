@@ -6,7 +6,7 @@
 
 > One API for hundreds of models
 
-Explore and browse 400+ models and providers [on our website](https://openrouter.ai/models), or [with our API](/api/api-reference/models/list-all-models-and-their-properties). You can also subscribe to our [RSS feed](https://openrouter.ai/api/v1/models?use_rss=true) to stay updated on new models.
+Explore and browse 400+ models and providers [on our website](https://openrouter.ai/models), or [with our API](/docs/api/api-reference/models/list-all-models-and-their-properties). You can also subscribe to our [RSS feed](https://openrouter.ai/api/v1/models?use_rss=true) to stay updated on new models.
 
 ## Query Parameters
 
@@ -40,7 +40,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
 curl "https://openrouter.ai/api/v1/models?output_modalities=all"
 ```
 
-The same parameter is available on the [`/v1/models/count`](/api/api-reference/models/get-total-count-of-available-models) endpoint so that counts stay consistent with list results.
+The same parameter is available on the [`/v1/models/count`](/docs/api/api-reference/models/get-total-count-of-available-models) endpoint so that counts stay consistent with list results.
 
 ### `supported_parameters`
 
@@ -116,7 +116,7 @@ Returns `404` if the model doesn't exist and isn't an alias for another model. T
 
 ## Models API Standard
 
-Our [Models API](/api/api-reference/models/list-all-models-and-their-properties) makes the most important information about all LLMs freely available as soon as we confirm it.
+Our [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) makes the most important information about all LLMs freely available as soon as we confirm it.
 
 ### API Response Schema
 
@@ -326,4 +326,4 @@ If there are models or providers you are interested in that OpenRouter doesn't h
 
 ## For Providers
 
-If you're interested in working with OpenRouter, you can learn more on our [providers page](/guides/community/for-providers).
+If you're interested in working with OpenRouter, you can learn more on our [providers page](/docs/guides/community/for-providers).

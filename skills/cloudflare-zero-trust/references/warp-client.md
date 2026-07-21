@@ -1,7 +1,7 @@
 ---
 title: Cloudflare WARP client
 description: Encrypt device traffic and connect to Cloudflare with the WARP client.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ The WARP client runs on several operating systems, including iOS and Android.
 The enterprise version of WARP allows organizations to apply security policies to corporate devices.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/warp-client/#page","headline":"Overview · Cloudflare WARP client docs","description":"Encrypt device traffic and connect to Cloudflare with the WARP client.","url":"https://developers.cloudflare.com/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/warp-client/#page","headline":"Overview · Cloudflare WARP client docs","description":"Encrypt device traffic and connect to Cloudflare with the WARP client.","url":"https://developers.cloudflare.com/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}}]}
 ```

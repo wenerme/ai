@@ -1,7 +1,7 @@
 ---
 title: DNS_PROBE_POSSIBLE
 description: Learn how to fix the DNS_PROBE_POSSIBLE browser error when using Cloudflare DNS.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ If you have the correct records set up, make sure those records are also pointin
 After making changes to your DNS records, you may need to wait a few minutes for those changes to take effect.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-possible/#page","headline":"Fix DNS_PROBE_POSSIBLE error · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_POSSIBLE browser error when using Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-possible/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-possible/#page","headline":"Fix DNS_PROBE_POSSIBLE error · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_POSSIBLE browser error when using Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-possible/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/troubleshooting/dns-probe-possible/","name":"DNS_PROBE_POSSIBLE"}}]}
 ```

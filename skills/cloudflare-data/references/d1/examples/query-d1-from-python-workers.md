@@ -1,7 +1,7 @@
 ---
 title: Query D1 from Python Workers
 description: Learn how to query D1 from a Python Worker
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -166,6 +166,6 @@ If you receive an error deploying:
 * Learn [how to import data](https://developers.cloudflare.com/d1/best-practices/import-export-data/) to your D1 database.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/query-d1-from-python-workers/","name":"Query D1 from Python Workers"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Rollback
 description: Roll back a subdomain zone setup.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ This process may incur in downtime, as it is not possible to add address records
 6. [Import](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#import-records) the records you had obtained [before you began](#before-you-begin).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/#page","headline":"Rollback subdomain setup · Cloudflare DNS docs","description":"Roll back a subdomain zone setup.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/#page","headline":"Rollback subdomain setup · Cloudflare DNS docs","description":"Roll back a subdomain zone setup.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/subdomain-setup/","name":"Subdomain setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/subdomain-setup/rollback/","name":"Rollback"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ Because responses from Workers themselves are not cached at the edge, purging of
 If the origin server sends an `Etag` HTTP header, the resized images will have an `Etag` HTTP header that has a format `cf-<gibberish>:<etag of the original image>`. You can compare the second part with the `Etag` header of the source image URL to check if the resized image is up to date.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Images docs","description":"Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.","url":"https://developers.cloudflare.com/images/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Images docs","description":"Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.","url":"https://developers.cloudflare.com/images/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/reference/troubleshooting/","name":"Troubleshooting"}}]}
 ```

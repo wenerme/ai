@@ -89,7 +89,7 @@ The `reasoning` config object consolidates settings for controlling reasoning st
 
 ### Discovering per-model reasoning options
 
-Each model in [`GET /api/v1/models`](/api/api-reference/models/list-all-models-and-their-properties) may include a `reasoning` object describing which effort levels it accepts and whether reasoning is mandatory:
+Each model in [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) may include a `reasoning` object describing which effort levels it accepts and whether reasoning is mandatory:
 
 ```json lines theme={null}
 {

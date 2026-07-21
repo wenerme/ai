@@ -1,7 +1,7 @@
 ---
 title: Standard
 description: Standard traffic steering options including failover and random.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Choose **Random** to route traffic to a healthy pool at random. Customers can us
 Similar to setting Weights to direct the amount of traffic going to each endpoint, customers can also set Weights on pools via the [API's](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) `random_steering` object to determine the percentage of traffic sent to each pool.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#page","headline":"Standard traffic steering policies · Cloudflare Load Balancing docs","description":"Standard traffic steering options including failover and random.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#page","headline":"Standard traffic steering policies · Cloudflare Load Balancing docs","description":"Standard traffic steering options including failover and random.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/understand-basics/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/","name":"Traffic steering"}},{"@type":"ListItem","position":5,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/steering-policies/","name":"Global traffic steering"}},{"@type":"ListItem","position":6,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/","name":"Standard"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Rotate ACM certificate packs
 description: Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -121,6 +121,6 @@ This page covers **ACM certificate packs** (Cloudflare-managed Domain Validated 
 If you are using a **custom certificate** (a certificate you supplied), Cloudflare provides an in-place **Replace SSL certificate and key** flow that handles the rotation without requiring you to manage two packs. Refer to [Manage custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/#page","headline":"Rotate ACM certificate packs · Cloudflare SSL/TLS docs","description":"Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.","url":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/#page","headline":"Rotate ACM certificate packs · Cloudflare SSL/TLS docs","description":"Replace an Advanced Certificate Manager certificate pack with zero downtime by creating the new pack, waiting for it to go Active, then deleting the old one.","url":"https://developers.cloudflare.com/ssl/reference/certificate-rotation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/certificate-rotation/","name":"Rotate ACM certificate packs"}}]}
 ```

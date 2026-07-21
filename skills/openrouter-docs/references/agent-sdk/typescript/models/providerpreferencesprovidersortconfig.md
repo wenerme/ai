@@ -23,5 +23,5 @@ let value: ProviderPreferencesProviderSortConfig = {};
 
 | Field       | Type                                                                                             | Required             | Description | Example |
 | ----------- | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ------- |
-| `by`        | [models.ProviderSort](/agent-sdk/typescript/models/providersort)                                 | :heavy\_minus\_sign: | N/A         | price   |
-| `partition` | [models.ProviderPreferencesPartition](/agent-sdk/typescript/models/providerpreferencespartition) | :heavy\_minus\_sign: | N/A         |         |
+| `by`        | [models.ProviderSort](/docs/agent-sdk/typescript/models/providersort)                                 | :heavy\_minus\_sign: | N/A         | price   |
+| `partition` | [models.ProviderPreferencesPartition](/docs/agent-sdk/typescript/models/providerpreferencespartition) | :heavy\_minus\_sign: | N/A         |         |

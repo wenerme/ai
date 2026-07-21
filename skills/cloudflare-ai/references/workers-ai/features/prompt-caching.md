@@ -1,7 +1,7 @@
 ---
 title: Prompt caching
 description: Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -91,6 +91,6 @@ To maximize cache hits:
 Workers AI surfaces cached token counts in the response `usage` object. Use this to verify that prefix caching is working and to track cost savings. The first request will usually be cold, so it is expected that cached tokens are not returned on the first hit. Inputs need to be sufficiently large enough in order to be cached due to block size. Cached tokens are billed at a lower rate than regular input tokens, which get totalled into your neuron count.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/#page","headline":"Prompt caching · Cloudflare Workers AI docs","description":"Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/#page","headline":"Prompt caching · Cloudflare Workers AI docs","description":"Use prefix caching and the x-session-affinity header to reduce latency and inference costs on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/prompt-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/prompt-caching/","name":"Prompt caching"}}]}
 ```

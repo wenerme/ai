@@ -1,7 +1,7 @@
 ---
 title: Playwright
 description: Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -520,6 +520,6 @@ The following capabilities are not yet fully supported, but we’re actively wor
 This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results ↗](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright · Cloudflare Browser Run docs","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright · Cloudflare Browser Run docs","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/playwright/","name":"Playwright"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Invoke methods
 description: Call RPC methods or send fetch requests to Durable Objects using stubs from a Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -321,6 +321,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#page","headline":"Invoke methods · Cloudflare Durable Objects docs","description":"Call RPC methods or send fetch requests to Durable Objects using stubs from a Worker.","url":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#page","headline":"Invoke methods · Cloudflare Durable Objects docs","description":"Call RPC methods or send fetch requests to Durable Objects using stubs from a Worker.","url":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","name":"Invoke methods"}}]}
 ```

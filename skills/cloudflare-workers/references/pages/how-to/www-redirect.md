@@ -1,7 +1,7 @@
 ---
 title: Redirecting www to domain apex
 description: Redirect a www subdomain to your apex domain on Cloudflare Pages using Bulk Redirects.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ Then, inspect the output to verify that the `location` header and status code ar
 * [Handle redirects with Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/www-redirect/#page","headline":"Redirecting www to domain apex · Cloudflare Pages docs","description":"Redirect a www subdomain to your apex domain on Cloudflare Pages using Bulk Redirects.","url":"https://developers.cloudflare.com/pages/how-to/www-redirect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/www-redirect/#page","headline":"Redirecting www to domain apex · Cloudflare Pages docs","description":"Redirect a www subdomain to your apex domain on Cloudflare Pages using Bulk Redirects.","url":"https://developers.cloudflare.com/pages/how-to/www-redirect/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/www-redirect/","name":"Redirecting www to domain apex"}}]}
 ```

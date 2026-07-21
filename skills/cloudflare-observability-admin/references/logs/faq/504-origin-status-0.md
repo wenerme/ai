@@ -1,7 +1,7 @@
 ---
 title: 504 responses with origin status 0 in Logpush
 description: Why internal subrequests appear as 504 with origin status 0 in Logpush.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -165,6 +165,6 @@ For the Workers Cache API case, the `504` MISS behavior is intrinsic to how `cac
 * [Worker subrequests — Why origin fields appear on Worker subrequest log entries](https://developers.cloudflare.com/logs/faq/worker-subrequests/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/504-origin-status-0/#page","headline":"504 responses with origin status 0 in Logpush · Cloudflare Logs docs","description":"Why internal subrequests appear as 504 with origin status 0 in Logpush.","url":"https://developers.cloudflare.com/logs/faq/504-origin-status-0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/504-origin-status-0/#page","headline":"504 responses with origin status 0 in Logpush · Cloudflare Logs docs","description":"Why internal subrequests appear as 504 with origin status 0 in Logpush.","url":"https://developers.cloudflare.com/logs/faq/504-origin-status-0/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/faq/","name":"FAQ"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/faq/504-origin-status-0/","name":"504 responses with origin status 0 in Logpush"}}]}
 ```

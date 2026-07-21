@@ -1,7 +1,7 @@
 ---
 title: ERR_SSL_PROTOCOL_ERROR
 description: Learn how to troubleshoot ERR_SSL_PROTOCOL_ERROR and similar SSL/TLS protocol errors when using Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -127,6 +127,6 @@ Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) to verify there
 If the issue persists and affects many visitors, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the diagnostic information collected.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/#page","headline":"Troubleshoot ERR_SSL_PROTOCOL_ERROR · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_PROTOCOL\\_ERROR and similar SSL/TLS protocol errors when using Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/#page","headline":"Troubleshoot ERR_SSL_PROTOCOL_ERROR · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_PROTOCOL\\_ERROR and similar SSL/TLS protocol errors when using Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/err-ssl-protocol-error/","name":"ERR_SSL_PROTOCOL_ERROR"}}]}
 ```

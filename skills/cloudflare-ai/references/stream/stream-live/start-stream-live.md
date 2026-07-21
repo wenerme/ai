@@ -1,7 +1,7 @@
 ---
 title: Start a live stream
 description: Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -160,6 +160,6 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 * If a live video exceeds seven days in length, the recording will be truncated to seven days. Only the first seven days of live video content will be recorded.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/start-stream-live/","name":"Start a live stream"}}]}
 ```

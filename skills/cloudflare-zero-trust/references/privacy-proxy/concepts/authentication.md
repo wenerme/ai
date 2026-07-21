@@ -1,7 +1,7 @@
 ---
 title: Authentication
 description: Privacy Proxy authentication methods, including pre-shared keys, Privacy Pass tokens, and mutual TLS.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -185,6 +185,6 @@ Proxy B authenticates itself to Proxy A using TLS. Depending on your configurati
 * [Supporting the latest version of the Privacy Pass protocol ↗](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) \- Cloudflare blog post on Privacy Pass implementation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/authentication/#page","headline":"Authentication · Cloudflare Privacy Proxy docs","description":"Privacy Proxy authentication methods, including pre-shared keys, Privacy Pass tokens, and mutual TLS.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/authentication/#page","headline":"Authentication · Cloudflare Privacy Proxy docs","description":"Privacy Proxy authentication methods, including pre-shared keys, Privacy Pass tokens, and mutual TLS.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/authentication/","name":"Authentication"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Test webhooks locally
 description: Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -294,6 +294,6 @@ npx wrangler secret put WEBHOOK_SECRET
 If you restart the tunnel later for additional local testing, you will need to repeat steps 3 and 4 to register the new tunnel URL and update the secret in `.dev.vars`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/#page","headline":"Test webhooks locally · Cloudflare Stream docs","description":"Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/#page","headline":"Test webhooks locally · Cloudflare Stream docs","description":"Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/examples/test-webhooks-locally/","name":"Test webhooks locally"}}]}
 ```

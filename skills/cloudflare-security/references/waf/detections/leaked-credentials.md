@@ -1,7 +1,7 @@
 ---
 title: Leaked credentials detection
 description: Scan incoming requests for usernames and passwords exposed in known data breaches.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -124,6 +124,6 @@ The following fields indicate the type of leaked credential match Cloudflare det
 | Authentication detected [cf.waf.auth\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.auth%5Fdetected/)  Boolean                                                                           | Indicates whether Cloudflare detected authentication credentials in the request.  Requires an Enterprise plan.                                             |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/#page","headline":"Leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan incoming requests for usernames and passwords exposed in known data breaches.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/#page","headline":"Leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan incoming requests for usernames and passwords exposed in known data breaches.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Account takeover"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/leaked-credentials/","name":"Leaked credentials detection"}}]}
 ```

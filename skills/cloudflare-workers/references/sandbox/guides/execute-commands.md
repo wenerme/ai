@@ -1,7 +1,7 @@
 ---
 title: Execute commands
 description: Run commands with streaming output, error handling, and shell access.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -427,6 +427,6 @@ await sandbox.exec('cd /workspace/my-app && python script.py');
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Higher-level code execution
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/execute-commands/","name":"Execute commands"}}]}
 ```

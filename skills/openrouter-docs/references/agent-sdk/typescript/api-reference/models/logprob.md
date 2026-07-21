@@ -33,4 +33,4 @@ let value: Logprob = {
 | `bytes`       | *number*\[]                                                                                                       | :heavy\_check\_mark: | N/A         |
 | `logprob`     | *number*                                                                                                          | :heavy\_check\_mark: | N/A         |
 | `token`       | *string*                                                                                                          | :heavy\_check\_mark: | N/A         |
-| `topLogprobs` | [models.ResponseOutputTextTopLogprob](/agent-sdk/typescript/api-reference/models/responseoutputtexttoplogprob)\[] | :heavy\_check\_mark: | N/A         |
+| `topLogprobs` | [models.ResponseOutputTextTopLogprob](/docs/agent-sdk/typescript/api-reference/models/responseoutputtexttoplogprob)\[] | :heavy\_check\_mark: | N/A         |

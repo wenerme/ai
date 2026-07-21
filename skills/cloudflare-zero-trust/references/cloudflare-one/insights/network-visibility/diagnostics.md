@@ -1,7 +1,7 @@
 ---
 title: Diagnostics
 description: Capture and analyze network packets passing through Cloudflare to diagnose connectivity and security issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ Refer to the articles in this section to learn how to use packet captures.
 * [ Buckets ](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/#page","headline":"Diagnostics · Cloudflare One docs","description":"Capture and analyze network packets passing through Cloudflare to diagnose connectivity and security issues.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/#page","headline":"Diagnostics · Cloudflare One docs","description":"Capture and analyze network packets passing through Cloudflare to diagnose connectivity and security issues.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}}]}
 ```

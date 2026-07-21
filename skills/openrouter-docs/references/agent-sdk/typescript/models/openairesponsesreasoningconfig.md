@@ -23,5 +23,5 @@ let value: OpenAIResponsesReasoningConfig = {};
 
 | Field     | Type                                                                                                 | Required             | Description |
 | --------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `effort`  | [models.OpenAIResponsesReasoningEffort](/agent-sdk/typescript/models/openairesponsesreasoningeffort) | :heavy\_minus\_sign: | N/A         |
-| `summary` | [models.ReasoningSummaryVerbosity](/agent-sdk/typescript/models/reasoningsummaryverbosity)           | :heavy\_minus\_sign: | N/A         |
+| `effort`  | [models.OpenAIResponsesReasoningEffort](/docs/agent-sdk/typescript/models/openairesponsesreasoningeffort) | :heavy\_minus\_sign: | N/A         |
+| `summary` | [models.ReasoningSummaryVerbosity](/docs/agent-sdk/typescript/models/reasoningsummaryverbosity)           | :heavy\_minus\_sign: | N/A         |

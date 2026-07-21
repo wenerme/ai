@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference documentation for Flagship, including platform limits, evaluation reasons, and error codes.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Wrangler commands ](https://developers.cloudflare.com/flagship/reference/wrangler-commands/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/reference/#page","headline":"Reference · Cloudflare Flagship docs","description":"Reference documentation for Flagship, including platform limits, evaluation reasons, and error codes.","url":"https://developers.cloudflare.com/flagship/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/reference/#page","headline":"Reference · Cloudflare Flagship docs","description":"Reference documentation for Flagship, including platform limits, evaluation reasons, and error codes.","url":"https://developers.cloudflare.com/flagship/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/reference/","name":"Reference"}}]}
 ```

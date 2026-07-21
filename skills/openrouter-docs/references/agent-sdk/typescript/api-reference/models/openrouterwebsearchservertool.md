@@ -27,5 +27,5 @@ let value: OpenRouterWebSearchServerTool = {
 
 | Field        | Type                                                                                                                     | Required             | Description | Example                                              |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ---------------------------------------------------- |
-| `parameters` | [models.WebSearchConfig](/agent-sdk/typescript/api-reference/models/websearchconfig)                                     | :heavy\_minus\_sign: | N/A         | `{"max_results": 5,"search_context_size": "medium"}` |
-| `type`       | [models.OpenRouterWebSearchServerToolType](/agent-sdk/typescript/api-reference/models/openrouterwebsearchservertooltype) | :heavy\_check\_mark: | N/A         |                                                      |
+| `parameters` | [models.WebSearchConfig](/docs/agent-sdk/typescript/api-reference/models/websearchconfig)                                     | :heavy\_minus\_sign: | N/A         | `{"max_results": 5,"search_context_size": "medium"}` |
+| `type`       | [models.OpenRouterWebSearchServerToolType](/docs/agent-sdk/typescript/api-reference/models/openrouterwebsearchservertooltype) | :heavy\_check\_mark: | N/A         |                                                      |

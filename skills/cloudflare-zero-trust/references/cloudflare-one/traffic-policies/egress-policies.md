@@ -1,7 +1,7 @@
 ---
 title: Egress policies
 description: Configure Egress policies in Gateway.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -333,6 +333,6 @@ The [Application](#application), [Content Categories](#content-categories), [Dom
 These selectors also resolve the destination IP address when Gateway processes the DNS query, not when the egress policy is applied. If the resolved destination IP and your egress IP are in different regions, connections to destinations that enforce geo-restriction or IP-allowlisting may fail. Refer to [DNS resolution location](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#dns-resolution-location) for details.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#page","headline":"Egress policies · Cloudflare One docs","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#page","headline":"Egress policies · Cloudflare One docs","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/","name":"Egress policies"}}]}
 ```

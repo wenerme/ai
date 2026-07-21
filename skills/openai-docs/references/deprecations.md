@@ -32,6 +32,22 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 Upcoming deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-07-20: Legacy audio, realtime, and transcription models
+
+On July 20, 2026, we notified developers using legacy audio, realtime, and transcription model families and snapshots of their deprecation and removal from the API on January 20, 2027.
+
+| Shutdown date | Model family / snapshot             | Recommended replacement             |
+| ------------- | ----------------------------------- | ----------------------------------- |
+| Jan 20, 2027  | `gpt-realtime`                      | `gpt-realtime-2.1`                  |
+| Jan 20, 2027  | `gpt-audio`                         | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-audio`                      | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-realtime`                   | `gpt-realtime-2.1`                  |
+| Jan 20, 2027  | `gpt-realtime-mini`                 | `gpt-realtime-2.1-mini`             |
+| Jan 20, 2027  | `gpt-audio-mini`                    | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-mini-realtime`              | `gpt-realtime-2.1-mini`             |
+| Jan 20, 2027  | `gpt-4o-mini-audio`                 | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-mini-transcribe-2025-03-20` | `gpt-4o-mini-transcribe-2025-12-15` |
+
 ### 2026-06-11: GPT-5 and o3 model deprecations
 
 On June 11, 2026, we notified developers using older GPT-5 and o3 model snapshots of their deprecation and removal from the API on December 11, 2026.

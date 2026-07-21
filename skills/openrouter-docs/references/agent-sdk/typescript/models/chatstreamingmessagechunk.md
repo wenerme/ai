@@ -23,9 +23,9 @@ let value: ChatStreamingMessageChunk = {};
 
 | Field              | Type                                                                                                | Required             | Description |
 | ------------------ | --------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `role`             | [models.ChatStreamingMessageChunkRole](/agent-sdk/typescript/models/chatstreamingmessagechunkrole)  | :heavy\_minus\_sign: | N/A         |
+| `role`             | [models.ChatStreamingMessageChunkRole](/docs/agent-sdk/typescript/models/chatstreamingmessagechunkrole)  | :heavy\_minus\_sign: | N/A         |
 | `content`          | *string*                                                                                            | :heavy\_minus\_sign: | N/A         |
 | `reasoning`        | *string*                                                                                            | :heavy\_minus\_sign: | N/A         |
 | `refusal`          | *string*                                                                                            | :heavy\_minus\_sign: | N/A         |
-| `toolCalls`        | [models.ChatStreamingMessageToolCall](/agent-sdk/typescript/models/chatstreamingmessagetoolcall)\[] | :heavy\_minus\_sign: | N/A         |
+| `toolCalls`        | [models.ChatStreamingMessageToolCall](/docs/agent-sdk/typescript/models/chatstreamingmessagetoolcall)\[] | :heavy\_minus\_sign: | N/A         |
 | `reasoningDetails` | *models.Schema2*\[]                                                                                 | :heavy\_minus\_sign: | N/A         |

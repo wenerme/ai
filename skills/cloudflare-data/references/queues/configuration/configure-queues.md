@@ -1,7 +1,7 @@
 ---
 title: Configure Queues
 description: Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -140,6 +140,6 @@ Refer to [Limits](https://developers.cloudflare.com/queues/platform/limits) to r
 A queue can have a HTTP-based consumer that pulls from the queue. This consumer can be any HTTP-speaking service that can communicate over the Internet. Review [Pull consumers](https://developers.cloudflare.com/queues/configuration/pull-consumers/) to learn how to configure a pull-based consumer.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/configure-queues/#page","headline":"Cloudflare Queues - Configuration · Cloudflare Queues docs","description":"Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/configure-queues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/configure-queues/#page","headline":"Cloudflare Queues - Configuration · Cloudflare Queues docs","description":"Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/configure-queues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/configure-queues/","name":"Configure Queues"}}]}
 ```

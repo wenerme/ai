@@ -1,7 +1,7 @@
 ---
 title: Media and streaming
 description: Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ Complete documentation for image optimization and transformation.
 Explore how media companies use Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming · Use cases · Cloudflare use cases","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming · Use cases · Cloudflare use cases","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}}]}
 ```

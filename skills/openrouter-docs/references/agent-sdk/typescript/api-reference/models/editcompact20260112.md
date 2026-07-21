@@ -27,5 +27,5 @@ let value: EditCompact20260112 = {
 | ---------------------- | ------------------------------------------------------------------------------------------ | -------------------- | ----------- | ------------------------------------------ |
 | `instructions`         | *string*                                                                                   | :heavy\_minus\_sign: | N/A         |                                            |
 | `pauseAfterCompaction` | *boolean*                                                                                  | :heavy\_minus\_sign: | N/A         |                                            |
-| `trigger`              | [models.TriggerInputTokens](/agent-sdk/typescript/api-reference/models/triggerinputtokens) | :heavy\_minus\_sign: | N/A         | `{"type": "input_tokens","value": 100000}` |
+| `trigger`              | [models.TriggerInputTokens](/docs/agent-sdk/typescript/api-reference/models/triggerinputtokens) | :heavy\_minus\_sign: | N/A         | `{"type": "input_tokens","value": 100000}` |
 | `type`                 | *"compact\_20260112"*                                                                      | :heavy\_check\_mark: | N/A         |                                            |

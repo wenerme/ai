@@ -28,5 +28,5 @@ let value: AnthropicBase64PdfSource = {
 | Field       | Type                                                                                                                     | Required             | Description |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `data`      | *string*                                                                                                                 | :heavy\_check\_mark: | N/A         |
-| `mediaType` | [models.AnthropicBase64PdfSourceMediaType](/agent-sdk/typescript/api-reference/models/anthropicbase64pdfsourcemediatype) | :heavy\_check\_mark: | N/A         |
+| `mediaType` | [models.AnthropicBase64PdfSourceMediaType](/docs/agent-sdk/typescript/api-reference/models/anthropicbase64pdfsourcemediatype) | :heavy\_check\_mark: | N/A         |
 | `type`      | *"base64"*                                                                                                               | :heavy\_check\_mark: | N/A         |

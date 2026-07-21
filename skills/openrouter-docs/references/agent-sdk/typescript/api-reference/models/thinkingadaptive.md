@@ -25,5 +25,5 @@ let value: ThinkingAdaptive = {
 
 | Field     | Type                                                                                                   | Required             | Description | Example    |
 | --------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ---------- |
-| `display` | [models.AnthropicThinkingDisplay](/agent-sdk/typescript/api-reference/models/anthropicthinkingdisplay) | :heavy\_minus\_sign: | N/A         | summarized |
+| `display` | [models.AnthropicThinkingDisplay](/docs/agent-sdk/typescript/api-reference/models/anthropicthinkingdisplay) | :heavy\_minus\_sign: | N/A         | summarized |
 | `type`    | *"adaptive"*                                                                                           | :heavy\_check\_mark: | N/A         |            |

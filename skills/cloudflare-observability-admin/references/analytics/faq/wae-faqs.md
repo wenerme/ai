@@ -1,7 +1,7 @@
 ---
 title: Workers Analytics Engine FAQs
 description: Common questions about Workers Analytics Engine.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ We have observed that for workloads like our global CDN, which distribute load a
 Depending on your workload and how you use Workers Analytics Engine, sampling may start at a higher or lower threshold than this. For example, if you are writing out many data points from a single worker execution, it is more likely that your data will be sampled.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/wae-faqs/#page","headline":"Workers Analytics Engine FAQs · Cloudflare Analytics docs","description":"Common questions about Workers Analytics Engine.","url":"https://developers.cloudflare.com/analytics/faq/wae-faqs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/wae-faqs/#page","headline":"Workers Analytics Engine FAQs · Cloudflare Analytics docs","description":"Common questions about Workers Analytics Engine.","url":"https://developers.cloudflare.com/analytics/faq/wae-faqs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/faq/","name":"FAQs"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/faq/wae-faqs/","name":"Workers Analytics Engine FAQs"}}]}
 ```

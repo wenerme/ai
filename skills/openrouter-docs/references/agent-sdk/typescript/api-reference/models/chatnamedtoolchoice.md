@@ -30,5 +30,5 @@ let value: ChatNamedToolChoice = {
 
 | Field      | Type                                                                                                         | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `function` | [models.ChatNamedToolChoiceFunction](/agent-sdk/typescript/api-reference/models/chatnamedtoolchoicefunction) | :heavy\_check\_mark: | N/A         |
-| `type`     | [models.ChatNamedToolChoiceType](/agent-sdk/typescript/api-reference/models/chatnamedtoolchoicetype)         | :heavy\_check\_mark: | N/A         |
+| `function` | [models.ChatNamedToolChoiceFunction](/docs/agent-sdk/typescript/api-reference/models/chatnamedtoolchoicefunction) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.ChatNamedToolChoiceType](/docs/agent-sdk/typescript/api-reference/models/chatnamedtoolchoicetype)         | :heavy\_check\_mark: | N/A         |

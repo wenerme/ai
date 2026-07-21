@@ -1,7 +1,7 @@
 ---
 title: Authentication profiles
 description: Maintain separate logins and switch accounts per directory.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -165,6 +165,6 @@ Two rules apply when environment variables are present:
 * `CLOUDFLARE_ACCOUNT_ID` and an `account_id` in your Wrangler configuration file are always respected, including within an active profile.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/profiles/","name":"Authentication profiles"}}]}
 ```

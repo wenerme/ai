@@ -1,7 +1,7 @@
 ---
 title: Advanced topics
 description: Advanced Cloudflare Terraform topics including best practices, provider customization, and remote backends.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Remote R2 backend ](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/advanced-topics/#page","headline":"Advanced topics · Cloudflare Terraform docs","description":"Advanced Cloudflare Terraform topics including best practices, provider customization, and remote backends.","url":"https://developers.cloudflare.com/terraform/advanced-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/advanced-topics/#page","headline":"Advanced topics · Cloudflare Terraform docs","description":"Advanced Cloudflare Terraform topics including best practices, provider customization, and remote backends.","url":"https://developers.cloudflare.com/terraform/advanced-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}}]}
 ```

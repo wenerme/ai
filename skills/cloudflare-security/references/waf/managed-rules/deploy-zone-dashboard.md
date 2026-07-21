@@ -1,7 +1,7 @@
 ---
 title: Deploy a WAF managed ruleset in the dashboard
 description: Deploy WAF managed rulesets at the zone level in the dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -193,6 +193,6 @@ If you have not deployed the managed ruleset, select the ruleset name under **Ma
 3. Next to the rule or exception (skip rule) you want to delete, select the three dots > **Delete** and confirm the operation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#page","headline":"Deploy a WAF managed ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy WAF managed rulesets at the zone level in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#page","headline":"Deploy a WAF managed ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy WAF managed rulesets at the zone level in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/deploy-zone-dashboard/","name":"Deploy a WAF managed ruleset in the dashboard"}}]}
 ```

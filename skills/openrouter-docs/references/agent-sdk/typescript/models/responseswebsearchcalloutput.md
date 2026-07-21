@@ -27,6 +27,6 @@ let value: ResponsesWebSearchCallOutput = {
 
 | Field    | Type                                                                                                     | Required             | Description | Example   |
 | -------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `type`   | [models.ResponsesWebSearchCallOutputType](/agent-sdk/typescript/models/responseswebsearchcalloutputtype) | :heavy\_check\_mark: | N/A         |           |
+| `type`   | [models.ResponsesWebSearchCallOutputType](/docs/agent-sdk/typescript/models/responseswebsearchcalloutputtype) | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                 | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.WebSearchStatus](/agent-sdk/typescript/models/websearchstatus)                                   | :heavy\_check\_mark: | N/A         | completed |
+| `status` | [models.WebSearchStatus](/docs/agent-sdk/typescript/models/websearchstatus)                                   | :heavy\_check\_mark: | N/A         | completed |

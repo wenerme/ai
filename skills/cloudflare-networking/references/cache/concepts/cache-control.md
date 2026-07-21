@@ -1,7 +1,7 @@
 ---
 title: Origin Cache Control
 description: How origin Cache-Control headers affect Cloudflare caching behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -242,6 +242,6 @@ Compression is disabled when the `no-transform` directive is present. If the ori
 [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) injection is disabled when the `no-transform` directive is present. The `cf.bot_management.js_detection.passed` field will show as `missing` for affected requests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cache-control/","name":"Origin Cache Control"}}]}
 ```

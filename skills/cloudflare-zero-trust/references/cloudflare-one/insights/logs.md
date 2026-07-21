@@ -1,7 +1,7 @@
 ---
 title: Logs
 description: Logs resources and guides for Zero Trust analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ For more information on how we use this data, refer to our [Privacy Policy ↗](
 1. Enterprise users on per query plans cannot store DNS logs via Cloudflare. You can still export logs via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). For more information, contact your account team. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/#page","headline":"Zero Trust logs · Cloudflare One docs","description":"Logs resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/#page","headline":"Zero Trust logs · Cloudflare One docs","description":"Logs resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Determine when to use PAC files
 description: Evaluate PAC files for proxy configuration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ For detailed instructions on creating a PAC file, refer to [Enable Gateway proxy
 * PAC files cannot be fetched through a proxy.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files · Cloudflare Learning Paths","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files · Cloudflare Learning Paths","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","name":"Determine when to use PAC files"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Control user session settings
 description: Configure session duration and renewal settings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ Then, to return a revocation origin command and revoke the user's session associ
 To get the number of sessions revoked, you can query `sessionsRevoked` metrics from your [Waiting Room analytics](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/#graphql-analytics) data via GraphQL API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-user-session/#page","headline":"Control user session settings · Cloudflare Waiting Room docs","description":"Configure session duration and renewal settings.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-user-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-user-session/#page","headline":"Control user session settings · Cloudflare Waiting Room docs","description":"Configure session duration and renewal settings.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-user-session/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/control-user-session/","name":"Control user session settings"}}]}
 ```

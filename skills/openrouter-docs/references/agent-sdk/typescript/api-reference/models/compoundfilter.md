@@ -35,4 +35,4 @@ let value: CompoundFilter = {
 | Field     | Type                                                                                       | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `filters` | `Record<string, *any*>`\[]                                                                 | :heavy\_check\_mark: | N/A         |
-| `type`    | [models.CompoundFilterType](/agent-sdk/typescript/api-reference/models/compoundfiltertype) | :heavy\_check\_mark: | N/A         |
+| `type`    | [models.CompoundFilterType](/docs/agent-sdk/typescript/api-reference/models/compoundfiltertype) | :heavy\_check\_mark: | N/A         |

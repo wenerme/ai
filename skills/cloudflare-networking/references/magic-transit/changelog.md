@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Review recent changes to Magic Transit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -176,6 +176,6 @@ Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wa
 Customers can exchange routes dynamically with their Magic virtual network overlay through Direct CNI or Cloud CNI based connectivity.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/magic-transit/changelog/#page","headline":"Changelog · Cloudflare Magic Transit docs","description":"Review recent changes to Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/magic-transit/changelog/#page","headline":"Changelog · Cloudflare Magic Transit docs","description":"Review recent changes to Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/changelog/","name":"Changelog"}}]}
 ```

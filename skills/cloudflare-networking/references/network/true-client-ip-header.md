@@ -1,7 +1,7 @@
 ---
 title: Understanding the True-Client-IP Header
 description: Send the visitor's IP to your origin via True-Client-IP header.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ For additional guidance on using True-Client-IP Header with Cloudflare, refer to
 * [Restoring original visitor IPs](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/true-client-ip-header/#page","headline":"Understanding the True-Client-IP Header · Cloudflare Network settings docs","description":"Send the visitor's IP to your origin via True-Client-IP header.","url":"https://developers.cloudflare.com/network/true-client-ip-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/true-client-ip-header/#page","headline":"Understanding the True-Client-IP Header · Cloudflare Network settings docs","description":"Send the visitor's IP to your origin via True-Client-IP header.","url":"https://developers.cloudflare.com/network/true-client-ip-header/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/true-client-ip-header/","name":"Understanding the True-Client-IP Header"}}]}
 ```

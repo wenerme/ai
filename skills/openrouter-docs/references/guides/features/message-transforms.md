@@ -8,7 +8,7 @@
 
 export const anthropicMaxMessagesCount = 1000;
 
-To help with prompts that exceed the maximum context size of a model, OpenRouter supports a context compression [plugin](/guides/features/plugins) that can be enabled per-request:
+To help with prompts that exceed the maximum context size of a model, OpenRouter supports a context compression [plugin](/docs/guides/features/plugins) that can be enabled per-request:
 
 ```typescript lines theme={null}
 {
@@ -27,11 +27,11 @@ When context compression is enabled, OpenRouter will first try to find models wh
 The compression will then attempt to fit your content within the chosen model's context window by removing or truncating content from the middle of the prompt. If context compression is disabled and your total tokens exceed the model's context length, the request will fail with an error message suggesting you either reduce the length or enable context compression.
 
 <Note>
-  [All OpenRouter endpoints](/guides/overview/models) with 8k (8,192 tokens) or less context
+  [All OpenRouter endpoints](/docs/guides/overview/models) with 8k (8,192 tokens) or less context
   length will default to using context compression. To disable this, pass
   `plugins: [{"id": "context-compression", "enabled": false}]` in the request body.
 </Note>
 
-Context compression is automatically skipped for [image-generation models](/guides/overview/multimodal/image-generation) that only output images (no text output). This preserves reference images in image-to-image requests — compression would otherwise truncate multipart message content and drop input `image_url` parts. Multimodal models that output both text and images (e.g., Gemini, gpt-image) still use compression since they have real text context windows.
+Context compression is automatically skipped for [image-generation models](/docs/guides/overview/multimodal/image-generation) that only output images (no text output). This preserves reference images in image-to-image requests — compression would otherwise truncate multipart message content and drop input `image_url` parts. Multimodal models that output both text and images (e.g., Gemini, gpt-image) still use compression since they have real text context windows.
 
 The middle of the prompt is compressed because [LLMs pay less attention](https://arxiv.org/abs/2307.03172) to the middle of sequences.

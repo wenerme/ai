@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ Logpush is only available on the Workers Paid plan.
 Prices subject to change. If you are an Enterprise customer, reach out to your account team to confirm pricing details.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing · Cloudflare AI Gateway docs","description":"Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing · Cloudflare AI Gateway docs","description":"Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/reference/pricing/","name":"Pricing"}}]}
 ```

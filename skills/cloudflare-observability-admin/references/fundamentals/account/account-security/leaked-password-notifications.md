@@ -1,7 +1,7 @@
 ---
 title: Leaked Password Notifications
 description: Cloudflare checks your password against known data breaches at login and prompts you to reset it if a match is found.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ We encourage you to enable two-factor authentication to secure your account.
 Cloudflare account Super Administrators can also require that [all members enable 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/). This functionality can be enabled by going to **Manage Account** \> **Members** in the Cloudflare dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/#page","headline":"Leaked Password Notifications · Cloudflare Fundamentals docs","description":"Cloudflare checks your password against known data breaches at login and prompts you to reset it if a match is found.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/#page","headline":"Leaked Password Notifications · Cloudflare Fundamentals docs","description":"Cloudflare checks your password against known data breaches at login and prompts you to reset it if a match is found.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/leaked-password-notifications/","name":"Leaked Password Notifications"}}]}
 ```

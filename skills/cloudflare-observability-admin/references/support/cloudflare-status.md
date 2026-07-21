@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Status
 description: Check Cloudflare service status and configure notifications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ Endpoints are displayed with examples using cURL and our embedded JavaScript wid
 * [Planned maintenance windows](https://developers.cloudflare.com/support/disruptive-maintenance/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/cloudflare-status/#page","headline":"Cloudflare Status · Cloudflare Support docs","description":"Check Cloudflare service status and configure notifications.","url":"https://developers.cloudflare.com/support/cloudflare-status/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/cloudflare-status/#page","headline":"Cloudflare Status · Cloudflare Support docs","description":"Check Cloudflare service status and configure notifications.","url":"https://developers.cloudflare.com/support/cloudflare-status/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/cloudflare-status/","name":"Cloudflare Status"}}]}
 ```

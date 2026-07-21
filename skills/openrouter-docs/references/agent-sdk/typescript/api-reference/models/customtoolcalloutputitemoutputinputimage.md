@@ -28,6 +28,6 @@ let value: CustomToolCallOutputItemOutputInputImage = {
 
 | Field      | Type                                                                                                               | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `detail`   | [models.CustomToolCallOutputItemDetail](/agent-sdk/typescript/api-reference/models/customtoolcalloutputitemdetail) | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.CustomToolCallOutputItemDetail](/docs/agent-sdk/typescript/api-reference/models/customtoolcalloutputitemdetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `type`     | *"input\_image"*                                                                                                   | :heavy\_check\_mark: | N/A         |

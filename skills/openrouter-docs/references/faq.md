@@ -35,7 +35,7 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     so you get the same pricing you'd get from the provider directly, with a
     unified API and fallbacks so that you get much better uptime.
 
-    [Learn more in our Quickstart guide](/quickstart).
+    [Learn more in our Quickstart guide](/docs/quickstart).
   </Accordion>
 
   <Accordion title="How do I get started with OpenRouter?">
@@ -46,8 +46,8 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     credits. Each model and provider has a different price per million tokens.
 
     Once you have credits you can either use the chat room, or create API keys
-    and start using the API. You can read our [quickstart](/quickstart)
-    or [enterprise](/cookbook/get-started/enterprise-quickstart) guide for code samples and more.
+    and start using the API. You can read our [quickstart](/docs/quickstart)
+    or [enterprise](/docs/cookbook/get-started/enterprise-quickstart) guide for code samples and more.
   </Accordion>
 
   <Accordion title="How do I get support?">
@@ -68,7 +68,7 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     You can review your complete usage history in the [Activity tab](https://openrouter.ai/activity).
 
     We pass through the pricing of the underlying providers; there is no markup
-    on inference pricing (however we do charge a [fee](/faq#pricing-and-fees) when purchasing credits).
+    on inference pricing (however we do charge a [fee](/docs/faq#pricing-and-fees) when purchasing credits).
   </Accordion>
 </AccordionGroup>
 
@@ -93,7 +93,7 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     costs directly with the provider while still leveraging OpenRouter's unified
     interface.
 
-    [Learn more about BYOK](/guides/overview/auth/byok).
+    [Learn more about BYOK](/docs/guides/overview/auth/byok).
   </Accordion>
 </AccordionGroup>
 
@@ -117,21 +117,21 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
 
     Static variants can only be used with specific models and these are listed in our [models api](https://openrouter.ai/api/v1/models).
 
-    1. `:free` - The model is always provided for free and has low rate limits. [Learn more](/guides/routing/model-variants/free).
-    2. `:extended` - The model has longer than usual context length. [Learn more](/guides/routing/model-variants/extended).
-    3. `:thinking` - The model supports reasoning by default. [Learn more](/guides/routing/model-variants/thinking).
+    1. `:free` - The model is always provided for free and has low rate limits. [Learn more](/docs/guides/routing/model-variants/free).
+    2. `:extended` - The model has longer than usual context length. [Learn more](/docs/guides/routing/model-variants/extended).
+    3. `:thinking` - The model supports reasoning by default. [Learn more](/docs/guides/routing/model-variants/thinking).
 
     Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
 
-    1. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search) instead. [Learn more](/guides/routing/model-variants/online).
-    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/guides/routing/provider-selection#nitro-shortcut).
-    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/guides/routing/provider-selection#floor-price-shortcut).
-    4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/guides/routing/model-variants/exacto).
+    1. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. [Learn more](/docs/guides/routing/model-variants/online).
+    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/guides/routing/provider-selection#nitro-shortcut).
+    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/guides/routing/provider-selection#floor-price-shortcut).
+    4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).
   </Accordion>
 
   <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">
     You can read our requirements at the [Providers
-    page](/guides/community/for-providers). If you would like to contact us, the best
+    page](/docs/guides/community/for-providers). If you would like to contact us, the best
     place to reach us is over email.
   </Accordion>
 
@@ -146,7 +146,7 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     If a provider returns an error OpenRouter will automatically fall back to the
     next provider. This happens transparently to the user and allows production
     apps to be much more resilient. OpenRouter has a lot of options to configure
-    the provider routing behavior. The full documentation can be found [here](/guides/routing/provider-selection).
+    the provider routing behavior. The full documentation can be found [here](/docs/guides/routing/provider-selection).
   </Accordion>
 </AccordionGroup>
 
@@ -158,9 +158,9 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
 
     1. Cookie-based authentication for the web interface and chatroom
     2. API keys (passed as Bearer tokens) for accessing the completions API and other core endpoints
-    3. [Management API keys](/guides/overview/auth/management-api-keys) for programmatically managing API keys through the key management endpoints
+    3. [Management API keys](/docs/guides/overview/auth/management-api-keys) for programmatically managing API keys through the key management endpoints
 
-    [Learn more about API authentication](/api/reference/authentication).
+    [Learn more about API authentication](/docs/api_reference/authentication).
   </Accordion>
 
   <Accordion title="How are rate limits calculated?">
@@ -168,36 +168,36 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
     If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits, your free model rate limit will be {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
     Otherwise, you will be rate limited to {FREE_MODEL_NO_CREDITS_RPD} free model API requests per day.
 
-    You can learn more about how rate limits work for paid accounts in our [rate limits documentation](/api/reference/limits).
+    You can learn more about how rate limits work for paid accounts in our [rate limits documentation](/docs/api_reference/limits).
   </Accordion>
 
   <Accordion title="What API endpoints are available?">
     OpenRouter implements the OpenAI API specification for /completions and
     /chat/completions endpoints, allowing you to use any model with the same
     request/response format. Additional endpoints like /api/v1/models are also
-    available. See our [API documentation](/api/reference/overview) for
+    available. See our [API documentation](/docs/api_reference/overview) for
     detailed specifications.
   </Accordion>
 
   <Accordion title="What are the supported formats?">
     The API supports text, images, and PDFs.
-    [Images](/guides/overview/multimodal/image-understanding) can be passed as
-    URLs or base64 encoded images. [PDFs](/guides/overview/multimodal/pdfs) can also be sent as URLs or base64 encoded data, and work with any model on OpenRouter.
+    [Images](/docs/guides/overview/multimodal/image-understanding) can be passed as
+    URLs or base64 encoded images. [PDFs](/docs/guides/overview/multimodal/pdfs) can also be sent as URLs or base64 encoded data, and work with any model on OpenRouter.
   </Accordion>
 
   <Accordion title="How does streaming work?">
     Streaming uses server-sent events (SSE) for real-time token delivery. Set
     `stream: true` in your request to enable streaming responses.
 
-    [Learn more about streaming](/api/reference/streaming).
+    [Learn more about streaming](/docs/api_reference/streaming).
   </Accordion>
 
   <Accordion title="What SDK support is available?">
     OpenRouter is a drop-in replacement for OpenAI. Therefore, any SDKs that
     support OpenAI by default also support OpenRouter. Check out our
-    [OpenAI SDK docs](/guides/community/openai-sdk) for more details.
+    [OpenAI SDK docs](/docs/guides/community/openai-sdk) for more details.
 
-    [See all supported frameworks and integrations](/guides/community/frameworks-and-integrations-overview).
+    [See all supported frameworks and integrations](/docs/guides/community/frameworks-and-integrations-overview).
   </Accordion>
 </AccordionGroup>
 
@@ -215,7 +215,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     lets users opt-in to log their prompts and completions in exchange for a 1%
     discount on usage costs.
 
-    [Learn more about data collection](/guides/privacy/data-collection).
+    [Learn more about data collection](/docs/guides/privacy/data-collection).
   </Accordion>
 
   <Accordion title="What data is logged during Chatroom use?">
@@ -230,10 +230,10 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     Providers that do log, or where we have been unable to confirm their policy, will not be routed to unless the model training
     toggle is switched on in the [privacy settings](https://openrouter.ai/settings/privacy) tab.
 
-    If you specify [provider routing](/guides/routing/provider-selection) in your request, but none of the providers
+    If you specify [provider routing](/docs/guides/routing/provider-selection) in your request, but none of the providers
     match the level of privacy specified in your account settings, you will get an error and your request will not complete.
 
-    [Learn more about provider logging policies](/guides/privacy/provider-logging).
+    [Learn more about provider logging policies](/docs/guides/privacy/provider-logging).
   </Accordion>
 </AccordionGroup>
 
@@ -274,7 +274,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     The [Activity](https://openrouter.ai/activity) page allows users to view
     their historic usage and filter the usage by model, provider and api key.
 
-    We also provide a [credits api](/api/api-reference/credits/get-remaining-credits) that has
+    We also provide a [credits api](/docs/api/api-reference/credits/get-remaining-credits) that has
     live information about the balance and remaining credits for the account.
   </Accordion>
 
@@ -285,7 +285,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     and are usually not suitable for production use. If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits,
     the free models will be limited to {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
 
-    You can also use the [Free Models Router](/cookbook/get-started/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
+    You can also use the [Free Models Router](/docs/cookbook/get-started/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
   </Accordion>
 
   <Accordion title="How do volume discounts work?">
@@ -300,7 +300,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
   </Accordion>
 
   <Accordion title="How does OpenRouter make money?">
-    We charge a small [fee](/faq#pricing-and-fees) when purchasing credits. We never mark-up the pricing
+    We charge a small [fee](/docs/faq#pricing-and-fees) when purchasing credits. We never mark-up the pricing
     of the underlying providers, and you'll always pay the same as the provider's
     listed price.
   </Accordion>
@@ -317,7 +317,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
   </Accordion>
 
   <Accordion title="How does team access work?">
-    Organization management information can be found in our [organization management documentation](/cookbook/administration/organization-management).
+    Organization management information can be found in our [organization management documentation](/docs/cookbook/administration/organization-management).
   </Accordion>
 
   <Accordion title="What analytics are available?">

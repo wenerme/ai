@@ -50,4 +50,4 @@ let value: VideoModelsListResponse = {
 
 | Field  | Type                                                                          | Required             | Description |
 | ------ | ----------------------------------------------------------------------------- | -------------------- | ----------- |
-| `data` | [models.VideoModel](/agent-sdk/typescript/api-reference/models/videomodel)\[] | :heavy\_check\_mark: | N/A         |
+| `data` | [models.VideoModel](/docs/agent-sdk/typescript/api-reference/models/videomodel)\[] | :heavy\_check\_mark: | N/A         |

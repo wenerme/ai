@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Review common troubleshooting scenarios for Cloudflare WAF.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -20,6 +20,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ FAQ ](https://developers.cloudflare.com/waf/troubleshooting/faq/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web Application Firewall (WAF) docs","description":"Review common troubleshooting scenarios for Cloudflare WAF.","url":"https://developers.cloudflare.com/waf/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web Application Firewall (WAF) docs","description":"Review common troubleshooting scenarios for Cloudflare WAF.","url":"https://developers.cloudflare.com/waf/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}}]}
 ```

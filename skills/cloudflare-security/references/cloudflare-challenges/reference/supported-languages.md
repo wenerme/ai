@@ -1,7 +1,7 @@
 ---
 title: Supported languages
 description: Languages supported by Cloudflare challenge pages, detected via navigator.language.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ For language support specific to Challenge Pages, refer to the table below.
 For language support specific to Turnstile, refer to the [Turnstile documentation](https://developers.cloudflare.com/turnstile/reference/supported-languages/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/#page","headline":"Supported languages · Cloudflare challenges docs","description":"Languages supported by Cloudflare challenge pages, detected via navigator.language.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/#page","headline":"Supported languages · Cloudflare challenges docs","description":"Languages supported by Cloudflare challenge pages, detected via navigator.language.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/reference/supported-languages/","name":"Supported languages"}}]}
 ```

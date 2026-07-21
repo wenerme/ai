@@ -1,7 +1,7 @@
 ---
 title: Set-up 2FA
 description: Configure two-factor authentication for account security.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ Cloudflare recommends that users enable at least two different 2FA factors, as w
 Cloudflare also supports 2FA with device built-in authenticators (Apple Touch ID, Android fingerprint, or Windows Hello), Yubikeys and TOTP mobile applications.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/#page","headline":"Set-up 2FA · Cloudflare Learning Paths","description":"Configure two-factor authentication for account security.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/#page","headline":"Set-up 2FA · Cloudflare Learning Paths","description":"Configure two-factor authentication for account security.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/account-security/","name":"Account security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/account-security/set-up-2fa/","name":"Set-up 2FA"}}]}
 ```

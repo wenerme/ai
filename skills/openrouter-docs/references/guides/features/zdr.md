@@ -50,7 +50,7 @@ OpenRouter has [privacy settings](https://openrouter.ai/settings/privacy) that, 
 Providers that do not retain your data are also unable to train on your data. However we do have some endpoints & providers who do not train on your data but *do* retain it (e.g. to scan for abuse or for legal reasons). OpenRouter gives you controls over both of these policies.
 
 <Warning>
-  ZDR enforcement only applies to provider routing for inference requests. It does not apply to [plugins](/guides/features/plugins) and tools you choose to enable, such as [web search](/guides/features/plugins/web-search). These may be operated by third-party services with their own data retention policies. Review the data policies of any plugins or tools you enable if you have strict data retention requirements.
+  ZDR enforcement only applies to provider routing for inference requests. It does not apply to [plugins](/docs/guides/features/plugins) and tools you choose to enable, such as [web search](/docs/guides/features/plugins/web-search). These may be operated by third-party services with their own data retention policies. Review the data policies of any plugins or tools you enable if you have strict data retention requirements.
 </Warning>
 
 ## How OpenRouter Manages Data Policies
@@ -63,11 +63,11 @@ Note that a provider's general policy may differ from the specific policy for a 
   If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
 </Note>
 
-A full list of providers and their data policies can be found [here](/guides/privacy/provider-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
+A full list of providers and their data policies can be found [here](/docs/guides/privacy/provider-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
 
 ## Per-Model-Group ZDR Enforcement
 
-Rather than a single global toggle, OpenRouter lets you enforce ZDR independently for different model groups. This is available in both your [account-level privacy settings](https://openrouter.ai/settings/privacy) and in [guardrails](/guides/features/guardrails).
+Rather than a single global toggle, OpenRouter lets you enforce ZDR independently for different model groups. This is available in both your [account-level privacy settings](https://openrouter.ai/settings/privacy) and in [guardrails](/docs/guides/features/guardrails).
 
 The five model group scopes are:
 
@@ -91,7 +91,7 @@ In your [privacy settings](https://openrouter.ai/settings/privacy), each model g
 
 ### Guardrail-level settings
 
-When creating or editing a [guardrail](/guides/features/guardrails), you can set ZDR independently for each model group. This lets you apply different ZDR policies to different API keys or organization members.
+When creating or editing a [guardrail](/docs/guides/features/guardrails), you can set ZDR independently for each model group. This lets you apply different ZDR policies to different API keys or organization members.
 
 In the API, these are represented as separate fields on the guardrail object:
 

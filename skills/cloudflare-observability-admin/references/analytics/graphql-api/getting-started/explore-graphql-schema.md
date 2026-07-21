@@ -1,7 +1,7 @@
 ---
 title: Explore the GraphQL schema
 description: Browse available datasets and fields via introspection.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ The list of fields displays:
 For more information on using GraphiQL, please visit this [guide](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/#page","headline":"Explore the GraphQL schema · Cloudflare Analytics docs","description":"Browse available datasets and fields via introspection.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/#page","headline":"Explore the GraphQL schema · Cloudflare Analytics docs","description":"Browse available datasets and fields via introspection.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/getting-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/getting-started/explore-graphql-schema/","name":"Explore the GraphQL schema"}}]}
 ```

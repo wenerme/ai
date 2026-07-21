@@ -39,4 +39,4 @@ let value: ActivityResponse = {
 
 | Field  | Type                                                                              | Required             | Description            |
 | ------ | --------------------------------------------------------------------------------- | -------------------- | ---------------------- |
-| `data` | [models.ActivityItem](/agent-sdk/typescript/api-reference/models/activityitem)\[] | :heavy\_check\_mark: | List of activity items |
+| `data` | [models.ActivityItem](/docs/agent-sdk/typescript/api-reference/models/activityitem)\[] | :heavy\_check\_mark: | List of activity items |

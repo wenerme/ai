@@ -1,7 +1,7 @@
 ---
 title: Store application data
 description: Persist data with serverless databases, key-value storage, and object storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Stateful objects with strongly consistent storage and coordination. [Learn more 
 4. [Durable Objects get started](https://developers.cloudflare.com/durable-objects/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/store-data/#page","headline":"Store application data · Cloudflare use cases","description":"Persist data with serverless databases, key-value storage, and object storage.","url":"https://developers.cloudflare.com/use-cases/web-apps/store-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/store-data/#page","headline":"Store application data · Cloudflare use cases","description":"Persist data with serverless databases, key-value storage, and object storage.","url":"https://developers.cloudflare.com/use-cases/web-apps/store-data/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/web-apps/","name":"Web sites and web apps"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/web-apps/store-data/","name":"Store application data"}}]}
 ```

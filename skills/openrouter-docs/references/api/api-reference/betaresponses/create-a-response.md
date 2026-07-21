@@ -4367,6 +4367,12 @@ components:
           total 0
         type: openrouter:bash
       properties:
+        arguments:
+          description: The raw tool-call arguments string as emitted by the model.
+          type: string
+        call_id:
+          description: The model-generated tool call id from the originating turn.
+          type: string
         command:
           type: string
         exitCode:
@@ -4729,8 +4735,29 @@ components:
           type: string
         id:
           type: string
+        instance_name:
+          description: >-
+            Provider-safe function name of the specific subagent instance that
+            produced this item (e.g. `openrouter_subagent__1`). Present only on
+            items from non-default instances — the second and later subagent
+            entries in the request `tools` array. The first (default) instance
+            omits it, even when multiple subagents are configured. When a
+            replayed item echoes this field back, the transcript rehydrates the
+            call under that instance's tool. This identity is positional: it is
+            derived from the index of the subagent entry in the request `tools`
+            array, so keep the order of subagent entries stable across requests
+            in a conversation.
+          example: openrouter_subagent__1
+          type: string
         model:
           description: Slug of the worker model that executed the task.
+          type: string
+        name:
+          description: >-
+            Configured name of the subagent that executed the task (the `name`
+            on its tool entry). Present only for named subagents; omitted for an
+            unnamed (default) subagent.
+          example: summarizer
           type: string
         outcome:
           description: >-
@@ -6046,9 +6073,10 @@ components:
           type: array
       type: object
     SubagentServerToolConfig:
-      description: Configuration for the openrouter:subagent server tool.
+      description: Configuration for one openrouter:subagent server tool entry.
       example:
         model: ~anthropic/claude-haiku-latest
+        name: summarizer
       properties:
         instructions:
           description: >-
@@ -6081,6 +6109,17 @@ components:
             delegating. When omitted, the model from the outer API request is
             used. The subagent tool itself cannot be the subagent model.
           example: ~anthropic/claude-haiku-latest
+          type: string
+        name:
+          description: >-
+            Optional name for this subagent. The model sees one tool per named
+            subagent (and one default for an unnamed entry). Names must be
+            unique across subagent entries. Letters, digits, spaces,
+            underscores, and dashes; trimmed; 1–64 chars.
+          example: summarizer
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9 _-]+$
           type: string
         reasoning:
           $ref: '#/components/schemas/SubagentReasoning'
@@ -6150,7 +6189,7 @@ components:
             panelist and the judge model may produce per inner call. Controls
             the total output budget so reasoning-heavy models like GPT-5.5 do
             not exhaust their token allowance before producing visible text.
-            When omitted, panelists default to 32000 and the judge to 50000.
+            When omitted, panelists default to 32000 and the judge to 20000.
           example: 16384
           type: integer
         max_tool_calls:

@@ -1,7 +1,7 @@
 ---
 title: Origin Analytics
 description: See how your origin server responds to Cloudflare. Identify slow endpoints, monitor response times, and diagnose errors.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ The following table describes how to use Origin Analytics to investigate common 
 * [Observatory dashboard](https://developers.cloudflare.com/speed/observatory/dashboard/) — monitor end-user performance with synthetic tests and real user data.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/origin-analytics/#page","headline":"Origin Analytics · Cloudflare Speed docs","description":"See how your origin server responds to Cloudflare. Identify slow endpoints, monitor response times, and diagnose errors.","url":"https://developers.cloudflare.com/speed/origin-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/origin-analytics/#page","headline":"Origin Analytics · Cloudflare Speed docs","description":"See how your origin server responds to Cloudflare. Identify slow endpoints, monitor response times, and diagnose errors.","url":"https://developers.cloudflare.com/speed/origin-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/origin-analytics/","name":"Origin Analytics"}}]}
 ```

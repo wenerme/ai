@@ -1,7 +1,7 @@
 ---
 title: Use RpcTarget class to handle Durable Object metadata
 description: Access the name from within a Durable Object using RpcTarget.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -322,6 +322,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/#page","headline":"Use RpcTarget class to handle Durable Object metadata · Cloudflare Durable Objects docs","description":"Access the name from within a Durable Object using RpcTarget.","url":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/#page","headline":"Use RpcTarget class to handle Durable Object metadata · Cloudflare Durable Objects docs","description":"Access the name from within a Durable Object using RpcTarget.","url":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/reference-do-name-using-init/","name":"Use RpcTarget class to handle Durable Object metadata"}}]}
 ```

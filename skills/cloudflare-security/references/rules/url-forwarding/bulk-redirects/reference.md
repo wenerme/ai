@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference information for Bulk Redirects.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Refer to the following pages for more information about Bulk Redirects:
 * [ Bulk Redirects API JSON objects ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/#page","headline":"Bulk Redirects reference · Cloudflare Rules docs","description":"Reference information for Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/#page","headline":"Bulk Redirects reference · Cloudflare Rules docs","description":"Reference information for Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/","name":"Reference"}}]}
 ```

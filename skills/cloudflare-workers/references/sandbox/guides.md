@@ -1,7 +1,7 @@
 ---
 title: How-to guides
 description: Practical guides for solving specific tasks with the Sandbox SDK.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ These guides show you how to solve specific problems and implement features with
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete method documentation
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/guides/#page","headline":"How-to guides · Cloudflare Sandbox SDK docs","description":"Practical guides for solving specific tasks with the Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/guides/#page","headline":"How-to guides · Cloudflare Sandbox SDK docs","description":"Practical guides for solving specific tasks with the Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}}]}
 ```

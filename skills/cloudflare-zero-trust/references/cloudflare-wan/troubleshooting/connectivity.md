@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot connectivity
 description: Troubleshoot WAN connectivity issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -117,6 +117,6 @@ If you have worked through this guide and cannot resolve the issue, gather the f
 * [Network Analytics](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/): Analyze traffic patterns over time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/#page","headline":"Troubleshoot connectivity · Cloudflare WAN docs","description":"Troubleshoot WAN connectivity issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/#page","headline":"Troubleshoot connectivity · Cloudflare WAN docs","description":"Troubleshoot WAN connectivity issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/troubleshooting/connectivity/","name":"Troubleshoot connectivity"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot Email security
 description: Resolve common issues with Cloudflare Email security, including delivery delays, false positives, and DMARC authentication errors.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -76,6 +76,6 @@ If emails are not being delivered or are arriving with significant latency:
 If you cannot resolve the issue, [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/). Please provide the **Message ID** or **Alert ID** for the affected emails, which you can find in the **Investigation** section of the dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/#page","headline":"Troubleshoot Email security · Cloudflare One docs","description":"Resolve common issues with Cloudflare Email security, including delivery delays, false positives, and DMARC authentication errors.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/#page","headline":"Troubleshoot Email security · Cloudflare One docs","description":"Resolve common issues with Cloudflare Email security, including delivery delays, false positives, and DMARC authentication errors.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/troubleshooting/","name":"Troubleshoot Email security"}}]}
 ```

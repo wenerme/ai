@@ -1,7 +1,7 @@
 ---
 title: Recipes and examples
 description: Examples that demonstrate how to write unit and integration tests with the Workers Vitest integration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ Recipes are examples that help demonstrate how to write unit tests and integrati
 * [Tests mocking Workers Assets ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/workers-assets)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/#page","headline":"Recipes and examples · Cloudflare Workers docs","description":"Examples that demonstrate how to write unit and integration tests with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/#page","headline":"Recipes and examples · Cloudflare Workers docs","description":"Examples that demonstrate how to write unit and integration tests with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/recipes/","name":"Recipes and examples"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: How to
 description: Step-by-step guides for common Cloudflare Pages tasks and configurations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Use Pages Functions for A/B testing ](https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/how-to/#page","headline":"How to · Cloudflare Pages docs","description":"Step-by-step guides for common Cloudflare Pages tasks and configurations.","url":"https://developers.cloudflare.com/pages/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/how-to/#page","headline":"How to · Cloudflare Pages docs","description":"Step-by-step guides for common Cloudflare Pages tasks and configurations.","url":"https://developers.cloudflare.com/pages/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}}]}
 ```

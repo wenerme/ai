@@ -1,7 +1,7 @@
 ---
 title: Routed subnets
 description: Learn how to configure routed subnets on a Cloudflare One Appliance, including setting static routes and next-hop addresses for complex LAN setups.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ Optionally, you can also [enable NAT for a subnet](https://developers.cloudflare
 For instructions on creating routed subnets, refer to **Create a LAN** in either [Configure hardware Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#create-a-lan) or [Configure Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#create-a-lan).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/#page","headline":"Routed subnets · Cloudflare WAN docs","description":"Learn how to configure routed subnets on a Cloudflare One Appliance, including setting static routes and next-hop addresses for complex LAN setups.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/#page","headline":"Routed subnets · Cloudflare WAN docs","description":"Learn how to configure routed subnets on a Cloudflare One Appliance, including setting static routes and next-hop addresses for complex LAN setups.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/routed-subnets/","name":"Routed subnets"}}]}
 ```

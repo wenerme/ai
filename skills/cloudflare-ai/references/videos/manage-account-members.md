@@ -1,7 +1,7 @@
 ---
 title: Manage account members
 description: In this video, learn how to define the roles and permission scope for members associated with an account.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -98,5 +98,5 @@ permissions. For more information on account members and user groups,
 visit our developer documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/manage-account-members/#page","headline":"Manage account members | Cloudflare Docs","description":"In this video, learn how to define the roles and permission scope for members associated with an account.","url":"https://developers.cloudflare.com/videos/manage-account-members/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/manage-account-members/#page","headline":"Manage account members | Cloudflare Docs","description":"In this video, learn how to define the roles and permission scope for members associated with an account.","url":"https://developers.cloudflare.com/videos/manage-account-members/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

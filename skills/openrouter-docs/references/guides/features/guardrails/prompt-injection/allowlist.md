@@ -6,10 +6,10 @@
 
 > Exclude known-safe phrases from prompt injection detection
 
-The prompt injection allowlist lets you mark specific phrases as safe so they are not caught by the [regex-based prompt injection detection guardrail](/guides/features/guardrails/prompt-injection). This is useful when your application legitimately uses language that overlaps with injection patterns — for example, a security-training chatbot that discusses prompt injection techniques, or a customer-support agent whose canned responses include phrases like "ignore previous instructions."
+The prompt injection allowlist lets you mark specific phrases as safe so they are not caught by the [regex-based prompt injection detection guardrail](/docs/guides/features/guardrails/prompt-injection). This is useful when your application legitimately uses language that overlaps with injection patterns — for example, a security-training chatbot that discusses prompt injection techniques, or a customer-support agent whose canned responses include phrases like "ignore previous instructions."
 
 <Note>
-  The allowlist only applies to regex-based detection patterns (the patterns listed on the [Prompt Injection Detection](/guides/features/guardrails/prompt-injection#detection-patterns) page). Evasion detectors — typoglycemia and Base64/hex encoding — are not affected by the allowlist because they operate on decoded or normalized text where selective phrase exemption is not meaningful.
+  The allowlist only applies to regex-based detection patterns (the patterns listed on the [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection#detection-patterns) page). Evasion detectors — typoglycemia and Base64/hex encoding — are not affected by the allowlist because they operate on decoded or normalized text where selective phrase exemption is not meaningful.
 </Note>
 
 ## How It Works
@@ -81,5 +81,5 @@ After adding, a confirmation links back to [Settings > Privacy](https://openrout
 
 ## Further Reading
 
-* [Prompt Injection Detection](/guides/features/guardrails/prompt-injection) — the full list of regex patterns and evasion detectors
-* [Guardrails overview](/guides/features/guardrails) — how guardrails work, hierarchy, and configuration
+* [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection) — the full list of regex patterns and evasion detectors
+* [Guardrails overview](/docs/guides/features/guardrails) — how guardrails work, hierarchy, and configuration

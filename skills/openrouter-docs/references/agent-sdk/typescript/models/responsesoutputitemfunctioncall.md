@@ -28,7 +28,7 @@ let value: ResponsesOutputItemFunctionCall = {
 
 | Field       | Type                                                                                                           | Required             | Description |
 | ----------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`      | [models.ResponsesOutputItemFunctionCallType](/agent-sdk/typescript/models/responsesoutputitemfunctioncalltype) | :heavy\_check\_mark: | N/A         |
+| `type`      | [models.ResponsesOutputItemFunctionCallType](/docs/agent-sdk/typescript/models/responsesoutputitemfunctioncalltype) | :heavy\_check\_mark: | N/A         |
 | `id`        | *string*                                                                                                       | :heavy\_minus\_sign: | N/A         |
 | `name`      | *string*                                                                                                       | :heavy\_check\_mark: | N/A         |
 | `arguments` | *string*                                                                                                       | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up and fine-tune DDoS protection for your zones, Spectrum apps, and Magic Transit prefixes.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -87,6 +87,6 @@ Revert the change you did in [Step 1](#1-configure-ruleset-actions-to-log), chan
 Alternatively, if you are using the API, [remove the override](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/#configure-an-override-for-the-http-ddos-attack-protection-managed-ruleset) you previously configured at the ruleset level for each managed ruleset. Ensure that you only remove the ruleset override and not any of the rule overrides you may have configured in [Step 3](#3-customize-managed-ruleset-rules).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/get-started/#page","headline":"Get started · Cloudflare DDoS Protection docs","description":"Set up and fine-tune DDoS protection for your zones, Spectrum apps, and Magic Transit prefixes.","url":"https://developers.cloudflare.com/ddos-protection/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/get-started/#page","headline":"Get started · Cloudflare DDoS Protection docs","description":"Set up and fine-tune DDoS protection for your zones, Spectrum apps, and Magic Transit prefixes.","url":"https://developers.cloudflare.com/ddos-protection/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/get-started/","name":"Get started"}}]}
 ```

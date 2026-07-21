@@ -1,7 +1,7 @@
 ---
 title: Record attributes
 description: Attributes and metadata for DNS records.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -72,6 +72,6 @@ Comments are treated as [graphic Unicode characters ↗](https://en.wikipedia.or
 Tags are treated as an array of `name:value` pairs, meaning that tag names are not case-sensitive and can only contain letters, numbers, `-`, and `_`. For tag values, the same character restrictions apply as for comments.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#page","headline":"DNS record comments and tags · Cloudflare DNS docs","description":"Attributes and metadata for DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#page","headline":"DNS record comments and tags · Cloudflare DNS docs","description":"Attributes and metadata for DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/record-attributes/","name":"Record attributes"}}]}
 ```

@@ -124,7 +124,7 @@ with OpenRouter(
 
 ## submit\_feedback
 
-Submit structured feedback on a generation the authenticated user made. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Submit structured feedback on a generation the authenticated user made. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

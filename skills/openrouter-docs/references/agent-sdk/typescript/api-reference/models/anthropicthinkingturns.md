@@ -26,5 +26,5 @@ let value: AnthropicThinkingTurns = {
 
 | Field   | Type                                                                                                       | Required             | Description |
 | ------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`  | [models.AnthropicThinkingTurnsType](/agent-sdk/typescript/api-reference/models/anthropicthinkingturnstype) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.AnthropicThinkingTurnsType](/docs/agent-sdk/typescript/api-reference/models/anthropicthinkingturnstype) | :heavy\_check\_mark: | N/A         |
 | `value` | *number*                                                                                                   | :heavy\_check\_mark: | N/A         |

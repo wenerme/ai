@@ -25,5 +25,5 @@ import { RequestTimeoutResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                   | Required             | Description                           | Example                                                                   |
 | -------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------- | ------------------------------------------------------------------------- |
-| `error`  | [models.RequestTimeoutResponseErrorData](/agent-sdk/typescript/models/requesttimeoutresponseerrordata) | :heavy\_check\_mark: | Error data for RequestTimeoutResponse | `{"code": 408,"message": "Operation timed out. Please try again later."}` |
+| `error`  | [models.RequestTimeoutResponseErrorData](/docs/agent-sdk/typescript/models/requesttimeoutresponseerrordata) | :heavy\_check\_mark: | Error data for RequestTimeoutResponse | `{"code": 408,"message": "Operation timed out. Please try again later."}` |
 | `userId` | *string*                                                                                               | :heavy\_minus\_sign: | N/A                                   |                                                                           |

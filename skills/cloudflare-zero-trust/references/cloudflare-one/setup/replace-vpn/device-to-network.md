@@ -1,7 +1,7 @@
 ---
 title: Device to network
 description: Connect a remote device to a private network using Cloudflare Tunnel and the Cloudflare One Client.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -116,6 +116,6 @@ If you have issues connecting, refer to these resources:
 * [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/#page","headline":"Device to network · Cloudflare One docs","description":"Connect a remote device to a private network using Cloudflare Tunnel and the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/#page","headline":"Device to network · Cloudflare One docs","description":"Connect a remote device to a private network using Cloudflare Tunnel and the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/replace-vpn/","name":"Replace your VPN"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/setup/replace-vpn/device-to-network/","name":"Device to network"}}]}
 ```

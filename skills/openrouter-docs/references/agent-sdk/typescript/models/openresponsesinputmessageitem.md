@@ -32,6 +32,6 @@ let value: OpenResponsesInputMessageItem = {
 | Field     | Type                                                                                                                     | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `id`      | *string*                                                                                                                 | :heavy\_minus\_sign: | N/A         |
-| `type`    | [models.OpenResponsesInputMessageItemTypeMessage](/agent-sdk/typescript/models/openresponsesinputmessageitemtypemessage) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OpenResponsesInputMessageItemTypeMessage](/docs/agent-sdk/typescript/models/openresponsesinputmessageitemtypemessage) | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.OpenResponsesInputMessageItemRoleUnion*                                                                          | :heavy\_check\_mark: | N/A         |
 | `content` | *models.OpenResponsesInputMessageItemContentUnion*\[]                                                                    | :heavy\_check\_mark: | N/A         |

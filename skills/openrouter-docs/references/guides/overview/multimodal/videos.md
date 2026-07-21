@@ -65,7 +65,7 @@ OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for vi
 
 Requests with video files to compatible models are available via the `/api/v1/chat/completions` API with the `video_url` content type. The `url` can either be a URL or a base64-encoded data URL. Note that only models with video processing capabilities will handle these requests.
 
-You can search for models that support video by filtering to video input modality on our [Models page](/guides/overview/models).
+You can search for models that support video by filtering to video input modality on our [Models page](/docs/guides/overview/models).
 
 ### Using Video URLs
 

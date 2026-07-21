@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -322,8 +322,8 @@ let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-9836)
-* [  TypeScript ](#tab-panel-9837)
+* [  JavaScript ](#tab-panel-9834)
+* [  TypeScript ](#tab-panel-9835)
 
 **JavaScript**
 
@@ -398,8 +398,8 @@ The code above:
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
 
-  * [  JavaScript ](#tab-panel-9834)
-  * [  TypeScript ](#tab-panel-9835)
+  * [  JavaScript ](#tab-panel-9836)
+  * [  TypeScript ](#tab-panel-9837)
 
 **JavaScript**
 ```js
@@ -502,6 +502,6 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Read the Wrangler [kv command documentation](https://developers.cloudflare.com/kv/reference/kv-commands/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/get-started/","name":"Getting started"}}]}
 ```

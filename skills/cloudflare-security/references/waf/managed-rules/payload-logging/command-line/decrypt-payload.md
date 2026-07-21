@@ -1,7 +1,7 @@
 ---
 title: Decrypt the payload content
 description: Decrypt matched rule payloads using the command-line tool.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ The format of the encrypted payload can change over time. The `matched-data-cli`
 To fix this error, [download ↗](https://github.com/cloudflare/matched-data-cli/releases) a newer version of the tool from GitHub and try again.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/#page","headline":"Decrypt the payload content in the command line · Cloudflare Web Application Firewall (WAF) docs","description":"Decrypt matched rule payloads using the command-line tool.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/#page","headline":"Decrypt the payload content in the command line · Cloudflare Web Application Firewall (WAF) docs","description":"Decrypt matched rule payloads using the command-line tool.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/command-line/","name":"Command-line operations"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/managed-rules/payload-logging/command-line/decrypt-payload/","name":"Decrypt the payload content"}}]}
 ```

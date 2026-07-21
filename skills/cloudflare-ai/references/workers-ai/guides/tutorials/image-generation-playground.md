@@ -1,7 +1,7 @@
 ---
 title: How to Build an Image Generator using Workers AI
 description: Learn how to build an image generator using Workers AI.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Video Series
 * [ Store and Catalog AI Generated Images with R2 (Part 3) ](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/#page","headline":"How to Build an Image Generator using Workers AI · Cloudflare Workers AI docs","description":"Learn how to build an image generator using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/#page","headline":"How to Build an Image Generator using Workers AI · Cloudflare Workers AI docs","description":"Learn how to build an image generator using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/image-generation-playground/","name":"How to Build an Image Generator using Workers AI"}}]}
 ```

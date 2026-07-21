@@ -51,5 +51,5 @@ let value: ChatMessageTokenLogprobs = {
 
 | Field     | Type                                                                                      | Required             | Description |
 | --------- | ----------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `content` | [models.ChatMessageTokenLogprob](/agent-sdk/typescript/models/chatmessagetokenlogprob)\[] | :heavy\_check\_mark: | N/A         |
-| `refusal` | [models.ChatMessageTokenLogprob](/agent-sdk/typescript/models/chatmessagetokenlogprob)\[] | :heavy\_check\_mark: | N/A         |
+| `content` | [models.ChatMessageTokenLogprob](/docs/agent-sdk/typescript/models/chatmessagetokenlogprob)\[] | :heavy\_check\_mark: | N/A         |
+| `refusal` | [models.ChatMessageTokenLogprob](/docs/agent-sdk/typescript/models/chatmessagetokenlogprob)\[] | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Glossary
 description: Definitions of key terms used in the Cloudflare Workflows documentation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Review the definitions for terms used across Cloudflare's Workflows documentatio
 | Workflow          | The named Workflow definition, associated with a single Workers script.                                                                                                                                                                                                                                                                                                  |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/glossary/#page","headline":"Glossary · Cloudflare Workflows docs","description":"Definitions of key terms used in the Cloudflare Workflows documentation.","url":"https://developers.cloudflare.com/workflows/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/glossary/#page","headline":"Glossary · Cloudflare Workflows docs","description":"Definitions of key terms used in the Cloudflare Workflows documentation.","url":"https://developers.cloudflare.com/workflows/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/glossary/","name":"Glossary"}}]}
 ```

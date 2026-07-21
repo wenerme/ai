@@ -157,7 +157,7 @@ type ModerationErrorMetadata = {
 
 ## Guardrail Errors
 
-On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
+On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
 
 ```json lines theme={null}
 {
@@ -171,7 +171,7 @@ On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a reque
 }
 ```
 
-When you opt in to [router metadata](/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
+When you opt in to [router metadata](/docs/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
 
 ```json expandable lines theme={null}
 {
@@ -214,7 +214,7 @@ When you opt in to [router metadata](/guides/features/router-metadata) via the `
 }
 ```
 
-The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/guides/features/router-metadata#pipeline-stages) for the full stage type and field reference.
+The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/docs/guides/features/router-metadata#pipeline-stages) for the full stage type and field reference.
 
 ## Provider Errors
 
@@ -258,7 +258,7 @@ provider was selected, fallback attempts, etc.) is carried in the
 `openrouter_metadata` object when the request sets `X-OpenRouter-Metadata`
 — it follows the same shape as on successful responses (routing-summary
 fields only; see
-[Pipeline Stages](/guides/features/router-metadata#pipeline-stages)).
+[Pipeline Stages](/docs/guides/features/router-metadata#pipeline-stages)).
 
 ## When No Content is Generated
 
@@ -282,7 +282,7 @@ When using streaming mode (`stream: true`), errors are handled differently depen
 Errors that occur before any tokens are sent follow the standard error format above, with appropriate HTTP status codes. At this stage the HTTP response hasn't been committed yet, so OpenRouter can:
 
 * Return a proper HTTP error status (4xx/5xx)
-* Silently retry with a different provider endpoint if [fallback routing](/guides/routing/provider-selection) is enabled
+* Silently retry with a different provider endpoint if [fallback routing](/docs/guides/routing/provider-selection) is enabled
 * Apply rate-limit or auth checks before any work begins
 
 You'll see pre-stream errors for issues like invalid API keys, malformed requests, or when every available provider endpoint is exhausted before streaming starts.
@@ -378,7 +378,7 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `error_type`        | HTTP Status                        | Description                                                                                                                  |
 | ------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `authentication`    | {HTTPStatus.S401_Unauthorized}     | The API key is missing, invalid, or revoked.                                                                                 |
-| `permission_denied` | {HTTPStatus.S403_Forbidden}        | The key is valid but lacks the required permission or the request was blocked by a [guardrail](/guides/features/guardrails). |
+| `permission_denied` | {HTTPStatus.S403_Forbidden}        | The key is valid but lacks the required permission or the request was blocked by a [guardrail](/docs/guides/features/guardrails). |
 | `payment_required`  | {HTTPStatus.S402_Payment_Required} | The account or API key has insufficient credits. [Add credits](https://openrouter.ai/credits) and retry.                     |
 
 ### Rate Limiting and Availability

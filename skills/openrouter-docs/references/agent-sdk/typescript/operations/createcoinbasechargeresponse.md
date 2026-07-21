@@ -52,4 +52,4 @@ let value: CreateCoinbaseChargeResponse = {
 
 | Field  | Type                                                                                             | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `data` | [operations.CreateCoinbaseChargeData](/agent-sdk/typescript/operations/createcoinbasechargedata) | :heavy\_check\_mark: | N/A         |
+| `data` | [operations.CreateCoinbaseChargeData](/docs/agent-sdk/typescript/operations/createcoinbasechargedata) | :heavy\_check\_mark: | N/A         |

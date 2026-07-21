@@ -56,7 +56,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 The `openrouter:fusion` server tool gives any model access to multi-model deliberation. When your model decides a prompt benefits from multiple perspectives, it invokes this tool — a panel of models answers in parallel, a judge compares their responses, and the structured analysis comes back to your model for the final answer.
 
-This is the same pipeline behind the [`openrouter/fusion` model alias](/guides/routing/routers/fusion-router) and the [`fusion` plugin](/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and judge independently.
+This is the same pipeline behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router) and the [`fusion` plugin](/docs/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and judge independently.
 
 ## Quick start
 
@@ -120,14 +120,14 @@ MODEL: '~anthropic/claude-opus-latest',
 </Template>
 
 <Note title="Chat Completions support is in beta">
-  Fusion in the `tools` array works on `/chat/completions` today, but it's slower there than on the [Responses API](/api_reference/responses/overview). For latency-sensitive use, send the same `tools: [{ type: "openrouter:fusion" }]` payload to the Responses API instead.
+  Fusion in the `tools` array works on `/chat/completions` today, but it's slower there than on the [Responses API](/docs/api_reference/responses/overview). For latency-sensitive use, send the same `tools: [{ type: "openrouter:fusion" }]` payload to the Responses API instead.
 </Note>
 
 ## When does the model invoke it?
 
 The tool's description tells the model to call `openrouter:fusion` only when a task genuinely benefits from multiple perspectives — research questions, multi-domain critique, "compare and contrast" prompts, or anything where being wrong is expensive. Simple tactical prompts won't trigger it.
 
-To **force** fusion on every request, set `tool_choice: "required"`. See [Forcing fusion on every request](/guides/routing/routers/fusion-router#forcing-fusion-on-every-request).
+To **force** fusion on every request, set `tool_choice: "required"`. See [Forcing fusion on every request](/docs/guides/routing/routers/fusion-router#forcing-fusion-on-every-request).
 
 ## Parameters
 
@@ -235,8 +235,8 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge 
 
 ## Related
 
-* [Fusion Router (`openrouter/fusion`)](/guides/routing/routers/fusion-router)
-* [Fusion plugin](/guides/features/plugins/fusion)
-* [Web Search server tool](/guides/features/server-tools/web-search)
-* [Web Fetch server tool](/guides/features/server-tools/web-fetch)
+* [Fusion Router (`openrouter/fusion`)](/docs/guides/routing/routers/fusion-router)
+* [Fusion plugin](/docs/guides/features/plugins/fusion)
+* [Web Search server tool](/docs/guides/features/server-tools/web-search)
+* [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
 * [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground

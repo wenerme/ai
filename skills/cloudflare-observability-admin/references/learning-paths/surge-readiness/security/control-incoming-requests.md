@@ -1,7 +1,7 @@
 ---
 title: Control incoming requests
 description: Filter incoming requests with WAF rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ To help you define the best rate limiting setting for your use case, refer to [H
 * Interactive Challenge: Visitors will be shown an interactive challenge before proceeding.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/#page","headline":"Control incoming requests · Cloudflare Learning Paths","description":"Filter incoming requests with WAF rules.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/#page","headline":"Control incoming requests · Cloudflare Learning Paths","description":"Filter incoming requests with WAF rules.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/security/control-incoming-requests/","name":"Control incoming requests"}}]}
 ```

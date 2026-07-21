@@ -1,7 +1,7 @@
 ---
 title: Grok 4.20 Multi-Agent
 description: xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -973,6 +973,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/#page","headline":"Grok 4.20 Multi-Agent (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/#page","headline":"Grok 4.20 Multi-Agent (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

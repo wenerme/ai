@@ -1,7 +1,7 @@
 ---
 title: Botnet Threat Feed
 description: Receive threat intelligence about DDoS botnets targeting your network infrastructure.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -164,6 +164,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/#page","headline":"DDoS Botnet Threat Feed for service providers · Cloudflare DDoS Protection docs","description":"Receive threat intelligence about DDoS botnets targeting your network infrastructure.","url":"https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/#page","headline":"DDoS Botnet Threat Feed for service providers · Cloudflare DDoS Protection docs","description":"Receive threat intelligence about DDoS botnets targeting your network infrastructure.","url":"https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/botnet-threat-feed/","name":"Botnet Threat Feed"}}]}
 ```

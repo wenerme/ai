@@ -1,7 +1,7 @@
 ---
 title: How Privacy Proxy works
 description: Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ The proxy authenticates users to verify they have permission to use the service,
 * [RFC 9298 ↗](https://datatracker.ietf.org/doc/html/rfc9298) \- CONNECT-UDP specification for proxying UDP over HTTP.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/#page","headline":"How Privacy Proxy works · Cloudflare Privacy Proxy docs","description":"Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/#page","headline":"How Privacy Proxy works · Cloudflare Privacy Proxy docs","description":"Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/how-it-works/","name":"How Privacy Proxy works"}}]}
 ```

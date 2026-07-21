@@ -35,4 +35,4 @@ let value: OpenAIResponseInputMessageItem = {
 | `content` | *models.OpenAIResponseInputMessageItemContent*\[]                                                                          | :heavy\_check\_mark: | N/A         |
 | `id`      | *string*                                                                                                                   | :heavy\_check\_mark: | N/A         |
 | `role`    | *models.OpenAIResponseInputMessageItemRoleUnion*                                                                           | :heavy\_check\_mark: | N/A         |
-| `type`    | [models.OpenAIResponseInputMessageItemType](/agent-sdk/typescript/api-reference/models/openairesponseinputmessageitemtype) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OpenAIResponseInputMessageItemType](/docs/agent-sdk/typescript/api-reference/models/openairesponseinputmessageitemtype) | :heavy\_minus\_sign: | N/A         |

@@ -57,7 +57,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 <Warning>
   **Responses API only**
 
-  The apply patch server tool is only available through the [Responses API](/api_reference/responses/overview). It is not supported via the Chat Completions API.
+  The apply patch server tool is only available through the [Responses API](/docs/api_reference/responses/overview). It is not supported via the Chat Completions API.
 </Warning>
 
 <Note>
@@ -257,7 +257,7 @@ The apply patch tool has no additional cost beyond standard token usage.
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
-* [Web Search](/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
+* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

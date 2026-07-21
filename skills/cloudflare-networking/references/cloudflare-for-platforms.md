@@ -1,7 +1,7 @@
 ---
 title: Cloudflare for Platforms
 description: Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 To learn how these components work together, refer to [How Workers for Platforms works](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/#page","headline":"Cloudflare for Platforms · Cloudflare for Platforms docs","description":"Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/#page","headline":"Cloudflare for Platforms · Cloudflare for Platforms docs","description":"Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}}]}
 ```

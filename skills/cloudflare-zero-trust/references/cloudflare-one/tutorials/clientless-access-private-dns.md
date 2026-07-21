@@ -1,7 +1,7 @@
 ---
 title: Access a web application via its private hostname without the Cloudflare One Client
 description: With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -100,6 +100,6 @@ Users can now access the application at the following URL:
 The application will load in an isolated browser. You can optionally [configure remote browser controls](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings) such as disabling copy/paste, printing, or keyboard input.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/#page","headline":"Access a web application via its private hostname without the Cloudflare One Client · Cloudflare One docs","description":"With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/#page","headline":"Access a web application via its private hostname without the Cloudflare One Client · Cloudflare One docs","description":"With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/clientless-access-private-dns/","name":"Access a web application via its private hostname without the Cloudflare One Client"}}]}
 ```

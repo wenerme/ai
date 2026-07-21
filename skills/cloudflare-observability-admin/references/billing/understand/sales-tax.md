@@ -1,7 +1,7 @@
 ---
 title: Sales tax
 description: Understand Cloudflare sales tax by region.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ Reach out to Cloudflare via email [indirect\_tax@cloudflare.com](mailto:indirect
 * [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — General billing terms
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/understand/sales-tax/#page","headline":"Sales tax · Cloudflare Billing docs","description":"Understand Cloudflare sales tax by region.","url":"https://developers.cloudflare.com/billing/understand/sales-tax/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/understand/sales-tax/#page","headline":"Sales tax · Cloudflare Billing docs","description":"Understand Cloudflare sales tax by region.","url":"https://developers.cloudflare.com/billing/understand/sales-tax/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/sales-tax/","name":"Sales tax"}}]}
 ```

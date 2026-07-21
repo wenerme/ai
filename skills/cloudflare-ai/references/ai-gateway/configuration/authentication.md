@@ -1,7 +1,7 @@
 ---
 title: Authenticated Gateway
 description: Add security by requiring a valid authorization token for each request.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -97,6 +97,6 @@ The following table outlines gateway behavior based on the authentication settin
 | Off                    | No header      | Unauthenticated gateway | Request succeeds                           |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/authentication/#page","headline":"Authenticated Gateway · Cloudflare AI Gateway docs","description":"Add security by requiring a valid authorization token for each request.","url":"https://developers.cloudflare.com/ai-gateway/configuration/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/authentication/#page","headline":"Authenticated Gateway · Cloudflare AI Gateway docs","description":"Add security by requiring a valid authorization token for each request.","url":"https://developers.cloudflare.com/ai-gateway/configuration/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/authentication/","name":"Authenticated Gateway"}}]}
 ```

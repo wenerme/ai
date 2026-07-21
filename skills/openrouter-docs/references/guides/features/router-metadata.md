@@ -184,7 +184,7 @@ When opted in, successful responses include an `openrouter_metadata` object alon
 | `attempts`  | `Attempt[]`         | Optional. Per-attempt provider/model/status when the router retried against fallbacks.                                    |
 | `pipeline`  | `PipelineStage[]`   | Optional. Plugins that materially altered the request or response (compression, guardrails, healing, server tools, etc.). |
 
-The full schema is documented under [`OpenRouterMetadata`](/agent-sdk/call-model/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/client-sdks/typescript/overview) and other generated clients.
+The full schema is documented under [`OpenRouterMetadata`](/docs/agent-sdk/call-model/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/docs/client-sdks/typescript/overview) and other generated clients.
 
 ## Pipeline Stages
 
@@ -238,7 +238,7 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
 
 ### Guardrail Blocked (403)
 
-When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
+When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
 
 ```json expandable lines theme={null}
 {
@@ -288,7 +288,7 @@ A few things to know:
 * **`attempt` reflects how far the router got.** A value of `0` means the request never reached a provider — typically because every candidate was filtered out before submission (e.g. `provider.only` excluded the last endpoint, or an allowed-providers / max-price filter rejected everything). Values `≥ 1` mean every attempted provider failed and fallbacks were exhausted.
 * **No endpoint is marked `selected` on failure.** None of the `endpoints.available[].selected` flags are `true` because no endpoint actually served a 200.
 * **Internal-error masking still applies.** Responses with a `500` status are scrubbed to a generic message, and `openrouter_metadata` is omitted from those envelopes by design — we don't surface internal routing details on errors whose cause is already hidden. Other 5xx classes (`502`, `503`, `504`, `529`) still include the metadata when the client opted in.
-* **Some failure modes won't carry it.** Authentication / rate-limit failures and other errors that fire before the router has usable routing state (for example, validation rejections at the API edge) will not include the field. If you need post-mortem routing context for a request that completed past the API edge but before the router materialised state, fetch the generation record via [`GET /api/v1/generation`](/agent-sdk/call-model/api-reference) using the `X-Generation-Id` response header.
+* **Some failure modes won't carry it.** Authentication / rate-limit failures and other errors that fire before the router has usable routing state (for example, validation rejections at the API edge) will not include the field. If you need post-mortem routing context for a request that completed past the API edge but before the router materialised state, fetch the generation record via [`GET /api/v1/generation`](/docs/agent-sdk/call-model/api-reference) using the `X-Generation-Id` response header.
 
 ## Stability
 

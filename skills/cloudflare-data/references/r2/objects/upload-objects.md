@@ -1,7 +1,7 @@
 ---
 title: Upload objects
 description: Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1096,6 +1096,6 @@ For example, if a two-part upload has part ETags `bce6bf66aeb76c7040fdd5f4eccb78
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Configure automatic cleanup of incomplete multipart uploads.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/objects/","name":"Objects"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/objects/upload-objects/","name":"Upload objects"}}]}
 ```

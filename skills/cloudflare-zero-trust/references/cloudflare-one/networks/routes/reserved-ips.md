@@ -1,7 +1,7 @@
 ---
 title: Reserved IP addresses
 description: Reference information for Reserved IP addresses in Zero Trust networking.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -90,6 +90,6 @@ Calculate
 In **Include IPs and domains** mode, only traffic for the included routes is sent to Cloudflare. You must explicitly add the reserved IP ranges that your deployment depends on. For example, if you use [hostname routing or egress policy host selectors](#gateway-initial-resolved-ips), add `100.80.0.0/16` to your Split Tunnels include list.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/routes/","name":"Routes"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/routes/reserved-ips/","name":"Reserved IP addresses"}}]}
 ```

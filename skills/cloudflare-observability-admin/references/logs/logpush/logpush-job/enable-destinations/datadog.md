@@ -1,7 +1,7 @@
 ---
 title: Enable Datadog
 description: Push Cloudflare logs to Datadog.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -175,6 +175,6 @@ The above limits are hardcoded defaults. It is not possible to override these li
 These limitations may result in noticeable log ingestion delay within Datadog following high traffic events. Logpush will not drop unsent logs, so all logs will be uploaded to Datadog in due time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/#page","headline":"Enable Logpush to Datadog · Cloudflare Logs docs","description":"Push Cloudflare logs to Datadog.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/#page","headline":"Enable Logpush to Datadog · Cloudflare Logs docs","description":"Push Cloudflare logs to Datadog.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/datadog/","name":"Enable Datadog"}}]}
 ```

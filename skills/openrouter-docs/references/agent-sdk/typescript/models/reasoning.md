@@ -23,5 +23,5 @@ let value: Reasoning = {};
 
 | Field     | Type                                                                                       | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `effort`  | [models.Effort](/agent-sdk/typescript/models/effort)                                       | :heavy\_minus\_sign: | N/A         |
-| `summary` | [models.ReasoningSummaryVerbosity](/agent-sdk/typescript/models/reasoningsummaryverbosity) | :heavy\_minus\_sign: | N/A         |
+| `effort`  | [models.Effort](/docs/agent-sdk/typescript/models/effort)                                       | :heavy\_minus\_sign: | N/A         |
+| `summary` | [models.ReasoningSummaryVerbosity](/docs/agent-sdk/typescript/models/reasoningsummaryverbosity) | :heavy\_minus\_sign: | N/A         |

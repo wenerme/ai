@@ -16,7 +16,7 @@ Analytics and usage endpoints
 
 ## GetUserActivity
 
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

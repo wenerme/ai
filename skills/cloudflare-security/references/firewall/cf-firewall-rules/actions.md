@@ -1,7 +1,7 @@
 ---
 title: Firewall rules actions
 description: Review available actions for firewall rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ When you configure a firewall rule with one of the challenge actions — _Non-In
 In this last case, no further firewall rules will be processed. This means that the action of any later rules with a challenge or _Block_ action also matching the request will not be applied, and the request will be allowed.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/#page","headline":"Firewall rules actions · Cloudflare Firewall Rules (deprecated) docs","description":"Review available actions for firewall rules.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/#page","headline":"Firewall rules actions · Cloudflare Firewall Rules (deprecated) docs","description":"Review available actions for firewall rules.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/cf-firewall-rules/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/cf-firewall-rules/actions/","name":"Firewall rules actions"}}]}
 ```

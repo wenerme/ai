@@ -1,7 +1,7 @@
 ---
 title: Understanding the basics
 description: Learn Logpull API access patterns and data retention.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ The following is a sample log with default fields:
 You can query for logs starting from 1 minute in the past (relative to the actual time that you make the query) and go back at least 3 days and up to 7 days. For longer durations, we recommend using [Logpush](https://developers.cloudflare.com/logs/logpush/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/understanding-the-basics/#page","headline":"Understanding the basics · Cloudflare Logs docs","description":"Learn Logpull API access patterns and data retention.","url":"https://developers.cloudflare.com/logs/logpull/understanding-the-basics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/understanding-the-basics/#page","headline":"Understanding the basics · Cloudflare Logs docs","description":"Learn Logpull API access patterns and data retention.","url":"https://developers.cloudflare.com/logs/logpull/understanding-the-basics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpull/","name":"Logpull"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpull/understanding-the-basics/","name":"Understanding the basics"}}]}
 ```

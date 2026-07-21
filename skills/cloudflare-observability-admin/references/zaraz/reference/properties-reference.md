@@ -1,7 +1,7 @@
 ---
 title: Properties reference
 description: Built-in properties available in Zaraz events.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Cloudflare Zaraz offers properties that you can use when configuring the product
 | _Timestamp (seconds)_      | Returns the Unix time in seconds.               |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/reference/properties-reference/#page","headline":"Properties reference · Cloudflare Zaraz docs","description":"Built-in properties available in Zaraz events.","url":"https://developers.cloudflare.com/zaraz/reference/properties-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/reference/properties-reference/#page","headline":"Properties reference · Cloudflare Zaraz docs","description":"Built-in properties available in Zaraz events.","url":"https://developers.cloudflare.com/zaraz/reference/properties-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/reference/properties-reference/","name":"Properties reference"}}]}
 ```

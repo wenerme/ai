@@ -27,16 +27,16 @@ You need:
 
 <Tip>
   If you are not already targeting a specific provider model, read
-  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
   so you can select one based on your clip duration, output shape, input type,
   audio, provider controls, and cost requirements.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
-* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
+* [Create video generation request](/docs/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/sdks/videogeneration/README)
 
 Provider-specific options can change by model and provider. Always check `allowed_passthrough_parameters` before relying on one.
 
@@ -178,7 +178,7 @@ job later completed and downloaded with this final summary:
 ```
 
 To wait for the playable MP4, use the polling and download helper from
-[Generate and Download a Video from Text](/cookbook/video-generation/text-to-video)
+[Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video)
 after submission.
 
 ## Step 3: Keep a fallback without passthrough options

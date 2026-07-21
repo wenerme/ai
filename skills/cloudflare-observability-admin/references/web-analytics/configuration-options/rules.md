@@ -1,7 +1,7 @@
 ---
 title: Rules
 description: Create rules to include or exclude traffic from Web Analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ Warning
 Configuration rules have precedence over any Web Analytics rules. If a Web Analytics rule turns on analytics measurements for an incoming request and the same request matches a configuration rule turning off Web Analytics, the configuration rule will win.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/configuration-options/rules/#page","headline":"Rules · Cloudflare Web Analytics docs","description":"Create rules to include or exclude traffic from Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/configuration-options/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/configuration-options/rules/#page","headline":"Rules · Cloudflare Web Analytics docs","description":"Create rules to include or exclude traffic from Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/configuration-options/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/configuration-options/","name":"Configuration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/configuration-options/rules/","name":"Rules"}}]}
 ```

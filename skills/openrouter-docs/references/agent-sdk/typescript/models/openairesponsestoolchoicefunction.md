@@ -26,5 +26,5 @@ let value: OpenAIResponsesToolChoiceFunction = {
 
 | Field  | Type                                                                                                               | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type` | [models.OpenAIResponsesToolChoiceTypeFunction](/agent-sdk/typescript/models/openairesponsestoolchoicetypefunction) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.OpenAIResponsesToolChoiceTypeFunction](/docs/agent-sdk/typescript/models/openairesponsestoolchoicetypefunction) | :heavy\_check\_mark: | N/A         |
 | `name` | *string*                                                                                                           | :heavy\_check\_mark: | N/A         |

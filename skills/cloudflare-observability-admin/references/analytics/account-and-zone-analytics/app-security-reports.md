@@ -1,7 +1,7 @@
 ---
 title: Security reports
 description: View account-wide application security reports covering WAF, bots, DDoS, and API Shield.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -128,6 +128,6 @@ Each report is generated per account. You can use the [API](#api) to retrieve th
 This feature is available in closed beta to Enterprise customers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/#page","headline":"Application Security reports · Cloudflare Analytics docs","description":"View account-wide application security reports covering WAF, bots, DDoS, and API Shield.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/#page","headline":"Application Security reports · Cloudflare Analytics docs","description":"View account-wide application security reports covering WAF, bots, DDoS, and API Shield.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/account-and-zone-analytics/app-security-reports/","name":"Security reports"}}]}
 ```

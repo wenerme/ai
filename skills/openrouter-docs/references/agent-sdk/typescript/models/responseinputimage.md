@@ -28,6 +28,6 @@ let value: ResponseInputImage = {
 
 | Field      | Type                                                                                     | Required             | Description |
 | ---------- | ---------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`     | [models.ResponseInputImageType](/agent-sdk/typescript/models/responseinputimagetype)     | :heavy\_check\_mark: | N/A         |
-| `detail`   | [models.ResponseInputImageDetail](/agent-sdk/typescript/models/responseinputimagedetail) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.ResponseInputImageType](/docs/agent-sdk/typescript/models/responseinputimagetype)     | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.ResponseInputImageDetail](/docs/agent-sdk/typescript/models/responseinputimagedetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                 | :heavy\_minus\_sign: | N/A         |

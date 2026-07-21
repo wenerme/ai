@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Magic Transit
 description: Protect your network infrastructure from DDoS attacks with Magic Transit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -84,6 +84,6 @@ Follow a guided learning path to set up Magic Transit, configure DDoS protection
 Deep dive into the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/magic-transit/#page","headline":"Overview · Cloudflare Magic Transit docs","description":"Protect your network infrastructure from DDoS attacks with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/magic-transit/#page","headline":"Overview · Cloudflare Magic Transit docs","description":"Protect your network infrastructure from DDoS attacks with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}}]}
 ```

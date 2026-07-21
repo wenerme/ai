@@ -1,7 +1,7 @@
 ---
 title: Redirect requests for a domain to a new domain
 description: Create a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ For example, the redirect rule would perform the following redirects:
 | https://example.com/search?q=term       | https://example.net/ | 301         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/#page","headline":"Redirect requests for a domain to a new domain · Cloudflare Rules docs","description":"Create a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/#page","headline":"Redirect requests for a domain to a new domain · Cloudflare Rules docs","description":"Create a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/examples/","name":"Redirect examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/examples/redirect-all-different-domain-root/","name":"Redirect requests for a domain to a new domain"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Review audit logs - v1
 description: Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ To maintain Audit Logs query performance, the Audit Logs API was modified on 201
 Audit Logs are retained for 18 months before being deleted. Enterprise customers can use [Logpush](https://developers.cloudflare.com/logs/logpush/) to store Audit Logs for longer periods of time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Fundamentals docs","description":"Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Fundamentals docs","description":"Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/review-audit-logs/","name":"Review audit logs - v1"}}]}
 ```

@@ -26,5 +26,5 @@ let value: WebSearchSource = {
 
 | Field  | Type                                                                                         | Required             | Description |
 | ------ | -------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type` | [models.WebSearchSourceType](/agent-sdk/typescript/api-reference/models/websearchsourcetype) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.WebSearchSourceType](/docs/agent-sdk/typescript/api-reference/models/websearchsourcetype) | :heavy\_check\_mark: | N/A         |
 | `url`  | *string*                                                                                     | :heavy\_check\_mark: | N/A         |

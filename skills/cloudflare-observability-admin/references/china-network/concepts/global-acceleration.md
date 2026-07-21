@@ -1,7 +1,7 @@
 ---
 title: Global Acceleration
 description: Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Contact your Cloudflare account team. They will assist you with contracting with
 Our local China partners will assist you to deploy Global Acceleration.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/#page","headline":"Global Acceleration · Cloudflare China Network docs","description":"Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.","url":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/#page","headline":"Global Acceleration · Cloudflare China Network docs","description":"Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.","url":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/concepts/global-acceleration/","name":"Global Acceleration"}}]}
 ```

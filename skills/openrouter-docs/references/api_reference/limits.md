@@ -336,7 +336,7 @@ Rate limits govern how many requests you can make. There are a few rate limits t
 
 ### Handling 429 errors
 
-Requests rejected with <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> fail with a standard [error response](/api_reference/errors-and-debugging):
+Requests rejected with <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> fail with a standard [error response](/docs/api_reference/errors-and-debugging):
 
 ```json lines theme={null}
 {
@@ -353,7 +353,7 @@ Requests rejected with <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> f
 A <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> error can come from two places:
 
 1. **OpenRouter** — you hit one of the platform limits above (free-model requests per minute or per day, or DDoS protection).
-2. **The upstream provider** — the provider serving your request is rate limiting or at capacity. In this case `error.metadata.provider_code` carries the provider's original error code when available, and [fallback routing](/guides/routing/provider-selection) retries other providers for the same model automatically before the error reaches you. You can also specify [fallback models](/guides/routing/model-fallbacks) to try a different model when all providers for the first are exhausted.
+2. **The upstream provider** — the provider serving your request is rate limiting or at capacity. In this case `error.metadata.provider_code` carries the provider's original error code when available, and [fallback routing](/docs/guides/routing/provider-selection) retries other providers for the same model automatically before the error reaches you. You can also specify [fallback models](/docs/guides/routing/model-fallbacks) to try a different model when all providers for the first are exhausted.
 
 <Note>
   Successful inference responses do not include `X-RateLimit-*` headers. When
@@ -370,7 +370,7 @@ To resolve <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> errors:
 
 * **Retry with exponential backoff.** Rate limits are transient; wait and retry rather than immediately re-sending. Honor the `Retry-After` header when present.
 * **On free variants**, purchase at least {FREE_MODEL_CREDITS_THRESHOLD} credits to raise your daily limit, or switch to the paid variant of the model, which has no platform-level request cap.
-* **For provider-side limits**, add [fallback models](/guides/routing/model-fallbacks) or relax [provider routing preferences](/guides/routing/provider-selection) so more providers are eligible to serve the request.
+* **For provider-side limits**, add [fallback models](/docs/guides/routing/model-fallbacks) or relax [provider routing preferences](/docs/guides/routing/provider-selection) so more providers are eligible to serve the request.
 
 #### Mid-stream rate limits
 
@@ -380,4 +380,4 @@ If a rate limit is hit after streaming has started, the error arrives as an SSE 
 data: {"id":"cmpl-abc123","object":"chat.completion.chunk","created":1234567890,"model":"openai/gpt-4o","provider":"openai","error":{"code":429,"message":"Rate limit exceeded"},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
 ```
 
-See [Handling Errors During Streaming](/api_reference/streaming#handling-errors-during-streaming) for details and code examples.
+See [Handling Errors During Streaming](/docs/api_reference/streaming#handling-errors-during-streaming) for details and code examples.

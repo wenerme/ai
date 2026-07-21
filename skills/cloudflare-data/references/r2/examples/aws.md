@@ -1,7 +1,7 @@
 ---
 title: S3 SDKs
 description: Use AWS S3 SDKs to interact with R2 storage through the S3-compatible API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ s3mini ](https://developers.cloudflare.com/r2/examples/aws/s3mini/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/examples/aws/#page","headline":"S3 SDKs · Cloudflare R2 docs","description":"Use AWS S3 SDKs to interact with R2 storage through the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/examples/aws/#page","headline":"S3 SDKs · Cloudflare R2 docs","description":"Use AWS S3 SDKs to interact with R2 storage through the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}}]}
 ```

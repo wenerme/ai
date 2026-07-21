@@ -28,16 +28,16 @@ You need:
 
 <Tip>
   If you have not chosen a model yet, read
-  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
   so you can select one based on your clip duration, output shape, input type,
   audio, provider controls, and cost requirements.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
-* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
+* [Create video generation request](/docs/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/sdks/videogeneration/README)
 
 If you adapt the Express examples below in a local test project, use these
 dependencies:
@@ -366,7 +366,7 @@ video from the first `unsigned_urls` entry or from the content endpoint. If the
 URL points to the OpenRouter API, include the bearer token when downloading it.
 
 For a complete polling and download helper, see
-[Generate and Download a Video from Text](/cookbook/video-generation/text-to-video).
+[Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video).
 
 Actual local receiver log shape from the signature test:
 

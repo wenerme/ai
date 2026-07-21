@@ -28,6 +28,6 @@ let value: ContentFilterEntry = {
 
 | Field     | Type                                                                                         | Required             | Description                                                     | Example                     |
 | --------- | -------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------- | --------------------------- |
-| `action`  | [models.ContentFilterAction](/agent-sdk/typescript/api-reference/models/contentfilteraction) | :heavy\_check\_mark: | Action taken when the pattern matches                           | block                       |
+| `action`  | [models.ContentFilterAction](/docs/agent-sdk/typescript/api-reference/models/contentfilteraction) | :heavy\_check\_mark: | Action taken when the pattern matches                           | block                       |
 | `label`   | *string*                                                                                     | :heavy\_minus\_sign: | Optional label used in redaction placeholders or error messages | \[API\_KEY]                 |
 | `pattern` | *string*                                                                                     | :heavy\_check\_mark: | A regex pattern to match against request content                | \b(sk-\[a-zA-Z0-9]`{48}`)\b |

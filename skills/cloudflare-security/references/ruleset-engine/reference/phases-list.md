@@ -1,7 +1,7 @@
 ---
 title: Phases list
 description: Complete list of phases available in the Ruleset Engine.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ The phases execute in the order they appear in the table.
 | http\_log\_custom\_fields          | [Logpush custom fields](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/)                     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#page","headline":"Phases list · Cloudflare Ruleset Engine docs","description":"Complete list of phases available in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#page","headline":"Phases list · Cloudflare Ruleset Engine docs","description":"Complete list of phases available in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/reference/phases-list/","name":"Phases list"}}]}
 ```

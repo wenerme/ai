@@ -25,4 +25,4 @@ let value: OpenAIResponsesToolChoiceShell = {
 
 | Field  | Type                                                                                                                       | Required             | Description |
 | ------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type` | [models.OpenAIResponsesToolChoiceTypeShell](/agent-sdk/typescript/api-reference/models/openairesponsestoolchoicetypeshell) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.OpenAIResponsesToolChoiceTypeShell](/docs/agent-sdk/typescript/api-reference/models/openairesponsestoolchoicetypeshell) | :heavy\_check\_mark: | N/A         |

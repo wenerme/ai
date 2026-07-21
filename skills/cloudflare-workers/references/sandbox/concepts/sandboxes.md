@@ -1,7 +1,7 @@
 ---
 title: Sandbox lifecycle
 description: Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -217,6 +217,6 @@ See [Dockerfile reference](https://developers.cloudflare.com/sandbox/configurati
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create and manage execution sessions
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/#page","headline":"Sandbox lifecycle · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.","url":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/#page","headline":"Sandbox lifecycle · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.","url":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/sandboxes/","name":"Sandbox lifecycle"}}]}
 ```

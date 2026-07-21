@@ -30,5 +30,5 @@ let value: OpenAIResponseFunctionToolCallOutput = {
 | `callId` | *string*                                                                                                                                   | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
 | `output` | *models.OpenAIResponseFunctionToolCallOutputOutput2*                                                                                       | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.OpenAIResponseFunctionToolCallOutputStatus](/agent-sdk/typescript/api-reference/models/openairesponsefunctiontoolcalloutputstatus) | :heavy\_minus\_sign: | N/A         | completed |
-| `type`   | [models.OpenAIResponseFunctionToolCallOutputType](/agent-sdk/typescript/api-reference/models/openairesponsefunctiontoolcalloutputtype)     | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.OpenAIResponseFunctionToolCallOutputStatus](/docs/agent-sdk/typescript/api-reference/models/openairesponsefunctiontoolcalloutputstatus) | :heavy\_minus\_sign: | N/A         | completed |
+| `type`   | [models.OpenAIResponseFunctionToolCallOutputType](/docs/agent-sdk/typescript/api-reference/models/openairesponsefunctiontoolcalloutputtype)     | :heavy\_check\_mark: | N/A         |           |

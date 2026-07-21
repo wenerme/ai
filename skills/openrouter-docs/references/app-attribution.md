@@ -286,6 +286,6 @@ Once your app is tracked, you can access detailed analytics at `openrouter.ai/ap
 
 ## Related Documentation
 
-* [Quickstart Guide](/quickstart) - Basic setup with attribution headers
-* [API Reference](/api/reference/overview) - Complete header documentation
-* [Usage Accounting](/cookbook/administration/usage-accounting) - Understanding your API usage
+* [Quickstart Guide](/docs/quickstart) - Basic setup with attribution headers
+* [API Reference](/docs/api_reference/overview) - Complete header documentation
+* [Usage Accounting](/docs/cookbook/administration/usage-accounting) - Understanding your API usage

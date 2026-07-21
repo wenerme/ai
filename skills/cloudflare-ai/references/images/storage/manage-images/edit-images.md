@@ -1,7 +1,7 @@
 ---
 title: Edit images
 description: Modify image settings in Cloudflare Images, including signed URL requirements and variant URLs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ To edit an image:
 2. Locate the image you want to modify and select **Edit**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/manage-images/edit-images/#page","headline":"Edit images · Cloudflare Images docs","description":"Modify image settings in Cloudflare Images, including signed URL requirements and variant URLs.","url":"https://developers.cloudflare.com/images/storage/manage-images/edit-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/manage-images/edit-images/#page","headline":"Edit images · Cloudflare Images docs","description":"Modify image settings in Cloudflare Images, including signed URL requirements and variant URLs.","url":"https://developers.cloudflare.com/images/storage/manage-images/edit-images/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/manage-images/","name":"Manage hosted images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/storage/manage-images/edit-images/","name":"Edit images"}}]}
 ```

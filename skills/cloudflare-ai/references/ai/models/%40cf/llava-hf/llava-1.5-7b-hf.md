@@ -1,7 +1,7 @@
 ---
 title: llava-1.5-7b-hf
 description: LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/sc
 Output [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/#page","headline":"llava-1.5-7b-hf (llava-hf) · Cloudflare AI docs · Cloudflare AI docs","description":"LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.","url":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/#page","headline":"llava-1.5-7b-hf (llava-hf) · Cloudflare AI docs · Cloudflare AI docs","description":"LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.","url":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

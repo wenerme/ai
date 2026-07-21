@@ -1,7 +1,7 @@
 ---
 title: Cloudflare and Google Analytics
 description: Understand how Cloudflare's proxy interacts with Google Analytics tracking and how to use GA with Zaraz.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ Note
 Details about features of Google Analytics that are unavailable with Zaraz can be found in [Zaraz FAQ](https://developers.cloudflare.com/zaraz/faq/#tools)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/google-analytics/#page","headline":"Using Google Analytics with Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare's proxy interacts with Google Analytics tracking and how to use GA with Zaraz.","url":"https://developers.cloudflare.com/fundamentals/reference/google-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/google-analytics/#page","headline":"Using Google Analytics with Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare's proxy interacts with Google Analytics tracking and how to use GA with Zaraz.","url":"https://developers.cloudflare.com/fundamentals/reference/google-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/google-analytics/","name":"Cloudflare and Google Analytics"}}]}
 ```

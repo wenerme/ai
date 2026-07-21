@@ -29,4 +29,4 @@ let value: ChatGenerationParamsPluginWeb = {
 | `enabled`      | *boolean*                                            | :heavy\_minus\_sign: | N/A         |
 | `maxResults`   | *number*                                             | :heavy\_minus\_sign: | N/A         |
 | `searchPrompt` | *string*                                             | :heavy\_minus\_sign: | N/A         |
-| `engine`       | [models.Engine](/agent-sdk/typescript/models/engine) | :heavy\_minus\_sign: | N/A         |
+| `engine`       | [models.Engine](/docs/agent-sdk/typescript/models/engine) | :heavy\_minus\_sign: | N/A         |

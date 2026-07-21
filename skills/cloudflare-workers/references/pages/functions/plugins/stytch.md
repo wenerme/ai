@@ -1,7 +1,7 @@
 ---
 title: Stytch
 description: Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ The Stytch Plugin takes a single argument, an object with several properties. `p
 The validated session response containing user information is made available to subsequent Pages Functions on `data.stytch.session`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/stytch/#page","headline":"Stytch · Cloudflare Pages docs","description":"Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/stytch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/stytch/#page","headline":"Stytch · Cloudflare Pages docs","description":"Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/stytch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/stytch/","name":"Stytch"}}]}
 ```

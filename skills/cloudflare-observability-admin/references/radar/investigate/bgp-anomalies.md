@@ -1,7 +1,7 @@
 ---
 title: BGP anomalies
 description: Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -490,6 +490,6 @@ async function send_email_alert(hijacker, prefixes, victims) {
 Refer to our API documentation for [BGP route leaks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/leaks/subresources/events/methods/list/) and [BGP hijacks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) for more information on these topics.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/bgp-anomalies/","name":"BGP anomalies"}}]}
 ```

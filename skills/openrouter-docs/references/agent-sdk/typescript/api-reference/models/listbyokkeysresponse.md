@@ -40,5 +40,5 @@ let value: ListBYOKKeysResponse = {
 
 | Field        | Type                                                                    | Required             | Description                                            | Example |
 | ------------ | ----------------------------------------------------------------------- | -------------------- | ------------------------------------------------------ | ------- |
-| `data`       | [models.BYOKKey](/agent-sdk/typescript/api-reference/models/byokkey)\[] | :heavy\_check\_mark: | List of BYOK credentials.                              |         |
+| `data`       | [models.BYOKKey](/docs/agent-sdk/typescript/api-reference/models/byokkey)\[] | :heavy\_check\_mark: | List of BYOK credentials.                              |         |
 | `totalCount` | *number*                                                                | :heavy\_check\_mark: | Total number of BYOK credentials matching the filters. | 1       |

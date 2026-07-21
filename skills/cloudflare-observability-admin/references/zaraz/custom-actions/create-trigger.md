@@ -1,7 +1,7 @@
 ---
 title: Create a trigger
 description: Create triggers that fire actions based on page events.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ Triggers define the conditions under which a tool will start an action. Since a 
 Your trigger is now complete. If you go back to the main page you will see it listed under **Triggers**, as well as which tools use it. You can also [**Edit** or **Delete** your trigger](https://developers.cloudflare.com/zaraz/custom-actions/edit-triggers/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/#page","headline":"Create a trigger · Cloudflare Zaraz docs","description":"Create triggers that fire actions based on page events.","url":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/#page","headline":"Create a trigger · Cloudflare Zaraz docs","description":"Create triggers that fire actions based on page events.","url":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/custom-actions/","name":"Custom actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/custom-actions/create-trigger/","name":"Create a trigger"}}]}
 ```

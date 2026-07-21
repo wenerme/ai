@@ -1,7 +1,7 @@
 ---
 title: Phase 4: Post-migration and DNSSEC Re-activation
 description: Verify and stabilize after DNS migration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ Ensure no resolvers are still pointing to the old BIND servers. This is especial
 Update all internal IT documentation to reflect the new DNS infrastructure and ensure your monitoring systems are checking DNS resolution via Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/#page","headline":"Phase 4: Post-migration and DNSSEC Re-activation · Cloudflare Learning Paths","description":"Verify and stabilize after DNS migration.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/#page","headline":"Phase 4: Post-migration and DNSSEC Re-activation · Cloudflare Learning Paths","description":"Verify and stabilize after DNS migration.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/dns-best-practices/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/dns-best-practices/concepts/phase-4/","name":"Phase 4: Post-migration and DNSSEC Re-activation"}}]}
 ```

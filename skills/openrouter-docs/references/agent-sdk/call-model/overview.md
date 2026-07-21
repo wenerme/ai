@@ -132,28 +132,28 @@ const result3 = openrouter.callModel({
 
 Explore the guides to learn more about specific features:
 
-* **[Working with Items](/agent-sdk/call-model/items)** - Understand
+* **[Working with Items](/docs/agent-sdk/call-model/items)** - Understand
   the items-based streaming paradigm
-* **[Text Generation](/agent-sdk/call-model/text-generation)** -
+* **[Text Generation](/docs/agent-sdk/call-model/text-generation)** -
   Input formats, model selection, and response handling
-* **[Streaming](/agent-sdk/call-model/streaming)** - All streaming
+* **[Streaming](/docs/agent-sdk/call-model/streaming)** - All streaming
   methods and patterns
-* **[Tools](/agent-sdk/call-model/tools)** - Creating typed tools
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Creating typed tools
   with Zod schemas and multi-turn orchestration
-* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** -
+* **[nextTurnParams](/docs/agent-sdk/call-model/next-turn-params)** -
   Tool-driven context injection for skills and plugins
-* **[Message Formats](/agent-sdk/call-model/message-formats)** -
+* **[Message Formats](/docs/agent-sdk/call-model/message-formats)** -
   Converting to/from OpenAI and Claude formats
-* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)**
+* **[Dynamic Parameters](/docs/agent-sdk/call-model/dynamic-parameters)**
   \- Async functions for adaptive behavior
-* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** -
+* **[Stop Conditions](/docs/agent-sdk/call-model/stop-conditions)** -
   Intelligent execution control
-* **[API Reference](/agent-sdk/call-model/api-reference)** - Complete
+* **[API Reference](/docs/agent-sdk/call-model/api-reference)** - Complete
   type definitions and method signatures
 
 ### Example Tools
 
 Ready-to-use tool implementations:
 
-* **[Weather Tool](/agent-sdk/call-model/examples/weather-tool)** - Basic API integration
-* **[Skills Loader](/agent-sdk/call-model/examples/skills-loader)** - Claude Code skills pattern
+* **[Weather Tool](/docs/agent-sdk/call-model/examples/weather-tool)** - Basic API integration
+* **[Skills Loader](/docs/agent-sdk/call-model/examples/skills-loader)** - Claude Code skills pattern

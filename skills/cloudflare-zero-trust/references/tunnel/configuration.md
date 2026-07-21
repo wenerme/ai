@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configure tunnel ingress rules, origins, and protocol settings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -179,6 +179,6 @@ You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](ht
 Refer to [Granular permissions](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration · Cloudflare Docs","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration · Cloudflare Docs","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/configuration/","name":"Configuration"}}]}
 ```

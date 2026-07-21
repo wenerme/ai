@@ -26,4 +26,4 @@ let value: ChatMessageContentItemCacheControl = {
 | Field  | Type                                           | Required             | Description |
 | ------ | ---------------------------------------------- | -------------------- | ----------- |
 | `type` | *"ephemeral"*                                  | :heavy\_check\_mark: | N/A         |
-| `ttl`  | [models.Ttl](/agent-sdk/typescript/models/ttl) | :heavy\_minus\_sign: | N/A         |
+| `ttl`  | [models.Ttl](/docs/agent-sdk/typescript/models/ttl) | :heavy\_minus\_sign: | N/A         |

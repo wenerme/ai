@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: Cloudflare Images transformations optimize and cache remote images from any origin at the edge.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ After enabling transformations on your zone, you can configure how Cloudflare ha
 * **[Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules)** — Use Transform Rules to rewrite image URLs and serve transformations from custom paths.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/overview/#page","headline":"Overview · Cloudflare Images docs","description":"Cloudflare Images transformations optimize and cache remote images from any origin at the edge.","url":"https://developers.cloudflare.com/images/optimization/transformations/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/overview/#page","headline":"Overview · Cloudflare Images docs","description":"Cloudflare Images transformations optimize and cache remote images from any origin at the edge.","url":"https://developers.cloudflare.com/images/optimization/transformations/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/overview/","name":"Overview"}}]}
 ```

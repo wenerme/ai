@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -297,6 +297,6 @@ By completing this guide, you have now created a queue, a producer Worker that p
 * Learn more about [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the applications you can build on Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/get-started/","name":"Getting started"}}]}
 ```

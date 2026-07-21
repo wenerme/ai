@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Troubleshoot common speed and performance optimization issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ Filter resources...
 [FAQ](https://developers.cloudflare.com/speed/observatory/faq/)[FAQ | Cloudflare Fonts](https://developers.cloudflare.com/speed/optimization/content/fonts/faq/)[Cloudflare Fonts troubleshooting](https://developers.cloudflare.com/speed/optimization/content/fonts/troubleshooting/)[Content encoding issues](https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/)[Turn off Auto Minify via API](https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/)[Image optimization on optimized images](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/)[Troubleshoot missing images](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/)[Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/)[Troubleshoot protocol issues](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/)[Troubleshooting a slow website](https://developers.cloudflare.com/speed/troubleshooting/slow-website/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Speed docs","description":"Troubleshoot common speed and performance optimization issues.","url":"https://developers.cloudflare.com/speed/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Speed docs","description":"Troubleshoot common speed and performance optimization issues.","url":"https://developers.cloudflare.com/speed/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/troubleshooting/","name":"Troubleshooting"}}]}
 ```

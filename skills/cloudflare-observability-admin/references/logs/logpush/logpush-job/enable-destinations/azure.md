@@ -1,7 +1,7 @@
 ---
 title: Enable Microsoft Azure
 description: Push Cloudflare logs to Microsoft Azure Blob Storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -84,6 +84,6 @@ To resolve this error, regenerate your SAS token using [Storage Explorer ↗](ht
 * Expiration: At least five years from now
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/#page","headline":"Enable Logpush to Microsoft Azure · Cloudflare Logs docs","description":"Push Cloudflare logs to Microsoft Azure Blob Storage.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/#page","headline":"Enable Logpush to Microsoft Azure · Cloudflare Logs docs","description":"Push Cloudflare logs to Microsoft Azure Blob Storage.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/azure/","name":"Enable Microsoft Azure"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Image Management
 description: Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -388,6 +388,6 @@ Images are limited in size by available disk of the configured [instance type](h
 Delete images with `wrangler containers images delete` to free up space, but reverting a Worker to a previous version that uses a deleted image will then error.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/image-management/","name":"Image Management"}}]}
 ```

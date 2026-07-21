@@ -1,7 +1,7 @@
 ---
 title: Create a durable Code Mode runtime
 description: Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -381,6 +381,6 @@ Approval resumes the same script through replay. Completed calls return recorded
 Call `rollbackExecution()` to compensate for applied calls whose currently configured connector provides `revert`. Save only completed executions as snippets.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/durable-runtime/","name":"Create a durable Code Mode runtime"}}]}
 ```

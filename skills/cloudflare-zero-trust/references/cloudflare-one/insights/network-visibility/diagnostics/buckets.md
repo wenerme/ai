@@ -1,7 +1,7 @@
 ---
 title: Buckets
 description: Configure cloud storage buckets for full packet captures.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -224,6 +224,6 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/buckets/","name":"Buckets"}}]}
 ```

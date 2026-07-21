@@ -1,7 +1,7 @@
 ---
 title: Tail Workers
 description: Track and log Workers on invocation by assigning a Tail Worker to your projects.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -155,6 +155,6 @@ Refer to the [Analytics Engine documentation](https://developers.cloudflare.com/
 * [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps) \- Learn how to enable source maps and generate stack traces for Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/#page","headline":"Tail Workers · Cloudflare Workers docs","description":"Track and log Workers on invocation by assigning a Tail Worker to your projects.","url":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/#page","headline":"Tail Workers · Cloudflare Workers docs","description":"Track and log Workers on invocation by assigning a Tail Worker to your projects.","url":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/logs/tail-workers/","name":"Tail Workers"}}]}
 ```

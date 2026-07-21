@@ -409,7 +409,16 @@ The Oracle plugin enforces a maximum response size for gRPC messages. The defaul
    ```sql
    SELECT * FROM your_table WHERE ROWNUM <= 1000
    ```
-3. For self-managed Grafana, increase the max response size (default `16`, maximum `512`, in MB):
+3. For self-managed Grafana, increase the max response size (default `16`, maximum `512`, in MB) by adding `max_response_size` under the `[plugin.grafana-oracle-datasource]` section of `grafana.ini`:
+
+   ini [Copy code to clipboard] Copy
+
+   ```ini
+   [plugin.grafana-oracle-datasource]
+   max_response_size = 128
+   ```
+
+   On Grafana versions before 12.4.2 you can instead set the `GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE` environment variable (still supported for backward compatibility):
 
    Bash [Copy code to clipboard] Copy
 
@@ -601,7 +610,16 @@ These issues relate to slow queries or resource exhaustion.
 
 **Solutions:**
 
-1. Increase the **Connection Pool Size** in the data source settings or use the environment variable:
+1. Increase the **Connection Pool Size** in the data source settings, or add `poolsize` under the `[plugin.grafana-oracle-datasource]` section of `grafana.ini`:
+
+   ini [Copy code to clipboard] Copy
+
+   ```ini
+   [plugin.grafana-oracle-datasource]
+   poolsize = 100
+   ```
+
+   On Grafana versions before 12.4.2 you can instead set the `GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE` environment variable (still supported for backward compatibility):
 
    Bash [Copy code to clipboard] Copy
 

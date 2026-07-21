@@ -44,5 +44,5 @@ let value: ListWorkspacesResponse = {
 
 | Field        | Type                                                                        | Required             | Description                | Example |
 | ------------ | --------------------------------------------------------------------------- | -------------------- | -------------------------- | ------- |
-| `data`       | [models.Workspace](/agent-sdk/typescript/api-reference/models/workspace)\[] | :heavy\_check\_mark: | List of workspaces         |         |
+| `data`       | [models.Workspace](/docs/agent-sdk/typescript/api-reference/models/workspace)\[] | :heavy\_check\_mark: | List of workspaces         |         |
 | `totalCount` | *number*                                                                    | :heavy\_check\_mark: | Total number of workspaces | 5       |

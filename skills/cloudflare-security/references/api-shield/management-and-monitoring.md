@@ -1,7 +1,7 @@
 ---
 title: Management and Monitoring
 description: Manage and monitor API endpoints, schemas, routing, and session identifiers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Build developer portals ](https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/#page","headline":"Management and Monitoring · Cloudflare API Shield docs","description":"Manage and monitor API endpoints, schemas, routing, and session identifiers.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/#page","headline":"Management and Monitoring · Cloudflare API Shield docs","description":"Manage and monitor API endpoints, schemas, routing, and session identifiers.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}}]}
 ```

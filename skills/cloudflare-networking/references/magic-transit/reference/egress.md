@@ -1,7 +1,7 @@
 ---
 title: Egress traffic
 description: How Magic Transit handles egress traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ If you have implemented Magic Transit with egress traffic, consider the followin
 * Once you configure your traffic to egress through the GRE/IPsec tunnel, Cloudflare encapsulates it and sends it to a Cloudflare anycast endpoint. Your Internet Service Provider (ISP) then routes the encapsulated traffic to the nearest available Cloudflare point of presence (PoP), where it exits to the Internet through Cloudflare's connectivity options at that location.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/egress/#page","headline":"Egress traffic · Cloudflare Magic Transit docs","description":"How Magic Transit handles egress traffic.","url":"https://developers.cloudflare.com/magic-transit/reference/egress/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/egress/#page","headline":"Egress traffic · Cloudflare Magic Transit docs","description":"How Magic Transit handles egress traffic.","url":"https://developers.cloudflare.com/magic-transit/reference/egress/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/egress/","name":"Egress traffic"}}]}
 ```

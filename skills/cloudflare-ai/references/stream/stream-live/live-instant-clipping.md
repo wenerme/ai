@@ -1,7 +1,7 @@
 ---
 title: Live Instant Clipping
 description: Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -128,6 +128,6 @@ https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&durat
 * `filename` string _(optional)_ a filename for the clip
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/#page","headline":"Live Instant Clipping · Cloudflare Stream docs","description":"Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.","url":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/#page","headline":"Live Instant Clipping · Cloudflare Stream docs","description":"Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.","url":"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/live-instant-clipping/","name":"Live Instant Clipping"}}]}
 ```

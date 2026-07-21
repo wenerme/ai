@@ -27,4 +27,4 @@ let value: ChatAssistantImages = {
 
 | Field      | Type                                                                                                         | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `imageUrl` | [models.ChatAssistantImagesImageUrl](/agent-sdk/typescript/api-reference/models/chatassistantimagesimageurl) | :heavy\_check\_mark: | N/A         |
+| `imageUrl` | [models.ChatAssistantImagesImageUrl](/docs/agent-sdk/typescript/api-reference/models/chatassistantimagesimageurl) | :heavy\_check\_mark: | N/A         |

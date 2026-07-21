@@ -1,7 +1,7 @@
 ---
 title: Google Cloud
 description: Configure 1.1.1.1 on Google Cloud instances.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -34,6 +34,6 @@ To configure 1.1.1.1 for your Google Cloud VPC network:
 DNS requests within the configured VPC networks will now use 1.1.1.1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/#page","headline":"Set up 1.1.1.1 on Google Cloud","description":"Configure 1.1.1.1 on Google Cloud instances.","url":"https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/#page","headline":"Set up 1.1.1.1 on Google Cloud","description":"Configure 1.1.1.1 on Google Cloud instances.","url":"https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/setup/","name":"Set up"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/setup/google-cloud/","name":"Google Cloud"}}]}
 ```

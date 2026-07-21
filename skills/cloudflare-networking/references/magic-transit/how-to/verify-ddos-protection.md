@@ -1,7 +1,7 @@
 ---
 title: Verify DDoS protection
 description: Confirm Magic Transit DDoS protection layers are active and configured.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -106,6 +106,6 @@ Note
 HTTP DDoS testing requires that your HTTP application is onboarded to the Cloudflare reverse proxy service. If you only use Magic Transit, HTTP DDoS tests do not work. Network-layer DDoS tests against your Magic Transit-protected prefixes do not have this limitation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/#page","headline":"Verify DDoS protection · Cloudflare Magic Transit docs","description":"Confirm Magic Transit DDoS protection layers are active and configured.","url":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/#page","headline":"Verify DDoS protection · Cloudflare Magic Transit docs","description":"Confirm Magic Transit DDoS protection layers are active and configured.","url":"https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/verify-ddos-protection/","name":"Verify DDoS protection"}}]}
 ```

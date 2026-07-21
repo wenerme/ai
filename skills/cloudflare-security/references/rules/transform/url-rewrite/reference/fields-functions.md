@@ -1,7 +1,7 @@
 ---
 title: Available fields and functions
 description: Available fields and functions for URL rewrite rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -96,6 +96,6 @@ Refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine
 The [concat()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#concat), [regex\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex%5Freplace), and [wildcard\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace) functions can appear only once in a rewrite expression. Additionally, you cannot nest the `regex_replace()` and `wildcard_replace()` functions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/#page","headline":"Available fields and functions · Cloudflare Rules docs","description":"Available fields and functions for URL rewrite rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/#page","headline":"Available fields and functions · Cloudflare Rules docs","description":"Available fields and functions for URL rewrite rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/transform/url-rewrite/reference/fields-functions/","name":"Available fields and functions"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Analytics
 description: Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -732,6 +732,6 @@ For more information on GraphQL introspection and schema exploration, refer to:
 * [GraphQL introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/analytics/#page","headline":"Analytics · Cloudflare Realtime docs","description":"Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.","url":"https://developers.cloudflare.com/realtime/turn/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/analytics/#page","headline":"Analytics · Cloudflare Realtime docs","description":"Query Cloudflare Realtime TURN usage metrics and traffic data via the GraphQL API.","url":"https://developers.cloudflare.com/realtime/turn/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/analytics/","name":"Analytics"}}]}
 ```

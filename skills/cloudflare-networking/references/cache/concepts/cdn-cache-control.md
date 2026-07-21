@@ -1,7 +1,7 @@
 ---
 title: CDN-Cache-Control
 description: Use CDN-Cache-Control headers to control Cloudflare cache independently.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -85,6 +85,6 @@ Behavior in response to [5XX error](https://developers.cloudflare.com/support/tr
 | Other CDN       | 200                                         |                                                   |                                           |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cdn-cache-control/#page","headline":"CDN-Cache-Control · Cloudflare Cache (CDN) docs","description":"Use CDN-Cache-Control headers to control Cloudflare cache independently.","url":"https://developers.cloudflare.com/cache/concepts/cdn-cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cdn-cache-control/#page","headline":"CDN-Cache-Control · Cloudflare Cache (CDN) docs","description":"Use CDN-Cache-Control headers to control Cloudflare cache independently.","url":"https://developers.cloudflare.com/cache/concepts/cdn-cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cdn-cache-control/","name":"CDN-Cache-Control"}}]}
 ```

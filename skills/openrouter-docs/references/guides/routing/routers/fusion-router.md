@@ -125,7 +125,7 @@ Override the default panel and judge via the `plugins` array or the `tools` arra
 
 ### Plugin config (recommended with the model slug)
 
-Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the same pattern the [Pareto Router](/guides/routing/routers/pareto-router) uses for `min_coding_score`.
+Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the same pattern the [Pareto Router](/docs/guides/routing/routers/pareto-router) uses for `min_coding_score`.
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
@@ -285,7 +285,7 @@ The response `model` field reports the **concrete model** that handled the reque
 }
 ```
 
-To confirm a generation went through the Fusion Router, check the [generation metadata](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation). The `router` field reports `openrouter/fusion`:
+To confirm a generation went through the Fusion Router, check the [generation metadata](/docs/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation). The `router` field reports `openrouter/fusion`:
 
 ```json lines theme={null}
 {
@@ -307,8 +307,8 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge 
 
 ## Related
 
-* [`openrouter:fusion` server tool](/guides/features/server-tools/fusion)
-* [Fusion plugin](/guides/features/plugins/fusion)
-* [Auto Router](/guides/routing/routers/auto-router)
-* [Pareto Router](/guides/routing/routers/pareto-router)
+* [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion)
+* [Fusion plugin](/docs/guides/features/plugins/fusion)
+* [Auto Router](/docs/guides/routing/routers/auto-router)
+* [Pareto Router](/docs/guides/routing/routers/pareto-router)
 * [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground

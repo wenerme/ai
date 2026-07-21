@@ -25,5 +25,5 @@ import { BadRequestResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                           | Required             | Description                       | Example                                                 |
 | -------- | ---------------------------------------------------------------------------------------------- | -------------------- | --------------------------------- | ------------------------------------------------------- |
-| `error`  | [models.BadRequestResponseErrorData](/agent-sdk/typescript/models/badrequestresponseerrordata) | :heavy\_check\_mark: | Error data for BadRequestResponse | `{"code": 400,"message": "Invalid request parameters"}` |
+| `error`  | [models.BadRequestResponseErrorData](/docs/agent-sdk/typescript/models/badrequestresponseerrordata) | :heavy\_check\_mark: | Error data for BadRequestResponse | `{"code": 400,"message": "Invalid request parameters"}` |
 | `userId` | *string*                                                                                       | :heavy\_minus\_sign: | N/A                               |                                                         |

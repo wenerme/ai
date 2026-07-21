@@ -1,7 +1,7 @@
 ---
 title: Metrics and analytics
 description: Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -195,6 +195,6 @@ query Viewer(
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAagSzAd0gCgFAxgEgIYDGBA9iAHYAuAKngOYBcMAzhRAmbQIRa5l4C2YJgAdCYAJIATRizYceOFnggVGAETwUwCsGWkwNWjAEoYAbx4A3JKgjme2QiXIUmaAGYIANloiMzME6klDQMuEEuoTAAvqYW2AkwANaWAMoUxBB0YACCknjCFAiWYADiEKTCbg6JMJ4+kP4w+VoA+rRgwIyKFMoUADTNmmCtXp3dupKDfIIiYlLdM0KiBBKSMTWJXgj8CKowAIwADCdHmwmZkpAAQlCMANotI2oAoqkAwgC653Hn2Px4AAe9lqtSSYCg72CFD+CQARlAtFCXLDorDJDtdEwEMQyEwQaCEk9Uec0YkyRtokA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGA7KYCMATgYg28QdkMnzVwyAC+QA)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers KV docs","description":"Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.","url":"https://developers.cloudflare.com/kv/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers KV docs","description":"Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.","url":"https://developers.cloudflare.com/kv/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
 ```

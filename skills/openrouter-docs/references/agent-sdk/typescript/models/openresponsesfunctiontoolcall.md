@@ -31,9 +31,9 @@ let value: OpenResponsesFunctionToolCall = {
 
 | Field       | Type                                                                                                       | Required             | Description | Example   |
 | ----------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `type`      | [models.OpenResponsesFunctionToolCallType](/agent-sdk/typescript/models/openresponsesfunctiontoolcalltype) | :heavy\_check\_mark: | N/A         |           |
+| `type`      | [models.OpenResponsesFunctionToolCallType](/docs/agent-sdk/typescript/models/openresponsesfunctiontoolcalltype) | :heavy\_check\_mark: | N/A         |           |
 | `callId`    | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |           |
 | `name`      | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |           |
 | `arguments` | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |           |
 | `id`        | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |           |
-| `status`    | [models.ToolCallStatus](/agent-sdk/typescript/models/toolcallstatus)                                       | :heavy\_minus\_sign: | N/A         | completed |
+| `status`    | [models.ToolCallStatus](/docs/agent-sdk/typescript/models/toolcallstatus)                                       | :heavy\_minus\_sign: | N/A         | completed |

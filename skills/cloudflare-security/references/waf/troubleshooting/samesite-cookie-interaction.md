@@ -1,7 +1,7 @@
 ---
 title: SameSite cookie interaction with Cloudflare
 description: How SameSite cookie attributes interact with Cloudflare challenges.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ The `Partitioned` attribute only takes effect on cookies that are also set with 
 * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare · Cloudflare Web Application Firewall (WAF) docs","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare · Cloudflare Web Application Firewall (WAF) docs","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/troubleshooting/samesite-cookie-interaction/","name":"SameSite cookie interaction with Cloudflare"}}]}
 ```

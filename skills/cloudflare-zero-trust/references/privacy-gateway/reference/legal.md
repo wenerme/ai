@@ -1,7 +1,7 @@
 ---
 title: Legal
 description: Understand what data Cloudflare sees, stores, and shares when operating the Privacy Gateway relay service.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ Cloudflare retains the Privacy Gateway Logs information for the most recent quar
 * The IP address and associated metadata of the Cloudflare Privacy Gateway server the request came from.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-gateway/reference/legal/#page","headline":"Legal · Cloudflare Privacy Gateway docs","description":"Understand what data Cloudflare sees, stores, and shares when operating the Privacy Gateway relay service.","url":"https://developers.cloudflare.com/privacy-gateway/reference/legal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-gateway/reference/legal/#page","headline":"Legal · Cloudflare Privacy Gateway docs","description":"Understand what data Cloudflare sees, stores, and shares when operating the Privacy Gateway relay service.","url":"https://developers.cloudflare.com/privacy-gateway/reference/legal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-gateway/","name":"Privacy Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-gateway/reference/legal/","name":"Legal"}}]}
 ```

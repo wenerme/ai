@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Zaraz pricing tiers and included event volumes.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ One Zaraz Event is an event you are sending to Zaraz, whether that is a page vie
 If you don't enable Zaraz Paid, you'll receive email notifications when you reach 50%, 80%, and 90% of your free allocation. Zaraz will be disabled until the next billing cycle if you exceed 1,000,000 events without enabling Zaraz Paid.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/pricing-info/#page","headline":"Pricing · Cloudflare Zaraz docs","description":"Zaraz pricing tiers and included event volumes.","url":"https://developers.cloudflare.com/zaraz/pricing-info/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/pricing-info/#page","headline":"Pricing · Cloudflare Zaraz docs","description":"Zaraz pricing tiers and included event volumes.","url":"https://developers.cloudflare.com/zaraz/pricing-info/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/pricing-info/","name":"Pricing"}}]}
 ```

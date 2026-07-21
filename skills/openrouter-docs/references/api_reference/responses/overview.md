@@ -108,4 +108,4 @@ For comprehensive error handling guidance, see [Error Handling](./error-handling
 
 ## Rate Limits
 
-Standard OpenRouter rate limits apply. See [API Limits](/api_reference/limits) for details.
+Standard OpenRouter rate limits apply. See [API Limits](/docs/api_reference/limits) for details.

@@ -23,4 +23,4 @@ let value: Pdf = {};
 
 | Field    | Type                                                       | Required             | Description |
 | -------- | ---------------------------------------------------------- | -------------------- | ----------- |
-| `engine` | [models.PdfEngine](/agent-sdk/typescript/models/pdfengine) | :heavy\_minus\_sign: | N/A         |
+| `engine` | [models.PdfEngine](/docs/agent-sdk/typescript/models/pdfengine) | :heavy\_minus\_sign: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Configuration Rules settings
 description: Available settings you can customize with Configuration Rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -355,6 +355,6 @@ API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/settings/#page","headline":"Configuration Rules settings · Cloudflare Rules docs","description":"Available settings you can customize with Configuration Rules.","url":"https://developers.cloudflare.com/rules/configuration-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/settings/#page","headline":"Configuration Rules settings · Cloudflare Rules docs","description":"Available settings you can customize with Configuration Rules.","url":"https://developers.cloudflare.com/rules/configuration-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/configuration-rules/","name":"Configuration Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/configuration-rules/settings/","name":"Configuration Rules settings"}}]}
 ```

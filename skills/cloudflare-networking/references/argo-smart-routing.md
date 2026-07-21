@@ -1,7 +1,7 @@
 ---
 title: Argo Smart Routing
 description: Route traffic across the fastest network paths to reduce latency and packet loss.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ Compare available Cloudflare plans
 Explore pricing options for Argo in the dashboard
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/argo-smart-routing/#page","headline":"Overview · Cloudflare Argo Smart Routing docs","description":"Route traffic across the fastest network paths to reduce latency and packet loss.","url":"https://developers.cloudflare.com/argo-smart-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/argo-smart-routing/#page","headline":"Overview · Cloudflare Argo Smart Routing docs","description":"Route traffic across the fastest network paths to reduce latency and packet loss.","url":"https://developers.cloudflare.com/argo-smart-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}}]}
 ```

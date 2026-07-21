@@ -46,7 +46,7 @@ export const Template = ({children, data}) => {
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
-OpenRouter plugins extend the capabilities of any model by injecting or mutating a request or response to add functionality like PDF processing, automatic JSON repair, and context compression. Unlike [server tools](/guides/features/server-tools) (which the model can call 0-N times), plugins always run once when enabled. Plugins can be enabled per-request via the API or configured as defaults for all your API requests through the [Plugins settings page](https://openrouter.ai/settings/plugins).
+OpenRouter plugins extend the capabilities of any model by injecting or mutating a request or response to add functionality like PDF processing, automatic JSON repair, and context compression. Unlike [server tools](/docs/guides/features/server-tools) (which the model can call 0-N times), plugins always run once when enabled. Plugins can be enabled per-request via the API or configured as defaults for all your API requests through the [Plugins settings page](https://openrouter.ai/settings/plugins).
 
 ## Available Plugins
 
@@ -54,11 +54,11 @@ OpenRouter currently supports the following plugins:
 
 | Plugin                      | Description                                                                                                                                               | Docs                                                          |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| **Web Search** (deprecated) | Augment LLM responses with real-time web search results. Use the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search) instead. | [Web Search](/guides/features/plugins/web-search)             |
-| **PDF Inputs**              | Parse and extract content from uploaded PDF files                                                                                                         | [PDF Inputs](/guides/overview/multimodal/pdfs)                |
-| **Response Healing**        | Automatically fix malformed JSON responses from LLMs                                                                                                      | [Response Healing](/guides/features/plugins/response-healing) |
-| **Pareto Router**           | Set a default coding quality tier for the Pareto code router                                                                                              | [Pareto Router](/guides/routing/routers/pareto-router)        |
-| **Context Compression**     | Compress prompts that exceed a model's context window using middle-out truncation                                                                         | [Message Transforms](/guides/features/message-transforms)     |
+| **Web Search** (deprecated) | Augment LLM responses with real-time web search results. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. | [Web Search](/docs/guides/features/plugins/web-search)             |
+| **PDF Inputs**              | Parse and extract content from uploaded PDF files                                                                                                         | [PDF Inputs](/docs/guides/overview/multimodal/pdfs)                |
+| **Response Healing**        | Automatically fix malformed JSON responses from LLMs                                                                                                      | [Response Healing](/docs/guides/features/plugins/response-healing) |
+| **Pareto Router**           | Set a default coding quality tier for the Pareto code router                                                                                              | [Pareto Router](/docs/guides/routing/routers/pareto-router)        |
+| **Context Compression**     | Compress prompts that exceed a model's context window using middle-out truncation                                                                         | [Message Transforms](/docs/guides/features/message-transforms)     |
 
 ## Enabling Plugins via API
 
@@ -217,7 +217,7 @@ This will turn off the web search plugin for that particular request, even if it
 <Warning>
   **Deprecated**
 
-  The `:online` variant and the web search plugin are deprecated. Use the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search) instead.
+  The `:online` variant and the web search plugin are deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
 </Warning>
 
 Some plugins have convenient model variant shortcuts. For example, appending `:online` to any model ID enables web search:
@@ -237,4 +237,4 @@ This is equivalent to:
 }
 ```
 
-See [Model Variants](/guides/routing/model-variants/online) for more information about available shortcuts.
+See [Model Variants](/docs/guides/routing/model-variants/online) for more information about available shortcuts.

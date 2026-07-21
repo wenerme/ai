@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up Cloudflare Load Balancing for your applications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ Get started with load balancing in one of two ways:
 * [Learning path](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/): Check an in-depth walkthrough for how to plan and set up a load balancer.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/get-started/#page","headline":"Get started · Cloudflare Load Balancing docs","description":"Set up Cloudflare Load Balancing for your applications.","url":"https://developers.cloudflare.com/load-balancing/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/get-started/#page","headline":"Get started · Cloudflare Load Balancing docs","description":"Set up Cloudflare Load Balancing for your applications.","url":"https://developers.cloudflare.com/load-balancing/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/get-started/","name":"Get started"}}]}
 ```

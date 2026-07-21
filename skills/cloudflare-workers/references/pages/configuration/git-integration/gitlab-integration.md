@@ -1,7 +1,7 @@
 ---
 title: GitLab integration
 description: Connect a GitLab repository to Cloudflare Pages for automatic deployments and commit status checks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ When encountering Git integration related issues, one potential troubleshooting 
 6. Attempt to make a new deployment with your project which was previously broken.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#page","headline":"GitLab integration · Cloudflare Pages docs","description":"Connect a GitLab repository to Cloudflare Pages for automatic deployments and commit status checks.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#page","headline":"GitLab integration · Cloudflare Pages docs","description":"Connect a GitLab repository to Cloudflare Pages for automatic deployments and commit status checks.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/configuration/git-integration/gitlab-integration/","name":"GitLab integration"}}]}
 ```

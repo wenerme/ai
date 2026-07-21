@@ -1,7 +1,7 @@
 ---
 title: Rules changelog
 description: Track the latest updates and changes to Cloudflare Rules features.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -749,6 +749,6 @@ Customers can now use new fields `cf.tls_client_hello_length` (the length of the
 Customers can now use arbitrary port numbers in Host Header Override in Origin Rules. Previously, only hostname was allowed as a value (for example, `example.com`). Now, you can set the value to `hostname:port` (for example, `example.com:1234`) as well.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/rules/changelog/#page","headline":"Rules changelog · Cloudflare Rules docs","description":"Track the latest updates and changes to Cloudflare Rules features.","url":"https://developers.cloudflare.com/rules/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/rules/changelog/#page","headline":"Rules changelog · Cloudflare Rules docs","description":"Track the latest updates and changes to Cloudflare Rules features.","url":"https://developers.cloudflare.com/rules/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/changelog/","name":"Rules changelog"}}]}
 ```

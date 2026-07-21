@@ -1,7 +1,7 @@
 ---
 title: Migrating from Workers Sites to Pages
 description: Learn how to migrate from Workers Sites to Cloudflare Pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ After you have deployed your Pages application, to delete your Worker:
 With your Workers application removed, requests will go to your Pages application. You have successfully migrated your Workers Sites project to Cloudflare Pages by completing this guide.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-from-workers/#page","headline":"Migrating from Workers Sites to Pages · Cloudflare Pages docs","description":"Learn how to migrate from Workers Sites to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/migrating-from-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-from-workers/#page","headline":"Migrating from Workers Sites to Pages · Cloudflare Pages docs","description":"Learn how to migrate from Workers Sites to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/migrating-from-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/migrations/","name":"Migration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/migrations/migrating-from-workers/","name":"Migrating from Workers Sites to Pages"}}]}
 ```

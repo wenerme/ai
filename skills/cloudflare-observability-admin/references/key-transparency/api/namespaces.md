@@ -1,7 +1,7 @@
 ---
 title: Namespaces
 description: Create and manage namespaces representing logs monitored by the Cloudflare Auditor.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -93,6 +93,6 @@ curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespa
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces · Cloudflare Key Transparency Auditor docs","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces · Cloudflare Key Transparency Auditor docs","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/key-transparency/","name":"Key Transparency Auditor"}},{"@type":"ListItem","position":3,"item":{"@id":"/key-transparency/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/key-transparency/api/namespaces/","name":"Namespaces"}}]}
 ```

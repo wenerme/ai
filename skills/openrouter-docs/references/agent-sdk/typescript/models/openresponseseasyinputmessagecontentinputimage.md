@@ -29,5 +29,5 @@ let value: OpenResponsesEasyInputMessageContentInputImage = {
 | Field      | Type                                                                                                           | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"input\_image"*                                                                                               | :heavy\_check\_mark: | N/A         |
-| `detail`   | [models.OpenResponsesEasyInputMessageDetail](/agent-sdk/typescript/models/openresponseseasyinputmessagedetail) | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.OpenResponsesEasyInputMessageDetail](/docs/agent-sdk/typescript/models/openresponseseasyinputmessagedetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                                       | :heavy\_minus\_sign: | N/A         |

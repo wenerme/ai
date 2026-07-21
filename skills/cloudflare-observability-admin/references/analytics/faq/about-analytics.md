@@ -1,7 +1,7 @@
 ---
 title: About Cloudflare Analytics
 description: Overview of Cloudflare analytics data and processing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ The Overview page shows analytics based on all traffic, including subrequests. H
 As a result, subrequests are excluded from the **HTTP Traffic** view, which can lead to discrepancies between the numbers shown in **Overview** and those displayed in other analytics sections of the dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/about-analytics/#page","headline":"A quick overview of Cloudflare Analytics · Cloudflare Analytics docs","description":"Overview of Cloudflare analytics data and processing.","url":"https://developers.cloudflare.com/analytics/faq/about-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/about-analytics/#page","headline":"A quick overview of Cloudflare Analytics · Cloudflare Analytics docs","description":"Overview of Cloudflare analytics data and processing.","url":"https://developers.cloudflare.com/analytics/faq/about-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/faq/","name":"FAQs"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/faq/about-analytics/","name":"About Cloudflare Analytics"}}]}
 ```

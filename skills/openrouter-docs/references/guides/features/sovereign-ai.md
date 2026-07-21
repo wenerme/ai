@@ -104,9 +104,9 @@ EU in-region routing is available for enterprise customers by request. [Contact 
 
 ### Zero Data Retention (ZDR)
 
-[Zero Data Retention](/guides/features/zdr) ensures that providers do not store your prompts or responses. This is a key component of sovereign AI, as it guarantees that no data persists outside your control after a request completes.
+[Zero Data Retention](/docs/guides/features/zdr) ensures that providers do not store your prompts or responses. This is a key component of sovereign AI, as it guarantees that no data persists outside your control after a request completes.
 
-ZDR can be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/guides/features/guardrails), or per-request:
+ZDR can be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request:
 
 ```json lines theme={null}
 {
@@ -146,8 +146,8 @@ This gives you a single API with unified billing while maintaining full control 
 
 Sovereign AI features are available to all OpenRouter users, with EU in-region routing available for enterprise customers. To get started:
 
-* [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/guides/routing/provider-selection) to control where your requests are processed
-* Enable [ZDR](/guides/features/zdr) and [data collection controls](/guides/privacy/provider-logging) for privacy compliance
+* [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/docs/guides/routing/provider-selection) to control where your requests are processed
+* Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/provider-logging) for privacy compliance
 * [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable EU in-region routing and discuss additional sovereign AI requirements
 
-For a complete enterprise setup guide, see the [Enterprise Quickstart](/cookbook/get-started/enterprise-quickstart).
+For a complete enterprise setup guide, see the [Enterprise Quickstart](/docs/cookbook/get-started/enterprise-quickstart).

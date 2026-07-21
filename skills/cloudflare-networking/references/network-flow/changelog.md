@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Review recent changes to Network Flow (formerly Magic Network Monitoring).
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ The free version of Magic Network Monitoring (MNM) is now available to everyone 
 For more details, refer to the [Get started guide](https://developers.cloudflare.com/network-flow/get-started/).
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/network-flow/changelog/#page","headline":"Changelog · Cloudflare Network Flow docs","description":"Review recent changes to Network Flow (formerly Magic Network Monitoring).","url":"https://developers.cloudflare.com/network-flow/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/network-flow/changelog/#page","headline":"Changelog · Cloudflare Network Flow docs","description":"Review recent changes to Network Flow (formerly Magic Network Monitoring).","url":"https://developers.cloudflare.com/network-flow/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/changelog/","name":"Changelog"}}]}
 ```

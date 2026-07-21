@@ -1,7 +1,7 @@
 ---
 title: GraphQL API inconsistent results
 description: Understand why GraphQL API results may vary slightly.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ A higher `sampleSize` indicates more reliable results.
 * [Adaptive Bit Rate blog post ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/#page","headline":"GraphQL API inconsistent results · Cloudflare Analytics docs","description":"Understand why GraphQL API results may vary slightly.","url":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/#page","headline":"GraphQL API inconsistent results · Cloudflare Analytics docs","description":"Understand why GraphQL API results may vary slightly.","url":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/faq/","name":"FAQs"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/faq/graphql-api-inconsistent-results/","name":"GraphQL API inconsistent results"}}]}
 ```

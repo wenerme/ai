@@ -41,7 +41,7 @@ export const TermsOfServiceDescriptions = () => {
 
 OpenRouter routes requests to the best available providers for your model. By default, [requests are load balanced](#price-based-load-balancing-default-strategy) across the top providers to maximize uptime.
 
-You can customize how your requests are routed using the `provider` object in the request body for [Chat Completions](/api/api-reference/chat/create-a-chat-completion).
+You can customize how your requests are routed using the `provider` object in the request body for [Chat Completions](/docs/api/api-reference/chat/create-a-chat-completion).
 
 The `provider` object can contain the following fields:
 
@@ -64,7 +64,7 @@ The `provider` object can contain the following fields:
 <Note>
   **EU data residency (Enterprise)**
 
-  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/guides/privacy/provider-logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
+  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
 </Note>
 
 ## Price-Based Load Balancing (Default Strategy)
@@ -277,7 +277,7 @@ You can append `:floor` to any model slug as a shortcut to sort by price. This i
 
 ## Advanced Sorting with Partition
 
-When using [model fallbacks](/guides/routing/routers/auto-router), the `sort` field can be specified as an object with additional options to control how endpoints are sorted across multiple models.
+When using [model fallbacks](/docs/guides/routing/routers/auto-router), the `sort` field can be specified as an object with additional options to control how endpoints are sorted across multiple models.
 
 | Field            | Type   | Default   | Description                                                          |
 | ---------------- | ------ | --------- | -------------------------------------------------------------------- |
@@ -286,7 +286,7 @@ When using [model fallbacks](/guides/routing/routers/auto-router), the `sort` fi
 
 By default, when you specify multiple models (fallbacks), OpenRouter groups endpoints by model before sorting. This means the primary model's endpoints are always tried first, regardless of their performance characteristics. Setting `partition` to `"none"` removes this grouping, allowing endpoints to be sorted globally across all models.
 
-To explicitly use the default behavior, set `partition: "model"`. For more details on how model fallbacks work, see [Model Fallbacks](/guides/routing/model-fallbacks).
+To explicitly use the default behavior, set `partition: "model"`. For more details on how model fallbacks work, see [Model Fallbacks](/docs/guides/routing/model-fallbacks).
 
 <Info>
   `preferred_max_latency` and `preferred_min_throughput` do *not* guarantee you will get a provider or model with this performance level. However, providers and models that hit your thresholds will be preferred. Specifying these preferences should therefore never prevent your request from being executed. This is different than `max_price`, which will prevent your request from running if the price is not available.
@@ -743,7 +743,7 @@ You can specify multiple percentile cutoffs to set both typical and worst-case p
 
 ### Use Case 3: Maximize BYOK Usage Across Models
 
-If you use [Bring Your Own Key (BYOK)](/guides/overview/auth/byok) and want to maximize usage of your own API keys, `partition: "none"` can help. When your primary model doesn't have a BYOK provider available, OpenRouter can route to a fallback model that does support BYOK.
+If you use [Bring Your Own Key (BYOK)](/docs/guides/overview/auth/byok) and want to maximize usage of your own API keys, `partition: "none"` can help. When your primary model doesn't have a BYOK provider available, OpenRouter can route to a fallback model that does support BYOK.
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" expandable lines theme={null}
@@ -993,7 +993,7 @@ Each provider on OpenRouter may host multiple endpoints for the same model, such
 
 ### Base Slug Matching
 
-When you use a base provider slug (e.g. `"google-vertex"`) in any provider routing field (`order`, `only`, or `ignore`), it matches **all** endpoints for that provider, including any variants or regions. For example, `"google-vertex"` matches `google-vertex`, `google-vertex/us-east5`, `google-vertex/us-central1`, and so on. Note that [service tier endpoints](/guides/features/service-tiers) (e.g. `openai/priority`, `google-vertex/flex`) are **not** matched by base slugs — they require explicit opt-in via the `service_tier` parameter or a tier-suffixed slug.
+When you use a base provider slug (e.g. `"google-vertex"`) in any provider routing field (`order`, `only`, or `ignore`), it matches **all** endpoints for that provider, including any variants or regions. For example, `"google-vertex"` matches `google-vertex`, `google-vertex/us-east5`, `google-vertex/us-central1`, and so on. Note that [service tier endpoints](/docs/guides/features/service-tiers) (e.g. `openai/priority`, `google-vertex/flex`) are **not** matched by base slugs — they require explicit opt-in via the `service_tier` parameter or a tier-suffixed slug.
 
 To target a **specific** variant or region, use the full slug including the suffix (e.g. `"google-vertex/us-east5"` or `"deepinfra/turbo"`).
 
@@ -1087,7 +1087,7 @@ You can restrict requests only to providers that support all parameters in your 
 | -------------------- | ------- | ------- | --------------------------------------------------------------- |
 | `require_parameters` | boolean | `false` | Only use providers that support all parameters in your request. |
 
-With the default routing strategy, providers that don't support all the [LLM parameters](/api_reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
+With the default routing strategy, providers that don't support all the [LLM parameters](/docs/api_reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
 
 ### Example: Excluding providers that don't support JSON formatting
 
@@ -1242,8 +1242,8 @@ When `zdr` is set to `true`, the request will only be routed to endpoints that h
 <Tip>
   **Per-Model-Group and Account-Wide ZDR**
 
-  ZDR can also be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy) or via [guardrails](/guides/features/guardrails). The per-request `zdr` parameter
-  operates as an "OR" with your account-wide and guardrail ZDR settings — if any of them is enabled, ZDR enforcement is applied. The request-level parameter can only ensure ZDR is enabled, not override account-wide or guardrail enforcement. See [Zero Data Retention](/guides/features/zdr#per-model-group-zdr-enforcement) for details.
+  ZDR can also be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy) or via [guardrails](/docs/guides/features/guardrails). The per-request `zdr` parameter
+  operates as an "OR" with your account-wide and guardrail ZDR settings — if any of them is enabled, ZDR enforcement is applied. The request-level parameter can only ensure ZDR is enabled, not override account-wide or guardrail enforcement. See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
 </Tip>
 
 ### Example: Enforcing ZDR for a specific request

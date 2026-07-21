@@ -224,6 +224,6 @@ const [result1, result2, result3] = await Promise.all([
 
 ## Next Steps
 
-* **[Streaming](/agent-sdk/call-model/streaming)** - Stream responses in real-time
-* **[Tools](/agent-sdk/call-model/tools)** - Add tool capabilities to your generation
-* **[Message Formats](/agent-sdk/call-model/message-formats)** - Convert from OpenAI/Claude formats
+* **[Streaming](/docs/agent-sdk/call-model/streaming)** - Stream responses in real-time
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Add tool capabilities to your generation
+* **[Message Formats](/docs/agent-sdk/call-model/message-formats)** - Convert from OpenAI/Claude formats

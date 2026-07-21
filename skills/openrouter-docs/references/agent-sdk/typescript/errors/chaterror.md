@@ -23,4 +23,4 @@ import { ChatError } from "@openrouter/sdk/models/errors";
 
 | Field   | Type                                                                 | Required             | Description |
 | ------- | -------------------------------------------------------------------- | -------------------- | ----------- |
-| `error` | [models.ChatErrorError](/agent-sdk/typescript/models/chaterrorerror) | :heavy\_check\_mark: | N/A         |
+| `error` | [models.ChatErrorError](/docs/agent-sdk/typescript/models/chaterrorerror) | :heavy\_check\_mark: | N/A         |

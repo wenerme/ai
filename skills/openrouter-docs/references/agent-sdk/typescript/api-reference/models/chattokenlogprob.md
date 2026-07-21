@@ -39,4 +39,4 @@ let value: ChatTokenLogprob = {
 | `bytes`       | *number*\[]                                                                                                   | :heavy\_check\_mark: | UTF-8 bytes of the token                  |
 | `logprob`     | *number*                                                                                                      | :heavy\_check\_mark: | Log probability of the token              |
 | `token`       | *string*                                                                                                      | :heavy\_check\_mark: | The token                                 |
-| `topLogprobs` | [models.ChatTokenLogprobTopLogprob](/agent-sdk/typescript/api-reference/models/chattokenlogprobtoplogprob)\[] | :heavy\_check\_mark: | Top alternative tokens with probabilities |
+| `topLogprobs` | [models.ChatTokenLogprobTopLogprob](/docs/agent-sdk/typescript/api-reference/models/chattokenlogprobtoplogprob)\[] | :heavy\_check\_mark: | Top alternative tokens with probabilities |

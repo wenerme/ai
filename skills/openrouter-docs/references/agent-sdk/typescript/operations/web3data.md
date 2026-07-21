@@ -43,4 +43,4 @@ let value: Web3Data = {
 
 | Field            | Type                                                                         | Required             | Description |
 | ---------------- | ---------------------------------------------------------------------------- | -------------------- | ----------- |
-| `transferIntent` | [operations.TransferIntent](/agent-sdk/typescript/operations/transferintent) | :heavy\_check\_mark: | N/A         |
+| `transferIntent` | [operations.TransferIntent](/docs/agent-sdk/typescript/operations/transferintent) | :heavy\_check\_mark: | N/A         |

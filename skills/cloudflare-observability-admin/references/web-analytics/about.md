@@ -1,7 +1,7 @@
 ---
 title: About
 description: How Cloudflare Web Analytics collects and processes visitor data.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Cloudflare Web Analytics does not collect or use your visitors’ personal data.
 [ Get started ](http://dash.cloudflare.com/sign-up/web-analytics) [ Learn more ](https://developers.cloudflare.com/web-analytics/data-metrics/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web-analytics/about/#page","headline":"Cloudflare Web Analytics · Cloudflare Web Analytics docs","description":"How Cloudflare Web Analytics collects and processes visitor data.","url":"https://developers.cloudflare.com/web-analytics/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Privacy"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web-analytics/about/#page","headline":"Cloudflare Web Analytics · Cloudflare Web Analytics docs","description":"How Cloudflare Web Analytics collects and processes visitor data.","url":"https://developers.cloudflare.com/web-analytics/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Privacy"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/about/","name":"About"}}]}
 ```

@@ -25,9 +25,9 @@ let value: EditClearToolUses20250919 = {
 
 | Field             | Type                                                                                                                   | Required             | Description | Example                                   |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | ----------------------------------------- |
-| `clearAtLeast`    | [models.AnthropicInputTokensClearAtLeast](/agent-sdk/typescript/api-reference/models/anthropicinputtokensclearatleast) | :heavy\_minus\_sign: | N/A         | `{"type": "input_tokens","value": 50000}` |
+| `clearAtLeast`    | [models.AnthropicInputTokensClearAtLeast](/docs/agent-sdk/typescript/api-reference/models/anthropicinputtokensclearatleast) | :heavy\_minus\_sign: | N/A         | `{"type": "input_tokens","value": 50000}` |
 | `clearToolInputs` | *models.ClearToolInputs*                                                                                               | :heavy\_minus\_sign: | N/A         |                                           |
 | `excludeTools`    | *string*\[]                                                                                                            | :heavy\_minus\_sign: | N/A         |                                           |
-| `keep`            | [models.AnthropicToolUsesKeep](/agent-sdk/typescript/api-reference/models/anthropictooluseskeep)                       | :heavy\_minus\_sign: | N/A         | `{"type": "tool_uses","value": 5}`        |
+| `keep`            | [models.AnthropicToolUsesKeep](/docs/agent-sdk/typescript/api-reference/models/anthropictooluseskeep)                       | :heavy\_minus\_sign: | N/A         | `{"type": "tool_uses","value": 5}`        |
 | `trigger`         | *models.Trigger*                                                                                                       | :heavy\_minus\_sign: | N/A         |                                           |
 | `type`            | *"clear\_tool\_uses\_20250919"*                                                                                        | :heavy\_check\_mark: | N/A         |                                           |

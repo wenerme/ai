@@ -34,11 +34,11 @@ let value: OpenResponsesReasoning = {
 
 | Field              | Type                                                                                             | Required             | Description |
 | ------------------ | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type`             | [models.OpenResponsesReasoningType](/agent-sdk/typescript/models/openresponsesreasoningtype)     | :heavy\_check\_mark: | N/A         |
+| `type`             | [models.OpenResponsesReasoningType](/docs/agent-sdk/typescript/models/openresponsesreasoningtype)     | :heavy\_check\_mark: | N/A         |
 | `id`               | *string*                                                                                         | :heavy\_check\_mark: | N/A         |
-| `content`          | [models.ReasoningTextContent](/agent-sdk/typescript/models/reasoningtextcontent)\[]              | :heavy\_minus\_sign: | N/A         |
-| `summary`          | [models.ReasoningSummaryText](/agent-sdk/typescript/models/reasoningsummarytext)\[]              | :heavy\_check\_mark: | N/A         |
+| `content`          | [models.ReasoningTextContent](/docs/agent-sdk/typescript/models/reasoningtextcontent)\[]              | :heavy\_minus\_sign: | N/A         |
+| `summary`          | [models.ReasoningSummaryText](/docs/agent-sdk/typescript/models/reasoningsummarytext)\[]              | :heavy\_check\_mark: | N/A         |
 | `encryptedContent` | *string*                                                                                         | :heavy\_minus\_sign: | N/A         |
 | `status`           | *models.OpenResponsesReasoningStatusUnion*                                                       | :heavy\_minus\_sign: | N/A         |
 | `signature`        | *string*                                                                                         | :heavy\_minus\_sign: | N/A         |
-| `format`           | [models.OpenResponsesReasoningFormat](/agent-sdk/typescript/models/openresponsesreasoningformat) | :heavy\_minus\_sign: | N/A         |
+| `format`           | [models.OpenResponsesReasoningFormat](/docs/agent-sdk/typescript/models/openresponsesreasoningformat) | :heavy\_minus\_sign: | N/A         |

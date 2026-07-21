@@ -1,7 +1,7 @@
 ---
 title: Add captions
 description: Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -460,6 +460,6 @@ If there is an entry in `errors` response field, the caption has not been delete
 | th            | Thai             |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/#page","headline":"Add captions · Cloudflare Stream docs","description":"Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/#page","headline":"Add captions · Cloudflare Stream docs","description":"Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/edit-videos/","name":"Edit videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/edit-videos/adding-captions/","name":"Add captions"}}]}
 ```

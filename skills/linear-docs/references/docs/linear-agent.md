@@ -131,6 +131,14 @@ Consider creating team-shared skills for repeatable workflows that team members 
 * [Triage issues for the team](https://linear.app/agent?prompt=Review%20new%20and%20untriaged%20issues%20for%20our%20team.%0A%0AFor%20each%20issue%2C%20recommend%20the%20next%20step%2C%20such%20as%20clarifying%20scope%2C%20assigning%20an%20owner%2C%20setting%20priority%2C%20linking%20related%20work%2C%20or%20closing%20it%20if%20it%20is%20no%20longer%20needed.%0A%0AFlag%20any%20duplicates%2C%20missing%20context%2C%20or%20risks%20that%20would%20help%20the%20team%20triage%20more%20consistently.%0A%0APresent%20the%20recommendations%20clearly%20so%20any%20team%20member%20can%20act%20on%20them.%0A%0ASave%20this%20as%20a%20new%20skill)
 * [Summarize new customer feedback for the team](https://linear.app/agent?prompt=Review%20recent%20customer%20feedback%2C%20customer%20requests%2C%20and%20related%20issues%20for%20our%20team.%0A%0ASummarize%20the%20main%20themes%2C%20repeated%20pain%20points%2C%20and%20notable%20new%20signals.%0A%0ACall%20out%20which%20requests%20seem%20to%20be%20gaining%20momentum%2C%20which%20customers%20are%20most%20affected%2C%20and%20where%20follow-up%20may%20be%20needed.%0A%0APresent%20the%20result%20in%20a%20format%20the%20team%20can%20quickly%20scan%20and%20reuse.%0A%0ASave%20this%20as%20a%20new%20skill)
 
+### Loops
+
+Loops let Linear work in the background to keep your processes moving — like a shared skill that triggers on a schedule or event. You can use loops to help with triage delegation, follow-ups, and other routine workflows.
+
+For setup details, triggers, permissions, and troubleshooting, see the [Loops](https://linear.app/docs/loops) help documentation.
+
+![Loop Automations](https://webassets.linear.app/images/ornj730p/production/a74f69f266bec89619ddeec9d71d5571e6fe30e7-3088x2088.png?q=95&auto=format&dpr=2)
+
 #### Best practices
 
 **Start in chat**
@@ -159,7 +167,7 @@ Linear Agent can also be delegated the actual implementation work on an issue. S
 
 Linear Agent can connect to MCP servers to access tools and data outside of Linear.
 
-This lets the agent bring external context into your workflows to investigate issues, plan projects, write specs, and draft updates grounded in your full context. MCP works across Linear Agent chat, comments, and automations, and is configured at the workspace level by Admins.
+This lets the agent bring external context into your workflows to investigate issues, plan projects, write specs, and draft updates grounded in your full context. MCP works across Linear Agent chat, comments, and Loops, and is configured at the workspace level by Admins.
 
 For more information to configure MCP servers within your workspace, check out our documentation [here](https://linear.app/docs/connect-mcp-servers).
 

@@ -1,7 +1,7 @@
 ---
 title: GPT-5.6 Luna
 description: GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -390,6 +390,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/#page","headline":"GPT-5.6 Luna (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/#page","headline":"GPT-5.6 Luna (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

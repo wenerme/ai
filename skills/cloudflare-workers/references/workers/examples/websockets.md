@@ -1,7 +1,7 @@
 ---
 title: Using the WebSockets API
 description: Use the WebSockets API to communicate in real time with your Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -381,6 +381,6 @@ For more details, refer to [WebSocket close behavior](https://developers.cloudfl
 Cloudflare Workers supports WebSocket compression. Refer to [WebSocket Compression](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-compression) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/websockets/","name":"Using the WebSockets API"}}]}
 ```

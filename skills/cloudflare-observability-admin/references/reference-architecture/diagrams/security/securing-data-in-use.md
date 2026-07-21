@@ -1,7 +1,7 @@
 ---
 title: Securing data in use
 description: Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ Figure 1: Text copy/paste blocked by Cloudflare RBI.
 * [Securing data at rest](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/#page","headline":"Securing data in use · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/#page","headline":"Securing data in use · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/security/securing-data-in-use/","name":"Securing data in use"}}]}
 ```

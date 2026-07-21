@@ -28,4 +28,4 @@ let value: ChatMessageContentItemText = {
 | -------------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `type`         | *"text"*                                                                                                     | :heavy\_check\_mark: | N/A         |
 | `text`         | *string*                                                                                                     | :heavy\_check\_mark: | N/A         |
-| `cacheControl` | [models.ChatMessageContentItemCacheControl](/agent-sdk/typescript/models/chatmessagecontentitemcachecontrol) | :heavy\_minus\_sign: | N/A         |
+| `cacheControl` | [models.ChatMessageContentItemCacheControl](/docs/agent-sdk/typescript/models/chatmessagecontentitemcachecontrol) | :heavy\_minus\_sign: | N/A         |

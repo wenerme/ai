@@ -1,7 +1,7 @@
 ---
 title: Single sign-on front door controls
 description: Protect SaaS apps with Access for SaaS.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ With [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/tra
 Similar to the dedicated egress IP option, many IdPs support a generic multi-factor authentication (MFA) method. You can use your IdP's generic MFA in conjunction with Cloudflare security policies to make your second factor a Cloudflare Access policy. This policy can check all of the security signals available in Access for SaaS. This method delivers user traffic data to Cloudflare and ensures that users cannot access SaaS applications without first being subject to granular security policy.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/#page","headline":"Single sign-on front door controls · Cloudflare Learning Paths","description":"Protect SaaS apps with Access for SaaS.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/#page","headline":"Single sign-on front door controls · Cloudflare Learning Paths","description":"Protect SaaS apps with Access for SaaS.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/","name":"Secure SaaS applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/","name":"Single sign-on front door controls"}}]}
 ```

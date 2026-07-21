@@ -32,5 +32,5 @@ let value: ApplyPatchCallOutputItem = {
 | `callId` | *string*                                                                                                           | :heavy\_check\_mark: | N/A         |
 | `id`     | *string*                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `output` | *string*                                                                                                           | :heavy\_minus\_sign: | N/A         |
-| `status` | [models.ApplyPatchCallOutputItemStatus](/agent-sdk/typescript/api-reference/models/applypatchcalloutputitemstatus) | :heavy\_check\_mark: | N/A         |
-| `type`   | [models.ApplyPatchCallOutputItemType](/agent-sdk/typescript/api-reference/models/applypatchcalloutputitemtype)     | :heavy\_check\_mark: | N/A         |
+| `status` | [models.ApplyPatchCallOutputItemStatus](/docs/agent-sdk/typescript/api-reference/models/applypatchcalloutputitemstatus) | :heavy\_check\_mark: | N/A         |
+| `type`   | [models.ApplyPatchCallOutputItemType](/docs/agent-sdk/typescript/api-reference/models/applypatchcalloutputitemtype)     | :heavy\_check\_mark: | N/A         |

@@ -28,7 +28,7 @@ Guardrails endpoints
 
 ## list
 
-List all guardrails for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all guardrails for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
 | `workspace_id`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter guardrails by workspace ID. By default, guardrails in the default workspace are returned.                                                            | 0df9e665-d932-5740-b2c7-b52af166bc11 |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
@@ -79,7 +79,7 @@ with OpenRouter(
 
 ## create
 
-Create a new guardrail for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Create a new guardrail for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -116,7 +116,7 @@ with OpenRouter(
 | `x_open_router_categories` | *Optional\[str]*                                                                                        | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                                                                                                                                                                |                                                                                                                             |
 | `allowed_models`           | List\[*str*]                                                                                            | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                                                                                                                                                                                                                                                                              | \[<br />"openai/gpt-5.2",<br />"anthropic/claude-4.5-opus-20251124",<br />"deepseek/deepseek-r1-0528:free"<br />]           |
 | `allowed_providers`        | List\[*str*]                                                                                            | :heavy\_minus\_sign: | List of allowed provider IDs                                                                                                                                                                                                                                                                                                                                                                               | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />]                                                                  |
-| `content_filter_builtins`  | List\[[components.ContentFilterBuiltinEntryInput](../../components/contentfilterbuiltinentryinput.mdx)] | :heavy\_minus\_sign: | Builtin content filters to apply. The "flag" action is only supported for "regex-prompt-injection"; PII slugs (email, phone, ssn, credit-card, ip-address, person-name, address) accept "block" or "redact" only.                                                                                                                                                                                          | \[<br />\{<br />"action": "block",<br />"slug": "regex-prompt-injection"<br />}<br />]                                      |
+| `content_filter_builtins`  | List\[[components.ContentFilterBuiltinEntryInput](../../components/contentfilterbuiltinentryinput.mdx)] | :heavy\_minus\_sign: | Builtin content filters to apply. Every builtin slug supports "block", "redact", and the detect-only "flag" action.                                                                                                                                                                                                                                                                                        | \[<br />\{<br />"action": "block",<br />"slug": "regex-prompt-injection"<br />}<br />]                                      |
 | `content_filters`          | List\[[components.ContentFilterEntry](../../components/contentfilterentry.mdx)]                         | :heavy\_minus\_sign: | Custom regex content filters to apply to request messages                                                                                                                                                                                                                                                                                                                                                  | \[<br />\{<br />"action": "redact",<br />"label": "\[API\_KEY]",<br />"pattern": "\b(sk-\[a-zA-Z0-9]\{48})\b"<br />}<br />] |
 | `description`              | *OptionalNullable\[str]*                                                                                | :heavy\_minus\_sign: | Description of the guardrail                                                                                                                                                                                                                                                                                                                                                                               | A guardrail for limiting API usage                                                                                          |
 | `enforce_zdr`              | *OptionalNullable\[bool]*                                                                               | :heavy\_minus\_sign: | : warning: \*\* DEPRECATED \*\*: This will be removed in a future release, please migrate away from it as soon as possible.<br /><br />Deprecated. Use enforce\_zdr\_anthropic, enforce\_zdr\_openai, enforce\_zdr\_google, enforce\_zdr\_xai, and enforce\_zdr\_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request. | false                                                                                                                       |
@@ -148,7 +148,7 @@ with OpenRouter(
 
 ## delete
 
-Delete an existing guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Delete an existing guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -196,7 +196,7 @@ with OpenRouter(
 
 ## get
 
-Get a single guardrail by ID. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Get a single guardrail by ID. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -244,7 +244,7 @@ with OpenRouter(
 
 ## update
 
-Update an existing guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Update an existing guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -277,7 +277,7 @@ with OpenRouter(
 | `x_open_router_categories` | *Optional\[str]*                                                                                        | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                                                                                                                                                                |                                                                                        |
 | `allowed_models`           | List\[*str*]                                                                                            | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                                                                                                                                                                                                                                                                              | \[<br />"openai/gpt-5.2"<br />]                                                        |
 | `allowed_providers`        | List\[*str*]                                                                                            | :heavy\_minus\_sign: | New list of allowed provider IDs                                                                                                                                                                                                                                                                                                                                                                           | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />]                             |
-| `content_filter_builtins`  | List\[[components.ContentFilterBuiltinEntryInput](../../components/contentfilterbuiltinentryinput.mdx)] | :heavy\_minus\_sign: | Builtin content filters to apply. Set to null to remove. The "flag" action is only supported for "regex-prompt-injection"; PII slugs (email, phone, ssn, credit-card, ip-address, person-name, address) accept "block" or "redact" only.                                                                                                                                                                   | \[<br />\{<br />"action": "block",<br />"slug": "regex-prompt-injection"<br />}<br />] |
+| `content_filter_builtins`  | List\[[components.ContentFilterBuiltinEntryInput](../../components/contentfilterbuiltinentryinput.mdx)] | :heavy\_minus\_sign: | Builtin content filters to apply. Set to null to remove. Every builtin slug supports "block", "redact", and the detect-only "flag" action.                                                                                                                                                                                                                                                                 | \[<br />\{<br />"action": "block",<br />"slug": "regex-prompt-injection"<br />}<br />] |
 | `content_filters`          | List\[[components.ContentFilterEntry](../../components/contentfilterentry.mdx)]                         | :heavy\_minus\_sign: | Custom regex content filters to apply. Set to null to remove.                                                                                                                                                                                                                                                                                                                                              | null                                                                                   |
 | `description`              | *OptionalNullable\[str]*                                                                                | :heavy\_minus\_sign: | New description for the guardrail                                                                                                                                                                                                                                                                                                                                                                          | Updated description                                                                    |
 | `enforce_zdr`              | *OptionalNullable\[bool]*                                                                               | :heavy\_minus\_sign: | : warning: \*\* DEPRECATED \*\*: This will be removed in a future release, please migrate away from it as soon as possible.<br /><br />Deprecated. Use enforce\_zdr\_anthropic, enforce\_zdr\_openai, enforce\_zdr\_google, enforce\_zdr\_xai, and enforce\_zdr\_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request. | true                                                                                   |
@@ -309,7 +309,7 @@ with OpenRouter(
 
 ## list\_guardrail\_key\_assignments
 
-List all API key assignments for a specific guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all API key assignments for a specific guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -342,7 +342,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
 
@@ -361,7 +361,7 @@ with OpenRouter(
 
 ## bulk\_assign\_keys
 
-Assign multiple API keys to a specific guardrail. A key may hold at most one guardrail; assigning replaces any existing assignment. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Assign multiple API keys to a specific guardrail. A key may hold at most one guardrail; assigning replaces any existing assignment. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -413,7 +413,7 @@ with OpenRouter(
 
 ## bulk\_unassign\_keys
 
-Unassign multiple API keys from a specific guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Unassign multiple API keys from a specific guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -465,7 +465,7 @@ with OpenRouter(
 
 ## list\_guardrail\_member\_assignments
 
-List all organization member assignments for a specific guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all organization member assignments for a specific guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -498,7 +498,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
 
@@ -517,7 +517,7 @@ with OpenRouter(
 
 ## bulk\_assign\_members
 
-Assign multiple organization members to a specific guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Assign multiple organization members to a specific guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -570,7 +570,7 @@ with OpenRouter(
 
 ## bulk\_unassign\_members
 
-Unassign multiple organization members from a specific guardrail. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Unassign multiple organization members from a specific guardrail. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -623,7 +623,7 @@ with OpenRouter(
 
 ## list\_key\_assignments
 
-List all API key guardrail assignments for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all API key guardrail assignments for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -655,7 +655,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
@@ -673,7 +673,7 @@ with OpenRouter(
 
 ## list\_member\_assignments
 
-List all organization member guardrail assignments for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all organization member guardrail assignments for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -705,7 +705,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 

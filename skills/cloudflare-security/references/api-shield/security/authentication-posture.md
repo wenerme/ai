@@ -1,7 +1,7 @@
 ---
 title: Authentication Posture
 description: Identify authentication misconfigurations for API endpoints with Authentication Posture.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ Authentication Posture can only apply when customers accurately set up session i
 Authentication Posture is available for all Enterprise customers with an API Shield subscription.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/authentication-posture/#page","headline":"Authentication Posture · Cloudflare API Shield docs","description":"Identify authentication misconfigurations for API endpoints with Authentication Posture.","url":"https://developers.cloudflare.com/api-shield/security/authentication-posture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/authentication-posture/#page","headline":"Authentication Posture · Cloudflare API Shield docs","description":"Identify authentication misconfigurations for API endpoints with Authentication Posture.","url":"https://developers.cloudflare.com/api-shield/security/authentication-posture/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/authentication-posture/","name":"Authentication Posture"}}]}
 ```

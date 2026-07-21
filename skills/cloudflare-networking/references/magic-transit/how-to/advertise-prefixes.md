@@ -1,7 +1,7 @@
 ---
 title: Advertise prefixes
 description: Advertise and withdraw IP prefixes with Magic Transit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -388,6 +388,6 @@ The default setting for static route regions is **All Regions**. Configure scopi
 Refer to [Scoping routes to specific regions](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#scoping-routes-to-specific-regions) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Magic Transit docs","description":"Advertise and withdraw IP prefixes with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Magic Transit docs","description":"Advertise and withdraw IP prefixes with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/advertise-prefixes/","name":"Advertise prefixes"}}]}
 ```

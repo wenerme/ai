@@ -27,5 +27,5 @@ let value: ChatContentCacheControl = {
 
 | Field  | Type                                                                                                         | Required             | Description | Example |
 | ------ | ------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ------- |
-| `ttl`  | [models.AnthropicCacheControlTtl](/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl)       | :heavy\_minus\_sign: | N/A         | 5m      |
-| `type` | [models.ChatContentCacheControlType](/agent-sdk/typescript/api-reference/models/chatcontentcachecontroltype) | :heavy\_check\_mark: | N/A         |         |
+| `ttl`  | [models.AnthropicCacheControlTtl](/docs/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl)       | :heavy\_minus\_sign: | N/A         | 5m      |
+| `type` | [models.ChatContentCacheControlType](/docs/agent-sdk/typescript/api-reference/models/chatcontentcachecontroltype) | :heavy\_check\_mark: | N/A         |         |

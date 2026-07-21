@@ -75,6 +75,6 @@ Free models may have different rate limits and availability compared to paid mod
 
 ## Related Resources
 
-* [Free Variant Documentation](/guides/routing/model-variants/free) - Learn about the `:free` variant suffix
+* [Free Variant Documentation](/docs/guides/routing/model-variants/free) - Learn about the `:free` variant suffix
 * [Models Page](https://openrouter.ai/models) - Browse all available models
 * [Free Models Router API](https://openrouter.ai/openrouter/free/api) - API quickstart for the Free Models Router

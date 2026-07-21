@@ -1,7 +1,7 @@
 ---
 title: Available RSS Feeds
 description: Read about the various RSS feeds available for Cloudflare's changelogs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -257,6 +257,6 @@ Included products
 * [Subscribe to Cloudflare Status](https://developers.cloudflare.com/support/cloudflare-status/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/#page","headline":"Available RSS Feeds · Cloudflare Fundamentals docs","description":"Read about the various RSS feeds available for Cloudflare's changelogs.","url":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/#page","headline":"Available RSS Feeds · Cloudflare Fundamentals docs","description":"Read about the various RSS feeds available for Cloudflare's changelogs.","url":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/new-features/","name":"RSS Feeds"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/new-features/available-rss-feeds/","name":"Available RSS Feeds"}}]}
 ```

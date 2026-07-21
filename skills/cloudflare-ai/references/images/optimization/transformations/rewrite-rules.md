@@ -1,7 +1,7 @@
 ---
 title: Set up rewrite rules
 description: Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ regex_replace(http.request.uri.path, "/(.*)", "/cdn-cgi/image/format=auto/${1}")
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/#page","headline":"Serve images from custom paths · Cloudflare Images docs","description":"Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.","url":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/#page","headline":"Serve images from custom paths · Cloudflare Images docs","description":"Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.","url":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/rewrite-rules/","name":"Set up rewrite rules"}}]}
 ```

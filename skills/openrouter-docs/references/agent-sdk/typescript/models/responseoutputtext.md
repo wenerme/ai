@@ -29,4 +29,4 @@ let value: ResponseOutputText = {
 | `type`        | *"output\_text"*                                          | :heavy\_check\_mark: | N/A         |
 | `text`        | *string*                                                  | :heavy\_check\_mark: | N/A         |
 | `annotations` | *models.OpenAIResponsesAnnotation*\[]                     | :heavy\_minus\_sign: | N/A         |
-| `logprobs`    | [models.Logprob](/agent-sdk/typescript/models/logprob)\[] | :heavy\_minus\_sign: | N/A         |
+| `logprobs`    | [models.Logprob](/docs/agent-sdk/typescript/models/logprob)\[] | :heavy\_minus\_sign: | N/A         |

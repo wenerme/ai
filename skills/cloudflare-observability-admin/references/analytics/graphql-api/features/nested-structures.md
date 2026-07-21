@@ -1,7 +1,7 @@
 ---
 title: Nested Structures
 description: Query arrays and maps in GraphQL Analytics API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -173,7 +173,7 @@ query NestedFields($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIyiWATgwUQMKABNm7LrwFCxLcZJkgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVGIwUQMKABNm7LrwFCWwiVJkgAvkA)
 
 Example response:
 
@@ -247,7 +247,7 @@ query MapCapacity(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtNwDsAgIwBOCtTow8UKhx78hontIDOzNkt6CRAnnG59UY05wkZpMBbpUGjYzmYtWQAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtNwDsAgIwBOCtTow8UKhx78hontIDOzNkt6CRAnnDEBWVN26pTGaTAW6VBo5zHnL1kAF8gA)
 
 Example response:
 
@@ -292,6 +292,6 @@ Example response:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/#page","headline":"Nested Structures · Cloudflare Analytics docs","description":"Query arrays and maps in GraphQL Analytics API.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/#page","headline":"Nested Structures · Cloudflare Analytics docs","description":"Query arrays and maps in GraphQL Analytics API.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/nested-structures/","name":"Nested Structures"}}]}
 ```

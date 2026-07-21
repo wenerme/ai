@@ -1,7 +1,7 @@
 ---
 title: Agentic Payments
 description: Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ MPP supports multiple payment methods beyond blockchain — including cards (via
 * [x402 examples ↗](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/#page","headline":"Agentic Payments · Cloudflare Agents docs","description":"Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.","url":"https://developers.cloudflare.com/agents/tools/payments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/#page","headline":"Agentic Payments · Cloudflare Agents docs","description":"Let AI agents pay for services programmatically using payment protocols like MPP and x402 with Cloudflare's Agents SDK.","url":"https://developers.cloudflare.com/agents/tools/payments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/payments/","name":"Agentic Payments"}}]}
 ```

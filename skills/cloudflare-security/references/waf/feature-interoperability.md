@@ -1,7 +1,7 @@
 ---
 title: Security features interoperability
 description: How Cloudflare security features interact and execute in order.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -188,6 +188,6 @@ If a managed rule blocks legitimate traffic:
 For detailed guidance, refer to [Troubleshoot managed rules](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/feature-interoperability/","name":"Security features interoperability"}}]}
 ```

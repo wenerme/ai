@@ -1,7 +1,7 @@
 ---
 title: robots.txt setting
 description: Manage a robots.txt file to direct AI bot operators on content scraping permissions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -227,6 +227,6 @@ Allow: /
 Managed `robots.txt` for AI crawlers is available on all plans.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting · Cloudflare bot solutions docs","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting · Cloudflare bot solutions docs","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/managed-robots-txt/","name":"robots.txt setting"}}]}
 ```

@@ -29,4 +29,4 @@ let value: ChatMessageContentItemVideoInputVideo = {
 | Field      | Type                                                       | Required             | Description |
 | ---------- | ---------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"input\_video"*                                           | :heavy\_check\_mark: | N/A         |
-| `videoUrl` | [models.VideoUrl1](/agent-sdk/typescript/models/videourl1) | :heavy\_check\_mark: | N/A         |
+| `videoUrl` | [models.VideoUrl1](/docs/agent-sdk/typescript/models/videourl1) | :heavy\_check\_mark: | N/A         |

@@ -28,4 +28,4 @@ let value: InputMessageItem = {
 | `content` | *models.InputMessageItemContentUnion*\[]                                                                     | :heavy\_minus\_sign: | N/A         |
 | `id`      | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.InputMessageItemRoleUnion*                                                                           | :heavy\_check\_mark: | N/A         |
-| `type`    | [models.InputMessageItemTypeMessage](/agent-sdk/typescript/api-reference/models/inputmessageitemtypemessage) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.InputMessageItemTypeMessage](/docs/agent-sdk/typescript/api-reference/models/inputmessageitemtypemessage) | :heavy\_minus\_sign: | N/A         |

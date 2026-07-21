@@ -27,7 +27,7 @@ let value: ChatStreamToolCall = {
 
 | Field      | Type                                                                                                       | Required             | Description                  | Example      |
 | ---------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------- | ------------ |
-| `function` | [models.ChatStreamToolCallFunction](/agent-sdk/typescript/api-reference/models/chatstreamtoolcallfunction) | :heavy\_minus\_sign: | Function call details        |              |
+| `function` | [models.ChatStreamToolCallFunction](/docs/agent-sdk/typescript/api-reference/models/chatstreamtoolcallfunction) | :heavy\_minus\_sign: | Function call details        |              |
 | `id`       | *string*                                                                                                   | :heavy\_minus\_sign: | Tool call identifier         | call\_abc123 |
 | `index`    | *number*                                                                                                   | :heavy\_check\_mark: | Tool call index in the array | 0            |
-| `type`     | [models.ChatStreamToolCallType](/agent-sdk/typescript/api-reference/models/chatstreamtoolcalltype)         | :heavy\_minus\_sign: | Tool call type               | function     |
+| `type`     | [models.ChatStreamToolCallType](/docs/agent-sdk/typescript/api-reference/models/chatstreamtoolcalltype)         | :heavy\_minus\_sign: | Tool call type               | function     |

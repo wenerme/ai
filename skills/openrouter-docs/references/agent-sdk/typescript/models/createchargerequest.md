@@ -31,4 +31,4 @@ let value: CreateChargeRequest = {
 | --------- | ------------------------------------------------------ | -------------------- | ----------- |
 | `amount`  | *number*                                               | :heavy\_check\_mark: | N/A         |
 | `sender`  | *string*                                               | :heavy\_check\_mark: | N/A         |
-| `chainId` | [models.ChainId](/agent-sdk/typescript/models/chainid) | :heavy\_check\_mark: | N/A         |
+| `chainId` | [models.ChainId](/docs/agent-sdk/typescript/models/chainid) | :heavy\_check\_mark: | N/A         |

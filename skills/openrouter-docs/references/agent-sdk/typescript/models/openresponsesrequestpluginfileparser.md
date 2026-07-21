@@ -27,4 +27,4 @@ let value: OpenResponsesRequestPluginFileParser = {
 | --------- | ------------------------------------------------------------------------ | -------------------- | ---------------------------------------------------------------------------------- |
 | `id`      | *"file-parser"*                                                          | :heavy\_check\_mark: | N/A                                                                                |
 | `enabled` | *boolean*                                                                | :heavy\_minus\_sign: | Set to false to disable the file-parser plugin for this request. Defaults to true. |
-| `pdf`     | [models.PDFParserOptions](/agent-sdk/typescript/models/pdfparseroptions) | :heavy\_minus\_sign: | Options for PDF parsing.                                                           |
+| `pdf`     | [models.PDFParserOptions](/docs/agent-sdk/typescript/models/pdfparseroptions) | :heavy\_minus\_sign: | Options for PDF parsing.                                                           |

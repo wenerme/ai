@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot missing images
 description: Fix missing or broken images after enabling image optimization.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ To troubleshoot:
 3. If the issue is not fixed, try another of the actions suggested in Step 1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/#page","headline":"Troubleshoot missing images · Cloudflare Speed docs","description":"Fix missing or broken images after enabling image optimization.","url":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/#page","headline":"Troubleshoot missing images · Cloudflare Speed docs","description":"Fix missing or broken images after enabling image optimization.","url":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/troubleshooting-missing-images/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/images/","name":"Image optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/images/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/images/troubleshooting/troubleshooting-missing-images/","name":"Troubleshoot missing images"}}]}
 ```

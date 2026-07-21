@@ -1,7 +1,7 @@
 ---
 title: Git integration
 description: Connect your Git provider to Pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -133,6 +133,6 @@ In the **Settings** section, you can configure advanced settings, such as changi
 * Set up Access policies to [manage who can view your deployment previews](https://developers.cloudflare.com/pages/configuration/preview-deployments/#customize-preview-deployments-access).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/get-started/git-integration/#page","headline":"Git integration guide · Cloudflare Pages docs","description":"Connect your Git provider to Pages.","url":"https://developers.cloudflare.com/pages/get-started/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/get-started/git-integration/#page","headline":"Git integration guide · Cloudflare Pages docs","description":"Connect your Git provider to Pages.","url":"https://developers.cloudflare.com/pages/get-started/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/get-started/git-integration/","name":"Git integration"}}]}
 ```

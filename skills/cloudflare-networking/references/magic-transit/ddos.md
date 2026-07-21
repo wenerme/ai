@@ -1,7 +1,7 @@
 ---
 title: DDoS protection
 description: DDoS mitigation layers available to Magic Transit customers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ When traffic enters the Cloudflare network, it passes through mitigation systems
 * [Best practices for DDoS protection](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/): Review proactive defense recommendations, including steps specific to Magic Transit.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/ddos/#page","headline":"Cloudflare DDoS protection · Cloudflare Magic Transit docs","description":"DDoS mitigation layers available to Magic Transit customers.","url":"https://developers.cloudflare.com/magic-transit/ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/ddos/#page","headline":"Cloudflare DDoS protection · Cloudflare Magic Transit docs","description":"DDoS mitigation layers available to Magic Transit customers.","url":"https://developers.cloudflare.com/magic-transit/ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/ddos/","name":"DDoS protection"}}]}
 ```

@@ -32,6 +32,6 @@ let value: ChatToolCall = {
 
 | Field      | Type                                                                                           | Required             | Description          |
 | ---------- | ---------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| `function` | [models.ChatToolCallFunction](/agent-sdk/typescript/api-reference/models/chattoolcallfunction) | :heavy\_check\_mark: | N/A                  |
+| `function` | [models.ChatToolCallFunction](/docs/agent-sdk/typescript/api-reference/models/chattoolcallfunction) | :heavy\_check\_mark: | N/A                  |
 | `id`       | *string*                                                                                       | :heavy\_check\_mark: | Tool call identifier |
-| `type`     | [models.ChatToolCallType](/agent-sdk/typescript/api-reference/models/chattoolcalltype)         | :heavy\_check\_mark: | N/A                  |
+| `type`     | [models.ChatToolCallType](/docs/agent-sdk/typescript/api-reference/models/chattoolcalltype)         | :heavy\_check\_mark: | N/A                  |

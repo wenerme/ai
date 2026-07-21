@@ -25,5 +25,5 @@ import { TooManyRequestsResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                     | Required             | Description                            | Example                                          |
 | -------- | -------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------- | ------------------------------------------------ |
-| `error`  | [models.TooManyRequestsResponseErrorData](/agent-sdk/typescript/models/toomanyrequestsresponseerrordata) | :heavy\_check\_mark: | Error data for TooManyRequestsResponse | `{"code": 429,"message": "Rate limit exceeded"}` |
+| `error`  | [models.TooManyRequestsResponseErrorData](/docs/agent-sdk/typescript/models/toomanyrequestsresponseerrordata) | :heavy\_check\_mark: | Error data for TooManyRequestsResponse | `{"code": 429,"message": "Rate limit exceeded"}` |
 | `userId` | *string*                                                                                                 | :heavy\_minus\_sign: | N/A                                    |                                                  |

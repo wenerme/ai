@@ -1,7 +1,7 @@
 ---
 title: Traffic policies
 description: Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -182,6 +182,6 @@ For details on how Gateway proxies traffic and establishes connections, refer to
 For help resolving common issues with Cloudflare Gateway policies, refer to [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/#page","headline":"Traffic policies · Cloudflare One docs","description":"Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Video"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/#page","headline":"Traffic policies · Cloudflare One docs","description":"Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Video"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}}]}
 ```

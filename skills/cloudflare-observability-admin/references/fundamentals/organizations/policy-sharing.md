@@ -1,7 +1,7 @@
 ---
 title: Policy sharing
 description: Share WAF and Gateway policies across accounts in your Cloudflare Organization.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -104,6 +104,6 @@ The policy is immediately removed from the destination account.
 * **Monitor shared policy coverage**: Regularly review which accounts have shared policies applied to ensure no accounts are missing critical security rules.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing · Cloudflare Fundamentals docs","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing · Cloudflare Fundamentals docs","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/policy-sharing/","name":"Policy sharing"}}]}
 ```

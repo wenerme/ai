@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Resolve common issues with client-side resource monitoring and script detection.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -134,6 +134,6 @@ Follow these steps to troubleshoot this issue:
 | Different CSP headers for different paths    | Use content security rule conditions to target specific paths, and avoid overlapping Transform Rules.                        |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/troubleshooting/#page","headline":"Troubleshooting · Client-side security docs","description":"Resolve common issues with client-side resource monitoring and script detection.","url":"https://developers.cloudflare.com/client-side-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP","Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/troubleshooting/#page","headline":"Troubleshooting · Client-side security docs","description":"Resolve common issues with client-side resource monitoring and script detection.","url":"https://developers.cloudflare.com/client-side-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP","Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/troubleshooting/","name":"Troubleshooting"}}]}
 ```

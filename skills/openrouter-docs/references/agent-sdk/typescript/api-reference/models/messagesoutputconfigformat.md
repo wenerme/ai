@@ -29,4 +29,4 @@ let value: MessagesOutputConfigFormat = {
 | Field    | Type                                                                                                                       | Required             | Description |
 | -------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `schema` | `Record<string, *any*>`                                                                                                    | :heavy\_check\_mark: | N/A         |
-| `type`   | [models.MessagesOutputConfigTypeJSONSchema](/agent-sdk/typescript/api-reference/models/messagesoutputconfigtypejsonschema) | :heavy\_check\_mark: | N/A         |
+| `type`   | [models.MessagesOutputConfigTypeJSONSchema](/docs/agent-sdk/typescript/api-reference/models/messagesoutputconfigtypejsonschema) | :heavy\_check\_mark: | N/A         |

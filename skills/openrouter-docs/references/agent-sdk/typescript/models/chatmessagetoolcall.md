@@ -32,4 +32,4 @@ let value: ChatMessageToolCall = {
 | ---------- | ---------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `id`       | *string*                                                                                       | :heavy\_check\_mark: | N/A         |
 | `type`     | *"function"*                                                                                   | :heavy\_check\_mark: | N/A         |
-| `function` | [models.ChatMessageToolCallFunction](/agent-sdk/typescript/models/chatmessagetoolcallfunction) | :heavy\_check\_mark: | N/A         |
+| `function` | [models.ChatMessageToolCallFunction](/docs/agent-sdk/typescript/models/chatmessagetoolcallfunction) | :heavy\_check\_mark: | N/A         |

@@ -25,5 +25,5 @@ let value: ChatRequestReasoning = {};
 
 | Field     | Type                                                                                                                     | Required             | Description                                         | Example |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | --------------------------------------------------- | ------- |
-| `effort`  | [models.ChatRequestEffort](/agent-sdk/typescript/api-reference/models/chatrequesteffort)                                 | :heavy\_minus\_sign: | Constrains effort on reasoning for reasoning models | medium  |
-| `summary` | [models.ChatReasoningSummaryVerbosityEnum](/agent-sdk/typescript/api-reference/models/chatreasoningsummaryverbosityenum) | :heavy\_minus\_sign: | N/A                                                 | concise |
+| `effort`  | [models.ChatRequestEffort](/docs/agent-sdk/typescript/api-reference/models/chatrequesteffort)                                 | :heavy\_minus\_sign: | Constrains effort on reasoning for reasoning models | medium  |
+| `summary` | [models.ChatReasoningSummaryVerbosityEnum](/docs/agent-sdk/typescript/api-reference/models/chatreasoningsummaryverbosityenum) | :heavy\_minus\_sign: | N/A                                                 | concise |

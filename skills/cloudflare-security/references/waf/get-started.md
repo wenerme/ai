@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up the Cloudflare WAF to protect your applications from attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -200,6 +200,6 @@ For more information on Cloudflare's API security features, refer to [Cloudflare
 For information on how to prevent attackers from discovering or overloading your origin server, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/) for a layered approach including proxied DNS, IP allowlisting, and authenticated origin pulls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/get-started/","name":"Get started"}}]}
 ```

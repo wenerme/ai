@@ -1,7 +1,7 @@
 ---
 title: Supported fonts
 description: View the list of pre-installed fonts available in the Browser Run Chromium environment for screenshots and PDFs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -72,6 +72,6 @@ Browser Run includes additional font packages for non-Latin scripts and emoji:
 * WenQuanYi Zen Hei (Chinese)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/supported-fonts/#page","headline":"Supported fonts · Cloudflare Browser Run docs","description":"View the list of pre-installed fonts available in the Browser Run Chromium environment for screenshots and PDFs.","url":"https://developers.cloudflare.com/browser-run/reference/supported-fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/supported-fonts/#page","headline":"Supported fonts · Cloudflare Browser Run docs","description":"View the list of pre-installed fonts available in the Browser Run Chromium environment for screenshots and PDFs.","url":"https://developers.cloudflare.com/browser-run/reference/supported-fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/supported-fonts/","name":"Supported fonts"}}]}
 ```

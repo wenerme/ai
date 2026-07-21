@@ -9,7 +9,7 @@
 <Tip>
   This recipe assumes you already have an agent built with the OpenRouter Agent
   SDK and `callModel`. If you are starting from scratch, first read the
-  [callModel overview](/agent-sdk/call-model/overview) to learn
+  [callModel overview](/docs/agent-sdk/call-model/overview) to learn
   about the Agent SDK.
 </Tip>
 
@@ -40,7 +40,7 @@ Both pause for human input, but they solve different problems:
 
 Use HITL when the decision depends on the input data. Use `requireApproval`
 when you need a human to approve whether a tool should execute. See the [Tool
-Approval & State](/agent-sdk/call-model/tool-approval-state)
+Approval & State](/docs/agent-sdk/call-model/tool-approval-state)
 reference for details on approval flows and conditional approval predicates.
 
 ## Prerequisites
@@ -96,7 +96,7 @@ const approvePayment = tool({
 
 `outputSchema` is required for HITL tools — it validates both the
 auto-resolved return value and any human-supplied response. See the
-[HITLTool type reference](/agent-sdk/call-model/api-reference#hitltool)
+[HITLTool type reference](/docs/agent-sdk/call-model/api-reference#hitltool)
 for the full type signature.
 
 ## 2. Add post-processing with onResponseReceived

@@ -1,7 +1,7 @@
 ---
 title: Enable Google BigQuery
 description: Push Cloudflare logs to Google BigQuery.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -194,6 +194,6 @@ Logpush delivers batches of logs as soon as possible, which means you could rece
 For a community-supported example of how to set up a schedule job load with BigQuery, refer to [Cloudflare + Google Cloud | Integrations repository ↗](https://github.com/cloudflare/cloudflare-gcp/tree/master/logpush-to-bigquery). Note that this repository is provided on a best-effort basis and is not maintained routinely.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/#page","headline":"Enable Logpush to Google BigQuery · Cloudflare Logs docs","description":"Push Cloudflare logs to Google BigQuery.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/#page","headline":"Enable Logpush to Google BigQuery · Cloudflare Logs docs","description":"Push Cloudflare logs to Google BigQuery.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/bigquery/","name":"Enable Google BigQuery"}}]}
 ```

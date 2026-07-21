@@ -1,7 +1,7 @@
 ---
 title: Add a React form with Formspree
 description: Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -268,6 +268,6 @@ If you would like to review the full source code for this application, you can f
 * [HTML Forms](https://developers.cloudflare.com/pages/tutorials/forms/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/#page","headline":"Add a React form with Formspree · Cloudflare Pages docs","description":"Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.","url":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/#page","headline":"Add a React form with Formspree · Cloudflare Pages docs","description":"Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.","url":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/tutorials/add-a-react-form-with-formspree/","name":"Add a React form with Formspree"}}]}
 ```

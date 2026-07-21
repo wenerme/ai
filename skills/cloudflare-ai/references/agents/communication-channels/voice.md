@@ -1,7 +1,7 @@
 ---
 title: Voice
 description: Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1172,6 +1172,6 @@ this.saveMessage("assistant", "Welcome! How can I help?");
 History survives Durable Object restarts and client reconnections. Voice agents use `keepAlive` to prevent eviction during active calls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice · Cloudflare Agents docs","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice · Cloudflare Agents docs","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/voice/","name":"Voice"}}]}
 ```

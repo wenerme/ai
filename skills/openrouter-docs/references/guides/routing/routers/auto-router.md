@@ -144,7 +144,7 @@ The response includes the `model` field showing which model was actually used:
 
 ## Session Stickiness
 
-The Auto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/guides/best-practices/prompt-caching) hits.
+The Auto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits.
 
 Stickiness applies at two levels:
 
@@ -153,7 +153,7 @@ Stickiness applies at two levels:
 
 In both cases, the cache expires after **5 minutes** of inactivity. Each successful request resets the timer. If the cached provider returns an error, the cache is not updated, allowing the next request to be re-routed.
 
-For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/guides/best-practices/prompt-caching#provider-sticky-routing).
+For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/docs/guides/best-practices/prompt-caching#provider-sticky-routing).
 
 ### Example with `session_id`
 
@@ -460,7 +460,7 @@ You pay the standard rate for whichever model is selected. There is no additiona
 
 ## Related
 
-* [Body Builder](/guides/routing/routers/body-builder) - Generate multiple parallel API requests
-* [Latest Model Resolution](/guides/routing/routers/latest-resolution) - Always target the newest version of a model family
-* [Model Fallbacks](/guides/routing/model-fallbacks) - Configure fallback models
-* [Provider Selection](/guides/routing/provider-selection) - Control which providers are used
+* [Body Builder](/docs/guides/routing/routers/body-builder) - Generate multiple parallel API requests
+* [Latest Model Resolution](/docs/guides/routing/routers/latest-resolution) - Always target the newest version of a model family
+* [Model Fallbacks](/docs/guides/routing/model-fallbacks) - Configure fallback models
+* [Provider Selection](/docs/guides/routing/provider-selection) - Control which providers are used

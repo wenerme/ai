@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: R2 pricing for storage, Class A and Class B operations, and free tier details.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -173,6 +173,6 @@ No. You are not charged for operations when the caller does not have permission 
 1. Egressing directly from R2, including via the [Workers API](https://developers.cloudflare.com/r2/api/workers/), [S3 API](https://developers.cloudflare.com/r2/api/s3/), and [r2.dev domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#enable-managed-public-access) does not incur data transfer (egress) charges and is free. If you connect other metered services to an R2 bucket, you may be charged by those services. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/pricing/","name":"Pricing"}}]}
 ```

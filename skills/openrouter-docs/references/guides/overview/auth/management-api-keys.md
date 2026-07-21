@@ -237,4 +237,4 @@ API responses return JSON objects containing key information:
 }
 ```
 
-When creating a new key, the response will include the key string itself. Read more in the [API reference](/api/api-reference/api-keys/create-a-new-api-key).
+When creating a new key, the response will include the key string itself. Read more in the [API reference](/docs/api/api-reference/api-keys/create-a-new-api-key).

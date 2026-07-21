@@ -1,7 +1,7 @@
 ---
 title: Request handling
 description: Configure AI Gateway request timeouts and retries for reliable AI provider interactions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ For a provider-specific endpoint, configure the retry settings by adding differe
 * `cf-aig-backoff` ("constant" | "linear" | "exponential)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling · Cloudflare AI Gateway docs","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling · Cloudflare AI Gateway docs","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/request-handling/","name":"Request handling"}}]}
 ```

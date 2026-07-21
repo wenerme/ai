@@ -1,7 +1,7 @@
 ---
 title: Supported cloud providers in Cloud Connector
 description: Cloud providers and storage services supported by Cloud Connector.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ If the blob container is not configured for public access, you must change the c
 Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/providers/","name":"Supported cloud providers in Cloud Connector"}}]}
 ```

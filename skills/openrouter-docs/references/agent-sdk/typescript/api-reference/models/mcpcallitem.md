@@ -37,4 +37,4 @@ let value: McpCallItem = {
 | `name`        | *string*                                                                             | :heavy\_check\_mark: | N/A         |
 | `output`      | *string*                                                                             | :heavy\_minus\_sign: | N/A         |
 | `serverLabel` | *string*                                                                             | :heavy\_check\_mark: | N/A         |
-| `type`        | [models.McpCallItemType](/agent-sdk/typescript/api-reference/models/mcpcallitemtype) | :heavy\_check\_mark: | N/A         |
+| `type`        | [models.McpCallItemType](/docs/agent-sdk/typescript/api-reference/models/mcpcallitemtype) | :heavy\_check\_mark: | N/A         |

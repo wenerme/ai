@@ -1,7 +1,7 @@
 ---
 title: WARP diagnostic logs
 description: Analyze WARP diagnostic log files.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ Explore the following resources on WARP, device profiles, operating modes, and s
 [ Watch Episode 2: WARP diagnostic logs ](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/) In this episode, we explain how to troubleshoot Cloudflare WARP by analyzing diagnostic logs and understand how the client connects in different modes.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/#page","headline":"WARP diagnostic logs · Cloudflare Learning Paths","description":"Analyze WARP diagnostic log files.","url":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/#page","headline":"WARP diagnostic logs · Cloudflare Learning Paths","description":"Analyze WARP diagnostic log files.","url":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/warp-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/warp-overview-course/series/warp-basics-2/","name":"WARP diagnostic logs"}}]}
 ```

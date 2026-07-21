@@ -1,7 +1,7 @@
 ---
 title: REST API migration
 description: Migrate from the legacy AutoRAG REST API endpoints to the new AI Search API endpoints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -208,6 +208,6 @@ Combine multiple conditions where all must match:
 * [Legacy AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/rest-api/#page","headline":"REST API migration · Cloudflare AI Search docs","description":"Migrate from the legacy AutoRAG REST API endpoints to the new AI Search API endpoints.","url":"https://developers.cloudflare.com/ai-search/api/migration/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/rest-api/#page","headline":"REST API migration · Cloudflare AI Search docs","description":"Migrate from the legacy AutoRAG REST API endpoints to the new AI Search API endpoints.","url":"https://developers.cloudflare.com/ai-search/api/migration/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/migration/","name":"API Migration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/migration/rest-api/","name":"REST API migration"}}]}
 ```

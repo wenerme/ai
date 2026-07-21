@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -103,6 +103,6 @@ If you are using thumbnails, you can use [animated thumbnails](https://developer
 If multiple players are on the same page, you can lazy load any players that are not visible in the initial viewport. For more information about lazy loading, refer to [Mozilla's lazy loading documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#lazy).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/faq/","name":"FAQ"}}]}
 ```

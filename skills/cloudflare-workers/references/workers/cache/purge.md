@@ -1,7 +1,7 @@
 ---
 title: Purging the cache
 description: Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -667,6 +667,6 @@ On failure, each error in `errors` carries a numeric `code` and a human-readable
 `purge()` uses the same rate-limiting system as Cloudflare's zone purge API. For the rate limits that apply to your account's plan, refer to [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits). When the purge is rate-limited, `success` is `false` and `errors` contains an entry describing the rejection.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/purge/","name":"Purging the cache"}}]}
 ```

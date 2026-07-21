@@ -1,7 +1,7 @@
 ---
 title: Verified bots
 description: Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -231,6 +231,6 @@ Cloudflare reserves the right to re-assign Verified bot categories if the bot's 
 Historically, Verified bots have been excluded in default bot configurations across all plans. Now, all customers have the option to [configure AI bot policies](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/) to define their block vs. allow expectations.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#page","headline":"Verified bots · Cloudflare bot solutions docs","description":"Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.","url":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#page","headline":"Verified bots · Cloudflare bot solutions docs","description":"Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.","url":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/bot/","name":"Bots"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/concepts/bot/verified-bots/","name":"Verified bots"}}]}
 ```

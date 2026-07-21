@@ -1,7 +1,7 @@
 ---
 title: Tenant structure
 description: Understand how tenants, accounts, users, and zones relate in the Cloudflare Tenant model.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ At the same time, this structure keeps your customers' data and settings separat
 [↩](#user-content-fnref-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/structure/#page","headline":"Tenant structure · Cloudflare Tenant docs","description":"Understand how tenants, accounts, users, and zones relate in the Cloudflare Tenant model.","url":"https://developers.cloudflare.com/tenant/structure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/structure/#page","headline":"Tenant structure · Cloudflare Tenant docs","description":"Understand how tenants, accounts, users, and zones relate in the Cloudflare Tenant model.","url":"https://developers.cloudflare.com/tenant/structure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/structure/","name":"Tenant structure"}}]}
 ```

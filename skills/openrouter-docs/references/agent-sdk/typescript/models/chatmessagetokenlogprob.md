@@ -39,4 +39,4 @@ let value: ChatMessageTokenLogprob = {
 | `token`       | *string*                                                                                                      | :heavy\_check\_mark: | N/A         |
 | `logprob`     | *number*                                                                                                      | :heavy\_check\_mark: | N/A         |
 | `bytes`       | *number*\[]                                                                                                   | :heavy\_check\_mark: | N/A         |
-| `topLogprobs` | [models.ChatMessageTokenLogprobTopLogprob](/agent-sdk/typescript/models/chatmessagetokenlogprobtoplogprob)\[] | :heavy\_check\_mark: | N/A         |
+| `topLogprobs` | [models.ChatMessageTokenLogprobTopLogprob](/docs/agent-sdk/typescript/models/chatmessagetokenlogprobtoplogprob)\[] | :heavy\_check\_mark: | N/A         |

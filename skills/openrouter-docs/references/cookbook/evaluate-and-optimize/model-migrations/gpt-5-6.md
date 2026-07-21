@@ -53,7 +53,7 @@ There are two equivalent ways to request pro mode:
 
 `mode` is independent of `effort`, so you can combine `mode: "pro"` with any supported effort level. Pro mode bills at the same per-token rates as standard mode but typically consumes more tokens.
 
-See [Reasoning Mode](/guides/best-practices/reasoning-tokens#reasoning-mode) for details.
+See [Reasoning Mode](/docs/guides/best-practices/reasoning-tokens#reasoning-mode) for details.
 
 ## Persisted Reasoning with `reasoning.context`
 
@@ -97,13 +97,13 @@ Use `all_turns` for multi-turn work where goals stay stable and you want the mod
 
 The default value of `context` may vary by model, so set it explicitly if your use case needs a specific behavior.
 
-See [Reasoning Context Mode](/guides/best-practices/reasoning-tokens#reasoning-context-mode) for details.
+See [Reasoning Context Mode](/docs/guides/best-practices/reasoning-tokens#reasoning-context-mode) for details.
 
 ## Explicit Prompt Caching
 
 Automatic prompt caching still works with no code changes. Explicit caching adds direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL.
 
-The fields work in both the [Chat Completions](/api/api-reference/chat/send-a-chat-completion-request) and [Responses](/api/api-reference/responses/create-a-response) APIs.
+The fields work in both the [Chat Completions](/docs/api/api-reference/chat/send-a-chat-completion-request) and [Responses](/docs/api/api-reference/responses/create-a-response) APIs.
 
 Two controls:
 
@@ -176,7 +176,7 @@ Chat Completions API:
   The block-level markers are interchangeable with the Anthropic-style `cache_control` blocks Chat Completions also accepts: `cache_control` becomes a `prompt_cache_breakpoint` on GPT-5.6+ models, and `prompt_cache_breakpoint` becomes a default 5-minute `cache_control` on Anthropic and Google. The request-level `prompt_cache_options` stays OpenAI-only.
 </Note>
 
-See [Prompt Caching](/guides/best-practices/prompt-caching#openai) for details.
+See [Prompt Caching](/docs/guides/best-practices/prompt-caching#openai) for details.
 
 ## Cache-Write Billing
 
@@ -210,6 +210,6 @@ None. All GPT-5.6 API additions are optional:
 * [Using GPT-5.6](https://developers.openai.com/api/docs/guides/latest-model) — OpenAI's official guide with migration and prompting best practices for GPT-5.6
 * [GPT-5.6 announcement](https://openai.com/index/gpt-5-6/)
 * [OpenAI API pricing](https://developers.openai.com/api/docs/pricing)
-* [Reasoning Tokens](/guides/best-practices/reasoning-tokens)
-* [Prompt Caching](/guides/best-practices/prompt-caching)
-* [OpenRouter Responses API](/api/api-reference/responses/create-a-response)
+* [Reasoning Tokens](/docs/guides/best-practices/reasoning-tokens)
+* [Prompt Caching](/docs/guides/best-practices/prompt-caching)
+* [OpenRouter Responses API](/docs/api/api-reference/responses/create-a-response)

@@ -1,7 +1,7 @@
 ---
 title: App Launcher
 description: Configure the Access App Launcher portal.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ If you are having issues specifying a custom logo, check that the image is serve
 To customize the App Launcher with your own branding, messages, and links, refer to the [Custom pages documentation](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/#page","headline":"App Launcher · Cloudflare Learning Paths","description":"Configure the Access App Launcher portal.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/#page","headline":"App Launcher · Cloudflare Learning Paths","description":"Configure the Access App Launcher portal.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/customize-ux/","name":"Customize the end user experience"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/customize-ux/app-launcher/","name":"App Launcher"}}]}
 ```

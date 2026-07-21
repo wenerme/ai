@@ -1,7 +1,7 @@
 ---
 title: Delegated
 description: Delegate domain control validation to Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -103,6 +103,6 @@ Once the hostname becomes resolvable again, [Delegated DCV](https://developers.c
 If you [move your zone to another account](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/), you will need to update the `CNAME` record at your authoritative DNS provider with a new validation URL.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/#page","headline":"Delegated DCV — Domain Control Validation — SSL/TLS · Cloudflare SSL/TLS docs","description":"Delegate domain control validation to Cloudflare.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/#page","headline":"Delegated DCV — Domain Control Validation — SSL/TLS · Cloudflare SSL/TLS docs","description":"Delegate domain control validation to Cloudflare.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/","name":"Domain control validation (DCV)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/methods/","name":"Methods"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/","name":"Delegated"}}]}
 ```

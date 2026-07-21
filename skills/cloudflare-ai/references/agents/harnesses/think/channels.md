@@ -1,7 +1,7 @@
 ---
 title: Channels
 description: Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -271,6 +271,6 @@ const unsubscribe = subscribe("channel", (event) => {
 * [Voice](https://developers.cloudflare.com/agents/communication-channels/voice/) — real-time speech surfaces.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/channels/#page","headline":"Channels · Cloudflare Agents docs","description":"Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.","url":"https://developers.cloudflare.com/agents/harnesses/think/channels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/channels/#page","headline":"Channels · Cloudflare Agents docs","description":"Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.","url":"https://developers.cloudflare.com/agents/harnesses/think/channels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/channels/","name":"Channels"}}]}
 ```

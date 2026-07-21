@@ -1,7 +1,7 @@
 ---
 title: Introduction
 description: Cloudflare Images provides a platform for optimizing, storing, and serving images at scale.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ To start, set up [predefined variants](https://developers.cloudflare.com/images/
 Each use case has a separate pricing model. To learn more, refer to [Pricing](https://developers.cloudflare.com/images/pricing/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/get-started/introduction/#page","headline":"Introduction · Cloudflare Images docs","description":"Cloudflare Images provides a platform for optimizing, storing, and serving images at scale.","url":"https://developers.cloudflare.com/images/get-started/introduction/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/get-started/introduction/#page","headline":"Introduction · Cloudflare Images docs","description":"Cloudflare Images provides a platform for optimizing, storing, and serving images at scale.","url":"https://developers.cloudflare.com/images/get-started/introduction/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/get-started/introduction/","name":"Introduction"}}]}
 ```

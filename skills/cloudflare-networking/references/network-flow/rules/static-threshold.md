@@ -1,7 +1,7 @@
 ---
 title: Static threshold rule
 description: Create static threshold rules for traffic limits.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ Your IP prefixes may experience inconsistent spikes across one-minute intervals.
 After updating your first set of thresholds based on historical data, monitor for Network Flow alerts to verify the thresholds are appropriate. Adjust thresholds and duration over time to find the right alert sensitivity for your network environment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/static-threshold/#page","headline":"Static threshold rule · Cloudflare Network Flow docs","description":"Create static threshold rules for traffic limits.","url":"https://developers.cloudflare.com/network-flow/rules/static-threshold/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/static-threshold/#page","headline":"Static threshold rule · Cloudflare Network Flow docs","description":"Create static threshold rules for traffic limits.","url":"https://developers.cloudflare.com/network-flow/rules/static-threshold/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/rules/","name":"Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/rules/static-threshold/","name":"Static threshold rule"}}]}
 ```

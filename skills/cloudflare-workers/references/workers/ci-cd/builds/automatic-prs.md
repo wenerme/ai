@@ -1,7 +1,7 @@
 ---
 title: Automatic pull requests
 description: Learn about the pull requests Workers Builds creates to configure your project or resolve issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -75,6 +75,6 @@ When you receive a PR from Workers Builds:
 3. **Merge when ready** \- Once satisfied, merge the PR to enable faster deployments
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests · Cloudflare Workers docs","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests · Cloudflare Workers docs","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/automatic-prs/","name":"Automatic pull requests"}}]}
 ```

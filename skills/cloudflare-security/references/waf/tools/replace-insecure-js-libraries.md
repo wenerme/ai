@@ -1,7 +1,7 @@
 ---
 title: Replace insecure JS libraries
 description: Detect and notify about insecure JavaScript libraries on your site.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/replace_insec
 Since [pages.dev zones](https://developers.cloudflare.com/pages/configuration/preview-deployments/) are on a Free plan, the **Replace insecure JavaScript libraries** feature is turned on by default on these zones and it is not possible to turn it off.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/#page","headline":"Replace insecure JavaScript libraries · Cloudflare Web Application Firewall (WAF) docs","description":"Detect and notify about insecure JavaScript libraries on your site.","url":"https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/#page","headline":"Replace insecure JavaScript libraries · Cloudflare Web Application Firewall (WAF) docs","description":"Detect and notify about insecure JavaScript libraries on your site.","url":"https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/replace-insecure-js-libraries/","name":"Replace insecure JS libraries"}}]}
 ```

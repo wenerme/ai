@@ -1,7 +1,7 @@
 ---
 title: Network Flow
 description: Analyze network traffic with NetFlow, sFlow, and IPFIX data.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -71,6 +71,6 @@ Connects your network infrastructure directly with Cloudflare - rather than usin
 Connect with the Network Flow community on Discord to ask questions, and share feedback.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-flow/#page","headline":"Overview · Cloudflare Network Flow docs","description":"Analyze network traffic with NetFlow, sFlow, and IPFIX data.","url":"https://developers.cloudflare.com/network-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-flow/#page","headline":"Overview · Cloudflare Network Flow docs","description":"Analyze network traffic with NetFlow, sFlow, and IPFIX data.","url":"https://developers.cloudflare.com/network-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}}]}
 ```

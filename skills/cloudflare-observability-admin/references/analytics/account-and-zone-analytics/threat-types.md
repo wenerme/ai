@@ -1,7 +1,7 @@
 ---
 title: Threat types
 description: Review threat categories blocked by Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ Unclassified threats comprises a number of automatic blocks that are not related
 Unclassified means a number of conditions under which we group common threats related to Hotlink Protection as well as specific requests that are blocked at Cloudflare's global network before reaching your servers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/#page","headline":"Threat types · Cloudflare Analytics docs","description":"Review threat categories blocked by Cloudflare.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/#page","headline":"Threat types · Cloudflare Analytics docs","description":"Review threat categories blocked by Cloudflare.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/account-and-zone-analytics/threat-types/","name":"Threat types"}}]}
 ```

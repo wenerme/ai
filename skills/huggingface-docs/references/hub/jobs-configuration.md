@@ -104,6 +104,9 @@ You can pass environment variables to your job using
 
 Mount Hugging Face repositories (models, datasets), [Storage Buckets](./storage-buckets), or local directories as volumes in your job container using `-v` or `--volume`. Hub sources use the `hf://` URL scheme: `hf://[TYPE/]SOURCE:/MOUNT_PATH[:ro]`; a local directory is passed directly as the source.
 
+> [!TIP]
+> Because mounted files are fetched lazily, mounting lets a Job work with datasets far larger than its local disk. See [Process Large Datasets](./jobs-large-datasets) for mounting, streaming, and processing big data on Jobs.
+
 Volume types:
 
 | Type | Example |
@@ -376,7 +379,7 @@ Note that you can pass a token with the right permission manually:
 
 ## Labels
 
-Add one or more labels to a Job to add some metadata with `-l` or `-label`.
+Add one or more labels to a Job to add some metadata with `-l` or `--label`.
 You can use such metadata later to filter Jobs on the website or in the CLI.
 
 Add labels with `--label my-label` or key-value labels with `--label key=value`.
@@ -387,3 +390,26 @@ hf jobs uv run --label fine-tuning --label model=Qwen3-0.6B --label dataset=Capy
 ```
 
 Note that using the same `key` multiple times causes the last `key=value` to overwrite and discard any previous label with `key`.
+
+### Name a Job
+
+Give a Job a name to make it easier to find and identify in the UI. The name is stored as the `name` label. Names are optional and do not have to be unique. In the UI Jobs will be grouped by name.
+
+```bash
+hf jobs run --name daily-report python:3.12 python report.py
+```
+
+### Update labels
+
+Update labels on an existing Job with `hf jobs labels`. Passing `--label` replaces all existing labels; passing `--name` alone keeps them:
+
+```bash
+# Replace the labels on a Job
+hf jobs labels <job_id> --label env=prod --label team=ml
+
+# Name an existing Job (keeps its other labels)
+hf jobs labels <job_id> --name daily-report
+
+# Remove all labels from a Job
+hf jobs labels <job_id> --clear
+```

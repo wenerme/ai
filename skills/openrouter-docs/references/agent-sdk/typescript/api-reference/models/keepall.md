@@ -25,4 +25,4 @@ let value: KeepAll = {
 
 | Field  | Type                                                                   | Required             | Description |
 | ------ | ---------------------------------------------------------------------- | -------------------- | ----------- |
-| `type` | [models.KeepType](/agent-sdk/typescript/api-reference/models/keeptype) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.KeepType](/docs/agent-sdk/typescript/api-reference/models/keeptype) | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: FAQs
 description: Answers to common Load Balancing questions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -111,6 +111,6 @@ For a list of specific error codes and next steps, refer to [Load Balancing Trou
 * [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#page","headline":"FAQs · Cloudflare Load Balancing docs","description":"Answers to common Load Balancing questions.","url":"https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#page","headline":"FAQs · Cloudflare Load Balancing docs","description":"Answers to common Load Balancing questions.","url":"https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/troubleshooting/load-balancing-faq/","name":"FAQs"}}]}
 ```

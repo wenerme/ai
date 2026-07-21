@@ -35,4 +35,4 @@ let value: McpApprovalRequestItem = {
 | `id`          | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |
 | `name`        | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |
 | `serverLabel` | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |
-| `type`        | [models.McpApprovalRequestItemType](/agent-sdk/typescript/api-reference/models/mcpapprovalrequestitemtype) | :heavy\_check\_mark: | N/A         |
+| `type`        | [models.McpApprovalRequestItemType](/docs/agent-sdk/typescript/api-reference/models/mcpapprovalrequestitemtype) | :heavy\_check\_mark: | N/A         |

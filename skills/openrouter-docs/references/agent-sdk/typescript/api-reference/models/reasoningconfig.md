@@ -25,7 +25,7 @@ let value: ReasoningConfig = {};
 
 | Field       | Type                                                                                                     | Required             | Description | Example |
 | ----------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | ------- |
-| `effort`    | [models.ReasoningEffort](/agent-sdk/typescript/api-reference/models/reasoningeffort)                     | :heavy\_minus\_sign: | N/A         | medium  |
-| `summary`   | [models.ReasoningSummaryVerbosity](/agent-sdk/typescript/api-reference/models/reasoningsummaryverbosity) | :heavy\_minus\_sign: | N/A         | auto    |
+| `effort`    | [models.ReasoningEffort](/docs/agent-sdk/typescript/api-reference/models/reasoningeffort)                     | :heavy\_minus\_sign: | N/A         | medium  |
+| `summary`   | [models.ReasoningSummaryVerbosity](/docs/agent-sdk/typescript/api-reference/models/reasoningsummaryverbosity) | :heavy\_minus\_sign: | N/A         | auto    |
 | `enabled`   | *boolean*                                                                                                | :heavy\_minus\_sign: | N/A         |         |
 | `maxTokens` | *number*                                                                                                 | :heavy\_minus\_sign: | N/A         |         |

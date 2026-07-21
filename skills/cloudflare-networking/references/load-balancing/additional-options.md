@@ -1,7 +1,7 @@
 ---
 title: Additional configuration
 description: Additional load balancing features and integrations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ Beyond [creating a simple load balancer](https://developers.cloudflare.com/load-
 * Increase visibility by [sending health monitor notifications to PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/#page","headline":"Additional configuration · Cloudflare Load Balancing docs","description":"Additional load balancing features and integrations.","url":"https://developers.cloudflare.com/load-balancing/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/#page","headline":"Additional configuration · Cloudflare Load Balancing docs","description":"Additional load balancing features and integrations.","url":"https://developers.cloudflare.com/load-balancing/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}}]}
 ```

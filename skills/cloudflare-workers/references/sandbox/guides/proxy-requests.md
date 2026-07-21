@@ -1,7 +1,7 @@
 ---
 title: Proxy requests to external APIs
 description: Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -447,6 +447,6 @@ transform: async (req, ctx) => {
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — simpler alternative for lower-risk credentials
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/#page","headline":"Proxy requests to external APIs · Cloudflare Sandbox SDK docs","description":"Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.","url":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/#page","headline":"Proxy requests to external APIs · Cloudflare Sandbox SDK docs","description":"Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.","url":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/proxy-requests/","name":"Proxy requests to external APIs"}}]}
 ```

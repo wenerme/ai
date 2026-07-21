@@ -1,7 +1,7 @@
 ---
 title: Sync recipient records
 description: Remove recipients after hard bounces and spam complaints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -276,6 +276,6 @@ Monitor the dead letter queue for failed events. Reprocess them after fixing the
 * [Workers KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) — account for propagation delays.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/sync-recipient-records/","name":"Sync recipient records"}}]}
 ```

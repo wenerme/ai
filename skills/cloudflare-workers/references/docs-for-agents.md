@@ -1,7 +1,7 @@
 ---
 title: Docs for agents
 description: Connect AI agents and LLMs to Cloudflare docs
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -130,6 +130,6 @@ The full Cloudflare API OpenAPI specification is available for AI coding tools, 
 For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/docs-for-agents/","name":"Docs for agents"}}]}
 ```

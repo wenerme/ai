@@ -563,6 +563,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Bad Request - Invalid request parameters or malformed input
+        '403':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 403
+                  message: Only management keys can perform this operation
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+          description: Forbidden - Authentication successful but insufficient permissions
         '500':
           content:
             application/json:
@@ -667,6 +677,27 @@ components:
       required:
         - error
       type: object
+    ForbiddenResponse:
+      description: Forbidden - Authentication successful but insufficient permissions
+      example:
+        error:
+          code: 403
+          message: Only management keys can perform this operation
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
     InternalServerResponse:
       description: Internal Server Error - Unexpected server error
       example:
@@ -735,6 +766,25 @@ components:
       example:
         code: 400
         message: Invalid request parameters
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    ForbiddenResponseErrorData:
+      description: Error data for ForbiddenResponse
+      example:
+        code: 403
+        message: Only management keys can perform this operation
       properties:
         code:
           type: integer

@@ -178,7 +178,7 @@ Organizations support role-based access control:
 
 If you need assistance with organization management:
 
-* **General Questions**: Check our [FAQ](/faq) for common questions
+* **General Questions**: Check our [FAQ](/docs/faq) for common questions
 * **Technical Support**: Email [support@openrouter.ai](mailto:support@openrouter.ai)
 * **Credit Transfers**: Email [support@openrouter.ai](mailto:support@openrouter.ai) with transfer requests
 * **Enterprise Sales**: Contact our sales team for large organization needs

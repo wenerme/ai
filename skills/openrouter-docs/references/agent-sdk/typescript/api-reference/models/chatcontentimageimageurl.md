@@ -25,5 +25,5 @@ let value: ChatContentImageImageUrl = {
 
 | Field    | Type                                                                                               | Required             | Description                             |
 | -------- | -------------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------- |
-| `detail` | [models.ChatContentImageDetail](/agent-sdk/typescript/api-reference/models/chatcontentimagedetail) | :heavy\_minus\_sign: | Image detail level for vision models    |
+| `detail` | [models.ChatContentImageDetail](/docs/agent-sdk/typescript/api-reference/models/chatcontentimagedetail) | :heavy\_minus\_sign: | Image detail level for vision models    |
 | `url`    | *string*                                                                                           | :heavy\_check\_mark: | URL of the image (data: URLs supported) |

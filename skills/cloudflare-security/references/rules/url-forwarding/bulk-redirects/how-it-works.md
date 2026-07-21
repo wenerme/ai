@@ -1,7 +1,7 @@
 ---
 title: How Bulk Redirects work
 description: How Bulk Redirects evaluate and match incoming requests.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ If there are two URL redirects with source URL hostnames `bar.com` and `foo.bar.
 4. URL redirects with a specific scheme (either `http` or `https`) win over URL redirects that match both schemes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#page","headline":"How Bulk Redirects work · Cloudflare Rules docs","description":"How Bulk Redirects evaluate and match incoming requests.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#page","headline":"How Bulk Redirects work · Cloudflare Rules docs","description":"How Bulk Redirects evaluate and match incoming requests.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/how-it-works/","name":"How Bulk Redirects work"}}]}
 ```

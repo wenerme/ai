@@ -31,4 +31,4 @@ let value: CreateAuthKeysCodeResponse = {
 
 | Field  | Type                                                                                         | Required             | Description    | Example                                                                           |
 | ------ | -------------------------------------------------------------------------------------------- | -------------------- | -------------- | --------------------------------------------------------------------------------- |
-| `data` | [operations.CreateAuthKeysCodeData](/agent-sdk/typescript/operations/createauthkeyscodedata) | :heavy\_check\_mark: | Auth code data | `{"id": "auth_code_xyz789","app_id": 12345,"created_at": "2025-08-24T10:30:00Z"}` |
+| `data` | [operations.CreateAuthKeysCodeData](/docs/agent-sdk/typescript/operations/createauthkeyscodedata) | :heavy\_check\_mark: | Auth code data | `{"id": "auth_code_xyz789","app_id": 12345,"created_at": "2025-08-24T10:30:00Z"}` |

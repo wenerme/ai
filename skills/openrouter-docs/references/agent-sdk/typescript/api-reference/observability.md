@@ -25,7 +25,7 @@ Observability endpoints
 
 ## list
 
-List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/guides/overview/auth/management-api-keys) required.
+List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -86,14 +86,14 @@ run();
 
 | Parameter              | Type                                                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.ListObservabilityDestinationsRequest](/agent-sdk/typescript/api-reference/operations/listobservabilitydestinationsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.ListObservabilityDestinationsRequest](/docs/agent-sdk/typescript/api-reference/operations/listobservabilitydestinationsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListObservabilityDestinationsResponse](/agent-sdk/typescript/api-reference/operations/listobservabilitydestinationsresponse)>**
+**Promise\<[operations.ListObservabilityDestinationsResponse](/docs/agent-sdk/typescript/api-reference/operations/listobservabilitydestinationsresponse)>**
 
 ### Errors
 
@@ -105,7 +105,7 @@ run();
 
 ## create
 
-Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/guides/overview/auth/management-api-keys) required.
+Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -182,14 +182,14 @@ run();
 
 | Parameter              | Type                                                                                                                                     | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreateObservabilityDestinationRequest](/agent-sdk/typescript/api-reference/operations/createobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreateObservabilityDestinationRequest](/docs/agent-sdk/typescript/api-reference/operations/createobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                           | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                  | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreateObservabilityDestinationResponse](/agent-sdk/typescript/api-reference/models/createobservabilitydestinationresponse)>**
+**Promise\<[models.CreateObservabilityDestinationResponse](/docs/agent-sdk/typescript/api-reference/models/createobservabilitydestinationresponse)>**
 
 ### Errors
 
@@ -204,7 +204,7 @@ run();
 
 ## delete
 
-Delete an existing observability destination. This performs a soft delete. [Management key](/guides/overview/auth/management-api-keys) required.
+Delete an existing observability destination. This performs a soft delete. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -265,14 +265,14 @@ run();
 
 | Parameter              | Type                                                                                                                                     | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.DeleteObservabilityDestinationRequest](/agent-sdk/typescript/api-reference/operations/deleteobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.DeleteObservabilityDestinationRequest](/docs/agent-sdk/typescript/api-reference/operations/deleteobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                           | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                  | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.DeleteObservabilityDestinationResponse](/agent-sdk/typescript/api-reference/models/deleteobservabilitydestinationresponse)>**
+**Promise\<[models.DeleteObservabilityDestinationResponse](/docs/agent-sdk/typescript/api-reference/models/deleteobservabilitydestinationresponse)>**
 
 ### Errors
 
@@ -285,7 +285,7 @@ run();
 
 ## get
 
-Fetch a single observability destination by its UUID. [Management key](/guides/overview/auth/management-api-keys) required.
+Fetch a single observability destination by its UUID. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -346,14 +346,14 @@ run();
 
 | Parameter              | Type                                                                                                                               | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.GetObservabilityDestinationRequest](/agent-sdk/typescript/api-reference/operations/getobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.GetObservabilityDestinationRequest](/docs/agent-sdk/typescript/api-reference/operations/getobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                     | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                            | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                 | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                 | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetObservabilityDestinationResponse](/agent-sdk/typescript/api-reference/models/getobservabilitydestinationresponse)>**
+**Promise\<[models.GetObservabilityDestinationResponse](/docs/agent-sdk/typescript/api-reference/models/getobservabilitydestinationresponse)>**
 
 ### Errors
 
@@ -366,7 +366,7 @@ run();
 
 ## update
 
-Update an existing observability destination. Only the fields provided in the request body are updated. [Management key](/guides/overview/auth/management-api-keys) required.
+Update an existing observability destination. Only the fields provided in the request body are updated. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -435,14 +435,14 @@ run();
 
 | Parameter              | Type                                                                                                                                     | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.UpdateObservabilityDestinationRequest](/agent-sdk/typescript/api-reference/operations/updateobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.UpdateObservabilityDestinationRequest](/docs/agent-sdk/typescript/api-reference/operations/updateobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                           | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                  | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.UpdateObservabilityDestinationResponse](/agent-sdk/typescript/api-reference/models/updateobservabilitydestinationresponse)>**
+**Promise\<[models.UpdateObservabilityDestinationResponse](/docs/agent-sdk/typescript/api-reference/models/updateobservabilitydestinationresponse)>**
 
 ### Errors
 

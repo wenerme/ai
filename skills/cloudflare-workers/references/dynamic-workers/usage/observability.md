@@ -1,7 +1,7 @@
 ---
 title: Observability
 description: Capture, retrieve, and forward logs from dynamic Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -154,6 +154,6 @@ const logs = await logWaiter.getLogs(1000);
 For a full working implementation, refer to the [Dynamic Workers Playground example ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/observability/#page","headline":"Observability · Cloudflare Dynamic Workers docs","description":"Capture, retrieve, and forward logs from dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/observability/#page","headline":"Observability · Cloudflare Dynamic Workers docs","description":"Capture, retrieve, and forward logs from dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/observability/","name":"Observability"}}]}
 ```

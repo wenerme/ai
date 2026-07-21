@@ -1,7 +1,7 @@
 ---
 title: Convert partial setup to full setup
 description: If you initially set up a partial domain on Cloudflare, you can later migrate it to a full setup.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ Once all the DNS TTLs expire, all your DNS queries will be answered by the Cloud
 Start proxying additional hostnames by enabling the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) (also known as orange-clouding) for specific DNS records. Previously proxied subdomains will continue to be proxied without any interruption.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/#page","headline":"Convert partial setup to full setup · Cloudflare DNS docs","description":"If you initially set up a partial domain on Cloudflare, you can later migrate it to a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/#page","headline":"Convert partial setup to full setup · Cloudflare DNS docs","description":"If you initially set up a partial domain on Cloudflare, you can later migrate it to a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/conversions/","name":"DNS setup conversions"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/conversions/convert-partial-to-full/","name":"Convert partial setup to full setup"}}]}
 ```

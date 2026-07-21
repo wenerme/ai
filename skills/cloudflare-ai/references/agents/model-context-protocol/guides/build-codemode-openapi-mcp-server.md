@@ -1,7 +1,7 @@
 ---
 title: Build a search and execute MCP server
 description: Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -299,6 +299,6 @@ Have model-written code select, map, aggregate, or paginate data before returnin
 Truncation does not reduce API work already performed. Return focused identifiers, status fields, counts, and errors that support the model's next decision.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","name":"Build a search and execute MCP server"}}]}
 ```

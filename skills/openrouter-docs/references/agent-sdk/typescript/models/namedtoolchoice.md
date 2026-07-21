@@ -29,4 +29,4 @@ let value: NamedToolChoice = {
 | Field      | Type                                                                                   | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"function"*                                                                           | :heavy\_check\_mark: | N/A         |
-| `function` | [models.NamedToolChoiceFunction](/agent-sdk/typescript/models/namedtoolchoicefunction) | :heavy\_check\_mark: | N/A         |
+| `function` | [models.NamedToolChoiceFunction](/docs/agent-sdk/typescript/models/namedtoolchoicefunction) | :heavy\_check\_mark: | N/A         |

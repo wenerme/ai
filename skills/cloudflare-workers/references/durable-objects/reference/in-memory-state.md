@@ -1,7 +1,7 @@
 ---
 title: In-memory state in a Durable Object
 description: Store and access transient in-memory state within a Durable Object instance between requests.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ Observe in-memory state size
 You can monitor V8 isolate memory usage — which includes the in-memory state your Durable Objects hold — with the **Memory usage** chart on the **Metrics** tab. Memory is measured per isolate (which can host multiple Durable Objects), not per object. Refer to [Metrics and analytics](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#memory-usage) for details, including how filtering by Durable Object ID or name affects what the chart shows. Because in-memory state is not preserved across [eviction or hibernation](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/), persist anything important to [storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/in-memory-state/#page","headline":"In-memory state in a Durable Object · Cloudflare Durable Objects docs","description":"Store and access transient in-memory state within a Durable Object instance between requests.","url":"https://developers.cloudflare.com/durable-objects/reference/in-memory-state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/in-memory-state/#page","headline":"In-memory state in a Durable Object · Cloudflare Durable Objects docs","description":"Store and access transient in-memory state within a Durable Object instance between requests.","url":"https://developers.cloudflare.com/durable-objects/reference/in-memory-state/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/in-memory-state/","name":"In-memory state in a Durable Object"}}]}
 ```

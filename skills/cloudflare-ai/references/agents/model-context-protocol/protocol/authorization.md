@@ -1,7 +1,7 @@
 ---
 title: Authorization
 description: Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -290,6 +290,6 @@ Checking inside the handler returns an error message to the LLM, which can expla
 [ MCP portals ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) Set up MCP portals to provide governance and security.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization · Cloudflare Agents docs","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization · Cloudflare Agents docs","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/authorization/","name":"Authorization"}}]}
 ```

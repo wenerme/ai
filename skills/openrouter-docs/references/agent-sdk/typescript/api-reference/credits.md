@@ -21,7 +21,7 @@ Credit management endpoints
 
 ## getCredits
 
-Get total credits purchased and used for the authenticated user. [Management key](/guides/overview/auth/management-api-keys) required.
+Get total credits purchased and used for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -78,14 +78,14 @@ run();
 
 | Parameter              | Type                                                                                             | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.GetCreditsRequest](/agent-sdk/typescript/api-reference/operations/getcreditsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.GetCreditsRequest](/docs/agent-sdk/typescript/api-reference/operations/getcreditsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                   | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)          | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.GetCreditsResponse](/agent-sdk/typescript/api-reference/operations/getcreditsresponse)>**
+**Promise\<[operations.GetCreditsResponse](/docs/agent-sdk/typescript/api-reference/operations/getcreditsresponse)>**
 
 ### Errors
 

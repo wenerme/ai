@@ -26,5 +26,5 @@ let value: ContentWebSearchToolResultError = {
 
 | Field       | Type                                                                                                           | Required             | Description |
 | ----------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `errorCode` | [models.ErrorCode](/agent-sdk/typescript/api-reference/models/errorcode)                                       | :heavy\_check\_mark: | N/A         |
-| `type`      | [models.TypeWebSearchToolResultError](/agent-sdk/typescript/api-reference/models/typewebsearchtoolresulterror) | :heavy\_check\_mark: | N/A         |
+| `errorCode` | [models.ErrorCode](/docs/agent-sdk/typescript/api-reference/models/errorcode)                                       | :heavy\_check\_mark: | N/A         |
+| `type`      | [models.TypeWebSearchToolResultError](/docs/agent-sdk/typescript/api-reference/models/typewebsearchtoolresulterror) | :heavy\_check\_mark: | N/A         |

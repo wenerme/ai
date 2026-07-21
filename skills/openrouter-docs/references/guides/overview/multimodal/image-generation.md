@@ -106,7 +106,7 @@ An absent key means the parameter is unsupported by that endpoint.
 
 ### Via the Models API
 
-You can also discover image models through the general [Models API](/api/api-reference/models/list-all-models-and-their-properties):
+You can also discover image models through the general [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties):
 
 ```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/models?output_modalities=image"
@@ -114,7 +114,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=image"
 
 ### On the Models Page
 
-Visit the [Models page](/models) and filter by output modalities to find models with image generation capabilities.
+Visit the [Models page](/docs/models) and filter by output modalities to find models with image generation capabilities.
 
 ## API Usage
 
@@ -323,7 +323,7 @@ The Image API supports these routing fields:
 * `sort` — sort eligible endpoints by `price`, `throughput`, or `latency`.
 * `allow_fallbacks` — when `false`, stop after the primary provider instead of trying another eligible provider.
 
-Use `provider_tag` from the [per-endpoint records](#per-endpoint-records) as the base provider slug. See [Provider Routing](/guides/routing/provider-selection) for the routing behavior shared across OpenRouter APIs.
+Use `provider_tag` from the [per-endpoint records](#per-endpoint-records) as the base provider slug. See [Provider Routing](/docs/guides/routing/provider-selection) for the routing behavior shared across OpenRouter APIs.
 
 ### Provider-Specific Options
 

@@ -1,7 +1,7 @@
 ---
 title: Threat intelligence
 description: Match incoming requests against Cloudforce One threat intelligence in WAF rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ The WAF must be enabled on your zone before threat intelligence fields can be us
 * [Threat Events](https://developers.cloudflare.com/security-center/cloudforce-one/) — Investigate threats in the Cloudforce One dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/#page","headline":"Threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Match incoming requests against Cloudforce One threat intelligence in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/#page","headline":"Threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Match incoming requests against Cloudforce One threat intelligence in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/threat-intelligence/","name":"Threat intelligence"}}]}
 ```

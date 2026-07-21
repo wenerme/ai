@@ -1,7 +1,7 @@
 ---
 title: What is load balancing?
 description: Distribute traffic across multiple servers efficiently.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ A load balancer spreads requests across your servers, which prevents any one ser
 For more background information on load balancers, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/performance/what-is-load-balancing/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancing/#page","headline":"What is load balancing? · Cloudflare Learning Paths","description":"Distribute traffic across multiple servers efficiently.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancing/#page","headline":"What is load balancing? · Cloudflare Learning Paths","description":"Distribute traffic across multiple servers efficiently.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/concepts/load-balancing/","name":"What is load balancing?"}}]}
 ```

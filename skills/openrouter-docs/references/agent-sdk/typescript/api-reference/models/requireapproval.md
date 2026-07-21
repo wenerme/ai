@@ -23,5 +23,5 @@ let value: RequireApproval = {};
 
 | Field    | Type                                                               | Required             | Description |
 | -------- | ------------------------------------------------------------------ | -------------------- | ----------- |
-| `always` | [models.Always](/agent-sdk/typescript/api-reference/models/always) | :heavy\_minus\_sign: | N/A         |
-| `never`  | [models.Never](/agent-sdk/typescript/api-reference/models/never)   | :heavy\_minus\_sign: | N/A         |
+| `always` | [models.Always](/docs/agent-sdk/typescript/api-reference/models/always) | :heavy\_minus\_sign: | N/A         |
+| `never`  | [models.Never](/docs/agent-sdk/typescript/api-reference/models/never)   | :heavy\_minus\_sign: | N/A         |

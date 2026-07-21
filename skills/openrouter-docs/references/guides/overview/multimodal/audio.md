@@ -54,7 +54,7 @@ Send audio files to compatible models for transcription, analysis, and processin
 
 **Note**: Audio files must be **base64-encoded** - direct URLs are not supported for audio content.
 
-You can search for models that support audio input by filtering to audio input modality on our [Models page](/guides/overview/models).
+You can search for models that support audio input by filtering to audio input modality on our [Models page](/docs/guides/overview/models).
 
 ### Sending Audio Files
 
@@ -224,7 +224,7 @@ Supported audio formats vary by provider. Common formats include:
 
 OpenRouter supports receiving audio responses from models that have audio output capabilities. To request audio output, include the `modalities` and `audio` parameters in your request.
 
-You can search for models that support audio output by filtering to audio output modality on our [Models page](/guides/overview/models).
+You can search for models that support audio output by filtering to audio output modality on our [Models page](/docs/guides/overview/models).
 
 ### Requesting Audio Output
 

@@ -1,7 +1,7 @@
 ---
 title: Rollouts
 description: Configure rolling deployments for Containers, including step percentages and grace periods for active instances.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -99,6 +99,6 @@ pnpm wrangler deploy --containers-rollout=immediate
 Note that `rollout_active_grace_period`, if configured, will still apply.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/rollouts/#page","headline":"Rollouts · Cloudflare Containers docs","description":"Configure rolling deployments for Containers, including step percentages and grace periods for active instances.","url":"https://developers.cloudflare.com/containers/platform-details/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/rollouts/#page","headline":"Rollouts · Cloudflare Containers docs","description":"Configure rolling deployments for Containers, including step percentages and grace periods for active instances.","url":"https://developers.cloudflare.com/containers/platform-details/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/rollouts/","name":"Rollouts"}}]}
 ```

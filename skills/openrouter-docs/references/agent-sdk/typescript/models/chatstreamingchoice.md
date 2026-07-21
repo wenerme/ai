@@ -27,7 +27,7 @@ let value: ChatStreamingChoice = {
 
 | Field          | Type                                                                                         | Required             | Description |
 | -------------- | -------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `delta`        | [models.ChatStreamingMessageChunk](/agent-sdk/typescript/models/chatstreamingmessagechunk)   | :heavy\_check\_mark: | N/A         |
-| `finishReason` | [models.ChatCompletionFinishReason](/agent-sdk/typescript/models/chatcompletionfinishreason) | :heavy\_check\_mark: | N/A         |
+| `delta`        | [models.ChatStreamingMessageChunk](/docs/agent-sdk/typescript/models/chatstreamingmessagechunk)   | :heavy\_check\_mark: | N/A         |
+| `finishReason` | [models.ChatCompletionFinishReason](/docs/agent-sdk/typescript/models/chatcompletionfinishreason) | :heavy\_check\_mark: | N/A         |
 | `index`        | *number*                                                                                     | :heavy\_check\_mark: | N/A         |
-| `logprobs`     | [models.ChatMessageTokenLogprobs](/agent-sdk/typescript/models/chatmessagetokenlogprobs)     | :heavy\_minus\_sign: | N/A         |
+| `logprobs`     | [models.ChatMessageTokenLogprobs](/docs/agent-sdk/typescript/models/chatmessagetokenlogprobs)     | :heavy\_minus\_sign: | N/A         |

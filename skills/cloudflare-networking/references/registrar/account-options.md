@@ -1,7 +1,7 @@
 ---
 title: Registration options
 description: Explore Cloudflare Registrar account options.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ WHOIS redaction ](https://developers.cloudflare.com/registrar/account-options/whois-redaction/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/registrar/account-options/#page","headline":"Registration options · Cloudflare Registrar docs","description":"Explore Cloudflare Registrar account options.","url":"https://developers.cloudflare.com/registrar/account-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/registrar/account-options/#page","headline":"Registration options · Cloudflare Registrar docs","description":"Explore Cloudflare Registrar account options.","url":"https://developers.cloudflare.com/registrar/account-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}}]}
 ```

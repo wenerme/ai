@@ -1,7 +1,7 @@
 ---
 title: Ruleset logic
 description: How Network Firewall rulesets evaluate and match traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ Cloudflare maintains the expressions and order of execution for rules in the Man
 Refer to [Enable managed rulesets](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#page","headline":"Cloudflare Network Firewall ruleset logic · Cloudflare Network Firewall docs","description":"How Network Firewall rulesets evaluate and match traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#page","headline":"Cloudflare Network Firewall ruleset logic · Cloudflare Network Firewall docs","description":"How Network Firewall rulesets evaluate and match traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/about/ruleset-logic/","name":"Ruleset logic"}}]}
 ```

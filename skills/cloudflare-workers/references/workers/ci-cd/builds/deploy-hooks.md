@@ -1,7 +1,7 @@
 ---
 title: Deploy Hooks
 description: Generate unique URLs that trigger new builds when they receive an HTTP POST request.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -215,6 +215,6 @@ If your external system supports custom headers, you can call the [manual build 
 Deploy Hooks are rate limited to 10 builds per minute per Worker and 100 builds per minute per account. For all Workers Builds limits, see [Limits & pricing](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Workers docs","description":"Generate unique URLs that trigger new builds when they receive an HTTP POST request.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Workers docs","description":"Generate unique URLs that trigger new builds when they receive an HTTP POST request.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/deploy-hooks/","name":"Deploy Hooks"}}]}
 ```

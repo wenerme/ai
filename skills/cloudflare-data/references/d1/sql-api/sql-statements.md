@@ -1,7 +1,7 @@
 ---
 title: SQL statements
 description: Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -498,6 +498,6 @@ results:  [...]
 * Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and debug issues before deploying.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/sql-statements/#page","headline":"SQL statements · Cloudflare D1 docs","description":"Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.","url":"https://developers.cloudflare.com/d1/sql-api/sql-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/sql-statements/#page","headline":"SQL statements · Cloudflare D1 docs","description":"Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.","url":"https://developers.cloudflare.com/d1/sql-api/sql-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/sql-statements/","name":"SQL statements"}}]}
 ```

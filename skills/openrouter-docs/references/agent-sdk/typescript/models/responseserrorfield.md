@@ -28,5 +28,5 @@ let value: ResponsesErrorField = {
 
 | Field     | Type                                                     | Required             | Description |
 | --------- | -------------------------------------------------------- | -------------------- | ----------- |
-| `code`    | [models.CodeEnum](/agent-sdk/typescript/models/codeenum) | :heavy\_check\_mark: | N/A         |
+| `code`    | [models.CodeEnum](/docs/agent-sdk/typescript/models/codeenum) | :heavy\_check\_mark: | N/A         |
 | `message` | *string*                                                 | :heavy\_check\_mark: | N/A         |

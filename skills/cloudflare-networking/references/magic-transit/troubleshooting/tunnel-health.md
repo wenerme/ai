@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot tunnel health
 description: Troubleshoot Magic Transit tunnel health issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -476,6 +476,6 @@ Collect output from these commands (syntax varies by vendor):
 * [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Traffic analysis tools
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/#page","headline":"Troubleshoot tunnel health · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit tunnel health issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/#page","headline":"Troubleshoot tunnel health · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit tunnel health issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/tunnel-health/","name":"Troubleshoot tunnel health"}}]}
 ```

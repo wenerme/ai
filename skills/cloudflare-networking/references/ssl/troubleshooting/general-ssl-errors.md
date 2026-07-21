@@ -1,7 +1,7 @@
 ---
 title: General SSL errors
 description: Learn how to troubleshoot various SSL/TLS errors with Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -168,6 +168,6 @@ When clicking `Approve Certificate` on a Certificate Approval renewal email, you
 Check the status of the certificate on the [Cloudflare dashboard ↗](https://dash.cloudflare.com?to=/:account/:zone/ssl-tls). If the status is `Active`, you can disregard this email and the error message.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/#page","headline":"General SSL errors · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot various SSL/TLS errors with Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/#page","headline":"General SSL errors · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot various SSL/TLS errors with Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/general-ssl-errors/","name":"General SSL errors"}}]}
 ```

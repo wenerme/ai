@@ -1,7 +1,7 @@
 ---
 title: Make comparisons
 description: Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -141,6 +141,6 @@ This shows how traffic dropped to almost zero during the outage. If we chart it 
 Refer to the Investigate section to drill down on the data Radar returns, such as [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/making-comparisons/#page","headline":"Make comparisons · Cloudflare Radar docs","description":"Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.","url":"https://developers.cloudflare.com/radar/get-started/making-comparisons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/making-comparisons/#page","headline":"Make comparisons · Cloudflare Radar docs","description":"Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.","url":"https://developers.cloudflare.com/radar/get-started/making-comparisons/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/get-started/making-comparisons/","name":"Make comparisons"}}]}
 ```

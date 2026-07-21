@@ -7,7 +7,7 @@
 > Scaffold a custom AI agent with a fully customizable terminal interface using an AI coding agent
 
 <Info>
-  Looking to build a headless agent for scripts, pipelines, or API servers instead? See the [Build Your Own Headless Agent](/cookbook/building-agents/create-headless-agent) guide.
+  Looking to build a headless agent for scripts, pipelines, or API servers instead? See the [Build Your Own Headless Agent](/docs/cookbook/building-agents/create-headless-agent) guide.
 </Info>
 
 The [create-agent-tui](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui) skill scaffolds a complete agent TUI (terminal user interface) in TypeScript — like `create-react-app` for terminal agents. Tell your AI coding agent what kind of agent you want, and it generates a runnable project targeting [OpenRouter](https://openrouter.ai) with a fully customizable terminal interface, tools, and configuration.
@@ -310,6 +310,6 @@ Here's a demo app built entirely by the agent TUI skill — a GitHub trending re
 * [Create Agent TUI skill README](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui)
 * [OpenRouter Skills repository](https://github.com/OpenRouterTeam/skills)
 * [`@openrouter/agent` on npm](https://www.npmjs.com/package/@openrouter/agent)
-* [OpenRouter TypeScript SDK](/client-sdks/typescript)
-* [Server Tools documentation](/guides/features/server-tools)
+* [OpenRouter TypeScript SDK](/docs/client-sdks/typescript)
+* [Server Tools documentation](/docs/guides/features/server-tools)
 * [OpenRouter API keys](https://openrouter.ai/settings/keys)

@@ -87,7 +87,7 @@ export ANTHROPIC_API_KEY=""
 
 Verify by running `/status` in a Claude Code session.
 See the full
-[Claude Code integration guide](/cookbook/coding-agents/claude-code-integration)
+[Claude Code integration guide](/docs/cookbook/coding-agents/claude-code-integration)
 for details.
 
 ### Codex CLI
@@ -125,7 +125,7 @@ OpenRouter provider.
 </Warning>
 
 See the full
-[Codex CLI integration guide](/cookbook/coding-agents/codex-cli)
+[Codex CLI integration guide](/docs/cookbook/coding-agents/codex-cli)
 for details.
 
 ## Understanding the Stop Hook
@@ -748,6 +748,6 @@ baseline snapshot taken before Claude's response).
 ## Resources
 
 * [Reference implementation (redline)](https://github.com/alexanderatallah/redline)
-* [Claude Code integration](/cookbook/coding-agents/claude-code-integration)
-* [Codex CLI integration](/cookbook/coding-agents/codex-cli)
+* [Claude Code integration](/docs/cookbook/coding-agents/claude-code-integration)
+* [Codex CLI integration](/docs/cookbook/coding-agents/codex-cli)
 * [OpenRouter Activity Dashboard](https://openrouter.ai/activity)

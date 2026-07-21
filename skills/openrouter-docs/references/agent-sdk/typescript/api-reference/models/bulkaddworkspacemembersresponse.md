@@ -35,4 +35,4 @@ let value: BulkAddWorkspaceMembersResponse = {
 | Field        | Type                                                                                    | Required             | Description                                        | Example |
 | ------------ | --------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------- | ------- |
 | `addedCount` | *number*                                                                                | :heavy\_check\_mark: | Number of workspace memberships created or updated | 2       |
-| `data`       | [models.WorkspaceMember](/agent-sdk/typescript/api-reference/models/workspacemember)\[] | :heavy\_check\_mark: | List of added workspace memberships                |         |
+| `data`       | [models.WorkspaceMember](/docs/agent-sdk/typescript/api-reference/models/workspacemember)\[] | :heavy\_check\_mark: | List of added workspace memberships                |         |

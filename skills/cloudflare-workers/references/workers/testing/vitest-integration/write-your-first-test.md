@@ -1,7 +1,7 @@
 ---
 title: Write your first test
 description: Write tests against Workers using Vitest
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -262,6 +262,6 @@ When using `exports.default.fetch()` for integration tests, your Worker code run
 * [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/write-your-first-test/","name":"Write your first test"}}]}
 ```

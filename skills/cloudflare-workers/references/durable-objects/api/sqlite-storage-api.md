@@ -1,7 +1,7 @@
 ---
 title: SQLite-backed Durable Object Storage
 description: API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -737,6 +737,6 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 * [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/sqlite-storage-api/","name":"SQLite-backed Durable Object Storage"}}]}
 ```

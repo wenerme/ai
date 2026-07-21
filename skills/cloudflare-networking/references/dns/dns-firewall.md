@@ -1,7 +1,7 @@
 ---
 title: DNS Firewall
 description: Protect and accelerate authoritative nameservers with DNS-level caching and DDoS mitigation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ DNS Firewall provides the following benefits while allowing your organization to
 * DNS [ANY ↗](https://datatracker.ietf.org/doc/html/rfc8482) query type block
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/dns-firewall/#page","headline":"DNS Firewall · Cloudflare DNS docs","description":"Protect and accelerate authoritative nameservers with DNS-level caching and DDoS mitigation.","url":"https://developers.cloudflare.com/dns/dns-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/dns-firewall/#page","headline":"DNS Firewall · Cloudflare DNS docs","description":"Protect and accelerate authoritative nameservers with DNS-level caching and DDoS mitigation.","url":"https://developers.cloudflare.com/dns/dns-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dns-firewall/","name":"DNS Firewall"}}]}
 ```

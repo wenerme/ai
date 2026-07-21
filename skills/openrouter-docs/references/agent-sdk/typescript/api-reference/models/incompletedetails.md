@@ -23,4 +23,4 @@ let value: IncompleteDetails = {};
 
 | Field    | Type                                                               | Required             | Description |
 | -------- | ------------------------------------------------------------------ | -------------------- | ----------- |
-| `reason` | [models.Reason](/agent-sdk/typescript/api-reference/models/reason) | :heavy\_minus\_sign: | N/A         |
+| `reason` | [models.Reason](/docs/agent-sdk/typescript/api-reference/models/reason) | :heavy\_minus\_sign: | N/A         |

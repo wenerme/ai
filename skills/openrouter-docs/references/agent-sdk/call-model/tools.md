@@ -163,7 +163,7 @@ const approvePaymentTool = tool({
 When `onToolCalled` returns `null`, the conversation state moves to `status: 'awaiting_hitl'` and the paused call surfaces via `getToolCalls()` / `getPendingToolCalls()`. Resume by calling `callModel` again with a `function_call_output` item for each paused call in the input.
 
 <Note>
-  HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/agent-sdk/call-model/tool-approval-state).
+  HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state).
 </Note>
 
 ## Schema Definition
@@ -949,7 +949,7 @@ const longRunningTool = tool({
 
 ## Next Steps
 
-* **[Tool Approval & State](/agent-sdk/call-model/tool-approval-state)** - Human-in-the-loop approval and conversation persistence
-* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** - Tool-driven context injection
-* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Advanced execution control
-* **[Examples](/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations
+* **[Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state)** - Human-in-the-loop approval and conversation persistence
+* **[nextTurnParams](/docs/agent-sdk/call-model/next-turn-params)** - Tool-driven context injection
+* **[Stop Conditions](/docs/agent-sdk/call-model/stop-conditions)** - Advanced execution control
+* **[Examples](/docs/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations

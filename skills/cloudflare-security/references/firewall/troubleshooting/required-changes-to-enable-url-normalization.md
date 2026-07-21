@@ -1,7 +1,7 @@
 ---
 title: Required firewall rule changes to enable URL normalization
 description: Update firewall rules for URL normalization.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ A Cloudflare user must have the [Firewall role](https://developers.cloudflare.co
 * [Transform Rules](https://developers.cloudflare.com/rules/transform/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/#page","headline":"Required firewall rule changes to enable URL normalization · Cloudflare Firewall Rules (deprecated) docs","description":"Update firewall rules for URL normalization.","url":"https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/#page","headline":"Required firewall rule changes to enable URL normalization · Cloudflare Firewall Rules (deprecated) docs","description":"Update firewall rules for URL normalization.","url":"https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/troubleshooting/required-changes-to-enable-url-normalization/","name":"Required firewall rule changes to enable URL normalization"}}]}
 ```

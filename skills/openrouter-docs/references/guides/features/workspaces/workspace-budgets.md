@@ -9,7 +9,7 @@
 Workspace budgets let you cap how much a workspace can spend on OpenRouter inference. Set a dollar limit on any combination of intervals — daily, weekly, monthly, or lifetime — and OpenRouter blocks requests automatically once a limit is reached.
 
 <Note>
-  Workspace budgets are available on the **Enterprise** plan. In the dashboard, only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Programmatic budget management uses organization [management API keys](/guides/overview/auth/management-api-keys), which operate at the account level. Contact [sales](https://openrouter.ai/contact/sales) to get started.
+  Workspace budgets are available on the **Enterprise** plan. In the dashboard, only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Programmatic budget management uses organization [management API keys](/docs/guides/overview/auth/management-api-keys), which operate at the account level. Contact [sales](https://openrouter.ai/contact/sales) to get started.
 </Note>
 
 ## How It Works
@@ -59,7 +59,7 @@ Each budget row shows a progress bar with current-period spend against the limit
 
 ## Setting Budgets via the API
 
-You can also manage budgets programmatically using an organization [management API key](/guides/overview/auth/management-api-keys). Management keys operate at the account level and can perform administrative actions across all workspaces. The budget endpoints live under `/api/v1/workspaces/{id}/budgets`.
+You can also manage budgets programmatically using an organization [management API key](/docs/guides/overview/auth/management-api-keys). Management keys operate at the account level and can perform administrative actions across all workspaces. The budget endpoints live under `/api/v1/workspaces/{id}/budgets`.
 
 ### List Budgets
 

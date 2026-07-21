@@ -48,7 +48,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 The Fusion plugin gives your model access to a multi-model deliberation tool. When the model invokes it, a panel of models answers your prompt in parallel (with `openrouter:web_search`), a judge compares their responses and returns structured analysis, and your model uses that analysis to write a better final answer.
 
-The Fusion plugin is a configuration surface for the [`openrouter:fusion` server tool](/guides/features/server-tools/fusion). It's also the mechanism behind the [`openrouter/fusion` model alias](/guides/routing/routers/fusion-router). All three entry points hit the same pipeline.
+The Fusion plugin is a configuration surface for the [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion). It's also the mechanism behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router). All three entry points hit the same pipeline.
 
 ## When to use Fusion
 
@@ -233,8 +233,8 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge 
 
 ## Related
 
-* [`openrouter:fusion` server tool](/guides/features/server-tools/fusion)
-* [Fusion Router (`openrouter/fusion`)](/guides/routing/routers/fusion-router)
-* [Web Search server tool](/guides/features/server-tools/web-search)
-* [Web Fetch server tool](/guides/features/server-tools/web-fetch)
+* [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion)
+* [Fusion Router (`openrouter/fusion`)](/docs/guides/routing/routers/fusion-router)
+* [Web Search server tool](/docs/guides/features/server-tools/web-search)
+* [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
 * [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground

@@ -1,7 +1,7 @@
 ---
 title: Gemini 2.5 Pro
 description: Google's most capable Gemini 2.5 model with strong reasoning, thinking support, and a 1M token context window.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -778,6 +778,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/sche
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/#page","headline":"Gemini 2.5 Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's most capable Gemini 2.5 model with strong reasoning, thinking support, and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/#page","headline":"Gemini 2.5 Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's most capable Gemini 2.5 model with strong reasoning, thinking support, and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

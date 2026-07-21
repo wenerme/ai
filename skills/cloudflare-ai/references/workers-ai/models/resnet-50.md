@@ -1,7 +1,7 @@
 ---
 title: resnet-50
 description: 50 layers deep image classification CNN trained on more than 1M images from ImageNet
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -99,6 +99,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-i
 Output [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/resnet-50/#page","headline":"resnet-50 (Microsoft) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"50 layers deep image classification CNN trained on more than 1M images from ImageNet","url":"https://developers.cloudflare.com/workers-ai/models/resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/resnet-50/#page","headline":"resnet-50 (Microsoft) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"50 layers deep image classification CNN trained on more than 1M images from ImageNet","url":"https://developers.cloudflare.com/workers-ai/models/resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

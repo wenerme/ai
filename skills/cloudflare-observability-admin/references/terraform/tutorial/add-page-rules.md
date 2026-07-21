@@ -1,7 +1,7 @@
 ---
 title: 5 – Add exceptions with Page Rules
 description: Page Rules let you override zone settings for specific URL patterns. Redirects old URLs with a 301 permanent redirect.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -109,6 +109,6 @@ git push
 The call works as expected. In the first case, the Cloudflare global network responds with a `301` redirecting the browser to the new location. In the second case, the Cloudflare global network initially responds with a `503`, which is consistent with the Under Attack mode.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/#page","headline":"Add exceptions with Page Rules · Cloudflare Terraform docs","description":"Page Rules let you override zone settings for specific URL patterns. Redirects old URLs with a 301 permanent redirect.","url":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/#page","headline":"Add exceptions with Page Rules · Cloudflare Terraform docs","description":"Page Rules let you override zone settings for specific URL patterns. Redirects old URLs with a 301 permanent redirect.","url":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/add-page-rules/","name":"5 – Add exceptions with Page Rules"}}]}
 ```

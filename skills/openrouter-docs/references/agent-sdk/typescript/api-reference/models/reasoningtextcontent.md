@@ -27,4 +27,4 @@ let value: ReasoningTextContent = {
 | Field  | Type                                                                                                   | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `text` | *string*                                                                                               | :heavy\_check\_mark: | N/A         |
-| `type` | [models.ReasoningTextContentType](/agent-sdk/typescript/api-reference/models/reasoningtextcontenttype) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.ReasoningTextContentType](/docs/agent-sdk/typescript/api-reference/models/reasoningtextcontenttype) | :heavy\_check\_mark: | N/A         |

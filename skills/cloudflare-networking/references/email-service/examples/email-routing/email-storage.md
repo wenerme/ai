@@ -1,7 +1,7 @@
 ---
 title: Email storage and processing
 description: Store incoming emails in KV and process them with Queues for support tickets and workflow automation in Email Service.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -526,6 +526,6 @@ async function processGeneral(
 * [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect and process bounce notifications.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/#page","headline":"Email storage and processing · Cloudflare Email Service docs","description":"Store incoming emails in KV and process them with Queues for support tickets and workflow automation in Email Service.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/#page","headline":"Email storage and processing · Cloudflare Email Service docs","description":"Store incoming emails in KV and process them with Queues for support tickets and workflow automation in Email Service.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-routing/","name":"Email routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-routing/email-storage/","name":"Email storage and processing"}}]}
 ```

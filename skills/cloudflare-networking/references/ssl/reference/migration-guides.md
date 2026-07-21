@@ -1,7 +1,7 @@
 ---
 title: Migration guides
 description: Guides for migrating away from distrusted certificate authorities.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ These guides walk you through the migration processes associated with various ch
 * [ DigiCert Legacy Root (G1) distrust by major browsers ](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/#page","headline":"Migration guides · Cloudflare SSL/TLS docs","description":"Guides for migrating away from distrusted certificate authorities.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/reference/migration-guides/#page","headline":"Migration guides · Cloudflare SSL/TLS docs","description":"Guides for migrating away from distrusted certificate authorities.","url":"https://developers.cloudflare.com/ssl/reference/migration-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/migration-guides/","name":"Migration guides"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Community resources
 description: Community-built libraries and integrations for Cloudflare Turnstile.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Other resources related to integrating Turnstile:
 * [Cloudflare Developers Discord server ↗](https://discord.com/channels/595317990191398933/1025131875397812224)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/community-resources/#page","headline":"Community resources · Cloudflare Turnstile docs","description":"Community-built libraries and integrations for Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/community-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/community-resources/#page","headline":"Community resources · Cloudflare Turnstile docs","description":"Community-built libraries and integrations for Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/community-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/community-resources/","name":"Community resources"}}]}
 ```

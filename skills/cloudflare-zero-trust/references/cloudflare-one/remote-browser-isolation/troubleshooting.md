@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot Browser Isolation
 description: Resolve common issues with Cloudflare Browser Isolation, including session limits, rendering errors, and WebGL support.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ If a website displays incorrectly (for example, broken CSS or missing images), i
 If you cannot resolve the issue, [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/). For RBI issues, it is helpful to provide the **Ray ID** from any error page and a description of the browser you are using.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/#page","headline":"Troubleshoot Browser Isolation · Cloudflare One docs","description":"Resolve common issues with Cloudflare Browser Isolation, including session limits, rendering errors, and WebGL support.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/#page","headline":"Troubleshoot Browser Isolation · Cloudflare One docs","description":"Resolve common issues with Cloudflare Browser Isolation, including session limits, rendering errors, and WebGL support.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/troubleshooting/","name":"Troubleshoot Browser Isolation"}}]}
 ```

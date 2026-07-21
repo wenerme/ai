@@ -88,7 +88,7 @@ Filter and analyze your classified generations in the [Activity](https://openrou
 
 ## Workspace Scoping
 
-Each classifier is scoped to a single [workspace](/guides/features/workspaces). Different workspaces can have different classifiers (or none at all). This lets you run a department classifier on your org-wide workspace while a specific project workspace uses a task-type classifier.
+Each classifier is scoped to a single [workspace](/docs/guides/features/workspaces). Different workspaces can have different classifiers (or none at all). This lets you run a department classifier on your org-wide workspace while a specific project workspace uses a task-type classifier.
 
 ## Tips
 

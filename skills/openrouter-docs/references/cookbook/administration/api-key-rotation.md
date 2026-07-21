@@ -6,7 +6,7 @@
 
 > Securely rotate your OpenRouter API keys
 
-Regular API key rotation is a security best practice that limits the impact of compromised credentials. OpenRouter's [Management API](/guides/overview/auth/management-api-keys) makes it easy to rotate keys programmatically without service interruption.
+Regular API key rotation is a security best practice that limits the impact of compromised credentials. OpenRouter's [Management API](/docs/guides/overview/auth/management-api-keys) makes it easy to rotate keys programmatically without service interruption.
 
 ## Why Rotate API Keys?
 
@@ -153,7 +153,7 @@ Once all your applications are using the new key, delete the old one:
 
 ## BYOK Advantage: Simplified Key Rotation
 
-If you use [Bring Your Own Key (BYOK)](/guides/overview/auth/byok) with OpenRouter, you get a significant advantage when it comes to key rotation: **you can rotate your OpenRouter API keys without ever needing to rotate your provider keys**.
+If you use [Bring Your Own Key (BYOK)](/docs/guides/overview/auth/byok) with OpenRouter, you get a significant advantage when it comes to key rotation: **you can rotate your OpenRouter API keys without ever needing to rotate your provider keys**.
 
 When you configure BYOK, your provider API keys (OpenAI, Anthropic, Google, etc.) are stored securely in OpenRouter and associated with your account, not with individual OpenRouter API keys. This means:
 
@@ -179,5 +179,5 @@ When implementing key rotation, keep these recommendations in mind:
 
 ## Related Resources
 
-* [Management API Keys](/guides/overview/auth/management-api-keys) - Full API reference for key management
-* [BYOK](/guides/overview/auth/byok) - Configure your own provider keys
+* [Management API Keys](/docs/guides/overview/auth/management-api-keys) - Full API reference for key management
+* [BYOK](/docs/guides/overview/auth/byok) - Configure your own provider keys

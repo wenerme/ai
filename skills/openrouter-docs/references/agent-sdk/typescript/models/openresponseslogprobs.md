@@ -30,4 +30,4 @@ let value: OpenResponsesLogProbs = {
 | ------------- | ------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `logprob`     | *number*                                                                                    | :heavy\_check\_mark: | N/A         |
 | `token`       | *string*                                                                                    | :heavy\_check\_mark: | N/A         |
-| `topLogprobs` | [models.OpenResponsesTopLogprobs](/agent-sdk/typescript/models/openresponsestoplogprobs)\[] | :heavy\_minus\_sign: | N/A         |
+| `topLogprobs` | [models.OpenResponsesTopLogprobs](/docs/agent-sdk/typescript/models/openresponsestoplogprobs)\[] | :heavy\_minus\_sign: | N/A         |

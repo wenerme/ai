@@ -1,7 +1,7 @@
 ---
 title: Isolation and concurrency
 description: Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -110,6 +110,6 @@ And we can run `wrangler dev` and `wrangler deploy` without issues. It _looks li
 To fix the issue, we either need to avoid using Node.js APIs, or add the `nodejs_compat` flag to our Wrangler configuration.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#page","headline":"Isolation and concurrency · Cloudflare Workers docs","description":"Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#page","headline":"Isolation and concurrency · Cloudflare Workers docs","description":"Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/isolation-and-concurrency/","name":"Isolation and concurrency"}}]}
 ```

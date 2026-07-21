@@ -1,7 +1,7 @@
 ---
 title: External CI/CD
 description: Integrate Workers development into your existing continuous integration and continuous development workflows, such as GitHub Actions or GitLab Pipelines.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ If you prefer to use your existing CI/CD provider instead of [Workers Builds](ht
 Other CI/CD options including but not limited to Terraform, CircleCI, Jenkins, and more, can also be used to deploy Workers following a similar set up process.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/#page","headline":"External CI/CD · Cloudflare Workers docs","description":"Integrate Workers development into your existing continuous integration and continuous development workflows, such as GitHub Actions or GitLab Pipelines.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/#page","headline":"External CI/CD · Cloudflare Workers docs","description":"Integrate Workers development into your existing continuous integration and continuous development workflows, such as GitHub Actions or GitLab Pipelines.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/external-cicd/","name":"External CI/CD"}}]}
 ```

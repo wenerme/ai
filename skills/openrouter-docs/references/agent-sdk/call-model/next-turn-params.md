@@ -396,6 +396,6 @@ nextTurnParams: {
 
 ## See Also
 
-* **[Skills Loader Example](/agent-sdk/call-model/examples/skills-loader)** - Complete implementation
-* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Async parameter functions
-* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Execution control
+* **[Skills Loader Example](/docs/agent-sdk/call-model/examples/skills-loader)** - Complete implementation
+* **[Dynamic Parameters](/docs/agent-sdk/call-model/dynamic-parameters)** - Async parameter functions
+* **[Stop Conditions](/docs/agent-sdk/call-model/stop-conditions)** - Execution control

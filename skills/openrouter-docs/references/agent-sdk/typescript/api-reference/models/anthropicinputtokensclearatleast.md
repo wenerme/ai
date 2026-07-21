@@ -26,5 +26,5 @@ let value: AnthropicInputTokensClearAtLeast = {
 
 | Field   | Type                                                                                                                           | Required             | Description |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type`  | [models.AnthropicInputTokensClearAtLeastType](/agent-sdk/typescript/api-reference/models/anthropicinputtokensclearatleasttype) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.AnthropicInputTokensClearAtLeastType](/docs/agent-sdk/typescript/api-reference/models/anthropicinputtokensclearatleasttype) | :heavy\_check\_mark: | N/A         |
 | `value` | *number*                                                                                                                       | :heavy\_check\_mark: | N/A         |

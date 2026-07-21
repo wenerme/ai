@@ -1,7 +1,7 @@
 ---
 title: Registrar API
 description: Search and register domains via the Registrar API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -476,6 +476,6 @@ Add a link here to the supported extensions list once it exists.
 If you are building with the Registrar API beta, especially for automation, agents, or multi-tenant platform workflows, we want your feedback.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/registrar-api/#page","headline":"Registrar API · Cloudflare Registrar docs","description":"Search and register domains via the Registrar API.","url":"https://developers.cloudflare.com/registrar/registrar-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/registrar-api/#page","headline":"Registrar API · Cloudflare Registrar docs","description":"Search and register domains via the Registrar API.","url":"https://developers.cloudflare.com/registrar/registrar-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/registrar-api/","name":"Registrar API"}}]}
 ```

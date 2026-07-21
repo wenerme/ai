@@ -1,7 +1,7 @@
 ---
 title: flux-1-schnell
 description: FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -110,6 +110,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/sch
 Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/#page","headline":"flux-1-schnell (Black Forest Labs) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"FLUX.1 \\[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.","url":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/#page","headline":"flux-1-schnell (Black Forest Labs) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"FLUX.1 \\[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.","url":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

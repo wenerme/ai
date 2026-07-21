@@ -16,49 +16,49 @@ OpenRouter supports multiple input and output modalities beyond text, allowing y
 
 Send images to vision-capable models for analysis, description, OCR, and more. OpenRouter supports multiple image formats and both URL-based and base64-encoded images.
 
-[Learn more about image inputs →](/guides/overview/multimodal/image-understanding)
+[Learn more about image inputs →](/docs/guides/overview/multimodal/image-understanding)
 
 ### Image Generation
 
 Generate images from text prompts using AI models with image output capabilities. OpenRouter supports various image generation models that can create high-quality images based on your descriptions.
 
-[Learn more about image generation →](/guides/overview/multimodal/image-generation)
+[Learn more about image generation →](/docs/guides/overview/multimodal/image-generation)
 
 ### PDFs
 
 Process PDF documents with any model on OpenRouter. Our intelligent PDF parsing system extracts text and handles both text-based and scanned documents.
 
-[Learn more about PDF processing →](/guides/overview/multimodal/pdfs)
+[Learn more about PDF processing →](/docs/guides/overview/multimodal/pdfs)
 
 ### Audio
 
 Send audio files to speech-capable models for transcription, analysis, and processing, or receive audio responses from models with audio output capabilities. OpenRouter supports common audio formats for both input and output.
 
-[Learn more about audio →](/guides/overview/multimodal/audio)
+[Learn more about audio →](/docs/guides/overview/multimodal/audio)
 
 ### Video
 
 Send video files to video-capable models for analysis, description, object detection, and action recognition. OpenRouter supports multiple video formats for comprehensive video understanding tasks.
 
-[Learn more about video inputs →](/guides/overview/multimodal/videos)
+[Learn more about video inputs →](/docs/guides/overview/multimodal/videos)
 
 ### Video Generation
 
 Generate videos from text prompts using AI models with video output capabilities. OpenRouter supports an asynchronous video generation API with configurable resolution, aspect ratio, duration, and optional reference images.
 
-[Learn more about video generation →](/guides/overview/multimodal/video-generation)
+[Learn more about video generation →](/docs/guides/overview/multimodal/video-generation)
 
 ### Text-to-Speech
 
 Generate speech audio from text using a dedicated OpenAI-compatible endpoint. OpenRouter supports multiple TTS providers and voices with output in MP3 or PCM format.
 
-[Learn more about text-to-speech →](/guides/overview/multimodal/tts)
+[Learn more about text-to-speech →](/docs/guides/overview/multimodal/tts)
 
 ### Speech-to-Text
 
 Transcribe audio into text using a dedicated endpoint. OpenRouter supports multiple STT providers and models, returning structured JSON with transcribed text and usage statistics.
 
-[Learn more about speech-to-text →](/guides/overview/multimodal/stt)
+[Learn more about speech-to-text →](/docs/guides/overview/multimodal/stt)
 
 ## Getting Started
 
@@ -71,9 +71,9 @@ Most multimodal inputs use the same `/api/v1/chat/completions` endpoint with the
 
 You can combine multiple modalities in a single request, and the number of files you can send varies by provider and model.
 
-**Text-to-Speech** uses a separate dedicated endpoint at `/api/v1/audio/speech`. See the [TTS documentation](/guides/overview/multimodal/tts) for details.
+**Text-to-Speech** uses a separate dedicated endpoint at `/api/v1/audio/speech`. See the [TTS documentation](/docs/guides/overview/multimodal/tts) for details.
 
-**Speech-to-Text** uses a separate dedicated endpoint at `/api/v1/audio/transcriptions`. See the [STT documentation](/guides/overview/multimodal/stt) for details.
+**Speech-to-Text** uses a separate dedicated endpoint at `/api/v1/audio/transcriptions`. See the [STT documentation](/docs/guides/overview/multimodal/stt) for details.
 
 ## Model Compatibility
 
@@ -107,7 +107,7 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for multimo
 <Info>
   URLs are more efficient for large files as they don't require local encoding and reduce request payload size. Base64 encoding is required for local files or when the content is not publicly accessible.
 
-  **Note for video URLs**: Video URL support varies by provider. For example, Google Gemini on AI Studio only supports YouTube links. See the [video inputs documentation](/guides/overview/multimodal/videos) for provider-specific details.
+  **Note for video URLs**: Video URL support varies by provider. For example, Google Gemini on AI Studio only supports YouTube links. See the [video inputs documentation](/docs/guides/overview/multimodal/videos) for provider-specific details.
 </Info>
 
 ## Frequently Asked Questions
@@ -126,18 +126,18 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for multimo
   </Accordion>
 
   <Accordion title="Which models support video input?">
-    Video support varies by model. Use the [Models page](/guides/overview/models) to filter for video-capable models. Check each model's documentation for specific video format and duration limits.
+    Video support varies by model. Use the [Models page](/docs/guides/overview/models) to filter for video-capable models. Check each model's documentation for specific video format and duration limits.
   </Accordion>
 
   <Accordion title="How does video generation work?">
-    Video generation uses an asynchronous API at `/api/v1/videos`. You submit a prompt, receive a job ID, then poll until the video is ready to download. See the [video generation documentation](/guides/overview/multimodal/video-generation) for details.
+    Video generation uses an asynchronous API at `/api/v1/videos`. You submit a prompt, receive a job ID, then poll until the video is ready to download. See the [video generation documentation](/docs/guides/overview/multimodal/video-generation) for details.
   </Accordion>
 
   <Accordion title="How does text-to-speech work?">
-    Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/guides/overview/multimodal/tts) for details.
+    Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/docs/guides/overview/multimodal/tts) for details.
   </Accordion>
 
   <Accordion title="How does speech-to-text work?">
-    Speech-to-text uses a dedicated endpoint at `/api/v1/audio/transcriptions`. Send base64-encoded audio and receive a JSON response with the transcribed text and usage statistics. See the [STT documentation](/guides/overview/multimodal/stt) for details.
+    Speech-to-text uses a dedicated endpoint at `/api/v1/audio/transcriptions`. Send base64-encoded audio and receive a JSON response with the transcribed text and usage statistics. See the [STT documentation](/docs/guides/overview/multimodal/stt) for details.
   </Accordion>
 </AccordionGroup>

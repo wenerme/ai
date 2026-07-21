@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Stream
 description: Serverless live and on-demand video streaming with adaptive bitrate encoding and global delivery.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ Understand and analyze which videos and live streams are viewed most and break d
  Join the Stream developer community
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/#page","headline":"Overview · Cloudflare Stream docs","description":"Serverless live and on-demand video streaming with adaptive bitrate encoding and global delivery.","url":"https://developers.cloudflare.com/stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/#page","headline":"Overview · Cloudflare Stream docs","description":"Serverless live and on-demand video streaming with adaptive bitrate encoding and global delivery.","url":"https://developers.cloudflare.com/stream/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}}]}
 ```

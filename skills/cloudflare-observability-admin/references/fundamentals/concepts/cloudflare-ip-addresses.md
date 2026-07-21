@@ -1,7 +1,7 @@
 ---
 title: Cloudflare IP addresses
 description: Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -103,6 +103,6 @@ AWS VPC route tables sometimes include a route covering `172.16.0.0/12` (or a br
 This issue does not appear in security group audits because security groups are evaluated at the instance level, not the routing layer.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses · Cloudflare Fundamentals docs","description":"Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses · Cloudflare Fundamentals docs","description":"Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/cloudflare-ip-addresses/","name":"Cloudflare IP addresses"}}]}
 ```

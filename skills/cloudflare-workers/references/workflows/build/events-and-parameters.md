@@ -1,7 +1,7 @@
 ---
 title: Events and parameters
 description: Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -368,6 +368,6 @@ You can also provide a type parameter to the `Workflows` type when creating (tri
 1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/events-and-parameters/#page","headline":"Events and parameters · Cloudflare Workflows docs","description":"Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.","url":"https://developers.cloudflare.com/workflows/build/events-and-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/events-and-parameters/#page","headline":"Events and parameters · Cloudflare Workflows docs","description":"Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.","url":"https://developers.cloudflare.com/workflows/build/events-and-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/events-and-parameters/","name":"Events and parameters"}}]}
 ```

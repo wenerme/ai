@@ -1,7 +1,7 @@
 ---
 title: Performance
 description: Accelerate websites and applications with Cloudflare CDN caching, image optimization, smart routing, load balancing, and web analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -44,6 +44,6 @@ Analyze cache hit rates and optimize caching.
 Explore how companies accelerate their applications with Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/performance/#page","headline":"Performance · Use cases · Cloudflare use cases","description":"Accelerate websites and applications with Cloudflare CDN caching, image optimization, smart routing, load balancing, and web analytics.","url":"https://developers.cloudflare.com/use-cases/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/performance/#page","headline":"Performance · Use cases · Cloudflare use cases","description":"Accelerate websites and applications with Cloudflare CDN caching, image optimization, smart routing, load balancing, and web analytics.","url":"https://developers.cloudflare.com/use-cases/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/performance/","name":"Performance"}}]}
 ```

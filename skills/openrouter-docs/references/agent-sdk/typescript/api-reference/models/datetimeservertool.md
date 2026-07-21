@@ -27,5 +27,5 @@ let value: DatetimeServerTool = {
 
 | Field        | Type                                                                                                   | Required             | Description                                           | Example                            |
 | ------------ | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------------------------------------------------- | ---------------------------------- |
-| `parameters` | [models.DatetimeServerToolConfig](/agent-sdk/typescript/api-reference/models/datetimeservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:datetime server tool | `{"timezone": "America/New_York"}` |
-| `type`       | [models.DatetimeServerToolType](/agent-sdk/typescript/api-reference/models/datetimeservertooltype)     | :heavy\_check\_mark: | N/A                                                   |                                    |
+| `parameters` | [models.DatetimeServerToolConfig](/docs/agent-sdk/typescript/api-reference/models/datetimeservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:datetime server tool | `{"timezone": "America/New_York"}` |
+| `type`       | [models.DatetimeServerToolType](/docs/agent-sdk/typescript/api-reference/models/datetimeservertooltype)     | :heavy\_check\_mark: | N/A                                                   |                                    |

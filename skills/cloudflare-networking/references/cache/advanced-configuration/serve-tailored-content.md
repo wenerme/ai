@@ -1,7 +1,7 @@
 ---
 title: Serving tailored content with Cloudflare
 description: Serve different cached content based on device type, location, or language.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -297,6 +297,6 @@ Availability
 * Custom Cache Keys: Enterprise only
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/#page","headline":"Serving tailored content with Cloudflare · Cloudflare Cache (CDN) docs","description":"Serve different cached content based on device type, location, or language.","url":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","A/B testing","Geolocation","Next.js"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/#page","headline":"Serving tailored content with Cloudflare · Cloudflare Cache (CDN) docs","description":"Serve different cached content based on device type, location, or language.","url":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","A/B testing","Geolocation","Next.js"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/serve-tailored-content/","name":"Serving tailored content with Cloudflare"}}]}
 ```

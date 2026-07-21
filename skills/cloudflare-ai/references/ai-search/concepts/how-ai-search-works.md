@@ -1,7 +1,7 @@
 ---
 title: How AI Search works
 description: Understand how AI Search indexes your content and retrieves results using vector and keyword search.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -95,6 +95,6 @@ AI Search is built on [Vectorize](https://developers.cloudflare.com/vectorize/) 
 | Best when               | You want to add search or RAG quickly                      | You need full control of the retrieval pipeline  |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works · Cloudflare AI Search docs","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works · Cloudflare AI Search docs","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/concepts/how-ai-search-works/","name":"How AI Search works"}}]}
 ```

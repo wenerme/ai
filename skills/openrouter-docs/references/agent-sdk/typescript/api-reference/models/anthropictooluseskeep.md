@@ -26,5 +26,5 @@ let value: AnthropicToolUsesKeep = {
 
 | Field   | Type                                                                                                     | Required             | Description |
 | ------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`  | [models.AnthropicToolUsesKeepType](/agent-sdk/typescript/api-reference/models/anthropictooluseskeeptype) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.AnthropicToolUsesKeepType](/docs/agent-sdk/typescript/api-reference/models/anthropictooluseskeeptype) | :heavy\_check\_mark: | N/A         |
 | `value` | *number*                                                                                                 | :heavy\_check\_mark: | N/A         |

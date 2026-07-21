@@ -1,7 +1,7 @@
 ---
 title: Set up email records
 description: Configure MX, SPF, DKIM, and DMARC records for email.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -162,6 +162,6 @@ Refer to [Security records](https://developers.cloudflare.com/dmarc-management/s
 By default, Cloudflare does not proxy email traffic on port 25 (SMTP). You can only proxy outgoing email if you have [Spectrum](https://developers.cloudflare.com/spectrum/) configured for [SMTP](https://developers.cloudflare.com/spectrum/reference/configuration-options/#smtp).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#page","headline":"Set up email records · Cloudflare DNS docs","description":"Configure MX, SPF, DKIM, and DMARC records for email.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#page","headline":"Set up email records · Cloudflare DNS docs","description":"Configure MX, SPF, DKIM, and DMARC records for email.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/email-records/","name":"Set up email records"}}]}
 ```

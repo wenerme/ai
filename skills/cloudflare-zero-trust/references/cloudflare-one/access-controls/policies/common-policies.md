@@ -1,7 +1,7 @@
 ---
 title: Common policies
 description: Commonly used Cloudflare Access policies for securing applications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -1173,6 +1173,6 @@ Warning
 Bypass disables all Access security controls and request logging for matching traffic. Scope Bypass policies as narrowly as possible and never use them as a persistent access mechanism for users or services. If you need to allow automated traffic while maintaining authentication and logging, use a [Service Auth](#authenticate-a-service-using-a-service-token) policy instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/#page","headline":"Common Access policies · Cloudflare One docs","description":"Commonly used Cloudflare Access policies for securing applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/#page","headline":"Common Access policies · Cloudflare One docs","description":"Commonly used Cloudflare Access policies for securing applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/policies/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/policies/common-policies/","name":"Common policies"}}]}
 ```

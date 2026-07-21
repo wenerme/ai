@@ -1,7 +1,7 @@
 ---
 title: Commands
 description: Execute commands and manage background processes in Sandbox SDK containers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -879,6 +879,6 @@ const result = await build.waitForExit(60000); // 60 second timeout
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/commands/#page","headline":"Commands · Cloudflare Sandbox SDK docs","description":"Execute commands and manage background processes in Sandbox SDK containers.","url":"https://developers.cloudflare.com/sandbox/api/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/commands/#page","headline":"Commands · Cloudflare Sandbox SDK docs","description":"Execute commands and manage background processes in Sandbox SDK containers.","url":"https://developers.cloudflare.com/sandbox/api/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/commands/","name":"Commands"}}]}
 ```

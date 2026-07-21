@@ -31,6 +31,6 @@ let value: Result = {
 
 | Field            | Type                                                                           | Required             | Description                                      | Example |
 | ---------------- | ------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------ | ------- |
-| `document`       | [operations.Document](/agent-sdk/typescript/api-reference/operations/document) | :heavy\_check\_mark: | The document object containing the original text |         |
+| `document`       | [operations.Document](/docs/agent-sdk/typescript/api-reference/operations/document) | :heavy\_check\_mark: | The document object containing the original text |         |
 | `index`          | *number*                                                                       | :heavy\_check\_mark: | Index of the document in the original input list | 0       |
 | `relevanceScore` | *number*                                                                       | :heavy\_check\_mark: | Relevance score of the document to the query     | 0.98    |

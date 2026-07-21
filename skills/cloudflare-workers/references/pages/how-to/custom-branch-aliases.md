@@ -1,7 +1,7 @@
 ---
 title: Add a custom domain to a branch
 description: Point a custom domain to a specific branch deployment of your Cloudflare Pages project.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ In this instance, change `your-project.pages.dev` to `staging.your-project.pages
 Now the `staging` branch of your Pages project will be available on `staging.example.com`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/#page","headline":"Add a custom domain to a branch · Cloudflare Pages docs","description":"Point a custom domain to a specific branch deployment of your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/#page","headline":"Add a custom domain to a branch · Cloudflare Pages docs","description":"Point a custom domain to a specific branch deployment of your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/custom-branch-aliases/","name":"Add a custom domain to a branch"}}]}
 ```

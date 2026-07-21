@@ -1,7 +1,7 @@
 ---
 title: Reverse zones and PTR records
 description: Set up reverse DNS zones and PTR records.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -110,6 +110,6 @@ While setting up reverse zones, the following third-party tools may be useful:
 * [IPv6 subnet calculator ↗](https://www.internex.at/de/toolbox/ipv6)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/#page","headline":"Reverse zones and PTR records · Cloudflare DNS docs","description":"Set up reverse DNS zones and PTR records.","url":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/#page","headline":"Reverse zones and PTR records · Cloudflare DNS docs","description":"Set up reverse DNS zones and PTR records.","url":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/additional-options/reverse-zones/","name":"Reverse zones and PTR records"}}]}
 ```

@@ -33,8 +33,8 @@ let value: ModelArchitecture = {
 
 | Field              | Type                                                                                                             | Required             | Description                      | Example    |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------- | ---------- |
-| `inputModalities`  | [models.InputModality](/agent-sdk/typescript/api-reference/models/inputmodality)\[]                              | :heavy\_check\_mark: | Supported input modalities       |            |
-| `instructType`     | [models.ModelArchitectureInstructType](/agent-sdk/typescript/api-reference/models/modelarchitectureinstructtype) | :heavy\_minus\_sign: | Instruction format type          | chatml     |
+| `inputModalities`  | [models.InputModality](/docs/agent-sdk/typescript/api-reference/models/inputmodality)\[]                              | :heavy\_check\_mark: | Supported input modalities       |            |
+| `instructType`     | [models.ModelArchitectureInstructType](/docs/agent-sdk/typescript/api-reference/models/modelarchitectureinstructtype) | :heavy\_minus\_sign: | Instruction format type          | chatml     |
 | `modality`         | *string*                                                                                                         | :heavy\_check\_mark: | Primary modality of the model    | text->text |
-| `outputModalities` | [models.OutputModality](/agent-sdk/typescript/api-reference/models/outputmodality)\[]                            | :heavy\_check\_mark: | Supported output modalities      |            |
-| `tokenizer`        | [models.ModelGroup](/agent-sdk/typescript/api-reference/models/modelgroup)                                       | :heavy\_minus\_sign: | Tokenizer type used by the model | GPT        |
+| `outputModalities` | [models.OutputModality](/docs/agent-sdk/typescript/api-reference/models/outputmodality)\[]                            | :heavy\_check\_mark: | Supported output modalities      |            |
+| `tokenizer`        | [models.ModelGroup](/docs/agent-sdk/typescript/api-reference/models/modelgroup)                                       | :heavy\_minus\_sign: | Tokenizer type used by the model | GPT        |

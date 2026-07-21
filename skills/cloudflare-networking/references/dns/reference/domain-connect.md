@@ -1,7 +1,7 @@
 ---
 title: Domain Connect
 description: Learn how to onboard your templates to use Domain Connect with Cloudflare as DNS provider.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -157,6 +157,6 @@ You can fix these by republishing the signature, using tools such as the one pro
 1. A domain that can be queried for `TXT` records containing a public key to verify your digital signature. Refer to [digitally signed requests ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#digitally-sign-requests) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/domain-connect/#page","headline":"Domain Connect · Cloudflare DNS docs","description":"Learn how to onboard your templates to use Domain Connect with Cloudflare as DNS provider.","url":"https://developers.cloudflare.com/dns/reference/domain-connect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/domain-connect/#page","headline":"Domain Connect · Cloudflare DNS docs","description":"Learn how to onboard your templates to use Domain Connect with Cloudflare as DNS provider.","url":"https://developers.cloudflare.com/dns/reference/domain-connect/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/reference/domain-connect/","name":"Domain Connect"}}]}
 ```

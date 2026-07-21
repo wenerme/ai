@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Enable and configure Workers Caching.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -644,6 +644,6 @@ If your Worker needs to return different encodings to different clients, you hav
 * **Vary on `Accept-Encoding`.** Return a different `Content-Encoding` per request and set `Vary: Accept-Encoding`. Cloudflare stores one variant per distinct `Accept-Encoding` value the Worker has seen. Because comparison is verbatim, clients that send semantically equivalent values in different orders or with different quality factors produce separate variants — keep cache fan-out under control by normalizing `Accept-Encoding` (for example, in a gateway Worker) before the response is generated.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/configuration/","name":"Configuration"}}]}
 ```

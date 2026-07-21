@@ -28,5 +28,5 @@ let value: ResponsesErrorField = {
 
 | Field     | Type                                                           | Required             | Description |
 | --------- | -------------------------------------------------------------- | -------------------- | ----------- |
-| `code`    | [models.Code](/agent-sdk/typescript/api-reference/models/code) | :heavy\_check\_mark: | N/A         |
+| `code`    | [models.Code](/docs/agent-sdk/typescript/api-reference/models/code) | :heavy\_check\_mark: | N/A         |
 | `message` | *string*                                                       | :heavy\_check\_mark: | N/A         |

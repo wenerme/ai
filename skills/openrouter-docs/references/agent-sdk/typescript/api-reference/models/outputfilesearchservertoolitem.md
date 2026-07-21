@@ -30,5 +30,5 @@ let value: OutputFileSearchServerToolItem = {
 | --------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
 | `id`      | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
 | `queries` | *string*\[]                                                                                                                | :heavy\_minus\_sign: | N/A         |           |
-| `status`  | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
-| `type`    | [models.OutputFileSearchServerToolItemType](/agent-sdk/typescript/api-reference/models/outputfilesearchservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `status`  | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
+| `type`    | [models.OutputFileSearchServerToolItemType](/docs/agent-sdk/typescript/api-reference/models/outputfilesearchservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |

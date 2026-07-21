@@ -354,12 +354,16 @@ export GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE=32
 export GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE=100
 ```
 
-Alternatively, configure these parameters in `grafana.ini` under the `[plugin.grafana-oracle-datasource]` section:
+Alternatively, configure the response size and connection pool size in `grafana.ini` under the `[plugin.grafana-oracle-datasource]` section.
 
 ini [Copy code to clipboard] Copy
 
 ```ini
 [plugin.grafana-oracle-datasource]
-oracle_datasource_poolsize = 50
-oracle_datasource_max_response_size = 16
+max_response_size = 128
+poolsize = 50
 ```
+
+> Note
+>
+> On Grafana 12.4.2 and later, `GF_`-prefixed host environment variables (including `GF_PLUGINS_ORACLE_DATASOURCE_*`) are no longer forwarded to plugin backend processes by default. Use the `[plugin.grafana-oracle-datasource]` section shown above to configure the maximum response size and connection pool size. The `GF_PLUGINS_ORACLE_DATASOURCE_*` variables are still read for backward compatibility.

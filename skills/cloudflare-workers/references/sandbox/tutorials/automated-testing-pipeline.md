@@ -1,7 +1,7 @@
 ---
 title: Automated testing pipeline
 description: Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -278,6 +278,6 @@ An automated testing pipeline that:
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Cache dependencies between runs
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/automated-testing-pipeline/","name":"Automated testing pipeline"}}]}
 ```

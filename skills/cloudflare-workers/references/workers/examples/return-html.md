@@ -1,7 +1,7 @@
 ---
 title: Return small HTML page
 description: Deliver an HTML page from an HTML string directly inside the Worker script.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -47,7 +47,7 @@ export default {
 };
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOAKwAWUQEZhAJnHjhUgFwsWbYBzhcafASInS5CpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW5IjiGAwEgYSAAMADwAQicAHlLBUAJoABQAoh8vmAAHxPTaAii4Oio57PQFHKTIgASdjAYHQJAA6pgwLhAcgCTjcSRATBkRUjm4SMBEABrEAwEgAdx6JAA5g47AgCHZcOQ6FsSJZySBcKgwIg7FTMLypQl6Wy0SzkJjsf8iOYjecICAEFQQnYhSQAEo3DxUVx2E6fb4AGkezI+djg8wQrj860Dm0ir1Kjgg1TskT8kXscRQPrARGOiE9EAYAFUKgAxbAADkivqNmwAvlXcTW7hba1Wa0QLGpmBotDoePwhGJJDJ5IopMUbPZHC53J5vK0qH4AlpSKFwlFwoQtGl-JlsmvImRyWQilYJ2VKom6g0mrwWm0UjZJuZVpEeTEAPojMZZZN5eYFVIaw7TtuyCXs9AHQxhxMKRmAsIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWAByiAbMIDMAVjkBGBQC4WLNsA5wuNPgJHipcxQoCwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyS8NrckRxDAYCQMJAAGAB4AIROADylgqAE0AAoAUQ+XzAAD4nptARRcHRUc9noCjgpkQAJOxgMDoEgAdUwYFwgOQBJxuJIgJgyIqRzcJGAiAA1iAYCQAO49EgAcwcdgQBDsuHIdC2JEs5JAuFQYEQdipmF5UoS9LZaJZyEx2P+RHMRvOEBACCoITsQpIACUbh4qK47CdPt8ADSPZkfOxweYIVx+daBzaRV6lRwQap2SJ+SL2OIoH1gIjHRCeiAMACqFQAYthRJFfUbNgBfSu46t3C01yvVogWNTMDRaHQ8fhCMSSGTyWRKYo2eyOFzuTzeVpUPwBLSkULhKLhQhaNL+TLZVeRMjkshFKzjsqVRN1BpNXgtNopGyTcyrSI8mIAfRGYyyyby8wKqWrdsOy7IIez0ftDCHExmAsIA)
 
 **TypeScript**
 
@@ -131,6 +131,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/return-html/#page","headline":"Return small HTML page · Cloudflare Workers docs","description":"Deliver an HTML page from an HTML string directly inside the Worker script.","url":"https://developers.cloudflare.com/workers/examples/return-html/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/return-html/#page","headline":"Return small HTML page · Cloudflare Workers docs","description":"Deliver an HTML page from an HTML string directly inside the Worker script.","url":"https://developers.cloudflare.com/workers/examples/return-html/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/return-html/","name":"Return small HTML page"}}]}
 ```

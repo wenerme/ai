@@ -1,7 +1,7 @@
 ---
 title: How to
 description: Guides for managing accounts, subscriptions, and tenant details with the Cloudflare Tenant API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Get tenant details ](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tenant/how-to/#page","headline":"How to · Cloudflare Tenant docs","description":"Guides for managing accounts, subscriptions, and tenant details with the Cloudflare Tenant API.","url":"https://developers.cloudflare.com/tenant/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tenant/how-to/#page","headline":"How to · Cloudflare Tenant docs","description":"Guides for managing accounts, subscriptions, and tenant details with the Cloudflare Tenant API.","url":"https://developers.cloudflare.com/tenant/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}}]}
 ```

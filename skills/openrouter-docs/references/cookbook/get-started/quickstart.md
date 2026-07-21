@@ -139,7 +139,7 @@ chatRequest wrapper, streaming delta chunks, and camelCase usage fields.`}
 * **Node.js 18+** installed
 * An **OpenRouter API key** — create one at
   [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys) or set up
-  a new [Stripe project](/guides/overview/stripe-projects)
+  a new [Stripe project](/docs/guides/overview/stripe-projects)
 
 ## 1. Create a project and install the SDK
 
@@ -193,7 +193,7 @@ You should see a single text response printed to the console. The SDK returns
 token usage in camelCase fields such as `promptTokens` and
 `completionTokens`. The
 `completion.choices` array follows the same shape as the
-[Chat Completions response](/api/api-reference/chat/create-a-chat-completion).
+[Chat Completions response](/docs/api/api-reference/chat/create-a-chat-completion).
 
 ## 3. Stream the response
 
@@ -225,7 +225,7 @@ for await (const chunk of stream) {
 console.log();
 ```
 
-Text now prints incrementally. See the [Streaming reference](/api/reference/streaming)
+Text now prints incrementally. See the [Streaming reference](/docs/api_reference/streaming)
 for the full SSE event format.
 
 ## 4. Add multi-turn conversation
@@ -305,7 +305,7 @@ model: 'openrouter/free',
 ```
 
 Browse all available models at [openrouter.ai/models](https://openrouter.ai/models)
-or query the [Models API](/api/api-reference/models/list-all-models-and-their-properties)
+or query the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties)
 programmatically.
 
 ## Check your work
@@ -321,7 +321,7 @@ programmatically.
 ## Next steps
 
 * Connect a
-  [coding agent](/cookbook/coding-agents/claude-code-integration) to
+  [coding agent](/docs/cookbook/coding-agents/claude-code-integration) to
   OpenRouter
-* Explore the [Agent SDK](/agent-sdk/overview) for built-in multi-turn
+* Explore the [Agent SDK](/docs/agent-sdk/overview) for built-in multi-turn
   loops and tool execution

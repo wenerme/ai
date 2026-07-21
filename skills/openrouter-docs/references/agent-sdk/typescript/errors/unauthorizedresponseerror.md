@@ -25,5 +25,5 @@ import { UnauthorizedResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                               | Required             | Description                         | Example                                                    |
 | -------- | -------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------- | ---------------------------------------------------------- |
-| `error`  | [models.UnauthorizedResponseErrorData](/agent-sdk/typescript/models/unauthorizedresponseerrordata) | :heavy\_check\_mark: | Error data for UnauthorizedResponse | `{"code": 401,"message": "Missing Authentication header"}` |
+| `error`  | [models.UnauthorizedResponseErrorData](/docs/agent-sdk/typescript/models/unauthorizedresponseerrordata) | :heavy\_check\_mark: | Error data for UnauthorizedResponse | `{"code": 401,"message": "Missing Authentication header"}` |
 | `userId` | *string*                                                                                           | :heavy\_minus\_sign: | N/A                                 |                                                            |

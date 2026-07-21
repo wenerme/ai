@@ -1,7 +1,7 @@
 ---
 title: Using a zero trust framework to secure SaaS applications
 description: Learn how to eliminate the trade-off between security and performance by using Cloudflare's global network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -261,6 +261,6 @@ Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.
 * [Using Cloudflare SASE with Microsoft](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/#page","headline":"Using a zero trust framework to secure SaaS applications · Cloudflare Reference Architecture docs","description":"Learn how to eliminate the trade-off between security and performance by using Cloudflare's global network.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/#page","headline":"Using a zero trust framework to secure SaaS applications · Cloudflare Reference Architecture docs","description":"Learn how to eliminate the trade-off between security and performance by using Cloudflare's global network.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/zero-trust-for-saas/","name":"Using a zero trust framework to secure SaaS applications"}}]}
 ```

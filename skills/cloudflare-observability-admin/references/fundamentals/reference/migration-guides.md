@@ -1,7 +1,7 @@
 ---
 title: Migration guides
 description: Find guides for migrating between versions of Cloudflare features and integrations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -15,6 +15,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ SCIM v1 to v2 Migration ](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/#page","headline":"Migration guides · Cloudflare Fundamentals docs","description":"Find guides for migrating between versions of Cloudflare features and integrations.","url":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/#page","headline":"Migration guides · Cloudflare Fundamentals docs","description":"Find guides for migrating between versions of Cloudflare features and integrations.","url":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/migration-guides/","name":"Migration guides"}}]}
 ```

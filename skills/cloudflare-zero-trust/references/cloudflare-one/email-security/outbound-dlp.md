@@ -1,7 +1,7 @@
 ---
 title: Outbound Data Loss Prevention (DLP)
 description: Outbound Data Loss Prevention (DLP) in Email Security.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -108,6 +108,6 @@ Outbound DLP presents its limitations:
 | Mobile client - Android              | Unstable due to Microsoft limitation                     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/#page","headline":"Outbound Data Loss Prevention (DLP) · Cloudflare One docs","description":"Outbound Data Loss Prevention (DLP) in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/#page","headline":"Outbound Data Loss Prevention (DLP) · Cloudflare One docs","description":"Outbound Data Loss Prevention (DLP) in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/outbound-dlp/","name":"Outbound Data Loss Prevention (DLP)"}}]}
 ```

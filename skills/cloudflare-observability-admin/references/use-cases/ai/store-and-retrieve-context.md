@@ -1,7 +1,7 @@
 ---
 title: Store and retrieve context
 description: Store vector embeddings, conversation history, and application state for AI applications using serverless databases and object storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ Globally distributed key-value storage for low-latency reads. [Learn more about 
 3. [R2 get started](https://developers.cloudflare.com/r2/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/store-and-retrieve-context/#page","headline":"Store and retrieve context · Cloudflare use cases","description":"Store vector embeddings, conversation history, and application state for AI applications using serverless databases and object storage.","url":"https://developers.cloudflare.com/use-cases/ai/store-and-retrieve-context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/store-and-retrieve-context/#page","headline":"Store and retrieve context · Cloudflare use cases","description":"Store vector embeddings, conversation history, and application state for AI applications using serverless databases and object storage.","url":"https://developers.cloudflare.com/use-cases/ai/store-and-retrieve-context/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/ai/","name":"AI applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/ai/store-and-retrieve-context/","name":"Store and retrieve context"}}]}
 ```

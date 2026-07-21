@@ -29,4 +29,4 @@ let value: MessagesMessageParam = {
 | Field     | Type                                                                                                   | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `content` | *models.MessagesMessageParamContentUnion5*                                                             | :heavy\_check\_mark: | N/A         |
-| `role`    | [models.MessagesMessageParamRole](/agent-sdk/typescript/api-reference/models/messagesmessageparamrole) | :heavy\_check\_mark: | N/A         |
+| `role`    | [models.MessagesMessageParamRole](/docs/agent-sdk/typescript/api-reference/models/messagesmessageparamrole) | :heavy\_check\_mark: | N/A         |

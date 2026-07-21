@@ -49,4 +49,4 @@ let value: ListResponse = {
 
 | Field  | Type                                                                | Required             | Description      |
 | ------ | ------------------------------------------------------------------- | -------------------- | ---------------- |
-| `data` | [operations.ListData](/agent-sdk/typescript/operations/listdata)\[] | :heavy\_check\_mark: | List of API keys |
+| `data` | [operations.ListData](/docs/agent-sdk/typescript/operations/listdata)\[] | :heavy\_check\_mark: | List of API keys |

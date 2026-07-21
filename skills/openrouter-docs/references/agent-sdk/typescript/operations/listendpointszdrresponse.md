@@ -61,4 +61,4 @@ let value: ListEndpointsZdrResponse = {
 
 | Field  | Type                                                                    | Required             | Description |
 | ------ | ----------------------------------------------------------------------- | -------------------- | ----------- |
-| `data` | [models.PublicEndpoint](/agent-sdk/typescript/models/publicendpoint)\[] | :heavy\_check\_mark: | N/A         |
+| `data` | [models.PublicEndpoint](/docs/agent-sdk/typescript/models/publicendpoint)\[] | :heavy\_check\_mark: | N/A         |

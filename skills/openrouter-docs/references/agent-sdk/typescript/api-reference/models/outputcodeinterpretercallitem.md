@@ -41,5 +41,5 @@ let value: OutputCodeInterpreterCallItem = {
 | `containerId` | *string*                                                                                             | :heavy\_check\_mark: | N/A         |           |
 | `id`          | *string*                                                                                             | :heavy\_check\_mark: | N/A         |           |
 | `outputs`     | *models.OutputCodeInterpreterCallItemOutputUnion*\[]                                                 | :heavy\_check\_mark: | N/A         |           |
-| `status`      | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                   | :heavy\_check\_mark: | N/A         | completed |
-| `type`        | [models.TypeCodeInterpreterCall](/agent-sdk/typescript/api-reference/models/typecodeinterpretercall) | :heavy\_check\_mark: | N/A         |           |
+| `status`      | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                   | :heavy\_check\_mark: | N/A         | completed |
+| `type`        | [models.TypeCodeInterpreterCall](/docs/agent-sdk/typescript/api-reference/models/typecodeinterpretercall) | :heavy\_check\_mark: | N/A         |           |

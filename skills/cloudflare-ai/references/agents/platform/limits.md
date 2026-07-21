@@ -1,7 +1,7 @@
 ---
 title: Limits
 description: Understand the concurrency, storage, and compute time limits that apply to Cloudflare Agents.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 3. Compute (CPU) time per Agent is limited to 30 seconds, but this is refreshed when an Agent receives a new HTTP request, runs a [scheduled task](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), or an incoming WebSocket message. [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/platform/limits/#page","headline":"Limits · Cloudflare Agents docs","description":"Understand the concurrency, storage, and compute time limits that apply to Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/platform/limits/#page","headline":"Limits · Cloudflare Agents docs","description":"Understand the concurrency, storage, and compute time limits that apply to Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/platform/limits/","name":"Limits"}}]}
 ```

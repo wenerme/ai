@@ -25,4 +25,4 @@ let value: VideoGenerationRequestProvider = {};
 
 | Field     | Type                                                                 | Required             | Description | Example                                                               |
 | --------- | -------------------------------------------------------------------- | -------------------- | ----------- | --------------------------------------------------------------------- |
-| `options` | [models.Options](/agent-sdk/typescript/api-reference/models/options) | :heavy\_minus\_sign: | N/A         | `{"google-vertex": {"output_config": {"effort": "low"}`<br />}<br />} |
+| `options` | [models.Options](/docs/agent-sdk/typescript/api-reference/models/options) | :heavy\_minus\_sign: | N/A         | `{"google-vertex": {"output_config": {"effort": "low"}`<br />}<br />} |

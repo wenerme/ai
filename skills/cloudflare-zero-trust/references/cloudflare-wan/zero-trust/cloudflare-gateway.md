@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Gateway
 description: Route WAN traffic through Cloudflare Gateway.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -137,6 +137,6 @@ Additionally, test both `http://ifconfig.me` (non-TLS) and `https://ifconfig.me`
 If the HTTPS query hangs or fails but HTTP works, the MSS value may be too high or not set. Reduce this value on your customer premise equipment to match the overhead introduced by your [IKE](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters) and [ESP ↗](https://en.wikipedia.org/wiki/IPsec#Encapsulating%5FSecurity%5FPayload) settings.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#page","headline":"Connect to Cloudflare Gateway with Cloudflare WAN · Cloudflare WAN docs","description":"Route WAN traffic through Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#page","headline":"Connect to Cloudflare Gateway with Cloudflare WAN · Cloudflare WAN docs","description":"Route WAN traffic through Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/cloudflare-gateway/","name":"Cloudflare Gateway"}}]}
 ```
