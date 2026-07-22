@@ -1,4 +1,5 @@
 ---
+description: Browse AI models available through Cloudflare, including hosted models on Workers AI and external providers via AI Gateway.
 title: Models
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,7 +12,7 @@ Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/mod
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 205 models
+We found 211 models
 
 No models found
 
@@ -65,6 +66,8 @@ Try a different search term, or broaden your search by removing filters.
 
 [ ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)  seedance-2.0-fast ByteDance  Text-to-Video  Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.  Third-party ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/)
 
+[ ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)  seedance-2.0-mini ByteDance  Text-to-Video  ByteDance's compact, cost-efficient video generation model from the Seedance 2.0 family. Supports text-to-video, image-to-video, reference video, and reference audio for background music. Ideal for high-volume workloads where speed and cost matter.  Third-party ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/)
+
 [ ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)  seedream-4.0 ByteDance  Text-to-Image  Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.  Third-party ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/)
 
 [ ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)  seedream-4.5 ByteDance  Text-to-Image  Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation, and sequential image generation.  Third-party ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/)
@@ -72,6 +75,8 @@ Try a different search term, or broaden your search by removing filters.
 [ ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)  seedream-5-lite ByteDance  Text-to-Image  Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi-reference and batch generation support.  Third-party ](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/)
 
 [  d  deepseek-v4-pro deepseek  Text Generation  DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.  Third-party ](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/)
+
+[ ![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)  eleven-turbo-v2-5 ElevenLabs  Text-to-Speech  ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.  Third-party ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/)
 
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  gemini-2.5-flash Google  Text Generation  Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/)
 
@@ -89,11 +94,17 @@ Try a different search term, or broaden your search by removing filters.
 
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  gemini-3.5-flash Google  Text Generation  Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.  Third-party ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/)
 
+[ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  gemini-3.5-flash-lite Google  Text Generation  Gemini 3.5 Flash-Lite is a low-latency, cost-effective multimodal model optimized for high-throughput, low-cost execution for subagent tasks and document parsing.  Third-party ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/)
+
+[ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  gemini-3.6-flash Google  Text Generation  Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.  Third-party ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/)
+
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  imagen-4 Google  Text-to-Image  Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/imagen-4/)
 
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  nano-banana Google  Text-to-Image  Google's fast image generation model producing high-quality images from text prompts.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/nano-banana/)
 
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  nano-banana-2 Google  Text-to-Image  Google's second-generation image generation model with improved quality and speed.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/)
+
+[ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  nano-banana-2-lite Google  Text-to-Image  Google's fastest Gemini image generation model for rapid image creation and iteration.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/nano-banana-2-lite/)
 
 [ ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)  nano-banana-pro Google  Text-to-Image  Google's higher-quality image generation model with improved detail and prompt adherence.  Third-party  Zero data retention ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/)
 
@@ -250,6 +261,8 @@ Try a different search term, or broaden your search by removing filters.
 [ ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)  grok-4.20-multi-agent-0309 xAI  Text Generation  xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.  Third-party ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/)
 
 [ ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)  grok-4.3 xAI  Text Generation  xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).  Third-party ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/)
+
+[ ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)  grok-4.5 xAI  Text Generation  xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).  Third-party ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/)
 
 [ ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)  grok-imagine-image xAI  Text-to-Image  xAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution.  Third-party ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/)
 
@@ -434,5 +447,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/#page","headline":"Models · Cloudflare AI docs","url":"https://developers.cloudflare.com/ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/#page","headline":"Models · Cloudflare AI docs","description":"Browse AI models available through Cloudflare, including hosted models on Workers AI and external providers via AI Gateway.","url":"https://developers.cloudflare.com/ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

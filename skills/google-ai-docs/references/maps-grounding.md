@@ -26,7 +26,7 @@ the Gemini model to use Google Maps data.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What are the best Italian restaurants within a 15-minute walk from here?",
         tools=[{
             "type": "google_maps",
@@ -56,7 +56,7 @@ the Gemini model to use Google Maps data.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "What are the best Italian restaurants within a 15-minute walk from here?",
         tools: [{
           type: "google_maps",
@@ -94,7 +94,7 @@ the Gemini model to use Google Maps data.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "What are the best Italian restaurants within a 15-minute walk from here?",
         "tools": [{
           "type": "google_maps",
@@ -154,7 +154,7 @@ user reviews and other Maps data.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Is there a cafe near the corner of 1st and Main that has outdoor seating?",
         tools=[{
             "type": "google_maps",
@@ -183,7 +183,7 @@ user reviews and other Maps data.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Is there a cafe near the corner of 1st and Main that has outdoor seating?",
         tools: [{
           type: "google_maps",
@@ -226,7 +226,7 @@ area.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Which family-friendly restaurants near here have the best playground reviews?",
         tools=[{
             "type": "google_maps",
@@ -255,7 +255,7 @@ area.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Which family-friendly restaurants near here have the best playground reviews?",
         tools: [{
           type: "google_maps",
@@ -300,7 +300,7 @@ locations, perfect for travel applications.
     prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt,
         tools=[{
             "type": "google_maps",
@@ -319,7 +319,7 @@ locations, perfect for travel applications.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
         tools: [{
           type: "google_maps",
@@ -338,7 +338,7 @@ locations, perfect for travel applications.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
         "tools": [{
           "type": "google_maps",
@@ -418,6 +418,8 @@ The following models support Grounding with Google Maps:
 
 | Model | Grounding with Google Maps |
 |---|---|
+| [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ✔️ |
+| [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ✔️ |
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |

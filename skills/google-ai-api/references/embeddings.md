@@ -1,4 +1,4 @@
-# Embeddings are a numerical representation of text input that open up a number of unique use cases, such as clustering, similarity measurement and information retrieval. For an introduction, check out the [Embeddings guide](https://ai.google.dev/gemini-api/docs/embeddings).
+Embeddings are a numerical representation of text input that open up a number of unique use cases, such as clustering, similarity measurement and information retrieval. For an introduction, check out the [Embeddings guide](https://ai.google.dev/gemini-api/docs/embeddings).
 
 Unlike generative AI models that create new content, the Gemini Embedding model is only intended to transform the format of your input data into a numerical representation. While Google is responsible for providing an embedding model that transforms the format of your input data to the numerical-format requested, users retain full responsibility for the data they input and the resulting embeddings. By using the Gemini Embedding model you confirm that you have the necessary rights to any content that you upload. Do not generate content that infringes on others' intellectual property or privacy rights. Your use of this service is subject to our [Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy) and [Google's Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -30,7 +30,7 @@ Format: `models/{model}` It takes the form `models/{model}`.
 ### Request body
 
 The request body contains data with the following structure:
-Fields `content` ``object (`https://ai.google.dev/api/caching#Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
+Fields `content` ``object (`Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
 `taskType
 (deprecated)` ``enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`)`` Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
 `title
@@ -292,6 +292,7 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 `batch.batchStats` ``object (`https://ai.google.dev/api/embeddings#EmbedContentBatchStats`)`` Output only. Stats about the batch.
 `batch.state` ``enum (`https://ai.google.dev/api/batch-api#v1beta.BatchState`)`` Output only. The state of the batch.
 `batch.priority` `string (https://developers.google.com/discovery/v1/type-format format)` Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+`batch.webhookConfig.uris[]` `string` Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
 
 ### Response body
 
@@ -434,12 +435,12 @@ Fields `inlinedResponses[]` ``object (`https://ai.google.dev/api/embeddings#Inli
 
 The response to a single request in the batch.
 Fields `metadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Output only. The metadata associated with the request.
-`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
+`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`google.rpc.Status`)`` Output only. The error encountered while processing the request.
 `response` ``object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`)`` Output only. The response to the request.
 
 | JSON representation |
 |---|
-| ``` { "metadata": { object }, // output "error": { object (`https://ai.google.dev/api/files#v1beta.Status`) }, "response": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`) } // Union type } ``` |
+| ``` { "metadata": { object }, // output "error": { object (`google.rpc.Status`) }, "response": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`) } // Union type } ``` |
 
 ## EmbedContentBatchStats
 

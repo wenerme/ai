@@ -16,9 +16,12 @@ For help getting started after setup, see some of our [example prompts](https://
 
 Our MCP server uses Streamable HTTP as the primary transport, accessible at the following address. The interactive setup flow uses OAuth 2.1 with dynamic client registration. You can also authenticate directly with a bearer token or Linear API key — see the FAQ for details.
 
- `https://mcp.linear.app/mcp`
+Read-write access is provided through `https://mcp.linear.app/mcp` by default.
 
-If you only want read-only access, use `https://mcp.linear.app/mcp/readonly` instead.
+For read-only access, you have two options:
+
+* Connect to `https://mcp.linear.app/mcp/readonly`, which only ever exposes read tools.
+* Use the standard `/mcp` endpoint, but only request the `read` OAuth scope.  Clients that request `read` are granted read-only access, and the underlying token can't reach write APIs.
 
 For instructions for specific clients, read on. Dedicated setup pages are also available for [Claude](https://linear.app/integrations/claude), [Cursor](https://linear.app/integrations/cursor-mcp), [VS Code](https://linear.app/integrations/vs-code-mcp), [Windsurf](https://linear.app/integrations/windsurf), and [Zed](https://linear.app/integrations/zed/).
 
@@ -314,11 +317,11 @@ Authenticate each configuration separately. For clients that manage their own au
 
 <details>
 <summary>Can I authenticate with my own API keys or OAuth access tokens?</summary>
-The MCP server now supports passing OAuth token and API keys directly in the `Authorization: Bearer <yourtoken>` header instead of using the interactive authentication flow.
+The MCP server supports passing OAuth token and API keys directly in the `Authorization: Bearer <yourtoken>` header instead of using the interactive authentication flow.
 
 You can use this to interact with the MCP server as an `app` user, provide read-only access through a restricted API key, or integrate with an existing Linear OAuth application without an extra authentication hop.
 
-For a read-only approach with your own API key, create a Linear API key with only the `Read` permission enabled.
+For an alternative read-only approach with your own API key, create a Linear API key with only the `Read` permission enabled.
 </details>
 
 <details>

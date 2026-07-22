@@ -69,9 +69,13 @@ At the top of the Reviews tab, you can switch between two tabs: **For me**, whic
 
 You can group by status, author, or repository, and sort or filter to hide draft and closed PRs.
 
-You can also choose whether to display draft or closed pull requests and whether to show additional fields such as repository, failed checks, or preview links if applicable.
+You can choose whether to display draft or closed pull requests and whether to show additional fields such as repository, failed checks, or preview links if applicable.
 
-![Code review Display settings](https://webassets.linear.app/images/ornj730p/production/c80a48d9e51260d8833bccf8557fb0c5ad875b05-778x828.png?q=95&auto=format&dpr=2)
+![Display options for your Reviews](https://webassets.linear.app/images/ornj730p/production/7f5086a8ef00e02de7cd8b6eb1ec9ae06306af39-760x882.png?q=95&auto=format&dpr=2)
+
+If your workspace uses GitHub team reviewers, display options  let you control whether team-level review requests appear in your Reviews list and whether they count toward the Reviews badge, which can help reduce noise when you’re part of larger review groups.
+
+![Team review Display options](https://webassets.linear.app/images/ornj730p/production/e6cedd7eb3f05124eb6d18952266420c8ef17fe8-760x894.png?q=95&auto=format&dpr=2)
 
 ## Code review
 
@@ -106,11 +110,17 @@ If you’d prefer to disable this feature, you can disable the _Generate Pull Re
 
 ### **Diff view options**
 
+#### Unified and split view
+
 Linear supports both _Unified_ and _Split_ diff views when reviewing a pull request.
 
 Unified shows changes in a single column, while Split shows the before and after side-by-side to make comparisons easier. You can switch between Unified and Split from the pull request display options, and you can also toggle between Split and Unified view with `Ctrl` or `⌘` + `B`.
 
-On smaller screens, Split view may be unavailable if there isn't enough horizontal space.
+Note that on smaller screens, Split view may be unavailable if there isn't enough horizontal space.
+
+#### Structural highlighting
+
+When structural highlight is disabled, the diff uses a standard line-based comparison, so added and removed lines are emphasized. When it’s on, Linear uses syntax-aware highlighting to better understand the structure of the code and highlight the specific parts of a line that changed, such as renamed variables, edited expressions, or moved code blocks.
 
 ![Unified and Split diff view options](https://webassets.linear.app/images/ornj730p/production/7d0e5b91472e0fb3962333a783d41a951429298f-788x900.png?q=95&auto=format&dpr=2)
 
@@ -132,13 +142,15 @@ If your PR contains one or more preview links, this will add a preview link shor
 
 ## Notifications
 
-With Diffs enabled, Linear can notify you about pull request activity, including new comments and reviews, review requests, mentions, and CI failures.
+With Diffs enabled, Linear can notify you about pull request activity in your inbox and push notifications.
 
-You can also control how much pull request activity reaches your inbox by choosing a **pull request notifications** mode: **All activity**, **All activity by people**, **Reviews and comments**, **Reviews and comments by people**, or **None**. In the "by people" modes, Linear filters activity GitHub identifies as coming from bot actors to reduce automated noise.
+In  [Code & reviews settings](https://linear.app/settings/account/code-and-reviews), you can choose which kinds of review activity reach you.
 
-Configure your personal notification preferences in your [Code & reviews settings](https://linear.app/settings/account/code-and-reviews).
+* **Comments & reviews** covers comments, mentions, and submitted reviews, and you can choose whether to include all activity or exclude activity from bot actors. **Review requests** controls requests for your personal review.
+* **Team review requests** controls review requests that come through your GitHub teams, which apply when a pull request is assigned to a GitHub team you belong to rather than directly to you. Note that team review requests are only sent for GitHub teams with 10 or fewer members.
+* **Checks & merge queue** controls notifications about failed checks and merge queue updates.
 
-![Pull request notifications](https://webassets.linear.app/images/ornj730p/production/04dcfde52cca225dd6a4b2a2479c897a81e84e2b-1490x708.png?q=95&auto=format&dpr=2)
+![Review notification settings in Code & reviews](https://webassets.linear.app/images/ornj730p/production/d68f78471d3d578b171db1f3a00d41c4d5f0178b-1524x872.png?q=95&auto=format&dpr=2)
 
 ## Additional settings
 

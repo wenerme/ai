@@ -1,5 +1,3 @@
-# Using files
-
 The Gemini API supports uploading media files separately from the prompt input, allowing your media to be reused across multiple requests and multiple prompts. For more details, check out the [Prompting with media](https://ai.google.dev/gemini-api/docs/prompting_with_media) guide.
 
 ## REST Resource: files
@@ -35,12 +33,12 @@ A base64-encoded string.
 `downloadUri` `string` Output only. The download uri of the `File`.
 `state` ``enum (`https://ai.google.dev/api/files#State`)`` Output only. Processing state of the File.
 `source` ``enum (`https://ai.google.dev/api/files#Source`)`` Source of the File.
-`error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. Error status if File processing failed.
+`error` ``object (`google.rpc.Status`)`` Output only. Error status if File processing failed.
 `metadata` `Union type` Metadata for the File. `metadata` can be only one of the following: `videoMetadata` ``object (`https://ai.google.dev/api/files#VideoFileMetadata`)`` Output only. Metadata for a video.
 
 | JSON representation |
 |---|
-| ``` { "name": string, "displayName": string, "mimeType": string, "sizeBytes": string, "createTime": string, "updateTime": string, "expirationTime": string, "sha256Hash": string, "uri": string, "downloadUri": string, "state": enum (`https://ai.google.dev/api/files#State`), "source": enum (`https://ai.google.dev/api/files#Source`), "error": { object (`https://ai.google.dev/api/files#v1beta.Status`) }, // metadata "videoMetadata": { object (`https://ai.google.dev/api/files#VideoFileMetadata`) } // Union type } ``` |
+| ``` { "name": string, "displayName": string, "mimeType": string, "sizeBytes": string, "createTime": string, "updateTime": string, "expirationTime": string, "sha256Hash": string, "uri": string, "downloadUri": string, "state": enum (`https://ai.google.dev/api/files#State`), "source": enum (`https://ai.google.dev/api/files#Source`), "error": { object (`google.rpc.Status`) }, // metadata "videoMetadata": { object (`https://ai.google.dev/api/files#VideoFileMetadata`) } // Union type } ``` |
 
 ## VideoFileMetadata
 
@@ -1037,17 +1035,15 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Metadata for t
 
 ## Status
 
-- [JSON representation](https://ai.google.dev/api/files#SCHEMA_REPRESENTATION)
+The status of the interaction.
 
-The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details.
-
-You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-Fields `code` `integer` The status code, which should be an enum value of `google.rpc.Code`.
-`message` `string` A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the `https://ai.google.dev/api/files#FIELDS.details` field, or localized by the client.
-`details[]` `object` A list of messages that carry the error details. There is a common set of message types for APIs to use.
-
-An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }`.
-
-| JSON representation |
-|---|
-| ``` { "code": integer, "message": string, "details": [ { "@type": string, field1: ..., ... } ] } ``` |
+| Enums ||
+|---|---|
+| `UNSPECIFIED` | Default value. This value is unused. |
+| `IN_PROGRESS` | The interaction is in progress. |
+| `REQUIRES_ACTION` | The interaction requires action/input from the user. |
+| `COMPLETED` | The interaction is completed. |
+| `FAILED` | The interaction failed. |
+| `CANCELLED` | The interaction was cancelled. |
+| `INCOMPLETE` | The interaction is completed, but contains incomplete results (e.g. hitting maxTokens). |
+| `BUDGET_EXCEEDED` | The interaction was halted because the token budget was exceeded. |

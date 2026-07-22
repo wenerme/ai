@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  Automated testing pipeline
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
 
@@ -261,5 +261,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/#page","headline":"Automated testing pipeline · Cloudflare Sandbox SDK docs","description":"Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.","url":"https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

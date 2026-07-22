@@ -1,5 +1,3 @@
-# Managed Agents Quickstart
-
 This guide walks you through creating and using Managed Agents on the Gemini API, using the [Antigravity agent](https://ai.google.dev/gemini-api/docs/agents/antigravity-agent). You'll make your first agent call, continue a multi-turn conversation, stream the response, download files from the sandbox, and work with the Antigravity managed agent.
 
 ## Run your first agent interaction
@@ -227,9 +225,9 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
 ## Save a managed agent
 
-In the previous steps, we used the default Antigravity agent and customized it inline. Once you have iterated on your configuration (instructions, skills, and environment), you can save it as a managed agent. This allows you to invoke it by ID without repeating the configuration.
+In the previous steps, we used the default Antigravity agent and customized it inline. Once you have iterated on your configuration (instructions, skills, model selection, and environment), you can save it as a reusable managed agent. This allows you to invoke it by ID without repeating the configuration.
 
-When you save an agent, you define a `base_environment` (either from sources or by forking an existing environment). The agent will use this environment for every new interaction.
+When you save an agent, notice the architectural symmetry with inline interactions: you specify `base_agent: "antigravity-preview-05-2026"` and can pass an `agent_config` with your chosen `model` just as you would on `interactions.create`. You also define a `base_environment` (either from sources or by forking an existing environment). The agent will use this environment and model configuration for every new interaction.
 
 **From sources:** Define sources inline, or from other sources such as GitHub or Cloud Storage.
 
@@ -238,6 +236,10 @@ When you save an agent, you define a `base_environment` (either from sources or 
     agent = client.agents.create(
         id="fibonacci-analyst",
         base_agent="antigravity-preview-05-2026",
+        agent_config={
+            "type": "antigravity",
+            "model": "gemini-3.6-flash",
+        },
         system_instruction="You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment={
             "type": "remote",
@@ -263,6 +265,10 @@ When you save an agent, you define a `base_environment` (either from sources or 
     const agent = await client.agents.create({
         id: "fibonacci-analyst",
         base_agent: "antigravity-preview-05-2026",
+        agent_config: {
+            type: "antigravity",
+            model: "gemini-3.6-flash",
+        },
         system_instruction: "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment: {
             type: "remote",
@@ -291,6 +297,10 @@ When you save an agent, you define a `base_environment` (either from sources or 
     -d '{
         "id": "fibonacci-analyst",
         "base_agent": "antigravity-preview-05-2026",
+        "agent_config": {
+            "type": "antigravity",
+            "model": "gemini-3.6-flash"
+        },
         "system_instruction": "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         "base_environment": {
             "type": "remote",

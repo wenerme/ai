@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  Enforce MFA
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
@@ -127,6 +127,29 @@ Access checks MFA sessions from most specific to least specific:
 1. **Policy MFA session duration** — If set, applies to users who match the policy.
 2. **Application MFA session duration** — If set, applies to all users accessing the application.
 3. **Global MFA session duration** — The default for all applications that do not specify their own duration.
+
+#### Require MFA on every login
+
+To require MFA every time a user logs in to an application, set the authentication duration to **Require every login**. This prevents Access from caching a successful MFA session.
+
+* **Organization** — Go to **Zero Trust** \> **Access controls** \> **Access settings** \> **Allow multi-factor authentication (MFA)**. Set **Authentication duration** to **Require every login**. This applies to all applications unless overridden at the application or policy level. For more details, refer to [independent MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
+* **Application** — Go to **Zero Trust** \> **Access controls** \> **Applications** \> select your application > **Configure** \> **Authentication** \> **MFA** tab. Select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+* **Policy** — Go to **Zero Trust** \> **Access controls** \> **Policies** \> select your policy > **Configure**. Under **Multi-factor authentication (MFA)**, select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+
+To configure this for an application via the API, first send a `GET` request to retrieve the full application configuration, then send a `PUT` request with the complete application body including the updated `mfa_config`. Set `session_duration` to `"0m"`:
+
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "mfa_config": {
+    "mfa_disabled": false,
+    "session_duration": "0m"
+  }
+}'
+```
 
 ### Precedence example
 
@@ -294,5 +317,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA · Cloudflare One docs","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA · Cloudflare One docs","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
 ```

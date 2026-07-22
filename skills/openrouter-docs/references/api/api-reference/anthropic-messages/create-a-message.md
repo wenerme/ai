@@ -781,6 +781,8 @@ components:
                 required:
                   - type
                 type: object
+              - $ref: '#/components/schemas/AnthropicToolSearchToolBm25'
+              - $ref: '#/components/schemas/AnthropicToolSearchToolRegex'
           type: array
         top_k:
           type: integer
@@ -1306,7 +1308,7 @@ components:
         allowed_models:
           - anthropic/*
           - openai/gpt-4o
-        cost_quality_tradeoff: 7
+        cost_quality_tradeoff: 9
         enabled: true
         id: auto-beta-router
       properties:
@@ -1330,8 +1332,8 @@ components:
             community spend share, then filters candidates by their average cost
             per generation for that task. Higher values favor cheaper models: 10
             keeps only models around the cheapest 10th percentile, while 0
-            permits models up to the 90th percentile for cost. Defaults to 7.
-          example: 7
+            permits models up to the 90th percentile for cost. Defaults to 9.
+          example: 9
           maximum: 10
           minimum: 0
           type: integer
@@ -1913,6 +1915,10 @@ components:
       description: >-
         Stop conditions for the server-tool agent loop. Any condition firing
         halts the loop (OR logic). When set, this overrides `max_tool_calls`.
+        When a condition fires while the model is still emitting tool calls, the
+        pending tool calls are executed and one final turn is made with tool
+        calls disabled so the response ends with a natural-language answer
+        instead of an unfinished tool call.
       example:
         - step_count: 5
           type: step_count_is
@@ -2130,6 +2136,52 @@ components:
       required:
         - type
       type: object
+    AnthropicToolSearchToolBm25:
+      properties:
+        allowed_callers:
+          $ref: '#/components/schemas/AnthropicAllowedCallers'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        defer_loading:
+          type: boolean
+        name:
+          enum:
+            - tool_search_tool_bm25
+          type: string
+        strict:
+          type: boolean
+        type:
+          enum:
+            - tool_search_tool_bm25_20251119
+            - tool_search_tool_bm25
+          type: string
+      required:
+        - type
+        - name
+      type: object
+    AnthropicToolSearchToolRegex:
+      properties:
+        allowed_callers:
+          $ref: '#/components/schemas/AnthropicAllowedCallers'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        defer_loading:
+          type: boolean
+        name:
+          enum:
+            - tool_search_tool_regex
+          type: string
+        strict:
+          type: boolean
+        type:
+          enum:
+            - tool_search_tool_regex_20251119
+            - tool_search_tool_regex
+          type: string
+      required:
+        - type
+        - name
+      type: object
     TraceConfig:
       additionalProperties: {}
       description: >-
@@ -2311,6 +2363,7 @@ components:
         - Clarifai
         - Cloudflare
         - Cohere
+        - CoreWeave
         - Crucible
         - Crusoe
         - Darkbloom
@@ -2382,6 +2435,7 @@ components:
         - WandB
         - Quiver
         - Krea
+        - Runway
         - Xiaomi
         - xAI
         - Z.AI
@@ -3923,6 +3977,7 @@ components:
                 - Clarifai
                 - Cloudflare
                 - Cohere
+                - CoreWeave
                 - Crucible
                 - Crusoe
                 - Darkbloom
@@ -3994,6 +4049,7 @@ components:
                 - WandB
                 - Quiver
                 - Krea
+                - Runway
                 - Xiaomi
                 - xAI
                 - Z.AI

@@ -8,8 +8,17 @@ Move from GitLab Duo Pro or Enterprise to the GitLab Duo Agent Platform.
 When you transition from GitLab Duo (non-agentic) to the Agent Platform, you get
 access to multiple assistants (called agents) throughout the software development lifecycle.
 
-The following table lists the non-agentic features and
-the agentic version. For a complete list of features in the Agent Platform, see [Generally available features](../../../user/duo_agent_platform/_index.md#generally-available-features) and [Beta and experiment features](../../../user/duo_agent_platform/_index.md#beta-and-experiment-features).
+To transition your instance to the Agent Platform, complete the following steps:
+
+1. Set up your environment
+1. Validate your configuration
+1. Configure Agent Platform settings
+1. Validate usage
+
+## Features available after transition
+
+The following table lists the GitLab Duo non-agentic features and
+the agentic version that your users can access after moving to the Agent Platform. For a complete list of features in the Agent Platform, see [Generally available features](../../../user/duo_agent_platform/_index.md#generally-available-features) and [Beta and experiment features](../../../user/duo_agent_platform/_index.md#beta-and-experiment-features).
 
 | Non-agentic feature | Agent Platform |
 |---------------------|----------------|
@@ -22,20 +31,13 @@ the agentic version. For a complete list of features in the Agent Platform, see 
 
 1. Requires a runner [configured to execute flows](#set-up-your-environment). If you don't configure a runner, after you transition to the Agent Platform these features appear unavailable to users who relied on them in GitLab Duo (non-agentic).
 
-To transition your instance to the Agent Platform, complete the following steps:
-
-1. Set up your environment
-1. Validate your configuration
-1. Configure Agent Platform settings
-1. Validate usage
-
 ## Before you begin
 
 You must have GitLab 19.0 or later.
 
 ## Set up your environment
 
-Unlike non-agentic GitLab Duo, the Agent Platform runs flows on runners and uses service accounts to create commits and pipelines. This requires configuration requirements that non-agentic features did not have.
+Unlike GitLab Duo (non-agentic), the Agent Platform runs flows on runners and uses service accounts to create commits and pipelines. This requires configuration requirements that non-agentic features did not have.
 
 To set up your environment for the Agent Platform:
 

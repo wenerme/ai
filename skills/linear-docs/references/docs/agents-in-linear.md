@@ -6,14 +6,13 @@ Build and deploy AI agents that work alongside your team
 
 ## Overview
 
-Agents, also known as "app users", behave similar to other users in a workspace. They can be @-mentioned, delegated issues through assignment, create and reply to comments, collaborate on projects and documents, etc. App users are installed and managed by workspace admins.
+Agents, also known as "app users", behave similar to other users in a workspace. Depending on the permissions granted during installation, agents can be mentioned, delegated issues through assignment, create and reply to comments, and collaborate on projects and documents. App users are installed and managed by workspace admins.
 
-Agents are not traditional assignees. Assigning an issue to an agent triggers delegation—the agent acts on the issue, but the human teammate remains responsible for its completion.
+Agents are not traditional assignees. Assigning an issue to an agent delegates the issue to that agent while the human teammate remains the primary assignee and owner — explore [Assign and delegate issues](https://linear.app/docs/assigning-issues) to learn more.
 
 ## Adding Agents
 
-> [!NOTE]
-> Workspace admins can install agents by following the setup instructions provided by the agent developer. Find available agents in the [Integrations Directory](https://linear.app/integrations/agents).
+Workspace admins can install agents by following the setup instructions provided by the agent developer. Find available agents in the [Integrations Directory](https://linear.app/integrations/agents).
 
 During installation, you’ll be prompted to choose which teams the agent has access to.
 
@@ -23,9 +22,7 @@ During installation, you’ll be prompted to choose which teams the agent has ac
 *Example of installing an agent into Linear*
 </details>
 
-Once installed, any user with access to the selected teams can interact with the agent.
-
-Agents can be uninstalled or managed by admins from **Settings > Applications** or suspended from **Settings > Administration > Members**.
+Once installed, any user with access to the selected teams can interact with the agent. Admins can also review agent access from the [AI & Agents](https://linear.app/settings/ai) settings in the _Installed Agents_ section.
 
 ## Using Agents in Linear
 

@@ -20,7 +20,7 @@ Grounding helps you build applications that can:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Who won the euro 2024?",
         tools=[{"type": "google_search"}]
     )
@@ -34,7 +34,7 @@ Grounding helps you build applications that can:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Who won the euro 2024?",
         tools: [{ type: "google_search" }]
     });
@@ -47,7 +47,7 @@ Grounding helps you build applications that can:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Who won the euro 2024?",
         "tools": [{"type": "google_search"}]
       }'
@@ -212,6 +212,8 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 | Model | Grounding with Google Search |
 |---|---|
+| Gemini 3.6 Flash | ✔️ |
+| Gemini 3.5 Flash-Lite | ✔️ |
 | Gemini 3.5 Flash | ✔️ |
 | Gemini 3.1 Flash Image Preview | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |

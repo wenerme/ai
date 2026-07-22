@@ -2036,28 +2036,28 @@
   },
   "marcusolsson-csv-datasource/configuration.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/configuration.md",
-    "size": 1774,
-    "updatedAt": "2026-07-21T06:50:55.159Z"
+    "size": 1787,
+    "updatedAt": "2026-07-22T03:58:41.206Z"
   },
   "marcusolsson-csv-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest.md",
-    "size": 1250,
-    "updatedAt": "2026-07-21T06:50:55.349Z"
+    "size": 1263,
+    "updatedAt": "2026-07-22T03:58:41.340Z"
   },
   "marcusolsson-csv-datasource/installation.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/installation.md",
-    "size": 2346,
-    "updatedAt": "2026-07-21T06:50:55.569Z"
+    "size": 2359,
+    "updatedAt": "2026-07-22T03:58:41.473Z"
   },
   "marcusolsson-csv-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/query-editor.md",
-    "size": 4759,
-    "updatedAt": "2026-07-21T06:50:55.760Z"
+    "size": 4772,
+    "updatedAt": "2026-07-22T03:58:41.602Z"
   },
   "marcusolsson-csv-datasource/variables.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/variables.md",
-    "size": 1363,
-    "updatedAt": "2026-07-21T06:50:55.932Z"
+    "size": 1376,
+    "updatedAt": "2026-07-22T03:58:41.728Z"
   },
   "marcusolsson-dynamictext-panel/exploring-eventbus.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-eventbus.md",
@@ -2221,8 +2221,8 @@
   },
   "marcusolsson-json-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest.md",
-    "size": 1602,
-    "updatedAt": "2026-06-25T05:43:56.649Z"
+    "size": 1633,
+    "updatedAt": "2026-07-22T03:58:45.977Z"
   },
   "marcusolsson-json-datasource/installation.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/installation.md",

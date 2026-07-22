@@ -371,6 +371,16 @@ paths:
                   - data
                 type: object
           description: List of API keys
+        '400':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 400
+                  message: Invalid request parameters
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request - Invalid request parameters or malformed input
         '401':
           content:
             application/json:
@@ -403,6 +413,27 @@ paths:
           description: Internal Server Error - Unexpected server error
 components:
   schemas:
+    BadRequestResponse:
+      description: Bad Request - Invalid request parameters or malformed input
+      example:
+        error:
+          code: 400
+          message: Invalid request parameters
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
     UnauthorizedResponse:
       description: Unauthorized - Authentication required or invalid credentials
       example:
@@ -465,6 +496,25 @@ components:
             - 'null'
       required:
         - error
+      type: object
+    BadRequestResponseErrorData:
+      description: Error data for BadRequestResponse
+      example:
+        code: 400
+        message: Invalid request parameters
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
       type: object
     UnauthorizedResponseErrorData:
       description: Error data for UnauthorizedResponse

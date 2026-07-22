@@ -109,8 +109,10 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 5,000,000 |
+| Gemini 3.5 Flash-Lite | 10,000,000 |
 | Gemini 3.1 Flash Lite | 10,000,000 |
 | Gemini 3.1 Flash Lite Preview | 10,000,000 |
+| Gemini 3.6 Flash | 3,000,000 |
 | Gemini 3.5 Flash | 3,000,000 |
 | Gemini 2.5 Pro | 5,000,000 |
 | Gemini 2.5 Pro TTS | 25,000 |
@@ -134,8 +136,10 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 500,000,000 |
+| Gemini 3.5 Flash-Lite | 500,000,000 |
 | Gemini 3.1 Flash Lite | 500,000,000 |
 | Gemini 3.1 Flash Lite Preview | 500,000,000 |
+| Gemini 3.6 Flash | 400,000,000 |
 | Gemini 3.5 Flash | 400,000,000 |
 | Gemini 2.5 Pro | 500,000,000 |
 | Gemini 2.5 Pro TTS | 100,000 |
@@ -159,8 +163,10 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 1,000,000,000 |
+| Gemini 3.5 Flash-Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Lite Preview | 1,000,000,000 |
+| Gemini 3.6 Flash | 1,000,000,000 |
 | Gemini 3.5 Flash | 1,000,000,000 |
 | Gemini 2.5 Pro | 1,000,000,000 |
 | Gemini 2.5 Pro TTS | 1,000,000 |

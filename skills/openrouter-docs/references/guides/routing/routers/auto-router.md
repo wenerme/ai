@@ -26,14 +26,14 @@ Auto Beta routes on evidence: what thousands of developers, in aggregate, keep u
 
 ## Benchmarks
 
-We benchmarked Auto Beta against the current Auto router on three very different workloads: GPQA Diamond (198 PhD-level science questions), τ-bench Verified Airline (50 multi-turn agentic customer-service tasks with tool use), and DRACO (20 deep-research report tasks across 10 domains, LLM-judged). Claude Opus 4.8 and GLM 5.2 were run as fixed-model reference points on GPQA and τ-bench. `cqt` is the [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting: 0 is the high-quality end, 7 is the cost-sensitive default.
+We benchmarked Auto Beta against the current Auto router on three very different workloads: GPQA Diamond (198 PhD-level science questions), τ-bench Verified Airline (50 multi-turn agentic customer-service tasks with tool use), and DRACO (20 deep-research report tasks across 10 domains, LLM-judged). Claude Opus 4.8 and GLM 5.2 were run as fixed-model reference points on GPQA and τ-bench. `cqt` is the [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting: 0 is the high-quality end and higher values favor cheaper models. The rows below were measured at `cqt=0` and `cqt=7` (Auto Beta now defaults to `cqt=9`).
 
 | Config                          | GPQA Diamond | τ-bench Airline | DRACO (norm. score) |
 | ------------------------------- | ------------ | --------------- | ------------------- |
 | **Auto Beta — quality (cqt=0)** | **83.8%**    | **74.0%**       | 60.0                |
-| **Auto Beta — default (cqt=7)** | 74.2%        | 66.0%           | **63.2**            |
+| **Auto Beta — cqt=7**           | 74.2%        | 66.0%           | **63.2**            |
 | Auto — quality (cqt=0)          | 50.0%        | 34.0%           | 19.6                |
-| Auto — default (cqt=7)          | 61.6%        | 30.0%           | 25.6                |
+| Auto — cqt=7                    | 61.6%        | 30.0%           | 25.6                |
 | Claude Opus 4.8                 | 86.9%        | 78.0%           | —                   |
 | GLM 5.2                         | 75.8%        | 72.0%           | —                   |
 
@@ -353,14 +353,14 @@ Control how aggressively the Auto Router optimizes for cost vs. quality using th
 * **10** = maximize for cost — cheapest model wins
 * Intermediate values blend quality and cost signals continuously
 
-The default is **7**, which balances cost savings with strong output quality.
+The default is **9** for Auto Beta (`openrouter/auto-beta`) and **7** for the deprecated `openrouter/auto`, balancing cost savings with strong output quality.
 
 ### How It Works in Auto Beta
 
 In Auto Beta, the tradeoff acts as a cost-percentile ceiling on the ranked candidate pool for your prompt's task type. Each candidate model has an average cost per generation for that task; the dial keeps only models at or below a percentile of that cost distribution:
 
 * At **0**, nearly the whole pool is eligible (up to the 90th cost percentile), so the top spend-share models win regardless of price.
-* At the default of **7**, only the cheapest \~third of candidates survive.
+* At the Auto Beta default of **9**, only the cheapest \~fifth of candidates survive.
 * At **10**, just the cheapest decile remains.
 
 The cheapest model is always kept, so the filter can never come up empty, and the surviving models are still ranked by spend share — the dial changes how expensive a model is allowed to be, not how candidates are ordered.

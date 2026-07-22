@@ -129,8 +129,10 @@ If a secret is already present in a file and not part of the changes, it is not 
 
 ## Audit events
 
-[Audit events](../../../compliance/audit_event_types.md#secret-detection) are logged when secret push protection
-skips scanning because the push contains [too many changed paths](#push-size-threshold).
+[Audit events](../../../compliance/audit_event_types.md#secret-detection) are logged when:
+
+- Secret push protection skips scanning because the push contains [too many changed paths](#push-size-threshold).
+- Secret push protection scan timeout occurs and GitLab accepts the push.
 
 ## Push size threshold
 

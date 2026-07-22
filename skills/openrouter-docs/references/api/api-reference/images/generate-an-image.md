@@ -1278,6 +1278,7 @@ components:
         - Clarifai
         - Cloudflare
         - Cohere
+        - CoreWeave
         - Crucible
         - Crusoe
         - Darkbloom
@@ -1349,6 +1350,7 @@ components:
         - WandB
         - Quiver
         - Krea
+        - Runway
         - Xiaomi
         - xAI
         - Z.AI
@@ -1440,6 +1442,9 @@ components:
           additionalProperties: {}
           type: object
         cohere:
+          additionalProperties: {}
+          type: object
+        coreweave:
           additionalProperties: {}
           type: object
         crofai:
@@ -1662,6 +1667,9 @@ components:
           additionalProperties: {}
           type: object
         replicate:
+          additionalProperties: {}
+          type: object
+        runway:
           additionalProperties: {}
           type: object
         sail-research:

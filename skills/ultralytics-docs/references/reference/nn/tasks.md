@@ -34,6 +34,10 @@ keywords: Ultralytics, YOLO, nn tasks, DetectionModel, PoseModel, RTDETRDetectio
 
 <hr>
 
+## ::: ultralytics.nn.tasks.DepthModel
+
+<hr>
+
 ## ::: ultralytics.nn.tasks.ClassificationModel
 
 <hr>

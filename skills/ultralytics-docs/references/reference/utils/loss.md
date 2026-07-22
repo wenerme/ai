@@ -70,6 +70,10 @@ keywords: Ultralytics, loss functions, Varifocal Loss, Focal Loss, Bbox Loss, Ro
 
 <hr>
 
+## ::: ultralytics.utils.loss.DepthLoss26
+
+<hr>
+
 ## ::: ultralytics.utils.loss.E2EDetectLoss
 
 <hr>

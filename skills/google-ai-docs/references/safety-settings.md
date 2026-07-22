@@ -1,5 +1,3 @@
-# Safety settings
-
 The Gemini API provides safety settings that you can adjust during the
 prototyping stage to determine if your application requires a more or less
 restrictive safety configuration. You can adjust these settings across four
@@ -144,7 +142,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents="Some potentially unsafe prompt",
         config=types.GenerateContentConfig(
           safety_settings=[
@@ -187,7 +185,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
         response, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3.5-flash",
+            "gemini-3.6-flash",
             genai.Text("Some potentially unsafe prompt."),
             config,
         )
@@ -212,7 +210,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         contents: "Some potentially unsafe prompt.",
         config: {
           safetySettings: safetySettings,
@@ -229,7 +227,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
         BlockThreshold.LOW_AND_ABOVE);
 
     GenerativeModel gm = new GenerativeModel(
-        "gemini-3.5-flash",
+        "gemini-3.6-flash",
         BuildConfig.apiKey,
         null, // generation config is optional
         Arrays.asList(hateSpeechSafety)
@@ -239,7 +237,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -X POST \

@@ -17336,7 +17336,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_1f3a51c7b434"
+              "$ref": "#/components/schemas/RequestBody_224978a87e6f"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -84116,6 +84116,8 @@ components:
           type: string
         sidekiq_job_limiter_limit_bytes:
           type: string
+        sidekiq_timezone_override:
+          type: string
         suggest_pipeline_enabled:
           type: string
         enable_artifact_external_redirect_warning_page:
@@ -97423,7 +97425,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_1f3a51c7b434:
+    RequestBody_224978a87e6f:
       type: object
       properties:
         admin_mode:
@@ -99282,6 +99284,9 @@ components:
           type: string
           nullable: true
         sidekiq_job_limiter_limit_bytes:
+          type: string
+          nullable: true
+        sidekiq_timezone_override:
           type: string
           nullable: true
         search_rate_limit:

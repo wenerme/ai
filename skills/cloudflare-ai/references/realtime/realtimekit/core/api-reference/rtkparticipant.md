@@ -11,7 +11,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  RTKParticipant
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This module represents a single participant in the meeting. The participant object can be accessed from one of the participant lists present in the `meeting.participants` object. For example,
 
@@ -19,261 +19,190 @@ This module represents a single participant in the meeting. The participant obje
 const participant1 = meeting.participants.active.get(participantId);
 const participant2 = meeting.participants.joined.get(participantId);
 const participant3 = meeting.participants.active.toArray()[0];
-const participant4 = meeting.participants.active.toArray()
+const participantsNamedJohn = meeting.participants.active.toArray()
   .filter((p) => p.name === 'John');
 ```
 
 * [RTKParticipant](#module%5FRTKParticipant)
-  * [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports) ⏏
-    * [new module.exports(context, participant, self, roomSocket)](#new%5Fmodule%5FRTKParticipant--module.exports%5Fnew)
-    * [.id](#module%5FRTKParticipant--module.exports+id)
-    * [.userId](#module%5FRTKParticipant--module.exports+userId)
-    * [.name](#module%5FRTKParticipant--module.exports+name)
-    * [.picture](#module%5FRTKParticipant--module.exports+picture)
-    * [.customParticipantId](#module%5FRTKParticipant--module.exports+customParticipantId)
-    * [.device](#module%5FRTKParticipant--module.exports+device)
-    * [.videoTrack](#module%5FRTKParticipant--module.exports+videoTrack)
-    * [.audioTrack](#module%5FRTKParticipant--module.exports+audioTrack)
-    * [.screenShareTracks](#module%5FRTKParticipant--module.exports+screenShareTracks)
-    * [.videoEnabled](#module%5FRTKParticipant--module.exports+videoEnabled)
-    * [.audioEnabled](#module%5FRTKParticipant--module.exports+audioEnabled)
-    * [.screenShareEnabled](#module%5FRTKParticipant--module.exports+screenShareEnabled)
-    * [.producers](#module%5FRTKParticipant--module.exports+producers)
-    * [.manualProducerConfig](#module%5FRTKParticipant--module.exports+manualProducerConfig)
-    * [.supportsRemoteControl](#module%5FRTKParticipant--module.exports+supportsRemoteControl)
-    * [.presetName](#module%5FRTKParticipant--module.exports+presetName)
-    * [.stageStatus](#module%5FRTKParticipant--module.exports+stageStatus)
-    * [.telemetry](#module%5FRTKParticipant--module.exports+telemetry)
-    * [.isPinned](#module%5FRTKParticipant--module.exports+isPinned)
-    * [.setVideoEnabled(videoEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setVideoEnabled)
-    * [.setAudioEnabled(audioEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setAudioEnabled)
-    * [.setScreenShareEnabled(screenShareEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setScreenShareEnabled)
-    * [.pin()](#module%5FRTKParticipant--module.exports+pin)
-    * [.unpin()](#module%5FRTKParticipant--module.exports+unpin)
-    * [.setIsPinned(isPinned, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setIsPinned)
-    * [.disableAudio()](#module%5FRTKParticipant--module.exports+disableAudio)
-    * [.kick()](#module%5FRTKParticipant--module.exports+kick)
-    * [.disableVideo()](#module%5FRTKParticipant--module.exports+disableVideo)
-    * [.registerVideoElement(videoElem)](#module%5FRTKParticipant--module.exports+registerVideoElement)
-    * [.deregisterVideoElement(\[videoElem\])](#module%5FRTKParticipant--module.exports+deregisterVideoElement)
-    * [.updateVideo(e)](#module%5FRTKParticipant--module.exports+updateVideo)
+  * [.id](#module%5FRTKParticipant+id)
+  * [.userId](#module%5FRTKParticipant+userId)
+  * [.name](#module%5FRTKParticipant+name)
+  * [.picture](#module%5FRTKParticipant+picture)
+  * [.customParticipantId](#module%5FRTKParticipant+customParticipantId)
+  * [.device](#module%5FRTKParticipant+device)
+  * [.videoTrack](#module%5FRTKParticipant+videoTrack)
+  * [.audioTrack](#module%5FRTKParticipant+audioTrack)
+  * [.screenShareTracks](#module%5FRTKParticipant+screenShareTracks)
+  * [.videoEnabled](#module%5FRTKParticipant+videoEnabled)
+  * [.audioEnabled](#module%5FRTKParticipant+audioEnabled)
+  * [.screenShareEnabled](#module%5FRTKParticipant+screenShareEnabled)
+  * [.producers](#module%5FRTKParticipant+producers)
+  * [.manualProducerConfig](#module%5FRTKParticipant+manualProducerConfig)
+  * [.supportsRemoteControl](#module%5FRTKParticipant+supportsRemoteControl)
+  * [.presetName](#module%5FRTKParticipant+presetName)
+  * [.stageStatus](#module%5FRTKParticipant+stageStatus)
+  * [.isPinned](#module%5FRTKParticipant+isPinned)
+  * [.pin()](#module%5FRTKParticipant+pin)
+  * [.unpin()](#module%5FRTKParticipant+unpin)
+  * [.disableAudio()](#module%5FRTKParticipant+disableAudio)
+  * [.kick()](#module%5FRTKParticipant+kick)
+  * [.disableVideo()](#module%5FRTKParticipant+disableVideo)
+  * [.registerVideoElement(videoElem)](#module%5FRTKParticipant+registerVideoElement)
+  * [.deregisterVideoElement(\[videoElem\])](#module%5FRTKParticipant+deregisterVideoElement)
 
-### module.exports ⏏
-
-**Kind**: Exported class
-
-#### new module.exports(context, participant, self, roomSocket)
-
-| Param       | Type              |
-| ----------- | ----------------- |
-| context     | Context           |
-| participant | IParticipant      |
-| self        | Self              |
-| roomSocket  | RoomSocketHandler |
-
-#### module.exports.id
+### participant.id
 
 The peer ID of the participant. The participants are indexed by this ID in the participant map.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.userId
+### participant.userId
 
 The user ID of the participant.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.name
+### participant.name
 
 The name of the participant.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.picture
+### participant.picture
 
 The picture of the participant.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.customParticipantId
+### participant.customParticipantId
 
-The custom id of the participant set during Add RTKParticipant REST API
+The custom id of the participant set during [https://developers.cloudflare.com/api/resources/realtime\_kit/subresources/meetings/methods/add\_participant ↗](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant) REST API
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.device
+### participant.device
 
 The device configuration of the participant.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.videoTrack
+### participant.videoTrack
 
 The participant's video track.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.audioTrack
+### participant.audioTrack
 
 The participant's audio track.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.screenShareTracks
+### participant.screenShareTracks
 
 The participant's screenshare video and audio track.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.videoEnabled
+### participant.videoEnabled
 
 This is true if the participant's video is enabled.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.audioEnabled
+### participant.audioEnabled
 
 This is true if the participant's audio is enabled.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.screenShareEnabled
+### participant.screenShareEnabled
 
 This is true if the participant is screensharing.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.producers
+### participant.producers
 
 producers created by participant
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.manualProducerConfig
+### participant.manualProducerConfig
 
 producer config passed during manual subscription
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.supportsRemoteControl
+### participant.supportsRemoteControl
 
 This is true if the participant supports remote control.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.presetName
+### participant.presetName
 
 The preset of the participant.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.stageStatus
+### participant.stageStatus
 
 Denotes the participants's current stage status.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.telemetry
-
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-#### module.exports.isPinned
+### participant.isPinned
 
 Returns true if the participant is pinned.
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance property of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.setVideoEnabled(videoEnabled, \[emitEvent\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-| Param         | Type    | Default |
-| ------------- | ------- | ------- |
-| videoEnabled  | boolean |         |
-| \[emitEvent\] | boolean | true    |
-
-#### module.exports.setAudioEnabled(audioEnabled, \[emitEvent\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-| Param         | Type    | Default |
-| ------------- | ------- | ------- |
-| audioEnabled  | boolean |         |
-| \[emitEvent\] | boolean | true    |
-
-#### module.exports.setScreenShareEnabled(screenShareEnabled, \[emitEvent\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-| Param              | Type    | Default |
-| ------------------ | ------- | ------- |
-| screenShareEnabled | boolean |         |
-| \[emitEvent\]      | boolean | true    |
-
-#### module.exports.pin()
+### participant.pin()
 
 Returns `participant.id` if user has permission to pin participants.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.unpin()
+### participant.unpin()
 
 Returns `participant.id` if user has permission to unpin participants.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.setIsPinned(isPinned, \[emitEvent\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-| Param         | Type    | Default |
-| ------------- | ------- | ------- |
-| isPinned      | boolean |         |
-| \[emitEvent\] | boolean | true    |
-
-#### module.exports.disableAudio()
+### participant.disableAudio()
 
 Disables audio for this participant. Requires the permission to disable participant audio.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.kick()
+### participant.kick()
 
 Kicks this participant from the meeting. Requires the permission to kick a participant.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.disableVideo()
+### participant.disableVideo()
 
 Disables video for this participant. Requires the permission to disable video for a participant.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
-#### module.exports.registerVideoElement(videoElem)
+### participant.registerVideoElement(videoElem)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
 | Param     | Type             |
 | --------- | ---------------- |
 | videoElem | HTMLVideoElement |
 
-#### module.exports.deregisterVideoElement(\[videoElem\])
+### participant.deregisterVideoElement(\[videoElem\])
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
+**Kind**: instance method of [RTKParticipant](#module%5FRTKParticipant)
 
 | Param         | Type             |
 | ------------- | ---------------- |
 | \[videoElem\] | HTMLVideoElement |
-
-#### module.exports.updateVideo(e)
-
-Internal method, do not use
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-| Param | Type             |
-| ----- | ---------------- |
-| e     | HTMLVideoElement |
 
 Was this helpful?
 
@@ -284,5 +213,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/#page","headline":"RTKParticipant · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/#page","headline":"RTKParticipant · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

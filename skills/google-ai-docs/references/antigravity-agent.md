@@ -1,6 +1,6 @@
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
-It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
+It is powered by Gemini 3.6 Flash and uses the same harness as the Antigravity IDE. You can configure the underlying Gemini model using `agent_config`. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
 
 ### Python
 
@@ -468,6 +468,73 @@ When registering an MCP server, you must specify the following fields in the `to
               "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
           }]
       }'
+
+## Model selection
+
+For `antigravity-preview-05-2026`, the default model is **Gemini 3.6 Flash** (`gemini-3.6-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.6-flash`.
+
+You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="Summarize the key differences between functional and object-oriented programming.",
+        environment="remote",
+        agent_config={
+            "type": "antigravity",
+            "model": "gemini-3.5-flash-lite",
+        },
+    )
+
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "Summarize the key differences between functional and object-oriented programming.",
+        environment: "remote",
+        agent_config: {
+            type: "antigravity",
+            model: "gemini-3.5-flash-lite",
+        },
+    }, { timeout: 300000 });
+
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+          "agent": "antigravity-preview-05-2026",
+          "input": "Summarize the key differences between functional and object-oriented programming.",
+          "environment": "remote",
+          "agent_config": {
+              "type": "antigravity",
+              "model": "gemini-3.5-flash-lite"
+          }
+      }'
+
+The supported values for `agent_config.model` are:
+
+| Model | Value in `agent_config.model` | Description |
+|---|---|---|
+| **Gemini 3.6 Flash** (default) | `gemini-3.6-flash` | Default balanced model for reasoning, coding, and tool use. |
+| **Gemini 3.5 Flash** | `gemini-3.5-flash` | Previous generation Flash model for general agentic workflows. |
+| **Gemini 3.5 Flash-Lite** | `gemini-3.5-flash-lite` | Lightweight model optimized for low latency and cost-sensitive tasks. |
+
+When creating a managed agent with `agents.create`, you configure the model in the exact same way by passing `base_agent` and `agent_config`. Notice that you cannot override the model at interaction time for a managed agent created with `agents.create`. The model is locked to what was set when the agent was created. This ensures predictable tool calling behavior, consistent debugging, and adherence to security boundaries.
 
 ## Customizing the agent
 
@@ -977,7 +1044,7 @@ limit token usage. You can also monitor progress in real time with
 
 ### Budget controls
 
-Set `max_total_tokens` inside `agent_config` (with `"type": "antigravity"`) to limit
+In addition to [model selection](https://ai.google.dev/gemini-api/docs/antigravity-agent#model-selection), set `max_total_tokens` inside `agent_config` (with `"type": "antigravity"`) to limit
 the total number of tokens (input + output + thinking) an interaction can consume.
 Cached tokens do not count toward this limit. When the agent reaches the limit, the
 interaction stops and returns with `status: "incomplete"`. The limit is best-effort:

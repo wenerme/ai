@@ -133,6 +133,7 @@ paths:
                 data:
                   - created_at: '2025-08-24T10:30:00Z'
                     created_by: user_abc123
+                    default_guardrail_id: 595d5849-7e86-51fd-a7c0-705c34e4afff
                     default_image_model: openai/dall-e-3
                     default_provider_sort: price
                     default_text_model: openai/gpt-4o
@@ -177,6 +178,7 @@ components:
         data:
           - created_at: '2025-08-24T10:30:00Z'
             created_by: user_abc123
+            default_guardrail_id: 595d5849-7e86-51fd-a7c0-705c34e4afff
             default_image_model: openai/dall-e-3
             default_provider_sort: price
             default_text_model: openai/gpt-4o
@@ -251,6 +253,7 @@ components:
       example:
         created_at: '2025-08-24T10:30:00Z'
         created_by: user_abc123
+        default_guardrail_id: 595d5849-7e86-51fd-a7c0-705c34e4afff
         default_image_model: openai/dall-e-3
         default_provider_sort: price
         default_text_model: openai/gpt-4o
@@ -275,6 +278,13 @@ components:
           type:
             - string
             - 'null'
+        default_guardrail_id:
+          description: >-
+            Deterministic ID of the workspace's implicitly-created default
+            guardrail
+          example: 595d5849-7e86-51fd-a7c0-705c34e4afff
+          format: uuid
+          type: string
         default_image_model:
           description: Default image model for this workspace
           example: openai/dall-e-3
@@ -351,6 +361,7 @@ components:
             - 'null'
       required:
         - id
+        - default_guardrail_id
         - name
         - slug
         - description

@@ -709,6 +709,9 @@ components:
         cohere:
           additionalProperties: {}
           type: object
+        coreweave:
+          additionalProperties: {}
+          type: object
         crofai:
           additionalProperties: {}
           type: object
@@ -929,6 +932,9 @@ components:
           additionalProperties: {}
           type: object
         replicate:
+          additionalProperties: {}
+          type: object
+        runway:
           additionalProperties: {}
           type: object
         sail-research:

@@ -11,7 +11,7 @@ Open source Grafana Cloud
 
 > Warning
 >
-> This plugin is in maintenance mode. It won’t receive new features, and bug fixes aren’t guaranteed. We recommend using the [Infinity data source](/grafana/plugins/yesoreyeram-infinity-datasource/) instead. To get started quickly with CSV data in Grafana, refer to [How to visualize CSV data with Grafana](/blog/2025/02/05/how-to-visualize-csv-data-with-grafana/).
+> This plugin is deprecated and will only receive critical security updates. Support will end on February 1, 2027. We recommend using the [Infinity data source](/grafana/plugins/yesoreyeram-infinity-datasource/) instead. To get started quickly with CSV data in Grafana, refer to [How to visualize CSV data with Grafana](/blog/2025/02/05/how-to-visualize-csv-data-with-grafana/).
 
 [Query variables](/docs/grafana/latest/variables/variable-types/add-query-variable/) let you extract data from a data source and use it to populate a dashboard variable.
 
