@@ -37,7 +37,7 @@ If you manually enter a parameter, it must be enclosed in double quotation marks
 
 - ASCII letters
 - Numbers (0-9)
-- Underscore (`_`), hyphen (`-`), question mark (`?`), dot (`.`), ampersand (`&`) or at (`@`)
+- Underscore (`_`), hyphen (`-`), question mark (`?`), dot (`.`), ampersand (`&`), or at (`@`)
 
 Parameters are case-sensitive. Autocomplete handles this, and the insertion
 of quotation marks, automatically.
@@ -117,7 +117,6 @@ Add one or more active CRM contacts.
 
 ### `add_email`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 13.8 [with a feature flag](../../administration/feature_flags/list.md) named `issue_email_participants`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
 
 Add up to six email participants.
@@ -264,8 +263,6 @@ Assign one or more users as reviewers, or request a new review from existing rev
 
 ### `award`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412275) in GitLab 16.5 for tasks, objectives, and key results.
-
 Toggle an emoji reaction.
 
 **Availability**:
@@ -298,8 +295,6 @@ Toggle an emoji reaction.
 - For more information, see [emoji reactions](../emoji_reactions.md).
 
 ### `blocked_by`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/214232) in GitLab 16.0.
 
 Mark the item as blocked by other items.
 
@@ -346,8 +341,6 @@ Mark the item as blocked by other items.
 - To mark the items as related, none blocking the other, use [`/relate`](#relate).
 
 ### `blocks`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/214232) in GitLab 16.0.
 
 Mark the item as blocking other items.
 
@@ -565,8 +558,6 @@ Close the work item.
 
 ### `confidential`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412276) in GitLab 16.4 for tasks, objectives, and key results.
-
 Mark the work item as confidential.
 
 **Availability**:
@@ -594,8 +585,6 @@ Mark the work item as confidential.
 - To make an item not confidential, in the upper-right corner, select **More actions** () and then **Turn off confidentiality**.
 
 ### `convert_to_ticket`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/433376) in GitLab 16.9.
 
 Convert an issue into a Service Desk ticket.
 
@@ -687,8 +676,6 @@ Create a new merge request starting from the current issue.
   ```
 
 ### `done`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412277) in GitLab 16.2 for tasks, objectives, and key results.
 
 Mark a to-do item as done.
 
@@ -912,8 +899,6 @@ Set the health status.
 - For more information, see [health status](issues/managing_issues.md#health-status).
 
 ### `iteration`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384885) in GitLab 16.9 for `--current` and `--next` options.
 
 Set the iteration.
 
@@ -1139,8 +1124,6 @@ Start escalations for the incident.
 
 ### `promote_to`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412534) in GitLab 16.1 for tasks and key results.
-
 Promote a work item to a specified type.
 
 **Availability**:
@@ -1223,8 +1206,6 @@ Publish an issue to an associated Status Page.
 - For more information, see [Status Page](../../operations/incident_management/status_page.md).
 
 ### `react`
-
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/409884) from `/award` in GitLab 16.7. `/award` is still available as an aliased command.
 
 Toggle an emoji reaction.
 
@@ -1441,8 +1422,6 @@ Mark items as related.
 
 ### `remove_child`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/132761) in GitLab 16.10 for objectives.
-
 Remove an item as a child item.
 
 **Availability**:
@@ -1525,7 +1504,6 @@ Remove the due date.
 
 ### `remove_email`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 13.8 [with a feature flag](../../administration/feature_flags/list.md) named `issue_email_participants`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
 
 Remove up to six email participants.
@@ -1629,8 +1607,6 @@ Remove the milestone.
 - To set the milestone, use [`/milestone`](#milestone).
 
 ### `remove_parent`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/434344) in GitLab 16.9 for tasks and key results.
 
 Remove the parent from the item.
 
@@ -1793,7 +1769,6 @@ Run a new pipeline for the merge request.
 
 ### `set_parent`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/420798) in GitLab 16.5 for tasks and key results.
 - Alias `/epic` for issues [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/514942) in GitLab 17.10.
 
 Set the parent item.
@@ -1986,8 +1961,6 @@ Submit a pending [review](merge_requests/reviews/_index.md#submit-a-review).
 
 ### `subscribe`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/420796) in GitLab 16.4 for tasks, objectives, and key results.
-
 Subscribe to notifications for a work item.
 
 **Availability**:
@@ -2102,8 +2075,6 @@ Change the title.
 
 ### `todo`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412277) in GitLab 16.2 for tasks, objectives, and key results.
-
 Add a to-do item for yourself.
 
 **Availability**:
@@ -2125,8 +2096,6 @@ Add a to-do item for yourself.
   ```
 
 ### `type`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385227) in GitLab 16.0.
 
 Convert a work item to a specified type.
 
@@ -2303,7 +2272,6 @@ Remove labels.
 
 ### `unlink`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/414400) in GitLab 16.1 for issues and epics.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/481851) in GitLab 17.8 for tasks, objectives, and key results.
 
 Remove a link to another item.
@@ -2369,8 +2337,6 @@ Unlock the discussions.
 - To lock the discussions, use [`/lock`](#lock).
 
 ### `unsubscribe`
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/420796) in GitLab 16.4 for tasks, objectives, and key results.
 
 Unsubscribe from notifications for a work item.
 

@@ -130,6 +130,47 @@ const result = openrouter.callModel({
 
 Execution stops when **any** condition is met.
 
+## Final Response After Stop
+
+A stop condition can fire while the model is still emitting tool calls. By
+default, the SDK then executes those pending tool calls (so they have
+matching outputs) and makes one more model turn with `toolChoice: 'none'`,
+appending a built-in final-answer directive (exported as
+`DEFAULT_FINAL_RESPONSE_DIRECTIVE`) as a user message — so the run ends with
+a real natural-language answer instead of a half-finished tool call. Tools
+stay in the request; only calling is forbidden, which preserves the
+prompt-cache prefix.
+
+Tune it with `allowFinalResponse`:
+
+```typescript lines theme={null}
+const result = openrouter.callModel({
+  model: 'openai/gpt-5.2',
+  input: 'Research this topic',
+  tools: [searchTool],
+  stopWhen: stepCountIs(5),
+  // default (omitted or `true`): final turn + built-in directive
+
+  // override the directive wording:
+  // allowFinalResponse: 'Summarize what you found so far.',
+  // make the final turn without appending any message:
+  // allowFinalResponse: '',
+  // disable the final turn (run ends on the halted tool-call turn):
+  // allowFinalResponse: false,
+});
+```
+
+<Note>
+  Without the directive, models that emit tool-call syntax as text can leak
+  an unparsed tool call (e.g. `<tool_call>…`) into the final content when
+  the loop stops mid-tool-call. The default directive exists to prevent
+  exactly that.
+</Note>
+
+The final turn only happens when a stop condition halted the loop while the
+last response contained executable tool calls. It never fires on natural
+completion, HITL/approval pauses, or interruption.
+
 ## Custom Stop Conditions
 
 Create custom conditions with a function:
@@ -296,7 +337,9 @@ const result = openrouter.callModel({
 
 ### Default Behavior
 
-If `stopWhen` is not specified, the default is `stepCountIs(5)`.
+If `stopWhen` is not specified, the loop runs until the model produces a
+turn with no tool calls. Always pass an explicit `stopWhen` (e.g.
+`stepCountIs(n)`, `maxCost(...)`) to bound iterations, cost, or tokens.
 
 ## Best Practices
 

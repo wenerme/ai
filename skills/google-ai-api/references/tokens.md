@@ -1,5 +1,3 @@
-# Counting tokens
-
 For a detailed guide on counting tokens using the Gemini API, including how images, audio and video are counted, see the [Token counting guide](https://ai.google.dev/gemini-api/docs/tokens) and accompanying [Cookbook recipe](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Counting_Tokens.ipynb).
 
 ## Method: models.countTokens
@@ -38,7 +36,7 @@ Format: `models/{model}` It takes the form `models/{model}`.
 ### Request body
 
 The request body contains data with the following structure:
-Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. The input given to the model as a prompt. This field is ignored when `generateContentRequest` is set.
+Fields `contents[]` ``object (`Content`)`` Optional. The input given to the model as a prompt. This field is ignored when `generateContentRequest` is set.
 `generateContentRequest` ``object (`https://ai.google.dev/api/batch-api#GenerateContentRequest`)`` Optional. The overall input given to the `Model`. This includes the prompt as well as other model steering information like [system instructions](https://ai.google.dev/gemini-api/docs/system-instructions), and/or function declarations for [function calling](https://ai.google.dev/gemini-api/docs/function-calling). `Model`s/`Content`s and `generateContentRequest`s are mutually exclusive. You can either send `Model` + `Content`s or a `generateContentRequest`, but never both.
 
 ### Example request

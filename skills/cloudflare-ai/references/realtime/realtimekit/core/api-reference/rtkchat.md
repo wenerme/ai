@@ -11,257 +11,197 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  RTKChat
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This is the chat module, which can be used to send and receive messages from the meeting.
 
 * [RTKChat](#module%5FRTKChat)
-  * [module.exports](#exp%5Fmodule%5FRTKChat--module.exports) ⏏
-    * [new module.exports(context, chatSocketHandler, self, participants)](#new%5Fmodule%5FRTKChat--module.exports%5Fnew)
-    * ~~[.messages](#module%5FRTKChat--module.exports+messages)~~
-    * [.telemetry](#module%5FRTKChat--module.exports+telemetry)
-    * [.setMaxTextLimit(limit)](#module%5FRTKChat--module.exports+setMaxTextLimit)
-    * [.sendMessageInternal(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessageInternal)
-    * [.sendTextMessageInternal(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessageInternal)
-    * [.sendImageMessageInternal(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessageInternal)
-    * [.sendFileMessageInternal(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessageInternal)
-    * [.updateRateLimits(num, period)](#module%5FRTKChat--module.exports+updateRateLimits)
-    * [.sendTextMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessage)
-    * [.sendCustomMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendCustomMessage)
-    * [.sendImageMessage(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessage)
-    * [.sendFileMessage(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessage)
-    * [.sendMessage(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessage)
-    * [.editTextMessage(messageId, message)](#module%5FRTKChat--module.exports+editTextMessage)
-    * [.editImageMessage(messageId, image)](#module%5FRTKChat--module.exports+editImageMessage)
-    * [.editFileMessage(messageId, file)](#module%5FRTKChat--module.exports+editFileMessage)
-    * [.editMessage(messageId, message)](#module%5FRTKChat--module.exports+editMessage)
-    * [.deleteMessage(messageId)](#module%5FRTKChat--module.exports+deleteMessage)
-    * [.pin(id)](#module%5FRTKChat--module.exports+pin)
-    * [.unpin(id)](#module%5FRTKChat--module.exports+unpin)
-    * [.fetchPublicMessages(options)](#module%5FRTKChat--module.exports+fetchPublicMessages)
-    * [.fetchPrivateMessages(options)](#module%5FRTKChat--module.exports+fetchPrivateMessages)
-    * [.fetchPinnedMessages(options)](#module%5FRTKChat--module.exports+fetchPinnedMessages)
+  * ~~[.messages](#module%5FRTKChat+messages)~~
+  * [.setMaxTextLimit(limit)](#module%5FRTKChat+setMaxTextLimit)
+  * [.updateRateLimits(num, period)](#module%5FRTKChat+updateRateLimits)
+  * [.sendTextMessage(message, \[peerIds\])](#module%5FRTKChat+sendTextMessage)
+  * [.sendCustomMessage(message, \[peerIds\])](#module%5FRTKChat+sendCustomMessage)
+  * [.sendImageMessage(image, \[peerIds\])](#module%5FRTKChat+sendImageMessage)
+  * [.sendFileMessage(file, \[peerIds\])](#module%5FRTKChat+sendFileMessage)
+  * [.sendMessage(message, \[participantIds\])](#module%5FRTKChat+sendMessage)
+  * [.editTextMessage(messageId, message)](#module%5FRTKChat+editTextMessage)
+  * [.editImageMessage(messageId, image)](#module%5FRTKChat+editImageMessage)
+  * [.editFileMessage(messageId, file)](#module%5FRTKChat+editFileMessage)
+  * [.editMessage(messageId, message)](#module%5FRTKChat+editMessage)
+  * [.deleteMessage(messageId)](#module%5FRTKChat+deleteMessage)
+  * [.pin(id)](#module%5FRTKChat+pin)
+  * [.unpin(id)](#module%5FRTKChat+unpin)
+  * [.fetchPublicMessages(options)](#module%5FRTKChat+fetchPublicMessages)
+  * [.fetchPrivateMessages(options)](#module%5FRTKChat+fetchPrivateMessages)
+  * [.fetchPinnedMessages(options)](#module%5FRTKChat+fetchPinnedMessages)
 
-### module.exports ⏏
-
-**Kind**: Exported class
-
-#### new module.exports(context, chatSocketHandler, self, participants)
-
-| Param             | Type                 |
-| ----------------- | -------------------- |
-| context           | Context              |
-| chatSocketHandler | RTKChatSocketHandler |
-| self              | Self                 |
-| participants      | Participants         |
-
-#### ~~module.exports.messages~~
+### ~~meeting.chat.messages~~
 
 _**Deprecated**_
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance property of [RTKChat](#module%5FRTKChat)
 
-#### module.exports.telemetry
-
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-#### module.exports.setMaxTextLimit(limit)
+### meeting.chat.setMaxTextLimit(limit)
 
 Set the max character limit of a text message
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param | Type   | Description                             |
 | ----- | ------ | --------------------------------------- |
 | limit | number | Max character limit for a text message. |
 
-#### module.exports.sendMessageInternal(message, \[participantIds\])
+### meeting.chat.updateRateLimits(num, period)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param              | Type           | Description                             |
-| ------------------ | -------------- | --------------------------------------- |
-| message            | MessagePayload | Message payload to send.                |
-| \[participantIds\] | Array.<string> | Participant ids to send the message to. |
-
-#### module.exports.sendTextMessageInternal(message, \[peerIds\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param       | Type           | Description                      |
-| ----------- | -------------- | -------------------------------- |
-| message     | string         | Text message to send.            |
-| \[peerIds\] | Array.<string> | Peer ids to send the message to. |
-
-#### module.exports.sendImageMessageInternal(image, \[peerIds\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param       | Type                    | Description                      |
-| ----------- | ----------------------- | -------------------------------- |
-| image       | File \| ReactNativeFile | Image file to send.              |
-| \[peerIds\] | Array.<string>          | Peer ids to send the message to. |
-
-#### module.exports.sendFileMessageInternal(file, \[peerIds\])
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
-
-| Param       | Type                    | Description                      |
-| ----------- | ----------------------- | -------------------------------- |
-| file        | File \| ReactNativeFile | File to send.                    |
-| \[peerIds\] | Array.<string>          | Peer ids to send the message to. |
-
-#### module.exports.updateRateLimits(num, period)
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param  | Type   |
 | ------ | ------ |
 | num    | number |
 | period | number |
 
-#### module.exports.sendTextMessage(message, \[peerIds\])
+### meeting.chat.sendTextMessage(message, \[peerIds\])
 
 Sends a chat text message to the room.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param       | Type           | Description                                |
 | ----------- | -------------- | ------------------------------------------ |
 | message     | string         | The message that must be sent to the room. |
 | \[peerIds\] | Array.<string> | Peer ids to send the message to.           |
 
-#### module.exports.sendCustomMessage(message, \[peerIds\])
+### meeting.chat.sendCustomMessage(message, \[peerIds\])
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param       | Type                 | Description                      |
 | ----------- | -------------------- | -------------------------------- |
 | message     | CustomMessagePayload | Custom message payload.          |
 | \[peerIds\] | Array.<string>       | Peer ids to send the message to. |
 
-#### module.exports.sendImageMessage(image, \[peerIds\])
+### meeting.chat.sendImageMessage(image, \[peerIds\])
 
 Sends an image message to the meeting.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param       | Type                    | Description                      |
 | ----------- | ----------------------- | -------------------------------- |
 | image       | File \| ReactNativeFile | The image that is to be sent.    |
 | \[peerIds\] | Array.<string>          | Peer ids to send the message to. |
 
-#### module.exports.sendFileMessage(file, \[peerIds\])
+### meeting.chat.sendFileMessage(file, \[peerIds\])
 
 Sends a file to the meeting.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param       | Type                    | Description                      |
 | ----------- | ----------------------- | -------------------------------- |
 | file        | File \| ReactNativeFile | A File object.                   |
 | \[peerIds\] | Array.<string>          | Peer ids to send the message to. |
 
-#### module.exports.sendMessage(message, \[participantIds\])
+### meeting.chat.sendMessage(message, \[participantIds\])
 
 Sends a message to the meeting. This method can be used to send text, image, or file messages. The message type is determined by the key 'type' in `message`object.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param              | Type           | Description                                              |
 | ------------------ | -------------- | -------------------------------------------------------- |
 | message            | MessagePayload | An object including the type and content of the message. |
 | \[participantIds\] | Array.<string> | An array including the userIds of the participants.      |
 
-#### module.exports.editTextMessage(messageId, message)
+### meeting.chat.editTextMessage(messageId, message)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param     | Type   | Description                |
 | --------- | ------ | -------------------------- |
 | messageId | string | Id of the message to edit. |
 | message   | string | Updated text message.      |
 
-#### module.exports.editImageMessage(messageId, image)
+### meeting.chat.editImageMessage(messageId, image)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param     | Type                    | Description                |
 | --------- | ----------------------- | -------------------------- |
 | messageId | string                  | Id of the message to edit. |
 | image     | File \| ReactNativeFile | Updated image file.        |
 
-#### module.exports.editFileMessage(messageId, file)
+### meeting.chat.editFileMessage(messageId, file)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param     | Type                    | Description                |
 | --------- | ----------------------- | -------------------------- |
 | messageId | string                  | Id of the message to edit. |
 | file      | File \| ReactNativeFile | Updated file.              |
 
-#### module.exports.editMessage(messageId, message)
+### meeting.chat.editMessage(messageId, message)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param     | Type           | Description                |
 | --------- | -------------- | -------------------------- |
 | messageId | string         | Id of the message to edit. |
 | message   | MessagePayload | Updated message payload.   |
 
-#### module.exports.deleteMessage(messageId)
+### meeting.chat.deleteMessage(messageId)
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param     | Type   | Description                  |
 | --------- | ------ | ---------------------------- |
 | messageId | string | Id of the message to delete. |
 
-#### module.exports.pin(id)
+### meeting.chat.pin(id)
 
 Pins a chat message
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param | Type   | Description                    |
 | ----- | ------ | ------------------------------ |
 | id    | string | ID of the message to be pinned |
 
-#### module.exports.unpin(id)
+### meeting.chat.unpin(id)
 
 Unpins a chat message
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param | Type   | Description                      |
 | ----- | ------ | -------------------------------- |
 | id    | string | ID of the message to be unpinned |
 
-#### module.exports.fetchPublicMessages(options)
+### meeting.chat.fetchPublicMessages(options)
 
 Fetches messages from the chat with pagination.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param   | Type                | Description                                                                                            |
 | ------- | ------------------- | ------------------------------------------------------------------------------------------------------ |
 | options | FetchMessageOptions | Configuration options for fetching messages, including timestamp, limit, and direction for pagination. |
 
-#### module.exports.fetchPrivateMessages(options)
+### meeting.chat.fetchPrivateMessages(options)
 
 Fetches private messages between the current user and another participant with pagination.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param   | Type                        | Description                                                                                                                             |
 | ------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | options | FetchPrivateMessagesOptions | Configuration options for fetching private messages, including private RTKChat ID (User ID of the participant) and pagination settings. |
 
-#### module.exports.fetchPinnedMessages(options)
+### meeting.chat.fetchPinnedMessages(options)
 
 Fetches pinned messages with pagination.
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)
+**Kind**: instance method of [RTKChat](#module%5FRTKChat)
 
 | Param   | Type                | Description                                                                                    |
 | ------- | ------------------- | ---------------------------------------------------------------------------------------------- |
@@ -276,5 +216,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/#page","headline":"RTKChat · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/#page","headline":"RTKChat · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

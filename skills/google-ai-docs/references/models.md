@@ -6,9 +6,13 @@ This guide introduces all the models available through the Gemini API.
 
 ### Stable
 
-[### Gemini 3.5 Flash
+[### Gemini 3.6 Flash
+Our latest model that balances speed with intelligence to deliver strong performance in agentic and multimodal tasks.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [### Gemini 3.5 Flash
 Most intelligent model for sustained frontier performance on agentic and coding tasks.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3.1 Flash-Lite
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3.5 Flash-Lite
+Our fastest, most cost-effective 3.5 model for high-throughput execution.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
@@ -234,7 +238,7 @@ Gemini models are available in either *stable* , *preview* , *latest* , or
 Points to a specific stable model. Stable models usually don't change. Most
 production apps should use a specific stable model.
 
-For example: `gemini-3.5-flash`.
+For example: `gemini-3.6-flash`.
 
 ### Preview
 

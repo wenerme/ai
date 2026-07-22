@@ -97,6 +97,27 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 
 Server tools work alongside your own user-defined tools — you can include both in the same request.
 
+## Tool Call Limits
+
+Every request that uses server tools runs an agent loop with a step budget. Each tool call the model makes (a web search, an image generation, etc.) consumes one step; when the budget is exhausted, the model is asked to produce its final answer with the context gathered so far.
+
+Two top-level request fields control the outer loop (both are siblings of `messages` and `tools`):
+
+| Field                    | Default | Max  | Behavior                                                                                                |
+| ------------------------ | ------- | ---- | ------------------------------------------------------------------------------------------------------- |
+| `max_tool_calls`         | `30`    | `30` | Total server-tool steps allowed for the request, across all server tools                                |
+| `stop_server_tools_when` | —       | —    | Array of stop conditions (step count, spend cap, and more). When set, it **overrides** `max_tool_calls` |
+
+Tools that run their own inner agent loops have separate, per-tool budgets configured via the tool's `parameters`:
+
+| Tool                                               | Parameter        | Default          | Max  |
+| -------------------------------------------------- | ---------------- | ---------------- | ---- |
+| [Fusion](/docs/guides/features/server-tools/fusion)     | `max_tool_calls` | `8`              | `16` |
+| [Advisor](/docs/guides/features/server-tools/advisor)   | `max_tool_calls` | Provider default | `25` |
+| [Subagent](/docs/guides/features/server-tools/subagent) | `max_tool_calls` | Provider default | `25` |
+
+These inner budgets bound each panelist, advisor, or worker model's own tool loop and are independent of the outer request budget.
+
 ## Quick Start
 
 Add server tools to the `tools` array using the `openrouter:` type prefix:

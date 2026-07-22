@@ -37,6 +37,64 @@ For large-scale deployments with custom needs for security, support, and complia
 
 [Contact Sales](https://cloud.google.com/contact)
 
+## Gemini 3.6 Flash
+
+*`gemini-3.6-flash`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.6-flash)
+
+Our most intelligent model built for speed, combining frontier intelligence with
+superior search and grounding.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $1.50 |
+| Output price (including thinking tokens) | Free of charge | $7.50 |
+| Context caching price | Free of charge | $0.15 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.75 |
+| Output price (including thinking tokens) | Not available | $3.75 |
+| Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Flex
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.75 |
+| Output price (including thinking tokens) | Not available | $3.75 |
+| Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Priority
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $2.70 |
+| Output price (including thinking tokens) | Free of charge | $13.50 |
+| Context caching price | Free of charge | $0.27 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ A customer-submitted request to Gemini may result in one or more
+queries to Google Search. You will be charged for each individual search query
+performed.
+
 ## Gemini 3.5 Flash
 
 *`gemini-3.5-flash`*
@@ -111,6 +169,60 @@ Our low-latency, real-time speech to speech translation model that supports 70+ 
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ^\*^ Billing is based on total input and output audio token consumption, calculated at a rate of 25 tokens per second of audio, equating to an effective price of approximately $0.0368 per minute.
+
+## Gemini 3.5 Flash-Lite
+
+*`gemini-3.5-flash-lite`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-flash-lite)
+
+Our most cost-efficient GA model, optimized for high-volume agentic tasks,
+translation, and simple data processing.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.30 (text / image / video / audio) |
+| Output price (including thinking tokens) | Free of charge | $2.50 |
+| Context caching price | Not available | $0.03 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.15 (text / image / video / audio) |
+| Output price (including thinking tokens) | Free of charge | $1.25 |
+| Context caching price | Not available | $0.02 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Flex
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.15 (text / image / video / audio) |
+| Output price (including thinking tokens) | Free of charge | $1.25 |
+| Context caching price | Not available | $0.02 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Priority
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.54 (text / image / video / audio) |
+| Output price (including thinking tokens) | Free of charge | $4.50 |
+| Context caching price | Not available | $0.05 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini 3.1 Flash-Lite
 
@@ -1090,7 +1202,7 @@ to each model.
 | [Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding#pricing_and_rate_limits) | 500 RPD Not available for Pro. | 1,500 RPD free (limit shared for Flash and Flash-Lite) 10,000 RPD free for Pro. Then $25 / 1,000 grounded prompts |
 | [Code execution](https://ai.google.dev/gemini-api/docs/code-execution#billing) | Free of charge | Code execution is billed at the standard token rates for the selected model. Costs are determined solely by the tool's usage, no charges are accrued for the session runtime. The generated code and execution results are billed as **Output tokens** when created, and as **Input tokens** when the model uses them as part of its iterative reasoning process. |
 | [URL context](https://ai.google.dev/gemini-api/docs/url-context#limitations) | Free of charge | Charged as input tokens per model pricing. |
-| [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) | Not available | Charged as regular tokens per model pricing (e.g., standard [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash) pricing). See the [Gemini 2.5 Computer Use Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-computer-use-preview-10-2025) pricing table for legacy model rates. |
+| [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) | Not available | Charged as regular tokens per model pricing (e.g., standard [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.6-flash) pricing). See the [Gemini 2.5 Computer Use Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-computer-use-preview-10-2025) pricing table for legacy model rates. |
 | [File search](https://ai.google.dev/gemini-api/docs/file-search#pricing) | Free of charge | Charged for [embeddings](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding) at $0.15 / 1M tokens. Retrieved document tokens charged as regular tokens per model pricing. |
 | [Custom Tools endpoint (Gemini 3.1 Pro Preview)](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | Not available | Same as [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview) pricing |
 

@@ -40,6 +40,10 @@ When you delegate work to Linear, Linear Agent creates an secure coding session 
 
 ![Collaborate with Linear Agent in a secure coding session](https://webassets.linear.app/images/ornj730p/production/583931386478f7632a8e9c9d841ed8a2cd760f41-2550x1904.png?q=95&auto=format&dpr=2)
 
+When you ask Linear to make a change, Linear agent starts working right away. That includes direct requests like fixing a bug, implementing a feature, opening a PR, or starting a coding session. If Linear has already offered to handle something, a quick reply like “proceed” is typically enough to begin.
+
+If you’re asking Linear to look into something first, it won’t start coding yet. Requests to investigate, debug, research, plan, or create the actual task are treated as scoping the problem, not implementing it. The same goes for messages that only say where the work should be tracked, like a team, project, cycle, milestone, or triage.
+
 ## Review code changes
 
 When a coding session produces a pull request, the workflow continues in your _Reviews_ tab, where you can inspect the resulting diffs and follow review discussions.

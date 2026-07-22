@@ -11,7 +11,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  RTKPip
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+## Modules
+
+[RTKPip](#module%5FRTKPip)
 
 ## Functions
 
@@ -19,52 +23,28 @@ Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://deve
 
 Code from ui-kit. Same method used in the avatar component
 
-[\_init(context, self)](#%5Finit)
+* [RTKPip](#module%5FRTKPip)
+  * [.disable](#module%5FRTKPip+disable)
+  * [.init(\[options\])](#module%5FRTKPip+init)
+  * [.disableSource(source)](#module%5FRTKPip+disableSource)
+  * [.addSource(id, element, enabled, \[displayText\])](#module%5FRTKPip+addSource)
+  * [.updateSource(id, source)](#module%5FRTKPip+updateSource)
+  * [.removeSource(id)](#module%5FRTKPip+removeSource)
+  * [.removePinnedSource(id)](#module%5FRTKPip+removePinnedSource)
+  * [.removeAllSources()](#module%5FRTKPip+removeAllSources)
+  * [.enable()](#module%5FRTKPip+enable)
 
-[init(\[options\])](#init)
+### meeting.participants.pip.disable
 
-Initialize PiP and prepare sources
+Disable PiP
 
-[disableSource(source)](#disableSource)
+**Kind**: instance property of [RTKPip](#module%5FRTKPip)
 
-[addSource(id, element, enabled, \[displayText\])](#addSource)
-
-Add a video source from the participant grid
-
-[updateSource(id, source)](#updateSource)
-
-Update a video source
-
-[removeSource(id)](#removeSource)
-
-Remove the video source for the participant
-
-[removePinnedSource(id)](#removePinnedSource)
-
-Remove the pinned source
-
-[removeAllSources()](#removeAllSources)
-
-Remove all sources
-
-[enable()](#enable)
-
-Enable PiP
-
-Code from ui-kit. Same method used in the avatar component
-
-**Kind**: global function
-
-**Kind**: global function
-
-| Param   | Type    |
-| ------- | ------- |
-| context | Context |
-| self    | Self    |
+### meeting.participants.pip.init(\[options\])
 
 Initialize PiP and prepare sources
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param              | Type   |
 | ------------------ | ------ |
@@ -72,15 +52,19 @@ Initialize PiP and prepare sources
 | \[options.height\] | number |
 | \[options.width\]  | number |
 
-**Kind**: global function
+### meeting.participants.pip.disableSource(source)
+
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param  | Type   |
 | ------ | ------ |
 | source | string |
 
+### meeting.participants.pip.addSource(id, element, enabled, \[displayText\])
+
 Add a video source from the participant grid
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param           | Type             | Description                            |
 | --------------- | ---------------- | -------------------------------------- |
@@ -89,36 +73,50 @@ Add a video source from the participant grid
 | enabled         | boolean          | if source is enabled                   |
 | \[displayText\] | string           | two character display text             |
 
+### meeting.participants.pip.updateSource(id, source)
+
 Update a video source
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param  | Type   |
 | ------ | ------ |
 | id     | string |
 | source | any    |
 
+### meeting.participants.pip.removeSource(id)
+
 Remove the video source for the participant
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param | Description                            |
 | ----- | -------------------------------------- |
 | id    | id for the source (ex. participant id) |
+
+### meeting.participants.pip.removePinnedSource(id)
 
 Remove the pinned source
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
 
 | Param | Description                            |
 | ----- | -------------------------------------- |
 | id    | id for the source (ex. participant id) |
 
+### meeting.participants.pip.removeAllSources()
+
 Remove all sources
 
-**Kind**: global function
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
+
+### meeting.participants.pip.enable()
 
 Enable PiP
+
+**Kind**: instance method of [RTKPip](#module%5FRTKPip)
+
+Code from ui-kit. Same method used in the avatar component
 
 **Kind**: global function
 
@@ -131,5 +129,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/#page","headline":"RTKPip · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/#page","headline":"RTKPip · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,4 +1,5 @@
 ---
+description: Browse the catalog of machine learning models available on Workers AI.
 title: Workers AI Models
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -190,5 +191,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/#page","headline":"Workers AI Models · Cloudflare Workers AI docs","url":"https://developers.cloudflare.com/workers-ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/#page","headline":"Workers AI Models · Cloudflare Workers AI docs","description":"Browse the catalog of machine learning models available on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1283,7 +1283,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32564 files, 382 MiB total
+> 115 skills, 32597 files, 383 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1294,7 +1294,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 104 | 566 KiB |
 | [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | 30 | 614 KiB |
 | [anthropic-api](./skills/anthropic-api/SKILL.md) | 369 | 17 MiB |
-| [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 213 | 6.5 MiB |
+| [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 214 | 6.6 MiB |
 | [anthropic-sdk-csharp](./skills/anthropic-sdk-csharp/SKILL.md) | 159 | 8.8 MiB |
 | [anthropic-sdk-go](./skills/anthropic-sdk-go/SKILL.md) | 159 | 11 MiB |
 | [anthropic-sdk-java](./skills/anthropic-sdk-java/SKILL.md) | 159 | 9.0 MiB |
@@ -1309,15 +1309,15 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 125 | 5.1 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 126 | 5.1 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1101 | 10 MiB |
-| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1543 | 17 MiB |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1548 | 17 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 2.9 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 32 KiB |
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 830 | 4.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.3 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 783 | 7.1 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 784 | 7.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.4 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4845 | 15 MiB |
@@ -1333,11 +1333,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 373 | 4.6 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
-| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.1 MiB |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 700 KiB |
-| [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.0 MiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 826 KiB |
+| [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 628 | 6.1 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 622 | 4.1 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 86 | 354 KiB |
@@ -1354,7 +1354,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 155 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 10 | 51 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 842 | 6.6 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 844 | 6.6 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 181 | 534 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1364,9 +1364,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-docs](./skills/openai-docs/SKILL.md) | 163 | 2.5 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 521 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 521 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 459 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 460 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 451 | 2.4 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2352 | 14 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2354 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 84 | 339 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
@@ -1390,12 +1390,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 168 | 1.3 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 43 | 1.7 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 495 | 4.3 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 515 | 4.4 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 542 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 222 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 173 | 1.4 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |
-| [waku-docs](./skills/waku-docs/SKILL.md) | 33 | 185 KiB |
+| [waku-docs](./skills/waku-docs/SKILL.md) | 34 | 194 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |

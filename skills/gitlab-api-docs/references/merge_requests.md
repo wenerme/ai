@@ -10,7 +10,6 @@ Documentation for the REST API for merge requests in GitLab.
 - `merge_status` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/3169#note_1162532204) in favor of `detailed_merge_status` in GitLab 15.6.
 - `with_merge_status_recheck` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/115948) in GitLab 15.11 [with a feature flag](../administration/feature_flags/_index.md) named `restrict_merge_status_recheck` to be ignored for requests from users with insufficient permissions. Disabled by default.
 - `approvals_before_merge` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/119503) in GitLab 16.0.
-- `prepared_at` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/122001) in GitLab 16.1.
 - `merge_user_id` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140002) in GitLab 17.0.
 - `merge_user_username` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140002) in GitLab 17.0.
 - `merged_at` value of `order_by` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147052) in GitLab 17.2.
@@ -142,7 +141,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `description`                            | string   | Description of the merge request. Contains Markdown rendered as HTML for caching. |
 | `description_html`                       | string   | If `render_html` is set, the rendered HTML version of the description. |
 | `detailed_merge_status`                  | string   | Detailed merge status information. See [merge status](#merge-status) for a list of potential values. |
-| `discussion_locked`                      | boolean  | If `true`, discussions are locked. Only project members can add, edit or resolve comments in locked discussions. |
+| `discussion_locked`                      | boolean  | If `true`, discussions are locked. Only project members can add, edit, or resolve comments in locked discussions. |
 | `downvotes`                              | integer  | Number of downvotes for the merge request. |
 | `draft`                                  | boolean  | If `true`, the merge request is marked in a `draft` state. |
 | `force_remove_source_branch`             | boolean  | If `true`, the project settings force the deletion of the source branch after merge. |
@@ -452,7 +451,7 @@ response attributes:
 | `[].prepared_at`                   | datetime | Timestamp of when the merge request was prepared. This field is populated one time, only after all the [preparation steps](#preparation-steps) are completed, and is not updated if more changes are added. |
 | `[].project_id`                    | integer  | ID of the project where the merge request resides. Always equal to `target_project_id`. |
 | `[].reference`                     | string   | Internal reference of the merge request. Returned in shortened format by default. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/20354) in GitLab 12.7, and scheduled for removal in [API version 5](https://gitlab.com/groups/gitlab-org/-/epics/8115). Use `references` instead.  |
-| `[].references`                    | object   | Internal references of the merge request. Includes `short`, `relative`, and `full` references. `references.relative` is relative to the merge request's group or project. When fetched from the merge request's project, `relative` and `short` formats are identical. When requested across groups or projects, `relative` and `full` formats are identical.|
+| `[].references`                    | object   | Internal references of the merge request. Includes `short`, `relative`, and `full` references. `references.relative` is relative to the merge request's group or project. When fetched from the merge request's project, `relative` and `short` formats are identical. When requested across groups or projects, `relative` and `full` formats are identical. |
 | `[].reviewers`                     | array    | Reviewers of the merge request. |
 | `[].sha`                           | string   | Diff head SHA of the merge request. |
 | `[].should_remove_source_branch`   | boolean  | Indicates if the source branch of the merge request should be deleted after merge. |
@@ -715,7 +714,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `created_at`                             | dateTime | Timestamp of when the merge request was created. |
 | `description`                            | string   | Description of the merge request. Contains Markdown rendered as HTML for caching. |
 | `detailed_merge_status`                  | string   | Detailed merge status information. See [merge status](#merge-status) for a list of potential values. |
-| `discussion_locked`                      | boolean  | If `true`, discussions are locked. Only project members can add, edit or resolve comments in locked discussions. |
+| `discussion_locked`                      | boolean  | If `true`, discussions are locked. Only project members can add, edit, or resolve comments in locked discussions. |
 | `downvotes`                              | integer  | Number of downvotes for the merge request. |
 | `draft`                                  | boolean  | If `true`, the merge request is marked in a `draft` state. |
 | `force_remove_source_branch`             | boolean  | If `true`, the project settings force the deletion of the source branch after merge. |
@@ -1002,7 +1001,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes). Other p
 | `diff_refs.base_sha`                                        | string   | SHA of the merge base commit where the source and target branches diverged. |
 | `diff_refs.start_sha`                                       | string   | SHA of the target branch commit. The starting point for the diff. Usually the same as `base_sha`. |
 | `diff_refs.head_sha`                                        | string   | SHA of the head commit in the source branch. The latest commit in the merge request. |
-| `discussion_locked`                                         | boolean  | If `true`, discussions are locked. Only project members can add, edit or resolve comments in locked discussions. |
+| `discussion_locked`                                         | boolean  | If `true`, discussions are locked. Only project members can add, edit, or resolve comments in locked discussions. |
 | `diverged_commits_count`                                    | integer  | If set, contains the number of commits the source branch is behind the target branch. |
 | `downvotes`                                                 | integer  | Number of downvotes for the merge request. |
 | `draft`                                                     | boolean  | If `true`, the merge request is marked in a `draft` state. |
@@ -2180,7 +2179,7 @@ Supported attributes:
 | `id`                | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `merge_request_iid` | integer           | Yes      | The internal ID of the merge request. |
 | `access_raw_diffs`  | boolean           | No       | Retrieve change diffs through Gitaly. |
-| `unidiff`           | boolean           | No       | Present change diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/130610) in GitLab 16.5. |
+| `unidiff`           | boolean           | No       | Present change diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. |
 
 Diffs associated with the set of changes have the same size limitations applied as other diffs
 returned by the API or viewed through the UI. When these limits impact the results, the `overflow`
@@ -2301,9 +2300,6 @@ Example response:
 
 ## List merge request diffs
 
-- `generated_file` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141576) in GitLab 16.9 [with a feature flag](../administration/feature_flags/_index.md) named `collapse_generated_diff_files`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/432670) in GitLab 16.10.
-- `generated_file` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/148478) in GitLab 16.11. Feature flag `collapse_generated_diff_files` removed.
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
 
 List diffs of the files changed in a merge request.
@@ -2320,7 +2316,7 @@ Supported attributes:
 | `merge_request_iid` | integer           | Yes      | The internal ID of the merge request. |
 | `page`              | integer           | No       | The page of results to return. Defaults to 1. |
 | `per_page`          | integer           | No       | The number of results per page. Defaults to 20. |
-| `unidiff`           | boolean           | No       | Present diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/130610) in GitLab 16.5. |
+| `unidiff`           | boolean           | No       | Present diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -2716,7 +2712,7 @@ PUT /projects/:id/merge_requests/:merge_request_iid
 | `assignee_id`              | integer           | No       | The ID of the user to assign the merge request to. Set to `0` or provide an empty value to unassign all assignees. |
 | `assignee_ids`             | integer array     | No       | The ID of the users to assign the merge request to. Set to `0` or provide an empty value to unassign all assignees. |
 | `description`              | string            | No       | Description of the merge request. Limited to 1,048,576 characters. |
-| `discussion_locked`        | boolean           | No       | Flag indicating if the merge request's discussion is locked. Only project members can add, edit or resolve comments to locked discussions. |
+| `discussion_locked`        | boolean           | No       | Flag indicating if the merge request's discussion is locked. Only project members can add, edit, or resolve comments to locked discussions. |
 | `labels`                   | string            | No       | Comma-separated label names for a merge request. Set to an empty string to unassign all labels. If a label does not already exist, this creates a new project label and assigns it to the merge request. |
 | `merge_after`              | string            | No       | Date after which the merge request can be merged. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/510992) in GitLab 17.8. |
 | `milestone_id`             | integer           | No       | The global ID of a milestone to assign the merge request to. Set to `0` or provide an empty value to unassign a milestone. Mutually exclusive with `milestone`. |
@@ -4123,7 +4119,7 @@ Supported attributes:
 | `id`                | String  | Yes      | ID of the project. |
 | `merge_request_iid` | integer | Yes      | Internal ID of the merge request. |
 | `version_id`        | integer | Yes      | ID of the merge request diff version. |
-| `unidiff`           | boolean | No       | Present diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/130610) in GitLab 16.5. |
+| `unidiff`           | boolean | No       | Present diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is false. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:

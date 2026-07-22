@@ -344,6 +344,10 @@ OpenRouter supports two cache TTL values for Anthropic:
 
 The 1-hour TTL is useful for longer sessions where you want to maintain cached content across multiple requests without incurring repeated cache write costs. The 1-hour TTL costs more for cache writes (2x base input price vs 1.25x for 5-minute TTL) but can save money over extended sessions by avoiding repeated cache writes. The 1-hour TTL for explicit cache breakpoints is supported across all Claude model providers (Anthropic, Amazon Bedrock, and Google Vertex AI).
 
+### Caching in the Batch API
+
+`cache_control` breakpoints work on Anthropic `:batch` endpoints the same way as on the sync API, but the requests inside a single batch may process concurrently and in any order — a cache written by one line is not guaranteed to be visible to other lines in the same batch. To get reliable cache hits, use `"ttl": "1h"` breakpoints on a shared prefix and reuse that prefix across successive batches (or warm the cache with a sync request first): the first batch pays the cache-write price and later batches read from the cache for as long as it stays warm.
+
 ### Examples
 
 #### Automatic caching (recommended for multi-turn conversations)

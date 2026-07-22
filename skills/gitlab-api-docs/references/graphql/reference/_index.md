@@ -31502,10 +31502,10 @@ Fields:
 | <a id="aitoolrule-actiontype"></a>`actionType` | [`AiToolActionType!`](#aitoolactiontype) | Action type categorisation for the tool. |
 | <a id="aitoolrule-category"></a>`category` | [`String!`](#string) | Display category for the tool. For example, GitLab Read, Files, and Commands. |
 | <a id="aitoolrule-id"></a>`id` | [`ID!`](#id) | Tool name. Used as stable identifier. Always the tool name string and never a database ID. |
-| <a id="aitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Null means no rule set and the value is inherited from the namespace default. |
+| <a id="aitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Null means no rule is set and the value falls back to the default privileged group. |
 | <a id="aitoolrule-name"></a>`name` | [`String!`](#string) | Name of the tool as registered in the tool registry. |
 | <a id="aitoolrule-source"></a>`source` | [`AiToolSource!`](#aitoolsource) | Source of the tool. Either "gitlab" or "mcp". |
-| <a id="aitoolrule-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Null means no rule set and the value is inherited from the namespace default. |
+| <a id="aitoolrule-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Null means no rule is set and the value falls back to the default privileged group. |
 
 ### `AiUsageData`
 

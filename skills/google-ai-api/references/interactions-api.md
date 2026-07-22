@@ -1,8 +1,8 @@
-> [!NOTE]
-> **Beta** : You are viewing the beta version of the Interactions API. Endpoints are under `/v1beta/`. The stable [v1 version](https://ai.google.dev/api/interactions-api-v1) is also available.
-
 The Gemini Interactions API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.
-[View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json) API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
+[View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
+
+> [!NOTE]
+> This API is in Beta. Endpoints are under `/v1beta/`.
 
 ## Creating an interaction
 
@@ -75,6 +75,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.5-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+- `gemini-3.6-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -127,7 +130,6 @@ language string (optional) The language of the speech.
 speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
 voice string (optional) The voice of the speaker.
 stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
-temperature number (optional) Controls the randomness of the output.
 thinking_level ThinkingLevel (optional) The level of thought tokens that the model should generate.
 <br />
 
@@ -173,7 +175,20 @@ values:
 - `validated`
 
   Validated tool choice.
-top_p number (optional) The maximum cumulative probability of tokens to consider when sampling.
+transcription_config TranscriptionConfig (optional) Optional. Configuration for speech recognition (transcription). If present, ASR is
+enabled.
+Configuration for speech recognition (transcription).
+
+#### Fields
+
+custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
+toward recognizing specific terms.
+diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
+language_hints array (string) (optional) Required. BCP-47 language codes providing hints about the languages present in the
+audio. At least one must be specified, or set to \["auto"\] to enable
+automatic language detection.
+timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
+Supported values: "word". If empty, no timestamps are generated.
 video_config VideoConfig (optional) Configuration for video generation.
 Configuration options for video generation.
 
@@ -309,6 +324,7 @@ AntigravityAgentConfig Configuration for the Antigravity agent runtime.
 Provides server-side control over the agent's execution environment
 and tool configuration.
 max_total_tokens string (optional) Max total tokens for the agent run.
+model string (optional) The model to use for agent reasoning.
 type object (required) No description provided.
 
 Always set to `"antigravity"`.
@@ -446,7 +462,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Simple Request
 
-<iframe src="https:///frame/api/interactions-api_bdb8a5fb90ab28111a40cf0b74f8124bbb2a91b305348b8debc193f51636a0c8.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_57fc2cb43a80a8bbc0637447b4330524259ab69e2efad22af50c6a1426044ff7.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -454,7 +470,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 {
   "created": "2025-11-26T12:25:15Z",
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "object": "interaction",
   "steps": [
     {
@@ -488,14 +504,14 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Multi-turn
 
-<iframe src="https:///frame/api/interactions-api_cca063a47faf9a9d055ed6c22e0561b7550c3244e70b03180e9a20dfb8449a7e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_9133ce14b4ac1f91f63da778a353ddb1e986278bf4be54fa1f41171d68971e6d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
 ```json
 {
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "status": "completed",
   "object": "interaction",
   "created": "2025-11-26T12:22:47Z",
@@ -530,14 +546,14 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Image Input
 
-<iframe src="https:///frame/api/interactions-api_7ed8f2a83b0ba197747a8f87cf382225e1932358f593f2000f54f6f1afecf0af.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_39c79f5979c068b653c90cf15324dae7182631cc5586beb5ae23b93ce4da6ee0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
 ```json
 {
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "status": "completed",
   "object": "interaction",
   "created": "2025-11-26T12:22:47Z",
@@ -576,14 +592,14 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Function Calling
 
-<iframe src="https:///frame/api/interactions-api_9300e1783438cdb77436aa5ced7e3f9df92a7cb670fd8538cb955118a40d1c38.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_866d12495631974ca58e3fcda3e1d5acd92ce06afb97473d8bb721bc1e95489d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
 ```json
 {
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "status": "requires_action",
   "object": "interaction",
   "created": "2025-11-26T12:22:47Z",
@@ -617,7 +633,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Deep Research
 
-<iframe src="https:///frame/api/interactions-api_6e9e40d1fdd53a1caf36a27f98803a7cc1dbff8b5d35ea570a8b05866b382e9e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_0741abf448485cc98000a2dce47edc14d9271ffe0cfd205f5afbeb25e0521529.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -659,7 +675,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Antigravity Agent
 
-<iframe src="https:///frame/api/interactions-api_d5e284b32f711b199788c8787e65497df64916db13b781f4a5abf5413868ce1d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_b50b113823dff553e253cd26525c555cef4b18b20d261e331a7933bb95ab583b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -702,7 +718,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Reuse Environment
 
-<iframe src="https:///frame/api/interactions-api_0534d7cbdb505dec061064c223e126662db0640787801627468ba00ed8bcfc9d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_53d01480bc081580a4cafb84fe212a25f41784b8b9b8a172e69d633190b18e98.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -745,11 +761,11 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### With Sources
 
-<iframe src="https:///frame/api/interactions-api_069fcd8f10491f30e6fbe90bff508230b2724e390ca0c0b288629f387cdedc33.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1a877d1213f5ef572f52563eec4697b9e9c15252990eac993413f92d4eb24846.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Custom Agent
 
-<iframe src="https:///frame/api/interactions-api_4028269ad31b050f85efa21f808f20559de199ec9e250a9c7d94c3faefd5cef0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1b202c540d186558083c0048321587710b0d800b339db184e9af71c433c52d22.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Canceling an interaction
 
@@ -768,7 +784,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel Interaction
 
-<iframe src="https:///frame/api/interactions-api_e54e2c334265d40d3c88df9a66b80d91e556fdc3189c7f8b2f0f53fc96b92780.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_e642441dbebb28afc8754cdbf82c90c4cf0c626747488d54a3acb9303334d36d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -793,6 +809,177 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 }
 ```
 
+## CreateTrigger
+
+post https://generativelanguage.googleapis.com/v1beta/triggers Creates a new trigger that will invoke the specified agent on the given cron schedule.
+- [Request body](https://ai.google.dev/api/interactions-api#CreateTrigger.request_body)
+- [Response](https://ai.google.dev/api/interactions-api#CreateTrigger.response)
+
+### Request body
+
+The request body contains data with the following structure:
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+interaction CreateAgentInteractionParams or CreateModelInteractionParams (required) Required. The interaction request template to be executed.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+schedule string (required) Required. The cron schedule on which the trigger should run. Standard cron format.
+time_zone string (required) Required. Time zone in which the schedule should be interpreted.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_63a15043982e498c2a55a26eaab4a27bd6f757a589b32ec0de43aef16bd67305.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "consecutive_failure_count": 0,
+  "create_time": "string",
+  "display_name": "string",
+  "environment_id": "string",
+  "execution_timeout_seconds": 0,
+  "id": "string",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "object": "interaction",
+    "steps": [
+      {
+        "type": "model_output",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
+          }
+        ]
+      }
+    ],
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z",
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 7
+        }
+      ],
+      "total_cached_tokens": 0,
+      "total_input_tokens": 7,
+      "total_output_tokens": 23,
+      "total_thought_tokens": 49,
+      "total_tokens": 79,
+      "total_tool_use_tokens": 0
+    }
+  },
+  "last_pause_time": "string",
+  "last_resume_time": "string",
+  "last_run_time": "string",
+  "max_consecutive_failures": 0,
+  "next_run_time": "string",
+  "previous_interaction_id": "string",
+  "schedule": "string",
+  "status": "active",
+  "time_zone": "string",
+  "update_time": "string"
+}
+```
+
+## RunTrigger
+
+post https://generativelanguage.googleapis.com/v1beta/triggers/{trigger_id}/executions Runs a trigger immediately.
+- [Response](https://ai.google.dev/api/interactions-api#RunTrigger.response)
+
+### Response
+
+If successful, the response body contains data with the following structure:
+end_time string (optional) Output only. The time when the execution finished.
+environment_id string (optional) Output only. The environment ID used for the execution.
+error string (optional) Output only. The error message if the execution failed.
+id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
+interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
+scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
+start_time string (optional) Output only. The time when the execution started.
+status enum (string) (optional) Output only. The status of the execution.
+
+Possible
+values:
+
+- `in_progress`
+
+  The execution is currently in progress.
+- `completed`
+
+  The execution completed successfully.
+- `failed`
+
+  The execution failed.
+- `skipped`
+
+  The execution was skipped (e.g., previous execution still running).
+- `timed_out`
+
+  The execution timed out.
+trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_e1331871767008a10ddd9fcf15fdb6ed30d023f5e3c0f32ef161ad17cc1c1a4c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "end_time": "string",
+  "environment_id": "string",
+  "error": "string",
+  "id": "string",
+  "interaction_id": "string",
+  "scheduled_time": "string",
+  "start_time": "string",
+  "status": "in_progress",
+  "trigger_id": "string"
+}
+```
+
 ## Retrieving an interaction
 
 get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves the full details of a single interaction based on its \`Interaction.id\`.
@@ -814,14 +1001,14 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Get Interaction
 
-<iframe src="https:///frame/api/interactions-api_9bfb93c53dbd222e441c5dffd6bb0d7bfcc20c1d20451ee44ca7a9b94878f06f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_8beb745c8a2a4001378da8ee2ed2e0771b8435c782967d02966b7968038a6b51.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
 ```json
 {
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "status": "completed",
   "object": "interaction",
   "created": "2025-11-26T12:25:15Z",
@@ -837,6 +1024,426 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
       ]
     }
   ]
+}
+```
+
+## ListTriggers
+
+get https://generativelanguage.googleapis.com/v1beta/triggers Lists triggers for a project.
+- [Path / Query parameters](https://ai.google.dev/api/interactions-api#ListTriggers.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/interactions-api#ListTriggers.response)
+
+### Path / Query Parameters
+
+filter string (optional) Optional. Filter expression (e.g., by state).
+page_size integer (optional) Optional. The maximum number of triggers to return per page.
+page_token string (optional) Optional. A page token from a previous ListTriggers call.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+next_page_token string (optional) A page token, received from a previous \`ListTriggers\` call.
+Provide this to retrieve the subsequent page.
+triggers Trigger (optional) The list of triggers.
+A trigger configuration that is scheduled to run an agent.
+
+#### Fields
+
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_88d4ce9cd00dfdb0d58650ad142188cdc7a715b46fc632f001253acce33dd756.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "next_page_token": "string",
+  "triggers": [
+    {
+      "consecutive_failure_count": 0,
+      "create_time": "string",
+      "display_name": "string",
+      "environment_id": "string",
+      "execution_timeout_seconds": 0,
+      "id": "string",
+      "interaction": {
+        "created": "2025-12-04T15:01:45Z",
+        "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+        "model": "gemini-3.6-flash",
+        "object": "interaction",
+        "steps": [
+          {
+            "type": "model_output",
+            "content": [
+              {
+                "type": "text",
+                "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
+              }
+            ]
+          }
+        ],
+        "status": "completed",
+        "updated": "2025-12-04T15:01:45Z",
+        "usage": {
+          "input_tokens_by_modality": [
+            {
+              "modality": "text",
+              "tokens": 7
+            }
+          ],
+          "total_cached_tokens": 0,
+          "total_input_tokens": 7,
+          "total_output_tokens": 23,
+          "total_thought_tokens": 49,
+          "total_tokens": 79,
+          "total_tool_use_tokens": 0
+        }
+      },
+      "last_pause_time": "string",
+      "last_resume_time": "string",
+      "last_run_time": "string",
+      "max_consecutive_failures": 0,
+      "next_run_time": "string",
+      "previous_interaction_id": "string",
+      "schedule": "string",
+      "status": "active",
+      "time_zone": "string",
+      "update_time": "string"
+    }
+  ]
+}
+```
+
+## GetTrigger
+
+get https://generativelanguage.googleapis.com/v1beta/triggers/{id} Gets details of a single trigger.
+- [Response](https://ai.google.dev/api/interactions-api#GetTrigger.response)
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_892e9f2b810313e63b3bd47c6343735a49e8d336477a131eb5bc29ca83c47471.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "consecutive_failure_count": 0,
+  "create_time": "string",
+  "display_name": "string",
+  "environment_id": "string",
+  "execution_timeout_seconds": 0,
+  "id": "string",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "object": "interaction",
+    "steps": [
+      {
+        "type": "model_output",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
+          }
+        ]
+      }
+    ],
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z",
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 7
+        }
+      ],
+      "total_cached_tokens": 0,
+      "total_input_tokens": 7,
+      "total_output_tokens": 23,
+      "total_thought_tokens": 49,
+      "total_tokens": 79,
+      "total_tool_use_tokens": 0
+    }
+  },
+  "last_pause_time": "string",
+  "last_resume_time": "string",
+  "last_run_time": "string",
+  "max_consecutive_failures": 0,
+  "next_run_time": "string",
+  "previous_interaction_id": "string",
+  "schedule": "string",
+  "status": "active",
+  "time_zone": "string",
+  "update_time": "string"
+}
+```
+
+## ListTriggerExecutions
+
+get https://generativelanguage.googleapis.com/v1beta/triggers/{trigger_id}/executions Lists executions for a trigger.
+- [Path / Query parameters](https://ai.google.dev/api/interactions-api#ListTriggerExecutions.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/interactions-api#ListTriggerExecutions.response)
+
+### Path / Query Parameters
+
+page_size integer (optional) Optional. The maximum number of executions to return per page.
+page_token string (optional) Optional. A page token from a previous ListTriggerExecutions call.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+next_page_token string (optional) A page token, received from a previous \`ListTriggerExecutions\` call.
+Provide this to retrieve the subsequent page.
+trigger_executions TriggerExecution (optional) The list of trigger executions.
+An execution instance of a trigger.
+
+#### Fields
+
+end_time string (optional) Output only. The time when the execution finished.
+environment_id string (optional) Output only. The environment ID used for the execution.
+error string (optional) Output only. The error message if the execution failed.
+id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
+interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
+scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
+start_time string (optional) Output only. The time when the execution started.
+status enum (string) (optional) Output only. The status of the execution.
+
+Possible
+values:
+
+- `in_progress`
+
+  The execution is currently in progress.
+- `completed`
+
+  The execution completed successfully.
+- `failed`
+
+  The execution failed.
+- `skipped`
+
+  The execution was skipped (e.g., previous execution still running).
+- `timed_out`
+
+  The execution timed out.
+trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_d38ba4d65ae2de3c341cbf5acbcdb7c642f39bed084f90073b0de1f6b2a71df6.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "next_page_token": "string",
+  "trigger_executions": [
+    {
+      "end_time": "string",
+      "environment_id": "string",
+      "error": "string",
+      "id": "string",
+      "interaction_id": "string",
+      "scheduled_time": "string",
+      "start_time": "string",
+      "status": "in_progress",
+      "trigger_id": "string"
+    }
+  ]
+}
+```
+
+## UpdateTrigger
+
+patch https://generativelanguage.googleapis.com/v1beta/triggers/{id} Updates a trigger.
+- [Request body](https://ai.google.dev/api/interactions-api#UpdateTrigger.request_body)
+- [Response](https://ai.google.dev/api/interactions-api#UpdateTrigger.response)
+
+### Request body
+
+The request body contains data with the following structure:
+display_name string (optional) Optional. The display name of the trigger.
+status enum (string) (optional) Optional. The status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_688432ac6861c110cf6e29cb42c21d64ee43c80a0b5ef324fa1b757c973d2ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "consecutive_failure_count": 0,
+  "create_time": "string",
+  "display_name": "string",
+  "environment_id": "string",
+  "execution_timeout_seconds": 0,
+  "id": "string",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "object": "interaction",
+    "steps": [
+      {
+        "type": "model_output",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
+          }
+        ]
+      }
+    ],
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z",
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 7
+        }
+      ],
+      "total_cached_tokens": 0,
+      "total_input_tokens": 7,
+      "total_output_tokens": 23,
+      "total_thought_tokens": 49,
+      "total_tokens": 79,
+      "total_tool_use_tokens": 0
+    }
+  },
+  "last_pause_time": "string",
+  "last_resume_time": "string",
+  "last_run_time": "string",
+  "max_consecutive_failures": 0,
+  "next_run_time": "string",
+  "previous_interaction_id": "string",
+  "schedule": "string",
+  "status": "active",
+  "time_zone": "string",
+  "update_time": "string"
 }
 ```
 
@@ -857,7 +1464,20 @@ If successful, the response is empty.
 
 ### Delete
 
-<iframe src="https:///frame/api/interactions-api_0fc2bd340016691664f848e973e53332506ebccc55dfe5a005735e2cd9b3bc83.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_513c9609e66e12d61d05211d53102de3457a011bd487dc4589b25c9e06448bcd.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+## DeleteTrigger
+
+delete https://generativelanguage.googleapis.com/v1beta/triggers/{id} Deletes a trigger.
+- [Response](https://ai.google.dev/api/interactions-api#DeleteTrigger.response)
+
+### Response
+
+If successful, the response is empty.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_2f61d2ed63f72748ba633b64f7ccc8683e6a31cfce26bd5490f2037cdd9fc1e8.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -991,6 +1611,7 @@ AntigravityAgentConfig Configuration for the Antigravity agent runtime.
 Provides server-side control over the agent's execution environment
 and tool configuration.
 max_total_tokens string (optional) Max total tokens for the agent run.
+model string (optional) The model to use for agent reasoning.
 type object (required) No description provided.
 
 Always set to `"antigravity"`.
@@ -1058,6 +1679,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
   Gemini 3.1 Flash Image.
 - `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+- `gemini-3.6-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
@@ -1334,6 +1958,9 @@ values:
 - `budget_exceeded`
 
   The interaction was halted because the token budget was exceeded.
+- `queued`
+
+  The interaction is queued, waiting for processing.
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, when included in the response.
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
@@ -1495,7 +2122,7 @@ webhooks.
 {
   "created": "2025-12-04T15:01:45Z",
   "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-  "model": "gemini-3.5-flash",
+  "model": "gemini-3.6-flash",
   "object": "interaction",
   "steps": [
     {
@@ -1588,6 +2215,22 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+WordInfo Word-level ASR annotation for transcription output.
+Carries the word text, optional timing, and optional speaker attribution.
+end_index integer (optional) End of the attributed segment, exclusive.
+end_offset string (optional) End offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+Present when diarization_mode is set in TranscriptionConfig.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+text string (optional) The transcribed word.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
 text string (required) Required. The text content.
 type object (required) No description provided.
 
@@ -2018,35 +2661,35 @@ Always set to `"retrieval"`.
 
 ### Function
 
-<iframe src="https:///frame/api/interactions-api_0a6381f4cffe2dc59a56a64244d52be8e858f7dd6f17f2a8c5f9d7a1ea561371.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_4a1db7d62da69faeb72a40374f13f6b111a3932f61a46567c76ab85419f661e4.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### CodeExecution
 
-<iframe src="https:///frame/api/interactions-api_a2bd1e03c31299e539505550d6ed1850439811d5727ce06231de0a42c345257a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_ab29aeb71ea190cbf0acebeccdff632d78c2a32645316790f56b29d2ccafa166.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### UrlContext
 
-<iframe src="https:///frame/api/interactions-api_0c0201b2282186dc9b05eaf38f3f2d088e543cdb1a7f7555f263e57dd57e7e10.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_f0f5afd1de6de158f3d4ecce7b66a0c3ede446b934508e8359fd9c9354f28970.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### ComputerUse
 
-<iframe src="https:///frame/api/interactions-api_6a3fb91cf8770fd2b668ec6269e8968fc17e2df7a50d4005f68ded26fb829ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_6f72341ccbe466e7d0af80b46d454c28bfb6efa77050cb1ed4668db3901343cb.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### McpServer
 
-<iframe src="https:///frame/api/interactions-api_30abb3c4809edc7bf616b3b270e797cd5b5096dca0c6eb3a5e0b1f0aa22cd2e4.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_4e5e475adb821c74bdbd49d62cdaad9ea5d5d477792589019e96d91f630d2434.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleSearch
 
-<iframe src="https:///frame/api/interactions-api_244c3923aa8f2f5224b1a239850f5e404d7abfdca7160c56400c8f296c05bb82.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_b56ef47956e1eef43bcb317b0abe89eb22bc20fd0ba2530107cbf17691d79c94.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### FileSearch
 
-<iframe src="https:///frame/api/interactions-api_6e3c5c705244cb360c2c008e9f1c24f5206f39d9ee74701c793492379981d61f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1ff31b29acafa05ad33e5fbf0c9d8951c88efd7e79a86ca39120f2bc2134b609.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleMaps
 
-<iframe src="https:///frame/api/interactions-api_639b871738010ddc9946e54bb46ef8890623289feeefeaa2bf4296c317a74ca2.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_c3303a09275183be23984978d037c8822abb7bfe67e67cbda20febd2f08b496b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Retrieval
 
@@ -2910,6 +3553,10 @@ values:
 - `budget_exceeded`
 
   The interaction was halted because the token budget was exceeded.
+- `queued`
+
+  The interaction is queued, waiting for processing (e.g. waiting for
+  off-peak capacity).
 ErrorEvent <br />
 
 error Error (optional) No description provided.
@@ -3473,6 +4120,22 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+WordInfo Word-level ASR annotation for transcription output.
+Carries the word text, optional timing, and optional speaker attribution.
+end_index integer (optional) End of the attributed segment, exclusive.
+end_offset string (optional) End offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+Present when diarization_mode is set in TranscriptionConfig.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+text string (optional) The transcribed word.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
 type object (required) No description provided.
 
 Always set to `"text_annotation_delta"`.
@@ -4274,7 +4937,7 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
   "event_type": "interaction.created",
   "interaction": {
     "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.5-flash",
+    "model": "gemini-3.6-flash",
     "status": "in_progress",
     "created": "2025-12-04T15:01:45Z",
     "updated": "2025-12-04T15:01:45Z"
@@ -4305,7 +4968,7 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
   "event_type": "interaction.completed",
   "interaction": {
     "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.5-flash",
+    "model": "gemini-3.6-flash",
     "status": "completed",
     "created": "2025-12-04T15:01:45Z",
     "updated": "2025-12-04T15:01:45Z"
@@ -4721,6 +5384,22 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+WordInfo Word-level ASR annotation for transcription output.
+Carries the word text, optional timing, and optional speaker attribution.
+end_index integer (optional) End of the attributed segment, exclusive.
+end_offset string (optional) End offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+Present when diarization_mode is set in TranscriptionConfig.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+text string (optional) The transcribed word.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
 text string (required) Required. The text content.
 type object (required) No description provided.
 
@@ -4875,7 +5554,7 @@ FunctionResultStep Result of a function tool call.
 call_id string (required) Required. ID to match the ID from the function call block.
 is_error boolean (optional) Whether the tool call resulted in an error.
 name string (optional) The name of the tool that was called.
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) The result of the tool call.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The result of the tool call.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
@@ -4933,7 +5612,7 @@ Always set to `"google_search_result"`.
 McpServerToolResultStep MCPServer tool result step.
 call_id string (required) Required. ID to match the ID from the function call block.
 name string (optional) Name of the tool which is called for this specific tool call.
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) The output from the MCP server call. Can be simple text or rich content.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
 server_name string (optional) The name of the used MCP server.
 type object (required) No description provided.
 
@@ -5208,8 +5887,12 @@ Configuration for a custom environment.
 
 #### Fields
 
-environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+created string (optional) Output only. The time at which the environment was created in ISO 8601 format
+(YYYY-MM-DDThh:mm:ssZ).
+id string (optional) Optional. The environment ID for the interaction. If specified, the request will
 update the existing environment instead of creating a new one.
+last_accessed string (optional) Output only. The time at which the environment was last accessed in ISO 8601 format
+(YYYY-MM-DDThh:mm:ssZ).
 network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
 
 Possible
@@ -5252,9 +5935,18 @@ values:
   projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
   Support mounting all skills under a project:
   projects/{project}/locations/{location}/skills.
+status enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `active`
+- `expired`
 type object (optional) No description provided.
 
 Always set to `"remote"`.
+updated string (optional) Output only. The time at which the environment was last updated in ISO 8601 format
+(YYYY-MM-DDThh:mm:ssZ).
 
 ### Examples
 
@@ -5550,6 +6242,22 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+WordInfo Word-level ASR annotation for transcription output.
+Carries the word text, optional timing, and optional speaker attribution.
+end_index integer (optional) End of the attributed segment, exclusive.
+end_offset string (optional) End offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+Present when diarization_mode is set in TranscriptionConfig.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+text string (optional) The transcribed word.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
 text string (optional) Required. The text content.
 type object (optional) No description provided.
 

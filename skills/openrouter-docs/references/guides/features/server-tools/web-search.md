@@ -333,6 +333,21 @@ When the model searches multiple times in a single request, use `max_total_resul
 
 Once the limit is reached, subsequent search calls return a message telling the model the limit was hit instead of performing another search. This is useful for controlling cost and context window usage in agentic loops.
 
+## Limiting the Number of Searches
+
+Each search the model performs consumes one step of the request's server-tool budget. Set the top-level `max_tool_calls` request field (a sibling of `messages` and `tools`, not a tool parameter) to bound how many searches the model may run:
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5.2",
+  "messages": [...],
+  "tools": [{ "type": "openrouter:web_search" }],
+  "max_tool_calls": 5
+}
+```
+
+When omitted, the budget defaults to **30** steps, which is also the maximum. For finer control (spend caps, custom stop conditions), use `stop_server_tools_when`, which overrides `max_tool_calls` entirely. See [Tool Call Limits](/docs/guides/features/server-tools#tool-call-limits) for how budgets work across all server tools.
+
 ## Works with the Responses API
 
 The web search server tool also works with the Responses API:

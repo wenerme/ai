@@ -11,12 +11,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  RTKSelf
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The RTKSelf module represents the current user, and allows to modify the state of the user in the meeting. The audio and video streams of the user can be retrieved from this module.
 
 * [RTKSelf](#module%5FRTKSelf)
-  * [.telemetry](#module%5FRTKSelf+telemetry)
   * [.peerId](#module%5FRTKSelf+peerId)
   * [.roomState](#module%5FRTKSelf+roomState)
   * [.permissions](#module%5FRTKSelf+permissions)
@@ -35,17 +34,11 @@ The RTKSelf module represents the current user, and allows to modify the state o
   * [.disableVideo()](#module%5FRTKSelf+disableVideo)
   * [.disableScreenShare()](#module%5FRTKSelf+disableScreenShare)
   * [.getAllDevices()](#module%5FRTKSelf+getAllDevices)
-  * [.setIsPinned()](#module%5FRTKSelf+setIsPinned)
   * [.pin()](#module%5FRTKSelf+pin)
   * [.unpin()](#module%5FRTKSelf+unpin)
   * [.hide()](#module%5FRTKSelf+hide)
   * [.show()](#module%5FRTKSelf+show)
   * [.setDevice(device)](#module%5FRTKSelf+setDevice)
-  * [.updateVideo()](#module%5FRTKSelf+updateVideo)
-
-### meeting.self.telemetry
-
-**Kind**: instance property of [RTKSelf](#module%5FRTKSelf)
 
 ### meeting.self.peerId
 
@@ -164,10 +157,6 @@ Returns all media devices accessible by the local participant.
 
 **Kind**: instance method of [RTKSelf](#module%5FRTKSelf)
 
-### meeting.self.setIsPinned()
-
-**Kind**: instance method of [RTKSelf](#module%5FRTKSelf)
-
 ### meeting.self.pin()
 
 Returns `self.id` if user has permission to pin participants.
@@ -202,12 +191,6 @@ Change the current media device that is being used by the local participant.
 | ------ | --------------- | ---------------------------------------------------------------------------------------------- |
 | device | MediaDeviceInfo | The device that is to be used. A device of the same kind will be replaced. the primary stream. |
 
-### meeting.self.updateVideo()
-
-Internal method, do not use
-
-**Kind**: instance method of [RTKSelf](#module%5FRTKSelf)
-
 Was this helpful?
 
 YesNo
@@ -217,5 +200,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/#page","headline":"RTKSelf · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/#page","headline":"RTKSelf · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

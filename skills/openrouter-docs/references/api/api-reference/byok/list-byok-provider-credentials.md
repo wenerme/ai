@@ -174,6 +174,7 @@ paths:
               - clarifai
               - cloudflare
               - cohere
+              - coreweave
               - crusoe
               - darkbloom
               - decart
@@ -227,6 +228,7 @@ paths:
               - recraft
               - reka
               - relace
+              - runway
               - sail-research
               - sakana
               - sambanova
@@ -270,6 +272,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListBYOKKeysResponse'
           description: List of BYOK credentials
+        '400':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 400
+                  message: Invalid request parameters
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request - Invalid request parameters or malformed input
         '401':
           content:
             application/json:
@@ -321,6 +333,27 @@ components:
       required:
         - data
         - total_count
+      type: object
+    BadRequestResponse:
+      description: Bad Request - Invalid request parameters or malformed input
+      example:
+        error:
+          code: 400
+          message: Invalid request parameters
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
       type: object
     UnauthorizedResponse:
       description: Unauthorized - Authentication required or invalid credentials
@@ -470,6 +503,25 @@ components:
         - sort_order
         - created_at
       type: object
+    BadRequestResponseErrorData:
+      description: Error data for BadRequestResponse
+      example:
+        code: 400
+        message: Invalid request parameters
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
     UnauthorizedResponseErrorData:
       description: Error data for UnauthorizedResponse
       example:
@@ -535,6 +587,7 @@ components:
         - clarifai
         - cloudflare
         - cohere
+        - coreweave
         - crusoe
         - darkbloom
         - decart
@@ -588,6 +641,7 @@ components:
         - recraft
         - reka
         - relace
+        - runway
         - sail-research
         - sakana
         - sambanova

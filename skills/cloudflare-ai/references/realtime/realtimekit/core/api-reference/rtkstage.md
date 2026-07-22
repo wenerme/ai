@@ -11,99 +11,78 @@ image: https://developers.cloudflare.com/og-docs.png
 
 #  RTKStage
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The RTKStage module represents a class to mange the RTKStage of the meeting RTKStage refers to a virtual area, where participants stream are visible to other participants. When a participant is off stage, they are not producing media but only consuming media from participants who are on RTKStage
 
 * [RTKStage](#module%5FRTKStage)
-  * [module.exports](#exp%5Fmodule%5FRTKStage--module.exports) ⏏
-    * [new module.exports(context, self, participants, stageSocketHandler, roomSocketHandler)](#new%5Fmodule%5FRTKStage--module.exports%5Fnew)
-    * [.telemetry](#module%5FRTKStage--module.exports+telemetry)
-    * [.peerId](#module%5FRTKStage--module.exports+peerId)
-    * [.getAccessRequests()](#module%5FRTKStage--module.exports+getAccessRequests)
-    * [.requestAccess()](#module%5FRTKStage--module.exports+requestAccess)
-    * [.cancelRequestAccess()](#module%5FRTKStage--module.exports+cancelRequestAccess)
-    * [.grantAccess()](#module%5FRTKStage--module.exports+grantAccess)
-    * [.denyAccess()](#module%5FRTKStage--module.exports+denyAccess)
-    * [.join()](#module%5FRTKStage--module.exports+join)
-    * [.leave()](#module%5FRTKStage--module.exports+leave)
-    * [.kick(userIds)](#module%5FRTKStage--module.exports+kick)
+  * [.peerId](#module%5FRTKStage+peerId)
+  * [.getAccessRequests()](#module%5FRTKStage+getAccessRequests)
+  * [.requestAccess()](#module%5FRTKStage+requestAccess)
+  * [.cancelRequestAccess()](#module%5FRTKStage+cancelRequestAccess)
+  * [.grantAccess()](#module%5FRTKStage+grantAccess)
+  * [.denyAccess()](#module%5FRTKStage+denyAccess)
+  * [.join()](#module%5FRTKStage+join)
+  * [.leave()](#module%5FRTKStage+leave)
+  * [.kick(userIds)](#module%5FRTKStage+kick)
 
-### module.exports ⏏
-
-**Kind**: Exported class
-
-#### new module.exports(context, self, participants, stageSocketHandler, roomSocketHandler)
-
-| Param              | Type                  |
-| ------------------ | --------------------- |
-| context            | Context               |
-| self               | Self                  |
-| participants       | Participants          |
-| stageSocketHandler | RTKStageSocketHandler |
-| roomSocketHandler  | RoomSocketHandler     |
-
-#### module.exports.telemetry
-
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
-
-#### module.exports.peerId
+### meeting.stage.peerId
 
 Returns the peerId of the current user
 
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance property of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.getAccessRequests()
+### meeting.stage.getAccessRequests()
 
 Method to fetch all RTKStage access requests from viewers
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.requestAccess()
+### meeting.stage.requestAccess()
 
 Method to send a request to privileged users to join the stage
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.cancelRequestAccess()
+### meeting.stage.cancelRequestAccess()
 
 Method to cancel a previous RTKStage join request
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.grantAccess()
+### meeting.stage.grantAccess()
 
 Method to grant access to RTKStage. This can be in response to a RTKStage Join request but it can be called on other users as well
 
 `permissions.acceptStageRequests` privilege required
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.denyAccess()
+### meeting.stage.denyAccess()
 
 Method to deny access to RTKStage. This should be called in response to a RTKStage Join request
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.join()
+### meeting.stage.join()
 
 Method to join the stage Users either need to have the permission in the preset or must be accepted by a privileged user to call this method
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.leave()
+### meeting.stage.leave()
 
 Method to leave the stage Users must either be on the stage already or be accepted to join the stage to call this method
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
-#### module.exports.kick(userIds)
+### meeting.stage.kick(userIds)
 
 Method to kick a user off the stage
 
 `permissions.acceptStageRequests` privilege required
 
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)
+**Kind**: instance method of [RTKStage](#module%5FRTKStage)
 
 | Param   | Type           |
 | ------- | -------------- |
@@ -118,5 +97,5 @@ YesNo
 [ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/#page","headline":"RTKStage · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/#page","headline":"RTKStage · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

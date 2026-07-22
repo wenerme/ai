@@ -40,7 +40,7 @@ This example shows how to define a function that schedules a meeting with attend
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Schedule a meeting with Bob and Alice for 03/14/2025 at 10:00 AM about Q3 planning.",
         tools=[{"type": "function", **schedule_meeting_function}],
     )
@@ -73,7 +73,7 @@ This example shows how to define a function that schedules a meeting with attend
     };
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: 'Schedule a meeting with Bob and Alice for 03/27/2025 at 10:00 AM about Q3 planning.',
       tools: [scheduleMeetingFunction],
     });
@@ -91,7 +91,7 @@ This example shows how to define a function that schedules a meeting with attend
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Schedule a meeting with Bob and Alice for 03/27/2025 at 10:00 AM about Q3 planning.",
         "tools": [{
             "type": "function",
@@ -137,7 +137,7 @@ This example shows how to define a function that retrieves temperature data for 
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What's the temperature in London?",
         tools=[weather_function],
     )
@@ -170,7 +170,7 @@ This example shows how to define a function that retrieves temperature data for 
     };
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: "What's the temperature in London?",
       tools: [weatherFunctionDeclaration],
     });
@@ -188,7 +188,7 @@ This example shows how to define a function that retrieves temperature data for 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "What'\''s the temperature in London?",
         "tools": [{
           "type": "function",
@@ -230,7 +230,7 @@ This example shows how to define a function that generates a bar chart from stru
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000.",
         tools=[create_chart_function],
     )
@@ -262,7 +262,7 @@ This example shows how to define a function that generates a bar chart from stru
     };
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: "Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000.",
       tools: [createChartFunctionDeclaration],
     });
@@ -279,7 +279,7 @@ This example shows how to define a function that generates a bar chart from stru
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Create a bar chart titled '\''Quarterly Sales'\'' with Q1: 50000, Q2: 75000, Q3: 60000.",
         "tools": [{
             "type": "function",
@@ -370,7 +370,7 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Turn the lights down to a romantic level",
         tools=[set_light_values_declaration],
     )
@@ -385,7 +385,7 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: 'Turn the lights down to a romantic level',
       tools: [setLightValuesTool],
     });
@@ -424,7 +424,7 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
 ### Python
 
     final_interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {
                 "type": "function_result",
@@ -442,7 +442,7 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
 ### JavaScript
 
     const finalInteraction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: [{
         type: 'function_result',
         name: fcStep.name,
@@ -479,7 +479,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
     ]
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         store=False,
         input=history,
         tools=[set_light_values_declaration],
@@ -500,7 +500,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
     })
 
     final_interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         store=False,
         input=history,
         tools=[set_light_values_declaration],
@@ -523,7 +523,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
       ];
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         store: false,
         input: history,
         tools: [setLightValuesTool],
@@ -545,7 +545,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
       });
 
       const finalInteraction = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         store: false,
         input: history,
         tools: [setLightValuesTool],
@@ -563,7 +563,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "store": false,
         "input": [
           {
@@ -610,7 +610,7 @@ In stateless mode, you must pass the full history of the conversation in the `in
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d "{
-        \"model\": \"gemini-3.5-flash\",
+        \"model\": \"gemini-3.6-flash\",
         \"store\": false,
         \"input\": $HISTORY,
         \"tools\": [{
@@ -660,7 +660,7 @@ Call multiple functions at once when they are independent:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Turn this place into a party!",
         tools=[power_disco_ball, start_music, dim_lights],
         generation_config={"tool_choice": "any"},
@@ -681,7 +681,7 @@ Call multiple functions at once when they are independent:
       parameters: { type: 'object', properties: { brightness: { type: 'number' } }, required: ['brightness'] } };
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: 'Turn this place into a party!',
       tools: [powerDiscoBall, startMusic, dimLights],
       generation_config: { tool_choice: 'any' },
@@ -699,7 +699,7 @@ Call multiple functions at once when they are independent:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Turn this place into a party!",
         "tools": [
           {
@@ -781,7 +781,7 @@ first, then get weather for that location).
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C.",
         tools=[
             get_weather_forecast_declaration,
@@ -834,7 +834,7 @@ first, then get weather for that location).
     };
 
     const interaction = await client.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: "If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C.",
       tools: [
         getWeatherForecastTool,
@@ -861,7 +861,7 @@ first, then get weather for that location).
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "If it'\''s warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C.",
         "tools": [
           {
@@ -928,7 +928,7 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "What is the temperature in Boston?",
         "tools": [{
           "type": "function",
@@ -988,7 +988,7 @@ automatically circulates the built-in tool context.
     ]
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What is the northernmost city in the United States? What's the weather like there today?",
         tools=tools
     )
@@ -998,7 +998,7 @@ automatically circulates the built-in tool context.
             print(f"Function call: {step.name} (ID: {step.id})")
             result = {"response": "Very cold. 22 degrees Fahrenheit."}
             interaction_2 = client.interactions.create(
-                model="gemini-3.5-flash",
+                model="gemini-3.6-flash",
                 previous_interaction_id=interaction.id,
                 tools=tools,
                 input=[{
@@ -1036,7 +1036,7 @@ automatically circulates the built-in tool context.
     ];
 
     let interaction = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         input: "What is the northernmost city in the United States? What's the weather like there today?",
         tools: tools
     });
@@ -1046,7 +1046,7 @@ automatically circulates the built-in tool context.
             console.log(`Function call: ${step.name} (ID: ${step.id})`);
             const result = {response: "Very cold. 22 degrees Fahrenheit."};
             const interaction_2 = await client.interactions.create({
-                model: 'gemini-3.5-flash',
+                model: 'gemini-3.6-flash',
                 previous_interaction_id: interaction.id,
                 tools: tools,
                 input: [{
@@ -1068,7 +1068,7 @@ automatically circulates the built-in tool context.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "What is the northernmost city in the United States? What'\''s the weather like there today?",
         "tools": [
           {"type": "google_search"},
@@ -1092,7 +1092,7 @@ automatically circulates the built-in tool context.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "previous_interaction_id": "INTERACTION_ID",
         "tools": [
           {"type": "google_search"},
@@ -1145,7 +1145,7 @@ The following example shows how to send a function response containing image dat
     base64_image_data = base64.b64encode(image_bytes).decode("utf-8")
 
     final_interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         previous_interaction_id=interaction.id,
         input=[
             {
@@ -1177,7 +1177,7 @@ The following example shows how to send a function response containing image dat
     const base64ImageData = "BASE64_IMAGE_DATA";
 
     const finalInteraction = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         previous_interaction_id: interaction.id,
         input: [{
             type: 'function_result',
@@ -1202,7 +1202,7 @@ The following example shows how to send a function response containing image dat
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "previous_interaction_id": "INTERACTION_ID",
         "input": [
           {
@@ -1253,7 +1253,7 @@ When using Remote MCP, be aware of the following constraints:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Check the weather in San Francisco.",
         tools=[
             {
@@ -1271,7 +1271,7 @@ When using Remote MCP, be aware of the following constraints:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         input: 'Check the weather in San Francisco.',
         tools: [
             {
@@ -1288,7 +1288,7 @@ When using Remote MCP, be aware of the following constraints:
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Check the weather in San Francisco.",
         "tools": [
             {
@@ -1327,7 +1327,7 @@ reconstruct the complete tool calls before executing them.
     }
 
     stream = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What is the weather in Paris?",
         tools=[weather_tool],
         stream=True
@@ -1394,7 +1394,7 @@ reconstruct the complete tool calls before executing them.
     };
 
     const stream = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         input: 'What is the weather in Paris?',
         tools: [weatherTool],
         stream: true,
@@ -1446,7 +1446,7 @@ reconstruct the complete tool calls before executing them.
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "What is the weather in Paris?",
         "tools": [{
             "type": "function",
@@ -1473,6 +1473,62 @@ reconstruct the complete tool calls before executing them.
 - **Validation:** Validate function calls before executing.
 - **Error Handling:** Implement robust error handling.
 - **Security:** Use appropriate authentication for external APIs.
+
+## Workarounds for pre-tool text requirements
+
+**Issue:** If your prompt requires the model to output structured text (XML, YAML, JSON, etc.) (e.g., `<UPDATE>...</UPDATE>`) immediately before making a tool call, the tool call may occasionally fail with `Malformed_Function_Call`.
+
+**Solutions:** The following workarounds resolve this issue:
+
+- **PREFERRED:** Instruct the model to put its pre-tool notes inside a dedicated `update()` function call instead of raw text (details below).
+- Instruct the model to write notes as Markdown headers (`# UPDATE`, `## PLAN`) instead of structured text.
+- Do not require the model to output text before tool calls.
+
+### Preferred workaround: Wrap working notes in a dedicated function call
+
+Instead of the original instruction:
+
+    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags within `<UPDATE>`.
+
+Use this updated instruction:
+
+    Before calling any other tool, in every response you MUST first call `update` with all required parameters (previous_step, plan, next_step, external).
+
+And update all references to the old `<UPDATE>` XML format in the customer request. Then add the corresponding function declaration for the update function:
+
+    {
+      "name": "update",
+      "description": "Update working notes (previous step analysis, plan, next step, external note).",
+      "parameters": {
+        "type": "OBJECT",
+        "properties": {
+          "previous_step": {
+            "type": "STRING",
+            "description": "Key findings and outcomes since the previous step."
+          },
+          "plan": {
+            "type": "STRING",
+            "description": "The current status of the plan."
+          },
+          "next_step": {
+            "type": "STRING",
+            "description": "Brief explanation of the immediate next action according to the plan."
+          },
+          "external": {
+            "type": "STRING",
+            "description": "A short, plain-language note shown to the User about what you are ABOUT TO DO next."
+          }
+        },
+        "required": [
+          "previous_step",
+          "plan",
+          "next_step",
+          "external"
+        ]
+      }
+    }
+
+Then the model will make two calls in the same step: the `update()` call that replaces the structured XML, and the actual function call it wants to make.
 
 ## Notes and limitations
 

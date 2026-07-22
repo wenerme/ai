@@ -377,6 +377,7 @@ components:
         - clarifai
         - cloudflare
         - cohere
+        - coreweave
         - crusoe
         - darkbloom
         - decart
@@ -430,6 +431,7 @@ components:
         - recraft
         - reka
         - relace
+        - runway
         - sail-research
         - sakana
         - sambanova

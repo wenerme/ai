@@ -34,7 +34,7 @@ Here's a minimal example of initializing the client and sending a prompt to the 
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Search for 'Gemini API' on Google.",
         tools=[{"type": "computer_use", "environment": "browser"}]
     )
@@ -48,7 +48,7 @@ Here's a minimal example of initializing the client and sending a prompt to the 
     const ai = new GoogleGenAI();
 
     const interaction = await ai.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: "Search for 'Gemini API' on Google.",
       tools: [{ type: "computer_use", environment: "browser" }]
     });
@@ -142,7 +142,7 @@ Use the `google-genai` Python SDK (version `2.7.0` or higher) to configure a req
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model='gemini-3.5-flash',
+        model='gemini-3.6-flash',
         input="Find a flight from SF to Hawaii on Jun 30th, coming back on Jul 6th",
         tools=[
             {
@@ -164,7 +164,7 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
     const ai = new GoogleGenAI();
 
     const interaction = await ai.interactions.create({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.6-flash',
       input: "Find a flight from SF to Hawaii on Jun 30th, coming back on Jul 6th",
       tools: [
         {
@@ -186,7 +186,7 @@ Use curl to send a request:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Find me a flight from SF to Hawaii on Jun 30th, coming back on Jul 6th. Start by navigating directly to flights.google.com",
         "tools": [
           {
@@ -573,7 +573,7 @@ model responses and your function responses to the history at each step.
 
         # First interaction
         interaction = client.interactions.create(
-            model='gemini-3.5-flash',
+            model='gemini-3.6-flash',
             input=[
                 {"type": "text", "text": USER_PROMPT},
                 {"type": "image", "data": base64.b64encode(initial_screenshot).decode("utf-8"), "mime_type": "image/png"}
@@ -610,7 +610,7 @@ model responses and your function responses to the history at each step.
 
             # Continue conversation with function responses
             interaction = client.interactions.create(
-                model='gemini-3.5-flash',
+                model='gemini-3.6-flash',
                 previous_interaction_id=interaction.id,
                 input=function_responses,
                 tools=[{
@@ -662,7 +662,7 @@ model responses and your function responses to the history at each step.
 
         // First interaction
         let interaction = await ai.interactions.create({
-            model: 'gemini-3.5-flash',
+            model: 'gemini-3.6-flash',
             input: [
                 { type: 'text', text: USER_PROMPT },
                 { type: 'image', data: initialScreenshotBase64, mime_type: 'image/png' }
@@ -703,7 +703,7 @@ model responses and your function responses to the history at each step.
 
             // Continue conversation with function responses
             interaction = await ai.interactions.create({
-                model: 'gemini-3.5-flash',
+                model: 'gemini-3.6-flash',
                 previous_interaction_id: interaction.id,
                 input: functionResponses,
                 tools: [{
@@ -843,7 +843,7 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
     }
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Click the submit button. If you need a second factor authentication code, ask me.",
         tools=[
             {
@@ -880,7 +880,7 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
     };
 
     const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Click the submit button. If you need a second factor authentication code, ask me.",
         tools: [
             {
@@ -1002,7 +1002,7 @@ You can override select policies by passing overrides:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Clean up the local folder by archiving old logs.",
         tools=[
             {
@@ -1022,7 +1022,7 @@ You can override select policies by passing overrides:
     const ai = new GoogleGenAI();
 
     const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Clean up the local folder by archiving old logs.",
         tools: [
             {
@@ -1184,7 +1184,7 @@ data and systems:
          """
 
          interaction = client.interactions.create(
-             model="gemini-3.5-flash",
+             model="gemini-3.6-flash",
              system_instruction=system_instruction,
              input="Prepare a draft but do not send.",
              tools=[{
@@ -1288,7 +1288,7 @@ data and systems:
          `;
 
          const interaction = await ai.interactions.create({
-             model: "gemini-3.5-flash",
+             model: "gemini-3.6-flash",
              system_instruction: systemInstruction,
              input: "Prepare a draft but do not send.",
              tools: [{
@@ -1331,7 +1331,9 @@ data and systems:
 
 You can use Computer Use with the following models:
 
-- [**Gemini 3.5 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) (`gemini-3.5-flash`): The recommended model for computer use, featuring streamlined actions with intents, support for browser, mobile, and desktop environments, configurable safety policies, and prompt injection detection.
+- [**Gemini 3.6 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) (`gemini-3.6-flash`): The recommended model for computer use, featuring streamlined actions with intents, support for browser, mobile, and desktop environments, configurable safety policies, and prompt injection detection.
+- [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite): A low-latency, cost-effective model supporting computer use.
+- [**Gemini 3.5 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) (`gemini-3.5-flash`): Previous stable model supporting computer use.
 - [**Gemini 3 Flash Preview**](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) (`gemini-3-flash-preview`): Preview model supporting computer use.
 - [**Gemini 2.5 (Legacy Preview)**](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) (`gemini-2.5-computer-use-preview-10-2025`): Legacy preview model optimized for browser-based computer use.
 

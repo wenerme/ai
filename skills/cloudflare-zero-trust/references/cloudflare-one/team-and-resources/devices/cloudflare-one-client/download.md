@@ -39,6 +39,18 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
+**Version:**  Windows 2026.6.880.0 **Date:**  2026-07-21 **Size:** 59 MB
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.880.0)
+
+#### Release notes
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+Previous version history (13)
+
+Windows 2026.6.850.0
+
 **Version:**  Windows 2026.6.850.0 **Date:**  2026-07-07 **Size:** 59 MB
 
 [ Download ](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.850.0)
@@ -46,8 +58,6 @@ Latest release
 #### Release notes
 
 This hotfix addresses a Windows authentication issue in the embedded WebView2 browser. Single sign-on could fail to use the Windows primary account, causing users to be prompted for an interactive sign-in. The embedded authentication browser now allows SSO providers to use the OS primary account when available.
-
-Previous version history (12)
 
 Windows 2026.6.822.0
 
@@ -449,6 +459,18 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
+**Version:**  macOS 2026.6.880.0 **Date:**  2026-07-21 **Size:** 152 MB
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.880.0)
+
+#### Release notes
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+Previous version history (11)
+
+macOS 2026.6.822.0
+
 **Version:**  macOS 2026.6.822.0 **Date:**  2026-06-29 **Size:** 152 MB
 
 [ Download ](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.822.0)
@@ -488,8 +510,6 @@ This release introduces multiple features from our previous beta release into st
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * When deploying with Microsoft Intune, the client may be repeatedly reinstalled because Intune adds the client's embedded framework bundles to its install-detection list, and those frameworks cannot be detected as installed on their own. See [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune) for the workaround.
-
-Previous version history (10)
 
 macOS 2026.4.1390.0
 
@@ -719,6 +739,20 @@ This release contains minor fixes and improvements.
 
 Latest release
 
+**Version:**  Linux 2026.6.880.0 **Date:**  2026-07-21 **Size:** 74.4 MB
+
+ AlmaLinux / RHEL 10 (arm64)  AlmaLinux / RHEL 10 (x86-64)  AlmaLinux / RHEL 9 (arm64)  AlmaLinux / RHEL 9 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (arm64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64)
+
+[ Download ](https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.6.880.0)
+
+#### Release notes
+
+This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
+
+Previous version history (12)
+
+Linux 2026.6.836.0
+
 **Version:**  Linux 2026.6.836.0 **Date:**  2026-07-01 **Size:** 74.4 MB
 
  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (arm64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64)
@@ -737,8 +771,6 @@ sudo dnf clean all
 sudo dnf install cloudflare-warp
 
 ```
-
-Previous version history (11)
 
 Linux 2026.6.822.0
 
