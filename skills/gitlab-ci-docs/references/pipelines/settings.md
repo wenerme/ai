@@ -105,6 +105,12 @@ When this setting is enabled:
   that is the source branch of a merge request. GitLab only tries to create a merge request pipeline.
 - If the branch is not the source branch of an open or previously closed merge request,
   then GitLab does try to create a branch pipeline.
+- On the first push that creates a merge request, a branch pipeline is still created
+  because the pipeline starts before the merge request is created.
+  Starting from the next push, branch pipelines are skipped.
+- Mergeability checks, like [**Pipelines must succeed**](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge),
+  only consider merge request pipelines. Branch pipelines
+  do not affect merge readiness.
 - Jobs without explicit `rules`, `only`, or `except` sections are automatically
   included in merge request pipelines. The implicit `only: [branches, tags]` default is removed for these jobs.
 - Only push-triggered pipelines are affected. All other pipeline types, including

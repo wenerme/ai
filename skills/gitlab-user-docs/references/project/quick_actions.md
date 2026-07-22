@@ -117,6 +117,7 @@ Add one or more active CRM contacts.
 
 ### `add_email`
 
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 13.8 [with a feature flag](../../administration/feature_flags/list.md) named `issue_email_participants`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
 
 Add up to six email participants.
@@ -1504,6 +1505,7 @@ Remove the due date.
 
 ### `remove_email`
 
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 13.8 [with a feature flag](../../administration/feature_flags/list.md) named `issue_email_participants`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
 
 Remove up to six email participants.

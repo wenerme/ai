@@ -347,8 +347,6 @@ If the **NameID** is configured with the email address, [change the **NameID** f
 
 ## Configure GitLab
 
-- Ability to set a custom role as the default membership role [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/417285) in GitLab 16.7.
-
 After you set up your identity provider to work with GitLab, you must configure GitLab to use it for authentication:
 
 1. In the top bar, select **Search or go to** and find your group.
@@ -364,10 +362,8 @@ After you set up your identity provider to work with GitLab, you must configure 
 1. For groups on GitLab Self-Managed instances: in the **Default membership role** field,
    select the role to assign to new users.
    The default role is **Guest**. That role becomes the starting role of all users
-   added to the group:
-   - In GitLab 16.7 and later, group Owners can set a [custom role](../../custom_roles/_index.md)
-   - In GitLab 16.6 and earlier, group Owners can set a default membership role other than **Guest**.
-     as the default membership role.
+   added to the group. Group Owners can set a [custom role](../../custom_roles/_index.md)
+   as the default membership role.
 1. Select the **Enable SAML authentication for this group** checkbox.
 1. Recommended. Select:
    - In GitLab 17.4 and later, **Disable password and passkey authentication for enterprise users**.
@@ -402,8 +398,6 @@ When [restricted access](../../../subscriptions/manage_seats.md#restricted-acces
 For more information, see [Provisioning behavior with SAML, SCIM, and LDAP](../../../subscriptions/manage_seats.md#provisioning-behavior-with-saml-scim-and-ldap).
 
 ### Link SAML to your existing GitLab.com account
-
-- **Remember me** checkbox [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/121569) in GitLab 15.7.
 
 > [!note]
 > If the user is an [enterprise user](../../enterprise_user/_index.md) of that group, the following steps do not apply. The enterprise user must instead [sign in with a SAML account that has the same email as the GitLab account](#automatic-identity-linking-for-enterprise-users). This allows GitLab to link the SAML account to the existing account.
@@ -447,8 +441,6 @@ enterprise user but who may not have yet signed into the group.
 
 ### Manage user SAML identity
 
-- Update of SAML identities using the SAML API [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/227841) in GitLab 15.5.
-
 GitLab.com uses the SAML **NameID** to identify users. The **NameID** is:
 
 - A required field in the SAML response.
@@ -490,8 +482,6 @@ For more information on the recommended value and format for specific identity
 providers, see [set up your identity provider](#set-up-your-identity-provider).
 
 ### Configure enterprise user settings from SAML response
-
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/412898) to configure only enterprise user settings in GitLab 16.7.
 
 GitLab allows setting certain user attributes based on values from the SAML response.
 An existing user's attributes are updated from the SAML response values if that
@@ -560,8 +550,6 @@ session ends.
 
 ### Bypass user email confirmation with verified domains
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/238461) in GitLab 15.4.
-
 By default, users provisioned with SAML or SCIM are sent a verification email to verify their identity. Instead, you can
 [configure GitLab with a custom domain](../../enterprise_user/_index.md#add-group-domains) and GitLab
 automatically confirms user accounts. Users still receive an
@@ -627,10 +615,6 @@ For example, to unlink the `MyOrg` account:
 1. In the **Service sign-in** section, select **Disconnect** next to the connected account.
 
 ## SSO enforcement
-
-- [Improved](https://gitlab.com/gitlab-org/gitlab/-/issues/215155) in GitLab 15.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `transparent_sso_enforcement` to include transparent enforcement even when SSO enforcement is not enabled. Disabled on GitLab.com.
-- [Improved](https://gitlab.com/gitlab-org/gitlab/-/issues/375788) in GitLab 15.8 by enabling transparent SSO by default on GitLab.com.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/389562) in GitLab 15.10. Feature flag `transparent_sso_enforcement` removed.
 
 On GitLab.com, SSO is enforced:
 

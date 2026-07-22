@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Cloudflare platform access

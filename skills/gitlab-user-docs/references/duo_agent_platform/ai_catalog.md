@@ -43,7 +43,6 @@ To view the AI Catalog, you can either:
 - Use the top bar:
   1. In the top bar, select **Search or go to** > **Explore**.
   1. Select **AI Catalog**.
-
 - Use the GitLab Duo sidebar:
   1. In the top bar, select **Search or go to** and find your project.
   1. On the GitLab Duo sidebar, select **GitLab Duo AI Catalog** ().

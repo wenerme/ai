@@ -22,7 +22,6 @@ the Linux package:
 1. [Download and install](https://about.gitlab.com/install/) the Linux
    package you want by using **steps 1 and 2** from the GitLab downloads page.
    Do not complete any other steps on the download page.
-
 1. Edit `/etc/gitlab/gitlab.rb` and add the contents:
 
    ```ruby
@@ -65,7 +64,6 @@ On the instance where GitLab is installed:
    ```
 
 1. Save your changes to `/etc/gitlab/gitlab.rb`.
-
 1. [Reconfigure GitLab](../restart_gitlab.md#reconfigure-a-linux-package-installation) for the changes to take effect.
 
 ## Use Valkey instead of Redis

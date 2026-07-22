@@ -98,6 +98,7 @@ To create and verify your security scanners and merge request approval policies 
 
 ## Merge request with multiple pipelines
 
+- Support for parent-child pipelines [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428591) in GitLab 16.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `approval_policy_parent_child_pipeline`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/451597) in GitLab 17.0.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/428591) in GitLab 17.1. Feature flag `approval_policy_parent_child_pipeline` removed.
 
@@ -416,6 +417,7 @@ actions:
 ## `send_bot_message` action type
 
 - The `send_bot_message` action type for projects:
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438269) in GitLab 16.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `approval_policy_disable_bot_comment`. Disabled by default.
   - [Enabled on GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/454852) in GitLab 17.0.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/454852) in GitLab 17.3. Feature flag `approval_policy_disable_bot_comment` removed.
 - The `send_bot_message` action type for groups:
@@ -494,6 +496,7 @@ approval_policy:
 ## `approval_settings`
 
 - The `block_group_branch_modification` field:
+  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/420724) in GitLab 16.8 [with a feature flag](../../../administration/feature_flags/_index.md) named `scan_result_policy_block_group_branch_modification`.
   - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/437306) in GitLab 17.6.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/503930) in GitLab 17.7. Feature flag `scan_result_policy_block_group_branch_modification` removed.
 

@@ -644,7 +644,7 @@ See the [enablement instructions for Gradle](dependency_scanning_sbom/_index.md#
 - If a `maven.graph.json` graph export file generated with the [Maven dependency plugin](https://maven.apache.org/plugins/maven-dependency-plugin/index.html)
   exists in the repository or a job artifact, the analyzer uses it directly.
 - If no graph export is detected but a supported `pom.xml` file exists, a [dependency resolution](dependency_scanning_sbom/_index.md#dependency-resolution)
-  job runs in the `.pre` stage. It automatically executes  `mvn dependency:tree` to generate a
+  job runs in the `.pre` stage. It automatically executes `mvn dependency:tree` to generate a
   dependency graph export for the `dependency-scanning` job.
 - If dependency resolution is not available or fails, [manifest fallback](dependency_scanning_sbom/_index.md#manifest-fallback)
   parses the `pom.xml` directly to extract direct dependencies only.

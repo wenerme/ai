@@ -139,10 +139,6 @@ These settings [can be configured](settings/import_export_rate_limits.md).
 
 #### Direct transfer migration
 
-- Maximum number of migrations permitted limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/386452) in GitLab 15.9.
-- Configurable settings [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384976) in GitLab 16.3.
-- Eight hour time limit on migrations [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/429867) in GitLab 16.7.
-
 The following limits apply on migration by direct transfer.
 
 | Limit                                                                      | Default     | Configurable |
@@ -187,9 +183,6 @@ Set the limit to `0` to disable it.
 
 ### Search rate limit
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/104208) in GitLab 15.9 to include issue, merge request, and epic searches in the rate limit.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/118525) in GitLab 16.0 to apply rate limits to [search scopes](../user/search/_index.md#disable-global-search-scopes) for authenticated requests.
-
 This setting limits search requests as follows:
 
 | Limit                | Default (requests per minute) |
@@ -222,8 +215,6 @@ This endpoint has been requested too many times. Try again later.
 ```
 
 ### Pipeline creation rate limit
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362475) in GitLab 15.0.
 
 This setting limits the request rate to the pipeline creation endpoints.
 
@@ -595,8 +586,6 @@ header. Such emails don't create comments on issues or merge requests.
 
 ## Amount of data sent from Sentry through Error Tracking
 
-- [Limiting all Sentry responses](https://gitlab.com/gitlab-org/gitlab/-/issues/356448) introduced in GitLab 15.6.
-
 Sentry payloads sent to GitLab have a 1 MB maximum limit, both for security reasons
 and to limit memory consumption.
 
@@ -758,9 +747,6 @@ Set the limit to `0` to disable it.
 
 ## Math rendering limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132939) in GitLab 16.5.
-- [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/368009) the 50-node limit from Wiki and repository files.
-- [Added](https://gitlab.com/gitlab-org/gitlab/-/issues/368009) a group-level setting to allow disabling math rendering limits, and re-enabled by default the math limits for wiki and repository files in GitLab 16.9.
 - [Increased](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243169) the maximum number of nodes rendered from 50 to 1000 in GitLab 19.2.
 
 GitLab imposes default limits when rendering math in Markdown fields. These limits provide better security and performance.
@@ -891,9 +877,6 @@ varies by file type:
 - Image manifest: 10 MB
 
 ## Maximum number of assignees and reviewers
-
-- Maximum assignees [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/368936) in GitLab 15.6.
-- Maximum reviewers [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/366485) in GitLab 15.9.
 
 Issues and merge requests enforce these maximums:
 

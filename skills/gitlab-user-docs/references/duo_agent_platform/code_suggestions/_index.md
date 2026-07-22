@@ -59,10 +59,8 @@ To use Code Suggestions:
 1. Author your code.
    As you type, suggestions are displayed. Code Suggestions provides code snippets
    or completes the current line, depending on the cursor position.
-
 1. Describe the requirements in natural language.
    Code Suggestions generates functions and code snippets based on the context provided.
-
 1. When you receive a suggestion, you can do any of the following:
    - To accept a suggestion, press <kbd>Tab</kbd>.
    - To accept a partial suggestion, press either <kbd>Control</kbd>+<kbd>Right arrow</kbd> or <kbd>Command</kbd>+<kbd>Right arrow</kbd>.

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Cloudflare platform access

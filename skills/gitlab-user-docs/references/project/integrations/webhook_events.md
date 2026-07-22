@@ -19,7 +19,7 @@ For a list of events triggered for system webhooks, see [system webhooks](../../
 
 | Event type                                                                    | Trigger |
 |-------------------------------------------------------------------------------|---------|
-| [Comment event](#comment-events)                                              | A new comment is made or edited on commits, merge requests, issues, and code snippets. <sup>1</sup> |
+| [Comment event](#comment-events)                                              | A new comment is made or edited on commits, merge requests, issues, and code snippets. |
 | [Deployment event](#deployment-events)                                        | A deployment starts, succeeds, fails, or is canceled. |
 | [Emoji event](#emoji-events)                                                  | An emoji reaction is added or removed. |
 | [Feature flag event](#feature-flag-events)                                    | A feature flag is turned on or off. |
@@ -34,10 +34,6 @@ For a list of events triggered for system webhooks, see [system webhooks](../../
 | [Vulnerability event](#vulnerability-events)                                  | A vulnerability is created or updated. |
 | [Wiki page event](#wiki-page-events)                                          | A wiki page is created, edited, or deleted. |
 | [Work item event](#work-item-events)                                          | A new work item is created or an existing one is edited, closed, or reopened. |
-
-Footnotes:
-
-1. Comment events triggered when the comment is edited [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127169) in GitLab 16.11.
 
 ## Events triggered for group webhooks only
 
@@ -424,8 +420,6 @@ Payload example:
 ```
 
 ## Comment events
-
-- `object_attributes.action` property [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147856) in GitLab 16.11.
 
 Comment events are triggered when a new comment is made or edited on commits,
 merge requests, issues, and code snippets.
@@ -1476,11 +1470,9 @@ Payload example:
 
 Pipeline events are triggered when the status of a pipeline changes.
 
-In [GitLab 15.1](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/89546)
-and later, pipeline webhooks triggered by blocked users are not processed.
+Pipeline webhooks triggered by blocked users are not processed.
 
-In [GitLab 16.1](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123639)
-and later, pipeline webhooks started to expose `object_attributes.name`.
+Pipeline webhooks expose `object_attributes.name`.
 
 Request header:
 
@@ -1765,8 +1757,7 @@ Job events are triggered when the status of a job changes. Trigger jobs are excl
 
 The `commit.id` in the payload is the ID of the pipeline, not the ID of the commit.
 
-In [GitLab 15.1](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/89546)
-and later, job events triggered by blocked users are not processed.
+Job events triggered by blocked users are not processed.
 
 Request header:
 
@@ -1872,15 +1863,10 @@ Payload example:
 
 ### Number of retries
 
-- `retries_count` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/382046) in GitLab 15.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `job_webhook_retries_count`. Disabled by default.
-- `retries_count` [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/382046) in GitLab 16.2.
-
 `retries_count` is an integer that indicates if the job is a retry. `0` means that the job
 has not been retried. `1` means that it's the first retry.
 
 ### Pipeline name
-
-- `commit.name` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107963) in GitLab 15.8.
 
 You can set custom names for pipelines with [`workflow:name`](../../../ci/yaml/_index.md#workflowname).
 If the pipeline has a name, that name is the value of `commit.name`.
@@ -2302,8 +2288,6 @@ Payload example:
 
 ## Release events
 
-- Delete release event [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418113) in GitLab 16.5.
-
 Release events are triggered when a release is created, updated, or deleted.
 
 The available values for `object_attributes.action` in the payload are:
@@ -2596,9 +2580,6 @@ Payload example:
 
 ## Project and group access token events
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141907) in GitLab 16.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `access_token_webhooks`. Disabled by default.
-- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/439379) in GitLab 16.11.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/454642) in GitLab 16.11. Feature flag `access_token_webhooks` removed.
 - `full_path` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/465421) in GitLab 17.4.
 - 60 and 30 day notifications [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/173792) in GitLab 17.7.
 

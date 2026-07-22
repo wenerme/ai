@@ -24,7 +24,7 @@ Compute AI Storage & Databases Media
 
 [ Create your first Worker ](https://developers.cloudflare.com/workers/get-started/guide/)
 
-[ Workers ](https://developers.cloudflare.com/workers/) · [ Containers ](https://developers.cloudflare.com/containers/) · [ Durable Objects ](https://developers.cloudflare.com/durable-objects/) · [ Queues ](https://developers.cloudflare.com/queues/)
+[ Workers ](https://developers.cloudflare.com/workers/) · [ Containers ](https://developers.cloudflare.com/containers/) · [ Durable Objects ](https://developers.cloudflare.com/durable-objects/) · [ Queues ](https://developers.cloudflare.com/queues/) · [ Flagship ](https://developers.cloudflare.com/flagship/)
 
 ###  The AI inference platform
 

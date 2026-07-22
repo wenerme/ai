@@ -1283,7 +1283,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32597 files, 383 MiB total
+> 115 skills, 32602 files, 383 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1320,7 +1320,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 784 | 7.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.4 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4845 | 15 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4849 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1590 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
@@ -1367,7 +1367,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 460 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 451 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2354 | 14 MiB |
-| [orpc-docs](./skills/orpc-docs/SKILL.md) | 84 | 339 KiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 85 | 346 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |

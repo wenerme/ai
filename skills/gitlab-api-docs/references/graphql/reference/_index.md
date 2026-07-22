@@ -61128,6 +61128,7 @@ Possible event types for flow triggers.
 | ----- | ----------- |
 | <a id="aiflowtriggereventtype-assign"></a>`ASSIGN` | Flow trigger assign event. |
 | <a id="aiflowtriggereventtype-assign_reviewer"></a>`ASSIGN_REVIEWER` | Flow trigger assign_reviewer event. |
+| <a id="aiflowtriggereventtype-commit_to_default_branch"></a>`COMMIT_TO_DEFAULT_BRANCH` | Flow trigger commit_to_default_branch event. |
 | <a id="aiflowtriggereventtype-mention"></a>`MENTION` | Flow trigger mention event. |
 | <a id="aiflowtriggereventtype-merge_request"></a>`MERGE_REQUEST` | Flow trigger merge_request event. |
 | <a id="aiflowtriggereventtype-merge_request_code_conflict"></a>`MERGE_REQUEST_CODE_CONFLICT` | Flow trigger merge_request_code_conflict event. |

@@ -7,7 +7,6 @@ Use this API to interact with [personal access tokens](../user/profile/personal_
 
 ## List all personal access tokens
 
-- `created_after`, `created_before`, `last_used_after`, `last_used_before`, `revoked`, `search` and `state` filters were [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362248) in GitLab 15.5.
 - `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Lists all personal access tokens accessible by the authenticated user. For administrators, returns
@@ -97,8 +96,6 @@ Other possible response:
 
 ## Retrieve a personal access token
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362239) in GitLab 15.1.
-- `404` HTTP status code [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93650) in GitLab 15.3.
 - `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Retrieves details for a specified personal access token. Administrators can retrieve details on any token.
@@ -130,8 +127,6 @@ Other possible responses:
 
 ### Self-inform
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/373999) in GitLab 15.5
-
 Instead of getting details on a specific personal access token, you can also return details on
 the personal access token you used to authenticate the request. To return these details, you must
 use the `self` keyword in the request URL.
@@ -153,8 +148,6 @@ You can create personal access tokens with the user tokens API. For more informa
 
 ## Rotate a personal access token
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/403042) in GitLab 16.0
-- `expires_at` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/416795) in GitLab 16.6.
 - `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
 
 Rotates a specified personal access token. This revokes the previous token and creates a new token
@@ -214,8 +207,6 @@ Other possible responses:
 
 ### Self-rotate
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/426779) in GitLab 16.10
-
 Instead of rotating a specific personal access token, you can also rotate the same personal access
 token you used to authenticate the request. To self-rotate a personal access token, you must:
 
@@ -229,8 +220,6 @@ curl --request POST \
 ```
 
 ### Automatic reuse detection
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/395352) in GitLab 16.3
 
 When you rotate or revoke a token, GitLab automatically tracks the relationship between the old and
 new tokens. Each time a new token is generated, a connection is made to the previous token. These
@@ -272,11 +261,8 @@ Other possible responses:
 
 ### Self-revoke
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/350240) in GitLab 15.0. Limited to tokens with `api` scope.
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/369103) in GitLab 15.4, any token can use this endpoint.
-
 Instead of revoking a specific personal access token, you can also revoke the same personal access
-token you used to authenticate the request. To self-revoke a personal access token, you must use
+token you used to authenticate the request. Any token can use this endpoint. To self-revoke a personal access token, you must use
 the `self` keyword in the request URL.
 
 ```shell
