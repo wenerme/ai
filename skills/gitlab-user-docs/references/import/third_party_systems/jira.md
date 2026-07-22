@@ -55,7 +55,6 @@ Importing large projects can take several minutes depending on the size of the i
 To import Jira issues to a GitLab project:
 
 1. On the  **Work items** page, select **Actions** () > **Import from Jira**.
-
 1. Select the **Import from** dropdown list and select the Jira project that you wish to import issues from.
 
    In the **Jira-GitLab user mapping template** section, the table shows to which GitLab users your Jira

@@ -17,7 +17,7 @@ In the following sections, you create an SLO by completing these steps:
 2. [Define a service level indicator](#define-a-service-level-indicator)
 3. [Set a target and error budget](#set-a-target-and-error-budget)
 4. [Add a name and description](#add-a-name-and-description)
-5. [Add SLO alert rules](#add-slo-alert-rules)
+5. [Add SLO alert rules and assistant investigations](#add-slo-alert-rules-and-assistant-investigations)
 6. [Review and save your SLO](#review-and-save-your-slo)
 
 ## Supported SLO data sources
@@ -149,7 +149,7 @@ SLO names identify your SLO in dashboards and alert rules.
 
 Good SLO names, descriptions, and labeling practices are a critical part of SLO maintenance and alignment.
 
-## Add SLO alert rules
+## Add SLO alert rules and assistant investigations
 
 Enable SLO alert rules to receive notifications and act proactively before the SLO is breached.
 
@@ -169,6 +169,7 @@ In Grafana SLO, you can enable two types of alert rules:
 In the alert rule settings, you can configure the following options:
 
 - Edit the name and description of the alert rules.
+- Enable running an [assistant investigation](/docs/grafana-cloud/machine-learning/assistant/guides/investigation/) when the alert fires. **Assistant investigations** explore SLO and system observability data, build hypotheses, and produce reports for incident response.
 - Add labels for alert routing.
 - Add annotations, such as runbooks, to provide additional context to responders.
 - Set the [minimum failure threshold](/docs/grafana-cloud/alerting-and-irm/slo/best-practices/#minimum-failures), the minimum number of failure events required to trigger the alert.
@@ -189,6 +190,6 @@ When you create an SLO, Grafana generates the following resources and places the
 
 - [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/): display SLO results, including SLI performance and error budget consumption.
 - [Recording rules](/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/): optimize queries used to calculate the SLI and error budget.
-- (*Optional*) [Alert rules](#add-slo-alert-rules): trigger notifications based on the configured SLO alert conditions.
+- (*Optional*) [Alert rules](#add-slo-alert-rules-and-assistant-investigations): trigger notifications based on the configured SLO alert conditions.
 
 If any of these resources are deleted, Grafana automatically recreates them to ensure that you don’t miss alerts or lose access SLO dashboards.

@@ -46,9 +46,6 @@ Value stream analytics includes the following lifecycle metrics:
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/355304) time to restore service tile in GitLab 15.0.
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/357071) change failure rate tile in GitLab 15.0.
-
 Value stream analytics includes the following [DORA](../../analytics/dora_metrics.md) metrics:
 
 - Deployment frequency
@@ -246,8 +243,6 @@ The first value stream uses standard timestamp-based events for defining the sta
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Enable filtering by stop date [added](https://gitlab.com/gitlab-org/gitlab/-/issues/355000) in GitLab 15.0
-
 Value stream analytics uses a backend process to collect and aggregate stage-level data, which
 ensures it can scale for large groups with a high number of issues and merge requests. Due to this process,
 there may be a slight delay between when an action is taken (for example, closing an issue) and when the data
@@ -263,10 +258,6 @@ longer than 10 minutes in the following cases:
 To view when the data was most recently updated, in the right corner next to **Edit**, hover over the **Last updated** badge.
 
 ## View value stream analytics
-
-- Predefined date ranges dropdown list [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408656/) in GitLab 16.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `vsa_predefined_date_ranges`. Disabled by default.
-- Predefined date ranges dropdown list [enabled on GitLab Self-Managed and GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/433149) in GitLab 16.7.
-- Predefined date ranges dropdown list [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/438051) in GitLab 16.9. Feature flag `vsa_predefined_date_ranges` removed.
 
 Prerequisites:
 

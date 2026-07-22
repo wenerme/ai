@@ -12,11 +12,6 @@ Use GitLab Duo Chat to ask questions about your code, get help with GitLab, and 
 - LLM for Amazon Q: Amazon Q Developer
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/117695) as an [experiment](../../policy/development_stages_support.md#experiment) for GitLab.com in GitLab 16.0.
-- Changed to [beta](../../policy/development_stages_support.md#beta) for GitLab.com in GitLab 16.6.
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/11251) as a beta for GitLab Self-Managed in GitLab 16.8.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142808) from Ultimate to Premium tier in GitLab 16.9 while in beta.
-- [Generally available](../../policy/development_stages_support.md#generally-available) in GitLab 16.11.
 - Changed to require GitLab Duo add-on in GitLab 17.6 and later.
 - [Added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201721) to GitLab Duo Core in GitLab 18.3.
 - [Updated default LLM](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/issues/1541) to Claude Sonnet 4.5 in GitLab 18.6.
@@ -146,9 +141,6 @@ However, administrators can [change this expiration period](#configure-chat-conv
 
 ## Use GitLab Duo Chat in the Web IDE
 
-- Introduced in GitLab 16.6 as an [experiment](../../policy/development_stages_support.md#experiment).
-- Changed to generally available in GitLab 16.11.
-
 To use GitLab Duo Chat in the Web IDE on GitLab:
 
 1. Open the Web IDE:
@@ -176,8 +168,6 @@ system versioning, feature state management, and feature flags:
 
 ## Use GitLab Duo Chat in VS Code
 
-- Introduced in GitLab 16.6 as an [experiment](../../policy/development_stages_support.md#experiment).
-- Changed to generally available in GitLab 16.11.
 - Status [added](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/issues/1712) in the GitLab for VS Code extension 5.29.0.
 
 Prerequisites:
@@ -249,8 +239,6 @@ To use GitLab Duo Chat in the GitLab for Visual Studio extension:
 If you have selected code in the editor, this selection is sent along with your question to the AI. This way you can ask questions about this code selection. For instance, `Could you refactor this?`.
 
 ## Use GitLab Duo Chat in JetBrains IDEs
-
-- Introduced as generally available in GitLab 16.11.
 
 Prerequisites:
 

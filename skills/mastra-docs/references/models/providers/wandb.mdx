@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 25 models available."
+description: "Use Weights & Biases models with Mastra. 26 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 25 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 26 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -157,6 +157,18 @@ for await (const chunk of stream) {
     "contextWindow": 196608,
     "maxOutput": 196608,
     "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "wandb/MiniMaxAI/MiniMax-M3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.29,
     "outputCost": 1.2
   },
   {

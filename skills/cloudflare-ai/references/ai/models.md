@@ -328,9 +328,9 @@ Try a different search term, or broaden your search by removing filters.
 
 [  a  gemma-sea-lion-v4-27b-it aisingapore  Text Generation  SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.  Cloudflare-hosted ](https://developers.cloudflare.com/ai/models/@cf/aisingapore/gemma-sea-lion-v4-27b-it/)
 
-[ Pinned ![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)  glm-4.7-flash Zhipu AI  Text Generation  GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.  Cloudflare-hosted  Function calling  Reasoning ](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[ Pinned ![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)  glm-4.7-flash Zhipu AI  Text Generation  GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.  Cloudflare-hosted  Function calling  Reasoning ](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
-[ ![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)  glm-5.2 Zhipu AI  Text Generation  Z.ai's flagship agentic coding model  Cloudflare-hosted  Function calling  Reasoning ](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[ ![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)  glm-5.2 Zhipu AI  Text Generation  Z.ai's flagship agentic coding model  Cloudflare-hosted  Function calling  Reasoning ](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 [ Pinned ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)  gpt-oss-120b OpenAI  Text Generation  OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.  Cloudflare-hosted  Function calling  Reasoning ](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
 

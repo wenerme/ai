@@ -13,7 +13,6 @@ Prerequisites:
 
 ## List all active integrations
 
-- `vulnerability_events` field [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131831) in GitLab 16.4.
 - `inherited` field [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154915) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `integration_api_inheritance`. Disabled by default.
 - `inherited` field [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/467186) in GitLab 17.3. Feature flag `integration_api_inheritance` removed.
 
@@ -356,7 +355,6 @@ GET /projects/:id/integrations/campfire
 
 ## ClickUp
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120732) in GitLab 16.1.
 - `use_inherited_settings` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467089) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `integration_api_inheritance`. Disabled by default.
 - `use_inherited_settings` parameter [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/467186) in GitLab 17.3. Feature flag `integration_api_inheritance` removed.
 
@@ -492,7 +490,7 @@ Parameters:
 | `datadog_service`      | string  | no    | GitLab instance to tag all data from in Datadog. Can be used when managing several self-managed deployments. |
 | `datadog_site`         | string  | no    | Datadog site to send data to. To send data to the EU site, use `datadoghq.eu`. |
 | `datadog_tags`         | string  | no    | Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`. |
-| `archive_trace_events` | boolean | no    | When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/346339) in GitLab 15.3). |
+| `archive_trace_events` | boolean | no    | When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces. |
 | `use_inherited_settings` | boolean | no | Indicates whether to inherit the default settings. Defaults to `false`. |
 
 ### Disable Datadog
@@ -551,7 +549,6 @@ GET /projects/:id/integrations/diffblue-cover
 
 ## Discord Notifications
 
-- `_channel` parameters [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/125621) in GitLab 16.3.
 - `use_inherited_settings` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467089) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `integration_api_inheritance`. Disabled by default.
 - `use_inherited_settings` parameter [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/467186) in GitLab 17.3. Feature flag `integration_api_inheritance` removed.
 
@@ -1344,7 +1341,7 @@ Parameters:
 | `issues_enabled` | boolean | no | Enable viewing Jira issues in GitLab. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/267015) in GitLab 17.0. |
 | `project_keys` | array of strings | no | Keys of Jira projects. When `issues_enabled` is `true`, this setting specifies which Jira projects to view issues from in GitLab. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/267015) in GitLab 17.0. |
 | `use_inherited_settings` | boolean | no | Indicates whether to inherit the default settings. Defaults to `false`. |
-| `vulnerabilities_enabled` | boolean | no | Available only in GitLab EE. When set to `true`, creates Jira issues for GitLab vulnerabilities.|
+| `vulnerabilities_enabled` | boolean | no | Available only in GitLab EE. When set to `true`, creates Jira issues for GitLab vulnerabilities. |
 | `vulnerabilities_issuetype` | number | no | Available only in GitLab EE. ID of the Jira issue type to use when creating issues from vulnerabilities. |
 | `project_key` | string | no | Available only in GitLab EE. Key of the project to use when creating issues from vulnerabilities. This parameter is required if using the integration to create issues from vulnerabilities. |
 | `customize_jira_issue_enabled` | boolean | no | Available only in GitLab EE. When set to `true`, opens a prefilled form on the Jira instance when creating a Jira issue from a vulnerability. |
@@ -1680,7 +1677,6 @@ GET /projects/:id/integrations/packagist
 
 ## Phorge
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/145863) in GitLab 16.11.
 - `use_inherited_settings` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467089) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `integration_api_inheritance`. Disabled by default.
 - `use_inherited_settings` parameter [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/467186) in GitLab 17.3. Feature flag `integration_api_inheritance` removed.
 
@@ -1990,7 +1986,6 @@ GET /projects/:id/integrations/slack
 
 ## Squash TM
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/337855) in GitLab 15.10.
 - `use_inherited_settings` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/467089) in GitLab 17.2 [with a feature flag](../administration/feature_flags/_index.md) named `integration_api_inheritance`. Disabled by default.
 - `use_inherited_settings` parameter [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/467186) in GitLab 17.3. Feature flag `integration_api_inheritance` removed.
 
@@ -2046,10 +2041,10 @@ Parameters:
 | `hostname`   | string | no | Custom hostname of the Telegram API ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/461313) in GitLab 17.1). The default value is `https://api.telegram.org`. |
 | `token`   | string | yes | The Telegram bot token (for example, `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`). |
 | `room` | string | yes | Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`). |
-| `thread` | integer | no | Unique identifier for the target message thread (topic in a forum supergroup). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/441097) in GitLab 16.11. |
+| `thread` | integer | no | Unique identifier for the target message thread (topic in a forum supergroup). |
 | `notify_only_broken_pipelines` | boolean | no | Send notifications for broken pipelines. |
 | `notify_only_when_pipeline_status_changes` | boolean | no | Send notifications only when the pipeline status for the ref changes. |
-| `branches_to_be_notified` | string | no | Branches to send notifications for ([introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134361) in GitLab 16.5). Valid options are `all`, `default`, `protected`, and `default_and_protected`. The default value is `default`. |
+| `branches_to_be_notified` | string | no | Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. The default value is `default`. |
 | `push_events` | boolean | yes | Enable notifications for push events. |
 | `issues_events` | boolean | yes | Enable notifications for issue events. |
 | `confidential_issues_events` | boolean | yes | Enable notifications for confidential issue events. |

@@ -612,6 +612,7 @@ system note in the task's comments, for example:
 
 ## Lock discussion
 
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/398649) in GitLab 16.9 [with a feature flag](../administration/feature_flags/_index.md) named `work_items_beta`. Disabled by default.
 - Feature flag `work_items_beta` [removed](https://gitlab.com/gitlab-com/gl-infra/production/-/issues/17549) in GitLab 18.6.
 
 You can prevent public comments in a task.
@@ -632,6 +633,8 @@ If a task is closed with a locked discussion, then you cannot reopen it until th
 
 ## Linked items in tasks
 
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/416558) in GitLab 16.5 [with a feature flag](../administration/feature_flags/_index.md) named `linked_work_items`. Disabled by default.
+- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/139394) in GitLab 16.7.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150148) in GitLab 17.0. Feature flag `linked_work_items` removed.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/epics/10267) minimum required role from Reporter (if true) to Guest in GitLab 17.0.
 

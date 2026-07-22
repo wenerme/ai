@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 1. **Download Codex**

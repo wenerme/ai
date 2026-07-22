@@ -25,7 +25,6 @@ Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://deve
 | ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------- | ------------------------------ |
 | 2026-07-21        | 2026-07-27   | Log              | N/A            | ...c2e84e2d | SSRF - Cloud - Beta             | This is an improved detection. |
 | 2026-07-21        | 2026-07-27   | Log              | N/A            | ...761e7a4c | Command Injection - Obfuscation | This is a new detection.       |
-| 2026-07-21        | 2026-07-27   | Log              | N/A            | ...90dcdb0a | Generic Rules - DoS             | This is a new detection.       |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

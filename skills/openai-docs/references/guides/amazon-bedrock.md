@@ -160,39 +160,40 @@ Bedrock Region itself and the corresponding AWS terms.
 Amazon Bedrock uses separate controls for operator access and data retention:
 
 - **[Zero operator access (ZOA)](https://aws.amazon.com/blogs/machine-learning/exploring-the-zero-operator-access-design-of-mantle/)**
-  prevents service operators from accessing model inputs and outputs processed
-  by Mantle.
+  means AWS operators have no technical mechanism to sign in to Mantle's
+  underlying compute systems or access customer data, including inference
+  prompts and completions.
 - **[Zero data retention (ZDR)](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html)**
-  means AWS does not write model inputs or outputs to durable storage or share
-  them with OpenAI when the effective retention mode is `none`.
+  means AWS does not write model inputs or outputs to durable storage when the
+  effective retention mode is `none`.
+
+For OpenAI models in Amazon Bedrock, AWS does not share request or response
+content with OpenAI when the effective retention mode is `default` or `none`.
 
 [Configure Bedrock data
 retention](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html#data-retention-configuration)
-for your AWS account or project. For requests sent directly to the OpenAI API,
-use the separate [OpenAI Zero Data Retention
-controls](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention).
+for your AWS account or project.
 
 Under the `default` retention mode, retention depends on the model and request
 settings. For specific OpenAI GPT models, AWS retains classifier-flagged traffic
-for up to 30 days for automated offline abuse detection. AWS stores and
-processes this data and does not share it with OpenAI. On the Responses API,
-`store` defaults to `true`, so AWS may store response data beyond abuse
-detection. See [Amazon Bedrock abuse
+for up to 30 days for automated offline abuse detection. Responses API requests
+use `store: true` by default. AWS retains the response, including its input and
+output, for 30 days so you can retrieve it or reference it in a later request.
+See [Amazon Bedrock abuse
 detection](https://docs.aws.amazon.com/bedrock/latest/userguide/abuse-detection.html)
 for the current model list and retention details.
 
-If you need full ZDR for a model that requires retention, [contact your AWS
-account
-manager](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html#data-retention-zdr)
-to discuss eligibility. AWS evaluates ZDR access for each account and model. If
-AWS approves access, confirm that `none` appears in the model's `allowed_modes`,
-then set the account or project retention mode to `none`. Setting `store: false`
-does not guarantee ZDR. When the effective retention mode is `none`, AWS rejects
-`store: true`, and background mode is unavailable.
+If you need full ZDR for a model that requires retention, contact your AWS
+account manager to discuss eligibility. AWS evaluates ZDR access for each account
+and model. If AWS approves access, confirm that `none` appears in the model's
+`allowed_modes`, then set the account or project retention mode to `none`.
+Setting `store: false` does not guarantee ZDR. When the effective retention mode
+is `none`, AWS rejects `store: true`, and background mode is unavailable.
 
-If AWS detects apparent CSAM in an image input, AWS may store and review the
-  flagged input or output only to determine whether it is CSAM. AWS may also
-  file a report with national authorities.
+If AWS detects apparent CSAM in an image input, AWS may move the flagged input
+  or output outside the ZOA environment and store and review it only to
+  determine whether it is CSAM. AWS may also file a report with national
+  authorities.
 
 ## Responses API feature availability
 

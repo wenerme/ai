@@ -6,7 +6,7 @@
 Use this API to interact with A/B experiments. This API is for internal use only.
 It cannot be used with anonymous or unauthenticated users. For experiments
 involving anonymous users, use the
-[`glex_force` query parameter](https://gitlab.com/gitlab-org/ruby/gems/gitlab-experiment#forced-variant-assignment-qauat)
+[`glex_force` query parameter](../development/experiment_guide/implementing_experiments.md#client-side-glex_force-query-parameter)
 instead.
 
 Prerequisites:
@@ -126,7 +126,8 @@ outside of a request/response cycle, where the `glex_force` query parameter
 is not available.
 
 The experiment must declare `context_keys` in its experiment class in
-`app/experiments`.
+`app/experiments`. For more information, see
+[Force variant assignment](../development/experiment_guide/implementing_experiments.md#force-variant-assignment).
 
 ### Force a variant assignment
 

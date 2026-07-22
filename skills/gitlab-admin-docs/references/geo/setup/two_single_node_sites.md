@@ -410,6 +410,14 @@ To replicate the database:
    sudo -i
    ```
 
+   > [!note]
+   > If you switched to `root` without a login shell (for example, with `su` or `sudo su`),
+   > run `sudo -i` before continuing.
+   > Running `gitlab-ctl replicate-geo-database` without a root login environment
+   > causes the PostgreSQL data directory to be owned by `root` instead of `gitlab-psql`,
+   > which causes PostgreSQL to fail with
+   > `could not access the server configuration file ".../postgresql.conf": Permission denied`.
+
 1. Choose a [database-friendly name](https://www.postgresql.org/docs/16/warm-standby.html#STREAMING-REPLICATION-SLOTS-MANIPULATION) for your secondary site to
    use as the replication slot name. For example, if your domain is
    `secondary.geo.example.com`, use `secondary_example` as the slot
