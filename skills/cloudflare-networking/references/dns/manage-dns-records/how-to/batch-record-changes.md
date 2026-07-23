@@ -4,15 +4,15 @@ title: Batch record changes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Batch record changes
+# Batch record changes
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare allows you to apply several changes to your zone records in just one action. You can [use the dashboard](#use-the-dashboard) to delete DNS records or update their proxy status in bulk, or [use the API](#use-the-api) to perform further batched operations.
 
@@ -44,7 +44,7 @@ Note
 If you have multiple `A/AAAA` records on the same name and at least one of them is proxied, Cloudflare will treat all `A/AAAA` records on this name as being proxied.
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select the DNS records you want to set the proxy status for. Note that only `A`, `AAAA`, and `CNAME` records can be proxied.
 3. Select **Edit records**.
 4. Choose the proxy status you want to apply to the selected records.
@@ -67,7 +67,7 @@ Caution
 Deleting DNS records can cause downtime and cannot be reverted. Make sure you only select DNS records that you can safely delete.
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select the DNS records you want to delete.
 3. Select **Delete records**.
 4. In the **Delete DNS records** prompt, type in `DELETE` and select **Delete** to confirm.
@@ -170,7 +170,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#page","headline":"Batch record changes · Cloudflare DNS docs","description":"Create, update, and delete multiple DNS records at once.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

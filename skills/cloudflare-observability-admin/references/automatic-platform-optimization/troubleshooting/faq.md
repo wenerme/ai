@@ -4,15 +4,15 @@ title: FAQs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  FAQs
+# FAQs
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Do I still need to create "Edge Cache TTL" page rules with "Cache Level: Cache Everything"?
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/#page","headline":"FAQs · Cloudflare Automatic Platform Optimization docs","description":"Answers to common questions about APO caching, Page Rules, and WordPress integration.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","Headers","Security"]}

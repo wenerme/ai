@@ -4,15 +4,15 @@ title: PCAPs bucket setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  PCAPs bucket setup
+# PCAPs bucket setup
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you can begin a full packet capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
 
@@ -156,7 +156,7 @@ To start collecting packet captures with R2, you first need to configure it prop
 ### Create bucket and API token
 
 1. In the Cloudflare dashboard, go to the **R2** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Give your bucket a name > **Create bucket**.
 4. Go to the R2 Overview page, and select **Manage R2 API Tokens**.
@@ -207,7 +207,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/#page","headline":"PCAPs bucket setup · Cloudflare Network Firewall docs","description":"Configure a storage bucket for packet captures.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3","GCP"]}

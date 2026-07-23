@@ -4,7 +4,7 @@ title: GPT-5.4 nano
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-5.4 nano
+# GPT-5.4 nano
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-5.4-nano `
+`openai/gpt-5.4-nano`
 
 * Third-party
 * Zero data retention
 
 GPT-5.4 nano is OpenAI's smallest and fastest model, optimized for edge and low-latency use cases.
 
-| Model Info                                                                  |                                                                                                                        |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                         |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
-| Zero data retention                                                         | Yes                                                                                                                    |
-| Request formats                                                             | Responses, Chat Completions                                                                                            |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-nano) |
+| Model Info                                                                 |                                                                                                                       |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                   |
+| Request formats                                                            | Responses, Chat Completions                                                                                           |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-nano) |
 
 ## Usage
 
@@ -122,7 +122,7 @@ The three laws of thermodynamics are:
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -214,7 +214,7 @@ If you want to read a JSON string instead (not a file), use `json.loads(s)`.
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -348,7 +348,7 @@ Answer those and I’ll propose a specific route with 6–12 stops, estimated ti
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -467,7 +467,7 @@ As if it knew exactly where her curiosity would go next.
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -5899,7 +5899,7 @@ If you want, I can also show a recursion example like summing a list or traversi
 ]
 ```
 
-**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -6240,9 +6240,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -6250,7 +6250,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/#page","headline":"GPT-5.4 nano (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 nano is OpenAI's smallest and fastest model, optimized for edge and low-latency use cases.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

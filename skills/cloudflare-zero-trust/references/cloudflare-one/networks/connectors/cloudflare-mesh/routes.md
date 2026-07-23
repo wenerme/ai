@@ -4,15 +4,15 @@ title: Routes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Routes
+# Routes
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
 
@@ -45,7 +45,7 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 ### Add a route
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**.
@@ -214,11 +214,11 @@ Hostname routes replace [virtual networks](https://developers.cloudflare.com/clo
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 Requests `wiki.internal.local`
-2. DNS query ↓
+2. DNS query↓
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 Returns a token IP, then rewrites the destination to the real private IP.
 `100.80.0.0/16`
-4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) ↓
+4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
 5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 Forwards traffic to the host on the local network
 6. ↓
@@ -262,7 +262,7 @@ Cloudflare will now proxy traffic from enrolled devices, except for the traffic 
 ### Add a hostname route
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**, then select **Private hostname**.
@@ -362,7 +362,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

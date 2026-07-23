@@ -4,15 +4,15 @@ title: Cache Reserve
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cache Reserve
+# Cache Reserve
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -37,7 +37,7 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 A paid Cache Reserve plan is required.
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
-[ Go to **Cache Reserve** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
+[Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
 2. Select **Enable storage sync**.
 
 Refer to the [Change Cache Reserve setting API](https://developers.cloudflare.com/api/resources/cache/subresources/cache%5Freserve/methods/edit/) for more information.
@@ -199,7 +199,7 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 Be aware that the deletion may take up to 24 hours to complete.
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
-[ Go to **Cache Reserve** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
+[Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
 2. In **Delete Cache Reserve Data**, select **Delete Storage**.
 
 To delete Cache Reserve data via API use the following example requests. For more information, refer to the [API documentation](https://developers.cloudflare.com/api/resources/cache/subresources/cache%5Freserve/methods/clear/).
@@ -268,7 +268,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

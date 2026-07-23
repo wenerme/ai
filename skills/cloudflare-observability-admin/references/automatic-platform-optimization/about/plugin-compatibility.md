@@ -4,15 +4,15 @@ title: Plugin compatibility
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Plugin compatibility
+# Plugin compatibility
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Currently, WordPress offers over 50,000 plugins for download. As a result, testing the compatibility between APO and every available plugin is impossible. However, Cloudflare has a list of officially supported plugins and a list of plugins known to cause issues when APO is enabled.
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/#page","headline":"Plugin compatibility · Cloudflare Automatic Platform Optimization docs","description":"WordPress plugins supported and known to conflict with APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}

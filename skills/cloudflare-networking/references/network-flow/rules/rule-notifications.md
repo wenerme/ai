@@ -4,15 +4,15 @@ title: Configure rule notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure rule notifications
+# Configure rule notifications
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/rules/rule-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/rules/rule-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Flow (formerly Magic Network Monitoring) can notify you by email, webhook, or PagerDuty when a rule is triggered. When a rule detects a traffic anomaly, notifications alert your team so you can respond — or, if you use Magic Transit with auto-advertisement, Cloudflare can begin mitigating the attack automatically.
 
@@ -51,7 +51,7 @@ You will receive the status of the advertisement for each prefix with the follow
 To configure notifications for Network Flow rules:
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 1. Select **Add**.
 2. Select _Magic Transit_ from the product drop-down menu.
 3. Find the appropriate Network Flow alert and select **Select**:
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/rule-notifications/#page","headline":"Configure rule notifications · Cloudflare Network Flow docs","description":"Configure notifications for Network Flow rule matches.","url":"https://developers.cloudflare.com/network-flow/rules/rule-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

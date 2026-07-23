@@ -4,15 +4,15 @@ title: Code Mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Code Mode
+# Code Mode
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode is a tool-use pattern where a model writes code instead of requesting each operation separately. The model receives one code-execution tool. Its code becomes a compact plan that calls tools, processes results, and returns the information needed for a response.
 
@@ -59,39 +59,39 @@ Use direct tool calls for simple tasks with a small, fixed tool set. Use Code Mo
 
 Code Mode provides surfaces for agent runtimes, AI frameworks, browsers, and Model Context Protocol (MCP) systems.
 
-### [ Durable runtime ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
+### [Durable runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
 
- Create a runtime with connectors, approvals, replay, and snippets.
+Create a runtime with connectors, approvals, replay, and snippets.
 
-### [ AI SDK ](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/)
+### [AI SDK](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/)
 
- Combine AI SDK tools into one Code Mode tool.
+Combine AI SDK tools into one Code Mode tool.
 
-### [ TanStack AI ](https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/)
+### [TanStack AI](https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/)
 
- Use Code Mode with TanStack AI tools and chat applications.
+Use Code Mode with TanStack AI tools and chat applications.
 
-### [ Browser ](https://developers.cloudflare.com/agents/tools/codemode/browser/)
+### [Browser](https://developers.cloudflare.com/agents/tools/codemode/browser/)
 
- Run generated code against browser-owned tools in an isolated iframe.
+Run generated code against browser-owned tools in an isolated iframe.
 
-### [ Model Context Protocol ](https://developers.cloudflare.com/agents/tools/codemode/mcp/)
+### [Model Context Protocol](https://developers.cloudflare.com/agents/tools/codemode/mcp/)
 
- Expose tools from an Agents SDK MCP connection inside Code Mode.
+Expose tools from an Agents SDK MCP connection inside Code Mode.
 
-### [ OpenAPI ](https://developers.cloudflare.com/agents/tools/codemode/openapi/)
+### [OpenAPI](https://developers.cloudflare.com/agents/tools/codemode/openapi/)
 
- Derive typed connector methods from an OpenAPI service.
+Derive typed connector methods from an OpenAPI service.
 
 ## Understand the pattern
 
-### [ How Code Mode works ](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/)
+### [How Code Mode works](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/)
 
- Understand how a generated plan discovers, calls, and combines tools.
+Understand how a generated plan discovers, calls, and combines tools.
 
-### [ API reference ](https://developers.cloudflare.com/agents/tools/codemode/api-reference/)
+### [API reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/)
 
- Look up Code Mode package exports, types, and options.
+Look up Code Mode package exports, types, and options.
 
 Was this helpful?
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/codemode/#page","headline":"Code Mode · Cloudflare Agents docs","description":"Use Code Mode to let models discover and compose tools by writing code as a compact, executable plan.","url":"https://developers.cloudflare.com/agents/tools/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

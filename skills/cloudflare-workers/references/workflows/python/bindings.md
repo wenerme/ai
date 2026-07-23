@@ -4,15 +4,15 @@ title: Interact with a Workflow
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Interact with a Workflow
+# Interact with a Workflow
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/python/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/python/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Python Workflows are in beta, as well as the underlying platform.
 
@@ -30,7 +30,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 	"name": "workflows-starter",
 	"main": "src/index.py",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["python_workflows", "python_workers"],
 	"workflows": [
 		{
@@ -50,7 +50,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 name = "workflows-starter"
 main = "src/index.py"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "python_workflows", "python_workers" ]
 
 [[workflows]]
@@ -171,7 +171,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/python/bindings/#page","headline":"Interact with a Workflow · Cloudflare Workflows docs","description":"Trigger and manage Workflows from Python Workers using FFI bindings to Cloudflare resources.","url":"https://developers.cloudflare.com/workflows/python/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

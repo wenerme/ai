@@ -4,15 +4,15 @@ title: Methods
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Methods
+# Methods
 
-Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/storage/upload-images/methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare gives you the option to [transform remote images](https://developers.cloudflare.com/images/optimization/transformations/overview), or upload into Images storage.
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/methods/#page","headline":"Methods · Cloudflare Images docs","description":"Upload images to Cloudflare Images via the dashboard, API, or S3 import with Sourcing Kit.","url":"https://developers.cloudflare.com/images/storage/upload-images/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

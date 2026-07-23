@@ -4,7 +4,7 @@ title: MiniMax Speech 2.8 HD
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg)
 
-#  MiniMax Speech 2.8 HD
+# MiniMax Speech 2.8 HD
 
- Text-to-Speech • MiniMax
+Text-to-Speech • MiniMax
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` minimax/speech-2.8-hd `
+`minimax/speech-2.8-hd`
 
 * Third-party
 * Zero data retention
 
 MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.
 
-| Model Info          |                                                                                                                          |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                 |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                      |
-| Zero data retention | Yes                                                                                                                      |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                     |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
 
 ## Usage
 
@@ -80,7 +80,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Custom Voice**  — Use a specific voice and adjust speed
+**Custom Voice** — Use a specific voice and adjust speed
 
 ```ts
 const response = await env.AI.run(
@@ -126,7 +126,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Emotion**  — Apply emotional tone to speech
+**With Emotion** — Apply emotional tone to speech
 
 ```ts
 const response = await env.AI.run(
@@ -174,7 +174,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Sample Rate**  — Studio quality at 44.1kHz sample rate
+**High Sample Rate** — Studio quality at 44.1kHz sample rate
 
 ```ts
 const response = await env.AI.run(
@@ -262,9 +262,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -272,7 +272,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/#page","headline":"MiniMax Speech 2.8 HD (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.","url":"https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

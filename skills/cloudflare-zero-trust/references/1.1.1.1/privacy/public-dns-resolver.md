@@ -4,15 +4,15 @@ title: 1.1.1.1 Public DNS Resolver
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  1.1.1.1 Public DNS Resolver
+# 1.1.1.1 Public DNS Resolver
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 _Last updated March 27, 2024_
 
@@ -138,7 +138,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/#page","headline":"1.1.1.1 Public DNS Resolver | Cloudflare Docs","description":"Learn more about Cloudflare's commitment to privacy with the 1.1.1.1 Public DNS Resolver.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","Privacy"]}

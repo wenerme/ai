@@ -4,17 +4,17 @@ title: Change the HTTP Host header and DNS record
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Change the HTTP Host header and DNS record
+# Change the HTTP Host header and DNS record
 
 Create an origin rule to change the HTTP `Host` header and DNS record.
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following origin rule overrides the HTTP `Host` header to `hr-server.example.com` for all requests with a URI path starting with `/hr-app/`. It also overrides the DNS record to the same hostname.
 
@@ -136,7 +136,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/#page","headline":"Change the HTTP Host header and DNS record · Cloudflare Rules docs","description":"Create an origin rule to change the HTTP Host header and the resolved DNS record.","url":"https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}

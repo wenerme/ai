@@ -4,15 +4,15 @@ title: Allow policies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Allow policies
+# Allow policies
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
 
@@ -20,7 +20,7 @@ Email security allows you to configure allow policies. An allow policy exempts m
 
 Allow policies are crucial for legitimate messages that may otherwise be blocked due to, for example, an incorrect setup.
 
-###  Example of allow policy
+### Example of allow policy
 
 An example of allow policy is a phishing simulation product. You want to configure a phishing simulation product as **Accept sender** so Email security does not scan the messages (or crawl links) in these simulated messages.
 
@@ -36,7 +36,7 @@ Accept sender creates exceptions for messages that would otherwise be marked as 
 
 It is recommended to choose this option, as it is the safest option to protect your email inbox from malicious or suspicious activities.
 
-###  Example of a use case where marketing emails that are legitimate have been blocked
+### Example of a use case where marketing emails that are legitimate have been blocked
 
 When a marketing email does not follow the correct template, it may be marked as malicious or spam. It may not be possible to change the template. However, in this scenario, the marketing email is legitimate.
 
@@ -161,7 +161,7 @@ The following use cases show how you could configure allow policies for accept s
 
 ### Use case 1
 
-###  Company receives emails from third-party providers not used internally. These emails are sent from the service provider, and Email security gives these emails an incorrect disposition.
+### Company receives emails from third-party providers not used internally. These emails are sent from the service provider, and Email security gives these emails an incorrect disposition.
 
 This use case can affect companies such as Shopify, PayPal, and Docusign.
 
@@ -173,7 +173,7 @@ To solve this:
 
 ### Use case 2
 
-###  Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof.
+### Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof.
 
 This use case can cause the emails you want to receive to follow the auto-moves rules you set up. This use case affects emails from internal tools (such as Salesforce, Atlassian, and Figma) that are given an incorrect disposition.
 
@@ -184,7 +184,7 @@ To solve this, when you add an allow policy in the Cloudflare One dashboard:
 
 ### Use case 3
 
-###  Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof. The custom email domain does not support DMARC, SPF, or DKIM, and would fail Sender Verification.
+### Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof. The custom email domain does not support DMARC, SPF, or DKIM, and would fail Sender Verification.
 
 This use case impacts the emails from internal tools (such as Salesforce, Atlassian, and Figma) that are given an incorrect disposition.
 
@@ -249,7 +249,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#page","headline":"Allow policies · Cloudflare One docs","description":"Allow policies in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

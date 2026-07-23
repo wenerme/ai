@@ -4,15 +4,15 @@ title: Transfer domain out from Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Transfer domain out from Cloudflare
+# Transfer domain out from Cloudflare
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Registrar makes it easy to transfer your domain to another registrar. Be aware that ICANN rules prohibit a domain from being transferred if:
 
@@ -29,7 +29,7 @@ Anyone with super-admin and admin permissions for a zone can also manage your do
 ## 1\. Unlock your domain at Cloudflare
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to transfer, and select **Manage**.
 3. Select **Configuration** \> **Unlock**.
 4. Select **Confirm and Unlock** to confirm that you want to unlock your domain.
@@ -54,7 +54,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/#page","headline":"Transfer domain from Cloudflare to another registrar · Cloudflare Registrar docs","description":"Transfer your domain to another registrar.","url":"https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

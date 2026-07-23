@@ -4,15 +4,15 @@ title: Start a live stream
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Start a live stream
+# Start a live stream
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
@@ -26,7 +26,7 @@ Stream only supports the SRT caller mode, which is responsible for broadcasting 
 
 **Step 1:** In the Cloudflare dashboard, go to the **Live inputs** page and create a live input.
 
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)![Create live input field from dashboard](https://developers.cloudflare.com/_astro/create-live-input-from-stream-dashboard.BPPM6pVj_Pmc3d.webp)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)![Create live input field from dashboard](https://developers.cloudflare.com/_astro/create-live-input-from-stream-dashboard.BPPM6pVj_Pmc3d.webp)
 
 **Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
 
@@ -79,7 +79,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 * `enabled` boolean default: `true`
 
   * Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
-* `preferLowLatency` boolean default: `false`  Beta
+* `preferLowLatency` boolean default: `false` Beta
 
   * When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
 * `deleteRecordingAfterDays` integer default: `null` (any)
@@ -135,7 +135,7 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 * Your creators should use a [GOP duration ↗](https://en.wikipedia.org/wiki/Group%5Fof%5Fpictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
 * When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
 
-#### Low-Latency HLS broadcast recommendations  Beta
+#### Low-Latency HLS broadcast recommendations Beta
 
 * Turn off B Frames or set them to 0\. B Frames are incompatible with LL-HLS and will result in jitter and sporadic buffering delays.
 * For lowest latency, use a GOP size (or "keyframe interval") of 2 - 4 seconds.
@@ -159,7 +159,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Get Origin CA keys
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get Origin CA keys
+# Get Origin CA keys
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -33,7 +33,7 @@ The key value always starts with `v1.0-`.
 To retrieve your Origin CA keys:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **User Profile** \> **API Tokens**.
 3. In the **API Keys** section, select `Origin CA Key`.
 
@@ -43,7 +43,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/#page","headline":"Get Origin CA keys · Cloudflare Fundamentals docs","description":"Retrieve or change your Cloudflare Origin CA key used to authenticate Origin CA certificate API requests.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

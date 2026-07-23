@@ -4,15 +4,15 @@ title: Virtual networks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Virtual networks
+# Virtual networks
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -58,7 +58,7 @@ To route overlapping IPs over virtual networks:
 
 1. Create two unique virtual networks:
   1. In the Cloudflare dashboard, go to **Networking** \> **Routes** \> **Virtual networks**.
-  [ Go to **Virtual networks** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
+  [Go to **Virtual networks** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
   2. Select **Create virtual network**.
   3. Name your virtual network `staging-vnet` and select **Save**.
   4. Repeat Steps 1a-1d to create another virtual network called `production-vnet`.
@@ -68,7 +68,7 @@ To route overlapping IPs over virtual networks:
   3. Name your tunnel `Staging tunnel` and select **Create**.
   4. Install the connector within your staging environment.
   5. Go to **Networking** \> **Routes**.
-  [ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+  [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
   6. Select **Create route** \> **Tunnel CIDR**.
   7. Select `Staging tunnel`, enter `10.128.0.1/32` as the network, and select _staging-vnet_ as the virtual network. Select **Create route**.
   8. Repeat Steps 2a-2d to create another tunnel called `Production tunnel`. Be sure to install the connector within your production environment.
@@ -196,7 +196,7 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 To delete a virtual network:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. On the **Routes** tab, check that no routes are assigned to the virtual network you are trying to delete. If the virtual network is in use, delete those routes or reassign them to a different virtual network first.
 3. Go to the **Virtual networks** tab and find your virtual network.
 4. Select the three-dot menu and choose **Delete**.
@@ -248,7 +248,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#page","headline":"Virtual networks · Cloudflare One docs","description":"Virtual networks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

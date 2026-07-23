@@ -4,15 +4,15 @@ title: MCP server portals
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  MCP server portals
+# MCP server portals
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -36,7 +36,7 @@ MCP server portals provide the following capabilities:
 
 The following diagram shows how requests flow through an MCP server portal.
 
-![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/_astro/mcp-portal-request-flow.CybWTaQp_Z1vEGof.svg)
+![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/_astro/mcp-portal-request-flow.CybWTaQp_46x1E.svg)
 1. An MCP client connects to the portal URL and receives a `401` response with OAuth discovery metadata.
 2. The user authenticates through Cloudflare Access via their identity provider or uses [service token](#connect-with-a-service-token) headers.
 3. Access validates the user's identity, and the portal establishes an MCP session and returns the tools available from enabled upstream servers.
@@ -1061,7 +1061,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

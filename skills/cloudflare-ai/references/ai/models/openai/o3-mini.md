@@ -4,7 +4,7 @@ title: o3-mini
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  o3-mini
+# o3-mini
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/o3-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/o3-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/o3-mini `
+`openai/o3-mini`
 
 * Third-party
 * Zero data retention
 
 o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to quick analytical tasks at scale.
 
-| Model Info                                                                  |                                                                                                                   |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                    |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                            |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                     |
-| Zero data retention                                                         | Yes                                                                                                               |
-| Request formats                                                             | Responses, Chat Completions                                                                                       |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
+| Model Info                                                                 |                                                                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                   |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                        | Yes                                                                                                              |
+| Request formats                                                            | Responses, Chat Completions                                                                                      |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
 
 ## Usage
 
@@ -117,7 +117,7 @@ These laws together form the basis of classical thermodynamics, helping us under
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -219,7 +219,7 @@ If you have any questions or need further assistance, feel free to ask!
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -345,7 +345,7 @@ Would you like more detailed itineraries for any of these stops, or do you have 
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -424,7 +424,7 @@ As she carefully lifted the figurine with gloved hands, Elena noted an inscripti
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -7768,9 +7768,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -7778,7 +7778,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/o3-mini/#page","headline":"o3-mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to quick analytical tasks at scale.","url":"https://developers.cloudflare.com/ai/models/openai/o3-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

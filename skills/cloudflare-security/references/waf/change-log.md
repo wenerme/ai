@@ -4,19 +4,19 @@ title: WAF changelog overview
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WAF changelog overview
+# WAF changelog overview
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/) provides information about changes to [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/) and general updates to WAF protection.
 
-[ View changelog ](https://developers.cloudflare.com/waf/change-log/changelog/)[ View scheduled changes ](https://developers.cloudflare.com/waf/change-log/scheduled-changes/)[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+[View changelog](https://developers.cloudflare.com/waf/change-log/changelog/)[View scheduled changes](https://developers.cloudflare.com/waf/change-log/scheduled-changes/)[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
 ## Changelog for managed rulesets
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

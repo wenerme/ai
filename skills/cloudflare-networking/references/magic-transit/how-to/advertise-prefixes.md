@@ -4,15 +4,15 @@ title: Advertise prefixes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Advertise prefixes
+# Advertise prefixes
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Onboard prefixes
 
@@ -89,7 +89,7 @@ You can only advertise your prefix after running pre-flight checks with Cloudfla
 Currently, only the default BGP prefix (that matches the IP prefix) can be controlled through the Cloudflare dashboard.
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **IP prefixes** tab, select the prefix you want to modify > **Edit**.
 2. From the **Status** drop-down menu, select _Advertised_ or _Withdrawn_.
 3. (Optional) Edit the description for your prefix.
@@ -127,7 +127,7 @@ Refer to [Safely withdraw a BYOIP prefix](#safely-withdraw-a-byoip-prefix) for m
 You can only delete a prefix with an _Unapproved_ status. To delete prefixes with a different status, contact your administrator or account manager.
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **IP Prefixes** tab, locate the prefix you want to modify and select **Delete**.
 2. Confirm your choice from the modal by selecting **Delete**.
 
@@ -380,7 +380,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Magic Transit docs","description":"Advertise and withdraw IP prefixes with Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

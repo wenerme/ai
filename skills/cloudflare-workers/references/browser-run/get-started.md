@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
 
@@ -64,7 +64,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 Create a new Worker project named `browser-quick-action` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- browser-quick-action
@@ -96,7 +96,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "name": "browser-quick-action",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "browser": {
     "binding": "BROWSER"
   }
@@ -107,7 +107,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-quick-action"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [browser]
 binding = "BROWSER"
@@ -188,7 +188,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Create a new Worker project named `browser-worker` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- browser-worker
@@ -214,7 +214,7 @@ For setup, select the following options:
 
 In your `browser-worker` directory, install Cloudflare’s [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @cloudflare/puppeteer
@@ -259,7 +259,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"name": "browser-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -279,7 +279,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -411,7 +411,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

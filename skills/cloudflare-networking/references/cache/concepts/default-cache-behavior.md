@@ -4,15 +4,15 @@ title: Default cache behavior
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Default cache behavior
+# Default cache behavior
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare respects the origin web server’s cache headers in the following order unless an [Edge Cache TTL cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) overrides the headers. Refer to the [Edge TTL](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#edge-ttl) section for details on default TTL behavior.
 
@@ -81,10 +81,10 @@ All other status codes are not cached by default.
 Cloudflare’s CDN provides several cache customization options:
 
 * Caching behavior for individual URLs via [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
-[ Go to **Cache Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 * Customize caching with [Cloudflare Workers](https://developers.cloudflare.com/workers/reference/how-the-cache-works/)
 * Adjust caching level, cache TTL, and more in the Caching page in the Cloudflare dashboard:
-[ Go to **Configuration** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
+[Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 
 ### Upload limits
 
@@ -114,7 +114,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#page","headline":"Default Cache Behavior · Cloudflare Cache (CDN) docs","description":"Default file extensions and content types that Cloudflare caches.","url":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

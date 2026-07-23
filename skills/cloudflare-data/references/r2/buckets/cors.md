@@ -4,15 +4,15 @@ title: Configure CORS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure CORS
+# Configure CORS
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/cors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cross-Origin Resource Sharing (CORS) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
 
@@ -79,7 +79,7 @@ If you set a CORS policy on a bucket that is already serving traffic using a cus
 ## Add CORS policies from the dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Locate and select your bucket from the list.
 3. Select **Settings**.
 4. Under **CORS Policy**, select **Add CORS policy**.
@@ -170,7 +170,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/cors/#page","headline":"Configure CORS · Cloudflare R2 docs","description":"Set up Cross-Origin Resource Sharing (CORS) policies on R2 buckets for browser access.","url":"https://developers.cloudflare.com/r2/buckets/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

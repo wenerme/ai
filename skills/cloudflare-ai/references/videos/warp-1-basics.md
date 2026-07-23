@@ -4,7 +4,7 @@ title: WARP - Understand Cloudflare WARP basics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling, and more.
 
@@ -12,22 +12,22 @@ Chapters
 
 * ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction and WARP GUI Basics**  0s
+**Introduction and WARP GUI Basics**0s
 * ![Consumer vs Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)
 
- **Consumer vs Corporate WARP**  57s
+**Consumer vs Corporate WARP**57s
 * ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)
 
- **Device Profiles Explained**  01m35s
+**Device Profiles Explained**01m35s
 * ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)
 
- **WARP Operating Modes**  02m12s
+**WARP Operating Modes**02m12s
 * ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=184s)
 
- **Split Tunneling**  03m4s
+**Split Tunneling**03m4s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)
 
- **Conclusion**  04m56s
+**Conclusion**04m56s
 
 Transcript
 

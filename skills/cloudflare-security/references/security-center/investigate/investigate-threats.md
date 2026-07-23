@@ -4,15 +4,15 @@ title: Investigate threats
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Investigate threats
+# Investigate threats
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/investigate/investigate-threats/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/investigate/investigate-threats/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Users can investigate the details of an IP address, domain name, URL, or Autonomous System Number (ASN). You can find the Investigate feature in your Cloudflare account's Security Center and in [Cloudflare Radar ↗](https://radar.cloudflare.com/scan).
 
@@ -57,7 +57,7 @@ When you search for a hash, the Cloudflare dashboard will provide a URL report f
 To search using a hash:
 
 1. In the Cloudflare dashboard, go to the **Investigate** page.
-[ Go to **Investigate** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
+[Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Enter the hash, then select **Search**.
 3. Select **View report** to view the report for your URL.
 
@@ -70,7 +70,7 @@ Different Cloudflare plans will have different [scan limitations](https://develo
 If you want to scan a URL:
 
 1. In the Cloudflare dashboard, go to the **Investigate** page.
-[ Go to **Investigate** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
+[Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Enter the URL, then select **Search**.
 
 Alternatively, to scan a URL, go to [Cloudflare Radar ↗](https://radar.cloudflare.com/) \> **URL scanner**. Enter the URL, then select **Publish**.
@@ -96,7 +96,7 @@ You can download a report of your scan in HAR or JSON format.
 To download a report:
 
 1. In the Cloudflare dashboard, go to the **Investigate** page.
-[ Go to **Investigate** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
+[Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Enter your domain and select **Search**.
 3. Once the report has been generated, select **Download** and choose between **Download HAR** or **Download JSON**.
 
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/investigate/investigate-threats/#page","headline":"Investigate threats · Cloudflare Security Center docs","description":"Search for IP, domain, URL, or ASN intelligence in Security Center or Radar.","url":"https://developers.cloudflare.com/security-center/investigate/investigate-threats/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

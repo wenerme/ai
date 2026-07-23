@@ -4,15 +4,15 @@ title: RedwoodSDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  RedwoodSDK
+# RedwoodSDK
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [RedwoodSDK ↗](https://rwsdk.com/) application and deploy it to Cloudflare Workers.
 
@@ -22,7 +22,7 @@ RedwoodSDK is a framework for building server-side web applications on Cloudflar
 
 1. **Create a new project.**
 Run the following command, replacing `my-project-name` with your desired project name:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx create-rwsdk my-project-name
 ```
@@ -37,7 +37,7 @@ pnpx create-rwsdk my-project-name
 cd my-project-name
 ```
 3. **Install dependencies.**
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm install
 ```
@@ -52,7 +52,7 @@ bun install
 ```
 4. **Develop locally.**
 Run the following command in the project directory to start a local development server. RedwoodSDK is a Vite plugin, so you can use the same development workflow as any other Vite project:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -93,7 +93,7 @@ Routes can return JSX directly. RedwoodSDK has support for React Server Componen
 6. **Deploy your project.**
 You can deploy your project to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), either from your local machine or from any CI/CD system, including [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/builds/).
 Use the following command to build and deploy. If you are using CI, make sure to update your [deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run release
 ```
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/#page","headline":"RedwoodSDK · Cloudflare Workers docs","description":"Create a RedwoodSDK application and deploy it to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

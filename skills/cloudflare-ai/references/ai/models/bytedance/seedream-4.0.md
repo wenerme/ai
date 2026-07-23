@@ -4,7 +4,7 @@ title: Seedream 4.0
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)
 
-#  Seedream 4.0
+# Seedream 4.0
 
- Text-to-Image • ByteDance
+Text-to-Image • ByteDance
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` bytedance/seedream-4.0 `
+`bytedance/seedream-4.0`
 
 * Third-party
 
 Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.
 
-| Model Info       |                                                                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F0)                                                                     |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
+| Model Info       |                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F0)                                                                    |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
 
 ## Usage
 
@@ -67,7 +67,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution**  — 4K quality image generation
+**High Resolution** — 4K quality image generation
 
 ```ts
 const response = await env.AI.run(
@@ -110,7 +110,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Widescreen Landscape**  — Cinematic aspect ratio image
+**Widescreen Landscape** — Cinematic aspect ratio image
 
 ```ts
 const response = await env.AI.run(
@@ -153,7 +153,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Format**  — Vertical image for portraits
+**Portrait Format** — Vertical image for portraits
 
 ```ts
 const response = await env.AI.run(
@@ -195,7 +195,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Detailed 4K**  — High-resolution detailed botanical illustration
+**Detailed 4K** — High-resolution detailed botanical illustration
 
 ```ts
 const response = await env.AI.run(
@@ -269,9 +269,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -279,7 +279,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

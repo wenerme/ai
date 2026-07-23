@@ -4,15 +4,15 @@ title: Organizations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Organizations
+# Organizations
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/organizations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An Organization is a top-level container in Cloudflare for managing multiple accounts. It allows administrators to govern accounts, members, and resources from a single location rather than managing each account individually. Organization Super Administrators have implicit access to all accounts within the Organization. This means they do not need explicit membership on each account.
 
@@ -82,13 +82,13 @@ For a full list of features and limitations specific to each Organization type, 
 
 ---
 
-* [ Organizations for Enterprise ](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/)
-* [ Organizations for MSSP and Distributors ](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/)
-* [ Policy sharing ](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/)
-* [ Limitations and troubleshooting ](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
-* [ Set up ](https://developers.cloudflare.com/fundamentals/organizations/setup/)
-* [ Manage members ](https://developers.cloudflare.com/fundamentals/organizations/manage-members/)
-* [ Manage organizations ](https://developers.cloudflare.com/fundamentals/organizations/manage-organization/)
+* [Organizations for Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/)
+* [Organizations for MSSP and Distributors](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/)
+* [Policy sharing](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/)
+* [Limitations and troubleshooting](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
+* [Set up](https://developers.cloudflare.com/fundamentals/organizations/setup/)
+* [Manage members](https://developers.cloudflare.com/fundamentals/organizations/manage-members/)
+* [Manage organizations](https://developers.cloudflare.com/fundamentals/organizations/manage-organization/)
 
 Was this helpful?
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/organizations/#page","headline":"Organizations · Cloudflare Fundamentals docs","description":"Manage multiple Cloudflare accounts from a single organization with centralized access control and audit logs.","url":"https://developers.cloudflare.com/fundamentals/organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

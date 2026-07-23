@@ -4,44 +4,46 @@ title: Bindings (env)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bindings (env)
+# Bindings (env)
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform. Bindings provide better performance and less restrictions when accessing resources from Workers than the [REST APIs](https://developers.cloudflare.com/api/) which are intended for non-Workers applications.
 
+During local development, bindings connect to locally simulated resources by default. You can also configure them to connect to real, production resources using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
+
 The following bindings are available today:
 
-* [ AI ](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
-* [ Analytics Engine ](https://developers.cloudflare.com/analytics/analytics-engine)
-* [ Assets ](https://developers.cloudflare.com/workers/static-assets/binding/)
-* [ Browser Run ](https://developers.cloudflare.com/browser-run/)
-* [ D1 ](https://developers.cloudflare.com/d1/worker-api/)
-* [ Dispatcher (Workers for Platforms) ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/)
-* [ Durable Objects ](https://developers.cloudflare.com/durable-objects/api/)
-* [ Dynamic Worker Loaders ](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
-* [ Environment Variables ](https://developers.cloudflare.com/workers/configuration/environment-variables/)
-* [ Hyperdrive ](https://developers.cloudflare.com/hyperdrive)
-* [ Images ](https://developers.cloudflare.com/images/optimization/binding/)
-* [ KV ](https://developers.cloudflare.com/kv/api/)
-* [ Media Transformations ](https://developers.cloudflare.com/stream/transform-videos/bindings/)
-* [ mTLS ](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/)
-* [ Queues ](https://developers.cloudflare.com/queues/configuration/javascript-apis/)
-* [ R2 ](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
-* [ Rate Limiting ](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
-* [ Secrets ](https://developers.cloudflare.com/workers/configuration/secrets/)
-* [ Secrets Store ](https://developers.cloudflare.com/secrets-store/integrations/workers/)
-* [ Service bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
-* [ Stream ](https://developers.cloudflare.com/stream/manage-video-library/bindings/)
-* [ Vectorize ](https://developers.cloudflare.com/vectorize/reference/client-api/)
-* [ Version metadata ](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/)
-* [ Workflows ](https://developers.cloudflare.com/workflows/)
+* [AI](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
+* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine)
+* [Assets](https://developers.cloudflare.com/workers/static-assets/binding/)
+* [Browser Run](https://developers.cloudflare.com/browser-run/)
+* [D1](https://developers.cloudflare.com/d1/worker-api/)
+* [Dispatcher (Workers for Platforms)](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/)
+* [Durable Objects](https://developers.cloudflare.com/durable-objects/api/)
+* [Dynamic Worker Loaders](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
+* [Environment Variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)
+* [Hyperdrive](https://developers.cloudflare.com/hyperdrive)
+* [Images](https://developers.cloudflare.com/images/optimization/binding/)
+* [KV](https://developers.cloudflare.com/kv/api/)
+* [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/bindings/)
+* [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/)
+* [Queues](https://developers.cloudflare.com/queues/configuration/javascript-apis/)
+* [R2](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
+* [Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
+* [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
+* [Secrets Store](https://developers.cloudflare.com/secrets-store/integrations/workers/)
+* [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
+* [Stream](https://developers.cloudflare.com/stream/manage-video-library/bindings/)
+* [Vectorize](https://developers.cloudflare.com/vectorize/reference/client-api/)
+* [Version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/)
+* [Workflows](https://developers.cloudflare.com/workflows/)
 
 ## What is a binding?
 
@@ -323,8 +325,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

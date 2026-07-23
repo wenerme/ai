@@ -4,15 +4,15 @@ title: Troubleshoot IPsec tunnels
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot IPsec tunnels
+# Troubleshoot IPsec tunnels
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
 
@@ -45,7 +45,7 @@ Verify your parameters match Cloudflare's supported values. For the complete lis
 Authentication failures in Phase 1 indicate a PSK mismatch. To resolve:
 
 1. Go to **Connectors** and select your tunnel.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select **Generate new PSK**.
 3. Copy the new PSK exactly — do not add extra spaces or characters.
 4. Update your tunnel endpoint with the new PSK.
@@ -131,7 +131,7 @@ Use IPsec logs to monitor tunnel activity during the key-exchange phase of the I
 ### Set up an IPsec Logpush job
 
 1. Go to the **Logpush** page.
-[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. Select **IPsec logs** as your dataset.
 
@@ -143,7 +143,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/#page","headline":"Troubleshoot IPsec tunnels · Cloudflare One docs","description":"Troubleshoot Troubleshoot IPsec tunnels issues in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

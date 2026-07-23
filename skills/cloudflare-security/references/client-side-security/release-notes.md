@@ -4,17 +4,17 @@ title: Release notes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Release notes
+# Release notes
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/release-notes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/release-notes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/client-side-security/release-notes/index.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/client-side-security/release-notes/index.xml)
 
 ## 2026-03-25
 
@@ -123,7 +123,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/client-side-security/release-notes/#page","headline":"Release notes · Client-side security docs","description":"Track the latest updates and changes to client-side security features.","url":"https://developers.cloudflare.com/client-side-security/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

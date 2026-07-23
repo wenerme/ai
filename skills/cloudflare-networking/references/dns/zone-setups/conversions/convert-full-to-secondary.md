@@ -4,15 +4,15 @@ title: Convert full setup to secondary setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Convert full setup to secondary setup
+# Convert full setup to secondary setup
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use [incoming zone transfers (Cloudflare as secondary)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/).
 
@@ -45,7 +45,7 @@ While optional, this step is highly recommended.
 To create a TSIG using the dashboard:
 
   1. In the Cloudflare dashboard, go to the account **Settings** page.
-  [ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+  [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
   2. Go to **DNS Settings**.
   3. Under **DNS Zone Transfers**, for **TSIG**, select **Create**.
   4. Enter the following information:
@@ -59,7 +59,7 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 To create a peer server using the dashboard:
 
   1. In the Cloudflare dashboard, go to the account **Settings** page.
-  [ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+  [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
   2. Go to **DNS Settings**.
   3. Under **DNS Zone Transfers**, for **Peer DNS servers**, select **Create**.
   4. Enter the following information, paying particular attention to:
@@ -75,7 +75,7 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 1. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `secondary` to convert the zone type. The existing records will remain in place.
 2. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 3. Select **Manage linked peers** under **DNS Zone Transfers**.
 4. Link the peer server you created in the previous steps and select **Save**.
 5. Back on the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Initiate zone transfer**.
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/#page","headline":"Convert full setup to secondary setup · Cloudflare DNS docs","description":"If you initially configured a full setup you can later convert your zone to use incoming zone transfers (Cloudflare as secondary).","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

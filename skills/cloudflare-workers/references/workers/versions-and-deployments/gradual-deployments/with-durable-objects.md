@@ -4,15 +4,15 @@ title: With Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  With Durable Objects
+# With Durable Objects
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To provide [global uniqueness](https://developers.cloudflare.com/durable-objects/platform/known-issues/#global-uniqueness), only one version of each [Durable Object](https://developers.cloudflare.com/durable-objects/) can run at a time. This means that gradual deployments work slightly differently for Durable Objects.
 
@@ -53,7 +53,7 @@ Versions of Worker bundles that change Durable Object class lifecycle cannot be 
 
 Durable Object lifecycle changes can be deployed with the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -79,7 +79,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#page","headline":"With Durable Objects · Cloudflare Workers docs","description":"How gradual deployments work with Durable Objects, including version assignment, migrations, and guarantees.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

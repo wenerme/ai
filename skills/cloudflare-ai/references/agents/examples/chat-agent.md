@@ -4,15 +4,15 @@ title: Chat agent
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Chat agent
+# Chat agent
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/examples/chat-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/chat-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a chat agent that streams AI responses, calls server-side tools, executes client-side tools in the browser, and asks for user approval before sensitive actions.
 
@@ -49,7 +49,7 @@ Replace your `wrangler.jsonc` with:
 	"name": "chat-agent",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"durable_objects": {
@@ -63,7 +63,7 @@ Replace your `wrangler.jsonc` with:
 name = "chat-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -571,21 +571,21 @@ Your chat agent has:
 
 ## Next steps
 
-### [ Chat agents API reference ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+### [Chat agents API reference](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
- Full reference for AIChatAgent and useAgentChat — providers, storage, advanced patterns.
+Full reference for AIChatAgent and useAgentChat — providers, storage, advanced patterns.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Add real-time state beyond chat messages.
+Add real-time state beyond chat messages.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- Expose agent methods as typed RPC for your client.
+Expose agent methods as typed RPC for your client.
 
-### [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+### [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 
- Deeper patterns for approval flows and manual intervention.
+Deeper patterns for approval flows and manual intervention.
 
 Was this helpful?
 
@@ -593,7 +593,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

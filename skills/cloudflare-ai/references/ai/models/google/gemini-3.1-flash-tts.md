@@ -3,7 +3,7 @@ title: Gemini 3.1 Flash TTS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -11,21 +11,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Gemini 3.1 Flash TTS
+# Gemini 3.1 Flash TTS
 
- Text-to-Speech • Google
+Text-to-Speech • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/gemini-3.1-flash-tts `
+`google/gemini-3.1-flash-tts`
 
 * Third-party
 * Zero data retention
 
-| Model Info          |                                                                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Zero data retention | Yes                                                                                                                            |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
+| Model Info          |                                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Zero data retention | Yes                                                                                                                           |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
 
 ## Usage
 
@@ -60,7 +60,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Custom Voice**  — Generate speech with a specific voice
+**Custom Voice** — Generate speech with a specific voice
 
 ```ts
 const response = await env.AI.run(
@@ -92,7 +92,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Longer Text**  — Convert longer text to speech
+**Longer Text** — Convert longer text to speech
 
 ```ts
 const response = await env.AI.run(
@@ -127,7 +127,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Narrative Voice**  — Generate speech with a narrative voice style
+**Narrative Voice** — Generate speech with a narrative voice style
 
 ```ts
 const response = await env.AI.run(
@@ -198,9 +198,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/#page","headline":"Gemini 3.1 Flash TTS (Google) · Cloudflare AI docs · Cloudflare AI docs","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

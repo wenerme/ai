@@ -4,19 +4,19 @@ title: Containers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Containers
+# Containers
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enhance your Workers with serverless containers
 
- Available on Workers Paid plan
+Available on Workers Paid plan
 
 Run code written in any programming language, built for any runtime, as part of apps built on [Workers](https://developers.cloudflare.com/workers).
 
@@ -54,7 +54,7 @@ export default {
 	"name": "container-starter",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -83,7 +83,7 @@ export default {
 name = "container-starter"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[containers]]
 class_name = "MyContainer"
@@ -99,7 +99,7 @@ new_sqlite_classes = [ "MyContainer" ]
 tag = "v1"
 ```
 
-[ Get started ](https://developers.cloudflare.com/containers/get-started/)[ Containers dashboard ](https://dash.cloudflare.com/?to=/:account/workers/containers)
+[Get started](https://developers.cloudflare.com/containers/get-started/)[Containers dashboard](https://dash.cloudflare.com/?to=/:account/workers/containers)
 
 ---
 
@@ -109,35 +109,35 @@ tag = "v1"
 
 Build and push an image, call a Container from a Worker, and understand scaling and routing.
 
- Deploy a Container
+Deploy a Container
 
 [Container Examples](https://developers.cloudflare.com/containers/examples/)
 
 See examples of how to use a Container with a Worker, including stateless and stateful routing, regional placement, Workflow and Queue integrations, AI-generated code execution, and short-lived workloads.
 
- See Examples
+See Examples
 
 ---
 
 ## More resources
 
-### [ Wrangler ](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers)
+### [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers)
 
 Learn more about the commands to develop, build and push images, and deploy containers with Wrangler.
 
-### [ Limits ](https://developers.cloudflare.com/containers/platform-details/limits/)
+### [Limits](https://developers.cloudflare.com/containers/platform-details/limits/)
 
 Learn about what limits Containers have and how to work within them.
 
-### [ Durable Object Container API ](https://developers.cloudflare.com/durable-objects/api/container/)
+### [Durable Object Container API](https://developers.cloudflare.com/durable-objects/api/container/)
 
 Low-level runtime API for starting, stopping, and communicating with the container process directly from a Durable Object.
 
-### [ SSH ](https://developers.cloudflare.com/containers/ssh/)
+### [SSH](https://developers.cloudflare.com/containers/ssh/)
 
 Connect to running Container instances with SSH through Wrangler.
 
-### [ Containers Discord ](https://discord.cloudflare.com)
+### [Containers Discord](https://discord.cloudflare.com)
 
 Connect with other users of Containers on Discord. Ask questions, show what you are building, and discuss the platform with other developers.
 
@@ -147,7 +147,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

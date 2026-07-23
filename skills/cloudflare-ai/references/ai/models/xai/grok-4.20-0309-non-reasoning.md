@@ -4,7 +4,7 @@ title: Grok 4.20 Non-Reasoning
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
-#  Grok 4.20 Non-Reasoning
+# Grok 4.20 Non-Reasoning
 
- Text Generation • xAI
+Text Generation • xAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` xai/grok-4.20-0309-non-reasoning `
+`xai/grok-4.20-0309-non-reasoning`
 
 * Third-party
 
 xAI's Grok 4.20 non-reasoning model. Skips the thinking trace for fast, single-pass responses while keeping the same training as the reasoning variant.
 
-| Model Info                                                                  |                                                                                                                                     |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                                    |
-| Terms and License                                                           | [link ↗](https://x.ai/legal/terms-of-service)                                                                                       |
-| More information                                                            | [link ↗](https://x.ai/)                                                                                                             |
-| Request formats                                                             | Chat Completions                                                                                                                    |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-non-reasoning) |
+| Model Info                                                                 |                                                                                                                                    |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                                   |
+| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                                      |
+| More information                                                           | [link ↗](https://x.ai/)                                                                                                            |
+| Request formats                                                            | Chat Completions                                                                                                                   |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-non-reasoning) |
 
 ## Usage
 
@@ -142,7 +142,7 @@ This implies it's impossible to reach absolute zero in a finite number of steps.
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -299,7 +299,7 @@ Would you like to see how to also **write** JSON files or work with specific JSO
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -461,7 +461,7 @@ Just let me know your preferences (how many days, budget level, must-see activit
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -544,7 +544,7 @@ It was a tiny, perfectly detailed photograph of the crime scene itself, taken fr
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -7433,9 +7433,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -7443,7 +7443,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/#page","headline":"Grok 4.20 Non-Reasoning (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 non-reasoning model. Skips the thinking trace for fast, single-pass responses while keeping the same training as the reasoning variant.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

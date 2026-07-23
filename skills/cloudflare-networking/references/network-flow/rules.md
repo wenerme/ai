@@ -4,15 +4,15 @@ title: Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rules
+# Rules
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Flow (formerly Magic Network Monitoring) rules monitor your network traffic for Distributed Denial of Service (DDoS) attacks targeting specific IP addresses or prefixes. When traffic exceeds a rule's threshold or matches a known DDoS attack fingerprint, you receive an alert.
 
@@ -43,7 +43,7 @@ Refer to [Account name](https://developers.cloudflare.com/fundamentals/account/c
 To create a new rule:
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. Select **Configure Network flow**.
 2. In the **Configure rules** tab, select **Add new rule**.
 3. Fill in the rule fields. For details on each field, refer to [Static threshold rules](https://developers.cloudflare.com/network-flow/rules/static-threshold/).
@@ -52,7 +52,7 @@ To create a new rule:
 ## Edit rules in the dashboard
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. Select **Configure Network flow**.
 2. In the **Configure rules** tab, find the static threshold rule you want to edit, and select **Edit**.
 3. Edit the appropriate fields. Refer to [Rule configuration fields](https://developers.cloudflare.com/network-flow/rules/static-threshold/#rule-configuration-fields) for more information on what each field does.
@@ -61,7 +61,7 @@ To create a new rule:
 ## Delete rules in the dashboard
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. Select **Configure Network flow**.
 2. In the **Configure rules** tab, find the static threshold rule you want to delete, and select **Delete**.
 3. Select **I understand that deleting a rule is permanent**, and select **Delete** again.
@@ -140,7 +140,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/#page","headline":"Rules · Cloudflare Network Flow docs","description":"Create rules to alert on network flow anomalies.","url":"https://developers.cloudflare.com/network-flow/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}

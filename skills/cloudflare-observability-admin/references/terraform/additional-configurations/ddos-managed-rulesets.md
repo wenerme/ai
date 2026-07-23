@@ -4,15 +4,15 @@ title: DDoS managed rulesets configuration using Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DDoS managed rulesets configuration using Terraform
+# DDoS managed rulesets configuration using Terraform
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of configuring [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) in your zone or account using Terraform. It covers the following configurations:
 
@@ -153,7 +153,7 @@ For more information about HTTP DDoS Attack Protection, refer to [HTTP DDoS Atta
 
 ## Example: Configure Network-layer DDoS Attack Protection
 
-This example configures the [Network-layer DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/) managed ruleset for an account using Terraform, changing the sensitivity level of rule with ID ...e954e98b  to `low` using an override.
+This example configures the [Network-layer DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/) managed ruleset for an account using Terraform, changing the sensitivity level of rule with ID ...e954e98b to `low` using an override.
 
 Important
 
@@ -426,7 +426,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/#page","headline":"DDoS managed rulesets configuration using Terraform · Cloudflare Terraform docs","description":"Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

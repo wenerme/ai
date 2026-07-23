@@ -4,15 +4,15 @@ title: Malicious uploads detection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Malicious uploads detection
+# Malicious uploads detection
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The malicious uploads detection is a [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) that scans files and other content uploaded to your application for malware.
 
@@ -94,16 +94,16 @@ The content scanner will automatically decode Base64 strings.
 
 When content scanning is enabled, you can use the following fields in WAF rules:
 
-| Field                                                                                                                                                                                                                  | Description                                                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Has content object [cf.waf.content\_scan.has\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fobj/)  Boolean                                         | Indicates whether the request contains at least one content object.                                                                                     |
-| Has malicious content object [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/)  Boolean        | Indicates whether the request contains at least one malicious content object.                                                                           |
-| Number of malicious content objects [cf.waf.content\_scan.num\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.num%5Fmalicious%5Fobj/)  Integer | The number of malicious content objects detected in the request (zero or greater).                                                                      |
-| Content scan has failed [cf.waf.content\_scan.has\_failed](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Ffailed/)  Boolean                              | Indicates whether the file scanner was unable to scan any of the content objects detected in the request.                                               |
-| Number of content objects [cf.waf.content\_scan.num\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.num%5Fobj/)  Integer                                  | The number of content objects detected in the request (zero or greater).                                                                                |
-| Content object size [cf.waf.content\_scan.obj\_sizes](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Fsizes/)  Array<Integer>                             | An array of file sizes in bytes, in the order the content objects were detected in the request.                                                         |
-| Content object type [cf.waf.content\_scan.obj\_types](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Ftypes/)  Array<String>                              | An array of file types in the order the content objects were detected in the request.                                                                   |
-| Content object result [cf.waf.content\_scan.obj\_results](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Fresults/)  Array<String>                        | An array of scan results in the order the content objects were detected in the request.  Possible values: clean, suspicious, infected, and not scanned. |
+| Field                                                                                                                                                                                                                 | Description                                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Has content object [cf.waf.content\_scan.has\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fobj/) Boolean                                         | Indicates whether the request contains at least one content object.                                                                                     |
+| Has malicious content object [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/) Boolean        | Indicates whether the request contains at least one malicious content object.                                                                           |
+| Number of malicious content objects [cf.waf.content\_scan.num\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.num%5Fmalicious%5Fobj/) Integer | The number of malicious content objects detected in the request (zero or greater).                                                                      |
+| Content scan has failed [cf.waf.content\_scan.has\_failed](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Ffailed/) Boolean                              | Indicates whether the file scanner was unable to scan any of the content objects detected in the request.                                               |
+| Number of content objects [cf.waf.content\_scan.num\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.num%5Fobj/) Integer                                  | The number of content objects detected in the request (zero or greater).                                                                                |
+| Content object size [cf.waf.content\_scan.obj\_sizes](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Fsizes/) Array<Integer>                             | An array of file sizes in bytes, in the order the content objects were detected in the request.                                                         |
+| Content object type [cf.waf.content\_scan.obj\_types](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Ftypes/) Array<String>                              | An array of file types in the order the content objects were detected in the request.                                                                   |
+| Content object result [cf.waf.content\_scan.obj\_results](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.obj%5Fresults/) Array<String>                        | An array of scan results in the order the content objects were detected in the request.  Possible values: clean, suspicious, infected, and not scanned. |
 
 For examples of rule expressions using these fields, refer to [Example rules](https://developers.cloudflare.com/waf/detections/malicious-uploads/example-rules/).
 
@@ -113,7 +113,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/#page","headline":"Malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan uploaded files for malware and malicious content.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

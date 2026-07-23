@@ -1,16 +1,18 @@
 ---
-title: Concepts
 description: Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
 # Concepts
+
+Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These pages explain how the Sandbox SDK works, why it's designed the way it is, and the concepts you need to understand to use it effectively.
 
@@ -28,7 +30,14 @@ These pages explain how the Sandbox SDK works, why it's designed the way it is, 
 * [How-to guides](https://developers.cloudflare.com/sandbox/guides/) \- Solve specific problems
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Technical details and method signatures
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Concepts · Cloudflare Sandbox SDK docs","description":"Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Concepts · Cloudflare Sandbox SDK docs","description":"Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

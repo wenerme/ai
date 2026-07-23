@@ -4,15 +4,15 @@ title: Run Devin Outposts on Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Run Devin Outposts on Cloudflare
+# Run Devin Outposts on Cloudflare
 
-Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run [Devin agents ↗](https://docs.devin.ai/onboard-devin/outposts) on Cloudflare. Each Devin session runs in its own isolated sandbox backed by Cloudflare Containers.
 
@@ -54,7 +54,7 @@ After the deployment finishes, your outpost is ready to run Devin sessions on Cl
 Use the following procedure when you need to add dependencies, tools, or environment variables to the template.
 
 1. Create a project from the Devin Outpost template:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/devin
 ```
@@ -130,7 +130,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/#page","headline":"Run Devin Outposts on Cloudflare · Cloudflare Sandbox SDK docs","description":"Deploy a Devin Outpost that runs each Devin session in an isolated Cloudflare container.","url":"https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

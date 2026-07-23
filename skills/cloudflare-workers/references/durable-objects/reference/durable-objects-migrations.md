@@ -4,15 +4,15 @@ title: Durable Object class exports
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Durable Object class exports
+# Durable Object class exports
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `exports` field in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is the declarative way to manage [Durable Object class](https://developers.cloudflare.com/durable-objects/) lifecycle. You declare each Durable Object class your Worker exports — along with whether it is live, deleted, renamed, or transferred — and Cloudflare reconciles your declaration against the namespaces that have already been provisioned for your Worker.
 
@@ -492,22 +492,22 @@ If `exports` is only declared at the top level, named environments inherit the s
 
 The `exports` field is a map keyed by Durable Object class name. Each value is an object whose fields depend on `state`:
 
-* `type` ` string `required
+* `type` `string`required
 
   * For Durable Object class entries, set this to `"durable-object"`.
-* `state` ` string `optional
+* `state` `string`optional
 
   * The lifecycle state. One of `"created"` (the default, omit to use), `"deleted"`, `"renamed"`, `"transferred"`, or `"expecting-transfer"`.
-* `storage` ` string `conditional
+* `storage` `string`conditional
 
   * Required when `state` is `"created"` or `"expecting-transfer"`. One of `"sqlite"` (recommended, the only valid value for new namespaces) or `"legacy-kv"` (only for existing key-value-backed namespaces). Forbidden on tombstone states.
-* `renamed_to` ` string `conditional
+* `renamed_to` `string`conditional
 
   * Required when `state` is `"renamed"`. The destination class name. Must be a valid JavaScript identifier, differ from the source class name, and appear as a live entry in the same `exports` map.
-* `transferred_to` ` string `conditional
+* `transferred_to` `string`conditional
 
   * Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
-* `transfer_from` ` string `conditional
+* `transfer_from` `string`conditional
 
   * Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
 
@@ -615,7 +615,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#page","headline":"Durable Object class exports · Cloudflare Durable Objects docs","description":"Use the declarative exports field in wrangler.json to manage Durable Object class lifecycle — create, delete, rename, and transfer Durable Object classes.","url":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

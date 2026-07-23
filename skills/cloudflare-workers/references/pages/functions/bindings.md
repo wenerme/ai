@@ -4,15 +4,15 @@ title: Bindings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bindings
+# Bindings
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
 
@@ -31,7 +31,7 @@ To bind your KV namespace to your Pages Function, you can configure a KV namespa
 To configure a KV namespace binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **KV namespace**.
 4. Give your binding a name under **Variable name**.
@@ -86,7 +86,7 @@ To bind your Durable Object to your Pages Function, you can configure a Durable 
 To configure a Durable Object binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Durable Object**.
 4. Give your binding a name under **Variable name**.
@@ -145,7 +145,7 @@ To bind your R2 bucket to your Pages Function, you can configure a R2 bucket bin
 To configure a R2 bucket binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **R2 bucket**.
 4. Give your binding a name under **Variable name**.
@@ -210,7 +210,7 @@ To bind your D1 database to your Pages Function, you can configure a D1 database
 To configure a D1 database binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add**\> **D1 database bindings**.
 4. Give your binding a name under **Variable name**.
@@ -279,7 +279,7 @@ To bind your Vectorize index to your Pages Function, you can configure a Vectori
 To configure a Vectorize index binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Choose whether you would like to set up the binding in your **Production** or **Preview** environment.
 3. Select your Pages project > **Settings**.
 4. Go to **Bindings** \> **Add** \> **Vectorize index**.
@@ -412,7 +412,7 @@ When developing locally using Wrangler, you can define an AI binding using the `
 To configure a Workers AI binding via the Cloudflare dashboard:
 
 1. Go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings**.
 3. Select your Pages environment > **Bindings** \> **Add** \> **Workers AI**.
 4. Give your binding a name under **Variable name**.
@@ -482,7 +482,7 @@ To bind your Pages Function to a Worker, configure a Service binding in your Pag
 To configure a Service binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Service binding**.
 4. Give your binding a name under **Variable name**.
@@ -539,7 +539,7 @@ To bind a queue to your Pages Function, configure a queue producer binding in yo
 To configure a queue producer binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Queue**.
 4. Give your binding a name under **Variable name**.
@@ -592,14 +592,14 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -609,7 +609,7 @@ To bind your Hyperdrive config to your Pages Function, you can configure a Hyper
 To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Hyperdrive**.
 4. Give your binding a name under **Variable name**.
@@ -675,7 +675,7 @@ To bind an Analytics Engine dataset to your Pages Function, you must configure a
 To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Bindings** \> **Add** \> **Analytics engine**.
 4. Give your binding a name under **Variable name**.
@@ -729,7 +729,7 @@ To add environment variables to your Pages project, you can use the [Wrangler co
 To configure an environment variable via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Variables and Secrets** \> **Add** .
 4. After setting a variable name and value, select **Save**.
@@ -780,7 +780,7 @@ Secrets are a type of binding that allow you to attach encrypted text values to 
 To add secrets to your Pages project:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Variables and Secrets** \> **Add**.
 4. Set a variable name and value.
@@ -840,7 +840,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings · Cloudflare Pages docs","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}

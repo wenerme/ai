@@ -4,15 +4,15 @@ title: WebSockets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WebSockets
+# WebSockets
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports proxied WebSocket connections without additional configuration.
 
@@ -25,7 +25,7 @@ WebSockets are open connections sustained between the client and the origin serv
 To enable **WebSockets** connections to your origin server in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Network** page.
-[ Go to **Network** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/network)
+[Go to **Network** ↗](https://dash.cloudflare.com/?to=/:account/:zone/network)
 2. For **WebSockets**, switch the toggle to **On**.
 
 To enable **WebSockets** connections to your origin server with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `websockets` as the setting name in the URI path, and the `value` parameter set to `"on"`.
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/websockets/#page","headline":"WebSockets · Cloudflare Network settings docs","description":"Proxy WebSocket connections through Cloudflare's network.","url":"https://developers.cloudflare.com/network/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

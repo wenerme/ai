@@ -4,15 +4,15 @@ title: Egress-free object storage in multi-cloud setups
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Egress-free object storage in multi-cloud setups
+# Egress-free object storage in multi-cloud setups
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Egress fees are charges incurred when data is transferred out of a cloud provide
 
 ## R2 multi-cloud setup
 
-![Figure 1: R2 multi-cloud setup](https://developers.cloudflare.com/_astro/r2-multi-cloud.jB-KW29c_Z1XXhic.svg "Figure 1: R2-multi-cloud setup")
+![Figure 1: R2 multi-cloud setup](https://developers.cloudflare.com/_astro/r2-multi-cloud.jB-KW29c_1HOzv7.svg "Figure 1: R2-multi-cloud setup")
 
 Figure 1: R2-multi-cloud setup
 
@@ -46,7 +46,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/#page","headline":"Egress-free object storage in multi-cloud setups · Cloudflare Reference Architecture docs","description":"Learn how to use R2 to get egress-free object storage in multi-cloud setups.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get started with Workers for Platforms by deploying a starter kit to your account.
 
@@ -91,7 +91,7 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 
 With [VibeSDK ↗](https://github.com/cloudflare/vibesdk), Cloudflare's open source vibe coding platform, you can get started with an example that handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
-[ View demo ](https://build.cloudflare.dev)[ View on GitHub ](https://github.com/cloudflare/vibesdk)
+[View demo](https://build.cloudflare.dev)[View on GitHub](https://github.com/cloudflare/vibesdk)
 
 Was this helpful?
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/#page","headline":"Get started · Cloudflare for Platforms docs","description":"Deploy a Workers for Platforms starter kit and create your first multi-tenant platform on Cloudflare.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

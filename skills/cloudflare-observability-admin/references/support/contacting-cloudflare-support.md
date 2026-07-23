@@ -4,15 +4,15 @@ title: Contacting Cloudflare Support
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Contacting Cloudflare Support
+# Contacting Cloudflare Support
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/contacting-cloudflare-support/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/contacting-cloudflare-support/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Guidelines for contacting Cloudflare support
 
@@ -63,7 +63,7 @@ In both cases, you will also need your **Unique Customer ID** (refer to [Finding
 ### Single-use token (no setup required)
 
 1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Emergency hotline** tile.
 2. Click **Get a single-use token**. A pop-up window will appear with your **Unique Customer ID** and **One Time Passcode**. The code automatically refreshes every 30 seconds.
 ![](https://developers.cloudflare.com/_astro/Emergency_Phone_Support.IYDzAqH8_Z57Dpr.webp)
@@ -71,7 +71,7 @@ In both cases, you will also need your **Unique Customer ID** (refer to [Finding
 ### Authenticator app (one-time setup)
 
 1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Emergency hotline** tile.
 2. Click **Configure authenticator app** and follow the [configuration instructions](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication).
 3. After configuration, the token code will appear in your mobile authentication app when you need it.
@@ -81,7 +81,7 @@ In both cases, you will also need your **Unique Customer ID** (refer to [Finding
 Your Unique Customer ID is required when calling the emergency phone line, regardless of which verification method you use.
 
 1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Emergency hotline** tile.
 2. Click **Get a single-use token**. Your **Unique Customer ID** will appear in the pop-up window.
 
@@ -96,7 +96,7 @@ Available for all paid plans. Free users can only submit cases for billing, acco
 To submit a support case, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Support** page and select the account you require assistance for.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Technical Support** tile, or for billing issues click **Billing** and then click **Create a Case** at the bottom of the following screen.
 2. Choose the category and subcategories that best define your issue.
 3. Choose the affected domains (if applicable).
@@ -149,14 +149,14 @@ When sending Cloudflare Support packet captures, please do the following:
 ### View open support cases
 
 1. In the Cloudflare dashboard, go to the **Support** page.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **My Cases** tile.
 2. You will be redirected to the portal where you can see your own cases and cases you are CC'd on.
 
 ### Add participants to open support tickets
 
 1. In the Cloudflare dashboard, go to the **Support** page.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **My Cases** tile.
 2. You will be redirected to the portal where you can see your own cases and cases you are CC'd on.
 3. Select the case you want to add participants to.
@@ -173,7 +173,7 @@ Available for Business and Enterprise plans only.
 Use **live chat** for quick questions that do not require deep technical investigation:
 
 1. In the Cloudflare dashboard, go to the **Support** page.
-[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support)
+[Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Chat with a human** tile. The chat widget will open immediately. Enter a brief description of your problem to begin.
 2. Wait for an agent to join the conversation. Response times may vary based on current chat volume.
 
@@ -252,7 +252,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/contacting-cloudflare-support/#page","headline":"Contacting Cloudflare Support · Cloudflare Support docs","description":"Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.","url":"https://developers.cloudflare.com/support/contacting-cloudflare-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

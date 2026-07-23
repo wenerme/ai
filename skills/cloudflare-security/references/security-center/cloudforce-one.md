@@ -4,15 +4,15 @@ title: Cloudforce One
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudforce One
+# Cloudforce One
 
-Last updated May 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/cloudforce-one/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/cloudforce-one/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -31,7 +31,7 @@ You must have a **Cloudforce One subscription** to access the platform.
 To access Cloudforce One:
 
 1. In the Cloudflare dashboard, go to the **Threat intelligence** page.
-[ Go to **Threat intelligence** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
+[Go to **Threat intelligence** ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
 
 You can also use Cloudforce One via the [REST API](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/requests/subresources/assets/).
 
@@ -48,7 +48,7 @@ Threat events represent Cloudflare telemetry and threat actor activity observed 
 
 To access threat events, go to the **Threat intelligence** page in the Cloudflare dashboard.
 
-[ Go to **Threat intelligence** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
+[Go to **Threat intelligence** ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
 
 You can also access threat events via the [API](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/threat%5Fevents/).
 
@@ -90,7 +90,7 @@ You can use Cloudy, Cloudflare's AI Agent, to receive an analysis and summary of
 To analyze threat events using Cloudy:
 
 1. In the Cloudflare dashboard, go to the **Threat intelligence** page.
-[ Go to **Threat intelligence** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
+[Go to **Threat intelligence** ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
 2. Go to **Threat Events** \> **Analyze with Cloudy**.
 
 Cloudy will show you the top threat events, analyze them, and give you a summary of threat events. You can also decide to receive an analysis based on **Attacker**, **Indicator**, and more. For example, you can enter "Give me a summary of threat events for ABC Attacker". Cloudy will then summarize threat events for ABC attacker.
@@ -100,7 +100,7 @@ Cloudy will show you the top threat events, analyze them, and give you a summary
 To submit RFIs (Request for Information):
 
 1. In the Cloudflare dashboard, go to the **Threat Intelligence** page.
-[ Go to **Threat intelligence** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
+[Go to **Threat intelligence** ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence)
 2. Select **Requests for Information**.
 3. Select **New Request**.
 4. Fill in the required fields, then select **Save**.
@@ -159,7 +159,7 @@ Use Cloudforce One to improve your security posture or recover from a past incid
 If you want to stop an active cyber attack, you can request assistance via the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 1. On the top bar, select **Support** \> **Get help** \> **Under attack**.
 2. Under **Request help to stop active cyberattacks**, select **Request help**.
 3. The dashboard will show you a pop-up where you will need to enter and confirm your phone number.
@@ -171,7 +171,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/cloudforce-one/#page","headline":"Cloudforce One · Cloudflare Security Center docs","description":"Access Cloudflare threat intelligence, reports, and automated security rules.","url":"https://developers.cloudflare.com/security-center/cloudforce-one/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents"]}

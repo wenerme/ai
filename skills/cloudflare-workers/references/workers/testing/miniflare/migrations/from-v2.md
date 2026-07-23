@@ -4,15 +4,15 @@ title: Migrating from Version 2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrating from Version 2
+# Migrating from Version 2
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Miniflare v3 now uses [workerd ↗](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗](https://blog.cloudflare.com/wrangler3/) for more information.
 
@@ -187,7 +187,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/#page","headline":"Migrating from Version 2 · Cloudflare Workers docs","description":"Migrate from Miniflare v2 to v3, which uses the workerd runtime for full Workers compatibility.","url":"https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

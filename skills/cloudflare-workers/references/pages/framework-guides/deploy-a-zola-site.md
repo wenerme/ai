@@ -4,15 +4,15 @@ title: Zola
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Zola
+# Zola
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Zola ↗](https://www.getzola.org/) is a fast static site generator in a single binary with everything built-in. In this guide, you will create a new Zola application and deploy it using Cloudflare Pages. You will use the `zola` CLI to create a new Zola site.
 
@@ -95,10 +95,10 @@ git push -u origin main
 
 ## Deploy with Cloudflare Pages
 
-| Configuration option | Value      |  | Production branch | main |
-| -------------------- | ---------- |  | ----------------- | ---- |
-| Build command        | zola build |  |                   |      |
-| Build directory      | public     |  |                   |      |
+| Configuration option | Value      | |  Production branch | main |
+| -------------------- | ---------- | -------------------- | ---- |
+| Build command        | zola build |                      |      |
+| Build directory      | public     |                      |      |
 
 Zola is preinstalled in the Cloudflare Pages build environment, so no additional configuration is required. You can optionally set the `ZOLA_VERSION` environment variable under **Environment Variables (advanced)** to pin a specific version.
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/#page","headline":"Zola · Cloudflare Pages docs","description":"Deploy a Zola static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

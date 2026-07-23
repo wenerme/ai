@@ -4,15 +4,15 @@ title: Event notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Event notifications
+# Event notifications
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Event notifications send messages to your [queue](https://developers.cloudflare.com/queues/) when data in your R2 bucket changes. You can consume these messages with a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [pull over HTTP](https://developers.cloudflare.com/queues/configuration/pull-consumers/) from outside of Cloudflare Workers.
 
@@ -29,7 +29,7 @@ Before getting started, you will need:
 ### Enable event notifications via Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you'd like to add an event notification rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Event notifications** card.
 4. Select **Add notification** and choose the queue you'd like to receive notifications and the [type of events](https://developers.cloudflare.com/r2/buckets/event-notifications/#event-types) that will trigger them.
@@ -125,7 +125,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/event-notifications/#page","headline":"Event notifications · Cloudflare R2 docs","description":"Send messages to Cloudflare Queues when objects in your R2 bucket change.","url":"https://developers.cloudflare.com/r2/buckets/event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

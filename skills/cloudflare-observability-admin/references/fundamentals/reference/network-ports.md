@@ -4,15 +4,15 @@ title: Network ports
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network ports
+# Network ports
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/network-ports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/network-ports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn which network ports Cloudflare proxies by default and how to enable Cloudflare's proxy for additional ports.
 
@@ -68,7 +68,7 @@ If traffic for your domain is destined for a different port than the ones listed
 Block traffic on ports other than 80 and 443 in Cloudflare paid plans by doing one of the following:
 
 * If you are using [WAF managed rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/), enable rule ID `100015` (`Anomaly:Port - Non Standard Port (not 80 or 443)`).
-* If you are using the new [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), enable rule ID ...664ed6fe  (`Anomaly:Port - Non Standard Port (not 80 or 443)`), which is disabled by default. This rule is part of the Cloudflare Managed Ruleset.
+* If you are using the new [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), enable rule ID ...664ed6fe (`Anomaly:Port - Non Standard Port (not 80 or 443)`), which is disabled by default. This rule is part of the Cloudflare Managed Ruleset.
 
 Ports 80 and 443 are the only ports compatible with:
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-ports/#page","headline":"Network ports · Cloudflare Fundamentals docs","description":"Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.","url":"https://developers.cloudflare.com/fundamentals/reference/network-ports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

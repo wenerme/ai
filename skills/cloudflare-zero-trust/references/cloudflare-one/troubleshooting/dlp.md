@@ -4,15 +4,15 @@ title: DLP
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DLP
+# DLP
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 
@@ -94,7 +94,7 @@ If you cannot use the _DLP Profile_ selector when creating an HTTP policy or are
 
 For more information, refer to the full DLP documentation.
 
-[ DLP troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/)
+[DLP troubleshooting ❯](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/)
 
 Was this helpful?
 
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/#page","headline":"DLP · Cloudflare One docs","description":"DLP for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

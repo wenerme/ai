@@ -4,15 +4,15 @@ title: Query vectors
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query vectors
+# Query vectors
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Querying an index, or vector search, enables you to search an index by providing an input vector and returning the nearest vectors based on the [configured distance metric](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics).
 
@@ -149,7 +149,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/#page","headline":"Query vectors · Cloudflare Vectorize docs","description":"Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.","url":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

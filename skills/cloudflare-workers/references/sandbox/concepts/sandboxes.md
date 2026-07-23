@@ -4,15 +4,15 @@ title: Sandbox lifecycle
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sandbox lifecycle
+# Sandbox lifecycle
 
-Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A sandbox is an isolated execution environment where your code runs. Each sandbox:
 
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/#page","headline":"Sandbox lifecycle · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.","url":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

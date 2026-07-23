@@ -4,15 +4,15 @@ title: Metadata attributes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Metadata attributes
+# Metadata attributes
 
-Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use metadata attributes to organize your indexed documents and provide context to guide AI responses. This page covers built-in metadata attributes and custom metadata schemas. To filter search results by these attributes at query time, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -101,7 +101,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Tools
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Tools
+# Tools
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 MCP tools are functions that an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/) exposes for clients to call. When an LLM decides it needs to take an action — look up data, run a calculation, call an API — it invokes a tool. The MCP server executes the tool and returns the result.
 
@@ -22,9 +22,9 @@ Experimental WebMCP adapter
 
 The Agents SDK also includes the experimental `agents/experimental/webmcp` adapter for bridging `McpAgent` tools to Chrome's native `navigator.modelContext` API. This API is under active development and may change between releases.
 
-### [ WebMCP example ](https://github.com/cloudflare/agents/tree/main/examples/webmcp)
+### [WebMCP example](https://github.com/cloudflare/agents/tree/main/examples/webmcp)
 
- Bridge MCP tools from a Cloudflare McpAgent into Chrome's experimental WebMCP API.
+Bridge MCP tools from a Cloudflare McpAgent into Chrome's experimental WebMCP API.
 
 ## Defining tools
 
@@ -292,21 +292,21 @@ export class MyMCP extends McpAgent {
 
 ## Next steps
 
-### [ Build a remote MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
+### [Build a remote MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
 
- Step-by-step guide to deploying an MCP server on Cloudflare.
+Step-by-step guide to deploying an MCP server on Cloudflare.
 
-### [ createMcpHandler API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
+### [createMcpHandler API](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
 
- Reference for stateless MCP servers.
+Reference for stateless MCP servers.
 
-### [ McpAgent API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
+### [McpAgent API](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
 
- Reference for stateful MCP servers.
+Reference for stateful MCP servers.
 
-### [ MCP authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+### [MCP authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
 
- Add OAuth authentication to your MCP server.
+Add OAuth authentication to your MCP server.
 
 Was this helpful?
 
@@ -314,7 +314,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Define, register, and manage MCP tools that expose server-side functions for AI agents to call.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

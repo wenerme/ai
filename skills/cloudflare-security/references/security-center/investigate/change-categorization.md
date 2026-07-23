@@ -4,15 +4,15 @@ title: Change categorization
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Change categorization
+# Change categorization
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/investigate/change-categorization/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/investigate/change-categorization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare sorts domains into categories based on their content and security type. You can request categorization changes via the [dashboard](#via-the-cloudflare-dashboard), [Cloudflare Radar](#via-cloudflare-radar), or the [API](#via-the-api).
 
@@ -23,7 +23,7 @@ For a detailed list of categories, refer to [Domain categories](https://develope
 To request a categorization change via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Investigate** page.
-[ Go to **Investigate** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
+[Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Search for the domain you want to change.
 3. In **Domain overview**, select **Request to change categorization**.
 4. Choose whether to change a [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) or a [content category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories).
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/investigate/change-categorization/#page","headline":"Change categorization · Cloudflare Security Center docs","description":"Request domain categorization changes via the dashboard, Radar, or the API.","url":"https://developers.cloudflare.com/security-center/investigate/change-categorization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

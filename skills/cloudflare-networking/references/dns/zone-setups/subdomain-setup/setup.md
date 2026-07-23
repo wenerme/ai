@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -59,8 +59,8 @@ This table assumes zones that are in an [active status](https://developers.cloud
 
 Refer to the following guides to learn how to configure a subdomain setup depending on the setup used for the parent zone:
 
-* [ Parent zone on full setup ](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-full/)
-* [ Parent zone on partial setup ](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/)
+* [Parent zone on full setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-full/)
+* [Parent zone on partial setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/)
 
 Although the how-to guides in this documentation are focused on both parent domains and subdomains existing in Cloudflare, it is also possible to achieve a subdomain setup in Cloudflare while the parent domain exists in a different DNS provider.
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/#page","headline":"Subdomain delegation and available setups · Cloudflare DNS docs","description":"Set up a subdomain zone in Cloudflare.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

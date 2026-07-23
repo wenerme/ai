@@ -4,15 +4,15 @@ title: Fullstack applications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Fullstack applications
+# Fullstack applications
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Fullstack web applications combine frontend and backend technologies to deliver complete, dynamic user experiences. These applications rely on a broad technology stack covering user interfaces, backend services, databases, integrations, and increasingly, AI-driven features to function seamlessly and scale reliably.
 
@@ -26,7 +26,7 @@ Modern fullstack development increasingly incorporates external services, APIs, 
 
 Cloudflare’s Developer Platform combines all these capabilities into a unified, globally distributed environment, offering developers everything they need to build, deploy, and scale modern fullstack applications with minimal operational overhead.
 
-![Figure 1: Cloudflare Developer Platform](https://developers.cloudflare.com/_astro/developer-platform.g69XQgmR_2k3mC0.svg "Figure 1: Cloudflare Developer Platform")
+![Figure 1: Cloudflare Developer Platform](https://developers.cloudflare.com/_astro/developer-platform.g69XQgmR_n1mbp.svg "Figure 1: Cloudflare Developer Platform")
 
 Figure 1: Cloudflare Developer Platform
 
@@ -36,7 +36,7 @@ Cloudflare’s platform doesn’t just offer individual services. Rather, it off
 
 In this section, we’ll present a practical example of how these services come together in a real fullstack application architecture.
 
-![Figure 2: Fullstack application](https://developers.cloudflare.com/_astro/fullstack-app-base.CZswu8qh_2IOYQ.svg "Figure 2: Fullstack application")
+![Figure 2: Fullstack application](https://developers.cloudflare.com/_astro/fullstack-app-base.CZswu8qh_EAzjl.svg "Figure 2: Fullstack application")
 
 Figure 2: Fullstack application
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/#page","headline":"Fullstack applications · Cloudflare Reference Architecture docs","description":"A practical example of how these services come together in a real fullstack application architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

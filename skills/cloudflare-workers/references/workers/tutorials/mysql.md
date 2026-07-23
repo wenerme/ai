@@ -4,15 +4,15 @@ title: Connect to a MySQL database with Cloudflare Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to a MySQL database with Cloudflare Workers
+# Connect to a MySQL database with Cloudflare Workers
 
-Last updated Feb 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/mysql/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/mysql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a MySQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of MySQL.
 
@@ -35,7 +35,7 @@ To continue:
 
 First, use the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker application. To do this, open a terminal window and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- mysql-tutorial
@@ -79,14 +79,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 ## 3\. Create a Hyperdrive configuration
@@ -105,7 +105,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -124,7 +124,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -136,7 +136,7 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i mysql2@>3.13.0
@@ -167,7 +167,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -180,7 +180,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -251,7 +251,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/mysql/#page","headline":"Connect to a MySQL database with Cloudflare Workers · Cloudflare Workers docs","description":"This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.","url":"https://developers.cloudflare.com/workers/tutorials/mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","TypeScript","SQL"]}

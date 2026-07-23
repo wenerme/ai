@@ -4,15 +4,15 @@ title: Agent class internals
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Agent class internals
+# Agent class internals
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The core of the `agents` library is the `Agent` class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how `Agent` is built, layer by layer, so you understand what is happening under the hood.
 
@@ -541,7 +541,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/#page","headline":"Agent class internals · Cloudflare Agents docs","description":"Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

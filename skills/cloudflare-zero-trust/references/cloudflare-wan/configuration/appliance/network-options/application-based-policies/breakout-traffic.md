@@ -4,21 +4,21 @@ title: Breakout traffic
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Breakout traffic
+# Breakout traffic
 
-Last updated May 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Breakout traffic allows you to define which applications should bypass Cloudflare's security filtering, and go directly to the Internet. It works via DNS requests inspection. This means that if your network is caching DNS requests, Breakout traffic will only take effect after you cache entries expire and your client issues a new DNS request that Cloudflare One Appliance (formerly Magic WAN Connector) can detect. This can take several minutes.
 
 Caution
 
- Breakout traffic will not work for applications that use DNS-over-HTTPS.
+Breakout traffic will not work for applications that use DNS-over-HTTPS.
 
 
 		flowchart LR
@@ -84,7 +84,7 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Cloudflare One Appliance you want to configure > **Edit**.
 2. Select **Traffic Steering**.
@@ -97,7 +97,7 @@ The traffic for the application you chose will now go directly to the Internet a
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with an account.
 Required API token permissions
@@ -157,7 +157,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 ### Delete an application from Cloudflare One Appliance
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Appliance you want to configure > **Edit**.
 2. Select **Traffic Steering**.
@@ -166,7 +166,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 You need to delete Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
@@ -223,7 +223,7 @@ With this preferred breakout port, customers have direct control over their loca
 To pin applications to a WAN port:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select your Appliance > **Edit**.
 1. In **Traffic steering** \> **Breakout Traffic** find the application you want to pin to a WAN port.
@@ -241,7 +241,7 @@ The Cloudflare One Appliance uses NetFlow v9 to export flow data for breakout tr
 
 Note
 
- To export NetFlow statistics, you will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/), as well as the `site_id` associated with your Cloudflare One Appliance.
+To export NetFlow statistics, you will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/), as well as the `site_id` associated with your Cloudflare One Appliance.
 
 1. Send a `PUT` request to the Netflow configuration endpoint for your site.
 2. In the JSON body request, you must include the `collector_ip` parameter. To export traffic statistics to Network Flow, use the IP address `162.159.65.1`. This is the only field required to enable the feature.
@@ -312,7 +312,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#page","headline":"Breakout traffic · Cloudflare WAN docs","description":"Breakout traffic allows you to define which applications should bypass Cloudflare's security filtering.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

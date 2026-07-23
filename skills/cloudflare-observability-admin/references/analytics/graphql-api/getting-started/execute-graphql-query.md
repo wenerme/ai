@@ -4,15 +4,15 @@ title: Execute a GraphQL query with curl
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Execute a GraphQL query with curl
+# Execute a GraphQL query with curl
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using a plain curl to send a query provides the ability to slice-n-dice with the results and apply post-processing if needed. For example, converting results received from GraphQL API into a CSV format.
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/#page","headline":"Execute a GraphQL query with curl · Cloudflare Analytics docs","description":"Learn about execute a graphql query with curl in Cloudflare analytics.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

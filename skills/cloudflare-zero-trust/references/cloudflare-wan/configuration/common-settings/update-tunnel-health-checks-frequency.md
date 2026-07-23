@@ -4,15 +4,15 @@ title: Update tunnel health checks frequency
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Update tunnel health checks frequency
+# Update tunnel health checks frequency
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare servers send [health checks](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/) to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Cloudflare WAN.
 
@@ -47,7 +47,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 ## Configure Connector
 
 1. Go to the **Connector** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go the **Appliances** tab > **Profiles**.
 2. Find the Connector profile you want to edit > select the three dots > **Edit**.
 3. In **Network Configuration** \> **WAN configuration** \> select your WAN > **Edit**.
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/#page","headline":"Update tunnel health checks frequency · Cloudflare WAN docs","description":"Update tunnel health check frequency.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

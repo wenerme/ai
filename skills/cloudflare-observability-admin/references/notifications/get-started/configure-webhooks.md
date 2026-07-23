@@ -4,15 +4,15 @@ title: Configure webhooks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure webhooks
+# Configure webhooks
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -23,7 +23,7 @@ There are a variety of services you can connect to Cloudflare using webhooks to 
 ## Configure webhooks
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Webhooks** card, select **Create**.
 4. Give your webhook a name to use for identification later.
@@ -38,7 +38,7 @@ The new webhook will appear in the **Webhooks** card.
 You can only edit the name of webhooks and/or delete them.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Webhooks** card, select **Edit** on the webhook that you want to edit.
 4. Update the webhook's name and select **Save**.
@@ -182,7 +182,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/configure-webhooks/#page","headline":"Configure webhooks · Cloudflare Notifications docs","description":"Send notifications to webhook endpoints.","url":"https://developers.cloudflare.com/notifications/get-started/configure-webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

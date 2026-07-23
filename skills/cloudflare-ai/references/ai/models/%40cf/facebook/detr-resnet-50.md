@@ -4,7 +4,7 @@ title: detr-resnet-50
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  detr-resnet-50
+# detr-resnet-50
 
- Beta
+Beta
 
- Object Detection • Meta
+Object Detection • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/facebook/detr-resnet-50 `
+`@cf/facebook/detr-resnet-50`
 
 * Cloudflare-hosted
 
@@ -96,9 +96,9 @@ items
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/#page","headline":"detr-resnet-50 (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).","url":"https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

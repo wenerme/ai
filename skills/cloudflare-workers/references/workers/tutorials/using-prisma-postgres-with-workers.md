@@ -4,15 +4,15 @@ title: Set up and use a Prisma Postgres database
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up and use a Prisma Postgres database
+# Set up and use a Prisma Postgres database
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Prisma Postgres ↗](https://www.prisma.io/postgres) is a managed, serverless PostgreSQL database. It supports features like connection pooling, caching, real-time subscriptions, and query optimization recommendations.
 
@@ -64,7 +64,7 @@ In this step, you will set up Prisma ORM with a Prisma Postgres database using t
 
 Install Prisma CLI as a dev dependency:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D prisma
@@ -84,7 +84,7 @@ bun add -d prisma
 
 Install the [Prisma Accelerate client extension ↗](https://www.npmjs.com/package/@prisma/extension-accelerate) as it is required for Prisma Postgres:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @prisma/extension-accelerate
@@ -104,7 +104,7 @@ bun add @prisma/extension-accelerate
 
 Install the [dotenv-cli package ↗](https://www.npmjs.com/package/dotenv-cli) to load environment variables from `.dev.vars`:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D dotenv-cli
@@ -126,7 +126,7 @@ bun add -d dotenv-cli
 
 Initialize Prisma in your application:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx prisma@latest init --db
@@ -307,7 +307,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/#page","headline":"Set up and use a Prisma Postgres database · Cloudflare Workers docs","description":"This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.","url":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL","Prisma ORM","PostgreSQL"]}

@@ -4,7 +4,7 @@ title: Application Security - Get started guide
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how to get immediate protection against the most common attacks.
 

@@ -4,15 +4,15 @@ title: Workers binding
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers binding
+# Workers binding
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/get-started/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating and querying an AI Search instance from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the Workers Binding. The Workers Binding uses a runtime [API](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) that runs inside a Worker and calls AI Search without managing API tokens.
 
@@ -29,7 +29,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `ai-search-tutorial` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- ai-search-tutorial
@@ -183,13 +183,13 @@ https://ai-search-tutorial.<YOUR_SUBDOMAIN>.workers.dev
 
 ## Next steps
 
-### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Search Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Full reference for searching and chatting from a Worker.
+Full reference for searching and chatting from a Worker.
 
-### [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
+### [Items Workers binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
 
- Upload, list, and manage documents from a Worker.
+Upload, list, and manage documents from a Worker.
 
 Was this helpful?
 
@@ -197,7 +197,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/workers/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from a Cloudflare Worker.","url":"https://developers.cloudflare.com/ai-search/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

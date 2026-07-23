@@ -4,15 +4,15 @@ title: Run Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Run Workflows
+# Run Workflows
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Integrate [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) with Agents for durable, multi-step background processing while Agents handle real-time communication.
 
@@ -171,7 +171,7 @@ export class MyAgent extends Agent {
 	"name": "my-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"durable_objects": {
 		"bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],
 	},
@@ -190,7 +190,7 @@ export class MyAgent extends Agent {
 name = "my-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[durable_objects.bindings]]
 name = "MY_AGENT"
@@ -1211,21 +1211,21 @@ Workflows cannot open WebSocket connections directly. Use `broadcastToClients()`
 
 ## Related resources
 
-### [ Workflows documentation ](https://developers.cloudflare.com/workflows/)
+### [Workflows documentation](https://developers.cloudflare.com/workflows/)
 
- Learn about Cloudflare Workflows fundamentals.
+Learn about Cloudflare Workflows fundamentals.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Persist and synchronize agent state.
+Persist and synchronize agent state.
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Time-based task execution.
+Time-based task execution.
 
-### [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+### [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 
- Approval flows and manual intervention patterns.
+Approval flows and manual intervention patterns.
 
 Was this helpful?
 
@@ -1233,7 +1233,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

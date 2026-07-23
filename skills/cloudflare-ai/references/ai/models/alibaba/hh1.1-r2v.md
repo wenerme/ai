@@ -4,7 +4,7 @@ title: HappyHorse 1.1 R2V
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
-#  HappyHorse 1.1 R2V
+# HappyHorse 1.1 R2V
 
- Image-to-Video • Alibaba
+Image-to-Video • Alibaba
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` alibaba/hh1.1-r2v `
+`alibaba/hh1.1-r2v`
 
 * Third-party
 
 Alibaba's HappyHorse 1.1 reference-to-video model. Takes 1-9 reference images (characters and scenes) and a prompt that choreographs them into a single video, keeping each subject's identity consistent. Supports 720P and 1080P output with durations from 3 to 15 seconds.
 
-| Model Info        |                                                                                                                      |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                 |
-| More information  | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                              |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1.1-r2v) |
+| Model Info        |                                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
+| More information  | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                             |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1.1-r2v) |
 
 ## Usage
 
@@ -119,9 +119,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/#page","headline":"HappyHorse 1.1 R2V (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's HappyHorse 1.1 reference-to-video model. Takes 1-9 reference images (characters and scenes) and a prompt that choreographs them into a single video, keeping each subject's identity consistent. Supports 720P and 1080P output with durations from 3 to 15 seconds.","url":"https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

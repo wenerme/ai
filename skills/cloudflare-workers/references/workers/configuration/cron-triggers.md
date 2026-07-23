@@ -4,15 +4,15 @@ title: Cron Triggers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cron Triggers
+# Cron Triggers
 
-Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -128,7 +128,7 @@ crons = [ "0 * * * *" ]
 To add Cron Triggers in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings** \> **Triggers** \> **Cron Triggers**.
 
 ## Supported cron expressions
@@ -216,7 +216,7 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=174585
 To view the execution history of Cron Triggers, view **Cron Events**:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Settings**.
 4. Under **Trigger Events**, select **View events**.
@@ -236,7 +236,7 @@ Refer to [Metrics and Analytics](https://developers.cloudflare.com/workers/obser
 To delete a Cron Trigger on a deployed Worker via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Go to **Triggers** \> select the three dot icon next to the Cron Trigger you want to remove > **Delete**.
 
@@ -276,7 +276,7 @@ Renewable energy can be purchased in a number of ways, including through on-site
 Green Compute can be configured at the account level:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In the **Account details** section, find **Compute Setting**.
 3. Select **Change**.
 4. Select **Green Compute**.
@@ -293,7 +293,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

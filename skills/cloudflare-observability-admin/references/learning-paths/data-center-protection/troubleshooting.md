@@ -4,15 +4,15 @@ title: Troubleshooting connectivity issues after prefix advertisement
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting connectivity issues after prefix advertisement
+# Troubleshooting connectivity issues after prefix advertisement
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/data-center-protection/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## For Magic Transit ingress-only with Direct Server Return
 
@@ -58,7 +58,7 @@ For example, devices cannot browse to a server which is hosted on the Magic Tran
 If you suspect that Cloudflare mitigations might be dropping legitimate traffic to your Magic Transit prefix:
 
 1. Go to the Network analytics page.
-[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 1. In the **All traffic** tab select **Add filter** to configure the filters for the traffic-flow in question — like source IP, destination IP and protocol/ports.
 2. Check the analytics results to determine which Cloudflare mitigation system has dropped the traffic — for example, DDoS Managed Rules, Advanced TCP/DNS Protection or Network Firewall.
 3. If the traffic was dropped by DDoS Managed Rules:
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/troubleshooting/#page","headline":"Troubleshooting connectivity issues after prefix advertisement · Cloudflare Learning Paths","description":"Learn about troubleshooting connectivity issues after prefix advertisement in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

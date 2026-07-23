@@ -4,11 +4,11 @@ title: cf.llm.prompt.unsafe_topic_categories
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.llm.prompt.unsafe\_topic\_categories
+# cf.llm.prompt.unsafe\_topic\_categories
 
-`cf.llm.prompt.unsafe_topic_categories` ` Array<String> `
+`cf.llm.prompt.unsafe_topic_categories` `Array<String>`
 
 Array of string values with the type of unsafe topics detected in the LLM prompt.
 
@@ -47,7 +47,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe_topic_categories/#page","headline":"cf.llm.prompt.unsafe_topic_categories · Cloudflare Ruleset Engine docs","description":"Array of string values with the type of unsafe topics detected in the LLM prompt.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe_topic_categories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

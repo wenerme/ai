@@ -4,15 +4,15 @@ title: Turso
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Turso
+# Turso
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Turso ↗](https://turso.tech/) is an edge-hosted, distributed database based on [libSQL ↗](https://libsql.org/), an open-source fork of SQLite. Turso was designed to minimize query latency for applications where queries comes from anywhere in the world.
 
@@ -91,7 +91,7 @@ npx wrangler secret put TURSO_AUTH_TOKEN
 # When prompted, paste your authentication token
 ```
 5. In your Worker, install the Turso client library:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @libsql/client
 ```
@@ -159,7 +159,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/#page","headline":"Turso · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/turso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

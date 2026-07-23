@@ -4,15 +4,15 @@ title: Temporary credentials
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Temporary credentials
+# Temporary credentials
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Temporary credentials are short-lived, scoped S3 credentials derived from an existing [R2 API token](https://developers.cloudflare.com/r2/api/tokens/). They authenticate with AWS Signature Version 4, the same as a long-lived token, but include a session token and expire automatically. The session token is sent with every request via the `X-Amz-Security-Token` header; all S3-compatible clients expose this as a standard session token credential field.
 
@@ -178,21 +178,21 @@ Treat temporary credentials as bearer tokens. Anyone in possession of all three 
 
 ## Related resources
 
-### [ Authenticate against R2 with temporary credentials ](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/)
+### [Authenticate against R2 with temporary credentials](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/)
 
- End-to-end examples for both the Temporary Credentials API and local JWT signing.
+End-to-end examples for both the Temporary Credentials API and local JWT signing.
 
-### [ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
+### [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
 
- Grant single-operation access to a specific object without issuing credentials.
+Grant single-operation access to a specific object without issuing credentials.
 
-### [ R2 API tokens ](https://developers.cloudflare.com/r2/api/tokens/)
+### [R2 API tokens](https://developers.cloudflare.com/r2/api/tokens/)
 
- Create the parent token that temporary credentials derive from.
+Create the parent token that temporary credentials derive from.
 
-### [ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/)
+### [Error codes](https://developers.cloudflare.com/r2/api/error-codes/)
 
- Authentication and authorization error codes returned by R2\.
+Authentication and authorization error codes returned by R2.
 
 Was this helpful?
 
@@ -200,7 +200,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/#page","headline":"Temporary credentials · Cloudflare R2 docs","description":"Learn about temporary credentials in r2.","url":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

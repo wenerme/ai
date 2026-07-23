@@ -4,15 +4,15 @@ title: Pre-render pages for crawlers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pre-render pages for crawlers
+# Pre-render pages for crawlers
 
-Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pre-rendering generates the final HTML for a page before returning it to a client. For JavaScript-heavy applications, this means loading the page in a browser, waiting for client-side JavaScript to run, and returning the rendered HTML instead of the initial app shell.
 
@@ -45,7 +45,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "name": "my-prerender-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "browser": {
     "binding": "BROWSER"
   }
@@ -56,7 +56,7 @@ Add a Browser Run binding to your Wrangler configuration:
 name = "my-prerender-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [browser]
 binding = "BROWSER"
@@ -240,7 +240,7 @@ The `waitUntil: "networkidle2"` option waits until the page has no more than two
 ## 3\. Test pre-rendering
 
 1. Start your Worker in remote mode:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler dev --remote
 ```
@@ -260,7 +260,7 @@ The response should contain the rendered HTML for the target page.
 ## 4\. Deploy
 
 1. Deploy the Worker after local validation:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler deploy
 ```
@@ -299,7 +299,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/#page","headline":"Pre-render pages for crawlers · Cloudflare Browser Run docs","description":"Use Browser Run to render JavaScript-heavy pages and return crawler-ready HTML from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

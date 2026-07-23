@@ -4,15 +4,15 @@ title: Developing with multiple Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Developing with multiple Workers
+# Developing with multiple Workers
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/multi-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/multi-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When building complex applications, you may want to run multiple Workers during development. This guide covers the different approaches for running multiple Workers locally and when to use each approach.
 
@@ -26,7 +26,7 @@ You can run multiple Workers in a single dev command by passing multiple configu
 
 **Using Wrangler**
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev -c ./app/wrangler.jsonc -c ./api/wrangler.jsonc
@@ -66,7 +66,7 @@ export default defineConfig({
 
 Then run:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx vite dev
@@ -90,7 +90,7 @@ pnpm vite dev
 
 You can also run each Worker in separate dev commands, each with its own terminal and configuration.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 # Terminal 1
@@ -107,7 +107,7 @@ yarn wrangler dev -c ./app/wrangler.jsonc
 pnpm wrangler dev -c ./app/wrangler.jsonc
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 # Terminal 2
@@ -144,7 +144,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/multi-workers/#page","headline":"Developing with multiple Workers · Cloudflare Workers docs","description":"Learn how to develop with multiple Workers using different approaches and configurations.","url":"https://developers.cloudflare.com/workers/local-development/multi-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

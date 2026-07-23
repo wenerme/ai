@@ -4,15 +4,15 @@ title: Access to private apps without having to deploy client agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Access to private apps without having to deploy client agents
+# Access to private apps without having to deploy client agents
 
-Last updated Apr 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -31,7 +31,7 @@ So how do you allow access to private resources, without creating public DNS rec
 
 Follow this [tutorial](https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/) for information on how to configure secure access to private web-based resources without having to deploy client agents.
 
-![Figure 1: Remote Access Internal Hostname](https://developers.cloudflare.com/_astro/diagram1.CgnmLabJ_1lNR1W.svg "Figure 1: Remote browser connected to private web service using internal hostname")
+![Figure 1: Remote Access Internal Hostname](https://developers.cloudflare.com/_astro/diagram1.CgnmLabJ_Z1ByIQE.svg "Figure 1: Remote browser connected to private web service using internal hostname")
 
 Figure 1: Remote browser connected to private web service using internal hostname
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/#page","headline":"Access to private apps without having to deploy client agents · Cloudflare Reference Architecture docs","description":"Learn how to provide access to private apps without having to deploy client agents.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

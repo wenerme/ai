@@ -4,15 +4,15 @@ title: AI Vibe Coding Platform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI Vibe Coding Platform
+# AI Vibe Coding Platform
 
-Last updated Apr 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -22,7 +22,7 @@ Building the infrastructure for such a platform introduces a unique set of chall
 
 Cloudflare has all the components required to build one of these platforms — from middleware that connects to AI models, to secure sandboxes for code execution, and a serverless deployment platform that scales to millions of applications.
 
-![Figure 1: AI Vibe Coding Platform on Cloudflare](https://developers.cloudflare.com/_astro/cf-vibe-plat.hdatWAqi_1eJrFI.svg)
+![Figure 1: AI Vibe Coding Platform on Cloudflare](https://developers.cloudflare.com/_astro/cf-vibe-plat.hdatWAqi_Pq4Wy.svg)
 
 To get started with a reference implementation of an AI vibe coding platform immediately, deploy this [starter template ↗](https://github.com/cloudflare/vibesdk) to your Cloudflare account:
 
@@ -30,7 +30,7 @@ To get started with a reference implementation of an AI vibe coding platform imm
 
 ## Core Architecture Components
 
-![Figure 2: Vibe Hosting Overview](https://developers.cloudflare.com/_astro/vibe-hosting-overview.ZFFcirO4_2mDVq2.svg)
+![Figure 2: Vibe Hosting Overview](https://developers.cloudflare.com/_astro/vibe-hosting-overview.ZFFcirO4_15sLTD.svg)
 
 To build an AI-powered coding platform, you will need these key components:
 
@@ -71,11 +71,11 @@ Both [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](ht
 
 **Sandboxes provide a fully-managed solution** that works out-of-the-box, with [pre-built APIs](https://developers.cloudflare.com/sandbox/api/) for code execution, output formatting, and developer tools, making them ideal for most AI code execution use cases.
 
-![Figure 3: Vibe Code Development - Sandbox SDK](https://developers.cloudflare.com/_astro/ai-platform-sandbox.DziHb_r3_ZCHeQ.svg)
+![Figure 3: Vibe Code Development - Sandbox SDK](https://developers.cloudflare.com/_astro/ai-platform-sandbox.DziHb_r3_2714Dj.svg)
 
 **Containers offer complete runtime control** through custom Docker images, allowing you to run any language or framework with up to 4GB RAM and dedicated vCPU and are best when you need custom runtimes or resource-intensive workloads.
 
-![Figure 4: Isolated Containers](https://developers.cloudflare.com/_astro/BYO-sandbox.cc63egyA_Zx7iBh.svg)
+![Figure 4: Isolated Containers](https://developers.cloudflare.com/_astro/BYO-sandbox.cc63egyA_2wzdAB.svg)
 
 ## Deploying applications to production
 
@@ -89,7 +89,7 @@ When building an AI-powered coding platform, you need to be able to deploy and h
 * **Egress control and usage limits** — Configure firewall policies for all outgoing requests through an [outbound worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) and [custom usage limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) to prevent abuse
 * **Dedicated resources per project:** Attach a KV store or database to each application, enabling more powerful functionality while ensuring [resources](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) are only accessible by the application they’re attached to.
 * **Logging & Observability** across the platform to gather insights, monitor performance, and troubleshoot issues across applications
-![Figure 5: Complete Vibe Coding Platform](https://developers.cloudflare.com/_astro/vibe-hosting-analytics.udVLDrQc_wI25g.svg)
+![Figure 5: Complete Vibe Coding Platform](https://developers.cloudflare.com/_astro/vibe-hosting-analytics.udVLDrQc_ZfoYpM.svg)
 
 ## Conclusion
 
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/#page","headline":"AI Vibe Coding Platform · Cloudflare Reference Architecture docs","description":"Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

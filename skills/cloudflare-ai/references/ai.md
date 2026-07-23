@@ -4,19 +4,19 @@ title: AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI
+# AI
 
-Last updated May 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run AI models on Cloudflare's global network.
 
- Available on all plans
+Available on all plans
 
 Cloudflare AI provides a unified platform for running AI models, whether hosted on Cloudflare infrastructure (Workers AI) or proxied through AI Gateway to external providers.
 
@@ -26,7 +26,7 @@ Cloudflare AI provides a unified platform for running AI models, whether hosted 
 
 Explore all AI models available through Cloudflare, including hosted models on Workers AI and external providers through AI Gateway.
 
- Browse models
+Browse models
 
 ## Related products
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai/#page","headline":"Overview · Cloudflare AI docs","description":"Run AI models on Cloudflare's global network using Workers AI, AI Gateway, and other integrated AI products.","url":"https://developers.cloudflare.com/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

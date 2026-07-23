@@ -4,15 +4,15 @@ title: Traffic detections
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Traffic detections
+# Traffic detections
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Traffic detections check incoming requests for malicious or potentially malicious activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard, and you can use them in rule expressions.
 
@@ -20,12 +20,12 @@ Detections are always on once enabled, even if you have not configured any secur
 
 Cloudflare provides the following detections:
 
-* [ WAF attack score ](https://developers.cloudflare.com/waf/detections/attack-score/)
-* [ Leaked credentials detection ](https://developers.cloudflare.com/waf/detections/leaked-credentials/)
-* [ Malicious uploads detection ](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
-* [ AI Security for Apps ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
-* [ Bot score ](https://developers.cloudflare.com/bots/concepts/bot-score/)
-* [ Threat intelligence ](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
+* [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/)
+* [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/)
+* [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
+* [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
+* [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/)
+* [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
 
 ## Availability
 
@@ -46,7 +46,7 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 To turn on a traffic detection:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Detection tools**.
 3. Turn on the desired detections.
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/#page","headline":"Traffic detections · Cloudflare Web Application Firewall (WAF) docs","description":"Traffic detection signals including attack scores, bot scores, and leaked credentials.","url":"https://developers.cloudflare.com/waf/detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

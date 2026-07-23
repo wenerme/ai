@@ -4,7 +4,7 @@ title: qwen2.5-coder-32b-instruct
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,30 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg)
 
-#  qwen2.5-coder-32b-instruct
+# qwen2.5-coder-32b-instruct
 
- Text Generation • Qwen
+Text Generation • Qwen
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/qwen/qwen2.5-coder-32b-instruct `
+`@cf/qwen/qwen2.5-coder-32b-instruct`
 
 * Cloudflare-hosted
 * LoRA
 
 Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:
 
-| Model Info                                                                  |                                                     |
-| --------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 32,768 tokens                                       |
-| LoRA                                                                        | Yes                                                 |
-| Unit Pricing                                                                | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info                                                                 |                                                     |
+| -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 32,768 tokens                                       |
+| LoRA                                                                       | Yes                                                 |
+| Unit Pricing                                                               | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/qwen/qwen2.5-coder-32b-instruct)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/qwen/qwen2.5-coder-32b-instruct)
 
 ## Usage
 
@@ -124,7 +124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -184,7 +184,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -198,7 +198,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -210,13 +210,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -224,7 +224,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/#page","headline":"qwen2.5-coder-32b-instruct (Qwen) · Cloudflare AI docs · Cloudflare AI docs","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:","url":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

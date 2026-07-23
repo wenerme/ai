@@ -4,7 +4,7 @@ title: Gemini 2.5 Flash Lite
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Gemini 2.5 Flash Lite
+# Gemini 2.5 Flash Lite
 
- Text Generation • Google
+Text Generation • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/gemini-2.5-flash-lite `
+`google/gemini-2.5-flash-lite`
 
 * Third-party
 * Zero data retention
 
 Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput tasks.
 
-| Model Info                                                                  |                                                                                                                                 |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                                |
-| Terms and License                                                           | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                                |
-| More information                                                            | [link ↗](https://deepmind.google/technologies/gemini/)                                                                          |
-| Zero data retention                                                         | Yes                                                                                                                             |
-| Request formats                                                             | Chat Completions                                                                                                                |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
+| Model Info                                                                 |                                                                                                                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                               |
+| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
+| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                            |
+| Request formats                                                            | Chat Completions                                                                                                               |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
 
 ## Usage
 
@@ -134,7 +134,7 @@ These three laws are fundamental to understanding how energy works in everything
 
 ## Examples
 
-**With System Instruction**  — Using a system instruction to set context
+**With System Instruction** — Using a system instruction to set context
 
 ```ts
 const response = await env.AI.run(
@@ -358,7 +358,7 @@ By following these steps, you can effectively read and work with JSON data in yo
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -495,7 +495,7 @@ This is the iconic drive for a reason! Expect breathtaking ocean views, dramatic
 }
 ```
 
-**Creative Writing**  — Higher temperature for creative output
+**Creative Writing** — Higher temperature for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -711,9 +711,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -721,7 +721,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/#page","headline":"Gemini 2.5 Flash Lite (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput tasks.","url":"https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

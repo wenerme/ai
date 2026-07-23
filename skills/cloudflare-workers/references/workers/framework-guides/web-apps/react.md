@@ -4,19 +4,19 @@ title: React + Vite
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  React + Vite
+# React + Vite
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI** \- scaffold a full-stack app with a React SPA, Cloudflare Workers API, and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-react-app --framework=react
@@ -43,7 +43,7 @@ pnpm create cloudflare@latest my-react-app --framework=react
 ## Creating a full-stack app with React
 
 1. **Create a new project with the create-cloudflare CLI (C3)**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-react-app --framework=react
 ```
@@ -73,7 +73,7 @@ Below is a simplified file tree of the project.
 `worker/index.ts` is your backend API, which contains a single endpoint, `/api/`, that returns a text response. At `src/App.tsx`, your React app calls this endpoint to get a message back and displays this.
 2. **Develop locally with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)**
 After creating your project, run the following command in your project directory to start a local development server.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -89,7 +89,7 @@ In addition, `vite.config.ts` is set up to use the Cloudflare Vite plugin. This 
 3. **Deploy your project**
 Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), from your own machine or from any CI/CD system, including Cloudflare's own [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
 The following command will build and deploy your project. If you are using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run deploy
 ```
@@ -116,9 +116,9 @@ Your new project also contains a Worker at `./worker/index.ts`, which you can us
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-### [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
- Access to compute, storage, AI and more.
+Access to compute, storage, AI and more.
 
 Was this helpful?
 
@@ -126,7 +126,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/#page","headline":"React + Vite · Cloudflare Workers docs","description":"Create a React application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}

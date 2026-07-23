@@ -4,15 +4,15 @@ title: Embed in an iFrame
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Embed in an iFrame
+# Embed in an iFrame
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because of how a waiting room [tracks visitor progress](#background), you need to [specify certain cookie attributes](#allow-cookies-to-pass-through-iframes) to properly embed a waiting room in an iFrame.
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/#page","headline":"Embed in an iFrame · Cloudflare Waiting Room docs","description":"Embed a waiting room page inside an iFrame.","url":"https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}

@@ -4,21 +4,21 @@ title: moondream3.1-9B-A2B
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- m
+m
 
-#  moondream3.1-9B-A2B
+# moondream3.1-9B-A2B
 
- Image-to-Text • moondream
+Image-to-Text • moondream
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/moondream/moondream3.1-9B-A2B `
+`@cf/moondream/moondream3.1-9B-A2B`
 
 * Cloudflare-hosted
 * Vision
@@ -106,9 +106,9 @@ caption
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/#page","headline":"moondream3.1-9B-A2B (moondream) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.","url":"https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

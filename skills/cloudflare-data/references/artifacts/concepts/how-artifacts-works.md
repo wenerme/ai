@@ -4,15 +4,15 @@ title: How Artifacts works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How Artifacts works
+# How Artifacts works
 
-Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts creates Git repos on demand. Each repo is an isolated Git service with its own remote URL, tokens, and durable state.
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/#page","headline":"How Artifacts works · Cloudflare Artifacts docs","description":"Understand namespaces, repos, and durability.","url":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

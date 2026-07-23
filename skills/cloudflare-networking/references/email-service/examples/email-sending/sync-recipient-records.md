@@ -4,17 +4,17 @@ title: Sync recipient records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sync recipient records
+# Sync recipient records
 
 Synchronize application recipient records with Email Sending lifecycle events.
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) to update application records after delivery problems. This example uses [Cloudflare Queues](https://developers.cloudflare.com/queues/) and [Workers KV](https://developers.cloudflare.com/kv/) to remove recipients from transactional notifications.
 
@@ -53,7 +53,7 @@ For payload details, refer to [Available Email Sending events](https://developer
 Create a queue and subscribe it to your sending domain:
 
 1. In the Cloudflare dashboard, go to the **Queues** page. Create a queue named `email-events`.
-[ Go to **Queues** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/queues)
+[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select `email-events`, then select **Subscriptions** \> **Subscribe to events**.
 3. Enter a subscription name and select **Email Sending** as the source.
 4. Select your sending domain and the `message.bounced` and `message.complained` events.
@@ -69,7 +69,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
   "name": "recipient-record-sync",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "kv_namespaces": [
     {
       "binding": "RECIPIENTS",
@@ -93,7 +93,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
 name = "recipient-record-sync"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[kv_namespaces]]
 binding = "RECIPIENTS"
@@ -226,7 +226,7 @@ The handler acknowledges each successful message. Failed operations move to the 
 
 Deploy the Worker and its queue consumer configuration:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -255,7 +255,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

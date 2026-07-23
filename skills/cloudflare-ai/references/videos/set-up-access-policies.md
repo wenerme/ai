@@ -4,7 +4,7 @@ title: Set up Cloudflare Access policies for your tunnel
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Learn how to set up access policies using Cloudflare Access to verify the identity of every user.
 

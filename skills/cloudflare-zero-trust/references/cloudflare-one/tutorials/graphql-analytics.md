@@ -4,15 +4,15 @@ title: GraphQL Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  GraphQL Analytics
+# GraphQL Analytics
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/graphql-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/graphql-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic. This contains both rules you configured in the Cloudflare Network Firewall dashboard, and the rules managed by Cloudflare as a part of [Cloudflare Network Firewall Managed rules](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/) and [Cloudflare Network Firewall IDS](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/) features.
 
@@ -32,7 +32,7 @@ To construct a Network Firewall GraphQL query for an object, you will need a Clo
 To construct queries to gather analytics for a particular rule, you need the rule ID for each firewall rule.
 
 1. In the Cloudflare dashboard, go to the **Cloudflare Network Firewall** page.
-[ Go to **Firewall policies** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall)
+[Go to **Firewall policies** ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall)
 2. In the **Custom rules** tab, locate the rule you need the rule ID for from the list and select the three dots > **Edit**.
 3. Locate the **Rule ID** and select the copy button.
 4. Select **Cancel** to return to the **Cloudflare Network Firewall** page.
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/graphql-analytics/#page","headline":"GraphQL Analytics · Cloudflare One docs","description":"Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/graphql-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}

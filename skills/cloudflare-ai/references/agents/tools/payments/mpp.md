@@ -4,15 +4,15 @@ title: MPP (Machine Payments Protocol)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  MPP (Machine Payments Protocol)
+# MPP (Machine Payments Protocol)
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/payments/mpp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Machine Payments Protocol (MPP) ↗](https://mpp.dev) is a protocol for machine-to-machine payments, co-authored by [Tempo Labs ↗](https://tempo.xyz) and [Stripe ↗](https://stripe.com). It standardizes the HTTP `402 Payment Required` status code with a formal authentication scheme proposed to the [IETF ↗](https://paymentauth.org). MPP gives agents, apps, and humans a single interface to pay for any service in the same HTTP request.
 
@@ -53,9 +53,9 @@ MPP is backwards-compatible with [x402](https://developers.cloudflare.com/agents
 
 ## Charge for resources
 
-### [ HTTP content ](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/)
+### [HTTP content](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/)
 
- Gate APIs, web pages, and files with MPP middleware
+Gate APIs, web pages, and files with MPP middleware
 
 ## SDKs
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/#page","headline":"MPP (Machine Payments Protocol) · Cloudflare Agents docs","description":"Accept and make payments using the Machine Payments Protocol (MPP) on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

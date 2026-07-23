@@ -4,15 +4,15 @@ title: Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Terraform
+# Terraform
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/reference/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/reference/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get started with API Shield using Terraform from the examples below. For more information on how to use Terraform with Cloudflare, refer to the [Terraform documentation](https://developers.cloudflare.com/terraform/).
 
@@ -175,7 +175,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/terraform/#page","headline":"Terraform · Cloudflare API Shield docs","description":"Configure API Shield resources with Terraform, including endpoints and schemas.","url":"https://developers.cloudflare.com/api-shield/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}

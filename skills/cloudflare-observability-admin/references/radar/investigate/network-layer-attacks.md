@@ -4,15 +4,15 @@ title: Network layer attacks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network layer attacks
+# Network layer attacks
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network layer attacks show [DDoS ↗](https://www.cloudflare.com/en-gb/learning/ddos/layer-3-ddos-attacks/) attack trends at the network layer. These attacks can be split by the network protocol they use: [ICMP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/internet-control-message-protocol-icmp/), [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/), [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) and others.
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/#page","headline":"Network layer attacks · Cloudflare Radar docs","description":"Examine network layer DDoS attack trends in Cloudflare Radar, broken down by protocol (TCP, UDP, ICMP) and source location.","url":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

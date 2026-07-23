@@ -4,15 +4,15 @@ title: JSON Web Tokens validation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JSON Web Tokens validation
+# JSON Web Tokens validation
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
 
@@ -27,7 +27,7 @@ A JWT validation configuration has two parts: a token validation configuration t
 ### Add a token validation configuration
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. On **Token configurations**, select **Configure tokens**.
 4. Add a name for your configuration.
@@ -48,7 +48,7 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 ### Add a JWT validation rule
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. On API JWT validation rules, select **Create rule**.
 3. Add a name for your rule.
 4. Select a hostname to protect requests with saved endpoints using the rule.
@@ -147,7 +147,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to prevent replay attacks and token tampering at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}

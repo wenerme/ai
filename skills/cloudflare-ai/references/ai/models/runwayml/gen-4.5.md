@@ -4,7 +4,7 @@ title: RunwayML Gen-4.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)
 
-#  RunwayML Gen-4.5
+# RunwayML Gen-4.5
 
- Text-to-Video • RunwayML
+Text-to-Video • RunwayML
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` runwayml/gen-4.5 `
+`runwayml/gen-4.5`
 
 * Third-party
 
 RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.
 
-| Model Info        |                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                         |
-| More information  | [link ↗](https://runwayml.com/)                                                                                     |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
+| Model Info        |                                                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                        |
+| More information  | [link ↗](https://runwayml.com/)                                                                                    |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
 
 ## Usage
 
@@ -72,7 +72,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait Video**  — Vertical video for social media
+**Portrait Video** — Vertical video for social media
 
 ```ts
 const response = await env.AI.run(
@@ -113,7 +113,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Nature Close-up**  — Close-up wildlife shot in 16:9
+**Nature Close-up** — Close-up wildlife shot in 16:9
 
 ```ts
 const response = await env.AI.run(
@@ -154,7 +154,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Cinematic Scene**  — Longer duration cinematic video
+**Cinematic Scene** — Longer duration cinematic video
 
 ```ts
 const response = await env.AI.run(
@@ -195,7 +195,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image-to-Video**  — Animate an existing image
+**Image-to-Video** — Animate an existing image
 
 ```ts
 const response = await env.AI.run(
@@ -238,7 +238,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Reproducible Generation**  — Use seed for consistent results
+**Reproducible Generation** — Use seed for consistent results
 
 ```ts
 const response = await env.AI.run(
@@ -280,7 +280,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Content Moderation**  — Adjust content moderation settings
+**With Content Moderation** — Adjust content moderation settings
 
 ```ts
 const response = await env.AI.run(
@@ -356,9 +356,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -366,7 +366,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/#page","headline":"RunwayML Gen-4.5 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.","url":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

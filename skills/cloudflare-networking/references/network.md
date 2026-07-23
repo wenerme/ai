@@ -4,19 +4,19 @@ title: Network settings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network settings
+# Network settings
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage network settings for your website.
 
- Available on all plans
+Available on all plans
 
 ---
 
@@ -26,19 +26,19 @@ Manage network settings for your website.
 
 Include the country code of the visitor location with all requests to your website.
 
- Use IP Geolocation
+Use IP Geolocation
 
 [IPv6 Compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/)
 
 Enable IPv6 support and gateway.
 
- Use IPv6 Compatibility
+Use IPv6 Compatibility
 
 [WebSockets](https://developers.cloudflare.com/network/websockets/)
 
 Allow WebSockets connections to your origin server.
 
- Use WebSockets
+Use WebSockets
 
 ---
 
@@ -58,7 +58,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network/#page","headline":"Overview · Cloudflare Network settings docs","description":"Manage network settings for your Cloudflare website.","url":"https://developers.cloudflare.com/network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Custom fields
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Custom fields
+# Custom fields
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The HTTP requests dataset includes most standard log information by default. However, if you need to capture additional request or response headers or cookies, you can use custom fields to tailor the logs to your specific needs
 
@@ -285,7 +285,7 @@ If you are a Cloudflare Access user, as of March 2022 you have to manually add t
 ## Enable custom fields via dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. In the **Custom log fields** section, select **Edit Custom Fields**.
 3. Select **Set new Custom Field**.
 4. From the **Field Type** dropdown, select _Request Header_, _Response Header_ or _Cookies_ and type the **Field Name**.
@@ -315,7 +315,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/#page","headline":"Custom fields · Cloudflare Logs docs","description":"Log custom request and response headers.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

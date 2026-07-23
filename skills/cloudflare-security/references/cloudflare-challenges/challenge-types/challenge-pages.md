@@ -4,15 +4,15 @@ title: Interstitial Challenge Pages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Interstitial Challenge Pages
+# Interstitial Challenge Pages
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An interstitial Challenge Page (a full-page screen that appears before the visitor reaches the destination URL) acts as a gate between the visitor and your website or application while Cloudflare verifies the authenticity of the visitor.
 
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#page","headline":"Interstitial Challenge Pages · Cloudflare challenges docs","description":"Full-page challenge screens that verify visitors before they reach your website.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

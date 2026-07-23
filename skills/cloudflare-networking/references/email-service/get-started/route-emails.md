@@ -4,17 +4,17 @@ title: Route emails
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Route emails
+# Route emails
 
 Set up email routing to forward incoming emails to existing mailboxes or process them with Workers.
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/get-started/route-emails/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/get-started/route-emails/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Route incoming emails sent to your domain to existing mailboxes, Workers for processing, or other destinations.
 
@@ -27,7 +27,7 @@ You must be using Cloudflare DNS to use Email Service.
 Before using Email Routing, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to your root domain:
 
@@ -53,7 +53,7 @@ The simplest way to route emails is forwarding them to existing email addresses.
 Before you can create a routing rule, add and verify the destination address that will receive the forwarded emails. Destination addresses are managed at the account level and can be reused across domains.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing** \> **Destination Addresses**.
-[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Under **Destination addresses**, enter the email address you want to use as a destination in the inline form and submit it.
 3. Open the verification email Cloudflare sends to that address and select **Verify email address**.
 
@@ -62,7 +62,7 @@ For full details, refer to [Add a destination address](https://developers.cloudf
 ### Create a routing rule
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select the domain you want to create an email address for.
 3. Select the **Routing Rules** tab.
 4. Select **Create routing rule**.
@@ -176,7 +176,7 @@ npm run deploy
 ### Configure routing to Worker
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select the domain you want to configure routing for.
 3. Select the **Routing Rules** tab.
 4. Select **Create routing rule**.
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/route-emails/#page","headline":"Route emails · Cloudflare Email Service docs","description":"Forward incoming emails to existing mailboxes or process them with Workers using Email Service.","url":"https://developers.cloudflare.com/email-service/get-started/route-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

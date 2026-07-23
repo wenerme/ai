@@ -4,15 +4,15 @@ title: Filter resources by tag
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Filter resources by tag
+# Filter resources by tag
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `GET /accounts/{account_id}/tags/resources` endpoint supports tag filtering via the `tag` query parameter. Multiple `tag` parameters combine with AND logic. For the full endpoint specification, refer to the [Resource Tagging API reference ↗](https://developers.cloudflare.com/api/resources/tags/).
 
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/#page","headline":"Filter resources by tag · Cloudflare Resource Tagging docs","description":"Query tagged resources using the tag filtering syntax.","url":"https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

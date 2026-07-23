@@ -4,15 +4,15 @@ title: Manage custom certificates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage custom certificates
+# Manage custom certificates
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists Cloudflare requirements for custom certificates and explains how to upload and update these certificates using Cloudflare dashboard or API.
 
@@ -47,7 +47,7 @@ When using `compatible` or `modern` [bundling](https://developers.cloudflare.com
 To upload a custom SSL certificate in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. In **Edge Certificates**, select **Upload Custom SSL Certificate**.
 3. Copy and paste relevant values into **SSL Certificate** and **Private key** text areas (or select **Paste from file**).
 Note
@@ -171,7 +171,7 @@ Replacing a custom certificate following these steps does not lead to any downti
 To update a certificate in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. In **Edge Certificates**, locate a custom certificate and select it to expand.
 3. Select the wrench button and choose **Replace SSL certificate and key**.
 4. Follow the same steps as [upload a new certificate](#upload-a-custom-certificate).
@@ -187,7 +187,7 @@ To update the **Private Key Restriction** setting of a certificate, you must del
 ## Delete a custom certificate
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. In **Edge Certificates**, locate a custom certificate and select it to expand.
 3. Select the cross button.
 4. Select **Confirm** to delete the certificate.
@@ -198,7 +198,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#page","headline":"Manage custom certificates · Cloudflare SSL/TLS docs","description":"Upload, update, and delete custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: BGP anomalies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  BGP anomalies
+# BGP anomalies
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/bgp-anomalies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/bgp-anomalies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To access Cloudflare Radar BGP Anomaly Detection results, you will first need to create an API token that includes a `Account:Radar` permission. All the following examples should work with a free-tier Cloudflare account.
 
@@ -182,7 +182,7 @@ We will start with setting up a Cloudflare Worker app.
 
 First, create a new Workers app in a local directory:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- hijack-alerts
@@ -218,7 +218,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 	"name": "hijack-alerts",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"triggers": {
 		"crons": [
 			"*/5 * * * *"
@@ -232,7 +232,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 name = "hijack-alerts"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [triggers]
 crons = [ "*/5 * * * *" ]
@@ -456,7 +456,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

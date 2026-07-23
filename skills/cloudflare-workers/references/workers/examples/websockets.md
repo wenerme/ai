@@ -4,17 +4,17 @@ title: Using the WebSockets API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using the WebSockets API
+# Using the WebSockets API
 
 Use the WebSockets API to communicate in real time with your Cloudflare Workers.
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 WebSockets allow you to communicate in real time with your Cloudflare Workers serverless functions. In this guide, you will learn the basics of WebSockets on Cloudflare Workers, both from the perspective of writing WebSocket servers in your Workers functions, as well as connecting to and working with those WebSocket servers as a client.
 
@@ -328,7 +328,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}

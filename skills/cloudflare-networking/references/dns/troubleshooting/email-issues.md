@@ -4,15 +4,15 @@ title: Email issues
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Email issues
+# Email issues
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/troubleshooting/email-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/email-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you have issues sending or receiving mail, follow these troubleshooting steps.
 
@@ -28,7 +28,7 @@ Alternatively, you can use a third-party tool to look up your MX records. For a 
 
 This returns a list of mail servers for your domain. Compare the output to the MX records on your Cloudflare DNS records page.
 
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 If the mail server listed does not match your email provider's expected value, update the MX record content to the correct value. Check your email provider's setup documentation for the correct MX record values.
 
@@ -71,7 +71,7 @@ Common examples include:
 To fix this issue:
 
 1. Go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Locate the mail-related hostname.
 3. Change the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) to **DNS only**.
 
@@ -96,13 +96,13 @@ Always confirm the exact values with your provider before making changes.
 
 Cloudflare does not proxy email traffic (SMTP, port 25) by default. Unless you have explicitly configured [Cloudflare Spectrum](https://developers.cloudflare.com/spectrum/reference/configuration-options#smtp) to proxy SMTP traffic, email is delivered directly to your mail server and does not pass through the Cloudflare network. DNS records used for email should be set to [DNS only](https://developers.cloudflare.com/dns/proxy-status/) to ensure mail traffic is not affected by the proxy.
 
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 
 ## Is Email Routing turned on?
 
 If [Email Routing](https://developers.cloudflare.com/email-service/) is turned on, Cloudflare manages your MX records and may create additional DNS records automatically.
 
-[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/email/routing)
+[Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/:zone/email/routing)
 
 If Email Routing is turned on but you use a different mail provider, the Email Routing MX records may conflict with your provider's records. You can [turn off Email Routing](https://developers.cloudflare.com/email-service/configuration/domains/#remove-a-domain-from-email-routing) to remove the managed records and configure your own.
 
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/#page","headline":"Troubleshooting email issues · Cloudflare DNS docs","description":"Resolve email delivery issues related to DNS configuration.","url":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

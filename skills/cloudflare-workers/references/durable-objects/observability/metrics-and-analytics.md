@@ -4,15 +4,15 @@ title: Metrics and analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Metrics and analytics
+# Metrics and analytics
 
-Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
 
@@ -27,7 +27,7 @@ A Durable Object namespace is a set of Durable Objects that can be addressed by 
 Per-namespace analytics for Durable Objects are available in the Cloudflare dashboard. To view current and historical metrics for a namespace:
 
 1. In the Cloudflare dashboard, go to the **Durable Objects** page.
-[ Go to **Durable Objects** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 2. View account-level Durable Objects usage.
 3. Select an existing Durable Object namespace.
 4. Select the **Metrics** tab.
@@ -75,7 +75,7 @@ enabled = true
 ```
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page.
-[ Go to **Durable Objects** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 4. Select an existing Durable Object namespace.
 5. Select the **Logs** tab.
 
@@ -152,7 +152,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Durable Objects docs","description":"View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.","url":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

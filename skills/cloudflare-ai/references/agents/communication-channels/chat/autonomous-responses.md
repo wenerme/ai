@@ -4,15 +4,15 @@ title: Autonomous responses
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Autonomous responses
+# Autonomous responses
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
 
@@ -613,21 +613,21 @@ Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()
 
 ## Next steps
 
-### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+### [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
- Full API reference for AIChatAgent, saveMessages, persistMessages, and onChatResponse.
+Full API reference for AIChatAgent, saveMessages, persistMessages, and onChatResponse.
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Delayed, cron, and interval scheduling for agent callbacks.
+Delayed, cron, and interval scheduling for agent callbacks.
 
-### [ Webhooks ](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
+### [Webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
 
- Receive webhook events and route them to agent instances.
+Receive webhook events and route them to agent instances.
 
-### [ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/)
+### [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)
 
- Handle inbound emails in your agent.
+Handle inbound emails in your agent.
 
 Was this helpful?
 
@@ -635,7 +635,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

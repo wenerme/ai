@@ -4,15 +4,15 @@ title: Implement regional private DNS servers with Gateway resolver policies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Implement regional private DNS servers with Gateway resolver policies
+# Implement regional private DNS servers with Gateway resolver policies
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway resolver policies allow you to route DNS queries to custom DNS resolvers based on various criteria. This tutorial demonstrates how to configure region-specific private DNS servers to ensure your users are directed to the closest internal resources based on their geographic location.
 
@@ -136,7 +136,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/#page","headline":"Implement regional private DNS servers with Gateway resolver policies · Cloudflare One docs","description":"Configure Gateway resolver policies to route DNS queries to region-specific private DNS servers, enabling geo-steering for internal resources across multiple locations.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Geolocation","Private networks"]}

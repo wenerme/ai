@@ -4,15 +4,15 @@ title: GitHub Copilot CLI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  GitHub Copilot CLI
+# GitHub Copilot CLI
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) supports bring-your-own-key (BYOK) model providers configured through environment variables. Route it through AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), an OpenAI-compatible `/chat/completions` endpoint authenticated with a Cloudflare API token. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so no provider API keys are needed in your environment. Alternatively, you can store your own provider API keys in AI Gateway with [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) and use the same Cloudflare API token to authenticate — AI Gateway resolves the stored key on each request.
 
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/#page","headline":"GitHub Copilot CLI · Cloudflare AI Gateway docs","description":"Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

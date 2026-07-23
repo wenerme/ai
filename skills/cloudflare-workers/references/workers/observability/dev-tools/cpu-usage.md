@@ -4,15 +4,15 @@ title: Profiling CPU usage
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Profiling CPU usage
+# Profiling CPU usage
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a Worker spends too much time performing CPU-intensive tasks, responses may be slow or the Worker might fail to startup due to [time limits](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/#page","headline":"Profiling CPU usage · Cloudflare Workers docs","description":"Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits","url":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

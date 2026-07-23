@@ -4,15 +4,15 @@ title: Configure Virtual Appliance
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure Virtual Appliance
+# Configure Virtual Appliance
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Register a virtual appliance and generate a license key
 
@@ -218,7 +218,7 @@ You need to create a profile for your appliance before connecting it to the Inte
 To create a profile:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Go to the **Appliances** tab > **Profiles** \> **Create a new profile**.
 1. In **Name**, enter a descriptive name for your Cloudflare One Virtual Appliance. Optionally, you can also add a description for it.
 2. You need to decide if you want to turn on high availability for the Cloudflare One Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
@@ -252,7 +252,7 @@ This is not the same as a high availability (HA) configuration. HA configuration
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
@@ -293,7 +293,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/create/) to create a LAN.
 
@@ -343,12 +343,12 @@ When the Cloudflare One Virtual Appliance is first activated, one of the ports m
 
 Caution
 
- Remember to connect Cloudflare One Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Virtual Appliance will not work.
+Remember to connect Cloudflare One Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Virtual Appliance will not work.
 
 When you are ready to connect your Cloudflare One Virtual Appliance to the Cloudflare network:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**.
 2. Find the Cloudflare One Virtual Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Cloudflare One Virtual Appliance you want to activate.
 3. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
@@ -371,7 +371,7 @@ After activating your device, you can use it in a network configuration with the
 
 Caution
 
- Make sure you complete the setup workflow and activate your Cloudflare One Virtual Appliance before changing the WAN settings to a static IP.
+Make sure you complete the setup workflow and activate your Cloudflare One Virtual Appliance before changing the WAN settings to a static IP.
 
 1. Connect the machine where you installed the VM with Cloudflare One Virtual Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.
@@ -430,10 +430,10 @@ Cloudflare One Virtual Appliance automatically creates [IPsec tunnels](https://d
 To check the IPsec tunnels and static routes created by your Cloudflare One Virtual Appliance:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. The **IPsec/GRE tunnels** tab shows a list of all the IPsec tunnels created by your Cloudflare One Virtual Appliance.
 2. Go to the **Routes** page.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Here you can inspect the static routes created by your Cloudflare One Virtual Appliance.
 
 ---
@@ -451,7 +451,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

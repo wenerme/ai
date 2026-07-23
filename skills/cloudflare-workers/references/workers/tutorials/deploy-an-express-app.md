@@ -4,15 +4,15 @@ title: Deploy an Express.js application on Cloudflare Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy an Express.js application on Cloudflare Workers
+# Deploy an Express.js application on Cloudflare Workers
 
-Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to deploy an [Express.js ↗](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
@@ -34,7 +34,7 @@ You may wish to manually follow the steps if you are new to Cloudflare Workers.
 
 Use [C3 ↗](https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/#c3), the command-line tool for Cloudflare's developer products, to create a new directory and initialize a new Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- express-d1-app
@@ -66,7 +66,7 @@ cd express-d1-app
 
 In this tutorial, you will use [Express.js ↗](https://expressjs.com/), a popular web framework for Node.js. To use Express in a Cloudflare Workers environment, install Express along with the necessary TypeScript types:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i express @types/express
@@ -561,7 +561,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

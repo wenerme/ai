@@ -4,15 +4,15 @@ title: Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
+# Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 HTTPS on Cloudflare involves two separate connections: visitor to Cloudflare, and Cloudflare to your origin server. Both must be encrypted for end-to-end security. This guide walks through five stages:
 
@@ -35,7 +35,7 @@ Your SSL/TLS encryption mode controls how Cloudflare connects to your origin ser
 ### Check your current mode
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Check the current encryption mode displayed on the page.
 
   * If the mode is already **Full (strict)**, skip to [Redirect all HTTP requests to HTTPS](#redirect-all-http-requests-to-https).
@@ -50,7 +50,7 @@ If your origin already has a valid certificate from a publicly trusted certifica
 #### 1\. Create an Origin CA certificate
 
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. On the **Origin Certificates** tab, select **Create Certificate**.
 3. Choose either:
 
@@ -88,7 +88,7 @@ After installing a valid certificate on your origin server, set the encryption m
 To change your encryption mode in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
 To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
@@ -113,7 +113,7 @@ Note
 If only some parts of your application can support HTTPS traffic, do not turn on Always Use HTTPS. Use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively redirect specific paths to HTTPS instead. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is not set to **Off**. When the encryption mode is Off, the Always Use HTTPS option is not visible in the dashboard.
 3. Go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 4. Turn on **Always Use HTTPS**.
@@ -126,7 +126,7 @@ If only some parts of your application can support HTTPS traffic, do not turn on
 Automatic HTTPS Rewrites prevents mixed content errors by rewriting HTTP resource URLs in your page HTML to HTTPS. This is useful for sites where you do not control all asset URLs, such as CMS-hosted content or embedded third-party resources.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Automatic HTTPS Rewrites**, switch the toggle to **On**.
 
 Send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `automatic_https_rewrites` as the setting name in the URI path, and the `value` parameter set to `"on"`.
@@ -144,7 +144,7 @@ After your encryption mode is set and HTTP traffic is redirected, strengthen you
 TLS 1.0 and 1.1 have known vulnerabilities and are no longer considered secure. Setting the minimum TLS version to 1.2 blocks connections from clients using older protocols. For guidance on which version to choose, refer to [TLS protocols](https://developers.cloudflare.com/ssl/reference/protocols/).
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Minimum TLS Version**, select **TLS 1.2**.
 
 Send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `min_tls_version` as the setting name in the URI path, and the `value` parameter set to `"1.2"`.
@@ -158,7 +158,7 @@ To set minimum TLS versions for individual hostnames instead of the entire zone,
 TLS 1.3 provides faster handshakes and improved security over TLS 1.2.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **TLS 1.3**, switch the toggle to **On**.
 
 Send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `tls_1_3` as the setting name in the URI path, and the `value` parameter set to `"on"`. To also turn on 0-RTT (Zero Round Trip Time Resumption), set the value to `"zrt"`.
@@ -178,7 +178,7 @@ Before turning on HSTS, confirm these prerequisites:
 * You are not redirecting HTTPS to HTTP anywhere.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Read the dialog and select **I understand**.
 4. Select **Next**.
@@ -209,7 +209,7 @@ HTTPS encrypts data in transit, but third-party scripts loaded by your pages can
 ### Turn on script monitoring
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Turn on **Continuous script monitoring**.
 
@@ -218,7 +218,7 @@ HTTPS encrypts data in transit, but third-party scripts loaded by your pages can
 After turning on monitoring, it may take some time for Cloudflare to generate a list of detected scripts on your domain.
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
-[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select the **Client-side resources** tab.
 3. Review the list of detected scripts. Check for unknown or unexpected scripts from domains you do not recognize.
 
@@ -239,7 +239,7 @@ Cloudflare's Automatic SSL/TLS analyzes your origin server and selects the most 
 To check whether your zone uses Automatic SSL/TLS:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Check whether **Automatic SSL/TLS** or **Custom SSL/TLS** is selected. If Custom is selected and you want Cloudflare to manage the mode automatically, select **Automatic SSL/TLS**.
 
 Note
@@ -291,7 +291,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/#page","headline":"Enforce HTTPS and encrypt all traffic (Free, Pro, and Business) · Cloudflare use cases","description":"Configure SSL/TLS encryption from edge to origin, redirect HTTP to HTTPS, and harden your HTTPS setup with HSTS and minimum TLS versions.","url":"https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

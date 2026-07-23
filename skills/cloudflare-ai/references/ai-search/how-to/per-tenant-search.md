@@ -4,15 +4,15 @@ title: Multitenancy
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Multitenancy
+# Multitenancy
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In a multi-tenant application, each tenant must only ever see their own data. AI Search supports two ways to isolate search per tenant: give each tenant its own instance, or share one instance and filter by tenant at query time.
 
@@ -40,7 +40,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `tenant-search` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- tenant-search
@@ -74,13 +74,13 @@ This is the **recommended** approach. Each tenant gets a separate instance with 
 
 Create an isolated AI Search instance for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
 
-[ Tenant A ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ Tenant B ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ Tenant C ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
-[ env.AI\_SEARCH.get(id) Worker ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[env.AI\_SEARCH.get(id)Worker](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 namespace: tenants
 
-[ AI Search instance tenant-a ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ AI Search instance tenant-b ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ AI Search instance tenant-c ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 Note
 
@@ -412,13 +412,13 @@ npx wrangler deploy
 
 ## Next steps
 
-### [ Namespaces ](https://developers.cloudflare.com/ai-search/concepts/namespaces/)
+### [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/)
 
- Group instances and manage them dynamically from a binding.
+Group instances and manage them dynamically from a binding.
 
-### [ Filtering ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)
+### [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)
 
- Filter search results by metadata attributes at query time.
+Filter search results by metadata attributes at query time.
 
 Was this helpful?
 
@@ -426,7 +426,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

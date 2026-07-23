@@ -4,15 +4,15 @@ title: Manage environments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage environments
+# Manage environments
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/how-to/environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/how-to/environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An environment is a place to test different versions of your zone configurations.
 
@@ -37,7 +37,7 @@ Based on your organization's needs, you may need to create additional environmen
 To create a new environment:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. Go to **Environments**.
 4. Select **Create Environment**.
@@ -58,7 +58,7 @@ You can only adjust the [**Read-only Environment**](https://developers.cloudflar
 To edit an environment:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. Select **Environments**.
 4. On a specific environment, select **Edit**.
@@ -80,7 +80,7 @@ Promotion moves a version from a lower-ranked environment to the next highest on
 To promote a version:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
 3. Go to **Version Management**.
 4. Select **Environments**.
@@ -96,7 +96,7 @@ When you roll back a version, you revert the environment to the previous version
 To roll back a version:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. Select **Environments**.
 4. On a specific environment, select **Roll back**.
@@ -108,7 +108,7 @@ To roll back a version:
 To delete an environment:
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and zone.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Version Management**.
 3. Select **Environments**.
 4. On a specific environment, select **Edit**.
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/environments/#page","headline":"Manage environments · Cloudflare Version Management docs","description":"Create and configure Version Management environments.","url":"https://developers.cloudflare.com/version-management/how-to/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

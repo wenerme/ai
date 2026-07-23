@@ -4,15 +4,15 @@ title: Authenticate coding agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Authenticate coding agents
+# Authenticate coding agents
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents such as Claude Code, OpenCode, and Windsurf often need to reach resources protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/). When a resource is behind Access, unauthenticated requests receive a redirect or `403` error instead of the expected response. Your agent needs a way to authenticate before it can reach the resource.
 
@@ -398,7 +398,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#page","headline":"Authenticate coding agents · Cloudflare One docs","description":"Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Authentication"]}

@@ -4,15 +4,15 @@ title: Image optimization on optimized images
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Image optimization on optimized images
+# Image optimization on optimized images
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's [image optimization features](https://developers.cloudflare.com/speed/optimization/images/) will likely not help much if you are already optimizing your images in some way (Smush.it, etc.).
 
@@ -24,7 +24,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/#page","headline":"Image optimization on optimized images · Cloudflare Speed docs","description":"How multiple image optimizations interact with each other.","url":"https://developers.cloudflare.com/speed/optimization/images/troubleshooting/multiple-optimizations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

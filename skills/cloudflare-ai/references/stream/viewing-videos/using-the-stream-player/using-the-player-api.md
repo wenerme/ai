@@ -4,15 +4,15 @@ title: Stream Player API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Stream Player API
+# Stream Player API
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For further control and customization, we provide an additional JavaScript SDK that you can use to control video playback and listen for media events.
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/#page","headline":"Stream Player API · Cloudflare Stream docs","description":"Control Cloudflare Stream video playback and listen for media events using the JavaScript SDK.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

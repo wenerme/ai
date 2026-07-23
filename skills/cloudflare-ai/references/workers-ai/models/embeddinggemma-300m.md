@@ -4,7 +4,7 @@ title: embeddinggemma-300m
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  embeddinggemma-300m
+# embeddinggemma-300m
 
- Text Embeddings • Google
+Text Embeddings • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/google/embeddinggemma-300m `
+`@cf/google/embeddinggemma-300m`
 
 * Cloudflare-hosted
 
@@ -88,7 +88,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -106,9 +106,9 @@ OpenAI compatible endpoints
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/#page","headline":"embeddinggemma-300m (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.","url":"https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

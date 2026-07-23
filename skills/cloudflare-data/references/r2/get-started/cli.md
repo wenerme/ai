@@ -4,15 +4,15 @@ title: CLI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  CLI
+# CLI
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/get-started/cli/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/get-started/cli/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage R2 buckets and objects directly from your terminal. Use CLI tools to automate tasks and manage objects.
 
@@ -41,7 +41,7 @@ npx wrangler r2 bucket list
 ```
 
 1. In the Cloudflare Dashboard, go to **R2 object storage**.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for your bucket.
 4. Select a [location](https://developers.cloudflare.com/r2/reference/data-location) for your bucket and a [default storage class](https://developers.cloudflare.com/r2/buckets/storage-classes/).
@@ -63,7 +63,7 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
 1. Install Wrangler:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i -D wrangler
 ```
@@ -154,21 +154,21 @@ Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/exampl
 
 ## Next steps
 
-### [ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
+### [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
 
- Generate temporary URLs for private object access.
+Generate temporary URLs for private object access.
 
-### [ Public buckets ](https://developers.cloudflare.com/r2/buckets/public-buckets/)
+### [Public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 
- Serve files directly over HTTP with a public bucket.
+Serve files directly over HTTP with a public bucket.
 
-### [ CORS ](https://developers.cloudflare.com/r2/buckets/cors/)
+### [CORS](https://developers.cloudflare.com/r2/buckets/cors/)
 
- Configure CORS for browser-based uploads.
+Configure CORS for browser-based uploads.
 
-### [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
+### [Object lifecycles](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
 
- Set up lifecycle rules to automatically delete old objects.
+Set up lifecycle rules to automatically delete old objects.
 
 Was this helpful?
 
@@ -176,7 +176,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/cli/#page","headline":"CLI · Cloudflare R2 docs","description":"Use R2 from the command line with Wrangler, rclone, or AWS CLI.","url":"https://developers.cloudflare.com/r2/get-started/cli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

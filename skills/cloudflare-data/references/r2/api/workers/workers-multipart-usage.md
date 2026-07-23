@@ -4,15 +4,15 @@ title: Use the R2 multipart API from Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use the R2 multipart API from Workers
+# Use the R2 multipart API from Workers
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker through which your applications can perform multipart uploads. This example worker could serve as a basis for your own use case where you can add authentication to the worker, or even add extra validation logic when uploading each part. This guide also contains an example Python application that uploads files to this worker.
 
@@ -382,7 +382,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

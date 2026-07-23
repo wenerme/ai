@@ -4,15 +4,15 @@ title: Claim deployments (temporary accounts)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Claim deployments (temporary accounts)
+# Claim deployments (temporary accounts)
 
-Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/claim-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/claim-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Temporary preview accounts let you deploy and test [Workers](https://developers.cloudflare.com/workers/) before you authenticate with Cloudflare. You can then claim the account to keep its deployments and supported resources.
 
@@ -54,7 +54,7 @@ Wrangler will use a temporary account and print a claim URL.
 ```
 This output tells the agent to rerun the command with `--temporary`.
 4. Rerun the deployment with `--temporary`.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler deploy --temporary
 ```
@@ -427,17 +427,17 @@ The following table summarizes supported capabilities and limits. Temporary cred
 
 ## Related resources
 
-### [ wrangler deploy ](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
+### [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
 
- Review the full command reference for deploying Workers.
+Review the full command reference for deploying Workers.
 
-### [ Prompting ](https://developers.cloudflare.com/workers/get-started/prompting/)
+### [Prompting](https://developers.cloudflare.com/workers/get-started/prompting/)
 
- Build Workers apps with AI prompts and MCP servers.
+Build Workers apps with AI prompts and MCP servers.
 
-### [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
+### [Deploy an existing project](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
 
- Learn how the Wrangler CLI automatically detects and configures projects for Workers.
+Learn how the Wrangler CLI automatically detects and configures projects for Workers.
 
 Was this helpful?
 
@@ -445,7 +445,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/claim-deployments/#page","headline":"Claim deployments (temporary accounts) · Cloudflare Workers docs","description":"Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.","url":"https://developers.cloudflare.com/workers/platform/claim-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

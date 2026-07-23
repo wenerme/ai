@@ -4,15 +4,15 @@ title: Install private packages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Install private packages
+# Install private packages
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/npm-private-registry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/npm-private-registry/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages supports custom package registries, allowing you to include private dependencies in your application. While this walkthrough focuses specifically on [npm ↗](https://www.npmjs.com/), the Node package manager and registry, the same approach can be applied to other registry tools.
 
@@ -77,7 +77,7 @@ In the event that your local development no longer works with your new `.npmrc` 
 1. Rename the Pages-compliant `.npmrc` file to `.npmrc.pages`. This should be referencing environment variables.
 2. Restore your previous `.npmrc` file – the version that was previously working for you and your teammates.
 3. Go to **Workers & Pages** in the Cloudflare dashboard.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 4. Select your Pages project.
 5. Go to **Settings** \> **Environment variables**, add a new [environment variable](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables) named [NPM\_CONFIG\_USERCONFIG ↗](https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files) and set its value to `/opt/buildhome/repo/.npmrc.pages`. If your `.npmrc.pages` file is not in your project's root directory, adjust this path accordingly.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/npm-private-registry/#page","headline":"Install private packages · Cloudflare Pages docs","description":"Use custom npm registries and private dependencies in your Cloudflare Pages builds.","url":"https://developers.cloudflare.com/pages/how-to/npm-private-registry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

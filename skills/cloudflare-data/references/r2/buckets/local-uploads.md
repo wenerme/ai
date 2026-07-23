@@ -4,15 +4,15 @@ title: Local uploads
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Local uploads
+# Local uploads
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/local-uploads/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/local-uploads/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can enable Local Uploads on your bucket to improve the performance of upload requests when clients upload data from a different region than your bucket. Local Uploads writes object data to a nearby location, then asynchronously copies it to your bucket. Data is available immediately and remains strongly consistent.
 
@@ -33,15 +33,15 @@ When you make an upload request (i.e. `PutObject` and `UploadPart`) to a bucket 
 
 Local uploads
 
-Client Eastern North America
+ClientEastern North America
 
-Edge Eastern North America
+EdgeEastern North America
 
 R2 Gateway Worker
 
-Object metadata Object data
+Object metadataObject data
 
-Edge Eastern North America
+EdgeEastern North America
 
 R2 Gateway Worker
 
@@ -51,7 +51,7 @@ Object metadata
 
 Object data
 
-Your bucket Eastern Europe
+Your bucketEastern Europe
 
 Metadata Service
 
@@ -70,7 +70,7 @@ Local uploads are built for workloads that receive a lot of uploads originating 
 To understand the geographic distribution of where your read and write requests are initiated:
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Metrics** and view the **Request Distribution** chart.
 
@@ -89,7 +89,7 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Local Uploads**, select **Enable**.
@@ -105,7 +105,7 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Local Uploads**, select **Disable**.
@@ -126,7 +126,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/local-uploads/#page","headline":"Local uploads · Cloudflare R2 docs","description":"Improve R2 upload performance by writing object data to a nearby location before async copy.","url":"https://developers.cloudflare.com/r2/buckets/local-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

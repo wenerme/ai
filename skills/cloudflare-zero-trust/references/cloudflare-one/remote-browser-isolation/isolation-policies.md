@@ -4,15 +4,15 @@ title: Isolation policies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Isolation policies
+# Isolation policies
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
 
@@ -119,7 +119,7 @@ Mouse input remains available to allow users to browse a website by following hy
 * _Allow_: (Default) Users can print isolated web pages to their local machine.
 * _Do not allow_: Prohibits users from printing isolated web pages to their local machine.
 
-## Custom block dialog  Beta
+## Custom block dialog Beta
 
 With custom block dialogs, you can host a custom block page when users are blocked from taking specific actions, like [copying](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#copy-from-remote-to-client), [pasting](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#paste-from-client-to-remote), [downloading](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#file-downloads), [uploading](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#file-uploads), [performing keyboard inputs](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#keyboard), or [printing](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#printing), within an isolated browser session.
 
@@ -274,7 +274,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies · Cloudflare One docs","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}

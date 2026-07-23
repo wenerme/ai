@@ -4,7 +4,7 @@ title: Grok TTS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
-#  Grok TTS
+# Grok TTS
 
- Text-to-Speech • xAI
+Text-to-Speech • xAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-tts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-tts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` xai/grok-tts `
+`xai/grok-tts`
 
 * Third-party
 
 xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.
 
-| Model Info        |                                                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                   |
-| More information  | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/text-to-speech)                                  |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-tts) |
+| Model Info        |                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
+| More information  | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/text-to-speech)                                 |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-tts) |
 
 ## Usage
 
@@ -67,7 +67,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Different Voice**  — Use the warm, conversational \`ara\` voice
+**Different Voice** — Use the warm, conversational \`ara\` voice
 
 ```ts
 const response = await env.AI.run(
@@ -103,7 +103,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High-Fidelity MP3**  — 44.1 kHz / 192 kbps MP3 for production use
+**High-Fidelity MP3** — 44.1 kHz / 192 kbps MP3 for production use
 
 ```ts
 const response = await env.AI.run(
@@ -149,7 +149,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Telephony (mulaw)**  — G.711 μ-law at 8 kHz for SIP / PSTN integration
+**Telephony (mulaw)** — G.711 μ-law at 8 kHz for SIP / PSTN integration
 
 ```ts
 const response = await env.AI.run(
@@ -194,7 +194,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Expressive Delivery**  — Inline speech tags for laughter, pauses, and whispers
+**Expressive Delivery** — Inline speech tags for laughter, pauses, and whispers
 
 ```ts
 const response = await env.AI.run(
@@ -234,7 +234,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Text Normalization**  — Convert written numbers and abbreviations to spoken form
+**Text Normalization** — Convert written numbers and abbreviations to spoken form
 
 ```ts
 const response = await env.AI.run(
@@ -316,9 +316,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -326,7 +326,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-tts/#page","headline":"Grok TTS (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.","url":"https://developers.cloudflare.com/ai/models/xai/grok-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

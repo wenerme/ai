@@ -4,15 +4,15 @@ title: Protect your origin server
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protect your origin server
+# Protect your origin server
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server) is a physical or virtual machine that is not owned by Cloudflare and hosts your application content (data, webpages, etc.).
 
@@ -171,7 +171,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/#page","headline":"Protect your origin server · Cloudflare Fundamentals docs","description":"Secure your origin server with Cloudflare by hiding its IP address, limiting connections, and monitoring health.","url":"https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

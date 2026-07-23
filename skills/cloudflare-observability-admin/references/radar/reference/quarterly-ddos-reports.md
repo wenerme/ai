@@ -4,15 +4,15 @@ title: Quarterly DDoS threat reports
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Quarterly DDoS threat reports
+# Quarterly DDoS threat reports
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack insights and trends over a three-month period.
 
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#page","headline":"Quarterly DDoS threat reports · Cloudflare Radar docs","description":"Understand the methodologies behind Cloudflare Radar quarterly DDoS threat reports, including attack counting, ranking, and geographical insights.","url":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

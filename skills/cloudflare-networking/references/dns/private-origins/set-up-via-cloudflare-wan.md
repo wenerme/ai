@@ -4,15 +4,15 @@ title: Set up a private origin via Cloudflare WAN
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up a private origin via Cloudflare WAN
+# Set up a private origin via Cloudflare WAN
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through proxying public hostnames to origins on a private network. The private network is reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) IPsec tunnel. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/#page","headline":"Set up a private origin via Cloudflare WAN · Cloudflare DNS docs","description":"Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.","url":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

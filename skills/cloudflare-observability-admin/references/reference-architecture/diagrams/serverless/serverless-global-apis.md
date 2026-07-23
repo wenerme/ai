@@ -4,15 +4,15 @@ title: Serverless global APIs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Serverless global APIs
+# Serverless global APIs
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -40,7 +40,7 @@ Overall, serverless globally-deployed APIs offer a cost-effective, scalable, and
 
 ## Serverless global APIs
 
-![Figure 3: Serverless global APIs](https://developers.cloudflare.com/_astro/serverless-global-apis.BnHHhP-u_2d88FE.svg "Figure 3: Serverless global APIs")
+![Figure 3: Serverless global APIs](https://developers.cloudflare.com/_astro/serverless-global-apis.BnHHhP-u_Z29LwvW.svg "Figure 3: Serverless global APIs")
 
 Figure 3: Serverless global APIs
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/#page","headline":"Serverless global APIs · Cloudflare Reference Architecture docs","description":"An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Traffic steering
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Traffic steering
+# Traffic steering
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Magic Transit Virtual Network routing table
 
@@ -238,7 +238,7 @@ Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/co
 
 Note
 
- These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
+These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
 
 ## Equal-cost multi-path routing
 
@@ -465,7 +465,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

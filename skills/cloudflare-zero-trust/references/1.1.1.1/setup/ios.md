@@ -4,15 +4,15 @@ title: iOS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  iOS
+# iOS
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/setup/ios/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/ios/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [1.1.1.1: Faster Internet ↗](https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627) app is the recommended way to set up 1.1.1.1 on iOS. It automatically configures your device to use 1.1.1.1 on any network you connect to, including cellular networks (which cannot use a custom DNS resolver through manual iOS settings alone).
 
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/ios/#page","headline":"Set up 1.1.1.1 on iOS","description":"Configure 1.1.1.1 on iOS devices.","url":"https://developers.cloudflare.com/1.1.1.1/setup/ios/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

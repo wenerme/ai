@@ -4,15 +4,15 @@ title: Explore the GraphQL schema
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Explore the GraphQL schema
+# Explore the GraphQL schema
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many GraphQL clients support browsing the GraphQL schema by taking care of [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/). In this page, we will cover GraphiQL and Altair clients.
 
@@ -108,7 +108,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/#page","headline":"Explore the GraphQL schema · Cloudflare Analytics docs","description":"Browse available datasets and fields via introspection.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

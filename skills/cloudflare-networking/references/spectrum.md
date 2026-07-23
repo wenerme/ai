@@ -4,19 +4,19 @@ title: Cloudflare Spectrum
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Spectrum
+# Cloudflare Spectrum
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum provides security and acceleration for any [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) or [UDP ↗](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/) based application.
 
- Available on Paid plans
+Available on Paid plans
 
 Spectrum allows you to route MQTT, email, file transfer, version control, games, and more over TCP or UDP through Cloudflare to mask the origin and protect it from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 
@@ -32,13 +32,13 @@ Custom TCP/UDP applications require an Enterprise plan with Spectrum as a paid a
 
 Use a proxy protocol for Cloudflare to pass on the client IP to your service.
 
- Use Enable Proxy protocol
+Use Enable Proxy protocol
 
 [DDoS Protection for Spectrum](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/)
 
 Learn more about what L3/4 DDoS Protection is included as part of the Spectrum service.
 
- Use DDoS Protection for Spectrum
+Use DDoS Protection for Spectrum
 
 ---
 
@@ -64,7 +64,7 @@ Cloudflare's global DNS platform provides speed and resilience. DNS customers al
 
 ## More resources
 
-### [ Plans ](https://www.cloudflare.com/plans/)
+### [Plans](https://www.cloudflare.com/plans/)
 
 Compare available Cloudflare plans.
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/spectrum/#page","headline":"Cloudflare Spectrum · Cloudflare Spectrum docs","description":"Proxy and protect TCP and UDP applications with Cloudflare Spectrum.","url":"https://developers.cloudflare.com/spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

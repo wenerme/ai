@@ -4,15 +4,15 @@ title: Transform via fetch
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Transform via fetch
+# Transform via fetch
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers lets you optimize images with a custom URL scheme.
 
@@ -211,7 +211,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch · Cloudflare Images docs","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: API deprecations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  API deprecations
+# API deprecations
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare occasionally makes updates to our APIs that result in behavior changes or deprecations. When this happens, we will communicate when the API will no longer be available and whether there will be a replacement.
 
@@ -20,7 +20,7 @@ Note
 
 Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml).
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
 ## 2026-07-21
 
@@ -1063,7 +1063,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#page","headline":"API deprecations · Cloudflare Fundamentals docs","description":"Track Cloudflare API deprecations, removal timelines, and replacement endpoints.","url":"https://developers.cloudflare.com/fundamentals/api/reference/deprecations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

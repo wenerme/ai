@@ -260,8 +260,8 @@
   "google-ai-docs/streaming.md": {
     "url": "https://ai.google.dev/gemini-api/docs/streaming",
     "skill": "google-ai-docs",
-    "size": 38691,
-    "updatedAt": "2026-07-08T04:03:38.908Z"
+    "size": 39287,
+    "updatedAt": "2026-07-23T04:03:21.725Z"
   },
   "google-ai-docs/video-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video-understanding",
@@ -332,8 +332,8 @@
   "google-ai-docs/managed-agents-quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/managed-agents-quickstart",
     "skill": "google-ai-docs",
-    "size": 14066,
-    "updatedAt": "2026-07-22T03:57:00.618Z"
+    "size": 14258,
+    "updatedAt": "2026-07-23T04:03:27.211Z"
   },
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",

@@ -4,15 +4,15 @@ title: Video resolution and simulcast
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Video resolution and simulcast
+# Video resolution and simulcast
 
-Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure video resolution, simulcast, and frame rate in RealtimeKit to balance quality against bandwidth. The right settings depend on your grid layout, participant count, and use case.
 
@@ -179,7 +179,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#page","headline":"Video resolution and simulcast · Cloudflare Realtime docs","description":"Choose the right video resolution, simulcast settings, and frame rate for your RealtimeKit use case to optimize quality and bandwidth.","url":"https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Live View
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Live View
+# Live View
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/live-view/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Live View lets you see and interact with a remote Browser Run session in real time. This is useful for debugging automation scripts, monitoring what a browser is doing, or manually stepping in when a task requires human intervention (see [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)).
 
@@ -26,7 +26,7 @@ There are three ways to access Live View: through the Cloudflare dashboard, via 
 
 In the Cloudflare dashboard, go to the **Browser Run** page and select the **Live Sessions** tab. This shows all active browser sessions in your account. Expand a session to see its tabs, then select **Open** to open the Live View for that tab.
 
-[ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+[Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 
 Note
 
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View · Cloudflare Browser Run docs","description":"View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

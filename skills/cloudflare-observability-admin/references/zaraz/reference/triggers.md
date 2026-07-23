@@ -4,15 +4,15 @@ title: Triggers and rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Triggers and rules
+# Triggers and rules
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/reference/triggers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/reference/triggers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Triggers define the conditions under which [a tool will start an action](https://developers.cloudflare.com/zaraz/custom-actions/). In most cases, your objective will be to create triggers that match specific website events that are relevant to your business. A trigger can be based on an event that happened on your website, like after selecting a button or loading a specific page.
 
@@ -172,7 +172,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/reference/triggers/#page","headline":"Triggers and rules · Cloudflare Zaraz docs","description":"Trigger types and matching rules for Zaraz actions.","url":"https://developers.cloudflare.com/zaraz/reference/triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

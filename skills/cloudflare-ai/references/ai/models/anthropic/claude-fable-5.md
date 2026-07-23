@@ -4,7 +4,7 @@ title: Claude Fable 5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
-#  Claude Fable 5
+# Claude Fable 5
 
- Text Generation • Anthropic
+Text Generation • Anthropic
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` anthropic/claude-fable-5 `
+`anthropic/claude-fable-5`
 
 * Third-party
 
 Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
 
-| Model Info                                                                  |                                                                                                                             |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                            | [link ↗](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5)            |
-| Request formats                                                             | Anthropic Messages                                                                                                          |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5) |
+| Model Info                                                                 |                                                                                                                            |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                           |
+| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                 |
+| More information                                                           | [link ↗](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5)           |
+| Request formats                                                            | Anthropic Messages                                                                                                         |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5) |
 
 ## Usage
 
@@ -123,7 +123,7 @@ A popular summary: *"You can't win (1st), you can't break even (2nd), and you ca
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -247,7 +247,7 @@ That's all you need for most use cases. For very large files, consider streaming
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -355,7 +355,7 @@ How much time do you have for the trip? That'll help narrow down the best plan!
 }
 ```
 
-**Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the \`effort\` parameter to control depth.
+**Creative Writing with Adaptive Thinking** — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the \`effort\` parameter to control depth.
 
 ```ts
 const response = await env.AI.run(
@@ -443,7 +443,7 @@ It was an invitation.
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -775,9 +775,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -785,7 +785,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/#page","headline":"Claude Fable 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

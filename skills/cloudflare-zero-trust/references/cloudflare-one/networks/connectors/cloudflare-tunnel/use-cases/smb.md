@@ -4,15 +4,15 @@ title: SMB
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SMB
+# SMB
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Server Message Block (SMB) protocol allows users to read, write, and access shared resources on a network. Due to security risks, firewalls and ISPs usually block public connections to an SMB file share. With Cloudflare Tunnel, you can provide secure and simple SMB access to users outside of your network.
 
@@ -36,10 +36,10 @@ You can use Cloudflare Tunnel to create a secure, outbound-only connection from 
 ### 1\. Connect the server to Cloudflare
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the private IP or CIDR address of your server, and select **Create route**.
 3. (Optional) [Set up Zero Trust policies](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#4-recommended-filter-network-traffic-with-gateway) to fine-tune access to your server.
 
@@ -100,7 +100,7 @@ The public hostname method can be implemented in conjunction with routing over t
 
 1. Create a Cloudflare Tunnel by following our [dashboard setup guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
 2. In the Cloudflare dashboard, go to **Networking** \> **Tunnels** and select your tunnel.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 3. On the **Routes** tab, select **Add route**, then select **Published application**.
 4. Choose a domain from the drop-down menu and specify any subdomain (for example, `smb.example.com`).
 5. For **Service**, select _SMB_ and enter the SMB listening port (for example, `localhost:445`). SMB drives listen on port `139` or `445` by default.
@@ -143,7 +143,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/#page","headline":"SMB · Cloudflare One docs","description":"SMB in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Windows","MacOS"]}

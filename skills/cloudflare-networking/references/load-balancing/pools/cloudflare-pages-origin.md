@@ -4,15 +4,15 @@ title: Use Pages as an origin for Load Balancing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Pages as an origin for Load Balancing
+# Use Pages as an origin for Load Balancing
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.
 
@@ -38,7 +38,7 @@ Although you can create all the components in the **Create Load Balancer** workf
 Monitors define the criteria based on which an endpoint will be considered healthy or not. Start by setting up a monitor as follows.
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select the **Monitors** tab and then **Create monitor**.
 3. Give the monitor a descriptive name and confirm the other fields are filled in as the following:
 
@@ -72,7 +72,7 @@ The endpoint pointing to [Cloudflare Pages](https://developers.cloudflare.com/pa
 Failing to add the host header will result in [response code mismatch error](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/#response-code-mismatch-error) for the monitor, and [Error 1000: DNS points to prohibited IP](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1000/) for visitors (if the load balancer is enabled despite the unhealthy monitor status).
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select the **Pools** tab and then **Create monitor**.
 3. For the first pool, start by filling out the fields:
 * A name for the pool (must be unique). Suggestion: `primary`
@@ -112,7 +112,7 @@ If your production website is hosted on a platform like Cloudflare Pages, where 
 Before setting up the load balancer:
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Go to the **Pools** tab.
 3. Find the pools you created in the list and check if their status is `Healthy`. You might have to refresh the page.
 4. Expand each pool entry to confirm that the health status for endpoints within them is also `Healthy`.
@@ -126,7 +126,7 @@ Revise your pools and monitor configurations to confirm they followed the instru
 After confirming the endpoints and monitors are set up correctly and return the expected health status, create the load balancer:
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Create load balancer**.
 3. On the **Hostname** page, configure the following and select **Next**.
 
@@ -150,7 +150,7 @@ A DNS record of the type `LB` will be created under [**DNS** \> **Records** ↗]
 If you have used a temporary hostname for your load balancer, follow the steps below to deploy and test it.
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. In the **Load Balancers** list, locate the load balancer you created under a test hostname (such as `lb`) and enable it.
 3. On your browser, request the temporary hostname (`lb.example.com`). You should see the website or application hosted at your primary origin server.
 4. Go back to the **Manage Load Balancers** list, select to expand the test load balancer, and disable the primary pool.
@@ -175,7 +175,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/#page","headline":"Use Pages as an origin for Load Balancing · Cloudflare Load Balancing docs","description":"This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.","url":"https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

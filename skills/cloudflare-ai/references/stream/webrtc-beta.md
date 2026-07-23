@@ -4,15 +4,15 @@ title: WebRTC
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WebRTC
+# WebRTC
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/webrtc-beta/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/webrtc-beta/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sub-second latency live streaming (using WHIP) and playback (using WHEP) to unlimited concurrent viewers.
 
@@ -31,7 +31,7 @@ WebRTC streaming is currently in beta, and we'd love to hear what you think. Joi
 Create a live input using one of the two options:
 
 * Use the **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * Make a POST request to the [/live\_inputs API endpoint](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
 
 ```json
@@ -55,7 +55,7 @@ Every live input has a unique URL that one creator can be stream to. This URL sh
 Copy the URL from either:
 
 * The **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * The `webRTC` key in the API response (see above).
 
 Paste this URL into the example code.
@@ -80,7 +80,7 @@ You can also use this URL with any client that supports the [WebRTC-HTTP ingesti
 Copy the URL from either:
 
 * The **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * The `webRTCPlayback` key in the API response (see above)
 
 There are no limits on the number of concurrent viewers.
@@ -162,7 +162,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/webrtc-beta/#page","headline":"WebRTC · Cloudflare Stream docs","description":"Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/webrtc-beta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

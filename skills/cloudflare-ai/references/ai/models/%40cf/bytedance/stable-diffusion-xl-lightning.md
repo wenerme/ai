@@ -4,7 +4,7 @@ title: stable-diffusion-xl-lightning
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)
 
-#  stable-diffusion-xl-lightning
+# stable-diffusion-xl-lightning
 
- Beta
+Beta
 
- Text-to-Image • ByteDance
+Text-to-Image • ByteDance
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/bytedance/stable-diffusion-xl-lightning `
+`@cf/bytedance/stable-diffusion-xl-lightning`
 
 * Cloudflare-hosted
 
@@ -78,13 +78,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
- The binding returns a `ReadableStream` with the output (check the model's output schema).
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/#page","headline":"stable-diffusion-xl-lightning (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.","url":"https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

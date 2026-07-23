@@ -4,15 +4,15 @@ title: Create a simple search engine
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a simple search engine
+# Create a simple search engine
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a search engine that returns the file names matching a query, using the `search()` method on the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/). You can adapt it to use the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) instead.
 
@@ -38,7 +38,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `search-engine` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- search-engine
@@ -151,13 +151,13 @@ npx wrangler deploy
 
 ## Next steps
 
-### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Search Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Full reference for searching and chatting from a Worker.
+Full reference for searching and chatting from a Worker.
 
-### [ Query rewriting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
+### [Query rewriting](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
 
- Control whether AI Search rewrites the query before searching.
+Control whether AI Search rewrites the query before searching.
 
 Was this helpful?
 
@@ -165,7 +165,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/#page","headline":"Create a simple search engine · Cloudflare AI Search docs","description":"Build a simple search engine using the AI Search Workers binding and the search method.","url":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

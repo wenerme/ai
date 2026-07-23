@@ -4,15 +4,15 @@ title: Redirects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Redirects
+# Redirects
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/redirects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/redirects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To apply custom redirects on a Worker with static assets, declare your redirects in a plain text file called `_redirects` without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Workers and its rules will be applied to static asset responses.
 
@@ -32,16 +32,16 @@ Only one redirect can be defined per line and must follow this format, otherwise
 [source] [destination] [code?]
 ```
 
-* `source` ` string `required
+* `source` `string`required
 
   * A file path.
   * Can include [wildcards (\*)](#splats) and [placeholders](#placeholders).
   * Because fragments are evaluated by your browser and not Cloudflare's network, any fragments in the source are not evaluated.
-* `destination` ` string `required
+* `destination` `string`required
 
   * A file path or external link.
   * Can include fragments, query strings, [splats](#splats), and [placeholders](#placeholders).
-* `code` ` number `(default: 302) optional
+* `code` `number`(default: 302) optional
 
   * Optional parameter
 
@@ -151,7 +151,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/redirects/#page","headline":"Redirects · Cloudflare Workers docs","description":"Configure redirect rules for Workers static assets using a \\_redirects file.","url":"https://developers.cloudflare.com/workers/static-assets/redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

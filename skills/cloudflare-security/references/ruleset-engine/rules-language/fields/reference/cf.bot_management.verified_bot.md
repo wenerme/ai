@@ -4,11 +4,11 @@ title: cf.bot_management.verified_bot
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.bot\_management.verified\_bot
+# cf.bot\_management.verified\_bot
 
-`cf.bot_management.verified_bot` ` Boolean `
+`cf.bot_management.verified_bot` `Boolean`
 
 Indicates whether the request originated from a known good bot or crawler.
 
@@ -24,7 +24,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.verified_bot/#page","headline":"cf.bot_management.verified_bot · Cloudflare Ruleset Engine docs","description":"Indicates whether the request originated from a known good bot or crawler.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.verified_bot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

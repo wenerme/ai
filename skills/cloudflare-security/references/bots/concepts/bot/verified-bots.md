@@ -4,15 +4,15 @@ title: Verified bots
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Verified bots
+# Verified bots
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Verified bot is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
 
@@ -238,7 +238,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#page","headline":"Verified bots · Cloudflare bot solutions docs","description":"Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.","url":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

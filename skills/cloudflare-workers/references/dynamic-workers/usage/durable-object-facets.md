@@ -4,15 +4,15 @@ title: Durable Object Facets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Durable Object Facets
+# Durable Object Facets
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Object Facets let you load a [Durable Object](https://developers.cloudflare.com/durable-objects/) class from a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) and run it as a child of your own Durable Object. The child (the facet) gets its own isolated SQLite database, while your class acts as a supervisor that controls access.
 
@@ -28,7 +28,7 @@ A facet-based setup has three layers:
 
 The supervisor's database and the facet's database are stored together as part of the same overall Durable Object. The dynamic code cannot read the supervisor's database — it only has access to its own.
 
-![Diagram showing the facet architecture: a request flows through the Worker entry point into a Durable Object instance containing a Supervisor with its own SQLite DB, which creates an isolated Facet with a separate SQLite DB via ctx.facets.get\(\) and forwards requests to it via facet.fetch\(\)](https://developers.cloudflare.com/_astro/facet-architecture.cRJeiYDD_OBMgn.svg)
+![Diagram showing the facet architecture: a request flows through the Worker entry point into a Durable Object instance containing a Supervisor with its own SQLite DB, which creates an isolated Facet with a separate SQLite DB via ctx.facets.get\(\) and forwards requests to it via facet.fetch\(\)](https://developers.cloudflare.com/_astro/facet-architecture.cRJeiYDD_13a986.svg)
 
 ## Configure your Worker
 
@@ -38,7 +38,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "main": "src/index.ts",
   "migrations": [
     {
@@ -58,7 +58,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "src/index.ts"
 
 [[migrations]]
@@ -236,7 +236,7 @@ The `this.ctx.facets` object is available inside any Durable Object class. It pr
 
 ### `get`
 
-`` this.ctx.facets.get(name ` string `, callback ` () => FacetStartupOptions `) ` Fetcher ` ``
+`` this.ctx.facets.get(name `string`, callback `() => FacetStartupOptions`) `Fetcher` ``
 
 Creates or resumes a facet with the given name and returns a stub you can use to send it requests.
 
@@ -246,7 +246,7 @@ The returned stub behaves like a [Durable Object stub](https://developers.cloudf
 
 ### `abort`
 
-`` this.ctx.facets.abort(name ` string `, reason ` any `) ` void ` ``
+`` this.ctx.facets.abort(name `string`, reason `any`) `void` ``
 
 Shuts down a running facet and invalidates all existing stubs. Any subsequent call on an invalidated stub throws `reason`. The facet's storage is preserved.
 
@@ -254,7 +254,7 @@ After aborting, you can call `get()` again to restart the facet — including wi
 
 ### `delete`
 
-`` this.ctx.facets.delete(name ` string `) ` void ` ``
+`` this.ctx.facets.delete(name `string`) `void` ``
 
 Aborts the facet (if running) and permanently deletes its SQLite database. If you call `get()` with the same name afterward, the facet starts with an empty database.
 
@@ -264,11 +264,11 @@ Use `delete()` to clean up storage for facets that are no longer needed.
 
 The object returned by the `getStartupOptions` callback.
 
-#### `` class ` DurableObjectClass ` ``
+#### `` class `DurableObjectClass` ``
 
 The Durable Object class to instantiate for the facet. Obtain this by calling `worker.getDurableObjectClass("ClassName")` on a Dynamic Worker stub.
 
-#### `` id ` DurableObjectId | string `Optional ``
+#### `` id `DurableObjectId | string`Optional ``
 
 The ID the facet sees as its own `ctx.id`. If omitted, the facet inherits the parent Durable Object's ID.
 
@@ -286,7 +286,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/#page","headline":"Durable Object Facets · Cloudflare Dynamic Workers docs","description":"Run dynamically-loaded code with isolated persistent storage.","url":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

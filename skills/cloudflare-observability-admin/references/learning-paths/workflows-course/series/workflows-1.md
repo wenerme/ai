@@ -5,15 +5,15 @@ title: Introduction to Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Introduction to Workflows
+# Introduction to Workflows
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
 
@@ -126,23 +126,23 @@ The homepage displays recently published puns (status "published"). The detail p
 
 Cloudflare Workers and Workflows are designed to scale automatically based on demand, handling concurrent requests and background tasks efficiently without requiring manual provisioning.
 
-### [ Watch Episode 1: Understand Cloudflare Workflows ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/)
+### [Watch Episode 1: Understand Cloudflare Workflows](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/)
 
- In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
+In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
 
-### [ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/)
+### [Watch Episode 2: Monitor and batch your website data](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/)
 
- In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
+In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
 
-### [ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/)
+### [Watch Episode 3: Use cron triggers to develop time-aware applications](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/)
 
- In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
+In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
 
 Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/#page","headline":"Introduction to Workflows · Cloudflare Learning Paths","description":"Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

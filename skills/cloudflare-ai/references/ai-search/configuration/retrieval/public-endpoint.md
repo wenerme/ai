@@ -4,15 +4,15 @@ title: Public endpoint settings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Public endpoint settings
+# Public endpoint settings
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure public endpoints to expose your AI Search instance directly to users without requiring authentication. This enables you to share your AI Search functionality with external users, or to integrate it into public-facing applications.
 
@@ -48,7 +48,7 @@ For example:
 
 You can enable or disable each public endpoint independently:
 
-1. Log in to your Cloudflare account, and go to **AI Search**. [ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Log in to your Cloudflare account, and go to **AI Search**. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
 3. Go to **Settings** \> **Public Endpoints**.
 4. Toggle on **Public Endpoints** to enable the feature, then toggle each individual endpoint on or off as needed.
@@ -108,7 +108,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/#page","headline":"Public endpoint settings · Cloudflare AI Search docs","description":"Expose AI Search instances through public MCP, chat, and search endpoints without authentication.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

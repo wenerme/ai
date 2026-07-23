@@ -4,15 +4,15 @@ title: Zaraz Context
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Zaraz Context
+# Zaraz Context
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/reference/context/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/reference/context/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Zaraz Context is a versatile object that provides a set of configurable properties for Zaraz, a web analytics tool for tracking user behavior on websites. These properties can be accessed and utilized across various components, including [Worker Variables](https://developers.cloudflare.com/zaraz/variables/worker-variables/) and [JSONata expressions](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/).
 
@@ -98,7 +98,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/reference/context/#page","headline":"Zaraz Context · Cloudflare Zaraz docs","description":"Data available in the Zaraz context object for triggers and actions.","url":"https://developers.cloudflare.com/zaraz/reference/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

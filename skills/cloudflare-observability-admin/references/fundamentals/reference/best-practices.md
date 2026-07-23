@@ -4,15 +4,15 @@ title: Account and domain management best practices
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Account and domain management best practices
+# Account and domain management best practices
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 More and more of our lives revolve around our online presence and maintaining access to our various online accounts, such as social media, banking, personal, and business accounts. These accounts are critical to remaining connected with our loved ones and business. As such, ensuring a level of continuity with these services is critical. Below is a list of important items to help ensure you are able to maintain access or delegate access to your Cloudflare account in the event that you are unable to manage your account.
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/best-practices/#page","headline":"Account and domain management best practices · Cloudflare Fundamentals docs","description":"Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.","url":"https://developers.cloudflare.com/fundamentals/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

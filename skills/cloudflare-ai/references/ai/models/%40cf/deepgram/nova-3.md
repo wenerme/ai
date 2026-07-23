@@ -4,7 +4,7 @@ title: nova-3
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
-#  nova-3
+# nova-3
 
- Automatic Speech Recognition • Deepgram
+Automatic Speech Recognition • Deepgram
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/deepgram/nova-3 `
+`@cf/deepgram/nova-3`
 
 * Cloudflare-hosted
 * Batch
@@ -194,9 +194,9 @@ utterance\_end\_ms
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -204,7 +204,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

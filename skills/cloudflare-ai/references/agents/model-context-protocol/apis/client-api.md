@@ -4,15 +4,15 @@ title: McpClient
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  McpClient
+# McpClient
 
-Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. This enables your agent to interact with GitHub, Slack, databases, and other services through a standardized protocol.
 
@@ -435,11 +435,12 @@ Once connected, access the server's capabilities:
 
 ### Get available tools
 
-```js
-const state = this.getMcpServers();
+Use `listTools()` to inspect the raw MCP catalog without preparing tools for an AI SDK model call:
 
-// All tools from all connected servers
-for (const tool of state.tools) {
+```js
+const tools = this.mcp.listTools();
+
+for (const tool of tools) {
 	console.log(`Tool: ${tool.name}`);
 	console.log(`  From server: ${tool.serverId}`);
 	console.log(`  Title: ${tool.title ?? tool.annotations?.title ?? tool.name}`);
@@ -448,16 +449,17 @@ for (const tool of state.tools) {
 ```
 
 ```ts
-const state = this.getMcpServers();
+const tools = this.mcp.listTools();
 
-// All tools from all connected servers
-for (const tool of state.tools) {
+for (const tool of tools) {
 	console.log(`Tool: ${tool.name}`);
 	console.log(`  From server: ${tool.serverId}`);
 	console.log(`  Title: ${tool.title ?? tool.annotations?.title ?? tool.name}`);
 	console.log(`  Description: ${tool.description}`);
 }
 ```
+
+`getMcpServers().tools` returns the same raw tool records as part of the full MCP client state. Neither API converts the tool schemas.
 
 #### Integration with AI SDK
 
@@ -501,7 +503,7 @@ export class MyAgent extends Agent<Env> {
 
 Note
 
-`getMcpServers().tools` returns raw MCP `Tool` objects for inspection. Use `this.mcp.getAITools()` when passing tools to the AI SDK.
+Use `this.mcp.listTools()` or `getMcpServers().tools` for discovery. Call `this.mcp.getAITools()` when passing tools to the AI SDK. `getAITools()` converts each input and output schema to Zod, then reuses those schemas while the live connection keeps the same current catalog.
 
 ### Resources and prompts
 
@@ -1511,6 +1513,16 @@ Close all active server connections while preserving registrations.
 async closeAllConnections(): Promise<void>
 ```
 
+#### `this.mcp.listTools()`
+
+Get raw MCP tool records without converting their schemas to Zod.
+
+```ts
+listTools(filter?: MCPServerFilter): Array<Tool & { serverId: string }>
+```
+
+Use this method for catalog discovery and inspection. Pass an `MCPServerFilter` to limit the returned tools to specific connections.
+
 #### `this.mcp.getAITools()`
 
 Get all discovered MCP tools in a format compatible with the AI SDK.
@@ -1520,6 +1532,8 @@ getAITools(filter?: MCPServerFilter): ToolSet
 ```
 
 Tools are automatically namespaced by server ID to prevent conflicts when multiple MCP servers expose tools with the same name.
+
+`getAITools()` reuses converted schemas for the current catalog on each live connection. It converts schemas again after discovery replaces the catalog or the live connection changes. Each call returns fresh tool records and execute functions. Use `this.mcp.listTools()` when you only need the raw catalog.
 
 Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
 
@@ -1609,17 +1623,17 @@ export class MyAgent extends Agent {
 
 ## Next steps
 
-### [ Creating MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
+### [Creating MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
 
- Build your own MCP server.
+Build your own MCP server.
 
-### [ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
- Connect from browsers with onMcpUpdate.
+Connect from browsers with onMcpUpdate.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Learn about agent persistence.
+Learn about agent persistence.
 
 Was this helpful?
 
@@ -1627,8 +1641,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient · Cloudflare Agents docs","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

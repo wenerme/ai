@@ -4,19 +4,19 @@ title: Cloudflare Cache
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Cache
+# Cloudflare Cache
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cache content across Cloudflare's global server network.
 
- Available on all plans
+Available on all plans
 
 Cache stores copies of frequently accessed content (such as images, videos, or webpages) in geographically distributed data centers that are located closer to end users than origin servers, reducing server load and improving website performance.
 
@@ -26,31 +26,31 @@ Cache stores copies of frequently accessed content (such as images, videos, or w
 
 Learn about default cache behavior, default cached file extensions and cache responses.
 
- Use Default cache behavior
+Use Default cache behavior
 
 [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
 
 Configure Cache Rules to optimize your website by specifying which resources should be cached and for how long.
 
- Use Cache Rules
+Use Cache Rules
 
 [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
 
 Enable Tiered Cache to optimize content delivery by caching frequently accessed content in multiple locations for faster delivery and reduced origin traffic.
 
- Use Tiered Cache
+Use Tiered Cache
 
 [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)
 
 Use Cloudflare's persistent storage to increase cache times.
 
- Use Cache Reserve
+Use Cache Reserve
 
 [Purge](https://developers.cloudflare.com/cache/how-to/purge-cache/)
 
 Instantly purge cached files to force Cloudflare to fetch fresh versions from your web server files. You can purge specific files or all at once.
 
- Use Purge
+Use Purge
 
 ---
 
@@ -88,11 +88,11 @@ Smart Shield Advanced provides dedicated egress IPs (from Cloudflare to your ori
 
 ## More resources
 
-### [ Plans ](https://www.cloudflare.com/cdn/)
+### [Plans](https://www.cloudflare.com/cdn/)
 
 Compare available Cloudflare plans
 
-### [ Pricing ](https://www.cloudflare.com/plans/#overview)
+### [Pricing](https://www.cloudflare.com/plans/#overview)
 
 Explore pricing options for Cache
 
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/#page","headline":"Cloudflare Cache · Cloudflare Cache (CDN) docs","description":"Cache and serve static and dynamic content from Cloudflare edge servers.","url":"https://developers.cloudflare.com/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

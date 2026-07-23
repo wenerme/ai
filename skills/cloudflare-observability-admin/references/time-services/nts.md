@@ -4,15 +4,15 @@ title: Network Time Security
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/time-services/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network Time Security
+# Network Time Security
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/time-services/nts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/time-services/nts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Network Time Security ↗](https://datatracker.ietf.org/doc/html/rfc8915) (NTS) provides cryptographic security for the client-server mode of the Network Time Protocol (NTP). This allows users to obtain time in an authenticated manner.
 
@@ -33,7 +33,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/nts/#page","headline":"Network Time Security · Cloudflare Time Services docs","description":"Secure time synchronization with NTS protocol.","url":"https://developers.cloudflare.com/time-services/nts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

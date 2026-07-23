@@ -4,22 +4,22 @@ title: Blocked Content
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Blocked Content
+# Blocked Content
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your domain has content that has been blocked, Blocked Content on the dashboard gives you the ability to request the Trust and Safety team to remove a block.
 
 To view Blocked Content on the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Blocked Content** page.
-[ Go to **Blocked content** ↗ ](https://dash.cloudflare.com/?to=/:account/blocked-content)
+[Go to **Blocked content** ↗](https://dash.cloudflare.com/?to=/:account/blocked-content)
 
 Note
 
@@ -49,7 +49,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/#page","headline":"Blocked Content · Cloudflare Fundamentals docs","description":"Request removal of Trust and Safety content blocks on your domain.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

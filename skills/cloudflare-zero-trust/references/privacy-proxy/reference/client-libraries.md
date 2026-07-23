@@ -4,15 +4,15 @@ title: Client libraries
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Client libraries
+# Client libraries
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists open source libraries and tools you can use to connect to Privacy Proxy.
 
@@ -132,7 +132,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/#page","headline":"Client libraries · Cloudflare Privacy Proxy docs","description":"Open source libraries and tools for connecting to Privacy Proxy, including tokio-quiche, Chaussette, and privacypass-ts.","url":"https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

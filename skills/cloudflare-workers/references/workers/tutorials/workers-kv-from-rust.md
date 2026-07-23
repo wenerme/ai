@@ -4,15 +4,15 @@ title: Use Workers KV directly from Rust
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Workers KV directly from Rust
+# Use Workers KV directly from Rust
 
-Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗](https://github.com/cloudflare/workers-rs).
 
@@ -213,7 +213,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/#page","headline":"Use Workers KV directly from Rust · Cloudflare Workers docs","description":"This tutorial will teach you how to read and write to KV directly from Rust using workers-rs. You will use Workers KV from Rust to build an app to store and retrieve cities.","url":"https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Rust"]}

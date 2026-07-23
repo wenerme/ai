@@ -4,15 +4,15 @@ title: Slack agent
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Slack agent
+# Slack agent
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/examples/slack-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/slack-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Deploy your first Slack Agent
 
@@ -82,7 +82,7 @@ Keep these handy — you will need them in the next step.
 
 1. Create a new project for your Slack Agent:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-slack-agent
@@ -138,7 +138,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 	"name": "my-slack-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -167,7 +167,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 name = "my-slack-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -485,21 +485,21 @@ export class MyAgent extends SlackAgent {
 
 ## Related resources
 
-### [ Agents documentation ](https://developers.cloudflare.com/agents/)
+### [Agents documentation](https://developers.cloudflare.com/agents/)
 
- Complete Agents framework documentation.
+Complete Agents framework documentation.
 
-### [ Durable Objects ](https://developers.cloudflare.com/durable-objects/)
+### [Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
- Learn about the underlying stateful infrastructure.
+Learn about the underlying stateful infrastructure.
 
-### [ Slack API ](https://api.slack.com/)
+### [Slack API](https://api.slack.com/)
 
- Official Slack API documentation.
+Official Slack API documentation.
 
-### [ OpenAI API ](https://platform.openai.com/docs/)
+### [OpenAI API](https://platform.openai.com/docs/)
 
- Official OpenAI API documentation.
+Official OpenAI API documentation.
 
 Was this helpful?
 
@@ -507,7 +507,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/slack-agent/#page","headline":"Slack agent · Cloudflare Agents docs","description":"Build and deploy an AI-powered Slack bot on Cloudflare Workers using the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/slack-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

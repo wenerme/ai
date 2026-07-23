@@ -4,15 +4,15 @@ title: Health Checks Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Health Checks Analytics
+# Health Checks Analytics
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/health-checks/health-checks-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/health-checks-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -23,7 +23,7 @@ Once you have set up a standalone Health Check including notification emails, us
 To access health check analytics:
 
 1. In the Cloudflare dashboard, go to the **Health Check Analytics** page.
-[ Go to **Health Check Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
+[Go to **Health Check Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
 
 You can evaluate origin uptime, latency, failure reason, and specific event logs:
 
@@ -250,7 +250,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/health-checks-analytics/#page","headline":"Health Checks Analytics · Cloudflare Health Checks docs","description":"View Health Checks status history and response time analytics.","url":"https://developers.cloudflare.com/health-checks/health-checks-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}

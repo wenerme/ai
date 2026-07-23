@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
@@ -97,36 +97,36 @@ It is recommended to consistently use the same API token across all uploads and 
 
 [Static assets](https://developers.cloudflare.com/workers/static-assets/) and [frameworks](https://developers.cloudflare.com/workers/framework-guides/) are now supported in Cloudflare Workers. Learn to set up Workers projects and the commands for each framework in the framework guides:
 
-* [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
-* [ Web applications ](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
-  * [ React + Vite ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
-  * [ Astro ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
-  * [ React Router (formerly Remix) ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
-  * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
-  * [ Vue ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
-  * [ RedwoodSDK ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
-  * [ TanStack Start ](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
-  * [ Microfrontends ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
-  * [ SvelteKit ](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
-  * [ Vike ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
-  * [ More guides... ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
-    * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
-    * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
-    * [ Docusaurus ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
-    * [ Gatsby ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
-    * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
-    * [ Nuxt ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
-    * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
-    * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
-    * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
-* [ Mobile applications ](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
-  * [ Expo ](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
-* [ APIs ](https://developers.cloudflare.com/workers/framework-guides/apis/)
-  * [ FastAPI ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
-  * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
-* [ AI & agents ](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
-  * [ Agents SDK ](https://developers.cloudflare.com/agents/)
-  * [ LangChain ](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
+* [Deploy an existing project](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
+* [Web applications](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
+  * [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
+  * [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
+  * [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
+  * [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
+  * [Vue](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
+  * [RedwoodSDK](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
+  * [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
+  * [Microfrontends](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
+  * [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
+  * [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+  * [More guides...](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
+    * [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
+    * [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
+    * [Docusaurus](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
+    * [Gatsby](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
+    * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+    * [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
+    * [Qwik](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
+    * [Solid](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
+    * [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
+* [Mobile applications](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
+  * [Expo](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
+* [APIs](https://developers.cloudflare.com/workers/framework-guides/apis/)
+  * [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+* [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
+  * [Agents SDK](https://developers.cloudflare.com/agents/)
+  * [LangChain](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
 
 ## Environment variables
 
@@ -135,7 +135,7 @@ You can provide custom environment variables to your build.
 To add environment variables via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 1. In **Overview**, select your Worker.
 2. Select **Settings** \> **Environment variables**.
 
@@ -187,7 +187,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

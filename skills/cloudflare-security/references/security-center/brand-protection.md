@@ -4,15 +4,15 @@ title: Brand Protection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Brand Protection
+# Brand Protection
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/brand-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/brand-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Brand Protection allows you to proactively identify and mitigate domain impersonation and phishing attacks. By monitoring newly registered domains and visual assets across the Internet, Cloudflare helps protect your brand's reputation and prevents your customers or employees from submitting sensitive information to fraudulent sites.
 
@@ -44,7 +44,7 @@ Search for domains based on text patterns, misspellings, or service combinations
 To start searching for new domains that might be trying to impersonate your brand:
 
 1. In the Cloudflare dashboard, go to the **Brand Protection** page.
-[ Go to **Brand protection** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
+[Go to **Brand protection** ↗](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
 2. In **String query**, provide a name for your query. You can add multiple brand phrases on the same query, and the results will generate matches for all of those. Once you entered the string queries, select **Search matches**.
 3. In the **Character distance**, select from `0-3`. This defines how many characters a result can differ from your string (for example, a distance of 1 would catch `clpudflare.com`). The number of characters the results can differ from your domain.
 Note
@@ -91,7 +91,7 @@ You can only submit an abuse report if your domain is with [Cloudflare Registrar
 To submit abuse reports directly from the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Brand Protection** page.
-[ Go to **Brand protection** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
+[Go to **Brand protection** ↗](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
 2. Go to **Monitor Strings**, select the query you want to report.
 3. Select **Report to Cloudflare**.
 4. Fill in the details to submit an abuse report.
@@ -99,7 +99,7 @@ To submit abuse reports directly from the dashboard:
 
 To view abuse reports, in the Cloudflare dashboard, go to the **Abuse Reports** page.
 
-[ Go to **Abuse reports** ↗ ](https://dash.cloudflare.com/?to=/:account/abuse-reports)
+[Go to **Abuse reports** ↗](https://dash.cloudflare.com/?to=/:account/abuse-reports)
 
 You can review abuse reports against your zones and any mitigations taken against reports in response.
 
@@ -117,7 +117,7 @@ When reviewing a matched domain, you have two paths to action depending on where
 ### Generate a C&D letter
 
 1. In the Cloudflare dashboard, go to the **Brand Protection** page.
-[ Go to **Brand protection** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
+[Go to **Brand protection** ↗](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
 2. Go to **Monitor Strings** and select a query to view its matched domains.
 3. Next to the domain you want to take action on, click **Generate C&D Letter**.
 4. Choose a template. You can select from three default templates or from your own saved templates:
@@ -259,7 +259,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/brand-protection/#page","headline":"Brand Protection · Cloudflare Security Center docs","description":"Detect phishing domains and impersonation attempts targeting your brand.","url":"https://developers.cloudflare.com/security-center/brand-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Phishing","AI"]}

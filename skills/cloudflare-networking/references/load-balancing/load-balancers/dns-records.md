@@ -4,15 +4,15 @@ title: DNS records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DNS records
+# DNS records
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/), Cloudflare automatically creates an LB DNS record for the specified **Hostname**. This functionality allows you to use a hostname with or without an existing DNS record. Private load balancers do not receive an automatic DNS record. Instead, you can configure a hostname using your internal DNS system or by applying a [Gateway Firewall override](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#override) to a hostname.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#page","headline":"DNS records for load balancing · Cloudflare Load Balancing docs","description":"DNS records created for load balanced hostnames.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

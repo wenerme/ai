@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Web Application Firewall (Cloudflare WAF) checks incoming web and API requests and filters undesired traffic based on sets of rules called rulesets.
 
@@ -35,7 +35,7 @@ If you are on a Free plan, you may skip to [5\. Review traffic in security dashb
 The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) protects against Common Vulnerabilities and Exposures (CVEs) and known attack vectors. This ruleset is designed to identify common attacks using signatures, while generating low false positives. Rule changes are published on a weekly basis in the [WAF changelog](https://developers.cloudflare.com/waf/change-log/). Cloudflare may also add rules at any time during emergency releases for high profile zero-day protection.
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Web application exploits**.
 3. Turn on **Cloudflare managed ruleset**.
 
@@ -87,7 +87,7 @@ Bot score is only available to Enterprise customers with [Bot Management](https:
 Enterprise customers with Bot Management should first configure bot protection using **Security Settings**, which provide baseline protection without creating custom rules:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page and filter by **Bot traffic**.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Configure the **Definitely automated**, **Likely automated**, and **Verified bots** settings according to your needs.
 3. Turn on **Block AI bots** if you want to block AI crawlers.
 
@@ -122,7 +122,7 @@ Caution
 The Cloudflare OWASP Core Ruleset is prone to false positives and offers only marginal benefits when added on top of Cloudflare Managed Ruleset and WAF attack score. If you decide to deploy this managed ruleset, you will need to monitor and adjust its settings based on your traffic to prevent false positives.
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Web application exploits**.
 3. Turn on **OWASP Core**.
 This will deploy the Cloudflare OWASP Core Ruleset with the default configuration: paranoia level = _PL1_ and score threshold = _Medium - 40 and higher_.
@@ -201,7 +201,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

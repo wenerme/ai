@@ -4,15 +4,15 @@ title: Use BYOIP with CDN and Spectrum
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use BYOIP with CDN and Spectrum
+# Use BYOIP with CDN and Spectrum
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [service bindings](https://developers.cloudflare.com/byoip/service-bindings/), CDN[1](#user-content-fn-1) customers using BYOIP can take the same prefix they have onboarded to Cloudflare and use it to selectively route traffic on a per-IP address basis to [Spectrum](https://developers.cloudflare.com/spectrum/)[2](#user-content-fn-2), or vice versa. This means:
 
@@ -172,7 +172,7 @@ Note
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[Go to **Address maps** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Select **Create an address map**.
 3. Choose the scope of the address map.
 4. Add the zones and IP addresses that you want to map.
@@ -194,7 +194,7 @@ As you create the necessary DNS records, [Total TLS](https://developers.cloudfla
 To create a DNS record in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Choose an address (`A`/`AAAA`) [record type](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
 4. Complete the required fields, setting the **Proxy status** to **proxied**.
@@ -290,7 +290,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/#page","headline":"Use BYOIP with CDN and Spectrum · Cloudflare BYOIP docs","description":"Cloudflare allows users to use their Cloudflare prefix to route traffic to a different service. Service bindings must be created on the parent account of the prefix.","url":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}

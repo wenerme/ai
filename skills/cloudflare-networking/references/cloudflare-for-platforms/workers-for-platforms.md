@@ -4,15 +4,15 @@ title: Workers for Platforms
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers for Platforms
+# Workers for Platforms
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a multi-tenant platform that runs untrusted code in secure, isolated sandboxes.
 
@@ -51,11 +51,11 @@ Explore reference architectures that use Workers for Platforms:
 
 ## Get started
 
-### [ Get started ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
+### [Get started](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
 
 Set up a dispatch namespace, dynamic dispatch Worker, and user Worker.
 
-### [ How Workers for Platforms works ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/)
+### [How Workers for Platforms works](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/)
 
 Understand the architecture: dispatch namespaces, dynamic dispatch Workers, user Workers, and outbound Workers.
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare for Platforms docs","description":"Run untrusted code from your customers or AI in secure, isolated sandboxes on Cloudflare's global network.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

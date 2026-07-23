@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Before you begin
 
@@ -33,7 +33,7 @@ The fastest way to create a threat intelligence rule is from a saved view in the
 Once the rule is deployed, matches appear in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/). You can see the threat event details — including threat actors, target industries, and countries — directly in the analytics view.
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Review the threat intelligence matches. Use the threat event details to decide which categories of traffic to block or challenge.
 
 If no matches appear after deploying the rule, contact your account team to verify your Cloudforce One subscription is active.
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Create a WAF rule using Cloudforce One threat intelligence fields.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}

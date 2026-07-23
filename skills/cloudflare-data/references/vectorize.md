@@ -4,15 +4,15 @@ title: Cloudflare Vectorize
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Vectorize
+# Cloudflare Vectorize
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build full-stack AI applications with Vectorize, Cloudflare's powerful vector database.
 
@@ -34,19 +34,19 @@ The vectors returned can reference images stored in Cloudflare R2, documents in 
 
 Learn how to create your first Vectorize database, upload vector embeddings, and query those embeddings from [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
- Create your Vector database
+Create your Vector database
 
 [Vector embeddings using Workers AI](https://developers.cloudflare.com/vectorize/get-started/embeddings/)
 
 Learn how to use Vectorize to generate vector embeddings using Workers AI.
 
- Create vector embeddings using Workers AI
+Create vector embeddings using Workers AI
 
 [Search using Vectorize and AI Search](https://developers.cloudflare.com/ai-search/)
 
 Learn how to automatically index your data and store it in Vectorize, then query it to generate context-aware responses using AI Search.
 
- Build a RAG with Vectorize
+Build a RAG with Vectorize
 
 ---
 
@@ -64,23 +64,23 @@ Store large amounts of unstructured data without the costly egress bandwidth fee
 
 ## More resources
 
-### [ Limits ](https://developers.cloudflare.com/vectorize/platform/limits/)
+### [Limits](https://developers.cloudflare.com/vectorize/platform/limits/)
 
 Learn about Vectorize limits and how to work within them.
 
-### [ Use cases ](https://developers.cloudflare.com/use-cases/ai/)
+### [Use cases](https://developers.cloudflare.com/use-cases/ai/)
 
 Learn how you can build and deploy ambitious AI applications to Cloudflare's global network.
 
-### [ Storage options ](https://developers.cloudflare.com/workers/platform/storage-options/)
+### [Storage options](https://developers.cloudflare.com/workers/platform/storage-options/)
 
 Learn more about the storage and database options you can build on with Workers.
 
-### [ Developer Discord ](https://discord.cloudflare.com)
+### [Developer Discord](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, join the `#vectorize` channel to show what you are building, and discuss the platform with other developers.
 
-### [ @CloudflareDev ](https://x.com/cloudflaredev)
+### [@CloudflareDev](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Developer Platform.
 
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/vectorize/#page","headline":"Overview · Cloudflare Vectorize docs","description":"Build full-stack AI applications with Vectorize, Cloudflare's vector database.","url":"https://developers.cloudflare.com/vectorize/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

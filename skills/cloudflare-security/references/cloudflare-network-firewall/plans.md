@@ -4,15 +4,15 @@ title: Plans
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Plans
+# Plans
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/plans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/plans/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are a [Magic Transit](https://developers.cloudflare.com/magic-transit/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) user, you are automatically provided with a standard list of Cloudflare Network Firewall (formerly Magic Firewall) features. For additional features available for purchase, refer to the list of advanced features below.
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/#page","headline":"Plans · Cloudflare Network Firewall docs","description":"Compare Network Firewall features by plan.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

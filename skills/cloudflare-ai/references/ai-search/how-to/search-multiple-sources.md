@@ -4,15 +4,15 @@ title: Search across multiple instances
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Search across multiple instances
+# Search across multiple instances
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search can query several instances in one request, merge the results, and tag each result with the instance it came from. This guide uses that to search two knowledge bases together: a shared **general** knowledge base that every user can search, plus a **tenant-specific** knowledge base that holds one customer's private content. A single query returns relevant content from both.
 
@@ -37,7 +37,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `multi-source-search` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- multi-source-search
@@ -75,7 +75,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
   "name": "multi-source-search",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -90,7 +90,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
 name = "multi-source-search"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -348,17 +348,17 @@ npx wrangler deploy
 
 ## Next steps
 
-### [ Multi-tenant search isolation ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+### [Multi-tenant search isolation](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
- Give each tenant its own instance, or share one instance with metadata filtering.
+Give each tenant its own instance, or share one instance with metadata filtering.
 
-### [ Namespaces ](https://developers.cloudflare.com/ai-search/concepts/namespaces/)
+### [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/)
 
- How instances are grouped, and how the namespace binding addresses them.
+How instances are grouped, and how the namespace binding addresses them.
 
-### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Search Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Full reference for single-instance and multi-instance search and chat.
+Full reference for single-instance and multi-instance search and chat.
 
 Was this helpful?
 
@@ -366,7 +366,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/#page","headline":"Search across multiple instances · Cloudflare AI Search docs","description":"Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.","url":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

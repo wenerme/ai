@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -43,7 +43,7 @@ npx wrangler r2 bucket create pipelines-tutorial
 ```
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter the bucket name: pipelines-tutorial
 4. Select **Create bucket**.
@@ -59,7 +59,7 @@ npx wrangler r2 bucket catalog enable pipelines-tutorial
 When you run this command, take note of the "Warehouse" and "Catalog URI". You will need these later.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket: pipelines-tutorial.
 3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
 4. Once enabled, note the **Catalog URI** and **Warehouse name**.
@@ -69,7 +69,7 @@ When you run this command, take note of the "Warehouse" and "Catalog URI". You w
 Pipelines must authenticate to R2 Data Catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has catalog and R2 permissions.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Manage API tokens**.
 3. Select **Create Account API token**.
 4. Give your API token a name.
@@ -148,7 +148,7 @@ INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream
 After setup completes, note the HTTP endpoint URL displayed in the final output.
 
 1. In the Cloudflare dashboard, go to **Pipelines** \> **Pipelines**.
-[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline**.
 3. **Connect to a Stream**:
 
@@ -282,17 +282,17 @@ You can also query this table with any engine that supports Apache Iceberg. To l
 
 ## Learn more
 
-### [ Managing R2 Data Catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
+### [Managing R2 Data Catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
 
- Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
+Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
 
-### [ Try another example ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline)
+### [Try another example](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline)
 
- Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
+Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
 
-### [ Pipelines ](https://developers.cloudflare.com/pipelines/)
+### [Pipelines](https://developers.cloudflare.com/pipelines/)
 
- Understand SQL transformations and pipeline configuration.
+Understand SQL transformations and pipeline configuration.
 
 Was this helpful?
 
@@ -300,7 +300,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/get-started/#page","headline":"Getting started · R2 SQL docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/r2-sql/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

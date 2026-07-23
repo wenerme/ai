@@ -4,15 +4,15 @@ title: Data location
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Data location
+# Data location
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/reference/data-location/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in R2 is determined and about the different available inputs that control the physical location where objects in your buckets are stored.
 
@@ -31,7 +31,7 @@ Using Location Hints can be a good choice when you expect the majority of access
 You can choose to automatically create your bucket in the closest available region based on your location or choose a specific location from the list.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
 4. Under **Location**, leave _None_ selected for automatic selection or choose a region from the list.
@@ -80,7 +80,7 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 ### Set jurisdiction via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
 4. Under **Location**, select **Specify jurisdiction** and choose a jurisdiction from the list.
@@ -174,7 +174,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/data-location/#page","headline":"Data location · Cloudflare R2 docs","description":"Control where R2 stores your data using automatic placement, location hints, or jurisdictions.","url":"https://developers.cloudflare.com/r2/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

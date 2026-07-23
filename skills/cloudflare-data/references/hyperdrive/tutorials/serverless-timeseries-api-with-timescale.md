@@ -4,15 +4,15 @@ title: Create a serverless, globally distributed time-series API with Timescale
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a serverless, globally distributed time-series API with Timescale
+# Create a serverless, globally distributed time-series API with Timescale
 
-Last updated Feb 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
@@ -34,7 +34,7 @@ You can learn more about Timescale by reading their [documentation ↗](https://
 
 Run the following command to create a Worker project from the command line:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- timescale-api
@@ -153,7 +153,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 	"name": "timescale-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -171,7 +171,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 name = "timescale-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -181,7 +181,7 @@ id = "your-id-here"
 
 Install the Postgres driver into your Worker project:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i pg
@@ -332,7 +332,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale · Cloudflare Hyperdrive docs","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}

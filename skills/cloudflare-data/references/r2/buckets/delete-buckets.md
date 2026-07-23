@@ -4,15 +4,15 @@ title: Delete buckets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Delete buckets
+# Delete buckets
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/delete-buckets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/delete-buckets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To delete an R2 bucket, you must first remove all objects from it. Once the bucket is empty, you can delete it.
 
@@ -29,7 +29,7 @@ You can empty a bucket in various ways.
 The dashboard provides an **Empty Bucket** action that handles this for you, regardless of how many objects the bucket contains. For large buckets, the operation runs in the background and the dashboard displays progress until all objects have been removed.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you want to empty.
 3. Go to the **Settings** tab.
 4. Scroll to the **Empty Bucket** section.
@@ -83,7 +83,7 @@ You can delete a bucket in various ways.
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you want to delete.
 3. Go to the **Settings** tab.
 4. Scroll to the **Delete Bucket** section. If the bucket is not empty, select **Empty Bucket** first to clear all objects.
@@ -126,21 +126,21 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/bu
 
 ## Related resources
 
-### [ Delete objects ](https://developers.cloudflare.com/r2/objects/delete-objects/)
+### [Delete objects](https://developers.cloudflare.com/r2/objects/delete-objects/)
 
- Delete individual objects or folders from an R2 bucket.
+Delete individual objects or folders from an R2 bucket.
 
-### [ Bucket locks ](https://developers.cloudflare.com/r2/buckets/bucket-locks/)
+### [Bucket locks](https://developers.cloudflare.com/r2/buckets/bucket-locks/)
 
- Prevent accidental deletion by setting retention policies on objects.
+Prevent accidental deletion by setting retention policies on objects.
 
-### [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
+### [Object lifecycles](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
 
- Automatically expire objects after a specified period instead of emptying manually.
+Automatically expire objects after a specified period instead of emptying manually.
 
-### [ Create buckets ](https://developers.cloudflare.com/r2/buckets/create-buckets/)
+### [Create buckets](https://developers.cloudflare.com/r2/buckets/create-buckets/)
 
- Create a new R2 bucket after deleting an existing one.
+Create a new R2 bucket after deleting an existing one.
 
 Was this helpful?
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/delete-buckets/#page","headline":"Delete buckets · Cloudflare R2 docs","description":"Empty all objects from an R2 bucket and permanently delete it.","url":"https://developers.cloudflare.com/r2/buckets/delete-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,11 +4,11 @@ title: ip.src.is_in_european_union
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  ip.src.is\_in\_european\_union
+# ip.src.is\_in\_european\_union
 
-`ip.src.is_in_european_union` ` Boolean `
+`ip.src.is_in_european_union` `Boolean`
 
 Whether the request originates from a country in the European Union (EU).
 
@@ -65,7 +65,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.is_in_european_union/#page","headline":"ip.src.is_in_european_union · Cloudflare Ruleset Engine docs","description":"Whether the request originates from a country in the European Union (EU).","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.is_in_european_union/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

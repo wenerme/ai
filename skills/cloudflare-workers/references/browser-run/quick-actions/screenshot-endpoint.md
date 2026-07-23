@@ -4,15 +4,15 @@ title: /screenshot - Capture screenshot
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  /screenshot - Capture screenshot
+# /screenshot - Capture screenshot
 
-Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/screenshot` endpoint renders the webpage by processing its HTML and JavaScript, then captures a screenshot of the fully rendered page.
 
@@ -304,7 +304,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#page","headline":"/screenshot - Capture screenshot · Cloudflare Browser Run docs","description":"Capture a screenshot of a fully rendered webpage using the Browser Run /screenshot endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

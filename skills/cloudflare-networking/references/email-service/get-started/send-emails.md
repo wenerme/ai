@@ -4,17 +4,17 @@ title: Send emails
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Send emails
+# Send emails
 
 Send your first email using the Workers binding, the REST API, or SMTP.
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send emails from your applications using Cloudflare Email Service. You can use the **Workers binding** for applications built on Cloudflare Workers, the **REST API** from any platform, or **SMTP** from any SMTP-capable application or mail client.
 
@@ -27,7 +27,7 @@ You must be using Cloudflare DNS to use Email Service.
 Before using Email Sending, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.
-[ Go to **Email Sending** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+[Go to **Email Sending** ↗](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
 
@@ -50,7 +50,7 @@ You can send your first email using the Workers binding, the REST API, or SMTP.
 If you are building on Cloudflare Workers, you can use the Workers binding for native email sending. Start by creating a new Worker project.
 
 1. Create a new Worker project:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- email-service-tutorial
 ```
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

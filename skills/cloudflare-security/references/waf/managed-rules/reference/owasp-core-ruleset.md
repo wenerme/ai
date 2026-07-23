@@ -4,15 +4,15 @@ title: Cloudflare OWASP Core Ruleset
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare OWASP Core Ruleset
+# Cloudflare OWASP Core Ruleset
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the [OWASP ModSecurity Core Rule Set ↗](https://owasp.org/www-project-modsecurity-core-rule-set/) (CRS) version 3.3.0.
 
@@ -56,11 +56,11 @@ The following table outlines how Cloudflare products map to the OWASP categories
 
 ## Resources
 
-* [ Concepts ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/)
-* [ OWASP evaluation example ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/)
-* [ Configure in the dashboard ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/)
-* [ Configure via API ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/)
-* [ Configure in Terraform ](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#configure-the-owasp-paranoia-level-score-threshold-and-action)
+* [Concepts](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/)
+* [OWASP evaluation example](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/)
+* [Configure in the dashboard](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/)
+* [Configure via API](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/)
+* [Configure in Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#configure-the-owasp-paranoia-level-score-threshold-and-action)
 
 Was this helpful?
 
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/#page","headline":"Cloudflare OWASP Core Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Configure the Cloudflare OWASP Core Ruleset for your zone.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

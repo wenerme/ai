@@ -4,15 +4,15 @@ title: Bindings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bindings
+# Bindings
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you deploy User Workers through Workers for Platforms, you can attach [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to give them access to resources like [KV namespaces](https://developers.cloudflare.com/kv/), [D1 databases](https://developers.cloudflare.com/d1/), [R2 buckets](https://developers.cloudflare.com/r2/), and more. This enables your end customers to build more powerful applications without you having to build the infrastructure components yourself.
 
@@ -28,7 +28,7 @@ With bindings, each User Worker can extend functionality to:
 
 Each User Worker can only access the bindings that are explicitly attached to it. For complete isolation, you can create and attach a unique resource (like a D1 database or KV namespace) to every User Worker.
 
-![Resource Isolation Model](https://developers.cloudflare.com/_astro/programmable-platforms-5.B2yd7IjV_Z1IMWex.svg "Resource Isolation Model")
+![Resource Isolation Model](https://developers.cloudflare.com/_astro/programmable-platforms-5.B2yd7IjV_ZFbTas.svg "Resource Isolation Model")
 
 Resource Isolation Model
 
@@ -95,8 +95,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/#page","headline":"Bindings · Cloudflare for Platforms docs","description":"Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/#page","headline":"Bindings · Cloudflare for Platforms docs","description":"Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

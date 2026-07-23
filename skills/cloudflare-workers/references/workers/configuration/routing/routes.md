@@ -4,15 +4,15 @@ title: Routes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Routes
+# Routes
 
-Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/routing/routes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -51,7 +51,7 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 To set up a route in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes** \> **Add** \> **Route**.
 4. Select the zone and enter the route pattern.
@@ -92,7 +92,7 @@ zone_id = "<YOUR_ZONE_ID>"
 Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `zone_id` options are interchangeable. If using `zone_id`, find your zone ID by:
 
 1. Go to the Zone Overview page in the Cloudflare dashboard.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 2. Find the **Zone ID** in the left-hand side of **Overview**.
 
 To add multiple routes:
@@ -220,7 +220,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes · Cloudflare Workers docs","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

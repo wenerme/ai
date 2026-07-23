@@ -4,15 +4,15 @@ title: What is Shadow AI?
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  What is Shadow AI?
+# What is Shadow AI?
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Shadow AI is the use of any AI tool or application by employees without the formal approval or oversight of the IT department. A common example is an employee using a generative AI application like ChatGPT to draft a report or analyze data, unknowingly exposing the company to significant risks. While employees often turn to these tools to increase productivity, their use can lead to major issues with data security, compliance, and even a company's reputation. For IT and security leaders, the key to managing these risks is to create a robust AI strategy that includes clear policies and governance.
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/#page","headline":"What is Shadow AI? · Cloudflare Learning Paths","description":"Understand unauthorized AI tool usage risks.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

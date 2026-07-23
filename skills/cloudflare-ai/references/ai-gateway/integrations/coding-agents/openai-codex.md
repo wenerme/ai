@@ -4,15 +4,15 @@ title: OpenAI Codex
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  OpenAI Codex
+# OpenAI Codex
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenAI Codex ↗](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key.
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#page","headline":"OpenAI Codex · Cloudflare AI Gateway docs","description":"Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

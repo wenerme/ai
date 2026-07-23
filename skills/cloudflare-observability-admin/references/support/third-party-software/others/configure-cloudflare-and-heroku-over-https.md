@@ -4,15 +4,15 @@ title: Configure Cloudflare and Heroku over HTTPS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure Cloudflare and Heroku over HTTPS
+# Configure Cloudflare and Heroku over HTTPS
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -36,7 +36,7 @@ Below, you will need to add DNS records for a subdomain and the apex domain (als
 
 In the Cloudflare dashboard, go to the **DNS Records** page.
 
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 Add a 'www' _CNAME_ record that points to the custom domain (also known as _DNS target_) that you obtained in Step 1 above for your subdomain.
 
@@ -125,7 +125,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/#page","headline":"Configure Cloudflare and Heroku over HTTPS · Cloudflare Support docs","description":"Set up Cloudflare with Heroku for HTTPS traffic.","url":"https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

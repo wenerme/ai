@@ -4,15 +4,15 @@ title: Cannot locate dashboard account
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cannot locate dashboard account
+# Cannot locate dashboard account
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 We are making some improvements to our support experience. This could be causing a temporary issue linking your [dashboard account ↗](https://dash.cloudflare.com) and your Cloudflare [Help Center My Activities sign-on information ↗](https://support.cloudflare.com/hc/requests).
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/#page","headline":"Cannot locate dashboard account · Cloudflare Support docs","description":"Resolve issues linking dashboard and support accounts.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -1,16 +1,18 @@
 ---
-title: Ethereum Gateway
 description: Access the Ethereum network through Cloudflare without running a node.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Ethereum Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
 # Ethereum Gateway
+
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Ethereum Gateway gives you read and write access to the [Ethereum network](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/) without installing any software on your computer.
 
@@ -30,7 +32,14 @@ Note
 
 For more pricing details, refer to the [Web3 product page ↗](https://www.cloudflare.com/application-services/products/web3/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/#page","headline":"Ethereum Gateway · Cloudflare Web3 docs","description":"Access the Ethereum network through Cloudflare without running a node.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/#page","headline":"Ethereum Gateway · Cloudflare Web3 docs","description":"Access the Ethereum network through Cloudflare without running a node.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

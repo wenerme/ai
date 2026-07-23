@@ -4,15 +4,15 @@ title: Pause and Purge
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pause and Purge
+# Pause and Purge
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/pause-purge/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/pause-purge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Pause Delivery
 
@@ -30,7 +30,7 @@ The following command will pause message delivery from your queue:
 $ npx wrangler queues pause-delivery <QUEUE-NAME>
 ```
 
-* `queue-name` ` string `required
+* `queue-name` `string`required
   * The name of the queue for which delivery should be paused.
 
 The following command will resume message delivery:
@@ -39,7 +39,7 @@ The following command will resume message delivery:
 $ npx wrangler queues resume-delivery <QUEUE-NAME>
 ```
 
-* `queue-name` ` string `required
+* `queue-name` `string`required
   * The name of the queue for which delivery should be resumed.
 
 ### What happens to HTTP Pull consumers with a paused queue?
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pause-purge/#page","headline":"Pause and Purge · Cloudflare Queues docs","description":"Pause message delivery or purge all messages from a Cloudflare Queue.","url":"https://developers.cloudflare.com/queues/configuration/pause-purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

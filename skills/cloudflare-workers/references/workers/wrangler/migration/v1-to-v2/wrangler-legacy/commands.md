@@ -4,15 +4,15 @@ title: Commands
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Commands
+# Commands
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -116,7 +116,7 @@ This command only invalidates OAuth tokens acquired through the `wrangler login`
 To delete your API token:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In the **Overview** \> **Get your API token** in the right side menu.
 3. Select the three-dot menu on your Wrangler token and select **Delete**.
 
@@ -924,10 +924,10 @@ In order to save JSON data, cast `value` to a string:
 
 The schema below is the full schema for key-value entries uploaded via the bulk API:
 
-* `key` ` string `required
+* `key` `string`required
 
   * The key’s name. The name may be 512 bytes maximum. All printable, non-whitespace characters are valid.
-* `value` ` string `required
+* `value` `string`required
 
   * The UTF-8 encoded string to be stored, up to 25 MB in length.
 * `expiration` int optional
@@ -985,10 +985,10 @@ This command takes a JSON file as an argument with a list of key-value pairs to 
 ]
 ```
 
-* `key` ` string `required
+* `key` `string`required
 
   * The key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
-* `value` ` string `required
+* `value` `string`required
 
   * This field must be specified for deserialization purposes, but is unused because the provided keys are being deleted, not written.
 
@@ -1059,7 +1059,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

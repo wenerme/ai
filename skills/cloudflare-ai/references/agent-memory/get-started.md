@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
@@ -39,7 +39,7 @@ Do not call `ingest()` after every model turn. Instead, batch ingestion after th
 
 Create a Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- memory-agent
@@ -69,7 +69,7 @@ cd memory-agent
 
 Install the dependencies used by this guide:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i agents ai workers-ai-provider
@@ -91,7 +91,7 @@ bun add agents ai workers-ai-provider
 
 A [namespace](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/) scopes the memory profiles for your application. Create one with Wrangler:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler agent-memory namespace create my-agent
@@ -117,7 +117,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
   "name": "memory-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -153,7 +153,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
 name = "memory-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -174,7 +174,7 @@ new_sqlite_classes = ["ChatAgent"]
 
 Generate local TypeScript types for your bindings:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -608,7 +608,7 @@ If the model can call a memory-write tool, add system prompt instructions that d
 
 Start local development:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev
@@ -644,17 +644,17 @@ The model should call `search_context`, receive recalled memory from Agent Memor
 
 ## Next steps
 
-### [ How Agent Memory works ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
+### [How Agent Memory works](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 
- Learn how Agent Memory extracts, stores, and retrieves durable memories.
+Learn how Agent Memory extracts, stores, and retrieves durable memories.
 
-### [ Namespaces and profiles ](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
+### [Namespaces and profiles](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
 
- Design memory scopes for users, teams, tenants, or organizations.
+Design memory scopes for users, teams, tenants, or organizations.
 
-### [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/)
+### [Workers API](https://developers.cloudflare.com/agent-memory/api/workers-api/)
 
- Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers.
+Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers.
 
 Was this helpful?
 
@@ -662,7 +662,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

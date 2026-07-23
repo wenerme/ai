@@ -4,15 +4,15 @@ title: Static resource protection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Static resource protection
+# Static resource protection
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/static-resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/static-resources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pro, Business, and Enterprise customers can use Cloudflare's bot solutions to protect their static resources from bots.
 
@@ -25,7 +25,7 @@ If you enable static resource protection, you may block good bots — like mail 
 To enable this feature as a Pro or Business customer or an Enterprise customer without Bot Management:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot Fight Mode**.
 4. Under **Configurations**, select the edit icon for **Static resource protection** and turn it on.
@@ -59,7 +59,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/static-resources/#page","headline":"Static resource protection · Cloudflare bot solutions docs","description":"Extend bot protection to static resources like images, CSS, and JavaScript files.","url":"https://developers.cloudflare.com/bots/additional-configurations/static-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

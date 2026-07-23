@@ -4,15 +4,15 @@ title: Prefetch URLs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Prefetch URLs
+# Prefetch URLs
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with [additional setup](#setup) — leads to a higher cache hit rate and thus a faster experience for the user.
 
@@ -35,7 +35,7 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 To enable **Prefetch URLs** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. For **Prefetch URLs**, switch the toggle to **On**.
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/#page","headline":"Prefetch URLs · Cloudflare Speed docs","description":"Prefetch URLs to load resources before visitors request them.","url":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}

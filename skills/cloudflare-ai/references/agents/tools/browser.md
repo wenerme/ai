@@ -4,17 +4,17 @@ title: Browser
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Browser
+# Browser
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/browser/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Agents can use [Browser Run](https://developers.cloudflare.com/browser-run/) to inspect and interact with web pages through the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/).  Beta  Browser tools are useful when an agent needs to understand rendered pages, capture screenshots, debug frontend behavior, or extract information that is only available after JavaScript runs.
+Agents can use [Browser Run](https://developers.cloudflare.com/browser-run/) to inspect and interact with web pages through the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/). Beta Browser tools are useful when an agent needs to understand rendered pages, capture screenshots, debug frontend behavior, or extract information that is only available after JavaScript runs.
 
 Instead of a fixed set of browser actions (click, screenshot, navigate), the model writes code that runs CDP commands against a live browser session through the `cdp` connector — accessing all domains, commands, events, and types in the protocol. Executions use the [durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/), so a run can pause for approval and resume with its browser session intact.
 
@@ -344,19 +344,19 @@ Using `@cloudflare/think`? The unified execute tool (`createExecuteTool(this)`) 
 
 For a complete walkthrough, including Browser Run setup, tool definitions, and screenshot capture, use the browser agent example.
 
-### [ Browser agent ](https://developers.cloudflare.com/agents/examples/browser-agent/)
+### [Browser agent](https://developers.cloudflare.com/agents/examples/browser-agent/)
 
- Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues.
+Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues.
 
 ## Related resources
 
-### [ Browser Run ](https://developers.cloudflare.com/browser-run/)
+### [Browser Run](https://developers.cloudflare.com/browser-run/)
 
- Run browser automation on Cloudflare.
+Run browser automation on Cloudflare.
 
-### [ Chrome DevTools Protocol ](https://developers.cloudflare.com/browser-run/cdp/)
+### [Chrome DevTools Protocol](https://developers.cloudflare.com/browser-run/cdp/)
 
- Use CDP commands, events, and types with Browser Run.
+Use CDP commands, events, and types with Browser Run.
 
 Was this helpful?
 
@@ -364,7 +364,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

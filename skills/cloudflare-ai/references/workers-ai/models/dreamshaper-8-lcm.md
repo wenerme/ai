@@ -4,21 +4,21 @@ title: dreamshaper-8-lcm
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- l
+l
 
-#  dreamshaper-8-lcm
+# dreamshaper-8-lcm
 
- Text-to-Image • lykon
+Text-to-Image • lykon
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/lykon/dreamshaper-8-lcm `
+`@cf/lykon/dreamshaper-8-lcm`
 
 * Cloudflare-hosted
 
@@ -74,13 +74,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
- The binding returns a `ReadableStream` with the output (check the model's output schema).
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/#page","headline":"dreamshaper-8-lcm (lykon) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.","url":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

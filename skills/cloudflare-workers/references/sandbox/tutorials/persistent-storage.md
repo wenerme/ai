@@ -4,15 +4,15 @@ title: Data persistence with R2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Data persistence with R2
+# Data persistence with R2
 
-Last updated May 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Mount object storage buckets as local filesystem paths to persist data across sandbox lifecycles. This tutorial uses Cloudflare R2, but the same approach works with any S3-compatible provider.
 
@@ -46,7 +46,7 @@ You'll also need:
 
 ## 1\. Create your project
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- data-pipeline --template=cloudflare/sandbox-sdk/examples/minimal
@@ -383,7 +383,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/#page","headline":"Data persistence with R2 · Cloudflare Sandbox SDK docs","description":"Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.","url":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

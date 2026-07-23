@@ -4,7 +4,7 @@ title: Life of a Request: The Fast Lane - Caching and Smart Routing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 After your request hits Cloudflare's secure network at the nearest data center where it's checked for security threats with a clean bill of health, it's time to get it to its destination at lightning speed.
 

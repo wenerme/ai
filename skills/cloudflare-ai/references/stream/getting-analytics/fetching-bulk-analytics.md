@@ -4,26 +4,26 @@ title: GraphQL Analytics API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  GraphQL Analytics API
+# GraphQL Analytics API
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream provides analytics about both live video and video uploaded to Stream, via the GraphQL API described below, as well as on the Stream **Analytics** page of the Cloudflare dashboard.
 
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/stream/analytics)
 
 The Stream Analytics API uses the Cloudflare GraphQL Analytics API, which can be used across many Cloudflare products. For more about GraphQL, rate limits, filters, and sorting, refer to the [Cloudflare GraphQL Analytics API docs](https://developers.cloudflare.com/analytics/graphql-api).
 
 ## Getting started
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Generate an API token with the **Account Analytics** permission.
 3. Use a GraphQL client of your choice to make your first query. [Postman ↗](https://www.postman.com/) has a built-in GraphQL client which can help you run your first query and introspect the GraphQL schema to understand what is possible.
 
@@ -172,7 +172,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/#page","headline":"GraphQL Analytics API · Cloudflare Stream docs","description":"Query Cloudflare Stream video metrics and viewer data using the GraphQL Analytics API.","url":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

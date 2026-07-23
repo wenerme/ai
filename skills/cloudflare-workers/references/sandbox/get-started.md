@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build your first application with Sandbox SDK - a secure code execution environment. In this guide, you'll create a Worker that can execute Python code and work with files in isolated containers.
 
@@ -41,7 +41,7 @@ You can check that Docker is running properly by running the `docker info` comma
 
 Create a new Sandbox SDK project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-sandbox --template=cloudflare/sandbox-sdk/examples/minimal
@@ -248,7 +248,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started · Cloudflare Sandbox SDK docs","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

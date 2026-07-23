@@ -4,15 +4,15 @@ title: Minimum TLS Version
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Minimum TLS Version
+# Minimum TLS Version
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Minimum TLS Version only allows HTTPS connections from visitors that support the selected TLS protocol version or newer.
 
@@ -50,7 +50,7 @@ The Minimum TLS version that you set up following these steps does not apply to 
 To manage the TLS version applied to your whole zone when proxied through Cloudflare:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Minimum TLS Version**, select an option.
 
 Use the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint with `min_tls_version` as the setting name in the URI path, and specify your preferred minimum version in the `value` field.
@@ -127,7 +127,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#page","headline":"Minimum TLS Version · Cloudflare SSL/TLS docs","description":"Set the minimum TLS version for connections to your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

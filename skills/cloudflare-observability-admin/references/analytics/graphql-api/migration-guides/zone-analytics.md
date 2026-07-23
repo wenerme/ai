@@ -4,15 +4,15 @@ title: Zone Analytics to GraphQL Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Zone Analytics to GraphQL Analytics
+# Zone Analytics to GraphQL Analytics
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Zone Analytics API allows you to get request data by zone. It offers optional `since` and `until` parameters to specify the request time period and a `continuous` parameter to indicate whether the time period should be moved backward to find a period with completely aggregated data.
 
@@ -519,7 +519,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/#page","headline":"Zone Analytics to GraphQL Analytics · Cloudflare Analytics docs","description":"Migrate from Zone Analytics API to GraphQL.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Example diagram
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Example diagram
+# Example diagram
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With CNAME flattening, Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. This process supports a few features and delivers better performance and flexibility, as mentioned in the [CNAME flattening concept page](https://developers.cloudflare.com/dns/cname-flattening/).
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/#page","headline":"CNAME flattening diagram · Cloudflare DNS docs","description":"Consider an example use case and the main steps involved in CNAME flattening.","url":"https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

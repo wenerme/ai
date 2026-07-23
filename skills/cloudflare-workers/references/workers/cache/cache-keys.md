@@ -4,15 +4,15 @@ title: Cache keys
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cache keys
+# Cache keys
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/cache-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/cache-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every cached response is stored under a **cache key**. When a request arrives, Cloudflare computes a cache key for it and looks it up — on a hit, the stored response is returned; on a miss, your Worker runs and its response is stored under that key for next time.
 
@@ -290,7 +290,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -303,7 +303,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -341,7 +341,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,17 +4,17 @@ title: Email storage and processing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Email storage and processing
+# Email storage and processing
 
 Store and process incoming emails using KV storage and queue systems for support tickets and workflow automation
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Store and process incoming emails with comprehensive storage, queue processing, and support ticket automation for streamlined email workflow management.
 
@@ -469,7 +469,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/#page","headline":"Email storage and processing · Cloudflare Email Service docs","description":"Store incoming emails in KV and process them with Queues for support tickets and workflow automation in Email Service.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

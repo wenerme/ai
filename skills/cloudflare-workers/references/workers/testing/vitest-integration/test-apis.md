@@ -4,15 +4,15 @@ title: Test APIs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Test APIs
+# Test APIs
 
-Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides runtime helpers for writing tests. Some helpers are exported from the `cloudflare:workers` module, and others from the `cloudflare:test` module. Both modules are provided by the `@cloudflare/vitest-pool-workers` package, but can only be imported from test files that execute in the Workers runtime.
 
@@ -415,7 +415,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

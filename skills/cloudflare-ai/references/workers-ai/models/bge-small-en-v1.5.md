@@ -4,7 +4,7 @@ title: bge-small-en-v1.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg)
 
-#  bge-small-en-v1.5
+# bge-small-en-v1.5
 
- Text Embeddings • BAAI
+Text Embeddings • BAAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/baai/bge-small-en-v1.5 `
+`@cf/baai/bge-small-en-v1.5`
 
 * Cloudflare-hosted
 * Batch
@@ -97,11 +97,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 ▶text
 
@@ -123,7 +123,7 @@ pooling
 
 `string`enum: mean, clsThe pooling method used in the embedding process.
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -143,13 +143,13 @@ pooling
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-output.json "Download")
+SynchronousOutput
 
-Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/#page","headline":"bge-small-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector","url":"https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Choose a connection method
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Choose a connection method
+# Choose a connection method
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are [multiple ways](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks) to onramp traffic from your private networks to Cloudflare. This page covers the two software-based methods commonly used for VPN replacement: Cloudflare Mesh and Cloudflare Tunnel. Both involve installing lightweight software on a host machine in your network to create a secure connection to Cloudflare's global network.
 
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/#page","headline":"Choose a connection method · Cloudflare Learning Paths","description":"Compare Cloudflare Mesh and Tunnel options.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

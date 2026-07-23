@@ -4,15 +4,15 @@ title: Create custom headers for Cloudflare Access-protected origins with Worker
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create custom headers for Cloudflare Access-protected origins with Workers
+# Create custom headers for Cloudflare Access-protected origins with Workers
 
-Last updated Jan 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial covers how to use a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to add custom HTTP headers to traffic, and how to send those custom headers to your origin services protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -27,7 +27,7 @@ Some applications and networking implementations require specific custom headers
 ## Before you begin
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. If this is your first Worker, select **Create Worker**. Otherwise, select **Create application**, then select **Create Worker**.
 3. Enter an identifiable name for the Worker, then select **Deploy**.
 4. Select **Edit code**.
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/#page","headline":"Create custom headers for Cloudflare Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

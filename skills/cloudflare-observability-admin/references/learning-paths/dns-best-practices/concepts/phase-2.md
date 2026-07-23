@@ -4,15 +4,15 @@ title: Phase 2: Preparation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Phase 2: Preparation
+# Phase 2: Preparation
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Careful preparation will minimize downtime and issues during the cutover.
 
@@ -31,14 +31,14 @@ Obtain a clean and current export of your zone files from your BIND servers in s
 ## 3\. Add domains to Cloudflare
 
 1. Log in to your Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Add each domain you intend to migrate. Cloudflare will attempt to scan for existing DNS records.
 
 ## 4\. Import DNS Records into Cloudflare
 
 Use Cloudflare's **Import and Export** feature (under **DNS** \> **Records**) to upload your BIND zone files.
 
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 * Verification (Crucial):
   * After import, meticulously compare the records in Cloudflare with your BIND zone files or a `dig` output of your current zone.
   * Pay close attention to `MX` records, `SRV` records, `TXT` records (especially for `SPF`, `DKIM`, `DMARC`), and any complex `CNAME` configurations.
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/#page","headline":"Phase 2: Preparation · Cloudflare Learning Paths","description":"Prepare for DNS migration with minimal downtime.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

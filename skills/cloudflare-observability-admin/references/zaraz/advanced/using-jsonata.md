@@ -4,15 +4,15 @@ title: Using JSONata
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using JSONata
+# Using JSONata
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For advanced use cases, it is sometimes useful to be able to retrieve a value in a particular way. For instance, you might be using `zaraz.track` to send a list of products to Zaraz, but the third-party tool you want to send this data to requires the total cost of the products. Alternatively, you may want to manipulate a value, such as converting it to lowercase.
 
@@ -21,7 +21,7 @@ Cloudflare Zaraz uses JSONata to enable you to perform complex operations on you
 To use JSONata inside Zaraz, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Tools configuration** \> **Tools**.
 3. Select **Edit** next to a tool that you have already configured.
 4. Select an action or add a new one.
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/#page","headline":"Using JSONata · Cloudflare Zaraz docs","description":"Transform and filter event data with JSONata expressions in Zaraz.","url":"https://developers.cloudflare.com/zaraz/advanced/using-jsonata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

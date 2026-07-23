@@ -4,15 +4,15 @@ title: Agents API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Agents API
+# Agents API
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/agents-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/agents-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
@@ -213,21 +213,21 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 ## Next steps
 
-### [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/)
+### [Quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 
- Build your first agent in about 10 minutes.
+Build your first agent in about 10 minutes.
 
-### [ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
+### [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 
- Learn about wrangler.jsonc setup and deployment.
+Learn about wrangler.jsonc setup and deployment.
 
-### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+### [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
- Real-time bidirectional communication with clients.
+Real-time bidirectional communication with clients.
 
-### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+### [Build a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
- Build AI applications with AIChatAgent.
+Build AI applications with AIChatAgent.
 
 Was this helpful?
 
@@ -235,7 +235,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

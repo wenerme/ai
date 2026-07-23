@@ -4,17 +4,17 @@ title: Audit Logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Audit Logs
+# Audit Logs
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/changelog/audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/changelog/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
 ## 2026-06-24
 
@@ -178,7 +178,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/logs/changelog/audit-logs/#page","headline":"Audit Logs · Cloudflare Logs docs","description":"View changelog entries for Audit Logs.","url":"https://developers.cloudflare.com/logs/changelog/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Device to device
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Device to device
+# Device to device
 
-Last updated Apr 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a secure connection between two devices so they can communicate directly through Cloudflare's network, without needing to be on the same physical network. This is useful when you need to remotely access a specific device, for example connecting to a home computer from a laptop at a coffee shop.
 
@@ -38,7 +38,7 @@ For more details, refer to [Connect client devices](https://developers.cloudflar
 Enrollment permissions control which users can connect devices to your account. In this step, you set an enrollment email and download the Cloudflare One Client. The email you provide becomes the first allowed login for your organization, and anyone with that email address can enroll a device.
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select **Add a node**, then follow the wizard. The wizard configures enrollment permissions and Mesh connectivity automatically.
 3. Download the Cloudflare One Client on your first device from the [downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 4. Open the client, enter your team name, and sign in with your email.
@@ -58,7 +58,7 @@ Both devices are now connected through Cloudflare's network using their assigned
 To view your device's assigned Mesh IP:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Your connected devices appear with their Mesh IPs.
 
 To test connectivity, `ping` the Mesh IP of one device from the other.
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/#page","headline":"Device to device · Cloudflare One docs","description":"Create a secure connection between two devices using Cloudflare Mesh and Cloudflare's network.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

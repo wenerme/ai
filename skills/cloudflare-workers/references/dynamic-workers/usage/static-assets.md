@@ -4,15 +4,15 @@ title: Static assets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Static assets
+# Static assets
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic Workers can serve static assets like HTML pages, JavaScript bundles, images, and other files alongside your Worker code. This is useful when you need a Dynamic Worker to serve a full-stack application.
 
@@ -220,7 +220,7 @@ export default {
 				modules: {
 					"index.js": { js: serverCode },
 				},
-				compatibilityDate: "2026-07-21",
+				compatibilityDate: "2026-07-22",
 				env: {
 					ASSETS: ctx.exports.AssetBinding({
 						props: { projectId },
@@ -309,7 +309,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

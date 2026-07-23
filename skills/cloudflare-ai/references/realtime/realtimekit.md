@@ -4,15 +4,15 @@ title: RealtimeKit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  RealtimeKit
+# RealtimeKit
 
-Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add live video and voice to your web or mobile apps in minutes — customizable SDKs, Integrate in just a few lines of code.
 
@@ -24,7 +24,7 @@ With RealtimeKit, you can expect:
 
 Experience the product:
 
-[ Try A Demo Meeting ](https://examples.realtime.cloudflare.com/)[ Build using Examples ](https://github.com/cloudflare/realtimekit-web-examples)[ RealtimeKit Dashboard ](https://dash.cloudflare.com/?to=/:account/realtime/kit)
+[Try A Demo Meeting](https://examples.realtime.cloudflare.com/)[Build using Examples](https://github.com/cloudflare/realtimekit-web-examples)[RealtimeKit Dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit)
 
 ## Build with RealtimeKit
 
@@ -44,7 +44,7 @@ Host audio-only calls — perfect for team discussions, support lines, and commu
 
 ## Product Suite
 
-* [**UI Kit**](https://developers.cloudflare.com/realtime/realtimekit/ui-kit)  Recommended  UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+* [**UI Kit**](https://developers.cloudflare.com/realtime/realtimekit/ui-kit) Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
 * [**Core SDK**](https://developers.cloudflare.com/realtime/realtimekit/core) Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 * [**Realtime SFU**](https://developers.cloudflare.com/realtime/sfu) efficiently routes media with low latency—all running on Cloudflare’s global network for reliability and scale.
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

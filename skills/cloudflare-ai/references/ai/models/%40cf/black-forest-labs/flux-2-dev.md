@@ -4,7 +4,7 @@ title: flux-2-dev
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-#  flux-2-dev
+# flux-2-dev
 
- Text-to-Image • Black Forest Labs
+Text-to-Image • Black Forest Labs
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/black-forest-labs/flux-2-dev `
+`@cf/black-forest-labs/flux-2-dev`
 
 * Cloudflare-hosted
 * Partner
@@ -43,9 +43,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/#page","headline":"flux-2-dev (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.","url":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Programmatic submissions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Programmatic submissions
+# Programmatic submissions
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durably accept a Think turn and return before inference runs. Use `submitMessages()` for webhook handlers, RPC callers, and parent Workers that need a fast acknowledgement, safe retry, and later status inspection.
 
@@ -168,7 +168,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#page","headline":"Programmatic submissions · Cloudflare Agents docs","description":"Durably accept a Think turn with submitMessages() for webhooks and RPC callers, with idempotent retry, status inspection, and cancellation.","url":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

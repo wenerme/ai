@@ -4,22 +4,22 @@ title: Use the Stream Player
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use the Stream Player
+# Use the Stream Player
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a customizable web player that can play both on-demand and live video, and requires zero additional engineering work.
 
 To add the Stream Player to a web page, you can either:
 
 * Generate an embed code on the **Stream** page of the Cloudflare dashboard for a specific video or live input.
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 * Use the code example below, replacing `<VIDEO_UID>` with the video UID (or [signed token](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)) and `<CODE>` with the your unique customer code, which can be found in the Stream Dashboard.
 
 ```html
@@ -160,7 +160,7 @@ After a live stream ends, a recording is automatically generated and available w
 
 While the recording of the live stream is generating, the video may report as `not-found` or `not-started`.
 
-## Low-Latency HLS playback  Beta
+## Low-Latency HLS playback Beta
 
 If a Live Input is enabled for the Low-Latency HLS beta, the Stream player will automatically play in low-latency mode if possible. Refer to [Start a Live Stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api) to enable this option.
 
@@ -170,7 +170,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/#page","headline":"Use the Stream Player · Cloudflare Stream docs","description":"Embed and customize the Cloudflare Stream Player for on-demand and live video playback.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

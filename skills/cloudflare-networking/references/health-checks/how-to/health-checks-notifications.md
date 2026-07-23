@@ -4,15 +4,15 @@ title: Health Checks notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Health Checks notifications
+# Health Checks notifications
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can [configure notification emails](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/#configure-notifications) to be alerted when the Health Check detects that there is a change in the status of your origin server. Cloudflare will send you an email within seconds so you can take the necessary action before customers are impacted.
 
@@ -21,7 +21,7 @@ The email provides information to determine what caused the health status change
 ## Configure notifications
 
 1. In the Cloudflare dashboard, go to the **Health Checks** page.
-[ Go to **Health Checks** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-checks)
+[Go to **Health Checks** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-checks)
 2. Select **Configure an alert**.
 3. Fill out the **Notification name** and **Description**.
 4. Add a Notification email.
@@ -46,7 +46,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/#page","headline":"Health Checks notifications · Cloudflare Health Checks docs","description":"Set up notifications for Health Checks status changes.","url":"https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

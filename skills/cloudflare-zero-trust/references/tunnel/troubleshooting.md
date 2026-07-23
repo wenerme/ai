@@ -4,15 +4,15 @@ title: Troubleshooting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting
+# Troubleshooting
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to diagnose and resolve common issues with Cloudflare Tunnel. Many issues are resolved by upgrading to the latest version of `cloudflared` — refer to [Update cloudflared](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/) before investigating further.
 
@@ -372,7 +372,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

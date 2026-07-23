@@ -4,15 +4,15 @@ title: Sleeping and retrying
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sleeping and retrying
+# Sleeping and retrying
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details how to sleep a Workflow and/or configure retries for a Workflow step.
 
@@ -304,7 +304,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

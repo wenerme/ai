@@ -4,15 +4,15 @@ title: Bot Fight Mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bot Fight Mode
+# Bot Fight Mode
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bot Fight Mode is a simple, free product that helps detect and mitigate bot traffic on your domain. When enabled, the product:
 
@@ -40,7 +40,7 @@ If you are using several app security features like custom rules, Managed Rules,
 To start using Bot Fight Mode:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -65,7 +65,7 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 To disable Bot Fight Mode:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot Fight Mode**.
 4. Turn **Bot Fight Mode** off.
@@ -123,7 +123,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/bot-fight-mode/#page","headline":"Get started with Bot Fight Mode · Cloudflare bot solutions docs","description":"Turn on Bot Fight Mode to challenge requests matching bot patterns on Free plans.","url":"https://developers.cloudflare.com/bots/get-started/bot-fight-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

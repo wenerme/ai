@@ -4,15 +4,15 @@ title: Upload objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Upload objects
+# Upload objects
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/objects/upload-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/objects/upload-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are several ways to upload objects to R2\. Which approach you choose depends on the size of your objects and your performance requirements.
 
@@ -36,7 +36,7 @@ Most S3-compatible SDKs and tools (such as `rclone`) automatically choose multip
 To upload objects to your bucket from the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Upload**.
 4. Drag and drop your file into the upload area or **select from computer**.
@@ -938,21 +938,21 @@ For example, if a two-part upload has part ETags `bce6bf66aeb76c7040fdd5f4eccb78
 
 ## Related resources
 
-### [ Workers API reference ](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
+### [Workers API reference](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
 
- Full reference for the R2 Workers API including put(), createMultipartUpload(), and more.
+Full reference for the R2 Workers API including put(), createMultipartUpload(), and more.
 
-### [ S3 API compatibility ](https://developers.cloudflare.com/r2/api/s3/api/)
+### [S3 API compatibility](https://developers.cloudflare.com/r2/api/s3/api/)
 
- Supported S3 API operations and R2-specific behavior.
+Supported S3 API operations and R2-specific behavior.
 
-### [ Presigned URLs ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
+### [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
 
- Generate temporary upload and download URLs for client-side access.
+Generate temporary upload and download URLs for client-side access.
 
-### [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
+### [Object lifecycles](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
 
- Configure automatic cleanup of incomplete multipart uploads.
+Configure automatic cleanup of incomplete multipart uploads.
 
 Was this helpful?
 
@@ -960,7 +960,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/upload-objects/#page","headline":"Upload objects · Cloudflare R2 docs","description":"Upload objects to R2 using single-part or multipart uploads via the dashboard, Workers API, or S3 API.","url":"https://developers.cloudflare.com/r2/objects/upload-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,17 +4,17 @@ title: Build a web crawler with Queues and Browser Run
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a web crawler with Queues and Browser Run
+# Build a web crawler with Queues and Browser Run
 
 Example of how to use Queues and Browser Run to power a web crawler.
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to build and deploy a web crawler with Queues, [Browser Run](https://developers.cloudflare.com/browser-run/), and [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
@@ -35,7 +35,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 To get started, create a Worker application using the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- queues-web-crawler
@@ -67,7 +67,7 @@ cd queues-web-crawler
 
 We need to create a KV store. This can be done through the Cloudflare dashboard or the Wrangler CLI. For this tutorial, we will use the Wrangler CLI.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv namespace create crawler_links
@@ -81,7 +81,7 @@ yarn wrangler kv namespace create crawler_links
 pnpm wrangler kv namespace create crawler_links
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv namespace create crawler_screenshots
@@ -146,7 +146,7 @@ Now, you need to set up your Worker for Browser Run.
 
 In your current directory, install Cloudflare's [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and also [robots-parser ↗](https://www.npmjs.com/package/robots-parser):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @cloudflare/puppeteer
@@ -164,7 +164,7 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i robots-parser
@@ -201,7 +201,7 @@ binding = "CRAWLER_BROWSER"
 
 Now, we need to set up the Queue.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler queues create queues-web-crawler
@@ -263,7 +263,7 @@ Your final Wrangler file should look similar to the one below.
 	"name": "web-crawler",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"kv_namespaces": [
 		{
@@ -300,7 +300,7 @@ Your final Wrangler file should look similar to the one below.
 name = "web-crawler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -680,7 +680,7 @@ export default {
 
 To deploy your Worker, run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -719,7 +719,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

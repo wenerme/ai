@@ -4,15 +4,15 @@ title: Client certificates (mTLS)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Client certificates (mTLS)
+# Client certificates (mTLS)
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Standard TLS verifies the server's identity to the client. Mutual TLS (mTLS) adds a second check: the server also verifies the client's identity using a client certificate. This allows you to restrict access to devices or services that present a valid certificate.
 
@@ -68,16 +68,16 @@ flowchart LR
 
 ## Further resources
 
-* [ Create a client certificate ](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/)
-* [ Enable mTLS ](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/)
-* [ Bring your own CA for mTLS ](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/)
-* [ Forward certificate to server ](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/)
-* [ Label client certificates ](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/)
-* [ Revoke a client certificate ](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/)
-* [ Configure your mobile app or IoT device ](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/)
-* [ Client certificate variables ](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/)
-* [ Troubleshooting ](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/)
-* [ mTLS for Zero Trust ](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/)
+* [Create a client certificate](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/)
+* [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/)
+* [Bring your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/)
+* [Forward certificate to server](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/)
+* [Label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/)
+* [Revoke a client certificate](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/)
+* [Configure your mobile app or IoT device](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/)
+* [Client certificate variables](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/)
+* [Troubleshooting](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/)
+* [mTLS for Zero Trust](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/)
 
 Was this helpful?
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/#page","headline":"Client certificates (mTLS) · Cloudflare SSL/TLS docs","description":"Use Cloudflare public key infrastructure (PKI) to create client certificates and enforce mutual Transport Layer Security (mTLS) encryption.","url":"https://developers.cloudflare.com/ssl/client-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}

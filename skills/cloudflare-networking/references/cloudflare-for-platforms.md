@@ -4,15 +4,15 @@ title: Cloudflare for Platforms
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare for Platforms
+# Cloudflare for Platforms
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a platform where your customers can deploy code, each with their own subdomain or custom domain.
 
@@ -36,7 +36,7 @@ Get a working platform running in minutes. Choose a template based on what you a
 
 An example of a platform where users can deploy code at scale. Each snippet becomes its own isolated Worker, served at `example.com/{app-name}`. Deploying this starter kit automatically configures Workers for Platforms with routing handled for you.
 
-[ View demo ](https://worker-publisher-template.templates.workers.dev/)[ View on GitHub ](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
+[View demo](https://worker-publisher-template.templates.workers.dev/)[View on GitHub](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
 
 ### AI vibe coding platform
 
@@ -46,7 +46,7 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 
 [VibeSDK ↗](https://github.com/cloudflare/vibesdk) handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
-[ View demo ](https://build.cloudflare.dev/)[ View on GitHub ](https://github.com/cloudflare/vibesdk)
+[View demo](https://build.cloudflare.dev/)[View on GitHub](https://github.com/cloudflare/vibesdk)
 
 ---
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/#page","headline":"Cloudflare for Platforms · Cloudflare for Platforms docs","description":"Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

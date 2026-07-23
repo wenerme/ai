@@ -4,15 +4,15 @@ title: Foreign Function Interface (FFI)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Foreign Function Interface (FFI)
+# Foreign Function Interface (FFI)
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/python/ffi/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/ffi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Via [Pyodide ↗](https://pyodide.org/en/stable/), Python Workers provide a [Foreign Function Interface (FFI) ↗](https://en.wikipedia.org/wiki/Foreign%5Ffunction%5Finterface) to JavaScript. This allows you to:
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/ffi/#page","headline":"Work with JavaScript objects, methods, functions and globals from Python Workers · Cloudflare Workers docs","description":"Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.","url":"https://developers.cloudflare.com/workers/languages/python/ffi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

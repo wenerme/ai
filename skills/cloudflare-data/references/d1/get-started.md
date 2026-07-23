@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide instructs you through:
 
@@ -50,7 +50,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 Create a new Worker as the means to query your database.
 
 1. Create a new project named `d1-tutorial` by running:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- d1-tutorial
 ```
@@ -91,7 +91,7 @@ If you are familiar with Cloudflare Workers, or initializing projects in a Conti
 
 For example: `CI=true npm create cloudflare@latest d1-tutorial --type=simple --git --ts --deploy=false` creates a basic "Hello World" project ready to build on.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select **Start with Hello World!** \> **Get started**.
 4. Name your Worker. For this tutorial, name your Worker `d1-tutorial`.
@@ -132,7 +132,7 @@ Created your new D1 database.
 This creates a new D1 database and outputs the [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) configuration needed in the next step.
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select **Create Database**.
 3. Name your database. For this tutorial, name your D1 database `prod-d1-tutorial`.
 4. (Optional) Provide a location hint. Location hint is an optional parameter you can provide to indicate your desired geographical location for your database. Refer to [Provide a location hint](https://developers.cloudflare.com/d1/configuration/data-location/#provide-a-location-hint) for more information.
@@ -189,7 +189,7 @@ You can also bind your D1 database to a [Pages Function](https://developers.clou
 
 You create bindings by adding them to the Worker you have created.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `d1-tutorial` Worker you created in [step 1](https://developers.cloudflare.com/d1/get-started/#1-create-a-worker).
 3. Go to the **Bindings** tab.
 4. Select **Add binding**.
@@ -246,7 +246,7 @@ npx wrangler d1 execute prod-d1-tutorial --local --command="SELECT * FROM Custom
 Use the Dashboard to create a table and populate it with data.
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select the `prod-d1-tutorial` database you created in [step 2](https://developers.cloudflare.com/d1/get-started/#2-create-a-database).
 3. Select **Console**.
 4. Paste the following SQL snippet.
@@ -339,7 +339,7 @@ After configuring your Worker, you can test your project locally before you depl
 You can query your D1 database using your Worker.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `d1-tutorial` Worker you created.
 3. Select the **Edit code** icon (**</>**).
 4. Clear the contents of the `worker.js` file, then paste the following code:
@@ -435,7 +435,7 @@ You can now visit the URL for your newly created project to query your live data
 For example, if the URL of your new Worker is `d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages` sends a request to your Worker that queries your live database directly.
 4. Test your database is running successfully. Add `/api/beverages` to the provided Wrangler URL. For example, `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages`.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your `d1-tutorial` Worker.
 3. Select **Deployments**.
 4. From the **Version History** table, select **Deploy version**.
@@ -473,7 +473,7 @@ npx wrangler d1 delete prod-d1-tutorial
 ```
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select your `prod-d1-tutorial` D1 database.
 3. Select **Settings**.
 4. Select **Delete**.
@@ -492,7 +492,7 @@ npx wrangler delete d1-tutorial
 ```
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your `d1-tutorial` Worker.
 3. Select **Settings**.
 4. Scroll to the bottom of the page, then select **Delete**.
@@ -520,7 +520,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

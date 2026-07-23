@@ -4,15 +4,15 @@ title: Upload Recording to Your Cloud
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Upload Recording to Your Cloud
+# Upload Recording to Your Cloud
 
-Last updated May 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can pass an optional object `storage_config` in the start recording request to publish the recording directly to your cloud provider. If a `path` is specified, the recorded video will be stored there, otherwise the default is the root of the directory.
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/#page","headline":"Upload Recording to Your Cloud · Cloudflare Realtime docs","description":"Explore how to set up custom cloud storage for RealtimeKit's recording. Follow our guide for effective configuration and integration.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

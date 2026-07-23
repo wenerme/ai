@@ -4,7 +4,7 @@ title: The Online Address Book
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 This video focuses on the first prerequisite for using a tunnel, a domain name. It uses the metaphor of an online address book to explain DNS and how Cloudflare manages your domain.
 

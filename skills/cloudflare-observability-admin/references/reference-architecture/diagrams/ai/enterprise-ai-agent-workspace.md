@@ -4,15 +4,15 @@ title: Enterprise AI agent workspace
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enterprise AI agent workspace
+# Enterprise AI agent workspace
 
-Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Unlike an [enterprise vibe coding platform](https://developers.cloudflare.com/re
 
 ## Core architecture
 
-![Enterprise AI agent workspace architecture showing multiple ways to invoke work, verified access, a stateful agent workspace built on Workers, Durable Objects, Dynamic Workers, and Sandbox containers, curated organizational knowledge, secure access to AI model providers through AI Gateway and to internal and SaaS MCP servers through MCP server portals, and durable outputs.](https://developers.cloudflare.com/_astro/top-level.uTywJ-Pf_2aC8Ny.svg)
+![Enterprise AI agent workspace architecture showing multiple ways to invoke work, verified access, a stateful agent workspace built on Workers, Durable Objects, Dynamic Workers, and Sandbox containers, curated organizational knowledge, secure access to AI model providers through AI Gateway and to internal and SaaS MCP servers through MCP server portals, and durable outputs.](https://developers.cloudflare.com/_astro/top-level.uTywJ-Pf_2rjoj7.svg)
 1. **Invoke work:** An employee starts or resumes work from the web application, enterprise chat, or email. Webhooks and schedules can also start work without an open browser session. [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) authenticates browser sessions, and each asynchronous channel validates its signature, token, or sender before a request is accepted.
 2. **Reach the agent workspace:** Workers route the request to the workspace agent. The agent restores conversation history, tasks, files, permissions, and queued events from durable state, draws on curated organization knowledge, then runs bounded code in Dynamic Workers or a Sandbox container when a task needs more than model inference.
 3. **Use governed models and tools:** The agent calls approved models through AI Gateway and approved enterprise tools through an MCP server portal. Both layers keep provider routing, credentials, policy, and logging outside the workspace.
@@ -36,7 +36,7 @@ The web application is the primary surface, but it is not the agent runtime. Eve
 
 ## State and isolation model
 
-![Workspace isolation and state model showing a stateless Worker routing to one per-user Durable Object and per-workspace Durable Objects, each coordinating Dynamic Workers, a Sandbox container, and durable file and output storage.](https://developers.cloudflare.com/_astro/worker-do.DlvZndlT_qNVqs.svg)
+![Workspace isolation and state model showing a stateless Worker routing to one per-user Durable Object and per-workspace Durable Objects, each coordinating Dynamic Workers, a Sandbox container, and durable file and output storage.](https://developers.cloudflare.com/_astro/worker-do.DlvZndlT_Z53qxo.svg)
 
 Workers stay stateless. They serve the interface and route each request to the right Durable Object using the identity and workspace in the request.
 
@@ -101,7 +101,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/#page","headline":"Enterprise AI agent workspace · Cloudflare Reference Architecture docs","description":"Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

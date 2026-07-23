@@ -4,15 +4,15 @@ title: Quick start
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Quick start
+# Quick start
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/getting-started/quick-start/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/quick-start/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI agents that persist, think, and act. Agents run on Cloudflare's global network, maintain state across requests, and connect to clients in real-time via WebSockets.
 
@@ -22,7 +22,7 @@ Build AI agents that persist, think, and act. Agents run on Cloudflare's global 
 
 ## Create a new project
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- --template cloudflare/agents-starter
@@ -171,7 +171,7 @@ Update `wrangler.jsonc` to register the agent:
 	"name": "my-agent",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [
@@ -194,7 +194,7 @@ Update `wrangler.jsonc` to register the agent:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -672,29 +672,29 @@ Now that you have a working agent, explore these topics:
 
 ### Explore more
 
-### [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Deep dive into setState(), initialState, and onStateChanged().
+Deep dive into setState(), initialState, and onStateChanged().
 
-### [ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
- Full useAgent and AgentClient API reference.
+Full useAgent and AgentClient API reference.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- Expose methods to clients with @callable().
+Expose methods to clients with @callable().
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Run tasks on a delay, schedule, or cron.
+Run tasks on a delay, schedule, or cron.
 
-### [ Agent class internals ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/)
+### [Agent class internals](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/)
 
- Full lifecycle and methods reference.
+Full lifecycle and methods reference.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
 Was this helpful?
 
@@ -702,7 +702,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/quick-start/#page","headline":"Quick start · Cloudflare Agents docs","description":"Build your first agent in 10 minutes — a counter with persistent state that syncs to a React frontend in real-time.","url":"https://developers.cloudflare.com/agents/getting-started/quick-start/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

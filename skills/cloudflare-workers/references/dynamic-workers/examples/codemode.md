@@ -4,15 +4,15 @@ title: Code Mode Example
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Code Mode Example
+# Code Mode Example
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to use the [@cloudflare/codemode ↗](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
 
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/#page","headline":"Code Mode Example · Cloudflare Dynamic Workers docs","description":"Project management chat app demonstrating code-as-tool. The LLM writes and executes JavaScript to orchestrate multiple tools in a single Dynamic Worker sandbox.","url":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents","JavaScript","TypeScript"]}

@@ -4,15 +4,15 @@ title: Enable TLS decryption (optional)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable TLS decryption (optional)
+# Enable TLS decryption (optional)
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [TLS decryption ↗](https://www.cloudflare.com/learning/security/what-is-https-inspection/) allows Cloudflare Gateway to inspect HTTPS requests to your private network applications.
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/#page","headline":"Enable TLS decryption (optional) · Cloudflare Learning Paths","description":"Inspect encrypted traffic with TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

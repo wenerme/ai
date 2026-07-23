@@ -4,15 +4,15 @@ title: Troubleshooting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting
+# Troubleshooting
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Device metrics
 
@@ -26,7 +26,7 @@ Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance
 To find the information above and start troubleshooting your Cloudflare One Appliance:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 
@@ -43,7 +43,7 @@ In Performance analytics you can review your Cloudflare One Appliance's performa
 To access performance analytics:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Performance analytics**.
@@ -58,7 +58,7 @@ Port analytics gives you access to information related to the packets sent and r
 The dashboard provides this information for all active ports in your Cloudflare One Appliance. To access port analytics:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Port analytics**.
@@ -87,7 +87,7 @@ Use Event logs to identify general patterns and changes over time. This is usefu
 To access event logs:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Events**.
@@ -98,7 +98,7 @@ To access event logs:
 The DHCP leasing section identifies DHCP assigned leases and their expiration dates. To access DHCP leasing:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **DHCP leasing**.
@@ -139,7 +139,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/#page","headline":"Troubleshooting · Cloudflare WAN docs","description":"Troubleshoot Appliance connectivity and configuration issues.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

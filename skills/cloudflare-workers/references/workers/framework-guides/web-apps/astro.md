@@ -4,19 +4,19 @@ title: Astro
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Astro
+# Astro
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-astro-app --framework=astro
@@ -47,7 +47,7 @@ Astro is also framework-agnostic, and supports every major UI framework, includi
 ## Deploy a new Astro project on Workers
 
 1. **Create a new project with the create-cloudflare CLI (C3).**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-astro-app --framework=astro
 ```
@@ -61,7 +61,7 @@ What's happening behind the scenes?
 When you run this command, C3 creates a new project directory, initiates [Astro's official setup tool ↗](https://docs.astro.build/en/tutorial/1-setup/2/), and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.
 2. **Develop locally.**
 After creating your project, run the following command in your project directory to start a local development server.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -73,7 +73,7 @@ pnpm run dev
 ```
 3. **Deploy your project.**
 You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run deploy
 ```
@@ -90,7 +90,7 @@ Automatic configuration
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect Astro, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -106,31 +106,31 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-Astro Detected
+AstroDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: dist/\_worker.js/index.js
+main:dist/\_worker.js/index.js
 
 wrangler.jsonc
 
-assets: directory: ./dist, binding: ASSETS
+assets:directory: ./dist, binding: ASSETS
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
 astro.config.mjs
 
-adapter: @astrojs/cloudflare
+adapter:@astrojs/cloudflare
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -148,7 +148,7 @@ In your project root, create a Wrangler configuration file with the following co
 {
 	"name": "my-astro-app",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist"
 	}
@@ -157,7 +157,7 @@ In your project root, create a Wrangler configuration file with the following co
 ```toml
 name = "my-astro-app"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 [assets]
 directory = "./dist"
 ```
@@ -166,7 +166,7 @@ The key part of this config is the `assets` field, which tells Wrangler where to
 Also note how there's no `main` field in this config - this is because you're only serving static assets, so no Worker code is needed for on demand rendering/SSR.
 2. **Build and deploy your project**
 You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx astro build
 ```
@@ -176,7 +176,7 @@ yarn astro build
 ```
 pnpm astro build
 ```
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler@latest deploy
 ```
@@ -192,7 +192,7 @@ pnpm wrangler@latest deploy
 If your Astro project uses [on demand rendering (also known as SSR) ↗](https://docs.astro.build/en/guides/on-demand-rendering/), follow these steps:
 
 1. **Install the Astro Cloudflare adapter**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx astro add cloudflare
 ```
@@ -217,7 +217,7 @@ In your project root, create a Wrangler configuration file with the following co
 	"main": "./dist/_worker.js/index.js",
 	// Update to today's date
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -232,7 +232,7 @@ In your project root, create a Wrangler configuration file with the following co
 name = "my-astro-app"
 main = "./dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 [assets]
 binding = "ASSETS"
@@ -248,7 +248,7 @@ The key parts of this config are:
 Read more about [Wrangler configuration options](https://developers.cloudflare.com/workers/wrangler/configuration/) and [asset configuration options](https://developers.cloudflare.com/workers/wrangler/configuration/#assets).
 4. **Build and deploy your project**
 You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx astro build
 ```
@@ -258,7 +258,7 @@ yarn astro build
 ```
 pnpm astro build
 ```
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler@latest deploy
 ```
@@ -333,7 +333,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#page","headline":"Astro · Cloudflare Workers docs","description":"Create an Astro application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg","full-stack","Astro"]}

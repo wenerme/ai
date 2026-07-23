@@ -4,7 +4,7 @@ title: Manage SSL version or cipher mismatch errors
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how to manage an SSL version or cipher mismatch error.
 

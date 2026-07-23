@@ -4,15 +4,15 @@ title: Super Bot Fight Mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Super Bot Fight Mode
+# Super Bot Fight Mode
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. Compared to [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), Super Bot Fight Mode adds configurable actions per bot category, bot analytics, and the ability to create exceptions using [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/). When enabled, the product:
 
@@ -52,7 +52,7 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 To start using Super Bot Fight Mode:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
@@ -90,7 +90,7 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 To disable Super Bot Fight Mode:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot Fight Mode**.
 4. For all bot groupings (**Definitely automated traffic**, **Likely automated traffic**, and **Verified bots**), set the value to **Allow**.
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/#page","headline":"Get started with Super Bot Fight Mode · Cloudflare bot solutions docs","description":"Configure Super Bot Fight Mode to challenge or block bots on Pro, Business, and Enterprise plans.","url":"https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

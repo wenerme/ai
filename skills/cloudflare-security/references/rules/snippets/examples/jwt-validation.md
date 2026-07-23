@@ -4,17 +4,17 @@ title: Validate JSON web tokens (JWT)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Validate JSON web tokens (JWT)
+# Validate JSON web tokens (JWT)
 
 Extract a JWT from the Authorization header, verify its HMAC-SHA256 signature using the WebCrypto API, and validate its claims.
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution when using in production
 
@@ -150,7 +150,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/#page","headline":"Validate JSON web tokens (JWT) · Cloudflare Rules docs","description":"Extract a JWT from the Authorization header, verify its HMAC-SHA256 signature using the WebCrypto API, and validate its claims.","url":"https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Request modification"]}

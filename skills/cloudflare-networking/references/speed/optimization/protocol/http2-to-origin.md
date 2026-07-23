@@ -4,15 +4,15 @@ title: HTTP/2 to Origin
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  HTTP/2 to Origin
+# HTTP/2 to Origin
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A protocol is a set of rules governing the exchange or transmission of data between devices. One of the most important protocols that run on the human-computer interaction layer, where applications can access the network services, is HTTP (Hypertext Transfer Protocol).
 
@@ -31,7 +31,7 @@ At Cloudflare, HTTP/2 connection to the origin is enabled by default.
 If you wish to disable HTTP/2 to Origin, you can follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to the **Protocol Optimization** tab and under **HTTP/2 to Origin** set the toggle to **Off**.
 
 ## Connection multiplexing
@@ -201,7 +201,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#page","headline":"HTTP/2 to Origin · Cloudflare Speed docs","description":"Use HTTP/2 for connections between Cloudflare and your origin.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}

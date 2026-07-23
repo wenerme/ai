@@ -4,15 +4,15 @@ title: Fetch and index single web pages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Fetch and index single web pages
+# Fetch and index single web pages
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [/content endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
@@ -39,7 +39,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `fetch-and-index` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- fetch-and-index
@@ -77,7 +77,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "name": "fetch-and-index",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -96,7 +96,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 name = "fetch-and-index"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [browser]
 binding = "BROWSER"
@@ -417,17 +417,17 @@ npx wrangler deploy
 
 ## Next steps
 
-### [ Browser Run /content endpoint ](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+### [Browser Run /content endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
 
- Fetch the fully rendered HTML of a page after JavaScript runs, with options for load behavior and blocking.
+Fetch the fully rendered HTML of a page after JavaScript runs, with options for load behavior and blocking.
 
-### [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
+### [Items Workers binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
 
- Full reference for uploading, listing, and deleting documents in built-in storage.
+Full reference for uploading, listing, and deleting documents in built-in storage.
 
-### [ Website data source ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
+### [Website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
 
- Crawl and index a domain you own automatically, following its sitemap.
+Crawl and index a domain you own automatically, following its sitemap.
 
 Was this helpful?
 
@@ -435,7 +435,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

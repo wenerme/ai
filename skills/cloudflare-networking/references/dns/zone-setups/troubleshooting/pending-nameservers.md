@@ -4,15 +4,15 @@ title: Zone stuck in Pending Nameserver Update
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Zone stuck in Pending Nameserver Update
+# Zone stuck in Pending Nameserver Update
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your nameservers are correctly set to Cloudflare but your zone remains in **Pending Nameserver Update** status, stale DNSSEC DS records at your registrar are the most common cause.
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/#page","headline":"Zone stuck in Pending Nameserver Update · Cloudflare DNS docs","description":"Troubleshoot a Cloudflare zone that stays in Pending Nameserver Update status after changing nameservers, including stale DNSSEC DS records.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

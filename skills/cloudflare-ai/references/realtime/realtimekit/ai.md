@@ -4,20 +4,20 @@ title: AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI
+# AI
 
-Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit provides AI-powered features using Cloudflare's AI infrastructure to enhance your meetings with transcription and summarization capabilities.
 
-* [ Transcription ](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/)
-* [ Summary ](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/)
+* [Transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/)
+* [Summary](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/)
 
 ## Available features
 
@@ -62,7 +62,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ai/#page","headline":"AI · Cloudflare Realtime docs","description":"Add AI-powered transcription and summarization to RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

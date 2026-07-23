@@ -4,15 +4,15 @@ title: Deployment Models
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deployment Models
+# Deployment Models
 
-Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers how a deployment of Privacy Pass is structured: who operates each of the four roles, detailed example deployment models, which deployment models work for different customer needs, and Privacy Pass as a part of other products.
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/#page","headline":"Deployment Models · Cloudflare Privacy Pass docs","description":"Who operates each Privacy Pass role and example deployment models.","url":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

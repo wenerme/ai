@@ -4,15 +4,15 @@ title: Manage gateways
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage gateways
+# Manage gateways
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/how-to/manage-gateways/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/how-to/manage-gateways/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 networks. You can interact with a gateway in several ways.
 
@@ -21,7 +21,7 @@ A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 ne
 To create a gateway using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web3** page.
-[ Go to **Web3** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. Click **Create Gateway**.
 3. Enter the following information:
 * **Hostname**: Enter a hostname to use as your gateway, which has to be a subdomain of the current Cloudflare zone.
@@ -87,7 +87,7 @@ If you need to edit other fields, [delete the gateway](#delete-a-gateway) and cr
 To edit a gateway using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web3** page.
-[ Go to **Web3** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click **Edit**.
 3. Update the **Gateway Description** and — if editing an **IPFS** gateway — the value for the [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/).
 4. Click **Reapply**.
@@ -103,7 +103,7 @@ When your gateway is stuck in an **Error** [status](https://developers.cloudflar
 To refresh a gateway using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web3** page.
-[ Go to **Web3** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a gateway, click the dropdown then **Refresh**.
 
 To refresh a gateway using the API, send a [PATCH](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/edit/) request with an empty request body.
@@ -123,7 +123,7 @@ You have the ability to block access to one or more:
 To add an item to the blocklist using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web3** page.
-[ Go to **Web3** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click the dropdown then **Blocklist**.
 3. Click **Add entry**.
 4. Enter the following information:
@@ -144,7 +144,7 @@ When you delete a gateway, Cloudflare will automatically remove all associated h
 To delete a gateway using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web3** page.
-[ Go to **Web3** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click the dropdown then **Remove**.
 3. Click **Delete hostname**.
 
@@ -156,7 +156,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/manage-gateways/#page","headline":"Manage gateways · Cloudflare Web3 docs","description":"Create, edit, and delete Web3 gateways.","url":"https://developers.cloudflare.com/web3/how-to/manage-gateways/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

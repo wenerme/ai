@@ -4,15 +4,15 @@ title: NetFlows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  NetFlows
+# NetFlows
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/netflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/netflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [NetFlows ↗](https://en.wikipedia.org/wiki/NetFlow) shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the [Internet traffic change ↗](https://radar.cloudflare.com/) chart.
 
@@ -132,7 +132,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/netflows/#page","headline":"NetFlows · Cloudflare Radar docs","description":"Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/netflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

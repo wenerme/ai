@@ -4,15 +4,15 @@ title: Encryption modes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Encryption modes
+# Encryption modes
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your zone's **SSL/TLS Encryption Mode** controls how Cloudflare manages two connections: one between your visitors and Cloudflare, and the other between Cloudflare and your origin server.
 
@@ -113,18 +113,18 @@ bash opt-out-multiple-zones.sh
 
 To use Custom SSL/TLS, select the custom option (if you prefer to manually set the encryption mode instead of using [Automatic SSL/TLS](#automatic-ssltls-default)):
 
-* [ Off (no encryption) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) :  No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
-* [ Flexible ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/) :  Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
-* [ Full ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) :  Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
-* [ Full (strict) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) :  Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
-* [ Strict (SSL-Only Origin Pull) ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/) :  Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
+* [Off (no encryption)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/): No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
+* [Flexible](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/): Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
+* [Full](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/): Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
+* [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/): Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
+* [Strict (SSL-Only Origin Pull)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/): Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
 
 ## Update your encryption mode
 
 To change your encryption mode in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
 To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
@@ -139,7 +139,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

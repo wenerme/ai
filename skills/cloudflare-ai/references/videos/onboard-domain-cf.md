@@ -4,7 +4,7 @@ title: Onboard your domain to Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Learn how Cloudflare secures and accelerates your website using its global network and reverse proxy technology. In this video, we explain how connecting your domain to Cloudflare protects your origin server, enhances performance, and keeps your site online—even during attacks. You'll see how DNS, nameservers, and proxy status work together to route and safeguard traffic. Whether you're self-hosting or using serverless platforms like Cloudflare Workers, this guide helps you understand the onboarding process and why Cloudflare is essential for modern web infrastructure.
 
@@ -12,16 +12,16 @@ Chapters
 
 * ![How Cloudflare Works](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **How Cloudflare Works**  0s
+**How Cloudflare Works**0s
 * ![Getting Started: Domain Onboarding](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=55s)
 
- **Getting Started: Domain Onboarding**  55s
+**Getting Started: Domain Onboarding**55s
 * ![DNS and Reverse Proxy Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=84s)
 
- **DNS and Reverse Proxy Explained**  01m24s
+**DNS and Reverse Proxy Explained**01m24s
 * ![Request Lifecycle and Performance Optimization](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=200s)
 
- **Request Lifecycle and Performance Optimization**  03m20s
+**Request Lifecycle and Performance Optimization**03m20s
 
 Transcript
 

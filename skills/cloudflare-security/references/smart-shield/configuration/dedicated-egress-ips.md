@@ -4,15 +4,15 @@ title: Dedicated CDN Egress IPs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Dedicated CDN Egress IPs
+# Dedicated CDN Egress IPs
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enterprise customers can leverage dedicated egress[1](#user-content-fn-1) IPs for layer 7 [WAF](https://developers.cloudflare.com/waf/) and CDN services, as well as [Spectrum](https://developers.cloudflare.com/spectrum/). The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.
 
@@ -40,10 +40,10 @@ Each dedicated egress pool can consist of either IPs from a [BYOIP prefix](https
 
 ## Resources
 
-* [ How it works ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/)
-* [ Setup ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/)
-* [ IPs utilization ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/)
-* [ Use with other Cloudflare products ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/)
+* [How it works](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/)
+* [Setup](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/)
+* [IPs utilization](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/)
+* [Use with other Cloudflare products](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/)
 
 ## Footnotes
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/#page","headline":"Dedicated CDN Egress IPs · Cloudflare Smart Shield docs","description":"Use reserved egress IP addresses for origin allowlisting and increased security.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

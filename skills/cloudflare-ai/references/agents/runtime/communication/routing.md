@@ -4,15 +4,15 @@ title: Routing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Routing
+# Routing
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/routing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how requests are routed to agents, how naming works, and patterns for organizing your agents.
 
@@ -1183,21 +1183,21 @@ class SecureAgent extends Agent {
 
 ## Next steps
 
-### [ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
- Connect from browsers with useAgent and AgentClient.
+Connect from browsers with useAgent and AgentClient.
 
-### [ Cross-domain authentication ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
+### [Cross-domain authentication](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
 
- WebSocket authentication patterns.
+WebSocket authentication patterns.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- RPC from clients over WebSocket.
+RPC from clients over WebSocket.
 
-### [ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
+### [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 
- Set up agent bindings in wrangler.jsonc.
+Set up agent bindings in wrangler.jsonc.
 
 Was this helpful?
 
@@ -1205,7 +1205,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/routing/#page","headline":"Routing · Cloudflare Agents docs","description":"Route HTTP and WebSocket requests to Agents SDK instances using routeAgentRequest() and getAgentByName().","url":"https://developers.cloudflare.com/agents/runtime/communication/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

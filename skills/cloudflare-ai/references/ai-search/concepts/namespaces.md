@@ -4,25 +4,25 @@ title: Namespaces
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Namespaces
+# Namespaces
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
 
-[ Tenant A ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ Tenant B ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ Tenant C ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
-[ env.AI\_SEARCH.get(id) Worker ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[env.AI\_SEARCH.get(id)Worker](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 namespace: tenants
 
-[ AI Search instance tenant-a ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ AI Search instance tenant-b ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [ AI Search instance tenant-c ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 ## Why use namespaces
 
@@ -150,7 +150,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

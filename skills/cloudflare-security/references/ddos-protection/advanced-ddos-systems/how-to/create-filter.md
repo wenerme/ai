@@ -4,15 +4,15 @@ title: Create a filter
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a filter
+# Create a filter
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-filter/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-filter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A filter modifies Advanced TCP Protection's [execution mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) — monitoring, mitigation (enabled), or disabled — for all incoming packets matching an expression.
 
@@ -27,7 +27,7 @@ Filters only apply to Advanced TCP Protection.
 To create a [filter](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#filter) for one of the system components:
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Advanced TCP Protection**.
 3. Under the system component for which you are creating the filter (**SYN Flood Protection** or **Out-of-state TCP Protection**), select **Create** next to the type of filter you want to create:
 
@@ -46,7 +46,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-filter/#page","headline":"Create a filter for Advanced TCP Protection · Cloudflare DDoS Protection docs","description":"Create a filter to define traffic characteristics for Advanced TCP Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-filter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: MongoDB SSH
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  MongoDB SSH
+# MongoDB SSH
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongside the deployment and as on the client side.
 
@@ -320,7 +320,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/#page","headline":"MongoDB SSH · Cloudflare One docs","description":"You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MongoDB","SSH","Kubernetes"]}

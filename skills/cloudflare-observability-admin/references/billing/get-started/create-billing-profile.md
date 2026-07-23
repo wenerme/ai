@@ -4,15 +4,15 @@ title: Create billing profile
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create billing profile
+# Create billing profile
 
-Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/get-started/create-billing-profile/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/get-started/create-billing-profile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Add a primary payment method
 
@@ -23,7 +23,7 @@ Note
 Because some countries tax goods and services on personal accounts, you may be asked to indicate whether your Cloudflare account is personal or business to determine tax eligibility.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Select **Add Payment Method**. If no payment method is on file, the dialog opens automatically.
 4. Choose a payment option and enter the required details:
@@ -57,7 +57,7 @@ You may receive the error message "Your account is limited to 2 payment methods,
 If you are unable to add or edit a payment method, [delete a payment method](https://developers.cloudflare.com/billing/get-started/update-billing-info/#delete-a-payment-method) and try again.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Select **Add Payment Method**.
 4. Enter card details or select a supported wallet. Complete 3D Secure authentication if your card issuer requires it.
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/get-started/create-billing-profile/#page","headline":"Create billing profile · Cloudflare Billing docs","description":"Add a payment method to your Cloudflare account.","url":"https://developers.cloudflare.com/billing/get-started/create-billing-profile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

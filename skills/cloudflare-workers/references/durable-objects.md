@@ -4,25 +4,25 @@ title: Cloudflare Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Durable Objects
+# Cloudflare Durable Objects
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create AI agents, collaborative applications, real-time interactions like chat, and more without needing to coordinate state, have separate storage, or manage infrastructure.
 
- Available on Free and Paid plans
+Available on Free and Paid plans
 
 Durable Objects provide a building block for stateful applications and distributed systems.
 
 Use Durable Objects to build applications that need coordination among multiple clients, like collaborative editing tools, interactive chat, multiplayer games, live notifications, and deep distributed systems, without requiring you to build serialization and coordination primitives on your own.
 
-[ Get started ](https://developers.cloudflare.com/durable-objects/get-started/)
+[Get started](https://developers.cloudflare.com/durable-objects/get-started/)
 
 Note
 
@@ -49,25 +49,25 @@ For more information, refer to the full [What are Durable Objects?](https://deve
 
 Learn how Durable Objects coordinate connections among multiple clients or events.
 
- Use In-memory State
+Use In-memory State
 
 [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/)
 
 Learn how Durable Objects provide transactional, strongly consistent, and serializable storage.
 
- Use Storage API
+Use Storage API
 
 [WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api)
 
 Learn how WebSocket Hibernation allows you to manage the connections of multiple clients at scale.
 
- Use WebSocket Hibernation
+Use WebSocket Hibernation
 
 [Durable Objects Alarms](https://developers.cloudflare.com/durable-objects/api/alarms/)
 
 Learn how to use alarms to trigger a Durable Object and perform compute in the future at customizable intervals.
 
- Use Durable Objects Alarms
+Use Durable Objects Alarms
 
 ---
 
@@ -89,23 +89,23 @@ Cloudflare R2 Storage allows developers to store large amounts of unstructured d
 
 ## More resources
 
-### [ Limits ](https://developers.cloudflare.com/durable-objects/platform/limits/)
+### [Limits](https://developers.cloudflare.com/durable-objects/platform/limits/)
 
 Learn about Durable Objects limits.
 
-### [ Pricing ](https://developers.cloudflare.com/durable-objects/platform/pricing/)
+### [Pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/)
 
 Learn about Durable Objects pricing.
 
-### [ Storage options ](https://developers.cloudflare.com/workers/platform/storage-options/)
+### [Storage options](https://developers.cloudflare.com/workers/platform/storage-options/)
 
 Learn more about storage and database options you can build with Workers.
 
-### [ Developer Discord ](https://discord.cloudflare.com)
+### [Developer Discord](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-### [ @CloudflareDev ](https://x.com/cloudflaredev)
+### [@CloudflareDev](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Developer Platform.
 
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/durable-objects/#page","headline":"Overview · Cloudflare Durable Objects docs","description":"Build stateful serverless applications with Durable Objects, including AI agents, real-time chat, and collaborative apps.","url":"https://developers.cloudflare.com/durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

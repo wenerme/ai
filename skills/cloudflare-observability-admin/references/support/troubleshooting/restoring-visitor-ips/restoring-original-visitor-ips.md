@@ -4,15 +4,15 @@ title: Restoring original visitor IPs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Restoring original visitor IPs
+# Restoring original visitor IPs
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When your [website traffic is routed through the Cloudflare network](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a [Cloudflare IP address ↗](https://www.cloudflare.com/ips/).
 
@@ -208,7 +208,7 @@ That list of prefixes needs to be updated regularly, and we publish the full lis
 
 Note
 
-To Include the original visitor IP in your logs, add the variables `http_cf_connecting_ip and `http\_x\_forwarded\_for in the log\_format directive.
+To Include the original visitor IP in your logs, add the variables $http\_cf\_connecting\_ip and $http\_x\_forwarded\_for in the log\_format directive.
 
 Also refer to: [Cloudflare and NGINX ↗](https://danielmiessler.com/blog/getting-real-ip-addresses-using-cloudflare-nginx-and-varnish/).
 
@@ -469,7 +469,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/#page","headline":"Restoring original visitor IPs · Cloudflare Support docs","description":"Configure your server to log original visitor IPs.","url":"https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

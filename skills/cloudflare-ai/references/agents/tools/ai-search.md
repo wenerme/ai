@@ -4,15 +4,15 @@ title: AI Search
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI Search
+# AI Search
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/ai-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/ai-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [AI Search](https://developers.cloudflare.com/ai-search/) to retrieve relevant information from indexed content and use it to augment [calls to AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/). AI Search manages the retrieval pipeline for you, including indexing, search, and optional chat completions over your content.
 
@@ -122,17 +122,17 @@ Use `remote: true` to query deployed AI Search instances during local developmen
 
 ## Related resources
 
-### [ AI Search ](https://developers.cloudflare.com/ai-search/)
+### [AI Search](https://developers.cloudflare.com/ai-search/)
 
- Create managed retrieval pipelines over websites, R2 buckets, and uploaded files.
+Create managed retrieval pipelines over websites, R2 buckets, and uploaded files.
 
-### [ Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Query AI Search directly from Workers code.
+Query AI Search directly from Workers code.
 
-### [ Create an AI Search instance ](https://developers.cloudflare.com/ai-search/get-started/)
+### [Create an AI Search instance](https://developers.cloudflare.com/ai-search/get-started/)
 
- Create your first AI Search instance and run your first query.
+Create your first AI Search instance and run your first query.
 
 Was this helpful?
 
@@ -140,7 +140,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/ai-search/#page","headline":"AI Search · Cloudflare Agents docs","description":"Give agents retrieval capabilities with Cloudflare AI Search.","url":"https://developers.cloudflare.com/agents/tools/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

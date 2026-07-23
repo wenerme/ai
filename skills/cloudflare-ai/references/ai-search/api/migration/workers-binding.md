@@ -4,15 +4,15 @@ title: Workers binding migration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers binding migration
+# Workers binding migration
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [env.AI.autorag() binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
 
@@ -268,7 +268,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/#page","headline":"Workers binding migration · Cloudflare AI Search docs","description":"Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

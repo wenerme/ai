@@ -4,15 +4,15 @@ title: AI Crawl Control with Cloudflare WAF
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI Crawl Control with Cloudflare WAF
+# AI Crawl Control with Cloudflare WAF
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). WAF checks incoming web and API requests, and filters undesired traffic based on rules. [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) allow you to perform certain actions such as enforcing `robots.txt`.
 
@@ -94,7 +94,7 @@ You may have both of the following features enabled:
 In this scenario, you have two custom rules, each directing a different logic for handling AI crawlers. To resolve this issue:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Filter by _Custom rules_.
 3. Identify your custom rule and the AI Crawl Control rule.
 4. Drag the rule you wish to prioritize to the top, or modify your custom rule to ensure it does not conflict with your AI Crawl Control configurations.
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/#page","headline":"AI Crawl Control with Cloudflare WAF · Cloudflare AI Crawl Control docs","description":"Use AI Crawl Control alongside WAF custom rules.","url":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

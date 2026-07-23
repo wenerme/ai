@@ -4,15 +4,15 @@ title: Cloudflare as identity provider
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare as identity provider
+# Cloudflare as identity provider
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access can use Cloudflare itself as an identity provider, allowing you to build Access policies that match on Cloudflare account membership. This is useful for scenarios where you want to restrict access to users who are members of a specific Cloudflare account, without requiring a third-party identity provider.
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/#page","headline":"Cloudflare as identity provider · Cloudflare One docs","description":"Use Cloudflare as an identity provider for Access policies, allowing authentication based on Cloudflare account membership.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}

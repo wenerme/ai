@@ -4,21 +4,21 @@ title: Set up Claude Managed Agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up Claude Managed Agents
+# Set up Claude Managed Agents
 
-Last updated May 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a self-managed environment for [Claude Managed Agents ↗](https://platform.claude.com/docs/en/managed-agents/overview). The agent loop runs on the Anthropic platform, while Cloudflare provides the runtime — sandboxes, egress control, browser access, email, and custom tools — that the agent's actions execute in.
 
 This integration ships as an open-source deployment template. Fork the repo, deploy it to your Cloudflare account, and customize it as needed.
 
-[ Get Started ](https://github.com/cloudflare/claude-managed-agents)
+[Get Started](https://github.com/cloudflare/claude-managed-agents)
 
 ## What you get
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/#page","headline":"Set up Claude Managed Agents · Cloudflare Sandbox SDK docs","description":"Run Claude Managed Agents on self-managed Cloudflare environments.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

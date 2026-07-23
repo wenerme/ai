@@ -4,7 +4,7 @@ title: SASE - The evolution of corporate networks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, we discuss Cloudflare One, our Secure Access Service Edge (SASE) platform and how it has been designed to revolutionize the corporate network and enable companies with their Zero Trust strategy. Legacy network design is struggling to address today's challenges of security, performance, and monitoring needs. Many IT teams are trying to evolve their corporate network with point solutions and finding the lack of integration and performance an issue.
 
@@ -12,22 +12,22 @@ Chapters
 
 * ![Introduction to SASE and Modern Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction to SASE and Modern Corporate Networking**  0s
+**Introduction to SASE and Modern Corporate Networking**0s
 * ![The Evolution of Corporate Networks and Security Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=68s)
 
- **The Evolution of Corporate Networks and Security Challenges**  01m08s
+**The Evolution of Corporate Networks and Security Challenges**01m08s
 * ![Why Legacy Solutions Like VPNs and SD-WAN Are Insufficient](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=185s)
 
- **Why Legacy Solutions Like VPNs and SD-WAN Are Insufficient**  03m05s
+**Why Legacy Solutions Like VPNs and SD-WAN Are Insufficient**03m05s
 * ![How Cloudflare's Global Network Powers SASE Solutions](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=253s)
 
- **How Cloudflare's Global Network Powers SASE Solutions**  04m13s
+**How Cloudflare's Global Network Powers SASE Solutions**04m13s
 * ![The Role of Cloudflare's Connectivity Cloud in Securing Enterprises](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=328s)
 
- **The Role of Cloudflare's Connectivity Cloud in Securing Enterprises**  05m28s
+**The Role of Cloudflare's Connectivity Cloud in Securing Enterprises**05m28s
 * ![Simplified Security, Network Optimization, and Cost Savings with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/a4ede34e937c81781575af6494828b5b/thumbnails/thumbnail.jpg?fit=crop&time=375s)
 
- **Simplified Security, Network Optimization, and Cost Savings with Cloudflare**  06m15s
+**Simplified Security, Network Optimization, and Cost Savings with Cloudflare**06m15s
 
 Transcript
 

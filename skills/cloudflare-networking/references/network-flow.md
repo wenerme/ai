@@ -4,19 +4,19 @@ title: Network Flow
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network Flow
+# Network Flow
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Improve your network and cloud traffic visibility. Customers with public IPs can also detect DDoS attacks based on their traffic flows. Formerly Magic Network Monitoring.
 
- Available on all plans
+Available on all plans
 
 Understanding what is happening on your network is essential for troubleshooting performance issues, detecting threats, and planning capacity. Network Flow (formerly Magic Network Monitoring) gives you this visibility by analyzing network flow data that your routers or cloud environment send. The service supports NetFlow v5, NetFlow v9, IPFIX, and sFlow. In cloud environments, it supports AWS VPC flow logs through AWS Firehose.
 
@@ -36,19 +36,19 @@ Refer to [Get started](https://developers.cloudflare.com/network-flow/get-starte
 
 Create rules to set thresholds for network traffic volume and receive alerts when thresholds are exceeded.
 
- Use Rules
+Use Rules
 
 [Magic Transit integration](https://developers.cloudflare.com/network-flow/magic-transit-integration/)
 
 Magic Transit On Demand customers can automatically enable DDoS mitigation when the service detects a DDoS attack.
 
- Use Magic Transit integration
+Use Magic Transit integration
 
 [Rule notifications](https://developers.cloudflare.com/network-flow/rules/rule-notifications/)
 
 Configure email, webhook, or PagerDuty notifications to receive alerts when rule thresholds are exceeded.
 
- Use Rule notifications
+Use Rule notifications
 
 ---
 
@@ -68,7 +68,7 @@ Connects your network infrastructure directly with Cloudflare - rather than usin
 
 ## More resources
 
-### [ Discord ](https://discord.com/invite/cloudflaredev)
+### [Discord](https://discord.com/invite/cloudflaredev)
 
 Connect with the Network Flow community on Discord to ask questions, and share feedback.
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-flow/#page","headline":"Overview · Cloudflare Network Flow docs","description":"Analyze network traffic with NetFlow, sFlow, and IPFIX data.","url":"https://developers.cloudflare.com/network-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

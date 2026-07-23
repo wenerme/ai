@@ -4,15 +4,15 @@ title: Use virtual networks to change user egress IPs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use virtual networks to change user egress IPs
+# Use virtual networks to change user egress IPs
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -38,7 +38,7 @@ Make sure you have:
 First, create [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to your dedicated egress IPs.
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. In **Virtual networks**, select **Create virtual network**.
 3. Name your virtual network. We recommend using a name related to the location of the corresponding dedicated egress IP. For example, if your users will egress from the Americas, you can name the virtual network `vnet-AMER`.
 4. Select **Save**.
@@ -67,7 +67,7 @@ For more information, refer to [Create a virtual network](https://developers.clo
 After creating your virtual networks, route your private network CIDRs over each virtual network. This ensures that users can reach all services on your network regardless of which egress IP they use.
 
 1. Go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route**, then choose **Tunnel CIDR**.
 3. Select the tunnel that routes `10.0.0.0/8` and enter `10.0.0.0/8` as the network.
 4. Under **Virtual network**, choose your first virtual network. For example, `vnet-AMER`.
@@ -192,7 +192,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/#page","headline":"Use virtual networks to change user egress IPs · Cloudflare One docs","description":"This tutorial gives administrators an easy way to allow their users to change their egress IP address between any of your assigned dedicated egress IP addresses.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6","Private networks"]}

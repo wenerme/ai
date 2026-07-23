@@ -4,15 +4,15 @@ title: FAQ
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  FAQ
+# FAQ
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/observatory/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/observatory/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/c/website-application-performance/88) to explore more resources.
 
@@ -65,7 +65,7 @@ Enabling RUM creates a Web Analytics configuration entry for the hostname at the
 If you wish to disable RUM, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[ Go to **Web analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select **Manage Site** for the hostname for which you wish to disable RUM.
 3. Select **Delete**.
 
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/faq/#page","headline":"FAQ · Cloudflare Speed docs","description":"Find answers to common questions about Cloudflare Observatory.","url":"https://developers.cloudflare.com/speed/observatory/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

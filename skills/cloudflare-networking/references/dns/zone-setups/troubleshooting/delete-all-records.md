@@ -4,15 +4,15 @@ title: Delete all DNS records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Delete all DNS records
+# Delete all DNS records
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/delete-all-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/delete-all-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you connect your domain to Cloudflare, the [DNS records quick scan](https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/) may automatically add several records to your zone.
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/delete-all-records/#page","headline":"Delete all DNS records · Cloudflare DNS docs","description":"Learn how to bulk delete DNS records in Cloudflare with a script so you can start from zero instead of using the quick scan results.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/delete-all-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

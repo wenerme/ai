@@ -4,15 +4,15 @@ title: Header Glossary
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Header Glossary
+# Header Glossary
 
-Last updated May 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/glossary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway supports a variety of headers to help you configure, customize, and manage your API requests. This page provides a complete list of all supported headers, along with a short description
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/glossary/#page","headline":"Header Glossary · Cloudflare AI Gateway docs","description":"Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.","url":"https://developers.cloudflare.com/ai-gateway/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

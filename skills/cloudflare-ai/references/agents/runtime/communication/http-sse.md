@@ -4,15 +4,15 @@ title: HTTP and Server-Sent Events
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  HTTP and Server-Sent Events
+# HTTP and Server-Sent Events
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/http-sse/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/http-sse/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can handle HTTP requests and stream responses using Server-Sent Events (SSE). This page covers the `onRequest` method and SSE patterns.
 
@@ -288,17 +288,17 @@ Refer to [WebSockets](https://developers.cloudflare.com/agents/runtime/communica
 
 ## Next steps
 
-### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+### [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
- Bi-directional real-time communication.
+Bi-directional real-time communication.
 
-### [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Persist stream progress and agent state.
+Persist stream progress and agent state.
 
-### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+### [Build a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
- Streaming responses with AI chat.
+Streaming responses with AI chat.
 
 Was this helpful?
 
@@ -306,7 +306,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/#page","headline":"HTTP and Server-Sent Events · Cloudflare Agents docs","description":"Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

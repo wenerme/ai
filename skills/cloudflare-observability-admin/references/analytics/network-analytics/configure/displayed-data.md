@@ -4,15 +4,15 @@ title: Adjust the displayed data
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Adjust the displayed data
+# Adjust the displayed data
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Select the appropriate tab
 
@@ -79,7 +79,7 @@ Enable the **Show annotations** toggle to show or hide annotations for advertise
 To filter for these traffic events:
 
 1. In the Cloudflare dashboard, go to the **Network Analytics** page.
-[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Go to **DDoS managed rules** tab.
 3. Select **Add filter**.
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#page","headline":"Adjust the data displayed in Network Analytics · Cloudflare Analytics docs","description":"Filter and configure Network Analytics dashboard data.","url":"https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

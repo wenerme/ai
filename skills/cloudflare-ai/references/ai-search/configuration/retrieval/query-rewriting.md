@@ -4,15 +4,15 @@ title: Query rewriting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query rewriting
+# Query rewriting
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. It applies to both [Search](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search) and [Chat Completions](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions) requests.
 
@@ -49,7 +49,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/#page","headline":"Query rewriting · Cloudflare AI Search docs","description":"Improve AI Search retrieval quality by enabling query rewriting to rephrase user queries.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

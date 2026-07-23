@@ -4,15 +4,15 @@ title: Register a new domain
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Register a new domain
+# Register a new domain
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/get-started/register-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/get-started/register-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites and restrictions
 
@@ -34,7 +34,7 @@ Note
 If you are registering a `.us` domain, refer to the [Additional requirements for .US domains](https://developers.cloudflare.com/registrar/top-level-domains/us-domains/) before proceeding.
 
 1. In the Cloudflare dashboard, go to the **Register domains** page.
-[ Go to **Register domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/register)
+[Go to **Register domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/register)
 2. In the search box, enter the domain name you wish to register, and select **Search**. You may also enter one or more keywords. The search results will contain a list of suggested domains. If the domain you entered does not appear in the list, this means it is not available for registration.
 
 Important
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/register-domain/#page","headline":"Register a new domain · Cloudflare Registrar docs","description":"Register a new domain with Cloudflare.","url":"https://developers.cloudflare.com/registrar/get-started/register-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

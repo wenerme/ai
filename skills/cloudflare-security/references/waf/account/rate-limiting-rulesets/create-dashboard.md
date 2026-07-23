@@ -4,15 +4,15 @@ title: Create a rate limiting ruleset in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a rate limiting ruleset in the dashboard
+# Create a rate limiting ruleset in the dashboard
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -25,7 +25,7 @@ For more information on rule parameters, refer to [Rate limiting parameters](htt
 ## 1\. Create a custom rate limiting ruleset
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Rate limiting rulesets** tab.
 3. To create a new empty ruleset, select **Create ruleset**. To duplicate an existing ruleset, select the three dots next to it > **Duplicate**.
 4. Enter a name for the ruleset and (optionally) a description.
@@ -50,7 +50,7 @@ Enterprise customers with a paid add-on can [throttle requests](https://develope
 To deploy a custom rate limiting ruleset to one or more zones on an Enterprise plan:
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Rate limiting rulesets** tab.
 3. Under **Your custom rate limiting rulesets** and next to the rate limiting ruleset you wish to deploy, select **Deploy**.
 4. In the ruleset deployment page, enter a descriptive name for the rule deploying the ruleset in **Execution name**.
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/#page","headline":"Create a rate limiting ruleset in the dashboard for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

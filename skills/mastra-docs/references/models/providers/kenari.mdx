@@ -1,11 +1,11 @@
 ---
 title: "Kenari | Models"
-description: "Use Kenari models with Mastra. 23 models available."
+description: "Use Kenari models with Mastra. 38 models available."
 ---
 
 # [Kenari logo]Kenari
 
-Access 23 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
+Access 38 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
 
 Learn more in the [Kenari documentation](https://kenari.id/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "kenari/claude-opus-4-7"
+  model: "kenari/claude-fable-5"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "kenari/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
   {
     "model": "kenari/claude-opus-4-7",
     "imageInput": true,
@@ -64,14 +76,14 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "kenari/claude-sonnet-4-6",
+    "model": "kenari/claude-sonnet-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 64000,
+    "maxOutput": 128000,
     "inputCost": null,
     "outputCost": null
   },
@@ -112,14 +124,38 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "kenari/deepseek-v4-pro:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
+    "model": "kenari/gemini-2-5-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/gemini-2-5-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/gemini-3-1-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
   },
@@ -132,6 +168,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/glm-4-7-flash:free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },
@@ -184,6 +232,42 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "kenari/gpt-5-6-luna",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/gpt-5-6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/gpt-5-6-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kenari/gpt-image-2",
     "imageInput": true,
     "audioInput": false,
@@ -220,14 +304,14 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "kenari/grok-4-3",
+    "model": "kenari/grok-4-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 30000,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
     "inputCost": null,
     "outputCost": null
   },
@@ -256,6 +340,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "kenari/kimi-k2-6:free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kenari/kimi-k2-7-code",
     "imageInput": true,
     "audioInput": false,
@@ -264,6 +360,30 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/kimi-k2-7-code:free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },
@@ -292,6 +412,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "kenari/mimo-v2-5:free",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kenari/minimax-m3",
     "imageInput": true,
     "audioInput": false,
@@ -299,6 +431,54 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 512000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/nemotron-3-nano-30b-a3b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/nemotron-3-super-120b-a12b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/nemotron-3-super-120b-a12b:free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/nemotron-3-ultra-550b-a55b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
     "maxOutput": 128000,
     "inputCost": null,
     "outputCost": null
@@ -328,7 +508,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://kenari.id/v1",
-    id: "kenari/claude-opus-4-7",
+    id: "kenari/claude-fable-5",
     apiKey: process.env.KENARI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -347,7 +527,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "kenari/qwen3-7-plus"
-      : "kenari/claude-opus-4-7";
+      : "kenari/claude-fable-5";
   }
 });
 ```

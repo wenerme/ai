@@ -4,19 +4,19 @@ title: Routing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Routing
+# Routing
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/routing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel routes traffic from Cloudflare's network to services running behind `cloudflared`. When you [publish an application](https://developers.cloudflare.com/tunnel/setup/#publish-an-application), you map a public hostname to a local service — for example, `app.example.com` to `http://localhost:8080` — and Cloudflare applies CDN caching, WAF, and DDoS protection before forwarding the request to your origin.
 
-![Multiple outbound connections from cloudflared are spread across Cloudflare data centers for reliability and failover.](https://developers.cloudflare.com/_astro/cf1-ref-arch-7.Dk3BnKM8_UmiKN.svg)
+![Multiple outbound connections from cloudflared are spread across Cloudflare data centers for reliability and failover.](https://developers.cloudflare.com/_astro/cf1-ref-arch-7.Dk3BnKM8_ZBYAf.svg)
 
 ## Published applications
 
@@ -72,7 +72,7 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 To create a DNS record for a Cloudflare Tunnel:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Enter the following values:
 
@@ -138,7 +138,7 @@ A Cloudflare Tunnel with at least one [published application route](https://deve
 To create a load balancer for Cloudflare Tunnel published applications:
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Create load balancer**, then select **Public load balancer**.
 3. Under **Select website**, select the domain of your published application route.
 4. On the **Hostname** page, enter a hostname for the load balancer (for example, `lb.example.com`).
@@ -202,7 +202,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}

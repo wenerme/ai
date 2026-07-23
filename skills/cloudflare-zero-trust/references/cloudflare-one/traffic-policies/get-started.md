@@ -4,21 +4,21 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This section covers best practices for setting up the following Gateway policy types:
 
-* [ DNS filtering ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/)
-* [ Network filtering ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/)
-* [ HTTP filtering ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/)
+* [DNS filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/)
+* [Network filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/)
+* [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/)
 
 For each type of policy, we recommend the following workflow:
 
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/#page","headline":"Get started · Cloudflare One docs","description":"Best practices for deploying Cloudflare Gateway traffic policies in phases.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

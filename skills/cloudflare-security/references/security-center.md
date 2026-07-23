@@ -4,15 +4,15 @@ title: Cloudflare Security Center
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Security Center
+# Cloudflare Security Center
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Security Center brings together your Cloudflare security products, threat intelligence from Cloudflare's global network, and configuration analysis into a unified security intelligence solution. Security Center enables you to strengthen your security posture by:
 
@@ -28,7 +28,7 @@ Cloudflare Security Center brings together your Cloudflare security products, th
 * **[Investigate](https://developers.cloudflare.com/security-center/investigate/)**: Investigate threats using data from Cloudflare's global network. Look up any IP address, domain, or hostname to view its category, country of origin, and passive DNS records.
 * **[Security Reports](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/)** (beta): Gain visibility into requests blocked or challenged by Cloudflare application security products, including [HTTP DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/), [WAF](https://developers.cloudflare.com/waf/), and [Bot Management](https://developers.cloudflare.com/bots/).
 * **[Brand Protection](https://developers.cloudflare.com/security-center/brand-protection/)** (beta): Search for newly registered domains that may be attempting to impersonate your brand. Brand Protection monitors for typosquatting, homoglyph attacks, and service concatenation.
-[ Get started ](https://developers.cloudflare.com/security-center/get-started/)
+[Get started](https://developers.cloudflare.com/security-center/get-started/)
 
 ---
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/#page","headline":"Overview · Cloudflare Security Center docs","description":"Review security insights, investigate threats, and protect your brand from impersonation.","url":"https://developers.cloudflare.com/security-center/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

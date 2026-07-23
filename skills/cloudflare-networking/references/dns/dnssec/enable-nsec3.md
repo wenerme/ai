@@ -4,15 +4,15 @@ title: NSEC3 support
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  NSEC3 support
+# NSEC3 support
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As explained in [our blog ↗](https://blog.cloudflare.com/black-lies/), Cloudflare's implementation of negative answers with NSEC is protected against zone walking[1](#user-content-fn-1). This implementation, also referred to as Compact Denial of Existence ([RFC 9824 ↗](https://www.rfc-editor.org/rfc/rfc9824.html)), removes the need for NSEC3 and is significantly more efficient.
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/enable-nsec3/#page","headline":"NSEC3 support · Cloudflare DNS docs","description":"Learn how to enable NSEC3 support with Cloudflare to meet compliance requirements.","url":"https://developers.cloudflare.com/dns/dnssec/enable-nsec3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

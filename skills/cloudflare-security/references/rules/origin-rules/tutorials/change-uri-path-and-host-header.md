@@ -4,15 +4,15 @@ title: Change URI path and Host header
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Change URI path and Host header
+# Change URI path and Host header
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will instruct you how to modify both the URI path and the `Host` header of incoming requests using [Transform Rules](https://developers.cloudflare.com/rules/transform/) and Origin Rules.
 
@@ -28,7 +28,7 @@ By following these steps, you can effectively manage both URI paths and `Host` h
 ## 1\. Create a URL rewrite
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **URL Rewrite Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **If incoming requests match**, select **Custom filter expression**, select **Edit expression**, and enter the following expression:
@@ -52,7 +52,7 @@ Note
 If you are routing traffic to an object storage bucket, use [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/) instead of an origin rule.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Origin Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **When incoming requests match**, define the rule expression:
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/#page","headline":"Change URI path and Host header · Cloudflare Rules docs","description":"This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.","url":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","URL rewrite"]}

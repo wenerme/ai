@@ -4,15 +4,15 @@ title: Protect your store
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protect your store
+# Protect your store
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/e-commerce/protect/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/protect/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Online stores are targets for DDoS attacks, credential stuffing, payment fraud, and supply chain script injections. Cloudflare provides layered security — from SSL/TLS encryption and application security managed rulesets to bot detection and client-side script monitoring — that protects your store without adding friction for shoppers.
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/protect/#page","headline":"Protect your store · Cloudflare use cases","description":"Before driving traffic to your store, establish security controls to protect against attacks and fraud.","url":"https://developers.cloudflare.com/use-cases/e-commerce/protect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

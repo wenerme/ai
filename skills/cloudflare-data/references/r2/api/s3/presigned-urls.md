@@ -4,15 +4,15 @@ title: Presigned URLs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Presigned URLs
+# Presigned URLs
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Presigned URLs are an [S3 concept ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
 
@@ -203,21 +203,21 @@ If you need authentication with R2 buckets accessed via custom domains (public b
 
 ## Related resources
 
-### [ R2 API tokens ](https://developers.cloudflare.com/r2/api/tokens/)
+### [R2 API tokens](https://developers.cloudflare.com/r2/api/tokens/)
 
- Create credentials for generating presigned URLs.
+Create credentials for generating presigned URLs.
 
-### [ Public buckets ](https://developers.cloudflare.com/r2/buckets/public-buckets/)
+### [Public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 
- Alternative approach for public read access without authentication.
+Alternative approach for public read access without authentication.
 
-### [ R2 bindings in Workers ](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
+### [R2 bindings in Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
 
- Alternative for server-side R2 access with built-in authentication.
+Alternative for server-side R2 access with built-in authentication.
 
-### [ Storing user generated content ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)
+### [Storing user generated content](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)
 
- Architecture guide for handling user uploads with R2\.
+Architecture guide for handling user uploads with R2.
 
 Was this helpful?
 
@@ -225,7 +225,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/#page","headline":"Presigned URLs · Cloudflare R2 docs","description":"Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.","url":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Set up Cloudflare Tunnel
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Set up Cloudflare Tunnel to create a secure link between your private environment and the Cloudflare edge.
 

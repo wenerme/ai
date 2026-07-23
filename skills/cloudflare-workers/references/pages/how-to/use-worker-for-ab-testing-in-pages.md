@@ -4,15 +4,15 @@ title: Use Pages Functions for A/B testing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Pages Functions for A/B testing
+# Use Pages Functions for A/B testing
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to use [Pages Functions](https://developers.cloudflare.com/pages/functions/) for A/B testing in your Pages projects. A/B testing is a user experience research methodology applied when comparing two or more versions of a web page or application. With A/B testing, you can serve two or more versions of a webpage to users and divide traffic to your site.
 
@@ -161,7 +161,7 @@ After you have set up your `functions/_middleware.js` file in your project you a
 After you have deployed your application, review your middleware Function:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings** \> **Functions** \> **Configuration**.
 
 Was this helpful?
@@ -170,7 +170,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/#page","headline":"Use Pages Functions for A/B testing · Cloudflare Pages docs","description":"Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.","url":"https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

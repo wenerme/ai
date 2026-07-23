@@ -4,15 +4,15 @@ title: Observatory (beta)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Observatory (beta)
+# Observatory (beta)
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/observatory/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/observatory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Observatory uses synthetic tests and real user data from browsers to assess the performance of your website. These data sources produce metrics that provide different types of insights into your website’s performance. Cloudflare then uses the analysis run by Observatory to recommend optimizations with the tools that best suit your performance issues.
 
@@ -40,7 +40,7 @@ Real user monitoring (also known as RUM), on the other hand, captures real metri
 
 Free customers have RUM enabled automatically, with EU traffic excluded, and can switch it off if they prefer. Customers on other plans may enable RUM as needed.
 
-[ Run test ](https://developers.cloudflare.com/speed/observatory/run-speed-test/)
+[Run test](https://developers.cloudflare.com/speed/observatory/run-speed-test/)
 
 Was this helpful?
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/observatory/#page","headline":"Observatory (beta) · Cloudflare Speed docs","description":"Test and monitor your website performance with Cloudflare Observatory.","url":"https://developers.cloudflare.com/speed/observatory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Recraft V4.1 Utility SVG
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)
 
-#  Recraft V4.1 Utility SVG
+# Recraft V4.1 Utility SVG
 
- Text-to-Image • Recraft
+Text-to-Image • Recraft
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` recraft/recraftv4-1-utility-vector `
+`recraft/recraftv4-1-utility-vector`
 
 * Third-party
 * Zero data retention
 
 Generate production-ready SVG vector graphics from text prompts with a general-purpose model suited for a wide range of design and illustration tasks.
 
-| Model Info          |                                                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                                |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                                     |
-| Zero data retention | Yes                                                                                                                                   |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility-vector) |
+| Model Info          |                                                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                               |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                                    |
+| Zero data retention | Yes                                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility-vector) |
 
 ## Usage
 
@@ -70,7 +70,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**App Icon**  — Mobile app icon in vector format
+**App Icon** — Mobile app icon in vector format
 
 ```ts
 const response = await env.AI.run(
@@ -107,7 +107,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Illustration**  — Vector illustration for general use
+**Illustration** — Vector illustration for general use
 
 ```ts
 const response = await env.AI.run(
@@ -148,7 +148,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Brand Colors**  — Vector with specific color palette
+**With Brand Colors** — Vector with specific color palette
 
 ```ts
 const response = await env.AI.run(
@@ -243,9 +243,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -253,7 +253,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/#page","headline":"Recraft V4.1 Utility SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate production-ready SVG vector graphics from text prompts with a general-purpose model suited for a wide range of design and illustration tasks.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Control origin access
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Control origin access
+# Control origin access
 
-Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can serve resized images without giving access to the original image. Images can be hosted on another server outside of your zone, and the true source of the image can be entirely hidden. The origin server may require authentication to disclose the original image, without needing visitors to be aware of it. Access to the full-size image may be prevented by making it impossible to manipulate resizing parameters.
 
@@ -163,7 +163,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/#page","headline":"Control origin access · Cloudflare Images docs","description":"Hide original image sources and restrict access using Cloudflare Workers with image transformations.","url":"https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

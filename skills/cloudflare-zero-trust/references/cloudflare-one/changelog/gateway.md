@@ -4,17 +4,17 @@ title: Gateway
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Gateway
+# Gateway
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
 ## 2026-07-15
 
@@ -93,17 +93,17 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
 1. [Worker](https://developers.cloudflare.com/workers/)
 Calls `env.EGRESS.fetch()`
-2. [VPC binding](https://developers.cloudflare.com/workers-vpc/) ↓
+2. [VPC binding](https://developers.cloudflare.com/workers-vpc/)↓
 3. [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 Bind via [cf1:network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 4. ↓
 5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 Policies applied:
-[ DNS ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[ HTTP ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[ Network ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+[DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
 6. ↓
-7. ↗ Public Internet
+7. ↗Public Internet
 Any public hostname or IP
-[ Gateway logs DNS HTTP Network ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/)
+[Gateway logsDNSHTTPNetwork](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/)
 
 What you get by default:
 
@@ -891,7 +891,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#page","headline":"Gateway Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

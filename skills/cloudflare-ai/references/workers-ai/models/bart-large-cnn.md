@@ -4,7 +4,7 @@ title: bart-large-cnn
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  bart-large-cnn
+# bart-large-cnn
 
- Beta
+Beta
 
- Summarization • Meta
+Summarization • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/facebook/bart-large-cnn `
+`@cf/facebook/bart-large-cnn`
 
 * Cloudflare-hosted
 * Deprecated
@@ -78,9 +78,9 @@ summary
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/#page","headline":"bart-large-cnn (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.","url":"https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

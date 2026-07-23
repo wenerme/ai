@@ -4,15 +4,15 @@ title: Protect data center networks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protect data center networks
+# Protect data center networks
 
-Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -45,7 +45,7 @@ The edge router(s) at each data center is connected to Cloudflare network via tw
 
 The reference architecture diagram below illustrates how Cloudflare Magic Transit and Cloudflare Network Firewall can be used to protect the data centers' public-facing networks from inbound traffic originating from the Internet.
 
-![Figure 1. Protect Public-facing Networks from Inbound Traffic.](https://developers.cloudflare.com/_astro/figure1.ByCLqfND_1EfOWx.svg "Figure 1. Protect Public-facing Networks from Inbound Traffic.")
+![Figure 1. Protect Public-facing Networks from Inbound Traffic.](https://developers.cloudflare.com/_astro/figure1.ByCLqfND_1YxpUX.svg "Figure 1. Protect Public-facing Networks from Inbound Traffic.")
 
 Figure 1\. Protect Public-facing Networks from Inbound Traffic.
 
@@ -63,7 +63,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 The reference architecture diagram below illustrates how Cloudflare services - Magic Transit (Egress), Cloudflare Network Firewall, and Cloudflare Gateway can be used to protect outbound Internet traffic originating from the data centers' public-facing networks (that is, servers with public IP addresses).
 
-![Figure 2. Protect outbound traffic from public-facing networks.](https://developers.cloudflare.com/_astro/figure2.CWqDwBZ8_Zz0dof.svg "Figure 2. Protect outbound traffic from public-facing networks.")
+![Figure 2. Protect outbound traffic from public-facing networks.](https://developers.cloudflare.com/_astro/figure2.CWqDwBZ8_ZR56hL.svg "Figure 2. Protect outbound traffic from public-facing networks.")
 
 Figure 2\. Protect outbound traffic from public-facing networks.
 
@@ -86,7 +86,7 @@ The reference architecture diagrams below illustrate how Cloudflare services —
 
 First, let us examine the use case where you do not intend to subject site-to-site private network traffic to Cloudflare Gateway proxy firewall service and simply route it using Cloudflare WAN service.
 
-![Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.](https://developers.cloudflare.com/_astro/figure3.1.Bcrim4pP_2v3a3D.svg "Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.")
+![Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.](https://developers.cloudflare.com/_astro/figure3.1.Bcrim4pP_ZhtXpl.svg "Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.")
 
 Figure 3.1\. Protect inter-data center non-gateway-proxied traffic between private networks.
 
@@ -101,7 +101,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 For the use case where you do want to apply application level policy for fine-grain control and security on certain private network traffic, you can route and proxy such traffic through Cloudflare WAN and Cloudflare Gateway service. The following diagram illustrates the architecture and packet flow of such use cases.
 
-![Figure 3.2: Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.](https://developers.cloudflare.com/_astro/figure3.2.D9WLCVnf_Z2oL35A.svg "Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.")
+![Figure 3.2: Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.](https://developers.cloudflare.com/_astro/figure3.2.D9WLCVnf_TSw6H.svg "Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.")
 
 Figure 3.2\. Protect inter-data center gateway-proxied traffic between private networks.
 
@@ -118,7 +118,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 The reference architecture diagram below illustrates how Cloudflare services — Cloudflare WAN, Cloudflare Network Firewall and Cloudflare Gateway — can be used to protect outbound Internet traffic originating from the data centers' private networks. The use cases and the protection provided to the servers on the private networks are very similar to those described in the previous section about protecting Internet access from public-facing networks. The differences are that the servers have private IP addresses and that Cloudflare WAN service is used in this section, as opposed to the previous section where servers are assigned with public IP addresses and Magic Transit server is used.
 
-![Figure 4. Protect outbound traffic from private networks.](https://developers.cloudflare.com/_astro/figure4.Chl4DAXi_1k88c5.svg "Figure 4. Protect outbound traffic from private networks.")
+![Figure 4. Protect outbound traffic from private networks.](https://developers.cloudflare.com/_astro/figure4.Chl4DAXi_1h91An.svg "Figure 4. Protect outbound traffic from private networks.")
 
 Figure 4\. Protect outbound traffic from private networks.
 
@@ -150,7 +150,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/#page","headline":"Protect data center networks · Cloudflare Reference Architecture docs","description":"This document focuses on the reference architecture of using Cloudflare WAN, Cloudflare Network Firewall, and Cloudflare Gateway services.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

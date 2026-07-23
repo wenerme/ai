@@ -4,17 +4,17 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
 
@@ -54,7 +54,7 @@ Refer to [How Workers works](https://developers.cloudflare.com/workers/reference
 Create a new Worker to read and write to your KV namespace.
 
 1. Create a new project named `kv-tutorial` by running:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- kv-tutorial
 ```
@@ -97,7 +97,7 @@ If you are familiar with Cloudflare Workers, or initializing projects in a Conti
 For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --git --ts --deploy=false` creates a basic "Hello World" project ready to build on.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select **Start with Hello World!** \> **Get started**.
 4. Name your Worker. For this tutorial, name your Worker `kv-tutorial`.
@@ -139,7 +139,7 @@ Add the following to your configuration file in your kv_namespaces array:
 ```
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.
-[ Go to **Workers KV** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+[Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Select **Create instance**.
 3. Enter a name for your namespace. For this tutorial, use `kv_tutorial_namespace`.
 4. Select **Create**.
@@ -179,7 +179,7 @@ Binding names do not need to correspond to the namespace you created. Binding na
   * Your binding is available in your Worker at `env.<BINDING_NAME>` from within your Worker. For this tutorial, the binding is available at `env.USERS_NOTIFICATION_CONFIG`.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `kv-tutorial` Worker you created in [step 1](https://developers.cloudflare.com/kv/get-started/#1-create-a-worker-project).
 3. Got to the **Bindings** tab, then select **Add binding**.
 4. Select **KV namespace** \> **Add binding**.
@@ -227,7 +227,7 @@ npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remo
 ```
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.
-[ Go to **Workers KV** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+[Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Select the KV namespace you created (`kv_tutorial_namespace`).
 3. Go to the **KV Pairs** tab.
 4. Enter a `<KEY>` of your choice.
@@ -259,7 +259,7 @@ Refer to the [kv bulk documentation](https://developers.cloudflare.com/kv/refere
 You can view key-value pairs directly from the dashboard.
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.
-[ Go to **Workers KV** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+[Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Go to the KV namespace you created (`kv_tutorial_namespace`).
 3. Go to the **KV Pairs** tab.
 
@@ -354,7 +354,7 @@ The code above:
 5. Uses JavaScript's [try...catch ↗](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/try...catch) exception handling to catch potential errors. When writing or reading from any service, such as Workers KV or external APIs using `fetch()`, you should expect to handle exceptions explicitly.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Go to the `kv-tutorial` Worker you created.
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
@@ -429,7 +429,7 @@ npm run deploy
 For example, if the URL of your new Worker is `kv-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://kv-tutorial.<YOUR_SUBDOMAIN>.workers.dev/` sends a request to your Worker that writes (and reads) from Workers KV.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your `kv-tutorial` Worker.
 3. Select **Deployments**.
 4. From the **Version History** table, select **Deploy version**.
@@ -458,7 +458,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

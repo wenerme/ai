@@ -4,15 +4,15 @@ title: PCI compliance and vulnerabilities mitigation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  PCI compliance and vulnerabilities mitigation
+# PCI compliance and vulnerabilities mitigation
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Both [TLS 1.0 and TLS 1.1](https://developers.cloudflare.com/ssl/reference/protocols/) are insufficient for protecting information due to known vulnerabilities. Specifically for Cloudflare customers, the primary impact of PCI is that TLS 1.0 and TLS 1.1 are insufficient to secure payment card related traffic.
 
@@ -25,7 +25,7 @@ Cloudflare also [implements mitigations against known vulnerabilities](#known-vu
 To configure your Cloudflare domain to only allow connections using TLS 1.2 or newer protocols:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Minimum TLS Version**, select **TLS 1.2** or higher.
 
 Refer to [Minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) for more information about this setting and other setup options.
@@ -79,7 +79,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/#page","headline":"PCI compliance and vulnerabilities mitigation · Cloudflare SSL/TLS docs","description":"PCI compliance status and TLS vulnerability mitigations.","url":"https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}

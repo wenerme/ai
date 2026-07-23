@@ -4,15 +4,15 @@ title: Python SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Python SDK
+# Python SDK
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/get-started/python/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/python/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗](https://github.com/cloudflare/cloudflare-python).
 
@@ -28,7 +28,7 @@ This guide uses the `default` [namespace](https://developers.cloudflare.com/ai-s
 You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
+[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Python`.
@@ -143,13 +143,13 @@ If the search returns no results, the content may still be indexing. Wait a mome
 
 ## Next steps
 
-### [ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
+### [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
 
- Query AI Search using HTTP requests.
+Query AI Search using HTTP requests.
 
-### [ Workers API ](https://developers.cloudflare.com/ai-search/get-started/workers/)
+### [Workers API](https://developers.cloudflare.com/ai-search/get-started/workers/)
 
- Query AI Search from within a Cloudflare Worker.
+Query AI Search from within a Cloudflare Worker.
 
 Was this helpful?
 
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/python/#page","headline":"Python SDK · Cloudflare AI Search docs","description":"Create, populate, and query an AI Search instance from Python.","url":"https://developers.cloudflare.com/ai-search/get-started/python/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

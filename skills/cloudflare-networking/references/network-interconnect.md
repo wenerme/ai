@@ -4,19 +4,19 @@ title: Cloudflare Network Interconnect
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Network Interconnect
+# Cloudflare Network Interconnect
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-interconnect/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect your network infrastructure directly to Cloudflare
 
- Enterprise-only
+Enterprise-only
 
 Cloudflare Network Interconnect (CNI) allows you to connect your network infrastructure directly to Cloudflare — rather than using the public Internet — for a more performant and secure experience. With CNI, you can bring Cloudflare's full suite of network functions to your network edge.
 
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-interconnect/#page","headline":"Overview · Cloudflare Network Interconnect docs","description":"Connect to Cloudflare with private network interconnects.","url":"https://developers.cloudflare.com/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

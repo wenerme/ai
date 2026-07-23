@@ -4,15 +4,15 @@ title: Localize a website with HTMLRewriter
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Localize a website with HTMLRewriter
+# Localize a website with HTMLRewriter
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build an example internationalization and localization engine (commonly referred to as **i18n** and **l10n**) for your application, serve the content of your site, and automatically translate the content based on your visitors’ location in the world.
 
@@ -40,7 +40,7 @@ If you would like to deploy your own version of the site, you can find the sourc
 
 Create a new application using the [create-cloudflare](https://developers.cloudflare.com/pages/get-started/c3), a CLI for creating and deploying new applications to Cloudflare.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- i18n-example
@@ -286,7 +286,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
@@ -295,7 +295,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
@@ -327,7 +327,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter · Cloudflare Pages docs","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

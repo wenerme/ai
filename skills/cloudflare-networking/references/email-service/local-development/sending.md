@@ -4,17 +4,17 @@ title: Email sending
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Email sending
+# Email sending
 
 Test email sending Workers locally using wrangler dev with simulated email delivery
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/local-development/sending/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/sending/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Test email sending functionality locally using `wrangler dev` to simulate email delivery and verify your sending logic before deploying.
 
@@ -39,7 +39,7 @@ Configure your Wrangler file with the email binding:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"send_email": [{ "name": "EMAIL" }],
 }
 ```
@@ -47,7 +47,7 @@ Configure your Wrangler file with the email binding:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[send_email]]
 name = "EMAIL"
@@ -63,7 +63,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"send_email": [
 		{
 			"name": "EMAIL",
@@ -76,7 +76,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[send_email]]
 name = "EMAIL"
@@ -198,7 +198,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

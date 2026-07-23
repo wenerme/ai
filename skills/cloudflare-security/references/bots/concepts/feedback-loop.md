@@ -4,15 +4,15 @@ title: Bot Feedback Loop
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bot Feedback Loop
+# Bot Feedback Loop
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/) incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
 
@@ -49,7 +49,7 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 ## Submit a report
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Apply one or more filters.
 3. Under **Request activity**, filter by **Bot analysis**.
 4. Select **Report incorrect data** and fill out the form.
@@ -247,7 +247,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/concepts/feedback-loop/#page","headline":"Bot Feedback Loop · Cloudflare bot solutions docs","description":"Submit feedback to improve bot detection accuracy for your domain.","url":"https://developers.cloudflare.com/bots/concepts/feedback-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

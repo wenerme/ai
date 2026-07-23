@@ -5,15 +5,15 @@ title: Tunnel permissions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Tunnel permissions
+# Tunnel permissions
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A remotely-managed tunnel only requires the tunnel token to run. Anyone with access to the token will be able to run the tunnel.
 
@@ -22,7 +22,7 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 To get the token for a remotely-managed tunnel:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select a tunnel to open its detail page.
 3. On the **Overview** tab, select **Add a replica** to reveal the installation command. Copy the command into a text editor (do not run the command). The token is the `eyJ...` string.
 
@@ -105,7 +105,7 @@ To rotate a tunnel token:
 1. Refresh the token on Cloudflare:
 
   1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-  [ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+  [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
   2. Select a tunnel to open its detail page.
   3. On the **Overview** tab, select **Refresh token**.
   4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.
@@ -221,7 +221,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#page","headline":"Tunnel permissions · Cloudflare One docs","description":"Manage tunnel tokens and control who can run your remotely-managed tunnels.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Terraform"]}

@@ -4,17 +4,17 @@ title: Use only Brotli compression for a specific path
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use only Brotli compression for a specific path
+# Use only Brotli compression for a specific path
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/#page","headline":"Use only Brotli compression for a specific path · Cloudflare Rules docs","description":"Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

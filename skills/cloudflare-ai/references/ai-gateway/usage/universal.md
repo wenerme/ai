@@ -4,15 +4,15 @@ title: Universal Endpoint (Deprecated)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Universal Endpoint (Deprecated)
+# Universal Endpoint (Deprecated)
 
-Last updated May 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -233,7 +233,7 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
 ]'
 ```
 
-## WebSockets API  beta
+## WebSockets API beta
 
 The Universal Endpoint can also be accessed via a [WebSockets API](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/) which provides a single persistent connection, enabling continuous communication. This API supports all AI providers connected to AI Gateway, including those that do not natively support WebSockets.
 
@@ -387,7 +387,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/universal/#page","headline":"Universal Endpoint (Deprecated) · Cloudflare AI Gateway docs","description":"Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.","url":"https://developers.cloudflare.com/ai-gateway/usage/universal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

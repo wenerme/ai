@@ -52,14 +52,14 @@ On July 20, 2026, we notified developers using legacy audio, realtime, and trans
 
 On June 11, 2026, we notified developers using older GPT-5 and o3 model snapshots of their deprecation and removal from the API on December 11, 2026.
 
-| Shutdown date | Model / system          | Recommended replacement |
-| ------------- | ----------------------- | ----------------------- |
-| Dec 11, 2026  | `gpt-5-2025-08-07`      | `gpt-5.5`               |
-| Dec 11, 2026  | `gpt-5-mini-2025-08-07` | `gpt-5.4-mini`          |
-| Dec 11, 2026  | `gpt-5-nano-2025-08-07` | `gpt-5.4-nano`          |
-| Dec 11, 2026  | `gpt-5-pro-2025-10-06`  | `gpt-5.5-pro`           |
-| Dec 11, 2026  | `o3-2025-04-16`         | `gpt-5.5`               |
-| Dec 11, 2026  | `o3-pro-2025-06-10`     | `gpt-5.5-pro`           |
+| Shutdown date | Model / system          | Recommended replacement               |
+| ------------- | ----------------------- | ------------------------------------- |
+| Dec 11, 2026  | `gpt-5-2025-08-07`      | `gpt-5.6-sol`                         |
+| Dec 11, 2026  | `gpt-5-mini-2025-08-07` | `gpt-5.6-terra`                       |
+| Dec 11, 2026  | `gpt-5-nano-2025-08-07` | `gpt-5.6-luna`                        |
+| Dec 11, 2026  | `gpt-5-pro-2025-10-06`  | `gpt-5.6-sol` (`reasoning.mode: pro`) |
+| Dec 11, 2026  | `o3-2025-04-16`         | `gpt-5.6-sol`                         |
+| Dec 11, 2026  | `o3-pro-2025-06-10`     | `gpt-5.6-sol` (`reasoning.mode: pro`) |
 
 ### 2026-06-03: Reusable prompts
 
@@ -113,8 +113,8 @@ On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.
 
 | Shutdown date | Model / system        | Recommended replacement |
 | ------------- | --------------------- | ----------------------- |
-| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.5`               |
-| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.5`               |
+| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
+| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
 
 ### Update to OpenAI’s self-serve fine-tuning
 
@@ -132,35 +132,35 @@ Inference on fine-tuned models will continue to be available until the base mode
 
 To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models. Access to these models will be shut down on the dates below.
 
-| Shutdown date | Model snapshot                                                         | Substitute model             |
-| ------------- | ---------------------------------------------------------------------- | ---------------------------- |
-| 2026-07-23    | `computer-use-preview-2025-03-11` \| `computer-use-preview`            | `gpt-5.4-mini`               |
-| 2026-07-23    | `gpt-4o-mini-search-preview-2025-03-11`                                | `gpt-5.4-mini`               |
-| 2026-07-23    | `gpt-4o-mini-tts-2025-03-20`                                           | `gpt-4o-mini-tts-2025-12-15` |
-| 2026-07-23    | `gpt-4o-search-preview-2025-03-11`                                     | `gpt-5.4-mini`               |
-| 2026-07-23    | `gpt-5-chat-latest`                                                    | `gpt-5.5`                    |
-| 2026-07-23    | `gpt-5-codex`                                                          | `gpt-5.5`                    |
-| 2026-07-23    | `gpt-5.1-chat-latest`                                                  | `gpt-5.5`                    |
-| 2026-07-23    | `gpt-5.1-codex`                                                        | `gpt-5.5`                    |
-| 2026-07-23    | `gpt-5.1-codex-max`                                                    | `gpt-5.5`                    |
-| 2026-07-23    | `gpt-5.1-codex-mini`                                                   | `gpt-5.4-mini`               |
-| 2026-07-23    | `gpt-audio-mini-2025-10-06`                                            | `gpt-audio-1.5`              |
-| 2026-07-23    | `gpt-realtime-mini-2025-10-06`                                         | `gpt-realtime-mini`          |
-| 2026-07-23    | `o3-deep-research-2025-06-26` \| `o3-deep-research`                    | `gpt-5.5-pro`                |
-| 2026-07-23    | `o4-mini-deep-research-2025-06-26` \| `o4-mini-deep-research`          | `gpt-5.5-pro`                |
-| 2026-07-23    | `gpt-5.2-codex`                                                        | `gpt-5.5`                    |
-| 2026-10-23    | `gpt-3.5-turbo-0125` \| `gpt-3.5-turbo`, `gpt-3.5-turbo-completions`   | `gpt-5.4-mini`               |
-| 2026-10-23    | `gpt-4-0613` \| `gpt-4`, `gpt-4-0613-completions`, `gpt-4-completions` | `gpt-5.5`                    |
-| 2026-10-23    | `gpt-4-1106-preview`                                                   | `gpt-5.5`                    |
-| 2026-10-23    | `gpt-4-turbo` \| `gpt-4-turbo-2024-04-09`, `gpt-4-turbo-completions`   | `gpt-5.5`                    |
-| 2026-10-23    | `gpt-4.1-nano` \| `gpt-4.1-nano-2025-04-14`                            | `gpt-5.4-nano`               |
-| 2026-10-23    | `gpt-4o-2024-05-13`                                                    | `gpt-5.5`                    |
-| 2026-10-23    | `gpt-image-1`                                                          | `gpt-image-2`                |
-| 2026-10-23    | `o1-2024-12-17` \| `o1`                                                | `gpt-5.5`                    |
-| 2026-10-23    | `o1-pro-2025-03-19` \| `o1-pro`                                        | `gpt-5.5-pro`                |
-| 2026-10-23    | `o3-mini-2025-01-31` \| `o3-mini`                                      | `gpt-5.5`                    |
-| 2026-10-23    | `ft-o4-mini-2025-04-16`                                                | `gpt-5.4-mini`               |
-| 2026-10-23    | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5.4-mini`               |
+| Shutdown date | Model snapshot                                                         | Substitute model                      |
+| ------------- | ---------------------------------------------------------------------- | ------------------------------------- |
+| July 23, 2026 | `computer-use-preview-2025-03-11` \| `computer-use-preview`            | `gpt-5.6-terra`                       |
+| July 23, 2026 | `gpt-4o-mini-search-preview-2025-03-11`                                | `gpt-5.6-terra`                       |
+| July 23, 2026 | `gpt-4o-mini-tts-2025-03-20`                                           | `gpt-4o-mini-tts-2025-12-15`          |
+| July 23, 2026 | `gpt-4o-search-preview-2025-03-11`                                     | `gpt-5.6-terra`                       |
+| July 23, 2026 | `gpt-5-chat-latest`                                                    | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5-codex`                                                          | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5.1-chat-latest`                                                  | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5.1-codex`                                                        | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5.1-codex-max`                                                    | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5.1-codex-mini`                                                   | `gpt-5.6-terra`                       |
+| July 23, 2026 | `gpt-audio-mini-2025-10-06`                                            | `gpt-audio-1.5`                       |
+| July 23, 2026 | `gpt-realtime-mini-2025-10-06`                                         | `gpt-realtime-2.1-mini`               |
+| July 23, 2026 | `o3-deep-research-2025-06-26` \| `o3-deep-research`                    | `gpt-5.6-sol`                         |
+| July 23, 2026 | `o4-mini-deep-research-2025-06-26` \| `o4-mini-deep-research`          | `gpt-5.6-sol`                         |
+| July 23, 2026 | `gpt-5.2-codex`                                                        | `gpt-5.6-sol`                         |
+| 2026-10-23    | `gpt-3.5-turbo-0125` \| `gpt-3.5-turbo`, `gpt-3.5-turbo-completions`   | `gpt-5.6-terra`                       |
+| 2026-10-23    | `gpt-4-0613` \| `gpt-4`, `gpt-4-0613-completions`, `gpt-4-completions` | `gpt-5.6-sol`                         |
+| 2026-10-23    | `gpt-4-1106-preview`                                                   | `gpt-5.6-sol`                         |
+| 2026-10-23    | `gpt-4-turbo` \| `gpt-4-turbo-2024-04-09`, `gpt-4-turbo-completions`   | `gpt-5.6-sol`                         |
+| 2026-10-23    | `gpt-4.1-nano` \| `gpt-4.1-nano-2025-04-14`                            | `gpt-5.6-luna`                        |
+| 2026-10-23    | `gpt-4o-2024-05-13`                                                    | `gpt-5.6-sol`                         |
+| 2026-10-23    | `gpt-image-1`                                                          | `gpt-image-2`                         |
+| 2026-10-23    | `o1-2024-12-17` \| `o1`                                                | `gpt-5.6-sol`                         |
+| 2026-10-23    | `o1-pro-2025-03-19` \| `o1-pro`                                        | `gpt-5.6-sol` (`reasoning.mode: pro`) |
+| 2026-10-23    | `o3-mini-2025-01-31` \| `o3-mini`                                      | `gpt-5.6-sol`                         |
+| 2026-10-23    | `ft-o4-mini-2025-04-16`                                                | `gpt-5.6-terra`                       |
+| 2026-10-23    | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5.6-terra`                       |
 
 We are also removing fine-tuned versions as below:
 

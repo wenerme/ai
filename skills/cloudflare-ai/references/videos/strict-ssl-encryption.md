@@ -4,7 +4,7 @@ title: Configure Strict encryption mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how to configure your site to use Strict (SSL-Only Origin Pull) encryption mode.
 

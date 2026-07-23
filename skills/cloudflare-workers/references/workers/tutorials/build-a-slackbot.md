@@ -4,15 +4,15 @@ title: Build a Slackbot
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a Slackbot
+# Build a Slackbot
 
-Last updated Apr 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a [Slack ↗](https://slack.com) bot using [Cloudflare Workers](https://developers.cloudflare.com/workers/). Your bot will make use of GitHub webhooks to send messages to a Slack channel when issues are updated or created, and allow users to write a command to look up GitHub issues from inside Slack.
 
@@ -99,7 +99,7 @@ When your webhook is created, it will attempt to send a test payload to your app
 
 To initiate the project, use the command line interface [C3 (create-cloudflare-cli) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare).
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- slack-bot
@@ -147,7 +147,7 @@ This is a minimal application using Hono. If a GET access comes in on the path `
 
 To run the application on your local machine, execute the following command.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -- dev
@@ -755,7 +755,7 @@ By completing the preceding steps, you have finished writing the code for your S
 
 Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, run the following command which will build and deploy your code.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -- deploy
@@ -789,7 +789,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/#page","headline":"Build a Slackbot · Cloudflare Workers docs","description":"Learn how to build a Slackbot with Hono and TypeScript in Cloudflare Workers","url":"https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript"]}

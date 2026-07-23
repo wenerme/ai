@@ -4,15 +4,15 @@ title: Cloudflare Environments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Environments
+# Cloudflare Environments
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
@@ -21,7 +21,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -45,7 +45,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./src/index.ts"
 
 [vars]
@@ -135,7 +135,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -159,7 +159,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./src/index.ts"
 
 [vars]
@@ -192,7 +192,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/#page","headline":"Cloudflare Environments · Cloudflare Workers docs","description":"Using Cloudflare environments with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

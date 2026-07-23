@@ -4,15 +4,15 @@ title: Migrate from Miniflare 2's test environments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate from Miniflare 2's test environments
+# Migrate from Miniflare 2's test environments
 
-Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Miniflare 2 ↗](https://github.com/cloudflare/miniflare?tab=readme-ov-file) provided custom environments for Jest and Vitest in the `jest-environment-miniflare` and `vitest-environment-miniflare` packages respectively. The `@cloudflare/vitest-pool-workers` package provides similar functionality using modern Miniflare versions and the [workerd runtime ↗](https://github.com/cloudflare/workerd). `workerd` is the same JavaScript/WebAssembly runtime that powers Cloudflare Workers. Using `workerd` practically eliminates behavior mismatches between your tests and deployed code. Refer to the [Miniflare 3 announcement ↗](https://blog.cloudflare.com/miniflare-and-workerd) for more information.
 
@@ -189,7 +189,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/#page","headline":"Migrate from Miniflare 2's test environments · Cloudflare Workers docs","description":"Migrate from Miniflare 2 to the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

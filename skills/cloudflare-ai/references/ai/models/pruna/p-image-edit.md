@@ -4,7 +4,7 @@ title: P-Image-Edit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.BVOvqoaI.svg)
 
-#  P-Image-Edit
+# P-Image-Edit
 
- Image-to-Image • Pruna AI
+Image-to-Image • Pruna AI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` pruna/p-image-edit `
+`pruna/p-image-edit`
 
 * Third-party
 
 Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.
 
-| Model Info       |                                                                                                                       |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                 |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-edit) |
+| Model Info       |                                                                                                                      |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-edit) |
 
 ## Usage
 
@@ -105,9 +105,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/#page","headline":"P-Image-Edit (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

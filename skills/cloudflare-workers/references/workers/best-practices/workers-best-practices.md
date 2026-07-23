@@ -4,15 +4,15 @@ title: Workers Best Practices
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Best Practices
+# Workers Best Practices
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Best practices for Workers based on production patterns, Cloudflare's own internal usage, and common issues seen across the developer community.
 
@@ -27,7 +27,7 @@ The [compatibility\_date](https://developers.cloudflare.com/workers/configuratio
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -36,7 +36,7 @@ The [compatibility\_date](https://developers.cloudflare.com/workers/configuratio
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -51,7 +51,7 @@ The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/node
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -60,7 +60,7 @@ The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/node
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -72,7 +72,7 @@ Do not hand-write your `Env` interface. Run [wrangler types](https://developers.
 
 Re-run `wrangler types` whenever you add or rename a binding.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -123,7 +123,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// ✅ Good: non-secret configuration lives in version control
@@ -140,7 +140,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -149,7 +149,7 @@ API_BASE_URL = "https://api.example.com"
 
 To add a secret, run the following command and provide the secret interactively when prompted:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secret put API_KEY
@@ -185,7 +185,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 	"name": "my-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// This binding only applies to the root Worker
@@ -214,7 +214,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 name = "my-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -240,7 +240,7 @@ zone_name = "example.com"
 
 With this configuration file, to deploy to staging:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy --env staging
@@ -270,7 +270,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Option 1: Custom domain — Worker is the origin, DNS is managed automatically
@@ -288,7 +288,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[routes]]
@@ -709,7 +709,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<YOUR_HYPERDRIVE_ID>" }],
@@ -720,7 +720,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -928,7 +928,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 	// Static site — no Worker script needed
 	"name": "my-static-site",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"assets": {
@@ -940,7 +940,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 ```toml
 name = "my-static-site"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -964,7 +964,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"observability": {
@@ -985,7 +985,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]
@@ -1485,7 +1485,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/#page","headline":"Workers Best Practices · Cloudflare Workers docs","description":"Code patterns and configuration guidance for building fast, reliable, observable, and secure Workers.","url":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

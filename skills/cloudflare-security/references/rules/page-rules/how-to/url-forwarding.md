@@ -4,15 +4,15 @@ title: URL forwarding with Page Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  URL forwarding with Page Rules
+# URL forwarding with Page Rules
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Page Rules allow you to forward or redirect traffic to a different URL, though they are just one of the [options provided by Cloudflare](https://developers.cloudflare.com/fundamentals/reference/redirects/).
 
@@ -29,7 +29,7 @@ For more flexibility and customization, consider using [Snippets](https://develo
 To configure URL forwarding or redirects using Page Rules:
 
 1. In the Cloudflare dashboard, go to the **Page Rules** page.
-[ Go to **Page Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
+[Go to **Page Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
 2. Select **Create Page Rule**.
 3. Under **If the URL matches**, enter the URL or URL pattern that should match the rule.
 4. In **Pick a Setting**, choose **Forwarding URL** from the drop-down menu.
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/#page","headline":"URL forwarding with Page Rules · Cloudflare Rules docs","description":"Create URL forwarding rules with Page Rules.","url":"https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}

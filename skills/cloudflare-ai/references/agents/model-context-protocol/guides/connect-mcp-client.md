@@ -4,15 +4,15 @@ title: Connect to an MCP server
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to an MCP server
+# Connect to an MCP server
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your Agent can connect to external [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io) servers to access their tools and extend your Agent's capabilities. In this tutorial, you'll create an Agent that connects to an MCP server and uses one of its tools.
 
@@ -31,7 +31,7 @@ An MCP server to connect to (or use the public example in this tutorial).
 ## 1\. Create a basic Agent
 
 1. Create a new Agent project using the `hello-world` template:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-mcp-client --template=cloudflare/ai/demos/hello-world
 ```
@@ -231,13 +231,13 @@ Connections persist in the Agent's [SQL storage](https://developers.cloudflare.c
 
 ## Next steps
 
-### [ Handle OAuth flows ](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/)
+### [Handle OAuth flows](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/)
 
- Configure OAuth callbacks and error handling.
+Configure OAuth callbacks and error handling.
 
-### [ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+### [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
- Complete API documentation for MCP clients.
+Complete API documentation for MCP clients.
 
 Was this helpful?
 
@@ -245,7 +245,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/#page","headline":"Connect to an MCP server · Cloudflare Agents docs","description":"Create a Cloudflare Agent that connects to an external MCP server and uses its tools.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

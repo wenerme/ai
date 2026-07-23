@@ -4,15 +4,15 @@ title: Ember
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Ember
+# Ember
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Ember.js ↗](https://emberjs.com) is a productive, battle-tested JavaScript framework for building modern web applications. It includes everything you need to build rich UIs that work on any device.
 
@@ -62,17 +62,17 @@ git push -u origin main
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Build settings** section, select _Ember.js_ as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value               |  | Production branch | main |
-| -------------------- | ------------------- |  | ----------------- | ---- |
-| Build command        | npx ember-cli build |  |                   |      |
-| Build directory      | dist                |  |                   |      |
+| Configuration option | Value               | |  Production branch | main |
+| -------------------- | ------------------- | -------------------- | ---- |
+| Build command        | npx ember-cli build |                      |      |
+| Build directory      | dist                |                      |      |
 
 After deploying your site, you will receive a unique subdomain for your project on `*.pages.dev`.
 
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/#page","headline":"Ember · Cloudflare Pages docs","description":"Deploy an Ember.js application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

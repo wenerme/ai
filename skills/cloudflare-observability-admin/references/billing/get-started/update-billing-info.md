@@ -4,15 +4,15 @@ title: Update billing information
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Update billing information
+# Update billing information
 
-Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/get-started/update-billing-info/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/get-started/update-billing-info/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To avoid potential disruptions in your Cloudflare services, make sure your billing information is current and accurate.
 
@@ -27,7 +27,7 @@ You may receive the error message "Your account is limited to 2 payment methods,
 If you are unable to add or edit a payment method, [delete a payment method](https://developers.cloudflare.com/billing/get-started/update-billing-info/#delete-a-payment-method) and try again.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Select **Add Payment Method** to add a new method, or **Edit** next to an existing one.
 4. Enter card details or select a supported wallet. Complete 3D Secure authentication if your card issuer requires it.
@@ -60,7 +60,7 @@ If you currently subscribe to any [add-on services](https://developers.cloudflar
 You cannot delete a payment method if a payment fails or if there is an outstanding balance. Until Cloudflare processes payment, you can only add or edit your payment method.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Select **Delete** next to the payment method you want to remove.
 4. Select **Confirm** to finish.
@@ -79,7 +79,7 @@ Updating the billing profile address applies to invoices issued after the change
 To update the billing profile address:
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. From **Billing Address**, select **Edit** and enter your information.
 3. Review the suggested address in the pop-up window. If the information is correct, select **Confirm**.
 
@@ -92,7 +92,7 @@ If you pay by PayPal, refer to PayPal's [billing address documentation ↗](http
 Your billing email address is particularly important if you have [opted in to invoice emails](https://developers.cloudflare.com/billing/manage/invoices/#turn-on-invoice-emails-from-cloudflare).
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to **Invoices and documents**.
 3. From **Billing email preference**, select **Change email address**.
 4. Enter and confirm your new email address, then select **Save**.
@@ -106,7 +106,7 @@ Note
 You cannot apply a VAT or GST number to past invoices. Adding a VAT or GST number will only apply to future invoices issued in the account.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. From **Billing Address**, select **Edit**.
 3. In the **VAT/GST** field, enter your VAT or GST number.
 4. Select **Confirm**.
@@ -118,7 +118,7 @@ Note
 You cannot remove a VAT or GST number from past invoices. Removing a VAT or GST number will only apply to future invoices issued in the account.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. From **Billing Address**, select **Edit**.
 3. In the **VAT/GST** field, delete the VAT or GST number.
 4. Select **Confirm**.
@@ -135,7 +135,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/get-started/update-billing-info/#page","headline":"Update billing information · Cloudflare Billing docs","description":"Update payment methods, billing address, or tax IDs.","url":"https://developers.cloudflare.com/billing/get-started/update-billing-info/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

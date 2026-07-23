@@ -4,15 +4,15 @@ title: Getting started with Cloudflare Zero Trust FAQ
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started with Cloudflare Zero Trust FAQ
+# Getting started with Cloudflare Zero Trust FAQ
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#page","headline":"Getting started with Cloudflare Zero Trust FAQ · Cloudflare One docs","description":"Review FAQs about getting started with Cloudflare Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

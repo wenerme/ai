@@ -4,11 +4,11 @@ title: cf.timings.edge_msec
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.timings.edge\_msec
+# cf.timings.edge\_msec
 
-`cf.timings.edge_msec` ` Integer `
+`cf.timings.edge_msec` `Integer`
 
 The time spent processing a request within the Cloudflare global network in milliseconds.
 
@@ -39,7 +39,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.edge_msec/#page","headline":"cf.timings.edge_msec · Cloudflare Ruleset Engine docs","description":"The time spent processing a request within the Cloudflare global network in milliseconds.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.edge_msec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

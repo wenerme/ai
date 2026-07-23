@@ -223,8 +223,8 @@ client = OpenAI()
 response = client.responses.create(
     model="gpt-5.6",
     reasoning={"effort": "low"},
-    instructions="${semicolonsDevMsg}",
-    input="${semicolonsPrompt}",
+    instructions="Talk like a pirate.",
+    input="Are semicolons optional in JavaScript?",
 )
 
 print(response.output_text)
@@ -237,8 +237,8 @@ curl "https://api.openai.com/v1/responses" \
     -d '{
         "model": "gpt-5.6",
         "reasoning": {"effort": "low"},
-        "instructions": "${semicolonsDevMsg}",
-        "input": "${semicolonsPrompt}"
+        "instructions": "Talk like a pirate.",
+        "input": "Are semicolons optional in JavaScript?"
     }'
 ```
 
@@ -279,11 +279,11 @@ response = client.responses.create(
     input=[
         {
             "role": "developer",
-            "content": "${semicolonsDevMsg}"
+            "content": "Talk like a pirate."
         },
         {
             "role": "user",
-            "content": "${semicolonsPrompt}"
+            "content": "Are semicolons optional in JavaScript?"
         }
     ]
 )
@@ -301,11 +301,11 @@ curl "https://api.openai.com/v1/responses" \
         "input": [
             {
                 "role": "developer",
-                "content": "${semicolonsDevMsg}"
+                "content": "Talk like a pirate."
             },
             {
                 "role": "user",
-                "content": "${semicolonsPrompt}"
+                "content": "Are semicolons optional in JavaScript?"
             }
         ]
     }'

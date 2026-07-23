@@ -4,7 +4,7 @@ title: Create an API token
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn the difference between account and user API tokens how to create one.
 

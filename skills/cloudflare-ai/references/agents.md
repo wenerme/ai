@@ -4,15 +4,15 @@ title: Build Agents on Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build Agents on Cloudflare
+# Build Agents on Cloudflare
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build and host Agents on Cloudflare, connect chat, voice, email, Slack, and webhooks to a durable agent runtime with Browser, Sandbox, AI Search, MCP, Payments, and other MCP tools.
 
@@ -20,13 +20,13 @@ When you host agents on Cloudflare, each agent session has a durable identity, l
 
 Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
 
-[ Chat ](https://developers.cloudflare.com/agents/communication-channels/chat/)[ Email ](https://developers.cloudflare.com/agents/communication-channels/email/)[ Voice ](https://developers.cloudflare.com/agents/communication-channels/voice/)[ Slack ](https://developers.cloudflare.com/agents/communication-channels/slack/)[ Webhook ](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
+[Chat](https://developers.cloudflare.com/agents/communication-channels/chat/)[Email](https://developers.cloudflare.com/agents/communication-channels/email/)[Voice](https://developers.cloudflare.com/agents/communication-channels/voice/)[Slack](https://developers.cloudflare.com/agents/communication-channels/slack/)[Webhook](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
 
 Agent harness
 
 Controls planning, tool use, and response flow.
 
-[Project Think](https://developers.cloudflare.com/agents/harnesses/think/) [Build-your-own agent](https://developers.cloudflare.com/agents/runtime/agents-api/)
+[Project Think](https://developers.cloudflare.com/agents/harnesses/think/)[Build-your-own agent](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
 Agents SDK runtime
 
@@ -36,9 +36,9 @@ Durable identity, state, connections, scheduling, and recovery.
 
 [State](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)[Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)[Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)[WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)[Scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)[Fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
 
-[ Sandbox ](https://developers.cloudflare.com/agents/tools/sandbox/)[ MCP ](https://developers.cloudflare.com/agents/tools/mcp/)[ Browser ](https://developers.cloudflare.com/agents/tools/browser/)[ AI Search ](https://developers.cloudflare.com/agents/tools/ai-search/)[ Payments ](https://developers.cloudflare.com/agents/tools/payments/)
+[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/)[MCP](https://developers.cloudflare.com/agents/tools/mcp/)[Browser](https://developers.cloudflare.com/agents/tools/browser/)[AI Search](https://developers.cloudflare.com/agents/tools/ai-search/)[Payments](https://developers.cloudflare.com/agents/tools/payments/)
 
-[ Observability Logs · metrics · traces ](https://developers.cloudflare.com/agents/runtime/operations/observability/)
+[ObservabilityLogs · metrics · traces](https://developers.cloudflare.com/agents/runtime/operations/observability/)
 
 Agents on Cloudflare are composed from four parts:
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/#page","headline":"Agents · Cloudflare Agents docs","description":"Create stateful AI agents with persistent memory, real-time WebSocket connections, and scheduled tasks using the Cloudflare Agents SDK.","url":"https://developers.cloudflare.com/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

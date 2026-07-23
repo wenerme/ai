@@ -4,15 +4,15 @@ title: Secrets Store
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Secrets Store
+# Secrets Store
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Interact with [Secret Store](https://developers.cloudflare.com/secrets-store/) using Wrangler.
 
@@ -28,7 +28,7 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret create [STORE-ID]
@@ -42,40 +42,40 @@ yarn wrangler secrets-store secret create [STORE-ID]
 pnpm wrangler secrets-store secret create [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which the secret resides
-* `--name` ` string ` required
+* `--name` `string` required
 Name of the secret
-* `--value` ` string `
+* `--value` `string`
 Value of the secret (Note: Only for testing. Not secure as this will leave secret value in plain-text in terminal history, exclude this flag and use automatic prompt instead)
-* `--scopes` ` string ` required
+* `--scopes` `string` required
 Scopes for the secret (comma-separated list of scopes eg:"workers")
-* `--comment` ` string `
+* `--comment` `string`
 Comment for the secret
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `create` command to create an account-level secret.
@@ -96,7 +96,7 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret update [STORE-ID]
@@ -110,47 +110,47 @@ yarn wrangler secrets-store secret update [STORE-ID]
 pnpm wrangler secrets-store secret update [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which the secret resides
-* `--secret-id` ` string ` required
+* `--secret-id` `string` required
 ID of the secret to update
-* `--value` ` string `
+* `--value` `string`
 Updated value of the secret (Note: Only for testing. Not secure as this will leave secret value in plain-text in terminal history, exclude this flag and use automatic prompt instead)
-* `--scopes` ` string `
+* `--scopes` `string`
 Updated scopes for the secret (comma-separated list of scopes eg:"workers")
-* `--comment` ` string `
+* `--comment` `string`
 Updated comment for the secret
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 ### `secrets-store secret duplicate`
 
 Duplicate a secret within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret duplicate [STORE-ID]
@@ -164,47 +164,47 @@ yarn wrangler secrets-store secret duplicate [STORE-ID]
 pnpm wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which the secret resides
-* `--secret-id` ` string ` required
+* `--secret-id` `string` required
 ID of the secret to duplicate the secret value of
-* `--name` ` string ` required
+* `--name` `string` required
 Name of the new secret
-* `--scopes` ` string ` required
+* `--scopes` `string` required
 Scopes for the new secret
-* `--comment` ` string `
+* `--comment` `string`
 Comment for the new secret
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 ### `secrets-store secret get`
 
 Get a secret within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret get [STORE-ID]
@@ -218,34 +218,34 @@ yarn wrangler secrets-store secret get [STORE-ID]
 pnpm wrangler secrets-store secret get [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which the secret resides
-* `--secret-id` ` string ` required
+* `--secret-id` `string` required
 ID of the secret to retrieve
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example with the expected output:
@@ -266,7 +266,7 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret delete [STORE-ID]
@@ -280,41 +280,41 @@ yarn wrangler secrets-store secret delete [STORE-ID]
 pnpm wrangler secrets-store secret delete [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which the secret resides
-* `--secret-id` ` string ` required
+* `--secret-id` `string` required
 ID of the secret to delete
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 ### `secrets-store secret list`
 
 List secrets within a store
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret list [STORE-ID]
@@ -328,36 +328,36 @@ yarn wrangler secrets-store secret list [STORE-ID]
 pnpm wrangler secrets-store secret list [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store in which to list secrets
-* `--page` ` number ` default: 1
+* `--page` `number` default: 1
 Page number of secrets listing results, can configure page size using "per-page"
-* `--per-page` ` number ` default: 10
+* `--per-page` `number` default: 10
 Number of secrets to show per page
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
-* `--persist-to` ` string `
+* `--persist-to` `string`
 Directory for local persistence
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 ## `secrets-store store`
@@ -372,7 +372,7 @@ Store limitation
 
 Create a store within an account
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store store create [NAME]
@@ -386,30 +386,30 @@ yarn wrangler secrets-store store create [NAME]
 pnpm wrangler secrets-store store create [NAME]
 ```
 
-* `[NAME]` ` string ` required
+* `[NAME]` `string` required
 Name of the store
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `create` command to create a store.
@@ -427,7 +427,7 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store store delete [STORE-ID]
@@ -441,30 +441,30 @@ yarn wrangler secrets-store store delete [STORE-ID]
 pnpm wrangler secrets-store store delete [STORE-ID]
 ```
 
-* `[STORE-ID]` ` string ` required
+* `[STORE-ID]` `string` required
 ID of the store
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `delete` command to delete a store.
@@ -482,7 +482,7 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store store list
@@ -496,32 +496,32 @@ yarn wrangler secrets-store store list
 pnpm wrangler secrets-store store list
 ```
 
-* `--page` ` number ` default: 1
+* `--page` `number` default: 1
 Page number of stores listing results, can configure page size using "per-page"
-* `--per-page` ` number ` default: 10
+* `--per-page` `number` default: 10
 Number of stores to show per page
-* `--remote` ` boolean ` default: false
+* `--remote` `boolean` default: false
 Execute command against remote Secrets Store
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `list` command to list stores.
@@ -545,7 +545,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

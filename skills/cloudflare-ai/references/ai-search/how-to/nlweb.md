@@ -4,15 +4,15 @@ title: NLWeb
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  NLWeb
+# NLWeb
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/nlweb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/nlweb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enable conversational search on your website with NLWeb and Cloudflare AI Search. This template crawls your site, indexes the content, and deploys NLWeb-standard endpoints to serve both people and AI agents.
 
@@ -33,7 +33,7 @@ You can deploy NLWeb on your website directly through the AI Search dashboard:
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Go to **AI** \> **AI Search**.
-[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 3. Select **Create AI Search**.
 4. Select **Website** as a data source.
 5. Follow the instructions to create an AI Search instance.
@@ -113,7 +113,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

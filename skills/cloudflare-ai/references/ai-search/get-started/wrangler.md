@@ -4,15 +4,15 @@ title: CLI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  CLI
+# CLI
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/get-started/wrangler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/).
 
@@ -20,7 +20,7 @@ This guide walks you through creating an AI Search instance using the [Wrangler 
 
 Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the command-line tool for Cloudflare Workers and developer platform products.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm install wrangler
@@ -88,13 +88,13 @@ For the full list of available commands, refer to [Wrangler commands](https://de
 
 ## Add to your application
 
-### [ Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Query AI Search directly from your Workers code.
+Query AI Search directly from your Workers code.
 
-### [ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
+### [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
 
- Query AI Search using HTTP requests.
+Query AI Search using HTTP requests.
 
 Was this helpful?
 
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/wrangler/#page","headline":"CLI · Cloudflare AI Search docs","description":"Create and manage AI Search instances from the command line.","url":"https://developers.cloudflare.com/ai-search/get-started/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

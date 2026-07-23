@@ -4,15 +4,15 @@ title: Quickstart
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Quickstart
+# Quickstart
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get up and running quickly with Load Balancing. For more in-depth explanations, refer to the [Learning path](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/).
 
@@ -563,7 +563,7 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 To set up those notifications:
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
 
@@ -579,16 +579,16 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 
 You may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products:
 
-* [ Cloudflare Tunnel (published applications) ](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
-* [ Spectrum ](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
-* [ Perform planned maintenance ](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
-* [ Load shedding ](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
-* [ DNS persistence ](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
-* [ Load Balancing with the China Network ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
-* [ Override HTTP Host headers ](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
-* [ Custom load balancing rules ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
-* [ Integrate with PagerDuty ](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
-* [ Additional DNS records ](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
+* [Cloudflare Tunnel (published applications)](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
+* [Spectrum](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
+* [Perform planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
+* [Load shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
+* [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
+* [Load Balancing with the China Network](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
+* [Override HTTP Host headers](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
+* [Custom load balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
+* [Integrate with PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
+* [Additional DNS records](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
 
 Was this helpful?
 
@@ -596,7 +596,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/#page","headline":"Quickstart · Cloudflare Load Balancing docs","description":"Create a load balancer with pools and monitors in a few steps.","url":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

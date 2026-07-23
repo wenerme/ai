@@ -4,15 +4,15 @@ title: Accelerate your store's performance
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Accelerate your store's performance
+# Accelerate your store's performance
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/e-commerce/performance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/performance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Slow page loads directly reduce e-commerce conversion rates. Cloudflare accelerates your storefront with global edge caching, on-the-fly image optimization for product images, automatic asset minification, and server-side loading of analytics and marketing tags through Zaraz.
 
@@ -62,7 +62,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/performance/#page","headline":"Accelerate your store's performance · Cloudflare use cases","description":"Speed up an e-commerce store with edge caching, image optimization, asset minification, and server-side tag loading.","url":"https://developers.cloudflare.com/use-cases/e-commerce/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

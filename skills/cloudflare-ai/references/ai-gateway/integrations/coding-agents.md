@@ -4,15 +4,15 @@ title: Coding agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Coding agents
+# Coding agents
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents send model requests to a provider on your behalf. By pointing the agent at AI Gateway instead of the provider, you observe and control that traffic without changing how you work.
 
@@ -52,7 +52,7 @@ After you configure a tool, confirm that traffic reaches AI Gateway.
 
 1. Send a prompt from the coding agent.
 2. In the Cloudflare dashboard, go to the **AI Gateway** page.
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 3. Select your gateway, then select **Logs**. Confirm that the request appears with its model, token count, and latency.
 
 For more information on logs, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#page","headline":"Coding agents · Cloudflare AI Gateway docs","description":"Route Claude Code, Claude Desktop, GitHub Copilot CLI, OpenAI Codex, and Pi through AI Gateway for observability, caching, rate limiting, and cost tracking.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

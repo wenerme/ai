@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
 
@@ -37,7 +37,7 @@ Add a `cache` block to your Wrangler configuration:
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": {
 		"enabled": true,
 	},
@@ -48,7 +48,7 @@ Add a `cache` block to your Wrangler configuration:
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -67,7 +67,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": {
 		"enabled": false,
 	},
@@ -78,7 +78,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = false
@@ -99,7 +99,7 @@ Requires Wrangler 4.107.0 or above.
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": {
 		"enabled": true,
 	},
@@ -116,7 +116,7 @@ Requires Wrangler 4.107.0 or above.
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -170,7 +170,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -182,7 +182,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -202,7 +202,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": {
 		"enabled": false,
 	},
@@ -220,7 +220,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = false
@@ -564,7 +564,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

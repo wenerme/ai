@@ -4,15 +4,15 @@ title: Migrate an existing zone with DNSSEC enabled
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate an existing zone with DNSSEC enabled
+# Migrate an existing zone with DNSSEC enabled
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.
 
@@ -177,7 +177,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/#page","headline":"DNSSEC migration tutorial · Cloudflare DNS docs","description":"Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}

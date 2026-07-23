@@ -4,15 +4,15 @@ title: Calling LLMs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Calling LLMs
+# Calling LLMs
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/calling-llms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/calling-llms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents change how you work with LLMs. In a stateless Worker, every request starts from scratch — you reconstruct context, call a model, return the response, and forget everything. An Agent keeps state between calls, stays connected to clients over WebSocket, and can call models on its own schedule without a user present.
 
@@ -314,21 +314,21 @@ For provider-level caching and rate limit management across multiple agents, use
 
 ## Next steps
 
-### [ Using AI Models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
+### [Using AI Models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
 
- Provider setup, streaming, and code examples for Workers AI, OpenAI, Anthropic, and more.
+Provider setup, streaming, and code examples for Workers AI, OpenAI, Anthropic, and more.
 
-### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+### [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
- AIChatAgent handles message persistence, resumable streaming, and tools automatically.
+AIChatAgent handles message persistence, resumable streaming, and tools automatically.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- SQL database and key-value state APIs for building context and caching.
+SQL database and key-value state APIs for building context and caching.
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Run autonomous model calls on a delay, schedule, or cron.
+Run autonomous model calls on a delay, schedule, or cron.
 
 Was this helpful?
 
@@ -336,7 +336,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/calling-llms/#page","headline":"Calling LLMs · Cloudflare Agents docs","description":"Call large language models from within a stateful Cloudflare Agent with persistent context and autonomous scheduling.","url":"https://developers.cloudflare.com/agents/concepts/calling-llms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

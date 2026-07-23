@@ -4,15 +4,15 @@ title: REST API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  REST API
+# REST API
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/instances/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to manage instances and sync jobs over HTTP.
 
@@ -21,7 +21,7 @@ Use the AI Search REST API to manage instances and sync jobs over HTTP.
 All requests require an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
+[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
@@ -101,7 +101,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Manage AI Search instances and sync jobs over HTTP using the Instances REST API.","url":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

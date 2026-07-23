@@ -4,7 +4,7 @@ title: What is Cloudflare Tunnel?
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Learn how Cloudflare Tunnel is like a private, secure pathway from your computer to the Internet, so you don't have to leave the front door (your network) wide open.
 

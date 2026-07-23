@@ -4,15 +4,15 @@ title: Troubleshooting a live stream
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting a live stream
+# Troubleshooting a live stream
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to following the live stream troubleshooting steps in this guide, make sure that your video settings align with [Cloudflare live stream recommendations](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations). If you use OBS, you can also check these [OBS-specific recommendations](https://developers.cloudflare.com/stream/examples/obs-from-scratch/#6-optional-optimize-settings).
 
@@ -21,7 +21,7 @@ In addition to following the live stream troubleshooting steps in this guide, ma
 If your live stream is buffering, freezing, experiencing latency issues, or having other similar issues, try these troubleshooting steps:
 
 1. In the Cloudflare dashboard, go to the **Live inputs** page.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 2. For the live input in use, select the **Metrics** tab.
 3. Look at your **Keyframe Interval** chart.
 It should be a consistent flat line that stays between 2s and 8s. If you see an inconsistent or wavy line, or a line that is consistently below 2s or above 8s, adjust the keyframe interval (also called GOP size) in your software or service used to send the stream to Cloudflare. The exact steps for editing those settings will depend on your platform.
@@ -48,7 +48,7 @@ If your encoder shows a connection error such as "Failed to connect to server" o
 
 * Verify that your RTMPS URL, stream key, and encoder software are copied correctly into your broadcasting software.
 * Verify that the live input is enabled. A live input that is _disabled_ will reject all incoming connections. You can enable or disable a live input from the **Live inputs** page in the Dashboard or via the API using the `enabled` property.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 ```bash
 curl -X GET \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/#page","headline":"Troubleshooting a live stream · Cloudflare Stream docs","description":"Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.","url":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

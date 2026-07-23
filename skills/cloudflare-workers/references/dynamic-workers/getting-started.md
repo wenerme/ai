@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/getting-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create a Worker that spins up other Workers, called Dynamic Workers, at runtime to execute code on-demand in a secure, sandboxed environment. You provide the code, choose which bindings the Dynamic Worker can access, and control whether the Dynamic Worker can reach the network.
 
@@ -69,7 +69,7 @@ export default {
 	async fetch(request, env) {
 		// Load a worker.
 		const worker = env.LOADER.load({
-			compatibilityDate: "2026-07-21",
+			compatibilityDate: "2026-07-22",
 
 			mainModule: "src/index.js",
 			modules: {
@@ -148,7 +148,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 	// Return the same format as `env.LOADER.load()` accepts.
 	return {
-		compatibilityDate: "2026-07-21",
+		compatibilityDate: "2026-07-22",
 		mainModule: "index.js",
 		modules: { "index.js": code },
 		globalOutbound: null,
@@ -186,7 +186,7 @@ To run Python code in a Dynamic Worker, you must include the `python_workers` co
 
 ```js
 const worker = env.LOADER.load({
-	compatibilityDate: "2026-07-21",
+	compatibilityDate: "2026-07-22",
 	compatibilityFlags: ["python_workers"],
 	mainModule: "worker.py",
 	modules: {
@@ -242,7 +242,7 @@ const worker = env.LOADER.get("my-worker", async () => {
 		},
 	});
 
-	return { mainModule, modules, compatibilityDate: "2026-07-21" };
+	return { mainModule, modules, compatibilityDate: "2026-07-22" };
 });
 ```
 
@@ -276,7 +276,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

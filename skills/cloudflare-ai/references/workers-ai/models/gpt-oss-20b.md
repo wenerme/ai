@@ -4,7 +4,7 @@ title: gpt-oss-20b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  gpt-oss-20b
+# gpt-oss-20b
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/openai/gpt-oss-20b `
+`@cf/openai/gpt-oss-20b`
 
 * Cloudflare-hosted
 * Function calling
@@ -28,7 +28,7 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 | Model Info                                                                           |                                                     |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 128,000 tokens                                      |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 128,000 tokens                                      |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                 |
 | Reasoning                                                                            | Yes                                                 |
 | Unit Pricing                                                                         | $0.20 per M input tokens, $0.30 per M output tokens |
@@ -120,11 +120,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 Input format
 
@@ -200,7 +200,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 Input format
 
@@ -284,7 +284,7 @@ format
 
 `binary`
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -304,17 +304,17 @@ response
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-output.json "Download")
+StreamingOutput
 
-Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -322,7 +322,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/#page","headline":"gpt-oss-20b (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.","url":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

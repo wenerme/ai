@@ -4,15 +4,15 @@ title: Connect to RDP in a browser
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to RDP in a browser
+# Connect to RDP in a browser
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Users can connect to an RDP server without installing an RDP client or the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on their device. Browser-based RDP leverages [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), which creates a secure, outbound-only connection from your RDP server to Cloudflare's global network. Setup involves running the `cloudflared` daemon on the RDP server (or any other host machine within the private network) and routing RDP traffic over a public hostname.
 
@@ -33,10 +33,10 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 ## 1\. Connect the server to Cloudflare
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
 
 ## 2\. Add a target
@@ -234,7 +234,7 @@ You now have access to the remote Windows desktop.
 
 ## Connection settings
 
-Connection settings restrict data transfer between the user's local machine and the browser-based RDP session. You can control text (copy and paste) and file transfers. Text controls manage clipboard content. File controls  Beta  manage file uploads and downloads. These controls are configured per policy, so you can grant different permissions to different groups of users.
+Connection settings restrict data transfer between the user's local machine and the browser-based RDP session. You can control text (copy and paste) and file transfers. Text controls manage clipboard content. File controls Beta manage file uploads and downloads. These controls are configured per policy, so you can grant different permissions to different groups of users.
 
 ### Default behavior
 
@@ -327,7 +327,7 @@ resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
 }
 ```
 
-### Transfer files  Beta
+### Transfer files Beta
 
 To manage transfers, select the settings gear icon on the left side of the RDP session. You can drag this icon along the left edge to reposition it.
 
@@ -478,7 +478,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}

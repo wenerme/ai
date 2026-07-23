@@ -4,7 +4,7 @@ title: kimi-k2.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.D9EBG7kx.svg)
 
-#  kimi-k2.5
+# kimi-k2.5
 
- Text Generation • Moonshot AI
+Text Generation • Moonshot AI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/moonshotai/kimi-k2.5 `
+`@cf/moonshotai/kimi-k2.5`
 
 * Cloudflare-hosted
 * Function calling
@@ -31,7 +31,7 @@ Kimi K2.5 is a frontier-scale open-source model with a 256k context window, mult
 | Model Info                                                                           |                                                                                      |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | Deprecated                                                                           | 5/30/2026                                                                            |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 256,000 tokens                                                                       |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                                       |
 | Terms and License                                                                    | [link ↗](https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE)                |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
 | Reasoning                                                                            | Yes                                                                                  |
@@ -43,7 +43,7 @@ Kimi K2.5 is a frontier-scale open-source model with a 256k context window, mult
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/moonshotai/kimi-k2.5)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/moonshotai/kimi-k2.5)
 
 ## Usage
 
@@ -132,11 +132,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 Input format
 
@@ -308,7 +308,7 @@ service\_tier
 
 `string | null`
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 Input format
 
@@ -460,7 +460,7 @@ format
 
 `binary`
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -500,17 +500,17 @@ service\_tier
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/sync-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/sync-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/streaming-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/streaming-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/streaming-output.json "Download")
+StreamingOutput
 
-Batch Input [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/batch-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -518,7 +518,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.5/#page","headline":"kimi-k2.5 (Moonshot AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Kimi K2.5 is a frontier-scale open-source model with a 256k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.","url":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

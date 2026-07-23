@@ -4,7 +4,7 @@ title: llama-3.3-70b-instruct-fp8-fast
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  llama-3.3-70b-instruct-fp8-fast
+# llama-3.3-70b-instruct-fp8-fast
 
- Text Generation • Meta
+Text Generation • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/meta/llama-3.3-70b-instruct-fp8-fast `
+`@cf/meta/llama-3.3-70b-instruct-fp8-fast`
 
 * Cloudflare-hosted
 * Batch
@@ -28,7 +28,7 @@ Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 
 | Model Info                                                                           |                                                                                          |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 24,000 tokens                                                                            |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 24,000 tokens                                                                            |
 | Terms and License                                                                    | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F3/LICENSE) |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                      |
 | Batch                                                                                | Yes                                                                                      |
@@ -38,7 +38,7 @@ Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.3-70b-instruct-fp8-fast)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.3-70b-instruct-fp8-fast)
 
 ## Usage
 
@@ -127,11 +127,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 prompt
 
@@ -197,7 +197,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 prompt
 
@@ -263,7 +263,7 @@ format
 
 `binary`
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -283,17 +283,17 @@ response
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-output.json "Download")
+StreamingOutput
 
-Batch Input [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -301,7 +301,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/#page","headline":"llama-3.3-70b-instruct-fp8-fast (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"Llama 3.3 70B quantized to fp8 precision, optimized to be faster.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

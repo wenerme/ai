@@ -4,15 +4,15 @@ title: Stop account takeover attacks (Free, Pro, and Business)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Stop account takeover attacks (Free, Pro, and Business)
+# Stop account takeover attacks (Free, Pro, and Business)
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When your site has login pages, you need to decide how to verify that visitors are human, how aggressively to limit failed attempts, and which request patterns to block. This guide covers five stages: enforce HTTPS, turn on bot protection, add [Turnstile](https://developers.cloudflare.com/turnstile/) to your login form, create Application Security [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) and [custom rules](https://developers.cloudflare.com/waf/custom-rules/) for suspicious patterns, and monitor for ongoing attacks using [SSL/TLS](https://developers.cloudflare.com/ssl/) transport security and [Cloudflare bot solutions](https://developers.cloudflare.com/bots/). The core workflow covers features available on Free, Pro, and Business plans. Enterprise features such as leaked credentials custom detection locations and Bot Management custom rules are included as callouts.
 
@@ -31,7 +31,7 @@ Always Use HTTPS redirects all visitor requests from `http` to `https` for all s
 To enable **Always Use HTTPS** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) is not set to **Off**. When you set your encryption mode to **Off**, the **Always Use HTTPS** option will not be visible in your Cloudflare dashboard.
 3. Go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 4. Turn on **Always Use HTTPS**.
@@ -58,7 +58,7 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -83,7 +83,7 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
@@ -134,7 +134,7 @@ Implementing Turnstile involves three steps: create a widget, add the client-sid
 Turnstile is configured at the account level.
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. Fill out the required information:
 
@@ -228,7 +228,7 @@ Caution
 Managed Challenge and other [challenge types](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/) require an HTML response to render. They do not work for non-HTML responses such as AJAX/XHR requests, which are common on login endpoints that use single-page applications (SPAs) or API-based authentication. If your login flow uses AJAX, consider using [Turnstile Pre-Clearance](https://developers.cloudflare.com/turnstile/additional-configuration/pre-clearance-support/) instead.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Rate limiting rules**.
 3. Enter a name for the rule (for example, "Rate limit login endpoint").
 4. Under **When incoming requests match**, select **Edit expression** and enter: `http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"`
@@ -278,7 +278,7 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Leaked credential detection**.
 
@@ -323,7 +323,7 @@ If your application uses non-standard credential field names, Enterprise custome
 Before deploying rules that challenge or block login traffic, create a skip rule that exempts known legitimate automated traffic. This prevents your monitoring tools, health checks, and partner integrations from being blocked by the rules that follow.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Custom rules**.
 3. Enter a name for the rule (for example, "Skip login rules for known clients").
 4. Select **Edit expression** and enter an expression that matches your legitimate automated traffic. For example, to skip verified bots and a specific monitoring service IP:
@@ -346,7 +346,7 @@ Note
 The Application Security Managed Ruleset includes rules for empty user-agents, but these are disabled by default and apply broadly. The custom rule below targets your login path specifically.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Custom rules**.
 3. Enter a name for the rule (for example, "Challenge empty UA on login").
 4. Select **Edit expression** and enter:
@@ -362,7 +362,7 @@ Replace `/login` with your login endpoint path.
 Combine rate limiting with leaked credentials detection to throttle login attempts that use known-compromised passwords. This rule issues a Managed Challenge when the same IP sends more than three requests with leaked passwords within one minute.
 
 1. On the **Security rules** page, select **Create rule** and choose **Rate limiting rules**.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Enter a name for the rule (for example, "Rate limit leaked credentials").
 3. Under **When incoming requests match**, enter the following expression:
 ```txt
@@ -392,7 +392,7 @@ After deploying the rules and configurations from the previous sections, monitor
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows requests that Cloudflare security products acted on or flagged, including blocks, challenges, and skips.
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 
 Review the **Sampled logs** to inspect individual requests. Each log entry shows the action taken, the rule that triggered, the source IP, user agent, URI path, and country. Use the **Add filter** button to narrow results by action, source IP, ASN, or other fields.
@@ -457,7 +457,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/#page","headline":"Stop account takeover attacks (Free, Pro, and Business) · Cloudflare use cases","description":"Block credential stuffing and brute force attacks on login endpoints using a layered defense.","url":"https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Examples
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Examples
+# Examples
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is **a cache that is itself a Worker primitive**. It sits in front of every Worker entrypoint — the default export and every named [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — and it also sits in front of `fetch()` calls between entrypoints in the same Worker via [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/). That second fact is the one that makes the rest of this page possible.
 
@@ -37,7 +37,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		// The gateway runs on every request — no caching in front of it.
@@ -52,7 +52,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -95,7 +95,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -108,7 +108,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -370,7 +370,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -383,7 +383,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -538,7 +538,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -551,7 +551,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -793,7 +793,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -806,7 +806,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -967,7 +967,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Migrate from Wrangler v3 to v4
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate from Wrangler v3 to v4
+# Migrate from Wrangler v3 to v4
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear. Unlike previous major versions of Wrangler, which were [foundational rewrites ↗](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
 
@@ -22,7 +22,7 @@ While many users should expect a no-op upgrade, the following sections outline t
 
 To upgrade to the latest version of Wrangler v4 within your Worker project, run:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D wrangler@4
@@ -42,7 +42,7 @@ bun add -d wrangler@4
 
 After upgrading, you can verify the installation:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler --version
@@ -200,7 +200,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/#page","headline":"Migrate from Wrangler v3 to v4 · Cloudflare Workers docs","description":"Upgrade Wrangler from v3 to v4, including breaking changes, updated Node.js requirements, and new defaults.","url":"https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

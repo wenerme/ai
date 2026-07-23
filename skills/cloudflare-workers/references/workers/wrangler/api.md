@@ -4,15 +4,15 @@ title: API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  API
+# API
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
@@ -41,7 +41,7 @@ const result = await experimental_generateTypes(options);
 
 ### Parameters
 
-* `options` ` object `optional
+* `options` `object`optional
 
   * Optional options object mirroring the `wrangler types` CLI flags:
 
@@ -166,10 +166,10 @@ const worker = await unstable_dev(script, options);
 
 ### Parameters
 
-* `script` ` string `
+* `script` `string`
 
   * A string containing a path to your Worker script, relative to your Worker project's root directory.
-* `options` ` object `optional
+* `options` `object`optional
 
   * Optional options object containing `wrangler dev` configuration settings.
   * Include an `experimental` object inside `options` to access experimental features such as `disableExperimentalWarning`.
@@ -349,7 +349,7 @@ const platform = await getPlatformProxy(options);
 
 ### Parameters
 
-* `options` ` object `optional
+* `options` `object`optional
   * Optional options object containing preferences for the bindings:
     * `environment` string
       The environment to use.
@@ -490,7 +490,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
   If you are not using RPC with your Durable Object, you can run a separate Wrangler dev session alongside your framework development server.
   Otherwise, you can build your application and run both Workers in the same Wrangler dev session.
   If you are using Pages run:
-   npm  yarn  pnpm
+  npmyarnpnpm
   ```
   npx wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
   ```
@@ -501,7 +501,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
   pnpm wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
   ```
   If you are using Workers with Assets run:
-   npm  yarn  pnpm
+  npmyarnpnpm
   ```
   npx wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
   ```
@@ -518,7 +518,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

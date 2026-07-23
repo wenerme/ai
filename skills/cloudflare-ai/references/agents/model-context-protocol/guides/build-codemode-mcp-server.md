@@ -4,15 +4,15 @@ title: Build a single-tool Code Mode MCP server
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a single-tool Code Mode MCP server
+# Build a single-tool Code Mode MCP server
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `codeMcpServer()` to wrap an existing Model Context Protocol (MCP) server. MCP clients receive one `code` tool instead of every upstream tool.
 
@@ -29,7 +29,7 @@ You need a Cloudflare Workers project and an existing `McpServer`.
 ## Wrap the server
 
 1. Install Code Mode and the MCP dependencies:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 ```
@@ -49,7 +49,7 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
   "name": "codemode-mcp-server",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -64,7 +64,7 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 name = "codemode-mcp-server"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
@@ -167,7 +167,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 4. Deploy the Worker:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler deploy
 ```
@@ -214,7 +214,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/#page","headline":"Build a single-tool Code Mode MCP server · Cloudflare Agents docs","description":"Replace an MCP server's individual tools with one sandboxed Code Mode tool on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}

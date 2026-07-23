@@ -4,15 +4,15 @@ title: DNS records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DNS records
+# DNS records
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DNS records contain information about your domain and are used to make your website or application available to visitors and other web services.
 
@@ -79,33 +79,33 @@ If you are an Enterprise customer and require a higher account quota, contact yo
 
 ### How to
 
-* [ Manage DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
-* [ Create zone apex record ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
-* [ Create subdomain records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
-* [ Set up email records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-* [ Import and export records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
-* [ Batch record changes ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
-* [ Dynamically update DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)
-* [ Round-robin DNS ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/)
-* [ Delegate subdomains ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
+* [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
+* [Create zone apex record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
+* [Create subdomain records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
+* [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
+* [Import and export records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
+* [Batch record changes](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
+* [Dynamically update DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)
+* [Round-robin DNS](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/)
+* [Delegate subdomains](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
 
 ### Reference
 
-* [ DNS record types ](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/)
-* [ Time to Live (TTL) ](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/)
-* [ Record attributes ](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
-* [ Wildcard DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/)
-* [ Shadowed records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/)
-* [ Vendor-specific DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/)
+* [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/)
+* [Time to Live (TTL)](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/)
+* [Record attributes](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
+* [Wildcard DNS records](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/)
+* [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/)
+* [Vendor-specific DNS records](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/)
 
 ### Troubleshooting
 
-* [ Records with the same name ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/records-with-same-name/)
-* [ Unexpected DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/)
-* [ Exposed IP addresses ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/)
-* [ Verify a domain with CNAME ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/)
-* [ NS records already exist ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/)
-* [ Stale response for upstream DNS resolution ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/stale-response/)
+* [Records with the same name](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/records-with-same-name/)
+* [Unexpected DNS records](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/)
+* [Exposed IP addresses](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/)
+* [Verify a domain with CNAME](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/)
+* [NS records already exist](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/)
+* [Stale response for upstream DNS resolution](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/stale-response/)
 
 Was this helpful?
 
@@ -113,7 +113,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/manage-dns-records/#page","headline":"DNS records · Cloudflare DNS docs","description":"Manage DNS records for your Cloudflare zones.","url":"https://developers.cloudflare.com/dns/manage-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

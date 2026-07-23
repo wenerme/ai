@@ -4,15 +4,15 @@ title: Handle OAuth with MCP servers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Handle OAuth with MCP servers
+# Handle OAuth with MCP servers
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting to OAuth-protected MCP servers (like Slack or Notion), your users need to authenticate before your Agent can access their data. This guide covers implementing OAuth flows for seamless authorization.
 
@@ -600,13 +600,13 @@ export default {
 
 ## Related
 
-### [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
+### [Connect to an MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 
- Get started without OAuth.
+Get started without OAuth.
 
-### [ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+### [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
- Complete API documentation for MCP clients.
+Complete API documentation for MCP clients.
 
 Was this helpful?
 
@@ -614,7 +614,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers · Cloudflare Agents docs","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

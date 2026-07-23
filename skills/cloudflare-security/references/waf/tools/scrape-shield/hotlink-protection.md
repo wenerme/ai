@@ -4,15 +4,15 @@ title: Hotlink Protection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Hotlink Protection
+# Hotlink Protection
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
@@ -31,14 +31,14 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 To enable **Hotlink Protection** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. For **Hotlink Protection**, switch the toggle to **On**.
 
 To enable **Hotlink Protection** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Scrape Shield** page.
-[ Go to **Scrape Shield** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
+[Go to **Scrape Shield** ↗](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
 2. For **Hotlink Protection**, switch the toggle to **On**.
 
 To enable **Hotlink Protection** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `hotlink_protection` as the setting name in the URI path, and the `value` parameter set to `"on"`.
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/#page","headline":"Hotlink Protection · Cloudflare Web Application Firewall (WAF) docs","description":"Prevent other sites from linking to your hosted images.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

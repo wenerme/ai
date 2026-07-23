@@ -154,7 +154,7 @@ In  [Code & reviews settings](https://linear.app/settings/account/code-and-revie
 
 ## Additional settings
 
-Navigate into [Code & reviews settings](https://linear.app/linear/settings/account/code-and-reviews) for additional preferences to the Reviews experience within Linear. These settings are personal, so they only affect your own workflow.
+Navigate into [Code & reviews settings](https://linear.app/settings/account/code-and-reviews) for additional preferences to the Reviews experience within Linear. These settings are personal, so they only affect your own workflow.
 
 ### **Auto-convert draft PRs**
 

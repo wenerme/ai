@@ -4,19 +4,19 @@ title: Overview
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Overview
+# Overview
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your cloud infrastructure or network offices with advanced, scalable firewall-as-a-service protection.
 
- Enterprise-only
+Enterprise-only
 
 Unwanted network traffic — from DDoS floods to unauthorized scans — can overwhelm your infrastructure. Cloudflare Network Firewall is a firewall-as-a-service (FWaaS) delivered from the Cloudflare global network, meaning Cloudflare runs the firewall for you in the cloud instead of on your own hardware. You can apply filter rules on a variety of criteria, such as protocol (for example, TCP or UDP) and packet length, to filter unwanted traffic before it reaches your network.
 
@@ -32,7 +32,7 @@ Cloudflare Network Firewall is available with the purchase of [Magic Transit](ht
 
 Actively monitor for a wide range of known threat signatures in your traffic. IDS scans packets for patterns that match known attacks (such as malware signatures or exploit attempts) and alerts you when it finds a match.
 
- Use Intrusion Detection System (IDS)
+Use Intrusion Detection System (IDS)
 
 ---
 
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/#page","headline":"Overview · Cloudflare One docs","description":"Overview in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

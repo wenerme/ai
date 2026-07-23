@@ -4,15 +4,15 @@ title: Workers Binding
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Binding
+# Workers Binding
 
-Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare’s serverless platform allows you to run code at the edge to build full-stack applications with [Workers](https://developers.cloudflare.com/workers/). A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Worker or Pages Function to interact with resources on the Cloudflare Developer Platform.
 
@@ -144,43 +144,43 @@ const result = await env.AI.toMarkdown({
 
 #### Parameter
 
-* `files`: ` MarkdownDocument | MarkdownDocument[] `\- an instance of or an array of `MarkdownDocument`s.
-* `conversionOptions`: ` ConversionOptions `\- options that control how conversion happens. See [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/) for further details.
+* `files`: `MarkdownDocument | MarkdownDocument[]`\- an instance of or an array of `MarkdownDocument`s.
+* `conversionOptions`: `ConversionOptions`\- options that control how conversion happens. See [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/) for further details.
 
 #### Return values
 
-* `results`: ` Promise<ConversionResult | ConversionResult[]> `\- An instance of or an array of `ConversionResult`s.
+* `results`: `Promise<ConversionResult | ConversionResult[]>`\- An instance of or an array of `ConversionResult`s.
 
 #### `MarkdownDocument` definition
 
-* `name` ` string `
+* `name` `string`
 
   * Name of the document to convert.
-* `blob` ` Blob `
+* `blob` `Blob`
 
   * A new [Blob ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob/Blob) object with the document content.
 
 #### `ConversionResult` definition
 
-* `id` ` string `
+* `id` `string`
 
   * ID associated to this object.
-* `name` ` string `
+* `name` `string`
 
   * Name of the converted document. Matches the input name.
-* `format` ` 'markdown' | 'text' | 'error' `
+* `format` `'markdown' | 'text' | 'error'`
 
   * The format of this `ConversionResult` object. Equals `text` when you set the [output.format](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#output) option to `text`.
-* `mimetype` ` string `
+* `mimetype` `string`
 
   * The detected [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME%5Ftypes/Common%5Ftypes) of the document.
-* `tokens` ` number `
+* `tokens` `number`
 
   * The estimated number of tokens of the converted document. Not present if `format` is equal to `error`.
-* `data` ` string `
+* `data` `string`
 
   * The content of the converted document. Not present if `format` is equal to `error`.
-* `error` ` string `
+* `error` `string`
 
   * The error message explaining why this conversion failed. Only present if `format` is equal to `error`.
 
@@ -216,14 +216,14 @@ const formats = await env.AI.toMarkdown().supported();
 
 #### Return values
 
-* `results`: ` SupportedFormat[] `\- An array of all formats supported for markdown conversion.
+* `results`: `SupportedFormat[]`\- An array of all formats supported for markdown conversion.
 
 #### `SupportedFormat` definition
 
-* `extension` ` string `
+* `extension` `string`
 
   * Extension of files in this format.
-* `mimeType` ` string `
+* `mimeType` `string`
 
   * The [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME%5Ftypes/Common%5Ftypes) of files of this format
 
@@ -233,7 +233,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#page","headline":"Workers Binding · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI binding and toMarkdown method.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

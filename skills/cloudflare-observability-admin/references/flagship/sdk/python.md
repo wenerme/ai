@@ -4,15 +4,15 @@ title: Python SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Python SDK
+# Python SDK
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/sdk/python/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -123,7 +123,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/python/#page","headline":"Python SDK · Cloudflare Flagship docs","description":"Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/python/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

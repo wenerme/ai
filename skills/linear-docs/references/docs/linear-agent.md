@@ -183,7 +183,7 @@ You can configure guidance for Linear at different scopes: workspace-wide, speci
 
 ![Workspace-level guidance restrictions](https://webassets.linear.app/images/ornj730p/production/bb98af39b35922ef41c86bcb52ba14336c29ede4-1516x346.png?q=95&auto=format&dpr=2)
 
-**Personal guidance** lets an individual tailor how Linear responds for them. Update your personal Linear agent guidance by navigating in [_Settings → Agent personalization_](https://linear.app/linear/settings/account/agents).
+**Personal guidance** lets an individual tailor how Linear responds for them. Update your personal Linear agent guidance by navigating in [_Settings → Agent personalization_](https://linear.app/settings/account/agents).
 
 If you’d like guidance to apply to a specific team only, you can reference that team and its unique instructions in your workspace-level guidance.
 

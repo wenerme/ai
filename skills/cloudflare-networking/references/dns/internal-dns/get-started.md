@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Follow this guide to get started with Internal DNS.
 
@@ -52,7 +52,7 @@ One important distinction: a zone-scoped token cannot create a zone because the 
 ## 1\. Set up your internal DNS zone
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[ Go to **Internal DNS** ↗ ](https://dash.cloudflare.com/?to=/:account/internal-dns)
+[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Select **Create an internal zone**.
 3. Give your internal zone a name.
 
@@ -120,7 +120,7 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[ Go to **Internal DNS** ↗ ](https://dash.cloudflare.com/?to=/:account/internal-dns)
+[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Select a zone.
 3. Within the selected zone, go to **Reference zone**.
 4. Select **Add reference zone**.
@@ -152,7 +152,7 @@ curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[ Go to **Internal DNS** ↗ ](https://dash.cloudflare.com/?to=/:account/internal-dns)
+[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Go to **Internal DNS Views**.
 3. Select **Create a view**.
 4. Give your view a descriptive name.
@@ -218,7 +218,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/get-started/#page","headline":"Get started · Cloudflare DNS docs","description":"Set up Internal DNS for private name resolution.","url":"https://developers.cloudflare.com/dns/internal-dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

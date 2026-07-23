@@ -4,15 +4,15 @@ title: JavaScript Detections
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JavaScript Detections
+# JavaScript Detections
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. JavaScript Detections helps Cloudflare's [bot solutions](https://developers.cloudflare.com/bots/) identify automated requests.
 
@@ -52,7 +52,7 @@ For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudfl
 For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is optional.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Under your bot traffic plan configurations, select the edit icon for **JS detections** and turn **JavaScript Detections** on.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -177,7 +177,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#page","headline":"JavaScript Detections · Cloudflare challenges docs","description":"Client-side JavaScript challenges that run on every request to identify automated traffic.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}

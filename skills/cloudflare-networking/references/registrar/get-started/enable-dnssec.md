@@ -4,15 +4,15 @@ title: Enable DNSSEC
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable DNSSEC
+# Enable DNSSEC
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/get-started/enable-dnssec/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/get-started/enable-dnssec/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The domain name system (DNS) translates domain names into numeric Internet addresses. However, DNS is a fundamentally insecure protocol. It does not guarantee where DNS records come from and accepts any requests given to it.
 
@@ -23,7 +23,7 @@ The domain name system (DNS) translates domain names into numeric Internet addre
 Cloudflare Registrar offers one-click DNSSEC activation for free to all customers:
 
 1. In Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain that you want to activate DNSSEC and select **Manage**.
 3. Select **Configuration** \> **Enable DNSSEC**. If DNSSEC was previously activated, select **Disable DNSSEC** to disable it.
 
@@ -47,7 +47,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/#page","headline":"Domain Name System Security Extensions (DNSSEC) · Cloudflare Registrar docs","description":"Enable DNSSEC for your registered domain.","url":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

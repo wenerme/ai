@@ -4,15 +4,15 @@ title: Sampling with WAE
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sampling with WAE
+# Sampling with WAE
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sampling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sampling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Analytics Engine offers the ability to write an extensive amount of data and retrieve it quickly, at minimal or no cost. To facilitate writing large amounts of data at a reasonable cost, Workers Analytics Engine employs weighted adaptive [sampling ↗](https://en.wikipedia.org/wiki/Sampling%5F%28statistics%29).
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sampling/#page","headline":"Sampling with Workers Analytics Engine · Cloudflare Analytics docs","description":"How data written to Workers Analytics Engine is automatically sampled at scale","url":"https://developers.cloudflare.com/analytics/analytics-engine/sampling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

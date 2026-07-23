@@ -4,15 +4,15 @@ title: Reserved IP addresses
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Reserved IP addresses
+# Reserved IP addresses
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare reserves several IPv4 and IPv6 ranges for internal routing and service functionality. These ranges are drawn from the CGNAT address space (`100.64.0.0/10`). To avoid routing conflicts, your Cloudflare Tunnel, Cloudflare Mesh, or WAN routes should not include subsets of these reserved ranges. Broader routes that contain a reserved range, such as `0.0.0.0/0`, are unaffected because longest-prefix match ensures the reserved ranges still take priority.
 
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}

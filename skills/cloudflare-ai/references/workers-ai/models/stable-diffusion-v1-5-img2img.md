@@ -4,7 +4,7 @@ title: stable-diffusion-v1-5-img2img
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)
 
-#  stable-diffusion-v1-5-img2img
+# stable-diffusion-v1-5-img2img
 
- Beta
+Beta
 
- Text-to-Image • RunwayML
+Text-to-Image • RunwayML
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/runwayml/stable-diffusion-v1-5-img2img `
+`@cf/runwayml/stable-diffusion-v1-5-img2img`
 
 * Cloudflare-hosted
 
@@ -79,13 +79,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
- The binding returns a `ReadableStream` with the output (check the model's output schema).
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

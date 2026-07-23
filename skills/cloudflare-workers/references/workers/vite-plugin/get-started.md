@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -41,7 +41,7 @@ Ensure that you include `"type": "module"` in order to use ES modules by default
 
 ## Install the dependencies
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D vite @cloudflare/vite-plugin wrangler
@@ -81,7 +81,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-vite-get-started",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./src/index.ts"
 }
 ```
@@ -90,7 +90,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-get-started"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./src/index.ts"
 ```
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/get-started/#page","headline":"Get started · Cloudflare Workers docs","description":"Get started with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

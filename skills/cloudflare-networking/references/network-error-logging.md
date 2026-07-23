@@ -4,15 +4,15 @@ title: Network Error Logging
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-error-logging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network Error Logging
+# Network Error Logging
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-error-logging/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-error-logging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Error Logging (NEL) is a browser-based reporting system that allows users to report their own failures to an external endpoint. You can use Network Error Logging to gain insight into connectivity issues on the Internet to learn when and where an incident is happening, who is impacted, and how they are being impacted.
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-error-logging/#page","headline":"Overview · Cloudflare Network Error Logging docs","description":"Collect reports about network errors affecting your visitors.","url":"https://developers.cloudflare.com/network-error-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Logging"]}

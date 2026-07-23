@@ -4,15 +4,15 @@ title: Isolate risky Entra ID users
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Isolate risky Entra ID users
+# Isolate risky Entra ID users
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Microsoft Entra ID (formerly Azure Active Directory) calculates a user's [risk level ↗](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk) based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 
@@ -85,7 +85,7 @@ cd risky-users
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "risky-users",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "src/index.js",
 	"workers_dev": false,
 	"account_id": "<ACCOUNT-ID>",
@@ -102,7 +102,7 @@ cd risky-users
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "risky-users"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "src/index.js"
 workers_dev = false
 account_id = "<ACCOUNT-ID>"
@@ -171,7 +171,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/#page","headline":"Isolate risky Entra ID users · Cloudflare One docs","description":"Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}

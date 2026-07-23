@@ -4,15 +4,15 @@ title: IP address service bindings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  IP address service bindings
+# IP address service bindings
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/service-bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the context of BYOIP, service bindings map traffic destined for IP addresses to the Cloudflare service it should be routed through - such as Magic Transit, CDN, or Spectrum. A default binding covering the entire prefix is required when you first [onboard](https://developers.cloudflare.com/byoip/get-started/#2-create-service-bindings), and additional bindings can be created at any time to route specific IP addresses or CIDR ranges to a different service.
 
@@ -73,8 +73,8 @@ When adding a service binding for a given IP address, it must be either a CDN se
 
 ## Tutorials
 
-* [ Use BYOIP with Magic Transit and CDN ](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
-* [ Use BYOIP with CDN and Spectrum ](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/)
+* [Use BYOIP with Magic Transit and CDN](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
+* [Use BYOIP with CDN and Spectrum](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/)
 
 ## Footnotes
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/#page","headline":"IP address service bindings · Cloudflare BYOIP docs","description":"In IP address management, service binding refers to the association of IPs to specific Cloudflare services. Review the available options and the API endpoints to set up service bindings.","url":"https://developers.cloudflare.com/byoip/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}

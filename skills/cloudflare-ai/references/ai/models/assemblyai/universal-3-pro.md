@@ -4,7 +4,7 @@ title: AssemblyAI Universal-3 Pro
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![AssemblyAI logo](https://developers.cloudflare.com/_astro/assemblyai.DKrad3Z3.svg)
 
-#  AssemblyAI Universal-3 Pro
+# AssemblyAI Universal-3 Pro
 
- Automatic Speech Recognition • AssemblyAI
+Automatic Speech Recognition • AssemblyAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` assemblyai/universal-3-pro `
+`assemblyai/universal-3-pro`
 
 * Third-party
 * Zero data retention
 
 AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.
 
-| Model Info          |                                                                                                                               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                   |
-| More information    | [link ↗](https://www.assemblyai.com/)                                                                                         |
-| Zero data retention | Yes                                                                                                                           |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
+| Model Info          |                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                  |
+| More information    | [link ↗](https://www.assemblyai.com/)                                                                                        |
+| Zero data retention | Yes                                                                                                                          |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
 
 ## Usage
 
@@ -237,7 +237,7 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 ## Examples
 
-**With Language Code**  — Transcribe with an explicit language code
+**With Language Code** — Transcribe with an explicit language code
 
 ```ts
 const response = await env.AI.run(
@@ -483,7 +483,7 @@ In the heart of the city, there is a large park where people go to relax and enj
 }
 ```
 
-**With Key Terms**  — Improve accuracy for domain-specific vocabulary
+**With Key Terms** — Improve accuracy for domain-specific vocabulary
 
 ```ts
 const response = await env.AI.run(
@@ -737,7 +737,7 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 }
 ```
 
-**Speaker Diarization**  — Identify different speakers in the audio
+**Speaker Diarization** — Identify different speakers in the audio
 
 ```ts
 const response = await env.AI.run(
@@ -1094,9 +1094,9 @@ language\_confidence
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -1104,7 +1104,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/#page","headline":"AssemblyAI Universal-3 Pro (AssemblyAI) · Cloudflare AI docs · Cloudflare AI docs","description":"AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.","url":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

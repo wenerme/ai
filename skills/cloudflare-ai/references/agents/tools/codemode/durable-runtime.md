@@ -1,18 +1,18 @@
 ---
-description: Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.
+description: Create a Code Mode runtime with connectors, direct host APIs, durable approvals, rollback, execution history, and reusable snippets.
 title: Create a durable Code Mode runtime
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a durable Code Mode runtime
+# Create a durable Code Mode runtime
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide adds a durable Code Mode runtime to an Agents SDK application. The runtime stores execution history, pending approvals, and snippets across Durable Object hibernation.
 
@@ -22,12 +22,12 @@ Code Mode is experimental and may introduce breaking changes. Use caution in pro
 
 ## Prerequisites
 
-You need an existing Agents SDK application that uses `AIChatAgent`, Vite, and the AI SDK.
+You need an existing Agents SDK application with a Durable Object and Vite. The example uses `AIChatAgent` and the AI SDK.
 
 ## Integrate Code Mode
 
 1. Install the Code Mode package:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/codemode
 ```
@@ -45,7 +45,7 @@ bun add @cloudflare/codemode
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -58,7 +58,7 @@ bun add @cloudflare/codemode
 ```
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
@@ -329,6 +329,34 @@ export class Chat extends AIChatAgent<Env> {
 ```
 Replace the `model` import with the existing model setup in your application.
 
+## Use the runtime without the AI SDK
+
+Use `execute()`, `search()`, and `describe()` when an MCP server or another host invokes Code Mode without an AI SDK tool adapter:
+
+```js
+const runtime = this.#runtime();
+const matches = await runtime.search("create note");
+const method = matches.results[0];
+const docs = await runtime.describe(method.path);
+const outcome = await runtime.execute({
+	code: `async () => notes.createNote({ text: "Follow up" })`,
+});
+```
+
+```ts
+const runtime = this.#runtime();
+const matches = await runtime.search("create note");
+const method = matches.results[0];
+const docs = await runtime.describe(method.path);
+const outcome = await runtime.execute({
+	code: `async () => notes.createNote({ text: "Follow up" })`,
+});
+```
+
+`search()` and `describe()` do not run sandbox code. Their results include `requiresApproval: true` for connector methods that pause before execution.
+
+`execute()` returns the same durable result as the model-facing tool. A result can complete, pause, or contain an execution error. Resolve a paused result with `approve()` or `reject()`.
+
 ## Verify the integration
 
 Ask the model to list saved notes. The model receives one `codemode` tool and can discover connector methods inside the sandbox:
@@ -355,8 +383,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/#page","headline":"Create a durable Code Mode runtime · Cloudflare Agents docs","description":"Create a Code Mode runtime with connectors, direct host APIs, durable approvals, rollback, execution history, and reusable snippets.","url":"https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

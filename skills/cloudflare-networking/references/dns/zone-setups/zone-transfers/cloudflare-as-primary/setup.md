@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [outgoing zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/), you can keep Cloudflare as your primary DNS provider and use one or more secondary providers for increased availability and fault tolerance.
 
@@ -39,7 +39,7 @@ While optional, this step is highly recommended.
 To create a TSIG using the dashboard:
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **TSIG**, select **Create**.
 4. Enter the following information:
@@ -61,7 +61,7 @@ You only need to create a peer DNS server if you want:
 To create a peer using the dashboard:
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **Peer DNS servers**, select **Create**.
 4. Enter the following information, paying particular attention to:
@@ -85,7 +85,7 @@ The maximum number of linked peers per zone is 30.
 To link a primary zone to a peer using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. For **DNS Zone Transfers**, select **Manage linked peers**.
 3. Select a peer.
 4. Select **Save**.
@@ -113,7 +113,7 @@ Note
 If your account [zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) are already defined to have **Multi-provider DNS** enabled, this step may not be necessary.
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Enable **Multi-provider DNS**.
 
 Send the following `PATCH` request replacing the placeholders with your zone ID and authentication information:
@@ -142,7 +142,7 @@ In case you want to keep Cloudflare as the only authoritative DNS provider, do n
 When you enable outgoing zone transfers, this will send a DNS NOTIFY message to your secondary DNS provider.
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. For **Outgoing Zone Transfers**, switch the toggle to **On**.
 
 To enable outgoing zone transfers using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/outgoing/methods/enable/) request.
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/#page","headline":"Set up outgoing zone transfers (Cloudflare as Primary) · Cloudflare DNS docs","description":"With outgoing zone transfers, you can keep Cloudflare as your primary DNS provider and use one or more secondary providers for increased availability.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

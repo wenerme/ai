@@ -4,15 +4,15 @@ title: Configure via API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure via API
+# Configure via API
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To enable the Cloudflare OWASP Core Ruleset for a given zone using the API, create a rule with `execute` action in the entry point ruleset for the `http_request_firewall_managed` phase. For more information on deploying a managed ruleset, refer to [Deploy a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/).
 
@@ -41,7 +41,7 @@ For example, to enable all the rules associated with Paranoia Level 2 (PL2), dis
 
 This example sets the Cloudflare OWASP Core Ruleset's paranoia level for a zone to PL2\. To perform this configuration, you must disable the tags associated with levels PL3 and PL4 (`paranoia-level-3` and `paranoia-level-4`) using tag overrides.
 
-1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f .
+1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 	--request GET \
@@ -67,7 +67,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 	"messages": []
 }
 ```
-2. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.
+2. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f). This rule will only exist if you have already deployed the OWASP ruleset.
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
 	--request GET \
@@ -147,7 +147,7 @@ To define the [score threshold](https://developers.cloudflare.com/waf/managed-ru
 
 This example configures the managed ruleset score threshold and the performed action by creating a rule override for the last rule of the managed ruleset.
 
-1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f  .
+1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 	--request GET \
@@ -173,7 +173,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 	"messages": []
 }
 ```
-2. Get the ID of the [last rule](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/) in the Cloudflare OWASP Core Ruleset. Use the [Get an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) method to obtain the list of rules in the ruleset. Alternatively, use the following rule ID directly: ...843b323c  .
+2. Get the ID of the [last rule](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/) in the Cloudflare OWASP Core Ruleset. Use the [Get an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) method to obtain the list of rules in the ruleset. Alternatively, use the following rule ID directly: ...843b323c.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$OWASP_RULESET_ID" \
 	--request GET \
@@ -209,7 +209,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$OWASP_
 	"messages": []
 }
 ```
-3. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) (in this example, `<EXECUTE_RULE_ID>`). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.
+3. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) (in this example, `<EXECUTE_RULE_ID>`). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f). This rule will only exist if you have already deployed the OWASP ruleset.
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
 	--request GET \
@@ -286,7 +286,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/#page","headline":"Configure via API · Cloudflare Web Application Firewall (WAF) docs","description":"Configure the OWASP Core Ruleset using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

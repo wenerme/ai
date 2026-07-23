@@ -4,15 +4,15 @@ title: Tune connection pooling
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Tune connection pooling
+# Tune connection pooling
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive maintains a pool of connections to your database that are shared across Worker invocations. You can configure the maximum number of these connections based on your database capacity and application requirements.
 
@@ -30,7 +30,7 @@ To configure connection pool size via the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Storage & databases** \> **Hyperdrive**.
-[ Go to **Hyperdrive** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+[Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 3. Select your Hyperdrive configuration.
 4. Select **Settings**.
 5. In the **Origin connection limit** section, adjust the **Maximum connections** value.
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/#page","headline":"Tune connection pooling · Cloudflare Hyperdrive docs","description":"Configure the maximum number of database connections in your Hyperdrive connection pool.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

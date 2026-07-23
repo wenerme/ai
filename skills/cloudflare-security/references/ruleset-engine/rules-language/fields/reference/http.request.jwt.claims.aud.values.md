@@ -4,11 +4,11 @@ title: http.request.jwt.claims.aud.values
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  http.request.jwt.claims.aud.values
+# http.request.jwt.claims.aud.values
 
-`http.request.jwt.claims.aud.values` ` Array<String> `
+`http.request.jwt.claims.aud.values` `Array<String>`
 
 The `aud` (audience) claim identifies the recipients that the JSON Web Token (JWT) is intended for.
 
@@ -26,7 +26,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.aud.values/#page","headline":"http.request.jwt.claims.aud.values · Cloudflare Ruleset Engine docs","description":"The aud (audience) claim identifies the recipients that the JSON Web Token (JWT) is intended for.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.aud.values/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

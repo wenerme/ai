@@ -4,15 +4,15 @@ title: Using AI Models
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using AI Models
+# Using AI Models
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
 
@@ -250,7 +250,7 @@ Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gatewa
 
 The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider).
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i ai workers-ai-provider
@@ -310,7 +310,7 @@ export class MyAgent extends Agent<Env> {
 
 You can swap the provider to use OpenAI, Anthropic, or any other AI SDK-compatible adapter:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i ai @ai-sdk/openai
@@ -452,7 +452,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models · Cloudflare Agents docs","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

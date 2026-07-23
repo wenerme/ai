@@ -4,17 +4,17 @@ title: Workers API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers API
+# Workers API
 
 Process incoming emails with the email() handler in Cloudflare Workers. Forward, reply, reject, or process emails programmatically.
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Process incoming emails using the `email()` handler in your Cloudflare Workers. This allows you to programmatically handle email routing with custom logic.
 
@@ -415,7 +415,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

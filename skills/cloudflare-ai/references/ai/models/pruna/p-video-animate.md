@@ -4,7 +4,7 @@ title: P-Video-Animate
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.BVOvqoaI.svg)
 
-#  P-Video-Animate
+# P-Video-Animate
 
- Image-to-Video • Pruna AI
+Image-to-Video • Pruna AI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` pruna/p-video-animate `
+`pruna/p-video-animate`
 
 * Third-party
 
 Pruna's P-Video-Animate takes a source video and a subject reference image, then animates the referenced subject using the motion and audio from the source video.
 
-| Model Info       |                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                    |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-animate) |
+| Model Info       |                                                                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                   |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-animate) |
 
 ## Usage
 
@@ -119,9 +119,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-video-animate/#page","headline":"P-Video-Animate (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Video-Animate takes a source video and a subject reference image, then animates the referenced subject using the motion and audio from the source video.","url":"https://developers.cloudflare.com/ai/models/pruna/p-video-animate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

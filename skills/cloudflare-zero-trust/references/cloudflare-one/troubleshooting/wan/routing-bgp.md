@@ -4,15 +4,15 @@ title: Routing and BGP
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Routing and BGP
+# Routing and BGP
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common routing and BGP issues with Cloudflare WAN. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
 
@@ -222,7 +222,7 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 
 For more information, refer to the full Cloudflare WAN documentation.
 
-[ Full routing and BGP guide ❯ ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/routing-and-bgp/)
+[Full routing and BGP guide ❯](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/routing-and-bgp/)
 
 Was this helpful?
 
@@ -230,7 +230,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/#page","headline":"Routing and BGP · Cloudflare One docs","description":"Routing and BGP for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

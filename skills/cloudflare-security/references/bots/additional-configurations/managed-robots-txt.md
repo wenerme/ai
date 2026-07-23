@@ -4,15 +4,15 @@ title: robots.txt setting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  robots.txt setting
+# robots.txt setting
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI companies use crawlers to collect website content for training language models, generating search answers, and other purposes. A `robots.txt` file at the root of your domain tells these crawlers which content they should or should not access. When you turn on the managed `robots.txt` setting, Cloudflare generates and maintains a `robots.txt` file that instructs known AI crawlers to stay away from your content.
 
@@ -117,7 +117,7 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 To implement a `robots.txt` file on your domain:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Set your preference to block training in robots.txt**.
 4. Turn on **Set your preference to block training in robots.txt**.
@@ -166,7 +166,7 @@ Cloudflare's Content Signals Policy is included by default in the `robots.txt` f
 
 If you would like to opt out of displaying the policy in your `robots.txt` file, you can uncheck **Display Content Signals Policy** under **Control AI Crawlers** in your zone's overview.
 
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Alternatively, you can use [Security Settings](#implementation).
 
@@ -202,7 +202,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting · Cloudflare bot solutions docs","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

@@ -4,21 +4,21 @@ title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Changelog
+# Changelog
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
 ## 2026-07-21
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.6.880.0)**
@@ -29,7 +29,7 @@ This hotfix resolves a regression that caused a large increase in DNS-over-TCP q
 
 ## 2026-07-21
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.6.880.0)**
@@ -40,7 +40,7 @@ This hotfix resolves a regression that caused a large increase in DNS-over-TCP q
 
 ## 2026-07-21
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.6.880.0)**
@@ -51,7 +51,7 @@ This hotfix resolves a regression that caused a large increase in DNS-over-TCP q
 
 ## 2026-07-20
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Browser-based login for plaintext HTTP private applications**
@@ -66,7 +66,7 @@ Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloud
 
 ## 2026-07-16
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Bulk print PDFs for browser-based RDP**
@@ -79,7 +79,7 @@ Bulk print is available in Chromium-based browsers and Firefox. For more informa
 
 ## 2026-07-15
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  DNS ](https://developers.cloudflare.com/dns/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[DNS](https://developers.cloudflare.com/dns/)
 
 
 **Internal DNS is now generally available**
@@ -109,7 +109,7 @@ Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare
 
 ## 2026-07-10
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Source code detection improvements**
@@ -126,7 +126,7 @@ For more information, refer to [Source Code predefined profiles](https://develop
 
 ## 2026-07-09
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 
 **Zero Trust Networks route endpoints and Cloudflare Tunnel connections field retiring on October 5, 2026**
@@ -225,7 +225,7 @@ To learn more, refer to the [Zero Trust Networks API](https://developers.cloudfl
 
 ## 2026-07-08
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **IPsec downgrade protection (beta)**
@@ -245,7 +245,7 @@ Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan
 
 ## 2026-07-07
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.6.850.0)**
@@ -256,7 +256,7 @@ This hotfix addresses a Windows authentication issue in the embedded WebView2 br
 
 ## 2026-07-07
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **File transfer controls for browser-based RDP (beta)**
@@ -288,7 +288,7 @@ This feature is in beta and available on all Zero Trust plans. For more informat
 
 ## 2026-07-07
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Browser Isolation support for authorization proxy endpoints**
@@ -301,7 +301,7 @@ To get started, [create an authorization proxy endpoint](https://developers.clou
 
 ## 2026-07-06
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Self-serve registration of Cloudflare One Virtual Appliance in the dashboard**
@@ -319,7 +319,7 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 
 ## 2026-07-02
 
-[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing for Cloudflare Mesh**
@@ -328,11 +328,11 @@ You can now add [hostname routes](https://developers.cloudflare.com/cloudflare-o
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 Requests `wiki.internal.local`
-2. DNS query ↓
+2. DNS query↓
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 Returns a token IP, then rewrites the destination to the real private IP.
 `100.80.0.0/16`
-4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) ↓
+4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
 5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 Forwards traffic to the host on the local network
 6. ↓
@@ -343,13 +343,13 @@ Instead of managing IP ranges, you can attract traffic for a hostname to a Mesh 
 
 * **Private hostname** (for example, `wiki.internal.local`) — reach an internal application by name, which is useful when it has an unknown or ephemeral IP. On Mesh you do not need to run a DNS server; a local hosts-file entry on the node is enough, or you can use a Gateway resolver policy for split DNS.
 * **Public hostname** (for example, `www.example.com`) — route that hostname's traffic through the node and egress via the node's public IP.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 
 For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
 
 ## 2026-07-01
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.6.836.0)**
@@ -369,7 +369,7 @@ sudo dnf install cloudflare-warp
 
 ## 2026-07-01
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Fix redirect URL fragment encoding for single-page applications**
@@ -382,7 +382,7 @@ If your SPA users were experiencing broken navigation after authenticating throu
 
 ## 2026-07-01
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Independent MFA for infrastructure applications**
@@ -401,7 +401,7 @@ For setup instructions, refer to [Enforce MFA for infrastructure applications](h
 
 ## 2026-06-30
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
 
 
 **New permissions and roles for Gateway policies and lists**
@@ -443,7 +443,7 @@ You can also now assign _Resource-scoped roles_. These roles are complementary t
 
 ## 2026-06-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.6.822.0)**
@@ -491,7 +491,7 @@ This release introduces multiple features from our previous beta release into st
 
 ## 2026-06-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.6.822.0)**
@@ -534,7 +534,7 @@ This release introduces multiple features from our previous beta release into st
 
 ## 2026-06-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.6.822.0)**
@@ -580,7 +580,7 @@ For RHEL deployments, this release introduces a dependency on the [Extra Package
 
 ## 2026-06-26
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Service token support for MCP server portals**
@@ -599,7 +599,7 @@ For step-by-step setup, refer to [Connect with a service token](https://develope
 
 ## 2026-06-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.6.782.1)**
@@ -631,7 +631,7 @@ This release also introduces multiple fixes and improvements including:
 
 ## 2026-06-23
 
-[  Data Localization Suite ](https://developers.cloudflare.com/data-localization/)
+[Data Localization Suite](https://developers.cloudflare.com/data-localization/)
 
 
 **Regionalized IP Bindings for Regional Services**
@@ -646,7 +646,7 @@ To get started, refer to [Regionalized IP Bindings](https://developers.cloudflar
 
 ## 2026-06-19
 
-[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Manage all your routes from one page in the dashboard**
@@ -665,13 +665,13 @@ From the unified Routes page you can:
 
 To find it, go to **Networking** \> **Routes** in the dashboard sidebar.
 
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
 
 ## 2026-06-18
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare identity provider is now the default for new accounts**
@@ -684,7 +684,7 @@ This change only applies to newly created accounts. Existing organizations keep 
 
 ## 2026-06-11
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Define custom topics for AI prompt protection**
@@ -711,7 +711,7 @@ For more information, refer to [AI prompt topics](https://developers.cloudflare.
 
 ## 2026-06-05
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[  Workers VPC ](https://developers.cloudflare.com/workers-vpc/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
 
 
 **Filter Workers' public Internet traffic using Gateway policies**
@@ -720,17 +720,17 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
 1. [Worker](https://developers.cloudflare.com/workers/)
 Calls `env.EGRESS.fetch()`
-2. [VPC binding](https://developers.cloudflare.com/workers-vpc/) ↓
+2. [VPC binding](https://developers.cloudflare.com/workers-vpc/)↓
 3. [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 Bind via [cf1:network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 4. ↓
 5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 Policies applied:
-[ DNS ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[ HTTP ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[ Network ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+[DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
 6. ↓
-7. ↗ Public Internet
+7. ↗Public Internet
 Any public hostname or IP
-[ Gateway logs DNS HTTP Network ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/)
+[Gateway logsDNSHTTPNetwork](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/)
 
 What you get by default:
 
@@ -770,7 +770,7 @@ For configuration options, refer to [VPC Networks](https://developers.cloudflare
 
 ## 2026-06-04
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Share identity providers across accounts with IdP federation**
@@ -789,7 +789,7 @@ To get started, refer to [IdP federation](https://developers.cloudflare.com/clou
 
 ## 2026-06-03
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **SAML assertion encryption for identity providers**
@@ -810,7 +810,7 @@ To get started, refer to [Encrypt SAML assertions](https://developers.cloudflare
 
 ## 2026-06-02
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Cisco IOS XE**
@@ -825,7 +825,7 @@ This link will take you directly to the updated [Cisco IOS XE](https://developer
 
 ## 2026-05-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.5.1155.1)**
@@ -856,7 +856,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 ## 2026-05-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.5.1155.1)**
@@ -896,7 +896,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 ## 2026-05-28
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Tool and prompt aliases for MCP server portals**
@@ -922,7 +922,7 @@ For more information, refer to [Tool and prompt aliases](https://developers.clou
 
 ## 2026-05-28
 
-[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **High availability replica management for Cloudflare Mesh**
@@ -952,7 +952,7 @@ Traffic reroutes to the promoted replica immediately. Refer to [High availabilit
 
 ## 2026-05-27
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Write regex using natural language in Cloudflare One**
@@ -971,7 +971,7 @@ For more information, refer to [Cloudflare One firewall policies](https://develo
 
 ## 2026-05-27
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Cloudflare Tunnel now runs connectivity pre-checks at startup**
@@ -1000,7 +1000,7 @@ To get the new behavior, upgrade `cloudflared` to version `2026.5.2` or later. F
 
 ## 2026-05-26
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.4.1390.0)**
@@ -1024,7 +1024,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 ## 2026-05-26
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.4.1390.0)**
@@ -1056,7 +1056,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 ## 2026-05-26
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.4.1390.0)**
@@ -1081,7 +1081,7 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 ## 2026-05-21
 
-[  Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 
 **Granular permissions for Cloudflare Tunnel and Cloudflare Mesh**
@@ -1112,7 +1112,7 @@ Granular permissions are a parallel layer to existing account-level roles — th
 
 ## 2026-05-19
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare as identity provider and account membership selector**
@@ -1130,7 +1130,7 @@ To get started, add Cloudflare as an [identity provider](https://developers.clou
 
 ## 2026-05-19
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **CASB adds support for Claude Compliance API**
@@ -1155,7 +1155,7 @@ This [integration](https://developers.cloudflare.com/cloudflare-one/integrations
 
 ## 2026-05-18
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 
 **Network Analytics support for Unified Routing**
@@ -1168,7 +1168,7 @@ For the remaining beta limitations, refer to [Traffic steering beta limitations]
 
 ## 2026-05-12
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Refreshed Access login page**
@@ -1192,7 +1192,7 @@ The updated login experience includes:
 
 ## 2026-05-12
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New accounts assigned a single IPv4 anycast address**
@@ -1207,7 +1207,7 @@ For tunnel configuration guidance, refer to [Configure tunnel endpoints](https:/
 
 ## 2026-05-12
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Create Gateway firewall policies with natural language**
@@ -1226,7 +1226,7 @@ For more information, refer to [Gateway firewall policies](https://developers.cl
 
 ## 2026-05-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.4.1350.0)**
@@ -1257,7 +1257,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 ## 2026-05-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.4.1350.0)**
@@ -1280,7 +1280,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 ## 2026-05-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.4.1350.0)**
@@ -1304,7 +1304,7 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 ## 2026-05-11
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 
 **NAT-T support for IKE on UDP port 500**
@@ -1329,7 +1329,7 @@ For configuration details, refer to [GRE and IPsec tunnels](https://developers.c
 
 ## 2026-05-07
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Custom DHCP options on Cloudflare One Appliance**
@@ -1342,7 +1342,7 @@ For details, refer to [DHCP server options](https://developers.cloudflare.com/cl
 
 ## 2026-05-07
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Source-based breakout and prioritization on Cloudflare One Appliance**
@@ -1358,7 +1358,7 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 
 ## 2026-05-07
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Self-serve provisioning of Cloudflare One Virtual Appliance via API**
@@ -1375,7 +1375,7 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 
 ## 2026-05-06
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Cloudy Summaries in PhishNet O365**
@@ -1390,7 +1390,7 @@ This feature is available for PhishNet with Office 365\. Support for Gmail will 
 
 ## 2026-05-06
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **IPv6 CIDR routes for Cloudflare Mesh**
@@ -1403,7 +1403,7 @@ To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://de
 
 ## 2026-04-30
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Post-quantum IPsec interoperability with third-party devices**
@@ -1425,7 +1425,7 @@ For supported key exchange methods and the list of validated platforms, refer to
 
 ## 2026-04-30
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Classify sensitive content with Data Classification**
@@ -1440,7 +1440,7 @@ For more information, refer to [Data Classification](https://developers.cloudfla
 
 ## 2026-04-30
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **New predefined detection entries are available**
@@ -1455,7 +1455,7 @@ For the full list, refer to [Predefined detection entries](https://developers.cl
 
 ## 2026-04-29
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **Digital experience tests to authenticated resources and enhanced configuration**
@@ -1471,7 +1471,7 @@ Digital experience tests also have enhanced configuration options including:
 
 ## 2026-04-29
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway Authorization Proxy and hosted PAC files are now generally available**
@@ -1486,7 +1486,7 @@ To get started, refer to the [proxy endpoints documentation](https://developers.
 
 ## 2026-04-28
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **Internet outage notifications for devices**
@@ -1499,7 +1499,7 @@ This Internet outage and traffic anomaly data is pulled from [Cloudflare Radar �
 
 ## 2026-04-28
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **Cloudflare One Client speed tests**
@@ -1518,7 +1518,7 @@ In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Tr
 
 ## 2026-04-28
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Create and manage DLP detection entries outside of profiles**
@@ -1531,7 +1531,7 @@ For more information, refer to [Configure detection entries](https://developers.
 
 ## 2026-04-28
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Detect PII records with a new predefined DLP profile**
@@ -1561,7 +1561,7 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-04-24
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Network Session Logs now available for all on-ramps**
@@ -1574,7 +1574,7 @@ For field definitions, refer to [Zero Trust Network Session Logs](https://develo
 
 ## 2026-04-23
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **AAGUID restrictions and AMR matching for Access independent MFA**
@@ -1588,7 +1588,7 @@ To get started, refer to [Independent MFA](https://developers.cloudflare.com/clo
 
 ## 2026-04-21
 
-[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Country rules supported in Unified Routing**
@@ -1603,7 +1603,7 @@ For the full list of current beta limitations, refer to [Traffic steering beta l
 
 ## 2026-04-20
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Network session analytics dashboard**
@@ -1636,7 +1636,7 @@ For more information, refer to the [Network session analytics documentation](htt
 
 ## 2026-04-17
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Homepage and sign-out for MCP server portals**
@@ -1657,7 +1657,7 @@ For more information, refer to [MCP server portals](https://developers.cloudflar
 
 ## 2026-04-15
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Independent MFA for Access applications**
@@ -1696,7 +1696,7 @@ To get started with Independent MFA, refer to [Independent MFA](https://develope
 
 ## 2026-04-15
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New, streamlined creation experience for Access Applications and Gateway Policies**
@@ -1728,7 +1728,7 @@ For more information, refer to [self-hosted applications](https://developers.clo
 
 ## 2026-04-15
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **Last seen timestamp for Cloudflare One Client devices is more consistent**
@@ -1737,7 +1737,7 @@ The last seen timestamp for [Cloudflare One Client](https://developers.cloudflar
 
 ## 2026-04-14
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **DLP account-level settings**
@@ -1760,7 +1760,7 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 
 ## 2026-04-14
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Introducing Cloudflare Mesh**
@@ -1790,7 +1790,7 @@ Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/c
 
 ## 2026-04-14
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Detect Cloudflare API tokens with DLP**
@@ -1826,7 +1826,7 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-04-14
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Configure how sensitive data appears in DLP payload logs**
@@ -1849,7 +1849,7 @@ For more information, refer to [DLP logging options](https://developers.cloudfla
 
 ## 2026-04-10
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
 
 
 **Canvas Remoting optimizes performance for productivity applications**
@@ -1887,7 +1887,7 @@ Currently supports 2D Canvas contexts only. WebGL and 3D graphics applications c
 
 ## 2026-04-09
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **Send CASB posture finding instances with webhooks**
@@ -1914,7 +1914,7 @@ CASB webhooks are now available in Cloudflare One.
 
 ## 2026-04-08
 
-[  Risk Score ](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
 
 
 **User risk scoring for high risk browsing activity**
@@ -1941,7 +1941,7 @@ To learn more and get started, refer to the [User Risk Scoring documentation](ht
 
 ## 2026-04-07
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Windows (version 2026.3.851.0)**
@@ -1982,7 +1982,7 @@ To work around this issue, reconnect the client by selecting **Disconnect** and 
 
 ## 2026-04-07
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **User Submission Triage Status Tracking**
@@ -2002,7 +2002,7 @@ This applies to all Email security packages:
 
 ## 2026-04-07
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Link aggregation (LACP) support for Cloudflare One Appliance**
@@ -2015,7 +2015,7 @@ To configure a Link Aggregation Group, refer to [Configure link aggregation grou
 
 ## 2026-04-06
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **DANE Support for MX Deployments**
@@ -2033,7 +2033,7 @@ This applies to all Email Security packages:
 
 ## 2026-04-06
 
-[  Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Organizations is now in public beta for enterprises**
@@ -2066,7 +2066,7 @@ For more info:
 
 ## 2026-04-02
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for macOS (version 2026.3.846.0)**
@@ -2090,7 +2090,7 @@ The next stable release for macOS will introduce the new Cloudflare One Client U
 
 ## 2026-04-02
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Client for Linux (version 2026.3.846.0)**
@@ -2114,7 +2114,7 @@ The next stable release for Linux will introduce the new Cloudflare One Client U
 
 ## 2026-04-02
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Session management for MCP server portals**
@@ -2140,7 +2140,7 @@ For more information, refer to [Manage portal sessions](https://developers.cloud
 
 ## 2026-04-01
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Logs UI refresh**
@@ -2160,7 +2160,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 ## 2026-03-26
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Code Mode for MCP server portals**
@@ -2181,7 +2181,7 @@ For more information, refer to [Code Mode](https://developers.cloudflare.com/clo
 
 ## 2026-03-26
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Context optimization for MCP server portals**
@@ -2208,7 +2208,7 @@ For more information, refer to [Optimize context](https://developers.cloudflare.
 
 ## 2026-03-26
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Streaming ZIP file scanning removes per-file size limits**
@@ -2221,7 +2221,7 @@ This improvement is automatic — no configuration changes are required.
 
 ## 2026-03-25
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Detect and sanitize HAR files**
@@ -2255,7 +2255,7 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-03-24
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **OIDC Claims filtering now available in Gateway Firewall, Resolver, and Egress policies**
@@ -2276,7 +2276,7 @@ For more information, refer to [Identity-based policies](https://developers.clou
 
 ## 2026-03-20
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Managed OAuth for Cloudflare Access**
@@ -2305,7 +2305,7 @@ For setup instructions, refer to [Enable managed OAuth](https://developers.cloud
 
 ## 2026-03-20
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Route MCP server portal traffic through Cloudflare Gateway**
@@ -2326,7 +2326,7 @@ For more details, refer to [Route traffic through Gateway](https://developers.cl
 
 ## 2026-03-20
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Stream logs from multiple replicas of Cloudflare Tunnel simultaneously**
@@ -2344,7 +2344,7 @@ For more information, refer to [Tunnel log streams](https://developers.cloudflar
 
 ## 2026-03-15
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Unlimited result paging in Investigations**
@@ -2367,7 +2367,7 @@ This applies to all Email Security packages:
 
 ## 2026-03-10
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2026.3.566.1)**
@@ -2395,7 +2395,7 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 ## 2026-03-10
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2026.3.566.1)**
@@ -2435,7 +2435,7 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 ## 2026-03-04
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **User risk score selector in Access policies**
@@ -2446,7 +2446,7 @@ For more information, refer to [Use risk scores in Access policies](https://deve
 
 ## 2026-03-04
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway Authorization Proxy and hosted PAC files (open beta)**
@@ -2476,7 +2476,7 @@ For more details, refer to the [proxy endpoints documentation](https://developer
 
 ## 2026-03-02
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Copy Cloudflare One resources as JSON or POST requests**
@@ -2498,7 +2498,7 @@ We will continue to add support for more resources throughout 2026.
 
 ## 2026-03-01
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Clipboard controls for browser-based RDP**
@@ -2524,7 +2524,7 @@ For more information, refer to [Clipboard controls for browser-based RDP](https:
 
 ## 2026-02-27
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Export MCP server portal logs with Logpush**
@@ -2560,7 +2560,7 @@ MCP server portals is currently in beta.
 
 ## 2026-02-27
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **New protocols added for Gateway Protocol Detection (Beta)**
@@ -2585,7 +2585,7 @@ For more information on using Protocol Detection, refer to the [Protocol detecti
 
 ## 2026-02-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2026.1.150.0)**
@@ -2618,7 +2618,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2026-02-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2026.1.150.0)**
@@ -2637,7 +2637,7 @@ This release contains minor fixes and improvements.
 
 ## 2026-02-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2026.1.150.0)**
@@ -2657,7 +2657,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 ## 2026-02-20
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **Understand CASB findings instantly with Cloudy Summaries**
@@ -2685,7 +2685,7 @@ Cloudy Summaries in CASB are available to all Cloudflare CASB users today.
 
 ## 2026-02-20
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Manage Cloudflare Tunnel directly from the main Cloudflare Dashboard**
@@ -2722,7 +2722,7 @@ New to Tunnel? Learn how to [get started with Cloudflare Tunnel](https://develop
 
 ## 2026-02-19
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **DEX Supports EU Customer Metadata Boundary**
@@ -2739,7 +2739,7 @@ If a customer enables CMB in their account, they will see the following message 
 
 ## 2026-02-17
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Streamlined clientless browser isolation for private applications**
@@ -2754,7 +2754,7 @@ Now, you can manage clientless access directly within your [private self-hosted 
 
 ## 2026-02-17
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Policies for bookmark applications**
@@ -2772,7 +2772,7 @@ For more information, refer to [Add bookmarks](https://developers.cloudflare.com
 
 ## 2026-02-17
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)[  Network Flow ](https://developers.cloudflare.com/network-flow/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)
 
 
 **Cloudflare One Product Name Updates**
@@ -2797,7 +2797,7 @@ For more information, visit the [Cloudflare One documentation](https://developer
 
 ## 2026-02-13
 
-[  Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Fine-grained permissions for Access policies and service tokens**
@@ -2822,7 +2822,7 @@ Resource-scoped roles is currently in beta.
 
 ## 2026-02-12
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Anycast IPs displayed on the dashboard**
@@ -2837,7 +2837,7 @@ For more information, refer to [Configure tunnel endpoints](https://developers.c
 
 ## 2026-02-11
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Post-quantum encryption support for Cloudflare One Appliance**
@@ -2852,7 +2852,7 @@ For more information, refer to [Cloudflare One Appliance](https://developers.clo
 
 ## 2026-02-02
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Improved Accessibility and Search for Monitoring**
@@ -2874,7 +2874,7 @@ This applies to all Email Security packages:
 
 ## 2026-01-30
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **BGP over GRE and IPsec tunnels**
@@ -2899,7 +2899,7 @@ For configuration details, refer to:
 
 ## 2026-01-27
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2026.1.89.1)**
@@ -2929,7 +2929,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2026-01-27
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2026.1.89.1)**
@@ -2945,7 +2945,7 @@ This release contains minor fixes and improvements.
 
 ## 2026-01-27
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Configure Cloudflare source IPs (beta)**
@@ -2970,7 +2970,7 @@ For configuration details, refer to [Configure Cloudflare source IPs](https://de
 
 ## 2026-01-22
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Require Access protection for zones**
@@ -2991,7 +2991,7 @@ To turn on this feature, refer to [Require Access protection](https://developers
 
 ## 2026-01-22
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **New granular API token permissions for Cloudflare Access**
@@ -3008,7 +3008,7 @@ For a full list of available permissions, refer to [API token permissions](https
 
 ## 2026-01-15
 
-[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Network Flow ](https://developers.cloudflare.com/network-flow/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Flow](https://developers.cloudflare.com/network-flow/)
 
 
 **Network Services navigation update**
@@ -3037,7 +3037,7 @@ Preview: ![Networking Navigation](https://developers.cloudflare.com/_astro/netwo
 
 ## 2026-01-15
 
-[  Risk Score ](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
 
 
 **Support for CrowdStrike device scores in User Risk Scoring**
@@ -3055,7 +3055,7 @@ These scores are derived from \[CrowdStrike device posture attributes\] (/cloudf
 
 ## 2026-01-15
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Verify WARP Connector connectivity with a simple ping**
@@ -3070,7 +3070,7 @@ Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cl
 
 ## 2026-01-13
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.10.186.0)**
@@ -3101,7 +3101,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2026-01-13
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.10.186.0)**
@@ -3118,7 +3118,7 @@ This release contains minor fixes, improvements, and new features, including the
 
 ## 2026-01-13
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.10.186.0)**
@@ -3139,7 +3139,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 ## 2026-01-12
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Enhanced visibility for post-delivery actions**
@@ -3161,7 +3161,7 @@ This applies to all Email Security packages:
 
 ## 2026-01-08
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare admin activity logs capture creation of DNS over HTTP (DoH) users**
@@ -3172,7 +3172,7 @@ These logs can be viewed from the [Cloudflare One dashboard ↗](https://one.das
 
 ## 2025-12-31
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Breakout traffic visibility via NetFlow**
@@ -3189,7 +3189,7 @@ For more information, refer to [NetFlow statistics](https://developers.cloudflar
 
 ## 2025-12-17
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - domain level SaaS analytics**
@@ -3206,7 +3206,7 @@ Both the analytics and policies are accessible in the Cloudflare [Zero Trust das
 
 ## 2025-12-16
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New duplicate action for supported Cloudflare One resources**
@@ -3223,7 +3223,7 @@ To try this out, simply click on the overflow menu (⋮) from the resource table
 
 ## 2025-12-09
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.10.118.1)**
@@ -3251,7 +3251,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-12-09
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.10.118.1)**
@@ -3267,7 +3267,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-12-03
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Reclassifications to Submissions**
@@ -3286,7 +3286,7 @@ This applies to all Email Security packages:
 
 ## 2025-11-18
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Adjustment to Final Disposition Column**
@@ -3306,7 +3306,7 @@ We will listen carefully to your feedback and continue to find comprehensive way
 
 ## 2025-11-17
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Cloudflare One Navigation and Product Experience**
@@ -3329,7 +3329,7 @@ No changes to our API endpoint structure or to any backend services have been ma
 
 ## 2025-11-14
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Generate Cloudflare Access SSH certificate authority (CA) directly from the Cloudflare dashboard**
@@ -3344,7 +3344,7 @@ For more details, refer to [Generate a Cloudflare SSH CA](https://developers.clo
 
 ## 2025-11-14
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **New SaaS Security weekly digests with API CASB**
@@ -3370,7 +3370,7 @@ The CASB Weekly Digest notification is available to all Cloudflare users today.
 
 ## 2025-11-12
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **DEX Logpush jobs**
@@ -3390,7 +3390,7 @@ To create a new DEX or WARP Logpush job, customers can go to the account level o
 
 ## 2025-11-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.9.558.0)**
@@ -3422,7 +3422,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-11-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.9.558.0)**
@@ -3443,7 +3443,7 @@ This release contains minor fixes, improvements, and new features including [Pat
 
 ## 2025-11-11
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.9.558.0)**
@@ -3462,7 +3462,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 ## 2025-11-11
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **cloudflared proxy-dns command will be removed starting February 2, 2026**
@@ -3491,7 +3491,7 @@ Instead of running `cloudflared proxy-dns` on a machine, you can install the WAR
 
 ## 2025-11-06
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Automatic Return Routing (Beta)**
@@ -3510,7 +3510,7 @@ For configuration details, refer to [Configure Automatic Return Routing](https:/
 
 ## 2025-11-06
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Designate WAN link for breakout traffic**
@@ -3529,7 +3529,7 @@ For configuration details, refer to [Designate WAN ports for breakout apps](http
 
 ## 2025-11-06
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Applications to be remapped to the new categories**
@@ -3608,7 +3608,7 @@ For more information on creating HTTP policies, refer to [Applications and app t
 
 ## 2025-10-28
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Access private hostname applications support all ports/protocols**
@@ -3627,7 +3627,7 @@ This feature is generally available across all plans.
 
 ## 2025-10-28
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **CASB introduces new granular roles**
@@ -3647,7 +3647,7 @@ To learn more about managing roles and permissions, refer to the [Manage account
 
 ## 2025-10-28
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **New Application Categories added for HTTP Traffic Management**
@@ -3679,7 +3679,7 @@ For more information on creating HTTP policies, refer to [Applications and app t
 
 ## 2025-10-20
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Schedule DNS policies from the UI**
@@ -3699,7 +3699,7 @@ This update makes time-based DNS policies accessible to all Gateway customers, r
 
 ## 2025-10-17
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **On-Demand Security Report**
@@ -3723,7 +3723,7 @@ This feature is available across the following Email security packages:
 
 ## 2025-10-16
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.9.173.1)**
@@ -3753,7 +3753,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-10-16
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.9.173.1)**
@@ -3775,7 +3775,7 @@ This release contains minor fixes, improvements, and new features including Path
 
 ## 2025-10-10
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **New domain categories added**
@@ -3794,7 +3794,7 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 ## 2025-10-07
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.8.779.0)**
@@ -3814,7 +3814,7 @@ This release contains significant fixes and improvements including an updated pu
 
 ## 2025-10-07
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.8.779.0)**
@@ -3842,7 +3842,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-10-07
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.8.779.0)**
@@ -3863,7 +3863,7 @@ This release contains significant fixes and improvements.
 
 ## 2025-10-02
 
-[  Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Fine-grained Permissioning for Access for Apps, IdPs, & Targets now in Public Beta**
@@ -3891,7 +3891,7 @@ For more info:
 
 ## 2025-10-01
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Expanded File Type Controls for Executables and Disk Images**
@@ -3918,7 +3918,7 @@ To get started, go to your HTTP policies in Zero Trust. For a full list of file 
 
 ## 2025-09-30
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.7.176.0)**
@@ -3949,7 +3949,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-09-30
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.7.176.0)**
@@ -3974,7 +3974,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-09-30
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.7.176.0)**
@@ -3996,7 +3996,7 @@ This release contains minor fixes and improvements including an updated public k
 
 ## 2025-09-30
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Application granular controls for operations in SaaS applications**
@@ -4012,7 +4012,7 @@ Get started using [Application Granular Controls](https://developers.cloudflare.
 
 ## 2025-09-25
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Refine DLP Scans with New Body Phase Selector**
@@ -4032,7 +4032,7 @@ For more information, refer to [Gateway HTTP policy selectors](https://developer
 
 ## 2025-09-23
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Invalid Submissions Feedback**
@@ -4056,7 +4056,7 @@ This feature is available across these Email security packages:
 
 ## 2025-09-22
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Access Remote Desktop Protocol (RDP) destinations securely from your browser — now generally available!**
@@ -4083,7 +4083,7 @@ To get started, refer to [Connect to RDP in a browser](https://developers.cloudf
 
 ## 2025-09-18
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Connect and secure any private or public app by hostname, not IP — with hostname routing for Cloudflare Tunnel**
@@ -4107,7 +4107,7 @@ Learn more in our [blog post ↗](https://blog.cloudflare.com/tunnel-hostname-ro
 
 ## 2025-09-16
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New AI-Enabled Search for Zero Trust Dashboard**
@@ -4124,7 +4124,7 @@ Cloudy can then stay open with you as you move between pages to build configurat
 
 ## 2025-09-11
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Regional Email Processing for Germany, India, or Australia**
@@ -4163,7 +4163,7 @@ We’re expanding the list of processing locations to match our [Data Localizati
 
 ## 2025-09-11
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **DNS filtering for private network onramps**
@@ -4176,7 +4176,7 @@ To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings
 
 ## 2025-09-10
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.7.106.1)**
@@ -4207,7 +4207,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-09-10
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.7.106.1)**
@@ -4231,7 +4231,7 @@ This release contains minor fixes and improvements including enhancements to [Pr
 
 ## 2025-09-08
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Custom IKE ID for IPsec Tunnels**
@@ -4242,7 +4242,7 @@ This feature is available via API only. Customers can read the Magic WAN documen
 
 ## 2025-09-05
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Bidirectional tunnel health checks are compatible with all Magic on-ramps**
@@ -4257,7 +4257,7 @@ Now, when a Magic tunnel has a bidirectional health check configured, the bidire
 
 ## 2025-09-02
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Cloudflare Tunnel and Networks API will no longer return deleted resources by default starting December 1, 2025**
@@ -4313,7 +4313,7 @@ To learn more, please visit the [Cloudflare Tunnel API](https://developers.cloud
 
 ## 2025-09-01
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Updated Email security roles**
@@ -4341,7 +4341,7 @@ This feature is available across these Email security packages:
 
 ## 2025-08-29
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One WARP Diagnostic AI Analyzer**
@@ -4350,7 +4350,7 @@ We're excited to share a new AI feature, the [WARP diagnostic analyzer ↗](http
 
 ## 2025-08-29
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **DEX MCP Server**
@@ -4367,7 +4367,7 @@ Customers can test the new DEX MCP server in less than one minute. To learn more
 
 ## 2025-08-27
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - SaaS analytics dashboard**
@@ -4384,7 +4384,7 @@ Both the analytics and policies are accessible in the Cloudflare [Zero Trust das
 
 ## 2025-08-26
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **New CASB integrations for ChatGPT, Claude, and Gemini**
@@ -4410,7 +4410,7 @@ These integrations are available to all Cloudflare One customers today.
 
 ## 2025-08-26
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Manage and restrict access to internal MCP servers with Cloudflare Access**
@@ -4423,7 +4423,7 @@ For example, if you have an MCP server designed for internal use within your org
 
 ## 2025-08-26
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **MCP server portals**
@@ -4439,7 +4439,7 @@ This is available in an open beta for all customers across all plans! For more i
 
 ## 2025-08-25
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **New DLP topic based detection entries for AI prompt protection**
@@ -4471,7 +4471,7 @@ AI prompt protection is now available in open beta. To learn more about it, read
 
 ## 2025-08-21
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.6.1400.0)**
@@ -4498,7 +4498,7 @@ To work around this issue, please reconnect the WARP client by toggling off and 
 
 ## 2025-08-21
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway BYOIP Dedicated Egress IPs now available.**
@@ -4515,7 +4515,7 @@ For more information, refer to [BYOIP for dedicated egress IPs](https://develope
 
 ## 2025-08-19
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.6.1335.0)**
@@ -4546,7 +4546,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-08-19
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.6.1335.0)**
@@ -4569,7 +4569,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-08-19
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.6.1335.0)**
@@ -4591,7 +4591,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-08-15
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **SFTP support for SSH with Cloudflare Access for Infrastructure**
@@ -4600,7 +4600,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-08-14
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare Access Logging supports the Customer Metadata Boundary (CMB)**
@@ -4613,7 +4613,7 @@ For EU CMB customers, the logs will not be stored by Access and will appear as e
 
 ## 2025-08-07
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Expanded Email Link Isolation**
@@ -4633,7 +4633,7 @@ This feature is available across these Email security packages:
 
 ## 2025-07-31
 
-[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Terraform V5 support for tunnels and routes**
@@ -4644,7 +4644,7 @@ For more information, refer to the [Cloudflare Terraform provider documentation 
 
 ## 2025-07-30
 
-[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Magic Transit and Magic WAN health check data is fully compatible with the CMB EU setting.**
@@ -4660,7 +4660,7 @@ Specifically, these two GraphQL endpoints are now compatible with CMB EU:
 
 ## 2025-07-28
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Scam domain category introduced under Security Threats**
@@ -4677,7 +4677,7 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 ## 2025-07-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.6.824.1)**
@@ -4707,7 +4707,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-07-24
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.6.824.1)**
@@ -4729,7 +4729,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-07-24
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway HTTP Filtering on all ports available in open BETA**
@@ -4744,7 +4744,7 @@ To learn more, refer to [Inspect on all ports (Beta)](https://developers.cloudfl
 
 ## 2025-07-23
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Windows (version 2025.5.943.0)**
@@ -4773,7 +4773,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 ## 2025-07-23
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for macOS (version 2025.5.943.0)**
@@ -4795,7 +4795,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-07-23
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **WARP client for Linux (version 2025.5.943.0)**
@@ -4815,7 +4815,7 @@ This release contains minor fixes and improvements.
 
 ## 2025-07-22
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Google Bard Application replaced by Gemini**
@@ -4824,7 +4824,7 @@ The **Google Bard** application (ID: 1198) has been deprecated and fully removed
 
 ## 2025-07-21
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Virtual Cloudflare One Appliance with KVM support (open beta)**
@@ -4837,7 +4837,7 @@ For setup instructions, refer to [Configure a virtual Cloudflare One Appliance](
 
 ## 2025-07-17
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **New detection entry type: Document Matching for DLP**
@@ -4860,7 +4860,7 @@ Once uploaded and processed, you can add this new document entry into a DLP prof
 
 ## 2025-07-15
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Faster, more reliable UDP traffic for Cloudflare Tunnel**
@@ -4878,7 +4878,7 @@ Learn more about running [TCP or UDP applications](https://developers.cloudflare
 
 ## 2025-07-10
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New onboarding guides for Zero Trust**
@@ -4904,7 +4904,7 @@ Try them out now in the [Zero Trust dashboard ↗](https://one.dash.cloudflare.c
 
 ## 2025-07-07
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Cloudy summaries for Access and Gateway Logs**
@@ -4919,7 +4919,7 @@ If you have feedback about the Cloudy summary - good or bad - you can provide th
 
 ## 2025-07-07
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New App Library for Zero Trust Dashboard**
@@ -4941,7 +4941,7 @@ Within individual Applications, you can also track their usage across your organ
 
 ## 2025-07-01
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Access RDP securely from your browser — now in open beta**
@@ -4960,7 +4960,7 @@ To get started, see [Connect to RDP in a browser](https://developers.cloudflare.
 
 ## 2025-06-30
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Agent for Android (version 2.4.2)**
@@ -4976,7 +4976,7 @@ A new GA release for the Android Cloudflare One Agent is now available in the [G
 
 ## 2025-06-30
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Agent for iOS (version 1.11)**
@@ -4991,7 +4991,7 @@ A new GA release for the iOS Cloudflare One Agent is now available in the [iOS A
 
 ## 2025-06-23
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Data Security Analytics in the Zero Trust dashboard**
@@ -5016,7 +5016,7 @@ To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.clo
 
 ## 2025-06-18
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway will now evaluate Network policies before HTTP policies from July 14th, 2025**
@@ -5068,7 +5068,7 @@ To learn more, visit the [Gateway order of enforcement documentation](https://de
 
 ## 2025-06-05
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Cloudflare One Analytics Dashboards and Exportable Access Report**
@@ -5085,7 +5085,7 @@ Both features are accessible in the Cloudflare [Zero Trust dashboard ↗](https:
 
 ## 2025-05-29
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Gateway Analytics in the Cloudflare One Dashboard**
@@ -5104,7 +5104,7 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗]
 
 ## 2025-05-27
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Gateway Protocol Detection Now Available for Pay-as-you-go and Free Plans**
@@ -5117,7 +5117,7 @@ This feature is available to enable in your account network settings for all acc
 
 ## 2025-05-18
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Applications Added to Zero Trust**
@@ -5132,7 +5132,7 @@ For more information on creating Gateway policies, see our [Gateway policy docum
 
 ## 2025-05-16
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Access Analytics in the Cloudflare One Dashboard**
@@ -5153,7 +5153,7 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗]
 
 ## 2025-05-15
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Open email attachments with Browser Isolation**
@@ -5181,7 +5181,7 @@ This feature is available across these Email security packages:
 
 ## 2025-05-14
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Domain Categories improvements**
@@ -5210,7 +5210,7 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 ## 2025-05-13
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
 
 
 **SAML HTTP-POST bindings support for RBI**
@@ -5221,7 +5221,7 @@ With expanded support for major IdPs like Okta and Azure AD, this enhancement de
 
 ## 2025-05-13
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **New Applications Added for DNS Filtering**
@@ -5238,7 +5238,7 @@ For more information on creating DNS policies, see our [DNS policy documentation
 
 ## 2025-05-12
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Case Sensitive Custom Word Lists**
@@ -5249,7 +5249,7 @@ You can now configure [custom word lists](https://developers.cloudflare.com/clou
 
 ## 2025-05-08
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Open email links with Browser Isolation**
@@ -5275,7 +5275,7 @@ This feature is available across these Email security packages:
 
 ## 2025-05-07
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Send forensic copies to storage without DLP profiles**
@@ -5288,7 +5288,7 @@ By default, Gateway will send all matched HTTP requests to your configured DLP F
 
 ## 2025-05-01
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
 
 
 **Browser Isolation Overview page for Zero Trust**
@@ -5308,7 +5308,7 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗]
 
 ## 2025-04-30
 
-[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Dark Mode for Zero Trust Dashboard**
@@ -5333,7 +5333,7 @@ To update your view preference in the Core dashboard:
 
 ## 2025-04-30
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Cloudflare One Appliance supports multiple DNS server IPs**
@@ -5346,7 +5346,7 @@ For configuration details, refer to [DHCP server](https://developers.cloudflare.
 
 ## 2025-04-28
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **FQDN Filtering For Gateway Egress Policies**
@@ -5362,7 +5362,7 @@ This will help apply egress IPs to your users' traffic when an upstream applicat
 
 ## 2025-04-21
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Access bulk policy tester**
@@ -5373,7 +5373,7 @@ The [Access bulk policy tester](https://developers.cloudflare.com/cloudflare-one
 
 ## 2025-04-14
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **New predefined detection entry for ICD-11**
@@ -5384,7 +5384,7 @@ ICD-10 dataset remains available for use.
 
 ## 2025-04-11
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **HTTP redirect and custom block page redirect**
@@ -5398,7 +5398,7 @@ Learn more in our documentation for [HTTP Redirect](https://developers.cloudflar
 
 ## 2025-04-09
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare Zero Trust SCIM User and Group Provisioning Logs**
@@ -5411,7 +5411,7 @@ SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM pro
 
 ## 2025-04-01
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **CASB and Email security**
@@ -5433,7 +5433,7 @@ This feature is available across these Email security packages:
 
 ## 2025-03-21
 
-[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Secure DNS Locations Management User Role**
@@ -5451,7 +5451,7 @@ You can assign the new role via Cloudflare Dashboard (`Manage Accounts > Members
 
 ## 2025-03-17
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Agent for Android (version 2.4)**
@@ -5466,7 +5466,7 @@ A new GA release for the Android Cloudflare One Agent is now available in the [G
 
 ## 2025-03-17
 
-[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Cloudflare One Agent for iOS (version 1.10)**
@@ -5481,7 +5481,7 @@ A new GA release for the iOS Cloudflare One Agent is now available in the [iOS A
 
 ## 2025-03-13
 
-[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
 
 
 **Cloudflare IP Ranges List**
@@ -5496,7 +5496,7 @@ Note: IP Lists require a Cloudflare Advanced Network Firewall subscription. For 
 
 ## 2025-03-07
 
-[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 
 
 **Cloudflare One Agent now supports Endpoint Monitoring**
@@ -5516,7 +5516,7 @@ For more details refer to our [DEX](https://developers.cloudflare.com/cloudflare
 
 ## 2025-03-04
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
 
 
 **Gain visibility into user actions in Zero Trust Browser Isolation sessions**
@@ -5546,7 +5546,7 @@ Learn more about how to get started with Logpush in our [documentation](https://
 
 ## 2025-03-03
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **New SAML and OIDC Fields and SAML transforms for Access for SaaS**
@@ -5575,7 +5575,7 @@ SAML identities sent to Access applications can be fully customized using JSONat
 
 ## 2025-03-01
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Use Logpush for Email security detections**
@@ -5595,7 +5595,7 @@ This feature is available across these Email security packages:
 
 ## 2025-02-27
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Check status of Email security or Area 1**
@@ -5623,7 +5623,7 @@ This feature is available across these Email security packages:
 
 ## 2025-02-25
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Use DLP Assist for M365**
@@ -5653,7 +5653,7 @@ This feature is available across these Email security packages:
 
 ## 2025-02-14
 
-[  Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[  Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Configure your Magic WAN Connector to connect via static IP assignment**
@@ -5666,7 +5666,7 @@ For more details, refer to [WAN with a static IP address](https://developers.clo
 
 ## 2025-02-07
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Open email links with Security Center**
@@ -5687,7 +5687,7 @@ This feature is available across these Email security packages:
 
 ## 2025-02-03
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Block files that are password-protected, compressed, or otherwise unscannable.**
@@ -5705,7 +5705,7 @@ To get started inspecting and modifying behavior based on these and other rules,
 
 ## 2025-01-20
 
-[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Detect source code leaks with Data Loss Prevention**
@@ -5733,7 +5733,7 @@ For more details, refer to [DLP profiles](https://developers.cloudflare.com/clou
 
 ## 2025-01-15
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Export SSH command logs with Access for Infrastructure using Logpush**
@@ -5748,7 +5748,7 @@ To set up a Logpush job, refer to [Logpush integration](https://developers.cloud
 
 ## 2024-12-19
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Escalate user submissions**
@@ -5769,7 +5769,7 @@ This feature is available across these Email security packages:
 
 ## 2024-12-19
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Increased transparency for phishing email submissions**
@@ -5784,7 +5784,7 @@ This new tab increases your visibility into this process, allowing you to view w
 
 ## 2024-12-19
 
-[  Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Troubleshoot tunnels with diagnostic logs**
@@ -5797,7 +5797,7 @@ For more information, refer to [Diagnostic logs](https://developers.cloudflare.c
 
 ## 2024-12-17
 
-[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Network Interconnect ](https://developers.cloudflare.com/network-interconnect/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
 
 **Establish BGP peering over Direct CNI circuits**
@@ -5819,7 +5819,7 @@ Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wa
 
 ## 2024-12-05
 
-[  Multi-Cloud Networking ](https://developers.cloudflare.com/multi-cloud-networking/)
+[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)
 
 
 **Generate customized terraform files for building cloud network on-ramps**
@@ -5837,7 +5837,7 @@ For more details, refer to [Set up with Terraform](https://developers.cloudflare
 
 ## 2024-11-22
 
-[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
 
 
 **Find security misconfigurations in your AWS cloud environment**
@@ -5856,7 +5856,7 @@ To connect a compute account to your AWS integration:
 
 ## 2024-11-21
 
-[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
 
 
 **Improved non-English keyboard support**
@@ -5865,7 +5865,7 @@ You can now type in languages that use diacritics (like á or ç) and character-
 
 ## 2024-11-07
 
-[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 
 **Use Logpush for Email security user actions**
@@ -5890,7 +5890,7 @@ This feature is available across all Email security packages:
 
 ## 2024-10-02
 
-[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
 
 
 **Search for custom rules using rule name and/or ID**
@@ -5907,7 +5907,7 @@ Additionally, the rule ID URL link has been added to Network Analytics.
 
 ## 2024-10-01
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Eliminate long-lived credentials and enhance SSH security with Cloudflare Access for Infrastructure**
@@ -5927,7 +5927,7 @@ To get started, refer to [SSH with Access for Infrastructure](https://developers
 
 ## 2024-06-17
 
-[  Risk Score ](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
 
 
 **Exchange user risk scores with Okta**
@@ -5953,7 +5953,7 @@ Next, configure Okta to receive your risk scores.
 
 ## 2024-06-16
 
-[  Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[  Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[  CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[  Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[  Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/)[  Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[  Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/)[  Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[  Multi-Cloud Networking ](https://developers.cloudflare.com/multi-cloud-networking/)[  Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)[  Network Flow ](https://developers.cloudflare.com/network-flow/)[  Magic Transit ](https://developers.cloudflare.com/magic-transit/)[  Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[  Network Interconnect ](https://developers.cloudflare.com/network-interconnect/)[  Risk Score ](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)[  Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Explore product updates for Cloudflare One**
@@ -5989,7 +5989,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/#page","headline":"Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

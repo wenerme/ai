@@ -4,15 +4,15 @@ title: Build a Comments API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a Comments API
+# Build a Comments API
 
-Last updated Mar 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use D1 and [Hono ↗](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
 
@@ -28,7 +28,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 ## 1\. Create a new Worker project
 
 1. Create a new project named `d1-comments-api` by running:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- d1-comments-api
 ```
@@ -54,7 +54,7 @@ cd d1-comments-api
 
 Install [Hono ↗](https://hono.dev/), a lightweight web framework for building APIs on Workers:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i hono
@@ -86,7 +86,7 @@ Confirm that your Wrangler configuration file contains the `d1_databases` bindin
   "name": "d1-comments-api",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "d1_databases": [
     {
       "binding": "DB",
@@ -100,7 +100,7 @@ Confirm that your Wrangler configuration file contains the `d1_databases` bindin
 name = "d1-comments-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 [[d1_databases]]
 binding = "DB" # available in your Worker on env.DB
 database_name = "d1-comments-api"
@@ -443,7 +443,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}

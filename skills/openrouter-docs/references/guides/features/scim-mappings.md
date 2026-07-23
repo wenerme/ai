@@ -58,6 +58,7 @@ A group can be mapped to any number of workspaces, with one mapping per group–
 * **Joining a group**: when someone is added to a mapped group in your identity provider, they're automatically added to the mapped workspaces with the mapping's role.
 * **Leaving a group**: when someone is removed from a mapped group, workspace access granted by that mapping is removed as well.
 * **Multiple groups**: if a member belongs to several groups mapped to the same workspace, they get the highest role across those mappings — Admin wins over Member.
+* **Deactivation or deletion**: when someone is deactivated or deleted in your identity provider, their organization membership and the API keys they created in the organization are deactivated. See [User Deactivation and Deletion](/docs/guides/features/sso#user-deactivation-and-deletion).
 
 ## Changing a Mapping's Role
 

@@ -4,15 +4,15 @@ title: Add player enhancements
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Add player enhancements
+# Add player enhancements
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With player enhancements, you can modify your video player to incorporate elements of your branding such as your logo, and customize additional options to present to your viewers.
 
@@ -63,7 +63,7 @@ You can also pull the JSON by using the endpoint below.
 ## Update player properties via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Videos** page.
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 2. Select a video from the list to edit it.
 3. Select the **Public Details** tab.
 4. From **Public Details**, enter information in the text fields for the properties you want to set.
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/player-enhancements/#page","headline":"Add player enhancements · Cloudflare Stream docs","description":"Customize the Cloudflare Stream player with branding, logos, and share links.","url":"https://developers.cloudflare.com/stream/edit-videos/player-enhancements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

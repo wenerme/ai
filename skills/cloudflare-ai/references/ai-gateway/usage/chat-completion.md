@@ -4,15 +4,15 @@ title: Unified API (OpenAI compat)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Unified API (OpenAI compat)
+# Unified API (OpenAI compat)
 
-Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -712,7 +712,7 @@ const { text } = await generateText({
 });
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -727,7 +727,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -742,7 +742,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -757,7 +757,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -772,7 +772,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -787,7 +787,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -802,7 +802,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {openai_api_token}' \
@@ -818,7 +818,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {anthropic_api_token}' \
@@ -834,7 +834,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {google_api_token}' \
@@ -850,7 +850,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {grok_api_token}' \
@@ -866,7 +866,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {dynamic_api_token}' \
@@ -882,7 +882,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```plaintext
+```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {workers-ai_api_token}' \
@@ -923,7 +923,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/#page","headline":"Unified API (OpenAI compat) · Cloudflare AI Gateway docs","description":"Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

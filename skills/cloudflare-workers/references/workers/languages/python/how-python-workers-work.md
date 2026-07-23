@@ -4,15 +4,15 @@ title: How Python Workers Work
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How Python Workers Work
+# How Python Workers Work
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers written in Python are executed by [Pyodide ↗](https://pyodide.org/en/stable/index.html). Pyodide is a [CPython ↗](https://github.com/python/cpython) (the reference implementation of Python — commonly referred to as just "Python") compiled to WebAssembly.
 
@@ -38,7 +38,7 @@ class Default(WorkerEntrypoint):
 	"name": "hello-world-python-worker",
 	"main": "src/entry.py",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
@@ -47,7 +47,7 @@ class Default(WorkerEntrypoint):
 name = "hello-world-python-worker"
 main = "src/entry.py"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

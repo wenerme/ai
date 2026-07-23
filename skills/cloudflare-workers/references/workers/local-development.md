@@ -4,15 +4,15 @@ title: Local development
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Local development
+# Local development
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [workerd ↗](https://github.com/cloudflare/workerd).
 
@@ -33,7 +33,7 @@ You can start a local development server using:
 
 1. The Cloudflare Workers CLI [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), using the built-in [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev
@@ -49,7 +49,7 @@ pnpm wrangler dev
 
 1. [**Vite** ↗](https://vite.dev/), using the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/).
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx vite dev
@@ -96,7 +96,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 
 	"r2_buckets": [
 		{
@@ -111,7 +111,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -131,7 +131,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 
 	"env": {
 		"production": {
@@ -158,7 +158,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -397,10 +397,10 @@ This function starts a proxy session for a given set of bindings. It accepts opt
 
 It returns an object with:
 
-* `ready` ` Promise<void> `: Resolves when the session is ready.
-* `dispose` ` () => Promise<void> `: Stops the session.
-* `updateBindings` ` (bindings: StartDevWorkerInput['bindings']) => Promise<void> `: Updates session bindings.
-* `remoteProxyConnectionString` ` remoteProxyConnectionString `: String to pass to Miniflare for remote binding access.
+* `ready` `Promise<void>`: Resolves when the session is ready.
+* `dispose` `() => Promise<void>`: Stops the session.
+* `updateBindings` `(bindings: StartDevWorkerInput['bindings']) => Promise<void>`: Updates session bindings.
+* `remoteProxyConnectionString` `remoteProxyConnectionString`: String to pass to Miniflare for remote binding access.
 
 #### `unstable_convertConfigBindingsToStartWorkerBindings`
 
@@ -532,7 +532,7 @@ async function startOrUpdateDevSession() {
 
 Separate from Miniflare-powered local development, Wrangler also offers a fully remote development mode via [wrangler dev --remote](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). Remote development is [**not** supported in the Vite plugin](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev --remote
@@ -569,7 +569,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

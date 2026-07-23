@@ -4,15 +4,15 @@ title: About
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  About
+# About
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Automatic Platform Optimization (APO), Cloudflare serves your entire site from our edge network, ensuring customers see improved performance when visiting your site. Cloudflare typically only caches static content, but with APO, we can also cache dynamic content — like HTML — to serve the entire site from the cache. This process removes round trips from the origin to drastically improve time to first byte (TTFB) along with other site performance metrics. In addition to caching dynamic content, APO caches third-party scripts to further reduce the number of requests that leave Cloudflare's edge network.
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/#page","headline":"About · Cloudflare Automatic Platform Optimization docs","description":"How APO caches dynamic WordPress content at the Cloudflare edge.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

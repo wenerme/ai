@@ -4,15 +4,15 @@ title: Logpush alerts and analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Logpush alerts and analytics
+# Logpush alerts and analytics
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush jobs may fail for a few reasons, for instance because the destination is unreachable, because of a change in permissions at the customers’ origin, or because a Logpush job did not complete at least one successful push in the last 24 hour.
 
@@ -45,7 +45,7 @@ In the email for the notification, you can find the destination name for the fai
 You can add an alert for **Failing Logpush Job Disabled** via the **Notifications** section of the dashboard. Note that alerts can be configured at the account level and apply to all jobs within an account.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Next, select **Add**.
 3. Select the alert **Failing Logpush Job Disabled**.
 4. Configure the alert: choose a name, add a description (optional), select the notification services, Webhooks and enter the email where you want to be notified.
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/#page","headline":"Logpush alerts and analytics · Cloudflare Logs docs","description":"Monitor Logpush job health with alerts and analytics.","url":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

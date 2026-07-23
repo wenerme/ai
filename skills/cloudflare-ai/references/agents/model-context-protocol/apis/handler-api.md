@@ -4,15 +4,15 @@ title: createMcpHandler
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  createMcpHandler
+# createMcpHandler
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `createMcpHandler` function creates a fetch handler to serve your [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/). Use it when you want a stateless MCP server that runs in a plain Worker (no Durable Object). For stateful MCP servers that persist state across requests, use the [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) class instead.
 
@@ -851,21 +851,21 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 
 ## Related Resources
 
-### [ Building MCP Servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
+### [Building MCP Servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
 
- Build and deploy MCP servers on Cloudflare.
+Build and deploy MCP servers on Cloudflare.
 
-### [ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
+### [MCP Tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
 
- Add tools to your MCP server.
+Add tools to your MCP server.
 
-### [ MCP Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+### [MCP Authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
 
- Authenticate users with OAuth.
+Authenticate users with OAuth.
 
-### [ McpAgent API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
+### [McpAgent API](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
 
- Build stateful MCP servers.
+Build stateful MCP servers.
 
 Was this helpful?
 
@@ -873,7 +873,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"createMcpHandler · Cloudflare Agents docs","description":"Create a stateless MCP server fetch handler for a plain Worker using createMcpHandler and streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

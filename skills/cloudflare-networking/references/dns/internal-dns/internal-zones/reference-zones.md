@@ -4,15 +4,15 @@ title: Reference zones
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Reference zones
+# Reference zones
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 During an [internal DNS query resolution](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview), if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is referencing another internal zone. Successive references can be followed with a maximum of five references in a chain.
 
@@ -30,7 +30,7 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 ## Set up
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[ Go to **Internal DNS** ↗ ](https://dash.cloudflare.com/?to=/:account/internal-dns)
+[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Select a zone.
 3. Within the selected zone, go to **Reference zone**.
 4. Select **Add reference zone**. If your zone already has a reference zone set up, you must first remove it. As explained in the [configuration conditions](#configuration-conditions), each internal zone can only reference one other zone at a time.
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/#page","headline":"Reference zones · Cloudflare DNS docs","description":"Learn about reference zones. Cloudflare Internal DNS allows zones to reference others for query resolution when no direct record is found.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

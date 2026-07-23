@@ -4,15 +4,15 @@ title: Use BYOIP with Magic Transit and CDN
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use BYOIP with Magic Transit and CDN
+# Use BYOIP with Magic Transit and CDN
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers using BYOIP can also benefit from the performance, reliability, and security that Cloudflare offers for HTTP-based applications. [Service bindings](https://developers.cloudflare.com/byoip/service-bindings/) allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline (which includes [Cache](https://developers.cloudflare.com/cache/), [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and more).
 
@@ -134,7 +134,7 @@ Tip
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[Go to **Address maps** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Select **Create an address map**.
 3. Choose the scope of the address map.
 4. Add the zones and IP addresses that you want to map.
@@ -150,7 +150,7 @@ Make sure you have the correct Key/Token and permissions.
 To create a DNS record in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Choose an address (`A`/`AAAA`) [record type](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
 4. Complete the required fields, setting the **Proxy status** to **proxied**.
@@ -206,7 +206,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/#page","headline":"Use BYOIP with Magic Transit and CDN · Cloudflare BYOIP docs","description":"Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.","url":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}

@@ -4,15 +4,15 @@ title: Prepared statement methods
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Prepared statement methods
+# Prepared statement methods
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/worker-api/prepared-statements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/worker-api/prepared-statements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This chapter documents the various ways you can run and retrieve the results of a query after you have [prepared your statement](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare).
 
@@ -36,12 +36,12 @@ stmt = self.env.DB.prepare(
 
 #### Parameter
 
-* `Variable`: ` string `
+* `Variable`: `string`
   * The variable to be appended into the prepared statement. See [guidance](#guidance) below.
 
 #### Return values
 
-* `D1PreparedStatement`: ` Object `
+* `D1PreparedStatement`: `Object`
   * A `D1PreparedStatement` where the input parameter has been included in the statement.
 
 #### Guidance
@@ -136,7 +136,7 @@ return_value = await stmt.run()
 
 #### Return values
 
-* `D1Result`: ` Object `
+* `D1Result`: `Object`
   * An object containing the success status, a meta object, and an array of objects containing the query results.
   * For more information on the object, refer to [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result).
 
@@ -236,12 +236,12 @@ return_value = await stmt.raw()
 
 #### Parameters
 
-* `columnNames`: ` Object `Optional
+* `columnNames`: `Object`Optional
   * A boolean object which includes column names as the first row of the result array.
 
 #### Return values
 
-* `Array`: ` Array `
+* `Array`: `Array`
   * An array of arrays. Each sub-array represents a row.
 
 Example of return values
@@ -325,18 +325,18 @@ values = await stmt.first()
 
 #### Parameters
 
-* `columnName`: ` String `Optional
+* `columnName`: `String`Optional
   * Specify a `columnName` to return a value from a specific column in the first row of the query result.
 * None.
   * Do not pass a parameter to obtain all columns from the first row.
 
 #### Return values
 
-* `firstRow`: ` Object `Optional
+* `firstRow`: `Object`Optional
 
   * An object containing the first row of the query result.
   * The return value will be further filtered to a specific attribute if `columnName` was specified.
-* `null`: ` null `
+* `null`: `null`
 
   * If the query returns no rows.
 
@@ -402,7 +402,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods · Cloudflare D1 docs","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

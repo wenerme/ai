@@ -4,7 +4,7 @@ title: GPT Image 1.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT Image 1.5
+# GPT Image 1.5
 
- Text-to-Image • OpenAI
+Text-to-Image • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-image-1.5 `
+`openai/gpt-image-1.5`
 
 * Third-party
 * Zero data retention
 
 OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
 
-| Model Info          |                                                                                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                  |
-| More information    | [link ↗](https://openai.com/)                                                                                           |
-| Zero data retention | Yes                                                                                                                     |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
+| Model Info          |                                                                                                                        |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information    | [link ↗](https://openai.com/)                                                                                          |
+| Zero data retention | Yes                                                                                                                    |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
 
 ## Usage
 
@@ -70,7 +70,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Quality**  — Generate a high-quality detailed image
+**High Quality** — Generate a high-quality detailed image
 
 ```ts
 const response = await env.AI.run(
@@ -111,7 +111,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Low Quality Draft**  — Fast, rough draft for iteration
+**Low Quality Draft** — Fast, rough draft for iteration
 
 ```ts
 const response = await env.AI.run(
@@ -151,7 +151,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Medium Quality**  — Balanced quality for most uses
+**Medium Quality** — Balanced quality for most uses
 
 ```ts
 const response = await env.AI.run(
@@ -192,7 +192,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Auto Quality**  — Let the model pick an appropriate quality level
+**Auto Quality** — Let the model pick an appropriate quality level
 
 ```ts
 const response = await env.AI.run(
@@ -261,9 +261,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -271,7 +271,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/#page","headline":"GPT Image 1.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

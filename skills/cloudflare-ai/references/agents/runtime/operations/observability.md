@@ -4,15 +4,15 @@ title: Observability
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Observability
+# Observability
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/observability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents emit structured events for every significant operation — RPC calls, state changes, schedule execution, workflow transitions, MCP connections, and more. These events are published to [diagnostics channels](https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/) and are silent by default (zero overhead when nobody is listening).
 
@@ -346,17 +346,17 @@ These events track chat message lifecycle, client-side tool interactions, and Th
 
 ## Next steps
 
-### [ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
+### [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 
- wrangler.jsonc setup and deployment.
+wrangler.jsonc setup and deployment.
 
-### [ Tail Workers ](https://developers.cloudflare.com/workers/observability/logs/tail-workers/)
+### [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/)
 
- Forward diagnostics channel events to a Tail Worker for production monitoring.
+Forward diagnostics channel events to a Tail Worker for production monitoring.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
 Was this helpful?
 
@@ -364,7 +364,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/#page","headline":"Observability · Cloudflare Agents docs","description":"Subscribe to structured Agent events for RPC calls, state changes, schedules, workflows, and MCP connections via diagnostics channels.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

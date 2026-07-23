@@ -4,7 +4,7 @@ title: Agent setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 ## Pick your agent
 
@@ -12,9 +12,9 @@ Select an agent to get step-by-step setup instructions.
 
 Filter by workflow:
 
- All  Terminal  IDE  Cloud  Extension
+AllTerminalIDECloudExtension
 
-[ ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/dark.svg) Claude Code Anthropic Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.  Terminal  Standalone  Cloud  Extension Full codebase understandingTerminal command executionGit operationsMulti-file editing View guide → ](https://developers.cloudflare.com/agent-setup/claude-code/)[ ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/dark.svg) Codex OpenAI Lightweight open-source terminal agent that reads and writes files, runs commands, and browses the web in a sandbox. Made by OpenAI.  Terminal  Standalone  Cloud  Extension  Open Source File read/write operationsCommand executionWeb browsingSandboxed environment View guide → ](https://developers.cloudflare.com/agent-setup/codex/)[ ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) Cursor Cursor AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.  Terminal  IDE  Standalone  Cloud Multi-file ComposerBackground agentsCodebase indexingTerminal integration View guide → ](https://developers.cloudflare.com/agent-setup/cursor/)[ ![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/light.svg) ![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) GitHub Copilot GitHub Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.  Terminal  Cloud  Extension Agent modeWorkspace contextCLI integrationPR summaries View guide → ](https://developers.cloudflare.com/agent-setup/github-copilot/)[ ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) OpenCode Anomaly Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.  Terminal  Standalone  Extension  Open Source 75+ model supportRich terminal TUIBuilt-in agents (build/plan)LSP integration View guide → ](https://developers.cloudflare.com/agent-setup/opencode/)[ ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) Windsurf Cognition Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.  IDE  Standalone Cascade context engineFlows automationDeep codebase searchCommand suggestions View guide → ](https://developers.cloudflare.com/agent-setup/windsurf/)
+[![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/light.svg)![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/dark.svg)Claude CodeAnthropicTerminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.TerminalStandaloneCloudExtensionFull codebase understandingTerminal command executionGit operationsMulti-file editingView guide →](https://developers.cloudflare.com/agent-setup/claude-code/)[![Codex icon](https://developers.cloudflare.com/icons/agents/codex/light.svg)![Codex icon](https://developers.cloudflare.com/icons/agents/codex/dark.svg)CodexOpenAILightweight open-source terminal agent that reads and writes files, runs commands, and browses the web in a sandbox. Made by OpenAI.TerminalStandaloneCloudExtensionOpen SourceFile read/write operationsCommand executionWeb browsingSandboxed environmentView guide →](https://developers.cloudflare.com/agent-setup/codex/)[![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/light.svg)![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/dark.svg)CursorCursorAI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.TerminalIDEStandaloneCloudMulti-file ComposerBackground agentsCodebase indexingTerminal integrationView guide →](https://developers.cloudflare.com/agent-setup/cursor/)[![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/dark.svg)GitHub CopilotGitHubEditor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.TerminalCloudExtensionAgent modeWorkspace contextCLI integrationPR summariesView guide →](https://developers.cloudflare.com/agent-setup/github-copilot/)[![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/dark.svg)OpenCodeAnomalyOpen-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.TerminalStandaloneExtensionOpen Source75+ model supportRich terminal TUIBuilt-in agents (build/plan)LSP integrationView guide →](https://developers.cloudflare.com/agent-setup/opencode/)[![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/light.svg)![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg)WindsurfCognitionAgentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.IDEStandaloneCascade context engineFlows automationDeep codebase searchCommand suggestionsView guide →](https://developers.cloudflare.com/agent-setup/windsurf/)[![Bionic icon](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![Bionic icon](https://developers.cloudflare.com/icons/agents/bionic/dark.svg)BionicLM StudioPowerful agent for coding and work. Natively local, with open models in the cloud. By LM Studio.StandaloneCloudLocal, remote, and cloud modelsCode Projects for local codebasesRepository search and file editingGit and local shell toolsView guide →](https://developers.cloudflare.com/agent-setup/bionic/)
 
 No agents match this filter.
 
@@ -24,14 +24,15 @@ Clear filter
 
 Capabilities, pricing, and context approaches compared.
 
-| Agent  ↑                                                                          | Terminal     | IDE            | Extension        | Cloud | Pricing | Model | Context | Open source |
-| --------------------------------------------------------------------------------- | ------------ | -------------- | ---------------- | ----- | ------- | ----- | ------- | ----------- |
-| [ Claude Code ](https://developers.cloudflare.com/agent-setup/claude-code/)       | Subscription | Locked         | Project memory   |       |         |       |         |             |
-| [ Codex ](https://developers.cloudflare.com/agent-setup/codex/)                   | Hybrid       | Locked         | Project memory   |       |         |       |         |             |
-| [ Cursor ](https://developers.cloudflare.com/agent-setup/cursor/)                 | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
-| [ GitHub Copilot ](https://developers.cloudflare.com/agent-setup/github-copilot/) | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
-| [ OpenCode ](https://developers.cloudflare.com/agent-setup/opencode/)             | BYOK         | Multi-provider | Project memory   |       |         |       |         |             |
-| [ Windsurf ](https://developers.cloudflare.com/agent-setup/windsurf/)             | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
+| Agent↑                                                                          | Terminal     | IDE            | Extension        | Cloud | Pricing | Model | Context | Open source |
+| ------------------------------------------------------------------------------- | ------------ | -------------- | ---------------- | ----- | ------- | ----- | ------- | ----------- |
+| [Bionic](https://developers.cloudflare.com/agent-setup/bionic/)                 | Hybrid       | Multi-provider | —                |       |         |       |         |             |
+| [Claude Code](https://developers.cloudflare.com/agent-setup/claude-code/)       | Subscription | Locked         | Project memory   |       |         |       |         |             |
+| [Codex](https://developers.cloudflare.com/agent-setup/codex/)                   | Hybrid       | Locked         | Project memory   |       |         |       |         |             |
+| [Cursor](https://developers.cloudflare.com/agent-setup/cursor/)                 | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
+| [GitHub Copilot](https://developers.cloudflare.com/agent-setup/github-copilot/) | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
+| [OpenCode](https://developers.cloudflare.com/agent-setup/opencode/)             | BYOK         | Multi-provider | Project memory   |       |         |       |         |             |
+| [Windsurf](https://developers.cloudflare.com/agent-setup/windsurf/)             | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
 
 Every agent listed supports Skills and MCP.
 
@@ -77,25 +78,25 @@ Which foundation models you can use. **Locked**supports only the vendor's own mo
 
 Context
 
-How the agent retains information about your project. **Session** only remembers the current conversation. **Project memory** persists across sessions. **Indexed codebase** builds a searchable index of your whole repository.
+How the agent retains information about your project.**Session** only remembers the current conversation.**Project memory** persists across sessions.**Indexed codebase** builds a searchable index of your whole repository.
 
 ### Common tradeoffs
 
 Decisions you'll make when picking an agent.
 
-Cloud vs. Local
+Cloudvs.Local
 
 Cloud agents run on hosted infrastructure and read your code over the network. Local agents run on your own machine, with no code leaving it.
 
-Proprietary vs. Open source
+Proprietaryvs.Open source
 
 Proprietary agents ship under a closed license you don't control. Open-source agents publish their source under an open license, so you can read, modify, or fork the code.
 
-Locked model vs. BYOK
+Locked modelvs.BYOK
 
 Locked agents only work with the vendor's own proprietary models. BYOK agents let you bring your own API key and switch between providers and models.
 
-Session vs. Indexed codebase
+Sessionvs.Indexed codebase
 
 Session context resets when you close the conversation. An indexed codebase is built up front and persists, letting the agent retrieve any file in the repo on demand.
 

@@ -4,15 +4,15 @@ title: Aggregate functions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Aggregate functions
+# Aggregate functions
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## count
 
@@ -130,7 +130,7 @@ quantileExactWeighted(0.95)(query_time, _sample_interval)
 
 For backwards compatibility, this is also available as `quantileWeighted(q, column_name, weight_column_name)`.
 
-## argMax  New
+## argMax New
 
 Usage:
 
@@ -152,7 +152,7 @@ argMax(blob1, double1)
 argMax(blob1, _sample_interval)
 ```
 
-## argMin  New
+## argMin New
 
 Usage:
 
@@ -174,7 +174,7 @@ argMin(blob1, double1)
 argMin(blob1, _sample_interval)
 ```
 
-## first\_value  New
+## first\_value New
 
 Usage:
 
@@ -191,7 +191,7 @@ Example:
 SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
 ```
 
-## last\_value  New
+## last\_value New
 
 Usage:
 
@@ -208,7 +208,7 @@ Example:
 SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
 ```
 
-## topK  New
+## topK New
 
 Usage:
 
@@ -230,7 +230,7 @@ SELECT topK(double1) FROM my_dataset
 SELECT topK(15)(blob1) FROM my_dataset
 ```
 
-## topKWeighted  New
+## topKWeighted New
 
 Usage:
 
@@ -252,7 +252,7 @@ SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
 SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
 ```
 
-## countIf  New
+## countIf New
 
 Usage:
 
@@ -269,7 +269,7 @@ Example:
 countIf(double1 > 5)
 ```
 
-## sumIf  New
+## sumIf New
 
 Usage:
 
@@ -286,7 +286,7 @@ Example:
 sumIf(item_cost, in_stock > 0)
 ```
 
-## avgIf  New
+## avgIf New
 
 Usage:
 
@@ -309,7 +309,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"SQL aggregate functions for Analytics Engine queries.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

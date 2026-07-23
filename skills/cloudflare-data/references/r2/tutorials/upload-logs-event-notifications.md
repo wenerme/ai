@@ -4,19 +4,19 @@ title: Log and store upload events in R2 with event notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Log and store upload events in R2 with event notifications
+# Log and store upload events in R2 with event notifications
 
-Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example provides a step-by-step guide on using [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to capture and store R2 upload logs in a separate bucket.
 
-![Push-Based R2 Event Notifications](https://developers.cloudflare.com/_astro/pushed-based-event-notification.NdMYExDK_ZD7HLg.svg)
+![Push-Based R2 Event Notifications](https://developers.cloudflare.com/_astro/pushed-based-event-notification.NdMYExDK_KsJeQ.svg)
 
 ## 1\. Install Wrangler
 
@@ -50,7 +50,7 @@ Before you enable event notifications for `example-upload-bucket`, you need to c
 
 Create a new Worker with C3 (`create-cloudflare` CLI). [C3](https://developers.cloudflare.com/pages/get-started/c3/) is a command-line tool designed to help you set up and deploy new applications, including Workers, to Cloudflare.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- consumer-worker
@@ -88,7 +88,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 	"name": "event-notification-writer",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -115,7 +115,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 name = "event-notification-writer"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.consumers]]
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

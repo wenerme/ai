@@ -4,15 +4,15 @@ title: JSON functions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JSON functions
+# JSON functions
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pipelines provides two set of JSON functions, the first based on PostgreSQL's SQL functions and syntax, and the second based on the [JSONPath ↗](https://jsonpath.com/) standard.
 
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json/#page","headline":"JSON functions · Cloudflare Pipelines Docs","description":"Scalar functions for manipulating JSON","url":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

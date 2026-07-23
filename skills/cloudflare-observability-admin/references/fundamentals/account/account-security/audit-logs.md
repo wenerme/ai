@@ -4,15 +4,15 @@ title: Audit Logs - version 2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Audit Logs - version 2
+# Audit Logs - version 2
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -102,7 +102,7 @@ For more information refer to the [API documentation ↗](https://developers.clo
 
 To access audit logs in the Cloudflare dashboard, go to **Manage Account** \> **Audit Logs**.
 
-[ Go to **Audit logs** ↗ ](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 Note
 
@@ -117,7 +117,7 @@ For customers who already have a Logpush job set up for Audit Logs v1, note that
 To create a Logpush job:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. In **Select a destination**, select the destination of your choice and add the destination details.
 4. In the datasets section, select the [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/). Audit Logs v2 is an account-based dataset.
@@ -288,7 +288,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

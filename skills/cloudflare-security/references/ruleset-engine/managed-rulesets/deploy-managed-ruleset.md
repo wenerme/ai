@@ -4,15 +4,15 @@ title: Deploy a managed ruleset
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy a managed ruleset
+# Deploy a managed ruleset
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy a managed ruleset at the zone level or at the account level. To deploy a managed ruleset to a phase, use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
@@ -267,7 +267,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/#page","headline":"Deploy a managed ruleset · Cloudflare Ruleset Engine docs","description":"Deploy a managed ruleset to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

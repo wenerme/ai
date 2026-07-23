@@ -4,11 +4,11 @@ title: http.request.jwt.claims.iss
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  http.request.jwt.claims.iss
+# http.request.jwt.claims.iss
 
-`http.request.jwt.claims.iss` ` Map<Array<String>> `
+`http.request.jwt.claims.iss` `Map<Array<String>>`
 
 The `iss` (issuer) claim identifies the principal that issued the JWT.
 
@@ -26,7 +26,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.iss/#page","headline":"http.request.jwt.claims.iss · Cloudflare Ruleset Engine docs","description":"The iss (issuer) claim identifies the principal that issued the JWT.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.iss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

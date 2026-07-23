@@ -4,15 +4,15 @@ title: Usage-based billing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Usage-based billing
+# Usage-based billing
 
-Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For some Cloudflare subscriptions and services, Cloudflare charges you based on how much you used a feature during your previous billing period. This differs from other services, which are a prepaid flat fee for the upcoming month (for example, plans and page rules).
 
@@ -82,7 +82,7 @@ For example, Argo Smart Routing has **Notify when total bytes of traffic exceeds
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Select your account.
 3. Go to **Notifications**.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 4. Select **Add** to create a new notification for **Billable Usage**.
 
 For more information, refer to [Cloudflare notifications](https://developers.cloudflare.com/notifications/get-started/).
@@ -104,7 +104,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/usage-based-billing/#page","headline":"Usage-based billing · Cloudflare Billing docs","description":"Products that bill based on metered consumption.","url":"https://developers.cloudflare.com/billing/understand/usage-based-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

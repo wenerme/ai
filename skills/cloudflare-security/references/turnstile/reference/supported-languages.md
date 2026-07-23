@@ -4,15 +4,15 @@ title: Supported languages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Supported languages
+# Supported languages
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/reference/supported-languages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/reference/supported-languages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile supports `auto` (default), which uses the visitor's browser language if it is supported. You can also explicitly set the widget's language using the [client-side configuration attribute](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations) to one listed on the table below:
 
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/supported-languages/#page","headline":"Supported languages · Cloudflare Turnstile docs","description":"Languages supported by Cloudflare Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}

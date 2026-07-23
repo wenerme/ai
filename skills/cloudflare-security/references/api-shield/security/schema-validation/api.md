@@ -4,15 +4,15 @@ title: Configure Schema validation via the API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure Schema validation via the API
+# Configure Schema validation via the API
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/schema-validation/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schema validation 2.0 allows all corresponding configuration calls to be made via API. This validation centers more around individual endpoints and lets you set mitigation actions for each endpoint individually. Additionally, you can use Cloudflare-provided learned schemas that we [learn automatically](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-schema-learning) from your traffic for individual endpoints.
 
@@ -480,7 +480,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/api/#page","headline":"Configure Schema validation · Cloudflare API Shield docs","description":"Configure per-endpoint schema validation and mitigation actions using the API.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

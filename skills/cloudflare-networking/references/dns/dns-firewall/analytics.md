@@ -4,15 +4,15 @@ title: Analytics and logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Analytics and logs
+# Analytics and logs
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dns-firewall/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the sections below to learn how to access analytics and logs for your DNS Firewall.
 
@@ -30,7 +30,7 @@ For a quick summary, view your DNS Firewall analytics on the dashboard. The DNS 
 
 In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page.
 
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 
 #### Available dimensions
 
@@ -70,7 +70,7 @@ The DNS Firewall analytics has two [schemas](https://developers.cloudflare.com/a
 * `dnsFirewallAnalyticsAdaptive`: Retrieve information about individual DNS Firewall queries.
 * `dnsFirewallAnalyticsAdaptiveGroups`: Get reports on aggregate information only.
 
-### API  Legacy
+### API Legacy
 
 You can also use the DNS Firewall API [reports endpoint](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/subresources/analytics/subresources/reports/).
 
@@ -104,7 +104,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/dns-firewall/analytics/#page","headline":"Analytics and logs · Cloudflare DNS docs","description":"Access DNS Firewall query analytics and configure Logpush for DNS logs.","url":"https://developers.cloudflare.com/dns/dns-firewall/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL","Logging"]}

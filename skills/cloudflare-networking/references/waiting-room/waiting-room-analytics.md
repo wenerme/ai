@@ -4,15 +4,15 @@ title: Waiting Room Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Waiting Room Analytics
+# Waiting Room Analytics
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Waiting Room Analytics gives you historical insights into the traffic going through your waiting room compared to your waiting room settings. Data is stored for the past 30 days.
 
@@ -27,7 +27,7 @@ Using Waiting Room Analytics, you can:
 To access your waiting room’s analytics in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Waiting Room** page.
-[ Go to **Waiting Room** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
+[Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
 2. Expand the waiting room you would like to review metrics for, to display a preview of your waiting room analytics. The preview gives you insights into peak traffic through your waiting room over the last 24 hours including: Maximum active users, Maximum queued users and Typical time in queue for queued users.
 3. Select **View More** under the Waiting Room Analytics section to get more historical analytics for your waiting room.
 4. The time range for all of the metrics displayed defaults to the last 24 hours. To change the time range, select from the drop down. You can select any time range from the last 30 days that is a minimum of 30 minutes.
@@ -282,7 +282,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/waiting-room-analytics/#page","headline":"Waiting Room Analytics · Cloudflare Waiting Room docs","description":"View waiting room queue depth, wait times, and visitor analytics.","url":"https://developers.cloudflare.com/waiting-room/waiting-room-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}

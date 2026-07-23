@@ -4,15 +4,15 @@ title: Metrics and analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Metrics and analytics
+# Metrics and analytics
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/observability/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/metrics-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 exposes database analytics that allow you to inspect query volume, query latency, and storage size across all and/or each database in your account.
 
@@ -47,7 +47,7 @@ Refer to the [Pricing documentation](https://developers.cloudflare.com/d1/platfo
 Per-database analytics for D1 are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
 1. In the Cloudflare dashboard, go to the **D1** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select an existing D1 database.
 3. Select the **Metrics** tab.
 
@@ -338,7 +338,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

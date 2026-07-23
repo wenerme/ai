@@ -4,15 +4,15 @@ title: Phase 4: Post-migration and DNSSEC Re-activation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Phase 4: Post-migration and DNSSEC Re-activation
+# Phase 4: Post-migration and DNSSEC Re-activation
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After the cutover, verify and stabilize.
 
@@ -29,7 +29,7 @@ Enable DNSSEC only after you are confident that DNS is resolving correctly throu
 **Action in Cloudflare:**
 
 1. In the Cloudflare dashboard, go to your zone's **DNS Settings**.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Select **Enable DNSSEC**. Cloudflare will sign your zone and generate `DNSKEY` and `DS` record details.
 
 **Action at registrar:**
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/#page","headline":"Phase 4: Post-migration and DNSSEC Re-activation · Cloudflare Learning Paths","description":"Verify and stabilize after DNS migration.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

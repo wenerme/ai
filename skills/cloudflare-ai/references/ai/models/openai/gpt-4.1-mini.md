@@ -4,7 +4,7 @@ title: GPT-4.1 mini
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-4.1 mini
+# GPT-4.1 mini
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-4.1-mini `
+`openai/gpt-4.1-mini`
 
 * Third-party
 * Zero data retention
 
 Fast, affordable version of GPT-4.1 with a million-token context window.
 
-| Model Info                                                                  |                                                                                                                        |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,047,576 tokens                                                                                                       |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                            | [link ↗](https://openai.com/index/gpt-4-1/)                                                                            |
-| Zero data retention                                                         | Yes                                                                                                                    |
-| Request formats                                                             | Responses, Chat Completions                                                                                            |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-mini) |
+| Model Info                                                                 |                                                                                                                       |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,047,576 tokens                                                                                                      |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                           | [link ↗](https://openai.com/index/gpt-4-1/)                                                                           |
+| Zero data retention                                                        | Yes                                                                                                                   |
+| Request formats                                                            | Responses, Chat Completions                                                                                           |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-mini) |
 
 ## Usage
 
@@ -120,7 +120,7 @@ If you need, I can also explain the Zeroth Law, which is foundational and often 
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -218,7 +218,7 @@ Let me know if you need help with that!
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -321,7 +321,7 @@ Would you like recommendations for dining, accommodations, or activities at any 
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -399,7 +399,7 @@ Detective Elena Marsh crouched beside the shattered window, the cold wind tuggin
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -6975,7 +6975,7 @@ This shows how recursion breaks down a problem into smaller identical problems u
 ]
 ```
 
-**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -7301,9 +7301,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -7311,7 +7311,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/#page","headline":"GPT-4.1 mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Fast, affordable version of GPT-4.1 with a million-token context window.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

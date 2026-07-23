@@ -4,15 +4,15 @@ title: DNS in Google Sheets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DNS in Google Sheets
+# DNS in Google Sheets
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Create a function
 
@@ -178,7 +178,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/#page","headline":"DNS in Google Sheets | Cloudflare Docs","description":"Look up DNS records directly inside Google Sheets using Cloudflare's 1.1.1.1 DNS resolver and a custom Google Apps Script function.","url":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","JSON","Integration"]}

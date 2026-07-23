@@ -4,15 +4,15 @@ title: How Agent Memory works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How Agent Memory works
+# How Agent Memory works
 
-Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent Memory is a managed service that gives your applications persistent, AI-powered memory. It automatically turns raw conversations into structured knowledge and retrieves the right context when you need it.
 
@@ -57,13 +57,13 @@ Agent Memory is designed for safe re-ingestion:
 
 ## Related resources
 
-### [ Profiles and namespaces ](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
+### [Profiles and namespaces](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
 
- Understand the isolation model for memory storage.
+Understand the isolation model for memory storage.
 
-### [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/)
+### [Workers API](https://developers.cloudflare.com/agent-memory/api/workers-api/)
 
- Configure bindings and use profiles from Worker code.
+Configure bindings and use profiles from Worker code.
 
 Was this helpful?
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/#page","headline":"How Agent Memory works · Cloudflare Agent Memory docs","description":"A high-level overview of how Agent Memory extracts, stores, and retrieves knowledge from conversations.","url":"https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

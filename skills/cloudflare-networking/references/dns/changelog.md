@@ -4,17 +4,17 @@ title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Changelog
+# Changelog
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dns.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dns.xml)
 
 ## 2026-07-15
 
@@ -67,7 +67,7 @@ Available to all DNS Firewall customers as part of their existing subscription.
 
 In the Cloudflare dashboard, go to the **DNS Firewall** page.
 
-[ Go to **Clusters** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
+[Go to **Clusters** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
 
 For more information, refer to [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/).
 
@@ -181,9 +181,9 @@ Available to customers with the [Data Localization Suite](https://developers.clo
 #### Where to find it
 
 * **Authoritative DNS:** In the Cloudflare dashboard, select your zone and go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
 * **DNS Firewall:** In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 
 For more information, refer to [DNS Analytics](https://developers.cloudflare.com/dns/additional-options/analytics/) and [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/).
 
@@ -218,7 +218,7 @@ Available to all DNS Firewall customers as part of their existing subscription.
 #### Where to Find It
 
 * In the Cloudflare dashboard, go to the **DNS Firewall** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 * Refer to the [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/) to learn more.
 
 ## 2025-06-19
@@ -387,7 +387,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/dns/changelog/#page","headline":"Changelog · Cloudflare DNS docs","description":"Track the latest updates and changes to Cloudflare DNS features.","url":"https://developers.cloudflare.com/dns/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

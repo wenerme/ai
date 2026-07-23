@@ -4,15 +4,15 @@ title: Manage operations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage operations
+# Manage operations
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Operation states
 
@@ -79,7 +79,7 @@ For the same method, hostname pattern, and path pattern, Cloudflare generates th
 Add an operation manually when traffic you want to protect has not been discovered, or when you want to define the operation structure yourself.
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted.
-[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select **Add operation**.
 3. Choose **Manually add**.
 4. Select the HTTP method, enter the hostname pattern and path pattern.
@@ -128,7 +128,7 @@ Review overlapping operations before making changes. Cloudflare matches a reques
 You can delete operations one at a time or in bulk.
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted.
-[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select the operation(s) that you want to delete.
 3. Confirm with **Delete operations**.
 
@@ -146,7 +146,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/manage-operations/#page","headline":"Manage operations · Security dashboard docs","description":"Add, review, refine, and delete HTTP request operations in Web Assets.","url":"https://developers.cloudflare.com/security/web-assets/manage-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

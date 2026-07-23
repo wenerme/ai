@@ -4,15 +4,15 @@ title: Reverse zones and PTR records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Reverse zones and PTR records
+# Reverse zones and PTR records
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/additional-options/reverse-zones/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/additional-options/reverse-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you control your own IP prefix(es), you can set up reverse zones with PTR records to allow reverse DNS lookups.
 
@@ -69,7 +69,7 @@ Example
 ### 2\. Add PTR records
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. For each IP within the prefix, add a PTR record using the least significant octet(s) as the subdomain.
 
 IPv4 example
@@ -117,7 +117,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/#page","headline":"Reverse zones and PTR records · Cloudflare DNS docs","description":"Set up reverse DNS zones and PTR records.","url":"https://developers.cloudflare.com/dns/additional-options/reverse-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}

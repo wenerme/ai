@@ -4,15 +4,15 @@ title: Human-in-the-loop patterns
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Human-in-the-loop patterns
+# Human-in-the-loop patterns
 
-Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Human-in-the-loop (HITL) patterns add approval or input at different layers of an Agent. You can respond to an MCP server request, hold application work in a durable Workflow, or approve a connector call before model-generated code invokes a tool.
 
@@ -476,7 +476,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 	"name": "expense-approval",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -496,7 +496,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 name = "expense-approval"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -889,21 +889,21 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 ## Next steps
 
-### [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Complete waitForApproval() API reference.
+Complete waitForApproval() API reference.
 
-### [ MCP clients ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+### [MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
- Handle elicitation requests in an Agent acting as an MCP client.
+Handle elicitation requests in an Agent acting as an MCP client.
 
-### [ MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
+### [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
 
- Request form or URL elicitation from an MCP server.
+Request form or URL elicitation from an MCP server.
 
-### [ Durable Code Mode runtime ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
+### [Durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
 
- Pause model-generated code for approval before connector calls.
+Pause model-generated code for approval before connector calls.
 
 Was this helpful?
 
@@ -911,7 +911,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

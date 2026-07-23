@@ -4,15 +4,15 @@ title: Get Started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get Started
+# Get Started
 
-Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Miniflare API allows you to dispatch events to workers without making actual HTTP requests, simulate connections between Workers, and interact with local emulations of storage products like [KV](https://developers.cloudflare.com/workers/testing/miniflare/storage/kv), [R2](https://developers.cloudflare.com/workers/testing/miniflare/storage/r2), and [Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects). This makes it great for writing tests, or other advanced use cases where you need finer-grained control.
 
@@ -20,7 +20,7 @@ The Miniflare API allows you to dispatch events to workers without making actual
 
 Miniflare is installed using `npm` as a dev dependency:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D miniflare
@@ -428,7 +428,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/get-started/#page","headline":"Get Started · Cloudflare Workers docs","description":"Install and configure the Miniflare API to dispatch events and test Cloudflare Workers locally.","url":"https://developers.cloudflare.com/workers/testing/miniflare/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

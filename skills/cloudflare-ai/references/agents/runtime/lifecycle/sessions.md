@@ -4,15 +4,15 @@ title: Sessions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sessions
+# Sessions
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. By default, it uses Durable Object SQLite. External Postgres storage is also available for apps that need shared database access, analytics, or cross-Durable Object queries.
 
@@ -1081,7 +1081,7 @@ CREATE INDEX IF NOT EXISTS idx_search_entries_fts
 
 Install `pg`, then create a client from the Hyperdrive connection string and pass it to the Postgres providers:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i pg
@@ -1237,7 +1237,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

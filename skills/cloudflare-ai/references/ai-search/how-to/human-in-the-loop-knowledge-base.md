@@ -4,15 +4,15 @@ title: Human-in-the-loop knowledge base updates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Human-in-the-loop knowledge base updates
+# Human-in-the-loop knowledge base updates
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds an agent that searches a knowledge base and adds to it, with a human approving every write. Letting an agent modify your data is risky, so each save pauses for approval before it runs, and you can roll back a save that turned out wrong.
 
@@ -47,7 +47,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `kb-agent` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- kb-agent
@@ -77,7 +77,7 @@ cd kb-agent
 
 Install the dependencies. The `ai` and `zod` versions are pinned to the ranges the Agents SDK expects as peer dependencies:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/codemode @cloudflare/ai-chat agents ai@6 workers-ai-provider zod@4
@@ -97,7 +97,7 @@ bun add @cloudflare/codemode @cloudflare/ai-chat agents ai@6 workers-ai-provider
 
 This tutorial uses the AI Search and Worker Loader bindings, which require Wrangler v4\. If `create-cloudflare` set up your project with an earlier version, upgrade it:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D wrangler@4
@@ -125,7 +125,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "kb-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -167,7 +167,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "kb-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -770,21 +770,21 @@ Your agent can now:
 
 ## Next steps
 
-### [ Create a durable Code Mode runtime ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
+### [Create a durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/)
 
- The full runtime API: rejection, execution history, and reusable snippets.
+The full runtime API: rejection, execution history, and reusable snippets.
 
-### [ AI Search as an agent tool ](https://developers.cloudflare.com/agents/tools/ai-search/)
+### [AI Search as an agent tool](https://developers.cloudflare.com/agents/tools/ai-search/)
 
- Give a Cloudflare Agent retrieval with AI Search.
+Give a Cloudflare Agent retrieval with AI Search.
 
-### [ Hybrid search ](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
+### [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
 
- Combine vector and keyword search with configurable fusion.
+Combine vector and keyword search with configurable fusion.
 
-### [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
+### [Items Workers binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
 
- Full reference for uploading, listing, and deleting documents.
+Full reference for uploading, listing, and deleting documents.
 
 Was this helpful?
 
@@ -792,7 +792,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/#page","headline":"Human-in-the-loop knowledge base updates · Cloudflare AI Search docs","description":"Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.","url":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

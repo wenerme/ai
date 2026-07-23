@@ -4,7 +4,7 @@ title: WARP - Understand Cloudflare WARP through diagnostic logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files - warp-status, warp-settings, and daemonlog. The video also provides troubleshooting tips, including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.
 
@@ -12,28 +12,28 @@ Chapters
 
 * ![00:00 Introduction"](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **00:00 Introduction"**  0s
+**00:00 Introduction"**0s
 * ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
 
- **What are warp-diag files?**  44s
+**What are warp-diag files?**44s
 * ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
 
- **How to download and navigate warp-diag files**  01m16s
+**How to download and navigate warp-diag files**01m16s
 * ![warp-statustxt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
 
- **warp-statustxt**  02m06s
+**warp-statustxt**02m06s
 * ![warp-settingstxt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
 
- **warp-settingstxt**  02m29s
+**warp-settingstxt**02m29s
 * ![daemonlog](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
 
- **daemonlog**  03m37s
+**daemonlog**03m37s
 * ![Additonal tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
 
- **Additonal tips**  08m07s
+**Additonal tips**08m07s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
 
- **Conclusion**  08m43s
+**Conclusion**08m43s
 
 Transcript
 

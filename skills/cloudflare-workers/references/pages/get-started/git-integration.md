@@ -4,15 +4,15 @@ title: Git integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Git integration
+# Git integration
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/get-started/git-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/get-started/git-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will get started with Cloudflare Pages and deploy your first website to the Pages platform through Git integration. The Git integration enables automatic builds and deployments every time you push a change to your connected [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/) repository.
 
@@ -25,7 +25,7 @@ If you deploy using the Git integration, you cannot switch to [Direct Upload](ht
 Pages offers support for [GitHub ↗](https://github.com/) and [GitLab ↗](https://gitlab.com/). To create your first Pages project:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Connect to Git**.
 
 You will be prompted to sign in with your preferred Git provider. This allows Cloudflare Pages to deploy your projects, and update your PRs with [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
@@ -115,7 +115,7 @@ After your first deploy, select **Continue to project** to see your project's co
 To delete your Pages project:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings** \> **Delete project**.
 
 Caution
@@ -140,7 +140,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/get-started/git-integration/#page","headline":"Git integration guide · Cloudflare Pages docs","description":"Connect your Git provider to Pages.","url":"https://developers.cloudflare.com/pages/get-started/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

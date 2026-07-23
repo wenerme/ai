@@ -4,7 +4,7 @@ title: Seedance 2.0 Fast
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)
 
-#  Seedance 2.0 Fast
+# Seedance 2.0 Fast
 
- Text-to-Video • ByteDance
+Text-to-Video • ByteDance
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` bytedance/seedance-2.0-fast `
+`bytedance/seedance-2.0-fast`
 
 * Third-party
 
 Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.
 
-| Model Info       |                                                                                                                                |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedance)                                                                               |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-fast) |
+| Model Info       |                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedance)                                                                              |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-fast) |
 
 ## Usage
 
@@ -73,7 +73,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait Video**  — Vertical video for social media
+**Portrait Video** — Vertical video for social media
 
 ```ts
 const response = await env.AI.run(
@@ -175,9 +175,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -185,7 +185,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/#page","headline":"Seedance 2.0 Fast (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

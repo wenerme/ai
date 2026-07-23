@@ -4,15 +4,15 @@ title: Create your first AI Gateway using Workers AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create your first AI Gateway using Workers AI
+# Create your first AI Gateway using Workers AI
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard. The intended audience is beginners who are new to AI Gateway and Workers AI. Creating an AI Gateway enables the user to efficiently manage and secure AI requests, allowing them to utilize AI models for tasks such as content generation, data processing, or predictive analysis with enhanced control and performance.
 
@@ -25,7 +25,7 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/#page","headline":"Create your first AI Gateway using Workers AI · Cloudflare AI Gateway docs","description":"This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

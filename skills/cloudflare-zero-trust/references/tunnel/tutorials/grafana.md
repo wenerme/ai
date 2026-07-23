@@ -4,15 +4,15 @@ title: Monitor Cloudflare Tunnel with Grafana
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitor Cloudflare Tunnel with Grafana
+# Monitor Cloudflare Tunnel with Grafana
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Grafana ↗](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/monitoring/#metrics) into actionable insights.
 
@@ -133,7 +133,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}

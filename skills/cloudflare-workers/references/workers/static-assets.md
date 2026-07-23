@@ -4,21 +4,21 @@ title: Static Assets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Static Assets
+# Static Assets
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can upload static assets (HTML, CSS, images and other files) as part of your Worker, and Cloudflare will handle caching and serving them to web browsers.
 
 **Start from CLI** \- Scaffold a React SPA with an API Worker, and use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-react-app --framework=react
@@ -40,9 +40,9 @@ pnpm create cloudflare@latest my-react-app --framework=react
 
 Learn more about supported frameworks on Workers.
 
-### [ Supported frameworks ](https://developers.cloudflare.com/workers/framework-guides/)
+### [Supported frameworks](https://developers.cloudflare.com/workers/framework-guides/)
 
- Start building on Workers with our framework guides.
+Start building on Workers with our framework guides.
 
 ### How it works
 
@@ -56,7 +56,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
   "name": "my-spa",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
@@ -69,7 +69,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
 name = "my-spa"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist"
@@ -146,7 +146,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 {
 	"name": "my-spa-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./src/index.ts",
 	"assets": {
 		"directory": "./dist/",
@@ -160,7 +160,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 ```toml
 name = "my-spa-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./src/index.ts"
 
 [assets]
@@ -172,9 +172,9 @@ run_worker_first = [ "/api/*", "!/api/docs/*" ]
 
 For a more advanced pattern, refer to [SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/), which uses HTMLRewriter to inject prefetched API data into the HTML stream.
 
-### [ Routing options ](https://developers.cloudflare.com/workers/static-assets/routing/)
+### [Routing options](https://developers.cloudflare.com/workers/static-assets/routing/)
 
- Learn more about how you can customize routing behavior.
+Learn more about how you can customize routing behavior.
 
 ### Caching behavior
 
@@ -185,19 +185,19 @@ Cloudflare provides automatic caching for static assets across its network, ensu
 
 ## Try it out
 
-### [ Vite + React SPA tutorial ](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)
+### [Vite + React SPA tutorial](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)
 
- Learn how to build and deploy a full-stack Single Page Application with static assets and API routes.
+Learn how to build and deploy a full-stack Single Page Application with static assets and API routes.
 
 ## Learn more
 
-### [ Supported frameworks ](https://developers.cloudflare.com/workers/framework-guides/)
+### [Supported frameworks](https://developers.cloudflare.com/workers/framework-guides/)
 
- Start building on Workers with our framework guides.
+Start building on Workers with our framework guides.
 
-### [ Billing and limitations ](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/)
+### [Billing and limitations](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/)
 
- Learn more about how requests are billed, current limitations, and troubleshooting.
+Learn more about how requests are billed, current limitations, and troubleshooting.
 
 Was this helpful?
 
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Static Assets · Cloudflare Workers docs","description":"Create full-stack applications deployed to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Custom Origin Trust Store
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Custom Origin Trust Store
+# Custom Origin Trust Store
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare's global network maintains [a list of publicly trusted certificate authorities ↗](https://github.com/cloudflare/cfssl%5Ftrust). This means that when using [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/), Cloudflare will only trust origin server certificates issued by a CA included in this trust store.
 
@@ -34,7 +34,7 @@ Custom Origin Trust Store accepts ML-DSA (FIPS 204) post-quantum certificate aut
 To manage origin trust stores in the dashboard:
 
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Custom Origin Trust Store** tab.
 3. Select **Upload trust store** to add a CA certificate, or use the table to manage existing trust stores.
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/#page","headline":"Custom Origin Trust Store · Cloudflare SSL/TLS docs","description":"Custom Origin Trust Store allows you to upload certificate authorities (CAs) that Cloudflare will use to authenticate connections to your origin server.","url":"https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

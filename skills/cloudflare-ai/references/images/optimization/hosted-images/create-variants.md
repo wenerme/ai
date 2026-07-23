@@ -4,15 +4,15 @@ title: Create predefined variants
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create predefined variants
+# Create predefined variants
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Variants let you specify how images should be resized for different use cases. By default, images are served with a `public` variant, but you can create up to 100 variants to fit your needs. Follow these steps to create a variant.
 
@@ -21,7 +21,7 @@ Note
 Cloudflare Images can deliver SVG files but will not resize them because it is an inherently scalable format. Resize via the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[ Go to **Hosted images** ↗ ](https://dash.cloudflare.com/?to=/:account/images/hosted)
+[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select the **Delivery** tab.
 3. Select **Create variant**.
 4. Name your variant and select **Create**.
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/#page","headline":"Create predefined variants · Cloudflare Images docs","description":"Define named variants in Cloudflare Images to control how hosted images are resized and served.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

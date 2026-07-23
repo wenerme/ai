@@ -4,15 +4,15 @@ title: Use webhooks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use webhooks
+# Use webhooks
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Webhooks notify your service when videos successfully finish processing and are ready to stream or if your video enters an error state.
 
@@ -24,7 +24,7 @@ Webhooks works differently for live broadcasting. For more information, refer to
 
 To subscribe to receive webhook notifications on your service or modify an existing subscription, generate an API token on the **Account API tokens** page of the Cloudflare dashboard.
 
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 
 The webhook notification URL must include the protocol. Only `http://` or `https://` is supported.
 
@@ -266,7 +266,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#page","headline":"Use webhooks · Cloudflare Stream docs","description":"Receive webhook notifications when Cloudflare Stream videos finish processing or encounter errors.","url":"https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

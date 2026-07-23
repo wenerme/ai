@@ -4,19 +4,19 @@ title: Production Deployment Testing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Production Deployment Testing
+# Production Deployment Testing
 
-Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers obtaining a token from your Cloudflare-operated deployment. By this point, you and Cloudflare have already worked together to build and provision the pieces below. Use this guide to confirm the deployment issues and redeems tokens end to end.
+This guide covers obtaining a token from your Cloudflare-operated deployment. By this point, you and Cloudflare have already worked together to build and provision the following components. Use this guide to confirm the deployment issues and redeems tokens end to end.
 
-Privacy Pass is not a self-serve product at the moment: a production deployment is a managed engagement with Cloudflare. If you just want to see Privacy Pass work without any setup, see [Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/).
+Privacy Pass is not a self-serve product at the moment: a production deployment is a managed engagement with Cloudflare. If you just want to see Privacy Pass work without any setup, refer to [Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/).
 
 [Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to request access and receive your issuer configuration.
 
@@ -32,7 +32,7 @@ Privacy Pass is not a self-serve product at the moment: a production deployment 
 
 **What you operate or need in place:**
 
-* A working **Attester** — the service that verifies your claim and, once the Client is verified, proxies the blinded token request to the Issuer. In Cloudflare Issuer deployments, the Client never contacts the Issuer directly. You operate the Attester to keep roles separate; Cloudflare can help build it. See [cloudflare/privacypass-attester ↗](https://github.com/cloudflare/privacypass-attester) for an implementation for Cloudflare Workers.
+* A working **Attester**, the service that verifies your claim and, once the Client is verified, proxies the blinded token request to the Issuer. In Cloudflare Issuer deployments, the Client never contacts the Issuer directly. Generally, you operate the Attester to keep roles separate, but Cloudflare can help build it. Refer to [cloudflare/privacypass-attester ↗](https://github.com/cloudflare/privacypass-attester) for an implementation for Cloudflare Workers.
 * The **Origin** (the web service, application, or website a Client is trying to access) configured to verify tokens against the issuer's public key (or Cloudflare redemption at the edge).
 * The **mTLS client certificate** your Attester uses to authenticate to the issuer.
 * The **client library** for running the issuance protocol. Library options include TypeScript, Go, and Rust.
@@ -116,7 +116,7 @@ const tokenResponse = client.deserializeTokenResponse(tokenResponseBytes);
 const token = await client.finalize(tokenResponse);
 ```
 
-The Client then redeems the token by sending it to the Origin in an `Authorization` header. The Origin (or Cloudflare at the edge – see [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/)) verifies the signature against the issuer's public key and responds with `200 OK`.
+The Client then redeems the token by sending it to the Origin in an `Authorization` header. The Origin (or Cloudflare at the edge – refer to [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/)) verifies the signature against the issuer's public key and responds with `200 OK`.
 
 Note
 
@@ -152,8 +152,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/#page","headline":"Production Deployment Testing · Cloudflare Privacy Pass docs","description":"Validate a Cloudflare-operated Privacy Pass deployment end to end — discover the issuer configuration, request and redeem a token, and verify issuance works.","url":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/#page","headline":"Production Deployment Testing · Cloudflare Privacy Pass docs","description":"Validate a Cloudflare-operated Privacy Pass deployment end to end — discover the issuer configuration, request and redeem a token, and verify issuance works.","url":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

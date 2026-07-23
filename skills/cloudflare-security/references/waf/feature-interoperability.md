@@ -4,15 +4,15 @@ title: Security features interoperability
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Security features interoperability
+# Security features interoperability
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/feature-interoperability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/feature-interoperability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare applies multiple security features to every incoming request. Each feature runs at a specific stage, and the order determines which feature acts first. Understanding this order helps you avoid conflicts and reduce false positives.
 
@@ -133,7 +133,7 @@ When security features interfere with legitimate traffic, use the following step
 Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify the feature that blocked a request:
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Find the blocked request in the log.
 4. Check the **Service** field to determine which product took the action. This field tells you which feature to adjust.
@@ -157,7 +157,7 @@ For more information, refer to [Handle false positives from Bot Fight Mode or Su
 Create a custom rule with the _Skip_ action to bypass SBFM for the affected traffic:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Define an expression that matches the legitimate traffic (for example, a specific IP range or user agent).
 4. Set the action to _Skip_ and select **Super Bot Fight Mode**.
@@ -189,7 +189,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

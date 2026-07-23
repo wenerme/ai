@@ -4,15 +4,15 @@ title: Use WebSockets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use WebSockets
+# Use WebSockets
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can act as WebSocket servers that connect thousands of clients per instance. You can also use WebSockets as a client to connect to other servers or Durable Objects.
 
@@ -347,7 +347,7 @@ The following methods are available on the Hibernation WebSocket API. Use them t
 
 #### `WebSocket.serializeAttachment`
 
-* `` serializeAttachment(value ` any `) ``: ` void `
+* `` serializeAttachment(value `any`) ``: `void`
 
 Keeps a copy of `value` associated with the WebSocket connection.
 
@@ -363,7 +363,7 @@ For larger values or data that must persist beyond WebSocket lifetime, use the [
 
 #### `WebSocket.deserializeAttachment`
 
-* `deserializeAttachment()`: ` any `
+* `deserializeAttachment()`: `any`
 
 Retrieves the most recent value passed to `serializeAttachment()`, or `null` if none exists.
 
@@ -777,7 +777,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/#page","headline":"Use WebSockets · Cloudflare Durable Objects docs","description":"Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.","url":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

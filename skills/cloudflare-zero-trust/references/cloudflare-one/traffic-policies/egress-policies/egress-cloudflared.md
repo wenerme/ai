@@ -4,15 +4,15 @@ title: Egress through Cloudflare Tunnel
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Egress through Cloudflare Tunnel
+# Egress through Cloudflare Tunnel
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -94,7 +94,7 @@ Feature availability
 To route a public hostname through Cloudflare Tunnel:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create hostname route**.
 3. In **Hostname**, enter the public hostname that represents the application (for example, `app.bank.com`). The hostname should be accessible from the public Internet.
 4. For **Tunnel**, select the Cloudflare Tunnel that is being used to connect the private network to Cloudflare.
@@ -180,7 +180,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/#page","headline":"Egress through Cloudflare Tunnel · Cloudflare One docs","description":"Egress through Cloudflare Tunnel in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Private networks"]}

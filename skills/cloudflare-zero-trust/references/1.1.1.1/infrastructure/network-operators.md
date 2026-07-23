@@ -4,15 +4,15 @@ title: Network operators
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network operators
+# Network operators
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network operators, including Internet Service Providers (ISPs), device manufacturers, public Wi-Fi networks, municipal broadband providers, and security scanning services can use [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/setup/) in place of operating their own recursive DNS infrastructure — DNS servers that resolve queries on behalf of clients by querying authoritative nameservers across the internet.
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/#page","headline":"Network operators | Cloudflare Docs","description":"Information for network operators peering with 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

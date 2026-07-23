@@ -4,19 +4,19 @@ title: Cloudflare DDoS Protection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare DDoS Protection
+# Cloudflare DDoS Protection
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Detect and mitigate distributed denial-of-service (DDoS) attacks automatically.
 
- Available on all plans
+Available on all plans
 
 Cloudflare automatically detects and mitigates [distributed denial-of-service (DDoS) attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) via our autonomous DDoS systems.
 
@@ -30,31 +30,31 @@ These systems include multiple dynamic mitigation rules exposed as [DDoS attack 
 
 Protect against a variety of DDoS attacks across layers 3/4 (network layer) and layer 7 (application layer) of the OSI model.
 
- Use Managed rulesets
+Use Managed rulesets
 
 [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/)
 
 Get increased protection against sophisticated DDoS attacks on layer 7 and layers 3/4.
 
- Use Adaptive DDoS Protection
+Use Adaptive DDoS Protection
 
 [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/)
 
 Detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods, or SYN and SYN-ACK floods.
 
- Use Advanced TCP Protection
+Use Advanced TCP Protection
 
 [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/)
 
 Protect against DNS-based DDoS attacks, specifically sophisticated and fully randomized DNS attacks such as random prefix attacks.
 
- Use Advanced DNS Protection
+Use Advanced DNS Protection
 
 [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/)
 
 Deploy custom eBPF packet logic across Cloudflare's network to inspect and mitigate DDoS attacks against UDP-based Layer 7 protocols.
 
- Use Programmable Flow Protection
+Use Programmable Flow Protection
 
 ---
 
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/#page","headline":"Overview · Cloudflare DDoS Protection docs","description":"Detect and mitigate DDoS attacks automatically across all Cloudflare plans.","url":"https://developers.cloudflare.com/ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

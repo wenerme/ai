@@ -4,15 +4,15 @@ title: Limits
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limits
+# Limits
 
-Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Account plan limits
 
@@ -141,7 +141,7 @@ To resolve a memory limit error:
 To view memory errors in the dashboard:
 
 1. Go to **Workers & Pages**.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to investigate.
 3. Under **Metrics**, select **Errors** \> **Invocation Statuses** and examine **Exceeded Memory**.
 
@@ -437,7 +437,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits · Cloudflare Workers docs","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

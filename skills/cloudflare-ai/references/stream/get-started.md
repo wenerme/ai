@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Media Transformations is now GA:
 
@@ -27,7 +27,7 @@ Billing for Media Transformations will begin on November 1st, 2025.
 
 You can upload videos using the API or directly on the **Stream** page of the Cloudflare dashboard.
 
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 For a list of accepted file types, refer to [Supported video formats](https://developers.cloudflare.com/stream/uploading-videos/#supported-video-formats).
 
@@ -140,7 +140,7 @@ To play video on your website with the [Stream Player](https://developers.cloudf
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.
 
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 ### Next steps
 
@@ -153,7 +153,7 @@ The embed code above can also be found on the **Stream** page of the Cloudflare 
 
 You can create a live input using the API or the **Live inputs** page of the Cloudflare dashboard.
 
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
@@ -223,7 +223,7 @@ To play the live stream you just started on your website with the [Stream Player
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.
 
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 ### Next steps
 
@@ -240,7 +240,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/get-started/#page","headline":"Get started · Cloudflare Stream docs","description":"Upload your first video or start your first live stream with Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

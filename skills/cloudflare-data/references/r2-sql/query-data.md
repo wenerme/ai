@@ -4,15 +4,15 @@ title: Query data
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query data
+# Query data
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/query-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/query-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Query [Apache Iceberg ↗](https://iceberg.apache.org/) tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/). R2 SQL queries can be made via [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or HTTP API.
 
@@ -123,13 +123,13 @@ To learn more about how to create API tokens for R2 SQL using the API, including
 
 ## Additional resources
 
-### [ Manage R2 Data Catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
+### [Manage R2 Data Catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
 
- Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
+Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
 
-### [ Build an end to end data pipeline ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline)
+### [Build an end to end data pipeline](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline)
 
- Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
+Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
 
 Was this helpful?
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/query-data/#page","headline":"Query data · R2 SQL docs","description":"Understand how to query data with R2 SQL","url":"https://developers.cloudflare.com/r2-sql/query-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

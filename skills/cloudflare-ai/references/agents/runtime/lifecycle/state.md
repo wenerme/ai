@@ -4,15 +4,15 @@ title: Store and sync state
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Store and sync state
+# Store and sync state
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents provide built-in state management with automatic persistence and real-time synchronization across all connected clients.
 
@@ -1006,21 +1006,21 @@ This works because each instance of an Agent has its own database, and the state
 
 ## Next steps
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
-### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+### [Build a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
- Build and deploy an AI chat agent.
+Build and deploy an AI chat agent.
 
-### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+### [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
- Build interactive agents with real-time data streaming.
+Build interactive agents with real-time data streaming.
 
-### [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Orchestrate asynchronous workflows from your agent.
+Orchestrate asynchronous workflows from your agent.
 
 Was this helpful?
 
@@ -1028,7 +1028,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/#page","headline":"Store and sync state · Cloudflare Agents docs","description":"Persist and sync Agent state across clients in real time using setState, SQL storage, and bidirectional updates.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

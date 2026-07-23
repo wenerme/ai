@@ -4,15 +4,15 @@ title: Hostname management
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Hostname management
+# Hostname management
 
-Last updated Apr 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hostname management controls where your Turnstile widgets can be used by specifying which domains are authorized to load and execute your widgets. This security measure prevents unauthorized use of your widgets on domains that you do not control.
 
@@ -76,7 +76,7 @@ Use a specific subdomain when you want to restrict the widget to a narrower scop
 Existing widget
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select an existing widget.
 3. Go to **Settings**.
 4. Under **Hostname Management**, select **Add Hostnames**.
@@ -86,7 +86,7 @@ Existing widget
 New widget
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. In the hostname field, enter your domain(s).
 4. If you have zones registered with Cloudflare, you can select from existing zones
@@ -114,7 +114,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/#page","headline":"Hostname management · Cloudflare Turnstile docs","description":"Control which hostnames can serve your Turnstile widget.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

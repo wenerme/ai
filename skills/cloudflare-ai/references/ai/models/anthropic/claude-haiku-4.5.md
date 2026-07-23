@@ -4,7 +4,7 @@ title: Claude Haiku 4.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
-#  Claude Haiku 4.5
+# Claude Haiku 4.5
 
- Text Generation • Anthropic
+Text Generation • Anthropic
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` anthropic/claude-haiku-4.5 `
+`anthropic/claude-haiku-4.5`
 
 * Third-party
 * Zero data retention
 
 Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.
 
-| Model Info                                                                  |                                                                                                                               |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                            | [link ↗](https://www.anthropic.com/claude/haiku)                                                                              |
-| Zero data retention                                                         | Yes                                                                                                                           |
-| Request formats                                                             | Anthropic Messages                                                                                                            |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
+| Model Info                                                                 |                                                                                                                              |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
+| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
+| More information                                                           | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                          |
+| Request formats                                                            | Anthropic Messages                                                                                                           |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage
 
@@ -105,7 +105,7 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -238,7 +238,7 @@ The `with` statement is recommended because it automatically closes the file whe
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -334,7 +334,7 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 }
 ```
 
-**Creative Writing**  — Higher temperature for creative output
+**Creative Writing** — Higher temperature for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -415,7 +415,7 @@ It was a warning.
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -691,7 +691,7 @@ Recursion is elegant but always ensure you have a clear base case!
 ]
 ```
 
-**Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
+**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -1054,9 +1054,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -1064,7 +1064,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/#page","headline":"Claude Haiku 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

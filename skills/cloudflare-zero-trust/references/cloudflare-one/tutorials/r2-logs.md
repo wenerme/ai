@@ -4,15 +4,15 @@ title: Use Cloudflare R2 as a Zero Trust log destination
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Cloudflare R2 as a Zero Trust log destination
+# Use Cloudflare R2 as a Zero Trust log destination
 
-Last updated Mar 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -27,7 +27,7 @@ This tutorial covers how to build a [Cloudflare R2 bucket](https://developers.cl
 ## Create a Cloudflare R2 bucket
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **R2 Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter an identifiable name for the bucket, then select **Create bucket**.
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/#page","headline":"Use Cloudflare R2 as a Zero Trust log destination · Cloudflare One docs","description":"This tutorial covers how to build a Cloudflare R2 bucket to store Zero Trust logs. It also shows how to connect the bucket to the Zero Trust Logpush service.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

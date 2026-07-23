@@ -4,15 +4,15 @@ title: Prefix delegations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Prefix delegations
+# Prefix delegations
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prefix delegations allow a prefix owner (Account A) to grant another Cloudflare account (Account B) permission to use all or part of their BYOIP prefix. The original prefix remains managed by Account A, but Account B can use the delegated IPs with CDN services (including Cloudflare for SaaS) or Spectrum. Refer to [service bindings](https://developers.cloudflare.com/byoip/service-bindings/) for more information on the services an IP can be bound to.
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/#page","headline":"Prefix delegations · Cloudflare BYOIP docs","description":"Delegate IP prefixes to other Cloudflare accounts.","url":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

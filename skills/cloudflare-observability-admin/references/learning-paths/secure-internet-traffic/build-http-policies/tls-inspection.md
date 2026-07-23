@@ -4,15 +4,15 @@ title: Use TLS inspection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use TLS inspection
+# Use TLS inspection
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TLS inspection (also known as TLS decryption or HTTPS inspection) allows Cloudflare Gateway to perform deeper traffic analysis and take actions like scanning request bodies for sensitive data, upgrading to a remote browser isolation session, and redirecting based on the complete URL and path of requests.
 
@@ -59,7 +59,7 @@ resource "cloudflare_zero_trust_gateway_settings" "team_name" {
 }
 ```
 
-#### Inspect on all ports  Beta
+#### Inspect on all ports Beta
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
 
@@ -160,7 +160,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/#page","headline":"Use TLS inspection · Cloudflare Learning Paths","description":"Enable and configure TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

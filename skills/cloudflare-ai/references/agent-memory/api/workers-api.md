@@ -4,15 +4,15 @@ title: Workers API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers API
+# Workers API
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/api/workers-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/api/workers-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Workers API to access Agent Memory from your [Worker](https://developers.cloudflare.com/workers/). The binding connects your Worker to a [namespace](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/) containing profiles, which are isolated memory stores for your agent.
 
@@ -58,8 +58,8 @@ Use namespace methods on the binding to access and manage memory profiles.
 
 Gets a memory profile by name. If the profile does not exist, Agent Memory creates it.
 
-* `profileName` ` string `required: Name of the profile to access. Maximum 100 characters.
-* Returns ` Promise<AgentMemoryProfile> `
+* `profileName` `string`required: Name of the profile to access. Maximum 100 characters.
+* Returns `Promise<AgentMemoryProfile>`
 
 The first `getProfile()` call for a new profile may take longer while Agent Memory creates the profile.
 
@@ -67,8 +67,8 @@ The first `getProfile()` call for a new profile may take longer while Agent Memo
 
 Marks a profile and all its memories and messages for deletion.
 
-* `profileName` ` string `required: Name of the profile to delete. Maximum 100 characters.
-* Returns ` Promise<void> `
+* `profileName` `string`required: Name of the profile to delete. Maximum 100 characters.
+* Returns `Promise<void>`
 
 ## Profile methods
 
@@ -90,9 +90,9 @@ type AgentMemoryMemory = {
 
 Processes a conversation and extracts structured memories from it. Agent Memory identifies facts, events, instructions, and tasks automatically, so you do not need to specify what to remember.
 
-* `messages` ` Iterable<AgentMemoryMessage> `required: Conversation messages to process.
-* `options.sessionId` ` string | null `optional: Identifier for the conversation session. Maximum 64 characters. If omitted, Agent Memory derives one from the message content.
-* Returns ` Promise<void> `
+* `messages` `Iterable<AgentMemoryMessage>`required: Conversation messages to process.
+* `options.sessionId` `string | null`optional: Identifier for the conversation session. Maximum 64 characters. If omitted, Agent Memory derives one from the message content.
+* Returns `Promise<void>`
 
 ```ts
 type AgentMemoryMessage = {
@@ -108,19 +108,19 @@ type AgentMemoryMessage = {
 
 Stores a single memory explicitly. Use `remember()` when your application or agent already knows what should be stored, instead of passing a conversation to `ingest()` for extraction.
 
-* `memory.content` ` string `required: Memory content to store. The service classifies and summarizes automatically.
-* `memory.sessionId` ` string | null `optional: Identifier for the related conversation session.
-* Returns ` Promise<AgentMemoryMemory> `
+* `memory.content` `string`required: Memory content to store. The service classifies and summarizes automatically.
+* `memory.sessionId` `string | null`optional: Identifier for the related conversation session.
+* Returns `Promise<AgentMemoryMemory>`
 
 ### `recall(query, options?)`
 
 Searches stored memories in the profile and returns a synthesized answer grounded in the stored content.
 
-* `query` ` string `required: Natural language question or search query. Maximum 1 KB (1,024 bytes UTF-8).
-* `options.thinkingLevel` ` "low" | "medium" | "high" `optional (default: "low"): Controls retrieval breadth. Higher levels search more candidates but take longer.
-* `options.responseLength` ` "short" | "medium" | "long" `optional (default: "medium"): Controls the verbosity of the synthesized answer.
-* `options.referenceDate` ` Date | string `optional: Temporal anchor for date-relative queries.
-* Returns ` Promise<AgentMemoryRecallResult> `
+* `query` `string`required: Natural language question or search query. Maximum 1 KB (1,024 bytes UTF-8).
+* `options.thinkingLevel` `"low" | "medium" | "high"`optional (default: "low"): Controls retrieval breadth. Higher levels search more candidates but take longer.
+* `options.responseLength` `"short" | "medium" | "long"`optional (default: "medium"): Controls the verbosity of the synthesized answer.
+* `options.referenceDate` `Date | string`optional: Temporal anchor for date-relative queries.
+* Returns `Promise<AgentMemoryRecallResult>`
 
 ```ts
 type AgentMemoryRecallResult = {
@@ -143,11 +143,11 @@ If no memories match the query, `recall()` returns an empty answer.
 
 Lists memories stored in the profile. Returns a paginated, filterable view of stored memories. Use the returned `cursor` (when present) to fetch the next page.
 
-* `options.limit` ` number `optional (default: 20, max: 500): Maximum number of memories to return.
-* `options.cursor` ` string `optional: Opaque cursor from a previous page.
-* `options.sessionId` ` string `optional: Exact-match session filter.
-* `options.type` ` "fact" | "event" | "instruction" | "task" `optional: Exact-match memory-type filter.
-* Returns ` Promise<AgentMemoryListMemoriesResult> `
+* `options.limit` `number`optional (default: 20, max: 500): Maximum number of memories to return.
+* `options.cursor` `string`optional: Opaque cursor from a previous page.
+* `options.sessionId` `string`optional: Exact-match session filter.
+* `options.type` `"fact" | "event" | "instruction" | "task"`optional: Exact-match memory-type filter.
+* Returns `Promise<AgentMemoryListMemoriesResult>`
 
 ```ts
 type AgentMemoryMemoryListEntry = Omit<AgentMemoryMemory, "content">;
@@ -164,8 +164,8 @@ List entries omit `content`. Use `get(memoryId)` to retrieve the full memory.
 
 Retrieves a memory by ID.
 
-* `memoryId` ` string `required: Memory ID.
-* Returns ` Promise<AgentMemoryMemory> `
+* `memoryId` `string`required: Memory ID.
+* Returns `Promise<AgentMemoryMemory>`
 
 Throws an error if the memory does not exist.
 
@@ -173,8 +173,8 @@ Throws an error if the memory does not exist.
 
 Deletes a memory by ID. Removes the memory and any source messages linked to it. Returns the deleted memory.
 
-* `memoryId` ` string `required: Memory ID.
-* Returns ` Promise<AgentMemoryMemory> `
+* `memoryId` `string`required: Memory ID.
+* Returns `Promise<AgentMemoryMemory>`
 
 Throws an error if the memory does not exist.
 
@@ -182,15 +182,15 @@ Throws an error if the memory does not exist.
 
 Marks all memories and messages in the profile that are tagged with the given session ID for deletion. Rows from other sessions in the same profile are untouched. Idempotent: deleting a session ID that has no rows is a no-op.
 
-* `sessionId` ` string `required: Session ID to delete. Maximum 64 characters.
-* Returns ` Promise<void> `
+* `sessionId` `string`required: Session ID to delete. Maximum 64 characters.
+* Returns `Promise<void>`
 
 ### `getSummary(options?)`
 
 Generates a structured Markdown summary of everything stored in a memory profile. Use it to inspect what Agent Memory remembers about a profile.
 
-* `options.sessionId` ` string | null `optional: Session ID to scope the "Last Session" section of the summary. If omitted, Agent Memory uses the most recent session.
-* Returns ` Promise<AgentMemoryGetSummaryResponse> `
+* `options.sessionId` `string | null`optional: Session ID to scope the "Last Session" section of the summary. If omitted, Agent Memory uses the most recent session.
+* Returns `Promise<AgentMemoryGetSummaryResponse>`
 
 ```ts
 type AgentMemoryGetSummaryResponse = {
@@ -211,13 +211,13 @@ Refer to [Limits](https://developers.cloudflare.com/agent-memory/platform/limits
 
 ## Next steps
 
-### [ HTTP API ](https://developers.cloudflare.com/agent-memory/api/http-api/)
+### [HTTP API](https://developers.cloudflare.com/agent-memory/api/http-api/)
 
- Use Agent Memory from services that call the Cloudflare API directly.
+Use Agent Memory from services that call the Cloudflare API directly.
 
-### [ Get started ](https://developers.cloudflare.com/agent-memory/get-started/)
+### [Get started](https://developers.cloudflare.com/agent-memory/get-started/)
 
- Add durable memory recall and ingestion to an agent.
+Add durable memory recall and ingestion to an agent.
 
 Was this helpful?
 
@@ -225,7 +225,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/api/workers-api/#page","headline":"Workers API · Cloudflare Agent Memory docs","description":"Configure the Agent Memory binding and use memory profiles from Worker code.","url":"https://developers.cloudflare.com/agent-memory/api/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

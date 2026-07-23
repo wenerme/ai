@@ -4,15 +4,15 @@ title: OWASP evaluation example
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  OWASP evaluation example
+# OWASP evaluation example
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example calculates the OWASP request threat score for an incoming request. The OWASP managed ruleset configuration is the following:
 
@@ -45,7 +45,7 @@ Since `26` \>= `25` — that is, the threat score is greater than the configured
 
 ![Event log for example incoming request mitigated by the OWASP Core Ruleset](https://developers.cloudflare.com/_astro/owasp-example-event-log.B3Lc0T9C_2mq13Y.webp)
 
-In sampled logs, the rule associated with requests mitigated by the Cloudflare OWASP Core Ruleset is the last rule in this managed ruleset: `949110: Inbound Anomaly Score Exceeded`, with rule ID ...843b323c . To get the scores of individual rules contributing to the final request threat score, expand **Additional logs** in the event details.
+In sampled logs, the rule associated with requests mitigated by the Cloudflare OWASP Core Ruleset is the last rule in this managed ruleset: `949110: Inbound Anomaly Score Exceeded`, with rule ID ...843b323c. To get the scores of individual rules contributing to the final request threat score, expand **Additional logs** in the event details.
 
 Was this helpful?
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/#page","headline":"OWASP evaluation example · Cloudflare Web Application Firewall (WAF) docs","description":"Example of how OWASP paranoia level and score threshold interact.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

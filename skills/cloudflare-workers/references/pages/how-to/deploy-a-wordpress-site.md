@@ -4,15 +4,15 @@ title: Deploy a static WordPress site
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy a static WordPress site
+# Deploy a static WordPress site
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -46,7 +46,7 @@ In the **Activity Log**, find the **ZIP archive created** message and select **C
 With your ZIP file downloaded, deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Use direct upload**.
 3. Name your project, then select **Create project**.
 4. Drag and drop your ZIP file (or unzipped folder of assets) or select it from your computer.
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/#page","headline":"Deploy a static WordPress site · Cloudflare Pages docs","description":"Learn how to deploy a static WordPress site using Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}

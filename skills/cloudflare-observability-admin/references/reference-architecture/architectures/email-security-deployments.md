@@ -4,15 +4,15 @@ title: Understanding Email Security Deployments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Understanding Email Security Deployments
+# Understanding Email Security Deployments
 
-Last updated Feb 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -79,7 +79,7 @@ Before you commit to a specific deployment, Cloudflare suggests you review all o
 
 With an Inline deployment, all emails destined for one or more domains are filtered through Cloudflare before they are delivered to the user's inbox. Cloudflare can be deployed anywhere in your email processing chain. When deployed as the first hop, you will need to update the domain's DNS MX records to point to Cloudflare. If you prefer Cloudflare to inspect messages after your existing SEG (Secure Email Gateway), Cloudflare can be inserted as a hop in the processing chain, and will then forward processed messages downstream to the next hop. Based on policies, messages are blocked and/or quarantined if they are marked as Spam, Malicious, Bulk, and more.
 
-![Inline deployment](https://developers.cloudflare.com/_astro/Inline_MX.W7ooc9mD_1wuIMp.svg)
+![Inline deployment](https://developers.cloudflare.com/_astro/Inline_MX.W7ooc9mD_2gyOIl.svg)
 
 The diagram above describes the following:
 
@@ -128,7 +128,7 @@ An alternative approach is to integrate via the Graph [API](https://developers.c
 
 This is performed by subscribing to all user mailboxes on the authorized domains. You have the ability to choose if the scope should be restricted to the Inbox only, or All Folders during the authorization process. Upon delivery to the mailbox, the subscription triggers an action within Microsoft 365 that sends Cloudflare a copy of the email to be scanned and assigned a disposition. Once the disposition has been assigned, our solution will look at the [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy and perform the desired action.
 
-![API deployment](https://developers.cloudflare.com/_astro/API.D-5LzkKL_6O1bn.svg)
+![API deployment](https://developers.cloudflare.com/_astro/API.D-5LzkKL_Z2quBGn.svg)
 
 The diagram above describes the following:
 
@@ -181,7 +181,7 @@ BCC/Journaling is very similar to API deployments with the exception of how emai
 
 Once Cloudflare receives the email, it will scan and determine the [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) of the email. Once an email has a disposition our solution will look at the API authorizations and [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy and perform the desired action. This method is less at risk to API Throttling as the APIs for Microsoft 365 and Google are only used to remediate emails.
 
-![BCC/Journaling deployment](https://developers.cloudflare.com/_astro/Journaling_Diagram.yvbQDbEw_2qLegl.svg)
+![BCC/Journaling deployment](https://developers.cloudflare.com/_astro/Journaling_Diagram.yvbQDbEw_Z1hjvfq.svg)
 
 During a proof of value, this deployment can be configured with any Email security solution or mail platform that allows for adding a BCC recipient to gain visibility into what those solutions are missing that Cloudflare would block.
 
@@ -244,7 +244,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/#page","headline":"Understanding Email Security Deployments · Cloudflare Reference Architecture docs","description":"This reference architecture describes the key architecture of Cloudflare Email security.","url":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive accelerates access to your existing databases from Cloudflare Workers, making even single-region databases feel globally distributed.
 
@@ -58,7 +58,7 @@ Refer to [How Workers works](https://developers.cloudflare.com/workers/reference
 
 Create a new project named `hyperdrive-tutorial` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- hyperdrive-tutorial
@@ -97,14 +97,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 ## 3\. Connect Hyperdrive to a database
@@ -245,7 +245,7 @@ To connect to your database, you will need a database driver which allows you to
 
 To install `pg`, ensure you are in the `hyperdrive-tutorial` directory. Open your terminal and run the following command:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 # This should install v8.13.0 or later
@@ -269,7 +269,7 @@ bun add pg
 
 If you are using TypeScript, you should also install the type definitions for `pg`:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 # This should install v8.13.0 or later
@@ -297,7 +297,7 @@ To connect to your database, you will need a database driver which allows you to
 
 To install `mysql2`, ensure you are in the `hyperdrive-tutorial` directory. Open your terminal and run the following command:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 # This should install v3.13.0 or later
@@ -521,7 +521,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

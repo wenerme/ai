@@ -4,15 +4,15 @@ title: Manage streams
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage streams
+# Manage streams
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/streams/manage-streams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/streams/manage-streams/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to:
 
@@ -27,7 +27,7 @@ Streams are made available to pipelines as SQL tables using the stream name (for
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **Pipelines** page.
-[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline** to launch the pipeline creation wizard.
 3. Complete the wizard to create your stream along with the associated sink and pipeline.
 
@@ -182,7 +182,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/streams/manage-streams/#page","headline":"Manage streams · Cloudflare Pipelines Docs","description":"Create, configure, and manage streams for data ingestion","url":"https://developers.cloudflare.com/pipelines/streams/manage-streams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

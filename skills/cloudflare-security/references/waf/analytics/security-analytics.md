@@ -4,15 +4,15 @@ title: Security Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Security Analytics
+# Security Analytics
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Analytics displays information about all incoming HTTP requests for your domain, including requests not handled by Cloudflare security products. This gives you visibility into your full traffic profile, not only the requests that triggered a security rule.
 
@@ -47,9 +47,9 @@ To use Security Analytics:
 2. Go to the account or zone/domain dashboard:
 
   * For the zone/domain dashboard, go to the **Analytics** page.
-  [ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+  [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
   * For the account dashboard, go to the **Security Analytics** page.
-  [ Go to **Security analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
+  [Go to **Security analytics** ↗](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
 
 ## Adjusting displayed data
 
@@ -179,7 +179,7 @@ The displayed information includes:
 * Security scores for the request (attack, bot, uploaded content scanning)
 * Request properties
 
-#### Raw logs  Beta
+#### Raw logs Beta
 
 Note
 
@@ -233,7 +233,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

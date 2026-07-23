@@ -4,15 +4,15 @@ title: Ephemeral IDs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Ephemeral IDs
+# Ephemeral IDs
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ephemeral IDs are short-lived device identifiers that Turnstile generates for each visitor interaction. Unlike IP-based detection, Ephemeral IDs link visitor behavior to a specific client device without relying on cookies or client-side storage. This makes them effective against attackers who change IP addresses between requests.
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/#page","headline":"Ephemeral IDs · Cloudflare Turnstile docs","description":"Generate single-use Ephemeral IDs for fraud detection and analytics.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}

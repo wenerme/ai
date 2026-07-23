@@ -4,7 +4,7 @@ title: Content compression
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how Cloudflare compresses content between Cloudflare and your website visitors and between Cloudflare and your origin server.
 

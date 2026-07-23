@@ -4,15 +4,15 @@ title: Bulk import to D1 using REST API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bulk import to D1 using REST API
+# Bulk import to D1 using REST API
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to import a database into D1 using the [REST API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/import/).
 
@@ -30,7 +30,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 To use REST APIs, you need to generate an API token to authenticate your API requests. You can do this through the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **API Tokens** page.
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Under **API Tokens**, select **Create Token**.
 3. Scroll to **Custom token** \> **Create custom token**, then select **Get started**.
 4. Under **Token name**, enter a descriptive token name. For example, `Name-D1-Import-API-Token`.
@@ -59,7 +59,7 @@ This tutorial uses the following:
 To create the table, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **D1** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select **Create database**.
 3. Name your database. For this tutorial, name your D1 database `d1-import-tutorial`.
 4. (Optional) Provide a location hint. Location hint is an optional parameter you can provide to indicate your desired geographical location for your database. Refer to [Provide a location hint](https://developers.cloudflare.com/d1/configuration/data-location/#provide-a-location-hint) for more information.
@@ -115,7 +115,7 @@ In practice, you may already have the data you wish to import to a D1 database.
 This tutorial generates example data to demonstrate the import process.
 
 1. Install the `@faker-js/faker` module.
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @faker-js/faker
 ```
@@ -421,7 +421,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/#page","headline":"Bulk import to D1 using REST API · Cloudflare D1 docs","description":"This tutorial uses the REST API to import a database into D1.","url":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","SQL"]}

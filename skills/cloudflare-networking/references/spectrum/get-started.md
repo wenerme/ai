@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum is available on all paid plans. Pro and Business support selected protocols only, whereas Enterprise supports all TCP and UDP based traffic. Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/) for more configuration details.
 
@@ -27,7 +27,7 @@ To create a Spectrum application using an IP address, Cloudflare normally assign
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **Application Type**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -109,7 +109,7 @@ To create a Spectrum application using a CNAME record, you will need to create a
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **Application Type**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -180,7 +180,7 @@ To prevent issues with DNS resolution for a Spectrum application, do not use the
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -261,7 +261,7 @@ For Cloudflare WAN (formerly Magic WAN) as the connector, refer to [Get started 
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**.
 3. Under **Application Type**, select **TCP** or **UDP**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -352,7 +352,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/get-started/#page","headline":"Get started · Cloudflare Spectrum docs","description":"Create a Spectrum application to proxy TCP or UDP traffic through Cloudflare.","url":"https://developers.cloudflare.com/spectrum/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

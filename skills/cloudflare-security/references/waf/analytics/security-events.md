@@ -4,15 +4,15 @@ title: Security Events
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Security Events
+# Security Events
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/analytics/security-events/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Events allows you to review mitigated requests and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
 
@@ -46,14 +46,14 @@ Available features vary according to your Cloudflare plan:
 To open Security Events for a given zone:
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 
 * In the Cloudflare dashboard, go to **Security** \> **Events**.
 
 Additionally, Enterprise customers have access to the account-level dashboard:
 
-[ Go to **Security events** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/events)
+[Go to **Security events** ↗](https://dash.cloudflare.com/?to=/:account/security-center/events)
 
 ## Adjust displayed data
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}

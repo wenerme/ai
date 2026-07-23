@@ -4,15 +4,15 @@ title: Features
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Features
+# Features
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
 
@@ -31,7 +31,7 @@ Serve identical requests directly from Cloudflare's global cache, reducing laten
 * Configurable TTL and per-request cache control
 * Works across all supported AI providers
 
- Use Caching
+Use Caching
 
 [Spend Limits](https://developers.cloudflare.com/ai-gateway/features/spend-limits/)
 
@@ -44,7 +44,7 @@ Set cost-based budgets that track cumulative dollar spend across requests. Scope
 * Configurable time windows (daily, weekly, monthly)
 * Automatic request blocking when budget is exceeded
 
- Use Spend Limits
+Use Spend Limits
 
 [Rate Limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/)
 
@@ -57,7 +57,7 @@ Control application scaling and protect against abuse with flexible rate limitin
 * Configurable per gateway or per request
 * Multiple rate limiting techniques available
 
- Use Rate Limiting
+Use Rate Limiting
 
 [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
 
@@ -71,7 +71,7 @@ Create sophisticated request routing flows without code changes. Route requests 
 * Context-aware routing based on request content
 * Dynamic rate limiting with automatic fallbacks
 
- Use Dynamic Routing
+Use Dynamic Routing
 
 ### Security & Safety
 
@@ -87,7 +87,7 @@ Deploy AI applications safely with real-time content moderation. Automatically d
 * Compliance and audit capabilities
 * Enhanced user safety and trust
 
- Use Guardrails
+Use Guardrails
 
 [Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/features/dlp/)
 
@@ -101,7 +101,7 @@ Protect your organization from inadvertent exposure of sensitive data through AI
 * Integration with Cloudflare's enterprise DLP solution
 * Compliance support for GDPR, HIPAA, and PCI DSS
 
- Use Data Loss Prevention (DLP)
+Use Data Loss Prevention (DLP)
 
 [Authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
 
@@ -114,7 +114,7 @@ Secure your AI Gateway with token-based authentication. Control access to your g
 * Integration with Cloudflare's security infrastructure
 * Audit trail for access attempts
 
- Use Authentication
+Use Authentication
 
 [Bring Your Own Keys (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)
 
@@ -128,7 +128,7 @@ Securely store and manage AI provider API keys in Cloudflare's encrypted infrast
 * Support for 20+ AI providers
 * Enhanced security and compliance
 
- Use Bring Your Own Keys (BYOK)
+Use Bring Your Own Keys (BYOK)
 
 ### Observability & Analytics
 
@@ -144,7 +144,7 @@ Gain deep insights into your AI application usage with comprehensive analytics. 
 * Cache hit rates and performance insights
 * GraphQL API for custom dashboards
 
- Use Analytics
+Use Analytics
 
 [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/)
 
@@ -158,7 +158,7 @@ Capture detailed logs of all AI requests and responses for debugging, compliance
 * Custom metadata support
 * Compliance and audit support
 
- Use Logging
+Use Logging
 
 [Custom Metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/)
 
@@ -171,7 +171,7 @@ Enrich your logs and analytics with custom metadata. Tag requests with user IDs,
 * Custom business logic integration
 * Improved debugging and troubleshooting
 
- Use Custom Metadata
+Use Custom Metadata
 
 ### Advanced Configuration
 
@@ -186,7 +186,7 @@ Override default pricing with your negotiated rates or custom cost models. Apply
 * Better budget planning and forecasting
 * Support for enterprise pricing agreements
 
- Use Custom Costs
+Use Custom Costs
 
 ## Feature Comparison by Use Case
 
@@ -214,7 +214,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features · Cloudflare AI Gateway docs","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

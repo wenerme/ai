@@ -4,15 +4,15 @@ title: Benefits of using Magic Transit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Benefits of using Magic Transit
+# Benefits of using Magic Transit
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/benefits-magic-transit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/benefits-magic-transit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit leverages Cloudflare's global anycast network. As of writing this guide, Cloudflare's global network spans over 330 cities, and has over 405 Tbps network capacity. This bandwidth allows it to absorb all manners of attack that otherwise would overwhelm a typical data center or on-premise hardware Distributed Denial-of-Service (DDoS) appliances.
 
@@ -33,7 +33,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/benefits-magic-transit/#page","headline":"Benefits of using Magic Transit · Cloudflare Learning Paths","description":"Learn about benefits of using magic transit in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/benefits-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

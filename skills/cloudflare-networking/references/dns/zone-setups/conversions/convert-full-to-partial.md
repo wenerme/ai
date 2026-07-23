@@ -4,15 +4,15 @@ title: Convert full setup to partial setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Convert full setup to partial setup
+# Convert full setup to partial setup
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use a CNAME setup (also known as partial setup). This guide assumes your zone is already in an [active status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#active).
 
@@ -47,7 +47,7 @@ To avoid downtime, replace your Universal SSL certificates with an [advanced cer
 To export records using the dashboard:
 
   1. In the Cloudflare dashboard, go to the **DNS Records** page.
-  [ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+  [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
   2. Select **Import and Export**.
   3. Select **Export**.
 To export records using the API, send a [GET request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/export/).
@@ -109,7 +109,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/#page","headline":"Convert full setup to partial setup · Cloudflare DNS docs","description":"Convert a full DNS setup to a partial CNAME setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

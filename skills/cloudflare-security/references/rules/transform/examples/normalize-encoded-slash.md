@@ -4,17 +4,17 @@ title: Normalize encoded slashes in URL path
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Normalize encoded slashes in URL path
+# Normalize encoded slashes in URL path
 
 Create a URL rewrite rule (part of Transform Rules) to normalize encoded forward slashes (`%2F`) in the request path to standard slashes (`/`).
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/examples/normalize-encoded-slash/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/examples/normalize-encoded-slash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Different web servers and applications handle encoded forward slashes (`%2F`) in URLs differently. Cloudflare follows [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986), which specifies that `%2F` **should not** be automatically normalized to `/` because `/` is a reserved character in URLs, and decoding it might change the intended meaning of the path.
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/normalize-encoded-slash/#page","headline":"Normalize encoded slashes in URL path · Cloudflare Rules docs","description":"Create a URL rewrite rule (part of Transform Rules) to normalize encoded forward slashes (%2F) in the request path to standard slashes (/).","url":"https://developers.cloudflare.com/rules/transform/examples/normalize-encoded-slash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}

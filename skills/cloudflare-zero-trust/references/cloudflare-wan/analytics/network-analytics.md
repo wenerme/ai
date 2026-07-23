@@ -4,15 +4,15 @@ title: Network analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network analytics
+# Network analytics
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different [packet](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) characteristics.
 
@@ -42,7 +42,7 @@ For instructions, refer to [Access tunnel traffic analytics](#access-tunnel-traf
 ## Access tunnel traffic analytics
 
 1. Go to the **Network Analytics** page.
-[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 1. In the **All Traffic** tab, scroll to **Top Insights** to access network traffic filters. By default, the dashboard displays five items, but you can display up to 25 items at once. To change the number of items, select the drop-down menu.
 2. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
 3. To adjust the scope of information, scroll to **All traffic** \> **Add filter**.
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/#page","headline":"Cloudflare WAN Network Analytics · Cloudflare WAN docs","description":"Analyze network traffic patterns with Network Analytics.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

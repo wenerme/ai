@@ -4,7 +4,7 @@ title: GPT-4o Transcribe
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-4o Transcribe
+# GPT-4o Transcribe
 
- Automatic Speech Recognition • OpenAI
+Automatic Speech Recognition • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-4o-transcribe `
+`openai/gpt-4o-transcribe`
 
 * Third-party
 * Zero data retention
 
 A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.
 
-| Model Info          |                                                                                                                             |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                      |
-| More information    | [link ↗](https://openai.com/)                                                                                               |
-| Zero data retention | Yes                                                                                                                         |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-transcribe) |
+| Model Info          |                                                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                     |
+| More information    | [link ↗](https://openai.com/)                                                                                              |
+| Zero data retention | Yes                                                                                                                        |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-transcribe) |
 
 ## Usage
 
@@ -70,7 +70,7 @@ Hello
 
 ## Examples
 
-**With Language Hint**  — Transcribe with a language hint for better accuracy
+**With Language Hint** — Transcribe with a language hint for better accuracy
 
 ```ts
 const response = await env.AI.run(
@@ -107,7 +107,7 @@ Hello
 }
 ```
 
-**Guided Transcription**  — Use a prompt to guide transcription style and context
+**Guided Transcription** — Use a prompt to guide transcription style and context
 
 ```ts
 const response = await env.AI.run(
@@ -149,7 +149,7 @@ This is a technical discussion about Kubernetes and cloud-native architecture.
 }
 ```
 
-**High Temperature**  — Higher temperature for more varied transcription
+**High Temperature** — Higher temperature for more varied transcription
 
 ```ts
 const response = await env.AI.run(
@@ -210,9 +210,9 @@ text
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -220,7 +220,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/#page","headline":"GPT-4o Transcribe (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

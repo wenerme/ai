@@ -4,15 +4,15 @@ title: Deploy a real-time chat application
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy a real-time chat application
+# Deploy a real-time chat application
 
-Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will deploy a serverless, real-time chat application that runs using [Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
@@ -95,7 +95,7 @@ custom_domain = true
 To test your live application:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Triggers** \> **Routes** \> Select the `edge-chat-demo.<SUBDOMAIN>.workers.dev` route.
 3. Enter a name in the **your name** field.
 4. Choose whether to enter a public room or create a private room.
@@ -148,7 +148,7 @@ Then run `npx wrangler deploy`.
 To delete your Worker:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Select **Manage Service** \> **Delete**. For complete instructions on set up and deletion, refer to the `README.md` in your cloned repository.
 
@@ -168,7 +168,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/#page","headline":"Deploy a real-time chat application · Cloudflare Workers docs","description":"This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

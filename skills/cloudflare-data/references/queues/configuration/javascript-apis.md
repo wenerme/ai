@@ -4,15 +4,15 @@ title: JavaScript APIs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JavaScript APIs
+# JavaScript APIs
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/javascript-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/javascript-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues is integrated with [Cloudflare Workers](https://developers.cloudflare.com/workers). To send and receive messages, you must use a Worker.
 
@@ -110,17 +110,17 @@ interface Queue<Body = unknown> {
 }
 ```
 
-* `send(body: unknown, options?: {contentType?: QueuesContentType })` ` Promise<QueueSendResult> `
+* `send(body: unknown, options?: {contentType?: QueuesContentType })` `Promise<QueueSendResult>`
 
   * Sends a message to the Queue. The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes), as long as its size is less than 128 KB.
   * When the promise resolves, the message is confirmed to be written to disk.
   * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
-* `sendBatch(messages: Iterable<MessageSendRequest<unknown>>, options?: QueueSendBatchOptions)` ` Promise<QueueSendBatchResult> `
+* `sendBatch(messages: Iterable<MessageSendRequest<unknown>>, options?: QueueSendBatchOptions)` `Promise<QueueSendBatchResult>`
 
   * Sends a batch of messages to the Queue. Each item in the provided [Iterable ↗](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html) must be supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes). A batch can contain up to 100 messages, though items are limited to 128 KB each, and the total size of the array cannot exceed 256 KB.
   * The optional `options` parameter can be used to apply settings (such as `delaySeconds`) to all messages in the batch. See [QueueSendBatchOptions](#queuesendbatchoptions).
   * When the promise resolves, the messages are confirmed to be written to disk.
-* `metrics()` ` Promise<QueueMetrics> `
+* `metrics()` `Promise<QueueMetrics>`
 
   * Returns realtime [QueueMetrics](#queuemetrics) for the queue.
 
@@ -136,13 +136,13 @@ interface MessageSendRequest<Body = unknown> {
 }
 ```
 
-* `body` ` unknown `
+* `body` `unknown`
   * The body of the message.
   * The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes), as long as its size is less than 128 KB.
-* `contentType` ` QueueContentType `
+* `contentType` `QueueContentType`
   * The explicit content type of a message so it can be previewed correctly with the [List messages from the dashboard](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/) feature. Optional argument.
   * See [QueuesContentType](#queuescontenttype) for possible values.
-* `delaySeconds` ` number `
+* `delaySeconds` `number`
   * The number of seconds to [delay a message](https://developers.cloudflare.com/queues/configuration/batching-retries/) for within the queue, before it can be delivered to a consumer.
   * Must be an integer between 0 and 86400 (24 hours).
 
@@ -150,11 +150,11 @@ interface MessageSendRequest<Body = unknown> {
 
 Optional configuration that applies when sending a message to a queue.
 
-* `contentType` ` QueuesContentType `
+* `contentType` `QueuesContentType`
   * The explicit content type of a message so it can be previewed correctly with the [List messages from the dashboard](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/) feature. Optional argument.
   * As of now, this option is for internal use. In the future, `contentType` will be used by alternative consumer types to explicitly mark messages as serialized so they can be consumed in the desired type.
   * See [QueuesContentType](#queuescontenttype) for possible values.
-* `delaySeconds` ` number `
+* `delaySeconds` `number`
   * The number of seconds to [delay a message](https://developers.cloudflare.com/queues/configuration/batching-retries/) for within the queue, before it can be delivered to a consumer.
   * Must be an integer between 0 and 86400 (24 hours). Setting this value to zero will explicitly prevent the message from being delayed, even if there is a global (default) delay at the queue level.
 
@@ -162,7 +162,7 @@ Optional configuration that applies when sending a message to a queue.
 
 Optional configuration that applies when sending a batch of messages to a queue.
 
-* `delaySeconds` ` number `
+* `delaySeconds` `number`
   * The number of seconds to [delay messages](https://developers.cloudflare.com/queues/configuration/batching-retries/) for within the queue, before it can be delivered to a consumer.
   * Must be a positive integer.
 
@@ -198,9 +198,9 @@ interface QueueSendResult {
 }
 ```
 
-* `metadata` ` object `
+* `metadata` `object`
   * Contains metadata about the queue after the send operation.
-* `metadata.metrics` ` QueueMetrics `
+* `metadata.metrics` `QueueMetrics`
   * Realtime metrics for the queue. See [QueueMetrics](#queuemetrics).
 
 ### `QueueMetrics`
@@ -215,11 +215,11 @@ interface QueueMetrics {
 }
 ```
 
-* `backlogCount` ` number `
+* `backlogCount` `number`
   * The number of messages currently in the queue.
-* `backlogBytes` ` number `
+* `backlogBytes` `number`
   * The total size of messages in the queue, in bytes.
-* `oldestMessageTimestamp` ` number `
+* `oldestMessageTimestamp` `number`
   * The timestamp (in milliseconds since epoch) of the oldest message in the queue.
 
 ## Consumer
@@ -326,13 +326,13 @@ interface MessageBatch<Body = unknown> {
 }
 ```
 
-* `queue` ` string `
+* `queue` `string`
   * The name of the Queue that belongs to this batch.
-* `messages` ` Message[] `
+* `messages` `Message[]`
   * An array of messages in the batch. Ordering of messages is best effort -- not guaranteed to be exactly the same as the order in which they were published.
-* `ackAll()` ` void `
+* `ackAll()` `void`
   * Marks every message as successfully delivered, regardless of whether your `queue()` consumer handler returns successfully or not.
-* `retryAll(options?: QueueRetryOptions)` ` void `
+* `retryAll(options?: QueueRetryOptions)` `void`
   * Marks every message to be retried in the next batch.
   * Supports an optional `options` object.
 
@@ -351,18 +351,18 @@ interface Message<Body = unknown> {
 }
 ```
 
-* `id` ` string `
+* `id` `string`
   * A unique, system-generated ID for the message.
-* `timestamp` ` Date `
+* `timestamp` `Date`
   * A timestamp when the message was sent.
-* `body` ` unknown `
+* `body` `unknown`
   * The body of the message.
   * The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes), as long as its size is less than 128 KB.
-* `attempts` ` number `
+* `attempts` `number`
   * The number of times the consumer has attempted to process this message. Starts at 1.
-* `ack()` ` void `
+* `ack()` `void`
   * Marks a message as successfully delivered, regardless of whether your `queue()` consumer handler returns successfully or not.
-* `retry(options?: QueueRetryOptions)` ` void `
+* `retry(options?: QueueRetryOptions)` `void`
   * Marks a message to be retried in the next batch.
   * Supports an optional `options` object.
 
@@ -376,7 +376,7 @@ interface QueueRetryOptions {
 }
 ```
 
-* `delaySeconds` ` number `
+* `delaySeconds` `number`
   * The number of seconds to [delay a message](https://developers.cloudflare.com/queues/configuration/batching-retries/) for within the queue, before it can be delivered to a consumer.
   * Must be a positive integer.
 * When the promise resolves, the messages are written to disk.
@@ -389,7 +389,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

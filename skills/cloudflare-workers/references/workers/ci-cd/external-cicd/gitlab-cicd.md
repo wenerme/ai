@@ -4,15 +4,15 @@ title: GitLab CI/CD
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  GitLab CI/CD
+# GitLab CI/CD
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy Workers with [GitLab CI/CD ↗](https://docs.gitlab.com/ee/ci/pipelines/index.html). Here is how you can set up your Gitlab CI/CD pipeline.
 
@@ -29,7 +29,7 @@ To find your Cloudflare account ID, refer to [Find account and zone IDs](https:/
 To create an API token to authenticate Wrangler in your CI job:
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Under **Permission policies**, open the **Custom** dropdown and select **Edit Cloudflare Workers**.
 4. Customize your token name.
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/#page","headline":"GitLab CI/CD · Cloudflare Workers docs","description":"Integrate Workers development into your existing GitLab Pipelines workflows.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

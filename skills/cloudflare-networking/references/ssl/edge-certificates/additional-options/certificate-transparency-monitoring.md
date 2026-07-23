@@ -4,15 +4,15 @@ title: Certificate Transparency Monitoring
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Certificate Transparency Monitoring
+# Certificate Transparency Monitoring
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Certificate Transparency (CT) Monitoring is an [opt-in](#opt-in-and-out) feature in public beta that aims at improving security by allowing you to double-check any SSL/TLS certificates issued for your domain.
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/#page","headline":"Certificate Transparency Monitoring · Cloudflare SSL/TLS docs","description":"Certificate Transparency (CT) Monitoring is an opt-in feature in public beta that aims at improving security by allowing you to double-check any SSL/TLS certificates issued for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

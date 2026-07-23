@@ -4,15 +4,15 @@ title: Image Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Image Management
+# Image Management
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/platform-details/image-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform-details/image-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Push images during `wrangler deploy`
 
@@ -109,7 +109,7 @@ To create a Docker Hub personal access token:
 
 Interactive:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers registries configure docker.io --dockerhub-username=<YOUR_DOCKERHUB_USERNAME>
@@ -171,7 +171,7 @@ After you create the IAM user, use its credentials to [configure the registry in
 
 Interactive:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers registries configure <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com --aws-access-key-id=<AWS_ACCESS_KEY_ID>
@@ -234,7 +234,7 @@ To generate the required credentials, create a service account with the **Artifa
 
 Interactive: Wrangler prompts for the key, where you enter a file path or base64-encoded JSON:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL>
@@ -289,7 +289,7 @@ docker tag <PUBLIC_IMAGE> <IMAGE>:<TAG>
 
 Wrangler provides a command to push images to the Cloudflare Registry:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers push <IMAGE>:<TAG>
@@ -305,7 +305,7 @@ pnpm wrangler containers push <IMAGE>:<TAG>
 
 Or, you can use the `-p` flag with `wrangler containers build` to build and push an image in one step:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers build -p -t <TAG> .
@@ -360,7 +360,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

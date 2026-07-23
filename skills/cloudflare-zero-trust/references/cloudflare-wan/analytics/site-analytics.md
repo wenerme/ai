@@ -4,15 +4,15 @@ title: Network overview
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network overview
+# Network overview
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After adding your sites, the Network overview section of the dashboard provides a summary of the connectivity status and traffic analytics for all your sites. This is a great place to start if you receive a Cloudflare WAN alert, need to begin the troubleshooting process, or are performing routine monitoring. Refer to [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/) for more information on how to set up a site.
 
@@ -40,7 +40,7 @@ Cloudflare WAN site data
 
 To start using network overview:
 
-[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 
 You will have access to an overview map with all your active sites, and any alerts for sites that are unhealthy or have no status available to them.
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/#page","headline":"Cloudflare WAN network overview · Cloudflare WAN docs","description":"View network overview analytics for your WAN sites.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

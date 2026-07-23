@@ -4,15 +4,15 @@ title: Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
+# Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages. Nuxt.js is a powerful static site generator built on the front-end framework Vue.js. Sanity.io is a headless CMS tool built for managing your application's data without needing to maintain a database.
 
@@ -29,7 +29,7 @@ To begin, create a new Sanity project, using one of Sanity's templates, the blog
 
 Create your new Sanity project by installing the `@sanity/cli` client from npm, and running `sanity init` in your terminal:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @sanity/cli
@@ -47,7 +47,7 @@ pnpm add @sanity/cli
 bun add @sanity/cli
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx sanity init
@@ -71,7 +71,7 @@ With your project created, you can navigate into the folder and start up the stu
 cd my-sanity-project
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx sanity start
@@ -93,7 +93,7 @@ The Sanity studio is where you can create new records for your dataset. By defau
 
 When you are ready to deploy your studio, run `sanity deploy` to choose a unique URL for your studio. This means that you (or anyone else you invite to manage your blog) can access the studio at a `yoururl.sanity.studio` domain.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx sanity deploy
@@ -122,7 +122,7 @@ This means that requests that come to your Sanity dataset from your Nuxt applica
 
 Next, create a Nuxt.js project. In a new terminal, use `create-nuxt-app` to set up a new Nuxt project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx create-nuxt-app blog
@@ -144,7 +144,7 @@ After you have completed your project, `cd` into your new project, and start a l
 cd blog
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -162,7 +162,7 @@ pnpm run dev
 
 After your Nuxt.js application is set up, add Sanity's `@sanity/nuxt` plugin to your Nuxt project:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @nuxtjs/sanity @sanity/client
@@ -326,7 +326,7 @@ You have rendered the `post` title for our blog, but you are still missing the c
 
 First, install the npm package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i sanity-blocks-vue-component
@@ -471,7 +471,7 @@ To push your project to GitHub, [create a new repository ↗](https://repo.new),
 After you have pushed your project to GitHub, deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and select **Begin setup**.
 4. In the **Set up builds and deployments** section, under **Build settings** \> **Framework preset**, choose _Nuxt_. Pages will set the correct fields for you automatically.
@@ -499,7 +499,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/#page","headline":"Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages · Cloudflare Pages docs","description":"Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Nuxt","Vue","JavaScript"]}

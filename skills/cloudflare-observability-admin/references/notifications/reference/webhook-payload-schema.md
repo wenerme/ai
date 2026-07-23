@@ -4,15 +4,15 @@ title: Webhook payload schema
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Webhook payload schema
+# Webhook payload schema
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [configure a generic webhook](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/#generic-webhooks), Cloudflare sends a JSON payload to your specified URL for each notification. This page documents the structure of that payload.
 
@@ -322,7 +322,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema · Cloudflare Notifications docs","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

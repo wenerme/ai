@@ -4,15 +4,15 @@ title: Deploy Hooks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy Hooks
+# Deploy Hooks
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Workers Builds triggers a build when you push a commit to your [connected Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/). Deploy Hooks provide another way to trigger a build. Each hook is a unique URL that triggers a manual build for one branch when it receives an HTTP POST request. Use Deploy Hooks to connect Workers Builds with workflows such as:
 
@@ -25,7 +25,7 @@ By default, Workers Builds triggers a build when you push a commit to your [conn
 Before creating a Deploy Hook, ensure your Worker is [connected to a Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/).
 
 1. Go to **Workers & Pages** and select your Worker.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Go to **Settings** \> **Builds** \> **Deploy Hooks**.
 3. Enter a **name** and select the **branch** to build.
 4. Select **Create** and copy the generated URL.
@@ -202,7 +202,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Workers docs","description":"Generate unique URLs that trigger new builds when they receive an HTTP POST request.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

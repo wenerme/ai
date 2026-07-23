@@ -24,7 +24,7 @@ A Linear owner or admin with GitHub organization owner access can enable coding 
 1. Navigating into your [GitHub Integration settings](https://linear.app/settings/integrations/github) and granting code access
 2. Enabling [Coding sessions](https://linear.app/settings/ai/coding-agent)
 
-Afterwards, any workspace member with a GitHub account linked in [Connected Accounts](https://linear.app/linear/settings/account/connections) will be able to start a coding session.
+Afterwards, any workspace member with a GitHub account linked in [Connected Accounts](https://linear.app/settings/account/connections) will be able to start a coding session.
 
 ## Choose a model
 

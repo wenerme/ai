@@ -4,19 +4,19 @@ title: Cloudflare Web Application Firewall
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Web Application Firewall
+# Cloudflare Web Application Firewall
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
- Available on all plans
+Available on all plans
 
 The Cloudflare Web Application Firewall (Cloudflare WAF) checks incoming web and API requests and filters undesired traffic based on sets of rules called rulesets. The WAF uses the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), a flexible expression syntax that lets you filter traffic by request properties such as IP address, URL path, headers, and body content.
 
@@ -30,39 +30,39 @@ Learn how to [get started](https://developers.cloudflare.com/waf/get-started/).
 
 Create your own custom rules to protect your website and your APIs from malicious incoming traffic. Use advanced features like [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) and [malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) in your custom rules.
 
- Use Custom rules
+Use Custom rules
 
 [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/)
 
 Define rate limits for incoming requests matching an expression, and the action to take when those rate limits are reached.
 
- Use Rate limiting rules
+Use Rate limiting rules
 
 [Managed rules](https://developers.cloudflare.com/waf/managed-rules/)
 
 Enable the pre-configured managed rulesets to get immediate protection. These rulesets are [regularly updated](https://developers.cloudflare.com/waf/change-log/), offering advanced zero-day vulnerability protections, and you can adjust their behavior.
 
- Use Managed rules
+Use Managed rules
 
 [Account-level configuration](https://developers.cloudflare.com/waf/account/)
 
- Enterprise-only
+Enterprise-only
 
 Create and deploy rulesets to multiple Enterprise zones.
 
- Use Account-level configuration
+Use Account-level configuration
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/)
 
 Review mitigated requests (rule matches) using an intuitive interface. Tailor your security configurations based on sampled logs.
 
- Explore Security Events
+Explore Security Events
 
 [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/)
 
 Displays information about all incoming HTTP requests, including those not affected by security measures.
 
- Explore Security Analytics
+Explore Security Analytics
 
 ## Availability
 
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/#page","headline":"Overview · Cloudflare Web Application Firewall (WAF) docs","description":"The Cloudflare Web Application Firewall (WAF) provides automatic protection from vulnerabilities and the flexibility to create custom rules.","url":"https://developers.cloudflare.com/waf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

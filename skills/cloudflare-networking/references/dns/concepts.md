@@ -4,15 +4,15 @@ title: Concepts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Concepts
+# Concepts
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Domain Name System (DNS) translates human-readable domain names (like `example.com`) into IP addresses that computers use to locate each other on the Internet. This page covers key DNS concepts used throughout the Cloudflare DNS documentation. For more concepts and broader descriptions, refer to the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/dns/what-is-dns/).
 
@@ -130,7 +130,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/concepts/#page","headline":"DNS concepts · Cloudflare DNS docs","description":"Understand key DNS concepts with Cloudflare's technical documentation. Learn about nameservers, DNS records, DNSSEC, and more.","url":"https://developers.cloudflare.com/dns/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

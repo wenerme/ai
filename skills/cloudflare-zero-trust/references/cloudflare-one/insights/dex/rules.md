@@ -4,15 +4,15 @@ title: Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rules
+# Rules
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/#page","headline":"Rules · Cloudflare One docs","description":"Reference information for Rules in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}

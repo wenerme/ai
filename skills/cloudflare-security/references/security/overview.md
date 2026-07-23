@@ -4,21 +4,21 @@ title: Security overview
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Security overview
+# Security overview
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/overview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/overview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security overview provides an overview of your domain's security posture and allows you to quickly identify security action items that may need your attention.
 
 To access Security overview in the new security dashboard, go to the **Overview** page.
 
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/overview)
 
 The Security overview page displays:
 
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/overview/#page","headline":"Security overview · Security dashboard docs","description":"Review your domain's security posture and action items.","url":"https://developers.cloudflare.com/security/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

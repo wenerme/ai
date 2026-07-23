@@ -4,15 +4,15 @@ title: Service API token
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Service API token
+# Service API token
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A service API token grants AI Search permission to access [R2](https://developers.cloudflare.com/r2/) buckets in your account. This token is only required if you connect an R2 bucket as a data source. If you use a website or upload files directly through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/), you do not need a service API token.
 
@@ -35,7 +35,7 @@ If you need to create a service API token programmatically, follow these steps.
 You need an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with permission to create other tokens.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
+[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `Token Creator`.
@@ -140,7 +140,7 @@ Do not delete your service API token. If you revoke or delete the token, any R2-
 To create a new service API token from the dashboard:
 
 1. Go to an existing AI Search instance in the Cloudflare dashboard.
-[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select **Settings**.
 3. Under **General**, find **Service API Token** and select the edit icon.
 4. Select **Create a new token**.
@@ -163,7 +163,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/#page","headline":"Service API token · Cloudflare AI Search docs","description":"Create a service API token to grant AI Search read access to R2 buckets for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

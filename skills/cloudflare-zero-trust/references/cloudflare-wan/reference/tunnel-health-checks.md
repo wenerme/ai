@@ -4,15 +4,15 @@ title: Tunnel health checks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Tunnel health checks
+# Tunnel health checks
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.
 
@@ -302,7 +302,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/#page","headline":"Tunnel health checks · Cloudflare WAN docs","description":"Cloudflare WAN uses probes to check for tunnel health. Review information on this page to learn more.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

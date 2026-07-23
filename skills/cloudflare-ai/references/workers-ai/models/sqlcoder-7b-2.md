@@ -4,7 +4,7 @@ title: sqlcoder-7b-2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,34 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Defog logo](https://developers.cloudflare.com/_astro/defog.BeLrxE1p.svg)
 
-#  sqlcoder-7b-2
+# sqlcoder-7b-2
 
- Beta
+Beta
 
- Text Generation • Defog
+Text Generation • Defog
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/defog/sqlcoder-7b-2 `
+`@cf/defog/sqlcoder-7b-2`
 
 * Cloudflare-hosted
 * Deprecated
 
 This model is intended to be used by non-technical users to understand data inside their SQL databases.
 
-| Model Info                                                                  |                                                                  |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Deprecated                                                                  | 5/30/2026                                                        |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 10,000 tokens                                                    |
-| Terms and License                                                           | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
-| More information                                                            | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
-| Beta                                                                        | Yes                                                              |
+| Model Info                                                                 |                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Deprecated                                                                 | 5/30/2026                                                        |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 10,000 tokens                                                    |
+| Terms and License                                                          | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
+| More information                                                           | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
+| Beta                                                                       | Yes                                                              |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/defog/sqlcoder-7b-2)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/defog/sqlcoder-7b-2)
 
 ## Usage
 
@@ -128,7 +128,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -188,7 +188,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -202,7 +202,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -214,13 +214,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -228,7 +228,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/#page","headline":"sqlcoder-7b-2 (Defog) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"This model is intended to be used by non-technical users to understand data inside their SQL databases.","url":"https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

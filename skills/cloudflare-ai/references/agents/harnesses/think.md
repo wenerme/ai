@@ -4,15 +4,15 @@ title: Think
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Think
+# Think
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
@@ -160,7 +160,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -188,7 +188,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -401,61 +401,61 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 
 ## In this section
 
-### [ Getting started ](https://developers.cloudflare.com/agents/harnesses/think/getting-started/)
+### [Getting started](https://developers.cloudflare.com/agents/harnesses/think/getting-started/)
 
- Build a Think agent step by step.
+Build a Think agent step by step.
 
-### [ Configuration ](https://developers.cloudflare.com/agents/harnesses/think/configuration/)
+### [Configuration](https://developers.cloudflare.com/agents/harnesses/think/configuration/)
 
- Configuration overrides, dynamic configuration, and Session integration.
+Configuration overrides, dynamic configuration, and Session integration.
 
-### [ Tools ](https://developers.cloudflare.com/agents/harnesses/think/tools/)
+### [Tools](https://developers.cloudflare.com/agents/harnesses/think/tools/)
 
- Workspace tools, code execution, browser tools, and extensions.
+Workspace tools, code execution, browser tools, and extensions.
 
-### [ Actions ](https://developers.cloudflare.com/agents/harnesses/think/actions/)
+### [Actions](https://developers.cloudflare.com/agents/harnesses/think/actions/)
 
- Server actions with idempotency, approvals, authorization, and reply attachments.
+Server actions with idempotency, approvals, authorization, and reply attachments.
 
-### [ Channels ](https://developers.cloudflare.com/agents/harnesses/think/channels/)
+### [Channels](https://developers.cloudflare.com/agents/harnesses/think/channels/)
 
- Per-channel policy, channel selection, and out-of-band notices.
+Per-channel policy, channel selection, and out-of-band notices.
 
-### [ Lifecycle hooks ](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/)
+### [Lifecycle hooks](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/)
 
- beforeTurn, beforeStep, onStepFinish, onChatResponse, and more.
+beforeTurn, beforeStep, onStepFinish, onChatResponse, and more.
 
-### [ Client tools ](https://developers.cloudflare.com/agents/harnesses/think/client-tools/)
+### [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/)
 
- Browser-side tools, approvals, and concurrency.
+Browser-side tools, approvals, and concurrency.
 
-### [ Messengers ](https://developers.cloudflare.com/agents/harnesses/think/messengers/)
+### [Messengers](https://developers.cloudflare.com/agents/harnesses/think/messengers/)
 
- Receive and reply to Chat SDK messenger webhooks.
+Receive and reply to Chat SDK messenger webhooks.
 
-### [ Scheduled tasks ](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/)
+### [Scheduled tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/)
 
- Declarative recurring prompts and handlers.
+Declarative recurring prompts and handlers.
 
-### [ Workflows ](https://developers.cloudflare.com/agents/harnesses/think/workflows/)
+### [Workflows](https://developers.cloudflare.com/agents/harnesses/think/workflows/)
 
- Durable model-driven reasoning steps inside Cloudflare Workflows.
+Durable model-driven reasoning steps inside Cloudflare Workflows.
 
-### [ Sub-agent RPC ](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/)
+### [Sub-agent RPC](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/)
 
- chat() streaming, saveMessages, continueLastTurn, and abort.
+chat() streaming, saveMessages, continueLastTurn, and abort.
 
-### [ Programmatic submissions ](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/)
+### [Programmatic submissions](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/)
 
- Durable turn admission for webhooks and RPC callers.
+Durable turn admission for webhooks and RPC callers.
 
-### [ Durable recovery ](https://developers.cloudflare.com/agents/harnesses/think/recovery/)
+### [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/)
 
- Chat recovery, stream-stall watchdog, and stability detection.
+Chat recovery, stream-stall watchdog, and stability detection.
 
-### [ Agent Skills ](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)
+### [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)
 
- On-demand instructions, resources, and scripts via getSkills().
+On-demand instructions, resources, and scripts via getSkills().
 
 ## Acknowledgments
 
@@ -463,9 +463,9 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 
 ## Example
 
-### [ Assistant example ](https://github.com/cloudflare/agents/tree/main/examples/assistant)
+### [Assistant example](https://github.com/cloudflare/agents/tree/main/examples/assistant)
 
- Explore a multi-session Think assistant with sub-agent routing, shared workspace, MCP, chat recovery, and GitHub OAuth.
+Explore a multi-session Think assistant with sub-agent routing, shared workspace, MCP, chat recovery, and GitHub OAuth.
 
 ## Related
 
@@ -482,7 +482,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

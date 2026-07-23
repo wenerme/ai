@@ -4,15 +4,15 @@ title: TanStack Start
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  TanStack Start
+# TanStack Start
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [TanStack Start ↗](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
 
@@ -20,7 +20,7 @@ Already have a TanStack Start project?
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect TanStack Start, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -36,27 +36,27 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-TanStack Start Detected
+TanStack StartDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: .output/server/index.mjs
+main:.output/server/index.mjs
 
 wrangler.jsonc
 
-assets: directory: .output/public
+assets:directory: .output/public
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -64,7 +64,7 @@ Wrangler handles configuration automatically
 
 Create a TanStack Start application pre-configured for Cloudflare Workers:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-tanstack-start-app --framework=tanstack-start
@@ -80,7 +80,7 @@ pnpm create cloudflare@latest my-tanstack-start-app --framework=tanstack-start
 
 Start a local development server to preview your project during development:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -99,7 +99,7 @@ pnpm run dev
 If you have an existing TanStack Start application, configure it to run on Cloudflare Workers:
 
 1. Install `@cloudflare/vite-plugin` and `wrangler`:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/vite-plugin wrangler -- -D
 ```
@@ -145,7 +145,7 @@ export default defineConfig({
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "<YOUR_PROJECT_NAME>",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "@tanstack/react-start/server-entry",
 	"observability": {
@@ -157,7 +157,7 @@ export default defineConfig({
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "<YOUR_PROJECT_NAME>"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 main = "@tanstack/react-start/server-entry"
 [observability]
@@ -180,7 +180,7 @@ enabled = true
 
 Deploy to a `*.workers.dev` subdomain or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your machine or any CI/CD system, including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run deploy
@@ -198,7 +198,7 @@ Note
 
 Preview the build locally before deploying:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run preview
@@ -437,7 +437,7 @@ function RouteComponent() {
 
 Generate TypeScript types for your bindings based on your Wrangler configuration:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run cf-typegen
@@ -453,9 +453,9 @@ pnpm run cf-typegen
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-### [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
- Access to compute, storage, AI and more.
+Access to compute, storage, AI and more.
 
 ### Use R2 in a server function
 
@@ -585,7 +585,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/#page","headline":"TanStack Start · Cloudflare Workers docs","description":"Deploy a TanStack Start application to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

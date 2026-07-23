@@ -4,31 +4,31 @@ title: Krea 2 Medium Turbo
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- k
+k
 
-#  Krea 2 Medium Turbo
+# Krea 2 Medium Turbo
 
- Text-to-Image • krea
+Text-to-Image • krea
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` krea/krea-2-medium-turbo `
+`krea/krea-2-medium-turbo`
 
 * Third-party
 
 The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.
 
-| Model Info        |                                                                                                                             |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.krea.ai/terms)                                                                                         |
-| More information  | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium-turbo)                                                       |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium-turbo) |
+| Model Info        |                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.krea.ai/terms)                                                                                        |
+| More information  | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium-turbo)                                                      |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium-turbo) |
 
 ## Usage
 
@@ -124,9 +124,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -134,7 +134,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/#page","headline":"Krea 2 Medium Turbo (krea) · Cloudflare AI docs · Cloudflare AI docs","description":"The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.","url":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

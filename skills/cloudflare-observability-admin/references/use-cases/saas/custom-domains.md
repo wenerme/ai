@@ -4,15 +4,15 @@ title: Customer domains with SSL for SaaS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Customer domains with SSL for SaaS
+# Customer domains with SSL for SaaS
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/saas/custom-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/saas/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 SaaS customers expect to use their own domains (for example, `app.theirdomain.com`) instead of a subdomain on your platform. Cloudflare SSL for SaaS provisions and renews SSL certificates automatically for every custom hostname, with no manual steps or customer action required.
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/saas/custom-domains/#page","headline":"Customer domains with SSL for SaaS · Cloudflare use cases","description":"Allow your customers to use their own domains with your platform, complete with automatic SSL certificates.","url":"https://developers.cloudflare.com/use-cases/saas/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

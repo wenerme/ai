@@ -4,19 +4,19 @@ title: Cloudflare Workers KV
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Workers KV
+# Cloudflare Workers KV
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a global, low-latency, key-value data storage.
 
- Available on Free and Paid plans
+Available on Free and Paid plans
 
 Workers KV is a data storage that allows you to store and retrieve data globally. With Workers KV, you can build dynamic and performant APIs and websites that support high read volumes with low latency.
 
@@ -118,7 +118,7 @@ for await (const namespace of client.kv.namespaces.list({ account_id: '<ACCOUNT_
 
 See the full Workers KV [REST API and SDK reference](https://developers.cloudflare.com/api/resources/kv/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-[ Get started ](https://developers.cloudflare.com/kv/get-started/)
+[Get started](https://developers.cloudflare.com/kv/get-started/)
 
 ---
 
@@ -128,19 +128,19 @@ See the full Workers KV [REST API and SDK reference](https://developers.cloudfla
 
 Learn how Workers KV stores and retrieves data.
 
- Use Key-value storage
+Use Key-value storage
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
 
 The Workers command-line interface, Wrangler, allows you to [create](https://developers.cloudflare.com/workers/wrangler/commands/general/#init), [test](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), and [deploy](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deploy) your Workers projects.
 
- Use Wrangler
+Use Wrangler
 
 [Bindings](https://developers.cloudflare.com/kv/concepts/kv-bindings/)
 
 Bindings allow your Workers to interact with resources on the Cloudflare developer platform, including [R2](https://developers.cloudflare.com/r2/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), and [D1](https://developers.cloudflare.com/d1/).
 
- Use Bindings
+Use Bindings
 
 ---
 
@@ -162,19 +162,19 @@ Built on SQLite, D1 is Cloudflare’s first queryable relational database. Creat
 
 ### More resources
 
-### [ Limits ](https://developers.cloudflare.com/kv/platform/limits/)
+### [Limits](https://developers.cloudflare.com/kv/platform/limits/)
 
  Learn about KV limits.
 
-### [ Pricing ](https://developers.cloudflare.com/kv/platform/pricing/)
+### [Pricing](https://developers.cloudflare.com/kv/platform/pricing/)
 
  Learn about KV pricing.
 
-### [ Discord ](https://discord.com/channels/595317990191398933/893253103695065128)
+### [Discord](https://discord.com/channels/595317990191398933/893253103695065128)
 
  Ask questions, show off what you are building, and discuss the platform with other developers.
 
-### [ Twitter ](https://x.com/cloudflaredev)
+### [Twitter](https://x.com/cloudflaredev)
 
  Learn about product announcements, new tutorials, and what is new in Cloudflare Developer Platform.
 
@@ -184,7 +184,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/#page","headline":"Cloudflare Workers KV · Cloudflare Workers KV docs","description":"Workers KV is a global, low-latency, key-value data store for building dynamic and performant APIs and websites.","url":"https://developers.cloudflare.com/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

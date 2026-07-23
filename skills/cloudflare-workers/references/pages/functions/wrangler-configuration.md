@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/wrangler-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/wrangler-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -178,7 +178,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 	"name": "my-pages-app",
 	"pages_build_output_dir": "./dist",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -196,7 +196,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -424,19 +424,19 @@ API_KEY = "6567875fvgt"
 
 Inheritable keys are configurable at the top-level, and can be inherited (or overridden) by environment-specific configuration.
 
-* `name` ` string `required
+* `name` `string`required
 
   * The name of your Pages project. Alphanumeric and dashes only.
-* `pages_build_output_dir` ` string `required
+* `pages_build_output_dir` `string`required
 
   * The path to your project's build output folder. For example: `./dist`.
-* `compatibility_date` ` string `required
+* `compatibility_date` `string`required
 
   * A date in the form `yyyy-mm-dd`, which will be used to determine which version of the Workers runtime is used. Refer to [Compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 * `compatibility_flags` string\[\] optional
 
   * A list of flags that enable features from upcoming features of the Workers runtime, usually used together with `compatibility_date`. Refer to [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
-* `send_metrics` ` boolean `optional
+* `send_metrics` `boolean`optional
 
   * Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 * `limits` Limits optional
@@ -499,37 +499,37 @@ API_KEY = "8901234bfgd"
 
 This will work for local development, but will fail to validate when you try to deploy.
 
-* `vars` ` object `optional
+* `vars` `object`optional
 
   * A map of environment variables to set when deploying your Function. Refer to [Environment variables](https://developers.cloudflare.com/pages/functions/bindings/#environment-variables).
-* `d1_databases` ` object `optional
+* `d1_databases` `object`optional
 
   * A list of D1 databases that your Function should be bound to. Refer to [D1 databases](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases).
-* `durable_objects` ` object `optional
+* `durable_objects` `object`optional
 
   * A list of Durable Objects that your Function should be bound to. Refer to [Durable Objects](https://developers.cloudflare.com/pages/functions/bindings/#durable-objects).
-* `hyperdrive` ` object `optional
+* `hyperdrive` `object`optional
 
   * Specifies Hyperdrive configs that your Function should be bound to. Refer to [Hyperdrive](https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets).
-* `kv_namespaces` ` object `optional
+* `kv_namespaces` `object`optional
 
   * A list of KV namespaces that your Function should be bound to. Refer to [KV namespaces](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces).
-* `queues.producers` ` object `optional
+* `queues.producers` `object`optional
 
   * Specifies Queues Producers that are bound to this Function. Refer to [Queues Producers](https://developers.cloudflare.com/queues/get-started/#4-set-up-your-producer-worker).
-* `r2_buckets` ` object `optional
+* `r2_buckets` `object`optional
 
   * A list of R2 buckets that your Function should be bound to. Refer to [R2 buckets](https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets).
-* `vectorize` ` object `optional
+* `vectorize` `object`optional
 
   * A list of Vectorize indexes that your Function should be bound to. Refer to [Vectorize indexes](https://developers.cloudflare.com/vectorize/get-started/intro/#3-bind-your-worker-to-your-index).
-* `services` ` object `optional
+* `services` `object`optional
 
   * A list of service bindings that your Function should be bound to. Refer to [service bindings](https://developers.cloudflare.com/pages/functions/bindings/#service-bindings).
-* `analytics_engine_datasets` ` object `optional
+* `analytics_engine_datasets` `object`optional
 
   * Specifies analytics engine datasets that are bound to this Function. Refer to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/get-started/).
-* `ai` ` object `optional
+* `ai` `object`optional
 
   * Specifies an AI binding to this Function. Refer to [Workers AI](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai).
 
@@ -661,7 +661,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/#page","headline":"Configuration · Cloudflare Pages docs","description":"Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.","url":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

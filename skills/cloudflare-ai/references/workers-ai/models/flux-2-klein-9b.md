@@ -4,7 +4,7 @@ title: flux-2-klein-9b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-#  flux-2-klein-9b
+# flux-2-klein-9b
 
- Text-to-Image • Black Forest Labs
+Text-to-Image • Black Forest Labs
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/black-forest-labs/flux-2-klein-9b `
+`@cf/black-forest-labs/flux-2-klein-9b`
 
 * Cloudflare-hosted
 * Partner
@@ -43,9 +43,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/#page","headline":"flux-2-klein-9b (Black Forest Labs) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"FLUX.2 \\[klein] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications.","url":"https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

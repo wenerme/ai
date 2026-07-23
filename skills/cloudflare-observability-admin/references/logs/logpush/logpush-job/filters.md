@@ -4,15 +4,15 @@ title: Filters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Filters
+# Filters
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following table represents the comparison operators that are supported and example values. Filters are added as escaped JSON strings formatted as `{"key":"<field>","operator":"<comparison_operator>","value":"<value>"}`.
 
@@ -104,8 +104,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 To set filters through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select the dataset you want to push to a storage service. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Below **Select data fields**, in the **Filter** section, you can set up your filters.
 4. You need to select a [dataset field](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/), an [Operator](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#logical-operators), and a **Value**.
@@ -118,7 +118,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#page","headline":"Filters · Cloudflare Logs docs","description":"Apply filters to Logpush job log output.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

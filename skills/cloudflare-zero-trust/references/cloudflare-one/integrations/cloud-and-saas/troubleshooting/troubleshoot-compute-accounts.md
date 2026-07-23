@@ -4,15 +4,15 @@ title: Troubleshoot compute accounts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot compute accounts
+# Troubleshoot compute accounts
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common compute account issues include security or functionality updates and API token misconfigurations.
 
@@ -65,7 +65,7 @@ If your token is lost or compromised, you can either create a new token or roll 
 To roll your API token:
 
 1. Go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
+[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Next to the API token you want to roll, select the **three dot icon** \> **Roll**.
 3. Select **Confirm** to generate a new API token.
 1. Copy your API token.
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/#page","headline":"Troubleshoot compute accounts · Cloudflare One docs","description":"Troubleshoot Troubleshoot compute accounts issues in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","GCP","Debugging"]}

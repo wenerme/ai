@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-interconnect/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 BGP architecture and resiliency
 
@@ -153,7 +153,7 @@ To connect to AWS Direct Connect:
 #### Google Cloud Interconnect
 
 1. In the Cloudflare dashboard, go to **Interconnects**.
-[ Go to **Interconnects** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 2. Select **Create an interconnect**.
 3. Under **Cloud Interconnect**, select **Create new**.
 4. Under **Google Integration**, select **Select integration**.
@@ -185,7 +185,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/get-started/#page","headline":"Get started · Cloudflare Network Interconnect docs","description":"Connect your network privately to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","GCP"]}

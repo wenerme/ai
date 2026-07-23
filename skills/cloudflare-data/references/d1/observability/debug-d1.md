@@ -4,15 +4,15 @@ title: Debug D1
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Debug D1
+# Debug D1
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/observability/debug-d1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
@@ -58,7 +58,7 @@ D1 returns the following error constants, in addition to the extended (detailed)
 
 The following table lists specific instances of `D1_ERROR`.
 
-###  List of D1\_ERRORs
+### List of D1\_ERRORs
 
 Retry operations
 
@@ -125,7 +125,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1 · Cloudflare D1 docs","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: distilbert-sst-2-int8
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![HuggingFace logo](https://developers.cloudflare.com/_astro/huggingface.ngjt5u2J.svg)
 
-#  distilbert-sst-2-int8
+# distilbert-sst-2-int8
 
- Text Classification • HuggingFace
+Text Classification • HuggingFace
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/huggingface/distilbert-sst-2-int8 `
+`@cf/huggingface/distilbert-sst-2-int8`
 
 * Cloudflare-hosted
 
@@ -97,9 +97,9 @@ items
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -107,7 +107,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/#page","headline":"distilbert-sst-2-int8 (HuggingFace) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Distilled BERT model that was finetuned on SST-2 for sentiment classification","url":"https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Local Explorer
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Local Explorer
+# Local Explorer
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) during development. It is available at `/cdn-cgi/explorer` on your local development server.
 
@@ -28,7 +28,7 @@ Local Explorer works with both [Wrangler](https://developers.cloudflare.com/work
 
 1. Start a local development session:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer · Cloudflare Workers docs","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,20 +4,20 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Sites not proxied through Cloudflare
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[ Go to **Web analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select **Add a site**.
 3. In **Set up hostname**, write your website's hostname.
 4. Select the message box that appears to choose the hostname you have input and select **Done**.
@@ -36,7 +36,7 @@ For more information on how many sites you can track, refer to [Limits](https://
 ## Sites proxied through Cloudflare
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[ Go to **Web analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select **Add a site**.
 3. Select a hostname from the drop-down menu > **Done**.
 
@@ -65,7 +65,7 @@ If you have a `Cache-Control` header set to `public, no-transform`, Cloudflare p
 Cloudflare Pages offers a one-click setup for Web Analytics:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Metrics** and select **Enable** under Web Analytics.
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/get-started/#page","headline":"Enabling Cloudflare Web Analytics · Cloudflare Web Analytics docs","description":"Set up Cloudflare Web Analytics for your website.","url":"https://developers.cloudflare.com/web-analytics/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}

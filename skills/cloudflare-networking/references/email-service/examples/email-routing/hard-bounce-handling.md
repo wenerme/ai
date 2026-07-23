@@ -4,17 +4,17 @@ title: Handle hard bounce emails
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Handle hard bounce emails
+# Handle hard bounce emails
 
 Detect and handle hard bounce emails to maintain sender reputation and manage undeliverable addresses
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Handle hard bounce notifications to automatically remove invalid email addresses from your mailing lists and maintain good sender reputation.
 
@@ -35,7 +35,7 @@ Configure your worker to handle bounce notifications:
 {
 	"name": "bounce-handler",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"send_email": [{ "name": "EMAIL" }],
 	"kv_namespaces": [
 		{
@@ -49,7 +49,7 @@ Configure your worker to handle bounce notifications:
 ```toml
 name = "bounce-handler"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[send_email]]
 name = "EMAIL"
@@ -286,7 +286,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/#page","headline":"Handle hard bounce emails · Cloudflare Email Service docs","description":"Detect and process hard bounce notifications in Email Service to maintain sender reputation.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: OpenFeature SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  OpenFeature SDK
+# OpenFeature SDK
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/sdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Evaluate Flagship feature flags using OpenFeature.
 
@@ -43,7 +43,7 @@ If you are running inside a Cloudflare Worker, the [binding](https://developers.
 
 For TypeScript server-side usage:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/flagship @openfeature/server-sdk
@@ -63,7 +63,7 @@ bun add @cloudflare/flagship @openfeature/server-sdk
 
 For TypeScript browser usage:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/flagship @openfeature/web-sdk
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK · Cloudflare Flagship docs","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

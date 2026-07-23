@@ -4,7 +4,7 @@ title: bge-m3
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg)
 
-#  bge-m3
+# bge-m3
 
- Text Embeddings • BAAI
+Text Embeddings • BAAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/bge-m3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-m3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/baai/bge-m3 `
+`@cf/baai/bge-m3`
 
 * Cloudflare-hosted
 
 Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
-| Model Info                                                                  |                           |
-| --------------------------------------------------------------------------- | ------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 60,000 tokens             |
-| Unit Pricing                                                                | $0.012 per M input tokens |
+| Model Info                                                                 |                           |
+| -------------------------------------------------------------------------- | ------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 60,000 tokens             |
+| Unit Pricing                                                               | $0.012 per M input tokens |
 
 ## Usage
 
@@ -93,11 +93,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 query
 
@@ -115,7 +115,7 @@ request\_id
 
 `string`The async request id that can be used to obtain the results.
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -127,13 +127,13 @@ request\_id
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/sync-output.json "Download")
+SynchronousOutput
 
-Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -141,7 +141,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-m3/#page","headline":"bge-m3 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.","url":"https://developers.cloudflare.com/workers-ai/models/bge-m3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
